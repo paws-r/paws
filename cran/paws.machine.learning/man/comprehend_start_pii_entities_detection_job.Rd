@@ -32,8 +32,8 @@ This parameter is required if you set the \code{Mode} parameter to
 \code{ONLY_REDACTION}. In that case, you must provide a \code{RedactionConfig}
 definition that includes the \code{PiiEntityTypes} parameter.}
 
-\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-(IAM) role that grants Amazon Comprehend read access to your input data.}
+\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that grants Amazon
+Comprehend read access to your input data.}
 
 \item{JobName}{The identifier of the job.}
 
@@ -43,7 +43,7 @@ valid language.}
 \item{ClientRequestToken}{A unique identifier for the request. If you don't set the client request
 token, Amazon Comprehend generates one.}
 
-\item{Tags}{Tags to be associated with the PII entities detection job. A tag is a
+\item{Tags}{Tags to associate with the PII entities detection job. A tag is a
 key-value pair that adds metadata to a resource used by Amazon
 Comprehend. For example, a tag with "Sales" as the key might be added to
 a resource to indicate its use by the sales department.}

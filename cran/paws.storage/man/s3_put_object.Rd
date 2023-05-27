@@ -61,13 +61,13 @@ Services SDKs, you provide the access point ARN in place of the bucket
 name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
 in the \emph{Amazon S3 User Guide}.
 
-When using this action with Amazon S3 on Outposts, you must direct
+When you use this action with Amazon S3 on Outposts, you must direct
 requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
-When using this action with S3 on Outposts through the Amazon Web
-Services SDKs, you provide the Outposts bucket ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
+When you use this action with S3 on Outposts through the Amazon Web
+Services SDKs, you provide the Outposts access point ARN in place of the
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{CacheControl}{Can be used to specify caching behavior along the request/reply chain.
@@ -75,19 +75,18 @@ For more information, see
 \href{https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9}{http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9}.}
 
 \item{ContentDisposition}{Specifies presentational information for the object. For more
-information, see
-\href{https://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1}{http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1}.}
+information, see \url{https://www.rfc-editor.org/rfc/rfc6266#section-4}.}
 
 \item{ContentEncoding}{Specifies what content encodings have been applied to the object and
 thus what decoding mechanisms must be applied to obtain the media-type
 referenced by the Content-Type header field. For more information, see
-\href{https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11}{http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11}.}
+\url{https://www.rfc-editor.org/rfc/rfc9110.html#field.content-encoding}.}
 
 \item{ContentLanguage}{The language the content is in.}
 
 \item{ContentLength}{Size of the body in bytes. This parameter is useful when the size of the
 body cannot be determined automatically. For more information, see
-\href{https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.13}{http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.13}.}
+\url{https://www.rfc-editor.org/rfc/rfc9110.html#name-content-length}.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the message (without the
 headers) according to RFC 1864. This header can be used as a message
@@ -98,7 +97,7 @@ information about REST request authentication, see \href{https://docs.aws.amazon
 
 \item{ContentType}{A standard MIME type describing the format of the contents. For more
 information, see
-\href{https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17}{http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17}.}
+\url{https://www.rfc-editor.org/rfc/rfc9110.html#name-content-type}.}
 
 \item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
 using the SDK. This header will not provide any additional functionality
@@ -136,8 +135,7 @@ more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguid
 in the \emph{Amazon S3 User Guide}.}
 
 \item{Expires}{The date and time at which the object is no longer cacheable. For more
-information, see
-\href{https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21}{http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21}.}
+information, see \url{https://www.rfc-editor.org/rfc/rfc7234#section-5.3}.}
 
 \item{GrantFullControl}{Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the
 object.
@@ -161,7 +159,7 @@ This action is not supported by Amazon S3 on Outposts.}
 \item{Metadata}{A map of metadata to store with the object in S3.}
 
 \item{ServerSideEncryption}{The server-side encryption algorithm used when storing this object in
-Amazon S3 (for example, AES256, aws:kms).}
+Amazon S3 (for example, AES256, \code{aws:kms}).}
 
 \item{StorageClass}{By default, Amazon S3 uses the STANDARD Storage Class to store newly
 created objects. The STANDARD storage class provides high durability and
@@ -201,10 +199,10 @@ appropriate for use with the algorithm specified in the
 1321. Amazon S3 uses this header for a message integrity check to ensure
 that the encryption key was transmitted without error.}
 
-\item{SSEKMSKeyId}{If \code{x-amz-server-side-encryption} is present and has the value of
-\code{aws:kms}, this header specifies the ID of the Amazon Web Services Key
-Management Service (Amazon Web Services KMS) symmetrical customer
-managed key that was used for the object. If you specify
+\item{SSEKMSKeyId}{If \code{x-amz-server-side-encryption} has a valid value of \code{aws:kms}, this
+header specifies the ID of the Amazon Web Services Key Management
+Service (Amazon Web Services KMS) symmetric encryption customer managed
+key that was used for the object. If you specify
 \code{x-amz-server-side-encryption:aws:kms}, but do not
 provide\code{ x-amz-server-side-encryption-aws-kms-key-id}, Amazon S3 uses
 the Amazon Web Services managed key to protect the data. If the KMS key
@@ -213,7 +211,10 @@ full ARN and not just the ID.}
 
 \item{SSEKMSEncryptionContext}{Specifies the Amazon Web Services KMS Encryption Context to use for
 object encryption. The value of this header is a base64-encoded UTF-8
-string holding JSON with the encryption context key-value pairs.}
+string holding JSON with the encryption context key-value pairs. This
+value is stored as object metadata and automatically gets passed on to
+Amazon Web Services KMS for future \code{\link[=s3_get_object]{get_object}} or
+\code{\link[=s3_copy_object]{copy_object}} operations on this object.}
 
 \item{BucketKeyEnabled}{Specifies whether Amazon S3 should use an S3 Bucket Key for object
 encryption with server-side encryption using AWS KMS (SSE-KMS). Setting

@@ -2,7 +2,7 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_update_mobile_device_access_rule}
 \alias{workmail_update_mobile_device_access_rule}
-\title{Updates a mobile device access rule for the specified Amazon WorkMail
+\title{Updates a mobile device access rule for the specified WorkMail
 organization}
 \usage{
 workmail_update_mobile_device_access_rule(
@@ -22,7 +22,7 @@ workmail_update_mobile_device_access_rule(
 )
 }
 \arguments{
-\item{OrganizationId}{[required] The Amazon WorkMail organization under which the rule will be updated.}
+\item{OrganizationId}{[required] The WorkMail organization under which the rule will be updated.}
 
 \item{MobileDeviceAccessRuleId}{[required] The identifier of the rule to be updated.}
 
@@ -54,7 +54,7 @@ other device operating systems will match.}
 agents will match.}
 }
 \description{
-Updates a mobile device access rule for the specified Amazon WorkMail organization.
+Updates a mobile device access rule for the specified WorkMail organization.
 
 See \url{https://paws-r.github.io/docs/workmail/update_mobile_device_access_rule.html} for full documentation.
 }

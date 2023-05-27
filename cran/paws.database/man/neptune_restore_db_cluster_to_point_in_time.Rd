@@ -19,7 +19,8 @@ neptune_restore_db_cluster_to_point_in_time(
   EnableIAMDatabaseAuthentication = NULL,
   EnableCloudwatchLogsExports = NULL,
   DBClusterParameterGroupName = NULL,
-  DeletionProtection = NULL
+  DeletionProtection = NULL,
+  ServerlessV2ScalingConfiguration = NULL
 )
 }
 \arguments{
@@ -141,6 +142,8 @@ DBClusterParameterGroup.
 \item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
 enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled.}
+
+\item{ServerlessV2ScalingConfiguration}{}
 }
 \description{
 Restores a DB cluster to an arbitrary point in time. Users can restore to any point in time before \code{LatestRestorableTime} for up to \code{BackupRetentionPeriod} days. The target DB cluster is created from the source DB cluster with the same configuration as the original DB cluster, except that the new DB cluster is created with the default DB security group.

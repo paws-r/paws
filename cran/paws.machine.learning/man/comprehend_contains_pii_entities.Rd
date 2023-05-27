@@ -9,9 +9,7 @@ such as name, address, bank account number, or phone number}
 comprehend_contains_pii_entities(Text, LanguageCode)
 }
 \arguments{
-\item{Text}{[required] Creates a new document classification request to analyze a single
-document in real-time, returning personally identifiable information
-(PII) entity labels.}
+\item{Text}{[required] A UTF-8 text string. The maximum string size is 100 KB.}
 
 \item{LanguageCode}{[required] The language of the input documents. Currently, English is the only
 valid language.}

@@ -2,8 +2,8 @@
 % Please edit documentation in R/emr_operations.R
 \name{emr_list_instances}
 \alias{emr_list_instances}
-\title{Provides information for all active EC2 instances and EC2 instances
-terminated in the last 30 days, up to a maximum of 2,000}
+\title{Provides information for all active Amazon EC2 instances and Amazon EC2
+instances terminated in the last 30 days, up to a maximum of 2,000}
 \usage{
 emr_list_instances(
   ClusterId,
@@ -32,7 +32,7 @@ this request.}
 \item{Marker}{The pagination token that indicates the next set of results to retrieve.}
 }
 \description{
-Provides information for all active EC2 instances and EC2 instances terminated in the last 30 days, up to a maximum of 2,000. EC2 instances in any of the following states are considered active: AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
+Provides information for all active Amazon EC2 instances and Amazon EC2 instances terminated in the last 30 days, up to a maximum of 2,000. Amazon EC2 instances in any of the following states are considered active: AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
 
 See \url{https://paws-r.github.io/docs/emr/list_instances.html} for full documentation.
 }

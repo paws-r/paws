@@ -47,7 +47,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{CopyTagsFromSource}{Copies the tags from the specified volume to corresponding snapshot.}
 }
 \description{
-Creates crash-consistent snapshots of multiple EBS volumes and stores the data in S3. Volumes are chosen by specifying an instance. Any attached volumes will produce one snapshot each that is crash-consistent across the instance. Boot volumes can be excluded by changing the parameters.
+Creates crash-consistent snapshots of multiple EBS volumes and stores the data in S3. Volumes are chosen by specifying an instance. Any attached volumes will produce one snapshot each that is crash-consistent across the instance.
 
 See \url{https://paws-r.github.io/docs/ec2/create_snapshots.html} for full documentation.
 }

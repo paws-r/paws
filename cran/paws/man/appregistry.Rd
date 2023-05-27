@@ -65,19 +65,21 @@ enterprise.
 \link[paws.management:appregistry_associate_resource]{associate_resource} \tab Associates a resource with an application\cr
 \link[paws.management:appregistry_create_application]{create_application} \tab Creates a new application that is the top-level node in a hierarchy of related cloud resource abstractions\cr
 \link[paws.management:appregistry_create_attribute_group]{create_attribute_group} \tab Creates a new attribute group as a container for user-defined attributes\cr
-\link[paws.management:appregistry_delete_application]{delete_application} \tab Deletes an application that is specified either by its application ID or name\cr
-\link[paws.management:appregistry_delete_attribute_group]{delete_attribute_group} \tab Deletes an attribute group, specified either by its attribute group ID or name\cr
+\link[paws.management:appregistry_delete_application]{delete_application} \tab Deletes an application that is specified either by its application ID, name, or ARN\cr
+\link[paws.management:appregistry_delete_attribute_group]{delete_attribute_group} \tab Deletes an attribute group, specified either by its attribute group ID, name, or ARN\cr
 \link[paws.management:appregistry_disassociate_attribute_group]{disassociate_attribute_group} \tab Disassociates an attribute group from an application to remove the extra attributes contained in the attribute group from the application's metadata\cr
 \link[paws.management:appregistry_disassociate_resource]{disassociate_resource} \tab Disassociates a resource from application\cr
 \link[paws.management:appregistry_get_application]{get_application} \tab Retrieves metadata information about one of your applications\cr
 \link[paws.management:appregistry_get_associated_resource]{get_associated_resource} \tab Gets the resource associated with the application\cr
-\link[paws.management:appregistry_get_attribute_group]{get_attribute_group} \tab Retrieves an attribute group, either by its name or its ID\cr
+\link[paws.management:appregistry_get_attribute_group]{get_attribute_group} \tab Retrieves an attribute group by its ARN, ID, or name\cr
+\link[paws.management:appregistry_get_configuration]{get_configuration} \tab Retrieves a TagKey configuration from an account\cr
 \link[paws.management:appregistry_list_applications]{list_applications} \tab Retrieves a list of all of your applications\cr
 \link[paws.management:appregistry_list_associated_attribute_groups]{list_associated_attribute_groups} \tab Lists all attribute groups that are associated with specified application\cr
-\link[paws.management:appregistry_list_associated_resources]{list_associated_resources} \tab Lists all resources that are associated with specified application\cr
+\link[paws.management:appregistry_list_associated_resources]{list_associated_resources} \tab Lists all of the resources that are associated with the specified application\cr
 \link[paws.management:appregistry_list_attribute_groups]{list_attribute_groups} \tab Lists all attribute groups which you have access to\cr
 \link[paws.management:appregistry_list_attribute_groups_for_application]{list_attribute_groups_for_application} \tab Lists the details of all attribute groups associated with a specific application\cr
 \link[paws.management:appregistry_list_tags_for_resource]{list_tags_for_resource} \tab Lists all of the tags on the resource\cr
+\link[paws.management:appregistry_put_configuration]{put_configuration} \tab Associates a TagKey configuration to an account\cr
 \link[paws.management:appregistry_sync_resource]{sync_resource} \tab Syncs the resource with current AppRegistry records\cr
 \link[paws.management:appregistry_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified resource\cr
 \link[paws.management:appregistry_untag_resource]{untag_resource} \tab Removes tags from a resource\cr

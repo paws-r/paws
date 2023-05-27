@@ -61,19 +61,27 @@ for use in predictive maintenance.
 \tabular{ll}{
 \link[paws.machine.learning:lookoutequipment_create_dataset]{create_dataset} \tab Creates a container for a collection of data being ingested for analysis\cr
 \link[paws.machine.learning:lookoutequipment_create_inference_scheduler]{create_inference_scheduler} \tab Creates a scheduled inference\cr
+\link[paws.machine.learning:lookoutequipment_create_label]{create_label} \tab Creates a label for an event\cr
+\link[paws.machine.learning:lookoutequipment_create_label_group]{create_label_group} \tab Creates a group of labels\cr
 \link[paws.machine.learning:lookoutequipment_create_model]{create_model} \tab Creates an ML model for data inference\cr
 \link[paws.machine.learning:lookoutequipment_delete_dataset]{delete_dataset} \tab Deletes a dataset and associated artifacts\cr
 \link[paws.machine.learning:lookoutequipment_delete_inference_scheduler]{delete_inference_scheduler} \tab Deletes an inference scheduler that has been set up\cr
+\link[paws.machine.learning:lookoutequipment_delete_label]{delete_label} \tab Deletes a label\cr
+\link[paws.machine.learning:lookoutequipment_delete_label_group]{delete_label_group} \tab Deletes a group of labels\cr
 \link[paws.machine.learning:lookoutequipment_delete_model]{delete_model} \tab Deletes an ML model currently available for Amazon Lookout for Equipment\cr
 \link[paws.machine.learning:lookoutequipment_describe_data_ingestion_job]{describe_data_ingestion_job} \tab Provides information on a specific data ingestion job such as creation time, dataset ARN, and status\cr
 \link[paws.machine.learning:lookoutequipment_describe_dataset]{describe_dataset} \tab Provides a JSON description of the data in each time series dataset, including names, column names, and data types\cr
 \link[paws.machine.learning:lookoutequipment_describe_inference_scheduler]{describe_inference_scheduler} \tab Specifies information about the inference scheduler being used, including name, model, status, and associated metadata\cr
+\link[paws.machine.learning:lookoutequipment_describe_label]{describe_label} \tab Returns the name of the label\cr
+\link[paws.machine.learning:lookoutequipment_describe_label_group]{describe_label_group} \tab Returns information about the label group\cr
 \link[paws.machine.learning:lookoutequipment_describe_model]{describe_model} \tab Provides a JSON containing the overall information about a specific ML model, including model name and ARN, dataset, training and evaluation information, status, and so on\cr
 \link[paws.machine.learning:lookoutequipment_list_data_ingestion_jobs]{list_data_ingestion_jobs} \tab Provides a list of all data ingestion jobs, including dataset name and ARN, S3 location of the input data, status, and so on\cr
 \link[paws.machine.learning:lookoutequipment_list_datasets]{list_datasets} \tab Lists all datasets currently available in your account, filtering on the dataset name\cr
 \link[paws.machine.learning:lookoutequipment_list_inference_events]{list_inference_events} \tab Lists all inference events that have been found for the specified inference scheduler\cr
 \link[paws.machine.learning:lookoutequipment_list_inference_executions]{list_inference_executions} \tab Lists all inference executions that have been performed by the specified inference scheduler\cr
 \link[paws.machine.learning:lookoutequipment_list_inference_schedulers]{list_inference_schedulers} \tab Retrieves a list of all inference schedulers currently available for your account\cr
+\link[paws.machine.learning:lookoutequipment_list_label_groups]{list_label_groups} \tab Returns a list of the label groups\cr
+\link[paws.machine.learning:lookoutequipment_list_labels]{list_labels} \tab Provides a list of labels\cr
 \link[paws.machine.learning:lookoutequipment_list_models]{list_models} \tab Generates a list of all models in the account, including model name and ARN, dataset, and status\cr
 \link[paws.machine.learning:lookoutequipment_list_sensor_statistics]{list_sensor_statistics} \tab Lists statistics about the data collected for each of the sensors that have been successfully ingested in the particular dataset\cr
 \link[paws.machine.learning:lookoutequipment_list_tags_for_resource]{list_tags_for_resource} \tab Lists all the tags for a specified resource, including key and value\cr
@@ -82,7 +90,8 @@ for use in predictive maintenance.
 \link[paws.machine.learning:lookoutequipment_stop_inference_scheduler]{stop_inference_scheduler} \tab Stops an inference scheduler\cr
 \link[paws.machine.learning:lookoutequipment_tag_resource]{tag_resource} \tab Associates a given tag to a resource in your account\cr
 \link[paws.machine.learning:lookoutequipment_untag_resource]{untag_resource} \tab Removes a specific tag from a given resource\cr
-\link[paws.machine.learning:lookoutequipment_update_inference_scheduler]{update_inference_scheduler} \tab Updates an inference scheduler
+\link[paws.machine.learning:lookoutequipment_update_inference_scheduler]{update_inference_scheduler} \tab Updates an inference scheduler\cr
+\link[paws.machine.learning:lookoutequipment_update_label_group]{update_label_group} \tab Updates the label group
 }
 }
 

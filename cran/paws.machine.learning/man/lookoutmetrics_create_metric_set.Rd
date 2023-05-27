@@ -15,7 +15,8 @@ lookoutmetrics_create_metric_set(
   MetricSetFrequency = NULL,
   MetricSource,
   Timezone = NULL,
-  Tags = NULL
+  Tags = NULL,
+  DimensionFilterList = NULL
 )
 }
 \arguments{
@@ -28,8 +29,8 @@ lookoutmetrics_create_metric_set(
 \item{MetricList}{[required] A list of metrics that the dataset will contain.}
 
 \item{Offset}{After an interval ends, the amount of seconds that the detector waits
-before importing data. Offset is only supported for S3 and Redshift
-datasources.}
+before importing data. Offset is only supported for S3, Redshift, Athena
+and datasources.}
 
 \item{TimestampColumn}{Contains information about the column used for tracking time in your
 source data.}
@@ -45,6 +46,8 @@ source data.}
 \item{Tags}{A list of
 \href{https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html}{tags}
 to apply to the dataset.}
+
+\item{DimensionFilterList}{A list of filters that specify which data is kept for anomaly detection.}
 }
 \description{
 Creates a dataset.

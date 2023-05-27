@@ -35,6 +35,36 @@ globalaccelerator_add_custom_routing_endpoints <- function(EndpointConfiguration
 }
 .globalaccelerator$operations$add_custom_routing_endpoints <- globalaccelerator_add_custom_routing_endpoints
 
+#' Add endpoints to an endpoint group
+#'
+#' @description
+#' Add endpoints to an endpoint group. The [`add_endpoints`][globalaccelerator_add_endpoints] API operation is the recommended option for adding endpoints. The alternative options are to add endpoints when you create an endpoint group (with the [`create_endpoint_group`][globalaccelerator_create_endpoint_group] API) or when you update an endpoint group (with the [`update_endpoint_group`][globalaccelerator_update_endpoint_group] API).
+#'
+#' See [https://paws-r.github.io/docs/globalaccelerator/add_endpoints.html](https://paws-r.github.io/docs/globalaccelerator/add_endpoints.html) for full documentation.
+#'
+#' @param EndpointConfigurations &#91;required&#93; The list of endpoint objects.
+#' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group.
+#'
+#' @keywords internal
+#'
+#' @rdname globalaccelerator_add_endpoints
+globalaccelerator_add_endpoints <- function(EndpointConfigurations, EndpointGroupArn) {
+  op <- new_operation(
+    name = "AddEndpoints",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .globalaccelerator$add_endpoints_input(EndpointConfigurations = EndpointConfigurations, EndpointGroupArn = EndpointGroupArn)
+  output <- .globalaccelerator$add_endpoints_output()
+  config <- get_config()
+  svc <- .globalaccelerator$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.globalaccelerator$operations$add_endpoints <- globalaccelerator_add_endpoints
+
 #' Advertises an IPv4 address range that is provisioned for use with your
 #' Amazon Web Services resources through bring your own IP addresses
 #' (BYOIP)
@@ -1360,6 +1390,36 @@ globalaccelerator_remove_custom_routing_endpoints <- function(EndpointIds, Endpo
   return(response)
 }
 .globalaccelerator$operations$remove_custom_routing_endpoints <- globalaccelerator_remove_custom_routing_endpoints
+
+#' Remove endpoints from an endpoint group
+#'
+#' @description
+#' Remove endpoints from an endpoint group.
+#'
+#' See [https://paws-r.github.io/docs/globalaccelerator/remove_endpoints.html](https://paws-r.github.io/docs/globalaccelerator/remove_endpoints.html) for full documentation.
+#'
+#' @param EndpointIdentifiers &#91;required&#93; The identifiers of the endpoints that you want to remove.
+#' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group.
+#'
+#' @keywords internal
+#'
+#' @rdname globalaccelerator_remove_endpoints
+globalaccelerator_remove_endpoints <- function(EndpointIdentifiers, EndpointGroupArn) {
+  op <- new_operation(
+    name = "RemoveEndpoints",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .globalaccelerator$remove_endpoints_input(EndpointIdentifiers = EndpointIdentifiers, EndpointGroupArn = EndpointGroupArn)
+  output <- .globalaccelerator$remove_endpoints_output()
+  config <- get_config()
+  svc <- .globalaccelerator$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.globalaccelerator$operations$remove_endpoints <- globalaccelerator_remove_endpoints
 
 #' Add tags to an accelerator resource
 #'

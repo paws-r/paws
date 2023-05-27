@@ -5,10 +5,15 @@
 \title{Splits a shard into two new shards in the Kinesis data stream, to
 increase the stream's capacity to ingest and transport data}
 \usage{
-kinesis_split_shard(StreamName, ShardToSplit, NewStartingHashKey)
+kinesis_split_shard(
+  StreamName = NULL,
+  ShardToSplit,
+  NewStartingHashKey,
+  StreamARN = NULL
+)
 }
 \arguments{
-\item{StreamName}{[required] The name of the stream for the shard split.}
+\item{StreamName}{The name of the stream for the shard split.}
 
 \item{ShardToSplit}{[required] The shard ID of the shard to split.}
 
@@ -20,9 +25,11 @@ the shard. The \code{NewStartingHashKey} hash key value and all higher hash
 key values in hash key range are distributed to one of the child shards.
 All the lower hash key values in the range are distributed to the other
 child shard.}
+
+\item{StreamARN}{The ARN of the stream.}
 }
 \description{
-Splits a shard into two new shards in the Kinesis data stream, to increase the stream's capacity to ingest and transport data. \code{\link[=kinesis_split_shard]{split_shard}} is called when there is a need to increase the overall capacity of a stream because of an expected increase in the volume of data records being ingested.
+Splits a shard into two new shards in the Kinesis data stream, to increase the stream's capacity to ingest and transport data. \code{\link[=kinesis_split_shard]{split_shard}} is called when there is a need to increase the overall capacity of a stream because of an expected increase in the volume of data records being ingested. This API is only supported for the data streams with the provisioned capacity mode.
 
 See \url{https://paws-r.github.io/docs/kinesis/split_shard.html} for full documentation.
 }

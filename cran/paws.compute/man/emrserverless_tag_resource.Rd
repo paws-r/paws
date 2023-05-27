@@ -14,7 +14,7 @@ applications and job runs.}
 \item{tags}{[required] The tags to add to the resource. A tag is an array of key-value pairs.}
 }
 \description{
-Assigns tags to resources. A tag is a label that you assign to an AWS resource. Each tag consists of a key and an optional value, both of which you define. Tags enable you to categorize your AWS resources by attributes such as purpose, owner, or environment. When you have many resources of the same type, you can quickly identify a specific resource based on the tags you've assigned to it.
+Assigns tags to resources. A tag is a label that you assign to an Amazon Web Services resource. Each tag consists of a key and an optional value, both of which you define. Tags enable you to categorize your Amazon Web Services resources by attributes such as purpose, owner, or environment. When you have many resources of the same type, you can quickly identify a specific resource based on the tags you've assigned to it.
 
 See \url{https://paws-r.github.io/docs/emrserverless/tag_resource.html} for full documentation.
 }

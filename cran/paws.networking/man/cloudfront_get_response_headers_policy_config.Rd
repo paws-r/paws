@@ -9,8 +9,8 @@ cloudfront_get_response_headers_policy_config(Id)
 \arguments{
 \item{Id}{[required] The identifier for the response headers policy.
 
-If the response headers policy is attached to a distribution’s cache
-behavior, you can get the policy’s identifier using
+If the response headers policy is attached to a distribution's cache
+behavior, you can get the policy's identifier using
 \code{\link[=cloudfront_list_distributions]{list_distributions}} or
 \code{\link[=cloudfront_get_distribution]{get_distribution}}. If the response
 headers policy is not attached to a cache behavior, you can get the

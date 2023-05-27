@@ -2,8 +2,8 @@
 % Please edit documentation in R/ivschat_operations.R
 \name{ivschat_create_chat_token}
 \alias{ivschat_create_chat_token}
-\title{Creates an encrypted token that is used to establish an individual
-WebSocket connection to a room}
+\title{Creates an encrypted token that is used by a chat participant to
+establish an individual WebSocket chat connection to a room}
 \usage{
 ivschat_create_chat_token(
   attributes = NULL,
@@ -32,7 +32,7 @@ this must be an ARN.}
 with this token. This can be any UTF-8 encoded text.}
 }
 \description{
-Creates an encrypted token that is used to establish an individual WebSocket connection to a room. The token is valid for one minute, and a connection (session) established with the token is valid for the specified duration.
+Creates an encrypted token that is used by a chat participant to establish an individual WebSocket chat connection to a room. When the token is used to connect to chat, the connection is valid for the session duration specified in the request. The token becomes invalid at the token-expiration timestamp included in the response.
 
 See \url{https://paws-r.github.io/docs/ivschat/create_chat_token.html} for full documentation.
 }

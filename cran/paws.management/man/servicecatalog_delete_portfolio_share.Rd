@@ -15,14 +15,13 @@ servicecatalog_delete_portfolio_share(
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
 
 \item{PortfolioId}{[required] The portfolio identifier.}
 
-\item{AccountId}{The AWS account ID.}
+\item{AccountId}{The Amazon Web Services account ID.}
 
 \item{OrganizationNode}{The organization node to whom you are going to stop sharing.}
 }

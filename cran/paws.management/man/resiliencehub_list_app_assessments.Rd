@@ -2,7 +2,7 @@
 % Please edit documentation in R/resiliencehub_operations.R
 \name{resiliencehub_list_app_assessments}
 \alias{resiliencehub_list_app_assessments}
-\title{Lists the assessments for an AWS Resilience Hub application}
+\title{Lists the assessments for an Resilience Hub application}
 \usage{
 resiliencehub_list_app_assessments(
   appArn = NULL,
@@ -16,10 +16,11 @@ resiliencehub_list_app_assessments(
 )
 }
 \arguments{
-\item{appArn}{The Amazon Resource Name (ARN) of the application. The format for this
-ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}.
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference}.}
+\item{appArn}{The Amazon Resource Name (ARN) of the Resilience Hub application. The
+format for this ARN is:
+arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
+information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
+in the \emph{AWS General Reference} guide.}
 
 \item{assessmentName}{The name for the assessment.}
 
@@ -40,7 +41,7 @@ in the response so that the remaining results can be retrieved.}
 \strong{startTime}, set reverseOrder to \code{true}.}
 }
 \description{
-Lists the assessments for an AWS Resilience Hub application. You can use request parameters to refine the results for the response object.
+Lists the assessments for an Resilience Hub application. You can use request parameters to refine the results for the response object.
 
 See \url{https://paws-r.github.io/docs/resiliencehub/list_app_assessments.html} for full documentation.
 }

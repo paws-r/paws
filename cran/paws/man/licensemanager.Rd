@@ -93,8 +93,10 @@ across multiple Amazon Web Services accounts and on-premises servers.
 \link[paws.management:licensemanager_list_licenses]{list_licenses} \tab Lists the licenses for your account\cr
 \link[paws.management:licensemanager_list_license_specifications_for_resource]{list_license_specifications_for_resource} \tab Describes the license configurations for the specified resource\cr
 \link[paws.management:licensemanager_list_license_versions]{list_license_versions} \tab Lists all versions of the specified license\cr
-\link[paws.management:licensemanager_list_received_grants]{list_received_grants} \tab Lists grants that are received but not accepted\cr
+\link[paws.management:licensemanager_list_received_grants]{list_received_grants} \tab Lists grants that are received\cr
+\link[paws.management:licensemanager_list_received_grants_for_organization]{list_received_grants_for_organization} \tab Lists the grants received for all accounts in the organization\cr
 \link[paws.management:licensemanager_list_received_licenses]{list_received_licenses} \tab Lists received licenses\cr
+\link[paws.management:licensemanager_list_received_licenses_for_organization]{list_received_licenses_for_organization} \tab Lists the licenses received for all accounts in the organization\cr
 \link[paws.management:licensemanager_list_resource_inventory]{list_resource_inventory} \tab Lists resources managed using Systems Manager inventory\cr
 \link[paws.management:licensemanager_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified license configuration\cr
 \link[paws.management:licensemanager_list_tokens]{list_tokens} \tab Lists your tokens\cr

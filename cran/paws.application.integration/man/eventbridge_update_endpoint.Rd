@@ -19,7 +19,7 @@ eventbridge_update_endpoint(
 \item{Description}{A description for the endpoint.}
 
 \item{RoutingConfig}{Configure the routing policy, including the health check and secondary
-Region..}
+Region.}
 
 \item{ReplicationConfig}{Whether event replication was enabled or disabled by this request.}
 

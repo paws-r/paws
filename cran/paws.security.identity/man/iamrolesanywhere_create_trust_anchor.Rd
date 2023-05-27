@@ -2,21 +2,30 @@
 % Please edit documentation in R/iamrolesanywhere_operations.R
 \name{iamrolesanywhere_create_trust_anchor}
 \alias{iamrolesanywhere_create_trust_anchor}
-\title{Creates a trust anchor}
+\title{Creates a trust anchor to establish trust between IAM Roles Anywhere and
+your certificate authority (CA)}
 \usage{
-iamrolesanywhere_create_trust_anchor(enabled = NULL, name, source, tags = NULL)
+iamrolesanywhere_create_trust_anchor(
+  enabled = NULL,
+  name,
+  notificationSettings = NULL,
+  source,
+  tags = NULL
+)
 }
 \arguments{
 \item{enabled}{Specifies whether the trust anchor is enabled.}
 
 \item{name}{[required] The name of the trust anchor.}
 
+\item{notificationSettings}{A list of notification settings to be associated to the trust anchor.}
+
 \item{source}{[required] The trust anchor type and its related certificate data.}
 
 \item{tags}{The tags to attach to the trust anchor.}
 }
 \description{
-Creates a trust anchor. You establish trust between IAM Roles Anywhere and your certificate authority (CA) by configuring a trust anchor. A Trust Anchor is defined either as a reference to a AWS Certificate Manager Private Certificate Authority (ACM PCA), or by uploading a Certificate Authority (CA) certificate. Your AWS workloads can authenticate with the trust anchor using certificates issued by the trusted Certificate Authority (CA) in exchange for temporary AWS credentials.
+Creates a trust anchor to establish trust between IAM Roles Anywhere and your certificate authority (CA). You can define a trust anchor as a reference to an Private Certificate Authority (Private CA) or by uploading a CA certificate. Your Amazon Web Services workloads can authenticate with the trust anchor using certificates issued by the CA in exchange for temporary Amazon Web Services credentials.
 
 See \url{https://paws-r.github.io/docs/iamrolesanywhere/create_trust_anchor.html} for full documentation.
 }

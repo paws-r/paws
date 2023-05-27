@@ -2,7 +2,8 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_describe_configuration_recorder_status}
 \alias{configservice_describe_configuration_recorder_status}
-\title{Returns the current status of the specified configuration recorder}
+\title{Returns the current status of the specified configuration recorder as
+well as the status of the last recording event for the recorder}
 \usage{
 configservice_describe_configuration_recorder_status(
   ConfigurationRecorderNames = NULL
@@ -14,7 +15,7 @@ the action returns the current status of all the configuration recorders
 associated with the account.}
 }
 \description{
-Returns the current status of the specified configuration recorder. If a configuration recorder is not specified, this action returns the status of all configuration recorders associated with the account.
+Returns the current status of the specified configuration recorder as well as the status of the last recording event for the recorder. If a configuration recorder is not specified, this action returns the status of all configuration recorders associated with the account.
 
 See \url{https://paws-r.github.io/docs/configservice/describe_configuration_recorder_status.html} for full documentation.
 }

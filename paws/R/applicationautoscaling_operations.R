@@ -95,6 +95,10 @@ NULL
 #' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
+#' 
+#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#'     the unique identifier is the resource ID. Example:
+#'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
@@ -127,7 +131,7 @@ NULL
 #'     Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2
-#'     instances for an SageMaker model endpoint variant.
+#'     instances for a SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for
 #'     a custom resource provided by your own application or service.
@@ -160,6 +164,9 @@ NULL
 #' 
 #' -   `neptune:cluster:ReadReplicaCount` - The count of read replicas in
 #'     an Amazon Neptune DB cluster.
+#' 
+#' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
+#'     concurrency for a SageMaker Serverless endpoint.
 #'
 #' @return
 #' An empty list.
@@ -170,7 +177,7 @@ NULL
 #'   PolicyName = "string",
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"
 #' )
 #' ```
 #'
@@ -294,6 +301,10 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
+#' 
+#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#'     the unique identifier is the resource ID. Example:
+#'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
@@ -326,7 +337,7 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #'     Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2
-#'     instances for an SageMaker model endpoint variant.
+#'     instances for a SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for
 #'     a custom resource provided by your own application or service.
@@ -359,6 +370,9 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' 
 #' -   `neptune:cluster:ReadReplicaCount` - The count of read replicas in
 #'     an Amazon Neptune DB cluster.
+#' 
+#' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
+#'     concurrency for a SageMaker Serverless endpoint.
 #'
 #' @return
 #' An empty list.
@@ -369,9 +383,21 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune",
 #'   ScheduledActionName = "string",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example deletes a scheduled action for the AppStream 2.0 fleet
+#' # called sample-fleet.
+#' svc$delete_scheduled_action(
+#'   ResourceId = "fleet/sample-fleet",
+#'   ScalableDimension = "appstream:fleet:DesiredCapacity",
+#'   ScheduledActionName = "my-recurring-action",
+#'   ServiceNamespace = "appstream"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -480,6 +506,10 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
+#' 
+#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#'     the unique identifier is the resource ID. Example:
+#'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension associated with the scalable target. This string
 #' consists of the service namespace, resource type, and scaling property.
 #' 
@@ -512,7 +542,7 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #'     Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2
-#'     instances for an SageMaker model endpoint variant.
+#'     instances for a SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for
 #'     a custom resource provided by your own application or service.
@@ -545,6 +575,9 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' 
 #' -   `neptune:cluster:ReadReplicaCount` - The count of read replicas in
 #'     an Amazon Neptune DB cluster.
+#' 
+#' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
+#'     concurrency for a SageMaker Serverless endpoint.
 #'
 #' @return
 #' An empty list.
@@ -554,7 +587,7 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' svc$deregister_scalable_target(
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"
 #' )
 #' ```
 #'
@@ -672,6 +705,10 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
+#' 
+#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#'     the unique identifier is the resource ID. Example:
+#'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' @param ScalableDimension The scalable dimension associated with the scalable target. This string
 #' consists of the service namespace, resource type, and scaling property.
 #' If you specify a scalable dimension, you must also specify a resource
@@ -706,7 +743,7 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #'     Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2
-#'     instances for an SageMaker model endpoint variant.
+#'     instances for a SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for
 #'     a custom resource provided by your own application or service.
@@ -739,6 +776,9 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' 
 #' -   `neptune:cluster:ReadReplicaCount` - The count of read replicas in
 #'     an Amazon Neptune DB cluster.
+#' 
+#' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
+#'     concurrency for a SageMaker Serverless endpoint.
 #' @param MaxResults The maximum number of scalable targets. This value can be between 1 and
 #' 50. The default value is 50.
 #' 
@@ -757,7 +797,7 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #'     list(
 #'       ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune",
 #'       ResourceId = "string",
-#'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount",
+#'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency",
 #'       MinCapacity = 123,
 #'       MaxCapacity = 123,
 #'       RoleARN = "string",
@@ -768,7 +808,8 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #'         DynamicScalingInSuspended = TRUE|FALSE,
 #'         DynamicScalingOutSuspended = TRUE|FALSE,
 #'         ScheduledScalingSuspended = TRUE|FALSE
-#'       )
+#'       ),
+#'       ScalableTargetARN = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -782,7 +823,7 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #'   ResourceIds = list(
 #'     "string"
 #'   ),
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -827,10 +868,15 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' specified namespace from the previous six weeks.
 #' 
 #' You can filter the results using `ResourceId` and `ScalableDimension`.
+#' 
+#' For information about viewing scaling activities using the Amazon Web
+#' Services CLI, see [Scaling activities for Application Auto
+#' Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scaling-activities.html).
 #'
 #' @usage
 #' applicationautoscaling_describe_scaling_activities(ServiceNamespace,
-#'   ResourceId, ScalableDimension, MaxResults, NextToken)
+#'   ResourceId, ScalableDimension, MaxResults, NextToken,
+#'   IncludeNotScaledActivities)
 #'
 #' @param ServiceNamespace &#91;required&#93; The namespace of the Amazon Web Services service that provides the
 #' resource. For a resource provided by your own application or service,
@@ -902,6 +948,10 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
+#' 
+#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#'     the unique identifier is the resource ID. Example:
+#'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property. If you specify a scalable
 #' dimension, you must also specify a resource ID.
@@ -935,7 +985,7 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #'     Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2
-#'     instances for an SageMaker model endpoint variant.
+#'     instances for a SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for
 #'     a custom resource provided by your own application or service.
@@ -968,6 +1018,9 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' 
 #' -   `neptune:cluster:ReadReplicaCount` - The count of read replicas in
 #'     an Amazon Neptune DB cluster.
+#' 
+#' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
+#'     concurrency for a SageMaker Serverless endpoint.
 #' @param MaxResults The maximum number of scalable targets. This value can be between 1 and
 #' 50. The default value is 50.
 #' 
@@ -977,6 +1030,12 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' parameter is not used, the operation returns up to 50 results and a
 #' `NextToken` value, if applicable.
 #' @param NextToken The token for the next set of results.
+#' @param IncludeNotScaledActivities Specifies whether to include activities that aren't scaled (*not scaled
+#' activities*) in the response. Not scaled activities are activities that
+#' aren't completed or started for various reasons, such as preventing
+#' infinite scaling loops. For help interpreting the not scaled reason
+#' details in the response, see [Scaling activities for Application Auto
+#' Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scaling-activities.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -987,7 +1046,7 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #'       ActivityId = "string",
 #'       ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune",
 #'       ResourceId = "string",
-#'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount",
+#'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency",
 #'       Description = "string",
 #'       Cause = "string",
 #'       StartTime = as.POSIXct(
@@ -998,7 +1057,15 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #'       ),
 #'       StatusCode = "Pending"|"InProgress"|"Successful"|"Overridden"|"Unfulfilled"|"Failed",
 #'       StatusMessage = "string",
-#'       Details = "string"
+#'       Details = "string",
+#'       NotScaledReasons = list(
+#'         list(
+#'           Code = "string",
+#'           MaxCapacity = 123,
+#'           MinCapacity = 123,
+#'           CurrentCapacity = 123
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1010,9 +1077,10 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' svc$describe_scaling_activities(
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency",
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   IncludeNotScaledActivities = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1032,14 +1100,14 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' @rdname applicationautoscaling_describe_scaling_activities
 #'
 #' @aliases applicationautoscaling_describe_scaling_activities
-applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace, ResourceId = NULL, ScalableDimension = NULL, MaxResults = NULL, NextToken = NULL) {
+applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace, ResourceId = NULL, ScalableDimension = NULL, MaxResults = NULL, NextToken = NULL, IncludeNotScaledActivities = NULL) {
   op <- new_operation(
     name = "DescribeScalingActivities",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationautoscaling$describe_scaling_activities_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .applicationautoscaling$describe_scaling_activities_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken, IncludeNotScaledActivities = IncludeNotScaledActivities)
   output <- .applicationautoscaling$describe_scaling_activities_output()
   config <- get_config()
   svc <- .applicationautoscaling$service(config)
@@ -1140,6 +1208,10 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
+#' 
+#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#'     the unique identifier is the resource ID. Example:
+#'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property. If you specify a scalable
 #' dimension, you must also specify a resource ID.
@@ -1173,7 +1245,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #'     Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2
-#'     instances for an SageMaker model endpoint variant.
+#'     instances for a SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for
 #'     a custom resource provided by your own application or service.
@@ -1206,6 +1278,9 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' 
 #' -   `neptune:cluster:ReadReplicaCount` - The count of read replicas in
 #'     an Amazon Neptune DB cluster.
+#' 
+#' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
+#'     concurrency for a SageMaker Serverless endpoint.
 #' @param MaxResults The maximum number of scalable targets. This value can be between 1 and
 #' 10. The default value is 10.
 #' 
@@ -1226,7 +1301,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #'       PolicyName = "string",
 #'       ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune",
 #'       ResourceId = "string",
-#'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount",
+#'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency",
 #'       PolicyType = "StepScaling"|"TargetTrackingScaling",
 #'       StepScalingPolicyConfiguration = list(
 #'         AdjustmentType = "ChangeInCapacity"|"PercentChangeInCapacity"|"ExactCapacity",
@@ -1244,7 +1319,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #'       TargetTrackingScalingPolicyConfiguration = list(
 #'         TargetValue = 123.0,
 #'         PredefinedMetricSpecification = list(
-#'           PredefinedMetricType = "DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut"|"SageMakerVariantInvocationsPerInstance"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"AppStreamAverageCapacityUtilization"|"ComprehendInferenceUtilization"|"LambdaProvisionedConcurrencyUtilization"|"CassandraReadCapacityUtilization"|"CassandraWriteCapacityUtilization"|"KafkaBrokerStorageUtilization"|"ElastiCachePrimaryEngineCPUUtilization"|"ElastiCacheReplicaEngineCPUUtilization"|"ElastiCacheDatabaseMemoryUsageCountedForEvictPercentage"|"NeptuneReaderAverageCPUUtilization",
+#'           PredefinedMetricType = "DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut"|"SageMakerVariantInvocationsPerInstance"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"AppStreamAverageCapacityUtilization"|"ComprehendInferenceUtilization"|"LambdaProvisionedConcurrencyUtilization"|"CassandraReadCapacityUtilization"|"CassandraWriteCapacityUtilization"|"KafkaBrokerStorageUtilization"|"ElastiCachePrimaryEngineCPUUtilization"|"ElastiCacheReplicaEngineCPUUtilization"|"ElastiCacheDatabaseMemoryUsageCountedForEvictPercentage"|"NeptuneReaderAverageCPUUtilization"|"SageMakerVariantProvisionedConcurrencyUtilization"|"ElastiCacheDatabaseCapacityUsageCountedForEvictPercentage",
 #'           ResourceLabel = "string"
 #'         ),
 #'         CustomizedMetricSpecification = list(
@@ -1257,7 +1332,29 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #'             )
 #'           ),
 #'           Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
-#'           Unit = "string"
+#'           Unit = "string",
+#'           Metrics = list(
+#'             list(
+#'               Expression = "string",
+#'               Id = "string",
+#'               Label = "string",
+#'               MetricStat = list(
+#'                 Metric = list(
+#'                   Dimensions = list(
+#'                     list(
+#'                       Name = "string",
+#'                       Value = "string"
+#'                     )
+#'                   ),
+#'                   MetricName = "string",
+#'                   Namespace = "string"
+#'                 ),
+#'                 Stat = "string",
+#'                 Unit = "string"
+#'               ),
+#'               ReturnData = TRUE|FALSE
+#'             )
+#'           )
 #'         ),
 #'         ScaleOutCooldown = 123,
 #'         ScaleInCooldown = 123,
@@ -1286,7 +1383,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #'   ),
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -1414,6 +1511,10 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
+#' 
+#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#'     the unique identifier is the resource ID. Example:
+#'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property. If you specify a scalable
 #' dimension, you must also specify a resource ID.
@@ -1447,7 +1548,7 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #'     Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2
-#'     instances for an SageMaker model endpoint variant.
+#'     instances for a SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for
 #'     a custom resource provided by your own application or service.
@@ -1480,6 +1581,9 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' 
 #' -   `neptune:cluster:ReadReplicaCount` - The count of read replicas in
 #'     an Amazon Neptune DB cluster.
+#' 
+#' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
+#'     concurrency for a SageMaker Serverless endpoint.
 #' @param MaxResults The maximum number of scheduled action results. This value can be
 #' between 1 and 50. The default value is 50.
 #' 
@@ -1502,7 +1606,7 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #'       Schedule = "string",
 #'       Timezone = "string",
 #'       ResourceId = "string",
-#'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount",
+#'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency",
 #'       StartTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1530,11 +1634,20 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #'   ),
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example describes the scheduled actions for the dynamodb service
+#' # namespace.
+#' svc$describe_scheduled_actions(
+#'   ServiceNamespace = "dynamodb"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1557,6 +1670,77 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
   return(response)
 }
 .applicationautoscaling$operations$describe_scheduled_actions <- applicationautoscaling_describe_scheduled_actions
+
+#' Returns all the tags on the specified Application Auto Scaling scalable
+#' target
+#'
+#' @description
+#' Returns all the tags on the specified Application Auto Scaling scalable
+#' target.
+#' 
+#' For general information about tags, including the format and syntax, see
+#' [Tagging Amazon Web Services
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' in the *Amazon Web Services General Reference*.
+#'
+#' @usage
+#' applicationautoscaling_list_tags_for_resource(ResourceARN)
+#'
+#' @param ResourceARN &#91;required&#93; Specify the ARN of the scalable target.
+#' 
+#' For example:
+#' `arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123`
+#' 
+#' To get the ARN for a scalable target, use
+#' [`describe_scalable_targets`][applicationautoscaling_describe_scalable_targets].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceARN = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example lists the tag key names and values that are attached to the
+#' # scalable target specified by its ARN.
+#' svc$list_tags_for_resource(
+#'   ResourceARN = "arn:aws:application-autoscaling:us-west-2:123456789012:sca..."
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname applicationautoscaling_list_tags_for_resource
+#'
+#' @aliases applicationautoscaling_list_tags_for_resource
+applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationautoscaling$list_tags_for_resource_input(ResourceARN = ResourceARN)
+  output <- .applicationautoscaling$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .applicationautoscaling$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationautoscaling$operations$list_tags_for_resource <- applicationautoscaling_list_tags_for_resource
 
 #' Creates or updates a scaling policy for an Application Auto Scaling
 #' scalable target
@@ -1596,7 +1780,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' in the *Application Auto Scaling User Guide*.
 #' 
 #' If a scalable target is deregistered, the scalable target is no longer
-#' available to execute scaling policies. Any scaling policies that were
+#' available to use scaling policies. Any scaling policies that were
 #' specified for the scalable target are deleted.
 #'
 #' @usage
@@ -1606,6 +1790,10 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #'   TargetTrackingScalingPolicyConfiguration)
 #'
 #' @param PolicyName &#91;required&#93; The name of the scaling policy.
+#' 
+#' You cannot change the name of a scaling policy, but you can delete the
+#' original scaling policy and create a new scaling policy with the same
+#' settings and a different name.
 #' @param ServiceNamespace &#91;required&#93; The namespace of the Amazon Web Services service that provides the
 #' resource. For a resource provided by your own application or service,
 #' use `custom-resource` instead.
@@ -1676,6 +1864,10 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
+#' 
+#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#'     the unique identifier is the resource ID. Example:
+#'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
@@ -1708,7 +1900,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #'     Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2
-#'     instances for an SageMaker model endpoint variant.
+#'     instances for a SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for
 #'     a custom resource provided by your own application or service.
@@ -1741,8 +1933,11 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' 
 #' -   `neptune:cluster:ReadReplicaCount` - The count of read replicas in
 #'     an Amazon Neptune DB cluster.
-#' @param PolicyType The policy type. This parameter is required if you are creating a
-#' scaling policy.
+#' 
+#' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
+#'     concurrency for a SageMaker Serverless endpoint.
+#' @param PolicyType The scaling policy type. This parameter is required if you are creating
+#' a scaling policy.
 #' 
 #' The following policy types are supported:
 #' 
@@ -1786,7 +1981,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #'   PolicyName = "string",
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency",
 #'   PolicyType = "StepScaling"|"TargetTrackingScaling",
 #'   StepScalingPolicyConfiguration = list(
 #'     AdjustmentType = "ChangeInCapacity"|"PercentChangeInCapacity"|"ExactCapacity",
@@ -1804,7 +1999,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #'   TargetTrackingScalingPolicyConfiguration = list(
 #'     TargetValue = 123.0,
 #'     PredefinedMetricSpecification = list(
-#'       PredefinedMetricType = "DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut"|"SageMakerVariantInvocationsPerInstance"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"AppStreamAverageCapacityUtilization"|"ComprehendInferenceUtilization"|"LambdaProvisionedConcurrencyUtilization"|"CassandraReadCapacityUtilization"|"CassandraWriteCapacityUtilization"|"KafkaBrokerStorageUtilization"|"ElastiCachePrimaryEngineCPUUtilization"|"ElastiCacheReplicaEngineCPUUtilization"|"ElastiCacheDatabaseMemoryUsageCountedForEvictPercentage"|"NeptuneReaderAverageCPUUtilization",
+#'       PredefinedMetricType = "DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut"|"SageMakerVariantInvocationsPerInstance"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"AppStreamAverageCapacityUtilization"|"ComprehendInferenceUtilization"|"LambdaProvisionedConcurrencyUtilization"|"CassandraReadCapacityUtilization"|"CassandraWriteCapacityUtilization"|"KafkaBrokerStorageUtilization"|"ElastiCachePrimaryEngineCPUUtilization"|"ElastiCacheReplicaEngineCPUUtilization"|"ElastiCacheDatabaseMemoryUsageCountedForEvictPercentage"|"NeptuneReaderAverageCPUUtilization"|"SageMakerVariantProvisionedConcurrencyUtilization"|"ElastiCacheDatabaseCapacityUsageCountedForEvictPercentage",
 #'       ResourceLabel = "string"
 #'     ),
 #'     CustomizedMetricSpecification = list(
@@ -1817,7 +2012,29 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #'         )
 #'       ),
 #'       Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
-#'       Unit = "string"
+#'       Unit = "string",
+#'       Metrics = list(
+#'         list(
+#'           Expression = "string",
+#'           Id = "string",
+#'           Label = "string",
+#'           MetricStat = list(
+#'             Metric = list(
+#'               Dimensions = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               ),
+#'               MetricName = "string",
+#'               Namespace = "string"
+#'             ),
+#'             Stat = "string",
+#'             Unit = "string"
+#'           ),
+#'           ReturnData = TRUE|FALSE
+#'         )
+#'       )
 #'     ),
 #'     ScaleOutCooldown = 123,
 #'     ScaleInCooldown = 123,
@@ -1885,7 +2102,7 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' scheduled action until you have registered the resource as a scalable
 #' target.
 #' 
-#' When start and end times are specified with a recurring schedule using a
+#' When you specify start and end times with a recurring schedule using a
 #' cron expression or rates, they form the boundaries for when the
 #' recurring action starts and stops.
 #' 
@@ -2011,6 +2228,10 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
+#' 
+#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#'     the unique identifier is the resource ID. Example:
+#'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
@@ -2043,7 +2264,7 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #'     Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2
-#'     instances for an SageMaker model endpoint variant.
+#'     instances for a SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for
 #'     a custom resource provided by your own application or service.
@@ -2076,6 +2297,9 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' 
 #' -   `neptune:cluster:ReadReplicaCount` - The count of read replicas in
 #'     an Amazon Neptune DB cluster.
+#' 
+#' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
+#'     concurrency for a SageMaker Serverless endpoint.
 #' @param StartTime The date and time for this scheduled action to start, in UTC.
 #' @param EndTime The date and time for the recurring schedule to end, in UTC.
 #' @param ScalableTargetAction The new minimum and maximum capacity. You can set both values or just
@@ -2095,7 +2319,7 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #'   Timezone = "string",
 #'   ScheduledActionName = "string",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency",
 #'   StartTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -2108,6 +2332,25 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example adds a scheduled action to a DynamoDB table called
+#' # TestTable to scale out on a recurring schedule. On the specified
+#' # schedule (every day at 12:15pm UTC), if the current capacity is below
+#' # the value specified for MinCapacity, Application Auto Scaling scales out
+#' # to the value specified by MinCapacity.
+#' svc$put_scheduled_action(
+#'   ResourceId = "table/TestTable",
+#'   ScalableDimension = "dynamodb:table:WriteCapacityUnits",
+#'   ScalableTargetAction = list(
+#'     MinCapacity = 6L
+#'   ),
+#'   Schedule = "cron(15 12 * * ? *)",
+#'   ScheduledActionName = "my-recurring-action",
+#'   ServiceNamespace = "dynamodb"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2131,20 +2374,27 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 }
 .applicationautoscaling$operations$put_scheduled_action <- applicationautoscaling_put_scheduled_action
 
-#' Registers or updates a scalable target
+#' Registers or updates a scalable target, which is the resource that you
+#' want to scale
 #'
 #' @description
-#' Registers or updates a scalable target.
+#' Registers or updates a scalable target, which is the resource that you
+#' want to scale.
 #' 
-#' A scalable target is a resource that Application Auto Scaling can scale
-#' out and scale in. Scalable targets are uniquely identified by the
-#' combination of resource ID, scalable dimension, and namespace.
+#' Scalable targets are uniquely identified by the combination of resource
+#' ID, scalable dimension, and namespace, which represents some capacity
+#' dimension of the underlying service.
 #' 
-#' When you register a new scalable target, you must specify values for
-#' minimum and maximum capacity. Current capacity will be adjusted within
-#' the specified range when scaling starts. Application Auto Scaling
-#' scaling policies will not scale capacity to values that are outside of
-#' this range.
+#' When you register a new scalable target, you must specify values for the
+#' minimum and maximum capacity. If the specified resource is not active in
+#' the target service, this operation does not change the resource's
+#' current capacity. Otherwise, it changes the resource's current capacity
+#' to a value that is inside of this range.
+#' 
+#' If you add a scaling policy, current capacity is adjustable within the
+#' specified range when scaling starts. Application Auto Scaling scaling
+#' policies will not scale capacity to values that are outside of the
+#' minimum and maximum range.
 #' 
 #' After you register a scalable target, you do not need to register it
 #' again to use other Application Auto Scaling operations. To see which
@@ -2162,17 +2412,27 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' 
 #' If you call the
 #' [`register_scalable_target`][applicationautoscaling_register_scalable_target]
-#' API to update an existing scalable target, Application Auto Scaling
-#' retrieves the current capacity of the resource. If it is below the
-#' minimum capacity or above the maximum capacity, Application Auto Scaling
-#' adjusts the capacity of the scalable target to place it within these
-#' bounds, even if you don't include the `MinCapacity` or `MaxCapacity`
-#' request parameters.
+#' API operation to create a scalable target, there might be a brief delay
+#' until the operation achieves [eventual
+#' consistency](https://en.wikipedia.org/wiki/Eventual_consistency). You
+#' might become aware of this brief delay if you get unexpected errors when
+#' performing sequential operations. The typical strategy is to retry the
+#' request, and some Amazon Web Services SDKs include automatic backoff and
+#' retry logic.
+#' 
+#' If you call the
+#' [`register_scalable_target`][applicationautoscaling_register_scalable_target]
+#' API operation to update an existing scalable target, Application Auto
+#' Scaling retrieves the current capacity of the resource. If it's below
+#' the minimum capacity or above the maximum capacity, Application Auto
+#' Scaling adjusts the capacity of the scalable target to place it within
+#' these bounds, even if you don't include the `MinCapacity` or
+#' `MaxCapacity` request parameters.
 #'
 #' @usage
 #' applicationautoscaling_register_scalable_target(ServiceNamespace,
 #'   ResourceId, ScalableDimension, MinCapacity, MaxCapacity, RoleARN,
-#'   SuspendedState)
+#'   SuspendedState, Tags)
 #'
 #' @param ServiceNamespace &#91;required&#93; The namespace of the Amazon Web Services service that provides the
 #' resource. For a resource provided by your own application or service,
@@ -2244,6 +2504,10 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
+#' 
+#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#'     the unique identifier is the resource ID. Example:
+#'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension associated with the scalable target. This string
 #' consists of the service namespace, resource type, and scaling property.
 #' 
@@ -2276,7 +2540,7 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #'     Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2
-#'     instances for an SageMaker model endpoint variant.
+#'     instances for a SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for
 #'     a custom resource provided by your own application or service.
@@ -2309,27 +2573,56 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' 
 #' -   `neptune:cluster:ReadReplicaCount` - The count of read replicas in
 #'     an Amazon Neptune DB cluster.
+#' 
+#' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
+#'     concurrency for a SageMaker Serverless endpoint.
 #' @param MinCapacity The minimum value that you plan to scale in to. When a scaling policy is
 #' in effect, Application Auto Scaling can scale in (contract) as needed to
 #' the minimum capacity limit in response to changing demand. This property
 #' is required when registering a new scalable target.
 #' 
-#' For certain resources, the minimum value allowed is 0. This includes
-#' Lambda provisioned concurrency, Spot Fleet, ECS services, Aurora DB
-#' clusters, EMR clusters, and custom resources. For all other resources,
-#' the minimum value allowed is 1.
+#' For the following resources, the minimum value allowed is 0.
+#' 
+#' -   AppStream 2.0 fleets
+#' 
+#' -   Aurora DB clusters
+#' 
+#' -   ECS services
+#' 
+#' -   EMR clusters
+#' 
+#' -   Lambda provisioned concurrency
+#' 
+#' -   SageMaker endpoint variants
+#' 
+#' -   SageMaker Serverless endpoint provisioned concurrency
+#' 
+#' -   Spot Fleets
+#' 
+#' -   custom resources
+#' 
+#' It's strongly recommended that you specify a value greater than 0. A
+#' value greater than 0 means that data points are continuously reported to
+#' CloudWatch that scaling policies can use to scale on a metric like
+#' average CPU utilization.
+#' 
+#' For all other resources, the minimum allowed value depends on the type
+#' of resource that you are using. If you provide a value that is lower
+#' than what a resource can accept, an error occurs. In which case, the
+#' error message will provide the minimum value that the resource can
+#' accept.
 #' @param MaxCapacity The maximum value that you plan to scale out to. When a scaling policy
 #' is in effect, Application Auto Scaling can scale out (expand) as needed
 #' to the maximum capacity limit in response to changing demand. This
 #' property is required when registering a new scalable target.
 #' 
 #' Although you can specify a large maximum capacity, note that service
-#' quotas may impose lower limits. Each service has its own default quotas
-#' for the maximum capacity of the resource. If you want to specify a
-#' higher limit, you can request an increase. For more information, consult
-#' the documentation for that service. For information about the default
-#' quotas for each service, see [Service Endpoints and
-#' Quotas](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html)
+#' quotas might impose lower limits. Each service has its own default
+#' quotas for the maximum capacity of the resource. If you want to specify
+#' a higher limit, you can request an increase. For more information,
+#' consult the documentation for that service. For information about the
+#' default quotas for each service, see [Service endpoints and
+#' quotas](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param RoleARN This parameter is required for services that do not support
 #' service-linked roles (such as Amazon EMR), and it must specify the ARN
@@ -2362,16 +2655,34 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' For more information, see [Suspending and resuming
 #' scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html)
 #' in the *Application Auto Scaling User Guide*.
+#' @param Tags Assigns one or more tags to the scalable target. Use this parameter to
+#' tag the scalable target when it is created. To tag an existing scalable
+#' target, use the [`tag_resource`][applicationautoscaling_tag_resource]
+#' operation.
+#' 
+#' Each tag consists of a tag key and a tag value. Both the tag key and the
+#' tag value are required. You cannot have more than one tag on a scalable
+#' target with the same tag key.
+#' 
+#' Use tags to control access to a scalable target. For more information,
+#' see [Tagging support for Application Auto
+#' Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/resource-tagging-support.html)
+#' in the *Application Auto Scaling User Guide*.
 #'
 #' @return
-#' An empty list.
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ScalableTargetARN = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$register_scalable_target(
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency",
 #'   MinCapacity = 123,
 #'   MaxCapacity = 123,
 #'   RoleARN = "string",
@@ -2379,6 +2690,9 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #'     DynamicScalingInSuspended = TRUE|FALSE,
 #'     DynamicScalingOutSuspended = TRUE|FALSE,
 #'     ScheduledScalingSuspended = TRUE|FALSE
+#'   ),
+#'   Tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -2402,14 +2716,14 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' @rdname applicationautoscaling_register_scalable_target
 #'
 #' @aliases applicationautoscaling_register_scalable_target
-applicationautoscaling_register_scalable_target <- function(ServiceNamespace, ResourceId, ScalableDimension, MinCapacity = NULL, MaxCapacity = NULL, RoleARN = NULL, SuspendedState = NULL) {
+applicationautoscaling_register_scalable_target <- function(ServiceNamespace, ResourceId, ScalableDimension, MinCapacity = NULL, MaxCapacity = NULL, RoleARN = NULL, SuspendedState = NULL, Tags = NULL) {
   op <- new_operation(
     name = "RegisterScalableTarget",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationautoscaling$register_scalable_target_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MinCapacity = MinCapacity, MaxCapacity = MaxCapacity, RoleARN = RoleARN, SuspendedState = SuspendedState)
+  input <- .applicationautoscaling$register_scalable_target_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MinCapacity = MinCapacity, MaxCapacity = MaxCapacity, RoleARN = RoleARN, SuspendedState = SuspendedState, Tags = Tags)
   output <- .applicationautoscaling$register_scalable_target_output()
   config <- get_config()
   svc <- .applicationautoscaling$service(config)
@@ -2418,3 +2732,169 @@ applicationautoscaling_register_scalable_target <- function(ServiceNamespace, Re
   return(response)
 }
 .applicationautoscaling$operations$register_scalable_target <- applicationautoscaling_register_scalable_target
+
+#' Adds or edits tags on an Application Auto Scaling scalable target
+#'
+#' @description
+#' Adds or edits tags on an Application Auto Scaling scalable target.
+#' 
+#' Each tag consists of a tag key and a tag value, which are both
+#' case-sensitive strings. To add a tag, specify a new tag key and a tag
+#' value. To edit a tag, specify an existing tag key and a new tag value.
+#' 
+#' You can use this operation to tag an Application Auto Scaling scalable
+#' target, but you cannot tag a scaling policy or scheduled action.
+#' 
+#' You can also add tags to an Application Auto Scaling scalable target
+#' while creating it
+#' ([`register_scalable_target`][applicationautoscaling_register_scalable_target]).
+#' 
+#' For general information about tags, including the format and syntax, see
+#' [Tagging Amazon Web Services
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' in the *Amazon Web Services General Reference*.
+#' 
+#' Use tags to control access to a scalable target. For more information,
+#' see [Tagging support for Application Auto
+#' Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/resource-tagging-support.html)
+#' in the *Application Auto Scaling User Guide*.
+#'
+#' @usage
+#' applicationautoscaling_tag_resource(ResourceARN, Tags)
+#'
+#' @param ResourceARN &#91;required&#93; Identifies the Application Auto Scaling scalable target that you want to
+#' apply tags to.
+#' 
+#' For example:
+#' `arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123`
+#' 
+#' To get the ARN for a scalable target, use
+#' [`describe_scalable_targets`][applicationautoscaling_describe_scalable_targets].
+#' @param Tags &#91;required&#93; The tags assigned to the resource. A tag is a label that you assign to
+#' an Amazon Web Services resource.
+#' 
+#' Each tag consists of a tag key and a tag value.
+#' 
+#' You cannot have more than one tag on an Application Auto Scaling
+#' scalable target with the same tag key. If you specify an existing tag
+#' key with a different tag value, Application Auto Scaling replaces the
+#' current tag value with the specified one.
+#' 
+#' For information about the rules that apply to tag keys and tag values,
+#' see [User-defined tag
+#' restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html)
+#' in the *Amazon Web Services Billing and Cost Management User Guide*.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceARN = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example adds a tag with the key name "environment" and the value
+#' # "production" to the scalable target specified by its ARN.
+#' svc$tag_resource(
+#'   ResourceARN = "arn:aws:application-autoscaling:us-west-2:123456789012:sca...",
+#'   Tags = list(
+#'     environment = "production"
+#'   )
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname applicationautoscaling_tag_resource
+#'
+#' @aliases applicationautoscaling_tag_resource
+applicationautoscaling_tag_resource <- function(ResourceARN, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationautoscaling$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
+  output <- .applicationautoscaling$tag_resource_output()
+  config <- get_config()
+  svc <- .applicationautoscaling$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationautoscaling$operations$tag_resource <- applicationautoscaling_tag_resource
+
+#' Deletes tags from an Application Auto Scaling scalable target
+#'
+#' @description
+#' Deletes tags from an Application Auto Scaling scalable target. To delete
+#' a tag, specify the tag key and the Application Auto Scaling scalable
+#' target.
+#'
+#' @usage
+#' applicationautoscaling_untag_resource(ResourceARN, TagKeys)
+#'
+#' @param ResourceARN &#91;required&#93; Identifies the Application Auto Scaling scalable target from which to
+#' remove tags.
+#' 
+#' For example:
+#' `arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123`
+#' 
+#' To get the ARN for a scalable target, use
+#' [`describe_scalable_targets`][applicationautoscaling_describe_scalable_targets].
+#' @param TagKeys &#91;required&#93; One or more tag keys. Specify only the tag keys, not the tag values.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceARN = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example removes the tag pair with the key name "environment" from
+#' # the scalable target specified by its ARN.
+#' svc$untag_resource(
+#'   ResourceARN = "arn:aws:application-autoscaling:us-west-2:123456789012:sca...",
+#'   TagKeys = list(
+#'     "environment"
+#'   )
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname applicationautoscaling_untag_resource
+#'
+#' @aliases applicationautoscaling_untag_resource
+applicationautoscaling_untag_resource <- function(ResourceARN, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationautoscaling$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
+  output <- .applicationautoscaling$untag_resource_output()
+  config <- get_config()
+  svc <- .applicationautoscaling$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationautoscaling$operations$untag_resource <- applicationautoscaling_untag_resource

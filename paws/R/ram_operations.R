@@ -16,8 +16,8 @@ NULL
 #' ram_accept_resource_share_invitation(resourceShareInvitationArn,
 #'   clientToken)
 #'
-#' @param resourceShareInvitationArn &#91;required&#93; The [Amazon Resoure Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' @param resourceShareInvitationArn &#91;required&#93; The [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the invitation that you want to accept.
 #' @param clientToken Specifies a unique, case-sensitive identifier that you provide to ensure
 #' the idempotency of the request. This lets you safely retry the request
@@ -29,6 +29,10 @@ NULL
 #' 
 #' If you don't provide this value, then Amazon Web Services generates a
 #' random one for you.
+#' 
+#' If you retry the operation with the same `ClientToken`, but with
+#' different parameters, the retry fails with an
+#' `IdempotentParameterMismatch` error.
 #'
 #' @return
 #' A list with the following syntax:
@@ -111,11 +115,11 @@ ram_accept_resource_share_invitation <- function(resourceShareInvitationArn, cli
 #' ram_associate_resource_share(resourceShareArn, resourceArns, principals,
 #'   clientToken)
 #'
-#' @param resourceShareArn &#91;required&#93; Specifies the [Amazon Resoure Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' @param resourceShareArn &#91;required&#93; Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the resource share that you want to add principals or resources to.
 #' @param resourceArns Specifies a list of [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the resources that you want to share. This can be `null` if you want
 #' to add only principals.
 #' @param principals Specifies a list of principals to whom you want to the resource share.
@@ -129,8 +133,8 @@ ram_accept_resource_share_invitation <- function(resourceShareInvitationArn, cli
 #' 
 #' -   An Amazon Web Services account ID, for example: `123456789012`
 #' 
-#' -   An [Amazon Resoure Name
-#'     (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' -   An [Amazon Resource Name
+#'     (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #'     of an organization in Organizations, for example:
 #'     `organizations::123456789012:organization/o-exampleorgid`
 #' 
@@ -156,6 +160,10 @@ ram_accept_resource_share_invitation <- function(resourceShareInvitationArn, cli
 #' 
 #' If you don't provide this value, then Amazon Web Services generates a
 #' random one for you.
+#' 
+#' If you retry the operation with the same `ClientToken`, but with
+#' different parameters, the retry fails with an
+#' `IdempotentParameterMismatch` error.
 #'
 #' @return
 #' A list with the following syntax:
@@ -232,20 +240,21 @@ ram_associate_resource_share <- function(resourceShareArn, resourceArns = NULL, 
 #' ram_associate_resource_share_permission(resourceShareArn, permissionArn,
 #'   replace, clientToken, permissionVersion)
 #'
-#' @param resourceShareArn &#91;required&#93; Specifies the [Amazon Resoure Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' @param resourceShareArn &#91;required&#93; Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the resource share to which you want to add or replace permissions.
-#' @param permissionArn &#91;required&#93; Specifies the [Amazon Resoure Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' @param permissionArn &#91;required&#93; Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the RAM permission to associate with the resource share. To find the
 #' ARN for a permission, use either the
 #' [`list_permissions`][ram_list_permissions] operation or go to the
 #' Permissions library page in the RAM console and then choose the name of
 #' the permission. The ARN is displayed on the detail page.
-#' @param replace Specifies whether the specified permission should replace or add to the
-#' existing permission associated with the resource share. Use `true` to
-#' replace the current permissions. Use `false` to add the permission to
-#' the current permission. The default value is `false`.
+#' @param replace Specifies whether the specified permission should replace the existing
+#' permission associated with the resource share. Use `true` to replace the
+#' current permissions. Use `false` to add the permission to a resource
+#' share that currently doesn't have a permission. The default value is
+#' `false`.
 #' 
 #' A resource share can have only one permission per resource type. If a
 #' resource share already has a permission for the specified resource type
@@ -261,11 +270,19 @@ ram_associate_resource_share <- function(resourceShareArn, resourceArns = NULL, 
 #' 
 #' If you don't provide this value, then Amazon Web Services generates a
 #' random one for you.
+#' 
+#' If you retry the operation with the same `ClientToken`, but with
+#' different parameters, the retry fails with an
+#' `IdempotentParameterMismatch` error.
 #' @param permissionVersion Specifies the version of the RAM permission to associate with the
-#' resource share. If you don't specify this parameter, the operation uses
-#' the version designated as the default. You can use the
-#' [`list_permission_versions`][ram_list_permission_versions] operation to
-#' discover the available versions of a permission.
+#' resource share. You can specify *only* the version that is currently set
+#' as the default version for the permission. If you also set the `replace`
+#' pararameter to `true`, then this operation updates an outdated version
+#' of the permission to the current default version.
+#' 
+#' You don't need to specify this parameter because the default behavior is
+#' to use the version that is currently set as the default version for the
+#' permission. This parameter is supported for backwards compatibility.
 #'
 #' @return
 #' A list with the following syntax:
@@ -309,12 +326,271 @@ ram_associate_resource_share_permission <- function(resourceShareArn, permission
 }
 .ram$operations$associate_resource_share_permission <- ram_associate_resource_share_permission
 
+#' Creates a customer managed permission for a specified resource type that
+#' you can attach to resource shares
+#'
+#' @description
+#' Creates a customer managed permission for a specified resource type that
+#' you can attach to resource shares. It is created in the Amazon Web
+#' Services Region in which you call the operation.
+#'
+#' @usage
+#' ram_create_permission(name, resourceType, policyTemplate, clientToken,
+#'   tags)
+#'
+#' @param name &#91;required&#93; Specifies the name of the customer managed permission. The name must be
+#' unique within the Amazon Web Services Region.
+#' @param resourceType &#91;required&#93; Specifies the name of the resource type that this customer managed
+#' permission applies to.
+#' 
+#' The format is ` <service-code>:<resource-type> ` and is not case
+#' sensitive. For example, to specify an Amazon EC2 Subnet, you can use the
+#' string `ec2:subnet`. To see the list of valid values for this parameter,
+#' query the [`list_resource_types`][ram_list_resource_types] operation.
+#' @param policyTemplate &#91;required&#93; A string in JSON format string that contains the following elements of a
+#' resource-based policy:
+#' 
+#' -   **Effect**: must be set to `ALLOW`.
+#' 
+#' -   **Action**: specifies the actions that are allowed by this customer
+#'     managed permission. The list must contain only actions that are
+#'     supported by the specified resource type. For a list of all actions
+#'     supported by each resource type, see [Actions, resources, and
+#'     condition keys for Amazon Web Services
+#'     services](https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html)
+#'     in the *Identity and Access Management User Guide*.
+#' 
+#' -   **Condition**: (optional) specifies conditional parameters that must
+#'     evaluate to true when a user attempts an action for that action to
+#'     be allowed. For more information about the Condition element, see
+#'     [IAM policies: Condition
+#'     element](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html)
+#'     in the *Identity and Access Management User Guide*.
+#' 
+#' This template can't include either the `Resource` or `Principal`
+#' elements. Those are both filled in by RAM when it instantiates the
+#' resource-based policy on each resource shared using this managed
+#' permission. The `Resource` comes from the ARN of the specific resource
+#' that you are sharing. The `Principal` comes from the list of identities
+#' added to the resource share.
+#' @param clientToken Specifies a unique, case-sensitive identifier that you provide to ensure
+#' the idempotency of the request. This lets you safely retry the request
+#' without accidentally performing the same operation a second time.
+#' Passing the same value to a later call to an operation requires that you
+#' also pass the same value for all other parameters. We recommend that you
+#' use a [UUID type of
+#' value.](https://en.wikipedia.org/wiki/Universally_unique_identifier).
+#' 
+#' If you don't provide this value, then Amazon Web Services generates a
+#' random one for you.
+#' 
+#' If you retry the operation with the same `ClientToken`, but with
+#' different parameters, the retry fails with an
+#' `IdempotentParameterMismatch` error.
+#' @param tags Specifies a list of one or more tag key and value pairs to attach to the
+#' permission.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   permission = list(
+#'     arn = "string",
+#'     version = "string",
+#'     defaultVersion = TRUE|FALSE,
+#'     name = "string",
+#'     resourceType = "string",
+#'     status = "string",
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     isResourceTypeDefault = TRUE|FALSE,
+#'     permissionType = "CUSTOMER_MANAGED"|"AWS_MANAGED",
+#'     featureSet = "CREATED_FROM_POLICY"|"PROMOTING_TO_STANDARD"|"STANDARD",
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_permission(
+#'   name = "string",
+#'   resourceType = "string",
+#'   policyTemplate = "string",
+#'   clientToken = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ram_create_permission
+#'
+#' @aliases ram_create_permission
+ram_create_permission <- function(name, resourceType, policyTemplate, clientToken = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreatePermission",
+    http_method = "POST",
+    http_path = "/createpermission",
+    paginator = list()
+  )
+  input <- .ram$create_permission_input(name = name, resourceType = resourceType, policyTemplate = policyTemplate, clientToken = clientToken, tags = tags)
+  output <- .ram$create_permission_output()
+  config <- get_config()
+  svc <- .ram$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ram$operations$create_permission <- ram_create_permission
+
+#' Creates a new version of the specified customer managed permission
+#'
+#' @description
+#' Creates a new version of the specified customer managed permission. The
+#' new version is automatically set as the default version of the customer
+#' managed permission. New resource shares automatically use the default
+#' permission. Existing resource shares continue to use their original
+#' permission versions, but you can use
+#' [`replace_permission_associations`][ram_replace_permission_associations]
+#' to update them.
+#' 
+#' If the specified customer managed permission already has the maximum of
+#' 5 versions, then you must delete one of the existing versions before you
+#' can create a new one.
+#'
+#' @usage
+#' ram_create_permission_version(permissionArn, policyTemplate,
+#'   clientToken)
+#'
+#' @param permissionArn &#91;required&#93; Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' of the customer managed permission you're creating a new version for.
+#' @param policyTemplate &#91;required&#93; A string in JSON format string that contains the following elements of a
+#' resource-based policy:
+#' 
+#' -   **Effect**: must be set to `ALLOW`.
+#' 
+#' -   **Action**: specifies the actions that are allowed by this customer
+#'     managed permission. The list must contain only actions that are
+#'     supported by the specified resource type. For a list of all actions
+#'     supported by each resource type, see [Actions, resources, and
+#'     condition keys for Amazon Web Services
+#'     services](https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html)
+#'     in the *Identity and Access Management User Guide*.
+#' 
+#' -   **Condition**: (optional) specifies conditional parameters that must
+#'     evaluate to true when a user attempts an action for that action to
+#'     be allowed. For more information about the Condition element, see
+#'     [IAM policies: Condition
+#'     element](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html)
+#'     in the *Identity and Access Management User Guide*.
+#' 
+#' This template can't include either the `Resource` or `Principal`
+#' elements. Those are both filled in by RAM when it instantiates the
+#' resource-based policy on each resource shared using this managed
+#' permission. The `Resource` comes from the ARN of the specific resource
+#' that you are sharing. The `Principal` comes from the list of identities
+#' added to the resource share.
+#' @param clientToken Specifies a unique, case-sensitive identifier that you provide to ensure
+#' the idempotency of the request. This lets you safely retry the request
+#' without accidentally performing the same operation a second time.
+#' Passing the same value to a later call to an operation requires that you
+#' also pass the same value for all other parameters. We recommend that you
+#' use a [UUID type of
+#' value.](https://en.wikipedia.org/wiki/Universally_unique_identifier).
+#' 
+#' If you don't provide this value, then Amazon Web Services generates a
+#' random one for you.
+#' 
+#' If you retry the operation with the same `ClientToken`, but with
+#' different parameters, the retry fails with an
+#' `IdempotentParameterMismatch` error.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   permission = list(
+#'     arn = "string",
+#'     version = "string",
+#'     defaultVersion = TRUE|FALSE,
+#'     name = "string",
+#'     resourceType = "string",
+#'     permission = "string",
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     isResourceTypeDefault = TRUE|FALSE,
+#'     permissionType = "CUSTOMER_MANAGED"|"AWS_MANAGED",
+#'     featureSet = "CREATED_FROM_POLICY"|"PROMOTING_TO_STANDARD"|"STANDARD",
+#'     status = "ATTACHABLE"|"UNATTACHABLE"|"DELETING"|"DELETED",
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_permission_version(
+#'   permissionArn = "string",
+#'   policyTemplate = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ram_create_permission_version
+#'
+#' @aliases ram_create_permission_version
+ram_create_permission_version <- function(permissionArn, policyTemplate, clientToken = NULL) {
+  op <- new_operation(
+    name = "CreatePermissionVersion",
+    http_method = "POST",
+    http_path = "/createpermissionversion",
+    paginator = list()
+  )
+  input <- .ram$create_permission_version_input(permissionArn = permissionArn, policyTemplate = policyTemplate, clientToken = clientToken)
+  output <- .ram$create_permission_version_output()
+  config <- get_config()
+  svc <- .ram$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ram$operations$create_permission_version <- ram_create_permission_version
+
 #' Creates a resource share
 #'
 #' @description
 #' Creates a resource share. You can provide a list of the [Amazon Resource
 #' Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' for the resources that you want to share, a list of principals you want
 #' to share the resources with, and the permissions to grant those
 #' principals.
@@ -338,8 +614,8 @@ ram_associate_resource_share_permission <- function(resourceShareArn, permission
 #' 
 #' -   An Amazon Web Services account ID, for example: `123456789012`
 #' 
-#' -   An [Amazon Resoure Name
-#'     (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' -   An [Amazon Resource Name
+#'     (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #'     of an organization in Organizations, for example:
 #'     `organizations::123456789012:organization/o-exampleorgid`
 #' 
@@ -374,8 +650,12 @@ ram_associate_resource_share_permission <- function(resourceShareArn, permission
 #' 
 #' If you don't provide this value, then Amazon Web Services generates a
 #' random one for you.
+#' 
+#' If you retry the operation with the same `ClientToken`, but with
+#' different parameters, the retry fails with an
+#' `IdempotentParameterMismatch` error.
 #' @param permissionArns Specifies the [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the RAM permission to associate with the resource share. If you do
 #' not specify an ARN for the permission, RAM automatically attaches the
 #' default version of the permission for each resource type. You can
@@ -457,19 +737,179 @@ ram_create_resource_share <- function(name, resourceArns = NULL, principals = NU
 }
 .ram$operations$create_resource_share <- ram_create_resource_share
 
+#' Deletes the specified customer managed permission in the Amazon Web
+#' Services Region in which you call this operation
+#'
+#' @description
+#' Deletes the specified customer managed permission in the Amazon Web
+#' Services Region in which you call this operation. You can delete a
+#' customer managed permission only if it isn't attached to any resource
+#' share. The operation deletes all versions associated with the customer
+#' managed permission.
+#'
+#' @usage
+#' ram_delete_permission(permissionArn, clientToken)
+#'
+#' @param permissionArn &#91;required&#93; Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' of the customer managed permission that you want to delete.
+#' @param clientToken Specifies a unique, case-sensitive identifier that you provide to ensure
+#' the idempotency of the request. This lets you safely retry the request
+#' without accidentally performing the same operation a second time.
+#' Passing the same value to a later call to an operation requires that you
+#' also pass the same value for all other parameters. We recommend that you
+#' use a [UUID type of
+#' value.](https://en.wikipedia.org/wiki/Universally_unique_identifier).
+#' 
+#' If you don't provide this value, then Amazon Web Services generates a
+#' random one for you.
+#' 
+#' If you retry the operation with the same `ClientToken`, but with
+#' different parameters, the retry fails with an
+#' `IdempotentParameterMismatch` error.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   returnValue = TRUE|FALSE,
+#'   clientToken = "string",
+#'   permissionStatus = "ATTACHABLE"|"UNATTACHABLE"|"DELETING"|"DELETED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_permission(
+#'   permissionArn = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ram_delete_permission
+#'
+#' @aliases ram_delete_permission
+ram_delete_permission <- function(permissionArn, clientToken = NULL) {
+  op <- new_operation(
+    name = "DeletePermission",
+    http_method = "DELETE",
+    http_path = "/deletepermission",
+    paginator = list()
+  )
+  input <- .ram$delete_permission_input(permissionArn = permissionArn, clientToken = clientToken)
+  output <- .ram$delete_permission_output()
+  config <- get_config()
+  svc <- .ram$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ram$operations$delete_permission <- ram_delete_permission
+
+#' Deletes one version of a customer managed permission
+#'
+#' @description
+#' Deletes one version of a customer managed permission. The version you
+#' specify must not be attached to any resource share and must not be the
+#' default version for the permission.
+#' 
+#' If a customer managed permission has the maximum of 5 versions, then you
+#' must delete at least one version before you can create another.
+#'
+#' @usage
+#' ram_delete_permission_version(permissionArn, permissionVersion,
+#'   clientToken)
+#'
+#' @param permissionArn &#91;required&#93; Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' of the permission with the version you want to delete.
+#' @param permissionVersion &#91;required&#93; Specifies the version number to delete.
+#' 
+#' You can't delete the default version for a customer managed permission.
+#' 
+#' You can't delete a version if it's the only version of the permission.
+#' You must either first create another version, or delete the permission
+#' completely.
+#' 
+#' You can't delete a version if it is attached to any resource shares. If
+#' the version is the default, you must first use
+#' [`set_default_permission_version`][ram_set_default_permission_version]
+#' to set a different version as the default for the customer managed
+#' permission, and then use
+#' [`associate_resource_share_permission`][ram_associate_resource_share_permission]
+#' to update your resource shares to use the new default version.
+#' @param clientToken Specifies a unique, case-sensitive identifier that you provide to ensure
+#' the idempotency of the request. This lets you safely retry the request
+#' without accidentally performing the same operation a second time.
+#' Passing the same value to a later call to an operation requires that you
+#' also pass the same value for all other parameters. We recommend that you
+#' use a [UUID type of
+#' value.](https://en.wikipedia.org/wiki/Universally_unique_identifier).
+#' 
+#' If you don't provide this value, then Amazon Web Services generates a
+#' random one for you.
+#' 
+#' If you retry the operation with the same `ClientToken`, but with
+#' different parameters, the retry fails with an
+#' `IdempotentParameterMismatch` error.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   returnValue = TRUE|FALSE,
+#'   clientToken = "string",
+#'   permissionStatus = "ATTACHABLE"|"UNATTACHABLE"|"DELETING"|"DELETED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_permission_version(
+#'   permissionArn = "string",
+#'   permissionVersion = 123,
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ram_delete_permission_version
+#'
+#' @aliases ram_delete_permission_version
+ram_delete_permission_version <- function(permissionArn, permissionVersion, clientToken = NULL) {
+  op <- new_operation(
+    name = "DeletePermissionVersion",
+    http_method = "DELETE",
+    http_path = "/deletepermissionversion",
+    paginator = list()
+  )
+  input <- .ram$delete_permission_version_input(permissionArn = permissionArn, permissionVersion = permissionVersion, clientToken = clientToken)
+  output <- .ram$delete_permission_version_output()
+  config <- get_config()
+  svc <- .ram$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ram$operations$delete_permission_version <- ram_delete_permission_version
+
 #' Deletes the specified resource share
 #'
 #' @description
-#' Deletes the specified resource share. This doesn't delete any of the
-#' resources that were associated with the resource share; it only stops
-#' the sharing of those resources outside of the Amazon Web Services
-#' account that created them.
+#' Deletes the specified resource share.
+#' 
+#' This doesn't delete any of the resources that were associated with the
+#' resource share; it only stops the sharing of those resources through
+#' this resource share.
 #'
 #' @usage
 #' ram_delete_resource_share(resourceShareArn, clientToken)
 #'
-#' @param resourceShareArn &#91;required&#93; Specifies the [Amazon Resoure Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' @param resourceShareArn &#91;required&#93; Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the resource share to delete.
 #' @param clientToken Specifies a unique, case-sensitive identifier that you provide to ensure
 #' the idempotency of the request. This lets you safely retry the request
@@ -481,6 +921,10 @@ ram_create_resource_share <- function(name, resourceArns = NULL, principals = NU
 #' 
 #' If you don't provide this value, then Amazon Web Services generates a
 #' random one for you.
+#' 
+#' If you retry the operation with the same `ClientToken`, but with
+#' different parameters, the retry fails with an
+#' `IdempotentParameterMismatch` error.
 #'
 #' @return
 #' A list with the following syntax:
@@ -521,26 +965,26 @@ ram_delete_resource_share <- function(resourceShareArn, clientToken = NULL) {
 }
 .ram$operations$delete_resource_share <- ram_delete_resource_share
 
-#' Disassociates the specified principals or resources from the specified
-#' resource share
+#' Removes the specified principals or resources from participating in the
+#' specified resource share
 #'
 #' @description
-#' Disassociates the specified principals or resources from the specified
-#' resource share.
+#' Removes the specified principals or resources from participating in the
+#' specified resource share.
 #'
 #' @usage
 #' ram_disassociate_resource_share(resourceShareArn, resourceArns,
 #'   principals, clientToken)
 #'
-#' @param resourceShareArn &#91;required&#93; Specifies [Amazon Resoure Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
-#' of the resource share that you want to remove resources from.
+#' @param resourceShareArn &#91;required&#93; Specifies [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' of the resource share that you want to remove resources or principals
+#' from.
 #' @param resourceArns Specifies a list of [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' for one or more resources that you want to remove from the resource
 #' share. After the operation runs, these resources are no longer shared
-#' with principals outside of the Amazon Web Services account that created
-#' the resources.
+#' with principals associated with the resource share.
 #' @param principals Specifies a list of one or more principals that no longer are to have
 #' access to the resources in this resource share.
 #' 
@@ -548,8 +992,8 @@ ram_delete_resource_share <- function(resourceShareArn, clientToken = NULL) {
 #' 
 #' -   An Amazon Web Services account ID, for example: `123456789012`
 #' 
-#' -   An [Amazon Resoure Name
-#'     (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' -   An [Amazon Resource Name
+#'     (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #'     of an organization in Organizations, for example:
 #'     `organizations::123456789012:organization/o-exampleorgid`
 #' 
@@ -575,6 +1019,10 @@ ram_delete_resource_share <- function(resourceShareArn, clientToken = NULL) {
 #' 
 #' If you don't provide this value, then Amazon Web Services generates a
 #' random one for you.
+#' 
+#' If you retry the operation with the same `ClientToken`, but with
+#' different parameters, the retry fails with an
+#' `IdempotentParameterMismatch` error.
 #'
 #' @return
 #' A list with the following syntax:
@@ -637,11 +1085,11 @@ ram_disassociate_resource_share <- function(resourceShareArn, resourceArns = NUL
 }
 .ram$operations$disassociate_resource_share <- ram_disassociate_resource_share
 
-#' Disassociates an RAM permission from a resource share
+#' Removes a managed permission from a resource share
 #'
 #' @description
-#' Disassociates an RAM permission from a resource share. Permission
-#' changes take effect immediately. You can remove a RAM permission from a
+#' Removes a managed permission from a resource share. Permission changes
+#' take effect immediately. You can remove a managed permission from a
 #' resource share only if there are currently no resources of the relevant
 #' resource type currently attached to the resource share.
 #'
@@ -649,13 +1097,14 @@ ram_disassociate_resource_share <- function(resourceShareArn, resourceArns = NUL
 #' ram_disassociate_resource_share_permission(resourceShareArn,
 #'   permissionArn, clientToken)
 #'
-#' @param resourceShareArn &#91;required&#93; The [Amazon Resoure Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
-#' of the resource share from which you want to disassociate a permission.
-#' @param permissionArn &#91;required&#93; The [Amazon Resoure Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
-#' of the permission to disassociate from the resource share. Changes to
-#' permissions take effect immediately.
+#' @param resourceShareArn &#91;required&#93; The [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' of the resource share that you want to remove the managed permission
+#' from.
+#' @param permissionArn &#91;required&#93; The [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' of the managed permission to disassociate from the resource share.
+#' Changes to permissions take effect immediately.
 #' @param clientToken Specifies a unique, case-sensitive identifier that you provide to ensure
 #' the idempotency of the request. This lets you safely retry the request
 #' without accidentally performing the same operation a second time.
@@ -666,6 +1115,10 @@ ram_disassociate_resource_share <- function(resourceShareArn, resourceArns = NUL
 #' 
 #' If you don't provide this value, then Amazon Web Services generates a
 #' random one for you.
+#' 
+#' If you retry the operation with the same `ClientToken`, but with
+#' different parameters, the retry fails with an
+#' `IdempotentParameterMismatch` error.
 #'
 #' @return
 #' A list with the following syntax:
@@ -710,16 +1163,19 @@ ram_disassociate_resource_share_permission <- function(resourceShareArn, permiss
 #' Enables resource sharing within your organization in Organizations
 #'
 #' @description
-#' Enables resource sharing within your organization in Organizations.
-#' Calling this operation enables RAM to retrieve information about the
-#' organization and its structure. This lets you share resources with all
-#' of the accounts in an organization by specifying the organization's ID,
-#' or all of the accounts in an organizational unit (OU) by specifying the
-#' OU's ID. Until you enable sharing within the organization, you can
-#' specify only individual Amazon Web Services accounts, or for supported
-#' resource types, IAM users and roles.
+#' Enables resource sharing within your organization in Organizations. This
+#' operation creates a service-linked role called
+#' `AWSServiceRoleForResourceAccessManager` that has the IAM managed policy
+#' named AWSResourceAccessManagerServiceRolePolicy attached. This role
+#' permits RAM to retrieve information about the organization and its
+#' structure. This lets you share resources with all of the accounts in the
+#' calling account's organization by specifying the organization ID, or all
+#' of the accounts in an organizational unit (OU) by specifying the OU ID.
+#' Until you enable sharing within the organization, you can specify only
+#' individual Amazon Web Services accounts, or for supported resource
+#' types, IAM roles and users.
 #' 
-#' You must call this operation from an IAM user or role in the
+#' You must call this operation from an IAM role or user in the
 #' organization's management account.
 #'
 #' @usage
@@ -760,24 +1216,27 @@ ram_enable_sharing_with_aws_organization <- function() {
 }
 .ram$operations$enable_sharing_with_aws_organization <- ram_enable_sharing_with_aws_organization
 
-#' Gets the contents of an RAM permission in JSON format
+#' Retrieves the contents of a managed permission in JSON format
 #'
 #' @description
-#' Gets the contents of an RAM permission in JSON format.
+#' Retrieves the contents of a managed permission in JSON format.
 #'
 #' @usage
 #' ram_get_permission(permissionArn, permissionVersion)
 #'
-#' @param permissionArn &#91;required&#93; Specifies the [Amazon Resoure Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' @param permissionArn &#91;required&#93; Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the permission whose contents you want to retrieve. To find the ARN
 #' for a permission, use either the
 #' [`list_permissions`][ram_list_permissions] operation or go to the
 #' Permissions library page in the RAM console and then choose the name of
 #' the permission. The ARN is displayed on the detail page.
-#' @param permissionVersion Specifies identifier for the version of the RAM permission to retrieve.
-#' If you don't specify this parameter, the operation retrieves the default
+#' @param permissionVersion Specifies the version number of the RAM permission to retrieve. If you
+#' don't specify this parameter, the operation retrieves the default
 #' version.
+#' 
+#' To see the list of available versions, use
+#' [`list_permission_versions`][ram_list_permission_versions].
 #'
 #' @return
 #' A list with the following syntax:
@@ -796,7 +1255,16 @@ ram_enable_sharing_with_aws_organization <- function() {
 #'     lastUpdatedTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     isResourceTypeDefault = TRUE|FALSE
+#'     isResourceTypeDefault = TRUE|FALSE,
+#'     permissionType = "CUSTOMER_MANAGED"|"AWS_MANAGED",
+#'     featureSet = "CREATED_FROM_POLICY"|"PROMOTING_TO_STANDARD"|"STANDARD",
+#'     status = "ATTACHABLE"|"UNATTACHABLE"|"DELETING"|"DELETED",
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -843,7 +1311,7 @@ ram_get_permission <- function(permissionArn, permissionVersion = NULL) {
 #'   maxResults)
 #'
 #' @param resourceArns &#91;required&#93; Specifies the [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the resources whose policies you want to retrieve.
 #' @param principal Specifies the principal.
 #' @param nextToken Specifies that you want to receive the next page of results. Valid only
@@ -907,12 +1375,12 @@ ram_get_resource_policies <- function(resourceArns, principal = NULL, nextToken 
 }
 .ram$operations$get_resource_policies <- ram_get_resource_policies
 
-#' Retrieves the resource and principal associations for resource shares
-#' that you own
+#' Retrieves the lists of resources and principals that associated for
+#' resource shares that you own
 #'
 #' @description
-#' Retrieves the resource and principal associations for resource shares
-#' that you own.
+#' Retrieves the lists of resources and principals that associated for
+#' resource shares that you own.
 #'
 #' @usage
 #' ram_get_resource_share_associations(associationType, resourceShareArns,
@@ -921,28 +1389,28 @@ ram_get_resource_policies <- function(resourceArns, principal = NULL, nextToken 
 #' @param associationType &#91;required&#93; Specifies whether you want to retrieve the associations that involve a
 #' specified resource or principal.
 #' 
-#' -   `PRINCIPAL` – list the principals that are associated with the
-#'     specified resource share.
+#' -   `PRINCIPAL` – list the principals whose associations you want to
+#'     see.
 #' 
-#' -   `RESOURCE` – list the resources that are associated with the
-#'     specified resource share.
+#' -   `RESOURCE` – list the resources whose associations you want to see.
 #' @param resourceShareArns Specifies a list of [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the resource share whose associations you want to retrieve.
-#' @param resourceArn Specifies the [Amazon Resoure Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
-#' of the resource whose resource shares you want to retrieve.
+#' @param resourceArn Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' of a resource whose resource shares you want to retrieve.
 #' 
 #' You cannot specify this parameter if the association type is
 #' `PRINCIPAL`.
 #' @param principal Specifies the ID of the principal whose resource shares you want to
 #' retrieve. This can be an Amazon Web Services account ID, an organization
-#' ID, an organizational unit ID, or the [Amazon Resoure Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' ID, an organizational unit ID, or the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of an individual IAM user or role.
 #' 
 #' You cannot specify this parameter if the association type is `RESOURCE`.
-#' @param associationStatus Specifies that you want to retrieve only associations with this status.
+#' @param associationStatus Specifies that you want to retrieve only associations that have this
+#' status.
 #' @param nextToken Specifies that you want to receive the next page of results. Valid only
 #' if you received a `NextToken` response in the previous request. If you
 #' did, it indicates that more output is available. Set this parameter to
@@ -1033,11 +1501,11 @@ ram_get_resource_share_associations <- function(associationType, resourceShareAr
 #'   resourceShareArns, nextToken, maxResults)
 #'
 #' @param resourceShareInvitationArns Specifies the [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the resource share invitations you want information about.
 #' @param resourceShareArns Specifies that you want details about invitations only for the resource
 #' shares described by this list of [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' @param nextToken Specifies that you want to receive the next page of results. Valid only
 #' if you received a `NextToken` response in the previous request. If you
 #' did, it indicates that more output is available. Set this parameter to
@@ -1138,10 +1606,11 @@ ram_get_resource_share_invitations <- function(resourceShareInvitationArns = NUL
 #'
 #' @usage
 #' ram_get_resource_shares(resourceShareArns, resourceShareStatus,
-#'   resourceOwner, name, tagFilters, nextToken, maxResults, permissionArn)
+#'   resourceOwner, name, tagFilters, nextToken, maxResults, permissionArn,
+#'   permissionVersion)
 #'
 #' @param resourceShareArns Specifies the [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of individual resource shares that you want information about.
 #' @param resourceShareStatus Specifies that you want to retrieve details of only those resource
 #' shares that have this status.
@@ -1173,8 +1642,10 @@ ram_get_resource_share_invitations <- function(resourceShareInvitationArns = NUL
 #' should check `NextToken` after every operation to ensure that you
 #' receive all of the results.
 #' @param permissionArn Specifies that you want to retrieve details of only those resource
-#' shares that use the RAM permission with this [Amazon Resoure Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' shares that use the managed permission with this [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' @param permissionVersion Specifies that you want to retrieve details for only those resource
+#' shares that use the specified version of the managed permission.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1226,7 +1697,8 @@ ram_get_resource_share_invitations <- function(resourceShareInvitationArns = NUL
 #'   ),
 #'   nextToken = "string",
 #'   maxResults = 123,
-#'   permissionArn = "string"
+#'   permissionArn = "string",
+#'   permissionVersion = 123
 #' )
 #' ```
 #'
@@ -1235,14 +1707,14 @@ ram_get_resource_share_invitations <- function(resourceShareInvitationArns = NUL
 #' @rdname ram_get_resource_shares
 #'
 #' @aliases ram_get_resource_shares
-ram_get_resource_shares <- function(resourceShareArns = NULL, resourceShareStatus = NULL, resourceOwner, name = NULL, tagFilters = NULL, nextToken = NULL, maxResults = NULL, permissionArn = NULL) {
+ram_get_resource_shares <- function(resourceShareArns = NULL, resourceShareStatus = NULL, resourceOwner, name = NULL, tagFilters = NULL, nextToken = NULL, maxResults = NULL, permissionArn = NULL, permissionVersion = NULL) {
   op <- new_operation(
     name = "GetResourceShares",
     http_method = "POST",
     http_path = "/getresourceshares",
     paginator = list()
   )
-  input <- .ram$get_resource_shares_input(resourceShareArns = resourceShareArns, resourceShareStatus = resourceShareStatus, resourceOwner = resourceOwner, name = name, tagFilters = tagFilters, nextToken = nextToken, maxResults = maxResults, permissionArn = permissionArn)
+  input <- .ram$get_resource_shares_input(resourceShareArns = resourceShareArns, resourceShareStatus = resourceShareStatus, resourceOwner = resourceOwner, name = name, tagFilters = tagFilters, nextToken = nextToken, maxResults = maxResults, permissionArn = permissionArn, permissionVersion = permissionVersion)
   output <- .ram$get_resource_shares_output()
   config <- get_config()
   svc <- .ram$service(config)
@@ -1264,8 +1736,8 @@ ram_get_resource_shares <- function(resourceShareArns = NULL, resourceShareStatu
 #' ram_list_pending_invitation_resources(resourceShareInvitationArn,
 #'   nextToken, maxResults, resourceRegionScope)
 #'
-#' @param resourceShareInvitationArn &#91;required&#93; Specifies the [Amazon Resoure Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' @param resourceShareInvitationArn &#91;required&#93; Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the invitation. You can use
 #' [`get_resource_share_invitations`][ram_get_resource_share_invitations]
 #' to find the ARN of the invitation.
@@ -1355,6 +1827,114 @@ ram_list_pending_invitation_resources <- function(resourceShareInvitationArn, ne
 }
 .ram$operations$list_pending_invitation_resources <- ram_list_pending_invitation_resources
 
+#' Lists information about the managed permission and its associations to
+#' any resource shares that use this managed permission
+#'
+#' @description
+#' Lists information about the managed permission and its associations to
+#' any resource shares that use this managed permission. This lets you see
+#' which resource shares use which versions of the specified managed
+#' permission.
+#'
+#' @usage
+#' ram_list_permission_associations(permissionArn, permissionVersion,
+#'   associationStatus, resourceType, featureSet, defaultVersion, nextToken,
+#'   maxResults)
+#'
+#' @param permissionArn Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' of the managed permission.
+#' @param permissionVersion Specifies that you want to list only those associations with resource
+#' shares that use this version of the managed permission. If you don't
+#' provide a value for this parameter, then the operation returns
+#' information about associations with resource shares that use any version
+#' of the managed permission.
+#' @param associationStatus Specifies that you want to list only those associations with resource
+#' shares that match this status.
+#' @param resourceType Specifies that you want to list only those associations with resource
+#' shares that include at least one resource of this resource type.
+#' @param featureSet Specifies that you want to list only those associations with resource
+#' shares that have a `featureSet` with this value.
+#' @param defaultVersion When `true`, specifies that you want to list only those associations
+#' with resource shares that use the default version of the specified
+#' managed permission.
+#' 
+#' When `false` (the default value), lists associations with resource
+#' shares that use any version of the specified managed permission.
+#' @param nextToken Specifies that you want to receive the next page of results. Valid only
+#' if you received a `NextToken` response in the previous request. If you
+#' did, it indicates that more output is available. Set this parameter to
+#' the value provided by the previous call's `NextToken` response to
+#' request the next page of results.
+#' @param maxResults Specifies the total number of results that you want included on each
+#' page of the response. If you do not include this parameter, it defaults
+#' to a value that is specific to the operation. If additional items exist
+#' beyond the number you specify, the `NextToken` response element is
+#' returned with a value (not null). Include the specified value as the
+#' `NextToken` request parameter in the next call to the operation to get
+#' the next part of the results. Note that the service might return fewer
+#' results than the maximum even when there are more results available. You
+#' should check `NextToken` after every operation to ensure that you
+#' receive all of the results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   permissions = list(
+#'     list(
+#'       arn = "string",
+#'       permissionVersion = "string",
+#'       defaultVersion = TRUE|FALSE,
+#'       resourceType = "string",
+#'       status = "string",
+#'       featureSet = "CREATED_FROM_POLICY"|"PROMOTING_TO_STANDARD"|"STANDARD",
+#'       lastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       resourceShareArn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_permission_associations(
+#'   permissionArn = "string",
+#'   permissionVersion = 123,
+#'   associationStatus = "ASSOCIATING"|"ASSOCIATED"|"FAILED"|"DISASSOCIATING"|"DISASSOCIATED",
+#'   resourceType = "string",
+#'   featureSet = "CREATED_FROM_POLICY"|"PROMOTING_TO_STANDARD"|"STANDARD",
+#'   defaultVersion = TRUE|FALSE,
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ram_list_permission_associations
+#'
+#' @aliases ram_list_permission_associations
+ram_list_permission_associations <- function(permissionArn = NULL, permissionVersion = NULL, associationStatus = NULL, resourceType = NULL, featureSet = NULL, defaultVersion = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListPermissionAssociations",
+    http_method = "POST",
+    http_path = "/listpermissionassociations",
+    paginator = list()
+  )
+  input <- .ram$list_permission_associations_input(permissionArn = permissionArn, permissionVersion = permissionVersion, associationStatus = associationStatus, resourceType = resourceType, featureSet = featureSet, defaultVersion = defaultVersion, nextToken = nextToken, maxResults = maxResults)
+  output <- .ram$list_permission_associations_output()
+  config <- get_config()
+  svc <- .ram$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ram$operations$list_permission_associations <- ram_list_permission_associations
+
 #' Lists the available versions of the specified RAM permission
 #'
 #' @description
@@ -1363,8 +1943,8 @@ ram_list_pending_invitation_resources <- function(resourceShareInvitationArn, ne
 #' @usage
 #' ram_list_permission_versions(permissionArn, nextToken, maxResults)
 #'
-#' @param permissionArn &#91;required&#93; Specifies the [Amazon Resoure Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' @param permissionArn &#91;required&#93; Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the RAM permission whose versions you want to list. You can use the
 #' `permissionVersion` parameter on the
 #' [`associate_resource_share_permission`][ram_associate_resource_share_permission]
@@ -1403,7 +1983,15 @@ ram_list_pending_invitation_resources <- function(resourceShareInvitationArn, ne
 #'       lastUpdatedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       isResourceTypeDefault = TRUE|FALSE
+#'       isResourceTypeDefault = TRUE|FALSE,
+#'       permissionType = "CUSTOMER_MANAGED"|"AWS_MANAGED",
+#'       featureSet = "CREATED_FROM_POLICY"|"PROMOTING_TO_STANDARD"|"STANDARD",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1449,11 +2037,14 @@ ram_list_permission_versions <- function(permissionArn, nextToken = NULL, maxRes
 #' supported resource types.
 #'
 #' @usage
-#' ram_list_permissions(resourceType, nextToken, maxResults)
+#' ram_list_permissions(resourceType, nextToken, maxResults,
+#'   permissionType)
 #'
-#' @param resourceType Specifies that you want to list permissions for only the specified
-#' resource type. For example, to list only permissions that apply to EC2
-#' subnets, specify `ec2:Subnet`. You can use the
+#' @param resourceType Specifies that you want to list only those permissions that apply to the
+#' specified resource type. This parameter is not case sensitive.
+#' 
+#' For example, to list only permissions that apply to Amazon EC2 subnets,
+#' specify `ec2:subnet`. You can use the
 #' [`list_resource_types`][ram_list_resource_types] operation to get the
 #' specific string required.
 #' @param nextToken Specifies that you want to receive the next page of results. Valid only
@@ -1471,6 +2062,16 @@ ram_list_permission_versions <- function(permissionArn, nextToken = NULL, maxRes
 #' results than the maximum even when there are more results available. You
 #' should check `NextToken` after every operation to ensure that you
 #' receive all of the results.
+#' @param permissionType Specifies that you want to list only permissions of this type:
+#' 
+#' -   `AWS` – returns only Amazon Web Services managed permissions.
+#' 
+#' -   `LOCAL` – returns only customer managed permissions
+#' 
+#' -   `ALL` – returns both Amazon Web Services managed permissions and
+#'     customer managed permissions.
+#' 
+#' If you don't specify this parameter, the default is `All`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1490,7 +2091,15 @@ ram_list_permission_versions <- function(permissionArn, nextToken = NULL, maxRes
 #'       lastUpdatedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       isResourceTypeDefault = TRUE|FALSE
+#'       isResourceTypeDefault = TRUE|FALSE,
+#'       permissionType = "CUSTOMER_MANAGED"|"AWS_MANAGED",
+#'       featureSet = "CREATED_FROM_POLICY"|"PROMOTING_TO_STANDARD"|"STANDARD",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1502,7 +2111,8 @@ ram_list_permission_versions <- function(permissionArn, nextToken = NULL, maxRes
 #' svc$list_permissions(
 #'   resourceType = "string",
 #'   nextToken = "string",
-#'   maxResults = 123
+#'   maxResults = 123,
+#'   permissionType = "ALL"|"AWS_MANAGED"|"CUSTOMER_MANAGED"
 #' )
 #' ```
 #'
@@ -1511,14 +2121,14 @@ ram_list_permission_versions <- function(permissionArn, nextToken = NULL, maxRes
 #' @rdname ram_list_permissions
 #'
 #' @aliases ram_list_permissions
-ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResults = NULL) {
+ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResults = NULL, permissionType = NULL) {
   op <- new_operation(
     name = "ListPermissions",
     http_method = "POST",
     http_path = "/listpermissions",
     paginator = list()
   )
-  input <- .ram$list_permissions_input(resourceType = resourceType, nextToken = nextToken, maxResults = maxResults)
+  input <- .ram$list_permissions_input(resourceType = resourceType, nextToken = nextToken, maxResults = maxResults, permissionType = permissionType)
   output <- .ram$list_permissions_output()
   config <- get_config()
   svc <- .ram$service(config)
@@ -1547,8 +2157,8 @@ ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResul
 #' -   **`OTHER-ACCOUNTS`** – principals that are sharing resources with
 #'     your account
 #' @param resourceArn Specifies that you want to list principal information for the resource
-#' share with the specified [Amazon Resoure Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' share with the specified [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' @param principals Specifies that you want to list information for only the listed
 #' principals.
 #' 
@@ -1556,8 +2166,8 @@ ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResul
 #' 
 #' -   An Amazon Web Services account ID, for example: `123456789012`
 #' 
-#' -   An [Amazon Resoure Name
-#'     (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' -   An [Amazon Resource Name
+#'     (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #'     of an organization in Organizations, for example:
 #'     `organizations::123456789012:organization/o-exampleorgid`
 #' 
@@ -1582,7 +2192,7 @@ ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResul
 #' @param resourceShareArns Specifies that you want to list information for only principals
 #' associated with the resource shares specified by a list the [Amazon
 #' Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' @param nextToken Specifies that you want to receive the next page of results. Valid only
 #' if you received a `NextToken` response in the previous request. If you
 #' did, it indicates that more output is available. Set this parameter to
@@ -1659,6 +2269,98 @@ ram_list_principals <- function(resourceOwner, resourceArn = NULL, principals = 
 }
 .ram$operations$list_principals <- ram_list_principals
 
+#' Retrieves the current status of the asynchronous tasks performed by RAM
+#' when you perform the ReplacePermissionAssociationsWork operation
+#'
+#' @description
+#' Retrieves the current status of the asynchronous tasks performed by RAM
+#' when you perform the ReplacePermissionAssociationsWork operation.
+#'
+#' @usage
+#' ram_list_replace_permission_associations_work(workIds, status,
+#'   nextToken, maxResults)
+#'
+#' @param workIds A list of IDs. These values come from the `id`field of the
+#' `replacePermissionAssociationsWork`structure returned by the
+#' [`replace_permission_associations`][ram_replace_permission_associations]
+#' operation.
+#' @param status Specifies that you want to see only the details about requests with a
+#' status that matches this value.
+#' @param nextToken Specifies that you want to receive the next page of results. Valid only
+#' if you received a `NextToken` response in the previous request. If you
+#' did, it indicates that more output is available. Set this parameter to
+#' the value provided by the previous call's `NextToken` response to
+#' request the next page of results.
+#' @param maxResults Specifies the total number of results that you want included on each
+#' page of the response. If you do not include this parameter, it defaults
+#' to a value that is specific to the operation. If additional items exist
+#' beyond the number you specify, the `NextToken` response element is
+#' returned with a value (not null). Include the specified value as the
+#' `NextToken` request parameter in the next call to the operation to get
+#' the next part of the results. Note that the service might return fewer
+#' results than the maximum even when there are more results available. You
+#' should check `NextToken` after every operation to ensure that you
+#' receive all of the results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   replacePermissionAssociationsWorks = list(
+#'     list(
+#'       id = "string",
+#'       fromPermissionArn = "string",
+#'       fromPermissionVersion = "string",
+#'       toPermissionArn = "string",
+#'       toPermissionVersion = "string",
+#'       status = "IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'       statusMessage = "string",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_replace_permission_associations_work(
+#'   workIds = list(
+#'     "string"
+#'   ),
+#'   status = "IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ram_list_replace_permission_associations_work
+#'
+#' @aliases ram_list_replace_permission_associations_work
+ram_list_replace_permission_associations_work <- function(workIds = NULL, status = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListReplacePermissionAssociationsWork",
+    http_method = "POST",
+    http_path = "/listreplacepermissionassociationswork",
+    paginator = list()
+  )
+  input <- .ram$list_replace_permission_associations_work_input(workIds = workIds, status = status, nextToken = nextToken, maxResults = maxResults)
+  output <- .ram$list_replace_permission_associations_work_output()
+  config <- get_config()
+  svc <- .ram$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ram$operations$list_replace_permission_associations_work <- ram_list_replace_permission_associations_work
+
 #' Lists the RAM permissions that are associated with a resource share
 #'
 #' @description
@@ -1668,8 +2370,8 @@ ram_list_principals <- function(resourceOwner, resourceArn = NULL, principals = 
 #' ram_list_resource_share_permissions(resourceShareArn, nextToken,
 #'   maxResults)
 #'
-#' @param resourceShareArn &#91;required&#93; Specifies the [Amazon Resoure Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' @param resourceShareArn &#91;required&#93; Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the resource share for which you want to retrieve the associated
 #' permissions.
 #' @param nextToken Specifies that you want to receive the next page of results. Valid only
@@ -1706,7 +2408,15 @@ ram_list_principals <- function(resourceOwner, resourceArn = NULL, principals = 
 #'       lastUpdatedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       isResourceTypeDefault = TRUE|FALSE
+#'       isResourceTypeDefault = TRUE|FALSE,
+#'       permissionType = "CUSTOMER_MANAGED"|"AWS_MANAGED",
+#'       featureSet = "CREATED_FROM_POLICY"|"PROMOTING_TO_STANDARD"|"STANDARD",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1854,10 +2564,10 @@ ram_list_resource_types <- function(nextToken = NULL, maxResults = NULL, resourc
 #' [`list_resource_types`][ram_list_resource_types] operation.
 #' @param resourceArns Specifies that you want to list only the resource shares that include
 #' resources with the specified [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' @param resourceShareArns Specifies that you want to list only resources in the resource shares
 #' identified by the specified [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' @param nextToken Specifies that you want to receive the next page of results. Valid only
 #' if you received a `NextToken` response in the previous request. If you
 #' did, it indicates that more output is available. Set this parameter to
@@ -1952,25 +2662,166 @@ ram_list_resources <- function(resourceOwner, principal = NULL, resourceType = N
 }
 .ram$operations$list_resources <- ram_list_resources
 
-#' When you attach a resource-based permission policy to a resource, it
-#' automatically creates a resource share
+#' When you attach a resource-based policy to a resource, RAM automatically
+#' creates a resource share of featureSet=CREATED_FROM_POLICY with a
+#' managed permission that has the same IAM permissions as the original
+#' resource-based policy
 #'
 #' @description
-#' When you attach a resource-based permission policy to a resource, it
-#' automatically creates a resource share. However, resource shares created
-#' this way are visible only to the resource share owner, and the resource
-#' share can't be modified in RAM.
+#' When you attach a resource-based policy to a resource, RAM automatically
+#' creates a resource share of `featureSet`=`CREATED_FROM_POLICY` with a
+#' managed permission that has the same IAM permissions as the original
+#' resource-based policy. However, this type of managed permission is
+#' visible to only the resource share owner, and the associated resource
+#' share can't be modified by using RAM.
 #' 
-#' You can use this operation to promote the resource share to a full RAM
-#' resource share. When you promote a resource share, you can then manage
-#' the resource share in RAM and it becomes visible to all of the
-#' principals you shared it with.
+#' This operation creates a separate, fully manageable customer managed
+#' permission that has the same IAM permissions as the original
+#' resource-based policy. You can associate this customer managed
+#' permission to any resource shares.
+#' 
+#' Before you use
+#' [`promote_resource_share_created_from_policy`][ram_promote_resource_share_created_from_policy],
+#' you should first run this operation to ensure that you have an
+#' appropriate customer managed permission that can be associated with the
+#' promoted resource share.
+#' 
+#' -   The original `CREATED_FROM_POLICY` policy isn't deleted, and
+#'     resource shares using that original policy aren't automatically
+#'     updated.
+#' 
+#' -   You can't modify a `CREATED_FROM_POLICY` resource share so you can't
+#'     associate the new customer managed permission by using
+#'     `ReplacePermsissionAssociations`. However, if you use
+#'     [`promote_resource_share_created_from_policy`][ram_promote_resource_share_created_from_policy],
+#'     that operation automatically associates the fully manageable
+#'     customer managed permission to the newly promoted `STANDARD`
+#'     resource share.
+#' 
+#' -   After you promote a resource share, if the original
+#'     `CREATED_FROM_POLICY` managed permission has no other associations
+#'     to A resource share, then RAM automatically deletes it.
+#'
+#' @usage
+#' ram_promote_permission_created_from_policy(permissionArn, name,
+#'   clientToken)
+#'
+#' @param permissionArn &#91;required&#93; Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' of the `CREATED_FROM_POLICY` permission that you want to promote. You
+#' can get this [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' by calling the
+#' [`list_resource_share_permissions`][ram_list_resource_share_permissions]
+#' operation.
+#' @param name &#91;required&#93; Specifies a name for the promoted customer managed permission.
+#' @param clientToken Specifies a unique, case-sensitive identifier that you provide to ensure
+#' the idempotency of the request. This lets you safely retry the request
+#' without accidentally performing the same operation a second time.
+#' Passing the same value to a later call to an operation requires that you
+#' also pass the same value for all other parameters. We recommend that you
+#' use a [UUID type of
+#' value.](https://en.wikipedia.org/wiki/Universally_unique_identifier).
+#' 
+#' If you don't provide this value, then Amazon Web Services generates a
+#' random one for you.
+#' 
+#' If you retry the operation with the same `ClientToken`, but with
+#' different parameters, the retry fails with an
+#' `IdempotentParameterMismatch` error.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   permission = list(
+#'     arn = "string",
+#'     version = "string",
+#'     defaultVersion = TRUE|FALSE,
+#'     name = "string",
+#'     resourceType = "string",
+#'     status = "string",
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     isResourceTypeDefault = TRUE|FALSE,
+#'     permissionType = "CUSTOMER_MANAGED"|"AWS_MANAGED",
+#'     featureSet = "CREATED_FROM_POLICY"|"PROMOTING_TO_STANDARD"|"STANDARD",
+#'     tags = list(
+#'       list(
+#'         key = "string",
+#'         value = "string"
+#'       )
+#'     )
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$promote_permission_created_from_policy(
+#'   permissionArn = "string",
+#'   name = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ram_promote_permission_created_from_policy
+#'
+#' @aliases ram_promote_permission_created_from_policy
+ram_promote_permission_created_from_policy <- function(permissionArn, name, clientToken = NULL) {
+  op <- new_operation(
+    name = "PromotePermissionCreatedFromPolicy",
+    http_method = "POST",
+    http_path = "/promotepermissioncreatedfrompolicy",
+    paginator = list()
+  )
+  input <- .ram$promote_permission_created_from_policy_input(permissionArn = permissionArn, name = name, clientToken = clientToken)
+  output <- .ram$promote_permission_created_from_policy_output()
+  config <- get_config()
+  svc <- .ram$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ram$operations$promote_permission_created_from_policy <- ram_promote_permission_created_from_policy
+
+#' When you attach a resource-based policy to a resource, RAM automatically
+#' creates a resource share of featureSet=CREATED_FROM_POLICY with a
+#' managed permission that has the same IAM permissions as the original
+#' resource-based policy
+#'
+#' @description
+#' When you attach a resource-based policy to a resource, RAM automatically
+#' creates a resource share of `featureSet`=`CREATED_FROM_POLICY` with a
+#' managed permission that has the same IAM permissions as the original
+#' resource-based policy. However, this type of managed permission is
+#' visible to only the resource share owner, and the associated resource
+#' share can't be modified by using RAM.
+#' 
+#' This operation promotes the resource share to a `STANDARD` resource
+#' share that is fully manageable in RAM. When you promote a resource
+#' share, you can then manage the resource share in RAM and it becomes
+#' visible to all of the principals you shared it with.
+#' 
+#' Before you perform this operation, you should first run
+#' [`promote_permission_created_from_policy`][ram_promote_permission_created_from_policy]to
+#' ensure that you have an appropriate customer managed permission that can
+#' be associated with this resource share after its is promoted. If this
+#' operation can't find a managed permission that exactly matches the
+#' existing `CREATED_FROM_POLICY` permission, then this operation fails.
 #'
 #' @usage
 #' ram_promote_resource_share_created_from_policy(resourceShareArn)
 #'
-#' @param resourceShareArn &#91;required&#93; Specifies the [Amazon Resoure Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' @param resourceShareArn &#91;required&#93; Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the resource share to promote.
 #'
 #' @return
@@ -2021,8 +2872,8 @@ ram_promote_resource_share_created_from_policy <- function(resourceShareArn) {
 #' ram_reject_resource_share_invitation(resourceShareInvitationArn,
 #'   clientToken)
 #'
-#' @param resourceShareInvitationArn &#91;required&#93; Specifies the [Amazon Resoure Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' @param resourceShareInvitationArn &#91;required&#93; Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the invitation that you want to reject.
 #' @param clientToken Specifies a unique, case-sensitive identifier that you provide to ensure
 #' the idempotency of the request. This lets you safely retry the request
@@ -2034,6 +2885,10 @@ ram_promote_resource_share_created_from_policy <- function(resourceShareArn) {
 #' 
 #' If you don't provide this value, then Amazon Web Services generates a
 #' random one for you.
+#' 
+#' If you retry the operation with the same `ClientToken`, but with
+#' different parameters, the retry fails with an
+#' `IdempotentParameterMismatch` error.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2102,22 +2957,217 @@ ram_reject_resource_share_invitation <- function(resourceShareInvitationArn, cli
 }
 .ram$operations$reject_resource_share_invitation <- ram_reject_resource_share_invitation
 
-#' Adds the specified tag keys and values to the specified resource share
+#' Updates all resource shares that use a managed permission to a different
+#' managed permission
 #'
 #' @description
-#' Adds the specified tag keys and values to the specified resource share.
-#' The tags are attached only to the resource share, not to the resources
-#' that are in the resource share.
+#' Updates all resource shares that use a managed permission to a different
+#' managed permission. This operation always applies the default version of
+#' the target managed permission. You can optionally specify that the
+#' update applies to only resource shares that currently use a specified
+#' version. This enables you to update to the latest version, without
+#' changing the which managed permission is used.
+#' 
+#' You can use this operation to update all of your resource shares to use
+#' the current default version of the permission by specifying the same
+#' value for the `fromPermissionArn` and `toPermissionArn` parameters.
+#' 
+#' You can use the optional `fromPermissionVersion` parameter to update
+#' only those resources that use a specified version of the managed
+#' permission to the new managed permission.
+#' 
+#' To successfully perform this operation, you must have permission to
+#' update the resource-based policy on all affected resource types.
 #'
 #' @usage
-#' ram_tag_resource(resourceShareArn, tags)
+#' ram_replace_permission_associations(fromPermissionArn,
+#'   fromPermissionVersion, toPermissionArn, clientToken)
 #'
-#' @param resourceShareArn &#91;required&#93; Specifies the [Amazon Resoure Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
-#' of the resource share that you want to add tags to.
+#' @param fromPermissionArn &#91;required&#93; Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' of the managed permission that you want to replace.
+#' @param fromPermissionVersion Specifies that you want to updated the permissions for only those
+#' resource shares that use the specified version of the managed
+#' permission.
+#' @param toPermissionArn &#91;required&#93; Specifies the ARN of the managed permission that you want to associate
+#' with resource shares in place of the one specified by `fromPerssionArn`
+#' and `fromPermissionVersion`.
+#' 
+#' The operation always associates the version that is currently the
+#' default for the specified managed permission.
+#' @param clientToken Specifies a unique, case-sensitive identifier that you provide to ensure
+#' the idempotency of the request. This lets you safely retry the request
+#' without accidentally performing the same operation a second time.
+#' Passing the same value to a later call to an operation requires that you
+#' also pass the same value for all other parameters. We recommend that you
+#' use a [UUID type of
+#' value.](https://en.wikipedia.org/wiki/Universally_unique_identifier).
+#' 
+#' If you don't provide this value, then Amazon Web Services generates a
+#' random one for you.
+#' 
+#' If you retry the operation with the same `ClientToken`, but with
+#' different parameters, the retry fails with an
+#' `IdempotentParameterMismatch` error.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   replacePermissionAssociationsWork = list(
+#'     id = "string",
+#'     fromPermissionArn = "string",
+#'     fromPermissionVersion = "string",
+#'     toPermissionArn = "string",
+#'     toPermissionVersion = "string",
+#'     status = "IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'     statusMessage = "string",
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$replace_permission_associations(
+#'   fromPermissionArn = "string",
+#'   fromPermissionVersion = 123,
+#'   toPermissionArn = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ram_replace_permission_associations
+#'
+#' @aliases ram_replace_permission_associations
+ram_replace_permission_associations <- function(fromPermissionArn, fromPermissionVersion = NULL, toPermissionArn, clientToken = NULL) {
+  op <- new_operation(
+    name = "ReplacePermissionAssociations",
+    http_method = "POST",
+    http_path = "/replacepermissionassociations",
+    paginator = list()
+  )
+  input <- .ram$replace_permission_associations_input(fromPermissionArn = fromPermissionArn, fromPermissionVersion = fromPermissionVersion, toPermissionArn = toPermissionArn, clientToken = clientToken)
+  output <- .ram$replace_permission_associations_output()
+  config <- get_config()
+  svc <- .ram$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ram$operations$replace_permission_associations <- ram_replace_permission_associations
+
+#' Designates the specified version number as the default version for the
+#' specified customer managed permission
+#'
+#' @description
+#' Designates the specified version number as the default version for the
+#' specified customer managed permission. New resource shares automatically
+#' use this new default permission. Existing resource shares continue to
+#' use their original permission version, but you can use
+#' [`replace_permission_associations`][ram_replace_permission_associations]
+#' to update them.
+#'
+#' @usage
+#' ram_set_default_permission_version(permissionArn, permissionVersion,
+#'   clientToken)
+#'
+#' @param permissionArn &#91;required&#93; Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' of the customer managed permission whose default version you want to
+#' change.
+#' @param permissionVersion &#91;required&#93; Specifies the version number that you want to designate as the default
+#' for customer managed permission. To see a list of all available version
+#' numbers, use [`list_permission_versions`][ram_list_permission_versions].
+#' @param clientToken Specifies a unique, case-sensitive identifier that you provide to ensure
+#' the idempotency of the request. This lets you safely retry the request
+#' without accidentally performing the same operation a second time.
+#' Passing the same value to a later call to an operation requires that you
+#' also pass the same value for all other parameters. We recommend that you
+#' use a [UUID type of
+#' value.](https://en.wikipedia.org/wiki/Universally_unique_identifier).
+#' 
+#' If you don't provide this value, then Amazon Web Services generates a
+#' random one for you.
+#' 
+#' If you retry the operation with the same `ClientToken`, but with
+#' different parameters, the retry fails with an
+#' `IdempotentParameterMismatch` error.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   returnValue = TRUE|FALSE,
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$set_default_permission_version(
+#'   permissionArn = "string",
+#'   permissionVersion = 123,
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ram_set_default_permission_version
+#'
+#' @aliases ram_set_default_permission_version
+ram_set_default_permission_version <- function(permissionArn, permissionVersion, clientToken = NULL) {
+  op <- new_operation(
+    name = "SetDefaultPermissionVersion",
+    http_method = "POST",
+    http_path = "/setdefaultpermissionversion",
+    paginator = list()
+  )
+  input <- .ram$set_default_permission_version_input(permissionArn = permissionArn, permissionVersion = permissionVersion, clientToken = clientToken)
+  output <- .ram$set_default_permission_version_output()
+  config <- get_config()
+  svc <- .ram$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ram$operations$set_default_permission_version <- ram_set_default_permission_version
+
+#' Adds the specified tag keys and values to a resource share or managed
+#' permission
+#'
+#' @description
+#' Adds the specified tag keys and values to a resource share or managed
+#' permission. If you choose a resource share, the tags are attached to
+#' only the resource share, not to the resources that are in the resource
+#' share.
+#' 
+#' The tags on a managed permission are the same for all versions of the
+#' managed permission.
+#'
+#' @usage
+#' ram_tag_resource(resourceShareArn, tags, resourceArn)
+#'
+#' @param resourceShareArn Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' of the resource share that you want to add tags to. You must specify
+#' *either* `resourceShareArn`, or `resourceArn`, but not both.
 #' @param tags &#91;required&#93; A list of one or more tag key and value pairs. The tag key must be
 #' present and not be an empty string. The tag value must be present but
 #' can be an empty string.
+#' @param resourceArn Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' of the managed permission that you want to add tags to. You must specify
+#' *either* `resourceArn`, or `resourceShareArn`, but not both.
 #'
 #' @return
 #' An empty list.
@@ -2131,7 +3181,8 @@ ram_reject_resource_share_invitation <- function(resourceShareInvitationArn, cli
 #'       key = "string",
 #'       value = "string"
 #'     )
-#'   )
+#'   ),
+#'   resourceArn = "string"
 #' )
 #' ```
 #'
@@ -2140,14 +3191,14 @@ ram_reject_resource_share_invitation <- function(resourceShareInvitationArn, cli
 #' @rdname ram_tag_resource
 #'
 #' @aliases ram_tag_resource
-ram_tag_resource <- function(resourceShareArn, tags) {
+ram_tag_resource <- function(resourceShareArn = NULL, tags, resourceArn = NULL) {
   op <- new_operation(
     name = "TagResource",
     http_method = "POST",
     http_path = "/tagresource",
     paginator = list()
   )
-  input <- .ram$tag_resource_input(resourceShareArn = resourceShareArn, tags = tags)
+  input <- .ram$tag_resource_input(resourceShareArn = resourceShareArn, tags = tags, resourceArn = resourceArn)
   output <- .ram$tag_resource_output()
   config <- get_config()
   svc <- .ram$service(config)
@@ -2158,21 +3209,26 @@ ram_tag_resource <- function(resourceShareArn, tags) {
 .ram$operations$tag_resource <- ram_tag_resource
 
 #' Removes the specified tag key and value pairs from the specified
-#' resource share
+#' resource share or managed permission
 #'
 #' @description
 #' Removes the specified tag key and value pairs from the specified
-#' resource share.
+#' resource share or managed permission.
 #'
 #' @usage
-#' ram_untag_resource(resourceShareArn, tagKeys)
+#' ram_untag_resource(resourceShareArn, tagKeys, resourceArn)
 #'
-#' @param resourceShareArn &#91;required&#93; Specifies the [Amazon Resoure Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' @param resourceShareArn Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the resource share that you want to remove tags from. The tags are
 #' removed from the resource share, not the resources in the resource
-#' share.
+#' share. You must specify either `resourceShareArn`, or `resourceArn`, but
+#' not both.
 #' @param tagKeys &#91;required&#93; Specifies a list of one or more tag keys that you want to remove.
+#' @param resourceArn Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' of the managed permission that you want to remove tags from. You must
+#' specify either `resourceArn`, or `resourceShareArn`, but not both.
 #'
 #' @return
 #' An empty list.
@@ -2183,7 +3239,8 @@ ram_tag_resource <- function(resourceShareArn, tags) {
 #'   resourceShareArn = "string",
 #'   tagKeys = list(
 #'     "string"
-#'   )
+#'   ),
+#'   resourceArn = "string"
 #' )
 #' ```
 #'
@@ -2192,14 +3249,14 @@ ram_tag_resource <- function(resourceShareArn, tags) {
 #' @rdname ram_untag_resource
 #'
 #' @aliases ram_untag_resource
-ram_untag_resource <- function(resourceShareArn, tagKeys) {
+ram_untag_resource <- function(resourceShareArn = NULL, tagKeys, resourceArn = NULL) {
   op <- new_operation(
     name = "UntagResource",
     http_method = "POST",
     http_path = "/untagresource",
     paginator = list()
   )
-  input <- .ram$untag_resource_input(resourceShareArn = resourceShareArn, tagKeys = tagKeys)
+  input <- .ram$untag_resource_input(resourceShareArn = resourceShareArn, tagKeys = tagKeys, resourceArn = resourceArn)
   output <- .ram$untag_resource_output()
   config <- get_config()
   svc <- .ram$service(config)
@@ -2218,8 +3275,8 @@ ram_untag_resource <- function(resourceShareArn, tagKeys) {
 #' ram_update_resource_share(resourceShareArn, name,
 #'   allowExternalPrincipals, clientToken)
 #'
-#' @param resourceShareArn &#91;required&#93; Specifies the [Amazon Resoure Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' @param resourceShareArn &#91;required&#93; Specifies the [Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the resource share that you want to modify.
 #' @param name If specified, the new name that you want to attach to the resource
 #' share.
@@ -2235,6 +3292,10 @@ ram_untag_resource <- function(resourceShareArn, tagKeys) {
 #' 
 #' If you don't provide this value, then Amazon Web Services generates a
 #' random one for you.
+#' 
+#' If you retry the operation with the same `ClientToken`, but with
+#' different parameters, the retry fails with an
+#' `IdempotentParameterMismatch` error.
 #'
 #' @return
 #' A list with the following syntax:

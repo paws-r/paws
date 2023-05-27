@@ -8,17 +8,16 @@ codes from the authorization service}
 ssooidc_start_device_authorization(clientId, clientSecret, startUrl)
 }
 \arguments{
-\item{clientId}{[required] The unique identifier string for the client that is registered with
-Amazon Web Services SSO. This value should come from the persisted
-result of the \code{\link[=ssooidc_register_client]{register_client}} API
-operation.}
+\item{clientId}{[required] The unique identifier string for the client that is registered with IAM
+Identity Center. This value should come from the persisted result of the
+\code{\link[=ssooidc_register_client]{register_client}} API operation.}
 
 \item{clientSecret}{[required] A secret string that is generated for the client. This value should come
 from the persisted result of the
 \code{\link[=ssooidc_register_client]{register_client}} API operation.}
 
 \item{startUrl}{[required] The URL for the AWS access portal. For more information, see \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/using-the-portal.html}{Using the AWS access portal}
-in the \emph{Amazon Web Services SSO User Guide}.}
+in the \emph{IAM Identity Center User Guide}.}
 }
 \description{
 Initiates device authorization by requesting a pair of verification codes from the authorization service.

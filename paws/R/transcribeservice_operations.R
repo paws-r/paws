@@ -8,10 +8,17 @@ NULL
 #' @description
 #' Creates a new Call Analytics category.
 #' 
-#' All categories are automatically applied to your Call Analytics jobs.
-#' Note that in order to apply your categories to your jobs, you must
-#' create them before submitting your job request, as categories cannot be
-#' applied retroactively.
+#' All categories are automatically applied to your Call Analytics
+#' transcriptions. Note that in order to apply categories to your
+#' transcriptions, you must create them before submitting your
+#' transcription request, as categories cannot be applied retroactively.
+#' 
+#' When creating a new category, you can use the `InputType` parameter to
+#' label the category as a `POST_CALL` or a `REAL_TIME` category.
+#' `POST_CALL` categories can only be applied to post-call transcriptions
+#' and `REAL_TIME` categories can only be applied to real-time
+#' transcriptions. If you do not include `InputType`, your category is
+#' created as a `POST_CALL` category by default.
 #' 
 #' Call Analytics categories are composed of rules. For each category, you
 #' must create between 1 and 20 rules. Rules can include these parameters:
@@ -19,20 +26,15 @@ NULL
 #' 
 #' To update an existing category, see .
 #' 
-#' To learn more about:
-#' 
-#' -   Call Analytics categories, see [Creating
-#'     categories](https://docs.aws.amazon.com/transcribe/latest/dg/)
-#' 
-#' -   Using rules, see [Rule
-#'     criteria](https://docs.aws.amazon.com/transcribe/latest/dg/#call-analytics-create-categories-rules)
-#'     and refer to the data type
-#' 
-#' -   Call Analytics, see [Analyzing call center audio with Call
-#'     Analytics](https://docs.aws.amazon.com/transcribe/latest/dg/call-analytics.html)
+#' To learn more about Call Analytics categories, see [Creating categories
+#' for post-call
+#' transcriptions](https://docs.aws.amazon.com/transcribe/latest/dg/tca-categories-batch.html)
+#' and [Creating categories for real-time
+#' transcriptions](https://docs.aws.amazon.com/transcribe/latest/dg/tca-categories-stream.html).
 #'
 #' @usage
-#' transcribeservice_create_call_analytics_category(CategoryName, Rules)
+#' transcribeservice_create_call_analytics_category(CategoryName, Rules,
+#'   InputType)
 #'
 #' @param CategoryName &#91;required&#93; A unique name, chosen by you, for your Call Analytics category. It's
 #' helpful to use a detailed naming system that will make sense to you in
@@ -41,12 +43,24 @@ NULL
 #' like `test-category`.
 #' 
 #' Category names are case sensitive.
-#' @param Rules &#91;required&#93; Rules define a Call Analytics category. When creating a new Call
-#' Analytics category, you must create between 1 and 20 rules for that
-#' category. For each rule, you specify a filter you want applied to the
-#' attributes of a call. For example, you can choose a sentiment filter
-#' that detects if a customer's sentiment was positive during the last 30
-#' seconds of the call.
+#' @param Rules &#91;required&#93; Rules define a Call Analytics category. When creating a new category,
+#' you must create between 1 and 20 rules for that category. For each rule,
+#' you specify a filter you want applied to the attributes of a call. For
+#' example, you can choose a sentiment filter that detects if a customer's
+#' sentiment was positive during the last 30 seconds of the call.
+#' @param InputType Choose whether you want to create a real-time or a post-call category
+#' for your Call Analytics transcription.
+#' 
+#' Specifying `POST_CALL` assigns your category to post-call
+#' transcriptions; categories with this input type cannot be applied to
+#' streaming (real-time) transcriptions.
+#' 
+#' Specifying `REAL_TIME` assigns your category to streaming
+#' transcriptions; categories with this input type cannot be applied to
+#' post-call transcriptions.
+#' 
+#' If you do not include `InputType`, your category is created as a
+#' post-call category by default.
 #'
 #' @return
 #' A list with the following syntax:
@@ -135,7 +149,8 @@ NULL
 #'     ),
 #'     LastUpdateTime = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     InputType = "REAL_TIME"|"POST_CALL"
 #'   )
 #' )
 #' ```
@@ -219,7 +234,8 @@ NULL
 #'         Negate = TRUE|FALSE
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   InputType = "REAL_TIME"|"POST_CALL"
 #' )
 #' ```
 #'
@@ -228,14 +244,14 @@ NULL
 #' @rdname transcribeservice_create_call_analytics_category
 #'
 #' @aliases transcribeservice_create_call_analytics_category
-transcribeservice_create_call_analytics_category <- function(CategoryName, Rules) {
+transcribeservice_create_call_analytics_category <- function(CategoryName, Rules, InputType = NULL) {
   op <- new_operation(
     name = "CreateCallAnalyticsCategory",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transcribeservice$create_call_analytics_category_input(CategoryName = CategoryName, Rules = Rules)
+  input <- .transcribeservice$create_call_analytics_category_input(CategoryName = CategoryName, Rules = Rules, InputType = InputType)
   output <- .transcribeservice$create_call_analytics_category_output()
   config <- get_config()
   svc <- .transcribeservice$service(config)
@@ -250,7 +266,7 @@ transcribeservice_create_call_analytics_category <- function(CategoryName, Rules
 #' @description
 #' Creates a new custom language model.
 #' 
-#' When creating a new language model, you must specify:
+#' When creating a new custom language model, you must specify:
 #' 
 #' -   If you want a Wideband (audio sample rates over 16,000 Hz) or
 #'     Narrowband (audio sample rates under 16,000 Hz) base model
@@ -261,29 +277,26 @@ transcribeservice_create_call_analytics_category <- function(CategoryName, Rules
 #' -   The language of your model
 #' 
 #' -   A unique name for your model
-#' 
-#' For more information, see [Custom language
-#' models](https://docs.aws.amazon.com/transcribe/latest/dg/custom-language-models.html).
 #'
 #' @usage
 #' transcribeservice_create_language_model(LanguageCode, BaseModelName,
 #'   ModelName, InputDataConfig, Tags)
 #'
 #' @param LanguageCode &#91;required&#93; The language code that represents the language of your model. Each
-#' language model must contain terms in only one language, and the language
-#' you select for your model must match the language of your training and
-#' tuning data.
+#' custom language model must contain terms in only one language, and the
+#' language you select for your custom language model must match the
+#' language of your training and tuning data.
 #' 
 #' For a list of supported languages and their associated language codes,
 #' refer to the [Supported
 #' languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html)
-#' table. Note that U.S. English (`en-US`) is the only language supported
+#' table. Note that US English (`en-US`) is the only language supported
 #' with Amazon Transcribe Medical.
 #' 
 #' A custom language model can only be used to transcribe files in the same
-#' language as the model. For example, if you create a language model using
-#' US English (`en-US`), you can only apply this model to files that
-#' contain English audio.
+#' language as the model. For example, if you create a custom language
+#' model using US English (`en-US`), you can only apply this model to files
+#' that contain English audio.
 #' @param BaseModelName &#91;required&#93; The Amazon Transcribe standard language model, or base model, used to
 #' create your custom language model. Amazon Transcribe offers two options
 #' for base models: Wideband and Narrowband.
@@ -294,9 +307,9 @@ transcribeservice_create_call_analytics_category <- function(CategoryName, Rules
 #' @param ModelName &#91;required&#93; A unique name, chosen by you, for your custom language model.
 #' 
 #' This name is case sensitive, cannot contain spaces, and must be unique
-#' within an Amazon Web Services account. If you try to create a new
-#' language model with the same name as an existing language model, you get
-#' a `ConflictException` error.
+#' within an Amazon Web Services account. If you try to create a new custom
+#' language model with the same name as an existing custom language model,
+#' you get a `ConflictException` error.
 #' @param InputDataConfig &#91;required&#93; Contains the Amazon S3 location of the training data you want to use to
 #' create a new custom language model, and permissions to access this
 #' location.
@@ -319,7 +332,7 @@ transcribeservice_create_call_analytics_category <- function(CategoryName, Rules
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   LanguageCode = "en-US"|"hi-IN"|"es-US"|"en-GB"|"en-AU",
+#'   LanguageCode = "en-US"|"hi-IN"|"es-US"|"en-GB"|"en-AU"|"de-DE"|"ja-JP",
 #'   BaseModelName = "NarrowBand"|"WideBand",
 #'   ModelName = "string",
 #'   InputDataConfig = list(
@@ -334,7 +347,7 @@ transcribeservice_create_call_analytics_category <- function(CategoryName, Rules
 #' @section Request syntax:
 #' ```
 #' svc$create_language_model(
-#'   LanguageCode = "en-US"|"hi-IN"|"es-US"|"en-GB"|"en-AU",
+#'   LanguageCode = "en-US"|"hi-IN"|"es-US"|"en-GB"|"en-AU"|"de-DE"|"ja-JP",
 #'   BaseModelName = "NarrowBand"|"WideBand",
 #'   ModelName = "string",
 #'   InputDataConfig = list(
@@ -378,21 +391,22 @@ transcribeservice_create_language_model <- function(LanguageCode, BaseModelName,
 #' @description
 #' Creates a new custom medical vocabulary.
 #' 
-#' Prior to creating a new medical vocabulary, you must first upload a text
-#' file that contains your new entries, phrases, and terms into an Amazon
-#' S3 bucket. Note that this differs from , where you can include a list of
-#' terms within your request using the `Phrases` flag;
+#' Before creating a new custom medical vocabulary, you must first upload a
+#' text file that contains your vocabulary table into an Amazon S3 bucket.
+#' Note that this differs from , where you can include a list of terms
+#' within your request using the `Phrases` flag;
 #' [`create_medical_vocabulary`][transcribeservice_create_medical_vocabulary]
-#' does not support the `Phrases` flag.
+#' does not support the `Phrases` flag and only accepts vocabularies in
+#' table format.
 #' 
 #' Each language has a character set that contains all allowed characters
 #' for that specific language. If you use unsupported characters, your
-#' vocabulary request fails. Refer to [Character Sets for Custom
+#' custom vocabulary request fails. Refer to [Character Sets for Custom
 #' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/charsets.html)
 #' to get the character set for your language.
 #' 
-#' For more information, see [Creating a custom
-#' vocabulary](https://docs.aws.amazon.com/transcribe/latest/dg/).
+#' For more information, see [Custom
+#' vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/custom-vocabulary.html).
 #'
 #' @usage
 #' transcribeservice_create_medical_vocabulary(VocabularyName,
@@ -401,9 +415,9 @@ transcribeservice_create_language_model <- function(LanguageCode, BaseModelName,
 #' @param VocabularyName &#91;required&#93; A unique name, chosen by you, for your new custom medical vocabulary.
 #' 
 #' This name is case sensitive, cannot contain spaces, and must be unique
-#' within an Amazon Web Services account. If you try to create a new
-#' medical vocabulary with the same name as an existing medical vocabulary,
-#' you get a `ConflictException` error.
+#' within an Amazon Web Services account. If you try to create a new custom
+#' medical vocabulary with the same name as an existing custom medical
+#' vocabulary, you get a `ConflictException` error.
 #' @param LanguageCode &#91;required&#93; The language code that represents the language of the entries in your
 #' custom vocabulary. US English (`en-US`) is the only language supported
 #' with Amazon Transcribe Medical.
@@ -413,7 +427,8 @@ transcribeservice_create_language_model <- function(LanguageCode, BaseModelName,
 #' 
 #' Here's an example URI path: `s3://DOC-EXAMPLE-BUCKET/my-vocab-file.txt`
 #' @param Tags Adds one or more custom tags, each in the form of a key:value pair, to a
-#' new medical vocabulary at the time you create this new vocabulary.
+#' new custom medical vocabulary at the time you create this new custom
+#' vocabulary.
 #' 
 #' To learn more about using tags with Amazon Transcribe, refer to [Tagging
 #' resources](https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html).
@@ -423,7 +438,7 @@ transcribeservice_create_language_model <- function(LanguageCode, BaseModelName,
 #' ```
 #' list(
 #'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'   VocabularyState = "PENDING"|"READY"|"FAILED",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
@@ -436,7 +451,7 @@ transcribeservice_create_language_model <- function(LanguageCode, BaseModelName,
 #' ```
 #' svc$create_medical_vocabulary(
 #'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'   VocabularyFileUri = "string",
 #'   Tags = list(
 #'     list(
@@ -474,55 +489,57 @@ transcribeservice_create_medical_vocabulary <- function(VocabularyName, Language
 #' @description
 #' Creates a new custom vocabulary.
 #' 
-#' When creating a new vocabulary, you can either upload a text file that
-#' contains your new entries, phrases, and terms into an Amazon S3 bucket
-#' and include the URI in your request, or you can include a list of terms
-#' directly in your request using the `Phrases` flag.
+#' When creating a new custom vocabulary, you can either upload a text file
+#' that contains your new entries, phrases, and terms into an Amazon S3
+#' bucket and include the URI in your request. Or you can include a list of
+#' terms directly in your request using the `Phrases` flag.
 #' 
 #' Each language has a character set that contains all allowed characters
 #' for that specific language. If you use unsupported characters, your
-#' vocabulary request fails. Refer to [Character Sets for Custom
+#' custom vocabulary request fails. Refer to [Character Sets for Custom
 #' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/charsets.html)
 #' to get the character set for your language.
 #' 
-#' For more information, see [Creating a custom
-#' vocabulary](https://docs.aws.amazon.com/transcribe/latest/dg/).
+#' For more information, see [Custom
+#' vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/custom-vocabulary.html).
 #'
 #' @usage
 #' transcribeservice_create_vocabulary(VocabularyName, LanguageCode,
-#'   Phrases, VocabularyFileUri, Tags)
+#'   Phrases, VocabularyFileUri, Tags, DataAccessRoleArn)
 #'
 #' @param VocabularyName &#91;required&#93; A unique name, chosen by you, for your new custom vocabulary.
 #' 
 #' This name is case sensitive, cannot contain spaces, and must be unique
-#' within an Amazon Web Services account. If you try to create a new
-#' vocabulary with the same name as an existing vocabulary, you get a
-#' `ConflictException` error.
+#' within an Amazon Web Services account. If you try to create a new custom
+#' vocabulary with the same name as an existing custom vocabulary, you get
+#' a `ConflictException` error.
 #' @param LanguageCode &#91;required&#93; The language code that represents the language of the entries in your
-#' custom vocabulary. Each vocabulary must contain terms in only one
+#' custom vocabulary. Each custom vocabulary must contain terms in only one
 #' language.
 #' 
 #' A custom vocabulary can only be used to transcribe files in the same
-#' language as the vocabulary. For example, if you create a vocabulary
-#' using US English (`en-US`), you can only apply this vocabulary to files
-#' that contain English audio.
+#' language as the custom vocabulary. For example, if you create a custom
+#' vocabulary using US English (`en-US`), you can only apply this custom
+#' vocabulary to files that contain English audio.
 #' 
 #' For a list of supported languages and their associated language codes,
 #' refer to the [Supported
 #' languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html)
 #' table.
-#' @param Phrases Use this parameter if you want to create your vocabulary by including
-#' all desired terms, as comma-separated values, within your request. The
-#' other option for creating your vocabulary is to save your entries in a
-#' text file and upload them to an Amazon S3 bucket, then specify the
-#' location of your file using the `VocabularyFileUri` parameter.
+#' @param Phrases Use this parameter if you want to create your custom vocabulary by
+#' including all desired terms, as comma-separated values, within your
+#' request. The other option for creating your custom vocabulary is to save
+#' your entries in a text file and upload them to an Amazon S3 bucket, then
+#' specify the location of your file using the `VocabularyFileUri`
+#' parameter.
 #' 
 #' Note that if you include `Phrases` in your request, you cannot use
 #' `VocabularyFileUri`; you must choose one or the other.
 #' 
 #' Each language has a character set that contains all allowed characters
 #' for that specific language. If you use unsupported characters, your
-#' vocabulary filter request fails. Refer to [Character Sets for Custom
+#' custom vocabulary filter request fails. Refer to [Character Sets for
+#' Custom
 #' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/charsets.html)
 #' to get the character set for your language.
 #' @param VocabularyFileUri The Amazon S3 location of the text file that contains your custom
@@ -534,17 +551,29 @@ transcribeservice_create_medical_vocabulary <- function(VocabularyName, Language
 #' Note that if you include `VocabularyFileUri` in your request, you cannot
 #' use the `Phrases` flag; you must choose one or the other.
 #' @param Tags Adds one or more custom tags, each in the form of a key:value pair, to a
-#' new custom vocabulary at the time you create this new vocabulary.
+#' new custom vocabulary at the time you create this new custom vocabulary.
 #' 
 #' To learn more about using tags with Amazon Transcribe, refer to [Tagging
 #' resources](https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html).
+#' @param DataAccessRoleArn The Amazon Resource Name (ARN) of an IAM role that has permissions to
+#' access the Amazon S3 bucket that contains your input files (in this
+#' case, your custom vocabulary). If the role that you specify doesn’t have
+#' the appropriate permissions to access the specified Amazon S3 location,
+#' your request fails.
+#' 
+#' IAM role ARNs have the format
+#' `arn:partition:iam::account:role/role-name-with-path`. For example:
+#' `arn:aws:iam::111122223333:role/Admin`.
+#' 
+#' For more information, see [IAM
+#' ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns).
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'   VocabularyState = "PENDING"|"READY"|"FAILED",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
@@ -557,7 +586,7 @@ transcribeservice_create_medical_vocabulary <- function(VocabularyName, Language
 #' ```
 #' svc$create_vocabulary(
 #'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'   Phrases = list(
 #'     "string"
 #'   ),
@@ -567,7 +596,8 @@ transcribeservice_create_medical_vocabulary <- function(VocabularyName, Language
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   DataAccessRoleArn = "string"
 #' )
 #' ```
 #'
@@ -576,14 +606,14 @@ transcribeservice_create_medical_vocabulary <- function(VocabularyName, Language
 #' @rdname transcribeservice_create_vocabulary
 #'
 #' @aliases transcribeservice_create_vocabulary
-transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Phrases = NULL, VocabularyFileUri = NULL, Tags = NULL) {
+transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Phrases = NULL, VocabularyFileUri = NULL, Tags = NULL, DataAccessRoleArn = NULL) {
   op <- new_operation(
     name = "CreateVocabulary",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transcribeservice$create_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, Phrases = Phrases, VocabularyFileUri = VocabularyFileUri, Tags = Tags)
+  input <- .transcribeservice$create_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, Phrases = Phrases, VocabularyFileUri = VocabularyFileUri, Tags = Tags, DataAccessRoleArn = DataAccessRoleArn)
   output <- .transcribeservice$create_vocabulary_output()
   config <- get_config()
   svc <- .transcribeservice$service(config)
@@ -598,44 +628,45 @@ transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' @description
 #' Creates a new custom vocabulary filter.
 #' 
-#' You can use vocabulary filters to mask, delete, or flag specific words
-#' from your transcript. Vocabulary filters are commonly used to mask
-#' profanity in transcripts.
+#' You can use custom vocabulary filters to mask, delete, or flag specific
+#' words from your transcript. Custom vocabulary filters are commonly used
+#' to mask profanity in transcripts.
 #' 
 #' Each language has a character set that contains all allowed characters
 #' for that specific language. If you use unsupported characters, your
-#' vocabulary filter request fails. Refer to [Character Sets for Custom
+#' custom vocabulary filter request fails. Refer to [Character Sets for
+#' Custom
 #' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/charsets.html)
 #' to get the character set for your language.
 #' 
-#' For more information, see [Using vocabulary filtering with unwanted
-#' words](https://docs.aws.amazon.com/transcribe/latest/dg/vocabulary-filtering.html).
+#' For more information, see [Vocabulary
+#' filtering](https://docs.aws.amazon.com/transcribe/latest/dg/vocabulary-filtering.html).
 #'
 #' @usage
 #' transcribeservice_create_vocabulary_filter(VocabularyFilterName,
-#'   LanguageCode, Words, VocabularyFilterFileUri, Tags)
+#'   LanguageCode, Words, VocabularyFilterFileUri, Tags, DataAccessRoleArn)
 #'
 #' @param VocabularyFilterName &#91;required&#93; A unique name, chosen by you, for your new custom vocabulary filter.
 #' 
 #' This name is case sensitive, cannot contain spaces, and must be unique
-#' within an Amazon Web Services account. If you try to create a new
-#' vocabulary filter with the same name as an existing vocabulary filter,
-#' you get a `ConflictException` error.
+#' within an Amazon Web Services account. If you try to create a new custom
+#' vocabulary filter with the same name as an existing custom vocabulary
+#' filter, you get a `ConflictException` error.
 #' @param LanguageCode &#91;required&#93; The language code that represents the language of the entries in your
-#' vocabulary filter. Each vocabulary filter must contain terms in only one
-#' language.
+#' vocabulary filter. Each custom vocabulary filter must contain terms in
+#' only one language.
 #' 
-#' A vocabulary filter can only be used to transcribe files in the same
-#' language as the filter. For example, if you create a vocabulary filter
-#' using US English (`en-US`), you can only apply this filter to files that
-#' contain English audio.
+#' A custom vocabulary filter can only be used to transcribe files in the
+#' same language as the filter. For example, if you create a custom
+#' vocabulary filter using US English (`en-US`), you can only apply this
+#' filter to files that contain English audio.
 #' 
 #' For a list of supported languages and their associated language codes,
 #' refer to the [Supported
 #' languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html)
 #' table.
-#' @param Words Use this parameter if you want to create your vocabulary filter by
-#' including all desired terms, as comma-separated values, within your
+#' @param Words Use this parameter if you want to create your custom vocabulary filter
+#' by including all desired terms, as comma-separated values, within your
 #' request. The other option for creating your vocabulary filter is to save
 #' your entries in a text file and upload them to an Amazon S3 bucket, then
 #' specify the location of your file using the `VocabularyFilterFileUri`
@@ -646,7 +677,8 @@ transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' 
 #' Each language has a character set that contains all allowed characters
 #' for that specific language. If you use unsupported characters, your
-#' vocabulary filter request fails. Refer to [Character Sets for Custom
+#' custom vocabulary filter request fails. Refer to [Character Sets for
+#' Custom
 #' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/charsets.html)
 #' to get the character set for your language.
 #' @param VocabularyFilterFileUri The Amazon S3 location of the text file that contains your custom
@@ -659,17 +691,30 @@ transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' Note that if you include `VocabularyFilterFileUri` in your request, you
 #' cannot use `Words`; you must choose one or the other.
 #' @param Tags Adds one or more custom tags, each in the form of a key:value pair, to a
-#' new custom vocabulary filter at the time you create this new filter.
+#' new custom vocabulary filter at the time you create this new vocabulary
+#' filter.
 #' 
 #' To learn more about using tags with Amazon Transcribe, refer to [Tagging
 #' resources](https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html).
+#' @param DataAccessRoleArn The Amazon Resource Name (ARN) of an IAM role that has permissions to
+#' access the Amazon S3 bucket that contains your input files (in this
+#' case, your custom vocabulary filter). If the role that you specify
+#' doesn’t have the appropriate permissions to access the specified Amazon
+#' S3 location, your request fails.
+#' 
+#' IAM role ARNs have the format
+#' `arn:partition:iam::account:role/role-name-with-path`. For example:
+#' `arn:aws:iam::111122223333:role/Admin`.
+#' 
+#' For more information, see [IAM
+#' ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns).
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   VocabularyFilterName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
 #'   )
@@ -680,7 +725,7 @@ transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' ```
 #' svc$create_vocabulary_filter(
 #'   VocabularyFilterName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'   Words = list(
 #'     "string"
 #'   ),
@@ -690,7 +735,8 @@ transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   DataAccessRoleArn = "string"
 #' )
 #' ```
 #'
@@ -699,14 +745,14 @@ transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' @rdname transcribeservice_create_vocabulary_filter
 #'
 #' @aliases transcribeservice_create_vocabulary_filter
-transcribeservice_create_vocabulary_filter <- function(VocabularyFilterName, LanguageCode, Words = NULL, VocabularyFilterFileUri = NULL, Tags = NULL) {
+transcribeservice_create_vocabulary_filter <- function(VocabularyFilterName, LanguageCode, Words = NULL, VocabularyFilterFileUri = NULL, Tags = NULL, DataAccessRoleArn = NULL) {
   op <- new_operation(
     name = "CreateVocabularyFilter",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transcribeservice$create_vocabulary_filter_input(VocabularyFilterName = VocabularyFilterName, LanguageCode = LanguageCode, Words = Words, VocabularyFilterFileUri = VocabularyFilterFileUri, Tags = Tags)
+  input <- .transcribeservice$create_vocabulary_filter_input(VocabularyFilterName = VocabularyFilterName, LanguageCode = LanguageCode, Words = Words, VocabularyFilterFileUri = VocabularyFilterFileUri, Tags = Tags, DataAccessRoleArn = DataAccessRoleArn)
   output <- .transcribeservice$create_vocabulary_filter_output()
   config <- get_config()
   svc <- .transcribeservice$service(config)
@@ -810,8 +856,8 @@ transcribeservice_delete_call_analytics_job <- function(CallAnalyticsJobName) {
 #'
 #' @description
 #' Deletes a custom language model. To use this operation, specify the name
-#' of the language model you want to delete using `ModelName`. Language
-#' model names are case sensitive.
+#' of the language model you want to delete using `ModelName`. custom
+#' language model names are case sensitive.
 #'
 #' @usage
 #' transcribeservice_delete_language_model(ModelName)
@@ -901,14 +947,14 @@ transcribeservice_delete_medical_transcription_job <- function(MedicalTranscript
 #'
 #' @description
 #' Deletes a custom medical vocabulary. To use this operation, specify the
-#' name of the vocabulary you want to delete using `VocabularyName`.
-#' Vocabulary names are case sensitive.
+#' name of the custom vocabulary you want to delete using `VocabularyName`.
+#' Custom vocabulary names are case sensitive.
 #'
 #' @usage
 #' transcribeservice_delete_medical_vocabulary(VocabularyName)
 #'
-#' @param VocabularyName &#91;required&#93; The name of the custom medical vocabulary you want to delete. Vocabulary
-#' names are case sensitive.
+#' @param VocabularyName &#91;required&#93; The name of the custom medical vocabulary you want to delete. Custom
+#' medical vocabulary names are case sensitive.
 #'
 #' @return
 #' An empty list.
@@ -991,14 +1037,14 @@ transcribeservice_delete_transcription_job <- function(TranscriptionJobName) {
 #'
 #' @description
 #' Deletes a custom vocabulary. To use this operation, specify the name of
-#' the vocabulary you want to delete using `VocabularyName`. Vocabulary
-#' names are case sensitive.
+#' the custom vocabulary you want to delete using `VocabularyName`. Custom
+#' vocabulary names are case sensitive.
 #'
 #' @usage
 #' transcribeservice_delete_vocabulary(VocabularyName)
 #'
-#' @param VocabularyName &#91;required&#93; The name of the custom vocabulary you want to delete. Vocabulary names
-#' are case sensitive.
+#' @param VocabularyName &#91;required&#93; The name of the custom vocabulary you want to delete. Custom vocabulary
+#' names are case sensitive.
 #'
 #' @return
 #' An empty list.
@@ -1032,18 +1078,19 @@ transcribeservice_delete_vocabulary <- function(VocabularyName) {
 }
 .transcribeservice$operations$delete_vocabulary <- transcribeservice_delete_vocabulary
 
-#' Deletes a vocabulary filter
+#' Deletes a custom vocabulary filter
 #'
 #' @description
-#' Deletes a vocabulary filter. To use this operation, specify the name of
-#' the vocabulary filter you want to delete using `VocabularyFilterName`.
-#' Vocabulary filter names are case sensitive.
+#' Deletes a custom vocabulary filter. To use this operation, specify the
+#' name of the custom vocabulary filter you want to delete using
+#' `VocabularyFilterName`. Custom vocabulary filter names are case
+#' sensitive.
 #'
 #' @usage
 #' transcribeservice_delete_vocabulary_filter(VocabularyFilterName)
 #'
-#' @param VocabularyFilterName &#91;required&#93; The name of the custom vocabulary filter you want to delete. Vocabulary
-#' filter names are case sensitive.
+#' @param VocabularyFilterName &#91;required&#93; The name of the custom vocabulary filter you want to delete. Custom
+#' vocabulary filter names are case sensitive.
 #'
 #' @return
 #' An empty list.
@@ -1082,17 +1129,15 @@ transcribeservice_delete_vocabulary_filter <- function(VocabularyFilterName) {
 #' @description
 #' Provides information about the specified custom language model.
 #' 
-#' This operation also shows if the base language model you used to create
-#' your custom language model has been updated. If Amazon Transcribe has
-#' updated the base model, you can create a new custom language model using
-#' the updated base model.
+#' This operation also shows if the base language model that you used to
+#' create your custom language model has been updated. If Amazon Transcribe
+#' has updated the base model, you can create a new custom language model
+#' using the updated base model.
 #' 
 #' If you tried to create a new custom language model and the request
 #' wasn't successful, you can use
 #' [`describe_language_model`][transcribeservice_describe_language_model]
 #' to help identify the reason for this failure.
-#' 
-#' To get a list of your custom language models, use the operation.
 #'
 #' @usage
 #' transcribeservice_describe_language_model(ModelName)
@@ -1112,7 +1157,7 @@ transcribeservice_delete_vocabulary_filter <- function(VocabularyFilterName) {
 #'     LastModifiedTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     LanguageCode = "en-US"|"hi-IN"|"es-US"|"en-GB"|"en-AU",
+#'     LanguageCode = "en-US"|"hi-IN"|"es-US"|"en-GB"|"en-AU"|"de-DE"|"ja-JP",
 #'     BaseModelName = "NarrowBand"|"WideBand",
 #'     ModelStatus = "IN_PROGRESS"|"FAILED"|"COMPLETED",
 #'     UpgradeAvailability = TRUE|FALSE,
@@ -1255,7 +1300,8 @@ transcribeservice_describe_language_model <- function(ModelName) {
 #'     ),
 #'     LastUpdateTime = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     InputType = "REAL_TIME"|"POST_CALL"
 #'   )
 #' )
 #' ```
@@ -1322,7 +1368,7 @@ transcribeservice_get_call_analytics_category <- function(CategoryName) {
 #'   CallAnalyticsJob = list(
 #'     CallAnalyticsJobName = "string",
 #'     CallAnalyticsJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'     MediaSampleRateHertz = 123,
 #'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
 #'     Media = list(
@@ -1358,7 +1404,7 @@ transcribeservice_get_call_analytics_category <- function(CategoryName) {
 #'         )
 #'       ),
 #'       LanguageOptions = list(
-#'         "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"
+#'         "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"
 #'       ),
 #'       LanguageIdSettings = list(
 #'         list(
@@ -1414,7 +1460,7 @@ transcribeservice_get_call_analytics_job <- function(CallAnalyticsJobName) {
 #' 
 #' To view the status of the specified medical transcription job, check the
 #' `TranscriptionJobStatus` field. If the status is `COMPLETED`, the job is
-#' finished and you can find the results at the location specified in
+#' finished. You can find the results at the location specified in
 #' `TranscriptFileUri`. If the status is `FAILED`, `FailureReason` provides
 #' details on why your transcription job failed.
 #' 
@@ -1434,7 +1480,7 @@ transcribeservice_get_call_analytics_job <- function(CallAnalyticsJobName) {
 #'   MedicalTranscriptionJob = list(
 #'     MedicalTranscriptionJobName = "string",
 #'     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'     MediaSampleRateHertz = 123,
 #'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
 #'     Media = list(
@@ -1509,10 +1555,10 @@ transcribeservice_get_medical_transcription_job <- function(MedicalTranscription
 #' @description
 #' Provides information about the specified custom medical vocabulary.
 #' 
-#' To view the status of the specified medical vocabulary, check the
-#' `VocabularyState` field. If the status is `READY`, your vocabulary is
-#' available to use. If the status is `FAILED`, `FailureReason` provides
-#' details on why your vocabulary failed.
+#' To view the status of the specified custom medical vocabulary, check the
+#' `VocabularyState` field. If the status is `READY`, your custom
+#' vocabulary is available to use. If the status is `FAILED`,
+#' `FailureReason` provides details on why your vocabulary failed.
 #' 
 #' To get a list of your custom medical vocabularies, use the operation.
 #'
@@ -1520,14 +1566,14 @@ transcribeservice_get_medical_transcription_job <- function(MedicalTranscription
 #' transcribeservice_get_medical_vocabulary(VocabularyName)
 #'
 #' @param VocabularyName &#91;required&#93; The name of the custom medical vocabulary you want information about.
-#' Vocabulary names are case sensitive.
+#' Custom medical vocabulary names are case sensitive.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'   VocabularyState = "PENDING"|"READY"|"FAILED",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
@@ -1573,7 +1619,7 @@ transcribeservice_get_medical_vocabulary <- function(VocabularyName) {
 #' 
 #' To view the status of the specified transcription job, check the
 #' `TranscriptionJobStatus` field. If the status is `COMPLETED`, the job is
-#' finished and you can find the results at the location specified in
+#' finished. You can find the results at the location specified in
 #' `TranscriptFileUri`. If the status is `FAILED`, `FailureReason` provides
 #' details on why your transcription job failed.
 #' 
@@ -1595,7 +1641,7 @@ transcribeservice_get_medical_vocabulary <- function(VocabularyName) {
 #'   TranscriptionJob = list(
 #'     TranscriptionJobName = "string",
 #'     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'     MediaSampleRateHertz = 123,
 #'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
 #'     Media = list(
@@ -1643,12 +1689,12 @@ transcribeservice_get_medical_vocabulary <- function(VocabularyName) {
 #'     IdentifyLanguage = TRUE|FALSE,
 #'     IdentifyMultipleLanguages = TRUE|FALSE,
 #'     LanguageOptions = list(
-#'       "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"
+#'       "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"
 #'     ),
 #'     IdentifiedLanguageScore = 123.0,
 #'     LanguageCodes = list(
 #'       list(
-#'         LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'         LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'         DurationInSeconds = 123.0
 #'       )
 #'     ),
@@ -1712,25 +1758,25 @@ transcribeservice_get_transcription_job <- function(TranscriptionJobName) {
 #' @description
 #' Provides information about the specified custom vocabulary.
 #' 
-#' To view the status of the specified vocabulary, check the
-#' `VocabularyState` field. If the status is `READY`, your vocabulary is
-#' available to use. If the status is `FAILED`, `FailureReason` provides
-#' details on why your vocabulary failed.
+#' To view the status of the specified custom vocabulary, check the
+#' `VocabularyState` field. If the status is `READY`, your custom
+#' vocabulary is available to use. If the status is `FAILED`,
+#' `FailureReason` provides details on why your custom vocabulary failed.
 #' 
 #' To get a list of your custom vocabularies, use the operation.
 #'
 #' @usage
 #' transcribeservice_get_vocabulary(VocabularyName)
 #'
-#' @param VocabularyName &#91;required&#93; The name of the custom vocabulary you want information about. Vocabulary
-#' names are case sensitive.
+#' @param VocabularyName &#91;required&#93; The name of the custom vocabulary you want information about. Custom
+#' vocabulary names are case sensitive.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'   VocabularyState = "PENDING"|"READY"|"FAILED",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
@@ -1774,25 +1820,20 @@ transcribeservice_get_vocabulary <- function(VocabularyName) {
 #' @description
 #' Provides information about the specified custom vocabulary filter.
 #' 
-#' To view the status of the specified vocabulary filter, check the
-#' `VocabularyState` field. If the status is `READY`, your vocabulary is
-#' available to use. If the status is `FAILED`, `FailureReason` provides
-#' details on why your vocabulary filter failed.
-#' 
 #' To get a list of your custom vocabulary filters, use the operation.
 #'
 #' @usage
 #' transcribeservice_get_vocabulary_filter(VocabularyFilterName)
 #'
 #' @param VocabularyFilterName &#91;required&#93; The name of the custom vocabulary filter you want information about.
-#' Vocabulary filter names are case sensitive.
+#' Custom vocabulary filter names are case sensitive.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   VocabularyFilterName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -1850,9 +1891,9 @@ transcribeservice_get_vocabulary_filter <- function(VocabularyFilterName) {
 #' `NextToken` with the value of the copied string. Repeat as needed to
 #' view all your results.
 #' @param MaxResults The maximum number of Call Analytics categories to return in each page
-#' of results. If there are fewer results than the value you specify, only
-#' the actual results are returned. If you don't specify a value, a default
-#' of 5 is used.
+#' of results. If there are fewer results than the value that you specify,
+#' only the actual results are returned. If you don't specify a value, a
+#' default of 5 is used.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1943,7 +1984,8 @@ transcribeservice_get_vocabulary_filter <- function(VocabularyFilterName) {
 #'       ),
 #'       LastUpdateTime = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       InputType = "REAL_TIME"|"POST_CALL"
 #'     )
 #'   )
 #' )
@@ -2006,9 +2048,9 @@ transcribeservice_list_call_analytics_categories <- function(NextToken = NULL, M
 #' `NextToken` with the value of the copied string. Repeat as needed to
 #' view all your results.
 #' @param MaxResults The maximum number of Call Analytics jobs to return in each page of
-#' results. If there are fewer results than the value you specify, only the
-#' actual results are returned. If you don't specify a value, a default of
-#' 5 is used.
+#' results. If there are fewer results than the value that you specify,
+#' only the actual results are returned. If you don't specify a value, a
+#' default of 5 is used.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2028,7 +2070,7 @@ transcribeservice_list_call_analytics_categories <- function(NextToken = NULL, M
 #'       CompletionTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'       CallAnalyticsJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
 #'       FailureReason = "string"
 #'     )
@@ -2073,7 +2115,7 @@ transcribeservice_list_call_analytics_jobs <- function(Status = NULL, JobNameCon
 #'
 #' @description
 #' Provides a list of custom language models that match the specified
-#' criteria. If no criteria are specified, all language models are
+#' criteria. If no criteria are specified, all custom language models are
 #' returned.
 #' 
 #' To get detailed information about a specific custom language model, use
@@ -2095,9 +2137,9 @@ transcribeservice_list_call_analytics_jobs <- function(Status = NULL, JobNameCon
 #' `NextToken` with the value of the copied string. Repeat as needed to
 #' view all your results.
 #' @param MaxResults The maximum number of custom language models to return in each page of
-#' results. If there are fewer results than the value you specify, only the
-#' actual results are returned. If you don't specify a value, a default of
-#' 5 is used.
+#' results. If there are fewer results than the value that you specify,
+#' only the actual results are returned. If you don't specify a value, a
+#' default of 5 is used.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2113,7 +2155,7 @@ transcribeservice_list_call_analytics_jobs <- function(Status = NULL, JobNameCon
 #'       LastModifiedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       LanguageCode = "en-US"|"hi-IN"|"es-US"|"en-GB"|"en-AU",
+#'       LanguageCode = "en-US"|"hi-IN"|"es-US"|"en-GB"|"en-AU"|"de-DE"|"ja-JP",
 #'       BaseModelName = "NarrowBand"|"WideBand",
 #'       ModelStatus = "IN_PROGRESS"|"FAILED"|"COMPLETED",
 #'       UpgradeAvailability = TRUE|FALSE,
@@ -2188,9 +2230,9 @@ transcribeservice_list_language_models <- function(StatusEquals = NULL, NameCont
 #' `NextToken` with the value of the copied string. Repeat as needed to
 #' view all your results.
 #' @param MaxResults The maximum number of medical transcription jobs to return in each page
-#' of results. If there are fewer results than the value you specify, only
-#' the actual results are returned. If you don't specify a value, a default
-#' of 5 is used.
+#' of results. If there are fewer results than the value that you specify,
+#' only the actual results are returned. If you don't specify a value, a
+#' default of 5 is used.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2210,7 +2252,7 @@ transcribeservice_list_language_models <- function(StatusEquals = NULL, NameCont
 #'       CompletionTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'       TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
 #'       FailureReason = "string",
 #'       OutputLocationType = "CUSTOMER_BUCKET"|"SERVICE_BUCKET",
@@ -2277,12 +2319,12 @@ transcribeservice_list_medical_transcription_jobs <- function(Status = NULL, Job
 #' `NextToken` with the value of the copied string. Repeat as needed to
 #' view all your results.
 #' @param MaxResults The maximum number of custom medical vocabularies to return in each page
-#' of results. If there are fewer results than the value you specify, only
-#' the actual results are returned. If you don't specify a value, a default
-#' of 5 is used.
+#' of results. If there are fewer results than the value that you specify,
+#' only the actual results are returned. If you don't specify a value, a
+#' default of 5 is used.
 #' @param StateEquals Returns only custom medical vocabularies with the specified state.
-#' Vocabularies are ordered by creation date, with the newest vocabulary
-#' first. If you don't include `StateEquals`, all custom medical
+#' Custom vocabularies are ordered by creation date, with the newest
+#' vocabulary first. If you don't include `StateEquals`, all custom medical
 #' vocabularies are returned.
 #' @param NameContains Returns only the custom medical vocabularies that contain the specified
 #' string. The search is not case sensitive.
@@ -2296,7 +2338,7 @@ transcribeservice_list_medical_transcription_jobs <- function(Status = NULL, Job
 #'   Vocabularies = list(
 #'     list(
 #'       VocabularyName = "string",
-#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'       LastModifiedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -2356,7 +2398,7 @@ transcribeservice_list_medical_vocabularies <- function(NextToken = NULL, MaxRes
 #' `arn:partition:service:region:account-id:resource-type/resource-id`.
 #' 
 #' For example,
-#' `arn:aws:transcribe:us-west-2:account-id:transcription-job/transcription-job-name`.
+#' `arn:aws:transcribe:us-west-2:111122223333:transcription-job/transcription-job-name`.
 #' 
 #' Valid values for `resource-type` are: `transcription-job`,
 #' `medical-transcription-job`, `vocabulary`, `medical-vocabulary`,
@@ -2431,9 +2473,9 @@ transcribeservice_list_tags_for_resource <- function(ResourceArn) {
 #' `NextToken` with the value of the copied string. Repeat as needed to
 #' view all your results.
 #' @param MaxResults The maximum number of transcription jobs to return in each page of
-#' results. If there are fewer results than the value you specify, only the
-#' actual results are returned. If you don't specify a value, a default of
-#' 5 is used.
+#' results. If there are fewer results than the value that you specify,
+#' only the actual results are returned. If you don't specify a value, a
+#' default of 5 is used.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2453,7 +2495,7 @@ transcribeservice_list_tags_for_resource <- function(ResourceArn) {
 #'       CompletionTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'       TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
 #'       FailureReason = "string",
 #'       OutputLocationType = "CUSTOMER_BUCKET"|"SERVICE_BUCKET",
@@ -2472,7 +2514,7 @@ transcribeservice_list_tags_for_resource <- function(ResourceArn) {
 #'       IdentifiedLanguageScore = 123.0,
 #'       LanguageCodes = list(
 #'         list(
-#'           LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'           LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'           DurationInSeconds = 123.0
 #'         )
 #'       )
@@ -2534,9 +2576,9 @@ transcribeservice_list_transcription_jobs <- function(Status = NULL, JobNameCont
 #' `NextToken` with the value of the copied string. Repeat as needed to
 #' view all your results.
 #' @param MaxResults The maximum number of custom vocabularies to return in each page of
-#' results. If there are fewer results than the value you specify, only the
-#' actual results are returned. If you don't specify a value, a default of
-#' 5 is used.
+#' results. If there are fewer results than the value that you specify,
+#' only the actual results are returned. If you don't specify a value, a
+#' default of 5 is used.
 #' @param StateEquals Returns only custom vocabularies with the specified state. Vocabularies
 #' are ordered by creation date, with the newest vocabulary first. If you
 #' don't include `StateEquals`, all custom medical vocabularies are
@@ -2553,7 +2595,7 @@ transcribeservice_list_transcription_jobs <- function(Status = NULL, JobNameCont
 #'   Vocabularies = list(
 #'     list(
 #'       VocabularyName = "string",
-#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'       LastModifiedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -2618,9 +2660,9 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
 #' `NextToken` with the value of the copied string. Repeat as needed to
 #' view all your results.
 #' @param MaxResults The maximum number of custom vocabulary filters to return in each page
-#' of results. If there are fewer results than the value you specify, only
-#' the actual results are returned. If you don't specify a value, a default
-#' of 5 is used.
+#' of results. If there are fewer results than the value that you specify,
+#' only the actual results are returned. If you don't specify a value, a
+#' default of 5 is used.
 #' @param NameContains Returns only the custom vocabulary filters that contain the specified
 #' string. The search is not case sensitive.
 #'
@@ -2632,7 +2674,7 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
 #'   VocabularyFilters = list(
 #'     list(
 #'       VocabularyFilterName = "string",
-#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'       LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'       LastModifiedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -2679,25 +2721,30 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' Transcribes the audio from a customer service call and applies any
 #' additional Request Parameters you choose to include in your request.
 #' 
-#' In addition to many of the standard transcription features, Call
-#' Analytics provides you with call characteristics, call summarization,
-#' speaker sentiment, and optional redaction of your text transcript and
-#' your audio file. You can also apply custom categories to flag specified
-#' conditions. To learn more about these features and insights, refer to
-#' [Analyzing call center audio with Call
+#' In addition to many standard transcription features, Call Analytics
+#' provides you with call characteristics, call summarization, speaker
+#' sentiment, and optional redaction of your text transcript and your audio
+#' file. You can also apply custom categories to flag specified conditions.
+#' To learn more about these features and insights, refer to [Analyzing
+#' call center audio with Call
 #' Analytics](https://docs.aws.amazon.com/transcribe/latest/dg/call-analytics.html).
 #' 
 #' If you want to apply categories to your Call Analytics job, you must
 #' create them before submitting your job request. Categories cannot be
 #' retroactively applied to a job. To create a new category, use the
 #' operation. To learn more about Call Analytics categories, see [Creating
-#' categories](https://docs.aws.amazon.com/transcribe/latest/dg/).
+#' categories for post-call
+#' transcriptions](https://docs.aws.amazon.com/transcribe/latest/dg/tca-categories-batch.html)
+#' and [Creating categories for real-time
+#' transcriptions](https://docs.aws.amazon.com/transcribe/latest/dg/tca-categories-stream.html).
 #' 
 #' To make a
 #' [`start_call_analytics_job`][transcribeservice_start_call_analytics_job]
 #' request, you must first upload your media file into an Amazon S3 bucket;
 #' you can then specify the Amazon S3 location of the file using the
 #' `Media` parameter.
+#' 
+#' Note that job queuing is enabled by default for Call Analytics jobs.
 #' 
 #' You must include the following parameters in your
 #' [`start_call_analytics_job`][transcribeservice_start_call_analytics_job]
@@ -2708,8 +2755,8 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #'     Amazon Transcribe, refer to [Amazon Transcribe endpoints and
 #'     quotas](https://docs.aws.amazon.com/general/latest/gr/transcribe.html).
 #' 
-#' -   `CallAnalyticsJobName`: A custom name you create for your
-#'     transcription job that is unique within your Amazon Web Services
+#' -   `CallAnalyticsJobName`: A custom name that you create for your
+#'     transcription job that's unique within your Amazon Web Services
 #'     account.
 #' 
 #' -   `DataAccessRoleArn`: The Amazon Resource Name (ARN) of an IAM role
@@ -2736,7 +2783,8 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' within an Amazon Web Services account. If you try to create a new job
 #' with the same name as an existing job, you get a `ConflictException`
 #' error.
-#' @param Media &#91;required&#93; 
+#' @param Media &#91;required&#93; Describes the Amazon S3 location of the media file you want to use in
+#' your Call Analytics request.
 #' @param OutputLocation The Amazon S3 location where you want your Call Analytics transcription
 #' output stored. You can use any of the following formats to specify the
 #' output location:
@@ -2791,11 +2839,11 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' If you specify a KMS key to encrypt your output, you must also specify
 #' an output location using the `OutputLocation` parameter.
 #' 
-#' Note that the user making the request must have permission to use the
+#' Note that the role making the request must have permission to use the
 #' specified KMS key.
 #' @param DataAccessRoleArn The Amazon Resource Name (ARN) of an IAM role that has permissions to
 #' access the Amazon S3 bucket that contains your input files. If the role
-#' you specify doesn’t have the appropriate permissions to access the
+#' that you specify doesn’t have the appropriate permissions to access the
 #' specified Amazon S3 location, your request fails.
 #' 
 #' IAM role ARNs have the format
@@ -2807,10 +2855,10 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' @param Settings Specify additional optional settings in your request, including content
 #' redaction; allows you to apply custom language models, vocabulary
 #' filters, and custom vocabularies to your Call Analytics job.
-#' @param ChannelDefinitions Allows you to specify which speaker is on which channel. For example, if
-#' your agent is the first participant to speak, you would set `ChannelId`
-#' to `0` (to indicate the first channel) and `ParticipantRole` to `AGENT`
-#' (to indicate that it's the agent speaking).
+#' @param ChannelDefinitions Makes it possible to specify which speaker is on which channel. For
+#' example, if your agent is the first participant to speak, you would set
+#' `ChannelId` to `0` (to indicate the first channel) and `ParticipantRole`
+#' to `AGENT` (to indicate that it's the agent speaking).
 #'
 #' @return
 #' A list with the following syntax:
@@ -2819,7 +2867,7 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #'   CallAnalyticsJob = list(
 #'     CallAnalyticsJobName = "string",
 #'     CallAnalyticsJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'     MediaSampleRateHertz = 123,
 #'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
 #'     Media = list(
@@ -2855,7 +2903,7 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #'         )
 #'       ),
 #'       LanguageOptions = list(
-#'         "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"
+#'         "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"
 #'       ),
 #'       LanguageIdSettings = list(
 #'         list(
@@ -2899,7 +2947,7 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #'       )
 #'     ),
 #'     LanguageOptions = list(
-#'       "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"
+#'       "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"
 #'     ),
 #'     LanguageIdSettings = list(
 #'       list(
@@ -2949,11 +2997,11 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #' applies any additional Request Parameters you choose to include in your
 #' request.
 #' 
-#' In addition to many of the standard transcription features, Amazon
-#' Transcribe Medical provides you with a robust medical vocabulary and,
-#' optionally, content identification, which adds flags to personal health
-#' information (PHI). To learn more about these features, refer to [How
-#' Amazon Transcribe Medical
+#' In addition to many standard transcription features, Amazon Transcribe
+#' Medical provides you with a robust medical vocabulary and, optionally,
+#' content identification, which adds flags to personal health information
+#' (PHI). To learn more about these features, refer to [How Amazon
+#' Transcribe Medical
 #' works](https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works-med.html).
 #' 
 #' To make a
@@ -2995,9 +3043,9 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #'   ContentIdentificationType, Specialty, Type, Tags)
 #'
 #' @param MedicalTranscriptionJobName &#91;required&#93; A unique name, chosen by you, for your medical transcription job. The
-#' name you specify is also used as the default name of your transcription
-#' output file. If you want to specify a different name for your
-#' transcription output, use the `OutputKey` parameter.
+#' name that you specify is also used as the default name of your
+#' transcription output file. If you want to specify a different name for
+#' your transcription output, use the `OutputKey` parameter.
 #' 
 #' This name is case sensitive, cannot contain spaces, and must be unique
 #' within an Amazon Web Services account. If you try to create a new job
@@ -3007,14 +3055,15 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #' file. US English (`en-US`) is the only valid value for medical
 #' transcription jobs. Any other value you enter for language code results
 #' in a `BadRequestException` error.
-#' @param MediaSampleRateHertz The sample rate, in Hertz, of the audio track in your input media file.
+#' @param MediaSampleRateHertz The sample rate, in hertz, of the audio track in your input media file.
 #' 
 #' If you don't specify the media sample rate, Amazon Transcribe Medical
 #' determines it for you. If you specify the sample rate, it must match the
 #' rate detected by Amazon Transcribe Medical; if there's a mismatch
-#' between the value you specify and the value detected, your job fails.
-#' Therefore, in most cases, it's advised to omit `MediaSampleRateHertz`
-#' and let Amazon Transcribe Medical determine the sample rate.
+#' between the value that you specify and the value detected, your job
+#' fails. Therefore, in most cases, it's advised to omit
+#' `MediaSampleRateHertz` and let Amazon Transcribe Medical determine the
+#' sample rate.
 #' @param MediaFormat Specify the format of your input media file.
 #' @param Media &#91;required&#93; 
 #' @param OutputBucketName &#91;required&#93; The name of the Amazon S3 bucket where you want your medical
@@ -3036,10 +3085,6 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #' Services Management Console](https://console.aws.amazon.com/s3/home).
 #' See also [Permissions Required for IAM User
 #' Roles](https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user).
-#' 
-#' If you don't specify `OutputBucketName`, your transcript is placed in a
-#' service-managed Amazon S3 bucket and you are provided with a URI to
-#' access your transcript.
 #' @param OutputKey Use in combination with `OutputBucketName` to specify the output
 #' location of your transcript and, optionally, a unique name for your
 #' output file. The default name for your transcription output is the same
@@ -3104,7 +3149,7 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #' If you specify a KMS key to encrypt your output, you must also specify
 #' an output location using the `OutputLocation` parameter.
 #' 
-#' Note that the user making the request must have permission to use the
+#' Note that the role making the request must have permission to use the
 #' specified KMS key.
 #' @param KMSEncryptionContext A map of plain text, non-secret key:value pairs, known as encryption
 #' context pairs, that provide an added layer of security for your data.
@@ -3113,8 +3158,8 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #' and [Asymmetric keys in
 #' KMS](https://docs.aws.amazon.com/transcribe/latest/dg/).
 #' @param Settings Specify additional optional settings in your request, including channel
-#' identification, alternative transcriptions, and speaker labeling; allows
-#' you to apply custom vocabularies to your transcription job.
+#' identification, alternative transcriptions, and speaker partitioning.
+#' You can use that to apply custom vocabularies to your transcription job.
 #' @param ContentIdentificationType Labels all personal health information (PHI) identified in your
 #' transcript. For more information, see [Identifying personal health
 #' information (PHI) in a
@@ -3142,7 +3187,7 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #'   MedicalTranscriptionJob = list(
 #'     MedicalTranscriptionJobName = "string",
 #'     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'     MediaSampleRateHertz = 123,
 #'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
 #'     Media = list(
@@ -3187,7 +3232,7 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #' ```
 #' svc$start_medical_transcription_job(
 #'   MedicalTranscriptionJobName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'   MediaSampleRateHertz = 123,
 #'   MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
 #'   Media = list(
@@ -3287,10 +3332,10 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #'   ContentRedaction, IdentifyLanguage, IdentifyMultipleLanguages,
 #'   LanguageOptions, Subtitles, Tags, LanguageIdSettings)
 #'
-#' @param TranscriptionJobName &#91;required&#93; A unique name, chosen by you, for your transcription job. The name you
-#' specify is also used as the default name of your transcription output
-#' file. If you want to specify a different name for your transcription
-#' output, use the `OutputKey` parameter.
+#' @param TranscriptionJobName &#91;required&#93; A unique name, chosen by you, for your transcription job. The name that
+#' you specify is also used as the default name of your transcription
+#' output file. If you want to specify a different name for your
+#' transcription output, use the `OutputKey` parameter.
 #' 
 #' This name is case sensitive, cannot contain spaces, and must be unique
 #' within an Amazon Web Services account. If you try to create a new job
@@ -3314,14 +3359,14 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' 
 #' To transcribe speech in Modern Standard Arabic (`ar-SA`), your media
 #' file must be encoded at a sample rate of 16,000 Hz or higher.
-#' @param MediaSampleRateHertz The sample rate, in Hertz, of the audio track in your input media file.
+#' @param MediaSampleRateHertz The sample rate, in hertz, of the audio track in your input media file.
 #' 
 #' If you don't specify the media sample rate, Amazon Transcribe determines
 #' it for you. If you specify the sample rate, it must match the rate
-#' detected by Amazon Transcribe; if there's a mismatch between the value
-#' you specify and the value detected, your job fails. Therefore, in most
-#' cases, it's advised to omit `MediaSampleRateHertz` and let Amazon
-#' Transcribe determine the sample rate.
+#' detected by Amazon Transcribe. If there's a mismatch between the value
+#' that you specify and the value detected, your job fails. In most cases,
+#' you can omit `MediaSampleRateHertz` and let Amazon Transcribe determine
+#' the sample rate.
 #' @param MediaFormat Specify the format of your input media file.
 #' @param Media &#91;required&#93; Describes the Amazon S3 location of the media file you want to use in
 #' your request.
@@ -3411,7 +3456,7 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' If you specify a KMS key to encrypt your output, you must also specify
 #' an output location using the `OutputLocation` parameter.
 #' 
-#' Note that the user making the request must have permission to use the
+#' Note that the role making the request must have permission to use the
 #' specified KMS key.
 #' @param KMSEncryptionContext A map of plain text, non-secret key:value pairs, known as encryption
 #' context pairs, that provide an added layer of security for your data.
@@ -3420,8 +3465,8 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' and [Asymmetric keys in
 #' KMS](https://docs.aws.amazon.com/transcribe/latest/dg/).
 #' @param Settings Specify additional optional settings in your request, including channel
-#' identification, alternative transcriptions, speaker labeling; allows you
-#' to apply custom vocabularies and vocabulary filters.
+#' identification, alternative transcriptions, speaker partitioning. You
+#' can use that to apply custom vocabularies and vocabulary filters.
 #' 
 #' If you want to include a custom vocabulary or a custom vocabulary filter
 #' (or both) with your request but **do not** want to use automatic
@@ -3439,7 +3484,7 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' 
 #' For more information, see [Custom language
 #' models](https://docs.aws.amazon.com/transcribe/latest/dg/custom-language-models.html).
-#' @param JobExecutionSettings Allows you to control how your transcription job is processed.
+#' @param JobExecutionSettings Makes it possible to control how your transcription job is processed.
 #' Currently, the only `JobExecutionSettings` modification you can choose
 #' is enabling job queueing using the `AllowDeferredExecution`
 #' sub-parameter.
@@ -3447,45 +3492,52 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' If you include `JobExecutionSettings` in your request, you must also
 #' include the sub-parameters: `AllowDeferredExecution` and
 #' `DataAccessRoleArn`.
-#' @param ContentRedaction Allows you to redact or flag specified personally identifiable
+#' @param ContentRedaction Makes it possible to redact or flag specified personally identifiable
 #' information (PII) in your transcript. If you use `ContentRedaction`, you
 #' must also include the sub-parameters: `PiiEntityTypes`,
 #' `RedactionOutput`, and `RedactionType`.
 #' @param IdentifyLanguage Enables automatic language identification in your transcription job
-#' request.
+#' request. Use this parameter if your media file contains only one
+#' language. If your media contains multiple languages, use
+#' `IdentifyMultipleLanguages` instead.
 #' 
 #' If you include `IdentifyLanguage`, you can optionally include a list of
 #' language codes, using `LanguageOptions`, that you think may be present
-#' in your media file. Including language options can improve transcription
-#' accuracy.
+#' in your media file. Including `LanguageOptions` restricts
+#' `IdentifyLanguage` to only the language options that you specify, which
+#' can improve transcription accuracy.
 #' 
 #' If you want to apply a custom language model, a custom vocabulary, or a
 #' custom vocabulary filter to your automatic language identification
 #' request, include `LanguageIdSettings` with the relevant sub-parameters
-#' (`VocabularyName`, `LanguageModelName`, and `VocabularyFilterName`).
+#' (`VocabularyName`, `LanguageModelName`, and `VocabularyFilterName`). If
+#' you include `LanguageIdSettings`, also include `LanguageOptions`.
 #' 
 #' Note that you must include one of `LanguageCode`, `IdentifyLanguage`, or
 #' `IdentifyMultipleLanguages` in your request. If you include more than
 #' one of these parameters, your transcription job fails.
 #' @param IdentifyMultipleLanguages Enables automatic multi-language identification in your transcription
 #' job request. Use this parameter if your media file contains more than
-#' one language.
+#' one language. If your media contains only one language, use
+#' `IdentifyLanguage` instead.
 #' 
 #' If you include `IdentifyMultipleLanguages`, you can optionally include a
 #' list of language codes, using `LanguageOptions`, that you think may be
-#' present in your media file. Including language options can improve
-#' transcription accuracy.
+#' present in your media file. Including `LanguageOptions` restricts
+#' `IdentifyLanguage` to only the language options that you specify, which
+#' can improve transcription accuracy.
 #' 
 #' If you want to apply a custom vocabulary or a custom vocabulary filter
 #' to your automatic language identification request, include
 #' `LanguageIdSettings` with the relevant sub-parameters (`VocabularyName`
-#' and `VocabularyFilterName`).
+#' and `VocabularyFilterName`). If you include `LanguageIdSettings`, also
+#' include `LanguageOptions`.
 #' 
 #' Note that you must include one of `LanguageCode`, `IdentifyLanguage`, or
 #' `IdentifyMultipleLanguages` in your request. If you include more than
 #' one of these parameters, your transcription job fails.
 #' @param LanguageOptions You can specify two or more language codes that represent the languages
-#' you think may be present in your media; including more than five is not
+#' you think may be present in your media. Including more than five is not
 #' recommended. If you're unsure what languages are present, do not include
 #' this parameter.
 #' 
@@ -3504,34 +3556,35 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' 
 #' To learn more about using tags with Amazon Transcribe, refer to [Tagging
 #' resources](https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html).
-#' @param LanguageIdSettings If using automatic language identification (`IdentifyLanguage`) in your
-#' request and you want to apply a custom language model, a custom
-#' vocabulary, or a custom vocabulary filter, include `LanguageIdSettings`
-#' with the relevant sub-parameters (`VocabularyName`, `LanguageModelName`,
-#' and `VocabularyFilterName`).
+#' @param LanguageIdSettings If using automatic language identification in your request and you want
+#' to apply a custom language model, a custom vocabulary, or a custom
+#' vocabulary filter, include `LanguageIdSettings` with the relevant
+#' sub-parameters (`VocabularyName`, `LanguageModelName`, and
+#' `VocabularyFilterName`). Note that multi-language identification
+#' (`IdentifyMultipleLanguages`) doesn't support custom language models.
 #' 
-#' You can specify two or more language codes that represent the languages
-#' you think may be present in your media; including more than five is not
-#' recommended. Each language code you include can have an associated
-#' custom language model, custom vocabulary, and custom vocabulary filter.
-#' The languages you specify must match the languages of the specified
-#' custom language models, custom vocabularies, and custom vocabulary
-#' filters.
+#' `LanguageIdSettings` supports two to five language codes. Each language
+#' code you include can have an associated custom language model, custom
+#' vocabulary, and custom vocabulary filter. The language codes that you
+#' specify must match the languages of the associated custom language
+#' models, custom vocabularies, and custom vocabulary filters.
 #' 
-#' To include language options using `IdentifyLanguage` **without**
-#' including a custom language model, a custom vocabulary, or a custom
-#' vocabulary filter, use `LanguageOptions` instead of
-#' `LanguageIdSettings`. Including language options can improve the
-#' accuracy of automatic language identification.
+#' It's recommended that you include `LanguageOptions` when using
+#' `LanguageIdSettings` to ensure that the correct language dialect is
+#' identified. For example, if you specify a custom vocabulary that is in
+#' `en-US` but Amazon Transcribe determines that the language spoken in
+#' your media is `en-AU`, your custom vocabulary *is not* applied to your
+#' transcription. If you include `LanguageOptions` and include `en-US` as
+#' the only English language dialect, your custom vocabulary *is* applied
+#' to your transcription.
 #' 
 #' If you want to include a custom language model with your request but
 #' **do not** want to use automatic language identification, use instead
-#' the `` parameter with the `LanguageModelName` sub-parameter.
-#' 
-#' If you want to include a custom vocabulary or a custom vocabulary filter
-#' (or both) with your request but **do not** want to use automatic
-#' language identification, use instead the `` parameter with the
-#' `VocabularyName` or `VocabularyFilterName` (or both) sub-parameter.
+#' the `` parameter with the `LanguageModelName` sub-parameter. If you want
+#' to include a custom vocabulary or a custom vocabulary filter (or both)
+#' with your request but **do not** want to use automatic language
+#' identification, use instead the `` parameter with the `VocabularyName`
+#' or `VocabularyFilterName` (or both) sub-parameter.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3540,7 +3593,7 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #'   TranscriptionJob = list(
 #'     TranscriptionJobName = "string",
 #'     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
-#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'     MediaSampleRateHertz = 123,
 #'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
 #'     Media = list(
@@ -3588,12 +3641,12 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #'     IdentifyLanguage = TRUE|FALSE,
 #'     IdentifyMultipleLanguages = TRUE|FALSE,
 #'     LanguageOptions = list(
-#'       "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"
+#'       "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"
 #'     ),
 #'     IdentifiedLanguageScore = 123.0,
 #'     LanguageCodes = list(
 #'       list(
-#'         LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'         LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'         DurationInSeconds = 123.0
 #'       )
 #'     ),
@@ -3627,7 +3680,7 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' ```
 #' svc$start_transcription_job(
 #'   TranscriptionJobName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'   MediaSampleRateHertz = 123,
 #'   MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
 #'   Media = list(
@@ -3667,7 +3720,7 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #'   IdentifyLanguage = TRUE|FALSE,
 #'   IdentifyMultipleLanguages = TRUE|FALSE,
 #'   LanguageOptions = list(
-#'     "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"
+#'     "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE"
 #'   ),
 #'   Subtitles = list(
 #'     Formats = list(
@@ -3731,7 +3784,7 @@ transcribeservice_start_transcription_job <- function(TranscriptionJobName, Lang
 #' `arn:partition:service:region:account-id:resource-type/resource-id`.
 #' 
 #' For example,
-#' `arn:aws:transcribe:us-west-2:account-id:transcription-job/transcription-job-name`.
+#' `arn:aws:transcribe:us-west-2:111122223333:transcription-job/transcription-job-name`.
 #' 
 #' Valid values for `resource-type` are: `transcription-job`,
 #' `medical-transcription-job`, `vocabulary`, `medical-vocabulary`,
@@ -3797,7 +3850,7 @@ transcribeservice_tag_resource <- function(ResourceArn, Tags) {
 #' `arn:partition:service:region:account-id:resource-type/resource-id`.
 #' 
 #' For example,
-#' `arn:aws:transcribe:us-west-2:account-id:transcription-job/transcription-job-name`.
+#' `arn:aws:transcribe:us-west-2:111122223333:transcription-job/transcription-job-name`.
 #' 
 #' Valid values for `resource-type` are: `transcription-job`,
 #' `medical-transcription-job`, `vocabulary`, `medical-vocabulary`,
@@ -3852,13 +3905,19 @@ transcribeservice_untag_resource <- function(ResourceArn, TagKeys) {
 #' To create a new category, see .
 #'
 #' @usage
-#' transcribeservice_update_call_analytics_category(CategoryName, Rules)
+#' transcribeservice_update_call_analytics_category(CategoryName, Rules,
+#'   InputType)
 #'
 #' @param CategoryName &#91;required&#93; The name of the Call Analytics category you want to update. Category
 #' names are case sensitive.
 #' @param Rules &#91;required&#93; The rules used for the updated Call Analytics category. The rules you
 #' provide in this field replace the ones that are currently being used in
 #' the specified category.
+#' @param InputType Choose whether you want to update a real-time or a post-call category.
+#' The input type you specify must match the input type specified when the
+#' category was created. For example, if you created a category with the
+#' `POST_CALL` input type, you must use `POST_CALL` as the input type when
+#' updating this category.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3947,7 +4006,8 @@ transcribeservice_untag_resource <- function(ResourceArn, TagKeys) {
 #'     ),
 #'     LastUpdateTime = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     InputType = "REAL_TIME"|"POST_CALL"
 #'   )
 #' )
 #' ```
@@ -4031,7 +4091,8 @@ transcribeservice_untag_resource <- function(ResourceArn, TagKeys) {
 #'         Negate = TRUE|FALSE
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   InputType = "REAL_TIME"|"POST_CALL"
 #' )
 #' ```
 #'
@@ -4040,14 +4101,14 @@ transcribeservice_untag_resource <- function(ResourceArn, TagKeys) {
 #' @rdname transcribeservice_update_call_analytics_category
 #'
 #' @aliases transcribeservice_update_call_analytics_category
-transcribeservice_update_call_analytics_category <- function(CategoryName, Rules) {
+transcribeservice_update_call_analytics_category <- function(CategoryName, Rules, InputType = NULL) {
   op <- new_operation(
     name = "UpdateCallAnalyticsCategory",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transcribeservice$update_call_analytics_category_input(CategoryName = CategoryName, Rules = Rules)
+  input <- .transcribeservice$update_call_analytics_category_input(CategoryName = CategoryName, Rules = Rules, InputType = InputType)
   output <- .transcribeservice$update_call_analytics_category_output()
   config <- get_config()
   svc <- .transcribeservice$service(config)
@@ -4062,14 +4123,14 @@ transcribeservice_update_call_analytics_category <- function(CategoryName, Rules
 #' @description
 #' Updates an existing custom medical vocabulary with new values. This
 #' operation overwrites all existing information with your new values; you
-#' cannot append new terms onto an existing vocabulary.
+#' cannot append new terms onto an existing custom vocabulary.
 #'
 #' @usage
 #' transcribeservice_update_medical_vocabulary(VocabularyName,
 #'   LanguageCode, VocabularyFileUri)
 #'
-#' @param VocabularyName &#91;required&#93; The name of the custom medical vocabulary you want to update. Vocabulary
-#' names are case sensitive.
+#' @param VocabularyName &#91;required&#93; The name of the custom medical vocabulary you want to update. Custom
+#' medical vocabulary names are case sensitive.
 #' @param LanguageCode &#91;required&#93; The language code that represents the language of the entries in the
 #' custom vocabulary you want to update. US English (`en-US`) is the only
 #' language supported with Amazon Transcribe Medical.
@@ -4084,7 +4145,7 @@ transcribeservice_update_call_analytics_category <- function(CategoryName, Rules
 #' ```
 #' list(
 #'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -4096,7 +4157,7 @@ transcribeservice_update_call_analytics_category <- function(CategoryName, Rules
 #' ```
 #' svc$update_medical_vocabulary(
 #'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'   VocabularyFileUri = "string"
 #' )
 #' ```
@@ -4128,39 +4189,41 @@ transcribeservice_update_medical_vocabulary <- function(VocabularyName, Language
 #' @description
 #' Updates an existing custom vocabulary with new values. This operation
 #' overwrites all existing information with your new values; you cannot
-#' append new terms onto an existing vocabulary.
+#' append new terms onto an existing custom vocabulary.
 #'
 #' @usage
 #' transcribeservice_update_vocabulary(VocabularyName, LanguageCode,
-#'   Phrases, VocabularyFileUri)
+#'   Phrases, VocabularyFileUri, DataAccessRoleArn)
 #'
-#' @param VocabularyName &#91;required&#93; The name of the custom vocabulary you want to update. Vocabulary names
-#' are case sensitive.
+#' @param VocabularyName &#91;required&#93; The name of the custom vocabulary you want to update. Custom vocabulary
+#' names are case sensitive.
 #' @param LanguageCode &#91;required&#93; The language code that represents the language of the entries in the
-#' custom vocabulary you want to update. Each vocabulary must contain terms
-#' in only one language.
+#' custom vocabulary you want to update. Each custom vocabulary must
+#' contain terms in only one language.
 #' 
 #' A custom vocabulary can only be used to transcribe files in the same
-#' language as the vocabulary. For example, if you create a vocabulary
-#' using US English (`en-US`), you can only apply this vocabulary to files
-#' that contain English audio.
+#' language as the custom vocabulary. For example, if you create a custom
+#' vocabulary using US English (`en-US`), you can only apply this custom
+#' vocabulary to files that contain English audio.
 #' 
 #' For a list of supported languages and their associated language codes,
 #' refer to the [Supported
 #' languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html)
 #' table.
-#' @param Phrases Use this parameter if you want to update your vocabulary by including
-#' all desired terms, as comma-separated values, within your request. The
-#' other option for updating your vocabulary is to save your entries in a
-#' text file and upload them to an Amazon S3 bucket, then specify the
-#' location of your file using the `VocabularyFileUri` parameter.
+#' @param Phrases Use this parameter if you want to update your custom vocabulary by
+#' including all desired terms, as comma-separated values, within your
+#' request. The other option for updating your custom vocabulary is to save
+#' your entries in a text file and upload them to an Amazon S3 bucket, then
+#' specify the location of your file using the `VocabularyFileUri`
+#' parameter.
 #' 
 #' Note that if you include `Phrases` in your request, you cannot use
 #' `VocabularyFileUri`; you must choose one or the other.
 #' 
 #' Each language has a character set that contains all allowed characters
 #' for that specific language. If you use unsupported characters, your
-#' vocabulary filter request fails. Refer to [Character Sets for Custom
+#' custom vocabulary filter request fails. Refer to [Character Sets for
+#' Custom
 #' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/charsets.html)
 #' to get the character set for your language.
 #' @param VocabularyFileUri The Amazon S3 location of the text file that contains your custom
@@ -4171,13 +4234,25 @@ transcribeservice_update_medical_vocabulary <- function(VocabularyName, Language
 #' 
 #' Note that if you include `VocabularyFileUri` in your request, you cannot
 #' use the `Phrases` flag; you must choose one or the other.
+#' @param DataAccessRoleArn The Amazon Resource Name (ARN) of an IAM role that has permissions to
+#' access the Amazon S3 bucket that contains your input files (in this
+#' case, your custom vocabulary). If the role that you specify doesn’t have
+#' the appropriate permissions to access the specified Amazon S3 location,
+#' your request fails.
+#' 
+#' IAM role ARNs have the format
+#' `arn:partition:iam::account:role/role-name-with-path`. For example:
+#' `arn:aws:iam::111122223333:role/Admin`.
+#' 
+#' For more information, see [IAM
+#' ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns).
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -4189,11 +4264,12 @@ transcribeservice_update_medical_vocabulary <- function(VocabularyName, Language
 #' ```
 #' svc$update_vocabulary(
 #'   VocabularyName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'   Phrases = list(
 #'     "string"
 #'   ),
-#'   VocabularyFileUri = "string"
+#'   VocabularyFileUri = "string",
+#'   DataAccessRoleArn = "string"
 #' )
 #' ```
 #'
@@ -4202,14 +4278,14 @@ transcribeservice_update_medical_vocabulary <- function(VocabularyName, Language
 #' @rdname transcribeservice_update_vocabulary
 #'
 #' @aliases transcribeservice_update_vocabulary
-transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Phrases = NULL, VocabularyFileUri = NULL) {
+transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Phrases = NULL, VocabularyFileUri = NULL, DataAccessRoleArn = NULL) {
   op <- new_operation(
     name = "UpdateVocabulary",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transcribeservice$update_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, Phrases = Phrases, VocabularyFileUri = VocabularyFileUri)
+  input <- .transcribeservice$update_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, Phrases = Phrases, VocabularyFileUri = VocabularyFileUri, DataAccessRoleArn = DataAccessRoleArn)
   output <- .transcribeservice$update_vocabulary_output()
   config <- get_config()
   svc <- .transcribeservice$service(config)
@@ -4224,16 +4300,16 @@ transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' @description
 #' Updates an existing custom vocabulary filter with a new list of words.
 #' The new list you provide overwrites all previous entries; you cannot
-#' append new terms onto an existing vocabulary filter.
+#' append new terms onto an existing custom vocabulary filter.
 #'
 #' @usage
 #' transcribeservice_update_vocabulary_filter(VocabularyFilterName, Words,
-#'   VocabularyFilterFileUri)
+#'   VocabularyFilterFileUri, DataAccessRoleArn)
 #'
-#' @param VocabularyFilterName &#91;required&#93; The name of the custom vocabulary filter you want to update. Vocabulary
-#' filter names are case sensitive.
-#' @param Words Use this parameter if you want to update your vocabulary filter by
-#' including all desired terms, as comma-separated values, within your
+#' @param VocabularyFilterName &#91;required&#93; The name of the custom vocabulary filter you want to update. Custom
+#' vocabulary filter names are case sensitive.
+#' @param Words Use this parameter if you want to update your custom vocabulary filter
+#' by including all desired terms, as comma-separated values, within your
 #' request. The other option for updating your vocabulary filter is to save
 #' your entries in a text file and upload them to an Amazon S3 bucket, then
 #' specify the location of your file using the `VocabularyFilterFileUri`
@@ -4244,7 +4320,8 @@ transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' 
 #' Each language has a character set that contains all allowed characters
 #' for that specific language. If you use unsupported characters, your
-#' vocabulary filter request fails. Refer to [Character Sets for Custom
+#' custom vocabulary filter request fails. Refer to [Character Sets for
+#' Custom
 #' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/charsets.html)
 #' to get the character set for your language.
 #' @param VocabularyFilterFileUri The Amazon S3 location of the text file that contains your custom
@@ -4256,13 +4333,25 @@ transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' 
 #' Note that if you include `VocabularyFilterFileUri` in your request, you
 #' cannot use `Words`; you must choose one or the other.
+#' @param DataAccessRoleArn The Amazon Resource Name (ARN) of an IAM role that has permissions to
+#' access the Amazon S3 bucket that contains your input files (in this
+#' case, your custom vocabulary filter). If the role that you specify
+#' doesn’t have the appropriate permissions to access the specified Amazon
+#' S3 location, your request fails.
+#' 
+#' IAM role ARNs have the format
+#' `arn:partition:iam::account:role/role-name-with-path`. For example:
+#' `arn:aws:iam::111122223333:role/Admin`.
+#' 
+#' For more information, see [IAM
+#' ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns).
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   VocabularyFilterName = "string",
-#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ",
+#'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
 #'   )
@@ -4276,7 +4365,8 @@ transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #'   Words = list(
 #'     "string"
 #'   ),
-#'   VocabularyFilterFileUri = "string"
+#'   VocabularyFilterFileUri = "string",
+#'   DataAccessRoleArn = "string"
 #' )
 #' ```
 #'
@@ -4285,14 +4375,14 @@ transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' @rdname transcribeservice_update_vocabulary_filter
 #'
 #' @aliases transcribeservice_update_vocabulary_filter
-transcribeservice_update_vocabulary_filter <- function(VocabularyFilterName, Words = NULL, VocabularyFilterFileUri = NULL) {
+transcribeservice_update_vocabulary_filter <- function(VocabularyFilterName, Words = NULL, VocabularyFilterFileUri = NULL, DataAccessRoleArn = NULL) {
   op <- new_operation(
     name = "UpdateVocabularyFilter",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transcribeservice$update_vocabulary_filter_input(VocabularyFilterName = VocabularyFilterName, Words = Words, VocabularyFilterFileUri = VocabularyFilterFileUri)
+  input <- .transcribeservice$update_vocabulary_filter_input(VocabularyFilterName = VocabularyFilterName, Words = Words, VocabularyFilterFileUri = VocabularyFilterFileUri, DataAccessRoleArn = DataAccessRoleArn)
   output <- .transcribeservice$update_vocabulary_filter_output()
   config <- get_config()
   svc <- .transcribeservice$service(config)

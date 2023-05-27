@@ -6,6 +6,7 @@
 data definition language (DDL)}
 \usage{
 redshiftdataapiservice_execute_statement(
+  ClientToken = NULL,
   ClusterIdentifier = NULL,
   Database,
   DbUser = NULL,
@@ -18,6 +19,9 @@ redshiftdataapiservice_execute_statement(
 )
 }
 \arguments{
+\item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request.}
+
 \item{ClusterIdentifier}{The cluster identifier. This parameter is required when connecting to a
 cluster and authenticating using either Secrets Manager or temporary
 credentials.}
@@ -26,7 +30,8 @@ credentials.}
 using either Secrets Manager or temporary credentials.}
 
 \item{DbUser}{The database user name. This parameter is required when connecting to a
-cluster and authenticating using temporary credentials.}
+cluster as a database user and authenticating using temporary
+credentials.}
 
 \item{Parameters}{The parameters for the SQL statement.}
 
@@ -41,9 +46,9 @@ create it to identify the query.}
 \item{WithEvent}{A value that indicates whether to send an event to the Amazon
 EventBridge event bus after the SQL statement runs.}
 
-\item{WorkgroupName}{The serverless workgroup name. This parameter is required when
-connecting to a serverless workgroup and authenticating using either
-Secrets Manager or temporary credentials.}
+\item{WorkgroupName}{The serverless workgroup name or Amazon Resource Name (ARN). This
+parameter is required when connecting to a serverless workgroup and
+authenticating using either Secrets Manager or temporary credentials.}
 }
 \description{
 Runs an SQL statement, which can be data manipulation language (DML) or data definition language (DDL). This statement must be a single SQL statement. Depending on the authorization method, use one of the following combinations of request parameters:

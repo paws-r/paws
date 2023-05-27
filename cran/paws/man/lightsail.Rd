@@ -38,7 +38,7 @@ distributions, DNS management of registered domains, and resource
 snapshots (backups) - for a low, predictable monthly price.
 
 You can manage your Lightsail resources using the Lightsail console,
-Lightsail API, AWS Command Line Interface (AWS CLI), or SDKs. For more
+Lightsail API, Command Line Interface (CLI), or SDKs. For more
 information about Lightsail concepts and tasks, see the Amazon Lightsail
 Developer Guide.
 
@@ -97,6 +97,7 @@ the \emph{Amazon Web Services General Reference}.
 \link[paws.compute:lightsail_create_distribution]{create_distribution} \tab Creates an Amazon Lightsail content delivery network (CDN) distribution\cr
 \link[paws.compute:lightsail_create_domain]{create_domain} \tab Creates a domain resource for the specified domain (e\cr
 \link[paws.compute:lightsail_create_domain_entry]{create_domain_entry} \tab Creates one of the following domain name system (DNS) records in a domain DNS zone: Address (A), canonical name (CNAME), mail exchanger (MX), name server (NS), start of authority (SOA), service locator (SRV), or text (TXT)\cr
+\link[paws.compute:lightsail_create_gui_session_access_details]{create_gui_session_access_details} \tab Creates two URLs that are used to access a virtual computer’s graphical user interface (GUI) session\cr
 \link[paws.compute:lightsail_create_instances]{create_instances} \tab Creates one or more Amazon Lightsail instances\cr
 \link[paws.compute:lightsail_create_instances_from_snapshot]{create_instances_from_snapshot} \tab Creates one or more new instances from a manual or automatic snapshot of an instance\cr
 \link[paws.compute:lightsail_create_instance_snapshot]{create_instance_snapshot} \tab Creates a snapshot of a specific virtual private server, or instance\cr
@@ -154,6 +155,7 @@ the \emph{Amazon Web Services General Reference}.
 \link[paws.compute:lightsail_get_container_service_metric_data]{get_container_service_metric_data} \tab Returns the data points of a specific metric of your Amazon Lightsail container service\cr
 \link[paws.compute:lightsail_get_container_service_powers]{get_container_service_powers} \tab Returns the list of powers that can be specified for your Amazon Lightsail container services\cr
 \link[paws.compute:lightsail_get_container_services]{get_container_services} \tab Returns information about one or more of your Amazon Lightsail container services\cr
+\link[paws.compute:lightsail_get_cost_estimate]{get_cost_estimate} \tab Retrieves information about the cost estimate for a specified resource\cr
 \link[paws.compute:lightsail_get_disk]{get_disk} \tab Returns information about a specific block storage disk\cr
 \link[paws.compute:lightsail_get_disks]{get_disks} \tab Returns information about all block storage disks in your AWS account and region\cr
 \link[paws.compute:lightsail_get_disk_snapshot]{get_disk_snapshot} \tab Returns information about a specific block storage disk snapshot\cr
@@ -212,8 +214,10 @@ the \emph{Amazon Web Services General Reference}.
 \link[paws.compute:lightsail_send_contact_method_verification]{send_contact_method_verification} \tab Sends a verification request to an email contact method to ensure it's owned by the requester\cr
 \link[paws.compute:lightsail_set_ip_address_type]{set_ip_address_type} \tab Sets the IP address type for an Amazon Lightsail resource\cr
 \link[paws.compute:lightsail_set_resource_access_for_bucket]{set_resource_access_for_bucket} \tab Sets the Amazon Lightsail resources that can access the specified Lightsail bucket\cr
+\link[paws.compute:lightsail_start_gui_session]{start_gui_session} \tab Initiates a graphical user interface (GUI) session that’s used to access a virtual computer’s operating system and application\cr
 \link[paws.compute:lightsail_start_instance]{start_instance} \tab Starts a specific Amazon Lightsail instance from a stopped state\cr
 \link[paws.compute:lightsail_start_relational_database]{start_relational_database} \tab Starts a specific database from a stopped state in Amazon Lightsail\cr
+\link[paws.compute:lightsail_stop_gui_session]{stop_gui_session} \tab Terminates a web-based NICE DCV session that’s used to access a virtual computer’s operating system or application\cr
 \link[paws.compute:lightsail_stop_instance]{stop_instance} \tab Stops a specific Amazon Lightsail instance that is currently running\cr
 \link[paws.compute:lightsail_stop_relational_database]{stop_relational_database} \tab Stops a specific database that is currently running in Amazon Lightsail\cr
 \link[paws.compute:lightsail_tag_resource]{tag_resource} \tab Adds one or more tags to the specified Amazon Lightsail resource\cr
@@ -226,6 +230,7 @@ the \emph{Amazon Web Services General Reference}.
 \link[paws.compute:lightsail_update_distribution]{update_distribution} \tab Updates an existing Amazon Lightsail content delivery network (CDN) distribution\cr
 \link[paws.compute:lightsail_update_distribution_bundle]{update_distribution_bundle} \tab Updates the bundle of your Amazon Lightsail content delivery network (CDN) distribution\cr
 \link[paws.compute:lightsail_update_domain_entry]{update_domain_entry} \tab Updates a domain recordset after it is created\cr
+\link[paws.compute:lightsail_update_instance_metadata_options]{update_instance_metadata_options} \tab Modifies the Amazon Lightsail instance metadata parameters on a running or stopped instance\cr
 \link[paws.compute:lightsail_update_load_balancer_attribute]{update_load_balancer_attribute} \tab Updates the specified attribute for a load balancer\cr
 \link[paws.compute:lightsail_update_relational_database]{update_relational_database} \tab Allows the update of one or more attributes of a database in Amazon Lightsail\cr
 \link[paws.compute:lightsail_update_relational_database_parameters]{update_relational_database_parameters} \tab Allows the update of one or more parameters of a database in Amazon Lightsail

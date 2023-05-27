@@ -17,7 +17,7 @@ efs_create_access_point(
 idempotent creation.}
 
 \item{Tags}{Creates tags associated with the access point. Each tag is a key-value
-pair, each key must be unique. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services resources}
+pair, each key must be unique. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}
 in the \emph{Amazon Web Services General Reference Guide}.}
 
 \item{FileSystemId}{[required] The ID of the EFS file system that the access point provides access to.}

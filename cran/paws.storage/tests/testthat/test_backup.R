@@ -56,6 +56,14 @@ test_that("list_frameworks", {
   expect_error(svc$list_frameworks(MaxResults = 20), NA)
 })
 
+test_that("list_legal_holds", {
+  expect_error(svc$list_legal_holds(), NA)
+})
+
+test_that("list_legal_holds", {
+  expect_error(svc$list_legal_holds(MaxResults = 20), NA)
+})
+
 test_that("list_protected_resources", {
   expect_error(svc$list_protected_resources(), NA)
 })

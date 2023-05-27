@@ -3,19 +3,18 @@
 #' @include cloudwatchlogs_service.R
 NULL
 
-#' Associates the specified Key Management Service customer master key
-#' (CMK) with the specified log group
+#' Associates the specified KMS key with the specified log group
 #'
 #' @description
-#' Associates the specified Key Management Service customer master key (CMK) with the specified log group.
+#' Associates the specified KMS key with the specified log group.
 #'
 #' See [https://paws-r.github.io/docs/cloudwatchlogs/associate_kms_key.html](https://paws-r.github.io/docs/cloudwatchlogs/associate_kms_key.html) for full documentation.
 #'
 #' @param logGroupName &#91;required&#93; The name of the log group.
-#' @param kmsKeyId &#91;required&#93; The Amazon Resource Name (ARN) of the CMK to use when encrypting log
-#' data. This must be a symmetric CMK. For more information, see [Amazon
-#' Resource Names - Key Management
-#' Service](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms)
+#' @param kmsKeyId &#91;required&#93; The Amazon Resource Name (ARN) of the KMS key to use when encrypting log
+#' data. This must be a symmetric KMS key. For more information, see
+#' [Amazon Resource
+#' Names](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kms)
 #' and [Using Symmetric and Asymmetric
 #' Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html).
 #'
@@ -68,11 +67,11 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 }
 .cloudwatchlogs$operations$cancel_export_task <- cloudwatchlogs_cancel_export_task
 
-#' Creates an export task, which allows you to efficiently export data from
-#' a log group to an Amazon S3 bucket
+#' Creates an export task so that you can efficiently export data from a
+#' log group to an Amazon S3 bucket
 #'
 #' @description
-#' Creates an export task, which allows you to efficiently export data from a log group to an Amazon S3 bucket. When you perform a [`create_export_task`][cloudwatchlogs_create_export_task] operation, you must use credentials that have permission to write to the S3 bucket that you specify as the destination.
+#' Creates an export task so that you can efficiently export data from a log group to an Amazon S3 bucket. When you perform a [`create_export_task`][cloudwatchlogs_create_export_task] operation, you must use credentials that have permission to write to the S3 bucket that you specify as the destination.
 #'
 #' See [https://paws-r.github.io/docs/cloudwatchlogs/create_export_task.html](https://paws-r.github.io/docs/cloudwatchlogs/create_export_task.html) for full documentation.
 #'
@@ -81,13 +80,16 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 #' @param logStreamNamePrefix Export only log streams that match the provided prefix. If you don't
 #' specify a value, no prefix filter is applied.
 #' @param from &#91;required&#93; The start time of the range for the request, expressed as the number of
-#' milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp
+#' milliseconds after `Jan 1, 1970 00:00:00 UTC`. Events with a timestamp
 #' earlier than this time are not exported.
 #' @param to &#91;required&#93; The end time of the range for the request, expressed as the number of
-#' milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp
+#' milliseconds after `Jan 1, 1970 00:00:00 UTC`. Events with a timestamp
 #' later than this time are not exported.
+#' 
+#' You must specify a time that is not earlier than when this log group was
+#' created.
 #' @param destination &#91;required&#93; The name of S3 bucket for the exported log data. The bucket must be in
-#' the same Amazon Web Services region.
+#' the same Amazon Web Services Region.
 #' @param destinationPrefix The prefix used as the start of the key for every object exported. If
 #' you don't specify a value, the default is `exportedlogs`.
 #'
@@ -119,16 +121,20 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 #' See [https://paws-r.github.io/docs/cloudwatchlogs/create_log_group.html](https://paws-r.github.io/docs/cloudwatchlogs/create_log_group.html) for full documentation.
 #'
 #' @param logGroupName &#91;required&#93; The name of the log group.
-#' @param kmsKeyId The Amazon Resource Name (ARN) of the CMK to use when encrypting log
-#' data. For more information, see [Amazon Resource Names - Key Management
-#' Service](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms).
+#' @param kmsKeyId The Amazon Resource Name (ARN) of the KMS key to use when encrypting log
+#' data. For more information, see [Amazon Resource
+#' Names](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kms).
 #' @param tags The key-value pairs to use for the tags.
 #' 
-#' CloudWatch Logs doesn’t support IAM policies that prevent users from
-#' assigning specified tags to log groups using the
-#' `aws:Resource/key-name ` or `aws:TagKeys` condition keys. For more
-#' information about using tags to control access, see [Controlling access
-#' to Amazon Web Services resources using
+#' You can grant users access to certain log groups while preventing them
+#' from accessing other log groups. To do so, tag your groups and use IAM
+#' policies that refer to those tags. To assign tags when you create a log
+#' group, you must have either the `logs:TagResource` or `logs:TagLogGroup`
+#' permission. For more information about tagging, see [Tagging Amazon Web
+#' Services
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
+#' For more information about using tags to control access, see
+#' [Controlling access to Amazon Web Services resources using
 #' tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html).
 #'
 #' @keywords internal
@@ -180,6 +186,36 @@ cloudwatchlogs_create_log_stream <- function(logGroupName, logStreamName) {
   return(response)
 }
 .cloudwatchlogs$operations$create_log_stream <- cloudwatchlogs_create_log_stream
+
+#' Deletes the data protection policy from the specified log group
+#'
+#' @description
+#' Deletes the data protection policy from the specified log group.
+#'
+#' See [https://paws-r.github.io/docs/cloudwatchlogs/delete_data_protection_policy.html](https://paws-r.github.io/docs/cloudwatchlogs/delete_data_protection_policy.html) for full documentation.
+#'
+#' @param logGroupIdentifier &#91;required&#93; The name or ARN of the log group that you want to delete the data
+#' protection policy for.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_delete_data_protection_policy
+cloudwatchlogs_delete_data_protection_policy <- function(logGroupIdentifier) {
+  op <- new_operation(
+    name = "DeleteDataProtectionPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$delete_data_protection_policy_input(logGroupIdentifier = logGroupIdentifier)
+  output <- .cloudwatchlogs$delete_data_protection_policy_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$delete_data_protection_policy <- cloudwatchlogs_delete_data_protection_policy
 
 #' Deletes the specified destination, and eventually disables all the
 #' subscription filters that publish to it
@@ -433,7 +469,7 @@ cloudwatchlogs_delete_subscription_filter <- function(logGroupName, filterName) 
 #' @param nextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #' @param limit The maximum number of items returned. If you don't specify a value, the
-#' default is up to 50 items.
+#' default maximum value of 50 items is used.
 #'
 #' @keywords internal
 #'
@@ -463,7 +499,7 @@ cloudwatchlogs_describe_destinations <- function(DestinationNamePrefix = NULL, n
 #' See [https://paws-r.github.io/docs/cloudwatchlogs/describe_export_tasks.html](https://paws-r.github.io/docs/cloudwatchlogs/describe_export_tasks.html) for full documentation.
 #'
 #' @param taskId The ID of the export task. Specifying a task ID filters the results to
-#' zero or one export tasks.
+#' one or zero export tasks.
 #' @param statusCode The status code of the export task. Specifying a status code filters the
 #' results to zero or more export tasks.
 #' @param nextToken The token for the next set of items to return. (You received this token
@@ -498,23 +534,49 @@ cloudwatchlogs_describe_export_tasks <- function(taskId = NULL, statusCode = NUL
 #'
 #' See [https://paws-r.github.io/docs/cloudwatchlogs/describe_log_groups.html](https://paws-r.github.io/docs/cloudwatchlogs/describe_log_groups.html) for full documentation.
 #'
+#' @param accountIdentifiers When `includeLinkedAccounts` is set to `True`, use this parameter to
+#' specify the list of accounts to search. You can specify as many as 20
+#' account IDs in the array.
 #' @param logGroupNamePrefix The prefix to match.
+#' 
+#' `logGroupNamePrefix` and `logGroupNamePattern` are mutually exclusive.
+#' Only one of these parameters can be passed.
+#' @param logGroupNamePattern If you specify a string for this parameter, the operation returns only
+#' log groups that have names that match the string based on a
+#' case-sensitive substring search. For example, if you specify `Foo`, log
+#' groups named `FooBar`, `aws/Foo`, and `GroupFoo` would match, but `foo`,
+#' `F/o/o` and `Froo` would not match.
+#' 
+#' `logGroupNamePattern` and `logGroupNamePrefix` are mutually exclusive.
+#' Only one of these parameters can be passed.
 #' @param nextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #' @param limit The maximum number of items returned. If you don't specify a value, the
 #' default is up to 50 items.
+#' @param includeLinkedAccounts If you are using a monitoring account, set this to `True` to have the
+#' operation return log groups in the accounts listed in
+#' `accountIdentifiers`.
+#' 
+#' If this parameter is set to `true` and `accountIdentifiers` contains a
+#' null value, the operation returns all log groups in the monitoring
+#' account and all log groups in all source accounts that are linked to the
+#' monitoring account.
+#' 
+#' If you specify `includeLinkedAccounts` in your request, then
+#' `metricFilterCount`, `retentionInDays`, and `storedBytes` are not
+#' included in the response.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_describe_log_groups
-cloudwatchlogs_describe_log_groups <- function(logGroupNamePrefix = NULL, nextToken = NULL, limit = NULL) {
+cloudwatchlogs_describe_log_groups <- function(accountIdentifiers = NULL, logGroupNamePrefix = NULL, logGroupNamePattern = NULL, nextToken = NULL, limit = NULL, includeLinkedAccounts = NULL) {
   op <- new_operation(
     name = "DescribeLogGroups",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatchlogs$describe_log_groups_input(logGroupNamePrefix = logGroupNamePrefix, nextToken = nextToken, limit = limit)
+  input <- .cloudwatchlogs$describe_log_groups_input(accountIdentifiers = accountIdentifiers, logGroupNamePrefix = logGroupNamePrefix, logGroupNamePattern = logGroupNamePattern, nextToken = nextToken, limit = limit, includeLinkedAccounts = includeLinkedAccounts)
   output <- .cloudwatchlogs$describe_log_groups_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config)
@@ -531,7 +593,16 @@ cloudwatchlogs_describe_log_groups <- function(logGroupNamePrefix = NULL, nextTo
 #'
 #' See [https://paws-r.github.io/docs/cloudwatchlogs/describe_log_streams.html](https://paws-r.github.io/docs/cloudwatchlogs/describe_log_streams.html) for full documentation.
 #'
-#' @param logGroupName &#91;required&#93; The name of the log group.
+#' @param logGroupName The name of the log group.
+#' 
+#' You must include either `logGroupIdentifier` or `logGroupName`, but not
+#' both.
+#' @param logGroupIdentifier Specify either the name or ARN of the log group to view. If the log
+#' group is in a source account and you are using a monitoring account, you
+#' must use the log group ARN.
+#' 
+#' You must include either `logGroupIdentifier` or `logGroupName`, but not
+#' both.
 #' @param logStreamNamePrefix The prefix to match.
 #' 
 #' If `orderBy` is `LastEventTime`, you cannot specify this parameter.
@@ -544,7 +615,7 @@ cloudwatchlogs_describe_log_groups <- function(logGroupNamePrefix = NULL, nextTo
 #' 
 #' `lastEventTimestamp` represents the time of the most recent log event in
 #' the log stream in CloudWatch Logs. This number is expressed as the
-#' number of milliseconds after Jan 1, 1970 00:00:00 UTC.
+#' number of milliseconds after `Jan 1, 1970 00:00:00 UTC`.
 #' `lastEventTimestamp` updates on an eventual consistency basis. It
 #' typically updates in less than an hour from ingestion, but in rare
 #' situations might take longer.
@@ -559,14 +630,14 @@ cloudwatchlogs_describe_log_groups <- function(logGroupNamePrefix = NULL, nextTo
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_describe_log_streams
-cloudwatchlogs_describe_log_streams <- function(logGroupName, logStreamNamePrefix = NULL, orderBy = NULL, descending = NULL, nextToken = NULL, limit = NULL) {
+cloudwatchlogs_describe_log_streams <- function(logGroupName = NULL, logGroupIdentifier = NULL, logStreamNamePrefix = NULL, orderBy = NULL, descending = NULL, nextToken = NULL, limit = NULL) {
   op <- new_operation(
     name = "DescribeLogStreams",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatchlogs$describe_log_streams_input(logGroupName = logGroupName, logStreamNamePrefix = logStreamNamePrefix, orderBy = orderBy, descending = descending, nextToken = nextToken, limit = limit)
+  input <- .cloudwatchlogs$describe_log_streams_input(logGroupName = logGroupName, logGroupIdentifier = logGroupIdentifier, logStreamNamePrefix = logStreamNamePrefix, orderBy = orderBy, descending = descending, nextToken = nextToken, limit = limit)
   output <- .cloudwatchlogs$describe_log_streams_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config)
@@ -584,8 +655,8 @@ cloudwatchlogs_describe_log_streams <- function(logGroupName, logStreamNamePrefi
 #' See [https://paws-r.github.io/docs/cloudwatchlogs/describe_metric_filters.html](https://paws-r.github.io/docs/cloudwatchlogs/describe_metric_filters.html) for full documentation.
 #'
 #' @param logGroupName The name of the log group.
-#' @param filterNamePrefix The prefix to match. CloudWatch Logs uses the value you set here only if
-#' you also include the `logGroupName` parameter in your request.
+#' @param filterNamePrefix The prefix to match. CloudWatch Logs uses the value that you set here
+#' only if you also include the `logGroupName` parameter in your request.
 #' @param nextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #' @param limit The maximum number of items returned. If you don't specify a value, the
@@ -618,10 +689,10 @@ cloudwatchlogs_describe_metric_filters <- function(logGroupName = NULL, filterNa
 .cloudwatchlogs$operations$describe_metric_filters <- cloudwatchlogs_describe_metric_filters
 
 #' Returns a list of CloudWatch Logs Insights queries that are scheduled,
-#' executing, or have been executed recently in this account
+#' running, or have been run recently in this account
 #'
 #' @description
-#' Returns a list of CloudWatch Logs Insights queries that are scheduled, executing, or have been executed recently in this account. You can request all queries or limit it to queries of a specific log group or queries with a certain status.
+#' Returns a list of CloudWatch Logs Insights queries that are scheduled, running, or have been run recently in this account. You can request all queries or limit it to queries of a specific log group or queries with a certain status.
 #'
 #' See [https://paws-r.github.io/docs/cloudwatchlogs/describe_queries.html](https://paws-r.github.io/docs/cloudwatchlogs/describe_queries.html) for full documentation.
 #'
@@ -751,11 +822,10 @@ cloudwatchlogs_describe_subscription_filters <- function(logGroupName, filterNam
 }
 .cloudwatchlogs$operations$describe_subscription_filters <- cloudwatchlogs_describe_subscription_filters
 
-#' Disassociates the associated Key Management Service customer master key
-#' (CMK) from the specified log group
+#' Disassociates the associated KMS key from the specified log group
 #'
 #' @description
-#' Disassociates the associated Key Management Service customer master key (CMK) from the specified log group.
+#' Disassociates the associated KMS key from the specified log group.
 #'
 #' See [https://paws-r.github.io/docs/cloudwatchlogs/disassociate_kms_key.html](https://paws-r.github.io/docs/cloudwatchlogs/disassociate_kms_key.html) for full documentation.
 #'
@@ -788,7 +858,16 @@ cloudwatchlogs_disassociate_kms_key <- function(logGroupName) {
 #'
 #' See [https://paws-r.github.io/docs/cloudwatchlogs/filter_log_events.html](https://paws-r.github.io/docs/cloudwatchlogs/filter_log_events.html) for full documentation.
 #'
-#' @param logGroupName &#91;required&#93; The name of the log group to search.
+#' @param logGroupName The name of the log group to search.
+#' 
+#' You must include either `logGroupIdentifier` or `logGroupName`, but not
+#' both.
+#' @param logGroupIdentifier Specify either the name or ARN of the log group to view log events from.
+#' If the log group is in a source account and you are using a monitoring
+#' account, you must use the log group ARN.
+#' 
+#' You must include either `logGroupIdentifier` or `logGroupName`, but not
+#' both.
 #' @param logStreamNames Filters the results to only logs from the log streams in this list.
 #' 
 #' If you specify a value for both `logStreamNamePrefix` and
@@ -802,10 +881,10 @@ cloudwatchlogs_disassociate_kms_key <- function(logGroupName) {
 #' any log stream names specified in `logStreamNames`, the action returns
 #' an `InvalidParameterException` error.
 #' @param startTime The start of the time range, expressed as the number of milliseconds
-#' after Jan 1, 1970 00:00:00 UTC. Events with a timestamp before this time
-#' are not returned.
+#' after `Jan 1, 1970 00:00:00 UTC`. Events with a timestamp before this
+#' time are not returned.
 #' @param endTime The end of the time range, expressed as the number of milliseconds after
-#' Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time
+#' `Jan 1, 1970 00:00:00 UTC`. Events with a timestamp later than this time
 #' are not returned.
 #' @param filterPattern The filter pattern to use. For more information, see [Filter and Pattern
 #' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
@@ -814,27 +893,32 @@ cloudwatchlogs_disassociate_kms_key <- function(logGroupName) {
 #' @param nextToken The token for the next set of events to return. (You received this token
 #' from a previous call.)
 #' @param limit The maximum number of events to return. The default is 10,000 events.
-#' @param interleaved If the value is true, the operation makes a best effort to provide
-#' responses that contain events from multiple log streams within the log
-#' group, interleaved in a single response. If the value is false, all the
-#' matched log events in the first log stream are searched first, then
-#' those in the next log stream, and so on. The default is false.
+#' @param interleaved If the value is true, the operation attempts to provide responses that
+#' contain events from multiple log streams within the log group,
+#' interleaved in a single response. If the value is false, all the matched
+#' log events in the first log stream are searched first, then those in the
+#' next log stream, and so on.
 #' 
-#' **Important:** Starting on June 17, 2019, this parameter is ignored and
-#' the value is assumed to be true. The response from this operation always
+#' **Important** As of June 17, 2019, this parameter is ignored and the
+#' value is assumed to be true. The response from this operation always
 #' interleaves events from multiple log streams within a log group.
+#' @param unmask Specify `true` to display the log event fields with all sensitive data
+#' unmasked and visible. The default is `false`.
+#' 
+#' To use this operation with this parameter, you must be signed into an
+#' account with the `logs:Unmask` permission.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_filter_log_events
-cloudwatchlogs_filter_log_events <- function(logGroupName, logStreamNames = NULL, logStreamNamePrefix = NULL, startTime = NULL, endTime = NULL, filterPattern = NULL, nextToken = NULL, limit = NULL, interleaved = NULL) {
+cloudwatchlogs_filter_log_events <- function(logGroupName = NULL, logGroupIdentifier = NULL, logStreamNames = NULL, logStreamNamePrefix = NULL, startTime = NULL, endTime = NULL, filterPattern = NULL, nextToken = NULL, limit = NULL, interleaved = NULL, unmask = NULL) {
   op <- new_operation(
     name = "FilterLogEvents",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatchlogs$filter_log_events_input(logGroupName = logGroupName, logStreamNames = logStreamNames, logStreamNamePrefix = logStreamNamePrefix, startTime = startTime, endTime = endTime, filterPattern = filterPattern, nextToken = nextToken, limit = limit, interleaved = interleaved)
+  input <- .cloudwatchlogs$filter_log_events_input(logGroupName = logGroupName, logGroupIdentifier = logGroupIdentifier, logStreamNames = logStreamNames, logStreamNamePrefix = logStreamNamePrefix, startTime = startTime, endTime = endTime, filterPattern = filterPattern, nextToken = nextToken, limit = limit, interleaved = interleaved, unmask = unmask)
   output <- .cloudwatchlogs$filter_log_events_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config)
@@ -844,6 +928,36 @@ cloudwatchlogs_filter_log_events <- function(logGroupName, logStreamNames = NULL
 }
 .cloudwatchlogs$operations$filter_log_events <- cloudwatchlogs_filter_log_events
 
+#' Returns information about a log group data protection policy
+#'
+#' @description
+#' Returns information about a log group data protection policy.
+#'
+#' See [https://paws-r.github.io/docs/cloudwatchlogs/get_data_protection_policy.html](https://paws-r.github.io/docs/cloudwatchlogs/get_data_protection_policy.html) for full documentation.
+#'
+#' @param logGroupIdentifier &#91;required&#93; The name or ARN of the log group that contains the data protection
+#' policy that you want to see.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_get_data_protection_policy
+cloudwatchlogs_get_data_protection_policy <- function(logGroupIdentifier) {
+  op <- new_operation(
+    name = "GetDataProtectionPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$get_data_protection_policy_input(logGroupIdentifier = logGroupIdentifier)
+  output <- .cloudwatchlogs$get_data_protection_policy_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$get_data_protection_policy <- cloudwatchlogs_get_data_protection_policy
+
 #' Lists log events from the specified log stream
 #'
 #' @description
@@ -851,38 +965,52 @@ cloudwatchlogs_filter_log_events <- function(logGroupName, logStreamNames = NULL
 #'
 #' See [https://paws-r.github.io/docs/cloudwatchlogs/get_log_events.html](https://paws-r.github.io/docs/cloudwatchlogs/get_log_events.html) for full documentation.
 #'
-#' @param logGroupName &#91;required&#93; The name of the log group.
+#' @param logGroupName The name of the log group.
+#' 
+#' You must include either `logGroupIdentifier` or `logGroupName`, but not
+#' both.
+#' @param logGroupIdentifier Specify either the name or ARN of the log group to view events from. If
+#' the log group is in a source account and you are using a monitoring
+#' account, you must use the log group ARN.
+#' 
+#' You must include either `logGroupIdentifier` or `logGroupName`, but not
+#' both.
 #' @param logStreamName &#91;required&#93; The name of the log stream.
 #' @param startTime The start of the time range, expressed as the number of milliseconds
-#' after Jan 1, 1970 00:00:00 UTC. Events with a timestamp equal to this
+#' after `Jan 1, 1970 00:00:00 UTC`. Events with a timestamp equal to this
 #' time or later than this time are included. Events with a timestamp
 #' earlier than this time are not included.
 #' @param endTime The end of the time range, expressed as the number of milliseconds after
-#' Jan 1, 1970 00:00:00 UTC. Events with a timestamp equal to or later than
-#' this time are not included.
+#' `Jan 1, 1970 00:00:00 UTC`. Events with a timestamp equal to or later
+#' than this time are not included.
 #' @param nextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#' @param limit The maximum number of log events returned. If you don't specify a value,
-#' the maximum is as many log events as can fit in a response size of 1 MB,
-#' up to 10,000 log events.
+#' @param limit The maximum number of log events returned. If you don't specify a limit,
+#' the default is as many log events as can fit in a response size of 1 MB
+#' (up to 10,000 log events).
 #' @param startFromHead If the value is true, the earliest log events are returned first. If the
 #' value is false, the latest log events are returned first. The default
 #' value is false.
 #' 
 #' If you are using a previous `nextForwardToken` value as the `nextToken`
 #' in this operation, you must specify `true` for `startFromHead`.
+#' @param unmask Specify `true` to display the log event fields with all sensitive data
+#' unmasked and visible. The default is `false`.
+#' 
+#' To use this operation with this parameter, you must be signed into an
+#' account with the `logs:Unmask` permission.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_get_log_events
-cloudwatchlogs_get_log_events <- function(logGroupName, logStreamName, startTime = NULL, endTime = NULL, nextToken = NULL, limit = NULL, startFromHead = NULL) {
+cloudwatchlogs_get_log_events <- function(logGroupName = NULL, logGroupIdentifier = NULL, logStreamName, startTime = NULL, endTime = NULL, nextToken = NULL, limit = NULL, startFromHead = NULL, unmask = NULL) {
   op <- new_operation(
     name = "GetLogEvents",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatchlogs$get_log_events_input(logGroupName = logGroupName, logStreamName = logStreamName, startTime = startTime, endTime = endTime, nextToken = nextToken, limit = limit, startFromHead = startFromHead)
+  input <- .cloudwatchlogs$get_log_events_input(logGroupName = logGroupName, logGroupIdentifier = logGroupIdentifier, logStreamName = logStreamName, startTime = startTime, endTime = endTime, nextToken = nextToken, limit = limit, startFromHead = startFromHead, unmask = unmask)
   output <- .cloudwatchlogs$get_log_events_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config)
@@ -893,33 +1021,41 @@ cloudwatchlogs_get_log_events <- function(logGroupName, logStreamName, startTime
 .cloudwatchlogs$operations$get_log_events <- cloudwatchlogs_get_log_events
 
 #' Returns a list of the fields that are included in log events in the
-#' specified log group, along with the percentage of log events that
-#' contain each field
+#' specified log group
 #'
 #' @description
-#' Returns a list of the fields that are included in log events in the specified log group, along with the percentage of log events that contain each field. The search is limited to a time period that you specify.
+#' Returns a list of the fields that are included in log events in the specified log group. Includes the percentage of log events that contain each field. The search is limited to a time period that you specify.
 #'
 #' See [https://paws-r.github.io/docs/cloudwatchlogs/get_log_group_fields.html](https://paws-r.github.io/docs/cloudwatchlogs/get_log_group_fields.html) for full documentation.
 #'
-#' @param logGroupName &#91;required&#93; The name of the log group to search.
+#' @param logGroupName The name of the log group to search.
+#' 
+#' You must include either `logGroupIdentifier` or `logGroupName`, but not
+#' both.
 #' @param time The time to set as the center of the query. If you specify `time`, the
-#' 15 minutes before this time are queries. If you omit `time` the 8
+#' 15 minutes before this time are queries. If you omit `time`, the 8
 #' minutes before and 8 minutes after this time are searched.
 #' 
-#' The `time` value is specified as epoch time, the number of seconds since
-#' January 1, 1970, 00:00:00 UTC.
+#' The `time` value is specified as epoch time, which is the number of
+#' seconds since `January 1, 1970, 00:00:00 UTC`.
+#' @param logGroupIdentifier Specify either the name or ARN of the log group to view. If the log
+#' group is in a source account and you are using a monitoring account, you
+#' must specify the ARN.
+#' 
+#' You must include either `logGroupIdentifier` or `logGroupName`, but not
+#' both.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_get_log_group_fields
-cloudwatchlogs_get_log_group_fields <- function(logGroupName, time = NULL) {
+cloudwatchlogs_get_log_group_fields <- function(logGroupName = NULL, time = NULL, logGroupIdentifier = NULL) {
   op <- new_operation(
     name = "GetLogGroupFields",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatchlogs$get_log_group_fields_input(logGroupName = logGroupName, time = time)
+  input <- .cloudwatchlogs$get_log_group_fields_input(logGroupName = logGroupName, time = time, logGroupIdentifier = logGroupIdentifier)
   output <- .cloudwatchlogs$get_log_group_fields_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config)
@@ -942,18 +1078,23 @@ cloudwatchlogs_get_log_group_fields <- function(logGroupName, time = NULL) {
 #' that response, the value of the `@@ptr` field for a log event is the
 #' value to use as `logRecordPointer` to retrieve that complete log event
 #' record.
+#' @param unmask Specify `true` to display the log event fields with all sensitive data
+#' unmasked and visible. The default is `false`.
+#' 
+#' To use this operation with this parameter, you must be signed into an
+#' account with the `logs:Unmask` permission.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_get_log_record
-cloudwatchlogs_get_log_record <- function(logRecordPointer) {
+cloudwatchlogs_get_log_record <- function(logRecordPointer, unmask = NULL) {
   op <- new_operation(
     name = "GetLogRecord",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatchlogs$get_log_record_input(logRecordPointer = logRecordPointer)
+  input <- .cloudwatchlogs$get_log_record_input(logRecordPointer = logRecordPointer, unmask = unmask)
   output <- .cloudwatchlogs$get_log_record_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config)
@@ -992,10 +1133,49 @@ cloudwatchlogs_get_query_results <- function(queryId) {
 }
 .cloudwatchlogs$operations$get_query_results <- cloudwatchlogs_get_query_results
 
-#' Lists the tags for the specified log group
+#' Displays the tags associated with a CloudWatch Logs resource
 #'
 #' @description
-#' Lists the tags for the specified log group.
+#' Displays the tags associated with a CloudWatch Logs resource. Currently, log groups and destinations support tagging.
+#'
+#' See [https://paws-r.github.io/docs/cloudwatchlogs/list_tags_for_resource.html](https://paws-r.github.io/docs/cloudwatchlogs/list_tags_for_resource.html) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The ARN of the resource that you want to view tags for.
+#' 
+#' The ARN format of a log group is
+#' `arn:aws:logs:Region:account-id:log-group:log-group-name `
+#' 
+#' The ARN format of a destination is
+#' `arn:aws:logs:Region:account-id:destination:destination-name `
+#' 
+#' For more information about ARN format, see [CloudWatch Logs resources
+#' and
+#' operations](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/iam-access-control-overview-cwl.html).
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_list_tags_for_resource
+cloudwatchlogs_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .cloudwatchlogs$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$list_tags_for_resource <- cloudwatchlogs_list_tags_for_resource
+
+#' The ListTagsLogGroup operation is on the path to deprecation
+#'
+#' @description
+#' The ListTagsLogGroup operation is on the path to deprecation. We recommend that you use [`list_tags_for_resource`][cloudwatchlogs_list_tags_for_resource] instead.
 #'
 #' See [https://paws-r.github.io/docs/cloudwatchlogs/list_tags_log_group.html](https://paws-r.github.io/docs/cloudwatchlogs/list_tags_log_group.html) for full documentation.
 #'
@@ -1021,6 +1201,67 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 }
 .cloudwatchlogs$operations$list_tags_log_group <- cloudwatchlogs_list_tags_log_group
 
+#' Creates a data protection policy for the specified log group
+#'
+#' @description
+#' Creates a data protection policy for the specified log group. A data protection policy can help safeguard sensitive data that's ingested by the log group by auditing and masking the sensitive log data.
+#'
+#' See [https://paws-r.github.io/docs/cloudwatchlogs/put_data_protection_policy.html](https://paws-r.github.io/docs/cloudwatchlogs/put_data_protection_policy.html) for full documentation.
+#'
+#' @param logGroupIdentifier &#91;required&#93; Specify either the log group name or log group ARN.
+#' @param policyDocument &#91;required&#93; Specify the data protection policy, in JSON.
+#' 
+#' This policy must include two JSON blocks:
+#' 
+#' -   The first block must include both a `DataIdentifer` array and an
+#'     `Operation` property with an `Audit` action. The `DataIdentifer`
+#'     array lists the types of sensitive data that you want to mask. For
+#'     more information about the available options, see [Types of data
+#'     that you can
+#'     mask](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/).
+#' 
+#'     The `Operation` property with an `Audit` action is required to find
+#'     the sensitive data terms. This `Audit` action must contain a
+#'     `FindingsDestination` object. You can optionally use that
+#'     `FindingsDestination` object to list one or more destinations to
+#'     send audit findings to. If you specify destinations such as log
+#'     groups, Kinesis Data Firehose streams, and S3 buckets, they must
+#'     already exist.
+#' 
+#' -   The second block must include both a `DataIdentifer` array and an
+#'     `Operation` property with an `Deidentify` action. The
+#'     `DataIdentifer` array must exactly match the `DataIdentifer` array
+#'     in the first block of the policy.
+#' 
+#'     The `Operation` property with the `Deidentify` action is what
+#'     actually masks the data, and it must contain the ` "MaskConfig": {}`
+#'     object. The ` "MaskConfig": {}` object must be empty.
+#' 
+#' For an example data protection policy, see the **Examples** section on
+#' this page.
+#' 
+#' The contents of two `DataIdentifer` arrays must match exactly.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_put_data_protection_policy
+cloudwatchlogs_put_data_protection_policy <- function(logGroupIdentifier, policyDocument) {
+  op <- new_operation(
+    name = "PutDataProtectionPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$put_data_protection_policy_input(logGroupIdentifier = logGroupIdentifier, policyDocument = policyDocument)
+  output <- .cloudwatchlogs$put_data_protection_policy_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$put_data_protection_policy <- cloudwatchlogs_put_data_protection_policy
+
 #' Creates or updates a destination
 #'
 #' @description
@@ -1033,18 +1274,22 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 #' events.
 #' @param roleArn &#91;required&#93; The ARN of an IAM role that grants CloudWatch Logs permissions to call
 #' the Amazon Kinesis `PutRecord` operation on the destination stream.
+#' @param tags An optional list of key-value pairs to associate with the resource.
+#' 
+#' For more information about tagging, see [Tagging Amazon Web Services
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_put_destination
-cloudwatchlogs_put_destination <- function(destinationName, targetArn, roleArn) {
+cloudwatchlogs_put_destination <- function(destinationName, targetArn, roleArn, tags = NULL) {
   op <- new_operation(
     name = "PutDestination",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatchlogs$put_destination_input(destinationName = destinationName, targetArn = targetArn, roleArn = roleArn)
+  input <- .cloudwatchlogs$put_destination_input(destinationName = destinationName, targetArn = targetArn, roleArn = roleArn, tags = tags)
   output <- .cloudwatchlogs$put_destination_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config)
@@ -1109,13 +1354,13 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy,
 #' @param logStreamName &#91;required&#93; The name of the log stream.
 #' @param logEvents &#91;required&#93; The log events.
 #' @param sequenceToken The sequence token obtained from the response of the previous
-#' [`put_log_events`][cloudwatchlogs_put_log_events] call. An upload in a
-#' newly created log stream does not require a sequence token. You can also
-#' get the sequence token using
-#' [`describe_log_streams`][cloudwatchlogs_describe_log_streams]. If you
-#' call [`put_log_events`][cloudwatchlogs_put_log_events] twice within a
-#' narrow time period using the same value for `sequenceToken`, both calls
-#' might be successful or one might be rejected.
+#' [`put_log_events`][cloudwatchlogs_put_log_events] call.
+#' 
+#' The `sequenceToken` parameter is now ignored in
+#' [`put_log_events`][cloudwatchlogs_put_log_events] actions.
+#' [`put_log_events`][cloudwatchlogs_put_log_events] actions are now
+#' accepted and never return `InvalidSequenceTokenException` or
+#' `DataAlreadyAcceptedException` even if the sequence token is not valid.
 #'
 #' @keywords internal
 #'
@@ -1141,7 +1386,7 @@ cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents
 #' log group
 #'
 #' @description
-#' Creates or updates a metric filter and associates it with the specified log group. Metric filters allow you to configure rules to extract metric data from log events ingested through [`put_log_events`][cloudwatchlogs_put_log_events].
+#' Creates or updates a metric filter and associates it with the specified log group. With metric filters, you can configure rules to extract metric data from log events ingested through [`put_log_events`][cloudwatchlogs_put_log_events].
 #'
 #' See [https://paws-r.github.io/docs/cloudwatchlogs/put_metric_filter.html](https://paws-r.github.io/docs/cloudwatchlogs/put_metric_filter.html) for full documentation.
 #'
@@ -1177,9 +1422,9 @@ cloudwatchlogs_put_metric_filter <- function(logGroupName, filterName, filterPat
 #'
 #' See [https://paws-r.github.io/docs/cloudwatchlogs/put_query_definition.html](https://paws-r.github.io/docs/cloudwatchlogs/put_query_definition.html) for full documentation.
 #'
-#' @param name &#91;required&#93; A name for the query definition. If you are saving a lot of query
-#' definitions, we recommend that you name them so that you can easily find
-#' the ones you want by using the first part of the name as a filter in the
+#' @param name &#91;required&#93; A name for the query definition. If you are saving numerous query
+#' definitions, we recommend that you name them. This way, you can find the
+#' ones you want by using the first part of the name as a filter in the
 #' `queryDefinitionNamePrefix` parameter of
 #' [`describe_query_definitions`][cloudwatchlogs_describe_query_definitions].
 #' @param queryDefinitionId If you are updating a query definition, use this parameter to specify
@@ -1245,8 +1490,8 @@ cloudwatchlogs_put_query_definition <- function(name, queryDefinitionId = NULL, 
 #' 
 #' In the example resource policy, you would replace the value of
 #' `SourceArn` with the resource making the call from Route 53 to
-#' CloudWatch Logs and replace the value of `SourceAccount` with the Amazon
-#' Web Services account ID making that call.
+#' CloudWatch Logs. You would also replace the value of `SourceAccount`
+#' with the Amazon Web Services account ID making that call.
 #' 
 #' `{ "Version": "2012-10-17", "Statement": [ { "Sid": "Route53LogsToCloudWatchLogs", "Effect": "Allow", "Principal": { "Service": [ "route53.amazonaws.com" ] }, "Action": "logs:PutLogEvents", "Resource": "logArn", "Condition": { "ArnLike": { "aws:SourceArn": "myRoute53ResourceArn" }, "StringEquals": { "aws:SourceAccount": "myAwsAccountId" } } } ] }`
 #'
@@ -1273,7 +1518,7 @@ cloudwatchlogs_put_resource_policy <- function(policyName = NULL, policyDocument
 #' Sets the retention of the specified log group
 #'
 #' @description
-#' Sets the retention of the specified log group. A retention policy allows you to configure the number of days for which to retain log events in the specified log group.
+#' Sets the retention of the specified log group. With a retention policy, you can configure the number of days for which to retain log events in the specified log group.
 #'
 #' See [https://paws-r.github.io/docs/cloudwatchlogs/put_retention_policy.html](https://paws-r.github.io/docs/cloudwatchlogs/put_retention_policy.html) for full documentation.
 #'
@@ -1304,7 +1549,7 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
 #' specified log group
 #'
 #' @description
-#' Creates or updates a subscription filter and associates it with the specified log group. Subscription filters allow you to subscribe to a real-time stream of log events ingested through [`put_log_events`][cloudwatchlogs_put_log_events] and have them delivered to a specific destination. When log events are sent to the receiving service, they are Base64 encoded and compressed with the gzip format.
+#' Creates or updates a subscription filter and associates it with the specified log group. With subscription filters, you can subscribe to a real-time stream of log events ingested through [`put_log_events`][cloudwatchlogs_put_log_events] and have them delivered to a specific destination. When log events are sent to the receiving service, they are Base64 encoded and compressed with the GZIP format.
 #'
 #' See [https://paws-r.github.io/docs/cloudwatchlogs/put_subscription_filter.html](https://paws-r.github.io/docs/cloudwatchlogs/put_subscription_filter.html) for full documentation.
 #'
@@ -1323,12 +1568,13 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
 #' -   A logical destination (specified using an ARN) belonging to a
 #'     different account, for cross-account delivery.
 #' 
-#'     If you are setting up a cross-account subscription, the destination
-#'     must have an IAM policy associated with it that allows the sender to
-#'     send logs to the destination. For more information, see
+#'     If you're setting up a cross-account subscription, the destination
+#'     must have an IAM policy associated with it. The IAM policy must
+#'     allow the sender to send logs to the destination. For more
+#'     information, see
 #'     [`put_destination_policy`][cloudwatchlogs_put_destination_policy].
 #' 
-#' -   An Amazon Kinesis Firehose delivery stream belonging to the same
+#' -   A Kinesis Data Firehose delivery stream belonging to the same
 #'     account as the subscription filter, for same-account delivery.
 #' 
 #' -   A Lambda function belonging to the same account as the subscription
@@ -1340,7 +1586,7 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
 #' @param distribution The method used to distribute log data to the destination. By default,
 #' log data is grouped by log stream, but the grouping can be set to random
 #' for a more even distribution. This property is only applicable when the
-#' destination is an Amazon Kinesis stream.
+#' destination is an Amazon Kinesis data stream.
 #'
 #' @keywords internal
 #'
@@ -1371,19 +1617,33 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
 #'
 #' @param logGroupName The log group on which to perform the query.
 #' 
-#' A [`start_query`][cloudwatchlogs_start_query] operation must include a
-#' `logGroupNames` or a `logGroupName` parameter, but not both.
-#' @param logGroupNames The list of log groups to be queried. You can include up to 20 log
+#' A [`start_query`][cloudwatchlogs_start_query] operation must include
+#' exactly one of the following parameters: `logGroupName`, `logGroupNames`
+#' or `logGroupIdentifiers`.
+#' @param logGroupNames The list of log groups to be queried. You can include up to 50 log
 #' groups.
 #' 
-#' A [`start_query`][cloudwatchlogs_start_query] operation must include a
-#' `logGroupNames` or a `logGroupName` parameter, but not both.
+#' A [`start_query`][cloudwatchlogs_start_query] operation must include
+#' exactly one of the following parameters: `logGroupName`, `logGroupNames`
+#' or `logGroupIdentifiers`.
+#' @param logGroupIdentifiers The list of log groups to query. You can include up to 50 log groups.
+#' 
+#' You can specify them by the log group name or ARN. If a log group that
+#' you're querying is in a source account and you're using a monitoring
+#' account, you must specify the ARN of the log group here. The query
+#' definition must also be defined in the monitoring account.
+#' 
+#' If you specify an ARN, the ARN can't end with an asterisk (*).
+#' 
+#' A [`start_query`][cloudwatchlogs_start_query] operation must include
+#' exactly one of the following parameters: `logGroupName`, `logGroupNames`
+#' or `logGroupIdentifiers`.
 #' @param startTime &#91;required&#93; The beginning of the time range to query. The range is inclusive, so the
 #' specified start time is included in the query. Specified as epoch time,
-#' the number of seconds since January 1, 1970, 00:00:00 UTC.
+#' the number of seconds since `January 1, 1970, 00:00:00 UTC`.
 #' @param endTime &#91;required&#93; The end of the time range to query. The range is inclusive, so the
 #' specified end time is included in the query. Specified as epoch time,
-#' the number of seconds since January 1, 1970, 00:00:00 UTC.
+#' the number of seconds since `January 1, 1970, 00:00:00 UTC`.
 #' @param queryString &#91;required&#93; The query string to use. For more information, see [CloudWatch Logs
 #' Insights Query
 #' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
@@ -1394,14 +1654,14 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_start_query
-cloudwatchlogs_start_query <- function(logGroupName = NULL, logGroupNames = NULL, startTime, endTime, queryString, limit = NULL) {
+cloudwatchlogs_start_query <- function(logGroupName = NULL, logGroupNames = NULL, logGroupIdentifiers = NULL, startTime, endTime, queryString, limit = NULL) {
   op <- new_operation(
     name = "StartQuery",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatchlogs$start_query_input(logGroupName = logGroupName, logGroupNames = logGroupNames, startTime = startTime, endTime = endTime, queryString = queryString, limit = limit)
+  input <- .cloudwatchlogs$start_query_input(logGroupName = logGroupName, logGroupNames = logGroupNames, logGroupIdentifiers = logGroupIdentifiers, startTime = startTime, endTime = endTime, queryString = queryString, limit = limit)
   output <- .cloudwatchlogs$start_query_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config)
@@ -1441,10 +1701,10 @@ cloudwatchlogs_stop_query <- function(queryId) {
 }
 .cloudwatchlogs$operations$stop_query <- cloudwatchlogs_stop_query
 
-#' Adds or updates the specified tags for the specified log group
+#' The TagLogGroup operation is on the path to deprecation
 #'
 #' @description
-#' Adds or updates the specified tags for the specified log group.
+#' The TagLogGroup operation is on the path to deprecation. We recommend that you use [`tag_resource`][cloudwatchlogs_tag_resource] instead.
 #'
 #' See [https://paws-r.github.io/docs/cloudwatchlogs/tag_log_group.html](https://paws-r.github.io/docs/cloudwatchlogs/tag_log_group.html) for full documentation.
 #'
@@ -1470,6 +1730,47 @@ cloudwatchlogs_tag_log_group <- function(logGroupName, tags) {
   return(response)
 }
 .cloudwatchlogs$operations$tag_log_group <- cloudwatchlogs_tag_log_group
+
+#' Assigns one or more tags (key-value pairs) to the specified CloudWatch
+#' Logs resource
+#'
+#' @description
+#' Assigns one or more tags (key-value pairs) to the specified CloudWatch Logs resource. Currently, the only CloudWatch Logs resources that can be tagged are log groups and destinations.
+#'
+#' See [https://paws-r.github.io/docs/cloudwatchlogs/tag_resource.html](https://paws-r.github.io/docs/cloudwatchlogs/tag_resource.html) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The ARN of the resource that you're adding tags to.
+#' 
+#' The ARN format of a log group is
+#' `arn:aws:logs:Region:account-id:log-group:log-group-name `
+#' 
+#' The ARN format of a destination is
+#' `arn:aws:logs:Region:account-id:destination:destination-name `
+#' 
+#' For more information about ARN format, see [CloudWatch Logs resources
+#' and
+#' operations](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/iam-access-control-overview-cwl.html).
+#' @param tags &#91;required&#93; The list of key-value pairs to associate with the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_tag_resource
+cloudwatchlogs_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .cloudwatchlogs$tag_resource_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$tag_resource <- cloudwatchlogs_tag_resource
 
 #' Tests the filter pattern of a metric filter against a sample of log
 #' event messages
@@ -1502,10 +1803,10 @@ cloudwatchlogs_test_metric_filter <- function(filterPattern, logEventMessages) {
 }
 .cloudwatchlogs$operations$test_metric_filter <- cloudwatchlogs_test_metric_filter
 
-#' Removes the specified tags from the specified log group
+#' The UntagLogGroup operation is on the path to deprecation
 #'
 #' @description
-#' Removes the specified tags from the specified log group.
+#' The UntagLogGroup operation is on the path to deprecation. We recommend that you use [`untag_resource`][cloudwatchlogs_untag_resource] instead.
 #'
 #' See [https://paws-r.github.io/docs/cloudwatchlogs/untag_log_group.html](https://paws-r.github.io/docs/cloudwatchlogs/untag_log_group.html) for full documentation.
 #'
@@ -1531,3 +1832,43 @@ cloudwatchlogs_untag_log_group <- function(logGroupName, tags) {
   return(response)
 }
 .cloudwatchlogs$operations$untag_log_group <- cloudwatchlogs_untag_log_group
+
+#' Removes one or more tags from the specified resource
+#'
+#' @description
+#' Removes one or more tags from the specified resource.
+#'
+#' See [https://paws-r.github.io/docs/cloudwatchlogs/untag_resource.html](https://paws-r.github.io/docs/cloudwatchlogs/untag_resource.html) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The ARN of the CloudWatch Logs resource that you're removing tags from.
+#' 
+#' The ARN format of a log group is
+#' `arn:aws:logs:Region:account-id:log-group:log-group-name `
+#' 
+#' The ARN format of a destination is
+#' `arn:aws:logs:Region:account-id:destination:destination-name `
+#' 
+#' For more information about ARN format, see [CloudWatch Logs resources
+#' and
+#' operations](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/iam-access-control-overview-cwl.html).
+#' @param tagKeys &#91;required&#93; The list of tag keys to remove from the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_untag_resource
+cloudwatchlogs_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .cloudwatchlogs$untag_resource_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$untag_resource <- cloudwatchlogs_untag_resource

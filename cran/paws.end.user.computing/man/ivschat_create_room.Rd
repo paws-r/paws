@@ -5,6 +5,7 @@
 \title{Creates a room that allows clients to connect and pass messages}
 \usage{
 ivschat_create_room(
+  loggingConfigurationIdentifiers = NULL,
   maximumMessageLength = NULL,
   maximumMessageRatePerSecond = NULL,
   messageReviewHandler = NULL,
@@ -13,6 +14,8 @@ ivschat_create_room(
 )
 }
 \arguments{
+\item{loggingConfigurationIdentifiers}{Array of logging-configuration identifiers attached to the room.}
+
 \item{maximumMessageLength}{Maximum number of characters in a single message. Messages are expected
 to be UTF-8 encoded and this limit applies specifically to
 rune/code-point count, not number of bytes. Default: 500.}
@@ -25,7 +28,10 @@ all clients). Default: 10.}
 \item{name}{Room name. The value does not need to be unique.}
 
 \item{tags}{Tags to attach to the resource. Array of maps, each of the form
-\code{string:string (key:value)}.}
+\code{string:string (key:value)}. See \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging AWS Resources}
+for details, including restrictions that apply to tags and "Tag naming
+limits and requirements"; Amazon IVS Chat has no constraints beyond what
+is documented there.}
 }
 \description{
 Creates a room that allows clients to connect and pass messages.

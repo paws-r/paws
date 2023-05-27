@@ -7,7 +7,7 @@
 codedeploy_batch_get_application_revisions(applicationName, revisions)
 }
 \arguments{
-\item{applicationName}{[required] The name of an AWS CodeDeploy application about which to get revision
+\item{applicationName}{[required] The name of an CodeDeploy application about which to get revision
 information.}
 
 \item{revisions}{[required] An array of \code{RevisionLocation} objects that specify information to get

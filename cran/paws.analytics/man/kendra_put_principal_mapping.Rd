@@ -47,14 +47,14 @@ process and apply on top of other actions with lower number IDs. This
 prevents previous actions with lower number IDs from possibly overriding
 the latest action.
 
-The ordering ID can be the UNIX time of the last update you made to a
+The ordering ID can be the Unix time of the last update you made to a
 group members list. You would then provide this list when calling
 \code{\link[=kendra_put_principal_mapping]{put_principal_mapping}}. This ensures
 your \code{PUT} action for that updated group with the latest members list
 doesn't get overwritten by earlier \code{PUT} actions for the same group
 which are yet to be processed.
 
-The default ordering ID is the current UNIX time in milliseconds that
+The default ordering ID is the current Unix time in milliseconds that
 the action was received by Amazon Kendra.}
 
 \item{RoleArn}{The Amazon Resource Name (ARN) of a role that has access to the S3 file

@@ -9,6 +9,7 @@ ec2_create_flow_logs(
   DryRun = NULL,
   ClientToken = NULL,
   DeliverLogsPermissionArn = NULL,
+  DeliverCrossAccountRole = NULL,
   LogGroupName = NULL,
   ResourceIds,
   ResourceType,
@@ -30,64 +31,66 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to ensure idempotency}.}
 
-\item{DeliverLogsPermissionArn}{The ARN for the IAM role that permits Amazon EC2 to publish flow logs to
-a CloudWatch Logs log group in your account.
+\item{DeliverLogsPermissionArn}{The ARN of the IAM role that allows Amazon EC2 to publish flow logs to a
+CloudWatch Logs log group in your account.
 
-If you specify \code{LogDestinationType} as \code{s3}, do not specify
-\code{DeliverLogsPermissionArn} or \code{LogGroupName}.}
+This parameter is required if the destination type is \code{cloud-watch-logs}
+and unsupported otherwise.}
+
+\item{DeliverCrossAccountRole}{The ARN of the IAM role that allows Amazon EC2 to publish flow logs
+across accounts.}
 
 \item{LogGroupName}{The name of a new or existing CloudWatch Logs log group where Amazon EC2
 publishes your flow logs.
 
-If you specify \code{LogDestinationType} as \code{s3}, do not specify
-\code{DeliverLogsPermissionArn} or \code{LogGroupName}.}
+This parameter is valid only if the destination type is
+\code{cloud-watch-logs}.}
 
-\item{ResourceIds}{[required] The ID of the subnet, network interface, or VPC for which you want to
-create a flow log.
+\item{ResourceIds}{[required] The IDs of the resources to monitor. For example, if the resource type
+is \code{VPC}, specify the IDs of the VPCs.
 
-Constraints: Maximum of 1000 resources}
+Constraints: Maximum of 25 for transit gateway resource types. Maximum
+of 1000 for the other resource types.}
 
-\item{ResourceType}{[required] The type of resource for which to create the flow log. For example, if
-you specified a VPC ID for the \code{ResourceId} property, specify \code{VPC} for
-this property.}
+\item{ResourceType}{[required] The type of resource to monitor.}
 
-\item{TrafficType}{The type of traffic to log. You can log traffic that the resource
-accepts or rejects, or all traffic.}
+\item{TrafficType}{The type of traffic to monitor (accepted traffic, rejected traffic, or
+all traffic). This parameter is not supported for transit gateway
+resource types. It is required for the other resource types.}
 
-\item{LogDestinationType}{The type of destination to which the flow log data is to be published.
-Flow log data can be published to CloudWatch Logs or Amazon S3. To
-publish flow log data to CloudWatch Logs, specify \code{cloud-watch-logs}. To
-publish flow log data to Amazon S3, specify \code{s3}.
-
-If you specify \code{LogDestinationType} as \code{s3}, do not specify
-\code{DeliverLogsPermissionArn} or \code{LogGroupName}.
+\item{LogDestinationType}{The type of destination for the flow log data.
 
 Default: \code{cloud-watch-logs}}
 
-\item{LogDestination}{The destination to which the flow log data is to be published. Flow log
-data can be published to a CloudWatch Logs log group or an Amazon S3
-bucket. The value specified for this parameter depends on the value
-specified for \code{LogDestinationType}.
+\item{LogDestination}{The destination for the flow log data. The meaning of this parameter
+depends on the destination type.
+\itemize{
+\item If the destination type is \code{cloud-watch-logs}, specify the ARN of a
+CloudWatch Logs log group. For example:
 
-If \code{LogDestinationType} is not specified or \code{cloud-watch-logs}, specify
-the Amazon Resource Name (ARN) of the CloudWatch Logs log group. For
-example, to publish to a log group called \code{my-logs}, specify
-\code{arn:aws:logs:us-east-1:123456789012:log-group:my-logs}. Alternatively,
-use \code{LogGroupName} instead.
+arn:aws:logs:\emph{region}:\emph{account_id}:log-group:\emph{my_group}
 
-If LogDestinationType is \code{s3}, specify the ARN of the Amazon S3 bucket.
-You can also specify a subfolder in the bucket. To specify a subfolder
-in the bucket, use the following ARN format:
-\verb{bucket_ARN/subfolder_name/}. For example, to specify a subfolder named
-\code{my-logs} in a bucket named \code{my-bucket}, use the following ARN:
-\verb{arn:aws:s3:::my-bucket/my-logs/}. You cannot use \code{AWSLogs} as a
-subfolder name. This is a reserved term.}
+Alternatively, use the \code{LogGroupName} parameter.
+\item If the destination type is \code{s3}, specify the ARN of an S3 bucket.
+For example:
 
-\item{LogFormat}{The fields to include in the flow log record, in the order in which they
-should appear. For a list of available fields, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html#flow-log-records}{Flow log records}.
-If you omit this parameter, the flow log is created using the default
-format. If you specify this parameter, you must specify at least one
-field.
+arn:aws:s3:::\emph{my_bucket}/\emph{my_subfolder}/
+
+The subfolder is optional. Note that you can't use \code{AWSLogs} as a
+subfolder name.
+\item If the destination type is \code{kinesis-data-firehose}, specify the ARN
+of a Kinesis Data Firehose delivery stream. For example:
+
+arn:aws:firehose:\emph{region}:\emph{account_id}:deliverystream:\emph{my_stream}
+}}
+
+\item{LogFormat}{The fields to include in the flow log record. List the fields in the
+order in which they should appear. If you omit this parameter, the flow
+log is created using the default format. If you specify this parameter,
+you must include at least one field. For more information about the
+available fields, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html#flow-log-records}{Flow log records}
+in the \emph{Amazon VPC User Guide} or \href{https://docs.aws.amazon.com/vpc/latest/tgw/tgw-flow-logs.html#flow-log-records}{Transit Gateway Flow Log records}
+in the \emph{Amazon Web Services Transit Gateway Guide}.
 
 Specify the fields using the \verb{$\{field-id\}} format, separated by spaces.
 For the CLI, surround this parameter value with single quotes on Linux
@@ -96,8 +99,9 @@ or double quotes on Windows.}
 \item{TagSpecifications}{The tags to apply to the flow logs.}
 
 \item{MaxAggregationInterval}{The maximum interval of time during which a flow of packets is captured
-and aggregated into a flow log record. You can specify 60 seconds (1
-minute) or 600 seconds (10 minutes).
+and aggregated into a flow log record. The possible values are 60
+seconds (1 minute) or 600 seconds (10 minutes). This parameter must be
+60 seconds for transit gateway resource types.
 
 When a network interface is attached to a \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{Nitro-based instance},
 the aggregation interval is always 60 seconds or less, regardless of the

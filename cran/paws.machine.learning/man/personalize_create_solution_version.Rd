@@ -5,12 +5,15 @@
 \title{Trains or retrains an active solution in a Custom dataset group}
 \usage{
 personalize_create_solution_version(
+  name = NULL,
   solutionArn,
   trainingMode = NULL,
   tags = NULL
 )
 }
 \arguments{
+\item{name}{The name of the solution version.}
+
 \item{solutionArn}{[required] The Amazon Resource Name (ARN) of the solution containing the training
 configuration information.}
 

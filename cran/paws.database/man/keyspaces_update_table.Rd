@@ -14,7 +14,8 @@ keyspaces_update_table(
   encryptionSpecification = NULL,
   pointInTimeRecovery = NULL,
   ttl = NULL,
-  defaultTimeToLive = NULL
+  defaultTimeToLive = NULL,
+  clientSideTimestamps = NULL
 )
 }
 \arguments{
@@ -23,20 +24,20 @@ keyspaces_update_table(
 \item{tableName}{[required] The name of the table.}
 
 \item{addColumns}{For each column to be added to the specified table:
-
-• \code{name} - The name of the column.
-
-• \code{type} - An Amazon Keyspaces data type. For more information, see
+\itemize{
+\item \code{name} - The name of the column.
+\item \code{type} - An Amazon Keyspaces data type. For more information, see
 \href{https://docs.aws.amazon.com/keyspaces/latest/devguide/cql.elements.html#cql.data-types}{Data types}
-in the \emph{Amazon Keyspaces Developer Guide}.}
+in the \emph{Amazon Keyspaces Developer Guide}.
+}}
 
 \item{capacitySpecification}{Modifies the read/write throughput capacity mode for the table. The
 options are:
-
-• \code{throughputMode:PAY_PER_REQUEST} and
-
-• \code{throughputMode:PROVISIONED} - Provisioned capacity mode requires
+\itemize{
+\item \code{throughputMode:PAY_PER_REQUEST} and
+\item \code{throughputMode:PROVISIONED} - Provisioned capacity mode requires
 \code{readCapacityUnits} and \code{writeCapacityUnits} as input.
+}
 
 The default is \code{throughput_mode:PAY_PER_REQUEST}.
 
@@ -45,13 +46,13 @@ in the \emph{Amazon Keyspaces Developer Guide}.}
 
 \item{encryptionSpecification}{Modifies the encryption settings of the table. You can choose one of the
 following KMS key (KMS key):
-
-• \code{type:AWS_OWNED_KMS_KEY} - This key is owned by Amazon Keyspaces.
-
-• \code{type:CUSTOMER_MANAGED_KMS_KEY} - This key is stored in your account
+\itemize{
+\item \code{type:AWS_OWNED_KMS_KEY} - This key is owned by Amazon Keyspaces.
+\item \code{type:CUSTOMER_MANAGED_KMS_KEY} - This key is stored in your account
 and is created, owned, and managed by you. This option requires the
-\code{kms_key_identifier} of the KMS key in Amazon Resource Name (ARN) format
-as input.
+\code{kms_key_identifier} of the KMS key in Amazon Resource Name (ARN)
+format as input.
+}
 
 The default is \code{AWS_OWNED_KMS_KEY}.
 
@@ -60,21 +61,21 @@ in the \emph{Amazon Keyspaces Developer Guide}.}
 
 \item{pointInTimeRecovery}{Modifies the \code{pointInTimeRecovery} settings of the table. The options
 are:
+\itemize{
+\item \code{status=ENABLED}
+\item \code{status=DISABLED}
+}
 
-• \code{ENABLED}
-
-• \code{DISABLED}
-
-If it's not specified, the default is \code{DISABLED}.
+If it's not specified, the default is \code{status=DISABLED}.
 
 For more information, see \href{https://docs.aws.amazon.com/keyspaces/latest/devguide/PointInTimeRecovery.html}{Point-in-time recovery}
 in the \emph{Amazon Keyspaces Developer Guide}.}
 
 \item{ttl}{Modifies Time to Live custom settings for the table. The options are:
-
-• \code{status:enabled}
-
-• \code{status:disabled}
+\itemize{
+\item \code{status:enabled}
+\item \code{status:disabled}
+}
 
 The default is \code{status:disabled}. After \code{ttl} is enabled, you can't
 disable it for the table.
@@ -86,6 +87,16 @@ in the \emph{Amazon Keyspaces Developer Guide}.}
 
 For more information, see \href{https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL-how-it-works.html#ttl-howitworks_default_ttl}{Setting the default TTL value for a table}
 in the \emph{Amazon Keyspaces Developer Guide}.}
+
+\item{clientSideTimestamps}{Enables client-side timestamps for the table. By default, the setting is
+disabled. You can enable client-side timestamps with the following
+option:
+\itemize{
+\item \code{status: "enabled"}
+}
+
+Once client-side timestamps are enabled for a table, this setting cannot
+be disabled.}
 }
 \description{
 Adds new columns to the table or updates one of the table's settings, for example capacity mode, encryption, point-in-time recovery, or ttl settings. Note that you can only update one specific table setting per update operation.

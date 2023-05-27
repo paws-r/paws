@@ -96,6 +96,59 @@ workmail_associate_member_to_group <- function(OrganizationId, GroupId, MemberId
 }
 .workmail$operations$associate_member_to_group <- workmail_associate_member_to_group
 
+#' Assumes an impersonation role for the given WorkMail organization
+#'
+#' @description
+#' Assumes an impersonation role for the given WorkMail organization. This
+#' method returns an authentication token you can use to make impersonated
+#' calls.
+#'
+#' @usage
+#' workmail_assume_impersonation_role(OrganizationId, ImpersonationRoleId)
+#'
+#' @param OrganizationId &#91;required&#93; The WorkMail organization under which the impersonation role will be
+#' assumed.
+#' @param ImpersonationRoleId &#91;required&#93; The impersonation role ID to assume.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Token = "string",
+#'   ExpiresIn = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$assume_impersonation_role(
+#'   OrganizationId = "string",
+#'   ImpersonationRoleId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_assume_impersonation_role
+#'
+#' @aliases workmail_assume_impersonation_role
+workmail_assume_impersonation_role <- function(OrganizationId, ImpersonationRoleId) {
+  op <- new_operation(
+    name = "AssumeImpersonationRole",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$assume_impersonation_role_input(OrganizationId = OrganizationId, ImpersonationRoleId = ImpersonationRoleId)
+  output <- .workmail$assume_impersonation_role_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$assume_impersonation_role <- workmail_assume_impersonation_role
+
 #' Cancels a mailbox export job
 #'
 #' @description
@@ -145,12 +198,10 @@ workmail_cancel_mailbox_export_job <- function(ClientToken, JobId, OrganizationI
 }
 .workmail$operations$cancel_mailbox_export_job <- workmail_cancel_mailbox_export_job
 
-#' Adds an alias to the set of a given member (user or group) of Amazon
-#' WorkMail
+#' Adds an alias to the set of a given member (user or group) of WorkMail
 #'
 #' @description
-#' Adds an alias to the set of a given member (user or group) of Amazon
-#' WorkMail.
+#' Adds an alias to the set of a given member (user or group) of WorkMail.
 #'
 #' @usage
 #' workmail_create_alias(OrganizationId, EntityId, Alias)
@@ -206,8 +257,8 @@ workmail_create_alias <- function(OrganizationId, EntityId, Alias) {
 #'
 #' @param ClientToken An idempotent token that ensures that an API request is executed only
 #' once.
-#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization for which the
-#' `AvailabilityConfiguration` will be created.
+#' @param OrganizationId &#91;required&#93; The WorkMail organization for which the `AvailabilityConfiguration` will
+#' be created.
 #' @param DomainName &#91;required&#93; The domain to which the provider applies.
 #' @param EwsProvider Exchange Web Services (EWS) availability provider definition. The
 #' request must contain exactly one provider definition, either
@@ -258,11 +309,11 @@ workmail_create_availability_configuration <- function(ClientToken = NULL, Organ
 }
 .workmail$operations$create_availability_configuration <- workmail_create_availability_configuration
 
-#' Creates a group that can be used in Amazon WorkMail by calling the
+#' Creates a group that can be used in WorkMail by calling the
 #' RegisterToWorkMail operation
 #'
 #' @description
-#' Creates a group that can be used in Amazon WorkMail by calling the
+#' Creates a group that can be used in WorkMail by calling the
 #' [`register_to_work_mail`][workmail_register_to_work_mail] operation.
 #'
 #' @usage
@@ -309,12 +360,89 @@ workmail_create_group <- function(OrganizationId, Name) {
 }
 .workmail$operations$create_group <- workmail_create_group
 
-#' Creates a new mobile device access rule for the specified Amazon
-#' WorkMail organization
+#' Creates an impersonation role for the given WorkMail organization
 #'
 #' @description
-#' Creates a new mobile device access rule for the specified Amazon
-#' WorkMail organization.
+#' Creates an impersonation role for the given WorkMail organization.
+#' 
+#' *Idempotency* ensures that an API request completes no more than one
+#' time. With an idempotent request, if the original request completes
+#' successfully, any subsequent retries also complete successfully without
+#' performing any further actions.
+#'
+#' @usage
+#' workmail_create_impersonation_role(ClientToken, OrganizationId, Name,
+#'   Type, Description, Rules)
+#'
+#' @param ClientToken The idempotency token for the client request.
+#' @param OrganizationId &#91;required&#93; The WorkMail organization to create the new impersonation role within.
+#' @param Name &#91;required&#93; The name of the new impersonation role.
+#' @param Type &#91;required&#93; The impersonation role's type. The available impersonation role types
+#' are `READ_ONLY` or `FULL_ACCESS`.
+#' @param Description The description of the new impersonation role.
+#' @param Rules &#91;required&#93; The list of rules for the impersonation role.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImpersonationRoleId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_impersonation_role(
+#'   ClientToken = "string",
+#'   OrganizationId = "string",
+#'   Name = "string",
+#'   Type = "FULL_ACCESS"|"READ_ONLY",
+#'   Description = "string",
+#'   Rules = list(
+#'     list(
+#'       ImpersonationRuleId = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       Effect = "ALLOW"|"DENY",
+#'       TargetUsers = list(
+#'         "string"
+#'       ),
+#'       NotTargetUsers = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_create_impersonation_role
+#'
+#' @aliases workmail_create_impersonation_role
+workmail_create_impersonation_role <- function(ClientToken = NULL, OrganizationId, Name, Type, Description = NULL, Rules) {
+  op <- new_operation(
+    name = "CreateImpersonationRole",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$create_impersonation_role_input(ClientToken = ClientToken, OrganizationId = OrganizationId, Name = Name, Type = Type, Description = Description, Rules = Rules)
+  output <- .workmail$create_impersonation_role_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$create_impersonation_role <- workmail_create_impersonation_role
+
+#' Creates a new mobile device access rule for the specified WorkMail
+#' organization
+#'
+#' @description
+#' Creates a new mobile device access rule for the specified WorkMail
+#' organization.
 #'
 #' @usage
 #' workmail_create_mobile_device_access_rule(OrganizationId, ClientToken,
@@ -322,7 +450,7 @@ workmail_create_group <- function(OrganizationId, Name) {
 #'   NotDeviceModels, DeviceOperatingSystems, NotDeviceOperatingSystems,
 #'   DeviceUserAgents, NotDeviceUserAgents)
 #'
-#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization under which the rule will be created.
+#' @param OrganizationId &#91;required&#93; The WorkMail organization under which the rule will be created.
 #' @param ClientToken The idempotency token for the client request.
 #' @param Name &#91;required&#93; The rule name.
 #' @param Description The rule description.
@@ -406,32 +534,31 @@ workmail_create_mobile_device_access_rule <- function(OrganizationId, ClientToke
 }
 .workmail$operations$create_mobile_device_access_rule <- workmail_create_mobile_device_access_rule
 
-#' Creates a new Amazon WorkMail organization
+#' Creates a new WorkMail organization
 #'
 #' @description
-#' Creates a new Amazon WorkMail organization. Optionally, you can choose
-#' to associate an existing AWS Directory Service directory with your
+#' Creates a new WorkMail organization. Optionally, you can choose to
+#' associate an existing AWS Directory Service directory with your
 #' organization. If an AWS Directory Service directory ID is specified, the
 #' organization alias must match the directory alias. If you choose not to
 #' associate an existing directory with your organization, then we create a
-#' new Amazon WorkMail directory for you. For more information, see [Adding
-#' an
+#' new WorkMail directory for you. For more information, see [Adding an
 #' organization](https://docs.aws.amazon.com/workmail/latest/adminguide/add_new_organization.html)
-#' in the *Amazon WorkMail Administrator Guide*.
+#' in the *WorkMail Administrator Guide*.
 #' 
-#' You can associate multiple email domains with an organization, then set
-#' your default email domain from the Amazon WorkMail console. You can also
+#' You can associate multiple email domains with an organization, then
+#' choose your default email domain from the WorkMail console. You can also
 #' associate a domain that is managed in an Amazon Route 53 public hosted
 #' zone. For more information, see [Adding a
 #' domain](https://docs.aws.amazon.com/workmail/latest/adminguide/add_domain.html)
 #' and [Choosing the default
 #' domain](https://docs.aws.amazon.com/workmail/latest/adminguide/default_domain.html)
-#' in the *Amazon WorkMail Administrator Guide*.
+#' in the *WorkMail Administrator Guide*.
 #' 
-#' Optionally, you can use a customer managed master key from AWS Key
-#' Management Service (AWS KMS) to encrypt email for your organization. If
-#' you don't associate an AWS KMS key, Amazon WorkMail creates a default
-#' AWS managed master key for you.
+#' Optionally, you can use a customer managed key from AWS Key Management
+#' Service (AWS KMS) to encrypt email for your organization. If you don't
+#' associate an AWS KMS key, WorkMail creates a default, AWS managed key
+#' for you.
 #'
 #' @usage
 #' workmail_create_organization(DirectoryId, Alias, ClientToken, Domains,
@@ -441,11 +568,10 @@ workmail_create_mobile_device_access_rule <- function(OrganizationId, ClientToke
 #' @param Alias &#91;required&#93; The organization alias.
 #' @param ClientToken The idempotency token associated with the request.
 #' @param Domains The email domains to associate with the organization.
-#' @param KmsKeyArn The Amazon Resource Name (ARN) of a customer managed master key from AWS
-#' KMS.
-#' @param EnableInteroperability When `true`, allows organization interoperability between Amazon
-#' WorkMail and Microsoft Exchange. Can only be set to `true` if an AD
-#' Connector directory ID is included in the request.
+#' @param KmsKeyArn The Amazon Resource Name (ARN) of a customer managed key from AWS KMS.
+#' @param EnableInteroperability When `true`, allows organization interoperability between WorkMail and
+#' Microsoft Exchange. If `true`, you must include a AD Connector directory
+#' ID in the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -494,10 +620,10 @@ workmail_create_organization <- function(DirectoryId = NULL, Alias, ClientToken 
 }
 .workmail$operations$create_organization <- workmail_create_organization
 
-#' Creates a new Amazon WorkMail resource
+#' Creates a new WorkMail resource
 #'
 #' @description
-#' Creates a new Amazon WorkMail resource.
+#' Creates a new WorkMail resource.
 #'
 #' @usage
 #' workmail_create_resource(OrganizationId, Name, Type)
@@ -547,11 +673,11 @@ workmail_create_resource <- function(OrganizationId, Name, Type) {
 }
 .workmail$operations$create_resource <- workmail_create_resource
 
-#' Creates a user who can be used in Amazon WorkMail by calling the
+#' Creates a user who can be used in WorkMail by calling the
 #' RegisterToWorkMail operation
 #'
 #' @description
-#' Creates a user who can be used in Amazon WorkMail by calling the
+#' Creates a user who can be used in WorkMail by calling the
 #' [`register_to_work_mail`][workmail_register_to_work_mail] operation.
 #'
 #' @usage
@@ -712,8 +838,8 @@ workmail_delete_alias <- function(OrganizationId, EntityId, Alias) {
 #' @usage
 #' workmail_delete_availability_configuration(OrganizationId, DomainName)
 #'
-#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization for which the
-#' `AvailabilityConfiguration` will be deleted.
+#' @param OrganizationId &#91;required&#93; The WorkMail organization for which the `AvailabilityConfiguration` will
+#' be deleted.
 #' @param DomainName &#91;required&#93; The domain for which the `AvailabilityConfiguration` will be deleted.
 #'
 #' @return
@@ -792,10 +918,10 @@ workmail_delete_email_monitoring_configuration <- function(OrganizationId) {
 }
 .workmail$operations$delete_email_monitoring_configuration <- workmail_delete_email_monitoring_configuration
 
-#' Deletes a group from Amazon WorkMail
+#' Deletes a group from WorkMail
 #'
 #' @description
-#' Deletes a group from Amazon WorkMail.
+#' Deletes a group from WorkMail.
 #'
 #' @usage
 #' workmail_delete_group(OrganizationId, GroupId)
@@ -835,6 +961,50 @@ workmail_delete_group <- function(OrganizationId, GroupId) {
   return(response)
 }
 .workmail$operations$delete_group <- workmail_delete_group
+
+#' Deletes an impersonation role for the given WorkMail organization
+#'
+#' @description
+#' Deletes an impersonation role for the given WorkMail organization.
+#'
+#' @usage
+#' workmail_delete_impersonation_role(OrganizationId, ImpersonationRoleId)
+#'
+#' @param OrganizationId &#91;required&#93; The WorkMail organization from which to delete the impersonation role.
+#' @param ImpersonationRoleId &#91;required&#93; The ID of the impersonation role to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_impersonation_role(
+#'   OrganizationId = "string",
+#'   ImpersonationRoleId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_delete_impersonation_role
+#'
+#' @aliases workmail_delete_impersonation_role
+workmail_delete_impersonation_role <- function(OrganizationId, ImpersonationRoleId) {
+  op <- new_operation(
+    name = "DeleteImpersonationRole",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$delete_impersonation_role_input(OrganizationId = OrganizationId, ImpersonationRoleId = ImpersonationRoleId)
+  output <- .workmail$delete_impersonation_role_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$delete_impersonation_role <- workmail_delete_impersonation_role
 
 #' Deletes permissions granted to a member (user or group)
 #'
@@ -899,8 +1069,7 @@ workmail_delete_mailbox_permissions <- function(OrganizationId, EntityId, Grante
 #' workmail_delete_mobile_device_access_override(OrganizationId, UserId,
 #'   DeviceId)
 #'
-#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization for which the access override will be
-#' deleted.
+#' @param OrganizationId &#91;required&#93; The WorkMail organization for which the access override will be deleted.
 #' @param UserId &#91;required&#93; The WorkMail user for which you want to delete the override. Accepts the
 #' following types of user identities:
 #' 
@@ -947,11 +1116,11 @@ workmail_delete_mobile_device_access_override <- function(OrganizationId, UserId
 }
 .workmail$operations$delete_mobile_device_access_override <- workmail_delete_mobile_device_access_override
 
-#' Deletes a mobile device access rule for the specified Amazon WorkMail
+#' Deletes a mobile device access rule for the specified WorkMail
 #' organization
 #'
 #' @description
-#' Deletes a mobile device access rule for the specified Amazon WorkMail
+#' Deletes a mobile device access rule for the specified WorkMail
 #' organization.
 #' 
 #' Deleting already deleted and non-existing rules does not produce an
@@ -962,7 +1131,7 @@ workmail_delete_mobile_device_access_override <- function(OrganizationId, UserId
 #' workmail_delete_mobile_device_access_rule(OrganizationId,
 #'   MobileDeviceAccessRuleId)
 #'
-#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization under which the rule will be deleted.
+#' @param OrganizationId &#91;required&#93; The WorkMail organization under which the rule will be deleted.
 #' @param MobileDeviceAccessRuleId &#91;required&#93; The identifier of the rule to be deleted.
 #'
 #' @return
@@ -998,16 +1167,16 @@ workmail_delete_mobile_device_access_rule <- function(OrganizationId, MobileDevi
 }
 .workmail$operations$delete_mobile_device_access_rule <- workmail_delete_mobile_device_access_rule
 
-#' Deletes an Amazon WorkMail organization and all underlying AWS resources
-#' managed by Amazon WorkMail as part of the organization
+#' Deletes an WorkMail organization and all underlying AWS resources
+#' managed by WorkMail as part of the organization
 #'
 #' @description
-#' Deletes an Amazon WorkMail organization and all underlying AWS resources
-#' managed by Amazon WorkMail as part of the organization. You can choose
-#' whether to delete the associated directory. For more information, see
-#' [Removing an
+#' Deletes an WorkMail organization and all underlying AWS resources
+#' managed by WorkMail as part of the organization. You can choose whether
+#' to delete the associated directory. For more information, see [Removing
+#' an
 #' organization](https://docs.aws.amazon.com/workmail/latest/adminguide/delete_organization.html)
-#' in the *Amazon WorkMail Administrator Guide*.
+#' in the *WorkMail Administrator Guide*.
 #'
 #' @usage
 #' workmail_delete_organization(ClientToken, OrganizationId,
@@ -1147,11 +1316,11 @@ workmail_delete_retention_policy <- function(OrganizationId, Id) {
 }
 .workmail$operations$delete_retention_policy <- workmail_delete_retention_policy
 
-#' Deletes a user from Amazon WorkMail and all subsequent systems
+#' Deletes a user from WorkMail and all subsequent systems
 #'
 #' @description
-#' Deletes a user from Amazon WorkMail and all subsequent systems. Before
-#' you can delete a user, the user state must be `DISABLED`. Use the
+#' Deletes a user from WorkMail and all subsequent systems. Before you can
+#' delete a user, the user state must be `DISABLED`. Use the
 #' [`describe_user`][workmail_describe_user] action to confirm the user
 #' state.
 #' 
@@ -1197,19 +1366,19 @@ workmail_delete_user <- function(OrganizationId, UserId) {
 }
 .workmail$operations$delete_user <- workmail_delete_user
 
-#' Mark a user, group, or resource as no longer used in Amazon WorkMail
+#' Mark a user, group, or resource as no longer used in WorkMail
 #'
 #' @description
-#' Mark a user, group, or resource as no longer used in Amazon WorkMail.
-#' This action disassociates the mailbox and schedules it for clean-up.
-#' WorkMail keeps mailboxes for 30 days before they are permanently
-#' removed. The functionality in the console is *Disable*.
+#' Mark a user, group, or resource as no longer used in WorkMail. This
+#' action disassociates the mailbox and schedules it for clean-up. WorkMail
+#' keeps mailboxes for 30 days before they are permanently removed. The
+#' functionality in the console is *Disable*.
 #'
 #' @usage
 #' workmail_deregister_from_work_mail(OrganizationId, EntityId)
 #'
-#' @param OrganizationId &#91;required&#93; The identifier for the organization under which the Amazon WorkMail
-#' entity exists.
+#' @param OrganizationId &#91;required&#93; The identifier for the organization under which the WorkMail entity
+#' exists.
 #' @param EntityId &#91;required&#93; The identifier for the member (user or group) to be updated.
 #'
 #' @return
@@ -1245,20 +1414,19 @@ workmail_deregister_from_work_mail <- function(OrganizationId, EntityId) {
 }
 .workmail$operations$deregister_from_work_mail <- workmail_deregister_from_work_mail
 
-#' Removes a domain from Amazon WorkMail, stops email routing to WorkMail,
-#' and removes the authorization allowing WorkMail use
+#' Removes a domain from WorkMail, stops email routing to WorkMail, and
+#' removes the authorization allowing WorkMail use
 #'
 #' @description
-#' Removes a domain from Amazon WorkMail, stops email routing to WorkMail,
-#' and removes the authorization allowing WorkMail use. SES keeps the
-#' domain because other applications may use it. You must first remove any
-#' email address used by WorkMail entities before you remove the domain.
+#' Removes a domain from WorkMail, stops email routing to WorkMail, and
+#' removes the authorization allowing WorkMail use. SES keeps the domain
+#' because other applications may use it. You must first remove any email
+#' address used by WorkMail entities before you remove the domain.
 #'
 #' @usage
 #' workmail_deregister_mail_domain(OrganizationId, DomainName)
 #'
-#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization for which the domain will be
-#' deregistered.
+#' @param OrganizationId &#91;required&#93; The WorkMail organization for which the domain will be deregistered.
 #' @param DomainName &#91;required&#93; The domain to deregister in WorkMail and SES.
 #'
 #' @return
@@ -1795,21 +1963,26 @@ workmail_disassociate_member_from_group <- function(OrganizationId, GroupId, Mem
 .workmail$operations$disassociate_member_from_group <- workmail_disassociate_member_from_group
 
 #' Gets the effects of an organization's access control rules as they apply
-#' to a specified IPv4 address, access protocol action, or user ID
+#' to a specified IPv4 address, access protocol action, and user ID or
+#' impersonation role ID
 #'
 #' @description
 #' Gets the effects of an organization's access control rules as they apply
-#' to a specified IPv4 address, access protocol action, or user ID.
+#' to a specified IPv4 address, access protocol action, and user ID or
+#' impersonation role ID. You must provide either the user ID or
+#' impersonation role ID. Impersonation role ID can only be used with
+#' Action EWS.
 #'
 #' @usage
 #' workmail_get_access_control_effect(OrganizationId, IpAddress, Action,
-#'   UserId)
+#'   UserId, ImpersonationRoleId)
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization.
 #' @param IpAddress &#91;required&#93; The IPv4 address.
 #' @param Action &#91;required&#93; The access protocol action. Valid values include `ActiveSync`,
 #' `AutoDiscover`, `EWS`, `IMAP`, `SMTP`, `WindowsOutlook`, and `WebMail`.
-#' @param UserId &#91;required&#93; The user ID.
+#' @param UserId The user ID.
+#' @param ImpersonationRoleId The impersonation role ID.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1828,7 +2001,8 @@ workmail_disassociate_member_from_group <- function(OrganizationId, GroupId, Mem
 #'   OrganizationId = "string",
 #'   IpAddress = "string",
 #'   Action = "string",
-#'   UserId = "string"
+#'   UserId = "string",
+#'   ImpersonationRoleId = "string"
 #' )
 #' ```
 #'
@@ -1837,14 +2011,14 @@ workmail_disassociate_member_from_group <- function(OrganizationId, GroupId, Mem
 #' @rdname workmail_get_access_control_effect
 #'
 #' @aliases workmail_get_access_control_effect
-workmail_get_access_control_effect <- function(OrganizationId, IpAddress, Action, UserId) {
+workmail_get_access_control_effect <- function(OrganizationId, IpAddress, Action, UserId = NULL, ImpersonationRoleId = NULL) {
   op <- new_operation(
     name = "GetAccessControlEffect",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .workmail$get_access_control_effect_input(OrganizationId = OrganizationId, IpAddress = IpAddress, Action = Action, UserId = UserId)
+  input <- .workmail$get_access_control_effect_input(OrganizationId = OrganizationId, IpAddress = IpAddress, Action = Action, UserId = UserId, ImpersonationRoleId = ImpersonationRoleId)
   output <- .workmail$get_access_control_effect_output()
   config <- get_config()
   svc <- .workmail$service(config)
@@ -1911,6 +2085,146 @@ workmail_get_default_retention_policy <- function(OrganizationId) {
 }
 .workmail$operations$get_default_retention_policy <- workmail_get_default_retention_policy
 
+#' Gets the impersonation role details for the given WorkMail organization
+#'
+#' @description
+#' Gets the impersonation role details for the given WorkMail organization.
+#'
+#' @usage
+#' workmail_get_impersonation_role(OrganizationId, ImpersonationRoleId)
+#'
+#' @param OrganizationId &#91;required&#93; The WorkMail organization from which to retrieve the impersonation role.
+#' @param ImpersonationRoleId &#91;required&#93; The impersonation role ID to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImpersonationRoleId = "string",
+#'   Name = "string",
+#'   Type = "FULL_ACCESS"|"READ_ONLY",
+#'   Description = "string",
+#'   Rules = list(
+#'     list(
+#'       ImpersonationRuleId = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       Effect = "ALLOW"|"DENY",
+#'       TargetUsers = list(
+#'         "string"
+#'       ),
+#'       NotTargetUsers = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   DateCreated = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DateModified = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_impersonation_role(
+#'   OrganizationId = "string",
+#'   ImpersonationRoleId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_get_impersonation_role
+#'
+#' @aliases workmail_get_impersonation_role
+workmail_get_impersonation_role <- function(OrganizationId, ImpersonationRoleId) {
+  op <- new_operation(
+    name = "GetImpersonationRole",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$get_impersonation_role_input(OrganizationId = OrganizationId, ImpersonationRoleId = ImpersonationRoleId)
+  output <- .workmail$get_impersonation_role_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$get_impersonation_role <- workmail_get_impersonation_role
+
+#' Tests whether the given impersonation role can impersonate a target user
+#'
+#' @description
+#' Tests whether the given impersonation role can impersonate a target
+#' user.
+#'
+#' @usage
+#' workmail_get_impersonation_role_effect(OrganizationId,
+#'   ImpersonationRoleId, TargetUser)
+#'
+#' @param OrganizationId &#91;required&#93; The WorkMail organization where the impersonation role is defined.
+#' @param ImpersonationRoleId &#91;required&#93; The impersonation role ID to test.
+#' @param TargetUser &#91;required&#93; The WorkMail organization user chosen to test the impersonation role.
+#' The following identity formats are available:
+#' 
+#' -   User ID: `12345678-1234-1234-1234-123456789012` or
+#'     `S-1-1-12-1234567890-123456789-123456789-1234`
+#' 
+#' -   Email address: `user@@domain.tld`
+#' 
+#' -   User name: `user`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Type = "FULL_ACCESS"|"READ_ONLY",
+#'   Effect = "ALLOW"|"DENY",
+#'   MatchedRules = list(
+#'     list(
+#'       ImpersonationRuleId = "string",
+#'       Name = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_impersonation_role_effect(
+#'   OrganizationId = "string",
+#'   ImpersonationRoleId = "string",
+#'   TargetUser = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_get_impersonation_role_effect
+#'
+#' @aliases workmail_get_impersonation_role_effect
+workmail_get_impersonation_role_effect <- function(OrganizationId, ImpersonationRoleId, TargetUser) {
+  op <- new_operation(
+    name = "GetImpersonationRoleEffect",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$get_impersonation_role_effect_input(OrganizationId = OrganizationId, ImpersonationRoleId = ImpersonationRoleId, TargetUser = TargetUser)
+  output <- .workmail$get_impersonation_role_effect_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$get_impersonation_role_effect <- workmail_get_impersonation_role_effect
+
 #' Gets details for a mail domain, including domain records required to
 #' configure your domain with recommended security
 #'
@@ -1921,7 +2235,7 @@ workmail_get_default_retention_policy <- function(OrganizationId) {
 #' @usage
 #' workmail_get_mail_domain(OrganizationId, DomainName)
 #'
-#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization for which the domain is retrieved.
+#' @param OrganizationId &#91;required&#93; The WorkMail organization for which the domain is retrieved.
 #' @param DomainName &#91;required&#93; The domain from which you want to retrieve details.
 #'
 #' @return
@@ -2029,14 +2343,14 @@ workmail_get_mailbox_details <- function(OrganizationId, UserId) {
 #' @description
 #' Simulates the effect of the mobile device access rules for the given
 #' attributes of a sample access event. Use this method to test the effects
-#' of the current set of mobile device access rules for the Amazon WorkMail
+#' of the current set of mobile device access rules for the WorkMail
 #' organization for a particular user's attributes.
 #'
 #' @usage
 #' workmail_get_mobile_device_access_effect(OrganizationId, DeviceType,
 #'   DeviceModel, DeviceOperatingSystem, DeviceUserAgent)
 #'
-#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization to simulate the access effect for.
+#' @param OrganizationId &#91;required&#93; The WorkMail organization to simulate the access effect for.
 #' @param DeviceType Device type the simulated user will report.
 #' @param DeviceModel Device model the simulated user will report.
 #' @param DeviceOperatingSystem Device operating system the simulated user will report.
@@ -2100,8 +2414,7 @@ workmail_get_mobile_device_access_effect <- function(OrganizationId, DeviceType 
 #' workmail_get_mobile_device_access_override(OrganizationId, UserId,
 #'   DeviceId)
 #'
-#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization to which you want to apply the
-#' override.
+#' @param OrganizationId &#91;required&#93; The WorkMail organization to which you want to apply the override.
 #' @param UserId &#91;required&#93; Identifies the WorkMail user for the override. Accepts the following
 #' types of user identities:
 #' 
@@ -2204,6 +2517,12 @@ workmail_get_mobile_device_access_override <- function(OrganizationId, UserId, D
 #'       ),
 #'       DateModified = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       ImpersonationRoleIds = list(
+#'         "string"
+#'       ),
+#'       NotImpersonationRoleIds = list(
+#'         "string"
 #'       )
 #'     )
 #'   )
@@ -2309,8 +2628,8 @@ workmail_list_aliases <- function(OrganizationId, EntityId, NextToken = NULL, Ma
 #' workmail_list_availability_configurations(OrganizationId, MaxResults,
 #'   NextToken)
 #'
-#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization for which the
-#' `AvailabilityConfiguration`'s will be listed.
+#' @param OrganizationId &#91;required&#93; The WorkMail organization for which the `AvailabilityConfiguration`'s
+#' will be listed.
 #' @param MaxResults The maximum number of results to return in a single call.
 #' @param NextToken The token to use to retrieve the next page of results. The first call
 #' does not require a token.
@@ -2510,15 +2829,81 @@ workmail_list_groups <- function(OrganizationId, NextToken = NULL, MaxResults = 
 }
 .workmail$operations$list_groups <- workmail_list_groups
 
-#' Lists the mail domains in a given Amazon WorkMail organization
+#' Lists all the impersonation roles for the given WorkMail organization
 #'
 #' @description
-#' Lists the mail domains in a given Amazon WorkMail organization.
+#' Lists all the impersonation roles for the given WorkMail organization.
+#'
+#' @usage
+#' workmail_list_impersonation_roles(OrganizationId, NextToken, MaxResults)
+#'
+#' @param OrganizationId &#91;required&#93; The WorkMail organization to which the listed impersonation roles
+#' belong.
+#' @param NextToken The token used to retrieve the next page of results. The first call
+#' doesn't require a token.
+#' @param MaxResults The maximum number of results returned in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Roles = list(
+#'     list(
+#'       ImpersonationRoleId = "string",
+#'       Name = "string",
+#'       Type = "FULL_ACCESS"|"READ_ONLY",
+#'       DateCreated = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DateModified = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_impersonation_roles(
+#'   OrganizationId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_list_impersonation_roles
+#'
+#' @aliases workmail_list_impersonation_roles
+workmail_list_impersonation_roles <- function(OrganizationId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListImpersonationRoles",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$list_impersonation_roles_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .workmail$list_impersonation_roles_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$list_impersonation_roles <- workmail_list_impersonation_roles
+
+#' Lists the mail domains in a given WorkMail organization
+#'
+#' @description
+#' Lists the mail domains in a given WorkMail organization.
 #'
 #' @usage
 #' workmail_list_mail_domains(OrganizationId, MaxResults, NextToken)
 #'
-#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization for which to list domains.
+#' @param OrganizationId &#91;required&#93; The WorkMail organization for which to list domains.
 #' @param MaxResults The maximum number of results to return in a single call.
 #' @param NextToken The token to use to retrieve the next page of results. The first call
 #' does not require a token.
@@ -2717,8 +3102,8 @@ workmail_list_mailbox_permissions <- function(OrganizationId, EntityId, NextToke
 #' workmail_list_mobile_device_access_overrides(OrganizationId, UserId,
 #'   DeviceId, NextToken, MaxResults)
 #'
-#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization under which to list mobile device
-#' access overrides.
+#' @param OrganizationId &#91;required&#93; The WorkMail organization under which to list mobile device access
+#' overrides.
 #' @param UserId The WorkMail user under which you list the mobile device access
 #' overrides. Accepts the following types of user identities:
 #' 
@@ -2788,17 +3173,17 @@ workmail_list_mobile_device_access_overrides <- function(OrganizationId, UserId 
 }
 .workmail$operations$list_mobile_device_access_overrides <- workmail_list_mobile_device_access_overrides
 
-#' Lists the mobile device access rules for the specified Amazon WorkMail
+#' Lists the mobile device access rules for the specified WorkMail
 #' organization
 #'
 #' @description
-#' Lists the mobile device access rules for the specified Amazon WorkMail
+#' Lists the mobile device access rules for the specified WorkMail
 #' organization.
 #'
 #' @usage
 #' workmail_list_mobile_device_access_rules(OrganizationId)
 #'
-#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization for which to list the rules.
+#' @param OrganizationId &#91;required&#93; The WorkMail organization for which to list the rules.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3063,10 +3448,10 @@ workmail_list_resources <- function(OrganizationId, NextToken = NULL, MaxResults
 }
 .workmail$operations$list_resources <- workmail_list_resources
 
-#' Lists the tags applied to an Amazon WorkMail organization resource
+#' Lists the tags applied to an WorkMail organization resource
 #'
 #' @description
-#' Lists the tags applied to an Amazon WorkMail organization resource.
+#' Lists the tags applied to an WorkMail organization resource.
 #'
 #' @usage
 #' workmail_list_tags_for_resource(ResourceARN)
@@ -3188,12 +3573,14 @@ workmail_list_users <- function(OrganizationId, NextToken = NULL, MaxResults = N
 #' @description
 #' Adds a new access control rule for the specified organization. The rule
 #' allows or denies access to the organization for the specified IPv4
-#' addresses, access protocol actions, and user IDs. Adding a new rule with
-#' the same name as an existing rule replaces the older rule.
+#' addresses, access protocol actions, user IDs and impersonation IDs.
+#' Adding a new rule with the same name as an existing rule replaces the
+#' older rule.
 #'
 #' @usage
 #' workmail_put_access_control_rule(Name, Effect, Description, IpRanges,
-#'   NotIpRanges, Actions, NotActions, UserIds, NotUserIds, OrganizationId)
+#'   NotIpRanges, Actions, NotActions, UserIds, NotUserIds, OrganizationId,
+#'   ImpersonationRoleIds, NotImpersonationRoleIds)
 #'
 #' @param Name &#91;required&#93; The rule name.
 #' @param Effect &#91;required&#93; The rule effect.
@@ -3209,6 +3596,8 @@ workmail_list_users <- function(OrganizationId, NextToken = NULL, MaxResults = N
 #' @param UserIds User IDs to include in the rule.
 #' @param NotUserIds User IDs to exclude from the rule.
 #' @param OrganizationId &#91;required&#93; The identifier of the organization.
+#' @param ImpersonationRoleIds Impersonation role IDs to include in the rule.
+#' @param NotImpersonationRoleIds Impersonation role IDs to exclude from the rule.
 #'
 #' @return
 #' An empty list.
@@ -3237,7 +3626,13 @@ workmail_list_users <- function(OrganizationId, NextToken = NULL, MaxResults = N
 #'   NotUserIds = list(
 #'     "string"
 #'   ),
-#'   OrganizationId = "string"
+#'   OrganizationId = "string",
+#'   ImpersonationRoleIds = list(
+#'     "string"
+#'   ),
+#'   NotImpersonationRoleIds = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -3246,14 +3641,14 @@ workmail_list_users <- function(OrganizationId, NextToken = NULL, MaxResults = N
 #' @rdname workmail_put_access_control_rule
 #'
 #' @aliases workmail_put_access_control_rule
-workmail_put_access_control_rule <- function(Name, Effect, Description, IpRanges = NULL, NotIpRanges = NULL, Actions = NULL, NotActions = NULL, UserIds = NULL, NotUserIds = NULL, OrganizationId) {
+workmail_put_access_control_rule <- function(Name, Effect, Description, IpRanges = NULL, NotIpRanges = NULL, Actions = NULL, NotActions = NULL, UserIds = NULL, NotUserIds = NULL, OrganizationId, ImpersonationRoleIds = NULL, NotImpersonationRoleIds = NULL) {
   op <- new_operation(
     name = "PutAccessControlRule",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .workmail$put_access_control_rule_input(Name = Name, Effect = Effect, Description = Description, IpRanges = IpRanges, NotIpRanges = NotIpRanges, Actions = Actions, NotActions = NotActions, UserIds = UserIds, NotUserIds = NotUserIds, OrganizationId = OrganizationId)
+  input <- .workmail$put_access_control_rule_input(Name = Name, Effect = Effect, Description = Description, IpRanges = IpRanges, NotIpRanges = NotIpRanges, Actions = Actions, NotActions = NotActions, UserIds = UserIds, NotUserIds = NotUserIds, OrganizationId = OrganizationId, ImpersonationRoleIds = ImpersonationRoleIds, NotImpersonationRoleIds = NotImpersonationRoleIds)
   output <- .workmail$put_access_control_rule_output()
   config <- get_config()
   svc <- .workmail$service(config)
@@ -3431,8 +3826,7 @@ workmail_put_mailbox_permissions <- function(OrganizationId, EntityId, GranteeId
 #' workmail_put_mobile_device_access_override(OrganizationId, UserId,
 #'   DeviceId, Effect, Description)
 #'
-#' @param OrganizationId &#91;required&#93; Identifies the Amazon WorkMail organization for which you create the
-#' override.
+#' @param OrganizationId &#91;required&#93; Identifies the WorkMail organization for which you create the override.
 #' @param UserId &#91;required&#93; The WorkMail user for which you create the override. Accepts the
 #' following types of user identities:
 #' 
@@ -3540,21 +3934,21 @@ workmail_put_retention_policy <- function(OrganizationId, Id = NULL, Name, Descr
 }
 .workmail$operations$put_retention_policy <- workmail_put_retention_policy
 
-#' Registers a new domain in Amazon WorkMail and SES, and configures it for
-#' use by WorkMail
+#' Registers a new domain in WorkMail and SES, and configures it for use by
+#' WorkMail
 #'
 #' @description
-#' Registers a new domain in Amazon WorkMail and SES, and configures it for
-#' use by WorkMail. Emails received by SES for this domain are routed to
-#' the specified WorkMail organization, and WorkMail has permanent
-#' permission to use the specified domain for sending your users' emails.
+#' Registers a new domain in WorkMail and SES, and configures it for use by
+#' WorkMail. Emails received by SES for this domain are routed to the
+#' specified WorkMail organization, and WorkMail has permanent permission
+#' to use the specified domain for sending your users' emails.
 #'
 #' @usage
 #' workmail_register_mail_domain(ClientToken, OrganizationId, DomainName)
 #'
 #' @param ClientToken Idempotency token used when retrying requests.
-#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization under which you're creating the domain.
-#' @param DomainName &#91;required&#93; The name of the mail domain to create in Amazon WorkMail and SES.
+#' @param OrganizationId &#91;required&#93; The WorkMail organization under which you're creating the domain.
+#' @param DomainName &#91;required&#93; The name of the mail domain to create in WorkMail and SES.
 #'
 #' @return
 #' An empty list.
@@ -3590,15 +3984,15 @@ workmail_register_mail_domain <- function(ClientToken = NULL, OrganizationId, Do
 }
 .workmail$operations$register_mail_domain <- workmail_register_mail_domain
 
-#' Registers an existing and disabled user, group, or resource for Amazon
-#' WorkMail use by associating a mailbox and calendaring capabilities
+#' Registers an existing and disabled user, group, or resource for WorkMail
+#' use by associating a mailbox and calendaring capabilities
 #'
 #' @description
-#' Registers an existing and disabled user, group, or resource for Amazon
-#' WorkMail use by associating a mailbox and calendaring capabilities. It
-#' performs no change if the user, group, or resource is enabled and fails
-#' if the user, group, or resource is deleted. This operation results in
-#' the accumulation of costs. For more information, see
+#' Registers an existing and disabled user, group, or resource for WorkMail
+#' use by associating a mailbox and calendaring capabilities. It performs
+#' no change if the user, group, or resource is enabled and fails if the
+#' user, group, or resource is deleted. This operation results in the
+#' accumulation of costs. For more information, see
 #' [Pricing](https://aws.amazon.com/workmail/pricing/). The equivalent
 #' console functionality for this operation is *Enable*.
 #' 
@@ -3706,7 +4100,7 @@ workmail_reset_password <- function(OrganizationId, UserId, Password) {
 #' Storage Service (Amazon S3) bucket. For more information, see [Exporting
 #' mailbox
 #' content](https://docs.aws.amazon.com/workmail/latest/adminguide/mail-export.html)
-#' in the *Amazon WorkMail Administrator Guide*.
+#' in the *WorkMail Administrator Guide*.
 #'
 #' @usage
 #' workmail_start_mailbox_export_job(ClientToken, OrganizationId, EntityId,
@@ -3767,11 +4161,11 @@ workmail_start_mailbox_export_job <- function(ClientToken, OrganizationId, Entit
 }
 .workmail$operations$start_mailbox_export_job <- workmail_start_mailbox_export_job
 
-#' Applies the specified tags to the specified Amazon WorkMail organization
+#' Applies the specified tags to the specified WorkMailorganization
 #' resource
 #'
 #' @description
-#' Applies the specified tags to the specified Amazon WorkMail organization
+#' Applies the specified tags to the specified WorkMailorganization
 #' resource.
 #'
 #' @usage
@@ -3838,7 +4232,7 @@ workmail_tag_resource <- function(ResourceARN, Tags) {
 #' workmail_test_availability_configuration(OrganizationId, DomainName,
 #'   EwsProvider, LambdaProvider)
 #'
-#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization where the availability provider will be
+#' @param OrganizationId &#91;required&#93; The WorkMail organization where the availability provider will be
 #' tested.
 #' @param DomainName The domain to which the provider applies. If this field is provided, a
 #' stored availability provider associated to this domain name will be
@@ -3893,12 +4287,12 @@ workmail_test_availability_configuration <- function(OrganizationId, DomainName 
 }
 .workmail$operations$test_availability_configuration <- workmail_test_availability_configuration
 
-#' Untags the specified tags from the specified Amazon WorkMail
-#' organization resource
+#' Untags the specified tags from the specified WorkMail organization
+#' resource
 #'
 #' @description
-#' Untags the specified tags from the specified Amazon WorkMail
-#' organization resource.
+#' Untags the specified tags from the specified WorkMail organization
+#' resource.
 #'
 #' @usage
 #' workmail_untag_resource(ResourceARN, TagKeys)
@@ -3952,8 +4346,8 @@ workmail_untag_resource <- function(ResourceARN, TagKeys) {
 #' workmail_update_availability_configuration(OrganizationId, DomainName,
 #'   EwsProvider, LambdaProvider)
 #'
-#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization for which the
-#' `AvailabilityConfiguration` will be updated.
+#' @param OrganizationId &#91;required&#93; The WorkMail organization for which the `AvailabilityConfiguration` will
+#' be updated.
 #' @param DomainName &#91;required&#93; The domain to which the provider applies the availability configuration.
 #' @param EwsProvider The EWS availability provider definition. The request must contain
 #' exactly one provider definition, either `EwsProvider` or
@@ -4015,7 +4409,7 @@ workmail_update_availability_configuration <- function(OrganizationId, DomainNam
 #' @usage
 #' workmail_update_default_mail_domain(OrganizationId, DomainName)
 #'
-#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization for which to list domains.
+#' @param OrganizationId &#91;required&#93; The WorkMail organization for which to list domains.
 #' @param DomainName &#91;required&#93; The domain name that will become the default domain.
 #'
 #' @return
@@ -4050,6 +4444,73 @@ workmail_update_default_mail_domain <- function(OrganizationId, DomainName) {
   return(response)
 }
 .workmail$operations$update_default_mail_domain <- workmail_update_default_mail_domain
+
+#' Updates an impersonation role for the given WorkMail organization
+#'
+#' @description
+#' Updates an impersonation role for the given WorkMail organization.
+#'
+#' @usage
+#' workmail_update_impersonation_role(OrganizationId, ImpersonationRoleId,
+#'   Name, Type, Description, Rules)
+#'
+#' @param OrganizationId &#91;required&#93; The WorkMail organization that contains the impersonation role to
+#' update.
+#' @param ImpersonationRoleId &#91;required&#93; The ID of the impersonation role to update.
+#' @param Name &#91;required&#93; The updated impersonation role name.
+#' @param Type &#91;required&#93; The updated impersonation role type.
+#' @param Description The updated impersonation role description.
+#' @param Rules &#91;required&#93; The updated list of rules.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_impersonation_role(
+#'   OrganizationId = "string",
+#'   ImpersonationRoleId = "string",
+#'   Name = "string",
+#'   Type = "FULL_ACCESS"|"READ_ONLY",
+#'   Description = "string",
+#'   Rules = list(
+#'     list(
+#'       ImpersonationRuleId = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       Effect = "ALLOW"|"DENY",
+#'       TargetUsers = list(
+#'         "string"
+#'       ),
+#'       NotTargetUsers = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_update_impersonation_role
+#'
+#' @aliases workmail_update_impersonation_role
+workmail_update_impersonation_role <- function(OrganizationId, ImpersonationRoleId, Name, Type, Description = NULL, Rules) {
+  op <- new_operation(
+    name = "UpdateImpersonationRole",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$update_impersonation_role_input(OrganizationId = OrganizationId, ImpersonationRoleId = ImpersonationRoleId, Name = Name, Type = Type, Description = Description, Rules = Rules)
+  output <- .workmail$update_impersonation_role_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$update_impersonation_role <- workmail_update_impersonation_role
 
 #' Updates a user's current mailbox quota for a specified organization and
 #' user
@@ -4100,11 +4561,11 @@ workmail_update_mailbox_quota <- function(OrganizationId, UserId, MailboxQuota) 
 }
 .workmail$operations$update_mailbox_quota <- workmail_update_mailbox_quota
 
-#' Updates a mobile device access rule for the specified Amazon WorkMail
+#' Updates a mobile device access rule for the specified WorkMail
 #' organization
 #'
 #' @description
-#' Updates a mobile device access rule for the specified Amazon WorkMail
+#' Updates a mobile device access rule for the specified WorkMail
 #' organization.
 #'
 #' @usage
@@ -4113,7 +4574,7 @@ workmail_update_mailbox_quota <- function(OrganizationId, UserId, MailboxQuota) 
 #'   NotDeviceTypes, DeviceModels, NotDeviceModels, DeviceOperatingSystems,
 #'   NotDeviceOperatingSystems, DeviceUserAgents, NotDeviceUserAgents)
 #'
-#' @param OrganizationId &#91;required&#93; The Amazon WorkMail organization under which the rule will be updated.
+#' @param OrganizationId &#91;required&#93; The WorkMail organization under which the rule will be updated.
 #' @param MobileDeviceAccessRuleId &#91;required&#93; The identifier of the rule to be updated.
 #' @param Name &#91;required&#93; The updated rule name.
 #' @param Description The updated rule description.

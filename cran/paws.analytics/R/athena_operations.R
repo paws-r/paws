@@ -96,6 +96,67 @@ athena_batch_get_query_execution <- function(QueryExecutionIds) {
 }
 .athena$operations$batch_get_query_execution <- athena_batch_get_query_execution
 
+#' Cancels the capacity reservation with the specified name
+#'
+#' @description
+#' Cancels the capacity reservation with the specified name.
+#'
+#' See [https://paws-r.github.io/docs/athena/cancel_capacity_reservation.html](https://paws-r.github.io/docs/athena/cancel_capacity_reservation.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the capacity reservation to cancel.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_cancel_capacity_reservation
+athena_cancel_capacity_reservation <- function(Name) {
+  op <- new_operation(
+    name = "CancelCapacityReservation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$cancel_capacity_reservation_input(Name = Name)
+  output <- .athena$cancel_capacity_reservation_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$cancel_capacity_reservation <- athena_cancel_capacity_reservation
+
+#' Creates a capacity reservation with the specified name and number of
+#' requested data processing units
+#'
+#' @description
+#' Creates a capacity reservation with the specified name and number of requested data processing units.
+#'
+#' See [https://paws-r.github.io/docs/athena/create_capacity_reservation.html](https://paws-r.github.io/docs/athena/create_capacity_reservation.html) for full documentation.
+#'
+#' @param TargetDpus &#91;required&#93; The number of requested data processing units.
+#' @param Name &#91;required&#93; The name of the capacity reservation to create.
+#' @param Tags The tags for the capacity reservation.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_create_capacity_reservation
+athena_create_capacity_reservation <- function(TargetDpus, Name, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateCapacityReservation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$create_capacity_reservation_input(TargetDpus = TargetDpus, Name = Name, Tags = Tags)
+  output <- .athena$create_capacity_reservation_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$create_capacity_reservation <- athena_create_capacity_reservation
+
 #' Creates (registers) a data catalog with the specified name and
 #' properties
 #'
@@ -221,6 +282,47 @@ athena_create_named_query <- function(Name, Description = NULL, Database, QueryS
 }
 .athena$operations$create_named_query <- athena_create_named_query
 
+#' Creates an empty ipynb file in the specified Apache Spark enabled
+#' workgroup
+#'
+#' @description
+#' Creates an empty `ipynb` file in the specified Apache Spark enabled workgroup. Throws an error if a file in the workgroup with the same name already exists.
+#'
+#' See [https://paws-r.github.io/docs/athena/create_notebook.html](https://paws-r.github.io/docs/athena/create_notebook.html) for full documentation.
+#'
+#' @param WorkGroup &#91;required&#93; The name of the Spark enabled workgroup in which the notebook will be
+#' created.
+#' @param Name &#91;required&#93; The name of the `ipynb` file to be created in the Spark workgroup,
+#' without the `.ipynb` extension.
+#' @param ClientRequestToken A unique case-sensitive string used to ensure the request to create the
+#' notebook is idempotent (executes only once).
+#' 
+#' This token is listed as not required because Amazon Web Services SDKs
+#' (for example the Amazon Web Services SDK for Java) auto-generate the
+#' token for you. If you are not using the Amazon Web Services SDK or the
+#' Amazon Web Services CLI, you must provide this token or the action will
+#' fail.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_create_notebook
+athena_create_notebook <- function(WorkGroup, Name, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "CreateNotebook",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$create_notebook_input(WorkGroup = WorkGroup, Name = Name, ClientRequestToken = ClientRequestToken)
+  output <- .athena$create_notebook_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$create_notebook <- athena_create_notebook
+
 #' Creates a prepared statement for use with SQL queries in Athena
 #'
 #' @description
@@ -253,21 +355,53 @@ athena_create_prepared_statement <- function(StatementName, WorkGroup, QueryStat
 }
 .athena$operations$create_prepared_statement <- athena_create_prepared_statement
 
+#' Gets an authentication token and the URL at which the notebook can be
+#' accessed
+#'
+#' @description
+#' Gets an authentication token and the URL at which the notebook can be accessed. During programmatic access, [`create_presigned_notebook_url`][athena_create_presigned_notebook_url] must be called every 10 minutes to refresh the authentication token. For information about granting programmatic access, see [Grant programmatic access](https://docs.aws.amazon.com/athena/latest/ug/setting-up.html#setting-up-grant-programmatic-access).
+#'
+#' See [https://paws-r.github.io/docs/athena/create_presigned_notebook_url.html](https://paws-r.github.io/docs/athena/create_presigned_notebook_url.html) for full documentation.
+#'
+#' @param SessionId &#91;required&#93; The session ID.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_create_presigned_notebook_url
+athena_create_presigned_notebook_url <- function(SessionId) {
+  op <- new_operation(
+    name = "CreatePresignedNotebookUrl",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$create_presigned_notebook_url_input(SessionId = SessionId)
+  output <- .athena$create_presigned_notebook_url_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$create_presigned_notebook_url <- athena_create_presigned_notebook_url
+
 #' Creates a workgroup with the specified name
 #'
 #' @description
-#' Creates a workgroup with the specified name.
+#' Creates a workgroup with the specified name. A workgroup can be an Apache Spark enabled workgroup or an Athena SQL workgroup.
 #'
 #' See [https://paws-r.github.io/docs/athena/create_work_group.html](https://paws-r.github.io/docs/athena/create_work_group.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The workgroup name.
-#' @param Configuration The configuration for the workgroup, which includes the location in
-#' Amazon S3 where query results are stored, the encryption configuration,
-#' if any, used for encrypting query results, whether the Amazon CloudWatch
-#' Metrics are enabled for the workgroup, the limit for the amount of bytes
-#' scanned (cutoff) per query, if it is specified, and whether workgroup's
-#' settings (specified with `EnforceWorkGroupConfiguration`) in the
-#' `WorkGroupConfiguration` override client-side settings. See
+#' @param Configuration Contains configuration information for creating an Athena SQL workgroup
+#' or Spark enabled Athena workgroup. Athena SQL workgroup configuration
+#' includes the location in Amazon S3 where query and calculation results
+#' are stored, the encryption configuration, if any, used for encrypting
+#' query results, whether the Amazon CloudWatch Metrics are enabled for the
+#' workgroup, the limit for the amount of bytes scanned (cutoff) per query,
+#' if it is specified, and whether workgroup's settings (specified with
+#' `EnforceWorkGroupConfiguration`) in the `WorkGroupConfiguration`
+#' override client-side settings. See
 #' WorkGroupConfiguration$EnforceWorkGroupConfiguration.
 #' @param Description The workgroup description.
 #' @param Tags A list of comma separated tags to add to the workgroup that is created.
@@ -351,6 +485,35 @@ athena_delete_named_query <- function(NamedQueryId) {
 }
 .athena$operations$delete_named_query <- athena_delete_named_query
 
+#' Deletes the specified notebook
+#'
+#' @description
+#' Deletes the specified notebook.
+#'
+#' See [https://paws-r.github.io/docs/athena/delete_notebook.html](https://paws-r.github.io/docs/athena/delete_notebook.html) for full documentation.
+#'
+#' @param NotebookId &#91;required&#93; The ID of the notebook to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_delete_notebook
+athena_delete_notebook <- function(NotebookId) {
+  op <- new_operation(
+    name = "DeleteNotebook",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$delete_notebook_input(NotebookId = NotebookId)
+  output <- .athena$delete_notebook_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$delete_notebook <- athena_delete_notebook
+
 #' Deletes the prepared statement with the specified name from the
 #' specified workgroup
 #'
@@ -391,7 +554,7 @@ athena_delete_prepared_statement <- function(StatementName, WorkGroup) {
 #'
 #' @param WorkGroup &#91;required&#93; The unique name of the workgroup to delete.
 #' @param RecursiveDeleteOption The option to delete the workgroup and its contents even if the
-#' workgroup contains any named queries or query executions.
+#' workgroup contains any named queries, query executions, or notebooks.
 #'
 #' @keywords internal
 #'
@@ -412,6 +575,183 @@ athena_delete_work_group <- function(WorkGroup, RecursiveDeleteOption = NULL) {
   return(response)
 }
 .athena$operations$delete_work_group <- athena_delete_work_group
+
+#' Exports the specified notebook and its metadata
+#'
+#' @description
+#' Exports the specified notebook and its metadata.
+#'
+#' See [https://paws-r.github.io/docs/athena/export_notebook.html](https://paws-r.github.io/docs/athena/export_notebook.html) for full documentation.
+#'
+#' @param NotebookId &#91;required&#93; The ID of the notebook to export.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_export_notebook
+athena_export_notebook <- function(NotebookId) {
+  op <- new_operation(
+    name = "ExportNotebook",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$export_notebook_input(NotebookId = NotebookId)
+  output <- .athena$export_notebook_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$export_notebook <- athena_export_notebook
+
+#' Describes a previously submitted calculation execution
+#'
+#' @description
+#' Describes a previously submitted calculation execution.
+#'
+#' See [https://paws-r.github.io/docs/athena/get_calculation_execution.html](https://paws-r.github.io/docs/athena/get_calculation_execution.html) for full documentation.
+#'
+#' @param CalculationExecutionId &#91;required&#93; The calculation execution UUID.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_get_calculation_execution
+athena_get_calculation_execution <- function(CalculationExecutionId) {
+  op <- new_operation(
+    name = "GetCalculationExecution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$get_calculation_execution_input(CalculationExecutionId = CalculationExecutionId)
+  output <- .athena$get_calculation_execution_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$get_calculation_execution <- athena_get_calculation_execution
+
+#' Retrieves the unencrypted code that was executed for the calculation
+#'
+#' @description
+#' Retrieves the unencrypted code that was executed for the calculation.
+#'
+#' See [https://paws-r.github.io/docs/athena/get_calculation_execution_code.html](https://paws-r.github.io/docs/athena/get_calculation_execution_code.html) for full documentation.
+#'
+#' @param CalculationExecutionId &#91;required&#93; The calculation execution UUID.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_get_calculation_execution_code
+athena_get_calculation_execution_code <- function(CalculationExecutionId) {
+  op <- new_operation(
+    name = "GetCalculationExecutionCode",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$get_calculation_execution_code_input(CalculationExecutionId = CalculationExecutionId)
+  output <- .athena$get_calculation_execution_code_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$get_calculation_execution_code <- athena_get_calculation_execution_code
+
+#' Gets the status of a current calculation
+#'
+#' @description
+#' Gets the status of a current calculation.
+#'
+#' See [https://paws-r.github.io/docs/athena/get_calculation_execution_status.html](https://paws-r.github.io/docs/athena/get_calculation_execution_status.html) for full documentation.
+#'
+#' @param CalculationExecutionId &#91;required&#93; The calculation execution UUID.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_get_calculation_execution_status
+athena_get_calculation_execution_status <- function(CalculationExecutionId) {
+  op <- new_operation(
+    name = "GetCalculationExecutionStatus",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$get_calculation_execution_status_input(CalculationExecutionId = CalculationExecutionId)
+  output <- .athena$get_calculation_execution_status_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$get_calculation_execution_status <- athena_get_calculation_execution_status
+
+#' Gets the capacity assignment configuration for a capacity reservation,
+#' if one exists
+#'
+#' @description
+#' Gets the capacity assignment configuration for a capacity reservation, if one exists.
+#'
+#' See [https://paws-r.github.io/docs/athena/get_capacity_assignment_configuration.html](https://paws-r.github.io/docs/athena/get_capacity_assignment_configuration.html) for full documentation.
+#'
+#' @param CapacityReservationName &#91;required&#93; The name of the capacity reservation to retrieve the capacity assignment
+#' configuration for.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_get_capacity_assignment_configuration
+athena_get_capacity_assignment_configuration <- function(CapacityReservationName) {
+  op <- new_operation(
+    name = "GetCapacityAssignmentConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$get_capacity_assignment_configuration_input(CapacityReservationName = CapacityReservationName)
+  output <- .athena$get_capacity_assignment_configuration_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$get_capacity_assignment_configuration <- athena_get_capacity_assignment_configuration
+
+#' Returns information about the capacity reservation with the specified
+#' name
+#'
+#' @description
+#' Returns information about the capacity reservation with the specified name.
+#'
+#' See [https://paws-r.github.io/docs/athena/get_capacity_reservation.html](https://paws-r.github.io/docs/athena/get_capacity_reservation.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the capacity reservation.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_get_capacity_reservation
+athena_get_capacity_reservation <- function(Name) {
+  op <- new_operation(
+    name = "GetCapacityReservation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$get_capacity_reservation_input(Name = Name)
+  output <- .athena$get_capacity_reservation_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$get_capacity_reservation <- athena_get_capacity_reservation
 
 #' Returns the specified data catalog
 #'
@@ -502,6 +842,35 @@ athena_get_named_query <- function(NamedQueryId) {
 }
 .athena$operations$get_named_query <- athena_get_named_query
 
+#' Retrieves notebook metadata for the specified notebook ID
+#'
+#' @description
+#' Retrieves notebook metadata for the specified notebook ID.
+#'
+#' See [https://paws-r.github.io/docs/athena/get_notebook_metadata.html](https://paws-r.github.io/docs/athena/get_notebook_metadata.html) for full documentation.
+#'
+#' @param NotebookId &#91;required&#93; The ID of the notebook whose metadata is to be retrieved.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_get_notebook_metadata
+athena_get_notebook_metadata <- function(NotebookId) {
+  op <- new_operation(
+    name = "GetNotebookMetadata",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$get_notebook_metadata_input(NotebookId = NotebookId)
+  output <- .athena$get_notebook_metadata_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$get_notebook_metadata <- athena_get_notebook_metadata
+
 #' Retrieves the prepared statement with the specified name from the
 #' specified workgroup
 #'
@@ -567,7 +936,7 @@ athena_get_query_execution <- function(QueryExecutionId) {
 #' QueryExecutionId from the Athena query results location in Amazon S3
 #'
 #' @description
-#' Streams the results of a single query execution specified by `QueryExecutionId` from the Athena query results location in Amazon S3. For more information, see [Query Results](https://docs.aws.amazon.com/athena/latest/ug/querying.html) in the *Amazon Athena User Guide*. This request does not execute the query but returns results. Use [`start_query_execution`][athena_start_query_execution] to run a query.
+#' Streams the results of a single query execution specified by `QueryExecutionId` from the Athena query results location in Amazon S3. For more information, see [Working with query results, recent queries, and output files](https://docs.aws.amazon.com/athena/latest/ug/querying.html) in the *Amazon Athena User Guide*. This request does not execute the query but returns results. Use [`start_query_execution`][athena_start_query_execution] to run a query.
 #'
 #' See [https://paws-r.github.io/docs/athena/get_query_results.html](https://paws-r.github.io/docs/athena/get_query_results.html) for full documentation.
 #'
@@ -602,7 +971,7 @@ athena_get_query_results <- function(QueryExecutionId, NextToken = NULL, MaxResu
 #' of a query if you have access to the workgroup in which the query ran
 #'
 #' @description
-#' Returns query execution runtime statistics related to a single execution of a query if you have access to the workgroup in which the query ran. The query execution runtime statistics is returned only when QueryExecutionStatus$State is in a SUCCEEDED or FAILED state.
+#' Returns query execution runtime statistics related to a single execution of a query if you have access to the workgroup in which the query ran. Query execution runtime statistics are returned only when QueryExecutionStatus$State is in a SUCCEEDED or FAILED state. Stage-level input and output row count and data size statistics are not shown when a query has row-level filters defined in Lake Formation.
 #'
 #' See [https://paws-r.github.io/docs/athena/get_query_runtime_statistics.html](https://paws-r.github.io/docs/athena/get_query_runtime_statistics.html) for full documentation.
 #'
@@ -627,6 +996,65 @@ athena_get_query_runtime_statistics <- function(QueryExecutionId) {
   return(response)
 }
 .athena$operations$get_query_runtime_statistics <- athena_get_query_runtime_statistics
+
+#' Gets the full details of a previously created session, including the
+#' session status and configuration
+#'
+#' @description
+#' Gets the full details of a previously created session, including the session status and configuration.
+#'
+#' See [https://paws-r.github.io/docs/athena/get_session.html](https://paws-r.github.io/docs/athena/get_session.html) for full documentation.
+#'
+#' @param SessionId &#91;required&#93; The session ID.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_get_session
+athena_get_session <- function(SessionId) {
+  op <- new_operation(
+    name = "GetSession",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$get_session_input(SessionId = SessionId)
+  output <- .athena$get_session_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$get_session <- athena_get_session
+
+#' Gets the current status of a session
+#'
+#' @description
+#' Gets the current status of a session.
+#'
+#' See [https://paws-r.github.io/docs/athena/get_session_status.html](https://paws-r.github.io/docs/athena/get_session_status.html) for full documentation.
+#'
+#' @param SessionId &#91;required&#93; The session ID.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_get_session_status
+athena_get_session_status <- function(SessionId) {
+  op <- new_operation(
+    name = "GetSessionStatus",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$get_session_status_input(SessionId = SessionId)
+  output <- .athena$get_session_status_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$get_session_status <- athena_get_session_status
 
 #' Returns table metadata for the specified catalog, database, and table
 #'
@@ -688,6 +1116,164 @@ athena_get_work_group <- function(WorkGroup) {
   return(response)
 }
 .athena$operations$get_work_group <- athena_get_work_group
+
+#' Imports a single ipynb file to a Spark enabled workgroup
+#'
+#' @description
+#' Imports a single `ipynb` file to a Spark enabled workgroup. The maximum file size that can be imported is 10 megabytes. If an `ipynb` file with the same name already exists in the workgroup, throws an error.
+#'
+#' See [https://paws-r.github.io/docs/athena/import_notebook.html](https://paws-r.github.io/docs/athena/import_notebook.html) for full documentation.
+#'
+#' @param WorkGroup &#91;required&#93; The name of the Spark enabled workgroup to import the notebook to.
+#' @param Name &#91;required&#93; The name of the notebook to import.
+#' @param Payload &#91;required&#93; The notebook content to be imported.
+#' @param Type &#91;required&#93; The notebook content type. Currently, the only valid type is `IPYNB`.
+#' @param ClientRequestToken A unique case-sensitive string used to ensure the request to import the
+#' notebook is idempotent (executes only once).
+#' 
+#' This token is listed as not required because Amazon Web Services SDKs
+#' (for example the Amazon Web Services SDK for Java) auto-generate the
+#' token for you. If you are not using the Amazon Web Services SDK or the
+#' Amazon Web Services CLI, you must provide this token or the action will
+#' fail.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_import_notebook
+athena_import_notebook <- function(WorkGroup, Name, Payload, Type, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "ImportNotebook",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$import_notebook_input(WorkGroup = WorkGroup, Name = Name, Payload = Payload, Type = Type, ClientRequestToken = ClientRequestToken)
+  output <- .athena$import_notebook_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$import_notebook <- athena_import_notebook
+
+#' Returns the supported DPU sizes for the supported application runtimes
+#' (for example, Athena notebook version 1)
+#'
+#' @description
+#' Returns the supported DPU sizes for the supported application runtimes (for example, `Athena notebook version 1`).
+#'
+#' See [https://paws-r.github.io/docs/athena/list_application_dpu_sizes.html](https://paws-r.github.io/docs/athena/list_application_dpu_sizes.html) for full documentation.
+#'
+#' @param MaxResults Specifies the maximum number of results to return.
+#' @param NextToken A token generated by the Athena service that specifies where to continue
+#' pagination if a previous request was truncated.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_list_application_dpu_sizes
+athena_list_application_dpu_sizes <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListApplicationDPUSizes",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$list_application_dpu_sizes_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .athena$list_application_dpu_sizes_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$list_application_dpu_sizes <- athena_list_application_dpu_sizes
+
+#' Lists the calculations that have been submitted to a session in
+#' descending order
+#'
+#' @description
+#' Lists the calculations that have been submitted to a session in descending order. Newer calculations are listed first; older calculations are listed later.
+#'
+#' See [https://paws-r.github.io/docs/athena/list_calculation_executions.html](https://paws-r.github.io/docs/athena/list_calculation_executions.html) for full documentation.
+#'
+#' @param SessionId &#91;required&#93; The session ID.
+#' @param StateFilter A filter for a specific calculation execution state. A description of
+#' each state follows.
+#' 
+#' `CREATING` - The calculation is in the process of being created.
+#' 
+#' `CREATED` - The calculation has been created and is ready to run.
+#' 
+#' `QUEUED` - The calculation has been queued for processing.
+#' 
+#' `RUNNING` - The calculation is running.
+#' 
+#' `CANCELING` - A request to cancel the calculation has been received and
+#' the system is working to stop it.
+#' 
+#' `CANCELED` - The calculation is no longer running as the result of a
+#' cancel request.
+#' 
+#' `COMPLETED` - The calculation has completed without error.
+#' 
+#' `FAILED` - The calculation failed and is no longer running.
+#' @param MaxResults The maximum number of calculation executions to return.
+#' @param NextToken A token generated by the Athena service that specifies where to continue
+#' pagination if a previous request was truncated. To obtain the next set
+#' of pages, pass in the `NextToken` from the response object of the
+#' previous page call.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_list_calculation_executions
+athena_list_calculation_executions <- function(SessionId, StateFilter = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListCalculationExecutions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$list_calculation_executions_input(SessionId = SessionId, StateFilter = StateFilter, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .athena$list_calculation_executions_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$list_calculation_executions <- athena_list_calculation_executions
+
+#' Lists the capacity reservations for the current account
+#'
+#' @description
+#' Lists the capacity reservations for the current account.
+#'
+#' See [https://paws-r.github.io/docs/athena/list_capacity_reservations.html](https://paws-r.github.io/docs/athena/list_capacity_reservations.html) for full documentation.
+#'
+#' @param NextToken A token generated by the Athena service that specifies where to continue
+#' pagination if a previous request was truncated.
+#' @param MaxResults Specifies the maximum number of results to return.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_list_capacity_reservations
+athena_list_capacity_reservations <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListCapacityReservations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$list_capacity_reservations_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .athena$list_capacity_reservations_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$list_capacity_reservations <- athena_list_capacity_reservations
 
 #' Lists the data catalogs in the current Amazon Web Services account
 #'
@@ -790,6 +1376,55 @@ athena_list_engine_versions <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .athena$operations$list_engine_versions <- athena_list_engine_versions
 
+#' Lists, in descending order, the executors that joined a session
+#'
+#' @description
+#' Lists, in descending order, the executors that joined a session. Newer executors are listed first; older executors are listed later. The result can be optionally filtered by state.
+#'
+#' See [https://paws-r.github.io/docs/athena/list_executors.html](https://paws-r.github.io/docs/athena/list_executors.html) for full documentation.
+#'
+#' @param SessionId &#91;required&#93; The session ID.
+#' @param ExecutorStateFilter A filter for a specific executor state. A description of each state
+#' follows.
+#' 
+#' `CREATING` - The executor is being started, including acquiring
+#' resources.
+#' 
+#' `CREATED` - The executor has been started.
+#' 
+#' `REGISTERED` - The executor has been registered.
+#' 
+#' `TERMINATING` - The executor is in the process of shutting down.
+#' 
+#' `TERMINATED` - The executor is no longer running.
+#' 
+#' `FAILED` - Due to a failure, the executor is no longer running.
+#' @param MaxResults The maximum number of executors to return.
+#' @param NextToken A token generated by the Athena service that specifies where to continue
+#' pagination if a previous request was truncated. To obtain the next set
+#' of pages, pass in the `NextToken` from the response object of the
+#' previous page call.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_list_executors
+athena_list_executors <- function(SessionId, ExecutorStateFilter = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListExecutors",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$list_executors_input(SessionId = SessionId, ExecutorStateFilter = ExecutorStateFilter, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .athena$list_executors_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$list_executors <- athena_list_executors
+
 #' Provides a list of available query IDs only for queries saved in the
 #' specified workgroup
 #'
@@ -826,6 +1461,77 @@ athena_list_named_queries <- function(NextToken = NULL, MaxResults = NULL, WorkG
   return(response)
 }
 .athena$operations$list_named_queries <- athena_list_named_queries
+
+#' Displays the notebook files for the specified workgroup in paginated
+#' format
+#'
+#' @description
+#' Displays the notebook files for the specified workgroup in paginated format.
+#'
+#' See [https://paws-r.github.io/docs/athena/list_notebook_metadata.html](https://paws-r.github.io/docs/athena/list_notebook_metadata.html) for full documentation.
+#'
+#' @param Filters Search filter string.
+#' @param NextToken A token generated by the Athena service that specifies where to continue
+#' pagination if a previous request was truncated.
+#' @param MaxResults Specifies the maximum number of results to return.
+#' @param WorkGroup &#91;required&#93; The name of the Spark enabled workgroup to retrieve notebook metadata
+#' for.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_list_notebook_metadata
+athena_list_notebook_metadata <- function(Filters = NULL, NextToken = NULL, MaxResults = NULL, WorkGroup) {
+  op <- new_operation(
+    name = "ListNotebookMetadata",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$list_notebook_metadata_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
+  output <- .athena$list_notebook_metadata_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$list_notebook_metadata <- athena_list_notebook_metadata
+
+#' Lists, in descending order, the sessions that have been created in a
+#' notebook that are in an active state like CREATING, CREATED, IDLE or
+#' BUSY
+#'
+#' @description
+#' Lists, in descending order, the sessions that have been created in a notebook that are in an active state like `CREATING`, `CREATED`, `IDLE` or `BUSY`. Newer sessions are listed first; older sessions are listed later.
+#'
+#' See [https://paws-r.github.io/docs/athena/list_notebook_sessions.html](https://paws-r.github.io/docs/athena/list_notebook_sessions.html) for full documentation.
+#'
+#' @param NotebookId &#91;required&#93; The ID of the notebook to list sessions for.
+#' @param MaxResults The maximum number of notebook sessions to return.
+#' @param NextToken A token generated by the Athena service that specifies where to continue
+#' pagination if a previous request was truncated. To obtain the next set
+#' of pages, pass in the `NextToken` from the response object of the
+#' previous page call.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_list_notebook_sessions
+athena_list_notebook_sessions <- function(NotebookId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListNotebookSessions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$list_notebook_sessions_input(NotebookId = NotebookId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .athena$list_notebook_sessions_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$list_notebook_sessions <- athena_list_notebook_sessions
 
 #' Lists the prepared statements in the specified workgroup
 #'
@@ -898,6 +1604,62 @@ athena_list_query_executions <- function(NextToken = NULL, MaxResults = NULL, Wo
 }
 .athena$operations$list_query_executions <- athena_list_query_executions
 
+#' Lists the sessions in a workgroup that are in an active state like
+#' CREATING, CREATED, IDLE, or BUSY
+#'
+#' @description
+#' Lists the sessions in a workgroup that are in an active state like `CREATING`, `CREATED`, `IDLE`, or `BUSY`. Newer sessions are listed first; older sessions are listed later.
+#'
+#' See [https://paws-r.github.io/docs/athena/list_sessions.html](https://paws-r.github.io/docs/athena/list_sessions.html) for full documentation.
+#'
+#' @param WorkGroup &#91;required&#93; The workgroup to which the session belongs.
+#' @param StateFilter A filter for a specific session state. A description of each state
+#' follows.
+#' 
+#' `CREATING` - The session is being started, including acquiring
+#' resources.
+#' 
+#' `CREATED` - The session has been started.
+#' 
+#' `IDLE` - The session is able to accept a calculation.
+#' 
+#' `BUSY` - The session is processing another task and is unable to accept
+#' a calculation.
+#' 
+#' `TERMINATING` - The session is in the process of shutting down.
+#' 
+#' `TERMINATED` - The session and its resources are no longer running.
+#' 
+#' `DEGRADED` - The session has no healthy coordinators.
+#' 
+#' `FAILED` - Due to a failure, the session and its resources are no longer
+#' running.
+#' @param MaxResults The maximum number of sessions to return.
+#' @param NextToken A token generated by the Athena service that specifies where to continue
+#' pagination if a previous request was truncated. To obtain the next set
+#' of pages, pass in the `NextToken` from the response object of the
+#' previous page call.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_list_sessions
+athena_list_sessions <- function(WorkGroup, StateFilter = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListSessions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$list_sessions_input(WorkGroup = WorkGroup, StateFilter = StateFilter, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .athena$list_sessions_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$list_sessions <- athena_list_sessions
+
 #' Lists the metadata for the tables in the specified data catalog database
 #'
 #' @description
@@ -936,11 +1698,10 @@ athena_list_table_metadata <- function(CatalogName, DatabaseName, Expression = N
 }
 .athena$operations$list_table_metadata <- athena_list_table_metadata
 
-#' Lists the tags associated with an Athena workgroup or data catalog
-#' resource
+#' Lists the tags associated with an Athena resource
 #'
 #' @description
-#' Lists the tags associated with an Athena workgroup or data catalog resource.
+#' Lists the tags associated with an Athena resource.
 #'
 #' See [https://paws-r.github.io/docs/athena/list_tags_for_resource.html](https://paws-r.github.io/docs/athena/list_tags_for_resource.html) for full documentation.
 #'
@@ -1004,6 +1765,81 @@ athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .athena$operations$list_work_groups <- athena_list_work_groups
 
+#' Puts a new capacity assignment configuration for a specified capacity
+#' reservation
+#'
+#' @description
+#' Puts a new capacity assignment configuration for a specified capacity reservation. If a capacity assignment configuration already exists for the capacity reservation, replaces the existing capacity assignment configuration.
+#'
+#' See [https://paws-r.github.io/docs/athena/put_capacity_assignment_configuration.html](https://paws-r.github.io/docs/athena/put_capacity_assignment_configuration.html) for full documentation.
+#'
+#' @param CapacityReservationName &#91;required&#93; The name of the capacity reservation to put a capacity assignment
+#' configuration for.
+#' @param CapacityAssignments &#91;required&#93; The list of assignments for the capacity assignment configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_put_capacity_assignment_configuration
+athena_put_capacity_assignment_configuration <- function(CapacityReservationName, CapacityAssignments) {
+  op <- new_operation(
+    name = "PutCapacityAssignmentConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$put_capacity_assignment_configuration_input(CapacityReservationName = CapacityReservationName, CapacityAssignments = CapacityAssignments)
+  output <- .athena$put_capacity_assignment_configuration_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$put_capacity_assignment_configuration <- athena_put_capacity_assignment_configuration
+
+#' Submits calculations for execution within a session
+#'
+#' @description
+#' Submits calculations for execution within a session. You can supply the code to run as an inline code block within the request.
+#'
+#' See [https://paws-r.github.io/docs/athena/start_calculation_execution.html](https://paws-r.github.io/docs/athena/start_calculation_execution.html) for full documentation.
+#'
+#' @param SessionId &#91;required&#93; The session ID.
+#' @param Description A description of the calculation.
+#' @param CalculationConfiguration Contains configuration information for the calculation.
+#' @param CodeBlock A string that contains the code of the calculation.
+#' @param ClientRequestToken A unique case-sensitive string used to ensure the request to create the
+#' calculation is idempotent (executes only once). If another
+#' `StartCalculationExecutionRequest` is received, the same response is
+#' returned and another calculation is not created. If a parameter has
+#' changed, an error is returned.
+#' 
+#' This token is listed as not required because Amazon Web Services SDKs
+#' (for example the Amazon Web Services SDK for Java) auto-generate the
+#' token for users. If you are not using the Amazon Web Services SDK or the
+#' Amazon Web Services CLI, you must provide this token or the action will
+#' fail.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_start_calculation_execution
+athena_start_calculation_execution <- function(SessionId, Description = NULL, CalculationConfiguration = NULL, CodeBlock = NULL, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "StartCalculationExecution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$start_calculation_execution_input(SessionId = SessionId, Description = Description, CalculationConfiguration = CalculationConfiguration, CodeBlock = CodeBlock, ClientRequestToken = ClientRequestToken)
+  output <- .athena$start_calculation_execution_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$start_calculation_execution <- athena_start_calculation_execution
+
 #' Runs the SQL query statements contained in the Query
 #'
 #' @description
@@ -1036,18 +1872,19 @@ athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
 #' @param ExecutionParameters A list of values for the parameters in a query. The values are applied
 #' sequentially to the parameters in the query in the order in which the
 #' parameters occur.
+#' @param ResultReuseConfiguration Specifies the query result reuse behavior for the query.
 #'
 #' @keywords internal
 #'
 #' @rdname athena_start_query_execution
-athena_start_query_execution <- function(QueryString, ClientRequestToken = NULL, QueryExecutionContext = NULL, ResultConfiguration = NULL, WorkGroup = NULL, ExecutionParameters = NULL) {
+athena_start_query_execution <- function(QueryString, ClientRequestToken = NULL, QueryExecutionContext = NULL, ResultConfiguration = NULL, WorkGroup = NULL, ExecutionParameters = NULL, ResultReuseConfiguration = NULL) {
   op <- new_operation(
     name = "StartQueryExecution",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .athena$start_query_execution_input(QueryString = QueryString, ClientRequestToken = ClientRequestToken, QueryExecutionContext = QueryExecutionContext, ResultConfiguration = ResultConfiguration, WorkGroup = WorkGroup, ExecutionParameters = ExecutionParameters)
+  input <- .athena$start_query_execution_input(QueryString = QueryString, ClientRequestToken = ClientRequestToken, QueryExecutionContext = QueryExecutionContext, ResultConfiguration = ResultConfiguration, WorkGroup = WorkGroup, ExecutionParameters = ExecutionParameters, ResultReuseConfiguration = ResultReuseConfiguration)
   output <- .athena$start_query_execution_output()
   config <- get_config()
   svc <- .athena$service(config)
@@ -1056,6 +1893,85 @@ athena_start_query_execution <- function(QueryString, ClientRequestToken = NULL,
   return(response)
 }
 .athena$operations$start_query_execution <- athena_start_query_execution
+
+#' Creates a session for running calculations within a workgroup
+#'
+#' @description
+#' Creates a session for running calculations within a workgroup. The session is ready when it reaches an `IDLE` state.
+#'
+#' See [https://paws-r.github.io/docs/athena/start_session.html](https://paws-r.github.io/docs/athena/start_session.html) for full documentation.
+#'
+#' @param Description The session description.
+#' @param WorkGroup &#91;required&#93; The workgroup to which the session belongs.
+#' @param EngineConfiguration &#91;required&#93; Contains engine data processing unit (DPU) configuration settings and
+#' parameter mappings.
+#' @param NotebookVersion The notebook version. This value is supplied automatically for notebook
+#' sessions in the Athena console and is not required for programmatic
+#' session access. The only valid notebook version is
+#' `Athena notebook version 1`. If you specify a value for
+#' `NotebookVersion`, you must also specify a value for `NotebookId`. See
+#' EngineConfiguration$AdditionalConfigs.
+#' @param SessionIdleTimeoutInMinutes The idle timeout in minutes for the session.
+#' @param ClientRequestToken A unique case-sensitive string used to ensure the request to create the
+#' session is idempotent (executes only once). If another
+#' `StartSessionRequest` is received, the same response is returned and
+#' another session is not created. If a parameter has changed, an error is
+#' returned.
+#' 
+#' This token is listed as not required because Amazon Web Services SDKs
+#' (for example the Amazon Web Services SDK for Java) auto-generate the
+#' token for users. If you are not using the Amazon Web Services SDK or the
+#' Amazon Web Services CLI, you must provide this token or the action will
+#' fail.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_start_session
+athena_start_session <- function(Description = NULL, WorkGroup, EngineConfiguration, NotebookVersion = NULL, SessionIdleTimeoutInMinutes = NULL, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "StartSession",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$start_session_input(Description = Description, WorkGroup = WorkGroup, EngineConfiguration = EngineConfiguration, NotebookVersion = NotebookVersion, SessionIdleTimeoutInMinutes = SessionIdleTimeoutInMinutes, ClientRequestToken = ClientRequestToken)
+  output <- .athena$start_session_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$start_session <- athena_start_session
+
+#' Requests the cancellation of a calculation
+#'
+#' @description
+#' Requests the cancellation of a calculation. A [`stop_calculation_execution`][athena_stop_calculation_execution] call on a calculation that is already in a terminal state (for example, `STOPPED`, `FAILED`, or `COMPLETED`) succeeds but has no effect.
+#'
+#' See [https://paws-r.github.io/docs/athena/stop_calculation_execution.html](https://paws-r.github.io/docs/athena/stop_calculation_execution.html) for full documentation.
+#'
+#' @param CalculationExecutionId &#91;required&#93; The calculation execution UUID.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_stop_calculation_execution
+athena_stop_calculation_execution <- function(CalculationExecutionId) {
+  op <- new_operation(
+    name = "StopCalculationExecution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$stop_calculation_execution_input(CalculationExecutionId = CalculationExecutionId)
+  output <- .athena$stop_calculation_execution_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$stop_calculation_execution <- athena_stop_calculation_execution
 
 #' Stops a query execution
 #'
@@ -1089,14 +2005,13 @@ athena_stop_query_execution <- function(QueryExecutionId) {
 #' Adds one or more tags to an Athena resource
 #'
 #' @description
-#' Adds one or more tags to an Athena resource. A tag is a label that you assign to a resource. In Athena, a resource can be a workgroup or data catalog. Each tag consists of a key and an optional value, both of which you define. For example, you can use tags to categorize Athena workgroups or data catalogs by purpose, owner, or environment. Use a consistent set of tag keys to make it easier to search and filter workgroups or data catalogs in your account. For best practices, see [Tagging Best Practices](https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf). Tag keys can be from 1 to 128 UTF-8 Unicode characters, and tag values can be from 0 to 256 UTF-8 Unicode characters. Tags can use letters and numbers representable in UTF-8, and the following characters: + - = . _ : / @@. Tag keys and values are case-sensitive. Tag keys must be unique per resource. If you specify more than one tag, separate them by commas.
+#' Adds one or more tags to an Athena resource. A tag is a label that you assign to a resource. Each tag consists of a key and an optional value, both of which you define. For example, you can use tags to categorize Athena workgroups, data catalogs, or capacity reservations by purpose, owner, or environment. Use a consistent set of tag keys to make it easier to search and filter the resources in your account. For best practices, see [Tagging Best Practices](https://docs.aws.amazon.com/whitepapers/latest/tagging-best-practices/tagging-best-practices.html). Tag keys can be from 1 to 128 UTF-8 Unicode characters, and tag values can be from 0 to 256 UTF-8 Unicode characters. Tags can use letters and numbers representable in UTF-8, and the following characters: + - = . _ : / @@. Tag keys and values are case-sensitive. Tag keys must be unique per resource. If you specify more than one tag, separate them by commas.
 #'
 #' See [https://paws-r.github.io/docs/athena/tag_resource.html](https://paws-r.github.io/docs/athena/tag_resource.html) for full documentation.
 #'
-#' @param ResourceARN &#91;required&#93; Specifies the ARN of the Athena resource (workgroup or data catalog) to
-#' which tags are to be added.
+#' @param ResourceARN &#91;required&#93; Specifies the ARN of the Athena resource to which tags are to be added.
 #' @param Tags &#91;required&#93; A collection of one or more tags, separated by commas, to be added to an
-#' Athena workgroup or data catalog resource.
+#' Athena resource.
 #'
 #' @keywords internal
 #'
@@ -1118,10 +2033,39 @@ athena_tag_resource <- function(ResourceARN, Tags) {
 }
 .athena$operations$tag_resource <- athena_tag_resource
 
-#' Removes one or more tags from a data catalog or workgroup resource
+#' Terminates an active session
 #'
 #' @description
-#' Removes one or more tags from a data catalog or workgroup resource.
+#' Terminates an active session. A [`terminate_session`][athena_terminate_session] call on a session that is already inactive (for example, in a `FAILED`, `TERMINATED` or `TERMINATING` state) succeeds but has no effect. Calculations running in the session when [`terminate_session`][athena_terminate_session] is called are forcefully stopped, but may display as `FAILED` instead of `STOPPED`.
+#'
+#' See [https://paws-r.github.io/docs/athena/terminate_session.html](https://paws-r.github.io/docs/athena/terminate_session.html) for full documentation.
+#'
+#' @param SessionId &#91;required&#93; The session ID.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_terminate_session
+athena_terminate_session <- function(SessionId) {
+  op <- new_operation(
+    name = "TerminateSession",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$terminate_session_input(SessionId = SessionId)
+  output <- .athena$terminate_session_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$terminate_session <- athena_terminate_session
+
+#' Removes one or more tags from an Athena resource
+#'
+#' @description
+#' Removes one or more tags from an Athena resource.
 #'
 #' See [https://paws-r.github.io/docs/athena/untag_resource.html](https://paws-r.github.io/docs/athena/untag_resource.html) for full documentation.
 #'
@@ -1148,6 +2092,37 @@ athena_untag_resource <- function(ResourceARN, TagKeys) {
   return(response)
 }
 .athena$operations$untag_resource <- athena_untag_resource
+
+#' Updates the number of requested data processing units for the capacity
+#' reservation with the specified name
+#'
+#' @description
+#' Updates the number of requested data processing units for the capacity reservation with the specified name.
+#'
+#' See [https://paws-r.github.io/docs/athena/update_capacity_reservation.html](https://paws-r.github.io/docs/athena/update_capacity_reservation.html) for full documentation.
+#'
+#' @param TargetDpus &#91;required&#93; The new number of requested data processing units.
+#' @param Name &#91;required&#93; The name of the capacity reservation.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_update_capacity_reservation
+athena_update_capacity_reservation <- function(TargetDpus, Name) {
+  op <- new_operation(
+    name = "UpdateCapacityReservation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$update_capacity_reservation_input(TargetDpus = TargetDpus, Name = Name)
+  output <- .athena$update_capacity_reservation_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$update_capacity_reservation <- athena_update_capacity_reservation
 
 #' Updates the data catalog that has the specified name
 #'
@@ -1241,6 +2216,85 @@ athena_update_named_query <- function(NamedQueryId, Name, Description = NULL, Qu
 }
 .athena$operations$update_named_query <- athena_update_named_query
 
+#' Updates the contents of a Spark notebook
+#'
+#' @description
+#' Updates the contents of a Spark notebook.
+#'
+#' See [https://paws-r.github.io/docs/athena/update_notebook.html](https://paws-r.github.io/docs/athena/update_notebook.html) for full documentation.
+#'
+#' @param NotebookId &#91;required&#93; The ID of the notebook to update.
+#' @param Payload &#91;required&#93; The updated content for the notebook.
+#' @param Type &#91;required&#93; The notebook content type. Currently, the only valid type is `IPYNB`.
+#' @param SessionId The active notebook session ID. Required if the notebook has an active
+#' session.
+#' @param ClientRequestToken A unique case-sensitive string used to ensure the request to create the
+#' notebook is idempotent (executes only once).
+#' 
+#' This token is listed as not required because Amazon Web Services SDKs
+#' (for example the Amazon Web Services SDK for Java) auto-generate the
+#' token for you. If you are not using the Amazon Web Services SDK or the
+#' Amazon Web Services CLI, you must provide this token or the action will
+#' fail.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_update_notebook
+athena_update_notebook <- function(NotebookId, Payload, Type, SessionId = NULL, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "UpdateNotebook",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$update_notebook_input(NotebookId = NotebookId, Payload = Payload, Type = Type, SessionId = SessionId, ClientRequestToken = ClientRequestToken)
+  output <- .athena$update_notebook_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$update_notebook <- athena_update_notebook
+
+#' Updates the metadata for a notebook
+#'
+#' @description
+#' Updates the metadata for a notebook.
+#'
+#' See [https://paws-r.github.io/docs/athena/update_notebook_metadata.html](https://paws-r.github.io/docs/athena/update_notebook_metadata.html) for full documentation.
+#'
+#' @param NotebookId &#91;required&#93; The ID of the notebook to update the metadata for.
+#' @param ClientRequestToken A unique case-sensitive string used to ensure the request to create the
+#' notebook is idempotent (executes only once).
+#' 
+#' This token is listed as not required because Amazon Web Services SDKs
+#' (for example the Amazon Web Services SDK for Java) auto-generate the
+#' token for you. If you are not using the Amazon Web Services SDK or the
+#' Amazon Web Services CLI, you must provide this token or the action will
+#' fail.
+#' @param Name &#91;required&#93; The name to update the notebook to.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_update_notebook_metadata
+athena_update_notebook_metadata <- function(NotebookId, ClientRequestToken = NULL, Name) {
+  op <- new_operation(
+    name = "UpdateNotebookMetadata",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$update_notebook_metadata_input(NotebookId = NotebookId, ClientRequestToken = ClientRequestToken, Name = Name)
+  output <- .athena$update_notebook_metadata_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$update_notebook_metadata <- athena_update_notebook_metadata
+
 #' Updates a prepared statement
 #'
 #' @description
@@ -1276,14 +2330,13 @@ athena_update_prepared_statement <- function(StatementName, WorkGroup, QueryStat
 #' Updates the workgroup with the specified name
 #'
 #' @description
-#' Updates the workgroup with the specified name. The workgroup's name cannot be changed.
+#' Updates the workgroup with the specified name. The workgroup's name cannot be changed. Only `ConfigurationUpdates` can be specified.
 #'
 #' See [https://paws-r.github.io/docs/athena/update_work_group.html](https://paws-r.github.io/docs/athena/update_work_group.html) for full documentation.
 #'
 #' @param WorkGroup &#91;required&#93; The specified workgroup that will be updated.
 #' @param Description The workgroup description.
-#' @param ConfigurationUpdates The workgroup configuration that will be updated for the given
-#' workgroup.
+#' @param ConfigurationUpdates Contains configuration updates for an Athena SQL workgroup.
 #' @param State The workgroup state that will be updated for the given workgroup.
 #'
 #' @keywords internal

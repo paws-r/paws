@@ -11,7 +11,7 @@ ram_list_resource_share_permissions(
 )
 }
 \arguments{
-\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
 of the resource share for which you want to retrieve the associated
 permissions.}
 

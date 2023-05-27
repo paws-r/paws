@@ -2,7 +2,7 @@
 % Please edit documentation in R/wellarchitected_operations.R
 \name{wellarchitected_list_answers}
 \alias{wellarchitected_list_answers}
-\title{List of answers}
+\title{List of answers for a particular workload and lens}
 \usage{
 wellarchitected_list_answers(
   WorkloadId,
@@ -27,7 +27,7 @@ wellarchitected_list_answers(
 \item{MaxResults}{The maximum number of results to return for this request.}
 }
 \description{
-List of answers.
+List of answers for a particular workload and lens.
 
 See \url{https://paws-r.github.io/docs/wellarchitected/list_answers.html} for full documentation.
 }

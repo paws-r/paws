@@ -13,7 +13,8 @@ ec2_allocate_hosts(
   Quantity,
   TagSpecifications = NULL,
   HostRecovery = NULL,
-  OutpostArn = NULL
+  OutpostArn = NULL,
+  HostMaintenance = NULL
 )
 }
 \arguments{
@@ -62,6 +63,10 @@ Default: \code{off}}
 
 \item{OutpostArn}{The Amazon Resource Name (ARN) of the Amazon Web Services Outpost on
 which to allocate the Dedicated Host.}
+
+\item{HostMaintenance}{Indicates whether to enable or disable host maintenance for the
+Dedicated Host. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-maintenance.html}{Host maintenance}
+in the \emph{Amazon EC2 User Guide}.}
 }
 \description{
 Allocates a Dedicated Host to your account. At a minimum, specify the supported instance type or instance family, the Availability Zone in which to allocate the host, and the number of hosts to allocate.

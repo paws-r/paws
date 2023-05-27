@@ -46,16 +46,36 @@ with the public wrapping key that
 using the wrapping algorithm that you specified in the same
 \code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}} request.}
 
-\item{ValidTo}{The time at which the imported key material expires. When the key
-material expires, KMS deletes the key material and the KMS key becomes
-unusable. You must omit this parameter when the \code{ExpirationModel}
-parameter is set to \code{KEY_MATERIAL_DOES_NOT_EXPIRE}. Otherwise it is
-required.}
+\item{ValidTo}{The date and time when the imported key material expires. This parameter
+is required when the value of the \code{ExpirationModel} parameter is
+\code{KEY_MATERIAL_EXPIRES}. Otherwise it is not valid.
+
+The value of this parameter must be a future date and time. The maximum
+value is 365 days from the request date.
+
+When the key material expires, KMS deletes the key material from the KMS
+key. Without its key material, the KMS key is unusable. To use the KMS
+key in cryptographic operations, you must reimport the same key
+material.
+
+You cannot change the \code{ExpirationModel} or \code{ValidTo} values for the
+current import after the request completes. To change either value, you
+must delete
+(\code{\link[=kms_delete_imported_key_material]{delete_imported_key_material}}) and
+reimport the key material.}
 
 \item{ExpirationModel}{Specifies whether the key material expires. The default is
-\code{KEY_MATERIAL_EXPIRES}, in which case you must include the \code{ValidTo}
-parameter. When this parameter is set to \code{KEY_MATERIAL_DOES_NOT_EXPIRE},
-you must omit the \code{ValidTo} parameter.}
+\code{KEY_MATERIAL_EXPIRES}.
+
+When the value of \code{ExpirationModel} is \code{KEY_MATERIAL_EXPIRES}, you must
+specify a value for the \code{ValidTo} parameter. When value is
+\code{KEY_MATERIAL_DOES_NOT_EXPIRE}, you must omit the \code{ValidTo} parameter.
+
+You cannot change the \code{ExpirationModel} or \code{ValidTo} values for the
+current import after the request completes. To change either value, you
+must delete
+(\code{\link[=kms_delete_imported_key_material]{delete_imported_key_material}}) and
+reimport the key material.}
 }
 \description{
 Imports key material into an existing symmetric encryption KMS key that was created without key material. After you successfully import key material into a KMS key, you can \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html#reimport-key-material}{reimport the same key material} into that KMS key, but you cannot import different key material.

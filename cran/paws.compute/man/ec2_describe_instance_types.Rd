@@ -24,8 +24,8 @@ in the \emph{Amazon EC2 User Guide}.}
 
 \item{Filters}{One or more filters. Filter names and values are case-sensitive.
 \itemize{
-\item \code{auto-recovery-supported} - Indicates whether auto recovery is
-supported (\code{true} | \code{false}).
+\item \code{auto-recovery-supported} - Indicates whether Amazon CloudWatch
+action based recovery is supported (\code{true} | \code{false}).
 \item \code{bare-metal} - Indicates whether it is a bare metal instance type
 (\code{true} | \code{false}).
 \item \code{burstable-performance-supported} - Indicates whether it is a
@@ -125,11 +125,13 @@ that can be configured for the instance type. For example, "1" or
 "1,2".
 }}
 
-\item{MaxResults}{The maximum number of results to return for the request in a single
-page. The remaining results can be seen by sending another request with
-the next token value.}
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 
-\item{NextToken}{The token to retrieve the next page of results.}
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
 }
 \description{
 Describes the details of the instance types that are offered in a location. The results can be filtered by the attributes of the instance types.

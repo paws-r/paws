@@ -19,7 +19,8 @@ billingconductor_list_pricing_plans(
 
 \item{MaxResults}{The maximum number of pricing plans to retrieve.}
 
-\item{NextToken}{The pagination token used on subsequent call to get pricing plans.}
+\item{NextToken}{The pagination token that's used on subsequent call to get pricing
+plans.}
 }
 \description{
 A paginated call to get pricing plans for the given billing period. If you don't provide a billing period, the current billing period is used.

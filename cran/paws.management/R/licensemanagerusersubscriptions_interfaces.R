@@ -23,7 +23,7 @@ NULL
 
 .licensemanagerusersubscriptions$deregister_identity_provider_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityProviderSummary = structure(list(FailureMessage = structure(logical(0), tags = list(type = "string")), IdentityProvider = structure(list(ActiveDirectoryIdentityProvider = structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Product = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(IdentityProviderSummary = structure(list(FailureMessage = structure(logical(0), tags = list(type = "string")), IdentityProvider = structure(list(ActiveDirectoryIdentityProvider = structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Product = structure(logical(0), tags = list(type = "string")), Settings = structure(list(SecurityGroupId = structure(logical(0), tags = list(type = "string")), Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -47,7 +47,7 @@ NULL
 
 .licensemanagerusersubscriptions$list_identity_providers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityProviderSummaries = structure(list(structure(list(FailureMessage = structure(logical(0), tags = list(type = "string")), IdentityProvider = structure(list(ActiveDirectoryIdentityProvider = structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Product = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(IdentityProviderSummaries = structure(list(structure(list(FailureMessage = structure(logical(0), tags = list(type = "string")), IdentityProvider = structure(list(ActiveDirectoryIdentityProvider = structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Product = structure(logical(0), tags = list(type = "string")), Settings = structure(list(SecurityGroupId = structure(logical(0), tags = list(type = "string")), Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -89,13 +89,13 @@ NULL
 
 .licensemanagerusersubscriptions$register_identity_provider_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityProvider = structure(list(ActiveDirectoryIdentityProvider = structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Product = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(IdentityProvider = structure(list(ActiveDirectoryIdentityProvider = structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Product = structure(logical(0), tags = list(type = "string")), Settings = structure(list(SecurityGroupId = structure(logical(0), tags = list(type = "string")), Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .licensemanagerusersubscriptions$register_identity_provider_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityProviderSummary = structure(list(FailureMessage = structure(logical(0), tags = list(type = "string")), IdentityProvider = structure(list(ActiveDirectoryIdentityProvider = structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Product = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(IdentityProviderSummary = structure(list(FailureMessage = structure(logical(0), tags = list(type = "string")), IdentityProvider = structure(list(ActiveDirectoryIdentityProvider = structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Product = structure(logical(0), tags = list(type = "string")), Settings = structure(list(SecurityGroupId = structure(logical(0), tags = list(type = "string")), Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -120,5 +120,17 @@ NULL
 .licensemanagerusersubscriptions$stop_product_subscription_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ProductUserSummary = structure(list(Domain = structure(logical(0), tags = list(type = "string")), IdentityProvider = structure(list(ActiveDirectoryIdentityProvider = structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Product = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), SubscriptionEndDate = structure(logical(0), tags = list(type = "string")), SubscriptionStartDate = structure(logical(0), tags = list(type = "string")), Username = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.licensemanagerusersubscriptions$update_identity_provider_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityProvider = structure(list(ActiveDirectoryIdentityProvider = structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Product = structure(logical(0), tags = list(type = "string")), UpdateSettings = structure(list(AddSubnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RemoveSubnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.licensemanagerusersubscriptions$update_identity_provider_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityProviderSummary = structure(list(FailureMessage = structure(logical(0), tags = list(type = "string")), IdentityProvider = structure(list(ActiveDirectoryIdentityProvider = structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Product = structure(logical(0), tags = list(type = "string")), Settings = structure(list(SecurityGroupId = structure(logical(0), tags = list(type = "string")), Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

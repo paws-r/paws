@@ -105,6 +105,41 @@ s3outposts_list_endpoints <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .s3outposts$operations$list_endpoints <- s3outposts_list_endpoints
 
+#' Lists the Outposts with S3 on Outposts capacity for your Amazon Web
+#' Services account
+#'
+#' @description
+#' Lists the Outposts with S3 on Outposts capacity for your Amazon Web Services account. Includes S3 on Outposts that you have access to as the Outposts owner, or as a shared user from Resource Access Manager (RAM).
+#'
+#' See [https://paws-r.github.io/docs/s3outposts/list_outposts_with_s3.html](https://paws-r.github.io/docs/s3outposts/list_outposts_with_s3.html) for full documentation.
+#'
+#' @param NextToken When you can get additional results from the
+#' [`list_outposts_with_s3`][s3outposts_list_outposts_with_s3] call, a
+#' `NextToken` parameter is returned in the output. You can then pass in a
+#' subsequent command to the `NextToken` parameter to continue listing
+#' additional Outposts.
+#' @param MaxResults The maximum number of Outposts to return. The limit is 100.
+#'
+#' @keywords internal
+#'
+#' @rdname s3outposts_list_outposts_with_s3
+s3outposts_list_outposts_with_s3 <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListOutpostsWithS3",
+    http_method = "GET",
+    http_path = "/S3Outposts/ListOutpostsWithS3",
+    paginator = list()
+  )
+  input <- .s3outposts$list_outposts_with_s3_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .s3outposts$list_outposts_with_s3_output()
+  config <- get_config()
+  svc <- .s3outposts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3outposts$operations$list_outposts_with_s3 <- s3outposts_list_outposts_with_s3
+
 #' Lists all endpoints associated with an Outpost that has been shared by
 #' Amazon Web Services Resource Access Manager (RAM)
 #'

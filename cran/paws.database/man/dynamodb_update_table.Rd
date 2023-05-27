@@ -14,7 +14,8 @@ dynamodb_update_table(
   StreamSpecification = NULL,
   SSESpecification = NULL,
   ReplicaUpdates = NULL,
-  TableClass = NULL
+  TableClass = NULL,
+  DeletionProtectionEnabled = NULL
 )
 }
 \arguments{
@@ -67,11 +68,14 @@ a table that doesn't have a stream.}
 \item{ReplicaUpdates}{A list of replica update actions (create, delete, or update) for the
 table.
 
-This property only applies to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html}{Version 2019.11.21}
+This property only applies to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html}{Version 2019.11.21 (Current)}
 of global tables.}
 
 \item{TableClass}{The table class of the table to be updated. Valid values are \code{STANDARD}
 and \code{STANDARD_INFREQUENT_ACCESS}.}
+
+\item{DeletionProtectionEnabled}{Indicates whether deletion protection is to be enabled (true) or
+disabled (false) on the table.}
 }
 \description{
 Modifies the provisioned throughput settings, global secondary indexes, or DynamoDB Streams settings for a given table.

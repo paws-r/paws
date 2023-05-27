@@ -71,3 +71,11 @@ test_that("list_organization_admin_accounts", {
 test_that("list_organization_admin_accounts", {
   expect_error(svc$list_organization_admin_accounts(MaxResults = 20), NA)
 })
+
+test_that("list_security_control_definitions", {
+  expect_error(svc$list_security_control_definitions(), NA)
+})
+
+test_that("list_security_control_definitions", {
+  expect_error(svc$list_security_control_definitions(MaxResults = 20), NA)
+})

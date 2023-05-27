@@ -14,11 +14,11 @@ ecrpublic_upload_layer_part(
 )
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry to which you are
-uploading layer parts. If you do not specify a registry, the default
-public registry is assumed.}
+\item{registryId}{The Amazon Web Services account ID, or registry alias, that's associated
+with the registry that you're uploading layer parts to. If you do not
+specify a registry, the default public registry is assumed.}
 
-\item{repositoryName}{[required] The name of the repository to which you are uploading layer parts.}
+\item{repositoryName}{[required] The name of the repository that you're uploading layer parts to.}
 
 \item{uploadId}{[required] The upload ID from a previous
 \code{\link[=ecrpublic_initiate_layer_upload]{initiate_layer_upload}} operation to

@@ -44,7 +44,7 @@ configure a cost and usage report per billing group.
 
 This documentation shows how you can configure Amazon Web Services
 Billing Conductor using its API. For more information about using the
-Amazon Web Services Billing Conductor user interface, see the \href{https://docs.aws.amazon.com/billingconductor/latest/userguide/what-is-billingconductor.html}{Amazon Web Services Enterprise Billing Console User Guide}.
+Amazon Web Services Billing Conductor user interface, see the \href{https://docs.aws.amazon.com/billingconductor/latest/userguide/what-is-billingconductor.html}{Amazon Web Services Billing Conductor User Guide}.
 }
 \section{Service syntax}{
 
@@ -84,18 +84,19 @@ Amazon Web Services Billing Conductor user interface, see the \href{https://docs
 \link[paws.cost.management:billingconductor_delete_billing_group]{delete_billing_group} \tab Deletes a billing group\cr
 \link[paws.cost.management:billingconductor_delete_custom_line_item]{delete_custom_line_item} \tab Deletes the custom line item identified by the given ARN in the current, or previous billing period\cr
 \link[paws.cost.management:billingconductor_delete_pricing_plan]{delete_pricing_plan} \tab Deletes a pricing plan\cr
-\link[paws.cost.management:billingconductor_delete_pricing_rule]{delete_pricing_rule} \tab Deletes the pricing rule identified by the input Amazon Resource Name (ARN)\cr
+\link[paws.cost.management:billingconductor_delete_pricing_rule]{delete_pricing_rule} \tab Deletes the pricing rule that's identified by the input Amazon Resource Name (ARN)\cr
 \link[paws.cost.management:billingconductor_disassociate_accounts]{disassociate_accounts} \tab Removes the specified list of account IDs from the given billing group\cr
 \link[paws.cost.management:billingconductor_disassociate_pricing_rules]{disassociate_pricing_rules} \tab Disassociates a list of pricing rules from a pricing plan\cr
-\link[paws.cost.management:billingconductor_list_account_associations]{list_account_associations} \tab Amazon Web Services Billing Conductor is in beta release and is subject to change\cr
+\link[paws.cost.management:billingconductor_list_account_associations]{list_account_associations} \tab This is a paginated call to list linked accounts that are linked to the payer account for the specified time period\cr
 \link[paws.cost.management:billingconductor_list_billing_group_cost_reports]{list_billing_group_cost_reports} \tab A paginated call to retrieve a summary report of actual Amazon Web Services charges and the calculated Amazon Web Services charges based on the associated pricing plan of a billing group\cr
 \link[paws.cost.management:billingconductor_list_billing_groups]{list_billing_groups} \tab A paginated call to retrieve a list of billing groups for the given billing period\cr
 \link[paws.cost.management:billingconductor_list_custom_line_items]{list_custom_line_items} \tab A paginated call to get a list of all custom line items (FFLIs) for the given billing period\cr
+\link[paws.cost.management:billingconductor_list_custom_line_item_versions]{list_custom_line_item_versions} \tab A paginated call to get a list of all custom line item versions\cr
 \link[paws.cost.management:billingconductor_list_pricing_plans]{list_pricing_plans} \tab A paginated call to get pricing plans for the given billing period\cr
-\link[paws.cost.management:billingconductor_list_pricing_plans_associated_with_pricing_rule]{list_pricing_plans_associated_with_pricing_rule} \tab A list of the pricing plans associated with a pricing rule\cr
+\link[paws.cost.management:billingconductor_list_pricing_plans_associated_with_pricing_rule]{list_pricing_plans_associated_with_pricing_rule} \tab A list of the pricing plans that are associated with a pricing rule\cr
 \link[paws.cost.management:billingconductor_list_pricing_rules]{list_pricing_rules} \tab Describes a pricing rule that can be associated to a pricing plan, or set of pricing plans\cr
-\link[paws.cost.management:billingconductor_list_pricing_rules_associated_to_pricing_plan]{list_pricing_rules_associated_to_pricing_plan} \tab Lists the pricing rules associated with a pricing plan\cr
-\link[paws.cost.management:billingconductor_list_resources_associated_to_custom_line_item]{list_resources_associated_to_custom_line_item} \tab List the resources associated to a custom line item\cr
+\link[paws.cost.management:billingconductor_list_pricing_rules_associated_to_pricing_plan]{list_pricing_rules_associated_to_pricing_plan} \tab Lists the pricing rules that are associated with a pricing plan\cr
+\link[paws.cost.management:billingconductor_list_resources_associated_to_custom_line_item]{list_resources_associated_to_custom_line_item} \tab List the resources that are associated to a custom line item\cr
 \link[paws.cost.management:billingconductor_list_tags_for_resource]{list_tags_for_resource} \tab A list the tags for a resource\cr
 \link[paws.cost.management:billingconductor_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn\cr
 \link[paws.cost.management:billingconductor_untag_resource]{untag_resource} \tab Deletes specified tags from a resource\cr

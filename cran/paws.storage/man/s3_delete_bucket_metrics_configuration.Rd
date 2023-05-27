@@ -10,7 +10,9 @@ s3_delete_bucket_metrics_configuration(Bucket, Id, ExpectedBucketOwner = NULL)
 \arguments{
 \item{Bucket}{[required] The name of the bucket containing the metrics configuration to delete.}
 
-\item{Id}{[required] The ID used to identify the metrics configuration.}
+\item{Id}{[required] The ID used to identify the metrics configuration. The ID has a 64
+character limit and can only contain letters, numbers, periods, dashes,
+and underscores.}
 
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request fails with the HTTP status code

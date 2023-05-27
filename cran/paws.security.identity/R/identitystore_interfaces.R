@@ -3,6 +3,78 @@
 #' @include identitystore_service.R
 NULL
 
+.identitystore$create_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$create_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GroupId = structure(logical(0), tags = list(type = "string")), IdentityStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$create_group_membership_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), GroupId = structure(logical(0), tags = list(type = "string")), MemberId = structure(list(UserId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$create_group_membership_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MembershipId = structure(logical(0), tags = list(type = "string")), IdentityStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$create_user_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Name = structure(list(Formatted = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), FamilyName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GivenName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MiddleName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), HonorificPrefix = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), HonorificSuffix = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), DisplayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), NickName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ProfileUrl = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Emails = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Primary = structure(logical(0), tags = list(type = "boolean", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), Addresses = structure(list(structure(list(StreetAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Locality = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Region = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PostalCode = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Country = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Formatted = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Primary = structure(logical(0), tags = list(type = "boolean", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), PhoneNumbers = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Primary = structure(logical(0), tags = list(type = "boolean", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), UserType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Title = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PreferredLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Locale = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Timezone = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$create_user_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(UserId = structure(logical(0), tags = list(type = "string")), IdentityStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$delete_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), GroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$delete_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$delete_group_membership_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), MembershipId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$delete_group_membership_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$delete_user_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$delete_user_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .identitystore$describe_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), GroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -11,7 +83,19 @@ NULL
 
 .identitystore$describe_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupId = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(GroupId = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ExternalIds = structure(list(structure(list(Issuer = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Id = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), IdentityStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$describe_group_membership_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), MembershipId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$describe_group_membership_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), MembershipId = structure(logical(0), tags = list(type = "string")), GroupId = structure(logical(0), tags = list(type = "string")), MemberId = structure(list(UserId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -23,30 +107,126 @@ NULL
 
 .identitystore$describe_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), UserId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(UserName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), UserId = structure(logical(0), tags = list(type = "string")), ExternalIds = structure(list(structure(list(Issuer = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Id = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), Name = structure(list(Formatted = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), FamilyName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GivenName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MiddleName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), HonorificPrefix = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), HonorificSuffix = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), DisplayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), NickName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ProfileUrl = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Emails = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Primary = structure(logical(0), tags = list(type = "boolean", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), Addresses = structure(list(structure(list(StreetAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Locality = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Region = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PostalCode = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Country = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Formatted = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Primary = structure(logical(0), tags = list(type = "boolean", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), PhoneNumbers = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Primary = structure(logical(0), tags = list(type = "boolean", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), UserType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Title = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PreferredLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Locale = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Timezone = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), IdentityStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$get_group_id_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), AlternateIdentifier = structure(list(ExternalId = structure(list(Issuer = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Id = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), UniqueAttribute = structure(list(AttributePath = structure(logical(0), tags = list(type = "string")), AttributeValue = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$get_group_id_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GroupId = structure(logical(0), tags = list(type = "string")), IdentityStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$get_group_membership_id_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), GroupId = structure(logical(0), tags = list(type = "string")), MemberId = structure(list(UserId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$get_group_membership_id_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MembershipId = structure(logical(0), tags = list(type = "string")), IdentityStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$get_user_id_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), AlternateIdentifier = structure(list(ExternalId = structure(list(Issuer = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Id = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), UniqueAttribute = structure(list(AttributePath = structure(logical(0), tags = list(type = "string")), AttributeValue = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$get_user_id_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(UserId = structure(logical(0), tags = list(type = "string")), IdentityStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$is_member_in_groups_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), MemberId = structure(list(UserId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), GroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$is_member_in_groups_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Results = structure(list(structure(list(GroupId = structure(logical(0), tags = list(type = "string")), MemberId = structure(list(UserId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), MembershipExists = structure(logical(0), tags = list(type = "boolean", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$list_group_memberships_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), GroupId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$list_group_memberships_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GroupMemberships = structure(list(structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), MembershipId = structure(logical(0), tags = list(type = "string")), GroupId = structure(logical(0), tags = list(type = "string")), MemberId = structure(list(UserId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$list_group_memberships_for_member_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), MemberId = structure(list(UserId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$list_group_memberships_for_member_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GroupMemberships = structure(list(structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), MembershipId = structure(logical(0), tags = list(type = "string")), GroupId = structure(logical(0), tags = list(type = "string")), MemberId = structure(list(UserId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .identitystore$list_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(AttributePath = structure(logical(0), tags = list(type = "string")), AttributeValue = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(AttributePath = structure(logical(0), tags = list(type = "string")), AttributeValue = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "Using filters with ListGroups API is deprecated, please use GetGroupId API instead.", type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .identitystore$list_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Groups = structure(list(structure(list(GroupId = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Groups = structure(list(structure(list(GroupId = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ExternalIds = structure(list(structure(list(Issuer = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Id = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), IdentityStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .identitystore$list_users_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(AttributePath = structure(logical(0), tags = list(type = "string")), AttributeValue = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(AttributePath = structure(logical(0), tags = list(type = "string")), AttributeValue = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "Using filters with ListUsers API is deprecated, please use GetGroupId API instead.", type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .identitystore$list_users_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Users = structure(list(structure(list(UserName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), UserId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Users = structure(list(structure(list(UserName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), UserId = structure(logical(0), tags = list(type = "string")), ExternalIds = structure(list(structure(list(Issuer = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Id = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), Name = structure(list(Formatted = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), FamilyName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), GivenName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MiddleName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), HonorificPrefix = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), HonorificSuffix = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), DisplayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), NickName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ProfileUrl = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Emails = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Primary = structure(logical(0), tags = list(type = "boolean", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), Addresses = structure(list(structure(list(StreetAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Locality = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Region = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PostalCode = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Country = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Formatted = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Primary = structure(logical(0), tags = list(type = "boolean", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), PhoneNumbers = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Primary = structure(logical(0), tags = list(type = "boolean", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), UserType = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Title = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PreferredLanguage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Locale = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Timezone = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), IdentityStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$update_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), GroupId = structure(logical(0), tags = list(type = "string")), Operations = structure(list(structure(list(AttributePath = structure(logical(0), tags = list(type = "string")), AttributeValue = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$update_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$update_user_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IdentityStoreId = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string")), Operations = structure(list(structure(list(AttributePath = structure(logical(0), tags = list(type = "string")), AttributeValue = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.identitystore$update_user_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }

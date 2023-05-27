@@ -72,7 +72,7 @@ Explorer API, see \href{https://aws.amazon.com/aws-cost-management/}{Amazon Web 
 
 \tabular{ll}{
 \link[paws.cost.management:costexplorer_create_anomaly_monitor]{create_anomaly_monitor} \tab Creates a new cost anomaly detection monitor with the requested type and monitor specification\cr
-\link[paws.cost.management:costexplorer_create_anomaly_subscription]{create_anomaly_subscription} \tab Adds a subscription to a cost anomaly detection monitor\cr
+\link[paws.cost.management:costexplorer_create_anomaly_subscription]{create_anomaly_subscription} \tab Adds an alert subscription to a cost anomaly detection monitor\cr
 \link[paws.cost.management:costexplorer_create_cost_category_definition]{create_cost_category_definition} \tab Creates a new Cost Category with the requested name and rules\cr
 \link[paws.cost.management:costexplorer_delete_anomaly_monitor]{delete_anomaly_monitor} \tab Deletes a cost anomaly monitor\cr
 \link[paws.cost.management:costexplorer_delete_anomaly_subscription]{delete_anomaly_subscription} \tab Deletes a cost anomaly subscription\cr
@@ -91,15 +91,17 @@ Explorer API, see \href{https://aws.amazon.com/aws-cost-management/}{Amazon Web 
 \link[paws.cost.management:costexplorer_get_reservation_utilization]{get_reservation_utilization} \tab Retrieves the reservation utilization for your account\cr
 \link[paws.cost.management:costexplorer_get_rightsizing_recommendation]{get_rightsizing_recommendation} \tab Creates recommendations that help you save cost by identifying idle and underutilized Amazon EC2 instances\cr
 \link[paws.cost.management:costexplorer_get_savings_plans_coverage]{get_savings_plans_coverage} \tab Retrieves the Savings Plans covered for your account\cr
-\link[paws.cost.management:costexplorer_get_savings_plans_purchase_recommendation]{get_savings_plans_purchase_recommendation} \tab Retrieves your request parameters, Savings Plan Recommendations Summary and Details\cr
+\link[paws.cost.management:costexplorer_get_savings_plans_purchase_recommendation]{get_savings_plans_purchase_recommendation} \tab Retrieves the Savings Plans recommendations for your account\cr
 \link[paws.cost.management:costexplorer_get_savings_plans_utilization]{get_savings_plans_utilization} \tab Retrieves the Savings Plans utilization for your account across date ranges with daily or monthly granularity\cr
 \link[paws.cost.management:costexplorer_get_savings_plans_utilization_details]{get_savings_plans_utilization_details} \tab Retrieves attribute data along with aggregate utilization and savings data for a given time period\cr
 \link[paws.cost.management:costexplorer_get_tags]{get_tags} \tab Queries for available tag keys and tag values for a specified period\cr
 \link[paws.cost.management:costexplorer_get_usage_forecast]{get_usage_forecast} \tab Retrieves a forecast for how much Amazon Web Services predicts that you will use over the forecast time period that you select, based on your past usage\cr
 \link[paws.cost.management:costexplorer_list_cost_allocation_tags]{list_cost_allocation_tags} \tab Get a list of cost allocation tags\cr
 \link[paws.cost.management:costexplorer_list_cost_category_definitions]{list_cost_category_definitions} \tab Returns the name, Amazon Resource Name (ARN), NumberOfRules and effective dates of all Cost Categories defined in the account\cr
+\link[paws.cost.management:costexplorer_list_savings_plans_purchase_recommendation_generation]{list_savings_plans_purchase_recommendation_generation} \tab Retrieves a list of your historical recommendation generations within the past 30 days\cr
 \link[paws.cost.management:costexplorer_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of resource tags associated with the resource specified by the Amazon Resource Name (ARN)\cr
 \link[paws.cost.management:costexplorer_provide_anomaly_feedback]{provide_anomaly_feedback} \tab Modifies the feedback property of a given cost anomaly\cr
+\link[paws.cost.management:costexplorer_start_savings_plans_purchase_recommendation_generation]{start_savings_plans_purchase_recommendation_generation} \tab Requests a Savings Plans recommendation generation\cr
 \link[paws.cost.management:costexplorer_tag_resource]{tag_resource} \tab An API operation for adding one or more tags (key-value pairs) to a resource\cr
 \link[paws.cost.management:costexplorer_untag_resource]{untag_resource} \tab Removes one or more tags from a resource\cr
 \link[paws.cost.management:costexplorer_update_anomaly_monitor]{update_anomaly_monitor} \tab Updates an existing cost anomaly monitor\cr

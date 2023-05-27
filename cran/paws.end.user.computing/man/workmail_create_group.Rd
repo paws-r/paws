@@ -2,7 +2,7 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_create_group}
 \alias{workmail_create_group}
-\title{Creates a group that can be used in Amazon WorkMail by calling the
+\title{Creates a group that can be used in WorkMail by calling the
 RegisterToWorkMail operation}
 \usage{
 workmail_create_group(OrganizationId, Name)
@@ -13,7 +13,7 @@ workmail_create_group(OrganizationId, Name)
 \item{Name}{[required] The name of the group.}
 }
 \description{
-Creates a group that can be used in Amazon WorkMail by calling the \code{\link[=workmail_register_to_work_mail]{register_to_work_mail}} operation.
+Creates a group that can be used in WorkMail by calling the \code{\link[=workmail_register_to_work_mail]{register_to_work_mail}} operation.
 
 See \url{https://paws-r.github.io/docs/workmail/create_group.html} for full documentation.
 }

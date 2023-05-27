@@ -19,9 +19,9 @@ s3control_list_regional_buckets(
 
 \item{MaxResults}{}
 
-\item{OutpostId}{The ID of the Outposts.
+\item{OutpostId}{The ID of the Outposts resource.
 
-This is required by Amazon S3 on Outposts buckets.}
+This ID is required by Amazon S3 on Outposts buckets.}
 }
 \description{
 Returns a list of all Outposts buckets in an Outpost that are owned by the authenticated sender of the request. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts} in the \emph{Amazon S3 User Guide}.

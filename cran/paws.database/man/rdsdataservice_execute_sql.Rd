@@ -5,31 +5,31 @@
 \title{Runs one or more SQL statements}
 \usage{
 rdsdataservice_execute_sql(
-  awsSecretStoreArn,
-  database = NULL,
   dbClusterOrInstanceArn,
-  schema = NULL,
-  sqlStatements
+  awsSecretStoreArn,
+  sqlStatements,
+  database = NULL,
+  schema = NULL
 )
 }
 \arguments{
+\item{dbClusterOrInstanceArn}{[required] The ARN of the Aurora Serverless DB cluster.}
+
 \item{awsSecretStoreArn}{[required] The Amazon Resource Name (ARN) of the secret that enables access to the
 DB cluster. Enter the database user name and password for the
 credentials in the secret.
 
 For information about creating the secret, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_database_secret.html}{Create a database secret}.}
 
-\item{database}{The name of the database.}
-
-\item{dbClusterOrInstanceArn}{[required] The ARN of the Aurora Serverless DB cluster.}
-
-\item{schema}{The name of the database schema.}
-
 \item{sqlStatements}{[required] One or more SQL statements to run on the DB cluster.
 
 You can separate SQL statements from each other with a semicolon (;).
 Any valid SQL statement is permitted, including data definition, data
 manipulation, and commit statements.}
+
+\item{database}{The name of the database.}
+
+\item{schema}{The name of the database schema.}
 }
 \description{
 Runs one or more SQL statements.

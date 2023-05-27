@@ -44,7 +44,7 @@ eks_associate_encryption_config <- function(clusterName, encryptionConfig, clien
 #' See [https://paws-r.github.io/docs/eks/associate_identity_provider_config.html](https://paws-r.github.io/docs/eks/associate_identity_provider_config.html) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster to associate the configuration to.
-#' @param oidc &#91;required&#93; An object that represents an OpenID Connect (OIDC) identity provider
+#' @param oidc &#91;required&#93; An object representing an OpenID Connect (OIDC) identity provider
 #' configuration.
 #' @param tags The metadata to apply to the configuration to assist with categorization
 #' and organization. Each tag consists of a key and an optional value. You
@@ -80,9 +80,9 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 #' See [https://paws-r.github.io/docs/eks/create_addon.html](https://paws-r.github.io/docs/eks/create_addon.html) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster to create the add-on for.
-#' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names returned by
+#' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names that
 #' [`describe_addon_versions`](https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonVersions.html)
-#' .
+#' returns.
 #' @param addonVersion The version of the add-on. The version must match one of the versions
 #' returned by
 #' [`describe_addon_versions`](https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonVersions.html)
@@ -100,25 +100,47 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 #' [Enabling IAM roles for service accounts on your
 #' cluster](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
 #' in the *Amazon EKS User Guide*.
-#' @param resolveConflicts How to resolve parameter value conflicts when migrating an existing
-#' add-on to an Amazon EKS add-on.
+#' @param resolveConflicts How to resolve field value conflicts for an Amazon EKS add-on. Conflicts
+#' are handled based on the value you choose:
+#' 
+#' -   **None** – If the self-managed version of the add-on is installed on
+#'     your cluster, Amazon EKS doesn't change the value. Creation of the
+#'     add-on might fail.
+#' 
+#' -   **Overwrite** – If the self-managed version of the add-on is
+#'     installed on your cluster and the Amazon EKS default value is
+#'     different than the existing value, Amazon EKS changes the value to
+#'     the Amazon EKS default value.
+#' 
+#' -   **Preserve** – Not supported. You can set this value when updating
+#'     an add-on though. For more information, see
+#'     [`update_addon`][eks_update_addon].
+#' 
+#' If you don't currently have the self-managed version of the add-on
+#' installed on your cluster, the Amazon EKS add-on is installed. Amazon
+#' EKS sets all values to default values, regardless of the option that you
+#' specify.
 #' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #' @param tags The metadata to apply to the cluster to assist with categorization and
 #' organization. Each tag consists of a key and an optional value. You
 #' define both.
+#' @param configurationValues The set of configuration values for the add-on that's created. The
+#' values that you provide are validated against the schema in
+#' [`describe_addon_configuration`](https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonConfiguration.html)
+#' .
 #'
 #' @keywords internal
 #'
 #' @rdname eks_create_addon
-eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, serviceAccountRoleArn = NULL, resolveConflicts = NULL, clientRequestToken = NULL, tags = NULL) {
+eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, serviceAccountRoleArn = NULL, resolveConflicts = NULL, clientRequestToken = NULL, tags = NULL, configurationValues = NULL) {
   op <- new_operation(
     name = "CreateAddon",
     http_method = "POST",
     http_path = "/clusters/{name}/addons",
     paginator = list()
   )
-  input <- .eks$create_addon_input(clusterName = clusterName, addonName = addonName, addonVersion = addonVersion, serviceAccountRoleArn = serviceAccountRoleArn, resolveConflicts = resolveConflicts, clientRequestToken = clientRequestToken, tags = tags)
+  input <- .eks$create_addon_input(clusterName = clusterName, addonName = addonName, addonVersion = addonVersion, serviceAccountRoleArn = serviceAccountRoleArn, resolveConflicts = resolveConflicts, clientRequestToken = clientRequestToken, tags = tags, configurationValues = configurationValues)
   output <- .eks$create_addon_output()
   config <- get_config()
   svc <- .eks$service(config)
@@ -137,7 +159,9 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #'
 #' @param name &#91;required&#93; The unique name to give to your cluster.
 #' @param version The desired Kubernetes version for your cluster. If you don't specify a
-#' value here, the latest version available in Amazon EKS is used.
+#' value here, the default version available in Amazon EKS is used.
+#' 
+#' The default version might not be the latest version available.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that provides permissions
 #' for the Kubernetes control plane to make calls to Amazon Web Services
 #' API operations on your behalf. For more information, see [Amazon EKS
@@ -170,18 +194,25 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' organization. Each tag consists of a key and an optional value. You
 #' define both.
 #' @param encryptionConfig The encryption configuration for the cluster.
+#' @param outpostConfig An object representing the configuration of your local Amazon EKS
+#' cluster on an Amazon Web Services Outpost. Before creating a local
+#' cluster on an Outpost, review [Local clusters for Amazon EKS on Amazon
+#' Web Services
+#' Outposts](https://docs.aws.amazon.com/eks/latest/userguide/eks-outposts-local-cluster-overview.html)
+#' in the *Amazon EKS User Guide*. This object isn't available for creating
+#' Amazon EKS clusters on the Amazon Web Services cloud.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_create_cluster
-eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, kubernetesNetworkConfig = NULL, logging = NULL, clientRequestToken = NULL, tags = NULL, encryptionConfig = NULL) {
+eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, kubernetesNetworkConfig = NULL, logging = NULL, clientRequestToken = NULL, tags = NULL, encryptionConfig = NULL, outpostConfig = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/clusters",
     paginator = list()
   )
-  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, logging = logging, clientRequestToken = clientRequestToken, tags = tags, encryptionConfig = encryptionConfig)
+  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, logging = logging, clientRequestToken = clientRequestToken, tags = tags, encryptionConfig = encryptionConfig, outpostConfig = outpostConfig)
   output <- .eks$create_cluster_output()
   config <- get_config()
   svc <- .eks$service(config)
@@ -255,7 +286,8 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' @param scalingConfig The scaling configuration details for the Auto Scaling group that is
 #' created for your node group.
 #' @param diskSize The root device disk size (in GiB) for your node group instances. The
-#' default disk size is 20 GiB. If you specify `launchTemplate`, then don't
+#' default disk size is 20 GiB for Linux and Bottlerocket. The default disk
+#' size is 50 GiB for Windows. If you specify `launchTemplate`, then don't
 #' specify `diskSize`, or the node group deployment will fail. For more
 #' information about using launch templates with Amazon EKS, see [Launch
 #' template
@@ -270,34 +302,33 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
 #' @param instanceTypes Specify the instance types for a node group. If you specify a GPU
-#' instance type, be sure to specify `AL2_x86_64_GPU` with the `amiType`
-#' parameter. If you specify `launchTemplate`, then you can specify zero or
-#' one instance type in your launch template *or* you can specify 0-20
-#' instance types for `instanceTypes`. If however, you specify an instance
-#' type in your launch template *and* specify any `instanceTypes`, the node
-#' group deployment will fail. If you don't specify an instance type in a
-#' launch template or for `instanceTypes`, then `t3.medium` is used, by
-#' default. If you specify `Spot` for `capacityType`, then we recommend
-#' specifying multiple values for `instanceTypes`. For more information,
-#' see [Managed node group capacity
+#' instance type, make sure to also specify an applicable GPU AMI type with
+#' the `amiType` parameter. If you specify `launchTemplate`, then you can
+#' specify zero or one instance type in your launch template *or* you can
+#' specify 0-20 instance types for `instanceTypes`. If however, you specify
+#' an instance type in your launch template *and* specify any
+#' `instanceTypes`, the node group deployment will fail. If you don't
+#' specify an instance type in a launch template or for `instanceTypes`,
+#' then `t3.medium` is used, by default. If you specify `Spot` for
+#' `capacityType`, then we recommend specifying multiple values for
+#' `instanceTypes`. For more information, see [Managed node group capacity
 #' types](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html#managed-node-group-capacity-types)
 #' and [Launch template
 #' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
-#' @param amiType The AMI type for your node group. GPU instance types should use the
-#' `AL2_x86_64_GPU` AMI type. Non-GPU instances should use the `AL2_x86_64`
-#' AMI type. Arm instances should use the `AL2_ARM_64` AMI type. All types
-#' use the Amazon EKS optimized Amazon Linux 2 AMI. If you specify
-#' `launchTemplate`, and your launch template uses a custom AMI, then don't
-#' specify `amiType`, or the node group deployment will fail. For more
-#' information about using launch templates with Amazon EKS, see [Launch
-#' template
+#' @param amiType The AMI type for your node group. If you specify `launchTemplate`, and
+#' your launch template uses a custom AMI, then don't specify `amiType`, or
+#' the node group deployment will fail. If your launch template uses a
+#' Windows custom AMI, then add `eks:kube-proxy-windows` to your Windows
+#' nodes `rolearn` in the `aws-auth` `ConfigMap`. For more information
+#' about using launch templates with Amazon EKS, see [Launch template
 #' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
-#' @param remoteAccess The remote access (SSH) configuration to use with your node group. If
-#' you specify `launchTemplate`, then don't specify `remoteAccess`, or the
-#' node group deployment will fail. For more information about using launch
-#' templates with Amazon EKS, see [Launch template
+#' @param remoteAccess The remote access configuration to use with your node group. For Linux,
+#' the protocol is SSH. For Windows, the protocol is RDP. If you specify
+#' `launchTemplate`, then don't specify `remoteAccess`, or the node group
+#' deployment will fail. For more information about using launch templates
+#' with Amazon EKS, see [Launch template
 #' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
 #' @param nodeRole &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to associate with your
@@ -344,14 +375,20 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' in the *Amazon EKS User Guide*.
 #' @param releaseVersion The AMI version of the Amazon EKS optimized AMI to use with your node
 #' group. By default, the latest available AMI version for the node group's
-#' current Kubernetes version is used. For more information, see [Amazon
-#' EKS optimized Amazon Linux 2 AMI
+#' current Kubernetes version is used. For information about Linux
+#' versions, see [Amazon EKS optimized Amazon Linux AMI
 #' versions](https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html)
-#' in the *Amazon EKS User Guide*. If you specify `launchTemplate`, and
-#' your launch template uses a custom AMI, then don't specify
-#' `releaseVersion`, or the node group deployment will fail. For more
-#' information about using launch templates with Amazon EKS, see [Launch
-#' template
+#' in the *Amazon EKS User Guide*. Amazon EKS managed node groups support
+#' the November 2022 and later releases of the Windows AMIs. For
+#' information about Windows versions, see [Amazon EKS optimized Windows
+#' AMI
+#' versions](https://docs.aws.amazon.com/eks/latest/userguide/eks-ami-versions-windows.html)
+#' in the *Amazon EKS User Guide*.
+#' 
+#' If you specify `launchTemplate`, and your launch template uses a custom
+#' AMI, then don't specify `releaseVersion`, or the node group deployment
+#' will fail. For more information about using launch templates with Amazon
+#' EKS, see [Launch template
 #' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
 #'
@@ -388,7 +425,7 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 #' .
 #' @param preserve Specifying this option preserves the add-on software on your cluster but
 #' Amazon EKS stops managing any settings for the add-on. If an IAM account
-#' is associated with the add-on, it is not removed.
+#' is associated with the add-on, it isn't removed.
 #'
 #' @keywords internal
 #'
@@ -563,14 +600,49 @@ eks_describe_addon <- function(clusterName, addonName) {
 }
 .eks$operations$describe_addon <- eks_describe_addon
 
-#' Describes the Kubernetes versions that the add-on can be used with
+#' Returns configuration options
 #'
 #' @description
-#' Describes the Kubernetes versions that the add-on can be used with.
+#' Returns configuration options.
+#'
+#' See [https://paws-r.github.io/docs/eks/describe_addon_configuration.html](https://paws-r.github.io/docs/eks/describe_addon_configuration.html) for full documentation.
+#'
+#' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names that
+#' [`describe_addon_versions`](https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonVersions.html)
+#' returns.
+#' @param addonVersion &#91;required&#93; The version of the add-on. The version must match one of the versions
+#' returned by
+#' [`describe_addon_versions`](https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonVersions.html)
+#' .
+#'
+#' @keywords internal
+#'
+#' @rdname eks_describe_addon_configuration
+eks_describe_addon_configuration <- function(addonName, addonVersion) {
+  op <- new_operation(
+    name = "DescribeAddonConfiguration",
+    http_method = "GET",
+    http_path = "/addons/configuration-schemas",
+    paginator = list()
+  )
+  input <- .eks$describe_addon_configuration_input(addonName = addonName, addonVersion = addonVersion)
+  output <- .eks$describe_addon_configuration_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$describe_addon_configuration <- eks_describe_addon_configuration
+
+#' Describes the versions for an add-on
+#'
+#' @description
+#' Describes the versions for an add-on. Information such as the Kubernetes versions that you can use the add-on with, the `owner`, `publisher`, and the `type` of the add-on are returned.
 #'
 #' See [https://paws-r.github.io/docs/eks/describe_addon_versions.html](https://paws-r.github.io/docs/eks/describe_addon_versions.html) for full documentation.
 #'
-#' @param kubernetesVersion The Kubernetes versions that the add-on can be used with.
+#' @param kubernetesVersion The Kubernetes versions that you can use the add-on with.
 #' @param maxResults The maximum number of results to return.
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' `DescribeAddonVersionsRequest` where `maxResults` was used and the
@@ -583,18 +655,24 @@ eks_describe_addon <- function(clusterName, addonName) {
 #' @param addonName The name of the add-on. The name must match one of the names returned by
 #' [`list_addons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
 #' .
+#' @param types The type of the add-on. For valid `types`, don't specify a value for
+#' this property.
+#' @param publishers The publisher of the add-on. For valid `publishers`, don't specify a
+#' value for this property.
+#' @param owners The owner of the add-on. For valid `owners`, don't specify a value for
+#' this property.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_describe_addon_versions
-eks_describe_addon_versions <- function(kubernetesVersion = NULL, maxResults = NULL, nextToken = NULL, addonName = NULL) {
+eks_describe_addon_versions <- function(kubernetesVersion = NULL, maxResults = NULL, nextToken = NULL, addonName = NULL, types = NULL, publishers = NULL, owners = NULL) {
   op <- new_operation(
     name = "DescribeAddonVersions",
     http_method = "GET",
     http_path = "/addons/supported-versions",
     paginator = list()
   )
-  input <- .eks$describe_addon_versions_input(kubernetesVersion = kubernetesVersion, maxResults = maxResults, nextToken = nextToken, addonName = addonName)
+  input <- .eks$describe_addon_versions_input(kubernetesVersion = kubernetesVersion, maxResults = maxResults, nextToken = nextToken, addonName = addonName, types = types, publishers = publishers, owners = owners)
   output <- .eks$describe_addon_versions_output()
   config <- get_config()
   svc <- .eks$service(config)
@@ -672,7 +750,7 @@ eks_describe_fargate_profile <- function(clusterName, fargateProfileName) {
 #'
 #' @param clusterName &#91;required&#93; The cluster name that the identity provider configuration is associated
 #' to.
-#' @param identityProviderConfig &#91;required&#93; An object that represents an identity provider configuration.
+#' @param identityProviderConfig &#91;required&#93; An object representing an identity provider configuration.
 #'
 #' @keywords internal
 #'
@@ -768,7 +846,7 @@ eks_describe_update <- function(name, updateId, nodegroupName = NULL, addonName 
 #' See [https://paws-r.github.io/docs/eks/disassociate_identity_provider_config.html](https://paws-r.github.io/docs/eks/disassociate_identity_provider_config.html) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster to disassociate an identity provider from.
-#' @param identityProviderConfig &#91;required&#93; An object that represents an identity provider configuration.
+#' @param identityProviderConfig &#91;required&#93; An object representing an identity provider configuration.
 #' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #'
@@ -1233,22 +1311,37 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
 #' [Enabling IAM roles for service accounts on your
 #' cluster](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
 #' in the *Amazon EKS User Guide*.
-#' @param resolveConflicts How to resolve parameter value conflicts when applying the new version
-#' of the add-on to the cluster.
+#' @param resolveConflicts How to resolve field value conflicts for an Amazon EKS add-on if you've
+#' changed a value from the Amazon EKS default value. Conflicts are handled
+#' based on the option you choose:
+#' 
+#' -   **None** – Amazon EKS doesn't change the value. The update might
+#'     fail.
+#' 
+#' -   **Overwrite** – Amazon EKS overwrites the changed value back to the
+#'     Amazon EKS default value.
+#' 
+#' -   **Preserve** – Amazon EKS preserves the value. If you choose this
+#'     option, we recommend that you test any field and value changes on a
+#'     non-production cluster before updating the add-on on your production
+#'     cluster.
 #' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
+#' @param configurationValues The set of configuration values for the add-on that's created. The
+#' values that you provide are validated against the schema in
+#' [`describe_addon_configuration`][eks_describe_addon_configuration].
 #'
 #' @keywords internal
 #'
 #' @rdname eks_update_addon
-eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, serviceAccountRoleArn = NULL, resolveConflicts = NULL, clientRequestToken = NULL) {
+eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, serviceAccountRoleArn = NULL, resolveConflicts = NULL, clientRequestToken = NULL, configurationValues = NULL) {
   op <- new_operation(
     name = "UpdateAddon",
     http_method = "POST",
     http_path = "/clusters/{name}/addons/{addonName}/update",
     paginator = list()
   )
-  input <- .eks$update_addon_input(clusterName = clusterName, addonName = addonName, addonVersion = addonVersion, serviceAccountRoleArn = serviceAccountRoleArn, resolveConflicts = resolveConflicts, clientRequestToken = clientRequestToken)
+  input <- .eks$update_addon_input(clusterName = clusterName, addonName = addonName, addonVersion = addonVersion, serviceAccountRoleArn = serviceAccountRoleArn, resolveConflicts = resolveConflicts, clientRequestToken = clientRequestToken, configurationValues = configurationValues)
   output <- .eks$update_addon_output()
   config <- get_config()
   svc <- .eks$service(config)
@@ -1396,14 +1489,20 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' in the *Amazon EKS User Guide*.
 #' @param releaseVersion The AMI version of the Amazon EKS optimized AMI to use for the update.
 #' By default, the latest available AMI version for the node group's
-#' Kubernetes version is used. For more information, see [Amazon EKS
-#' optimized Amazon Linux 2 AMI
+#' Kubernetes version is used. For information about Linux versions, see
+#' [Amazon EKS optimized Amazon Linux AMI
 #' versions](https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html)
-#' in the *Amazon EKS User Guide*. If you specify `launchTemplate`, and
-#' your launch template uses a custom AMI, then don't specify
-#' `releaseVersion`, or the node group update will fail. For more
-#' information about using launch templates with Amazon EKS, see [Launch
-#' template
+#' in the *Amazon EKS User Guide*. Amazon EKS managed node groups support
+#' the November 2022 and later releases of the Windows AMIs. For
+#' information about Windows versions, see [Amazon EKS optimized Windows
+#' AMI
+#' versions](https://docs.aws.amazon.com/eks/latest/userguide/eks-ami-versions-windows.html)
+#' in the *Amazon EKS User Guide*.
+#' 
+#' If you specify `launchTemplate`, and your launch template uses a custom
+#' AMI, then don't specify `releaseVersion`, or the node group update will
+#' fail. For more information about using launch templates with Amazon EKS,
+#' see [Launch template
 #' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
 #' @param launchTemplate An object representing a node group's launch template specification. You

@@ -15,7 +15,9 @@ connectparticipant_complete_attachment_upload(
 \item{AttachmentIds}{[required] A list of unique identifiers for the attachments.}
 
 \item{ClientToken}{[required] A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
+idempotency of the request. If not provided, the Amazon Web Services SDK
+populates this field. For more information about idempotency, see
+\href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.}
 
 \item{ConnectionToken}{[required] The authentication token associated with the participant's connection.}
 }

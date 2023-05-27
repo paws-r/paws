@@ -7,7 +7,9 @@
 sagemaker_update_domain(
   DomainId,
   DefaultUserSettings = NULL,
-  DomainSettingsForUpdate = NULL
+  DomainSettingsForUpdate = NULL,
+  DefaultSpaceSettings = NULL,
+  AppSecurityGroupManagement = NULL
 )
 }
 \arguments{
@@ -16,6 +18,15 @@ sagemaker_update_domain(
 \item{DefaultUserSettings}{A collection of settings.}
 
 \item{DomainSettingsForUpdate}{A collection of \code{DomainSettings} configuration values to update.}
+
+\item{DefaultSpaceSettings}{The default settings used to create a space within the Domain.}
+
+\item{AppSecurityGroupManagement}{The entity that creates and manages the required security groups for
+inter-app communication in \code{VPCOnly} mode. Required when
+\code{CreateDomain.AppNetworkAccessType} is \code{VPCOnly} and
+\code{DomainSettings.RStudioServerProDomainSettings.DomainExecutionRoleArn}
+is provided. If setting up the domain for use with RStudio, this value
+must be set to \code{Service}.}
 }
 \description{
 Updates the default settings for new user profiles in the domain.

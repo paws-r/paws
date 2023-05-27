@@ -25,12 +25,11 @@ This token is only valid during the termination process. After the
 provisioned product is terminated, subsequent requests to terminate the
 same provisioned product always return \strong{ResourceNotFound}.}
 
-\item{IgnoreErrors}{If set to true, AWS Service Catalog stops managing the specified
-provisioned product even if it cannot delete the underlying resources.}
+\item{IgnoreErrors}{If set to true, Service Catalog stops managing the specified provisioned
+product even if it cannot delete the underlying resources.}
 
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}

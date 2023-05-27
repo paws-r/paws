@@ -128,32 +128,49 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
 #' to be used.
 #' 
 #' The
-#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
+#' [PutCapacityProvider](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/)
 #' API operation is used to update the list of available capacity providers
 #' for a cluster after the cluster is created.
 #' @param defaultCapacityProviderStrategy The capacity provider strategy to set as the default for the cluster.
 #' After a default capacity provider strategy is set for a cluster, when
-#' you call the [`run_task`][ecs_run_task] or
-#' [`create_service`][ecs_create_service] APIs with no capacity provider
-#' strategy or launch type specified, the default capacity provider
-#' strategy for the cluster is used.
+#' you call the [`create_service`][ecs_create_service] or
+#' [`run_task`][ecs_run_task] APIs with no capacity provider strategy or
+#' launch type specified, the default capacity provider strategy for the
+#' cluster is used.
 #' 
 #' If a default capacity provider strategy isn't defined for a cluster when
 #' it was created, it can be defined later with the
 #' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
 #' API operation.
+#' @param serviceConnectDefaults Use this parameter to set a default Service Connect namespace. After you
+#' set a default Service Connect namespace, any new services with Service
+#' Connect turned on that are created in the cluster are added as client
+#' services in the namespace. This setting only applies to new services
+#' that set the `enabled` parameter to `true` in the
+#' `ServiceConnectConfiguration`. You can set the namespace of each service
+#' individually in the `ServiceConnectConfiguration` to override this
+#' default parameter.
+#' 
+#' Tasks that run in a namespace can use short names to connect to services
+#' in the namespace. Tasks can connect to services across all of the
+#' clusters in the namespace. Tasks connect through a managed proxy
+#' container that collects logs and metrics for increased visibility. Only
+#' the tasks that Amazon ECS services create are supported with Service
+#' Connect. For more information, see [Service
+#' Connect](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname ecs_create_cluster
-ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL, configuration = NULL, capacityProviders = NULL, defaultCapacityProviderStrategy = NULL) {
+ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL, configuration = NULL, capacityProviders = NULL, defaultCapacityProviderStrategy = NULL, serviceConnectDefaults = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecs$create_cluster_input(clusterName = clusterName, tags = tags, settings = settings, configuration = configuration, capacityProviders = capacityProviders, defaultCapacityProviderStrategy = defaultCapacityProviderStrategy)
+  input <- .ecs$create_cluster_input(clusterName = clusterName, tags = tags, settings = settings, configuration = configuration, capacityProviders = capacityProviders, defaultCapacityProviderStrategy = defaultCapacityProviderStrategy, serviceConnectDefaults = serviceConnectDefaults)
   output <- .ecs$create_cluster_output()
   config <- get_config()
   svc <- .ecs$service(config)
@@ -184,6 +201,9 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' 
 #' A task definition must be specified if the service uses either the `ECS`
 #' or `CODE_DEPLOY` deployment controllers.
+#' 
+#' For more information about deployment types, see [Amazon ECS deployment
+#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html).
 #' @param loadBalancers A load balancer object representing the load balancers to use with your
 #' service. For more information, see [Service load
 #' balancing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
@@ -241,7 +261,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' Each service may be associated with one service registry. Multiple
 #' service registries for each service isn't supported.
 #' @param desiredCount The number of instantiations of the specified task definition to place
-#' and keep running on your cluster.
+#' and keep running in your service.
 #' 
 #' This is required if `schedulingStrategy` is `REPLICA` or isn't
 #' specified. If `schedulingStrategy` is `DAEMON` then this isn't required.
@@ -330,8 +350,8 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' defined and you don't specify a health check grace period value, the
 #' default value of `0` is used.
 #' 
-#' If you do not use an Elastic Load Balancing, we recomend that you use
-#' the `startPeriod` in the task definition healtch check parameters. For
+#' If you do not use an Elastic Load Balancing, we recommend that you use
+#' the `startPeriod` in the task definition health check parameters. For
 #' more information, see [Health
 #' check](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_HealthCheck.html).
 #' 
@@ -406,21 +426,33 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' only be propagated to the task during task creation. To add tags to a
 #' task after task creation, use the [`tag_resource`][ecs_tag_resource] API
 #' action.
-#' @param enableExecuteCommand Determines whether the execute command functionality is enabled for the
-#' service. If `true`, this enables execute command functionality on all
-#' containers in the service tasks.
+#' @param enableExecuteCommand Determines whether the execute command functionality is turned on for
+#' the service. If `true`, this enables execute command functionality on
+#' all containers in the service tasks.
+#' @param serviceConnectConfiguration The configuration for this service to discover and connect to services,
+#' and be discovered by, and connected from, other services within a
+#' namespace.
+#' 
+#' Tasks that run in a namespace can use short names to connect to services
+#' in the namespace. Tasks can connect to services across all of the
+#' clusters in the namespace. Tasks connect through a managed proxy
+#' container that collects logs and metrics for increased visibility. Only
+#' the tasks that Amazon ECS services create are supported with Service
+#' Connect. For more information, see [Service
+#' Connect](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname ecs_create_service
-ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NULL, loadBalancers = NULL, serviceRegistries = NULL, desiredCount = NULL, clientToken = NULL, launchType = NULL, capacityProviderStrategy = NULL, platformVersion = NULL, role = NULL, deploymentConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, networkConfiguration = NULL, healthCheckGracePeriodSeconds = NULL, schedulingStrategy = NULL, deploymentController = NULL, tags = NULL, enableECSManagedTags = NULL, propagateTags = NULL, enableExecuteCommand = NULL) {
+ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NULL, loadBalancers = NULL, serviceRegistries = NULL, desiredCount = NULL, clientToken = NULL, launchType = NULL, capacityProviderStrategy = NULL, platformVersion = NULL, role = NULL, deploymentConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, networkConfiguration = NULL, healthCheckGracePeriodSeconds = NULL, schedulingStrategy = NULL, deploymentController = NULL, tags = NULL, enableECSManagedTags = NULL, propagateTags = NULL, enableExecuteCommand = NULL, serviceConnectConfiguration = NULL) {
   op <- new_operation(
     name = "CreateService",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecs$create_service_input(cluster = cluster, serviceName = serviceName, taskDefinition = taskDefinition, loadBalancers = loadBalancers, serviceRegistries = serviceRegistries, desiredCount = desiredCount, clientToken = clientToken, launchType = launchType, capacityProviderStrategy = capacityProviderStrategy, platformVersion = platformVersion, role = role, deploymentConfiguration = deploymentConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, networkConfiguration = networkConfiguration, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, schedulingStrategy = schedulingStrategy, deploymentController = deploymentController, tags = tags, enableECSManagedTags = enableECSManagedTags, propagateTags = propagateTags, enableExecuteCommand = enableExecuteCommand)
+  input <- .ecs$create_service_input(cluster = cluster, serviceName = serviceName, taskDefinition = taskDefinition, loadBalancers = loadBalancers, serviceRegistries = serviceRegistries, desiredCount = desiredCount, clientToken = clientToken, launchType = launchType, capacityProviderStrategy = capacityProviderStrategy, platformVersion = platformVersion, role = role, deploymentConfiguration = deploymentConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, networkConfiguration = networkConfiguration, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, schedulingStrategy = schedulingStrategy, deploymentController = deploymentController, tags = tags, enableECSManagedTags = enableECSManagedTags, propagateTags = propagateTags, enableExecuteCommand = enableExecuteCommand, serviceConnectConfiguration = serviceConnectConfiguration)
   output <- .ecs$create_service_output()
   config <- get_config()
   svc <- .ecs$service(config)
@@ -548,11 +580,11 @@ ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinit
 }
 .ecs$operations$create_task_set <- ecs_create_task_set
 
-#' Disables an account setting for a specified IAM user, IAM role, or the
-#' root user for an account
+#' Disables an account setting for a specified user, role, or the root user
+#' for an account
 #'
 #' @description
-#' Disables an account setting for a specified IAM user, IAM role, or the root user for an account.
+#' Disables an account setting for a specified user, role, or the root user for an account.
 #'
 #' See [https://paws-r.github.io/docs/ecs/delete_account_setting.html](https://paws-r.github.io/docs/ecs/delete_account_setting.html) for full documentation.
 #'
@@ -564,12 +596,11 @@ ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinit
 #' for your Amazon ECS container instances is affected. If `awsvpcTrunking`
 #' is specified, the ENI limit for your Amazon ECS container instances is
 #' affected.
-#' @param principalArn The Amazon Resource Name (ARN) of the principal. It can be an IAM user,
-#' IAM role, or the root user. If you specify the root user, it disables
-#' the account setting for all IAM users, IAM roles, and the root user of
-#' the account unless an IAM user or role explicitly overrides these
-#' settings. If this field is omitted, the setting is changed only for the
-#' authenticated user.
+#' @param principalArn The Amazon Resource Name (ARN) of the principal. It can be an user,
+#' role, or the root user. If you specify the root user, it disables the
+#' account setting for all users, roles, and the root user of the account
+#' unless a user or role explicitly overrides these settings. If this field
+#' is omitted, the setting is changed only for the authenticated user.
 #'
 #' @keywords internal
 #'
@@ -722,6 +753,39 @@ ecs_delete_service <- function(cluster = NULL, service, force = NULL) {
 }
 .ecs$operations$delete_service <- ecs_delete_service
 
+#' Deletes one or more task definitions
+#'
+#' @description
+#' Deletes one or more task definitions.
+#'
+#' See [https://paws-r.github.io/docs/ecs/delete_task_definitions.html](https://paws-r.github.io/docs/ecs/delete_task_definitions.html) for full documentation.
+#'
+#' @param taskDefinitions &#91;required&#93; The `family` and `revision` (`family:revision`) or full Amazon Resource
+#' Name (ARN) of the task definition to delete. You must specify a
+#' `revision`.
+#' 
+#' You can specify up to 10 task definitions as a comma separated list.
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_delete_task_definitions
+ecs_delete_task_definitions <- function(taskDefinitions) {
+  op <- new_operation(
+    name = "DeleteTaskDefinitions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecs$delete_task_definitions_input(taskDefinitions = taskDefinitions)
+  output <- .ecs$delete_task_definitions_output()
+  config <- get_config()
+  svc <- .ecs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$delete_task_definitions <- ecs_delete_task_definitions
+
 #' Deletes a specified task set within a service
 #'
 #' @description
@@ -810,7 +874,7 @@ ecs_deregister_container_instance <- function(cluster = NULL, containerInstance,
 #' Deregisters the specified task definition by family and revision
 #'
 #' @description
-#' Deregisters the specified task definition by family and revision. Upon deregistration, the task definition is marked as `INACTIVE`. Existing tasks and services that reference an `INACTIVE` task definition continue to run without disruption. Existing services that reference an `INACTIVE` task definition can still scale up or down by modifying the service's desired count.
+#' Deregisters the specified task definition by family and revision. Upon deregistration, the task definition is marked as `INACTIVE`. Existing tasks and services that reference an `INACTIVE` task definition continue to run without disruption. Existing services that reference an `INACTIVE` task definition can still scale up or down by modifying the service's desired count. If you want to delete a task definition revision, you must first deregister the task definition revision.
 #'
 #' See [https://paws-r.github.io/docs/ecs/deregister_task_definition.html](https://paws-r.github.io/docs/ecs/deregister_task_definition.html) for full documentation.
 #'
@@ -909,7 +973,8 @@ ecs_describe_capacity_providers <- function(capacityProviders = NULL, include = 
 #' included.
 #' 
 #' If `ATTACHMENTS` is specified, the attachments for the container
-#' instances or tasks within the cluster are included.
+#' instances or tasks within the cluster are included, for example the
+#' capacity providers.
 #' 
 #' If `SETTINGS` is specified, the settings for the cluster are included.
 #' 
@@ -1199,6 +1264,37 @@ ecs_execute_command <- function(cluster = NULL, container = NULL, command, inter
 }
 .ecs$operations$execute_command <- ecs_execute_command
 
+#' Retrieves the protection status of tasks in an Amazon ECS service
+#'
+#' @description
+#' Retrieves the protection status of tasks in an Amazon ECS service.
+#'
+#' See [https://paws-r.github.io/docs/ecs/get_task_protection.html](https://paws-r.github.io/docs/ecs/get_task_protection.html) for full documentation.
+#'
+#' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster that
+#' hosts the service that the task sets exist in.
+#' @param tasks A list of up to 100 task IDs or full ARN entries.
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_get_task_protection
+ecs_get_task_protection <- function(cluster, tasks = NULL) {
+  op <- new_operation(
+    name = "GetTaskProtection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecs$get_task_protection_input(cluster = cluster, tasks = tasks)
+  output <- .ecs$get_task_protection_output()
+  config <- get_config()
+  svc <- .ecs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$get_task_protection <- ecs_get_task_protection
+
 #' Lists the account settings for a specified principal
 #'
 #' @description
@@ -1209,9 +1305,9 @@ ecs_execute_command <- function(cluster = NULL, container = NULL, command, inter
 #' @param name The name of the account setting you want to list the settings for.
 #' @param value The value of the account settings to filter results with. You must also
 #' specify an account setting name to use this parameter.
-#' @param principalArn The ARN of the principal, which can be an IAM user, IAM role, or the
-#' root user. If this field is omitted, the account settings are listed
-#' only for the authenticated user.
+#' @param principalArn The ARN of the principal, which can be a user, role, or the root user.
+#' If this field is omitted, the account settings are listed only for the
+#' authenticated user.
 #' 
 #' Federated users assume the account setting of the root user and can't
 #' have explicit account settings set for them.
@@ -1481,6 +1577,63 @@ ecs_list_services <- function(cluster = NULL, nextToken = NULL, maxResults = NUL
 }
 .ecs$operations$list_services <- ecs_list_services
 
+#' This operation lists all of the services that are associated with a
+#' Cloud Map namespace
+#'
+#' @description
+#' This operation lists all of the services that are associated with a Cloud Map namespace. This list might include services in different clusters. In contrast, [`list_services`][ecs_list_services] can only list services in one cluster at a time. If you need to filter the list of services in a single cluster by various parameters, use [`list_services`][ecs_list_services]. For more information, see [Service Connect](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html) in the *Amazon Elastic Container Service Developer Guide*.
+#'
+#' See [https://paws-r.github.io/docs/ecs/list_services_by_namespace.html](https://paws-r.github.io/docs/ecs/list_services_by_namespace.html) for full documentation.
+#'
+#' @param namespace &#91;required&#93; The namespace name or full Amazon Resource Name (ARN) of the Cloud Map
+#' namespace to list the services in.
+#' 
+#' Tasks that run in a namespace can use short names to connect to services
+#' in the namespace. Tasks can connect to services across all of the
+#' clusters in the namespace. Tasks connect through a managed proxy
+#' container that collects logs and metrics for increased visibility. Only
+#' the tasks that Amazon ECS services create are supported with Service
+#' Connect. For more information, see [Service
+#' Connect](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
+#' @param nextToken The `nextToken` value that's returned from a
+#' [`list_services_by_namespace`][ecs_list_services_by_namespace] request.
+#' It indicates that more results are available to fulfill the request and
+#' further calls are needed. If `maxResults` is returned, it is possible
+#' the number of results is less than `maxResults`.
+#' @param maxResults The maximum number of service results that
+#' [`list_services_by_namespace`][ecs_list_services_by_namespace] returns
+#' in paginated output. When this parameter is used,
+#' [`list_services_by_namespace`][ecs_list_services_by_namespace] only
+#' returns `maxResults` results in a single page along with a `nextToken`
+#' response element. The remaining results of the initial request can be
+#' seen by sending another
+#' [`list_services_by_namespace`][ecs_list_services_by_namespace] request
+#' with the returned `nextToken` value. This value can be between 1 and
+#' 100. If this parameter isn't used, then
+#' [`list_services_by_namespace`][ecs_list_services_by_namespace] returns
+#' up to 10 results and a `nextToken` value if applicable.
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_list_services_by_namespace
+ecs_list_services_by_namespace <- function(namespace, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListServicesByNamespace",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecs$list_services_by_namespace_input(namespace = namespace, nextToken = nextToken, maxResults = maxResults)
+  output <- .ecs$list_services_by_namespace_output()
+  config <- get_config()
+  svc <- .ecs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$list_services_by_namespace <- ecs_list_services_by_namespace
+
 #' List the tags for an Amazon ECS resource
 #'
 #' @description
@@ -1677,6 +1830,9 @@ ecs_list_task_definitions <- function(familyPrefix = NULL, status = NULL, sort =
 #' @param startedBy The `startedBy` value to filter the task results with. Specifying a
 #' `startedBy` value limits the results to tasks that were started with
 #' that value.
+#' 
+#' When you specify `startedBy` as the filter, it must be the only filter
+#' that you use.
 #' @param serviceName The name of the service to use when filtering the
 #' [`list_tasks`][ecs_list_tasks] results. Specifying a `serviceName`
 #' limits the results to tasks that belong to that service.
@@ -1730,15 +1886,21 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' for your Amazon ECS container instances is affected. If `awsvpcTrunking`
 #' is specified, the elastic network interface (ENI) limit for your Amazon
 #' ECS container instances is affected. If `containerInsights` is
-#' specified, the default setting for CloudWatch Container Insights for
-#' your clusters is affected.
+#' specified, the default setting for Amazon Web Services CloudWatch
+#' Container Insights for your clusters is affected. If `fargateFIPSMode`
+#' is specified, Fargate FIPS 140 compliance is affected. If
+#' `tagResourceAuthorization` is specified, the opt-in option for tagging
+#' resources on creation is affected. For information about the opt-in
+#' timeline, see [Tagging authorization
+#' timeline](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html#tag-resources)
+#' in the *Amazon ECS Developer Guide*.
 #' @param value &#91;required&#93; The account setting value for the specified principal ARN. Accepted
-#' values are `enabled` and `disabled`.
-#' @param principalArn The ARN of the principal, which can be an IAM user, IAM role, or the
-#' root user. If you specify the root user, it modifies the account setting
-#' for all IAM users, IAM roles, and the root user of the account unless an
-#' IAM user or role explicitly overrides these settings. If this field is
-#' omitted, the setting is changed only for the authenticated user.
+#' values are `enabled`, `disabled`, `on`, and `off`.
+#' @param principalArn The ARN of the principal, which can be a user, role, or the root user.
+#' If you specify the root user, it modifies the account setting for all
+#' users, roles, and the root user of the account unless a user or role
+#' explicitly overrides these settings. If this field is omitted, the
+#' setting is changed only for the authenticated user.
 #' 
 #' Federated users assume the account setting of the root user and can't
 #' have explicit account settings set for them.
@@ -1763,11 +1925,11 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 }
 .ecs$operations$put_account_setting <- ecs_put_account_setting
 
-#' Modifies an account setting for all IAM users on an account for whom no
+#' Modifies an account setting for all users on an account for whom no
 #' individual account setting has been specified
 #'
 #' @description
-#' Modifies an account setting for all IAM users on an account for whom no individual account setting has been specified. Account settings are set on a per-Region basis.
+#' Modifies an account setting for all users on an account for whom no individual account setting has been specified. Account settings are set on a per-Region basis.
 #'
 #' See [https://paws-r.github.io/docs/ecs/put_account_setting_default.html](https://paws-r.github.io/docs/ecs/put_account_setting_default.html) for full documentation.
 #'
@@ -1779,9 +1941,22 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #' for your Amazon ECS container instances is affected. If `awsvpcTrunking`
 #' is specified, the ENI limit for your Amazon ECS container instances is
 #' affected. If `containerInsights` is specified, the default setting for
-#' CloudWatch Container Insights for your clusters is affected.
+#' Amazon Web Services CloudWatch Container Insights for your clusters is
+#' affected. If `tagResourceAuthorization` is specified, the opt-in option
+#' for tagging resources on creation is affected. For information about the
+#' opt-in timeline, see [Tagging authorization
+#' timeline](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html#tag-resources)
+#' in the *Amazon ECS Developer Guide*.
+#' 
+#' When you specify `fargateFIPSMode` for the `name` and `enabled` for the
+#' `value`, Fargate uses FIPS-140 compliant cryptographic algorithms on
+#' your tasks. For more information about FIPS-140 compliance with Fargate,
+#' see [Amazon Web Services Fargate Federal Information Processing Standard
+#' (FIPS) 140-2
+#' compliance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-fips-compliance.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param value &#91;required&#93; The account setting value for the specified principal ARN. Accepted
-#' values are `enabled` and `disabled`.
+#' values are `enabled`, `disabled`, `on`, and `off`.
 #'
 #' @keywords internal
 #'
@@ -2067,7 +2242,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' 
 #' If you're using the EC2 launch type, this field is optional. Supported
 #' values are between `128` CPU units (`0.125` vCPUs) and `10240` CPU units
-#' (`10` vCPUs).
+#' (`10` vCPUs). If you do not specify a value, the parameter is ignored.
 #' 
 #' If you're using the Fargate launch type, this field is required and you
 #' must use one of the following values, which determines your range of
@@ -2085,11 +2260,21 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' -   1024 (1 vCPU) - Available `memory` values: 2048 (2 GB), 3072 (3 GB),
 #'     4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168 (7 GB), 8192 (8 GB)
 #' 
-#' -   2048 (2 vCPU) - Available `memory` values: Between 4096 (4 GB) and
-#'     16384 (16 GB) in increments of 1024 (1 GB)
+#' -   2048 (2 vCPU) - Available `memory` values: 4096 (4 GB) and 16384 (16
+#'     GB) in increments of 1024 (1 GB)
 #' 
-#' -   4096 (4 vCPU) - Available `memory` values: Between 8192 (8 GB) and
-#'     30720 (30 GB) in increments of 1024 (1 GB)
+#' -   4096 (4 vCPU) - Available `memory` values: 8192 (8 GB) and 30720 (30
+#'     GB) in increments of 1024 (1 GB)
+#' 
+#' -   8192 (8 vCPU) - Available `memory` values: 16 GB and 60 GB in 4 GB
+#'     increments
+#' 
+#'     This option requires Linux platform `1.4.0` or later.
+#' 
+#' -   16384 (16vCPU) - Available `memory` values: 32GB and 120 GB in 8 GB
+#'     increments
+#' 
+#'     This option requires Linux platform `1.4.0` or later.
 #' @param memory The amount of memory (in MiB) used by the task. It can be expressed as
 #' an integer using MiB (for example ,`1024`) or as a string using GB (for
 #' example, `1GB` or `1 GB`) in a task definition. String values are
@@ -2123,6 +2308,16 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' 
 #' -   Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024 (1 GB) -
 #'     Available `cpu` values: 4096 (4 vCPU)
+#' 
+#' -   Between 16 GB and 60 GB in 4 GB increments - Available `cpu` values:
+#'     8192 (8 vCPU)
+#' 
+#'     This option requires Linux platform `1.4.0` or later.
+#' 
+#' -   Between 32GB and 120 GB in 8 GB increments - Available `cpu` values:
+#'     16384 (16 vCPU)
+#' 
+#'     This option requires Linux platform `1.4.0` or later.
 #' @param tags The metadata that you apply to the task definition to help you
 #' categorize and organize them. Each tag consists of a key and an optional
 #' value. You define both of them.
@@ -2209,7 +2404,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' ECS-optimized AMI version `20190301` or later, then they contain the
 #' required versions of the container agent and `ecs-init`. For more
 #' information, see [Amazon ECS-optimized AMI
-#' versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-ami-versions.html)
+#' versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html#ecs-optimized-ami-linux-releasenotes)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param inferenceAccelerators The Elastic Inference accelerators to use for the containers in the
 #' task.
@@ -2220,8 +2415,8 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' storage](https://docs.aws.amazon.com/AmazonECS/latest/userguide/using_data_volumes.html)
 #' in the *Amazon ECS User Guide for Fargate*.
 #' 
-#' This parameter is only supported for tasks hosted on Fargate using the
-#' following platform versions:
+#' For tasks using the Fargate launch type, the task requires the following
+#' platforms:
 #' 
 #' -   Linux platform version `1.4.0` or later.
 #' 
@@ -2392,11 +2587,11 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' definition to run. If a `revision` isn't specified, the latest `ACTIVE`
 #' revision is used.
 #' 
-#' When you create an IAM policy for run-task, you can set the resource to
-#' be the latest task definition revision, or a specific revision.
+#' When you create a policy for run-task, you can set the resource to be
+#' the latest task definition revision, or a specific revision.
 #' 
 #' The full ARN value must match the value that you specified as the
-#' `Resource` of the IAM principal's permissions policy.
+#' `Resource` of the principal's permissions policy.
 #' 
 #' When you specify the policy resource as the latest task definition
 #' version (by setting the `Resource` in the policy to
@@ -2453,8 +2648,8 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #' information, see [Tagging Your Amazon ECS
 #' Resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
-#' @param enableExecuteCommand Whether or not the execute command functionality is enabled for the
-#' task. If `true`, this enables execute command functionality on all
+#' @param enableExecuteCommand Whether or not the execute command functionality is turned on for the
+#' task. If `true`, this turns on the execute command functionality on all
 #' containers in the task.
 #' @param group The name of the task group to associate with the task. The default value
 #' is the family name of the task definition (for example,
@@ -2548,7 +2743,7 @@ ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedT
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the task to stop. If you do not specify a cluster, the default
 #' cluster is assumed.
-#' @param task &#91;required&#93; The task ID or full Amazon Resource Name (ARN) of the task to stop.
+#' @param task &#91;required&#93; The task ID of the task to stop.
 #' @param reason An optional message specified when a task is stopped. For example, if
 #' you're using a custom scheduler, you can use this parameter to specify
 #' the reason for stopping the task here, and the message appears in
@@ -2816,18 +3011,35 @@ ecs_update_capacity_provider <- function(name, autoScalingGroupProvider) {
 #' @param cluster &#91;required&#93; The name of the cluster to modify the settings for.
 #' @param settings The cluster settings for your cluster.
 #' @param configuration The execute command configuration for the cluster.
+#' @param serviceConnectDefaults Use this parameter to set a default Service Connect namespace. After you
+#' set a default Service Connect namespace, any new services with Service
+#' Connect turned on that are created in the cluster are added as client
+#' services in the namespace. This setting only applies to new services
+#' that set the `enabled` parameter to `true` in the
+#' `ServiceConnectConfiguration`. You can set the namespace of each service
+#' individually in the `ServiceConnectConfiguration` to override this
+#' default parameter.
+#' 
+#' Tasks that run in a namespace can use short names to connect to services
+#' in the namespace. Tasks can connect to services across all of the
+#' clusters in the namespace. Tasks connect through a managed proxy
+#' container that collects logs and metrics for increased visibility. Only
+#' the tasks that Amazon ECS services create are supported with Service
+#' Connect. For more information, see [Service
+#' Connect](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname ecs_update_cluster
-ecs_update_cluster <- function(cluster, settings = NULL, configuration = NULL) {
+ecs_update_cluster <- function(cluster, settings = NULL, configuration = NULL, serviceConnectDefaults = NULL) {
   op <- new_operation(
     name = "UpdateCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecs$update_cluster_input(cluster = cluster, settings = settings, configuration = configuration)
+  input <- .ecs$update_cluster_input(cluster = cluster, settings = settings, configuration = configuration, serviceConnectDefaults = serviceConnectDefaults)
   output <- .ecs$update_cluster_output()
   config <- get_config()
   svc <- .ecs$service(config)
@@ -2850,6 +3062,13 @@ ecs_update_cluster <- function(cluster, settings = NULL, configuration = NULL) {
 #' specified, it overrides the `containerInsights` value set with
 #' [`put_account_setting`][ecs_put_account_setting] or
 #' [`put_account_setting_default`][ecs_put_account_setting_default].
+#' 
+#' Currently, if you delete an existing cluster that does not have
+#' Container Insights turned on, and then create a new cluster with the
+#' same name with Container Insights tuned on, Container Insights will not
+#' actually be turned on. If you want to preserve the same name for your
+#' existing cluster and turn on Container Insights, you must wait 7 days
+#' before you can re-create it.
 #'
 #' @keywords internal
 #'
@@ -3096,18 +3315,30 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' running.
 #' 
 #' You can remove existing `serviceRegistries` by passing an empty list.
+#' @param serviceConnectConfiguration The configuration for this service to discover and connect to services,
+#' and be discovered by, and connected from, other services within a
+#' namespace.
+#' 
+#' Tasks that run in a namespace can use short names to connect to services
+#' in the namespace. Tasks can connect to services across all of the
+#' clusters in the namespace. Tasks connect through a managed proxy
+#' container that collects logs and metrics for increased visibility. Only
+#' the tasks that Amazon ECS services create are supported with Service
+#' Connect. For more information, see [Service
+#' Connect](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname ecs_update_service
-ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, taskDefinition = NULL, capacityProviderStrategy = NULL, deploymentConfiguration = NULL, networkConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, platformVersion = NULL, forceNewDeployment = NULL, healthCheckGracePeriodSeconds = NULL, enableExecuteCommand = NULL, enableECSManagedTags = NULL, loadBalancers = NULL, propagateTags = NULL, serviceRegistries = NULL) {
+ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, taskDefinition = NULL, capacityProviderStrategy = NULL, deploymentConfiguration = NULL, networkConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, platformVersion = NULL, forceNewDeployment = NULL, healthCheckGracePeriodSeconds = NULL, enableExecuteCommand = NULL, enableECSManagedTags = NULL, loadBalancers = NULL, propagateTags = NULL, serviceRegistries = NULL, serviceConnectConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateService",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecs$update_service_input(cluster = cluster, service = service, desiredCount = desiredCount, taskDefinition = taskDefinition, capacityProviderStrategy = capacityProviderStrategy, deploymentConfiguration = deploymentConfiguration, networkConfiguration = networkConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, forceNewDeployment = forceNewDeployment, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, enableExecuteCommand = enableExecuteCommand, enableECSManagedTags = enableECSManagedTags, loadBalancers = loadBalancers, propagateTags = propagateTags, serviceRegistries = serviceRegistries)
+  input <- .ecs$update_service_input(cluster = cluster, service = service, desiredCount = desiredCount, taskDefinition = taskDefinition, capacityProviderStrategy = capacityProviderStrategy, deploymentConfiguration = deploymentConfiguration, networkConfiguration = networkConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, forceNewDeployment = forceNewDeployment, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, enableExecuteCommand = enableExecuteCommand, enableECSManagedTags = enableECSManagedTags, loadBalancers = loadBalancers, propagateTags = propagateTags, serviceRegistries = serviceRegistries, serviceConnectConfiguration = serviceConnectConfiguration)
   output <- .ecs$update_service_output()
   config <- get_config()
   svc <- .ecs$service(config)
@@ -3150,6 +3381,48 @@ ecs_update_service_primary_task_set <- function(cluster, service, primaryTaskSet
   return(response)
 }
 .ecs$operations$update_service_primary_task_set <- ecs_update_service_primary_task_set
+
+#' Updates the protection status of a task
+#'
+#' @description
+#' Updates the protection status of a task. You can set `protectionEnabled` to `true` to protect your task from termination during scale-in events from [Service Autoscaling](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html) or [deployments](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html).
+#'
+#' See [https://paws-r.github.io/docs/ecs/update_task_protection.html](https://paws-r.github.io/docs/ecs/update_task_protection.html) for full documentation.
+#'
+#' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster that
+#' hosts the service that the task sets exist in.
+#' @param tasks &#91;required&#93; A list of up to 10 task IDs or full ARN entries.
+#' @param protectionEnabled &#91;required&#93; Specify `true` to mark a task for protection and `false` to unset
+#' protection, making it eligible for termination.
+#' @param expiresInMinutes If you set `protectionEnabled` to `true`, you can specify the duration
+#' for task protection in minutes. You can specify a value from 1 minute to
+#' up to 2,880 minutes (48 hours). During this time, your task will not be
+#' terminated by scale-in events from Service Auto Scaling or deployments.
+#' After this time period lapses, `protectionEnabled` will be reset to
+#' `false`.
+#' 
+#' If you don’t specify the time, then the task is automatically protected
+#' for 120 minutes (2 hours).
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_update_task_protection
+ecs_update_task_protection <- function(cluster, tasks, protectionEnabled, expiresInMinutes = NULL) {
+  op <- new_operation(
+    name = "UpdateTaskProtection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecs$update_task_protection_input(cluster = cluster, tasks = tasks, protectionEnabled = protectionEnabled, expiresInMinutes = expiresInMinutes)
+  output <- .ecs$update_task_protection_output()
+  config <- get_config()
+  svc <- .ecs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$update_task_protection <- ecs_update_task_protection
 
 #' Modifies a task set
 #'

@@ -60,6 +60,7 @@ Amazon S3 on Outposts provides access to S3 on Outposts operations.
 \link[paws.storage:s3outposts_create_endpoint]{create_endpoint} \tab Creates an endpoint and associates it with the specified Outpost\cr
 \link[paws.storage:s3outposts_delete_endpoint]{delete_endpoint} \tab Deletes an endpoint\cr
 \link[paws.storage:s3outposts_list_endpoints]{list_endpoints} \tab Lists endpoints associated with the specified Outpost\cr
+\link[paws.storage:s3outposts_list_outposts_with_s3]{list_outposts_with_s3} \tab Lists the Outposts with S3 on Outposts capacity for your Amazon Web Services account\cr
 \link[paws.storage:s3outposts_list_shared_endpoints]{list_shared_endpoints} \tab Lists all endpoints associated with an Outpost that has been shared by Amazon Web Services Resource Access Manager (RAM)
 }
 }

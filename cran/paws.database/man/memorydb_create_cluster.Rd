@@ -25,7 +25,8 @@ memorydb_create_cluster(
   SnapshotWindow = NULL,
   ACLName,
   EngineVersion = NULL,
-  AutoMinorVersionUpgrade = NULL
+  AutoMinorVersionUpgrade = NULL,
+  DataTiering = NULL
 )
 }
 \arguments{
@@ -49,8 +50,21 @@ The maximum is 5.}
 
 \item{MaintenanceWindow}{Specifies the weekly time range during which maintenance on the cluster
 is performed. It is specified as a range in the format
-\code{ddd:hh24:mi-ddd:hh24:mi} (24H Clock UTC). The minimum maintenance
-window is a 60 minute period.}
+ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
+is a 60 minute period.
+
+Valid values for \code{ddd} are:
+\itemize{
+\item \code{sun}
+\item \code{mon}
+\item \code{tue}
+\item \code{wed}
+\item \code{thu}
+\item \code{fri}
+\item \code{sat}
+}
+
+Example: \code{sun:23:00-mon:01:30}}
 
 \item{Port}{The port number on which each of the nodes accepts connections.}
 
@@ -94,6 +108,10 @@ appropriate time range.}
 
 \item{AutoMinorVersionUpgrade}{When set to true, the cluster will automatically receive minor engine
 version upgrades after launch.}
+
+\item{DataTiering}{Enables data tiering. Data tiering is only supported for clusters using
+the r6gd node type. This parameter must be set when using r6gd nodes.
+For more information, see \href{https://docs.aws.amazon.com/memorydb/latest/devguide/data-tiering.html}{Data tiering}.}
 }
 \description{
 Creates a cluster. All nodes in the cluster run the same protocol-compliant engine software.

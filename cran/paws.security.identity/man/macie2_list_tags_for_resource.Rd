@@ -2,18 +2,16 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_list_tags_for_resource}
 \alias{macie2_list_tags_for_resource}
-\title{Retrieves the tags (keys and values) that are associated with a
-classification job, custom data identifier, findings filter, or member
-account}
+\title{Retrieves the tags (keys and values) that are associated with an Amazon
+Macie resource}
 \usage{
 macie2_list_tags_for_resource(resourceArn)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the classification job, custom data
-identifier, findings filter, or member account.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 }
 \description{
-Retrieves the tags (keys and values) that are associated with a classification job, custom data identifier, findings filter, or member account.
+Retrieves the tags (keys and values) that are associated with an Amazon Macie resource.
 
 See \url{https://paws-r.github.io/docs/macie2/list_tags_for_resource.html} for full documentation.
 }

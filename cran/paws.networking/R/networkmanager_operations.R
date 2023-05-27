@@ -542,6 +542,8 @@ networkmanager_create_transit_gateway_peering <- function(CoreNetworkId, Transit
 #'
 #' @param PeeringId &#91;required&#93; The ID of the peer for the
 #' @param TransitGatewayRouteTableArn &#91;required&#93; The ARN of the transit gateway route table for the attachment request.
+#' For example,
+#' `"TransitGatewayRouteTableArn": "arn:aws:ec2:us-west-2:123456789012:transit-gateway-route-table/tgw-rtb-9876543210123456"`.
 #' @param Tags The list of key-value tags associated with the request.
 #' @param ClientToken The client token associated with the request.
 #'
@@ -2405,7 +2407,7 @@ networkmanager_put_resource_policy <- function(PolicyDocument, ResourceArn) {
 #' Registers a transit gateway in your global network
 #'
 #' @description
-#' Registers a transit gateway in your global network. The transit gateway can be in any Amazon Web Services Region, but it must be owned by the same Amazon Web Services account that owns the global network. You cannot register a transit gateway in more than one global network.
+#' Registers a transit gateway in your global network. Not all Regions support transit gateways for global networks. For a list of the supported Regions, see [Region Availability](https://docs.aws.amazon.com/network-manager/latest/tgwnm/what-are-global-networks.html#nm-available-regions) in the *Amazon Web Services Transit Gateways for Global Networks User Guide*. The transit gateway can be in any of the supported Amazon Web Services Regions, but it must be owned by the same Amazon Web Services account that owns the global network. You cannot register a transit gateway in more than one global network.
 #'
 #' See [https://paws-r.github.io/docs/networkmanager/register_transit_gateway.html](https://paws-r.github.io/docs/networkmanager/register_transit_gateway.html) for full documentation.
 #'
@@ -2492,11 +2494,11 @@ networkmanager_restore_core_network_policy_version <- function(CoreNetworkId, Po
 }
 .networkmanager$operations$restore_core_network_policy_version <- networkmanager_restore_core_network_policy_version
 
-#' Enables for the Network Manager service for an Amazon Web Services
+#' Enables the Network Manager service for an Amazon Web Services
 #' Organization
 #'
 #' @description
-#' Enables for the Network Manager service for an Amazon Web Services Organization. This can only be called by a management account within the organization.
+#' Enables the Network Manager service for an Amazon Web Services Organization. This can only be called by a management account within the organization.
 #'
 #' See [https://paws-r.github.io/docs/networkmanager/start_organization_service_access_update.html](https://paws-r.github.io/docs/networkmanager/start_organization_service_access_update.html) for full documentation.
 #'

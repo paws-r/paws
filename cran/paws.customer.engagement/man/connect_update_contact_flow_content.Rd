@@ -2,21 +2,20 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_update_contact_flow_content}
 \alias{connect_update_contact_flow_content}
-\title{Updates the specified contact flow}
+\title{Updates the specified flow}
 \usage{
 connect_update_contact_flow_content(InstanceId, ContactFlowId, Content)
 }
 \arguments{
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 
-\item{ContactFlowId}{[required] The identifier of the contact flow.}
+\item{ContactFlowId}{[required] The identifier of the flow.}
 
-\item{Content}{[required] The JSON string that represents contact flow’s content. For an example,
-see \href{https://docs.aws.amazon.com/connect/latest/APIReference/flow-language-example.html}{Example contact flow in Amazon Connect Flow language}
-in the \emph{Amazon Connect Administrator Guide}.}
+\item{Content}{[required] The JSON string that represents flow's content. For an example, see
+\href{https://docs.aws.amazon.com/connect/latest/APIReference/flow-language-example.html}{Example contact flow in Amazon Connect Flow language}.}
 }
 \description{
-Updates the specified contact flow.
+Updates the specified flow.
 
 See \url{https://paws-r.github.io/docs/connect/update_contact_flow_content.html} for full documentation.
 }

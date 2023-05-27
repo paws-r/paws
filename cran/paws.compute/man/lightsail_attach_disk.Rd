@@ -5,7 +5,7 @@
 \title{Attaches a block storage disk to a running or stopped Lightsail instance
 and exposes it to the instance with the specified disk name}
 \usage{
-lightsail_attach_disk(diskName, instanceName, diskPath)
+lightsail_attach_disk(diskName, instanceName, diskPath, autoMounting = NULL)
 }
 \arguments{
 \item{diskName}{[required] The unique Lightsail disk name (e.g., \code{my-disk}).}
@@ -14,6 +14,11 @@ lightsail_attach_disk(diskName, instanceName, diskPath)
 disk.}
 
 \item{diskPath}{[required] The disk path to expose to the instance (e.g., \verb{/dev/xvdf}).}
+
+\item{autoMounting}{A Boolean value used to determine the automatic mounting of a storage
+volume to a virtual computer. The default value is \code{False}.
+
+This value only applies to Lightsail for Research resources.}
 }
 \description{
 Attaches a block storage disk to a running or stopped Lightsail instance and exposes it to the instance with the specified disk name.

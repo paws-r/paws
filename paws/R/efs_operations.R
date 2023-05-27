@@ -17,6 +17,12 @@ NULL
 #' access
 #' points](https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html).
 #' 
+#' If multiple requests to create access points on the same file system are
+#' sent in quick succession, and the file system is near the limit of 1000
+#' access points, you may experience a throttling response for these
+#' requests. This is to ensure that the file system does not exceed the
+#' stated access point limit.
+#' 
 #' This operation requires permissions for the
 #' `elasticfilesystem:CreateAccessPoint` action.
 #'
@@ -29,7 +35,7 @@ NULL
 #' @param Tags Creates tags associated with the access point. Each tag is a key-value
 #' pair, each key must be unique. For more information, see [Tagging Amazon
 #' Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference Guide*.
 #' @param FileSystemId &#91;required&#93; The ID of the EFS file system that the access point provides access to.
 #' @param PosixUser The operating system user and group applied to all file system requests
@@ -242,14 +248,14 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' 
 #' EFS accepts only symmetric KMS keys. You cannot use asymmetric KMS keys
 #' with Amazon EFS file systems.
-#' @param ThroughputMode Specifies the throughput mode for the file system, either `bursting` or
-#' `provisioned`. If you set `ThroughputMode` to `provisioned`, you must
-#' also set a value for `ProvisionedThroughputInMibps`. After you create
-#' the file system, you can decrease your file system's throughput in
-#' Provisioned Throughput mode or change between the throughput modes, as
-#' long as it’s been more than 24 hours since the last decrease or
-#' throughput mode change. For more information, see [Specifying throughput
-#' with provisioned
+#' @param ThroughputMode Specifies the throughput mode for the file system. The mode can be
+#' `bursting`, `provisioned`, or `elastic`. If you set `ThroughputMode` to
+#' `provisioned`, you must also set a value for
+#' `ProvisionedThroughputInMibps`. After you create the file system, you
+#' can decrease your file system's throughput in Provisioned Throughput
+#' mode or change between the throughput modes, with certain time
+#' restrictions. For more information, see [Specifying throughput with
+#' provisioned
 #' mode](https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput)
 #' in the *Amazon EFS User Guide*.
 #' 
@@ -288,7 +294,7 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' is a user-defined key-value pair. Name your file system on creation by
 #' including a `"Key":"Name","Value":"{value}"` key-value pair. Each key
 #' must be unique. For more information, see [Tagging Amazon Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference Guide*.
 #'
 #' @return
@@ -316,7 +322,7 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #'   PerformanceMode = "generalPurpose"|"maxIO",
 #'   Encrypted = TRUE|FALSE,
 #'   KmsKeyId = "string",
-#'   ThroughputMode = "bursting"|"provisioned",
+#'   ThroughputMode = "bursting"|"provisioned"|"elastic",
 #'   ProvisionedThroughputInMibps = 123.0,
 #'   AvailabilityZoneName = "string",
 #'   AvailabilityZoneId = "string",
@@ -336,7 +342,7 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #'   PerformanceMode = "generalPurpose"|"maxIO",
 #'   Encrypted = TRUE|FALSE,
 #'   KmsKeyId = "string",
-#'   ThroughputMode = "bursting"|"provisioned",
+#'   ThroughputMode = "bursting"|"provisioned"|"elastic",
 #'   ProvisionedThroughputInMibps = 123.0,
 #'   AvailabilityZoneName = "string",
 #'   Backup = TRUE|FALSE,
@@ -638,9 +644,9 @@ efs_create_mount_target <- function(FileSystemId, SubnetId, IpAddress = NULL, Se
 #'     Purpose performance mode is used. The performance mode cannot be
 #'     changed.
 #' 
-#' -   **Throughput mode** - The destination file system uses the Bursting
-#'     Throughput mode by default. After the file system is created, you
-#'     can modify the throughput mode.
+#' -   **Throughput mode** - The destination file system's throughput mode
+#'     matches that of the source file system. After the file system is
+#'     created, you can modify the throughput mode.
 #' 
 #' The following properties are turned off by default:
 #' 
@@ -679,7 +685,7 @@ efs_create_mount_target <- function(FileSystemId, SubnetId, IpAddress = NULL, Se
 #'   ),
 #'   Destinations = list(
 #'     list(
-#'       Status = "ENABLED"|"ENABLING"|"DELETING"|"ERROR",
+#'       Status = "ENABLED"|"ENABLING"|"DELETING"|"ERROR"|"PAUSED"|"PAUSING",
 #'       FileSystemId = "string",
 #'       Region = "string",
 #'       LastReplicatedTimestamp = as.POSIXct(
@@ -1443,11 +1449,10 @@ efs_describe_file_system_policy <- function(FileSystemId) {
 #' 
 #' When retrieving all file system descriptions, you can optionally specify
 #' the `MaxItems` parameter to limit the number of descriptions in a
-#' response. Currently, this number is automatically set to 10. If more
-#' file system descriptions remain, Amazon EFS returns a `NextMarker`, an
-#' opaque token, in the response. In this case, you should send a
-#' subsequent request with the `Marker` request parameter set to the value
-#' of `NextMarker`.
+#' response. This number is automatically set to 100. If more file system
+#' descriptions remain, Amazon EFS returns a `NextMarker`, an opaque token,
+#' in the response. In this case, you should send a subsequent request with
+#' the `Marker` request parameter set to the value of `NextMarker`.
 #' 
 #' To retrieve a list of your file system descriptions, this operation is
 #' used in an iterative process, where
@@ -1509,7 +1514,7 @@ efs_describe_file_system_policy <- function(FileSystemId) {
 #'       PerformanceMode = "generalPurpose"|"maxIO",
 #'       Encrypted = TRUE|FALSE,
 #'       KmsKeyId = "string",
-#'       ThroughputMode = "bursting"|"provisioned",
+#'       ThroughputMode = "bursting"|"provisioned"|"elastic",
 #'       ProvisionedThroughputInMibps = 123.0,
 #'       AvailabilityZoneName = "string",
 #'       AvailabilityZoneId = "string",
@@ -1592,7 +1597,7 @@ efs_describe_file_systems <- function(MaxItems = NULL, Marker = NULL, CreationTo
 #' list(
 #'   LifecyclePolicies = list(
 #'     list(
-#'       TransitionToIA = "AFTER_7_DAYS"|"AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS",
+#'       TransitionToIA = "AFTER_7_DAYS"|"AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS"|"AFTER_1_DAY",
 #'       TransitionToPrimaryStorageClass = "AFTER_1_ACCESS"
 #'     )
 #'   )
@@ -1843,7 +1848,7 @@ efs_describe_mount_targets <- function(MaxItems = NULL, Marker = NULL, FileSyste
 #'       ),
 #'       Destinations = list(
 #'         list(
-#'           Status = "ENABLED"|"ENABLING"|"DELETING"|"ERROR",
+#'           Status = "ENABLED"|"ENABLING"|"DELETING"|"ERROR"|"PAUSED"|"PAUSING",
 #'           FileSystemId = "string",
 #'           Region = "string",
 #'           LastReplicatedTimestamp = as.POSIXct(
@@ -2318,26 +2323,26 @@ efs_put_file_system_policy <- function(FileSystemId, Policy, BypassPolicyLockout
 }
 .efs$operations$put_file_system_policy <- efs_put_file_system_policy
 
-#' Use this action to manage EFS lifecycle management and intelligent
-#' tiering
+#' Use this action to manage EFS lifecycle management and EFS
+#' Intelligent-Tiering
 #'
 #' @description
-#' Use this action to manage EFS lifecycle management and intelligent
-#' tiering. A `LifecycleConfiguration` consists of one or more
+#' Use this action to manage EFS lifecycle management and EFS
+#' Intelligent-Tiering. A `LifecycleConfiguration` consists of one or more
 #' `LifecyclePolicy` objects that define the following:
 #' 
 #' -   **EFS Lifecycle management** - When Amazon EFS automatically
-#'     transitions files in a file system into the lower-cost Infrequent
-#'     Access (IA) storage class.
+#'     transitions files in a file system into the lower-cost EFS
+#'     Infrequent Access (IA) storage class.
 #' 
 #'     To enable EFS Lifecycle management, set the value of
 #'     `TransitionToIA` to one of the available options.
 #' 
-#' -   **EFS Intelligent tiering** - When Amazon EFS automatically
+#' -   **EFS Intelligent-Tiering** - When Amazon EFS automatically
 #'     transitions files from IA back into the file system's primary
-#'     storage class (Standard or One Zone Standard.
+#'     storage class (EFS Standard or EFS One Zone Standard).
 #' 
-#'     To enable EFS Intelligent Tiering, set the value of
+#'     To enable EFS Intelligent-Tiering, set the value of
 #'     `TransitionToPrimaryStorageClass` to `AFTER_1_ACCESS`.
 #' 
 #' For more information, see [EFS Lifecycle
@@ -2351,12 +2356,12 @@ efs_put_file_system_policy <- function(FileSystemId, Policy, BypassPolicyLockout
 #' [`put_lifecycle_configuration`][efs_put_lifecycle_configuration] call
 #' with an empty `LifecyclePolicies` array in the request body deletes any
 #' existing `LifecycleConfiguration` and turns off lifecycle management and
-#' intelligent tiering for the file system.
+#' EFS Intelligent-Tiering for the file system.
 #' 
 #' In the request, specify the following:
 #' 
 #' -   The ID for the file system for which you are enabling, disabling, or
-#'     modifying lifecycle management and intelligent tiering.
+#'     modifying lifecycle management and EFS Intelligent-Tiering.
 #' 
 #' -   A `LifecyclePolicies` array of `LifecyclePolicy` objects that define
 #'     when files are moved into IA storage, and when they are moved back
@@ -2404,7 +2409,7 @@ efs_put_file_system_policy <- function(FileSystemId, Policy, BypassPolicyLockout
 #' list(
 #'   LifecyclePolicies = list(
 #'     list(
-#'       TransitionToIA = "AFTER_7_DAYS"|"AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS",
+#'       TransitionToIA = "AFTER_7_DAYS"|"AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS"|"AFTER_1_DAY",
 #'       TransitionToPrimaryStorageClass = "AFTER_1_ACCESS"
 #'     )
 #'   )
@@ -2417,7 +2422,7 @@ efs_put_file_system_policy <- function(FileSystemId, Policy, BypassPolicyLockout
 #'   FileSystemId = "string",
 #'   LifecyclePolicies = list(
 #'     list(
-#'       TransitionToIA = "AFTER_7_DAYS"|"AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS",
+#'       TransitionToIA = "AFTER_7_DAYS"|"AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS"|"AFTER_1_DAY",
 #'       TransitionToPrimaryStorageClass = "AFTER_1_ACCESS"
 #'     )
 #'   )
@@ -2614,7 +2619,7 @@ efs_untag_resource <- function(ResourceId, TagKeys) {
 #'   PerformanceMode = "generalPurpose"|"maxIO",
 #'   Encrypted = TRUE|FALSE,
 #'   KmsKeyId = "string",
-#'   ThroughputMode = "bursting"|"provisioned",
+#'   ThroughputMode = "bursting"|"provisioned"|"elastic",
 #'   ProvisionedThroughputInMibps = 123.0,
 #'   AvailabilityZoneName = "string",
 #'   AvailabilityZoneId = "string",
@@ -2631,7 +2636,7 @@ efs_untag_resource <- function(ResourceId, TagKeys) {
 #' ```
 #' svc$update_file_system(
 #'   FileSystemId = "string",
-#'   ThroughputMode = "bursting"|"provisioned",
+#'   ThroughputMode = "bursting"|"provisioned"|"elastic",
 #'   ProvisionedThroughputInMibps = 123.0
 #' )
 #' ```

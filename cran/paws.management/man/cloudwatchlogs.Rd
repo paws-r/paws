@@ -31,34 +31,36 @@ Operations section.
 You can use Amazon CloudWatch Logs to monitor, store, and access your
 log files from EC2 instances, CloudTrail, and other sources. You can
 then retrieve the associated log data from CloudWatch Logs using the
-CloudWatch console, CloudWatch Logs commands in the Amazon Web Services
-CLI, CloudWatch Logs API, or CloudWatch Logs SDK.
+CloudWatch console. Alternatively, you can use CloudWatch Logs commands
+in the Amazon Web Services CLI, CloudWatch Logs API, or CloudWatch Logs
+SDK.
 
 You can use CloudWatch Logs to:
 \itemize{
-\item \strong{Monitor logs from EC2 instances in real-time}: You can use
+\item \strong{Monitor logs from EC2 instances in real time}: You can use
 CloudWatch Logs to monitor applications and systems using log data.
 For example, CloudWatch Logs can track the number of errors that
-occur in your application logs and send you a notification whenever
-the rate of errors exceeds a threshold that you specify. CloudWatch
-Logs uses your log data for monitoring so no code changes are
-required. For example, you can monitor application logs for specific
-literal terms (such as "NullReferenceException") or count the number
-of occurrences of a literal term at a particular position in log
-data (such as "404" status codes in an Apache access log). When the
-term you are searching for is found, CloudWatch Logs reports the
-data to a CloudWatch metric that you specify.
+occur in your application logs. Then, it can send you a notification
+whenever the rate of errors exceeds a threshold that you specify.
+CloudWatch Logs uses your log data for monitoring so no code changes
+are required. For example, you can monitor application logs for
+specific literal terms (such as "NullReferenceException"). You can
+also count the number of occurrences of a literal term at a
+particular position in log data (such as "404" status codes in an
+Apache access log). When the term you are searching for is found,
+CloudWatch Logs reports the data to a CloudWatch metric that you
+specify.
 \item \strong{Monitor CloudTrail logged events}: You can create alarms in
 CloudWatch and receive notifications of particular API activity as
 captured by CloudTrail. You can use the notification to perform
 troubleshooting.
 \item \strong{Archive log data}: You can use CloudWatch Logs to store your log
 data in highly durable storage. You can change the log retention
-setting so that any log events older than this setting are
-automatically deleted. The CloudWatch Logs agent makes it easy to
-quickly send both rotated and non-rotated log data off of a host and
-into the log service. You can then access the raw log data when you
-need it.
+setting so that any log events earlier than this setting are
+automatically deleted. The CloudWatch Logs agent helps to quickly
+send both rotated and non-rotated log data off of a host and into
+the log service. You can then access the raw log data when you need
+it.
 }
 }
 \section{Service syntax}{
@@ -88,11 +90,12 @@ need it.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=cloudwatchlogs_associate_kms_key]{associate_kms_key} \tab Associates the specified Key Management Service customer master key (CMK) with the specified log group\cr
+\link[=cloudwatchlogs_associate_kms_key]{associate_kms_key} \tab Associates the specified KMS key with the specified log group\cr
 \link[=cloudwatchlogs_cancel_export_task]{cancel_export_task} \tab Cancels the specified export task\cr
-\link[=cloudwatchlogs_create_export_task]{create_export_task} \tab Creates an export task, which allows you to efficiently export data from a log group to an Amazon S3 bucket\cr
+\link[=cloudwatchlogs_create_export_task]{create_export_task} \tab Creates an export task so that you can efficiently export data from a log group to an Amazon S3 bucket\cr
 \link[=cloudwatchlogs_create_log_group]{create_log_group} \tab Creates a log group with the specified name\cr
 \link[=cloudwatchlogs_create_log_stream]{create_log_stream} \tab Creates a log stream for the specified log group\cr
+\link[=cloudwatchlogs_delete_data_protection_policy]{delete_data_protection_policy} \tab Deletes the data protection policy from the specified log group\cr
 \link[=cloudwatchlogs_delete_destination]{delete_destination} \tab Deletes the specified destination, and eventually disables all the subscription filters that publish to it\cr
 \link[=cloudwatchlogs_delete_log_group]{delete_log_group} \tab Deletes the specified log group and permanently deletes all the archived log events associated with the log group\cr
 \link[=cloudwatchlogs_delete_log_stream]{delete_log_stream} \tab Deletes the specified log stream and permanently deletes all the archived log events associated with the log stream\cr
@@ -106,17 +109,20 @@ need it.
 \link[=cloudwatchlogs_describe_log_groups]{describe_log_groups} \tab Lists the specified log groups\cr
 \link[=cloudwatchlogs_describe_log_streams]{describe_log_streams} \tab Lists the log streams for the specified log group\cr
 \link[=cloudwatchlogs_describe_metric_filters]{describe_metric_filters} \tab Lists the specified metric filters\cr
-\link[=cloudwatchlogs_describe_queries]{describe_queries} \tab Returns a list of CloudWatch Logs Insights queries that are scheduled, executing, or have been executed recently in this account\cr
+\link[=cloudwatchlogs_describe_queries]{describe_queries} \tab Returns a list of CloudWatch Logs Insights queries that are scheduled, running, or have been run recently in this account\cr
 \link[=cloudwatchlogs_describe_query_definitions]{describe_query_definitions} \tab This operation returns a paginated list of your saved CloudWatch Logs Insights query definitions\cr
 \link[=cloudwatchlogs_describe_resource_policies]{describe_resource_policies} \tab Lists the resource policies in this account\cr
 \link[=cloudwatchlogs_describe_subscription_filters]{describe_subscription_filters} \tab Lists the subscription filters for the specified log group\cr
-\link[=cloudwatchlogs_disassociate_kms_key]{disassociate_kms_key} \tab Disassociates the associated Key Management Service customer master key (CMK) from the specified log group\cr
+\link[=cloudwatchlogs_disassociate_kms_key]{disassociate_kms_key} \tab Disassociates the associated KMS key from the specified log group\cr
 \link[=cloudwatchlogs_filter_log_events]{filter_log_events} \tab Lists log events from the specified log group\cr
+\link[=cloudwatchlogs_get_data_protection_policy]{get_data_protection_policy} \tab Returns information about a log group data protection policy\cr
 \link[=cloudwatchlogs_get_log_events]{get_log_events} \tab Lists log events from the specified log stream\cr
-\link[=cloudwatchlogs_get_log_group_fields]{get_log_group_fields} \tab Returns a list of the fields that are included in log events in the specified log group, along with the percentage of log events that contain each field\cr
+\link[=cloudwatchlogs_get_log_group_fields]{get_log_group_fields} \tab Returns a list of the fields that are included in log events in the specified log group\cr
 \link[=cloudwatchlogs_get_log_record]{get_log_record} \tab Retrieves all of the fields and values of a single log event\cr
 \link[=cloudwatchlogs_get_query_results]{get_query_results} \tab Returns the results from the specified query\cr
-\link[=cloudwatchlogs_list_tags_log_group]{list_tags_log_group} \tab Lists the tags for the specified log group\cr
+\link[=cloudwatchlogs_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a CloudWatch Logs resource\cr
+\link[=cloudwatchlogs_list_tags_log_group]{list_tags_log_group} \tab The ListTagsLogGroup operation is on the path to deprecation\cr
+\link[=cloudwatchlogs_put_data_protection_policy]{put_data_protection_policy} \tab Creates a data protection policy for the specified log group\cr
 \link[=cloudwatchlogs_put_destination]{put_destination} \tab Creates or updates a destination\cr
 \link[=cloudwatchlogs_put_destination_policy]{put_destination_policy} \tab Creates or updates an access policy associated with an existing destination\cr
 \link[=cloudwatchlogs_put_log_events]{put_log_events} \tab Uploads a batch of log events to the specified log stream\cr
@@ -127,9 +133,11 @@ need it.
 \link[=cloudwatchlogs_put_subscription_filter]{put_subscription_filter} \tab Creates or updates a subscription filter and associates it with the specified log group\cr
 \link[=cloudwatchlogs_start_query]{start_query} \tab Schedules a query of a log group using CloudWatch Logs Insights\cr
 \link[=cloudwatchlogs_stop_query]{stop_query} \tab Stops a CloudWatch Logs Insights query that is in progress\cr
-\link[=cloudwatchlogs_tag_log_group]{tag_log_group} \tab Adds or updates the specified tags for the specified log group\cr
+\link[=cloudwatchlogs_tag_log_group]{tag_log_group} \tab The TagLogGroup operation is on the path to deprecation\cr
+\link[=cloudwatchlogs_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified CloudWatch Logs resource\cr
 \link[=cloudwatchlogs_test_metric_filter]{test_metric_filter} \tab Tests the filter pattern of a metric filter against a sample of log event messages\cr
-\link[=cloudwatchlogs_untag_log_group]{untag_log_group} \tab Removes the specified tags from the specified log group
+\link[=cloudwatchlogs_untag_log_group]{untag_log_group} \tab The UntagLogGroup operation is on the path to deprecation\cr
+\link[=cloudwatchlogs_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource
 }
 }
 

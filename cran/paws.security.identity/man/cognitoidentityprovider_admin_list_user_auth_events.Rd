@@ -17,7 +17,9 @@ cognitoidentityprovider_admin_list_user_auth_events(
 
 \item{Username}{[required] The user pool username or an alias.}
 
-\item{MaxResults}{The maximum number of authentication events to return.}
+\item{MaxResults}{The maximum number of authentication events to return. Returns 60 events
+if you set \code{MaxResults} to 0, or if you don't include a \code{MaxResults}
+parameter.}
 
 \item{NextToken}{A pagination token.}
 }

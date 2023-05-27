@@ -86,7 +86,18 @@ Valid Values: \code{false} | \code{true}}
 
 \item{TravelMode}{Specifies the mode of transport when calculating a route. Used in
 estimating the speed of travel and road compatibility. You can choose
-\code{Car}, \code{Truck}, or \code{Walking} as options for the \code{TravelMode}.
+\code{Car}, \code{Truck}, \code{Walking}, \code{Bicycle} or \code{Motorcycle} as options for the
+\code{TravelMode}.
+
+\code{Bicycle} and \code{Motorcycle} are only valid when using Grab as a data
+provider, and only within Southeast Asia.
+
+\code{Truck} is not available for Grab.
+
+For more details on the using Grab for routing, including areas of
+coverage, see
+\href{https://docs.aws.amazon.com/location/latest/developerguide/grab.html}{GrabMaps}
+in the \emph{Amazon Location Service Developer Guide}.
 
 The \code{TravelMode} you specify also determines how you specify route
 preferences:

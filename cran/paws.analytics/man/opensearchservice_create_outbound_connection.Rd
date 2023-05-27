@@ -2,25 +2,27 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_create_outbound_connection}
 \alias{opensearchservice_create_outbound_connection}
-\title{Creates a new cross-cluster connection from a local OpenSearch domain to
-a remote OpenSearch domain}
+\title{Creates a new cross-cluster search connection from a source Amazon
+OpenSearch Service domain to a destination domain}
 \usage{
 opensearchservice_create_outbound_connection(
   LocalDomainInfo,
   RemoteDomainInfo,
-  ConnectionAlias
+  ConnectionAlias,
+  ConnectionMode = NULL
 )
 }
 \arguments{
-\item{LocalDomainInfo}{[required] The \code{AWSDomainInformation} for the local OpenSearch domain.}
+\item{LocalDomainInfo}{[required] Name and Region of the source (local) domain.}
 
-\item{RemoteDomainInfo}{[required] The \code{AWSDomainInformation} for the remote OpenSearch domain.}
+\item{RemoteDomainInfo}{[required] Name and Region of the destination (remote) domain.}
 
-\item{ConnectionAlias}{[required] The connection alias used used by the customer for this cross-cluster
-connection.}
+\item{ConnectionAlias}{[required] Name of the connection.}
+
+\item{ConnectionMode}{The connection mode.}
 }
 \description{
-Creates a new cross-cluster connection from a local OpenSearch domain to a remote OpenSearch domain.
+Creates a new cross-cluster search connection from a source Amazon OpenSearch Service domain to a destination domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html}{Cross-cluster search for Amazon OpenSearch Service}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/create_outbound_connection.html} for full documentation.
 }

@@ -6,18 +6,18 @@
 domain}
 \usage{
 ec2_disassociate_transit_gateway_multicast_domain(
-  TransitGatewayMulticastDomainId = NULL,
-  TransitGatewayAttachmentId = NULL,
-  SubnetIds = NULL,
+  TransitGatewayMulticastDomainId,
+  TransitGatewayAttachmentId,
+  SubnetIds,
   DryRun = NULL
 )
 }
 \arguments{
-\item{TransitGatewayMulticastDomainId}{The ID of the transit gateway multicast domain.}
+\item{TransitGatewayMulticastDomainId}{[required] The ID of the transit gateway multicast domain.}
 
-\item{TransitGatewayAttachmentId}{The ID of the attachment.}
+\item{TransitGatewayAttachmentId}{[required] The ID of the attachment.}
 
-\item{SubnetIds}{The IDs of the subnets;}
+\item{SubnetIds}{[required] The IDs of the subnets;}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

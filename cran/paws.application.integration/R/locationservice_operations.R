@@ -13,7 +13,7 @@ NULL
 #'
 #' @param ConsumerArn &#91;required&#93; The Amazon Resource Name (ARN) for the geofence collection to be
 #' associated to tracker resource. Used when you need to specify a resource
-#' across all AWS.
+#' across all Amazon Web Services.
 #' 
 #' -   Format example:
 #'     `arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollectionConsumer`
@@ -301,7 +301,18 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' Valid Values: `false` | `true`
 #' @param TravelMode Specifies the mode of transport when calculating a route. Used in
 #' estimating the speed of travel and road compatibility. You can choose
-#' `Car`, `Truck`, or `Walking` as options for the `TravelMode`.
+#' `Car`, `Truck`, `Walking`, `Bicycle` or `Motorcycle` as options for the
+#' `TravelMode`.
+#' 
+#' `Bicycle` and `Motorcycle` are only valid when using Grab as a data
+#' provider, and only within Southeast Asia.
+#' 
+#' `Truck` is not available for Grab.
+#' 
+#' For more details on the using Grab for routing, including areas of
+#' coverage, see
+#' [GrabMaps](https://docs.aws.amazon.com/location/latest/developerguide/grab.html)
+#' in the *Amazon Location Service Developer Guide*.
 #' 
 #' The `TravelMode` you specify also determines how you specify route
 #' preferences:
@@ -441,6 +452,15 @@ locationservice_calculate_route <- function(CalculatorName, CarModeOptions = NUL
 #' 
 #' -   If traveling by `Truck` use the `TruckModeOptions` parameter.
 #' 
+#' `Bicycle` or `Motorcycle` are only valid when using `Grab` as a data
+#' provider, and only within Southeast Asia.
+#' 
+#' `Truck` is not available for Grab.
+#' 
+#' For more information about using Grab as a data provider, see
+#' [GrabMaps](https://docs.aws.amazon.com/location/latest/developerguide/grab.html)
+#' in the *Amazon Location Service Developer Guide*.
+#' 
 #' Default Value: `Car`
 #' @param TruckModeOptions Specifies route preferences when traveling by `Truck`, such as avoiding
 #' routes that use ferries or tolls, and truck specifications to consider
@@ -486,7 +506,7 @@ locationservice_calculate_route_matrix <- function(CalculatorName, CarModeOption
 #' 
 #' -   No spaces allowed. For example, `ExampleGeofenceCollection`.
 #' @param Description An optional description for the geofence collection.
-#' @param KmsKeyId A key identifier for an [AWS KMS customer managed
+#' @param KmsKeyId A key identifier for an [Amazon Web Services KMS customer managed
 #' key](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html).
 #' Enter a key ID, key ARN, alias name, or alias ARN.
 #' @param PricingPlan No longer used. If included, the only allowed value is
@@ -533,15 +553,86 @@ locationservice_create_geofence_collection <- function(CollectionName, Descripti
 }
 .locationservice$operations$create_geofence_collection <- locationservice_create_geofence_collection
 
-#' Creates a map resource in your AWS account, which provides map tiles of
-#' different styles sourced from global location data providers
+#' Creates an API key resource in your Amazon Web Services account, which
+#' lets you grant geo:GetMap* actions for Amazon Location Map resources to
+#' the API key bearer
 #'
 #' @description
-#' Creates a map resource in your AWS account, which provides map tiles of different styles sourced from global location data providers.
+#' Creates an API key resource in your Amazon Web Services account, which lets you grant `geo:GetMap*` actions for Amazon Location Map resources to the API key bearer.
+#'
+#' See [https://paws-r.github.io/docs/locationservice/create_key.html](https://paws-r.github.io/docs/locationservice/create_key.html) for full documentation.
+#'
+#' @param Description An optional description for the API key resource.
+#' @param ExpireTime The optional timestamp for when the API key resource will expire in [ISO
+#' 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format:
+#' `YYYY-MM-DDThh:mm:ss.sssZ`. One of `NoExpiry` or `ExpireTime` must be
+#' set.
+#' @param KeyName &#91;required&#93; A custom name for the API key resource.
+#' 
+#' Requirements:
+#' 
+#' -   Contain only alphanumeric characters (A–Z, a–z, 0–9), hyphens (-),
+#'     periods (.), and underscores (_).
+#' 
+#' -   Must be a unique API key name.
+#' 
+#' -   No spaces allowed. For example, `ExampleAPIKey`.
+#' @param NoExpiry Optionally set to `true` to set no expiration time for the API key. One
+#' of `NoExpiry` or `ExpireTime` must be set.
+#' @param Restrictions &#91;required&#93; The API key restrictions for the API key resource.
+#' @param Tags Applies one or more tags to the map resource. A tag is a key-value pair
+#' that helps manage, identify, search, and filter your resources by
+#' labelling them.
+#' 
+#' Format: `"key" : "value"`
+#' 
+#' Restrictions:
+#' 
+#' -   Maximum 50 tags per resource
+#' 
+#' -   Each resource tag must be unique with a maximum of one value.
+#' 
+#' -   Maximum key length: 128 Unicode characters in UTF-8
+#' 
+#' -   Maximum value length: 256 Unicode characters in UTF-8
+#' 
+#' -   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following
+#'     characters: + - = . _ : / @@.
+#' 
+#' -   Cannot use "aws:" as a prefix for a key.
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_create_key
+locationservice_create_key <- function(Description = NULL, ExpireTime = NULL, KeyName, NoExpiry = NULL, Restrictions, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateKey",
+    http_method = "POST",
+    http_path = "/metadata/v0/keys",
+    paginator = list()
+  )
+  input <- .locationservice$create_key_input(Description = Description, ExpireTime = ExpireTime, KeyName = KeyName, NoExpiry = NoExpiry, Restrictions = Restrictions, Tags = Tags)
+  output <- .locationservice$create_key_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$create_key <- locationservice_create_key
+
+#' Creates a map resource in your Amazon Web Services account, which
+#' provides map tiles of different styles sourced from global location data
+#' providers
+#'
+#' @description
+#' Creates a map resource in your Amazon Web Services account, which provides map tiles of different styles sourced from global location data providers.
 #'
 #' See [https://paws-r.github.io/docs/locationservice/create_map.html](https://paws-r.github.io/docs/locationservice/create_map.html) for full documentation.
 #'
-#' @param Configuration &#91;required&#93; Specifies the map style selected from an available data provider.
+#' @param Configuration &#91;required&#93; Specifies the `MapConfiguration`, including the map style, for the map
+#' resource that you create. The map style defines the look of maps and the
+#' data provider for your map resource.
 #' @param Description An optional description for the map resource.
 #' @param MapName &#91;required&#93; The name for the map resource.
 #' 
@@ -596,10 +687,10 @@ locationservice_create_map <- function(Configuration, Description = NULL, MapNam
 }
 .locationservice$operations$create_map <- locationservice_create_map
 
-#' Creates a place index resource in your AWS account
+#' Creates a place index resource in your Amazon Web Services account
 #'
 #' @description
-#' Creates a place index resource in your AWS account. Use a place index resource to geocode addresses and other text queries by using the [`search_place_index_for_text`][locationservice_search_place_index_for_text] operation, and reverse geocode coordinates by using the [`search_place_index_for_position`][locationservice_search_place_index_for_position] operation, and enable autosuggestions by using the [`search_place_index_for_suggestions`][locationservice_search_place_index_for_suggestions] operation.
+#' Creates a place index resource in your Amazon Web Services account. Use a place index resource to geocode addresses and other text queries by using the [`search_place_index_for_text`][locationservice_search_place_index_for_text] operation, and reverse geocode coordinates by using the [`search_place_index_for_position`][locationservice_search_place_index_for_position] operation, and enable autosuggestions by using the [`search_place_index_for_suggestions`][locationservice_search_place_index_for_suggestions] operation.
 #'
 #' See [https://paws-r.github.io/docs/locationservice/create_place_index.html](https://paws-r.github.io/docs/locationservice/create_place_index.html) for full documentation.
 #'
@@ -615,6 +706,12 @@ locationservice_create_map <- function(Configuration, Description = NULL, MapNam
 #'     coverage in your region of interest, see [Esri details on geocoding
 #'     coverage](https://developers.arcgis.com/rest/geocode/api-reference/geocode-coverage.htm).
 #' 
+#' -   `Grab` – Grab provides place index functionality for Southeast Asia.
+#'     For additional information about
+#'     [GrabMaps](https://docs.aws.amazon.com/location/latest/developerguide/grab.html)'
+#'     coverage, see [GrabMaps countries and areas
+#'     covered](https://docs.aws.amazon.com/location/latest/developerguide/grab.html#grab-coverage-area).
+#' 
 #' -   `Here` – For additional information about [HERE
 #'     Technologies](https://docs.aws.amazon.com/location/latest/developerguide/HERE.html)'
 #'     coverage in your region of interest, see HERE details on goecoding
@@ -623,9 +720,9 @@ locationservice_create_map <- function(Configuration, Description = NULL, MapNam
 #'     If you specify HERE Technologies (`Here`) as the data provider, you
 #'     may not [store
 #'     results](https://docs.aws.amazon.com/location/latest/APIReference/API_DataSourceConfiguration.html)
-#'     for locations in Japan. For more information, see the [AWS Service
-#'     Terms](https://aws.amazon.com/service-terms/) for Amazon Location
-#'     Service.
+#'     for locations in Japan. For more information, see the [Amazon Web
+#'     Services Service Terms](https://aws.amazon.com/service-terms/) for
+#'     Amazon Location Service.
 #' 
 #' For additional information , see [Data
 #' providers](https://docs.aws.amazon.com/location/latest/developerguide/what-is-data-provider.html)
@@ -686,10 +783,10 @@ locationservice_create_place_index <- function(DataSource, DataSourceConfigurati
 }
 .locationservice$operations$create_place_index <- locationservice_create_place_index
 
-#' Creates a route calculator resource in your AWS account
+#' Creates a route calculator resource in your Amazon Web Services account
 #'
 #' @description
-#' Creates a route calculator resource in your AWS account.
+#' Creates a route calculator resource in your Amazon Web Services account.
 #'
 #' See [https://paws-r.github.io/docs/locationservice/create_route_calculator.html](https://paws-r.github.io/docs/locationservice/create_route_calculator.html) for full documentation.
 #'
@@ -706,9 +803,7 @@ locationservice_create_place_index <- function(DataSource, DataSourceConfigurati
 #' @param DataSource &#91;required&#93; Specifies the data provider of traffic and road network data.
 #' 
 #' This field is case-sensitive. Enter the valid values as shown. For
-#' example, entering `HERE` returns an error. Route calculators that use
-#' Esri as a data source only calculate routes that are shorter than 400
-#' km.
+#' example, entering `HERE` returns an error.
 #' 
 #' Valid values include:
 #' 
@@ -717,6 +812,15 @@ locationservice_create_place_index <- function(DataSource, DataSourceConfigurati
 #'     coverage in your region of interest, see [Esri details on street
 #'     networks and traffic
 #'     coverage](https://doc.arcgis.com/en/arcgis-online/reference/network-coverage.htm).
+#' 
+#'     Route calculators that use Esri as a data source only calculate
+#'     routes that are shorter than 400 km.
+#' 
+#' -   `Grab` – Grab provides routing functionality for Southeast Asia. For
+#'     additional information about
+#'     [GrabMaps](https://docs.aws.amazon.com/location/latest/developerguide/grab.html)'
+#'     coverage, see [GrabMaps countries and areas
+#'     covered](https://docs.aws.amazon.com/location/latest/developerguide/grab.html#grab-coverage-area).
 #' 
 #' -   `Here` – For additional information about [HERE
 #'     Technologies](https://docs.aws.amazon.com/location/latest/developerguide/HERE.html)'
@@ -772,16 +876,16 @@ locationservice_create_route_calculator <- function(CalculatorName, DataSource, 
 }
 .locationservice$operations$create_route_calculator <- locationservice_create_route_calculator
 
-#' Creates a tracker resource in your AWS account, which lets you retrieve
-#' current and historical location of devices
+#' Creates a tracker resource in your Amazon Web Services account, which
+#' lets you retrieve current and historical location of devices
 #'
 #' @description
-#' Creates a tracker resource in your AWS account, which lets you retrieve current and historical location of devices.
+#' Creates a tracker resource in your Amazon Web Services account, which lets you retrieve current and historical location of devices.
 #'
 #' See [https://paws-r.github.io/docs/locationservice/create_tracker.html](https://paws-r.github.io/docs/locationservice/create_tracker.html) for full documentation.
 #'
 #' @param Description An optional description for the tracker resource.
-#' @param KmsKeyId A key identifier for an [AWS KMS customer managed
+#' @param KmsKeyId A key identifier for an [Amazon Web Services KMS customer managed
 #' key](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html).
 #' Enter a key ID, key ARN, alias name, or alias ARN.
 #' @param PositionFiltering Specifies the position filtering for the tracker resource.
@@ -867,10 +971,10 @@ locationservice_create_tracker <- function(Description = NULL, KmsKeyId = NULL, 
 }
 .locationservice$operations$create_tracker <- locationservice_create_tracker
 
-#' Deletes a geofence collection from your AWS account
+#' Deletes a geofence collection from your Amazon Web Services account
 #'
 #' @description
-#' Deletes a geofence collection from your AWS account.
+#' Deletes a geofence collection from your Amazon Web Services account.
 #'
 #' See [https://paws-r.github.io/docs/locationservice/delete_geofence_collection.html](https://paws-r.github.io/docs/locationservice/delete_geofence_collection.html) for full documentation.
 #'
@@ -896,10 +1000,39 @@ locationservice_delete_geofence_collection <- function(CollectionName) {
 }
 .locationservice$operations$delete_geofence_collection <- locationservice_delete_geofence_collection
 
-#' Deletes a map resource from your AWS account
+#' Deletes the specified API key
 #'
 #' @description
-#' Deletes a map resource from your AWS account.
+#' Deletes the specified API key. The API key must have been deactivated more than 90 days previously.
+#'
+#' See [https://paws-r.github.io/docs/locationservice/delete_key.html](https://paws-r.github.io/docs/locationservice/delete_key.html) for full documentation.
+#'
+#' @param KeyName &#91;required&#93; The name of the API key to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_delete_key
+locationservice_delete_key <- function(KeyName) {
+  op <- new_operation(
+    name = "DeleteKey",
+    http_method = "DELETE",
+    http_path = "/metadata/v0/keys/{KeyName}",
+    paginator = list()
+  )
+  input <- .locationservice$delete_key_input(KeyName = KeyName)
+  output <- .locationservice$delete_key_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$delete_key <- locationservice_delete_key
+
+#' Deletes a map resource from your Amazon Web Services account
+#'
+#' @description
+#' Deletes a map resource from your Amazon Web Services account.
 #'
 #' See [https://paws-r.github.io/docs/locationservice/delete_map.html](https://paws-r.github.io/docs/locationservice/delete_map.html) for full documentation.
 #'
@@ -925,10 +1058,10 @@ locationservice_delete_map <- function(MapName) {
 }
 .locationservice$operations$delete_map <- locationservice_delete_map
 
-#' Deletes a place index resource from your AWS account
+#' Deletes a place index resource from your Amazon Web Services account
 #'
 #' @description
-#' Deletes a place index resource from your AWS account.
+#' Deletes a place index resource from your Amazon Web Services account.
 #'
 #' See [https://paws-r.github.io/docs/locationservice/delete_place_index.html](https://paws-r.github.io/docs/locationservice/delete_place_index.html) for full documentation.
 #'
@@ -954,10 +1087,11 @@ locationservice_delete_place_index <- function(IndexName) {
 }
 .locationservice$operations$delete_place_index <- locationservice_delete_place_index
 
-#' Deletes a route calculator resource from your AWS account
+#' Deletes a route calculator resource from your Amazon Web Services
+#' account
 #'
 #' @description
-#' Deletes a route calculator resource from your AWS account.
+#' Deletes a route calculator resource from your Amazon Web Services account.
 #'
 #' See [https://paws-r.github.io/docs/locationservice/delete_route_calculator.html](https://paws-r.github.io/docs/locationservice/delete_route_calculator.html) for full documentation.
 #'
@@ -983,10 +1117,10 @@ locationservice_delete_route_calculator <- function(CalculatorName) {
 }
 .locationservice$operations$delete_route_calculator <- locationservice_delete_route_calculator
 
-#' Deletes a tracker resource from your AWS account
+#' Deletes a tracker resource from your Amazon Web Services account
 #'
 #' @description
-#' Deletes a tracker resource from your AWS account.
+#' Deletes a tracker resource from your Amazon Web Services account.
 #'
 #' See [https://paws-r.github.io/docs/locationservice/delete_tracker.html](https://paws-r.github.io/docs/locationservice/delete_tracker.html) for full documentation.
 #'
@@ -1040,6 +1174,35 @@ locationservice_describe_geofence_collection <- function(CollectionName) {
   return(response)
 }
 .locationservice$operations$describe_geofence_collection <- locationservice_describe_geofence_collection
+
+#' Retrieves the API key resource details
+#'
+#' @description
+#' Retrieves the API key resource details.
+#'
+#' See [https://paws-r.github.io/docs/locationservice/describe_key.html](https://paws-r.github.io/docs/locationservice/describe_key.html) for full documentation.
+#'
+#' @param KeyName &#91;required&#93; The name of the API key resource.
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_describe_key
+locationservice_describe_key <- function(KeyName) {
+  op <- new_operation(
+    name = "DescribeKey",
+    http_method = "GET",
+    http_path = "/metadata/v0/keys/{KeyName}",
+    paginator = list()
+  )
+  input <- .locationservice$describe_key_input(KeyName = KeyName)
+  output <- .locationservice$describe_key_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$describe_key <- locationservice_describe_key
 
 #' Retrieves the map resource details
 #'
@@ -1167,7 +1330,7 @@ locationservice_describe_tracker <- function(TrackerName) {
 #'
 #' @param ConsumerArn &#91;required&#93; The Amazon Resource Name (ARN) for the geofence collection to be
 #' disassociated from the tracker resource. Used when you need to specify a
-#' resource across all AWS.
+#' resource across all Amazon Web Services.
 #' 
 #' -   Format example:
 #'     `arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollectionConsumer`
@@ -1346,25 +1509,53 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
 #' 
 #' -   VectorHereContrast – `Fira GO Regular` | `Fira GO Bold`
 #' 
-#' -   VectorHereExplore, VectorHereExploreTruck – `Firo GO Italic` |
-#'     `Fira GO Map` | `Fira GO Map Bold` | `Noto Sans CJK JP Bold` |
+#' -   VectorHereExplore, VectorHereExploreTruck,
+#'     HybridHereExploreSatellite – `Fira GO Italic` | `Fira GO Map` |
+#'     `Fira GO Map Bold` | `Noto Sans CJK JP Bold` |
 #'     `Noto Sans CJK JP Light` | `Noto Sans CJK JP Regular`
+#' 
+#' Valid font stacks for
+#' [GrabMaps](https://docs.aws.amazon.com/location/latest/developerguide/grab.html)
+#' styles:
+#' 
+#' -   VectorGrabStandardLight, VectorGrabStandardDark –
+#'     `Noto Sans Regular` | `Noto Sans Medium` | `Noto Sans Bold`
+#' 
+#' Valid font stacks for [Open
+#' Data](https://docs.aws.amazon.com/location/latest/developerguide/open-data.html)
+#' styles:
+#' 
+#' -   VectorOpenDataStandardLight, VectorOpenDataStandardDark,
+#'     VectorOpenDataVisualizationLight, VectorOpenDataVisualizationDark –
+#'     `Amazon Ember Regular,Noto Sans Regular` |
+#'     `Amazon Ember Bold,Noto Sans Bold` |
+#'     `Amazon Ember Medium,Noto Sans Medium` |
+#'     `Amazon Ember Regular Italic,Noto Sans Italic` |
+#'     `Amazon Ember Condensed RC Regular,Noto Sans Regular` |
+#'     `Amazon Ember Condensed RC Bold,Noto Sans Bold`
+#' 
+#' The fonts used by the Open Data map styles are combined fonts that use
+#' `Amazon Ember` for most glyphs but `Noto Sans` for glyphs unsupported by
+#' `Amazon Ember`.
 #' @param FontUnicodeRange &#91;required&#93; A Unicode range of characters to download glyphs for. Each response will
 #' contain 256 characters. For example, 0–255 includes all characters from
 #' range `U+0000` to `00FF`. Must be aligned to multiples of 256.
+#' @param Key The optional [API
+#' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
+#' to authorize the request.
 #' @param MapName &#91;required&#93; The map resource associated with the glyph ﬁle.
 #'
 #' @keywords internal
 #'
 #' @rdname locationservice_get_map_glyphs
-locationservice_get_map_glyphs <- function(FontStack, FontUnicodeRange, MapName) {
+locationservice_get_map_glyphs <- function(FontStack, FontUnicodeRange, Key = NULL, MapName) {
   op <- new_operation(
     name = "GetMapGlyphs",
     http_method = "GET",
     http_path = "/maps/v0/maps/{MapName}/glyphs/{FontStack}/{FontUnicodeRange}",
     paginator = list()
   )
-  input <- .locationservice$get_map_glyphs_input(FontStack = FontStack, FontUnicodeRange = FontUnicodeRange, MapName = MapName)
+  input <- .locationservice$get_map_glyphs_input(FontStack = FontStack, FontUnicodeRange = FontUnicodeRange, Key = Key, MapName = MapName)
   output <- .locationservice$get_map_glyphs_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -1388,25 +1579,28 @@ locationservice_get_map_glyphs <- function(FontStack, FontUnicodeRange, MapName)
 #' 
 #' -   `sprites@@2x.png` for high pixel density displays
 #' 
-#' For the JSON document contain image offsets. Use the following ﬁle
+#' For the JSON document containing image offsets. Use the following ﬁle
 #' names:
 #' 
 #' -   `sprites.json`
 #' 
 #' -   `sprites@@2x.json` for high pixel density displays
+#' @param Key The optional [API
+#' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
+#' to authorize the request.
 #' @param MapName &#91;required&#93; The map resource associated with the sprite ﬁle.
 #'
 #' @keywords internal
 #'
 #' @rdname locationservice_get_map_sprites
-locationservice_get_map_sprites <- function(FileName, MapName) {
+locationservice_get_map_sprites <- function(FileName, Key = NULL, MapName) {
   op <- new_operation(
     name = "GetMapSprites",
     http_method = "GET",
     http_path = "/maps/v0/maps/{MapName}/sprites/{FileName}",
     paginator = list()
   )
-  input <- .locationservice$get_map_sprites_input(FileName = FileName, MapName = MapName)
+  input <- .locationservice$get_map_sprites_input(FileName = FileName, Key = Key, MapName = MapName)
   output <- .locationservice$get_map_sprites_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -1423,19 +1617,22 @@ locationservice_get_map_sprites <- function(FileName, MapName) {
 #'
 #' See [https://paws-r.github.io/docs/locationservice/get_map_style_descriptor.html](https://paws-r.github.io/docs/locationservice/get_map_style_descriptor.html) for full documentation.
 #'
+#' @param Key The optional [API
+#' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
+#' to authorize the request.
 #' @param MapName &#91;required&#93; The map resource to retrieve the style descriptor from.
 #'
 #' @keywords internal
 #'
 #' @rdname locationservice_get_map_style_descriptor
-locationservice_get_map_style_descriptor <- function(MapName) {
+locationservice_get_map_style_descriptor <- function(Key = NULL, MapName) {
   op <- new_operation(
     name = "GetMapStyleDescriptor",
     http_method = "GET",
     http_path = "/maps/v0/maps/{MapName}/style-descriptor",
     paginator = list()
   )
-  input <- .locationservice$get_map_style_descriptor_input(MapName = MapName)
+  input <- .locationservice$get_map_style_descriptor_input(Key = Key, MapName = MapName)
   output <- .locationservice$get_map_style_descriptor_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -1452,6 +1649,9 @@ locationservice_get_map_style_descriptor <- function(MapName) {
 #'
 #' See [https://paws-r.github.io/docs/locationservice/get_map_tile.html](https://paws-r.github.io/docs/locationservice/get_map_tile.html) for full documentation.
 #'
+#' @param Key The optional [API
+#' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
+#' to authorize the request.
 #' @param MapName &#91;required&#93; The map resource to retrieve the map tiles from.
 #' @param X &#91;required&#93; The X axis value for the map tile.
 #' @param Y &#91;required&#93; The Y axis value for the map tile.
@@ -1460,14 +1660,14 @@ locationservice_get_map_style_descriptor <- function(MapName) {
 #' @keywords internal
 #'
 #' @rdname locationservice_get_map_tile
-locationservice_get_map_tile <- function(MapName, X, Y, Z) {
+locationservice_get_map_tile <- function(Key = NULL, MapName, X, Y, Z) {
   op <- new_operation(
     name = "GetMapTile",
     http_method = "GET",
     http_path = "/maps/v0/maps/{MapName}/tiles/{Z}/{X}/{Y}",
     paginator = list()
   )
-  input <- .locationservice$get_map_tile_input(MapName = MapName, X = X, Y = Y, Z = Z)
+  input <- .locationservice$get_map_tile_input(Key = Key, MapName = MapName, X = X, Y = Y, Z = Z)
   output <- .locationservice$get_map_tile_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -1476,6 +1676,54 @@ locationservice_get_map_tile <- function(MapName, X, Y, Z) {
   return(response)
 }
 .locationservice$operations$get_map_tile <- locationservice_get_map_tile
+
+#' Finds a place by its unique ID
+#'
+#' @description
+#' Finds a place by its unique ID. A `PlaceId` is returned by other search operations.
+#'
+#' See [https://paws-r.github.io/docs/locationservice/get_place.html](https://paws-r.github.io/docs/locationservice/get_place.html) for full documentation.
+#'
+#' @param IndexName &#91;required&#93; The name of the place index resource that you want to use for the
+#' search.
+#' @param Language The preferred language used to return results. The value must be a valid
+#' BCP 47 language tag, for example, `en` for English.
+#' 
+#' This setting affects the languages used in the results, but not the
+#' results themselves. If no language is specified, or not supported for a
+#' particular result, the partner automatically chooses a language for the
+#' result.
+#' 
+#' For an example, we'll use the Greek language. You search for a location
+#' around Athens, Greece, with the `language` parameter set to `en`. The
+#' `city` in the results will most likely be returned as `Athens`.
+#' 
+#' If you set the `language` parameter to `el`, for Greek, then the `city`
+#' in the results will more likely be returned as \eqn{A\Theta\eta\nu\alpha}.
+#' 
+#' If the data provider does not have a value for Greek, the result will be
+#' in a language that the provider does support.
+#' @param PlaceId &#91;required&#93; The identifier of the place to find.
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_get_place
+locationservice_get_place <- function(IndexName, Language = NULL, PlaceId) {
+  op <- new_operation(
+    name = "GetPlace",
+    http_method = "GET",
+    http_path = "/places/v0/indexes/{IndexName}/places/{PlaceId}",
+    paginator = list()
+  )
+  input <- .locationservice$get_place_input(IndexName = IndexName, Language = Language, PlaceId = PlaceId)
+  output <- .locationservice$get_place_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$get_place <- locationservice_get_place
 
 #' A batch request to retrieve all device positions
 #'
@@ -1513,10 +1761,10 @@ locationservice_list_device_positions <- function(MaxResults = NULL, NextToken =
 }
 .locationservice$operations$list_device_positions <- locationservice_list_device_positions
 
-#' Lists geofence collections in your AWS account
+#' Lists geofence collections in your Amazon Web Services account
 #'
 #' @description
-#' Lists geofence collections in your AWS account.
+#' Lists geofence collections in your Amazon Web Services account.
 #'
 #' See [https://paws-r.github.io/docs/locationservice/list_geofence_collections.html](https://paws-r.github.io/docs/locationservice/list_geofence_collections.html) for full documentation.
 #'
@@ -1584,10 +1832,46 @@ locationservice_list_geofences <- function(CollectionName, MaxResults = NULL, Ne
 }
 .locationservice$operations$list_geofences <- locationservice_list_geofences
 
-#' Lists map resources in your AWS account
+#' Lists API key resources in your Amazon Web Services account
 #'
 #' @description
-#' Lists map resources in your AWS account.
+#' Lists API key resources in your Amazon Web Services account.
+#'
+#' See [https://paws-r.github.io/docs/locationservice/list_keys.html](https://paws-r.github.io/docs/locationservice/list_keys.html) for full documentation.
+#'
+#' @param Filter Optionally filter the list to only `Active` or `Expired` API keys.
+#' @param MaxResults An optional limit for the number of resources returned in a single call.
+#' 
+#' Default value: `100`
+#' @param NextToken The pagination token specifying which page of results to return in the
+#' response. If no token is provided, the default page is the first page.
+#' 
+#' Default value: `null`
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_list_keys
+locationservice_list_keys <- function(Filter = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListKeys",
+    http_method = "POST",
+    http_path = "/metadata/v0/list-keys",
+    paginator = list()
+  )
+  input <- .locationservice$list_keys_input(Filter = Filter, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .locationservice$list_keys_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$list_keys <- locationservice_list_keys
+
+#' Lists map resources in your Amazon Web Services account
+#'
+#' @description
+#' Lists map resources in your Amazon Web Services account.
 #'
 #' See [https://paws-r.github.io/docs/locationservice/list_maps.html](https://paws-r.github.io/docs/locationservice/list_maps.html) for full documentation.
 #'
@@ -1619,10 +1903,10 @@ locationservice_list_maps <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .locationservice$operations$list_maps <- locationservice_list_maps
 
-#' Lists place index resources in your AWS account
+#' Lists place index resources in your Amazon Web Services account
 #'
 #' @description
-#' Lists place index resources in your AWS account.
+#' Lists place index resources in your Amazon Web Services account.
 #'
 #' See [https://paws-r.github.io/docs/locationservice/list_place_indexes.html](https://paws-r.github.io/docs/locationservice/list_place_indexes.html) for full documentation.
 #'
@@ -1655,10 +1939,10 @@ locationservice_list_place_indexes <- function(MaxResults = NULL, NextToken = NU
 }
 .locationservice$operations$list_place_indexes <- locationservice_list_place_indexes
 
-#' Lists route calculator resources in your AWS account
+#' Lists route calculator resources in your Amazon Web Services account
 #'
 #' @description
-#' Lists route calculator resources in your AWS account.
+#' Lists route calculator resources in your Amazon Web Services account.
 #'
 #' See [https://paws-r.github.io/docs/locationservice/list_route_calculators.html](https://paws-r.github.io/docs/locationservice/list_route_calculators.html) for full documentation.
 #'
@@ -1762,10 +2046,10 @@ locationservice_list_tracker_consumers <- function(MaxResults = NULL, NextToken 
 }
 .locationservice$operations$list_tracker_consumers <- locationservice_list_tracker_consumers
 
-#' Lists tracker resources in your AWS account
+#' Lists tracker resources in your Amazon Web Services account
 #'
 #' @description
-#' Lists tracker resources in your AWS account.
+#' Lists tracker resources in your Amazon Web Services account.
 #'
 #' See [https://paws-r.github.io/docs/locationservice/list_trackers.html](https://paws-r.github.io/docs/locationservice/list_trackers.html) for full documentation.
 #'
@@ -1939,9 +2223,7 @@ locationservice_search_place_index_for_position <- function(IndexName, Language 
 #'     characters: `AUS`.
 #' @param IndexName &#91;required&#93; The name of the place index resource you want to use for the search.
 #' @param Language The preferred language used to return results. The value must be a valid
-#' [BCP
-#' 47](https://datatracker.ietf.org/doc/search?rfcs=on&activedrafts=on&name=bcp47)
-#' language tag, for example, `en` for English.
+#' BCP 47 language tag, for example, `en` for English.
 #' 
 #' This setting affects the languages used in the results. If no language
 #' is specified, or not supported for a particular result, the partner
@@ -2030,9 +2312,7 @@ locationservice_search_place_index_for_suggestions <- function(BiasPosition = NU
 #'     characters: `AUS`.
 #' @param IndexName &#91;required&#93; The name of the place index resource you want to use for the search.
 #' @param Language The preferred language used to return results. The value must be a valid
-#' [BCP
-#' 47](https://datatracker.ietf.org/doc/search?rfcs=on&activedrafts=on&name=bcp47)
-#' language tag, for example, `en` for English.
+#' BCP 47 language tag, for example, `en` for English.
 #' 
 #' This setting affects the languages used in the results, but not the
 #' results themselves. If no language is specified, or not supported for a
@@ -2195,6 +2475,51 @@ locationservice_update_geofence_collection <- function(CollectionName, Descripti
   return(response)
 }
 .locationservice$operations$update_geofence_collection <- locationservice_update_geofence_collection
+
+#' Updates the specified properties of a given API key resource
+#'
+#' @description
+#' Updates the specified properties of a given API key resource.
+#'
+#' See [https://paws-r.github.io/docs/locationservice/update_key.html](https://paws-r.github.io/docs/locationservice/update_key.html) for full documentation.
+#'
+#' @param Description Updates the description for the API key resource.
+#' @param ExpireTime Updates the timestamp for when the API key resource will expire in [ISO
+#' 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format:
+#' `YYYY-MM-DDThh:mm:ss.sssZ`.
+#' @param ForceUpdate The boolean flag to be included for updating `ExpireTime` or
+#' `Restrictions` details.
+#' 
+#' Must be set to `true` to update an API key resource that has been used
+#' in the past 7 days.
+#' 
+#' `False` if force update is not preferred
+#' 
+#' Default value: `False`
+#' @param KeyName &#91;required&#93; The name of the API key resource to update.
+#' @param NoExpiry Whether the API key should expire. Set to `true` to set the API key to
+#' have no expiration time.
+#' @param Restrictions Updates the API key restrictions for the API key resource.
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_update_key
+locationservice_update_key <- function(Description = NULL, ExpireTime = NULL, ForceUpdate = NULL, KeyName, NoExpiry = NULL, Restrictions = NULL) {
+  op <- new_operation(
+    name = "UpdateKey",
+    http_method = "PATCH",
+    http_path = "/metadata/v0/keys/{KeyName}",
+    paginator = list()
+  )
+  input <- .locationservice$update_key_input(Description = Description, ExpireTime = ExpireTime, ForceUpdate = ForceUpdate, KeyName = KeyName, NoExpiry = NoExpiry, Restrictions = Restrictions)
+  output <- .locationservice$update_key_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$update_key <- locationservice_update_key
 
 #' Updates the specified properties of a given map resource
 #'

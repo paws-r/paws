@@ -26,7 +26,7 @@ resource share.
 You can include the following values:
 \itemize{
 \item An Amazon Web Services account ID, for example: \code{123456789012}
-\item An \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+\item An \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
 of an organization in Organizations, for example:
 \verb{organizations::123456789012:organization/o-exampleorgid}
 \item An ARN of an organizational unit (OU) in Organizations, for example:
@@ -59,9 +59,13 @@ also pass the same value for all other parameters. We recommend that you
 use a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID type of value.}.
 
 If you don't provide this value, then Amazon Web Services generates a
-random one for you.}
+random one for you.
 
-\item{permissionArns}{Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+If you retry the operation with the same \code{ClientToken}, but with
+different parameters, the retry fails with an
+\code{IdempotentParameterMismatch} error.}
+
+\item{permissionArns}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 of the RAM permission to associate with the resource share. If you do
 not specify an ARN for the permission, RAM automatically attaches the
 default version of the permission for each resource type. You can
@@ -69,7 +73,7 @@ associate only one permission with each resource type included in the
 resource share.}
 }
 \description{
-Creates a resource share. You can provide a list of the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)} for the resources that you want to share, a list of principals you want to share the resources with, and the permissions to grant those principals.
+Creates a resource share. You can provide a list of the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} for the resources that you want to share, a list of principals you want to share the resources with, and the permissions to grant those principals.
 
 See \url{https://paws-r.github.io/docs/ram/create_resource_share.html} for full documentation.
 }

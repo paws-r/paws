@@ -1115,7 +1115,7 @@ swf_describe_workflow_type <- function(domain, workflowType) {
 #' value of `NextPageToken` is a unique pagination token for each page.
 #' Make the call again using the returned token to retrieve the next page.
 #' Keep all other arguments unchanged. Each pagination token expires after
-#' 60 seconds. Using an expired pagination token will return a `400` error:
+#' 24 hours. Using an expired pagination token will return a `400` error:
 #' "`Specified token has exceeded its maximum lifetime`".
 #' 
 #' The configured `maximumPageSize` determines how many results can be
@@ -1631,7 +1631,7 @@ swf_get_workflow_execution_history <- function(domain, execution, nextPageToken 
 #' value of `NextPageToken` is a unique pagination token for each page.
 #' Make the call again using the returned token to retrieve the next page.
 #' Keep all other arguments unchanged. Each pagination token expires after
-#' 60 seconds. Using an expired pagination token will return a `400` error:
+#' 24 hours. Using an expired pagination token will return a `400` error:
 #' "`Specified token has exceeded its maximum lifetime`".
 #' 
 #' The configured `maximumPageSize` determines how many results can be
@@ -1787,7 +1787,7 @@ swf_list_activity_types <- function(domain, name = NULL, registrationStatus, nex
 #' value of `NextPageToken` is a unique pagination token for each page.
 #' Make the call again using the returned token to retrieve the next page.
 #' Keep all other arguments unchanged. Each pagination token expires after
-#' 60 seconds. Using an expired pagination token will return a `400` error:
+#' 24 hours. Using an expired pagination token will return a `400` error:
 #' "`Specified token has exceeded its maximum lifetime`".
 #' 
 #' The configured `maximumPageSize` determines how many results can be
@@ -1936,7 +1936,7 @@ swf_list_closed_workflow_executions <- function(domain, startTimeFilter = NULL, 
 #' value of `NextPageToken` is a unique pagination token for each page.
 #' Make the call again using the returned token to retrieve the next page.
 #' Keep all other arguments unchanged. Each pagination token expires after
-#' 60 seconds. Using an expired pagination token will return a `400` error:
+#' 24 hours. Using an expired pagination token will return a `400` error:
 #' "`Specified token has exceeded its maximum lifetime`".
 #' 
 #' The configured `maximumPageSize` determines how many results can be
@@ -2060,7 +2060,7 @@ swf_list_domains <- function(nextPageToken = NULL, registrationStatus, maximumPa
 #' value of `NextPageToken` is a unique pagination token for each page.
 #' Make the call again using the returned token to retrieve the next page.
 #' Keep all other arguments unchanged. Each pagination token expires after
-#' 60 seconds. Using an expired pagination token will return a `400` error:
+#' 24 hours. Using an expired pagination token will return a `400` error:
 #' "`Specified token has exceeded its maximum lifetime`".
 #' 
 #' The configured `maximumPageSize` determines how many results can be
@@ -2253,7 +2253,7 @@ swf_list_tags_for_resource <- function(resourceArn) {
 #' value of `NextPageToken` is a unique pagination token for each page.
 #' Make the call again using the returned token to retrieve the next page.
 #' Keep all other arguments unchanged. Each pagination token expires after
-#' 60 seconds. Using an expired pagination token will return a `400` error:
+#' 24 hours. Using an expired pagination token will return a `400` error:
 #' "`Specified token has exceeded its maximum lifetime`".
 #' 
 #' The configured `maximumPageSize` determines how many results can be
@@ -2371,7 +2371,7 @@ swf_list_workflow_types <- function(domain, name = NULL, registrationStatus, nex
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
+#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must *not* be
 #' the literal string `arn`.
 #' @param identity Identity of the worker making the request, recorded in the
 #' `ActivityTaskStarted` event in the workflow history. This enables
@@ -2486,15 +2486,14 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
 #'
 #' @usage
 #' swf_poll_for_decision_task(domain, taskList, identity, nextPageToken,
-#'   maximumPageSize, reverseOrder)
+#'   maximumPageSize, reverseOrder, startAtPreviousStartedEvent)
 #'
 #' @param domain &#91;required&#93; The name of the domain containing the task lists to poll.
 #' @param taskList &#91;required&#93; Specifies the task list to poll for decision tasks.
 #' 
-#' The specified string must not start or end with whitespace. It must not
-#' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
-#' the literal string `arn`.
+#' The specified string must not contain a `:` (colon), `/` (slash), `|`
+#' (vertical bar), or any control characters (``U+0000`-`U+001f`` |
+#' ``U+007f`-`U+009f``). Also, it must *not* be the literal string `arn`.
 #' @param identity Identity of the decider making the request, which is recorded in the
 #' DecisionTaskStarted event in the workflow history. This enables
 #' diagnostic tracing when problems arise. The form of this identity is
@@ -2503,7 +2502,7 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
 #' value of `NextPageToken` is a unique pagination token for each page.
 #' Make the call again using the returned token to retrieve the next page.
 #' Keep all other arguments unchanged. Each pagination token expires after
-#' 60 seconds. Using an expired pagination token will return a `400` error:
+#' 24 hours. Using an expired pagination token will return a `400` error:
 #' "`Specified token has exceeded its maximum lifetime`".
 #' 
 #' The configured `maximumPageSize` determines how many results can be
@@ -2524,6 +2523,10 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
 #' @param reverseOrder When set to `true`, returns the events in reverse order. By default the
 #' results are returned in ascending order of the `eventTimestamp` of the
 #' events.
+#' @param startAtPreviousStartedEvent When set to `true`, returns the events with `eventTimestamp` greater
+#' than or equal to `eventTimestamp` of the most recent
+#' `DecisionTaskStarted` event. By default, this parameter is set to
+#' `false`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2972,7 +2975,8 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
 #'   identity = "string",
 #'   nextPageToken = "string",
 #'   maximumPageSize = 123,
-#'   reverseOrder = TRUE|FALSE
+#'   reverseOrder = TRUE|FALSE,
+#'   startAtPreviousStartedEvent = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -2981,14 +2985,14 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
 #' @rdname swf_poll_for_decision_task
 #'
 #' @aliases swf_poll_for_decision_task
-swf_poll_for_decision_task <- function(domain, taskList, identity = NULL, nextPageToken = NULL, maximumPageSize = NULL, reverseOrder = NULL) {
+swf_poll_for_decision_task <- function(domain, taskList, identity = NULL, nextPageToken = NULL, maximumPageSize = NULL, reverseOrder = NULL, startAtPreviousStartedEvent = NULL) {
   op <- new_operation(
     name = "PollForDecisionTask",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .swf$poll_for_decision_task_input(domain = domain, taskList = taskList, identity = identity, nextPageToken = nextPageToken, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder)
+  input <- .swf$poll_for_decision_task_input(domain = domain, taskList = taskList, identity = identity, nextPageToken = nextPageToken, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder, startAtPreviousStartedEvent = startAtPreviousStartedEvent)
   output <- .swf$poll_for_decision_task_output()
   config <- get_config()
   svc <- .swf$service(config)
@@ -3154,19 +3158,17 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
 #' @param domain &#91;required&#93; The name of the domain in which this activity is to be registered.
 #' @param name &#91;required&#93; The name of the activity type within the domain.
 #' 
-#' The specified string must not start or end with whitespace. It must not
-#' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
-#' the literal string `arn`.
+#' The specified string must not contain a `:` (colon), `/` (slash), `|`
+#' (vertical bar), or any control characters (``U+0000`-`U+001f`` |
+#' ``U+007f`-`U+009f``). Also, it must *not* be the literal string `arn`.
 #' @param version &#91;required&#93; The version of the activity type.
 #' 
 #' The activity type consists of the name and version, the combination of
 #' which must be unique within the domain.
 #' 
-#' The specified string must not start or end with whitespace. It must not
-#' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
-#' the literal string `arn`.
+#' The specified string must not contain a `:` (colon), `/` (slash), `|`
+#' (vertical bar), or any control characters (``U+0000`-`U+001f`` |
+#' ``U+007f`-`U+009f``). Also, it must *not* be the literal string `arn`.
 #' @param description A textual description of the activity type.
 #' @param defaultTaskStartToCloseTimeout If set, specifies the default maximum duration that a worker can take to
 #' process tasks of this activity type. This default can be overridden when
@@ -3292,7 +3294,7 @@ swf_register_activity_type <- function(domain, name, version, description = NULL
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
+#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must *not* be
 #' the literal string `arn`.
 #' @param description A text description of the domain.
 #' @param workflowExecutionRetentionPeriodInDays &#91;required&#93; The duration (in days) that records and histories of workflow executions
@@ -3405,10 +3407,9 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' @param domain &#91;required&#93; The name of the domain in which to register the workflow type.
 #' @param name &#91;required&#93; The name of the workflow type.
 #' 
-#' The specified string must not start or end with whitespace. It must not
-#' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
-#' the literal string `arn`.
+#' The specified string must not contain a `:` (colon), `/` (slash), `|`
+#' (vertical bar), or any control characters (``U+0000`-`U+001f`` |
+#' ``U+007f`-`U+009f``). Also, it must *not* be the literal string `arn`.
 #' @param version &#91;required&#93; The version of the workflow type.
 #' 
 #' The workflow type consists of the name and version, the combination of
@@ -3416,10 +3417,9 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' registered workflow types, use the
 #' [`list_workflow_types`][swf_list_workflow_types] action.
 #' 
-#' The specified string must not start or end with whitespace. It must not
-#' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
-#' the literal string `arn`.
+#' The specified string must not contain a `:` (colon), `/` (slash), `|`
+#' (vertical bar), or any control characters (``U+0000`-`U+001f`` |
+#' ``U+007f`-`U+009f``). Also, it must *not* be the literal string `arn`.
 #' @param description Textual description of the workflow type.
 #' @param defaultTaskStartToCloseTimeout If set, specifies the default maximum duration of decision tasks for
 #' this workflow type. This default can be overridden when starting a
@@ -4189,6 +4189,10 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #'   taskStartToCloseTimeout, childPolicy, lambdaRole)
 #'
 #' @param domain &#91;required&#93; The name of the domain in which the workflow execution is created.
+#' 
+#' The specified string must not contain a `:` (colon), `/` (slash), `|`
+#' (vertical bar), or any control characters (``U+0000`-`U+001f`` |
+#' ``U+007f`-`U+009f``). Also, it must *not* be the literal string `arn`.
 #' @param workflowId &#91;required&#93; The user defined identifier associated with the workflow execution. You
 #' can use this to associate a custom identifier with the workflow
 #' execution. You may specify the same identifier if a workflow execution
@@ -4196,10 +4200,9 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' open workflow executions with the same `workflowId` at the same time
 #' within the same domain.
 #' 
-#' The specified string must not start or end with whitespace. It must not
-#' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
-#' the literal string `arn`.
+#' The specified string must not contain a `:` (colon), `/` (slash), `|`
+#' (vertical bar), or any control characters (``U+0000`-`U+001f`` |
+#' ``U+007f`-`U+009f``). Also, it must *not* be the literal string `arn`.
 #' @param workflowType &#91;required&#93; The type of the workflow to start.
 #' @param taskList The task list to use for the decision tasks generated for this workflow
 #' execution. This overrides the `defaultTaskList` specified when
@@ -4210,10 +4213,9 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' parameter is set nor a default task list was specified at registration
 #' time then a fault is returned.
 #' 
-#' The specified string must not start or end with whitespace. It must not
-#' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
-#' the literal string `arn`.
+#' The specified string must not contain a `:` (colon), `/` (slash), `|`
+#' (vertical bar), or any control characters (``U+0000`-`U+001f`` |
+#' ``U+007f`-`U+009f``). Also, it must *not* be the literal string `arn`.
 #' @param taskPriority The task priority to use for this workflow execution. This overrides any
 #' default priority that was assigned when the workflow type was
 #' registered. If not set, then the default task priority for the workflow

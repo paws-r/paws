@@ -2,8 +2,8 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_disassociate_resource_share}
 \alias{ram_disassociate_resource_share}
-\title{Disassociates the specified principals or resources from the specified
-resource share}
+\title{Removes the specified principals or resources from participating in the
+specified resource share}
 \usage{
 ram_disassociate_resource_share(
   resourceShareArn,
@@ -13,14 +13,14 @@ ram_disassociate_resource_share(
 )
 }
 \arguments{
-\item{resourceShareArn}{[required] Specifies \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
-of the resource share that you want to remove resources from.}
+\item{resourceShareArn}{[required] Specifies \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
+of the resource share that you want to remove resources or principals
+from.}
 
-\item{resourceArns}{Specifies a list of \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+\item{resourceArns}{Specifies a list of \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 for one or more resources that you want to remove from the resource
 share. After the operation runs, these resources are no longer shared
-with principals outside of the Amazon Web Services account that created
-the resources.}
+with principals associated with the resource share.}
 
 \item{principals}{Specifies a list of one or more principals that no longer are to have
 access to the resources in this resource share.
@@ -28,7 +28,7 @@ access to the resources in this resource share.
 You can include the following values:
 \itemize{
 \item An Amazon Web Services account ID, for example: \code{123456789012}
-\item An \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+\item An \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
 of an organization in Organizations, for example:
 \verb{organizations::123456789012:organization/o-exampleorgid}
 \item An ARN of an organizational unit (OU) in Organizations, for example:
@@ -50,10 +50,14 @@ also pass the same value for all other parameters. We recommend that you
 use a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID type of value.}.
 
 If you don't provide this value, then Amazon Web Services generates a
-random one for you.}
+random one for you.
+
+If you retry the operation with the same \code{ClientToken}, but with
+different parameters, the retry fails with an
+\code{IdempotentParameterMismatch} error.}
 }
 \description{
-Disassociates the specified principals or resources from the specified resource share.
+Removes the specified principals or resources from participating in the specified resource share.
 
 See \url{https://paws-r.github.io/docs/ram/disassociate_resource_share.html} for full documentation.
 }

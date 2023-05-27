@@ -6,13 +6,36 @@
 document in real-time, using a previously created and trained custom
 model and an endpoint}
 \usage{
-comprehend_classify_document(Text, EndpointArn)
+comprehend_classify_document(
+  Text = NULL,
+  EndpointArn,
+  Bytes = NULL,
+  DocumentReaderConfig = NULL
+)
 }
 \arguments{
-\item{Text}{[required] The document text to be analyzed.}
+\item{Text}{The document text to be analyzed. If you enter text using this
+parameter, do not use the \code{Bytes} parameter.}
 
 \item{EndpointArn}{[required] The Amazon Resource Number (ARN) of the endpoint. For information about
 endpoints, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html}{Managing endpoints}.}
+
+\item{Bytes}{Use the \code{Bytes} parameter to input a text, PDF, Word or image file. You
+can also use the \code{Bytes} parameter to input an Amazon Textract
+\code{DetectDocumentText} or \code{AnalyzeDocument} output file.
+
+Provide the input document as a sequence of base64-encoded bytes. If
+your code uses an Amazon Web Services SDK to classify documents, the SDK
+may encode the document file bytes for you.
+
+The maximum length of this field depends on the input document type. For
+details, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/idp-inputs-sync.html}{Inputs for real-time custom analysis}
+in the Comprehend Developer Guide.
+
+If you use the \code{Bytes} parameter, do not use the \code{Text} parameter.}
+
+\item{DocumentReaderConfig}{Provides configuration parameters to override the default actions for
+extracting text from PDF documents and image files.}
 }
 \description{
 Creates a new document classification request to analyze a single document in real-time, using a previously created and trained custom model and an endpoint.

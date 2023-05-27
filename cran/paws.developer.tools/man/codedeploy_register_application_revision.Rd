@@ -2,7 +2,7 @@
 % Please edit documentation in R/codedeploy_operations.R
 \name{codedeploy_register_application_revision}
 \alias{codedeploy_register_application_revision}
-\title{Registers with AWS CodeDeploy a revision for the specified application}
+\title{Registers with CodeDeploy a revision for the specified application}
 \usage{
 codedeploy_register_application_revision(
   applicationName,
@@ -11,8 +11,8 @@ codedeploy_register_application_revision(
 )
 }
 \arguments{
-\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the IAM user
-or AWS account.}
+\item{applicationName}{[required] The name of an CodeDeploy application associated with the IAM user or
+Amazon Web Services account.}
 
 \item{description}{A comment about the revision.}
 
@@ -20,7 +20,7 @@ or AWS account.}
 and location.}
 }
 \description{
-Registers with AWS CodeDeploy a revision for the specified application.
+Registers with CodeDeploy a revision for the specified application.
 
 See \url{https://paws-r.github.io/docs/codedeploy/register_application_revision.html} for full documentation.
 }

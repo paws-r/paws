@@ -39,3 +39,11 @@ test_that("list_vpc_connectors", {
 test_that("list_vpc_connectors", {
   expect_error(svc$list_vpc_connectors(MaxResults = 20), NA)
 })
+
+test_that("list_vpc_ingress_connections", {
+  expect_error(svc$list_vpc_ingress_connections(), NA)
+})
+
+test_that("list_vpc_ingress_connections", {
+  expect_error(svc$list_vpc_ingress_connections(MaxResults = 20), NA)
+})

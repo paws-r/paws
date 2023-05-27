@@ -4,7 +4,7 @@
 \alias{ec2_accept_vpc_peering_connection}
 \title{Accept a VPC peering connection request}
 \usage{
-ec2_accept_vpc_peering_connection(DryRun = NULL, VpcPeeringConnectionId = NULL)
+ec2_accept_vpc_peering_connection(DryRun = NULL, VpcPeeringConnectionId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -12,7 +12,7 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{VpcPeeringConnectionId}{The ID of the VPC peering connection. You must specify this parameter in
+\item{VpcPeeringConnectionId}{[required] The ID of the VPC peering connection. You must specify this parameter in
 the request.}
 }
 \description{

@@ -17,13 +17,14 @@ rds_describe_engine_default_parameters(
 
 Valid Values:
 \itemize{
-\item \code{aurora5.6}
 \item \code{aurora-mysql5.7}
 \item \code{aurora-mysql8.0}
 \item \code{aurora-postgresql10}
 \item \code{aurora-postgresql11}
 \item \code{aurora-postgresql12}
 \item \code{aurora-postgresql13}
+\item \code{aurora-postgresql14}
+\item \code{custom-oracle-ee-19}
 \item \code{mariadb10.2}
 \item \code{mariadb10.3}
 \item \code{mariadb10.4}
@@ -31,6 +32,12 @@ Valid Values:
 \item \code{mariadb10.6}
 \item \code{mysql5.7}
 \item \code{mysql8.0}
+\item \code{oracle-ee-19}
+\item \code{oracle-ee-cdb-19}
+\item \code{oracle-ee-cdb-21}
+\item \code{oracle-se2-19}
+\item \code{oracle-se2-cdb-19}
+\item \code{oracle-se2-cdb-21}
 \item \code{postgres10}
 \item \code{postgres11}
 \item \code{postgres12}

@@ -9,7 +9,8 @@ lambda_create_function_url_config(
   FunctionName,
   Qualifier = NULL,
   AuthType,
-  Cors = NULL
+  Cors = NULL,
+  InvokeMode = NULL
 )
 }
 \arguments{
@@ -17,10 +18,10 @@ lambda_create_function_url_config(
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} - \verb{my-function}.
-\item \strong{Function ARN} -
+\item \strong{Function name} – \verb{my-function}.
+\item \strong{Function ARN} –
 \verb{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
-\item \strong{Partial ARN} - \verb{123456789012:function:my-function}.
+\item \strong{Partial ARN} – \verb{123456789012:function:my-function}.
 }
 
 The length constraint applies only to the full ARN. If you specify only
@@ -29,12 +30,25 @@ the function name, it is limited to 64 characters in length.}
 \item{Qualifier}{The alias name.}
 
 \item{AuthType}{[required] The type of authentication that your function URL uses. Set to \code{AWS_IAM}
-if you want to restrict access to authenticated \code{IAM} users only. Set to
+if you want to restrict access to authenticated users only. Set to
 \code{NONE} if you want to bypass IAM authentication to create a public
 endpoint. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html}{Security and auth model for Lambda function URLs}.}
 
 \item{Cors}{The \href{https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS}{cross-origin resource sharing (CORS)} settings
 for your function URL.}
+
+\item{InvokeMode}{Use one of the following options:
+\itemize{
+\item \code{BUFFERED} – This is the default option. Lambda invokes your
+function using the \code{\link[=lambda_invoke]{invoke}} API operation.
+Invocation results are available when the payload is complete. The
+maximum payload size is 6 MB.
+\item \code{RESPONSE_STREAM} – Your function streams payload results as they
+become available. Lambda invokes your function using the
+\code{\link[=lambda_invoke_with_response_stream]{invoke_with_response_stream}}
+API operation. The maximum response payload size is 20 MB, however,
+you can \href{https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html}{request a quota increase}.
+}}
 }
 \description{
 Creates a Lambda function URL with the specified configuration parameters. A function URL is a dedicated HTTP(S) endpoint that you can use to invoke your function.

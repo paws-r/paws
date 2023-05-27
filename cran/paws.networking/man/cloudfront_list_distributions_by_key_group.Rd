@@ -15,8 +15,8 @@ cloudfront_list_distributions_by_key_group(
 \item{Marker}{Use this field when paginating results to indicate where to begin in
 your list of distribution IDs. The response includes distribution IDs in
 the list that occur after the marker. To get the next page of the list,
-set this field’s value to the value of \code{NextMarker} from the current
-page’s response.}
+set this field's value to the value of \code{NextMarker} from the current
+page's response.}
 
 \item{MaxItems}{The maximum number of distribution IDs that you want in the response.}
 

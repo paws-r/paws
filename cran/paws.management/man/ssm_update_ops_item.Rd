@@ -19,7 +19,8 @@ ssm_update_ops_item(
   ActualStartTime = NULL,
   ActualEndTime = NULL,
   PlannedStartTime = NULL,
-  PlannedEndTime = NULL
+  PlannedEndTime = NULL,
+  OpsItemArn = NULL
 )
 }
 \arguments{
@@ -90,6 +91,8 @@ Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
 
 \item{PlannedEndTime}{The time specified in a change request for a runbook workflow to end.
 Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
+
+\item{OpsItemArn}{The OpsItem Amazon Resource Name (ARN).}
 }
 \description{
 Edit or change an OpsItem. You must have permission in Identity and Access Management (IAM) to update an OpsItem. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Getting started with OpsCenter} in the \emph{Amazon Web Services Systems Manager User Guide}.

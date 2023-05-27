@@ -247,6 +247,8 @@ eventbridge_create_archive <- function(ArchiveName, EventSourceArn, Description 
 #' @param Name &#91;required&#93; The name for the connection to create.
 #' @param Description A description for the connection to create.
 #' @param AuthorizationType &#91;required&#93; The type of authorization to use for the connection.
+#' 
+#' OAUTH tokens are refreshed when a 401 or 407 response is returned.
 #' @param AuthParameters &#91;required&#93; A `CreateConnectionAuthRequestParameters` object that contains the
 #' authorization parameters to use to authorize with the endpoint.
 #'
@@ -380,7 +382,10 @@ eventbridge_create_connection <- function(Name, Description = NULL, Authorizatio
 #' @param Description A description of the global endpoint.
 #' @param RoutingConfig &#91;required&#93; Configure the routing policy, including the health check and secondary
 #' Region..
-#' @param ReplicationConfig Enable or disable event replication.
+#' @param ReplicationConfig Enable or disable event replication. The default state is `ENABLED`
+#' which means you must supply a `RoleArn`. If you don't have a `RoleArn`
+#' or you don't want event replication enabled, set the state to
+#' `DISABLED`.
 #' @param EventBuses &#91;required&#93; Define the event buses used.
 #' 
 #' The names of the event buses must be identical in each Region.
@@ -477,12 +482,13 @@ eventbridge_create_endpoint <- function(Name, Description = NULL, RoutingConfig,
 #'
 #' @param Name &#91;required&#93; The name of the new event bus.
 #' 
-#' Event bus names cannot contain the / character. You can't use the name
-#' `default` for a custom event bus, as this name is already used for your
-#' account's default event bus.
+#' Custom event bus names can't contain the `/` character, but you can use
+#' the `/` character in partner event bus names. In addition, for partner
+#' event buses, the name must exactly match the name of the partner event
+#' source that this event bus is matched to.
 #' 
-#' If this is a partner event bus, the name must exactly match the name of
-#' the partner event source that this event bus is matched to.
+#' You can't use the name `default` for a custom event bus, as this name is
+#' already used for your account's default event bus.
 #' @param EventSourceName If you are creating a partner event bus, this specifies the partner
 #' event source that the new event bus will be matched with.
 #' @param Tags Tags to associate with the event bus.
@@ -2058,7 +2064,7 @@ eventbridge_list_connections <- function(NamePrefix = NULL, ConnectionState = NU
 #' @param HomeRegion The primary Region of the endpoints associated with this account. For
 #' example `"HomeRegion": "us-east-1"`.
 #' @param NextToken If `nextToken` is returned, there are more results available. The value
-#' of nextToken is a unique pagination token for each page. Make the call
+#' of `nextToken` is a unique pagination token for each page. Make the call
 #' again using the returned token to retrieve the next page. Keep all other
 #' arguments unchanged. Each pagination token expires after 24 hours. Using
 #' an expired pagination token will return an HTTP 400 InvalidToken error.
@@ -2805,7 +2811,10 @@ eventbridge_list_tags_for_resource <- function(ResourceARN) {
 #'         DbUser = "string",
 #'         Sql = "string",
 #'         StatementName = "string",
-#'         WithEvent = TRUE|FALSE
+#'         WithEvent = TRUE|FALSE,
+#'         Sqls = list(
+#'           "string"
+#'         )
 #'       ),
 #'       SageMakerPipelineParameters = list(
 #'         PipelineParameterList = list(
@@ -2876,8 +2885,8 @@ eventbridge_list_targets_by_rule <- function(Rule, EventBusName = NULL, NextToke
 #' parameters for the entry such as the source and type of the event,
 #' resources associated with the event, and so on.
 #' @param EndpointId The URL subdomain of the endpoint. For example, if the URL for Endpoint
-#' is abcde.veo.endpoints.event.amazonaws.com, then the EndpointId is
-#' `abcde.veo`.
+#' is https://abcde.veo.endpoints.event.amazonaws.com, then the EndpointId
+#' is `abcde.veo`.
 #' 
 #' When using Java, you must include `auth-crt` on the class path.
 #'
@@ -3197,9 +3206,9 @@ eventbridge_put_permission <- function(EventBusName = NULL, Action = NULL, Princ
 #' @param Name &#91;required&#93; The name of the rule that you are creating or updating.
 #' @param ScheduleExpression The scheduling expression. For example, "cron(0 20 * * ? *)" or
 #' "rate(5 minutes)".
-#' @param EventPattern The event pattern. For more information, see [EventBridge event
-#' patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/) in
-#' the *Amazon EventBridge User Guide*.
+#' @param EventPattern The event pattern. For more information, see [Amazon EventBridge event
+#' patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-event-patterns.html)
+#' in the *Amazon EventBridge User Guide*.
 #' @param State Indicates whether the rule is enabled or disabled.
 #' @param Description A description of the rule.
 #' @param RoleArn The Amazon Resource Name (ARN) of the IAM role associated with the rule.
@@ -3323,6 +3332,8 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 #' 
 #' -   Redshift cluster
 #' 
+#' -   Redshift Serverless workgroup
+#' 
 #' -   SageMaker Pipeline
 #' 
 #' -   SNS topic
@@ -3352,9 +3363,9 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 #' EventBridge needs the appropriate permissions. For Lambda and Amazon SNS
 #' resources, EventBridge relies on resource-based policies. For EC2
 #' instances, Kinesis Data Streams, Step Functions state machines and API
-#' Gateway REST APIs, EventBridge relies on IAM roles that you specify in
-#' the `RoleARN` argument in [`put_targets`][eventbridge_put_targets]. For
-#' more information, see [Authentication and Access
+#' Gateway APIs, EventBridge relies on IAM roles that you specify in the
+#' `RoleARN` argument in [`put_targets`][eventbridge_put_targets]. For more
+#' information, see [Authentication and Access
 #' Control](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-iam.html)
 #' in the *Amazon EventBridge User Guide*.
 #' 
@@ -3549,7 +3560,10 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 #'         DbUser = "string",
 #'         Sql = "string",
 #'         StatementName = "string",
-#'         WithEvent = TRUE|FALSE
+#'         WithEvent = TRUE|FALSE,
+#'         Sqls = list(
+#'           "string"
+#'         )
 #'       ),
 #'       SageMakerPipelineParameters = list(
 #'         PipelineParameterList = list(
@@ -4272,7 +4286,7 @@ eventbridge_update_connection <- function(Name, Description = NULL, Authorizatio
 #' @param Name &#91;required&#93; The name of the endpoint you want to update.
 #' @param Description A description for the endpoint.
 #' @param RoutingConfig Configure the routing policy, including the health check and secondary
-#' Region..
+#' Region.
 #' @param ReplicationConfig Whether event replication was enabled or disabled by this request.
 #' @param EventBuses Define event buses used for replication.
 #' @param RoleArn The ARN of the role used by event replication for this request.

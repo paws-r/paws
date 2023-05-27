@@ -133,6 +133,88 @@ lakeformation_add_lf_tags_to_resource <- function(CatalogId = NULL, Resource, LF
 }
 .lakeformation$operations$add_lf_tags_to_resource <- lakeformation_add_lf_tags_to_resource
 
+#' Allows a caller to assume an IAM role decorated as the SAML user
+#' specified in the SAML assertion included in the request
+#'
+#' @description
+#' Allows a caller to assume an IAM role decorated as the SAML user
+#' specified in the SAML assertion included in the request. This decoration
+#' allows Lake Formation to enforce access policies against the SAML users
+#' and groups. This API operation requires SAML federation setup in the
+#' caller’s account as it can only be called with valid SAML assertions.
+#' Lake Formation does not scope down the permission of the assumed role.
+#' All permissions attached to the role via the SAML federation setup will
+#' be included in the role session.
+#' 
+#' This decorated role is expected to access data in Amazon S3 by getting
+#' temporary access from Lake Formation which is authorized via the virtual
+#' API `GetDataAccess`. Therefore, all SAML roles that can be assumed via
+#' [`assume_decorated_role_with_saml`][lakeformation_assume_decorated_role_with_saml]
+#' must at a minimum include `lakeformation:GetDataAccess` in their role
+#' policies. A typical IAM policy attached to such a role would look as
+#' follows:
+#'
+#' @usage
+#' lakeformation_assume_decorated_role_with_saml(SAMLAssertion, RoleArn,
+#'   PrincipalArn, DurationSeconds)
+#'
+#' @param SAMLAssertion &#91;required&#93; A SAML assertion consisting of an assertion statement for the user who
+#' needs temporary credentials. This must match the SAML assertion that was
+#' issued to IAM. This must be Base64 encoded.
+#' @param RoleArn &#91;required&#93; The role that represents an IAM principal whose scope down policy allows
+#' it to call credential vending APIs such as
+#' `GetTemporaryTableCredentials`. The caller must also have iam:PassRole
+#' permission on this role.
+#' @param PrincipalArn &#91;required&#93; The Amazon Resource Name (ARN) of the SAML provider in IAM that
+#' describes the IdP.
+#' @param DurationSeconds The time period, between 900 and 43,200 seconds, for the timeout of the
+#' temporary credentials.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccessKeyId = "string",
+#'   SecretAccessKey = "string",
+#'   SessionToken = "string",
+#'   Expiration = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$assume_decorated_role_with_saml(
+#'   SAMLAssertion = "string",
+#'   RoleArn = "string",
+#'   PrincipalArn = "string",
+#'   DurationSeconds = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_assume_decorated_role_with_saml
+#'
+#' @aliases lakeformation_assume_decorated_role_with_saml
+lakeformation_assume_decorated_role_with_saml <- function(SAMLAssertion, RoleArn, PrincipalArn, DurationSeconds = NULL) {
+  op <- new_operation(
+    name = "AssumeDecoratedRoleWithSAML",
+    http_method = "POST",
+    http_path = "/AssumeDecoratedRoleWithSAML",
+    paginator = list()
+  )
+  input <- .lakeformation$assume_decorated_role_with_saml_input(SAMLAssertion = SAMLAssertion, RoleArn = RoleArn, PrincipalArn = PrincipalArn, DurationSeconds = DurationSeconds)
+  output <- .lakeformation$assume_decorated_role_with_saml_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$assume_decorated_role_with_saml <- lakeformation_assume_decorated_role_with_saml
+
 #' Batch operation to grant permissions to the principal
 #'
 #' @description
@@ -650,7 +732,8 @@ lakeformation_commit_transaction <- function(TransactionId) {
 #'       ExcludedColumnNames = list(
 #'         "string"
 #'       )
-#'     )
+#'     ),
+#'     VersionId = "string"
 #'   )
 #' )
 #' ```
@@ -777,16 +860,15 @@ lakeformation_delete_data_cells_filter <- function(TableCatalogId = NULL, Databa
 }
 .lakeformation$operations$delete_data_cells_filter <- lakeformation_delete_data_cells_filter
 
-#' Deletes the specified LF-tag key name
+#' Deletes the specified LF-tag given a key name
 #'
 #' @description
-#' Deletes the specified LF-tag key name. If the attribute key does not
-#' exist or the LF-tag does not exist, then the operation will not do
-#' anything. If the attribute key exists, then the operation checks if any
-#' resources are tagged with this attribute key, if yes, the API throws a
-#' 400 Exception with the message "Delete not allowed" as the LF-tag key is
-#' still attached with resources. You can consider untagging resources with
-#' this LF-tag key.
+#' Deletes the specified LF-tag given a key name. If the input parameter
+#' tag key was not found, then the operation will throw an exception. When
+#' you delete an LF-tag, the `LFTagPolicy` attached to the LF-tag becomes
+#' invalid. If the deleted LF-tag was still assigned to any resource, the
+#' tag policy attach to the deleted LF-tag will no longer be applied to the
+#' resource.
 #'
 #' @usage
 #' lakeformation_delete_lf_tag(CatalogId, TagKey)
@@ -845,7 +927,7 @@ lakeformation_delete_lf_tag <- function(CatalogId = NULL, TagKey) {
 #' includes an option to automatically call
 #' [`delete_objects_on_cancel`][lakeformation_delete_objects_on_cancel]
 #' before writes. For more information, see [Rolling Back Amazon S3
-#' Writes](https://docs.aws.amazon.com/lake-formation/latest/dg/transactions-data-operations.html#rolling-back-writes).
+#' Writes](https://docs.aws.amazon.com/lake-formation/latest/dg/#rolling-back-writes).
 #'
 #' @usage
 #' lakeformation_delete_objects_on_cancel(CatalogId, DatabaseName,
@@ -967,7 +1049,8 @@ lakeformation_deregister_resource <- function(ResourceArn) {
 #'     RoleArn = "string",
 #'     LastModified = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     WithFederation = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -1104,6 +1187,78 @@ lakeformation_extend_transaction <- function(TransactionId = NULL) {
 }
 .lakeformation$operations$extend_transaction <- lakeformation_extend_transaction
 
+#' Returns a data cells filter
+#'
+#' @description
+#' Returns a data cells filter.
+#'
+#' @usage
+#' lakeformation_get_data_cells_filter(TableCatalogId, DatabaseName,
+#'   TableName, Name)
+#'
+#' @param TableCatalogId &#91;required&#93; The ID of the catalog to which the table belongs.
+#' @param DatabaseName &#91;required&#93; A database in the Glue Data Catalog.
+#' @param TableName &#91;required&#93; A table in the database.
+#' @param Name &#91;required&#93; The name given by the user to the data filter cell.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataCellsFilter = list(
+#'     TableCatalogId = "string",
+#'     DatabaseName = "string",
+#'     TableName = "string",
+#'     Name = "string",
+#'     RowFilter = list(
+#'       FilterExpression = "string",
+#'       AllRowsWildcard = list()
+#'     ),
+#'     ColumnNames = list(
+#'       "string"
+#'     ),
+#'     ColumnWildcard = list(
+#'       ExcludedColumnNames = list(
+#'         "string"
+#'       )
+#'     ),
+#'     VersionId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_data_cells_filter(
+#'   TableCatalogId = "string",
+#'   DatabaseName = "string",
+#'   TableName = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_get_data_cells_filter
+#'
+#' @aliases lakeformation_get_data_cells_filter
+lakeformation_get_data_cells_filter <- function(TableCatalogId, DatabaseName, TableName, Name) {
+  op <- new_operation(
+    name = "GetDataCellsFilter",
+    http_method = "POST",
+    http_path = "/GetDataCellsFilter",
+    paginator = list()
+  )
+  input <- .lakeformation$get_data_cells_filter_input(TableCatalogId = TableCatalogId, DatabaseName = DatabaseName, TableName = TableName, Name = Name)
+  output <- .lakeformation$get_data_cells_filter_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$get_data_cells_filter <- lakeformation_get_data_cells_filter
+
 #' Retrieves the list of the data lake administrators of a Lake
 #' Formation-managed data lake
 #'
@@ -1148,6 +1303,9 @@ lakeformation_extend_transaction <- function(TransactionId = NULL) {
 #'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
 #'         )
 #'       )
+#'     ),
+#'     Parameters = list(
+#'       "string"
 #'     ),
 #'     TrustedResourceOwners = list(
 #'       "string"
@@ -2023,8 +2181,9 @@ lakeformation_get_work_units <- function(NextToken = NULL, PageSize = NULL, Quer
 #' Grants permissions to the principal to access metadata in the Data
 #' Catalog and data organized in underlying data storage such as Amazon S3.
 #' 
-#' For information about permissions, see Security and Access Control to
-#' Metadata and Data.
+#' For information about permissions, see [Security and Access Control to
+#' Metadata and
+#' Data](https://docs.aws.amazon.com/lake-formation/latest/dg/security-data-access.html).
 #'
 #' @usage
 #' lakeformation_grant_permissions(CatalogId, Principal, Resource,
@@ -2181,7 +2340,8 @@ lakeformation_grant_permissions <- function(CatalogId = NULL, Principal, Resourc
 #'         ExcludedColumnNames = list(
 #'           "string"
 #'         )
-#'       )
+#'       ),
+#'       VersionId = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2526,7 +2686,8 @@ lakeformation_list_permissions <- function(CatalogId = NULL, Principal = NULL, R
 #'       RoleArn = "string",
 #'       LastModified = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       WithFederation = TRUE|FALSE
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2774,6 +2935,9 @@ lakeformation_list_transactions <- function(CatalogId = NULL, StatusFilter = NUL
 #'         )
 #'       )
 #'     ),
+#'     Parameters = list(
+#'       "string"
+#'     ),
 #'     TrustedResourceOwners = list(
 #'       "string"
 #'     ),
@@ -2838,7 +3002,7 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #'
 #' @usage
 #' lakeformation_register_resource(ResourceArn, UseServiceLinkedRole,
-#'   RoleArn)
+#'   RoleArn, WithFederation)
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to
 #' register.
@@ -2846,8 +3010,10 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #' by registering this role with the Data Catalog. A service-linked role is
 #' a unique type of IAM role that is linked directly to Lake Formation.
 #' 
-#' For more information, see Using Service-Linked Roles for Lake Formation.
+#' For more information, see [Using Service-Linked Roles for Lake
+#' Formation](https://docs.aws.amazon.com/lake-formation/latest/dg/service-linked-roles.html).
 #' @param RoleArn The identifier for the role that registers the resource.
+#' @param WithFederation Whether or not the resource is a federated resource.
 #'
 #' @return
 #' An empty list.
@@ -2857,7 +3023,8 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #' svc$register_resource(
 #'   ResourceArn = "string",
 #'   UseServiceLinkedRole = TRUE|FALSE,
-#'   RoleArn = "string"
+#'   RoleArn = "string",
+#'   WithFederation = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -2866,14 +3033,14 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #' @rdname lakeformation_register_resource
 #'
 #' @aliases lakeformation_register_resource
-lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = NULL, RoleArn = NULL) {
+lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = NULL, RoleArn = NULL, WithFederation = NULL) {
   op <- new_operation(
     name = "RegisterResource",
     http_method = "POST",
     http_path = "/RegisterResource",
     paginator = list()
   )
-  input <- .lakeformation$register_resource_input(ResourceArn = ResourceArn, UseServiceLinkedRole = UseServiceLinkedRole, RoleArn = RoleArn)
+  input <- .lakeformation$register_resource_input(ResourceArn = ResourceArn, UseServiceLinkedRole = UseServiceLinkedRole, RoleArn = RoleArn, WithFederation = WithFederation)
   output <- .lakeformation$register_resource_output()
   config <- get_config()
   svc <- .lakeformation$service(config)
@@ -3034,8 +3201,9 @@ lakeformation_remove_lf_tags_from_resource <- function(CatalogId = NULL, Resourc
 #' @param Principal &#91;required&#93; The principal to be revoked permissions on the resource.
 #' @param Resource &#91;required&#93; The resource to which permissions are to be revoked.
 #' @param Permissions &#91;required&#93; The permissions revoked to the principal on the resource. For
-#' information about permissions, see Security and Access Control to
-#' Metadata and Data.
+#' information about permissions, see [Security and Access Control to
+#' Metadata and
+#' Data](https://docs.aws.amazon.com/lake-formation/latest/dg/security-data-access.html).
 #' @param PermissionsWithGrantOption Indicates a list of permissions for which to revoke the grant option
 #' allowing the principal to pass permissions to other principals.
 #'
@@ -3449,6 +3617,67 @@ lakeformation_start_transaction <- function(TransactionType = NULL) {
 }
 .lakeformation$operations$start_transaction <- lakeformation_start_transaction
 
+#' Updates a data cell filter
+#'
+#' @description
+#' Updates a data cell filter.
+#'
+#' @usage
+#' lakeformation_update_data_cells_filter(TableData)
+#'
+#' @param TableData &#91;required&#93; A `DataCellsFilter` structure containing information about the data
+#' cells filter.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_data_cells_filter(
+#'   TableData = list(
+#'     TableCatalogId = "string",
+#'     DatabaseName = "string",
+#'     TableName = "string",
+#'     Name = "string",
+#'     RowFilter = list(
+#'       FilterExpression = "string",
+#'       AllRowsWildcard = list()
+#'     ),
+#'     ColumnNames = list(
+#'       "string"
+#'     ),
+#'     ColumnWildcard = list(
+#'       ExcludedColumnNames = list(
+#'         "string"
+#'       )
+#'     ),
+#'     VersionId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_update_data_cells_filter
+#'
+#' @aliases lakeformation_update_data_cells_filter
+lakeformation_update_data_cells_filter <- function(TableData) {
+  op <- new_operation(
+    name = "UpdateDataCellsFilter",
+    http_method = "POST",
+    http_path = "/UpdateDataCellsFilter",
+    paginator = list()
+  )
+  input <- .lakeformation$update_data_cells_filter_input(TableData = TableData)
+  output <- .lakeformation$update_data_cells_filter_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$update_data_cells_filter <- lakeformation_update_data_cells_filter
+
 #' Updates the list of possible values for the specified LF-tag key
 #'
 #' @description
@@ -3518,10 +3747,11 @@ lakeformation_update_lf_tag <- function(CatalogId = NULL, TagKey, TagValuesToDel
 #' (registered) resource in Lake Formation.
 #'
 #' @usage
-#' lakeformation_update_resource(RoleArn, ResourceArn)
+#' lakeformation_update_resource(RoleArn, ResourceArn, WithFederation)
 #'
 #' @param RoleArn &#91;required&#93; The new role to use for the given resource registered in Lake Formation.
 #' @param ResourceArn &#91;required&#93; The resource ARN.
+#' @param WithFederation Whether or not the resource is a federated resource.
 #'
 #' @return
 #' An empty list.
@@ -3530,7 +3760,8 @@ lakeformation_update_lf_tag <- function(CatalogId = NULL, TagKey, TagValuesToDel
 #' ```
 #' svc$update_resource(
 #'   RoleArn = "string",
-#'   ResourceArn = "string"
+#'   ResourceArn = "string",
+#'   WithFederation = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -3539,14 +3770,14 @@ lakeformation_update_lf_tag <- function(CatalogId = NULL, TagKey, TagValuesToDel
 #' @rdname lakeformation_update_resource
 #'
 #' @aliases lakeformation_update_resource
-lakeformation_update_resource <- function(RoleArn, ResourceArn) {
+lakeformation_update_resource <- function(RoleArn, ResourceArn, WithFederation = NULL) {
   op <- new_operation(
     name = "UpdateResource",
     http_method = "POST",
     http_path = "/UpdateResource",
     paginator = list()
   )
-  input <- .lakeformation$update_resource_input(RoleArn = RoleArn, ResourceArn = ResourceArn)
+  input <- .lakeformation$update_resource_input(RoleArn = RoleArn, ResourceArn = ResourceArn, WithFederation = WithFederation)
   output <- .lakeformation$update_resource_output()
   config <- get_config()
   svc <- .lakeformation$service(config)

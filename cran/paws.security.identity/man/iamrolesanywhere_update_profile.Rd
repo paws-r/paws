@@ -2,7 +2,8 @@
 % Please edit documentation in R/iamrolesanywhere_operations.R
 \name{iamrolesanywhere_update_profile}
 \alias{iamrolesanywhere_update_profile}
-\title{Updates the profile}
+\title{Updates a profile, a list of the roles that IAM Roles Anywhere service
+is trusted to assume}
 \usage{
 iamrolesanywhere_update_profile(
   durationSeconds = NULL,
@@ -23,15 +24,14 @@ credentials.}
 
 \item{profileId}{[required] The unique identifier of the profile.}
 
-\item{roleArns}{A list of IAM roles that this profile can assume in a
-\href{https://docs.aws.amazon.com/rolesanywhere/latest/APIReference/}{CreateSession}
-operation.}
+\item{roleArns}{A list of IAM roles that this profile can assume in a temporary
+credential request.}
 
 \item{sessionPolicy}{A session policy that applies to the trust boundary of the vended
 session credentials.}
 }
 \description{
-Updates the profile. A profile is configuration resource to list the roles that RolesAnywhere service is trusted to assume. In addition, by applying a profile you can scope-down permissions with IAM managed policies.
+Updates a \emph{profile}, a list of the roles that IAM Roles Anywhere service is trusted to assume. You use profiles to intersect permissions with IAM managed policies.
 
 See \url{https://paws-r.github.io/docs/iamrolesanywhere/update_profile.html} for full documentation.
 }

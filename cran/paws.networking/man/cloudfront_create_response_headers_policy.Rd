@@ -8,7 +8,7 @@ cloudfront_create_response_headers_policy(ResponseHeadersPolicyConfig)
 }
 \arguments{
 \item{ResponseHeadersPolicyConfig}{[required] Contains metadata about the response headers policy, and a set of
-configurations that specify the response headers.}
+configurations that specify the HTTP headers.}
 }
 \description{
 Creates a response headers policy.

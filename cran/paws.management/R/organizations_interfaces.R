@@ -147,6 +147,14 @@ NULL
   list()
 }
 
+.organizations$delete_resource_policy_input <- function(...) {
+  list()
+}
+
+.organizations$delete_resource_policy_output <- function(...) {
+  list()
+}
+
 .organizations$deregister_delegated_administrator_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), ServicePrincipal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -236,6 +244,16 @@ NULL
 .organizations$describe_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Policy = structure(list(PolicySummary = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), AwsManaged = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Content = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$describe_resource_policy_input <- function(...) {
+  list()
+}
+
+.organizations$describe_resource_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourcePolicy = structure(list(ResourcePolicySummary = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Content = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -525,6 +543,18 @@ NULL
 
 .organizations$move_account_output <- function(...) {
   list()
+}
+
+.organizations$put_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Content = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$put_resource_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourcePolicy = structure(list(ResourcePolicySummary = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Content = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .organizations$register_delegated_administrator_input <- function(...) {

@@ -95,6 +95,37 @@ elasticsearchservice_associate_package <- function(PackageID, DomainName) {
 }
 .elasticsearchservice$operations$associate_package <- elasticsearchservice_associate_package
 
+#' Provides access to an Amazon OpenSearch Service domain through the use
+#' of an interface VPC endpoint
+#'
+#' @description
+#' Provides access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
+#'
+#' See [https://paws-r.github.io/docs/elasticsearchservice/authorize_vpc_endpoint_access.html](https://paws-r.github.io/docs/elasticsearchservice/authorize_vpc_endpoint_access.html) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The name of the OpenSearch Service domain to provide access to.
+#' @param Account &#91;required&#93; The account ID to grant access to.
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_authorize_vpc_endpoint_access
+elasticsearchservice_authorize_vpc_endpoint_access <- function(DomainName, Account) {
+  op <- new_operation(
+    name = "AuthorizeVpcEndpointAccess",
+    http_method = "POST",
+    http_path = "/2015-01-01/es/domain/{DomainName}/authorizeVpcEndpointAccess",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$authorize_vpc_endpoint_access_input(DomainName = DomainName, Account = Account)
+  output <- .elasticsearchservice$authorize_vpc_endpoint_access_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$authorize_vpc_endpoint_access <- elasticsearchservice_authorize_vpc_endpoint_access
+
 #' Cancels a scheduled service software update for an Amazon ES domain
 #'
 #' @description
@@ -258,6 +289,37 @@ elasticsearchservice_create_package <- function(PackageName, PackageType, Packag
 }
 .elasticsearchservice$operations$create_package <- elasticsearchservice_create_package
 
+#' Creates an Amazon OpenSearch Service-managed VPC endpoint
+#'
+#' @description
+#' Creates an Amazon OpenSearch Service-managed VPC endpoint.
+#'
+#' See [https://paws-r.github.io/docs/elasticsearchservice/create_vpc_endpoint.html](https://paws-r.github.io/docs/elasticsearchservice/create_vpc_endpoint.html) for full documentation.
+#'
+#' @param DomainArn &#91;required&#93; The Amazon Resource Name (ARN) of the domain to grant access to.
+#' @param VpcOptions &#91;required&#93; Options to specify the subnets and security groups for the endpoint.
+#' @param ClientToken Unique, case-sensitive identifier to ensure idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_create_vpc_endpoint
+elasticsearchservice_create_vpc_endpoint <- function(DomainArn, VpcOptions, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateVpcEndpoint",
+    http_method = "POST",
+    http_path = "/2015-01-01/es/vpcEndpoints",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$create_vpc_endpoint_input(DomainArn = DomainArn, VpcOptions = VpcOptions, ClientToken = ClientToken)
+  output <- .elasticsearchservice$create_vpc_endpoint_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$create_vpc_endpoint <- elasticsearchservice_create_vpc_endpoint
+
 #' Permanently deletes the specified Elasticsearch domain and all of its
 #' data
 #'
@@ -409,6 +471,35 @@ elasticsearchservice_delete_package <- function(PackageID) {
   return(response)
 }
 .elasticsearchservice$operations$delete_package <- elasticsearchservice_delete_package
+
+#' Deletes an Amazon OpenSearch Service-managed interface VPC endpoint
+#'
+#' @description
+#' Deletes an Amazon OpenSearch Service-managed interface VPC endpoint.
+#'
+#' See [https://paws-r.github.io/docs/elasticsearchservice/delete_vpc_endpoint.html](https://paws-r.github.io/docs/elasticsearchservice/delete_vpc_endpoint.html) for full documentation.
+#'
+#' @param VpcEndpointId &#91;required&#93; The unique identifier of the endpoint to be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_delete_vpc_endpoint
+elasticsearchservice_delete_vpc_endpoint <- function(VpcEndpointId) {
+  op <- new_operation(
+    name = "DeleteVpcEndpoint",
+    http_method = "DELETE",
+    http_path = "/2015-01-01/es/vpcEndpoints/{VpcEndpointId}",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$delete_vpc_endpoint_input(VpcEndpointId = VpcEndpointId)
+  output <- .elasticsearchservice$delete_vpc_endpoint_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$delete_vpc_endpoint <- elasticsearchservice_delete_vpc_endpoint
 
 #' Provides scheduled Auto-Tune action details for the Elasticsearch
 #' domain, such as Auto-Tune action type, description, severity, and
@@ -793,6 +884,35 @@ elasticsearchservice_describe_reserved_elasticsearch_instances <- function(Reser
 }
 .elasticsearchservice$operations$describe_reserved_elasticsearch_instances <- elasticsearchservice_describe_reserved_elasticsearch_instances
 
+#' Describes one or more Amazon OpenSearch Service-managed VPC endpoints
+#'
+#' @description
+#' Describes one or more Amazon OpenSearch Service-managed VPC endpoints.
+#'
+#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_vpc_endpoints.html](https://paws-r.github.io/docs/elasticsearchservice/describe_vpc_endpoints.html) for full documentation.
+#'
+#' @param VpcEndpointIds &#91;required&#93; The unique identifiers of the endpoints to get information about.
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_describe_vpc_endpoints
+elasticsearchservice_describe_vpc_endpoints <- function(VpcEndpointIds) {
+  op <- new_operation(
+    name = "DescribeVpcEndpoints",
+    http_method = "POST",
+    http_path = "/2015-01-01/es/vpcEndpoints/describe",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$describe_vpc_endpoints_input(VpcEndpointIds = VpcEndpointIds)
+  output <- .elasticsearchservice$describe_vpc_endpoints_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$describe_vpc_endpoints <- elasticsearchservice_describe_vpc_endpoints
+
 #' Dissociates a package from the Amazon ES domain
 #'
 #' @description
@@ -1146,6 +1266,100 @@ elasticsearchservice_list_tags <- function(ARN) {
 }
 .elasticsearchservice$operations$list_tags <- elasticsearchservice_list_tags
 
+#' Retrieves information about each principal that is allowed to access a
+#' given Amazon OpenSearch Service domain through the use of an interface
+#' VPC endpoint
+#'
+#' @description
+#' Retrieves information about each principal that is allowed to access a given Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
+#'
+#' See [https://paws-r.github.io/docs/elasticsearchservice/list_vpc_endpoint_access.html](https://paws-r.github.io/docs/elasticsearchservice/list_vpc_endpoint_access.html) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The name of the OpenSearch Service domain to retrieve access information
+#' for.
+#' @param NextToken Provides an identifier to allow retrieval of paginated results.
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_list_vpc_endpoint_access
+elasticsearchservice_list_vpc_endpoint_access <- function(DomainName, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListVpcEndpointAccess",
+    http_method = "GET",
+    http_path = "/2015-01-01/es/domain/{DomainName}/listVpcEndpointAccess",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$list_vpc_endpoint_access_input(DomainName = DomainName, NextToken = NextToken)
+  output <- .elasticsearchservice$list_vpc_endpoint_access_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$list_vpc_endpoint_access <- elasticsearchservice_list_vpc_endpoint_access
+
+#' Retrieves all Amazon OpenSearch Service-managed VPC endpoints in the
+#' current account and Region
+#'
+#' @description
+#' Retrieves all Amazon OpenSearch Service-managed VPC endpoints in the current account and Region.
+#'
+#' See [https://paws-r.github.io/docs/elasticsearchservice/list_vpc_endpoints.html](https://paws-r.github.io/docs/elasticsearchservice/list_vpc_endpoints.html) for full documentation.
+#'
+#' @param NextToken Identifier to allow retrieval of paginated results.
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_list_vpc_endpoints
+elasticsearchservice_list_vpc_endpoints <- function(NextToken = NULL) {
+  op <- new_operation(
+    name = "ListVpcEndpoints",
+    http_method = "GET",
+    http_path = "/2015-01-01/es/vpcEndpoints",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$list_vpc_endpoints_input(NextToken = NextToken)
+  output <- .elasticsearchservice$list_vpc_endpoints_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$list_vpc_endpoints <- elasticsearchservice_list_vpc_endpoints
+
+#' Retrieves all Amazon OpenSearch Service-managed VPC endpoints associated
+#' with a particular domain
+#'
+#' @description
+#' Retrieves all Amazon OpenSearch Service-managed VPC endpoints associated with a particular domain.
+#'
+#' See [https://paws-r.github.io/docs/elasticsearchservice/list_vpc_endpoints_for_domain.html](https://paws-r.github.io/docs/elasticsearchservice/list_vpc_endpoints_for_domain.html) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; Name of the ElasticSearch domain whose VPC endpoints are to be listed.
+#' @param NextToken Provides an identifier to allow retrieval of paginated results.
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_list_vpc_endpoints_for_domain
+elasticsearchservice_list_vpc_endpoints_for_domain <- function(DomainName, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListVpcEndpointsForDomain",
+    http_method = "GET",
+    http_path = "/2015-01-01/es/domain/{DomainName}/vpcEndpoints",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$list_vpc_endpoints_for_domain_input(DomainName = DomainName, NextToken = NextToken)
+  output <- .elasticsearchservice$list_vpc_endpoints_for_domain_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$list_vpc_endpoints_for_domain <- elasticsearchservice_list_vpc_endpoints_for_domain
+
 #' Allows you to purchase reserved Elasticsearch instances
 #'
 #' @description
@@ -1239,6 +1453,37 @@ elasticsearchservice_remove_tags <- function(ARN, TagKeys) {
   return(response)
 }
 .elasticsearchservice$operations$remove_tags <- elasticsearchservice_remove_tags
+
+#' Revokes access to an Amazon OpenSearch Service domain that was provided
+#' through an interface VPC endpoint
+#'
+#' @description
+#' Revokes access to an Amazon OpenSearch Service domain that was provided through an interface VPC endpoint.
+#'
+#' See [https://paws-r.github.io/docs/elasticsearchservice/revoke_vpc_endpoint_access.html](https://paws-r.github.io/docs/elasticsearchservice/revoke_vpc_endpoint_access.html) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The name of the OpenSearch Service domain.
+#' @param Account &#91;required&#93; The account ID to revoke access from.
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_revoke_vpc_endpoint_access
+elasticsearchservice_revoke_vpc_endpoint_access <- function(DomainName, Account) {
+  op <- new_operation(
+    name = "RevokeVpcEndpointAccess",
+    http_method = "POST",
+    http_path = "/2015-01-01/es/domain/{DomainName}/revokeVpcEndpointAccess",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$revoke_vpc_endpoint_access_input(DomainName = DomainName, Account = Account)
+  output <- .elasticsearchservice$revoke_vpc_endpoint_access_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$revoke_vpc_endpoint_access <- elasticsearchservice_revoke_vpc_endpoint_access
 
 #' Schedules a service software update for an Amazon ES domain
 #'
@@ -1365,6 +1610,36 @@ elasticsearchservice_update_package <- function(PackageID, PackageSource, Packag
   return(response)
 }
 .elasticsearchservice$operations$update_package <- elasticsearchservice_update_package
+
+#' Modifies an Amazon OpenSearch Service-managed interface VPC endpoint
+#'
+#' @description
+#' Modifies an Amazon OpenSearch Service-managed interface VPC endpoint.
+#'
+#' See [https://paws-r.github.io/docs/elasticsearchservice/update_vpc_endpoint.html](https://paws-r.github.io/docs/elasticsearchservice/update_vpc_endpoint.html) for full documentation.
+#'
+#' @param VpcEndpointId &#91;required&#93; Unique identifier of the VPC endpoint to be updated.
+#' @param VpcOptions &#91;required&#93; The security groups and/or subnets to add, remove, or modify.
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_update_vpc_endpoint
+elasticsearchservice_update_vpc_endpoint <- function(VpcEndpointId, VpcOptions) {
+  op <- new_operation(
+    name = "UpdateVpcEndpoint",
+    http_method = "POST",
+    http_path = "/2015-01-01/es/vpcEndpoints/update",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$update_vpc_endpoint_input(VpcEndpointId = VpcEndpointId, VpcOptions = VpcOptions)
+  output <- .elasticsearchservice$update_vpc_endpoint_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$update_vpc_endpoint <- elasticsearchservice_update_vpc_endpoint
 
 #' Allows you to either upgrade your domain or perform an Upgrade
 #' eligibility check to a compatible Elasticsearch version

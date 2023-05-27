@@ -15,8 +15,8 @@ resourcegroups_update_group_query(
 
 \item{Group}{The name or the ARN of the resource group to query.}
 
-\item{ResourceQuery}{[required] The resource query to determine which AWS resources are members of this
-resource group.
+\item{ResourceQuery}{[required] The resource query to determine which Amazon Web Services resources are
+members of this resource group.
 
 A resource group can contain either a \code{Configuration} or a
 \code{ResourceQuery}, but not both.}

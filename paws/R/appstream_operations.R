@@ -168,7 +168,7 @@ appstream_associate_fleet <- function(FleetName, StackName) {
 #'       UserStackAssociation = list(
 #'         StackName = "string",
 #'         UserName = "string",
-#'         AuthenticationType = "API"|"SAML"|"USERPOOL",
+#'         AuthenticationType = "API"|"SAML"|"USERPOOL"|"AWS_AD",
 #'         SendEmailNotification = TRUE|FALSE
 #'       ),
 #'       ErrorCode = "STACK_NOT_FOUND"|"USER_NAME_NOT_FOUND"|"DIRECTORY_NOT_FOUND"|"INTERNAL_ERROR",
@@ -185,7 +185,7 @@ appstream_associate_fleet <- function(FleetName, StackName) {
 #'     list(
 #'       StackName = "string",
 #'       UserName = "string",
-#'       AuthenticationType = "API"|"SAML"|"USERPOOL",
+#'       AuthenticationType = "API"|"SAML"|"USERPOOL"|"AWS_AD",
 #'       SendEmailNotification = TRUE|FALSE
 #'     )
 #'   )
@@ -233,7 +233,7 @@ appstream_batch_associate_user_stack <- function(UserStackAssociations) {
 #'       UserStackAssociation = list(
 #'         StackName = "string",
 #'         UserName = "string",
-#'         AuthenticationType = "API"|"SAML"|"USERPOOL",
+#'         AuthenticationType = "API"|"SAML"|"USERPOOL"|"AWS_AD",
 #'         SendEmailNotification = TRUE|FALSE
 #'       ),
 #'       ErrorCode = "STACK_NOT_FOUND"|"USER_NAME_NOT_FOUND"|"DIRECTORY_NOT_FOUND"|"INTERNAL_ERROR",
@@ -250,7 +250,7 @@ appstream_batch_associate_user_stack <- function(UserStackAssociations) {
 #'     list(
 #'       StackName = "string",
 #'       UserName = "string",
-#'       AuthenticationType = "API"|"SAML"|"USERPOOL",
+#'       AuthenticationType = "API"|"SAML"|"USERPOOL"|"AWS_AD",
 #'       SendEmailNotification = TRUE|FALSE
 #'     )
 #'   )
@@ -566,7 +566,8 @@ appstream_create_application <- function(Name, DisplayName = NULL, Description =
 #'
 #' @usage
 #' appstream_create_directory_config(DirectoryName,
-#'   OrganizationalUnitDistinguishedNames, ServiceAccountCredentials)
+#'   OrganizationalUnitDistinguishedNames, ServiceAccountCredentials,
+#'   CertificateBasedAuthProperties)
 #'
 #' @param DirectoryName &#91;required&#93; The fully qualified name of the directory (for example,
 #' corp.example.com).
@@ -574,6 +575,16 @@ appstream_create_application <- function(Name, DisplayName = NULL, Description =
 #' accounts.
 #' @param ServiceAccountCredentials The credentials for the service account used by the fleet or image
 #' builder to connect to the directory.
+#' @param CertificateBasedAuthProperties The certificate-based authentication properties used to authenticate
+#' SAML 2.0 Identity Provider (IdP) user identities to Active Directory
+#' domain-joined streaming instances. Fallback is turned on by default when
+#' certificate-based authentication is **Enabled** . Fallback allows users
+#' to log in using their AD domain password if certificate-based
+#' authentication is unsuccessful, or to unlock a desktop lock screen.
+#' **Enabled_no_directory_login_fallback** enables certificate-based
+#' authentication, but does not allow users to log in using their AD domain
+#' password. Users will be disconnected to re-authenticate using
+#' certificates.
 #'
 #' @return
 #' A list with the following syntax:
@@ -590,6 +601,10 @@ appstream_create_application <- function(Name, DisplayName = NULL, Description =
 #'     ),
 #'     CreatedTime = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     CertificateBasedAuthProperties = list(
+#'       Status = "DISABLED"|"ENABLED"|"ENABLED_NO_DIRECTORY_LOGIN_FALLBACK",
+#'       CertificateAuthorityArn = "string"
 #'     )
 #'   )
 #' )
@@ -605,6 +620,10 @@ appstream_create_application <- function(Name, DisplayName = NULL, Description =
 #'   ServiceAccountCredentials = list(
 #'     AccountName = "string",
 #'     AccountPassword = "string"
+#'   ),
+#'   CertificateBasedAuthProperties = list(
+#'     Status = "DISABLED"|"ENABLED"|"ENABLED_NO_DIRECTORY_LOGIN_FALLBACK",
+#'     CertificateAuthorityArn = "string"
 #'   )
 #' )
 #' ```
@@ -614,14 +633,14 @@ appstream_create_application <- function(Name, DisplayName = NULL, Description =
 #' @rdname appstream_create_directory_config
 #'
 #' @aliases appstream_create_directory_config
-appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitDistinguishedNames, ServiceAccountCredentials = NULL) {
+appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitDistinguishedNames, ServiceAccountCredentials = NULL, CertificateBasedAuthProperties = NULL) {
   op <- new_operation(
     name = "CreateDirectoryConfig",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .appstream$create_directory_config_input(DirectoryName = DirectoryName, OrganizationalUnitDistinguishedNames = OrganizationalUnitDistinguishedNames, ServiceAccountCredentials = ServiceAccountCredentials)
+  input <- .appstream$create_directory_config_input(DirectoryName = DirectoryName, OrganizationalUnitDistinguishedNames = OrganizationalUnitDistinguishedNames, ServiceAccountCredentials = ServiceAccountCredentials, CertificateBasedAuthProperties = CertificateBasedAuthProperties)
   output <- .appstream$create_directory_config_output()
   config <- get_config()
   svc <- .appstream$service(config)
@@ -718,8 +737,8 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' Creates a fleet
 #'
 #' @description
-#' Creates a fleet. A fleet consists of streaming instances that run a
-#' specified image when using Always-On or On-Demand.
+#' Creates a fleet. A fleet consists of streaming instances that your users
+#' access for their applications and desktops.
 #'
 #' @usage
 #' appstream_create_fleet(Name, ImageName, ImageArn, InstanceType,
@@ -740,6 +759,10 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' -   stream.standard.medium
 #' 
 #' -   stream.standard.large
+#' 
+#' -   stream.standard.xlarge
+#' 
+#' -   stream.standard.2xlarge
 #' 
 #' -   stream.compute.large
 #' 
@@ -806,6 +829,12 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' -   stream.standard.small
 #' 
 #' -   stream.standard.medium
+#' 
+#' -   stream.standard.large
+#' 
+#' -   stream.standard.xlarge
+#' 
+#' -   stream.standard.2xlarge
 #' @param FleetType The fleet type.
 #' 
 #' **ALWAYS_ON**
@@ -1807,7 +1836,7 @@ appstream_create_usage_report_subscription <- function() {
 #'   MessageAction = "SUPPRESS"|"RESEND",
 #'   FirstName = "string",
 #'   LastName = "string",
-#'   AuthenticationType = "API"|"SAML"|"USERPOOL"
+#'   AuthenticationType = "API"|"SAML"|"USERPOOL"|"AWS_AD"
 #' )
 #' ```
 #'
@@ -2408,7 +2437,7 @@ appstream_delete_usage_report_subscription <- function() {
 #' ```
 #' svc$delete_user(
 #'   UserName = "string",
-#'   AuthenticationType = "API"|"SAML"|"USERPOOL"
+#'   AuthenticationType = "API"|"SAML"|"USERPOOL"|"AWS_AD"
 #' )
 #' ```
 #'
@@ -2697,6 +2726,10 @@ appstream_describe_applications <- function(Arns = NULL, NextToken = NULL, MaxRe
 #'       ),
 #'       CreatedTime = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       CertificateBasedAuthProperties = list(
+#'         Status = "DISABLED"|"ENABLED"|"ENABLED_NO_DIRECTORY_LOGIN_FALLBACK",
+#'         CertificateAuthorityArn = "string"
 #'       )
 #'     )
 #'   ),
@@ -3277,7 +3310,7 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
 #'       MaxExpirationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       AuthenticationType = "API"|"SAML"|"USERPOOL",
+#'       AuthenticationType = "API"|"SAML"|"USERPOOL"|"AWS_AD",
 #'       NetworkAccessConfiguration = list(
 #'         EniPrivateIpAddress = "string",
 #'         EniId = "string"
@@ -3296,7 +3329,7 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
 #'   UserId = "string",
 #'   NextToken = "string",
 #'   Limit = 123,
-#'   AuthenticationType = "API"|"SAML"|"USERPOOL"
+#'   AuthenticationType = "API"|"SAML"|"USERPOOL"|"AWS_AD"
 #' )
 #' ```
 #'
@@ -3526,7 +3559,7 @@ appstream_describe_usage_report_subscriptions <- function(MaxResults = NULL, Nex
 #'     list(
 #'       StackName = "string",
 #'       UserName = "string",
-#'       AuthenticationType = "API"|"SAML"|"USERPOOL",
+#'       AuthenticationType = "API"|"SAML"|"USERPOOL"|"AWS_AD",
 #'       SendEmailNotification = TRUE|FALSE
 #'     )
 #'   ),
@@ -3539,7 +3572,7 @@ appstream_describe_usage_report_subscriptions <- function(MaxResults = NULL, Nex
 #' svc$describe_user_stack_associations(
 #'   StackName = "string",
 #'   UserName = "string",
-#'   AuthenticationType = "API"|"SAML"|"USERPOOL",
+#'   AuthenticationType = "API"|"SAML"|"USERPOOL"|"AWS_AD",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -3598,7 +3631,7 @@ appstream_describe_user_stack_associations <- function(StackName = NULL, UserNam
 #'       CreatedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       AuthenticationType = "API"|"SAML"|"USERPOOL"
+#'       AuthenticationType = "API"|"SAML"|"USERPOOL"|"AWS_AD"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3608,7 +3641,7 @@ appstream_describe_user_stack_associations <- function(StackName = NULL, UserNam
 #' @section Request syntax:
 #' ```
 #' svc$describe_users(
-#'   AuthenticationType = "API"|"SAML"|"USERPOOL",
+#'   AuthenticationType = "API"|"SAML"|"USERPOOL"|"AWS_AD",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -3658,7 +3691,7 @@ appstream_describe_users <- function(AuthenticationType, MaxResults = NULL, Next
 #' ```
 #' svc$disable_user(
 #'   UserName = "string",
-#'   AuthenticationType = "API"|"SAML"|"USERPOOL"
+#'   AuthenticationType = "API"|"SAML"|"USERPOOL"|"AWS_AD"
 #' )
 #' ```
 #'
@@ -3844,7 +3877,7 @@ appstream_disassociate_fleet <- function(FleetName, StackName) {
 #' ```
 #' svc$enable_user(
 #'   UserName = "string",
-#'   AuthenticationType = "API"|"SAML"|"USERPOOL"
+#'   AuthenticationType = "API"|"SAML"|"USERPOOL"|"AWS_AD"
 #' )
 #' ```
 #'
@@ -4648,13 +4681,24 @@ appstream_update_application <- function(Name, DisplayName = NULL, Description =
 #'
 #' @usage
 #' appstream_update_directory_config(DirectoryName,
-#'   OrganizationalUnitDistinguishedNames, ServiceAccountCredentials)
+#'   OrganizationalUnitDistinguishedNames, ServiceAccountCredentials,
+#'   CertificateBasedAuthProperties)
 #'
 #' @param DirectoryName &#91;required&#93; The name of the Directory Config object.
 #' @param OrganizationalUnitDistinguishedNames The distinguished names of the organizational units for computer
 #' accounts.
 #' @param ServiceAccountCredentials The credentials for the service account used by the fleet or image
 #' builder to connect to the directory.
+#' @param CertificateBasedAuthProperties The certificate-based authentication properties used to authenticate
+#' SAML 2.0 Identity Provider (IdP) user identities to Active Directory
+#' domain-joined streaming instances. Fallback is turned on by default when
+#' certificate-based authentication is **Enabled** . Fallback allows users
+#' to log in using their AD domain password if certificate-based
+#' authentication is unsuccessful, or to unlock a desktop lock screen.
+#' **Enabled_no_directory_login_fallback** enables certificate-based
+#' authentication, but does not allow users to log in using their AD domain
+#' password. Users will be disconnected to re-authenticate using
+#' certificates.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4671,6 +4715,10 @@ appstream_update_application <- function(Name, DisplayName = NULL, Description =
 #'     ),
 #'     CreatedTime = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     CertificateBasedAuthProperties = list(
+#'       Status = "DISABLED"|"ENABLED"|"ENABLED_NO_DIRECTORY_LOGIN_FALLBACK",
+#'       CertificateAuthorityArn = "string"
 #'     )
 #'   )
 #' )
@@ -4686,6 +4734,10 @@ appstream_update_application <- function(Name, DisplayName = NULL, Description =
 #'   ServiceAccountCredentials = list(
 #'     AccountName = "string",
 #'     AccountPassword = "string"
+#'   ),
+#'   CertificateBasedAuthProperties = list(
+#'     Status = "DISABLED"|"ENABLED"|"ENABLED_NO_DIRECTORY_LOGIN_FALLBACK",
+#'     CertificateAuthorityArn = "string"
 #'   )
 #' )
 #' ```
@@ -4695,14 +4747,14 @@ appstream_update_application <- function(Name, DisplayName = NULL, Description =
 #' @rdname appstream_update_directory_config
 #'
 #' @aliases appstream_update_directory_config
-appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitDistinguishedNames = NULL, ServiceAccountCredentials = NULL) {
+appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitDistinguishedNames = NULL, ServiceAccountCredentials = NULL, CertificateBasedAuthProperties = NULL) {
   op <- new_operation(
     name = "UpdateDirectoryConfig",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .appstream$update_directory_config_input(DirectoryName = DirectoryName, OrganizationalUnitDistinguishedNames = OrganizationalUnitDistinguishedNames, ServiceAccountCredentials = ServiceAccountCredentials)
+  input <- .appstream$update_directory_config_input(DirectoryName = DirectoryName, OrganizationalUnitDistinguishedNames = OrganizationalUnitDistinguishedNames, ServiceAccountCredentials = ServiceAccountCredentials, CertificateBasedAuthProperties = CertificateBasedAuthProperties)
   output <- .appstream$update_directory_config_output()
   config <- get_config()
   svc <- .appstream$service(config)
@@ -4837,6 +4889,10 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' 
 #' -   stream.standard.large
 #' 
+#' -   stream.standard.xlarge
+#' 
+#' -   stream.standard.2xlarge
+#' 
 #' -   stream.compute.large
 #' 
 #' -   stream.compute.xlarge
@@ -4902,6 +4958,12 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' -   stream.standard.small
 #' 
 #' -   stream.standard.medium
+#' 
+#' -   stream.standard.large
+#' 
+#' -   stream.standard.xlarge
+#' 
+#' -   stream.standard.2xlarge
 #' @param ComputeCapacity The desired capacity for the fleet. This is not allowed for Elastic
 #' fleets.
 #' @param VpcConfig The VPC configuration for the fleet. This is required for Elastic

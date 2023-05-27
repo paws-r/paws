@@ -21,11 +21,13 @@ ec2_describe_replace_root_volume_tasks(
 replacement task was created.
 }}
 
-\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
-the remaining results, make another call with the returned \code{nextToken}
-value.}
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 
-\item{NextToken}{The token for the next page of results.}
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -33,7 +35,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Describes a root volume replacement task. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-restoring-volume.html#replace-root}{Replace a root volume} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Describes a root volume replacement task. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/replace-root.html}{Replace a root volume} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 See \url{https://paws-r.github.io/docs/ec2/describe_replace_root_volume_tasks.html} for full documentation.
 }

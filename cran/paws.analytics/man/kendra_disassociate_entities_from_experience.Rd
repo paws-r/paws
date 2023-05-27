@@ -2,7 +2,7 @@
 % Please edit documentation in R/kendra_operations.R
 \name{kendra_disassociate_entities_from_experience}
 \alias{kendra_disassociate_entities_from_experience}
-\title{Prevents users or groups in your Amazon Web Services SSO identity source
+\title{Prevents users or groups in your IAM Identity Center identity source
 from accessing your Amazon Kendra experience}
 \usage{
 kendra_disassociate_entities_from_experience(Id, IndexId, EntityList)
@@ -12,10 +12,10 @@ kendra_disassociate_entities_from_experience(Id, IndexId, EntityList)
 
 \item{IndexId}{[required] The identifier of the index for your Amazon Kendra experience.}
 
-\item{EntityList}{[required] Lists users or groups in your Amazon Web Services SSO identity source.}
+\item{EntityList}{[required] Lists users or groups in your IAM Identity Center identity source.}
 }
 \description{
-Prevents users or groups in your Amazon Web Services SSO identity source from accessing your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see \href{https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html}{Building a search experience with no code}.
+Prevents users or groups in your IAM Identity Center identity source from accessing your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see \href{https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html}{Building a search experience with no code}.
 
 See \url{https://paws-r.github.io/docs/kendra/disassociate_entities_from_experience.html} for full documentation.
 }

@@ -10,7 +10,7 @@ timestreamwrite_delete_database(DatabaseName)
 \item{DatabaseName}{[required] The name of the Timestream database to be deleted.}
 }
 \description{
-Deletes a given Timestream database. \emph{This is an irreversible operation. After a database is deleted, the time series data from its tables cannot be recovered.}
+Deletes a given Timestream database. \emph{This is an irreversible operation. After a database is deleted, the time-series data from its tables cannot be recovered.}
 
 See \url{https://paws-r.github.io/docs/timestreamwrite/delete_database.html} for full documentation.
 }

@@ -24,8 +24,12 @@ the job exists in \code{CREATE_FAILED} state.}
 \item{eventTypeName}{[required] The name of the event type.}
 
 \item{iamRoleArn}{[required] The ARN of the IAM role created for Amazon S3 bucket that holds your
-data file. The IAM role must have read and write permissions to both
-input and output S3 buckets.}
+data file.
+
+The IAM role must have read permissions to your input S3 bucket and
+write permissions to your output S3 bucket. For more information about
+bucket permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-policies-s3.html}{User policy examples}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{tags}{A collection of key-value pairs associated with this request.}
 }

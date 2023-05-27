@@ -17,8 +17,8 @@ NULL
 #' workdocs_abort_document_version_upload(AuthenticationToken, DocumentId,
 #'   VersionId)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param VersionId &#91;required&#93; The ID of the version.
 #'
@@ -66,8 +66,8 @@ workdocs_abort_document_version_upload <- function(AuthenticationToken = NULL, D
 #' workdocs_activate_user(UserId, AuthenticationToken)
 #'
 #' @param UserId &#91;required&#93; The ID of the user.
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #'
 #' @return
 #' A list with the following syntax:
@@ -144,8 +144,8 @@ workdocs_activate_user <- function(UserId, AuthenticationToken = NULL) {
 #' workdocs_add_resource_permissions(AuthenticationToken, ResourceId,
 #'   Principals, NotificationOptions)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param ResourceId &#91;required&#93; The ID of the resource.
 #' @param Principals &#91;required&#93; The users, groups, or organization being granted permission.
 #' @param NotificationOptions The notification options.
@@ -217,8 +217,8 @@ workdocs_add_resource_permissions <- function(AuthenticationToken = NULL, Resour
 #' workdocs_create_comment(AuthenticationToken, DocumentId, VersionId,
 #'   ParentId, ThreadId, Text, Visibility, NotifyCollaborators)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param VersionId &#91;required&#93; The ID of the document version.
 #' @param ParentId The ID of the parent comment.
@@ -324,8 +324,8 @@ workdocs_create_comment <- function(AuthenticationToken = NULL, DocumentId, Vers
 #' workdocs_create_custom_metadata(AuthenticationToken, ResourceId,
 #'   VersionId, CustomMetadata)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param ResourceId &#91;required&#93; The ID of the resource.
 #' @param VersionId The ID of the version, if the custom metadata is being added to a
 #' document version.
@@ -376,8 +376,8 @@ workdocs_create_custom_metadata <- function(AuthenticationToken = NULL, Resource
 #' @usage
 #' workdocs_create_folder(AuthenticationToken, Name, ParentFolderId)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param Name The name of the new folder.
 #' @param ParentFolderId &#91;required&#93; The ID of the parent folder.
 #'
@@ -450,8 +450,8 @@ workdocs_create_folder <- function(AuthenticationToken = NULL, Name = NULL, Pare
 #'
 #' @param ResourceId &#91;required&#93; The ID of the resource.
 #' @param Labels &#91;required&#93; List of labels to add to the resource.
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #'
 #' @return
 #' An empty list.
@@ -495,8 +495,8 @@ workdocs_create_labels <- function(ResourceId, Labels, AuthenticationToken = NUL
 #' Configure Amazon WorkDocs to use Amazon SNS notifications. The endpoint
 #' receives a confirmation message, and must confirm the subscription.
 #' 
-#' For more information, see [Subscribe to
-#' Notifications](https://docs.aws.amazon.com/workdocs/latest/developerguide/)
+#' For more information, see [Setting up notifications for an IAM user or
+#' role](https://docs.aws.amazon.com/workdocs/latest/developerguide/manage-notifications.html)
 #' in the *Amazon WorkDocs Developer Guide*.
 #'
 #' @usage
@@ -517,7 +517,7 @@ workdocs_create_labels <- function(ResourceId, Labels, AuthenticationToken = NUL
 #'   Subscription = list(
 #'     SubscriptionId = "string",
 #'     EndPoint = "string",
-#'     Protocol = "HTTPS"
+#'     Protocol = "HTTPS"|"SQS"
 #'   )
 #' )
 #' ```
@@ -527,7 +527,7 @@ workdocs_create_labels <- function(ResourceId, Labels, AuthenticationToken = NUL
 #' svc$create_notification_subscription(
 #'   OrganizationId = "string",
 #'   Endpoint = "string",
-#'   Protocol = "HTTPS",
+#'   Protocol = "HTTPS"|"SQS",
 #'   SubscriptionType = "ALL"
 #' )
 #' ```
@@ -572,8 +572,8 @@ workdocs_create_notification_subscription <- function(OrganizationId, Endpoint, 
 #' @param Password &#91;required&#93; The password of the user.
 #' @param TimeZoneId The time zone ID of the user.
 #' @param StorageRule The amount of storage for the user.
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #'
 #' @return
 #' A list with the following syntax:
@@ -660,8 +660,8 @@ workdocs_create_user <- function(OrganizationId = NULL, Username, EmailAddress =
 #' workdocs_deactivate_user(UserId, AuthenticationToken)
 #'
 #' @param UserId &#91;required&#93; The ID of the user.
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #'
 #' @return
 #' An empty list.
@@ -705,8 +705,8 @@ workdocs_deactivate_user <- function(UserId, AuthenticationToken = NULL) {
 #' workdocs_delete_comment(AuthenticationToken, DocumentId, VersionId,
 #'   CommentId)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param VersionId &#91;required&#93; The ID of the document version.
 #' @param CommentId &#91;required&#93; The ID of the comment.
@@ -755,8 +755,8 @@ workdocs_delete_comment <- function(AuthenticationToken = NULL, DocumentId, Vers
 #' workdocs_delete_custom_metadata(AuthenticationToken, ResourceId,
 #'   VersionId, Keys, DeleteAll)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param ResourceId &#91;required&#93; The ID of the resource, either a document or folder.
 #' @param VersionId The ID of the version, if the custom metadata is being deleted from a
 #' document version.
@@ -810,8 +810,8 @@ workdocs_delete_custom_metadata <- function(AuthenticationToken = NULL, Resource
 #' @usage
 #' workdocs_delete_document(AuthenticationToken, DocumentId)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #'
 #' @return
@@ -847,6 +847,56 @@ workdocs_delete_document <- function(AuthenticationToken = NULL, DocumentId) {
 }
 .workdocs$operations$delete_document <- workdocs_delete_document
 
+#' Deletes a specific version of a document
+#'
+#' @description
+#' Deletes a specific version of a document.
+#'
+#' @usage
+#' workdocs_delete_document_version(AuthenticationToken, DocumentId,
+#'   VersionId, DeletePriorVersions)
+#'
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
+#' @param DocumentId &#91;required&#93; The ID of the document associated with the version being deleted.
+#' @param VersionId &#91;required&#93; The ID of the version being deleted.
+#' @param DeletePriorVersions &#91;required&#93; Deletes all versions of a document prior to the current version.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_document_version(
+#'   AuthenticationToken = "string",
+#'   DocumentId = "string",
+#'   VersionId = "string",
+#'   DeletePriorVersions = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workdocs_delete_document_version
+#'
+#' @aliases workdocs_delete_document_version
+workdocs_delete_document_version <- function(AuthenticationToken = NULL, DocumentId, VersionId, DeletePriorVersions) {
+  op <- new_operation(
+    name = "DeleteDocumentVersion",
+    http_method = "DELETE",
+    http_path = "/api/v1/documentVersions/{DocumentId}/versions/{VersionId}",
+    paginator = list()
+  )
+  input <- .workdocs$delete_document_version_input(AuthenticationToken = AuthenticationToken, DocumentId = DocumentId, VersionId = VersionId, DeletePriorVersions = DeletePriorVersions)
+  output <- .workdocs$delete_document_version_output()
+  config <- get_config()
+  svc <- .workdocs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workdocs$operations$delete_document_version <- workdocs_delete_document_version
+
 #' Permanently deletes the specified folder and its contents
 #'
 #' @description
@@ -855,8 +905,8 @@ workdocs_delete_document <- function(AuthenticationToken = NULL, DocumentId) {
 #' @usage
 #' workdocs_delete_folder(AuthenticationToken, FolderId)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param FolderId &#91;required&#93; The ID of the folder.
 #'
 #' @return
@@ -900,8 +950,8 @@ workdocs_delete_folder <- function(AuthenticationToken = NULL, FolderId) {
 #' @usage
 #' workdocs_delete_folder_contents(AuthenticationToken, FolderId)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param FolderId &#91;required&#93; The ID of the folder.
 #'
 #' @return
@@ -947,8 +997,8 @@ workdocs_delete_folder_contents <- function(AuthenticationToken = NULL, FolderId
 #'   DeleteAll)
 #'
 #' @param ResourceId &#91;required&#93; The ID of the resource.
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param Labels List of labels to delete from the resource.
 #' @param DeleteAll Flag to request removal of all labels from the specified resource.
 #'
@@ -1038,13 +1088,17 @@ workdocs_delete_notification_subscription <- function(SubscriptionId, Organizati
 #'
 #' @description
 #' Deletes the specified user from a Simple AD or Microsoft AD directory.
+#' 
+#' Deleting a user immediately and permanently deletes all content in that
+#' user's folder structure. Site retention policies do NOT apply to this
+#' type of deletion.
 #'
 #' @usage
 #' workdocs_delete_user(AuthenticationToken, UserId)
 #'
 #' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' administrative API actions, as in accessing the API using Amazon Web
+#' Services credentials.
 #' @param UserId &#91;required&#93; The ID of the user.
 #'
 #' @return
@@ -1090,8 +1144,8 @@ workdocs_delete_user <- function(AuthenticationToken = NULL, UserId) {
 #'   OrganizationId, ActivityTypes, ResourceId, UserId,
 #'   IncludeIndirectActivities, Limit, Marker)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param StartTime The timestamp that determines the starting time of the activities. The
 #' response includes the activities performed after the specified
 #' timestamp.
@@ -1212,7 +1266,8 @@ workdocs_delete_user <- function(AuthenticationToken = NULL, UserId) {
 #'           "2015-01-01"
 #'         ),
 #'         CommentStatus = "DRAFT"|"PUBLISHED"|"DELETED",
-#'         RecipientId = "string"
+#'         RecipientId = "string",
+#'         ContributorId = "string"
 #'       )
 #'     )
 #'   ),
@@ -1271,8 +1326,8 @@ workdocs_describe_activities <- function(AuthenticationToken = NULL, StartTime =
 #' workdocs_describe_comments(AuthenticationToken, DocumentId, VersionId,
 #'   Limit, Marker)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param VersionId &#91;required&#93; The ID of the document version.
 #' @param Limit The maximum number of items to return.
@@ -1372,8 +1427,8 @@ workdocs_describe_comments <- function(AuthenticationToken = NULL, DocumentId, V
 #' workdocs_describe_document_versions(AuthenticationToken, DocumentId,
 #'   Marker, Limit, Include, Fields)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call.)
@@ -1470,8 +1525,8 @@ workdocs_describe_document_versions <- function(AuthenticationToken = NULL, Docu
 #' workdocs_describe_folder_contents(AuthenticationToken, FolderId, Sort,
 #'   Order, Limit, Marker, Type, Include)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param FolderId &#91;required&#93; The ID of the folder.
 #' @param Sort The sorting criteria.
 #' @param Order The order for the contents of the folder.
@@ -1601,8 +1656,8 @@ workdocs_describe_folder_contents <- function(AuthenticationToken = NULL, Folder
 #' workdocs_describe_groups(AuthenticationToken, SearchQuery,
 #'   OrganizationId, Marker, Limit)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param SearchQuery &#91;required&#93; A query to describe groups by group name.
 #' @param OrganizationId The ID of the organization.
 #' @param Marker The marker for the next set of results. (You received this marker from a
@@ -1678,7 +1733,7 @@ workdocs_describe_groups <- function(AuthenticationToken = NULL, SearchQuery, Or
 #'     list(
 #'       SubscriptionId = "string",
 #'       EndPoint = "string",
-#'       Protocol = "HTTPS"
+#'       Protocol = "HTTPS"|"SQS"
 #'     )
 #'   ),
 #'   Marker = "string"
@@ -1725,8 +1780,8 @@ workdocs_describe_notification_subscriptions <- function(OrganizationId, Marker 
 #' workdocs_describe_resource_permissions(AuthenticationToken, ResourceId,
 #'   PrincipalId, Limit, Marker)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param ResourceId &#91;required&#93; The ID of the resource.
 #' @param PrincipalId The ID of the principal to filter permissions by.
 #' @param Limit The maximum number of items to return with this call.
@@ -1883,11 +1938,28 @@ workdocs_describe_root_folders <- function(AuthenticationToken, Limit = NULL, Ma
 #' workdocs_describe_users(AuthenticationToken, OrganizationId, UserIds,
 #'   Query, Include, Order, Sort, Marker, Limit, Fields)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param OrganizationId The ID of the organization.
 #' @param UserIds The IDs of the users.
-#' @param Query A query to filter users by user name.
+#' @param Query A query to filter users by user name. Remember the following about the
+#' `Userids` and `Query` parameters:
+#' 
+#' -   If you don't use either parameter, the API returns a paginated list
+#'     of all users on the site.
+#' 
+#' -   If you use both parameters, the API ignores the `Query` parameter.
+#' 
+#' -   The `Userid` parameter only returns user names that match a
+#'     corresponding user ID.
+#' 
+#' -   The `Query` parameter runs a "prefix" search for users by the
+#'     `GivenName`, `SurName`, or `UserName` fields included in a
+#'     [`create_user`][workdocs_create_user] API call. For example,
+#'     querying on `Ma` returns Márcia Oliveira, María García, and Mateo
+#'     Jackson. If you use multiple characters, the API only returns data
+#'     that matches all characters. For example, querying on `Ma J` only
+#'     returns Mateo Jackson.
 #' @param Include The state of the users. Specify "ALL" to include inactive users.
 #' @param Order The order for the results.
 #' @param Sort The sorting criteria.
@@ -2064,8 +2136,8 @@ workdocs_get_current_user <- function(AuthenticationToken) {
 #' workdocs_get_document(AuthenticationToken, DocumentId,
 #'   IncludeCustomMetadata)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param IncludeCustomMetadata Set this to `TRUE` to include custom metadata in the response.
 #'
@@ -2168,8 +2240,8 @@ workdocs_get_document <- function(AuthenticationToken = NULL, DocumentId, Includ
 #' workdocs_get_document_path(AuthenticationToken, DocumentId, Limit,
 #'   Fields, Marker)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param Limit The maximum number of levels in the hierarchy to return.
 #' @param Fields A comma-separated list of values. Specify `NAME` to include the names of
@@ -2233,8 +2305,8 @@ workdocs_get_document_path <- function(AuthenticationToken = NULL, DocumentId, L
 #' workdocs_get_document_version(AuthenticationToken, DocumentId,
 #'   VersionId, Fields, IncludeCustomMetadata)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param VersionId &#91;required&#93; The version ID of the document.
 #' @param Fields A comma-separated list of values. Specify "SOURCE" to include a URL for
@@ -2320,8 +2392,8 @@ workdocs_get_document_version <- function(AuthenticationToken = NULL, DocumentId
 #' workdocs_get_folder(AuthenticationToken, FolderId,
 #'   IncludeCustomMetadata)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param FolderId &#91;required&#93; The ID of the folder.
 #' @param IncludeCustomMetadata Set to TRUE to include custom metadata in the response.
 #'
@@ -2401,8 +2473,8 @@ workdocs_get_folder <- function(AuthenticationToken = NULL, FolderId, IncludeCus
 #' workdocs_get_folder_path(AuthenticationToken, FolderId, Limit, Fields,
 #'   Marker)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param FolderId &#91;required&#93; The ID of the folder.
 #' @param Limit The maximum number of levels in the hierarchy to return.
 #' @param Fields A comma-separated list of values. Specify "NAME" to include the names of
@@ -2467,8 +2539,8 @@ workdocs_get_folder_path <- function(AuthenticationToken = NULL, FolderId, Limit
 #' workdocs_get_resources(AuthenticationToken, UserId, CollectionType,
 #'   Limit, Marker)
 #'
-#' @param AuthenticationToken The Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken The Amazon WorkDocs authentication token. Not required when using Amazon
+#' Web Services administrator credentials to access the API.
 #' @param UserId The user ID for the resource collection. This is a required field for
 #' accessing the API operation using IAM credentials.
 #' @param CollectionType The collection type.
@@ -2601,15 +2673,15 @@ workdocs_get_resources <- function(AuthenticationToken = NULL, UserId = NULL, Co
 #'   ContentCreatedTimestamp, ContentModifiedTimestamp, ContentType,
 #'   DocumentSizeInBytes, ParentFolderId)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param Id The ID of the document.
 #' @param Name The name of the document.
 #' @param ContentCreatedTimestamp The timestamp when the content of the document was originally created.
 #' @param ContentModifiedTimestamp The timestamp when the content of the document was modified.
 #' @param ContentType The content type of the document.
 #' @param DocumentSizeInBytes The size of the document, in bytes.
-#' @param ParentFolderId &#91;required&#93; The ID of the parent folder.
+#' @param ParentFolderId The ID of the parent folder.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2689,7 +2761,7 @@ workdocs_get_resources <- function(AuthenticationToken = NULL, UserId = NULL, Co
 #' @rdname workdocs_initiate_document_version_upload
 #'
 #' @aliases workdocs_initiate_document_version_upload
-workdocs_initiate_document_version_upload <- function(AuthenticationToken = NULL, Id = NULL, Name = NULL, ContentCreatedTimestamp = NULL, ContentModifiedTimestamp = NULL, ContentType = NULL, DocumentSizeInBytes = NULL, ParentFolderId) {
+workdocs_initiate_document_version_upload <- function(AuthenticationToken = NULL, Id = NULL, Name = NULL, ContentCreatedTimestamp = NULL, ContentModifiedTimestamp = NULL, ContentType = NULL, DocumentSizeInBytes = NULL, ParentFolderId = NULL) {
   op <- new_operation(
     name = "InitiateDocumentVersionUpload",
     http_method = "POST",
@@ -2715,8 +2787,8 @@ workdocs_initiate_document_version_upload <- function(AuthenticationToken = NULL
 #' workdocs_remove_all_resource_permissions(AuthenticationToken,
 #'   ResourceId)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param ResourceId &#91;required&#93; The ID of the resource.
 #'
 #' @return
@@ -2763,8 +2835,8 @@ workdocs_remove_all_resource_permissions <- function(AuthenticationToken = NULL,
 #' workdocs_remove_resource_permission(AuthenticationToken, ResourceId,
 #'   PrincipalId, PrincipalType)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param ResourceId &#91;required&#93; The ID of the resource.
 #' @param PrincipalId &#91;required&#93; The principal ID of the resource.
 #' @param PrincipalType The principal type of the resource.
@@ -2804,6 +2876,311 @@ workdocs_remove_resource_permission <- function(AuthenticationToken = NULL, Reso
 }
 .workdocs$operations$remove_resource_permission <- workdocs_remove_resource_permission
 
+#' Recovers a deleted version of an Amazon WorkDocs document
+#'
+#' @description
+#' Recovers a deleted version of an Amazon WorkDocs document.
+#'
+#' @usage
+#' workdocs_restore_document_versions(AuthenticationToken, DocumentId)
+#'
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
+#' @param DocumentId &#91;required&#93; The ID of the document.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$restore_document_versions(
+#'   AuthenticationToken = "string",
+#'   DocumentId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workdocs_restore_document_versions
+#'
+#' @aliases workdocs_restore_document_versions
+workdocs_restore_document_versions <- function(AuthenticationToken = NULL, DocumentId) {
+  op <- new_operation(
+    name = "RestoreDocumentVersions",
+    http_method = "POST",
+    http_path = "/api/v1/documentVersions/restore/{DocumentId}",
+    paginator = list()
+  )
+  input <- .workdocs$restore_document_versions_input(AuthenticationToken = AuthenticationToken, DocumentId = DocumentId)
+  output <- .workdocs$restore_document_versions_output()
+  config <- get_config()
+  svc <- .workdocs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workdocs$operations$restore_document_versions <- workdocs_restore_document_versions
+
+#' Searches metadata and the content of folders, documents, document
+#' versions, and comments
+#'
+#' @description
+#' Searches metadata and the content of folders, documents, document
+#' versions, and comments.
+#'
+#' @usage
+#' workdocs_search_resources(AuthenticationToken, QueryText, QueryScopes,
+#'   OrganizationId, AdditionalResponseFields, Filters, OrderBy, Limit,
+#'   Marker)
+#'
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
+#' @param QueryText The String to search for. Searches across different text fields based on
+#' request parameters. Use double quotes around the query string for exact
+#' phrase matches.
+#' @param QueryScopes Filter based on the text field type. A Folder has only a name and no
+#' content. A Comment has only content and no name. A Document or Document
+#' Version has a name and content
+#' @param OrganizationId Filters based on the resource owner OrgId. This is a mandatory parameter
+#' when using Admin SigV4 credentials.
+#' @param AdditionalResponseFields A list of attributes to include in the response. Used to request fields
+#' that are not normally returned in a standard response.
+#' @param Filters Filters results based on entity metadata.
+#' @param OrderBy Order by results in one or more categories.
+#' @param Limit Max results count per page.
+#' @param Marker The marker for the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ResourceType = "DOCUMENT"|"FOLDER"|"COMMENT"|"DOCUMENT_VERSION",
+#'       WebUrl = "string",
+#'       DocumentMetadata = list(
+#'         Id = "string",
+#'         CreatorId = "string",
+#'         ParentFolderId = "string",
+#'         CreatedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ModifiedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LatestVersionMetadata = list(
+#'           Id = "string",
+#'           Name = "string",
+#'           ContentType = "string",
+#'           Size = 123,
+#'           Signature = "string",
+#'           Status = "INITIALIZED"|"ACTIVE",
+#'           CreatedTimestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ModifiedTimestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ContentCreatedTimestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ContentModifiedTimestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           CreatorId = "string",
+#'           Thumbnail = list(
+#'             "string"
+#'           ),
+#'           Source = list(
+#'             "string"
+#'           )
+#'         ),
+#'         ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
+#'         Labels = list(
+#'           "string"
+#'         )
+#'       ),
+#'       FolderMetadata = list(
+#'         Id = "string",
+#'         Name = "string",
+#'         CreatorId = "string",
+#'         ParentFolderId = "string",
+#'         CreatedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ModifiedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
+#'         Signature = "string",
+#'         Labels = list(
+#'           "string"
+#'         ),
+#'         Size = 123,
+#'         LatestVersionSize = 123
+#'       ),
+#'       CommentMetadata = list(
+#'         CommentId = "string",
+#'         Contributor = list(
+#'           Id = "string",
+#'           Username = "string",
+#'           EmailAddress = "string",
+#'           GivenName = "string",
+#'           Surname = "string",
+#'           OrganizationId = "string",
+#'           RootFolderId = "string",
+#'           RecycleBinFolderId = "string",
+#'           Status = "ACTIVE"|"INACTIVE"|"PENDING",
+#'           Type = "USER"|"ADMIN"|"POWERUSER"|"MINIMALUSER"|"WORKSPACESUSER",
+#'           CreatedTimestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ModifiedTimestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           TimeZoneId = "string",
+#'           Locale = "en"|"fr"|"ko"|"de"|"es"|"ja"|"ru"|"zh_CN"|"zh_TW"|"pt_BR"|"default",
+#'           Storage = list(
+#'             StorageUtilizedInBytes = 123,
+#'             StorageRule = list(
+#'               StorageAllocatedInBytes = 123,
+#'               StorageType = "UNLIMITED"|"QUOTA"
+#'             )
+#'           )
+#'         ),
+#'         CreatedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         CommentStatus = "DRAFT"|"PUBLISHED"|"DELETED",
+#'         RecipientId = "string",
+#'         ContributorId = "string"
+#'       ),
+#'       DocumentVersionMetadata = list(
+#'         Id = "string",
+#'         Name = "string",
+#'         ContentType = "string",
+#'         Size = 123,
+#'         Signature = "string",
+#'         Status = "INITIALIZED"|"ACTIVE",
+#'         CreatedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ModifiedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ContentCreatedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ContentModifiedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         CreatorId = "string",
+#'         Thumbnail = list(
+#'           "string"
+#'         ),
+#'         Source = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_resources(
+#'   AuthenticationToken = "string",
+#'   QueryText = "string",
+#'   QueryScopes = list(
+#'     "NAME"|"CONTENT"
+#'   ),
+#'   OrganizationId = "string",
+#'   AdditionalResponseFields = list(
+#'     "WEBURL"
+#'   ),
+#'   Filters = list(
+#'     TextLocales = list(
+#'       "AR"|"BG"|"BN"|"DA"|"DE"|"CS"|"EL"|"EN"|"ES"|"FA"|"FI"|"FR"|"HI"|"HU"|"ID"|"IT"|"JA"|"KO"|"LT"|"LV"|"NL"|"NO"|"PT"|"RO"|"RU"|"SV"|"SW"|"TH"|"TR"|"ZH"|"DEFAULT"
+#'     ),
+#'     ContentCategories = list(
+#'       "IMAGE"|"DOCUMENT"|"PDF"|"SPREADSHEET"|"PRESENTATION"|"AUDIO"|"VIDEO"|"SOURCE_CODE"|"OTHER"
+#'     ),
+#'     ResourceTypes = list(
+#'       "FOLDER"|"DOCUMENT"|"COMMENT"|"DOCUMENT_VERSION"
+#'     ),
+#'     Labels = list(
+#'       "string"
+#'     ),
+#'     Principals = list(
+#'       list(
+#'         Id = "string",
+#'         Roles = list(
+#'           "VIEWER"|"CONTRIBUTOR"|"OWNER"|"COOWNER"
+#'         )
+#'       )
+#'     ),
+#'     AncestorIds = list(
+#'       "string"
+#'     ),
+#'     SearchCollectionTypes = list(
+#'       "OWNED"|"SHARED_WITH_ME"
+#'     ),
+#'     SizeRange = list(
+#'       StartValue = 123,
+#'       EndValue = 123
+#'     ),
+#'     CreatedRange = list(
+#'       StartValue = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndValue = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     ModifiedRange = list(
+#'       StartValue = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndValue = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   OrderBy = list(
+#'     list(
+#'       Field = "RELEVANCE"|"NAME"|"SIZE"|"CREATED_TIMESTAMP"|"MODIFIED_TIMESTAMP",
+#'       Order = "ASC"|"DESC"
+#'     )
+#'   ),
+#'   Limit = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workdocs_search_resources
+#'
+#' @aliases workdocs_search_resources
+workdocs_search_resources <- function(AuthenticationToken = NULL, QueryText = NULL, QueryScopes = NULL, OrganizationId = NULL, AdditionalResponseFields = NULL, Filters = NULL, OrderBy = NULL, Limit = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "SearchResources",
+    http_method = "POST",
+    http_path = "/api/v1/search",
+    paginator = list()
+  )
+  input <- .workdocs$search_resources_input(AuthenticationToken = AuthenticationToken, QueryText = QueryText, QueryScopes = QueryScopes, OrganizationId = OrganizationId, AdditionalResponseFields = AdditionalResponseFields, Filters = Filters, OrderBy = OrderBy, Limit = Limit, Marker = Marker)
+  output <- .workdocs$search_resources_output()
+  config <- get_config()
+  svc <- .workdocs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workdocs$operations$search_resources <- workdocs_search_resources
+
 #' Updates the specified attributes of a document
 #'
 #' @description
@@ -2814,8 +3191,8 @@ workdocs_remove_resource_permission <- function(AuthenticationToken = NULL, Reso
 #' workdocs_update_document(AuthenticationToken, DocumentId, Name,
 #'   ParentFolderId, ResourceState)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param Name The name of the document.
 #' @param ParentFolderId The ID of the parent folder.
@@ -2872,8 +3249,8 @@ workdocs_update_document <- function(AuthenticationToken = NULL, DocumentId, Nam
 #' workdocs_update_document_version(AuthenticationToken, DocumentId,
 #'   VersionId, VersionStatus)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param VersionId &#91;required&#93; The version ID of the document.
 #' @param VersionStatus The status of the version.
@@ -2923,8 +3300,8 @@ workdocs_update_document_version <- function(AuthenticationToken = NULL, Documen
 #' workdocs_update_folder(AuthenticationToken, FolderId, Name,
 #'   ParentFolderId, ResourceState)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param FolderId &#91;required&#93; The ID of the folder.
 #' @param Name The name of the folder.
 #' @param ParentFolderId The ID of the parent folder.
@@ -2978,8 +3355,8 @@ workdocs_update_folder <- function(AuthenticationToken = NULL, FolderId, Name = 
 #' workdocs_update_user(AuthenticationToken, UserId, GivenName, Surname,
 #'   Type, StorageRule, TimeZoneId, Locale, GrantPoweruserPrivileges)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
-#' administrator credentials to access the API.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using Amazon Web
+#' Services administrator credentials to access the API.
 #' @param UserId &#91;required&#93; The ID of the user.
 #' @param GivenName The given name of the user.
 #' @param Surname The surname of the user.
@@ -2987,7 +3364,7 @@ workdocs_update_folder <- function(AuthenticationToken = NULL, FolderId, Name = 
 #' @param StorageRule The amount of storage for the user.
 #' @param TimeZoneId The time zone ID of the user.
 #' @param Locale The locale of the user.
-#' @param GrantPoweruserPrivileges Boolean value to determine whether the user is granted Poweruser
+#' @param GrantPoweruserPrivileges Boolean value to determine whether the user is granted Power user
 #' privileges.
 #'
 #' @return

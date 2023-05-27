@@ -34,7 +34,7 @@ retrieve the next page of results.}
 \item{MaxItems}{Limit the number of aliases returned.}
 }
 \description{
-Returns a list of \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{aliases} for a Lambda function.
+Returns a list of \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html}{aliases} for a Lambda function.
 
 See \url{https://paws-r.github.io/docs/lambda/list_aliases.html} for full documentation.
 }

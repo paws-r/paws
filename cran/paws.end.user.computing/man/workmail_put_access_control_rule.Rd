@@ -14,7 +14,9 @@ workmail_put_access_control_rule(
   NotActions = NULL,
   UserIds = NULL,
   NotUserIds = NULL,
-  OrganizationId
+  OrganizationId,
+  ImpersonationRoleIds = NULL,
+  NotImpersonationRoleIds = NULL
 )
 }
 \arguments{
@@ -41,9 +43,13 @@ and \code{WebMail}.}
 \item{NotUserIds}{User IDs to exclude from the rule.}
 
 \item{OrganizationId}{[required] The identifier of the organization.}
+
+\item{ImpersonationRoleIds}{Impersonation role IDs to include in the rule.}
+
+\item{NotImpersonationRoleIds}{Impersonation role IDs to exclude from the rule.}
 }
 \description{
-Adds a new access control rule for the specified organization. The rule allows or denies access to the organization for the specified IPv4 addresses, access protocol actions, and user IDs. Adding a new rule with the same name as an existing rule replaces the older rule.
+Adds a new access control rule for the specified organization. The rule allows or denies access to the organization for the specified IPv4 addresses, access protocol actions, user IDs and impersonation IDs. Adding a new rule with the same name as an existing rule replaces the older rule.
 
 See \url{https://paws-r.github.io/docs/workmail/put_access_control_rule.html} for full documentation.
 }

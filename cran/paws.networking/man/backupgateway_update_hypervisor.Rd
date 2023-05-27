@@ -8,6 +8,7 @@ password}
 backupgateway_update_hypervisor(
   Host = NULL,
   HypervisorArn,
+  LogGroupArn = NULL,
   Name = NULL,
   Password = NULL,
   Username = NULL
@@ -18,6 +19,9 @@ backupgateway_update_hypervisor(
 a fully-qualified domain name (FQDN).}
 
 \item{HypervisorArn}{[required] The Amazon Resource Name (ARN) of the hypervisor to update.}
+
+\item{LogGroupArn}{The Amazon Resource Name (ARN) of the group of gateways within the
+requested log.}
 
 \item{Name}{The updated name for the hypervisor}
 

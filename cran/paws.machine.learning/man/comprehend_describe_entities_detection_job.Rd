@@ -8,6 +8,7 @@ comprehend_describe_entities_detection_job(JobId)
 }
 \arguments{
 \item{JobId}{[required] The identifier that Amazon Comprehend generated for the job. The
+\code{\link[=comprehend_start_entities_detection_job]{start_entities_detection_job}}
 operation returns this identifier in its response.}
 }
 \description{

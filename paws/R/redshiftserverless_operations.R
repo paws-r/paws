@@ -12,11 +12,14 @@ NULL
 #'
 #' @usage
 #' redshiftserverless_convert_recovery_point_to_snapshot(recoveryPointId,
-#'   retentionPeriod, snapshotName)
+#'   retentionPeriod, snapshotName, tags)
 #'
 #' @param recoveryPointId &#91;required&#93; The unique identifier of the recovery point.
 #' @param retentionPeriod How long to retain the snapshot.
 #' @param snapshotName &#91;required&#93; The name of the snapshot.
+#' @param tags An array of [Tag
+#' objects](https://docs.aws.amazon.com/redshift-serverless/latest/APIReference/API_Tag.html)
+#' to associate with the created snapshot.
 #'
 #' @return
 #' A list with the following syntax:
@@ -60,7 +63,13 @@ NULL
 #' svc$convert_recovery_point_to_snapshot(
 #'   recoveryPointId = "string",
 #'   retentionPeriod = 123,
-#'   snapshotName = "string"
+#'   snapshotName = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -69,14 +78,14 @@ NULL
 #' @rdname redshiftserverless_convert_recovery_point_to_snapshot
 #'
 #' @aliases redshiftserverless_convert_recovery_point_to_snapshot
-redshiftserverless_convert_recovery_point_to_snapshot <- function(recoveryPointId, retentionPeriod = NULL, snapshotName) {
+redshiftserverless_convert_recovery_point_to_snapshot <- function(recoveryPointId, retentionPeriod = NULL, snapshotName, tags = NULL) {
   op <- new_operation(
     name = "ConvertRecoveryPointToSnapshot",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshiftserverless$convert_recovery_point_to_snapshot_input(recoveryPointId = recoveryPointId, retentionPeriod = retentionPeriod, snapshotName = snapshotName)
+  input <- .redshiftserverless$convert_recovery_point_to_snapshot_input(recoveryPointId = recoveryPointId, retentionPeriod = retentionPeriod, snapshotName = snapshotName, tags = tags)
   output <- .redshiftserverless$convert_recovery_point_to_snapshot_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config)
@@ -287,11 +296,14 @@ redshiftserverless_create_namespace <- function(adminUserPassword = NULL, adminU
 #'
 #' @usage
 #' redshiftserverless_create_snapshot(namespaceName, retentionPeriod,
-#'   snapshotName)
+#'   snapshotName, tags)
 #'
 #' @param namespaceName &#91;required&#93; The namespace to create a snapshot for.
 #' @param retentionPeriod How long to retain the created snapshot.
 #' @param snapshotName &#91;required&#93; The name of the snapshot.
+#' @param tags An array of [Tag
+#' objects](https://docs.aws.amazon.com/redshift-serverless/latest/APIReference/API_Tag.html)
+#' to associate with the snapshot.
 #'
 #' @return
 #' A list with the following syntax:
@@ -335,7 +347,13 @@ redshiftserverless_create_namespace <- function(adminUserPassword = NULL, adminU
 #' svc$create_snapshot(
 #'   namespaceName = "string",
 #'   retentionPeriod = 123,
-#'   snapshotName = "string"
+#'   snapshotName = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -344,14 +362,14 @@ redshiftserverless_create_namespace <- function(adminUserPassword = NULL, adminU
 #' @rdname redshiftserverless_create_snapshot
 #'
 #' @aliases redshiftserverless_create_snapshot
-redshiftserverless_create_snapshot <- function(namespaceName, retentionPeriod = NULL, snapshotName) {
+redshiftserverless_create_snapshot <- function(namespaceName, retentionPeriod = NULL, snapshotName, tags = NULL) {
   op <- new_operation(
     name = "CreateSnapshot",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshiftserverless$create_snapshot_input(namespaceName = namespaceName, retentionPeriod = retentionPeriod, snapshotName = snapshotName)
+  input <- .redshiftserverless$create_snapshot_input(namespaceName = namespaceName, retentionPeriod = retentionPeriod, snapshotName = snapshotName, tags = tags)
   output <- .redshiftserverless$create_snapshot_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config)
@@ -442,18 +460,25 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #'
 #' @usage
 #' redshiftserverless_create_workgroup(baseCapacity, configParameters,
-#'   enhancedVpcRouting, namespaceName, publiclyAccessible, securityGroupIds,
-#'   subnetIds, tags, workgroupName)
+#'   enhancedVpcRouting, namespaceName, port, publiclyAccessible,
+#'   securityGroupIds, subnetIds, tags, workgroupName)
 #'
 #' @param baseCapacity The base data warehouse capacity of the workgroup in Redshift Processing
 #' Units (RPUs).
-#' @param configParameters An array of parameters to set for more control over a serverless
-#' database. The options are `datestyle`, `enable_user_activity_logging`,
-#' `query_group`, `search_path`, and `max_query_execution_time`.
+#' @param configParameters An array of parameters to set for advanced control over a database. The
+#' options are `auto_mv`, `datestyle`,
+#' `enable_case_sensitivity_identifier`, `enable_user_activity_logging`,
+#' `query_group`, `search_path`, and query monitoring metrics that let you
+#' define performance boundaries. For more information about query
+#' monitoring rules and available metrics, see [Query monitoring metrics
+#' for Amazon Redshift
+#' Serverless](https://docs.aws.amazon.com/redshift/latest/dg/cm-c-wlm-query-monitoring-rules.html#cm-c-wlm-query-monitoring-metrics-serverless).
 #' @param enhancedVpcRouting The value that specifies whether to turn on enhanced virtual private
 #' cloud (VPC) routing, which forces Amazon Redshift Serverless to route
 #' traffic through your VPC instead of over the internet.
 #' @param namespaceName &#91;required&#93; The name of the namespace to associate with the workgroup.
+#' @param port The custom port to use when connecting to a workgroup. Valid port ranges
+#' are 5431-5455 and 8191-8215. The default is 5439.
 #' @param publiclyAccessible A value that specifies whether the workgroup can be accessed from a
 #' public network.
 #' @param securityGroupIds An array of security group IDs to associate with the workgroup.
@@ -496,6 +521,7 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #'     ),
 #'     enhancedVpcRouting = TRUE|FALSE,
 #'     namespaceName = "string",
+#'     port = 123,
 #'     publiclyAccessible = TRUE|FALSE,
 #'     securityGroupIds = list(
 #'       "string"
@@ -523,6 +549,7 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #'   ),
 #'   enhancedVpcRouting = TRUE|FALSE,
 #'   namespaceName = "string",
+#'   port = 123,
 #'   publiclyAccessible = TRUE|FALSE,
 #'   securityGroupIds = list(
 #'     "string"
@@ -545,14 +572,14 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #' @rdname redshiftserverless_create_workgroup
 #'
 #' @aliases redshiftserverless_create_workgroup
-redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, namespaceName, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, tags = NULL, workgroupName) {
+redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, namespaceName, port = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, tags = NULL, workgroupName) {
   op <- new_operation(
     name = "CreateWorkgroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshiftserverless$create_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, namespaceName = namespaceName, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, tags = tags, workgroupName = workgroupName)
+  input <- .redshiftserverless$create_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, namespaceName = namespaceName, port = port, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, tags = tags, workgroupName = workgroupName)
   output <- .redshiftserverless$create_workgroup_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config)
@@ -930,6 +957,7 @@ redshiftserverless_delete_usage_limit <- function(usageLimitId) {
 #'     ),
 #'     enhancedVpcRouting = TRUE|FALSE,
 #'     namespaceName = "string",
+#'     port = 123,
 #'     publiclyAccessible = TRUE|FALSE,
 #'     securityGroupIds = list(
 #'       "string"
@@ -985,7 +1013,7 @@ redshiftserverless_delete_workgroup <- function(workgroupName) {
 #' optionally specify a duration between 900 seconds (15 minutes) and 3600
 #' seconds (60 minutes).
 #' 
-#'      <p> The Identity and Access Management (IAM) user or role that runs GetCredentials must have an IAM policy attached that allows access to all necessary actions and resources. </p> <p> If the <code>DbName</code> parameter is specified, the IAM policy must allow access to the resource dbname for the specified database name.</p> 
+#'      <p>The Identity and Access Management (IAM) user or role that runs GetCredentials must have an IAM policy attached that allows access to all necessary actions and resources.</p> <p>If the <code>DbName</code> parameter is specified, the IAM policy must allow access to the resource dbname for the specified database name.</p> 
 #'
 #' @usage
 #' redshiftserverless_get_credentials(dbName, durationSeconds,
@@ -997,8 +1025,8 @@ redshiftserverless_delete_workgroup <- function(workgroupName) {
 #' 
 #' -   Must be 1 to 64 alphanumeric characters or hyphens.
 #' 
-#' -   Must contain only lowercase letters, numbers, underscore, plus sign,
-#'     period (dot), at symbol (@@), or hyphen.
+#' -   Must contain only uppercase or lowercase letters, numbers,
+#'     underscore, plus sign, period (dot), at symbol (@@), or hyphen.
 #' 
 #' -   The first character must be a letter.
 #' 
@@ -1216,6 +1244,7 @@ redshiftserverless_get_namespace <- function(namespaceName) {
 #' ```
 #' list(
 #'   recoveryPoint = list(
+#'     namespaceArn = "string",
 #'     namespaceName = "string",
 #'     recoveryPointCreateTime = as.POSIXct(
 #'       "2015-01-01"
@@ -1387,6 +1416,73 @@ redshiftserverless_get_snapshot <- function(ownerAccount = NULL, snapshotArn = N
 }
 .redshiftserverless$operations$get_snapshot <- redshiftserverless_get_snapshot
 
+#' Returns information about a TableRestoreStatus object
+#'
+#' @description
+#' Returns information about a `TableRestoreStatus` object.
+#'
+#' @usage
+#' redshiftserverless_get_table_restore_status(tableRestoreRequestId)
+#'
+#' @param tableRestoreRequestId &#91;required&#93; The ID of the
+#' [`restore_table_from_snapshot`][redshiftserverless_restore_table_from_snapshot]
+#' request to return status for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tableRestoreStatus = list(
+#'     message = "string",
+#'     namespaceName = "string",
+#'     newTableName = "string",
+#'     progressInMegaBytes = 123,
+#'     requestTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     snapshotName = "string",
+#'     sourceDatabaseName = "string",
+#'     sourceSchemaName = "string",
+#'     sourceTableName = "string",
+#'     status = "string",
+#'     tableRestoreRequestId = "string",
+#'     targetDatabaseName = "string",
+#'     targetSchemaName = "string",
+#'     totalDataInMegaBytes = 123,
+#'     workgroupName = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_table_restore_status(
+#'   tableRestoreRequestId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_get_table_restore_status
+#'
+#' @aliases redshiftserverless_get_table_restore_status
+redshiftserverless_get_table_restore_status <- function(tableRestoreRequestId) {
+  op <- new_operation(
+    name = "GetTableRestoreStatus",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshiftserverless$get_table_restore_status_input(tableRestoreRequestId = tableRestoreRequestId)
+  output <- .redshiftserverless$get_table_restore_status_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$get_table_restore_status <- redshiftserverless_get_table_restore_status
+
 #' Returns information about a usage limit
 #'
 #' @description
@@ -1487,6 +1583,7 @@ redshiftserverless_get_usage_limit <- function(usageLimitId) {
 #'     ),
 #'     enhancedVpcRouting = TRUE|FALSE,
 #'     namespaceName = "string",
+#'     port = 123,
 #'     publiclyAccessible = TRUE|FALSE,
 #'     securityGroupIds = list(
 #'       "string"
@@ -1541,11 +1638,11 @@ redshiftserverless_get_workgroup <- function(workgroupName) {
 #'   workgroupName)
 #'
 #' @param maxResults An optional parameter that specifies the maximum number of results to
-#' return. You can use `nextToken` to get the next page of results.
+#' return. You can use `nextToken` to display the next page of results.
 #' @param nextToken If your initial
 #' [`list_endpoint_access`][redshiftserverless_list_endpoint_access]
 #' operation returns a `nextToken`, you can include the returned
-#' `nextToken` in subsequent
+#' `nextToken` in following
 #' [`list_endpoint_access`][redshiftserverless_list_endpoint_access]
 #' operations, which returns results in the next page.
 #' @param vpcId The unique identifier of the virtual private cloud with access to Amazon
@@ -1635,10 +1732,10 @@ redshiftserverless_list_endpoint_access <- function(maxResults = NULL, nextToken
 #' redshiftserverless_list_namespaces(maxResults, nextToken)
 #'
 #' @param maxResults An optional parameter that specifies the maximum number of results to
-#' return. You can use `nextToken` to get the next page of results.
+#' return. You can use `nextToken` to display the next page of results.
 #' @param nextToken If your initial [`list_namespaces`][redshiftserverless_list_namespaces]
 #' operation returns a `nextToken`, you can include the returned
-#' `nextToken` in subsequent
+#' `nextToken` in following
 #' [`list_namespaces`][redshiftserverless_list_namespaces] operations,
 #' which returns results in the next page.
 #'
@@ -1708,16 +1805,18 @@ redshiftserverless_list_namespaces <- function(maxResults = NULL, nextToken = NU
 #'
 #' @usage
 #' redshiftserverless_list_recovery_points(endTime, maxResults,
-#'   namespaceName, nextToken, startTime)
+#'   namespaceArn, namespaceName, nextToken, startTime)
 #'
 #' @param endTime The time when creation of the recovery point finished.
 #' @param maxResults An optional parameter that specifies the maximum number of results to
-#' return. You can use `nextToken` to get the next page of results.
+#' return. You can use `nextToken` to display the next page of results.
+#' @param namespaceArn The Amazon Resource Name (ARN) of the namespace from which to list
+#' recovery points.
 #' @param namespaceName The name of the namespace to list recovery points for.
 #' @param nextToken If your initial
 #' [`list_recovery_points`][redshiftserverless_list_recovery_points]
 #' operation returns a `nextToken`, you can include the returned
-#' `nextToken` in subsequent
+#' `nextToken` in following
 #' [`list_recovery_points`][redshiftserverless_list_recovery_points]
 #' operations, which returns results in the next page.
 #' @param startTime The time when the recovery point's creation was initiated.
@@ -1729,6 +1828,7 @@ redshiftserverless_list_namespaces <- function(maxResults = NULL, nextToken = NU
 #'   nextToken = "string",
 #'   recoveryPoints = list(
 #'     list(
+#'       namespaceArn = "string",
 #'       namespaceName = "string",
 #'       recoveryPointCreateTime = as.POSIXct(
 #'         "2015-01-01"
@@ -1748,6 +1848,7 @@ redshiftserverless_list_namespaces <- function(maxResults = NULL, nextToken = NU
 #'     "2015-01-01"
 #'   ),
 #'   maxResults = 123,
+#'   namespaceArn = "string",
 #'   namespaceName = "string",
 #'   nextToken = "string",
 #'   startTime = as.POSIXct(
@@ -1761,14 +1862,14 @@ redshiftserverless_list_namespaces <- function(maxResults = NULL, nextToken = NU
 #' @rdname redshiftserverless_list_recovery_points
 #'
 #' @aliases redshiftserverless_list_recovery_points
-redshiftserverless_list_recovery_points <- function(endTime = NULL, maxResults = NULL, namespaceName = NULL, nextToken = NULL, startTime = NULL) {
+redshiftserverless_list_recovery_points <- function(endTime = NULL, maxResults = NULL, namespaceArn = NULL, namespaceName = NULL, nextToken = NULL, startTime = NULL) {
   op <- new_operation(
     name = "ListRecoveryPoints",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshiftserverless$list_recovery_points_input(endTime = endTime, maxResults = maxResults, namespaceName = namespaceName, nextToken = nextToken, startTime = startTime)
+  input <- .redshiftserverless$list_recovery_points_input(endTime = endTime, maxResults = maxResults, namespaceArn = namespaceArn, namespaceName = namespaceName, nextToken = nextToken, startTime = startTime)
   output <- .redshiftserverless$list_recovery_points_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config)
@@ -1789,7 +1890,7 @@ redshiftserverless_list_recovery_points <- function(endTime = NULL, maxResults =
 #'
 #' @param endTime The timestamp showing when the snapshot creation finished.
 #' @param maxResults An optional parameter that specifies the maximum number of results to
-#' return. You can use `nextToken` to get the next page of results.
+#' return. You can use `nextToken` to display the next page of results.
 #' @param namespaceArn The Amazon Resource Name (ARN) of the namespace from which to list all
 #' snapshots.
 #' @param namespaceName The namespace from which to list all snapshots.
@@ -1878,6 +1979,91 @@ redshiftserverless_list_snapshots <- function(endTime = NULL, maxResults = NULL,
 }
 .redshiftserverless$operations$list_snapshots <- redshiftserverless_list_snapshots
 
+#' Returns information about an array of TableRestoreStatus objects
+#'
+#' @description
+#' Returns information about an array of `TableRestoreStatus` objects.
+#'
+#' @usage
+#' redshiftserverless_list_table_restore_status(maxResults, namespaceName,
+#'   nextToken, workgroupName)
+#'
+#' @param maxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use nextToken to display the next page of results.
+#' @param namespaceName The namespace from which to list all of the statuses of
+#' [`restore_table_from_snapshot`][redshiftserverless_restore_table_from_snapshot]
+#' operations .
+#' @param nextToken If your initial
+#' [`list_table_restore_status`][redshiftserverless_list_table_restore_status]
+#' operation returns a nextToken, you can include the returned `nextToken`
+#' in following
+#' [`list_table_restore_status`][redshiftserverless_list_table_restore_status]
+#' operations. This will return results on the next page.
+#' @param workgroupName The workgroup from which to list all of the statuses of
+#' [`restore_table_from_snapshot`][redshiftserverless_restore_table_from_snapshot]
+#' operations.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   tableRestoreStatuses = list(
+#'     list(
+#'       message = "string",
+#'       namespaceName = "string",
+#'       newTableName = "string",
+#'       progressInMegaBytes = 123,
+#'       requestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       snapshotName = "string",
+#'       sourceDatabaseName = "string",
+#'       sourceSchemaName = "string",
+#'       sourceTableName = "string",
+#'       status = "string",
+#'       tableRestoreRequestId = "string",
+#'       targetDatabaseName = "string",
+#'       targetSchemaName = "string",
+#'       totalDataInMegaBytes = 123,
+#'       workgroupName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_table_restore_status(
+#'   maxResults = 123,
+#'   namespaceName = "string",
+#'   nextToken = "string",
+#'   workgroupName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_list_table_restore_status
+#'
+#' @aliases redshiftserverless_list_table_restore_status
+redshiftserverless_list_table_restore_status <- function(maxResults = NULL, namespaceName = NULL, nextToken = NULL, workgroupName = NULL) {
+  op <- new_operation(
+    name = "ListTableRestoreStatus",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshiftserverless$list_table_restore_status_input(maxResults = maxResults, namespaceName = namespaceName, nextToken = nextToken, workgroupName = workgroupName)
+  output <- .redshiftserverless$list_table_restore_status_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$list_table_restore_status <- redshiftserverless_list_table_restore_status
+
 #' Lists the tags assigned to a resource
 #'
 #' @description
@@ -1945,7 +2131,7 @@ redshiftserverless_list_tags_for_resource <- function(resourceArn) {
 #' @param nextToken If your initial
 #' [`list_usage_limits`][redshiftserverless_list_usage_limits] operation
 #' returns a `nextToken`, you can include the returned `nextToken` in
-#' subsequent [`list_usage_limits`][redshiftserverless_list_usage_limits]
+#' following [`list_usage_limits`][redshiftserverless_list_usage_limits]
 #' operations, which returns results in the next page.
 #' @param resourceArn The Amazon Resource Name (ARN) associated with the resource whose usage
 #' limits you want to list.
@@ -2011,10 +2197,10 @@ redshiftserverless_list_usage_limits <- function(maxResults = NULL, nextToken = 
 #' redshiftserverless_list_workgroups(maxResults, nextToken)
 #'
 #' @param maxResults An optional parameter that specifies the maximum number of results to
-#' return. You can use `nextToken` to get the next page of results.
+#' return. You can use `nextToken` to display the next page of results.
 #' @param nextToken If your initial ListWorkgroups operation returns a `nextToken`, you can
-#' include the returned `nextToken` in subsequent ListNamespaces
-#' operations, which returns results in the next page.
+#' include the returned `nextToken` in following ListNamespaces operations,
+#' which returns results in the next page.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2053,6 +2239,7 @@ redshiftserverless_list_usage_limits <- function(maxResults = NULL, nextToken = 
 #'       ),
 #'       enhancedVpcRouting = TRUE|FALSE,
 #'       namespaceName = "string",
+#'       port = 123,
 #'       publiclyAccessible = TRUE|FALSE,
 #'       securityGroupIds = list(
 #'         "string"
@@ -2238,8 +2425,14 @@ redshiftserverless_restore_from_recovery_point <- function(namespaceName, recove
 #'
 #' @param namespaceName &#91;required&#93; The name of the namespace to restore the snapshot to.
 #' @param ownerAccount The Amazon Web Services account that owns the snapshot.
-#' @param snapshotArn The Amazon Resource Name (ARN) of the snapshot to restore from.
-#' @param snapshotName The name of the snapshot to restore from.
+#' @param snapshotArn The Amazon Resource Name (ARN) of the snapshot to restore from. Required
+#' if restoring from Amazon Redshift Serverless to a provisioned cluster.
+#' Must not be specified at the same time as `snapshotName`.
+#' 
+#' The format of the ARN is
+#' arn:aws:redshift:\<region\>:\<account_id\>:snapshot:\<cluster_identifier\>/\<snapshot_identifier\>.
+#' @param snapshotName The name of the snapshot to restore from. Must not be specified at the
+#' same time as `snapshotArn`.
 #' @param workgroupName &#91;required&#93; The name of the workgroup used to restore the snapshot.
 #'
 #' @return
@@ -2302,6 +2495,98 @@ redshiftserverless_restore_from_snapshot <- function(namespaceName, ownerAccount
   return(response)
 }
 .redshiftserverless$operations$restore_from_snapshot <- redshiftserverless_restore_from_snapshot
+
+#' Restores a table from a snapshot to your Amazon Redshift Serverless
+#' instance
+#'
+#' @description
+#' Restores a table from a snapshot to your Amazon Redshift Serverless
+#' instance. You can't use this operation to restore tables with
+#' [interleaved sort
+#' keys](https://docs.aws.amazon.com/redshift/latest/dg/t_Sorting_data.html#t_Sorting_data-interleaved).
+#'
+#' @usage
+#' redshiftserverless_restore_table_from_snapshot(
+#'   activateCaseSensitiveIdentifier, namespaceName, newTableName,
+#'   snapshotName, sourceDatabaseName, sourceSchemaName, sourceTableName,
+#'   targetDatabaseName, targetSchemaName, workgroupName)
+#'
+#' @param activateCaseSensitiveIdentifier Indicates whether name identifiers for database, schema, and table are
+#' case sensitive. If true, the names are case sensitive. If false, the
+#' names are not case sensitive. The default is false.
+#' @param namespaceName &#91;required&#93; The namespace of the snapshot to restore from.
+#' @param newTableName &#91;required&#93; The name of the table to create from the restore operation.
+#' @param snapshotName &#91;required&#93; The name of the snapshot to restore the table from.
+#' @param sourceDatabaseName &#91;required&#93; The name of the source database that contains the table being restored.
+#' @param sourceSchemaName The name of the source schema that contains the table being restored.
+#' @param sourceTableName &#91;required&#93; The name of the source table being restored.
+#' @param targetDatabaseName The name of the database to restore the table to.
+#' @param targetSchemaName The name of the schema to restore the table to.
+#' @param workgroupName &#91;required&#93; The workgroup to restore the table to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tableRestoreStatus = list(
+#'     message = "string",
+#'     namespaceName = "string",
+#'     newTableName = "string",
+#'     progressInMegaBytes = 123,
+#'     requestTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     snapshotName = "string",
+#'     sourceDatabaseName = "string",
+#'     sourceSchemaName = "string",
+#'     sourceTableName = "string",
+#'     status = "string",
+#'     tableRestoreRequestId = "string",
+#'     targetDatabaseName = "string",
+#'     targetSchemaName = "string",
+#'     totalDataInMegaBytes = 123,
+#'     workgroupName = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$restore_table_from_snapshot(
+#'   activateCaseSensitiveIdentifier = TRUE|FALSE,
+#'   namespaceName = "string",
+#'   newTableName = "string",
+#'   snapshotName = "string",
+#'   sourceDatabaseName = "string",
+#'   sourceSchemaName = "string",
+#'   sourceTableName = "string",
+#'   targetDatabaseName = "string",
+#'   targetSchemaName = "string",
+#'   workgroupName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_restore_table_from_snapshot
+#'
+#' @aliases redshiftserverless_restore_table_from_snapshot
+redshiftserverless_restore_table_from_snapshot <- function(activateCaseSensitiveIdentifier = NULL, namespaceName, newTableName, snapshotName, sourceDatabaseName, sourceSchemaName = NULL, sourceTableName, targetDatabaseName = NULL, targetSchemaName = NULL, workgroupName) {
+  op <- new_operation(
+    name = "RestoreTableFromSnapshot",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshiftserverless$restore_table_from_snapshot_input(activateCaseSensitiveIdentifier = activateCaseSensitiveIdentifier, namespaceName = namespaceName, newTableName = newTableName, snapshotName = snapshotName, sourceDatabaseName = sourceDatabaseName, sourceSchemaName = sourceSchemaName, sourceTableName = sourceTableName, targetDatabaseName = targetDatabaseName, targetSchemaName = targetSchemaName, workgroupName = workgroupName)
+  output <- .redshiftserverless$restore_table_from_snapshot_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$restore_table_from_snapshot <- redshiftserverless_restore_table_from_snapshot
 
 #' Assigns one or more tags to a resource
 #'
@@ -2485,24 +2770,31 @@ redshiftserverless_update_endpoint_access <- function(endpointName, vpcSecurityG
 #' Updates a namespace with the specified settings
 #'
 #' @description
-#' Updates a namespace with the specified settings.
+#' Updates a namespace with the specified settings. Unless required, you
+#' can't update multiple parameters in one request. For example, you must
+#' specify both `adminUsername` and `adminUserPassword` to update either
+#' field, but you can't update both `kmsKeyId` and `logExports` in a single
+#' request.
 #'
 #' @usage
 #' redshiftserverless_update_namespace(adminUserPassword, adminUsername,
 #'   defaultIamRoleArn, iamRoles, kmsKeyId, logExports, namespaceName)
 #'
 #' @param adminUserPassword The password of the administrator for the first database created in the
-#' namespace.
+#' namespace. This parameter must be updated together with `adminUsername`.
 #' @param adminUsername The username of the administrator for the first database created in the
-#' namespace.
+#' namespace. This parameter must be updated together with
+#' `adminUserPassword`.
 #' @param defaultIamRoleArn The Amazon Resource Name (ARN) of the IAM role to set as a default in
-#' the namespace.
-#' @param iamRoles A list of IAM roles to associate with the namespace.
+#' the namespace. This parameter must be updated together with `iamRoles`.
+#' @param iamRoles A list of IAM roles to associate with the namespace. This parameter must
+#' be updated together with `defaultIamRoleArn`.
 #' @param kmsKeyId The ID of the Amazon Web Services Key Management Service key used to
 #' encrypt your data.
 #' @param logExports The types of logs the namespace can export. The export types are
 #' `userlog`, `connectionlog`, and `useractivitylog`.
-#' @param namespaceName &#91;required&#93; The name of the namespace.
+#' @param namespaceName &#91;required&#93; The name of the namespace to update. You can't update the name of a
+#' namespace once it is created.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2657,7 +2949,10 @@ redshiftserverless_update_snapshot <- function(retentionPeriod = NULL, snapshotN
 #' redshiftserverless_update_usage_limit(amount, breachAction,
 #'   usageLimitId)
 #'
-#' @param amount The new limit amount. For more information about this parameter.
+#' @param amount The new limit amount. If time-based, this amount is in Redshift
+#' Processing Units (RPU) consumed per hour. If data-based, this amount is
+#' in terabytes (TB) of data transferred between Regions in cross-account
+#' sharing. The value must be a positive number.
 #' @param breachAction The new action that Amazon Redshift Serverless takes when the limit is
 #' reached.
 #' @param usageLimitId &#91;required&#93; The identifier of the usage limit to update.
@@ -2712,26 +3007,37 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #' Updates a workgroup with the specified configuration settings
 #'
 #' @description
-#' Updates a workgroup with the specified configuration settings.
+#' Updates a workgroup with the specified configuration settings. You can't
+#' update multiple parameters in one request. For example, you can update
+#' `baseCapacity` or `port` in a single request, but you can't update both
+#' in the same request.
 #'
 #' @usage
 #' redshiftserverless_update_workgroup(baseCapacity, configParameters,
-#'   enhancedVpcRouting, publiclyAccessible, securityGroupIds, subnetIds,
-#'   workgroupName)
+#'   enhancedVpcRouting, port, publiclyAccessible, securityGroupIds,
+#'   subnetIds, workgroupName)
 #'
 #' @param baseCapacity The new base data warehouse capacity in Redshift Processing Units
 #' (RPUs).
 #' @param configParameters An array of parameters to set for advanced control over a database. The
-#' options are `datestyle`, `enable_user_activity_logging`, `query_group`,
-#' `search_path`, and `max_query_execution_time`.
+#' options are `auto_mv`, `datestyle`,
+#' `enable_case_sensitivity_identifier`, `enable_user_activity_logging`,
+#' `query_group`, `search_path`, and query monitoring metrics that let you
+#' define performance boundaries. For more information about query
+#' monitoring rules and available metrics, see [Query monitoring metrics
+#' for Amazon Redshift
+#' Serverless](https://docs.aws.amazon.com/redshift/latest/dg/cm-c-wlm-query-monitoring-rules.html#cm-c-wlm-query-monitoring-metrics-serverless).
 #' @param enhancedVpcRouting The value that specifies whether to turn on enhanced virtual private
 #' cloud (VPC) routing, which forces Amazon Redshift Serverless to route
 #' traffic through your VPC.
+#' @param port The custom port to use when connecting to a workgroup. Valid port ranges
+#' are 5431-5455 and 8191-8215. The default is 5439.
 #' @param publiclyAccessible A value that specifies whether the workgroup can be accessible from a
 #' public network.
 #' @param securityGroupIds An array of security group IDs to associate with the workgroup.
 #' @param subnetIds An array of VPC subnet IDs to associate with the workgroup.
-#' @param workgroupName &#91;required&#93; The name of the workgroup to update.
+#' @param workgroupName &#91;required&#93; The name of the workgroup to update. You can't update the name of a
+#' workgroup once it is created.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2768,6 +3074,7 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #'     ),
 #'     enhancedVpcRouting = TRUE|FALSE,
 #'     namespaceName = "string",
+#'     port = 123,
 #'     publiclyAccessible = TRUE|FALSE,
 #'     securityGroupIds = list(
 #'       "string"
@@ -2794,6 +3101,7 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #'     )
 #'   ),
 #'   enhancedVpcRouting = TRUE|FALSE,
+#'   port = 123,
 #'   publiclyAccessible = TRUE|FALSE,
 #'   securityGroupIds = list(
 #'     "string"
@@ -2810,14 +3118,14 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #' @rdname redshiftserverless_update_workgroup
 #'
 #' @aliases redshiftserverless_update_workgroup
-redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, workgroupName) {
+redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, port = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, workgroupName) {
   op <- new_operation(
     name = "UpdateWorkgroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshiftserverless$update_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, workgroupName = workgroupName)
+  input <- .redshiftserverless$update_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, port = port, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, workgroupName = workgroupName)
   output <- .redshiftserverless$update_workgroup_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config)

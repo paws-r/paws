@@ -2,8 +2,8 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_get_resource_share_associations}
 \alias{ram_get_resource_share_associations}
-\title{Retrieves the resource and principal associations for resource shares
-that you own}
+\title{Retrieves the lists of resources and principals that associated for
+resource shares that you own}
 \usage{
 ram_get_resource_share_associations(
   associationType,
@@ -19,29 +19,29 @@ ram_get_resource_share_associations(
 \item{associationType}{[required] Specifies whether you want to retrieve the associations that involve a
 specified resource or principal.
 \itemize{
-\item \code{PRINCIPAL} – list the principals that are associated with the
-specified resource share.
-\item \code{RESOURCE} – list the resources that are associated with the
-specified resource share.
+\item \code{PRINCIPAL} – list the principals whose associations you want to
+see.
+\item \code{RESOURCE} – list the resources whose associations you want to see.
 }}
 
-\item{resourceShareArns}{Specifies a list of \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+\item{resourceShareArns}{Specifies a list of \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 of the resource share whose associations you want to retrieve.}
 
-\item{resourceArn}{Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
-of the resource whose resource shares you want to retrieve.
+\item{resourceArn}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
+of a resource whose resource shares you want to retrieve.
 
 You cannot specify this parameter if the association type is
 \code{PRINCIPAL}.}
 
 \item{principal}{Specifies the ID of the principal whose resource shares you want to
 retrieve. This can be an Amazon Web Services account ID, an organization
-ID, an organizational unit ID, or the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+ID, an organizational unit ID, or the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
 of an individual IAM user or role.
 
 You cannot specify this parameter if the association type is \code{RESOURCE}.}
 
-\item{associationStatus}{Specifies that you want to retrieve only associations with this status.}
+\item{associationStatus}{Specifies that you want to retrieve only associations that have this
+status.}
 
 \item{nextToken}{Specifies that you want to receive the next page of results. Valid only
 if you received a \code{NextToken} response in the previous request. If you
@@ -61,7 +61,7 @@ should check \code{NextToken} after every operation to ensure that you
 receive all of the results.}
 }
 \description{
-Retrieves the resource and principal associations for resource shares that you own.
+Retrieves the lists of resources and principals that associated for resource shares that you own.
 
 See \url{https://paws-r.github.io/docs/ram/get_resource_share_associations.html} for full documentation.
 }

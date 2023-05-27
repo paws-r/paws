@@ -3,17 +3,18 @@
 #' @include fms_service.R
 NULL
 
-#' Sets the Firewall Manager administrator account
+#' Sets a Firewall Manager default administrator account
 #'
 #' @description
-#' Sets the Firewall Manager administrator account. The account must be a member of the organization in Organizations whose resources you want to protect. Firewall Manager sets the permissions that allow the account to administer your Firewall Manager policies.
+#' Sets a Firewall Manager default administrator account. The Firewall Manager default administrator account can manage third-party firewalls and has full administrative scope that allows administration of all policy types, accounts, organizational units, and Regions. This account must be a member account of the organization in Organizations whose resources you want to protect.
 #'
 #' See [https://paws-r.github.io/docs/fms/associate_admin_account.html](https://paws-r.github.io/docs/fms/associate_admin_account.html) for full documentation.
 #'
 #' @param AdminAccount &#91;required&#93; The Amazon Web Services account ID to associate with Firewall Manager as
-#' the Firewall Manager administrator account. This must be an
-#' Organizations member account. For more information about Organizations,
-#' see [Managing the Amazon Web Services Accounts in Your
+#' the Firewall Manager default administrator account. This account must be
+#' a member account of the organization in Organizations whose resources
+#' you want to protect. For more information about Organizations, see
+#' [Managing the Amazon Web Services Accounts in Your
 #' Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html).
 #'
 #' @keywords internal
@@ -65,6 +66,72 @@ fms_associate_third_party_firewall <- function(ThirdPartyFirewall) {
   return(response)
 }
 .fms$operations$associate_third_party_firewall <- fms_associate_third_party_firewall
+
+#' Associate resources to a Firewall Manager resource set
+#'
+#' @description
+#' Associate resources to a Firewall Manager resource set.
+#'
+#' See [https://paws-r.github.io/docs/fms/batch_associate_resource.html](https://paws-r.github.io/docs/fms/batch_associate_resource.html) for full documentation.
+#'
+#' @param ResourceSetIdentifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to
+#' the resource set.
+#' @param Items &#91;required&#93; The uniform resource identifiers (URIs) of resources that should be
+#' associated to the resource set. The URIs must be Amazon Resource Names
+#' (ARNs).
+#'
+#' @keywords internal
+#'
+#' @rdname fms_batch_associate_resource
+fms_batch_associate_resource <- function(ResourceSetIdentifier, Items) {
+  op <- new_operation(
+    name = "BatchAssociateResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$batch_associate_resource_input(ResourceSetIdentifier = ResourceSetIdentifier, Items = Items)
+  output <- .fms$batch_associate_resource_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$batch_associate_resource <- fms_batch_associate_resource
+
+#' Disassociates resources from a Firewall Manager resource set
+#'
+#' @description
+#' Disassociates resources from a Firewall Manager resource set.
+#'
+#' See [https://paws-r.github.io/docs/fms/batch_disassociate_resource.html](https://paws-r.github.io/docs/fms/batch_disassociate_resource.html) for full documentation.
+#'
+#' @param ResourceSetIdentifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to
+#' the resource set.
+#' @param Items &#91;required&#93; The uniform resource identifiers (URI) of resources that should be
+#' disassociated from the resource set. The URIs must be Amazon Resource
+#' Names (ARNs).
+#'
+#' @keywords internal
+#'
+#' @rdname fms_batch_disassociate_resource
+fms_batch_disassociate_resource <- function(ResourceSetIdentifier, Items) {
+  op <- new_operation(
+    name = "BatchDisassociateResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$batch_disassociate_resource_input(ResourceSetIdentifier = ResourceSetIdentifier, Items = Items)
+  output <- .fms$batch_disassociate_resource_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$batch_disassociate_resource <- fms_batch_disassociate_resource
 
 #' Permanently deletes an Firewall Manager applications list
 #'
@@ -217,11 +284,40 @@ fms_delete_protocols_list <- function(ListId) {
 }
 .fms$operations$delete_protocols_list <- fms_delete_protocols_list
 
-#' Disassociates the account that has been set as the Firewall Manager
-#' administrator account
+#' Deletes the specified ResourceSet
 #'
 #' @description
-#' Disassociates the account that has been set as the Firewall Manager administrator account. To set a different account as the administrator account, you must submit an [`associate_admin_account`][fms_associate_admin_account] request.
+#' Deletes the specified ResourceSet.
+#'
+#' See [https://paws-r.github.io/docs/fms/delete_resource_set.html](https://paws-r.github.io/docs/fms/delete_resource_set.html) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to
+#' the resource set.
+#'
+#' @keywords internal
+#'
+#' @rdname fms_delete_resource_set
+fms_delete_resource_set <- function(Identifier) {
+  op <- new_operation(
+    name = "DeleteResourceSet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$delete_resource_set_input(Identifier = Identifier)
+  output <- .fms$delete_resource_set_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$delete_resource_set <- fms_delete_resource_set
+
+#' Disassociates an Firewall Manager administrator account
+#'
+#' @description
+#' Disassociates an Firewall Manager administrator account. To set a different account as an Firewall Manager administrator, submit a [`put_admin_account`][fms_put_admin_account] request. To set an account as a default administrator account, you must submit an [`associate_admin_account`][fms_associate_admin_account] request.
 #'
 #' See [https://paws-r.github.io/docs/fms/disassociate_admin_account.html](https://paws-r.github.io/docs/fms/disassociate_admin_account.html) for full documentation.
 #'
@@ -276,10 +372,10 @@ fms_disassociate_third_party_firewall <- function(ThirdPartyFirewall) {
 .fms$operations$disassociate_third_party_firewall <- fms_disassociate_third_party_firewall
 
 #' Returns the Organizations account that is associated with Firewall
-#' Manager as the Firewall Manager administrator
+#' Manager as the Firewall Manager default administrator
 #'
 #' @description
-#' Returns the Organizations account that is associated with Firewall Manager as the Firewall Manager administrator.
+#' Returns the Organizations account that is associated with Firewall Manager as the Firewall Manager default administrator.
 #'
 #' See [https://paws-r.github.io/docs/fms/get_admin_account.html](https://paws-r.github.io/docs/fms/get_admin_account.html) for full documentation.
 #'
@@ -302,6 +398,35 @@ fms_get_admin_account <- function() {
   return(response)
 }
 .fms$operations$get_admin_account <- fms_get_admin_account
+
+#' Returns information about the specified account's administrative scope
+#'
+#' @description
+#' Returns information about the specified account's administrative scope. The admistrative scope defines the resources that an Firewall Manager administrator can manage.
+#'
+#' See [https://paws-r.github.io/docs/fms/get_admin_scope.html](https://paws-r.github.io/docs/fms/get_admin_scope.html) for full documentation.
+#'
+#' @param AdminAccount &#91;required&#93; The administator account that you want to get the details for.
+#'
+#' @keywords internal
+#'
+#' @rdname fms_get_admin_scope
+fms_get_admin_scope <- function(AdminAccount) {
+  op <- new_operation(
+    name = "GetAdminScope",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$get_admin_scope_input(AdminAccount = AdminAccount)
+  output <- .fms$get_admin_scope_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$get_admin_scope <- fms_get_admin_scope
 
 #' Returns information about the specified Firewall Manager applications
 #' list
@@ -510,6 +635,36 @@ fms_get_protocols_list <- function(ListId, DefaultList = NULL) {
 }
 .fms$operations$get_protocols_list <- fms_get_protocols_list
 
+#' Gets information about a specific resource set
+#'
+#' @description
+#' Gets information about a specific resource set.
+#'
+#' See [https://paws-r.github.io/docs/fms/get_resource_set.html](https://paws-r.github.io/docs/fms/get_resource_set.html) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to
+#' the resource set.
+#'
+#' @keywords internal
+#'
+#' @rdname fms_get_resource_set
+fms_get_resource_set <- function(Identifier) {
+  op <- new_operation(
+    name = "GetResourceSet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$get_resource_set_input(Identifier = Identifier)
+  output <- .fms$get_resource_set_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$get_resource_set <- fms_get_resource_set
+
 #' The onboarding status of a Firewall Manager admin account to third-party
 #' firewall vendor tenant
 #'
@@ -578,6 +733,83 @@ fms_get_violation_details <- function(PolicyId, MemberAccount, ResourceId, Resou
   return(response)
 }
 .fms$operations$get_violation_details <- fms_get_violation_details
+
+#' Returns a AdminAccounts object that lists the Firewall Manager
+#' administrators within the organization that are onboarded to Firewall
+#' Manager by AssociateAdminAccount
+#'
+#' @description
+#' Returns a `AdminAccounts` object that lists the Firewall Manager administrators within the organization that are onboarded to Firewall Manager by [`associate_admin_account`][fms_associate_admin_account].
+#'
+#' See [https://paws-r.github.io/docs/fms/list_admin_accounts_for_organization.html](https://paws-r.github.io/docs/fms/list_admin_accounts_for_organization.html) for full documentation.
+#'
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
+#' number of objects that are still available for retrieval exceeds the
+#' maximum you requested, Firewall Manager returns a `NextToken` value in
+#' the response. To retrieve the next batch of objects, use the token
+#' returned from the prior request in your next request.
+#' @param MaxResults The maximum number of objects that you want Firewall Manager to return
+#' for this request. If more objects are available, in the response,
+#' Firewall Manager provides a `NextToken` value that you can use in a
+#' subsequent call to get the next batch of objects.
+#'
+#' @keywords internal
+#'
+#' @rdname fms_list_admin_accounts_for_organization
+fms_list_admin_accounts_for_organization <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAdminAccountsForOrganization",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$list_admin_accounts_for_organization_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .fms$list_admin_accounts_for_organization_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$list_admin_accounts_for_organization <- fms_list_admin_accounts_for_organization
+
+#' Lists the accounts that are managing the specified Organizations member
+#' account
+#'
+#' @description
+#' Lists the accounts that are managing the specified Organizations member account. This is useful for any member account so that they can view the accounts who are managing their account. This operation only returns the managing administrators that have the requested account within their AdminScope.
+#'
+#' See [https://paws-r.github.io/docs/fms/list_admins_managing_account.html](https://paws-r.github.io/docs/fms/list_admins_managing_account.html) for full documentation.
+#'
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
+#' number of objects that are still available for retrieval exceeds the
+#' maximum you requested, Firewall Manager returns a `NextToken` value in
+#' the response. To retrieve the next batch of objects, use the token
+#' returned from the prior request in your next request.
+#' @param MaxResults The maximum number of objects that you want Firewall Manager to return
+#' for this request. If more objects are available, in the response,
+#' Firewall Manager provides a `NextToken` value that you can use in a
+#' subsequent call to get the next batch of objects.
+#'
+#' @keywords internal
+#'
+#' @rdname fms_list_admins_managing_account
+fms_list_admins_managing_account <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAdminsManagingAccount",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$list_admins_managing_account_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .fms$list_admins_managing_account_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$list_admins_managing_account <- fms_list_admins_managing_account
 
 #' Returns an array of AppsListDataSummary objects
 #'
@@ -662,6 +894,48 @@ fms_list_compliance_status <- function(PolicyId, NextToken = NULL, MaxResults = 
   return(response)
 }
 .fms$operations$list_compliance_status <- fms_list_compliance_status
+
+#' Returns an array of resources in the organization's accounts that are
+#' available to be associated with a resource set
+#'
+#' @description
+#' Returns an array of resources in the organization's accounts that are available to be associated with a resource set.
+#'
+#' See [https://paws-r.github.io/docs/fms/list_discovered_resources.html](https://paws-r.github.io/docs/fms/list_discovered_resources.html) for full documentation.
+#'
+#' @param MemberAccountIds &#91;required&#93; The Amazon Web Services account IDs to discover resources in. Only one
+#' account is supported per request. The account must be a member of your
+#' organization.
+#' @param ResourceType &#91;required&#93; The type of resources to discover.
+#' @param MaxResults The maximum number of objects that you want Firewall Manager to return
+#' for this request. If more objects are available, in the response,
+#' Firewall Manager provides a `NextToken` value that you can use in a
+#' subsequent call to get the next batch of objects.
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
+#' number of objects that are still available for retrieval exceeds the
+#' maximum you requested, Firewall Manager returns a `NextToken` value in
+#' the response. To retrieve the next batch of objects, use the token
+#' returned from the prior request in your next request.
+#'
+#' @keywords internal
+#'
+#' @rdname fms_list_discovered_resources
+fms_list_discovered_resources <- function(MemberAccountIds, ResourceType, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListDiscoveredResources",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$list_discovered_resources_input(MemberAccountIds = MemberAccountIds, ResourceType = ResourceType, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .fms$list_discovered_resources_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$list_discovered_resources <- fms_list_discovered_resources
 
 #' Returns a MemberAccounts object that lists the member accounts in the
 #' administrator's Amazon Web Services organization
@@ -786,6 +1060,83 @@ fms_list_protocols_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxR
 }
 .fms$operations$list_protocols_lists <- fms_list_protocols_lists
 
+#' Returns an array of resources that are currently associated to a
+#' resource set
+#'
+#' @description
+#' Returns an array of resources that are currently associated to a resource set.
+#'
+#' See [https://paws-r.github.io/docs/fms/list_resource_set_resources.html](https://paws-r.github.io/docs/fms/list_resource_set_resources.html) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to
+#' the resource set.
+#' @param MaxResults The maximum number of objects that you want Firewall Manager to return
+#' for this request. If more objects are available, in the response,
+#' Firewall Manager provides a `NextToken` value that you can use in a
+#' subsequent call to get the next batch of objects.
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
+#' number of objects that are still available for retrieval exceeds the
+#' maximum you requested, Firewall Manager returns a `NextToken` value in
+#' the response. To retrieve the next batch of objects, use the token
+#' returned from the prior request in your next request.
+#'
+#' @keywords internal
+#'
+#' @rdname fms_list_resource_set_resources
+fms_list_resource_set_resources <- function(Identifier, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListResourceSetResources",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$list_resource_set_resources_input(Identifier = Identifier, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .fms$list_resource_set_resources_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$list_resource_set_resources <- fms_list_resource_set_resources
+
+#' Returns an array of ResourceSetSummary objects
+#'
+#' @description
+#' Returns an array of `ResourceSetSummary` objects.
+#'
+#' See [https://paws-r.github.io/docs/fms/list_resource_sets.html](https://paws-r.github.io/docs/fms/list_resource_sets.html) for full documentation.
+#'
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
+#' number of objects that are still available for retrieval exceeds the
+#' maximum you requested, Firewall Manager returns a `NextToken` value in
+#' the response. To retrieve the next batch of objects, use the token
+#' returned from the prior request in your next request.
+#' @param MaxResults The maximum number of objects that you want Firewall Manager to return
+#' for this request. If more objects are available, in the response,
+#' Firewall Manager provides a `NextToken` value that you can use in a
+#' subsequent call to get the next batch of objects.
+#'
+#' @keywords internal
+#'
+#' @rdname fms_list_resource_sets
+fms_list_resource_sets <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListResourceSets",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$list_resource_sets_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .fms$list_resource_sets_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$list_resource_sets <- fms_list_resource_sets
+
 #' Retrieves the list of tags for the specified Amazon Web Services
 #' resource
 #'
@@ -861,6 +1212,46 @@ fms_list_third_party_firewall_firewall_policies <- function(ThirdPartyFirewall, 
   return(response)
 }
 .fms$operations$list_third_party_firewall_firewall_policies <- fms_list_third_party_firewall_firewall_policies
+
+#' Creates or updates an Firewall Manager administrator account
+#'
+#' @description
+#' Creates or updates an Firewall Manager administrator account. The account must be a member of the organization that was onboarded to Firewall Manager by [`associate_admin_account`][fms_associate_admin_account]. Only the organization's management account can create an Firewall Manager administrator account. When you create an Firewall Manager administrator account, the service checks to see if the account is already a delegated administrator within Organizations. If the account isn't a delegated administrator, Firewall Manager calls Organizations to delegate the account within Organizations. For more information about administrator accounts within Organizations, see [Managing the Amazon Web Services Accounts in Your Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html).
+#'
+#' See [https://paws-r.github.io/docs/fms/put_admin_account.html](https://paws-r.github.io/docs/fms/put_admin_account.html) for full documentation.
+#'
+#' @param AdminAccount &#91;required&#93; The Amazon Web Services account ID to add as an Firewall Manager
+#' administrator account. The account must be a member of the organization
+#' that was onboarded to Firewall Manager by
+#' [`associate_admin_account`][fms_associate_admin_account]. For more
+#' information about Organizations, see [Managing the Amazon Web Services
+#' Accounts in Your
+#' Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html).
+#' @param AdminScope Configures the resources that the specified Firewall Manager
+#' administrator can manage. As a best practice, set the administrative
+#' scope according to the principles of least privilege. Only grant the
+#' administrator the specific resources or permissions that they need to
+#' perform the duties of their role.
+#'
+#' @keywords internal
+#'
+#' @rdname fms_put_admin_account
+fms_put_admin_account <- function(AdminAccount, AdminScope = NULL) {
+  op <- new_operation(
+    name = "PutAdminAccount",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$put_admin_account_input(AdminAccount = AdminAccount, AdminScope = AdminScope)
+  output <- .fms$put_admin_account_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$put_admin_account <- fms_put_admin_account
 
 #' Creates an Firewall Manager applications list
 #'
@@ -984,6 +1375,41 @@ fms_put_protocols_list <- function(ProtocolsList, TagList = NULL) {
   return(response)
 }
 .fms$operations$put_protocols_list <- fms_put_protocols_list
+
+#' Creates the resource set
+#'
+#' @description
+#' Creates the resource set.
+#'
+#' See [https://paws-r.github.io/docs/fms/put_resource_set.html](https://paws-r.github.io/docs/fms/put_resource_set.html) for full documentation.
+#'
+#' @param ResourceSet &#91;required&#93; Details about the resource set to be created or updated.\>
+#' @param TagList Retrieves the tags associated with the specified resource set. Tags are
+#' key:value pairs that you can use to categorize and manage your
+#' resources, for purposes like billing. For example, you might set the tag
+#' key to "customer" and the value to the customer name or ID. You can
+#' specify one or more tags to add to each Amazon Web Services resource, up
+#' to 50 tags for a resource.
+#'
+#' @keywords internal
+#'
+#' @rdname fms_put_resource_set
+fms_put_resource_set <- function(ResourceSet, TagList = NULL) {
+  op <- new_operation(
+    name = "PutResourceSet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$put_resource_set_input(ResourceSet = ResourceSet, TagList = TagList)
+  output <- .fms$put_resource_set_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$put_resource_set <- fms_put_resource_set
 
 #' Adds one or more tags to an Amazon Web Services resource
 #'

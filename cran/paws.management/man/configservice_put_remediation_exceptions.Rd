@@ -2,7 +2,7 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_put_remediation_exceptions}
 \alias{configservice_put_remediation_exceptions}
-\title{A remediation exception is when a specific resource is no longer
+\title{A remediation exception is when a specified resource is no longer
 considered for auto-remediation}
 \usage{
 configservice_put_remediation_exceptions(
@@ -25,7 +25,7 @@ example, Config adds 3 exceptions for 3 resource keys.}
 \item{ExpirationTime}{The exception is automatically deleted after the expiration date.}
 }
 \description{
-A remediation exception is when a specific resource is no longer considered for auto-remediation. This API adds a new exception or updates an existing exception for a specific resource with a specific Config rule.
+A remediation exception is when a specified resource is no longer considered for auto-remediation. This API adds a new exception or updates an existing exception for a specified resource with a specified Config rule.
 
 See \url{https://paws-r.github.io/docs/configservice/put_remediation_exceptions.html} for full documentation.
 }

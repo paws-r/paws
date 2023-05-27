@@ -39,11 +39,13 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{NextToken}{The token for the next page of results.}
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
 
-\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
-the remaining results, make another call with the returned \code{nextToken}
-value.}
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 }
 \description{
 Describes one or more of your DHCP options sets.

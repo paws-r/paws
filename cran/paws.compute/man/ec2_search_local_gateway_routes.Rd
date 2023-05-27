@@ -17,6 +17,7 @@ ec2_search_local_gateway_routes(
 
 \item{Filters}{One or more filters.
 \itemize{
+\item \code{prefix-list-id} - The ID of the prefix list.
 \item \code{route-search.exact-match} - The exact match of the specified
 filter.
 \item \code{route-search.longest-prefix-match} - The longest prefix that

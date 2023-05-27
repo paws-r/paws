@@ -3,7 +3,7 @@
 \name{emr_remove_auto_scaling_policy}
 \alias{emr_remove_auto_scaling_policy}
 \title{Removes an automatic scaling policy from a specified instance group
-within an EMR cluster}
+within an Amazon EMR cluster}
 \usage{
 emr_remove_auto_scaling_policy(ClusterId, InstanceGroupId)
 }
@@ -15,7 +15,7 @@ scaling policy is applied is within this cluster.}
 applied.}
 }
 \description{
-Removes an automatic scaling policy from a specified instance group within an EMR cluster.
+Removes an automatic scaling policy from a specified instance group within an Amazon EMR cluster.
 
 See \url{https://paws-r.github.io/docs/emr/remove_auto_scaling_policy.html} for full documentation.
 }

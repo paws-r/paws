@@ -2,12 +2,12 @@
 % Please edit documentation in R/servicecatalog_operations.R
 \name{servicecatalog_get_aws_organizations_access_status}
 \alias{servicecatalog_get_aws_organizations_access_status}
-\title{Get the Access Status for AWS Organization portfolio share feature}
+\title{Get the Access Status for Organizations portfolio share feature}
 \usage{
 servicecatalog_get_aws_organizations_access_status()
 }
 \description{
-Get the Access Status for AWS Organization portfolio share feature. This API can only be called by the management account in the organization or by a delegated admin.
+Get the Access Status for Organizations portfolio share feature. This API can only be called by the management account in the organization or by a delegated admin.
 
 See \url{https://paws-r.github.io/docs/servicecatalog/get_aws_organizations_access_status.html} for full documentation.
 }

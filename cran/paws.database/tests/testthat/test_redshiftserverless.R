@@ -16,6 +16,10 @@ test_that("list_snapshots", {
   expect_error(svc$list_snapshots(), NA)
 })
 
+test_that("list_table_restore_status", {
+  expect_error(svc$list_table_restore_status(), NA)
+})
+
 test_that("list_usage_limits", {
   expect_error(svc$list_usage_limits(), NA)
 })

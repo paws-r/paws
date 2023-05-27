@@ -50,7 +50,7 @@ primary key and other replicas of that primary key, but in the same
 Amazon Web Services partition. KMS must be available in the replica
 Region. If the Region is not enabled by default, the Amazon Web Services
 account must be enabled in the Region. For information about Amazon Web
-Services partitions, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+Services partitions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}. For information about
 enabling and disabling Regions, see \href{https://docs.aws.amazon.com/general/latest/gr/rande-manage.html#rande-manage-enable}{Enabling a Region}
 and \href{https://docs.aws.amazon.com/general/latest/gr/rande-manage.html#rande-manage-disable}{Disabling a Region}
@@ -67,20 +67,20 @@ property.
 
 If you provide a key policy, it must meet the following criteria:
 \itemize{
-\item If you don't set \code{BypassPolicyLockoutSafetyCheck} to true, the key
-policy must give the caller \code{kms:PutKeyPolicy} permission on the
-replica key. This reduces the risk that the KMS key becomes
-unmanageable. For more information, refer to the scenario in the
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam}{Default Key Policy}
-section of the \emph{Key Management Service Developer Guide} .
+\item The key policy must allow the calling principal to make a subsequent
+\code{\link[=kms_put_key_policy]{put_key_policy}} request on the KMS key. This
+reduces the risk that the KMS key becomes unmanageable. For more
+information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key}{Default key policy}
+in the \emph{Key Management Service Developer Guide}. (To omit this
+condition, set \code{BypassPolicyLockoutSafetyCheck} to true.)
 \item Each statement in the key policy must contain one or more
 principals. The principals in the key policy must exist and be
-visible to KMS. When you create a new Amazon Web Services principal
-(for example, an IAM user or role), you might need to enforce a
-delay before including the new principal in a key policy because the
-new principal might not be immediately visible to KMS. For more
-information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible}
-in the \emph{Identity and Access Management User Guide} .
+visible to KMS. When you create a new Amazon Web Services principal,
+you might need to enforce a delay before including the new principal
+in a key policy because the new principal might not be immediately
+visible to KMS. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible}
+in the \emph{Amazon Web Services Identity and Access Management User
+Guide}.
 }
 
 A key policy document can include only the following characters:
@@ -98,23 +98,24 @@ in the \emph{Key Management Service Developer Guide}. For help writing and
 formatting a JSON policy document, see the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html}{IAM JSON Policy Reference}
 in the \emph{Identity and Access Management User Guide} .}
 
-\item{BypassPolicyLockoutSafetyCheck}{A flag to indicate whether to bypass the key policy lockout safety
-check.
+\item{BypassPolicyLockoutSafetyCheck}{Skips ("bypasses") the key policy lockout safety check. The default
+value is false.
 
 Setting this value to true increases the risk that the KMS key becomes
 unmanageable. Do not set this value to true indiscriminately.
 
-For more information, refer to the scenario in the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam}{Default Key Policy}
-section in the \emph{Key Management Service Developer Guide}.
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key}{Default key policy}
+in the \emph{Key Management Service Developer Guide}.
 
 Use this parameter only when you intend to prevent the principal that is
 making the request from making a subsequent
-\code{\link[=kms_put_key_policy]{put_key_policy}} request on the KMS key.
-
-The default value is false.}
+\code{\link[=kms_put_key_policy]{put_key_policy}} request on the KMS key.}
 
 \item{Description}{A description of the KMS key. The default value is an empty string (no
 description).
+
+Do not include confidential or sensitive information in this field. This
+field may be displayed in plaintext in CloudTrail logs and other output.
 
 The description is not a shared property of multi-Region keys. You can
 specify the same description or a different description for each key in
@@ -125,8 +126,11 @@ property.}
 the KMS key when it is created. To tag an existing KMS key, use the
 \code{\link[=kms_tag_resource]{tag_resource}} operation.
 
+Do not include confidential or sensitive information in this field. This
+field may be displayed in plaintext in CloudTrail logs and other output.
+
 Tagging or untagging a KMS key can allow or deny permission to the KMS
-key. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/abac.html}{ABAC in KMS} in
+key. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/abac.html}{ABAC for KMS} in
 the \emph{Key Management Service Developer Guide}.
 
 To use this parameter, you must have

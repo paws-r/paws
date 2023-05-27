@@ -40,8 +40,6 @@ NULL
 #' 
 #'     -   [`create_web_login_token`][mwaa_create_web_login_token]
 #' 
-#'       
-#' 
 #' -   `ops.airflow.{region}.amazonaws.com` - This endpoint is used to push
 #'     environment metrics that track environment health.
 #' 

@@ -63,13 +63,13 @@ Services SDKs, you provide the access point ARN in place of the bucket
 name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
 in the \emph{Amazon S3 User Guide}.
 
-When using this action with Amazon S3 on Outposts, you must direct
+When you use this action with Amazon S3 on Outposts, you must direct
 requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
-When using this action with S3 on Outposts through the Amazon Web
-Services SDKs, you provide the Outposts bucket ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
+When you use this action with S3 on Outposts through the Amazon Web
+Services SDKs, you provide the Outposts access point ARN in place of the
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{CacheControl}{Specifies caching behavior along the request/reply chain.}
@@ -167,7 +167,7 @@ replaced with metadata provided in the request.}
 or replaced with tag-set provided in the request.}
 
 \item{ServerSideEncryption}{The server-side encryption algorithm used when storing this object in
-Amazon S3 (for example, AES256, aws:kms).}
+Amazon S3 (for example, AES256, \code{aws:kms}).}
 
 \item{StorageClass}{By default, Amazon S3 uses the STANDARD Storage Class to store newly
 created objects. The STANDARD storage class provides high durability and
@@ -178,7 +178,10 @@ in the \emph{Amazon S3 User Guide}.}
 
 \item{WebsiteRedirectLocation}{If the bucket is configured as a website, redirects requests for this
 object to another object in the same bucket or to an external URL.
-Amazon S3 stores the value of this header in the object metadata.}
+Amazon S3 stores the value of this header in the object metadata. This
+value is unique to each object and is not copied when using the
+\code{x-amz-metadata-directive} header. Instead, you may opt to provide this
+header in combination with the directive.}
 
 \item{SSECustomerAlgorithm}{Specifies the algorithm to use to when encrypting the object (for
 example, AES256).}

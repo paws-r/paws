@@ -13,12 +13,12 @@ voiceid_list_speaker_enrollment_jobs(
 )
 }
 \arguments{
-\item{DomainId}{[required] The identifier of the domain containing the speaker enrollment jobs.}
+\item{DomainId}{[required] The identifier of the domain that contains the speaker enrollment jobs.}
 
 \item{JobStatus}{Provides the status of your speaker enrollment Job.}
 
 \item{MaxResults}{The maximum number of results that are returned per call. You can use
-\code{NextToken} to obtain further pages of results. The default is 100; the
+\code{NextToken} to obtain more pages of results. The default is 100; the
 maximum allowed page size is also 100.}
 
 \item{NextToken}{If \code{NextToken} is returned, there are more results available. The value

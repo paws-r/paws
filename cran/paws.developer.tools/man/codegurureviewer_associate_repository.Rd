@@ -3,7 +3,7 @@
 \name{codegurureviewer_associate_repository}
 \alias{codegurureviewer_associate_repository}
 \title{Use to associate an Amazon Web Services CodeCommit repository or a
-repostory managed by Amazon Web Services CodeStar Connections with
+repository managed by Amazon Web Services CodeStar Connections with
 Amazon CodeGuru Reviewer}
 \usage{
 codegurureviewer_associate_repository(
@@ -37,11 +37,11 @@ values are case sensitive.
 owned by Amazon Web Services Key Management Service (KMS)
 (\code{AWS_OWNED_CMK}) or customer managed (\code{CUSTOMER_MANAGED_CMK}).
 \item The ID of the Amazon Web Services KMS key that is associated with
-this respository association.
+this repository association.
 }}
 }
 \description{
-Use to associate an Amazon Web Services CodeCommit repository or a repostory managed by Amazon Web Services CodeStar Connections with Amazon CodeGuru Reviewer. When you associate a repository, CodeGuru Reviewer reviews source code changes in the repository's pull requests and provides automatic recommendations. You can view recommendations using the CodeGuru Reviewer console. For more information, see \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/recommendations.html}{Recommendations in Amazon CodeGuru Reviewer} in the \emph{Amazon CodeGuru Reviewer User Guide.}
+Use to associate an Amazon Web Services CodeCommit repository or a repository managed by Amazon Web Services CodeStar Connections with Amazon CodeGuru Reviewer. When you associate a repository, CodeGuru Reviewer reviews source code changes in the repository's pull requests and provides automatic recommendations. You can view recommendations using the CodeGuru Reviewer console. For more information, see \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/recommendations.html}{Recommendations in Amazon CodeGuru Reviewer} in the \emph{Amazon CodeGuru Reviewer User Guide.}
 
 See \url{https://paws-r.github.io/docs/codegurureviewer/associate_repository.html} for full documentation.
 }

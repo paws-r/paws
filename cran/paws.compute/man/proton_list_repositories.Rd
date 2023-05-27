@@ -2,7 +2,7 @@
 % Please edit documentation in R/proton_operations.R
 \name{proton_list_repositories}
 \alias{proton_list_repositories}
-\title{List repositories with detail data}
+\title{List linked repositories with detail data}
 \usage{
 proton_list_repositories(maxResults = NULL, nextToken = NULL)
 }
@@ -13,7 +13,7 @@ proton_list_repositories(maxResults = NULL, nextToken = NULL)
 of repositories, after the list of repositories previously requested.}
 }
 \description{
-List repositories with detail data.
+List linked repositories with detail data.
 
 See \url{https://paws-r.github.io/docs/proton/list_repositories.html} for full documentation.
 }

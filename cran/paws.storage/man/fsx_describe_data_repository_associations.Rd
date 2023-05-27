@@ -2,9 +2,9 @@
 % Please edit documentation in R/fsx_operations.R
 \name{fsx_describe_data_repository_associations}
 \alias{fsx_describe_data_repository_associations}
-\title{Returns the description of specific Amazon FSx for Lustre data
-repository associations, if one or more AssociationIds values are
-provided in the request, or if filters are used in the request}
+\title{Returns the description of specific Amazon FSx for Lustre or Amazon File
+Cache data repository associations, if one or more AssociationIds values
+are provided in the request, or if filters are used in the request}
 \usage{
 fsx_describe_data_repository_associations(
   AssociationIds = NULL,
@@ -25,7 +25,7 @@ must be an integer greater than zero.}
 \item{NextToken}{}
 }
 \description{
-Returns the description of specific Amazon FSx for Lustre data repository associations, if one or more \code{AssociationIds} values are provided in the request, or if filters are used in the request. Data repository associations are supported only for file systems with the \code{Persistent_2} deployment type.
+Returns the description of specific Amazon FSx for Lustre or Amazon File Cache data repository associations, if one or more \code{AssociationIds} values are provided in the request, or if filters are used in the request. Data repository associations are supported on Amazon File Cache resources and all Amazon FSx for Lustre file systems excluding \code{Scratch_1} deployment types.
 
 See \url{https://paws-r.github.io/docs/fsx/describe_data_repository_associations.html} for full documentation.
 }

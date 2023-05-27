@@ -3,7 +3,7 @@
 \name{connect_search_available_phone_numbers}
 \alias{connect_search_available_phone_numbers}
 \title{Searches for available phone numbers that you can claim to your Amazon
-Connect instance}
+Connect instance or traffic distribution group}
 \usage{
 connect_search_available_phone_numbers(
   TargetArn,
@@ -15,8 +15,8 @@ connect_search_available_phone_numbers(
 )
 }
 \arguments{
-\item{TargetArn}{[required] The Amazon Resource Name (ARN) for Amazon Connect instances that phone
-numbers are claimed to.}
+\item{TargetArn}{[required] The Amazon Resource Name (ARN) for Amazon Connect instances or traffic
+distribution groups that phone numbers are claimed to.}
 
 \item{PhoneNumberCountryCode}{[required] The ISO country code.}
 
@@ -32,7 +32,7 @@ previous response in the next request to retrieve the next set of
 results.}
 }
 \description{
-Searches for available phone numbers that you can claim to your Amazon Connect instance.
+Searches for available phone numbers that you can claim to your Amazon Connect instance or traffic distribution group. If the provided \code{TargetArn} is a traffic distribution group, you can call this API in both Amazon Web Services Regions associated with the traffic distribution group.
 
 See \url{https://paws-r.github.io/docs/connect/search_available_phone_numbers.html} for full documentation.
 }

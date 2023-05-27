@@ -6,13 +6,13 @@
 by DevOps Guru}
 \usage{
 devopsguru_list_monitored_resources(
-  Filters,
+  Filters = NULL,
   MaxResults = NULL,
   NextToken = NULL
 )
 }
 \arguments{
-\item{Filters}{[required] Filters to determine which monitored resources you want to retrieve. You
+\item{Filters}{Filters to determine which monitored resources you want to retrieve. You
 can filter by resource type or resource permission status.}
 
 \item{MaxResults}{The maximum number of results to return with a single call. To retrieve

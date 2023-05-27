@@ -6,18 +6,18 @@
 multicast group}
 \usage{
 ec2_register_transit_gateway_multicast_group_members(
-  TransitGatewayMulticastDomainId = NULL,
+  TransitGatewayMulticastDomainId,
   GroupIpAddress = NULL,
-  NetworkInterfaceIds = NULL,
+  NetworkInterfaceIds,
   DryRun = NULL
 )
 }
 \arguments{
-\item{TransitGatewayMulticastDomainId}{The ID of the transit gateway multicast domain.}
+\item{TransitGatewayMulticastDomainId}{[required] The ID of the transit gateway multicast domain.}
 
 \item{GroupIpAddress}{The IP address assigned to the transit gateway multicast group.}
 
-\item{NetworkInterfaceIds}{The group members' network interface IDs to register with the transit
+\item{NetworkInterfaceIds}{[required] The group members' network interface IDs to register with the transit
 gateway multicast group.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without

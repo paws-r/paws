@@ -52,13 +52,13 @@ Services SDKs, you provide the access point ARN in place of the bucket
 name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
 in the \emph{Amazon S3 User Guide}.
 
-When using this action with Amazon S3 on Outposts, you must direct
+When you use this action with Amazon S3 on Outposts, you must direct
 requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
-When using this action with S3 on Outposts through the Amazon Web
-Services SDKs, you provide the Outposts bucket ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
+When you use this action with S3 on Outposts through the Amazon Web
+Services SDKs, you provide the Outposts access point ARN in place of the
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{CacheControl}{Specifies caching behavior along the request/reply chain.}
@@ -97,7 +97,7 @@ This action is not supported by Amazon S3 on Outposts.}
 \item{Metadata}{A map of metadata to store with the object in S3.}
 
 \item{ServerSideEncryption}{The server-side encryption algorithm used when storing this object in
-Amazon S3 (for example, AES256, aws:kms).}
+Amazon S3 (for example, AES256, \code{aws:kms}).}
 
 \item{StorageClass}{By default, Amazon S3 uses the STANDARD Storage Class to store newly
 created objects. The STANDARD storage class provides high durability and
@@ -123,10 +123,10 @@ appropriate for use with the algorithm specified in the
 1321. Amazon S3 uses this header for a message integrity check to ensure
 that the encryption key was transmitted without error.}
 
-\item{SSEKMSKeyId}{Specifies the ID of the symmetric customer managed key to use for object
-encryption. All GET and PUT requests for an object protected by Amazon
-Web Services KMS will fail if not made via SSL or using SigV4. For
-information about configuring using any of the officially supported
+\item{SSEKMSKeyId}{Specifies the ID of the symmetric encryption customer managed key to use
+for object encryption. All GET and PUT requests for an object protected
+by Amazon Web Services KMS will fail if not made via SSL or using SigV4.
+For information about configuring using any of the officially supported
 Amazon Web Services SDKs and Amazon Web Services CLI, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version}{Specifying the Signature Version in Request Authentication}
 in the \emph{Amazon S3 User Guide}.}
 

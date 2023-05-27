@@ -33,6 +33,7 @@ required when requesting Maven packages.
 \item The namespace of an npm package is its \code{scope}.
 \item Python and NuGet packages do not contain a corresponding component,
 packages of those formats do not have a namespace.
+\item The namespace of a generic package is its \code{namespace}.
 }}
 
 \item{package}{[required] The name of the requested package.}

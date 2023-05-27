@@ -21,7 +21,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ServiceId}{[required] The ID of the service.}
 
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{principal} - The ARN of the principal.
 \item \code{principal-type} - The principal type (\code{All} | \code{Service} |

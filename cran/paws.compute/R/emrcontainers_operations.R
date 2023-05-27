@@ -33,10 +33,43 @@ emrcontainers_cancel_job_run <- function(id, virtualClusterId) {
 }
 .emrcontainers$operations$cancel_job_run <- emrcontainers_cancel_job_run
 
+#' Creates a job template
+#'
+#' @description
+#' Creates a job template. Job template stores values of StartJobRun API request in a template and can be used to start a job run. Job template allows two use cases: avoid repeating recurring StartJobRun API request values, enforcing certain values in StartJobRun API request.
+#'
+#' See [https://paws-r.github.io/docs/emrcontainers/create_job_template.html](https://paws-r.github.io/docs/emrcontainers/create_job_template.html) for full documentation.
+#'
+#' @param name &#91;required&#93; The specified name of the job template.
+#' @param clientToken &#91;required&#93; The client token of the job template.
+#' @param jobTemplateData &#91;required&#93; The job template data which holds values of StartJobRun API request.
+#' @param tags The tags that are associated with the job template.
+#' @param kmsKeyArn The KMS key ARN used to encrypt the job template.
+#'
+#' @keywords internal
+#'
+#' @rdname emrcontainers_create_job_template
+emrcontainers_create_job_template <- function(name, clientToken, jobTemplateData, tags = NULL, kmsKeyArn = NULL) {
+  op <- new_operation(
+    name = "CreateJobTemplate",
+    http_method = "POST",
+    http_path = "/jobtemplates",
+    paginator = list()
+  )
+  input <- .emrcontainers$create_job_template_input(name = name, clientToken = clientToken, jobTemplateData = jobTemplateData, tags = tags, kmsKeyArn = kmsKeyArn)
+  output <- .emrcontainers$create_job_template_output()
+  config <- get_config()
+  svc <- .emrcontainers$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emrcontainers$operations$create_job_template <- emrcontainers_create_job_template
+
 #' Creates a managed endpoint
 #'
 #' @description
-#' Creates a managed endpoint. A managed endpoint is a gateway that connects EMR Studio to Amazon EMR on EKS so that EMR Studio can communicate with your virtual cluster.
+#' Creates a managed endpoint. A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon EMR on EKS so that Amazon EMR Studio can communicate with your virtual cluster.
 #'
 #' See [https://paws-r.github.io/docs/emrcontainers/create_managed_endpoint.html](https://paws-r.github.io/docs/emrcontainers/create_managed_endpoint.html) for full documentation.
 #'
@@ -46,7 +79,7 @@ emrcontainers_cancel_job_run <- function(id, virtualClusterId) {
 #' @param releaseLabel &#91;required&#93; The Amazon EMR release version.
 #' @param executionRoleArn &#91;required&#93; The ARN of the execution role.
 #' @param certificateArn The certificate ARN provided by users for the managed endpoint. This
-#' fiedd is under deprecation and will be removed in future releases.
+#' field is under deprecation and will be removed in future releases.
 #' @param configurationOverrides The configuration settings that will be used to override existing
 #' configurations.
 #' @param clientToken &#91;required&#93; The client idempotency token for this create call.
@@ -104,10 +137,39 @@ emrcontainers_create_virtual_cluster <- function(name, containerProvider, client
 }
 .emrcontainers$operations$create_virtual_cluster <- emrcontainers_create_virtual_cluster
 
+#' Deletes a job template
+#'
+#' @description
+#' Deletes a job template. Job template stores values of StartJobRun API request in a template and can be used to start a job run. Job template allows two use cases: avoid repeating recurring StartJobRun API request values, enforcing certain values in StartJobRun API request.
+#'
+#' See [https://paws-r.github.io/docs/emrcontainers/delete_job_template.html](https://paws-r.github.io/docs/emrcontainers/delete_job_template.html) for full documentation.
+#'
+#' @param id &#91;required&#93; The ID of the job template that will be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname emrcontainers_delete_job_template
+emrcontainers_delete_job_template <- function(id) {
+  op <- new_operation(
+    name = "DeleteJobTemplate",
+    http_method = "DELETE",
+    http_path = "/jobtemplates/{templateId}",
+    paginator = list()
+  )
+  input <- .emrcontainers$delete_job_template_input(id = id)
+  output <- .emrcontainers$delete_job_template_output()
+  config <- get_config()
+  svc <- .emrcontainers$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emrcontainers$operations$delete_job_template <- emrcontainers_delete_job_template
+
 #' Deletes a managed endpoint
 #'
 #' @description
-#' Deletes a managed endpoint. A managed endpoint is a gateway that connects EMR Studio to Amazon EMR on EKS so that EMR Studio can communicate with your virtual cluster.
+#' Deletes a managed endpoint. A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon EMR on EKS so that Amazon EMR Studio can communicate with your virtual cluster.
 #'
 #' See [https://paws-r.github.io/docs/emrcontainers/delete_managed_endpoint.html](https://paws-r.github.io/docs/emrcontainers/delete_managed_endpoint.html) for full documentation.
 #'
@@ -193,10 +255,39 @@ emrcontainers_describe_job_run <- function(id, virtualClusterId) {
 }
 .emrcontainers$operations$describe_job_run <- emrcontainers_describe_job_run
 
+#' Displays detailed information about a specified job template
+#'
+#' @description
+#' Displays detailed information about a specified job template. Job template stores values of StartJobRun API request in a template and can be used to start a job run. Job template allows two use cases: avoid repeating recurring StartJobRun API request values, enforcing certain values in StartJobRun API request.
+#'
+#' See [https://paws-r.github.io/docs/emrcontainers/describe_job_template.html](https://paws-r.github.io/docs/emrcontainers/describe_job_template.html) for full documentation.
+#'
+#' @param id &#91;required&#93; The ID of the job template that will be described.
+#'
+#' @keywords internal
+#'
+#' @rdname emrcontainers_describe_job_template
+emrcontainers_describe_job_template <- function(id) {
+  op <- new_operation(
+    name = "DescribeJobTemplate",
+    http_method = "GET",
+    http_path = "/jobtemplates/{templateId}",
+    paginator = list()
+  )
+  input <- .emrcontainers$describe_job_template_input(id = id)
+  output <- .emrcontainers$describe_job_template_output()
+  config <- get_config()
+  svc <- .emrcontainers$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emrcontainers$operations$describe_job_template <- emrcontainers_describe_job_template
+
 #' Displays detailed information about a managed endpoint
 #'
 #' @description
-#' Displays detailed information about a managed endpoint. A managed endpoint is a gateway that connects EMR Studio to Amazon EMR on EKS so that EMR Studio can communicate with your virtual cluster.
+#' Displays detailed information about a managed endpoint. A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon EMR on EKS so that Amazon EMR Studio can communicate with your virtual cluster.
 #'
 #' See [https://paws-r.github.io/docs/emrcontainers/describe_managed_endpoint.html](https://paws-r.github.io/docs/emrcontainers/describe_managed_endpoint.html) for full documentation.
 #'
@@ -252,6 +343,44 @@ emrcontainers_describe_virtual_cluster <- function(id) {
 }
 .emrcontainers$operations$describe_virtual_cluster <- emrcontainers_describe_virtual_cluster
 
+#' Generate a session token to connect to a managed endpoint
+#'
+#' @description
+#' Generate a session token to connect to a managed endpoint.
+#'
+#' See [https://paws-r.github.io/docs/emrcontainers/get_managed_endpoint_session_credentials.html](https://paws-r.github.io/docs/emrcontainers/get_managed_endpoint_session_credentials.html) for full documentation.
+#'
+#' @param endpointIdentifier &#91;required&#93; The ARN of the managed endpoint for which the request is submitted.
+#' @param virtualClusterIdentifier &#91;required&#93; The ARN of the Virtual Cluster which the Managed Endpoint belongs to.
+#' @param executionRoleArn &#91;required&#93; The IAM Execution Role ARN that will be used by the job run.
+#' @param credentialType &#91;required&#93; Type of the token requested. Currently supported and default value of
+#' this field is “TOKEN.”
+#' @param durationInSeconds Duration in seconds for which the session token is valid. The default
+#' duration is 15 minutes and the maximum is 12 hours.
+#' @param logContext String identifier used to separate sections of the execution logs
+#' uploaded to S3.
+#' @param clientToken The client idempotency token of the job run request.
+#'
+#' @keywords internal
+#'
+#' @rdname emrcontainers_get_managed_endpoint_session_credentials
+emrcontainers_get_managed_endpoint_session_credentials <- function(endpointIdentifier, virtualClusterIdentifier, executionRoleArn, credentialType, durationInSeconds = NULL, logContext = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "GetManagedEndpointSessionCredentials",
+    http_method = "POST",
+    http_path = "/virtualclusters/{virtualClusterId}/endpoints/{endpointId}/credentials",
+    paginator = list()
+  )
+  input <- .emrcontainers$get_managed_endpoint_session_credentials_input(endpointIdentifier = endpointIdentifier, virtualClusterIdentifier = virtualClusterIdentifier, executionRoleArn = executionRoleArn, credentialType = credentialType, durationInSeconds = durationInSeconds, logContext = logContext, clientToken = clientToken)
+  output <- .emrcontainers$get_managed_endpoint_session_credentials_output()
+  config <- get_config()
+  svc <- .emrcontainers$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emrcontainers$operations$get_managed_endpoint_session_credentials <- emrcontainers_get_managed_endpoint_session_credentials
+
 #' Lists job runs based on a set of parameters
 #'
 #' @description
@@ -287,10 +416,42 @@ emrcontainers_list_job_runs <- function(virtualClusterId, createdBefore = NULL, 
 }
 .emrcontainers$operations$list_job_runs <- emrcontainers_list_job_runs
 
+#' Lists job templates based on a set of parameters
+#'
+#' @description
+#' Lists job templates based on a set of parameters. Job template stores values of StartJobRun API request in a template and can be used to start a job run. Job template allows two use cases: avoid repeating recurring StartJobRun API request values, enforcing certain values in StartJobRun API request.
+#'
+#' See [https://paws-r.github.io/docs/emrcontainers/list_job_templates.html](https://paws-r.github.io/docs/emrcontainers/list_job_templates.html) for full documentation.
+#'
+#' @param createdAfter The date and time after which the job templates were created.
+#' @param createdBefore The date and time before which the job templates were created.
+#' @param maxResults The maximum number of job templates that can be listed.
+#' @param nextToken The token for the next set of job templates to return.
+#'
+#' @keywords internal
+#'
+#' @rdname emrcontainers_list_job_templates
+emrcontainers_list_job_templates <- function(createdAfter = NULL, createdBefore = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListJobTemplates",
+    http_method = "GET",
+    http_path = "/jobtemplates",
+    paginator = list()
+  )
+  input <- .emrcontainers$list_job_templates_input(createdAfter = createdAfter, createdBefore = createdBefore, maxResults = maxResults, nextToken = nextToken)
+  output <- .emrcontainers$list_job_templates_output()
+  config <- get_config()
+  svc <- .emrcontainers$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emrcontainers$operations$list_job_templates <- emrcontainers_list_job_templates
+
 #' Lists managed endpoints based on a set of parameters
 #'
 #' @description
-#' Lists managed endpoints based on a set of parameters. A managed endpoint is a gateway that connects EMR Studio to Amazon EMR on EKS so that EMR Studio can communicate with your virtual cluster.
+#' Lists managed endpoints based on a set of parameters. A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon EMR on EKS so that Amazon EMR Studio can communicate with your virtual cluster.
 #'
 #' See [https://paws-r.github.io/docs/emrcontainers/list_managed_endpoints.html](https://paws-r.github.io/docs/emrcontainers/list_managed_endpoints.html) for full documentation.
 #'
@@ -359,8 +520,8 @@ emrcontainers_list_tags_for_resource <- function(resourceArn) {
 #' See [https://paws-r.github.io/docs/emrcontainers/list_virtual_clusters.html](https://paws-r.github.io/docs/emrcontainers/list_virtual_clusters.html) for full documentation.
 #'
 #' @param containerProviderId The container provider ID of the virtual cluster.
-#' @param containerProviderType The container provider type of the virtual cluster. EKS is the only
-#' supported type as of now.
+#' @param containerProviderType The container provider type of the virtual cluster. Amazon EKS is the
+#' only supported type as of now.
 #' @param createdAfter The date and time after which the virtual clusters are created.
 #' @param createdBefore The date and time before which the virtual clusters are created.
 #' @param states The states of the requested virtual clusters.
@@ -397,23 +558,26 @@ emrcontainers_list_virtual_clusters <- function(containerProviderId = NULL, cont
 #' @param name The name of the job run.
 #' @param virtualClusterId &#91;required&#93; The virtual cluster ID for which the job run request is submitted.
 #' @param clientToken &#91;required&#93; The client idempotency token of the job run request.
-#' @param executionRoleArn &#91;required&#93; The execution role ARN for the job run.
-#' @param releaseLabel &#91;required&#93; The Amazon EMR release version to use for the job run.
-#' @param jobDriver &#91;required&#93; The job driver for the job run.
+#' @param executionRoleArn The execution role ARN for the job run.
+#' @param releaseLabel The Amazon EMR release version to use for the job run.
+#' @param jobDriver The job driver for the job run.
 #' @param configurationOverrides The configuration overrides for the job run.
 #' @param tags The tags assigned to job runs.
+#' @param jobTemplateId The job template ID to be used to start the job run.
+#' @param jobTemplateParameters The values of job template parameters to start a job run.
+#' @param retryPolicyConfiguration The retry policy configuration for the job run.
 #'
 #' @keywords internal
 #'
 #' @rdname emrcontainers_start_job_run
-emrcontainers_start_job_run <- function(name = NULL, virtualClusterId, clientToken, executionRoleArn, releaseLabel, jobDriver, configurationOverrides = NULL, tags = NULL) {
+emrcontainers_start_job_run <- function(name = NULL, virtualClusterId, clientToken, executionRoleArn = NULL, releaseLabel = NULL, jobDriver = NULL, configurationOverrides = NULL, tags = NULL, jobTemplateId = NULL, jobTemplateParameters = NULL, retryPolicyConfiguration = NULL) {
   op <- new_operation(
     name = "StartJobRun",
     http_method = "POST",
     http_path = "/virtualclusters/{virtualClusterId}/jobruns",
     paginator = list()
   )
-  input <- .emrcontainers$start_job_run_input(name = name, virtualClusterId = virtualClusterId, clientToken = clientToken, executionRoleArn = executionRoleArn, releaseLabel = releaseLabel, jobDriver = jobDriver, configurationOverrides = configurationOverrides, tags = tags)
+  input <- .emrcontainers$start_job_run_input(name = name, virtualClusterId = virtualClusterId, clientToken = clientToken, executionRoleArn = executionRoleArn, releaseLabel = releaseLabel, jobDriver = jobDriver, configurationOverrides = configurationOverrides, tags = tags, jobTemplateId = jobTemplateId, jobTemplateParameters = jobTemplateParameters, retryPolicyConfiguration = retryPolicyConfiguration)
   output <- .emrcontainers$start_job_run_output()
   config <- get_config()
   svc <- .emrcontainers$service(config)
@@ -426,7 +590,7 @@ emrcontainers_start_job_run <- function(name = NULL, virtualClusterId, clientTok
 #' Assigns tags to resources
 #'
 #' @description
-#' Assigns tags to resources. A tag is a label that you assign to an AWS resource. Each tag consists of a key and an optional value, both of which you define. Tags enable you to categorize your AWS resources by attributes such as purpose, owner, or environment. When you have many resources of the same type, you can quickly identify a specific resource based on the tags you've assigned to it. For example, you can define a set of tags for your Amazon EMR on EKS clusters to help you track each cluster's owner and stack level. We recommend that you devise a consistent set of tag keys for each resource type. You can then search and filter the resources based on the tags that you add.
+#' Assigns tags to resources. A tag is a label that you assign to an Amazon Web Services resource. Each tag consists of a key and an optional value, both of which you define. Tags enable you to categorize your Amazon Web Services resources by attributes such as purpose, owner, or environment. When you have many resources of the same type, you can quickly identify a specific resource based on the tags you've assigned to it. For example, you can define a set of tags for your Amazon EMR on EKS clusters to help you track each cluster's owner and stack level. We recommend that you devise a consistent set of tag keys for each resource type. You can then search and filter the resources based on the tags that you add.
 #'
 #' See [https://paws-r.github.io/docs/emrcontainers/tag_resource.html](https://paws-r.github.io/docs/emrcontainers/tag_resource.html) for full documentation.
 #'

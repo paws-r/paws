@@ -25,8 +25,8 @@ associated shadow trails in other regions is returned.
 
 If one or more trail names are specified, information is returned only
 if the names match the names of trails belonging only to the current
-region. To return information about a trail in another region, you must
-specify its trail ARN.}
+region and current account. To return information about a trail in
+another region, you must specify its trail ARN.}
 
 \item{includeShadowTrails}{Specifies whether to include shadow trails in the response. A shadow
 trail is the replication in a region of a trail that was created in a

@@ -14,13 +14,16 @@ emrserverless_create_application(
   tags = NULL,
   autoStartConfiguration = NULL,
   autoStopConfiguration = NULL,
-  networkConfiguration = NULL
+  networkConfiguration = NULL,
+  architecture = NULL,
+  imageConfiguration = NULL,
+  workerTypeSpecifications = NULL
 )
 }
 \arguments{
 \item{name}{The name of the application.}
 
-\item{releaseLabel}{[required] The EMR release version associated with the application.}
+\item{releaseLabel}{[required] The EMR release associated with the application.}
 
 \item{type}{[required] The type of application you want to start, such as Spark or Hive.}
 
@@ -43,6 +46,20 @@ submission.}
 certain amount of time being idle.}
 
 \item{networkConfiguration}{The network configuration for customer VPC connectivity.}
+
+\item{architecture}{The CPU architecture of an application.}
+
+\item{imageConfiguration}{The image configuration for all worker types. You can either set this
+parameter or \code{imageConfiguration} for each worker type in
+\code{workerTypeSpecifications}.}
+
+\item{workerTypeSpecifications}{The key-value pairs that specify worker type to
+\code{WorkerTypeSpecificationInput}. This parameter must contain all valid
+worker types for a Spark or Hive application. Valid worker types include
+\code{Driver} and \code{Executor} for Spark applications and \code{HiveDriver} and
+\code{TezTask} for Hive applications. You can either set image details in
+this parameter for each worker type, or in \code{imageConfiguration} for all
+worker types.}
 }
 \description{
 Creates an application.

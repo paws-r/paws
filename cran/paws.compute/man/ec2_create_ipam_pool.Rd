@@ -19,7 +19,8 @@ ec2_create_ipam_pool(
   AllocationResourceTags = NULL,
   TagSpecifications = NULL,
   ClientToken = NULL,
-  AwsService = NULL
+  AwsService = NULL,
+  PublicIpSource = NULL
 )
 }
 \arguments{
@@ -98,6 +99,15 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \item{AwsService}{Limits which service in Amazon Web Services that the pool can be used
 in. "ec2", for example, allows users to use space for Elastic IP
 addresses and VPCs.}
+
+\item{PublicIpSource}{The IP address source for pools in the public scope. Only used for
+provisioning IP address CIDRs to pools in the public scope. Default is
+\code{byoip}. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/ipam/intro-create-ipv6-pools.html}{Create IPv6 pools}
+in the \emph{Amazon VPC IPAM User Guide}. By default, you can add only one
+Amazon-provided IPv6 CIDR block to a top-level IPv6 pool if
+PublicIpSource is \code{amazon}. For information on increasing the default
+limit, see \href{https://docs.aws.amazon.com/vpc/latest/ipam/quotas-ipam.html}{Quotas for your IPAM} in
+the \emph{Amazon VPC IPAM User Guide}.}
 }
 \description{
 Create an IP address pool for Amazon VPC IP Address Manager (IPAM). In IPAM, a pool is a collection of contiguous IP addresses CIDRs. Pools enable you to organize your IP addresses according to your routing and security needs. For example, if you have separate routing and security needs for development and production applications, you can create a pool for each.

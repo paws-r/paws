@@ -7108,7 +7108,10 @@ pinpoint_get_campaign <- function(ApplicationId, CampaignId) {
 #'         TimezonesCompletedCount = 123,
 #'         TimezonesTotalCount = 123,
 #'         TotalEndpointCount = 123,
-#'         TreatmentId = "string"
+#'         TreatmentId = "string",
+#'         ExecutionMetrics = list(
+#'           "string"
+#'         )
 #'       )
 #'     ),
 #'     NextToken = "string"
@@ -10601,9 +10604,9 @@ pinpoint_get_journey_date_range_kpi <- function(ApplicationId, EndTime = NULL, J
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param JourneyActivityId &#91;required&#93; The unique identifier for the journey activity.
 #' @param JourneyId &#91;required&#93; The unique identifier for the journey.
-#' @param NextToken The string that specifies which page of results to return in a paginated
-#' response. This parameter is not supported for application, campaign, and
-#' journey metrics.
+#' @param NextToken The `` string that specifies which page of results to return in a
+#' paginated response. This parameter is not supported for application,
+#' campaign, and journey metrics.
 #' @param PageSize The maximum number of items to include in each page of a paginated
 #' response. This parameter is not supported for application, campaign, and
 #' journey metrics.
@@ -10672,9 +10675,9 @@ pinpoint_get_journey_execution_activity_metrics <- function(ApplicationId, Journ
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param JourneyId &#91;required&#93; The unique identifier for the journey.
-#' @param NextToken The string that specifies which page of results to return in a paginated
-#' response. This parameter is not supported for application, campaign, and
-#' journey metrics.
+#' @param NextToken The `` string that specifies which page of results to return in a
+#' paginated response. This parameter is not supported for application,
+#' campaign, and journey metrics.
 #' @param PageSize The maximum number of items to include in each page of a paginated
 #' response. This parameter is not supported for application, campaign, and
 #' journey metrics.
@@ -10725,6 +10728,251 @@ pinpoint_get_journey_execution_metrics <- function(ApplicationId, JourneyId, Nex
   return(response)
 }
 .pinpoint$operations$get_journey_execution_metrics <- pinpoint_get_journey_execution_metrics
+
+#' Retrieves (queries) pre-aggregated data for a standard run execution
+#' metric that applies to a journey activity
+#'
+#' @description
+#' Retrieves (queries) pre-aggregated data for a standard run execution
+#' metric that applies to a journey activity.
+#'
+#' @usage
+#' pinpoint_get_journey_run_execution_activity_metrics(ApplicationId,
+#'   JourneyActivityId, JourneyId, NextToken, PageSize, RunId)
+#'
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param JourneyActivityId &#91;required&#93; The unique identifier for the journey activity.
+#' @param JourneyId &#91;required&#93; The unique identifier for the journey.
+#' @param NextToken The `` string that specifies which page of results to return in a
+#' paginated response. This parameter is not supported for application,
+#' campaign, and journey metrics.
+#' @param PageSize The maximum number of items to include in each page of a paginated
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
+#' @param RunId &#91;required&#93; The unique identifier for the journey run.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JourneyRunExecutionActivityMetricsResponse = list(
+#'     ActivityType = "string",
+#'     ApplicationId = "string",
+#'     JourneyActivityId = "string",
+#'     JourneyId = "string",
+#'     LastEvaluatedTime = "string",
+#'     Metrics = list(
+#'       "string"
+#'     ),
+#'     RunId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_journey_run_execution_activity_metrics(
+#'   ApplicationId = "string",
+#'   JourneyActivityId = "string",
+#'   JourneyId = "string",
+#'   NextToken = "string",
+#'   PageSize = "string",
+#'   RunId = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example gets activity execution metrics for a single run
+#' # of a journey.
+#' svc$get_journey_run_execution_activity_metrics(
+#'   ApplicationId = "11111111112222222222333333333344",
+#'   JourneyId = "aaaaaaaaaabbbbbbbbbbccccccccccdd",
+#'   RunId = "99999999998888888888777777777766",
+#'   JourneyActivityId = "AAAAAAAAAA"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_get_journey_run_execution_activity_metrics
+#'
+#' @aliases pinpoint_get_journey_run_execution_activity_metrics
+pinpoint_get_journey_run_execution_activity_metrics <- function(ApplicationId, JourneyActivityId, JourneyId, NextToken = NULL, PageSize = NULL, RunId) {
+  op <- new_operation(
+    name = "GetJourneyRunExecutionActivityMetrics",
+    http_method = "GET",
+    http_path = "/v1/apps/{application-id}/journeys/{journey-id}/runs/{run-id}/activities/{journey-activity-id}/execution-metrics",
+    paginator = list()
+  )
+  input <- .pinpoint$get_journey_run_execution_activity_metrics_input(ApplicationId = ApplicationId, JourneyActivityId = JourneyActivityId, JourneyId = JourneyId, NextToken = NextToken, PageSize = PageSize, RunId = RunId)
+  output <- .pinpoint$get_journey_run_execution_activity_metrics_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$get_journey_run_execution_activity_metrics <- pinpoint_get_journey_run_execution_activity_metrics
+
+#' Retrieves (queries) pre-aggregated data for a standard run execution
+#' metric that applies to a journey
+#'
+#' @description
+#' Retrieves (queries) pre-aggregated data for a standard run execution
+#' metric that applies to a journey.
+#'
+#' @usage
+#' pinpoint_get_journey_run_execution_metrics(ApplicationId, JourneyId,
+#'   NextToken, PageSize, RunId)
+#'
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param JourneyId &#91;required&#93; The unique identifier for the journey.
+#' @param NextToken The `` string that specifies which page of results to return in a
+#' paginated response. This parameter is not supported for application,
+#' campaign, and journey metrics.
+#' @param PageSize The maximum number of items to include in each page of a paginated
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
+#' @param RunId &#91;required&#93; The unique identifier for the journey run.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JourneyRunExecutionMetricsResponse = list(
+#'     ApplicationId = "string",
+#'     JourneyId = "string",
+#'     LastEvaluatedTime = "string",
+#'     Metrics = list(
+#'       "string"
+#'     ),
+#'     RunId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_journey_run_execution_metrics(
+#'   ApplicationId = "string",
+#'   JourneyId = "string",
+#'   NextToken = "string",
+#'   PageSize = "string",
+#'   RunId = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example gets execution metrics for a single run of a
+#' # journey.
+#' svc$get_journey_run_execution_metrics(
+#'   ApplicationId = "11111111112222222222333333333344",
+#'   JourneyId = "aaaaaaaaaabbbbbbbbbbccccccccccdd",
+#'   RunId = "99999999998888888888777777777766"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_get_journey_run_execution_metrics
+#'
+#' @aliases pinpoint_get_journey_run_execution_metrics
+pinpoint_get_journey_run_execution_metrics <- function(ApplicationId, JourneyId, NextToken = NULL, PageSize = NULL, RunId) {
+  op <- new_operation(
+    name = "GetJourneyRunExecutionMetrics",
+    http_method = "GET",
+    http_path = "/v1/apps/{application-id}/journeys/{journey-id}/runs/{run-id}/execution-metrics",
+    paginator = list()
+  )
+  input <- .pinpoint$get_journey_run_execution_metrics_input(ApplicationId = ApplicationId, JourneyId = JourneyId, NextToken = NextToken, PageSize = PageSize, RunId = RunId)
+  output <- .pinpoint$get_journey_run_execution_metrics_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$get_journey_run_execution_metrics <- pinpoint_get_journey_run_execution_metrics
+
+#' Provides information about the runs of a journey
+#'
+#' @description
+#' Provides information about the runs of a journey.
+#'
+#' @usage
+#' pinpoint_get_journey_runs(ApplicationId, JourneyId, PageSize, Token)
+#'
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param JourneyId &#91;required&#93; The unique identifier for the journey.
+#' @param PageSize The maximum number of items to include in each page of a paginated
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
+#' @param Token The NextToken string that specifies which page of results to return in a
+#' paginated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JourneyRunsResponse = list(
+#'     Item = list(
+#'       list(
+#'         CreationTime = "string",
+#'         LastUpdateTime = "string",
+#'         RunId = "string",
+#'         Status = "SCHEDULED"|"RUNNING"|"COMPLETED"|"CANCELLED"
+#'       )
+#'     ),
+#'     NextToken = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_journey_runs(
+#'   ApplicationId = "string",
+#'   JourneyId = "string",
+#'   PageSize = "string",
+#'   Token = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example gets the runs of a journey.
+#' svc$get_journey_runs(
+#'   ApplicationId = "11111111112222222222333333333344",
+#'   JourneyId = "aaaaaaaaaabbbbbbbbbbccccccccccdd"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_get_journey_runs
+#'
+#' @aliases pinpoint_get_journey_runs
+pinpoint_get_journey_runs <- function(ApplicationId, JourneyId, PageSize = NULL, Token = NULL) {
+  op <- new_operation(
+    name = "GetJourneyRuns",
+    http_method = "GET",
+    http_path = "/v1/apps/{application-id}/journeys/{journey-id}/runs",
+    paginator = list()
+  )
+  input <- .pinpoint$get_journey_runs_input(ApplicationId = ApplicationId, JourneyId = JourneyId, PageSize = PageSize, Token = Token)
+  output <- .pinpoint$get_journey_runs_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$get_journey_runs <- pinpoint_get_journey_runs
 
 #' Retrieves the content and settings of a message template for messages
 #' that are sent through a push notification channel

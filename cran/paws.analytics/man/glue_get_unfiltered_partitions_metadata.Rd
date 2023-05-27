@@ -2,7 +2,8 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_get_unfiltered_partitions_metadata}
 \alias{glue_get_unfiltered_partitions_metadata}
-\title{Get unfiltered partitions metadata}
+\title{Retrieves partition metadata from the Data Catalog that contains
+unfiltered metadata}
 \usage{
 glue_get_unfiltered_partitions_metadata(
   CatalogId,
@@ -17,26 +18,100 @@ glue_get_unfiltered_partitions_metadata(
 )
 }
 \arguments{
-\item{CatalogId}{[required]}
+\item{CatalogId}{[required] The ID of the Data Catalog where the partitions in question reside. If
+none is provided, the AWS account ID is used by default.}
 
-\item{DatabaseName}{[required]}
+\item{DatabaseName}{[required] The name of the catalog database where the partitions reside.}
 
-\item{TableName}{[required]}
+\item{TableName}{[required] The name of the table that contains the partition.}
 
-\item{Expression}{}
+\item{Expression}{An expression that filters the partitions to be returned.
 
-\item{AuditContext}{}
+The expression uses SQL syntax similar to the SQL \code{WHERE} filter clause.
+The SQL statement parser
+\href{https://jsqlparser.sourceforge.net/home.php}{JSQLParser} parses the
+expression.
 
-\item{SupportedPermissionTypes}{[required]}
+\emph{Operators}: The following are the operators that you can use in the
+\code{Expression} API call:
 
-\item{NextToken}{}
+\strong{=}
 
-\item{Segment}{}
+Checks whether the values of the two operands are equal; if yes, then
+the condition becomes true.
 
-\item{MaxResults}{}
+Example: Assume 'variable a' holds 10 and 'variable b' holds 20.
+
+(a = b) is not true.
+
+\strong{\< \>}
+
+Checks whether the values of two operands are equal; if the values are
+not equal, then the condition becomes true.
+
+Example: (a \< \> b) is true.
+
+\strong{\>}
+
+Checks whether the value of the left operand is greater than the value
+of the right operand; if yes, then the condition becomes true.
+
+Example: (a \> b) is not true.
+
+\strong{\<}
+
+Checks whether the value of the left operand is less than the value of
+the right operand; if yes, then the condition becomes true.
+
+Example: (a \< b) is true.
+
+\strong{\>=}
+
+Checks whether the value of the left operand is greater than or equal to
+the value of the right operand; if yes, then the condition becomes true.
+
+Example: (a \>= b) is not true.
+
+\strong{\<=}
+
+Checks whether the value of the left operand is less than or equal to
+the value of the right operand; if yes, then the condition becomes true.
+
+Example: (a \<= b) is true.
+
+\strong{AND, OR, IN, BETWEEN, LIKE, NOT, IS NULL}
+
+Logical operators.
+
+\emph{Supported Partition Key Types}: The following are the supported
+partition keys.
+\itemize{
+\item \code{string}
+\item \code{date}
+\item \code{timestamp}
+\item \code{int}
+\item \code{bigint}
+\item \code{long}
+\item \code{tinyint}
+\item \code{smallint}
+\item \code{decimal}
+}
+
+If an type is encountered that is not valid, an exception is thrown.}
+
+\item{AuditContext}{A structure containing Lake Formation audit context information.}
+
+\item{SupportedPermissionTypes}{[required] A list of supported permission types.}
+
+\item{NextToken}{A continuation token, if this is not the first call to retrieve these
+partitions.}
+
+\item{Segment}{The segment of the table's partitions to scan in this request.}
+
+\item{MaxResults}{The maximum number of partitions to return in a single response.}
 }
 \description{
-Get unfiltered partitions metadata
+Retrieves partition metadata from the Data Catalog that contains unfiltered metadata.
 
 See \url{https://paws-r.github.io/docs/glue/get_unfiltered_partitions_metadata.html} for full documentation.
 }

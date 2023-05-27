@@ -7,7 +7,7 @@
 proton_delete_repository(name, provider)
 }
 \arguments{
-\item{name}{[required] The name of the repository.}
+\item{name}{[required] The repository name.}
 
 \item{provider}{[required] The repository provider.}
 }

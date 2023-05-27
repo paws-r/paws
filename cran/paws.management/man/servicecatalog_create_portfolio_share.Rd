@@ -10,30 +10,39 @@ servicecatalog_create_portfolio_share(
   PortfolioId,
   AccountId = NULL,
   OrganizationNode = NULL,
-  ShareTagOptions = NULL
+  ShareTagOptions = NULL,
+  SharePrincipals = NULL
 )
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
 
 \item{PortfolioId}{[required] The portfolio identifier.}
 
-\item{AccountId}{The AWS account ID. For example, \code{123456789012}.}
+\item{AccountId}{The Amazon Web Services account ID. For example, \code{123456789012}.}
 
-\item{OrganizationNode}{The organization node to whom you are going to share. If
-\code{OrganizationNode} is passed in, \code{PortfolioShare} will be created for
-the node an ListOrganizationPortfolioAccessd its children (when
-applies), and a \code{PortfolioShareToken} will be returned in the output in
-order for the administrator to monitor the status of the
-\code{PortfolioShare} creation process.}
+\item{OrganizationNode}{The organization node to whom you are going to share. When you pass
+\code{OrganizationNode}, it creates \code{PortfolioShare} for all of the Amazon
+Web Services accounts that are associated to the \code{OrganizationNode}. The
+output returns a \code{PortfolioShareToken}, which enables the administrator
+to monitor the status of the \code{PortfolioShare} creation process.}
 
 \item{ShareTagOptions}{Enables or disables \code{TagOptions } sharing when creating the portfolio
 share. If this flag is not provided, TagOptions sharing is disabled.}
+
+\item{SharePrincipals}{Enables or disables \code{Principal} sharing when creating the portfolio
+share. If this flag is not provided, principal sharing is disabled.
+
+When you enable Principal Name Sharing for a portfolio share, the share
+recipient account end users with a principal that matches any of the
+associated IAM patterns can provision products from the portfolio. Once
+shared, the share recipient can view associations of \code{PrincipalType}:
+\code{IAM_PATTERN} on their portfolio. You can create the principals in the
+recipient account before or after creating the share.}
 }
 \description{
 Shares the specified portfolio with the specified account or organization node. Shares to an organization node can only be created by the management account of an organization or by a delegated administrator. You can share portfolios to an organization, an organizational unit, or a specific account.

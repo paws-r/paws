@@ -29,7 +29,8 @@ Operations section.
 }
 \description{
 Amazon Connect Voice ID provides real-time caller authentication and
-fraud screening. This guide describes the APIs used for this service.
+fraud risk detection, which make voice interactions in contact centers
+more secure and efficient.
 }
 \section{Service syntax}{
 
@@ -58,34 +59,42 @@ fraud screening. This guide describes the APIs used for this service.
 \section{Operations}{
 
 \tabular{ll}{
+\link[paws.machine.learning:voiceid_associate_fraudster]{associate_fraudster} \tab Associates the fraudsters with the watchlist specified in the same domain\cr
 \link[paws.machine.learning:voiceid_create_domain]{create_domain} \tab Creates a domain that contains all Amazon Connect Voice ID data, such as speakers, fraudsters, customer audio, and voiceprints\cr
+\link[paws.machine.learning:voiceid_create_watchlist]{create_watchlist} \tab Creates a watchlist that fraudsters can be a part of\cr
 \link[paws.machine.learning:voiceid_delete_domain]{delete_domain} \tab Deletes the specified domain from Voice ID\cr
 \link[paws.machine.learning:voiceid_delete_fraudster]{delete_fraudster} \tab Deletes the specified fraudster from Voice ID\cr
 \link[paws.machine.learning:voiceid_delete_speaker]{delete_speaker} \tab Deletes the specified speaker from Voice ID\cr
+\link[paws.machine.learning:voiceid_delete_watchlist]{delete_watchlist} \tab Deletes the specified watchlist from Voice ID\cr
 \link[paws.machine.learning:voiceid_describe_domain]{describe_domain} \tab Describes the specified domain\cr
 \link[paws.machine.learning:voiceid_describe_fraudster]{describe_fraudster} \tab Describes the specified fraudster\cr
 \link[paws.machine.learning:voiceid_describe_fraudster_registration_job]{describe_fraudster_registration_job} \tab Describes the specified fraudster registration job\cr
 \link[paws.machine.learning:voiceid_describe_speaker]{describe_speaker} \tab Describes the specified speaker\cr
 \link[paws.machine.learning:voiceid_describe_speaker_enrollment_job]{describe_speaker_enrollment_job} \tab Describes the specified speaker enrollment job\cr
+\link[paws.machine.learning:voiceid_describe_watchlist]{describe_watchlist} \tab Describes the specified watchlist\cr
+\link[paws.machine.learning:voiceid_disassociate_fraudster]{disassociate_fraudster} \tab Disassociates the fraudsters from the watchlist specified\cr
 \link[paws.machine.learning:voiceid_evaluate_session]{evaluate_session} \tab Evaluates a specified session based on audio data accumulated during a streaming Amazon Connect Voice ID call\cr
 \link[paws.machine.learning:voiceid_list_domains]{list_domains} \tab Lists all the domains in the Amazon Web Services account\cr
 \link[paws.machine.learning:voiceid_list_fraudster_registration_jobs]{list_fraudster_registration_jobs} \tab Lists all the fraudster registration jobs in the domain with the given JobStatus\cr
+\link[paws.machine.learning:voiceid_list_fraudsters]{list_fraudsters} \tab Lists all fraudsters in a specified watchlist or domain\cr
 \link[paws.machine.learning:voiceid_list_speaker_enrollment_jobs]{list_speaker_enrollment_jobs} \tab Lists all the speaker enrollment jobs in the domain with the specified JobStatus\cr
 \link[paws.machine.learning:voiceid_list_speakers]{list_speakers} \tab Lists all speakers in a specified domain\cr
 \link[paws.machine.learning:voiceid_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags associated with a specified Voice ID resource\cr
+\link[paws.machine.learning:voiceid_list_watchlists]{list_watchlists} \tab Lists all watchlists in a specified domain\cr
 \link[paws.machine.learning:voiceid_opt_out_speaker]{opt_out_speaker} \tab Opts out a speaker from Voice ID\cr
 \link[paws.machine.learning:voiceid_start_fraudster_registration_job]{start_fraudster_registration_job} \tab Starts a new batch fraudster registration job using provided details\cr
 \link[paws.machine.learning:voiceid_start_speaker_enrollment_job]{start_speaker_enrollment_job} \tab Starts a new batch speaker enrollment job using specified details\cr
 \link[paws.machine.learning:voiceid_tag_resource]{tag_resource} \tab Tags a Voice ID resource with the provided list of tags\cr
 \link[paws.machine.learning:voiceid_untag_resource]{untag_resource} \tab Removes specified tags from a specified Amazon Connect Voice ID resource\cr
-\link[paws.machine.learning:voiceid_update_domain]{update_domain} \tab Updates the specified domain
+\link[paws.machine.learning:voiceid_update_domain]{update_domain} \tab Updates the specified domain\cr
+\link[paws.machine.learning:voiceid_update_watchlist]{update_watchlist} \tab Updates the specified watchlist
 }
 }
 
 \examples{
 \dontrun{
 svc <- voiceid()
-svc$create_domain(
+svc$associate_fraudster(
   Foo = 123
 )
 }

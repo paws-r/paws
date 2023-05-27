@@ -113,7 +113,7 @@ they complete at most one time. If you repeat an operation, it succeeds.
 \link[paws.networking:elbv2_register_targets]{register_targets} \tab Registers the specified targets with the specified target group\cr
 \link[paws.networking:elbv2_remove_listener_certificates]{remove_listener_certificates} \tab Removes the specified certificate from the certificate list for the specified HTTPS or TLS listener\cr
 \link[paws.networking:elbv2_remove_tags]{remove_tags} \tab Removes the specified tags from the specified Elastic Load Balancing resources\cr
-\link[paws.networking:elbv2_set_ip_address_type]{set_ip_address_type} \tab Sets the type of IP addresses used by the subnets of the specified Application Load Balancer or Network Load Balancer\cr
+\link[paws.networking:elbv2_set_ip_address_type]{set_ip_address_type} \tab Sets the type of IP addresses used by the subnets of the specified load balancer\cr
 \link[paws.networking:elbv2_set_rule_priorities]{set_rule_priorities} \tab Sets the priorities of the specified rules\cr
 \link[paws.networking:elbv2_set_security_groups]{set_security_groups} \tab Associates the specified security groups with the specified Application Load Balancer\cr
 \link[paws.networking:elbv2_set_subnets]{set_subnets} \tab Enables the Availability Zones for the specified public subnets for the specified Application Load Balancer or Network Load Balancer

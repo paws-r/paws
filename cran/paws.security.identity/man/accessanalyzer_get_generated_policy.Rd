@@ -5,12 +5,20 @@
 \title{Retrieves the policy that was generated using StartPolicyGeneration}
 \usage{
 accessanalyzer_get_generated_policy(
+  jobId,
   includeResourcePlaceholders = NULL,
-  includeServiceLevelTemplate = NULL,
-  jobId
+  includeServiceLevelTemplate = NULL
 )
 }
 \arguments{
+\item{jobId}{[required] The \code{JobId} that is returned by the
+\code{\link[=accessanalyzer_start_policy_generation]{start_policy_generation}}
+operation. The \code{JobId} can be used with
+\code{\link[=accessanalyzer_get_generated_policy]{get_generated_policy}} to
+retrieve the generated policies or used with
+\code{\link[=accessanalyzer_cancel_policy_generation]{cancel_policy_generation}} to
+cancel the policy generation request.}
+
 \item{includeResourcePlaceholders}{The level of detail that you want to generate. You can specify whether
 to generate policies with placeholders for resource ARNs for actions
 that support resource level granularity in policies.
@@ -24,14 +32,6 @@ to generate service-level policies.
 
 IAM Access Analyzer uses \code{iam:servicelastaccessed} to identify services
 that have been used recently to create this service-level template.}
-
-\item{jobId}{[required] The \code{JobId} that is returned by the
-\code{\link[=accessanalyzer_start_policy_generation]{start_policy_generation}}
-operation. The \code{JobId} can be used with
-\code{\link[=accessanalyzer_get_generated_policy]{get_generated_policy}} to
-retrieve the generated policies or used with
-\code{\link[=accessanalyzer_cancel_policy_generation]{cancel_policy_generation}} to
-cancel the policy generation request.}
 }
 \description{
 Retrieves the policy that was generated using \code{\link[=accessanalyzer_start_policy_generation]{start_policy_generation}}.

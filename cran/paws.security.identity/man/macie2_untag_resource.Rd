@@ -2,21 +2,19 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_untag_resource}
 \alias{macie2_untag_resource}
-\title{Removes one or more tags (keys and values) from a classification job,
-custom data identifier, findings filter, or member account}
+\title{Removes one or more tags (keys and values) from an Amazon Macie resource}
 \usage{
 macie2_untag_resource(resourceArn, tagKeys)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the classification job, custom data
-identifier, findings filter, or member account.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 
 \item{tagKeys}{[required] One or more tags (keys) to remove from the resource. In an HTTP request
 to remove multiple tags, append the tagKeys parameter and argument for
-each tag to remove, and separate them with an ampersand (&).}
+each tag to remove, separated by an ampersand (&).}
 }
 \description{
-Removes one or more tags (keys and values) from a classification job, custom data identifier, findings filter, or member account.
+Removes one or more tags (keys and values) from an Amazon Macie resource.
 
 See \url{https://paws-r.github.io/docs/macie2/untag_resource.html} for full documentation.
 }

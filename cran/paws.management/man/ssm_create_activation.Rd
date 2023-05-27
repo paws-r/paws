@@ -32,7 +32,10 @@ Don't enter personally identifiable information in this field.}
 to assign to the managed node. This IAM role must provide AssumeRole
 permissions for the Amazon Web Services Systems Manager service
 principal \code{ssm.amazonaws.com}. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-service-role.html}{Create an IAM service role for a hybrid environment}
-in the \emph{Amazon Web Services Systems Manager User Guide}.}
+in the \emph{Amazon Web Services Systems Manager User Guide}.
+
+You can't specify an IAM service-linked role for this parameter. You
+must create a unique role.}
 
 \item{RegistrationLimit}{Specify the maximum number of managed nodes you want to register. The
 default value is \code{1}.}

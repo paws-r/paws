@@ -2,7 +2,8 @@
 % Please edit documentation in R/proton_operations.R
 \name{proton_create_template_sync_config}
 \alias{proton_create_template_sync_config}
-\title{Set up a template to create new template versions automatically}
+\title{Set up a template to create new template versions automatically by
+tracking a linked repository}
 \usage{
 proton_create_template_sync_config(
   branch,
@@ -14,9 +15,9 @@ proton_create_template_sync_config(
 )
 }
 \arguments{
-\item{branch}{[required] The branch of the registered repository for your template.}
+\item{branch}{[required] The repository branch for your template.}
 
-\item{repositoryName}{[required] The name of your repository (for example, \code{myrepos/myrepo}).}
+\item{repositoryName}{[required] The repository name (for example, \code{myrepos/myrepo}).}
 
 \item{repositoryProvider}{[required] The provider type for your repository.}
 
@@ -29,7 +30,7 @@ directory.}
 \item{templateType}{[required] The type of the registered template.}
 }
 \description{
-Set up a template to create new template versions automatically. When a commit is pushed to your registered \href{https://docs.aws.amazon.com/proton/latest/APIReference/API_Repository.html}{repository}, Proton checks for changes to your repository template bundles. If it detects a template bundle change, a new major or minor version of its template is created, if the version doesn’t already exist. For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-template-sync-configs.html}{Template sync configurations} in the \emph{Proton Administrator Guide}.
+Set up a template to create new template versions automatically by tracking a linked repository. A linked repository is a repository that has been registered with Proton. For more information, see \code{\link[=proton_create_repository]{create_repository}}.
 
 See \url{https://paws-r.github.io/docs/proton/create_template_sync_config.html} for full documentation.
 }

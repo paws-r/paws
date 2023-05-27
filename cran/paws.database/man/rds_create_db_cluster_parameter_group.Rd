@@ -29,11 +29,11 @@ group family.
 
 \strong{Aurora MySQL}
 
-Example: \code{aurora5.6}, \code{aurora-mysql5.7}, \code{aurora-mysql8.0}
+Example: \code{aurora-mysql5.7}, \code{aurora-mysql8.0}
 
 \strong{Aurora PostgreSQL}
 
-Example: \code{aurora-postgresql9.6}
+Example: \code{aurora-postgresql14}
 
 \strong{RDS for MySQL}
 
@@ -57,9 +57,7 @@ The output contains duplicates.
 
 The following are the valid DB engine values:
 \itemize{
-\item \code{aurora} (for MySQL 5.6-compatible Aurora)
-\item \code{aurora-mysql} (for MySQL 5.7-compatible and MySQL 8.0-compatible
-Aurora)
+\item \code{aurora-mysql}
 \item \code{aurora-postgresql}
 \item \code{mysql}
 \item \code{postgres}

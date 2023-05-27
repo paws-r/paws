@@ -2,8 +2,8 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_detach_load_balancers}
 \alias{autoscaling_detach_load_balancers}
-\title{Detaches one or more Classic Load Balancers from the specified Auto
-Scaling group}
+\title{This API operation is superseded by DetachTrafficSources, which can
+detach multiple traffic sources types}
 \usage{
 autoscaling_detach_load_balancers(AutoScalingGroupName, LoadBalancerNames)
 }
@@ -14,7 +14,7 @@ autoscaling_detach_load_balancers(AutoScalingGroupName, LoadBalancerNames)
 balancers.}
 }
 \description{
-Detaches one or more Classic Load Balancers from the specified Auto Scaling group.
+This API operation is superseded by \code{\link[=autoscaling_detach_traffic_sources]{detach_traffic_sources}}, which can detach multiple traffic sources types. We recommend using \code{\link[=autoscaling_detach_traffic_sources]{detach_traffic_sources}} to simplify how you manage traffic sources. However, we continue to support \code{\link[=autoscaling_detach_load_balancers]{detach_load_balancers}}. You can use both the original \code{\link[=autoscaling_detach_load_balancers]{detach_load_balancers}} API operation and \code{\link[=autoscaling_detach_traffic_sources]{detach_traffic_sources}} on the same Auto Scaling group.
 
 See \url{https://paws-r.github.io/docs/autoscaling/detach_load_balancers.html} for full documentation.
 }

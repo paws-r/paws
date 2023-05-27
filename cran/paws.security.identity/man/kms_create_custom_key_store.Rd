@@ -2,31 +2,51 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_create_custom_key_store}
 \alias{kms_create_custom_key_store}
-\title{Creates a custom key store that is associated with an CloudHSM cluster
-that you own and manage}
+\title{Creates a custom key store backed by a key store that you own and manage}
 \usage{
 kms_create_custom_key_store(
   CustomKeyStoreName,
   CloudHsmClusterId = NULL,
   TrustAnchorCertificate = NULL,
-  KeyStorePassword = NULL
+  KeyStorePassword = NULL,
+  CustomKeyStoreType = NULL,
+  XksProxyUriEndpoint = NULL,
+  XksProxyUriPath = NULL,
+  XksProxyVpcEndpointServiceName = NULL,
+  XksProxyAuthenticationCredential = NULL,
+  XksProxyConnectivity = NULL
 )
 }
 \arguments{
 \item{CustomKeyStoreName}{[required] Specifies a friendly name for the custom key store. The name must be
-unique in your Amazon Web Services account.}
+unique in your Amazon Web Services account and Region. This parameter is
+required for all custom key stores.
 
-\item{CloudHsmClusterId}{Identifies the CloudHSM cluster for the custom key store. Enter the
-cluster ID of any active CloudHSM cluster that is not already associated
-with a custom key store. To find the cluster ID, use the
+Do not include confidential or sensitive information in this field. This
+field may be displayed in plaintext in CloudTrail logs and other output.}
+
+\item{CloudHsmClusterId}{Identifies the CloudHSM cluster for an CloudHSM key store. This
+parameter is required for custom key stores with \code{CustomKeyStoreType} of
+\code{AWS_CLOUDHSM}.
+
+Enter the cluster ID of any active CloudHSM cluster that is not already
+associated with a custom key store. To find the cluster ID, use the
 \href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html}{DescribeClusters}
 operation.}
 
-\item{TrustAnchorCertificate}{Enter the content of the trust anchor certificate for the cluster. This
-is the content of the \code{customerCA.crt} file that you created when you
-\href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/initialize-cluster.html}{initialized the cluster}.}
+\item{TrustAnchorCertificate}{Specifies the certificate for an CloudHSM key store. This parameter is
+required for custom key stores with a \code{CustomKeyStoreType} of
+\code{AWS_CLOUDHSM}.
 
-\item{KeyStorePassword}{Enter the password of the \href{https://docs.aws.amazon.com/kms/latest/developerguide/#concept-kmsuser}{\code{kmsuser} crypto user (CU) account}
+Enter the content of the trust anchor certificate for the CloudHSM
+cluster. This is the content of the \code{customerCA.crt} file that you
+created when you \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/initialize-cluster.html}{initialized the cluster}.}
+
+\item{KeyStorePassword}{Specifies the \code{kmsuser} password for an CloudHSM key store. This
+parameter is required for custom key stores with a \code{CustomKeyStoreType}
+of \code{AWS_CLOUDHSM}.
+
+Enter the password of the \href{https://docs.aws.amazon.com/kms/latest/developerguide/#concept-kmsuser}{\code{kmsuser} crypto user (CU) account}
 in the specified CloudHSM cluster. KMS logs into the cluster as this
 user to manage key material on your behalf.
 
@@ -35,9 +55,129 @@ sensitive.
 
 This parameter tells KMS the \code{kmsuser} account password; it does not
 change the password in the CloudHSM cluster.}
+
+\item{CustomKeyStoreType}{Specifies the type of custom key store. The default value is
+\code{AWS_CLOUDHSM}.
+
+For a custom key store backed by an CloudHSM cluster, omit the parameter
+or enter \code{AWS_CLOUDHSM}. For a custom key store backed by an external
+key manager outside of Amazon Web Services, enter \code{EXTERNAL_KEY_STORE}.
+You cannot change this property after the key store is created.}
+
+\item{XksProxyUriEndpoint}{Specifies the endpoint that KMS uses to send requests to the external
+key store proxy (XKS proxy). This parameter is required for custom key
+stores with a \code{CustomKeyStoreType} of \code{EXTERNAL_KEY_STORE}.
+
+The protocol must be HTTPS. KMS communicates on port 443. Do not specify
+the port in the \code{XksProxyUriEndpoint} value.
+
+For external key stores with \code{XksProxyConnectivity} value of
+\code{VPC_ENDPOINT_SERVICE}, specify \verb{https://} followed by the private DNS
+name of the VPC endpoint service.
+
+For external key stores with \code{PUBLIC_ENDPOINT} connectivity, this
+endpoint must be reachable before you create the custom key store. KMS
+connects to the external key store proxy while creating the custom key
+store. For external key stores with \code{VPC_ENDPOINT_SERVICE} connectivity,
+KMS connects when you call the
+\code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}} operation.
+
+The value of this parameter must begin with \verb{https://}. The remainder
+can contain upper and lower case letters (A-Z and a-z), numbers (0-9),
+dots (\code{.}), and hyphens (\code{-}). Additional slashes (\code{/} and \verb{\\}) are not
+permitted.
+
+\strong{Uniqueness requirements:}
+\itemize{
+\item The combined \code{XksProxyUriEndpoint} and \code{XksProxyUriPath} values must
+be unique in the Amazon Web Services account and Region.
+\item An external key store with \code{PUBLIC_ENDPOINT} connectivity cannot use
+the same \code{XksProxyUriEndpoint} value as an external key store with
+\code{VPC_ENDPOINT_SERVICE} connectivity in the same Amazon Web Services
+Region.
+\item Each external key store with \code{VPC_ENDPOINT_SERVICE} connectivity
+must have its own private DNS name. The \code{XksProxyUriEndpoint} value
+for external key stores with \code{VPC_ENDPOINT_SERVICE} connectivity
+(private DNS name) must be unique in the Amazon Web Services account
+and Region.
+}}
+
+\item{XksProxyUriPath}{Specifies the base path to the proxy APIs for this external key store.
+To find this value, see the documentation for your external key store
+proxy. This parameter is required for all custom key stores with a
+\code{CustomKeyStoreType} of \code{EXTERNAL_KEY_STORE}.
+
+The value must start with \code{/} and must end with \verb{/kms/xks/v1} where \code{v1}
+represents the version of the KMS external key store proxy API. This
+path can include an optional prefix between the required elements such
+as \verb{/prefix/kms/xks/v1}.
+
+\strong{Uniqueness requirements:}
+\itemize{
+\item The combined \code{XksProxyUriEndpoint} and \code{XksProxyUriPath} values must
+be unique in the Amazon Web Services account and Region.
+}}
+
+\item{XksProxyVpcEndpointServiceName}{Specifies the name of the Amazon VPC endpoint service for interface
+endpoints that is used to communicate with your external key store proxy
+(XKS proxy). This parameter is required when the value of
+\code{CustomKeyStoreType} is \code{EXTERNAL_KEY_STORE} and the value of
+\code{XksProxyConnectivity} is \code{VPC_ENDPOINT_SERVICE}.
+
+The Amazon VPC endpoint service must \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-xks-keystore.html#xks-requirements}{fulfill all requirements}
+for use with an external key store.
+
+\strong{Uniqueness requirements:}
+\itemize{
+\item External key stores with \code{VPC_ENDPOINT_SERVICE} connectivity can
+share an Amazon VPC, but each external key store must have its own
+VPC endpoint service and private DNS name.
+}}
+
+\item{XksProxyAuthenticationCredential}{Specifies an authentication credential for the external key store proxy
+(XKS proxy). This parameter is required for all custom key stores with a
+\code{CustomKeyStoreType} of \code{EXTERNAL_KEY_STORE}.
+
+The \code{XksProxyAuthenticationCredential} has two required elements:
+\code{RawSecretAccessKey}, a secret key, and \code{AccessKeyId}, a unique
+identifier for the \code{RawSecretAccessKey}. For character requirements, see
+\href{https://docs.aws.amazon.com/kms/latest/APIReference/API_XksProxyAuthenticationCredentialType.html}{XksProxyAuthenticationCredentialType}.
+
+KMS uses this authentication credential to sign requests to the external
+key store proxy on your behalf. This credential is unrelated to Identity
+and Access Management (IAM) and Amazon Web Services credentials.
+
+This parameter doesn't set or change the authentication credentials on
+the XKS proxy. It just tells KMS the credential that you established on
+your external key store proxy. If you rotate your proxy authentication
+credential, use the
+\code{\link[=kms_update_custom_key_store]{update_custom_key_store}} operation to
+provide the new credential to KMS.}
+
+\item{XksProxyConnectivity}{Indicates how KMS communicates with the external key store proxy. This
+parameter is required for custom key stores with a \code{CustomKeyStoreType}
+of \code{EXTERNAL_KEY_STORE}.
+
+If the external key store proxy uses a public endpoint, specify
+\code{PUBLIC_ENDPOINT}. If the external key store proxy uses a Amazon VPC
+endpoint service for communication with KMS, specify
+\code{VPC_ENDPOINT_SERVICE}. For help making this choice, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/plan-xks-keystore.html#choose-xks-connectivity}{Choosing a connectivity option}
+in the \emph{Key Management Service Developer Guide}.
+
+An Amazon VPC endpoint service keeps your communication with KMS in a
+private address space entirely within Amazon Web Services, but it
+requires more configuration, including establishing a Amazon VPC with
+multiple subnets, a VPC endpoint service, a network load balancer, and a
+verified private DNS name. A public endpoint is simpler to set up, but
+it might be slower and might not fulfill your security requirements. You
+might consider testing with a public endpoint, and then establishing a
+VPC endpoint service for production tasks. Note that this choice does
+not determine the location of the external key store proxy. Even if you
+choose a VPC endpoint service, the proxy can be hosted within the VPC or
+outside of Amazon Web Services such as in your corporate data center.}
 }
 \description{
-Creates a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store} that is associated with an \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/clusters.html}{CloudHSM cluster} that you own and manage.
+Creates a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store} backed by a key store that you own and manage. When you use a KMS key in a custom key store for a cryptographic operation, the cryptographic operation is actually performed in your key store using your keys. KMS supports \href{https://docs.aws.amazon.com/kms/latest/developerguide/keystore-cloudhsm.html}{CloudHSM key stores} backed by an \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/clusters.html}{CloudHSM cluster} and \href{https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html}{external key stores} backed by an external key store proxy and external key manager outside of Amazon Web Services.
 
 See \url{https://paws-r.github.io/docs/kms/create_custom_key_store.html} for full documentation.
 }

@@ -155,7 +155,10 @@ cloudwatchevidently_batch_evaluate_feature <- function(project, requests) {
 #' Tags don't have any semantic meaning to Amazon Web Services and are
 #' interpreted strictly as strings of characters.
 #' 
-#'      <p>You can associate as many as 50 tags with an experiment.</p> <p>For more information, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging Amazon Web Services resources</a>.</p> 
+#' You can associate as many as 50 tags with an experiment.
+#' 
+#' For more information, see [Tagging Amazon Web Services
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #' @param treatments &#91;required&#93; An array of structures that describe the configuration of each feature
 #' variation used in the experiment.
 #'
@@ -320,6 +323,9 @@ cloudwatchevidently_create_experiment <- function(description = NULL, metricGoal
 #' specify a user by entering their user ID, account ID, or some other
 #' identifier. For the value, specify the name of the variation that they
 #' are to be served.
+#' 
+#' This parameter is limited to 2500 overrides or a total of 40KB. The 40KB
+#' limit includes an overhead of 6 bytes per override.
 #' @param evaluationStrategy Specify `ALL_RULES` to activate the traffic allocation specified by any
 #' ongoing launches or experiments. Specify `DEFAULT_VARIATION` to serve
 #' the default variation to all users instead.
@@ -334,7 +340,10 @@ cloudwatchevidently_create_experiment <- function(description = NULL, metricGoal
 #' Tags don't have any semantic meaning to Amazon Web Services and are
 #' interpreted strictly as strings of characters.
 #' 
-#'      <p>You can associate as many as 50 tags with a feature.</p> <p>For more information, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging Amazon Web Services resources</a>.</p> 
+#' You can associate as many as 50 tags with a feature.
+#' 
+#' For more information, see [Tagging Amazon Web Services
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #' @param variations &#91;required&#93; An array of structures that contain the configuration of the feature's
 #' different variations.
 #'
@@ -476,7 +485,10 @@ cloudwatchevidently_create_feature <- function(defaultVariation = NULL, descript
 #' Tags don't have any semantic meaning to Amazon Web Services and are
 #' interpreted strictly as strings of characters.
 #' 
-#'      <p>You can associate as many as 50 tags with a launch.</p> <p>For more information, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging Amazon Web Services resources</a>.</p> 
+#' You can associate as many as 50 tags with a launch.
+#' 
+#' For more information, see [Tagging Amazon Web Services
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -640,9 +652,23 @@ cloudwatchevidently_create_launch <- function(description = NULL, groups, metric
 #' [`update_project`][cloudwatchevidently_update_project].
 #'
 #' @usage
-#' cloudwatchevidently_create_project(dataDelivery, description, name,
-#'   tags)
+#' cloudwatchevidently_create_project(appConfigResource, dataDelivery,
+#'   description, name, tags)
 #'
+#' @param appConfigResource Use this parameter if the project will use *client-side evaluation
+#' powered by AppConfig*. Client-side evaluation allows your application to
+#' assign variations to user sessions locally instead of by calling the
+#' [`evaluate_feature`][cloudwatchevidently_evaluate_feature] operation.
+#' This mitigates the latency and availability risks that come with an API
+#' call. For more information, see [Client-side evaluation - powered by
+#' AppConfig.](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-client-side-evaluation.html)
+#' 
+#' This parameter is a structure that contains information about the
+#' AppConfig application and environment that will be used as for
+#' client-side evaluation.
+#' 
+#' To create a project that uses client-side evaluation, you must have the
+#' `evidently:ExportProjectAsConfiguration` permission.
 #' @param dataDelivery A structure that contains information about where Evidently is to store
 #' evaluation events for longer term storage, if you choose to do so. If
 #' you choose not to store these events, Evidently deletes them after using
@@ -658,7 +684,10 @@ cloudwatchevidently_create_launch <- function(description = NULL, groups, metric
 #' Tags don't have any semantic meaning to Amazon Web Services and are
 #' interpreted strictly as strings of characters.
 #' 
-#'      <p>You can associate as many as 50 tags with a project.</p> <p>For more information, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging Amazon Web Services resources</a>.</p> 
+#' You can associate as many as 50 tags with a project.
+#' 
+#' For more information, see [Tagging Amazon Web Services
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -667,6 +696,11 @@ cloudwatchevidently_create_launch <- function(description = NULL, groups, metric
 #'   project = list(
 #'     activeExperimentCount = 123,
 #'     activeLaunchCount = 123,
+#'     appConfigResource = list(
+#'       applicationId = "string",
+#'       configurationProfileId = "string",
+#'       environmentId = "string"
+#'     ),
 #'     arn = "string",
 #'     createdTime = as.POSIXct(
 #'       "2015-01-01"
@@ -699,6 +733,10 @@ cloudwatchevidently_create_launch <- function(description = NULL, groups, metric
 #' @section Request syntax:
 #' ```
 #' svc$create_project(
+#'   appConfigResource = list(
+#'     applicationId = "string",
+#'     environmentId = "string"
+#'   ),
 #'   dataDelivery = list(
 #'     cloudWatchLogs = list(
 #'       logGroup = "string"
@@ -721,14 +759,14 @@ cloudwatchevidently_create_launch <- function(description = NULL, groups, metric
 #' @rdname cloudwatchevidently_create_project
 #'
 #' @aliases cloudwatchevidently_create_project
-cloudwatchevidently_create_project <- function(dataDelivery = NULL, description = NULL, name, tags = NULL) {
+cloudwatchevidently_create_project <- function(appConfigResource = NULL, dataDelivery = NULL, description = NULL, name, tags = NULL) {
   op <- new_operation(
     name = "CreateProject",
     http_method = "POST",
     http_path = "/projects",
     paginator = list()
   )
-  input <- .cloudwatchevidently$create_project_input(dataDelivery = dataDelivery, description = description, name = name, tags = tags)
+  input <- .cloudwatchevidently$create_project_input(appConfigResource = appConfigResource, dataDelivery = dataDelivery, description = description, name = name, tags = tags)
   output <- .cloudwatchevidently$create_project_output()
   config <- get_config()
   svc <- .cloudwatchevidently$service(config)
@@ -749,10 +787,17 @@ cloudwatchevidently_create_project <- function(dataDelivery = NULL, description 
 #' 
 #' Using a segment in an experiment limits that experiment to evaluate only
 #' the users who match the segment criteria. Using one or more segments in
-#' a launch allow you to define different traffic splits for the different
+#' a launch allows you to define different traffic splits for the different
 #' audience segments.
 #' 
-#'      <p>For more information about segment pattern syntax, see <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments-syntax.html"> Segment rule pattern syntax</a>.</p> <p>The pattern that you define for a segment is matched against the value of <code>evaluationContext</code>, which is passed into Evidently in the <a href="https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_EvaluateFeature.html">EvaluateFeature</a> operation, when Evidently assigns a feature variation to a user.</p> 
+#' For more information about segment pattern syntax, see [Segment rule
+#' pattern
+#' syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html#CloudWatch-Evidently-segments-syntax.html).
+#' 
+#' The pattern that you define for a segment is matched against the value
+#' of `evaluationContext`, which is passed into Evidently in the
+#' [`evaluate_feature`][cloudwatchevidently_evaluate_feature] operation,
+#' when Evidently assigns a feature variation to a user.
 #'
 #' @usage
 #' cloudwatchevidently_create_segment(description, name, pattern, tags)
@@ -761,7 +806,7 @@ cloudwatchevidently_create_project <- function(dataDelivery = NULL, description 
 #' @param name &#91;required&#93; A name for the segment.
 #' @param pattern &#91;required&#93; The pattern to use for the segment. For more information about pattern
 #' syntax, see [Segment rule pattern
-#' syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/).
+#' syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html#CloudWatch-Evidently-segments-syntax.html).
 #' @param tags Assigns one or more tags (key-value pairs) to the segment.
 #' 
 #' Tags can help you organize and categorize your resources. You can also
@@ -771,7 +816,10 @@ cloudwatchevidently_create_project <- function(dataDelivery = NULL, description 
 #' Tags don't have any semantic meaning to Amazon Web Services and are
 #' interpreted strictly as strings of characters.
 #' 
-#'      <p>You can associate as many as 50 tags with a segment.</p> <p>For more information, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging Amazon Web Services resources</a>.</p> 
+#' You can associate as many as 50 tags with a segment.
+#' 
+#' For more information, see [Tagging Amazon Web Services
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1070,7 +1118,35 @@ cloudwatchevidently_delete_segment <- function(segment) {
 #' `entityID` matches an override rule, the user is served the variation
 #' specified by that rule.
 #' 
-#'      <p>If there is a current launch with this feature that uses segment overrides, and if the user session\'s <code>evaluationContext</code> matches a segment rule defined in a segment override, the configuration in the segment overrides is used. For more information about segments, see <a href="https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_CreateSegment.html">CreateSegment</a> and <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html">Use segments to focus your audience</a>.</p> <p>If there is a launch with no segment overrides, the user might be assigned to a variation in the launch. The chance of this depends on the percentage of users that are allocated to that launch. If the user is enrolled in the launch, the variation they are served depends on the allocation of the various feature variations used for the launch.</p> <p>If the user is not assigned to a launch, and there is an ongoing experiment for this feature, the user might be assigned to a variation in the experiment. The chance of this depends on the percentage of users that are allocated to that experiment.</p> <p>If the experiment uses a segment, then only user sessions with <code>evaluationContext</code> values that match the segment rule are used in the experiment.</p> <p>If the user is enrolled in the experiment, the variation they are served depends on the allocation of the various feature variations used for the experiment. </p> <p>If the user is not assigned to a launch or experiment, they are served the default variation.</p> 
+#' If there is a current launch with this feature that uses segment
+#' overrides, and if the user session's `evaluationContext` matches a
+#' segment rule defined in a segment override, the configuration in the
+#' segment overrides is used. For more information about segments, see
+#' [`create_segment`][cloudwatchevidently_create_segment] and [Use segments
+#' to focus your
+#' audience](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html).
+#' 
+#' If there is a launch with no segment overrides, the user might be
+#' assigned to a variation in the launch. The chance of this depends on the
+#' percentage of users that are allocated to that launch. If the user is
+#' enrolled in the launch, the variation they are served depends on the
+#' allocation of the various feature variations used for the launch.
+#' 
+#' If the user is not assigned to a launch, and there is an ongoing
+#' experiment for this feature, the user might be assigned to a variation
+#' in the experiment. The chance of this depends on the percentage of users
+#' that are allocated to that experiment.
+#' 
+#' If the experiment uses a segment, then only user sessions with
+#' `evaluationContext` values that match the segment rule are used in the
+#' experiment.
+#' 
+#' If the user is enrolled in the experiment, the variation they are served
+#' depends on the allocation of the various feature variations used for the
+#' experiment.
+#' 
+#' If the user is not assigned to a launch or experiment, they are served
+#' the default variation.
 #'
 #' @usage
 #' cloudwatchevidently_evaluate_feature(entityId, evaluationContext,
@@ -1085,7 +1161,8 @@ cloudwatchevidently_delete_segment <- function(segment) {
 #' segments. For more information, see [Use segments to focus your
 #' audience](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html).
 #' 
-#'      <p>If you include this parameter, the value must be a JSON object. A JSON array is not supported.</p> 
+#' If you include this parameter, the value must be a JSON object. A JSON
+#' array is not supported.
 #' @param feature &#91;required&#93; The name of the feature being evaluated.
 #' @param project &#91;required&#93; The name or ARN of the project that contains this feature.
 #'
@@ -1253,7 +1330,12 @@ cloudwatchevidently_get_experiment <- function(experiment, project) {
 #' @description
 #' Retrieves the results of a running or completed experiment. No results
 #' are available until there have been 100 events for each variation and at
-#' least 10 minutes have passed since the start of the experiment.
+#' least 10 minutes have passed since the start of the experiment. To
+#' increase the statistical power, Evidently performs an additional offline
+#' p-value analysis at the end of the experiment. Offline p-value analysis
+#' can detect statistical significance in some cases where the anytime
+#' p-values used during the experiment do not find statistical
+#' significance.
 #' 
 #' Experiment results are available up to 63 days after the start of the
 #' experiment. They are not available after that because of CloudWatch data
@@ -1609,6 +1691,11 @@ cloudwatchevidently_get_launch <- function(launch, project) {
 #'   project = list(
 #'     activeExperimentCount = 123,
 #'     activeLaunchCount = 123,
+#'     appConfigResource = list(
+#'       applicationId = "string",
+#'       configurationProfileId = "string",
+#'       environmentId = "string"
+#'     ),
 #'     arn = "string",
 #'     createdTime = as.POSIXct(
 #'       "2015-01-01"
@@ -2717,7 +2804,7 @@ cloudwatchevidently_stop_launch <- function(desiredState = NULL, launch, project
 #' You can associate as many as 50 tags with a resource.
 #' 
 #' For more information, see [Tagging Amazon Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #'
 #' @usage
 #' cloudwatchevidently_tag_resource(resourceArn, tags)
@@ -3060,6 +3147,9 @@ cloudwatchevidently_update_experiment <- function(description = NULL, experiment
 #' specify a user by entering their user ID, account ID, or some other
 #' identifier. For the value, specify the name of the variation that they
 #' are to be served.
+#' 
+#' This parameter is limited to 2500 overrides or a total of 40KB. The 40KB
+#' limit includes an overhead of 6 bytes per override.
 #' @param evaluationStrategy Specify `ALL_RULES` to activate the traffic allocation specified by any
 #' ongoing launches or experiments. Specify `DEFAULT_VARIATION` to serve
 #' the default variation to all users instead.
@@ -3358,8 +3448,18 @@ cloudwatchevidently_update_launch <- function(description = NULL, groups = NULL,
 #' [`tag_resource`][cloudwatchevidently_tag_resource].
 #'
 #' @usage
-#' cloudwatchevidently_update_project(description, project)
+#' cloudwatchevidently_update_project(appConfigResource, description,
+#'   project)
 #'
+#' @param appConfigResource Use this parameter if the project will use client-side evaluation
+#' powered by AppConfig. Client-side evaluation allows your application to
+#' assign variations to user sessions locally instead of by calling the
+#' [`evaluate_feature`][cloudwatchevidently_evaluate_feature] operation.
+#' This mitigates the latency and availability risks that come with an API
+#' call. allows you to
+#' 
+#' This parameter is a structure that contains information about the
+#' AppConfig application that will be used for client-side evaluation.
 #' @param description An optional description of the project.
 #' @param project &#91;required&#93; The name or ARN of the project to update.
 #'
@@ -3370,6 +3470,11 @@ cloudwatchevidently_update_launch <- function(description = NULL, groups = NULL,
 #'   project = list(
 #'     activeExperimentCount = 123,
 #'     activeLaunchCount = 123,
+#'     appConfigResource = list(
+#'       applicationId = "string",
+#'       configurationProfileId = "string",
+#'       environmentId = "string"
+#'     ),
 #'     arn = "string",
 #'     createdTime = as.POSIXct(
 #'       "2015-01-01"
@@ -3402,6 +3507,10 @@ cloudwatchevidently_update_launch <- function(description = NULL, groups = NULL,
 #' @section Request syntax:
 #' ```
 #' svc$update_project(
+#'   appConfigResource = list(
+#'     applicationId = "string",
+#'     environmentId = "string"
+#'   ),
 #'   description = "string",
 #'   project = "string"
 #' )
@@ -3412,14 +3521,14 @@ cloudwatchevidently_update_launch <- function(description = NULL, groups = NULL,
 #' @rdname cloudwatchevidently_update_project
 #'
 #' @aliases cloudwatchevidently_update_project
-cloudwatchevidently_update_project <- function(description = NULL, project) {
+cloudwatchevidently_update_project <- function(appConfigResource = NULL, description = NULL, project) {
   op <- new_operation(
     name = "UpdateProject",
     http_method = "PATCH",
     http_path = "/projects/{project}",
     paginator = list()
   )
-  input <- .cloudwatchevidently$update_project_input(description = description, project = project)
+  input <- .cloudwatchevidently$update_project_input(appConfigResource = appConfigResource, description = description, project = project)
   output <- .cloudwatchevidently$update_project_output()
   config <- get_config()
   svc <- .cloudwatchevidently$service(config)
@@ -3459,6 +3568,11 @@ cloudwatchevidently_update_project <- function(description = NULL, project) {
 #'   project = list(
 #'     activeExperimentCount = 123,
 #'     activeLaunchCount = 123,
+#'     appConfigResource = list(
+#'       applicationId = "string",
+#'       configurationProfileId = "string",
+#'       environmentId = "string"
+#'     ),
 #'     arn = "string",
 #'     createdTime = as.POSIXct(
 #'       "2015-01-01"

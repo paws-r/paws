@@ -277,18 +277,28 @@ appstream_create_application <- function(Name, DisplayName = NULL, Description =
 #' accounts.
 #' @param ServiceAccountCredentials The credentials for the service account used by the fleet or image
 #' builder to connect to the directory.
+#' @param CertificateBasedAuthProperties The certificate-based authentication properties used to authenticate
+#' SAML 2.0 Identity Provider (IdP) user identities to Active Directory
+#' domain-joined streaming instances. Fallback is turned on by default when
+#' certificate-based authentication is **Enabled** . Fallback allows users
+#' to log in using their AD domain password if certificate-based
+#' authentication is unsuccessful, or to unlock a desktop lock screen.
+#' **Enabled_no_directory_login_fallback** enables certificate-based
+#' authentication, but does not allow users to log in using their AD domain
+#' password. Users will be disconnected to re-authenticate using
+#' certificates.
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_create_directory_config
-appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitDistinguishedNames, ServiceAccountCredentials = NULL) {
+appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitDistinguishedNames, ServiceAccountCredentials = NULL, CertificateBasedAuthProperties = NULL) {
   op <- new_operation(
     name = "CreateDirectoryConfig",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .appstream$create_directory_config_input(DirectoryName = DirectoryName, OrganizationalUnitDistinguishedNames = OrganizationalUnitDistinguishedNames, ServiceAccountCredentials = ServiceAccountCredentials)
+  input <- .appstream$create_directory_config_input(DirectoryName = DirectoryName, OrganizationalUnitDistinguishedNames = OrganizationalUnitDistinguishedNames, ServiceAccountCredentials = ServiceAccountCredentials, CertificateBasedAuthProperties = CertificateBasedAuthProperties)
   output <- .appstream$create_directory_config_output()
   config <- get_config()
   svc <- .appstream$service(config)
@@ -334,7 +344,7 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' Creates a fleet
 #'
 #' @description
-#' Creates a fleet. A fleet consists of streaming instances that run a specified image when using Always-On or On-Demand.
+#' Creates a fleet. A fleet consists of streaming instances that your users access for their applications and desktops.
 #'
 #' See [https://paws-r.github.io/docs/appstream/create_fleet.html](https://paws-r.github.io/docs/appstream/create_fleet.html) for full documentation.
 #'
@@ -349,6 +359,10 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' -   stream.standard.medium
 #' 
 #' -   stream.standard.large
+#' 
+#' -   stream.standard.xlarge
+#' 
+#' -   stream.standard.2xlarge
 #' 
 #' -   stream.compute.large
 #' 
@@ -415,6 +429,12 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' -   stream.standard.small
 #' 
 #' -   stream.standard.medium
+#' 
+#' -   stream.standard.large
+#' 
+#' -   stream.standard.xlarge
+#' 
+#' -   stream.standard.2xlarge
 #' @param FleetType The fleet type.
 #' 
 #' **ALWAYS_ON**
@@ -2285,18 +2305,28 @@ appstream_update_application <- function(Name, DisplayName = NULL, Description =
 #' accounts.
 #' @param ServiceAccountCredentials The credentials for the service account used by the fleet or image
 #' builder to connect to the directory.
+#' @param CertificateBasedAuthProperties The certificate-based authentication properties used to authenticate
+#' SAML 2.0 Identity Provider (IdP) user identities to Active Directory
+#' domain-joined streaming instances. Fallback is turned on by default when
+#' certificate-based authentication is **Enabled** . Fallback allows users
+#' to log in using their AD domain password if certificate-based
+#' authentication is unsuccessful, or to unlock a desktop lock screen.
+#' **Enabled_no_directory_login_fallback** enables certificate-based
+#' authentication, but does not allow users to log in using their AD domain
+#' password. Users will be disconnected to re-authenticate using
+#' certificates.
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_update_directory_config
-appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitDistinguishedNames = NULL, ServiceAccountCredentials = NULL) {
+appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitDistinguishedNames = NULL, ServiceAccountCredentials = NULL, CertificateBasedAuthProperties = NULL) {
   op <- new_operation(
     name = "UpdateDirectoryConfig",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .appstream$update_directory_config_input(DirectoryName = DirectoryName, OrganizationalUnitDistinguishedNames = OrganizationalUnitDistinguishedNames, ServiceAccountCredentials = ServiceAccountCredentials)
+  input <- .appstream$update_directory_config_input(DirectoryName = DirectoryName, OrganizationalUnitDistinguishedNames = OrganizationalUnitDistinguishedNames, ServiceAccountCredentials = ServiceAccountCredentials, CertificateBasedAuthProperties = CertificateBasedAuthProperties)
   output <- .appstream$update_directory_config_output()
   config <- get_config()
   svc <- .appstream$service(config)
@@ -2357,6 +2387,10 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' -   stream.standard.medium
 #' 
 #' -   stream.standard.large
+#' 
+#' -   stream.standard.xlarge
+#' 
+#' -   stream.standard.2xlarge
 #' 
 #' -   stream.compute.large
 #' 
@@ -2423,6 +2457,12 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' -   stream.standard.small
 #' 
 #' -   stream.standard.medium
+#' 
+#' -   stream.standard.large
+#' 
+#' -   stream.standard.xlarge
+#' 
+#' -   stream.standard.2xlarge
 #' @param ComputeCapacity The desired capacity for the fleet. This is not allowed for Elastic
 #' fleets.
 #' @param VpcConfig The VPC configuration for the fleet. This is required for Elastic

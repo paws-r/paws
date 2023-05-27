@@ -27,11 +27,11 @@ braces, for example: \code{"input": "{}"}
 Length constraints apply to the payload size, and are expressed as bytes
 in UTF-8 encoding.}
 
-\item{traceHeader}{Passes the AWS X-Ray trace header. The trace header can also be passed
-in the request payload.}
+\item{traceHeader}{Passes the X-Ray trace header. The trace header can also be passed in
+the request payload.}
 }
 \description{
-Starts a Synchronous Express state machine execution.
+Starts a Synchronous Express state machine execution. \code{\link[=sfn_start_sync_execution]{start_sync_execution}} is not available for \code{STANDARD} workflows.
 
 See \url{https://paws-r.github.io/docs/sfn/start_sync_execution.html} for full documentation.
 }

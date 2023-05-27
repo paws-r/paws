@@ -6,29 +6,37 @@
 resource}
 \usage{
 configservice_get_compliance_details_by_resource(
-  ResourceType,
-  ResourceId,
+  ResourceType = NULL,
+  ResourceId = NULL,
   ComplianceTypes = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  ResourceEvaluationId = NULL
 )
 }
 \arguments{
-\item{ResourceType}{[required] The type of the Amazon Web Services resource for which you want
+\item{ResourceType}{The type of the Amazon Web Services resource for which you want
 compliance information.}
 
-\item{ResourceId}{[required] The ID of the Amazon Web Services resource for which you want compliance
+\item{ResourceId}{The ID of the Amazon Web Services resource for which you want compliance
 information.}
 
 \item{ComplianceTypes}{Filters the results by compliance.
 
-The allowed values are \code{COMPLIANT}, \code{NON_COMPLIANT}, and
-\code{NOT_APPLICABLE}.}
+\code{INSUFFICIENT_DATA} is a valid \code{ComplianceType} that is returned when an
+Config rule cannot be evaluated. However, \code{INSUFFICIENT_DATA} cannot be
+used as a \code{ComplianceType} for filtering results.}
 
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
+
+\item{ResourceEvaluationId}{The unique ID of Amazon Web Services resource execution for which you
+want to retrieve evaluation results.
+
+You need to only provide either a \code{ResourceEvaluationID} or a
+\code{ResourceID }and \code{ResourceType}.}
 }
 \description{
-Returns the evaluation results for the specified Amazon Web Services resource. The results indicate which Config rules were used to evaluate the resource, when each rule was last used, and whether the resource complies with each rule.
+Returns the evaluation results for the specified Amazon Web Services resource. The results indicate which Config rules were used to evaluate the resource, when each rule was last invoked, and whether the resource complies with each rule.
 
 See \url{https://paws-r.github.io/docs/configservice/get_compliance_details_by_resource.html} for full documentation.
 }

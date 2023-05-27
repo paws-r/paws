@@ -14,12 +14,12 @@ NULL
 #' ssoadmin_attach_customer_managed_policy_reference_to_permission_set(
 #'   InstanceArn, PermissionSetArn, CustomerManagedPolicyReference)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the `PermissionSet`.
 #' @param CustomerManagedPolicyReference &#91;required&#93; Specifies the name and path of a customer managed policy. You must have
-#' an IAM policy that matches the name and path in each Amazon Web Services
-#' account where you want to deploy your permission set.
+#' an IAM policy that matches the name and path in each AWS account where
+#' you want to deploy your permission set.
 #'
 #' @return
 #' An empty list.
@@ -58,10 +58,10 @@ ssoadmin_attach_customer_managed_policy_reference_to_permission_set <- function(
 }
 .ssoadmin$operations$attach_customer_managed_policy_reference_to_permission_set <- ssoadmin_attach_customer_managed_policy_reference_to_permission_set
 
-#' Attaches an Amazon Web Services managed policy ARN to a permission set
+#' Attaches an AWS managed policy ARN to a permission set
 #'
 #' @description
-#' Attaches an Amazon Web Services managed policy ARN to a permission set.
+#' Attaches an AWS managed policy ARN to a permission set.
 #' 
 #' If the permission set is already referenced by one or more account
 #' assignments, you will need to call
@@ -74,14 +74,12 @@ ssoadmin_attach_customer_managed_policy_reference_to_permission_set <- function(
 #' ssoadmin_attach_managed_policy_to_permission_set(InstanceArn,
 #'   PermissionSetArn, ManagedPolicyArn)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the PermissionSet that the managed policy should be attached
 #' to.
-#' @param ManagedPolicyArn &#91;required&#93; The Amazon Web Services managed policy ARN to be attached to a
-#' permission set.
+#' @param ManagedPolicyArn &#91;required&#93; The AWS managed policy ARN to be attached to a permission set.
 #'
 #' @return
 #' An empty list.
@@ -117,45 +115,48 @@ ssoadmin_attach_managed_policy_to_permission_set <- function(InstanceArn, Permis
 }
 .ssoadmin$operations$attach_managed_policy_to_permission_set <- ssoadmin_attach_managed_policy_to_permission_set
 
-#' Assigns access to a principal for a specified Amazon Web Services
-#' account using a specified permission set
+#' Assigns access to a principal for a specified AWS account using a
+#' specified permission set
 #'
 #' @description
-#' Assigns access to a principal for a specified Amazon Web Services
-#' account using a specified permission set.
+#' Assigns access to a principal for a specified AWS account using a
+#' specified permission set.
 #' 
 #' The term *principal* here refers to a user or group that is defined in
-#' Amazon Web Services SSO.
+#' IAM Identity Center.
 #' 
 #' As part of a successful
 #' [`create_account_assignment`][ssoadmin_create_account_assignment] call,
 #' the specified permission set will automatically be provisioned to the
 #' account in the form of an IAM policy. That policy is attached to the IAM
-#' role created in Amazon Web Services SSO. If the permission set is
+#' role created in IAM Identity Center. If the permission set is
 #' subsequently updated, the corresponding IAM policies attached to roles
 #' in your accounts will not be updated automatically. In this case, you
 #' must call
 #' [`provision_permission_set`][ssoadmin_provision_permission_set] to make
 #' these updates.
+#' 
+#' After a successful response, call
+#' [`describe_account_assignment_creation_status`][ssoadmin_describe_account_assignment_creation_status]
+#' to describe the status of an assignment creation request.
 #'
 #' @usage
 #' ssoadmin_create_account_assignment(InstanceArn, TargetId, TargetType,
 #'   PermissionSetArn, PrincipalType, PrincipalId)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
-#' @param TargetId &#91;required&#93; TargetID is an Amazon Web Services account identifier, typically a 10-12
-#' digit string (For example, 123456789012).
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
+#' @param TargetId &#91;required&#93; TargetID is an AWS account identifier, typically a 10-12 digit string
+#' (For example, 123456789012).
 #' @param TargetType &#91;required&#93; The entity type for which the assignment will be created.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set that the admin wants to grant the
 #' principal access to.
 #' @param PrincipalType &#91;required&#93; The entity type for which the assignment will be created.
-#' @param PrincipalId &#91;required&#93; An identifier for an object in Amazon Web Services SSO, such as a user
-#' or group. PrincipalIds are GUIDs (For example,
+#' @param PrincipalId &#91;required&#93; An identifier for an object in IAM Identity Center, such as a user or
+#' group. PrincipalIds are GUIDs (For example,
 #' f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about
-#' PrincipalIds in Amazon Web Services SSO, see the Amazon Web Services SSO
+#' PrincipalIds in IAM Identity Center, see the IAM Identity Center
 #' Identity Store API Reference.
 #'
 #' @return
@@ -213,28 +214,33 @@ ssoadmin_create_account_assignment <- function(InstanceArn, TargetId, TargetType
 .ssoadmin$operations$create_account_assignment <- ssoadmin_create_account_assignment
 
 #' Enables the attributes-based access control (ABAC) feature for the
-#' specified Amazon Web Services SSO instance
+#' specified IAM Identity Center instance
 #'
 #' @description
 #' Enables the attributes-based access control (ABAC) feature for the
-#' specified Amazon Web Services SSO instance. You can also specify new
+#' specified IAM Identity Center instance. You can also specify new
 #' attributes to add to your ABAC configuration during the enabling
 #' process. For more information about ABAC, see Attribute-Based Access
-#' Control in the *Amazon Web Services SSO User Guide*.
+#' Control in the *IAM Identity Center User Guide*.
+#' 
+#' After a successful response, call
+#' [`describe_instance_access_control_attribute_configuration`][ssoadmin_describe_instance_access_control_attribute_configuration]
+#' to validate that `InstanceAccessControlAttributeConfiguration` was
+#' created.
 #'
 #' @usage
 #' ssoadmin_create_instance_access_control_attribute_configuration(
 #'   InstanceArn, InstanceAccessControlAttributeConfiguration)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed.
-#' @param InstanceAccessControlAttributeConfiguration &#91;required&#93; Specifies the Amazon Web Services SSO identity store attributes to add
-#' to your ABAC configuration. When using an external identity provider as
-#' an identity source, you can pass attributes through the SAML assertion.
-#' Doing so provides an alternative to configuring attributes from the
-#' Amazon Web Services SSO identity store. If a SAML assertion passes any
-#' of these attributes, Amazon Web Services SSO will replace the attribute
-#' value with the value from the Amazon Web Services SSO identity store.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed.
+#' @param InstanceAccessControlAttributeConfiguration &#91;required&#93; Specifies the IAM Identity Center identity store attributes to add to
+#' your ABAC configuration. When using an external identity provider as an
+#' identity source, you can pass attributes through the SAML assertion.
+#' Doing so provides an alternative to configuring attributes from the IAM
+#' Identity Center identity store. If a SAML assertion passes any of these
+#' attributes, IAM Identity Center will replace the attribute value with
+#' the value from the IAM Identity Center identity store.
 #'
 #' @return
 #' An empty list.
@@ -280,15 +286,13 @@ ssoadmin_create_instance_access_control_attribute_configuration <- function(Inst
 }
 .ssoadmin$operations$create_instance_access_control_attribute_configuration <- ssoadmin_create_instance_access_control_attribute_configuration
 
-#' Creates a permission set within a specified Amazon Web Services SSO
-#' instance
+#' Creates a permission set within a specified IAM Identity Center instance
 #'
 #' @description
-#' Creates a permission set within a specified Amazon Web Services SSO
+#' Creates a permission set within a specified IAM Identity Center
 #' instance.
 #' 
-#' To grant users and groups access to Amazon Web Services account
-#' resources, use
+#' To grant users and groups access to AWS account resources, use
 #' [`create_account_assignment`][ssoadmin_create_account_assignment].
 #'
 #' @usage
@@ -297,10 +301,9 @@ ssoadmin_create_instance_access_control_attribute_configuration <- function(Inst
 #'
 #' @param Name &#91;required&#93; The name of the PermissionSet.
 #' @param Description The description of the PermissionSet.
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
 #' @param SessionDuration The length of time that the application user sessions are valid in the
 #' ISO-8601 standard.
 #' @param RelayState Used to redirect users within the application during the federation
@@ -363,30 +366,33 @@ ssoadmin_create_permission_set <- function(Name, Description = NULL, InstanceArn
 }
 .ssoadmin$operations$create_permission_set <- ssoadmin_create_permission_set
 
-#' Deletes a principal's access from a specified Amazon Web Services
-#' account using a specified permission set
+#' Deletes a principal's access from a specified AWS account using a
+#' specified permission set
 #'
 #' @description
-#' Deletes a principal's access from a specified Amazon Web Services
-#' account using a specified permission set.
+#' Deletes a principal's access from a specified AWS account using a
+#' specified permission set.
+#' 
+#' After a successful response, call
+#' [`describe_account_assignment_creation_status`][ssoadmin_describe_account_assignment_creation_status]
+#' to describe the status of an assignment deletion request.
 #'
 #' @usage
 #' ssoadmin_delete_account_assignment(InstanceArn, TargetId, TargetType,
 #'   PermissionSetArn, PrincipalType, PrincipalId)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
-#' @param TargetId &#91;required&#93; TargetID is an Amazon Web Services account identifier, typically a 10-12
-#' digit string (For example, 123456789012).
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
+#' @param TargetId &#91;required&#93; TargetID is an AWS account identifier, typically a 10-12 digit string
+#' (For example, 123456789012).
 #' @param TargetType &#91;required&#93; The entity type for which the assignment will be deleted.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set that will be used to remove access.
 #' @param PrincipalType &#91;required&#93; The entity type for which the assignment will be deleted.
-#' @param PrincipalId &#91;required&#93; An identifier for an object in Amazon Web Services SSO, such as a user
-#' or group. PrincipalIds are GUIDs (For example,
+#' @param PrincipalId &#91;required&#93; An identifier for an object in IAM Identity Center, such as a user or
+#' group. PrincipalIds are GUIDs (For example,
 #' f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about
-#' PrincipalIds in Amazon Web Services SSO, see the Amazon Web Services SSO
+#' PrincipalIds in IAM Identity Center, see the IAM Identity Center
 #' Identity Store API Reference.
 #'
 #' @return
@@ -452,10 +458,9 @@ ssoadmin_delete_account_assignment <- function(InstanceArn, TargetId, TargetType
 #' ssoadmin_delete_inline_policy_from_permission_set(InstanceArn,
 #'   PermissionSetArn)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set that will be used to remove access.
 #'
 #' @return
@@ -492,24 +497,24 @@ ssoadmin_delete_inline_policy_from_permission_set <- function(InstanceArn, Permi
 .ssoadmin$operations$delete_inline_policy_from_permission_set <- ssoadmin_delete_inline_policy_from_permission_set
 
 #' Disables the attributes-based access control (ABAC) feature for the
-#' specified Amazon Web Services SSO instance and deletes all of the
-#' attribute mappings that have been configured
+#' specified IAM Identity Center instance and deletes all of the attribute
+#' mappings that have been configured
 #'
 #' @description
 #' Disables the attributes-based access control (ABAC) feature for the
-#' specified Amazon Web Services SSO instance and deletes all of the
-#' attribute mappings that have been configured. Once deleted, any
-#' attributes that are received from an identity source and any custom
-#' attributes you have previously configured will not be passed. For more
-#' information about ABAC, see Attribute-Based Access Control in the
-#' *Amazon Web Services SSO User Guide*.
+#' specified IAM Identity Center instance and deletes all of the attribute
+#' mappings that have been configured. Once deleted, any attributes that
+#' are received from an identity source and any custom attributes you have
+#' previously configured will not be passed. For more information about
+#' ABAC, see Attribute-Based Access Control in the *IAM Identity Center
+#' User Guide*.
 #'
 #' @usage
 #' ssoadmin_delete_instance_access_control_attribute_configuration(
 #'   InstanceArn)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed.
 #'
 #' @return
 #' An empty list.
@@ -551,10 +556,9 @@ ssoadmin_delete_instance_access_control_attribute_configuration <- function(Inst
 #' @usage
 #' ssoadmin_delete_permission_set(InstanceArn, PermissionSetArn)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set that should be deleted.
 #'
 #' @return
@@ -599,8 +603,8 @@ ssoadmin_delete_permission_set <- function(InstanceArn, PermissionSetArn) {
 #' ssoadmin_delete_permissions_boundary_from_permission_set(InstanceArn,
 #'   PermissionSetArn)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the `PermissionSet`.
 #'
 #' @return
@@ -645,10 +649,9 @@ ssoadmin_delete_permissions_boundary_from_permission_set <- function(InstanceArn
 #' ssoadmin_describe_account_assignment_creation_status(InstanceArn,
 #'   AccountAssignmentCreationRequestId)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
 #' @param AccountAssignmentCreationRequestId &#91;required&#93; The identifier that is used to track the request operation progress.
 #'
 #' @return
@@ -710,10 +713,9 @@ ssoadmin_describe_account_assignment_creation_status <- function(InstanceArn, Ac
 #' ssoadmin_describe_account_assignment_deletion_status(InstanceArn,
 #'   AccountAssignmentDeletionRequestId)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
 #' @param AccountAssignmentDeletionRequestId &#91;required&#93; The identifier that is used to track the request operation progress.
 #'
 #' @return
@@ -766,24 +768,24 @@ ssoadmin_describe_account_assignment_deletion_status <- function(InstanceArn, Ac
 }
 .ssoadmin$operations$describe_account_assignment_deletion_status <- ssoadmin_describe_account_assignment_deletion_status
 
-#' Returns the list of Amazon Web Services SSO identity store attributes
-#' that have been configured to work with attributes-based access control
-#' (ABAC) for the specified Amazon Web Services SSO instance
+#' Returns the list of IAM Identity Center identity store attributes that
+#' have been configured to work with attributes-based access control (ABAC)
+#' for the specified IAM Identity Center instance
 #'
 #' @description
-#' Returns the list of Amazon Web Services SSO identity store attributes
-#' that have been configured to work with attributes-based access control
-#' (ABAC) for the specified Amazon Web Services SSO instance. This will not
-#' return attributes configured and sent by an external identity provider.
-#' For more information about ABAC, see Attribute-Based Access Control in
-#' the *Amazon Web Services SSO User Guide*.
+#' Returns the list of IAM Identity Center identity store attributes that
+#' have been configured to work with attributes-based access control (ABAC)
+#' for the specified IAM Identity Center instance. This will not return
+#' attributes configured and sent by an external identity provider. For
+#' more information about ABAC, see Attribute-Based Access Control in the
+#' *IAM Identity Center User Guide*.
 #'
 #' @usage
 #' ssoadmin_describe_instance_access_control_attribute_configuration(
 #'   InstanceArn)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed.
 #'
 #' @return
 #' A list with the following syntax:
@@ -843,10 +845,9 @@ ssoadmin_describe_instance_access_control_attribute_configuration <- function(In
 #' @usage
 #' ssoadmin_describe_permission_set(InstanceArn, PermissionSetArn)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set.
 #'
 #' @return
@@ -905,10 +906,9 @@ ssoadmin_describe_permission_set <- function(InstanceArn, PermissionSetArn) {
 #' ssoadmin_describe_permission_set_provisioning_status(InstanceArn,
 #'   ProvisionPermissionSetRequestId)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
 #' @param ProvisionPermissionSetRequestId &#91;required&#93; The identifier that is provided by the
 #' [`provision_permission_set`][ssoadmin_provision_permission_set] call to
 #' retrieve the current status of the provisioning workflow.
@@ -971,12 +971,12 @@ ssoadmin_describe_permission_set_provisioning_status <- function(InstanceArn, Pr
 #' ssoadmin_detach_customer_managed_policy_reference_from_permission_set(
 #'   InstanceArn, PermissionSetArn, CustomerManagedPolicyReference)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the `PermissionSet`.
 #' @param CustomerManagedPolicyReference &#91;required&#93; Specifies the name and path of a customer managed policy. You must have
-#' an IAM policy that matches the name and path in each Amazon Web Services
-#' account where you want to deploy your permission set.
+#' an IAM policy that matches the name and path in each AWS account where
+#' you want to deploy your permission set.
 #'
 #' @return
 #' An empty list.
@@ -1015,24 +1015,22 @@ ssoadmin_detach_customer_managed_policy_reference_from_permission_set <- functio
 }
 .ssoadmin$operations$detach_customer_managed_policy_reference_from_permission_set <- ssoadmin_detach_customer_managed_policy_reference_from_permission_set
 
-#' Detaches the attached Amazon Web Services managed policy ARN from the
-#' specified permission set
+#' Detaches the attached AWS managed policy ARN from the specified
+#' permission set
 #'
 #' @description
-#' Detaches the attached Amazon Web Services managed policy ARN from the
-#' specified permission set.
+#' Detaches the attached AWS managed policy ARN from the specified
+#' permission set.
 #'
 #' @usage
 #' ssoadmin_detach_managed_policy_from_permission_set(InstanceArn,
 #'   PermissionSetArn, ManagedPolicyArn)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the PermissionSet from which the policy should be detached.
-#' @param ManagedPolicyArn &#91;required&#93; The Amazon Web Services managed policy ARN to be detached from a
-#' permission set.
+#' @param ManagedPolicyArn &#91;required&#93; The AWS managed policy ARN to be detached from a permission set.
 #'
 #' @return
 #' An empty list.
@@ -1077,10 +1075,9 @@ ssoadmin_detach_managed_policy_from_permission_set <- function(InstanceArn, Perm
 #' ssoadmin_get_inline_policy_for_permission_set(InstanceArn,
 #'   PermissionSetArn)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set.
 #'
 #' @return
@@ -1130,8 +1127,8 @@ ssoadmin_get_inline_policy_for_permission_set <- function(InstanceArn, Permissio
 #' ssoadmin_get_permissions_boundary_for_permission_set(InstanceArn,
 #'   PermissionSetArn)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the `PermissionSet`.
 #'
 #' @return
@@ -1178,21 +1175,20 @@ ssoadmin_get_permissions_boundary_for_permission_set <- function(InstanceArn, Pe
 }
 .ssoadmin$operations$get_permissions_boundary_for_permission_set <- ssoadmin_get_permissions_boundary_for_permission_set
 
-#' Lists the status of the Amazon Web Services account assignment creation
-#' requests for a specified Amazon Web Services SSO instance
+#' Lists the status of the AWS account assignment creation requests for a
+#' specified IAM Identity Center instance
 #'
 #' @description
-#' Lists the status of the Amazon Web Services account assignment creation
-#' requests for a specified Amazon Web Services SSO instance.
+#' Lists the status of the AWS account assignment creation requests for a
+#' specified IAM Identity Center instance.
 #'
 #' @usage
 #' ssoadmin_list_account_assignment_creation_status(InstanceArn,
 #'   MaxResults, NextToken, Filter)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
 #' @param MaxResults The maximum number of results to display for the assignment.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
@@ -1249,21 +1245,20 @@ ssoadmin_list_account_assignment_creation_status <- function(InstanceArn, MaxRes
 }
 .ssoadmin$operations$list_account_assignment_creation_status <- ssoadmin_list_account_assignment_creation_status
 
-#' Lists the status of the Amazon Web Services account assignment deletion
-#' requests for a specified Amazon Web Services SSO instance
+#' Lists the status of the AWS account assignment deletion requests for a
+#' specified IAM Identity Center instance
 #'
 #' @description
-#' Lists the status of the Amazon Web Services account assignment deletion
-#' requests for a specified Amazon Web Services SSO instance.
+#' Lists the status of the AWS account assignment deletion requests for a
+#' specified IAM Identity Center instance.
 #'
 #' @usage
 #' ssoadmin_list_account_assignment_deletion_status(InstanceArn,
 #'   MaxResults, NextToken, Filter)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
 #' @param MaxResults The maximum number of results to display for the assignment.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
@@ -1320,23 +1315,21 @@ ssoadmin_list_account_assignment_deletion_status <- function(InstanceArn, MaxRes
 }
 .ssoadmin$operations$list_account_assignment_deletion_status <- ssoadmin_list_account_assignment_deletion_status
 
-#' Lists the assignee of the specified Amazon Web Services account with the
-#' specified permission set
+#' Lists the assignee of the specified AWS account with the specified
+#' permission set
 #'
 #' @description
-#' Lists the assignee of the specified Amazon Web Services account with the
-#' specified permission set.
+#' Lists the assignee of the specified AWS account with the specified
+#' permission set.
 #'
 #' @usage
 #' ssoadmin_list_account_assignments(InstanceArn, AccountId,
 #'   PermissionSetArn, MaxResults, NextToken)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
-#' @param AccountId &#91;required&#93; The identifier of the Amazon Web Services account from which to list the
-#' assignments.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
+#' @param AccountId &#91;required&#93; The identifier of the AWS account from which to list the assignments.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set from which to list assignments.
 #' @param MaxResults The maximum number of results to display for the assignment.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
@@ -1391,25 +1384,23 @@ ssoadmin_list_account_assignments <- function(InstanceArn, AccountId, Permission
 }
 .ssoadmin$operations$list_account_assignments <- ssoadmin_list_account_assignments
 
-#' Lists all the Amazon Web Services accounts where the specified
-#' permission set is provisioned
+#' Lists all the AWS accounts where the specified permission set is
+#' provisioned
 #'
 #' @description
-#' Lists all the Amazon Web Services accounts where the specified
-#' permission set is provisioned.
+#' Lists all the AWS accounts where the specified permission set is
+#' provisioned.
 #'
 #' @usage
 #' ssoadmin_list_accounts_for_provisioned_permission_set(InstanceArn,
 #'   PermissionSetArn, ProvisioningStatus, MaxResults, NextToken)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
-#' @param PermissionSetArn &#91;required&#93; The ARN of the PermissionSet from which the associated Amazon Web
-#' Services accounts will be listed.
-#' @param ProvisioningStatus The permission set provisioning status for an Amazon Web Services
-#' account.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
+#' @param PermissionSetArn &#91;required&#93; The ARN of the PermissionSet from which the associated AWS accounts will
+#' be listed.
+#' @param ProvisioningStatus The permission set provisioning status for an AWS account.
 #' @param MaxResults The maximum number of results to display for the PermissionSet.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
@@ -1469,8 +1460,8 @@ ssoadmin_list_accounts_for_provisioned_permission_set <- function(InstanceArn, P
 #' ssoadmin_list_customer_managed_policy_references_in_permission_set(
 #'   InstanceArn, PermissionSetArn, MaxResults, NextToken)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the `PermissionSet`.
 #' @param MaxResults The maximum number of results to display for the list call.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
@@ -1522,12 +1513,10 @@ ssoadmin_list_customer_managed_policy_references_in_permission_set <- function(I
 }
 .ssoadmin$operations$list_customer_managed_policy_references_in_permission_set <- ssoadmin_list_customer_managed_policy_references_in_permission_set
 
-#' Lists the Amazon Web Services SSO instances that the caller has access
-#' to
+#' Lists the IAM Identity Center instances that the caller has access to
 #'
 #' @description
-#' Lists the Amazon Web Services SSO instances that the caller has access
-#' to.
+#' Lists the IAM Identity Center instances that the caller has access to.
 #'
 #' @usage
 #' ssoadmin_list_instances(MaxResults, NextToken)
@@ -1580,21 +1569,20 @@ ssoadmin_list_instances <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .ssoadmin$operations$list_instances <- ssoadmin_list_instances
 
-#' Lists the Amazon Web Services managed policy that is attached to a
-#' specified permission set
+#' Lists the AWS managed policy that is attached to a specified permission
+#' set
 #'
 #' @description
-#' Lists the Amazon Web Services managed policy that is attached to a
-#' specified permission set.
+#' Lists the AWS managed policy that is attached to a specified permission
+#' set.
 #'
 #' @usage
 #' ssoadmin_list_managed_policies_in_permission_set(InstanceArn,
 #'   PermissionSetArn, MaxResults, NextToken)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the PermissionSet whose managed policies will be listed.
 #' @param MaxResults The maximum number of results to display for the PermissionSet.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
@@ -1647,20 +1635,19 @@ ssoadmin_list_managed_policies_in_permission_set <- function(InstanceArn, Permis
 .ssoadmin$operations$list_managed_policies_in_permission_set <- ssoadmin_list_managed_policies_in_permission_set
 
 #' Lists the status of the permission set provisioning requests for a
-#' specified Amazon Web Services SSO instance
+#' specified IAM Identity Center instance
 #'
 #' @description
 #' Lists the status of the permission set provisioning requests for a
-#' specified Amazon Web Services SSO instance.
+#' specified IAM Identity Center instance.
 #'
 #' @usage
 #' ssoadmin_list_permission_set_provisioning_status(InstanceArn,
 #'   MaxResults, NextToken, Filter)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
 #' @param MaxResults The maximum number of results to display for the assignment.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
@@ -1717,18 +1704,17 @@ ssoadmin_list_permission_set_provisioning_status <- function(InstanceArn, MaxRes
 }
 .ssoadmin$operations$list_permission_set_provisioning_status <- ssoadmin_list_permission_set_provisioning_status
 
-#' Lists the PermissionSets in an Amazon Web Services SSO instance
+#' Lists the PermissionSets in an IAM Identity Center instance
 #'
 #' @description
-#' Lists the PermissionSets in an Amazon Web Services SSO instance.
+#' Lists the PermissionSets in an IAM Identity Center instance.
 #'
 #' @usage
 #' ssoadmin_list_permission_sets(InstanceArn, NextToken, MaxResults)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
 #' @param MaxResults The maximum number of results to display for the assignment.
@@ -1775,23 +1761,21 @@ ssoadmin_list_permission_sets <- function(InstanceArn, NextToken = NULL, MaxResu
 }
 .ssoadmin$operations$list_permission_sets <- ssoadmin_list_permission_sets
 
-#' Lists all the permission sets that are provisioned to a specified Amazon
-#' Web Services account
+#' Lists all the permission sets that are provisioned to a specified AWS
+#' account
 #'
 #' @description
-#' Lists all the permission sets that are provisioned to a specified Amazon
-#' Web Services account.
+#' Lists all the permission sets that are provisioned to a specified AWS
+#' account.
 #'
 #' @usage
 #' ssoadmin_list_permission_sets_provisioned_to_account(InstanceArn,
 #'   AccountId, ProvisioningStatus, MaxResults, NextToken)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
-#' @param AccountId &#91;required&#93; The identifier of the Amazon Web Services account from which to list the
-#' assignments.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
+#' @param AccountId &#91;required&#93; The identifier of the AWS account from which to list the assignments.
 #' @param ProvisioningStatus The status object for the permission set provisioning operation.
 #' @param MaxResults The maximum number of results to display for the assignment.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
@@ -1849,10 +1833,9 @@ ssoadmin_list_permission_sets_provisioned_to_account <- function(InstanceArn, Ac
 #' @usage
 #' ssoadmin_list_tags_for_resource(InstanceArn, ResourceArn, NextToken)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
 #' @param ResourceArn &#91;required&#93; The ARN of the resource with the tags to be listed.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
 #' the output of previous API calls to make subsequent calls.
@@ -1913,13 +1896,12 @@ ssoadmin_list_tags_for_resource <- function(InstanceArn, ResourceArn, NextToken 
 #' ssoadmin_provision_permission_set(InstanceArn, PermissionSetArn,
 #'   TargetId, TargetType)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set.
-#' @param TargetId TargetID is an Amazon Web Services account identifier, typically a 10-12
-#' digit string (For example, 123456789012).
+#' @param TargetId TargetID is an AWS account identifier, typically a 10-12 digit string
+#' (For example, 123456789012).
 #' @param TargetType &#91;required&#93; The entity type for which the assignment will be created.
 #'
 #' @return
@@ -1986,10 +1968,9 @@ ssoadmin_provision_permission_set <- function(InstanceArn, PermissionSetArn, Tar
 #' ssoadmin_put_inline_policy_to_permission_set(InstanceArn,
 #'   PermissionSetArn, InlinePolicy)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set.
 #' @param InlinePolicy &#91;required&#93; The inline policy to attach to a PermissionSet.
 #'
@@ -2027,19 +2008,19 @@ ssoadmin_put_inline_policy_to_permission_set <- function(InstanceArn, Permission
 }
 .ssoadmin$operations$put_inline_policy_to_permission_set <- ssoadmin_put_inline_policy_to_permission_set
 
-#' Attaches an Amazon Web Services managed or customer managed policy to
-#' the specified PermissionSet as a permissions boundary
+#' Attaches an AWS managed or customer managed policy to the specified
+#' PermissionSet as a permissions boundary
 #'
 #' @description
-#' Attaches an Amazon Web Services managed or customer managed policy to
-#' the specified PermissionSet as a permissions boundary.
+#' Attaches an AWS managed or customer managed policy to the specified
+#' PermissionSet as a permissions boundary.
 #'
 #' @usage
 #' ssoadmin_put_permissions_boundary_to_permission_set(InstanceArn,
 #'   PermissionSetArn, PermissionsBoundary)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the `PermissionSet`.
 #' @param PermissionsBoundary &#91;required&#93; The permissions boundary that you want to attach to a `PermissionSet`.
 #'
@@ -2091,10 +2072,9 @@ ssoadmin_put_permissions_boundary_to_permission_set <- function(InstanceArn, Per
 #' @usage
 #' ssoadmin_tag_resource(InstanceArn, ResourceArn, Tags)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
 #' @param ResourceArn &#91;required&#93; The ARN of the resource with the tags to be listed.
 #' @param Tags &#91;required&#93; A set of key-value pairs that are used to manage the resource.
 #'
@@ -2145,10 +2125,9 @@ ssoadmin_tag_resource <- function(InstanceArn, ResourceArn, Tags) {
 #' @usage
 #' ssoadmin_untag_resource(InstanceArn, ResourceArn, TagKeys)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
 #' @param ResourceArn &#91;required&#93; The ARN of the resource with the tags to be listed.
 #' @param TagKeys &#91;required&#93; The keys of tags that are attached to the resource.
 #'
@@ -2188,28 +2167,27 @@ ssoadmin_untag_resource <- function(InstanceArn, ResourceArn, TagKeys) {
 }
 .ssoadmin$operations$untag_resource <- ssoadmin_untag_resource
 
-#' Updates the Amazon Web Services SSO identity store attributes that you
-#' can use with the Amazon Web Services SSO instance for attributes-based
-#' access control (ABAC)
+#' Updates the IAM Identity Center identity store attributes that you can
+#' use with the IAM Identity Center instance for attributes-based access
+#' control (ABAC)
 #'
 #' @description
-#' Updates the Amazon Web Services SSO identity store attributes that you
-#' can use with the Amazon Web Services SSO instance for attributes-based
-#' access control (ABAC). When using an external identity provider as an
-#' identity source, you can pass attributes through the SAML assertion as
-#' an alternative to configuring attributes from the Amazon Web Services
-#' SSO identity store. If a SAML assertion passes any of these attributes,
-#' Amazon Web Services SSO replaces the attribute value with the value from
-#' the Amazon Web Services SSO identity store. For more information about
-#' ABAC, see Attribute-Based Access Control in the *Amazon Web Services SSO
-#' User Guide*.
+#' Updates the IAM Identity Center identity store attributes that you can
+#' use with the IAM Identity Center instance for attributes-based access
+#' control (ABAC). When using an external identity provider as an identity
+#' source, you can pass attributes through the SAML assertion as an
+#' alternative to configuring attributes from the IAM Identity Center
+#' identity store. If a SAML assertion passes any of these attributes, IAM
+#' Identity Center replaces the attribute value with the value from the IAM
+#' Identity Center identity store. For more information about ABAC, see
+#' Attribute-Based Access Control in the *IAM Identity Center User Guide*.
 #'
 #' @usage
 #' ssoadmin_update_instance_access_control_attribute_configuration(
 #'   InstanceArn, InstanceAccessControlAttributeConfiguration)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed.
 #' @param InstanceAccessControlAttributeConfiguration &#91;required&#93; Updates the attributes for your ABAC configuration.
 #'
 #' @return
@@ -2265,10 +2243,9 @@ ssoadmin_update_instance_access_control_attribute_configuration <- function(Inst
 #' ssoadmin_update_permission_set(InstanceArn, PermissionSetArn,
 #'   Description, SessionDuration, RelayState)
 #'
-#' @param InstanceArn &#91;required&#93; The ARN of the Amazon Web Services SSO instance under which the
-#' operation will be executed. For more information about ARNs, see Amazon
-#' Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-#' *Amazon Web Services General Reference*.
+#' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
+#' will be executed. For more information about ARNs, see Amazon Resource
+#' Names (ARNs) and AWS Service Namespaces in the *AWS General Reference*.
 #' @param PermissionSetArn &#91;required&#93; The ARN of the permission set.
 #' @param Description The description of the PermissionSet.
 #' @param SessionDuration The length of time that the application user sessions are valid for in

@@ -13,7 +13,8 @@ sagemakerruntime_invoke_endpoint_async(
   CustomAttributes = NULL,
   InferenceId = NULL,
   InputLocation,
-  RequestTTLSeconds = NULL
+  RequestTTLSeconds = NULL,
+  InvocationTimeoutSeconds = NULL
 )
 }
 \arguments{
@@ -50,7 +51,10 @@ an identifier for you if none is specified.}
 \item{InputLocation}{[required] The Amazon S3 URI where the inference request payload is stored.}
 
 \item{RequestTTLSeconds}{Maximum age in seconds a request can be in the queue before it is marked
-as expired.}
+as expired. The default is 6 hours, or 21,600 seconds.}
+
+\item{InvocationTimeoutSeconds}{Maximum amount of time in seconds a request can be processed before it
+is marked as expired. The default is 15 minutes, or 900 seconds.}
 }
 \description{
 After you deploy a model into production using Amazon SageMaker hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint in an asynchronous manner.

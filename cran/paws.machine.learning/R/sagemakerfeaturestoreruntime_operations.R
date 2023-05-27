@@ -34,10 +34,10 @@ sagemakerfeaturestoreruntime_batch_get_record <- function(Identifiers) {
 }
 .sagemakerfeaturestoreruntime$operations$batch_get_record <- sagemakerfeaturestoreruntime_batch_get_record
 
-#' Deletes a Record from a FeatureGroup
+#' Deletes a Record from a FeatureGroup in the OnlineStore
 #'
 #' @description
-#' Deletes a `Record` from a `FeatureGroup`. A new record will show up in the `OfflineStore` when the [`delete_record`][sagemakerfeaturestoreruntime_delete_record] API is called. This record will have a value of `True` in the `is_deleted` column.
+#' Deletes a `Record` from a `FeatureGroup` in the `OnlineStore`. Feature Store supports both `SOFT_DELETE` and `HARD_DELETE`. For `SOFT_DELETE` (default), feature columns are set to `null` and the record is no longer retrievable by [`get_record`][sagemakerfeaturestoreruntime_get_record] or [`batch_get_record`][sagemakerfeaturestoreruntime_batch_get_record]. For` HARD_DELETE`, the complete `Record` is removed from the `OnlineStore`. In both cases, Feature Store appends the deleted record marker to the `OfflineStore` with feature values set to `null`, `is_deleted` value set to `True`, and `EventTime` set to the delete input `EventTime`.
 #'
 #' See [https://paws-r.github.io/docs/sagemakerfeaturestoreruntime/delete_record.html](https://paws-r.github.io/docs/sagemakerfeaturestoreruntime/delete_record.html) for full documentation.
 #'
@@ -46,18 +46,23 @@ sagemakerfeaturestoreruntime_batch_get_record <- function(Identifiers) {
 #' record, in string format.
 #' @param EventTime &#91;required&#93; Timestamp indicating when the deletion event occurred. `EventTime` can
 #' be used to query data at a certain point in time.
+#' @param TargetStores A list of stores from which you're deleting the record. By default,
+#' Feature Store deletes the record from all of the stores that you're
+#' using for the `FeatureGroup`.
+#' @param DeletionMode The name of the deletion mode for deleting the record. By default, the
+#' deletion mode is set to `SoftDelete`.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemakerfeaturestoreruntime_delete_record
-sagemakerfeaturestoreruntime_delete_record <- function(FeatureGroupName, RecordIdentifierValueAsString, EventTime) {
+sagemakerfeaturestoreruntime_delete_record <- function(FeatureGroupName, RecordIdentifierValueAsString, EventTime, TargetStores = NULL, DeletionMode = NULL) {
   op <- new_operation(
     name = "DeleteRecord",
     http_method = "DELETE",
     http_path = "/FeatureGroup/{FeatureGroupName}",
     paginator = list()
   )
-  input <- .sagemakerfeaturestoreruntime$delete_record_input(FeatureGroupName = FeatureGroupName, RecordIdentifierValueAsString = RecordIdentifierValueAsString, EventTime = EventTime)
+  input <- .sagemakerfeaturestoreruntime$delete_record_input(FeatureGroupName = FeatureGroupName, RecordIdentifierValueAsString = RecordIdentifierValueAsString, EventTime = EventTime, TargetStores = TargetStores, DeletionMode = DeletionMode)
   output <- .sagemakerfeaturestoreruntime$delete_record_output()
   config <- get_config()
   svc <- .sagemakerfeaturestoreruntime$service(config)
@@ -74,7 +79,7 @@ sagemakerfeaturestoreruntime_delete_record <- function(FeatureGroupName, RecordI
 #'
 #' See [https://paws-r.github.io/docs/sagemakerfeaturestoreruntime/get_record.html](https://paws-r.github.io/docs/sagemakerfeaturestoreruntime/get_record.html) for full documentation.
 #'
-#' @param FeatureGroupName &#91;required&#93; The name of the feature group in which you want to put the records.
+#' @param FeatureGroupName &#91;required&#93; The name of the feature group from which you want to retrieve a record.
 #' @param RecordIdentifierValueAsString &#91;required&#93; The value that corresponds to `RecordIdentifier` type and uniquely
 #' identifies the record in the `FeatureGroup`.
 #' @param FeatureNames List of names of Features to be retrieved. If not specified, the latest
@@ -119,18 +124,21 @@ sagemakerfeaturestoreruntime_get_record <- function(FeatureGroupName, RecordIden
 #' 
 #' -   Use [`put_record`][sagemakerfeaturestoreruntime_put_record] to
 #'     update feature values.
+#' @param TargetStores A list of stores to which you're adding the record. By default, Feature
+#' Store adds the record to all of the stores that you're using for the
+#' `FeatureGroup`.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemakerfeaturestoreruntime_put_record
-sagemakerfeaturestoreruntime_put_record <- function(FeatureGroupName, Record) {
+sagemakerfeaturestoreruntime_put_record <- function(FeatureGroupName, Record, TargetStores = NULL) {
   op <- new_operation(
     name = "PutRecord",
     http_method = "PUT",
     http_path = "/FeatureGroup/{FeatureGroupName}",
     paginator = list()
   )
-  input <- .sagemakerfeaturestoreruntime$put_record_input(FeatureGroupName = FeatureGroupName, Record = Record)
+  input <- .sagemakerfeaturestoreruntime$put_record_input(FeatureGroupName = FeatureGroupName, Record = Record, TargetStores = TargetStores)
   output <- .sagemakerfeaturestoreruntime$put_record_output()
   config <- get_config()
   svc <- .sagemakerfeaturestoreruntime$service(config)

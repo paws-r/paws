@@ -40,11 +40,11 @@ selectors, up to a maximum of 500 values for all conditions and
 selectors on a trail. You can use either \code{AdvancedEventSelectors} or
 \code{EventSelectors}, but not both. If you apply \code{AdvancedEventSelectors} to
 a trail, any existing \code{EventSelectors} are overwritten. For more
-information about advanced event selectors, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html}{Logging data events for trails}
+information about advanced event selectors, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html}{Logging data events}
 in the \emph{CloudTrail User Guide}.}
 }
 \description{
-Configures an event selector or advanced event selectors for your trail. Use event selectors or advanced event selectors to specify management and data event settings for your trail. By default, trails created without specific event selectors are configured to log all read and write management events, and no data events.
+Configures an event selector or advanced event selectors for your trail. Use event selectors or advanced event selectors to specify management and data event settings for your trail. If you want your trail to log Insights events, be sure the event selector enables logging of the Insights event types you want configured for your trail. For more information about logging Insights events, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html}{Logging Insights events for trails} in the \emph{CloudTrail User Guide}. By default, trails created without specific event selectors are configured to log all read and write management events, and no data events.
 
 See \url{https://paws-r.github.io/docs/cloudtrail/put_event_selectors.html} for full documentation.
 }

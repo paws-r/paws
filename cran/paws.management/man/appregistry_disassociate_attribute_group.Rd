@@ -9,9 +9,9 @@ metadata}
 appregistry_disassociate_attribute_group(application, attributeGroup)
 }
 \arguments{
-\item{application}{[required] The name or ID of the application.}
+\item{application}{[required] The name, ID, or ARN of the application.}
 
-\item{attributeGroup}{[required] The name or ID of the attribute group that holds the attributes to
+\item{attributeGroup}{[required] The name, ID, or ARN of the attribute group that holds the attributes to
 describe the application.}
 }
 \description{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_start_instance_refresh}
 \alias{autoscaling_start_instance_refresh}
-\title{Starts a new instance refresh operation}
+\title{Starts an instance refresh}
 \usage{
 autoscaling_start_instance_refresh(
   AutoScalingGroupName,
@@ -15,13 +15,7 @@ autoscaling_start_instance_refresh(
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
 \item{Strategy}{The strategy to use for the instance refresh. The only valid value is
-\code{Rolling}.
-
-A rolling update helps you update your instances gradually. A rolling
-update can fail due to failed health checks or if instances are on
-standby or are protected from scale in. If the rolling update process
-fails, any instances that are replaced are not rolled back to their
-previous configuration.}
+\code{Rolling}.}
 
 \item{DesiredConfiguration}{The desired configuration. For example, the desired configuration can
 specify a new launch template or a new version of the current launch
@@ -35,14 +29,23 @@ When you specify a new launch template or a new version of the current
 launch template for your desired configuration, consider enabling the
 \code{SkipMatching} property in preferences. If it's enabled, Amazon EC2 Auto
 Scaling skips replacing instances that already use the specified launch
-template and version. This can help you reduce the number of
+template and instance types. This can help you reduce the number of
 replacements that are required to apply updates.}
 
-\item{Preferences}{Set of preferences associated with the instance refresh request. If not
-provided, the default values are used.}
+\item{Preferences}{Sets your preferences for the instance refresh so that it performs as
+expected when you start it. Includes the instance warmup time, the
+minimum healthy percentage, and the behaviors that you want Amazon EC2
+Auto Scaling to use if instances that are in \code{Standby} state or
+protected from scale in are found. You can also choose to enable
+additional features, such as the following:
+\itemize{
+\item Auto rollback
+\item Checkpoints
+\item Skip matching
+}}
 }
 \description{
-Starts a new instance refresh operation. An instance refresh performs a rolling replacement of all or some instances in an Auto Scaling group. Each instance is terminated first and then replaced, which temporarily reduces the capacity available within your Auto Scaling group.
+Starts an instance refresh. During an instance refresh, Amazon EC2 Auto Scaling performs a rolling update of instances in an Auto Scaling group. Instances are terminated first and then replaced, which temporarily reduces the capacity available within your Auto Scaling group.
 
 See \url{https://paws-r.github.io/docs/autoscaling/start_instance_refresh.html} for full documentation.
 }

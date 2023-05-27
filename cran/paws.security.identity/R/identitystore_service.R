@@ -5,10 +5,13 @@ NULL
 #' AWS SSO Identity Store
 #'
 #' @description
-#' The identity store service used by Amazon Web Services Single Sign On
-#' provides a single place to retrieve all of your identities (users and
-#' groups). For more information, see the [Amazon Web Services SSO User
+#' The Identity Store service used by AWS IAM Identity Center (successor to
+#' AWS Single Sign-On) provides a single place to retrieve all of your
+#' identities (users and groups). For more information, see the [IAM
+#' Identity Center User
 #' Guide](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html).
+#' 
+#'      <note> <p>Although AWS Single Sign-On was renamed, the <code>sso</code> and <code>identitystore</code> API namespaces will continue to retain their original name for backward compatibility purposes. For more information, see <a href="https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#renamed">IAM Identity Center rename</a>.</p> </note> <p>This reference guide describes the identity store operations that you can call programatically and includes detailed information about data types and errors.</p> 
 #'
 #' @param
 #' config
@@ -51,17 +54,32 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- identitystore()
-#' svc$describe_group(
+#' svc$create_group(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=identitystore_create_group]{create_group} \tab Creates a group within the specified identity store\cr
+#'  \link[=identitystore_create_group_membership]{create_group_membership} \tab Creates a relationship between a member and a group\cr
+#'  \link[=identitystore_create_user]{create_user} \tab Creates a user within the specified identity store\cr
+#'  \link[=identitystore_delete_group]{delete_group} \tab Delete a group within an identity store given GroupId\cr
+#'  \link[=identitystore_delete_group_membership]{delete_group_membership} \tab Delete a membership within a group given MembershipId\cr
+#'  \link[=identitystore_delete_user]{delete_user} \tab Deletes a user within an identity store given UserId\cr
 #'  \link[=identitystore_describe_group]{describe_group} \tab Retrieves the group metadata and attributes from GroupId in an identity store\cr
-#'  \link[=identitystore_describe_user]{describe_user} \tab Retrieves the user metadata and attributes from UserId in an identity store\cr
-#'  \link[=identitystore_list_groups]{list_groups} \tab Lists the attribute name and value of the group that you specified in the search\cr
-#'  \link[=identitystore_list_users]{list_users} \tab Lists the attribute name and value of the user that you specified in the search
+#'  \link[=identitystore_describe_group_membership]{describe_group_membership} \tab Retrieves membership metadata and attributes from MembershipId in an identity store\cr
+#'  \link[=identitystore_describe_user]{describe_user} \tab Retrieves the user metadata and attributes from the UserId in an identity store\cr
+#'  \link[=identitystore_get_group_id]{get_group_id} \tab Retrieves GroupId in an identity store\cr
+#'  \link[=identitystore_get_group_membership_id]{get_group_membership_id} \tab Retrieves the MembershipId in an identity store\cr
+#'  \link[=identitystore_get_user_id]{get_user_id} \tab Retrieves the UserId in an identity store\cr
+#'  \link[=identitystore_is_member_in_groups]{is_member_in_groups} \tab Checks the user's membership in all requested groups and returns if the member exists in all queried groups\cr
+#'  \link[=identitystore_list_group_memberships]{list_group_memberships} \tab For the specified group in the specified identity store, returns the list of all GroupMembership objects and returns results in paginated form\cr
+#'  \link[=identitystore_list_group_memberships_for_member]{list_group_memberships_for_member} \tab For the specified member in the specified identity store, returns the list of all GroupMembership objects and returns results in paginated form\cr
+#'  \link[=identitystore_list_groups]{list_groups} \tab Lists all groups in the identity store\cr
+#'  \link[=identitystore_list_users]{list_users} \tab Lists all users in the identity store\cr
+#'  \link[=identitystore_update_group]{update_group} \tab For the specified group in the specified identity store, updates the group metadata and attributes\cr
+#'  \link[=identitystore_update_user]{update_user} \tab For the specified user in the specified identity store, updates the user metadata and attributes
 #' }
 #'
 #' @return

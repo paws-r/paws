@@ -62,10 +62,12 @@ providing reporting and auditing.
 \section{Operations}{
 
 \tabular{ll}{
+\link[paws.storage:backup_cancel_legal_hold]{cancel_legal_hold} \tab This action removes the specified legal hold on a recovery point\cr
 \link[paws.storage:backup_create_backup_plan]{create_backup_plan} \tab Creates a backup plan using a backup plan name and backup rules\cr
 \link[paws.storage:backup_create_backup_selection]{create_backup_selection} \tab Creates a JSON document that specifies a set of resources to assign to a backup plan\cr
 \link[paws.storage:backup_create_backup_vault]{create_backup_vault} \tab Creates a logical container where backups are stored\cr
 \link[paws.storage:backup_create_framework]{create_framework} \tab Creates a framework with one or more controls\cr
+\link[paws.storage:backup_create_legal_hold]{create_legal_hold} \tab This action creates a legal hold on a recovery point (backup)\cr
 \link[paws.storage:backup_create_report_plan]{create_report_plan} \tab Creates a report plan\cr
 \link[paws.storage:backup_delete_backup_plan]{delete_backup_plan} \tab Deletes a backup plan\cr
 \link[paws.storage:backup_delete_backup_selection]{delete_backup_selection} \tab Deletes the resource selection associated with a backup plan that is specified by the SelectionId\cr
@@ -88,6 +90,7 @@ providing reporting and auditing.
 \link[paws.storage:backup_describe_report_plan]{describe_report_plan} \tab Returns a list of all report plans for an Amazon Web Services account and Amazon Web Services Region\cr
 \link[paws.storage:backup_describe_restore_job]{describe_restore_job} \tab Returns metadata associated with a restore job that is specified by a job ID\cr
 \link[paws.storage:backup_disassociate_recovery_point]{disassociate_recovery_point} \tab Deletes the specified continuous backup recovery point from Backup and releases control of that continuous backup to the source service, such as Amazon RDS\cr
+\link[paws.storage:backup_disassociate_recovery_point_from_parent]{disassociate_recovery_point_from_parent} \tab This action to a specific child (nested) recovery point removes the relationship between the specified recovery point and its parent (composite) recovery point\cr
 \link[paws.storage:backup_export_backup_plan_template]{export_backup_plan_template} \tab Returns the backup plan that is specified by the plan ID as a backup template\cr
 \link[paws.storage:backup_get_backup_plan]{get_backup_plan} \tab Returns BackupPlan details for the specified BackupPlanId\cr
 \link[paws.storage:backup_get_backup_plan_from_json]{get_backup_plan_from_json} \tab Returns a valid JSON document specifying a backup plan or an error\cr
@@ -95,6 +98,7 @@ providing reporting and auditing.
 \link[paws.storage:backup_get_backup_selection]{get_backup_selection} \tab Returns selection metadata and a document in JSON format that specifies a list of resources that are associated with a backup plan\cr
 \link[paws.storage:backup_get_backup_vault_access_policy]{get_backup_vault_access_policy} \tab Returns the access policy document that is associated with the named backup vault\cr
 \link[paws.storage:backup_get_backup_vault_notifications]{get_backup_vault_notifications} \tab Returns event notifications for the specified backup vault\cr
+\link[paws.storage:backup_get_legal_hold]{get_legal_hold} \tab This action returns details for a specified legal hold\cr
 \link[paws.storage:backup_get_recovery_point_restore_metadata]{get_recovery_point_restore_metadata} \tab Returns a set of metadata key-value pairs that were used to create the backup\cr
 \link[paws.storage:backup_get_supported_resource_types]{get_supported_resource_types} \tab Returns the Amazon Web Services resource types supported by Backup\cr
 \link[paws.storage:backup_list_backup_jobs]{list_backup_jobs} \tab Returns a list of existing backup jobs for an authenticated account for the last 30 days\cr
@@ -105,8 +109,10 @@ providing reporting and auditing.
 \link[paws.storage:backup_list_backup_vaults]{list_backup_vaults} \tab Returns a list of recovery point storage containers along with information about them\cr
 \link[paws.storage:backup_list_copy_jobs]{list_copy_jobs} \tab Returns metadata about your copy jobs\cr
 \link[paws.storage:backup_list_frameworks]{list_frameworks} \tab Returns a list of all frameworks for an Amazon Web Services account and Amazon Web Services Region\cr
+\link[paws.storage:backup_list_legal_holds]{list_legal_holds} \tab This action returns metadata about active and previous legal holds\cr
 \link[paws.storage:backup_list_protected_resources]{list_protected_resources} \tab Returns an array of resources successfully backed up by Backup, including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type\cr
 \link[paws.storage:backup_list_recovery_points_by_backup_vault]{list_recovery_points_by_backup_vault} \tab Returns detailed information about the recovery points stored in a backup vault\cr
+\link[paws.storage:backup_list_recovery_points_by_legal_hold]{list_recovery_points_by_legal_hold} \tab This action returns recovery point ARNs (Amazon Resource Names) of the specified legal hold\cr
 \link[paws.storage:backup_list_recovery_points_by_resource]{list_recovery_points_by_resource} \tab Returns detailed information about all the recovery points of the type specified by a resource Amazon Resource Name (ARN)\cr
 \link[paws.storage:backup_list_report_jobs]{list_report_jobs} \tab Returns details about your report jobs\cr
 \link[paws.storage:backup_list_report_plans]{list_report_plans} \tab Returns a list of your report plans\cr
@@ -134,7 +140,7 @@ providing reporting and auditing.
 \examples{
 \dontrun{
 svc <- backup()
-svc$create_backup_plan(
+svc$cancel_legal_hold(
   Foo = 123
 )
 }

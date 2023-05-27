@@ -5,14 +5,14 @@
 \title{Retroactively applies the archive rule to existing findings that meet
 the archive rule criteria}
 \usage{
-accessanalyzer_apply_archive_rule(analyzerArn, clientToken = NULL, ruleName)
+accessanalyzer_apply_archive_rule(analyzerArn, ruleName, clientToken = NULL)
 }
 \arguments{
 \item{analyzerArn}{[required] The Amazon resource name (ARN) of the analyzer.}
 
-\item{clientToken}{A client token.}
-
 \item{ruleName}{[required] The name of the rule to apply.}
+
+\item{clientToken}{A client token.}
 }
 \description{
 Retroactively applies the archive rule to existing findings that meet the archive rule criteria.

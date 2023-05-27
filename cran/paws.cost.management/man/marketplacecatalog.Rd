@@ -65,11 +65,17 @@ of the Catalog API to manage your products on AWS Marketplace.
 
 \tabular{ll}{
 \link[=marketplacecatalog_cancel_change_set]{cancel_change_set} \tab Used to cancel an open change request\cr
+\link[=marketplacecatalog_delete_resource_policy]{delete_resource_policy} \tab Deletes a resource-based policy on an Entity that is identified by its resource ARN\cr
 \link[=marketplacecatalog_describe_change_set]{describe_change_set} \tab Provides information about a given change set\cr
 \link[=marketplacecatalog_describe_entity]{describe_entity} \tab Returns the metadata and content of the entity\cr
+\link[=marketplacecatalog_get_resource_policy]{get_resource_policy} \tab Gets a resource-based policy of an Entity that is identified by its resource ARN\cr
 \link[=marketplacecatalog_list_change_sets]{list_change_sets} \tab Returns the list of change sets owned by the account being used to make the call\cr
 \link[=marketplacecatalog_list_entities]{list_entities} \tab Provides the list of entities of a given type\cr
-\link[=marketplacecatalog_start_change_set]{start_change_set} \tab This operation allows you to request changes for your entities
+\link[=marketplacecatalog_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags that have been added to a resource (either an entity or change set)\cr
+\link[=marketplacecatalog_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based policy to an Entity\cr
+\link[=marketplacecatalog_start_change_set]{start_change_set} \tab Allows you to request changes for your entities\cr
+\link[=marketplacecatalog_tag_resource]{tag_resource} \tab Tags a resource (either an entity or change set)\cr
+\link[=marketplacecatalog_untag_resource]{untag_resource} \tab Removes a tag or list of tags from a resource (either an entity or change set)
 }
 }
 

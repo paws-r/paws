@@ -28,14 +28,16 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
+CodePipeline
+
 \strong{Overview}
 
-This is the AWS CodePipeline API Reference. This guide provides
-descriptions of the actions and data types for AWS CodePipeline. Some
-functionality for your pipeline can only be configured through the API.
-For more information, see the \href{https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html}{AWS CodePipeline User Guide}.
+This is the CodePipeline API Reference. This guide provides descriptions
+of the actions and data types for CodePipeline. Some functionality for
+your pipeline can only be configured through the API. For more
+information, see the \href{https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html}{CodePipeline User Guide}.
 
-You can use the AWS CodePipeline API to work with pipelines, stages,
+You can use the CodePipeline API to work with pipelines, stages,
 actions, and transitions.
 
 \emph{Pipelines} are models of automated release processes. Each pipeline is
@@ -85,7 +87,7 @@ the status of a pipeline, including the status of stages in the
 pipeline, or \code{get_pipeline}, which returns
 the entire structure of the pipeline, including the stages of that
 pipeline. For more information about the structure of stages and
-actions, see \href{https://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html}{AWS CodePipeline Pipeline Structure Reference}.
+actions, see \href{https://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html}{CodePipeline Pipeline Structure Reference}.
 
 Pipeline stages include \emph{actions} that are categorized into categories
 such as source or build actions performed in a stage of a pipeline. For
@@ -118,12 +120,12 @@ pipeline.
 which enables transition of artifacts between stages in a pipeline.
 }
 
-\strong{Using the API to integrate with AWS CodePipeline}
+\strong{Using the API to integrate with CodePipeline}
 
 For third-party integrators or developers who want to create their own
-integrations with AWS CodePipeline, the expected sequence varies from
-the standard API user. To integrate with AWS CodePipeline, developers
-need to work with the following items:
+integrations with CodePipeline, the expected sequence varies from the
+standard API user. To integrate with CodePipeline, developers need to
+work with the following items:
 
 \strong{Jobs}, which are instances of an action. For example, a job for a
 source action might import a revision of an artifact from a source.
@@ -143,8 +145,8 @@ which provides details of a job success.
 }
 
 \strong{Third party jobs}, which are instances of an action created by a
-partner action and integrated into AWS CodePipeline. Partner actions are
-created by members of the AWS Partner Network.
+partner action and integrated into CodePipeline. Partner actions are
+created by members of the Amazon Web Services Partner Network.
 
 You can work with third party jobs by calling:
 \itemize{
@@ -189,7 +191,7 @@ which provides details of a job success.
 \tabular{ll}{
 \link[paws.developer.tools:codepipeline_acknowledge_job]{acknowledge_job} \tab Returns information about a specified job and whether that job has been received by the job worker\cr
 \link[paws.developer.tools:codepipeline_acknowledge_third_party_job]{acknowledge_third_party_job} \tab Confirms a job worker has received the specified job\cr
-\link[paws.developer.tools:codepipeline_create_custom_action_type]{create_custom_action_type} \tab Creates a new custom action that can be used in all pipelines associated with the AWS account\cr
+\link[paws.developer.tools:codepipeline_create_custom_action_type]{create_custom_action_type} \tab Creates a new custom action that can be used in all pipelines associated with the Amazon Web Services account\cr
 \link[paws.developer.tools:codepipeline_create_pipeline]{create_pipeline} \tab Creates a pipeline\cr
 \link[paws.developer.tools:codepipeline_delete_custom_action_type]{delete_custom_action_type} \tab Marks a custom action as deleted\cr
 \link[paws.developer.tools:codepipeline_delete_pipeline]{delete_pipeline} \tab Deletes the specified pipeline\cr
@@ -204,15 +206,15 @@ which provides details of a job success.
 \link[paws.developer.tools:codepipeline_get_pipeline_state]{get_pipeline_state} \tab Returns information about the state of a pipeline, including the stages and actions\cr
 \link[paws.developer.tools:codepipeline_get_third_party_job_details]{get_third_party_job_details} \tab Requests the details of a job for a third party action\cr
 \link[paws.developer.tools:codepipeline_list_action_executions]{list_action_executions} \tab Lists the action executions that have occurred in a pipeline\cr
-\link[paws.developer.tools:codepipeline_list_action_types]{list_action_types} \tab Gets a summary of all AWS CodePipeline action types associated with your account\cr
+\link[paws.developer.tools:codepipeline_list_action_types]{list_action_types} \tab Gets a summary of all CodePipeline action types associated with your account\cr
 \link[paws.developer.tools:codepipeline_list_pipeline_executions]{list_pipeline_executions} \tab Gets a summary of the most recent executions for a pipeline\cr
 \link[paws.developer.tools:codepipeline_list_pipelines]{list_pipelines} \tab Gets a summary of all of the pipelines associated with your account\cr
 \link[paws.developer.tools:codepipeline_list_tags_for_resource]{list_tags_for_resource} \tab Gets the set of key-value pairs (metadata) that are used to manage the resource\cr
-\link[paws.developer.tools:codepipeline_list_webhooks]{list_webhooks} \tab Gets a listing of all the webhooks in this AWS Region for this account\cr
-\link[paws.developer.tools:codepipeline_poll_for_jobs]{poll_for_jobs} \tab Returns information about any jobs for AWS CodePipeline to act on\cr
+\link[paws.developer.tools:codepipeline_list_webhooks]{list_webhooks} \tab Gets a listing of all the webhooks in this Amazon Web Services Region for this account\cr
+\link[paws.developer.tools:codepipeline_poll_for_jobs]{poll_for_jobs} \tab Returns information about any jobs for CodePipeline to act on\cr
 \link[paws.developer.tools:codepipeline_poll_for_third_party_jobs]{poll_for_third_party_jobs} \tab Determines whether there are any third party jobs for a job worker to act on\cr
-\link[paws.developer.tools:codepipeline_put_action_revision]{put_action_revision} \tab Provides information to AWS CodePipeline about new revisions to a source\cr
-\link[paws.developer.tools:codepipeline_put_approval_result]{put_approval_result} \tab Provides the response to a manual approval request to AWS CodePipeline\cr
+\link[paws.developer.tools:codepipeline_put_action_revision]{put_action_revision} \tab Provides information to CodePipeline about new revisions to a source\cr
+\link[paws.developer.tools:codepipeline_put_approval_result]{put_approval_result} \tab Provides the response to a manual approval request to CodePipeline\cr
 \link[paws.developer.tools:codepipeline_put_job_failure_result]{put_job_failure_result} \tab Represents the failure of a job as returned to the pipeline by a job worker\cr
 \link[paws.developer.tools:codepipeline_put_job_success_result]{put_job_success_result} \tab Represents the success of a job as returned to the pipeline by a job worker\cr
 \link[paws.developer.tools:codepipeline_put_third_party_job_failure_result]{put_third_party_job_failure_result} \tab Represents the failure of a third party job as returned to the pipeline by a job worker\cr
@@ -223,7 +225,7 @@ which provides details of a job success.
 \link[paws.developer.tools:codepipeline_start_pipeline_execution]{start_pipeline_execution} \tab Starts the specified pipeline\cr
 \link[paws.developer.tools:codepipeline_stop_pipeline_execution]{stop_pipeline_execution} \tab Stops the specified pipeline execution\cr
 \link[paws.developer.tools:codepipeline_tag_resource]{tag_resource} \tab Adds to or modifies the tags of the given resource\cr
-\link[paws.developer.tools:codepipeline_untag_resource]{untag_resource} \tab Removes tags from an AWS resource\cr
+\link[paws.developer.tools:codepipeline_untag_resource]{untag_resource} \tab Removes tags from an Amazon Web Services resource\cr
 \link[paws.developer.tools:codepipeline_update_action_type]{update_action_type} \tab Updates an action type that was created with any supported integration model, where the action type is to be used by customers of the action type provider\cr
 \link[paws.developer.tools:codepipeline_update_pipeline]{update_pipeline} \tab Updates a specified pipeline with edits or changes to its structure
 }

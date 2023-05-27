@@ -8,11 +8,12 @@ quicksight_update_dashboard(
   AwsAccountId,
   DashboardId,
   Name,
-  SourceEntity,
+  SourceEntity = NULL,
   Parameters = NULL,
   VersionDescription = NULL,
   DashboardPublishOptions = NULL,
-  ThemeArn = NULL
+  ThemeArn = NULL,
+  Definition = NULL
 )
 }
 \arguments{
@@ -23,7 +24,7 @@ that you're updating.}
 
 \item{Name}{[required] The display name of the dashboard.}
 
-\item{SourceEntity}{[required] The entity that you are using as a source when you update the dashboard.
+\item{SourceEntity}{The entity that you are using as a source when you update the dashboard.
 In \code{SourceEntity}, you specify the type of object you're using as
 source. You can only update a dashboard from a template, so you use a
 \code{SourceTemplate} entity. If you need to update a dashboard from an
@@ -63,6 +64,11 @@ by default.
 dashboard. If you add a value for this field, it overrides the value
 that was originally associated with the entity. The theme ARN must exist
 in the same Amazon Web Services account where you create the dashboard.}
+
+\item{Definition}{The definition of a dashboard.
+
+A definition is the data model of all features in a Dashboard, Template,
+or Analysis.}
 }
 \description{
 Updates a dashboard in an Amazon Web Services account.

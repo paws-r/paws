@@ -10,7 +10,7 @@ locationservice_disassociate_tracker_consumer(ConsumerArn, TrackerName)
 \arguments{
 \item{ConsumerArn}{[required] The Amazon Resource Name (ARN) for the geofence collection to be
 disassociated from the tracker resource. Used when you need to specify a
-resource across all AWS.
+resource across all Amazon Web Services.
 \itemize{
 \item Format example:
 \code{arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollectionConsumer}

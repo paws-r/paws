@@ -28,10 +28,13 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-\href{https://aws.amazon.com/servicecatalog/}{AWS Service Catalog} enables
+Service Catalog
+
+\href{https://aws.amazon.com/servicecatalog/}{Service Catalog} enables
 organizations to create and manage catalogs of IT services that are
-approved for AWS. To get the most out of this documentation, you should
-be familiar with the terminology discussed in \href{https://docs.aws.amazon.com/servicecatalog/latest/adminguide/what-is_concepts.html}{AWS Service Catalog Concepts}.
+approved for Amazon Web Services. To get the most out of this
+documentation, you should be familiar with the terminology discussed in
+\href{https://docs.aws.amazon.com/servicecatalog/latest/adminguide/what-is_concepts.html}{Service Catalog Concepts}.
 }
 \section{Service syntax}{
 
@@ -101,18 +104,18 @@ be familiar with the terminology discussed in \href{https://docs.aws.amazon.com/
 \link[paws.management:servicecatalog_describe_service_action]{describe_service_action} \tab Describes a self-service action\cr
 \link[paws.management:servicecatalog_describe_service_action_execution_parameters]{describe_service_action_execution_parameters} \tab Finds the default parameters for a specific self-service action on a specific provisioned product and returns a map of the results to the user\cr
 \link[paws.management:servicecatalog_describe_tag_option]{describe_tag_option} \tab Gets information about the specified TagOption\cr
-\link[paws.management:servicecatalog_disable_aws_organizations_access]{disable_aws_organizations_access} \tab Disable portfolio sharing through AWS Organizations feature\cr
+\link[paws.management:servicecatalog_disable_aws_organizations_access]{disable_aws_organizations_access} \tab Disable portfolio sharing through the Organizations service\cr
 \link[paws.management:servicecatalog_disassociate_budget_from_resource]{disassociate_budget_from_resource} \tab Disassociates the specified budget from the specified resource\cr
 \link[paws.management:servicecatalog_disassociate_principal_from_portfolio]{disassociate_principal_from_portfolio} \tab Disassociates a previously associated principal ARN from a specified portfolio\cr
 \link[paws.management:servicecatalog_disassociate_product_from_portfolio]{disassociate_product_from_portfolio} \tab Disassociates the specified product from the specified portfolio\cr
 \link[paws.management:servicecatalog_disassociate_service_action_from_provisioning_artifact]{disassociate_service_action_from_provisioning_artifact} \tab Disassociates the specified self-service action association from the specified provisioning artifact\cr
 \link[paws.management:servicecatalog_disassociate_tag_option_from_resource]{disassociate_tag_option_from_resource} \tab Disassociates the specified TagOption from the specified resource\cr
-\link[paws.management:servicecatalog_enable_aws_organizations_access]{enable_aws_organizations_access} \tab Enable portfolio sharing feature through AWS Organizations\cr
+\link[paws.management:servicecatalog_enable_aws_organizations_access]{enable_aws_organizations_access} \tab Enable portfolio sharing feature through Organizations\cr
 \link[paws.management:servicecatalog_execute_provisioned_product_plan]{execute_provisioned_product_plan} \tab Provisions or modifies a product based on the resource changes for the specified plan\cr
 \link[paws.management:servicecatalog_execute_provisioned_product_service_action]{execute_provisioned_product_service_action} \tab Executes a self-service action against a provisioned product\cr
-\link[paws.management:servicecatalog_get_aws_organizations_access_status]{get_aws_organizations_access_status} \tab Get the Access Status for AWS Organization portfolio share feature\cr
+\link[paws.management:servicecatalog_get_aws_organizations_access_status]{get_aws_organizations_access_status} \tab Get the Access Status for Organizations portfolio share feature\cr
 \link[paws.management:servicecatalog_get_provisioned_product_outputs]{get_provisioned_product_outputs} \tab This API takes either a ProvisonedProductId or a ProvisionedProductName, along with a list of one or more output keys, and responds with the key/value pairs of those outputs\cr
-\link[paws.management:servicecatalog_import_as_provisioned_product]{import_as_provisioned_product} \tab Requests the import of a resource as a Service Catalog provisioned product that is associated to a Service Catalog product and provisioning artifact\cr
+\link[paws.management:servicecatalog_import_as_provisioned_product]{import_as_provisioned_product} \tab Requests the import of a resource as an Service Catalog provisioned product that is associated to an Service Catalog product and provisioning artifact\cr
 \link[paws.management:servicecatalog_list_accepted_portfolio_shares]{list_accepted_portfolio_shares} \tab Lists all imported portfolios for which account-to-account shares were accepted by this account\cr
 \link[paws.management:servicecatalog_list_budgets_for_resource]{list_budgets_for_resource} \tab Lists all the budgets associated to the specified resource\cr
 \link[paws.management:servicecatalog_list_constraints_for_portfolio]{list_constraints_for_portfolio} \tab Lists the constraints for the specified portfolio and product\cr
@@ -121,7 +124,7 @@ be familiar with the terminology discussed in \href{https://docs.aws.amazon.com/
 \link[paws.management:servicecatalog_list_portfolio_access]{list_portfolio_access} \tab Lists the account IDs that have access to the specified portfolio\cr
 \link[paws.management:servicecatalog_list_portfolios]{list_portfolios} \tab Lists all portfolios in the catalog\cr
 \link[paws.management:servicecatalog_list_portfolios_for_product]{list_portfolios_for_product} \tab Lists all portfolios that the specified product is associated with\cr
-\link[paws.management:servicecatalog_list_principals_for_portfolio]{list_principals_for_portfolio} \tab Lists all principal ARNs associated with the specified portfolio\cr
+\link[paws.management:servicecatalog_list_principals_for_portfolio]{list_principals_for_portfolio} \tab Lists all PrincipalARNs and corresponding PrincipalTypes associated with the specified portfolio\cr
 \link[paws.management:servicecatalog_list_provisioned_product_plans]{list_provisioned_product_plans} \tab Lists the plans for the specified provisioned product or all plans to which the user has access\cr
 \link[paws.management:servicecatalog_list_provisioning_artifacts]{list_provisioning_artifacts} \tab Lists all provisioning artifacts (also known as versions) for the specified product\cr
 \link[paws.management:servicecatalog_list_provisioning_artifacts_for_service_action]{list_provisioning_artifacts_for_service_action} \tab Lists all provisioning artifacts (also known as versions) for the specified self-service action\cr
@@ -131,6 +134,9 @@ be familiar with the terminology discussed in \href{https://docs.aws.amazon.com/
 \link[paws.management:servicecatalog_list_service_actions_for_provisioning_artifact]{list_service_actions_for_provisioning_artifact} \tab Returns a paginated list of self-service actions associated with the specified Product ID and Provisioning Artifact ID\cr
 \link[paws.management:servicecatalog_list_stack_instances_for_provisioned_product]{list_stack_instances_for_provisioned_product} \tab Returns summary information about stack instances that are associated with the specified CFN_STACKSET type provisioned product\cr
 \link[paws.management:servicecatalog_list_tag_options]{list_tag_options} \tab Lists the specified TagOptions or all TagOptions\cr
+\link[paws.management:servicecatalog_notify_provision_product_engine_workflow_result]{notify_provision_product_engine_workflow_result} \tab Notifies the result of the provisioning engine execution\cr
+\link[paws.management:servicecatalog_notify_terminate_provisioned_product_engine_workflow_result]{notify_terminate_provisioned_product_engine_workflow_result} \tab Notifies the result of the terminate engine execution\cr
+\link[paws.management:servicecatalog_notify_update_provisioned_product_engine_workflow_result]{notify_update_provisioned_product_engine_workflow_result} \tab Notifies the result of the update engine execution\cr
 \link[paws.management:servicecatalog_provision_product]{provision_product} \tab Provisions the specified product\cr
 \link[paws.management:servicecatalog_reject_portfolio_share]{reject_portfolio_share} \tab Rejects an offer to share the specified portfolio\cr
 \link[paws.management:servicecatalog_scan_provisioned_products]{scan_provisioned_products} \tab Lists the provisioned products that are available (not terminated)\cr

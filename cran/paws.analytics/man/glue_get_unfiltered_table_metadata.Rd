@@ -2,7 +2,8 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_get_unfiltered_table_metadata}
 \alias{glue_get_unfiltered_table_metadata}
-\title{Get unfiltered table metadata}
+\title{Retrieves table metadata from the Data Catalog that contains unfiltered
+metadata}
 \usage{
 glue_get_unfiltered_table_metadata(
   CatalogId,
@@ -13,18 +14,19 @@ glue_get_unfiltered_table_metadata(
 )
 }
 \arguments{
-\item{CatalogId}{[required]}
+\item{CatalogId}{[required] The catalog ID where the table resides.}
 
-\item{DatabaseName}{[required]}
+\item{DatabaseName}{[required] (Required) Specifies the name of a database that contains the table.}
 
-\item{Name}{[required]}
+\item{Name}{[required] (Required) Specifies the name of a table for which you are requesting
+metadata.}
 
-\item{AuditContext}{}
+\item{AuditContext}{A structure containing Lake Formation audit context information.}
 
-\item{SupportedPermissionTypes}{[required]}
+\item{SupportedPermissionTypes}{[required] (Required) A list of supported permission types.}
 }
 \description{
-Get unfiltered table metadata
+Retrieves table metadata from the Data Catalog that contains unfiltered metadata.
 
 See \url{https://paws-r.github.io/docs/glue/get_unfiltered_table_metadata.html} for full documentation.
 }

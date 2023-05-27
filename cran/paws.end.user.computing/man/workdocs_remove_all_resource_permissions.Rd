@@ -10,8 +10,8 @@ workdocs_remove_all_resource_permissions(
 )
 }
 \arguments{
-\item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
-administrator credentials to access the API.}
+\item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using Amazon Web
+Services administrator credentials to access the API.}
 
 \item{ResourceId}{[required] The ID of the resource.}
 }

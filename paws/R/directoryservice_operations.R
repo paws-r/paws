@@ -1676,7 +1676,8 @@ directoryservice_describe_conditional_forwarders <- function(DirectoryId, Remote
 #'         AdditionalRegions = list(
 #'           "string"
 #'         )
-#'       )
+#'       ),
+#'       OsVersion = "SERVER_2012"|"SERVER_2019"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2047,7 +2048,8 @@ directoryservice_describe_regions <- function(DirectoryId, RegionName = NULL, Ne
 #'       ),
 #'       LastRequestedDateTime = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       DataType = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2333,6 +2335,87 @@ directoryservice_describe_trusts <- function(DirectoryId = NULL, TrustIds = NULL
   return(response)
 }
 .directoryservice$operations$describe_trusts <- directoryservice_describe_trusts
+
+#' Describes the updates of a directory for a particular update type
+#'
+#' @description
+#' Describes the updates of a directory for a particular update type.
+#'
+#' @usage
+#' directoryservice_describe_update_directory(DirectoryId, UpdateType,
+#'   RegionName, NextToken)
+#'
+#' @param DirectoryId &#91;required&#93; The unique identifier of the directory.
+#' @param UpdateType &#91;required&#93; The type of updates you want to describe for the directory.
+#' @param RegionName The name of the Region.
+#' @param NextToken The `DescribeUpdateDirectoryResult`. NextToken value from a previous
+#' call to
+#' [`describe_update_directory`][directoryservice_describe_update_directory].
+#' Pass null if this is the first call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UpdateActivities = list(
+#'     list(
+#'       Region = "string",
+#'       Status = "Updated"|"Updating"|"UpdateFailed",
+#'       StatusReason = "string",
+#'       InitiatedBy = "string",
+#'       NewValue = list(
+#'         OSUpdateSettings = list(
+#'           OSVersion = "SERVER_2012"|"SERVER_2019"
+#'         )
+#'       ),
+#'       PreviousValue = list(
+#'         OSUpdateSettings = list(
+#'           OSVersion = "SERVER_2012"|"SERVER_2019"
+#'         )
+#'       ),
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_update_directory(
+#'   DirectoryId = "string",
+#'   UpdateType = "OS",
+#'   RegionName = "string",
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_describe_update_directory
+#'
+#' @aliases directoryservice_describe_update_directory
+directoryservice_describe_update_directory <- function(DirectoryId, UpdateType, RegionName = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeUpdateDirectory",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directoryservice$describe_update_directory_input(DirectoryId = DirectoryId, UpdateType = UpdateType, RegionName = RegionName, NextToken = NextToken)
+  output <- .directoryservice$describe_update_directory_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$describe_update_directory <- directoryservice_describe_update_directory
 
 #' Disables alternative client authentication methods for the specified
 #' directory
@@ -3845,6 +3928,60 @@ directoryservice_update_conditional_forwarder <- function(DirectoryId, RemoteDom
   return(response)
 }
 .directoryservice$operations$update_conditional_forwarder <- directoryservice_update_conditional_forwarder
+
+#' Updates the directory for a particular update type
+#'
+#' @description
+#' Updates the directory for a particular update type.
+#'
+#' @usage
+#' directoryservice_update_directory_setup(DirectoryId, UpdateType,
+#'   OSUpdateSettings, CreateSnapshotBeforeUpdate)
+#'
+#' @param DirectoryId &#91;required&#93; The identifier of the directory on which you want to perform the update.
+#' @param UpdateType &#91;required&#93; The type of update that needs to be performed on the directory. For
+#' example, OS.
+#' @param OSUpdateSettings The settings for the OS update that needs to be performed on the
+#' directory.
+#' @param CreateSnapshotBeforeUpdate The boolean that specifies if a snapshot for the directory needs to be
+#' taken before updating the directory.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_directory_setup(
+#'   DirectoryId = "string",
+#'   UpdateType = "OS",
+#'   OSUpdateSettings = list(
+#'     OSVersion = "SERVER_2012"|"SERVER_2019"
+#'   ),
+#'   CreateSnapshotBeforeUpdate = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_update_directory_setup
+#'
+#' @aliases directoryservice_update_directory_setup
+directoryservice_update_directory_setup <- function(DirectoryId, UpdateType, OSUpdateSettings = NULL, CreateSnapshotBeforeUpdate = NULL) {
+  op <- new_operation(
+    name = "UpdateDirectorySetup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directoryservice$update_directory_setup_input(DirectoryId = DirectoryId, UpdateType = UpdateType, OSUpdateSettings = OSUpdateSettings, CreateSnapshotBeforeUpdate = CreateSnapshotBeforeUpdate)
+  output <- .directoryservice$update_directory_setup_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$update_directory_setup <- directoryservice_update_directory_setup
 
 #' Adds or removes domain controllers to or from the directory
 #'

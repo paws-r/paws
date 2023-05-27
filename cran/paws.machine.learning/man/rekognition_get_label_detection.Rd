@@ -9,7 +9,8 @@ rekognition_get_label_detection(
   JobId,
   MaxResults = NULL,
   NextToken = NULL,
-  SortBy = NULL
+  SortBy = NULL,
+  AggregateBy = NULL
 )
 }
 \arguments{
@@ -31,6 +32,9 @@ array elements by the time labels are detected. Use \code{NAME} to
 alphabetically group elements for a label together. Within each label
 group, the array element are sorted by detection confidence. The default
 sort is by \code{TIMESTAMP}.}
+
+\item{AggregateBy}{Defines how to aggregate the returned results. Results can be aggregated
+by timestamps or segments.}
 }
 \description{
 Gets the label detection results of a Amazon Rekognition Video analysis started by \code{\link[=rekognition_start_label_detection]{start_label_detection}}.

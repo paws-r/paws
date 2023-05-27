@@ -2,7 +2,7 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_create_resource}
 \alias{workmail_create_resource}
-\title{Creates a new Amazon WorkMail resource}
+\title{Creates a new WorkMail resource}
 \usage{
 workmail_create_resource(OrganizationId, Name, Type)
 }
@@ -16,7 +16,7 @@ is created.}
 \code{room}.}
 }
 \description{
-Creates a new Amazon WorkMail resource.
+Creates a new WorkMail resource.
 
 See \url{https://paws-r.github.io/docs/workmail/create_resource.html} for full documentation.
 }

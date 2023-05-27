@@ -2,7 +2,7 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_create_sample_findings}
 \alias{guardduty_create_sample_findings}
-\title{Generates example findings of types specified by the list of finding
+\title{Generates sample findings of types specified by the list of finding
 types}
 \usage{
 guardduty_create_sample_findings(DetectorId, FindingTypes = NULL)
@@ -13,7 +13,7 @@ guardduty_create_sample_findings(DetectorId, FindingTypes = NULL)
 \item{FindingTypes}{The types of sample findings to generate.}
 }
 \description{
-Generates example findings of types specified by the list of finding types. If 'NULL' is specified for \code{findingTypes}, the API generates example findings of all supported finding types.
+Generates sample findings of types specified by the list of finding types. If 'NULL' is specified for \code{findingTypes}, the API generates sample findings of all supported finding types.
 
 See \url{https://paws-r.github.io/docs/guardduty/create_sample_findings.html} for full documentation.
 }

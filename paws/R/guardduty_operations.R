@@ -164,22 +164,44 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 #' must create a detector in each Region where you enable the service. You
 #' can have only one detector per account per Region. All data sources are
 #' enabled in a new detector by default.
+#' 
+#' There might be regional differences because some data sources might not
+#' be available in all the Amazon Web Services Regions where GuardDuty is
+#' presently supported. For more information, see [Regions and
+#' endpoints](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html).
 #'
 #' @usage
 #' guardduty_create_detector(Enable, ClientToken,
-#'   FindingPublishingFrequency, DataSources, Tags)
+#'   FindingPublishingFrequency, DataSources, Tags, Features)
 #'
 #' @param Enable &#91;required&#93; A Boolean value that specifies whether the detector is to be enabled.
 #' @param ClientToken The idempotency token for the create request.
 #' @param FindingPublishingFrequency A value that specifies how frequently updated findings are exported.
 #' @param DataSources Describes which data sources will be enabled for the detector.
+#' 
+#' There might be regional differences because some data sources might not
+#' be available in all the Amazon Web Services Regions where GuardDuty is
+#' presently supported. For more information, see [Regions and
+#' endpoints](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html).
 #' @param Tags The tags to be added to a new detector resource.
+#' @param Features A list of features that will be configured for the detector.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   DetectorId = "string"
+#'   DetectorId = "string",
+#'   UnprocessedDataSources = list(
+#'     MalwareProtection = list(
+#'       ScanEc2InstanceWithFindings = list(
+#'         EbsVolumes = list(
+#'           Status = "ENABLED"|"DISABLED",
+#'           Reason = "string"
+#'         )
+#'       ),
+#'       ServiceRole = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -206,6 +228,18 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 #'   ),
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   Features = list(
+#'     list(
+#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS",
+#'       Status = "ENABLED"|"DISABLED",
+#'       AdditionalConfiguration = list(
+#'         list(
+#'           Name = "EKS_ADDON_MANAGEMENT",
+#'           Status = "ENABLED"|"DISABLED"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -215,14 +249,14 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 #' @rdname guardduty_create_detector
 #'
 #' @aliases guardduty_create_detector
-guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublishingFrequency = NULL, DataSources = NULL, Tags = NULL) {
+guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublishingFrequency = NULL, DataSources = NULL, Tags = NULL, Features = NULL) {
   op <- new_operation(
     name = "CreateDetector",
     http_method = "POST",
     http_path = "/detector",
     paginator = list()
   )
-  input <- .guardduty$create_detector_input(Enable = Enable, ClientToken = ClientToken, FindingPublishingFrequency = FindingPublishingFrequency, DataSources = DataSources, Tags = Tags)
+  input <- .guardduty$create_detector_input(Enable = Enable, ClientToken = ClientToken, FindingPublishingFrequency = FindingPublishingFrequency, DataSources = DataSources, Tags = Tags, Features = Features)
   output <- .guardduty$create_detector_output()
   config <- get_config()
   svc <- .guardduty$service(config)
@@ -235,7 +269,10 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' Creates a filter using the specified finding criteria
 #'
 #' @description
-#' Creates a filter using the specified finding criteria.
+#' Creates a filter using the specified finding criteria. The maximum
+#' number of saved filters per Amazon Web Services account per Region is
+#' 100. For more information, see [Quotas for
+#' GuardDuty](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_limits.html).
 #'
 #' @usage
 #' guardduty_create_filter(DetectorId, Name, Description, Action, Rank,
@@ -243,10 +280,14 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector belonging to the GuardDuty account that you want
 #' to create a filter for.
-#' @param Name &#91;required&#93; The name of the filter. Minimum length of 3. Maximum length of 64. Valid
-#' characters include alphanumeric characters, dot (.), underscore (_),
-#' and dash (-). Spaces are not allowed.
-#' @param Description The description of the filter.
+#' @param Name &#91;required&#93; The name of the filter. Valid characters include period (.), underscore
+#' (_), dash (-), and alphanumeric characters. A whitespace is considered
+#' to be an invalid character.
+#' @param Description The description of the filter. Valid characters include alphanumeric
+#' characters, and special characters such as hyphen, period, colon,
+#' underscore, parentheses (`{ }`, `[ ]`, and `( )`), forward slash,
+#' horizontal tab, vertical tab, newline, form feed, return, and
+#' whitespace.
 #' @param Action Specifies the action that is to be applied to the findings that match
 #' the filter.
 #' @param Rank Specifies the position of the filter in the list of current filters.
@@ -259,8 +300,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' -   accountId
 #' 
 #' -   region
-#' 
-#' -   confidence
 #' 
 #' -   id
 #' 
@@ -359,12 +398,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' -   resource.s3BucketDetails.tags.value
 #' 
 #' -   resource.s3BucketDetails.type
-#' 
-#' -   service.archived
-#' 
-#'     When this attribute is set to TRUE, only archived findings are
-#'     listed. When it's set to FALSE, only unarchived findings are listed.
-#'     When this attribute is not set, all existing findings are listed.
 #' 
 #' -   service.resourceRole
 #' 
@@ -470,7 +503,7 @@ guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action
 #' create an IPSet for.
 #' @param Name &#91;required&#93; The user-friendly name to identify the IPSet.
 #' 
-#' Allowed characters are alphanumerics, spaces, hyphens (-), and
+#' Allowed characters are alphanumeric, whitespace, dash (-), and
 #' underscores (_).
 #' @param Format &#91;required&#93; The format of the file that contains the IPSet.
 #' @param Location &#91;required&#93; The URI of the file that contains the IPSet.
@@ -538,10 +571,9 @@ guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate
 #' exception of the organization delegated administrator account, which
 #' must enable GuardDuty prior to being added as a member.
 #' 
-#' If you are adding accounts by invitation use this action after GuardDuty
-#' has been enabled in potential member accounts and before using
-#' [`Invite Members`](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html)
-#' .
+#' If you are adding accounts by invitation, use this action after
+#' GuardDuty has bee enabled in potential member accounts and before using
+#' [`invite_members`][guardduty_invite_members].
 #'
 #' @usage
 #' guardduty_create_members(DetectorId, AccountDetails)
@@ -660,13 +692,13 @@ guardduty_create_publishing_destination <- function(DetectorId, DestinationType,
 }
 .guardduty$operations$create_publishing_destination <- guardduty_create_publishing_destination
 
-#' Generates example findings of types specified by the list of finding
+#' Generates sample findings of types specified by the list of finding
 #' types
 #'
 #' @description
-#' Generates example findings of types specified by the list of finding
+#' Generates sample findings of types specified by the list of finding
 #' types. If 'NULL' is specified for `findingTypes`, the API generates
-#' example findings of all supported finding types.
+#' sample findings of all supported finding types.
 #'
 #' @usage
 #' guardduty_create_sample_findings(DetectorId, FindingTypes)
@@ -1032,6 +1064,10 @@ guardduty_delete_invitations <- function(AccountIds) {
 #' @description
 #' Deletes GuardDuty member accounts (to the current GuardDuty
 #' administrator account) specified by the account IDs.
+#' 
+#' With `autoEnableOrganizationMembers` configuration for your organization
+#' set to `ALL`, you'll receive an error if you attempt to disable
+#' GuardDuty for a member account in your organization.
 #'
 #' @usage
 #' guardduty_delete_members(DetectorId, AccountIds)
@@ -1179,7 +1215,14 @@ guardduty_delete_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #' Returns a list of malware scans
 #'
 #' @description
-#' Returns a list of malware scans.
+#' Returns a list of malware scans. Each member account can view the
+#' malware scans for their own accounts. An administrator can view the
+#' malware scans for all the member accounts.
+#' 
+#' There might be regional differences because some data sources might not
+#' be available in all the Amazon Web Services Regions where GuardDuty is
+#' presently supported. For more information, see [Regions and
+#' endpoints](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html).
 #'
 #' @usage
 #' guardduty_describe_malware_scans(DetectorId, NextToken, MaxResults,
@@ -1195,7 +1238,9 @@ guardduty_delete_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #' 50.
 #' @param FilterCriteria Represents the criteria to be used in the filter for describing scan
 #' entries.
-#' @param SortCriteria Represents the criteria used for sorting scan entries.
+#' @param SortCriteria Represents the criteria used for sorting scan entries. The
+#' [`attributeName`](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_SortCriteria.html#guardduty-Type-SortCriteria-attributeName)
+#' is required and it must be `scanStartTime`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1206,7 +1251,7 @@ guardduty_delete_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #'       DetectorId = "string",
 #'       AdminDetectorId = "string",
 #'       ScanId = "string",
-#'       ScanStatus = "RUNNING"|"COMPLETED"|"FAILED",
+#'       ScanStatus = "RUNNING"|"COMPLETED"|"FAILED"|"SKIPPED",
 #'       FailureReason = "string",
 #'       ScanStartTime = as.POSIXct(
 #'         "2015-01-01"
@@ -1237,7 +1282,8 @@ guardduty_delete_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #'           SnapshotArn = "string",
 #'           KmsKeyArn = "string"
 #'         )
-#'       )
+#'       ),
+#'       ScanType = "GUARDDUTY_INITIATED"|"ON_DEMAND"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1253,7 +1299,7 @@ guardduty_delete_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #'   FilterCriteria = list(
 #'     FilterCriterion = list(
 #'       list(
-#'         CriterionKey = "EC2_INSTANCE_ARN"|"SCAN_ID"|"ACCOUNT_ID"|"GUARDDUTY_FINDING_ID"|"SCAN_START_TIME"|"SCAN_STATUS",
+#'         CriterionKey = "EC2_INSTANCE_ARN"|"SCAN_ID"|"ACCOUNT_ID"|"GUARDDUTY_FINDING_ID"|"SCAN_START_TIME"|"SCAN_STATUS"|"SCAN_TYPE",
 #'         FilterCondition = list(
 #'           EqualsValue = "string",
 #'           GreaterThan = 123,
@@ -1297,12 +1343,25 @@ guardduty_describe_malware_scans <- function(DetectorId, NextToken = NULL, MaxRe
 #' @description
 #' Returns information about the account selected as the delegated
 #' administrator for GuardDuty.
+#' 
+#' There might be regional differences because some data sources might not
+#' be available in all the Amazon Web Services Regions where GuardDuty is
+#' presently supported. For more information, see [Regions and
+#' endpoints](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html).
 #'
 #' @usage
-#' guardduty_describe_organization_configuration(DetectorId)
+#' guardduty_describe_organization_configuration(DetectorId, MaxResults,
+#'   NextToken)
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector to retrieve information about the delegated
 #' administrator from.
+#' @param MaxResults You can use this parameter to indicate the maximum number of items that
+#' you want in the response.
+#' @param NextToken You can use this parameter when paginating results. Set the value of
+#' this parameter to null on your first call to the list action. For
+#' subsequent calls to the action, fill `nextToken` in the request with the
+#' value of `NextToken` from the previous response to continue listing
+#' data.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1326,14 +1385,30 @@ guardduty_describe_malware_scans <- function(DetectorId, NextToken = NULL, MaxRe
 #'         )
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   Features = list(
+#'     list(
+#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS",
+#'       AutoEnable = "NEW"|"NONE",
+#'       AdditionalConfiguration = list(
+#'         list(
+#'           Name = "EKS_ADDON_MANAGEMENT",
+#'           AutoEnable = "NEW"|"NONE"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   AutoEnableOrganizationMembers = "NEW"|"ALL"|"NONE"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$describe_organization_configuration(
-#'   DetectorId = "string"
+#'   DetectorId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
 #' )
 #' ```
 #'
@@ -1342,14 +1417,14 @@ guardduty_describe_malware_scans <- function(DetectorId, NextToken = NULL, MaxRe
 #' @rdname guardduty_describe_organization_configuration
 #'
 #' @aliases guardduty_describe_organization_configuration
-guardduty_describe_organization_configuration <- function(DetectorId) {
+guardduty_describe_organization_configuration <- function(DetectorId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeOrganizationConfiguration",
     http_method = "GET",
     http_path = "/detector/{detectorId}/admin",
     paginator = list()
   )
-  input <- .guardduty$describe_organization_configuration_input(DetectorId = DetectorId)
+  input <- .guardduty$describe_organization_configuration_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$describe_organization_configuration_output()
   config <- get_config()
   svc <- .guardduty$service(config)
@@ -1469,6 +1544,10 @@ guardduty_disable_organization_admin_account <- function(AdminAccountId) {
 #' @description
 #' Disassociates the current GuardDuty member account from its
 #' administrator account.
+#' 
+#' With `autoEnableOrganizationMembers` configuration for your organization
+#' set to `ALL`, you'll receive an error if you attempt to disable
+#' GuardDuty in a member account.
 #'
 #' @usage
 #' guardduty_disassociate_from_administrator_account(DetectorId)
@@ -1551,12 +1630,17 @@ guardduty_disassociate_from_master_account <- function(DetectorId) {
 }
 .guardduty$operations$disassociate_from_master_account <- guardduty_disassociate_from_master_account
 
-#' Disassociates GuardDuty member accounts (to the current GuardDuty
-#' administrator account) specified by the account IDs
+#' Disassociates GuardDuty member accounts (to the current administrator
+#' account) specified by the account IDs
 #'
 #' @description
-#' Disassociates GuardDuty member accounts (to the current GuardDuty
-#' administrator account) specified by the account IDs.
+#' Disassociates GuardDuty member accounts (to the current administrator
+#' account) specified by the account IDs.
+#' 
+#' With `autoEnableOrganizationMembers` configuration for your organization
+#' set to `ALL`, you'll receive an error if you attempt to disassociate a
+#' member account before removing them from your Amazon Web Services
+#' organization.
 #'
 #' @usage
 #' guardduty_disassociate_members(DetectorId, AccountIds)
@@ -1710,10 +1794,95 @@ guardduty_get_administrator_account <- function(DetectorId) {
 }
 .guardduty$operations$get_administrator_account <- guardduty_get_administrator_account
 
+#' Retrieves aggregated statistics for your account
+#'
+#' @description
+#' Retrieves aggregated statistics for your account. If you are a GuardDuty
+#' administrator, you can retrieve the statistics for all the resources
+#' associated with the active member accounts in your organization who have
+#' enabled EKS Runtime Monitoring and have the GuardDuty agent running on
+#' their EKS nodes.
+#'
+#' @usage
+#' guardduty_get_coverage_statistics(DetectorId, FilterCriteria,
+#'   StatisticsType)
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the GuardDuty detector associated to the coverage
+#' statistics.
+#' @param FilterCriteria Represents the criteria used to filter the coverage statistics
+#' @param StatisticsType &#91;required&#93; Represents the statistics type used to aggregate the coverage details.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CoverageStatistics = list(
+#'     CountByResourceType = list(
+#'       123
+#'     ),
+#'     CountByCoverageStatus = list(
+#'       123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_coverage_statistics(
+#'   DetectorId = "string",
+#'   FilterCriteria = list(
+#'     FilterCriterion = list(
+#'       list(
+#'         CriterionKey = "ACCOUNT_ID"|"CLUSTER_NAME"|"RESOURCE_TYPE"|"COVERAGE_STATUS"|"ADDON_VERSION",
+#'         FilterCondition = list(
+#'           Equals = list(
+#'             "string"
+#'           ),
+#'           NotEquals = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   StatisticsType = list(
+#'     "COUNT_BY_RESOURCE_TYPE"|"COUNT_BY_COVERAGE_STATUS"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_coverage_statistics
+#'
+#' @aliases guardduty_get_coverage_statistics
+guardduty_get_coverage_statistics <- function(DetectorId, FilterCriteria = NULL, StatisticsType) {
+  op <- new_operation(
+    name = "GetCoverageStatistics",
+    http_method = "POST",
+    http_path = "/detector/{detectorId}/coverage/statistics",
+    paginator = list()
+  )
+  input <- .guardduty$get_coverage_statistics_input(DetectorId = DetectorId, FilterCriteria = FilterCriteria, StatisticsType = StatisticsType)
+  output <- .guardduty$get_coverage_statistics_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_coverage_statistics <- guardduty_get_coverage_statistics
+
 #' Retrieves an Amazon GuardDuty detector specified by the detectorId
 #'
 #' @description
 #' Retrieves an Amazon GuardDuty detector specified by the detectorId.
+#' 
+#' There might be regional differences because some data sources might not
+#' be available in all the Amazon Web Services Regions where GuardDuty is
+#' presently supported. For more information, see [Regions and
+#' endpoints](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html).
 #'
 #' @usage
 #' guardduty_get_detector(DetectorId)
@@ -1750,7 +1919,8 @@ guardduty_get_administrator_account <- function(DetectorId) {
 #'     MalwareProtection = list(
 #'       ScanEc2InstanceWithFindings = list(
 #'         EbsVolumes = list(
-#'           Status = "ENABLED"|"DISABLED"
+#'           Status = "ENABLED"|"DISABLED",
+#'           Reason = "string"
 #'         )
 #'       ),
 #'       ServiceRole = "string"
@@ -1758,6 +1928,24 @@ guardduty_get_administrator_account <- function(DetectorId) {
 #'   ),
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   Features = list(
+#'     list(
+#'       Name = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS",
+#'       Status = "ENABLED"|"DISABLED",
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AdditionalConfiguration = list(
+#'         list(
+#'           Name = "EKS_ADDON_MANAGEMENT",
+#'           Status = "ENABLED"|"DISABLED",
+#'           UpdatedAt = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -2167,6 +2355,55 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'           SecurityContext = list(
 #'             Privileged = TRUE|FALSE
 #'           )
+#'         ),
+#'         RdsDbInstanceDetails = list(
+#'           DbInstanceIdentifier = "string",
+#'           Engine = "string",
+#'           EngineVersion = "string",
+#'           DbClusterIdentifier = "string",
+#'           DbInstanceArn = "string",
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           )
+#'         ),
+#'         RdsDbUserDetails = list(
+#'           User = "string",
+#'           Application = "string",
+#'           Database = "string",
+#'           Ssl = "string",
+#'           AuthMethod = "string"
+#'         ),
+#'         LambdaDetails = list(
+#'           FunctionArn = "string",
+#'           FunctionName = "string",
+#'           Description = "string",
+#'           LastModifiedAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           RevisionId = "string",
+#'           FunctionVersion = "string",
+#'           Role = "string",
+#'           VpcConfig = list(
+#'             SubnetIds = list(
+#'               "string"
+#'             ),
+#'             VpcId = "string",
+#'             SecurityGroups = list(
+#'               list(
+#'                 GroupId = "string",
+#'                 GroupName = "string"
+#'               )
+#'             )
+#'           ),
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       SchemaVersion = "string",
@@ -2314,6 +2551,36 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'             ),
 #'             StatusCode = 123,
 #'             Parameters = "string"
+#'           ),
+#'           RdsLoginAttemptAction = list(
+#'             RemoteIpDetails = list(
+#'               City = list(
+#'                 CityName = "string"
+#'               ),
+#'               Country = list(
+#'                 CountryCode = "string",
+#'                 CountryName = "string"
+#'               ),
+#'               GeoLocation = list(
+#'                 Lat = 123.0,
+#'                 Lon = 123.0
+#'               ),
+#'               IpAddressV4 = "string",
+#'               Organization = list(
+#'                 Asn = "string",
+#'                 AsnOrg = "string",
+#'                 Isp = "string",
+#'                 Org = "string"
+#'               )
+#'             ),
+#'             LoginAttributes = list(
+#'               list(
+#'                 User = "string",
+#'                 Application = "string",
+#'                 FailedLoginAttempts = 123,
+#'                 SuccessfulLoginAttempts = 123
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         Evidence = list(
@@ -2384,6 +2651,128 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'                   )
 #'                 )
 #'               )
+#'             )
+#'           ),
+#'           ScanType = "GUARDDUTY_INITIATED"|"ON_DEMAND"
+#'         ),
+#'         RuntimeDetails = list(
+#'           Process = list(
+#'             Name = "string",
+#'             ExecutablePath = "string",
+#'             ExecutableSha256 = "string",
+#'             NamespacePid = 123,
+#'             Pwd = "string",
+#'             Pid = 123,
+#'             StartTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             Uuid = "string",
+#'             ParentUuid = "string",
+#'             User = "string",
+#'             UserId = 123,
+#'             Euid = 123,
+#'             Lineage = list(
+#'               list(
+#'                 StartTime = as.POSIXct(
+#'                   "2015-01-01"
+#'                 ),
+#'                 NamespacePid = 123,
+#'                 UserId = 123,
+#'                 Name = "string",
+#'                 Pid = 123,
+#'                 Uuid = "string",
+#'                 ExecutablePath = "string",
+#'                 Euid = 123,
+#'                 ParentUuid = "string"
+#'               )
+#'             )
+#'           ),
+#'           Context = list(
+#'             ModifyingProcess = list(
+#'               Name = "string",
+#'               ExecutablePath = "string",
+#'               ExecutableSha256 = "string",
+#'               NamespacePid = 123,
+#'               Pwd = "string",
+#'               Pid = 123,
+#'               StartTime = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               Uuid = "string",
+#'               ParentUuid = "string",
+#'               User = "string",
+#'               UserId = 123,
+#'               Euid = 123,
+#'               Lineage = list(
+#'                 list(
+#'                   StartTime = as.POSIXct(
+#'                     "2015-01-01"
+#'                   ),
+#'                   NamespacePid = 123,
+#'                   UserId = 123,
+#'                   Name = "string",
+#'                   Pid = 123,
+#'                   Uuid = "string",
+#'                   ExecutablePath = "string",
+#'                   Euid = 123,
+#'                   ParentUuid = "string"
+#'                 )
+#'               )
+#'             ),
+#'             ModifiedAt = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             ScriptPath = "string",
+#'             LibraryPath = "string",
+#'             LdPreloadValue = "string",
+#'             SocketPath = "string",
+#'             RuncBinaryPath = "string",
+#'             ReleaseAgentPath = "string",
+#'             MountSource = "string",
+#'             MountTarget = "string",
+#'             FileSystemType = "string",
+#'             Flags = list(
+#'               "string"
+#'             ),
+#'             ModuleName = "string",
+#'             ModuleFilePath = "string",
+#'             ModuleSha256 = "string",
+#'             ShellHistoryFilePath = "string",
+#'             TargetProcess = list(
+#'               Name = "string",
+#'               ExecutablePath = "string",
+#'               ExecutableSha256 = "string",
+#'               NamespacePid = 123,
+#'               Pwd = "string",
+#'               Pid = 123,
+#'               StartTime = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               Uuid = "string",
+#'               ParentUuid = "string",
+#'               User = "string",
+#'               UserId = 123,
+#'               Euid = 123,
+#'               Lineage = list(
+#'                 list(
+#'                   StartTime = as.POSIXct(
+#'                     "2015-01-01"
+#'                   ),
+#'                   NamespacePid = 123,
+#'                   UserId = 123,
+#'                   Name = "string",
+#'                   Pid = 123,
+#'                   Uuid = "string",
+#'                   ExecutablePath = "string",
+#'                   Euid = 123,
+#'                   ParentUuid = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AddressFamily = "string",
+#'             IanaProtocolNumber = 123,
+#'             MemoryRegions = list(
+#'               "string"
 #'             )
 #'           )
 #'         )
@@ -2622,6 +3011,11 @@ guardduty_get_invitations_count <- function() {
 #'
 #' @description
 #' Returns the details of the malware scan settings.
+#' 
+#' There might be regional differences because some data sources might not
+#' be available in all the Amazon Web Services Regions where GuardDuty is
+#' presently supported. For more information, see [Regions and
+#' endpoints](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html).
 #'
 #' @usage
 #' guardduty_get_malware_scan_settings(DetectorId)
@@ -2747,6 +3141,11 @@ guardduty_get_master_account <- function(DetectorId) {
 #' @description
 #' Describes which data sources are enabled for the member account's
 #' detector.
+#' 
+#' There might be regional differences because some data sources might not
+#' be available in all the Amazon Web Services Regions where GuardDuty is
+#' presently supported. For more information, see [Regions and
+#' endpoints](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html).
 #'
 #' @usage
 #' guardduty_get_member_detectors(DetectorId, AccountIds)
@@ -2782,10 +3181,29 @@ guardduty_get_master_account <- function(DetectorId) {
 #'         MalwareProtection = list(
 #'           ScanEc2InstanceWithFindings = list(
 #'             EbsVolumes = list(
-#'               Status = "ENABLED"|"DISABLED"
+#'               Status = "ENABLED"|"DISABLED",
+#'               Reason = "string"
 #'             )
 #'           ),
 #'           ServiceRole = "string"
+#'         )
+#'       ),
+#'       Features = list(
+#'         list(
+#'           Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS",
+#'           Status = "ENABLED"|"DISABLED",
+#'           UpdatedAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           AdditionalConfiguration = list(
+#'             list(
+#'               Name = "EKS_ADDON_MANAGEMENT",
+#'               Status = "ENABLED"|"DISABLED",
+#'               UpdatedAt = as.POSIXct(
+#'                 "2015-01-01"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       )
 #'     )
@@ -2945,6 +3363,12 @@ guardduty_get_members <- function(DetectorId, AccountIds) {
 #'           ScanEc2InstanceWithFindings = list(
 #'             FreeTrialDaysRemaining = 123
 #'           )
+#'         )
+#'       ),
+#'       Features = list(
+#'         list(
+#'           Name = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS",
+#'           FreeTrialDaysRemaining = 123
 #'         )
 #'       )
 #'     )
@@ -3114,6 +3538,15 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #'           Unit = "string"
 #'         )
 #'       )
+#'     ),
+#'     SumByFeature = list(
+#'       list(
+#'         Feature = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING",
+#'         Total = list(
+#'           Amount = "string",
+#'           Unit = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3124,7 +3557,7 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #' ```
 #' svc$get_usage_statistics(
 #'   DetectorId = "string",
-#'   UsageStatisticType = "SUM_BY_ACCOUNT"|"SUM_BY_DATA_SOURCE"|"SUM_BY_RESOURCE"|"TOP_RESOURCES",
+#'   UsageStatisticType = "SUM_BY_ACCOUNT"|"SUM_BY_DATA_SOURCE"|"SUM_BY_RESOURCE"|"TOP_RESOURCES"|"SUM_BY_FEATURES",
 #'   UsageCriteria = list(
 #'     AccountIds = list(
 #'       "string"
@@ -3134,6 +3567,9 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #'     ),
 #'     Resources = list(
 #'       "string"
+#'     ),
+#'     Features = list(
+#'       "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"
 #'     )
 #'   ),
 #'   Unit = "string",
@@ -3237,6 +3673,112 @@ guardduty_invite_members <- function(DetectorId, AccountIds, DisableEmailNotific
   return(response)
 }
 .guardduty$operations$invite_members <- guardduty_invite_members
+
+#' Lists coverage details for your GuardDuty account
+#'
+#' @description
+#' Lists coverage details for your GuardDuty account. If you're a GuardDuty
+#' administrator, you can retrieve all resources associated with the active
+#' member accounts in your organization.
+#' 
+#' Make sure the accounts have EKS Runtime Monitoring enabled and GuardDuty
+#' agent running on their EKS nodes.
+#'
+#' @usage
+#' guardduty_list_coverage(DetectorId, NextToken, MaxResults,
+#'   FilterCriteria, SortCriteria)
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector whose coverage details you want to
+#' retrieve.
+#' @param NextToken A token to use for paginating results that are returned in the response.
+#' Set the value of this parameter to null for the first request to a list
+#' action. For subsequent calls, use the NextToken value returned from the
+#' previous request to continue listing results after the first page.
+#' @param MaxResults The maximum number of results to return in the response.
+#' @param FilterCriteria Represents the criteria used to filter the coverage details.
+#' @param SortCriteria Represents the criteria used to sort the coverage details.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Resources = list(
+#'     list(
+#'       ResourceId = "string",
+#'       DetectorId = "string",
+#'       AccountId = "string",
+#'       ResourceDetails = list(
+#'         EksClusterDetails = list(
+#'           ClusterName = "string",
+#'           CoveredNodes = 123,
+#'           CompatibleNodes = 123,
+#'           AddonDetails = list(
+#'             AddonVersion = "string",
+#'             AddonStatus = "string"
+#'           )
+#'         ),
+#'         ResourceType = "EKS"
+#'       ),
+#'       CoverageStatus = "HEALTHY"|"UNHEALTHY",
+#'       Issue = "string",
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_coverage(
+#'   DetectorId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   FilterCriteria = list(
+#'     FilterCriterion = list(
+#'       list(
+#'         CriterionKey = "ACCOUNT_ID"|"CLUSTER_NAME"|"RESOURCE_TYPE"|"COVERAGE_STATUS"|"ADDON_VERSION",
+#'         FilterCondition = list(
+#'           Equals = list(
+#'             "string"
+#'           ),
+#'           NotEquals = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   SortCriteria = list(
+#'     AttributeName = "ACCOUNT_ID"|"CLUSTER_NAME"|"COVERAGE_STATUS"|"ISSUE"|"ADDON_VERSION"|"UPDATED_AT",
+#'     OrderBy = "ASC"|"DESC"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_list_coverage
+#'
+#' @aliases guardduty_list_coverage
+guardduty_list_coverage <- function(DetectorId, NextToken = NULL, MaxResults = NULL, FilterCriteria = NULL, SortCriteria = NULL) {
+  op <- new_operation(
+    name = "ListCoverage",
+    http_method = "POST",
+    http_path = "/detector/{detectorId}/coverage",
+    paginator = list()
+  )
+  input <- .guardduty$list_coverage_input(DetectorId = DetectorId, NextToken = NextToken, MaxResults = MaxResults, FilterCriteria = FilterCriteria, SortCriteria = SortCriteria)
+  output <- .guardduty$list_coverage_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$list_coverage <- guardduty_list_coverage
 
 #' Lists detectorIds of all the existing Amazon GuardDuty detector
 #' resources
@@ -3696,7 +4238,10 @@ guardduty_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #' value of NextToken from the previous response to continue listing data.
 #' @param OnlyAssociated Specifies whether to only return associated members or to return all
 #' members (including members who haven't been invited yet or have been
-#' disassociated).
+#' disassociated). Member accounts must have been previously associated
+#' with the GuardDuty administrator account using
+#' [`Create Members`](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html)
+#' .
 #'
 #' @return
 #' A list with the following syntax:
@@ -3988,6 +4533,57 @@ guardduty_list_threat_intel_sets <- function(DetectorId, MaxResults = NULL, Next
 }
 .guardduty$operations$list_threat_intel_sets <- guardduty_list_threat_intel_sets
 
+#' Initiates the malware scan
+#'
+#' @description
+#' Initiates the malware scan. Invoking this API will automatically create
+#' the [Service-linked
+#' role](https://docs.aws.amazon.com/guardduty/latest/ug/slr-permissions-malware-protection.html)
+#' in the corresponding account.
+#'
+#' @usage
+#' guardduty_start_malware_scan(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the resource for which you invoked the
+#' API.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ScanId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_malware_scan(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_start_malware_scan
+#'
+#' @aliases guardduty_start_malware_scan
+guardduty_start_malware_scan <- function(ResourceArn) {
+  op <- new_operation(
+    name = "StartMalwareScan",
+    http_method = "POST",
+    http_path = "/malware-scan/start",
+    paginator = list()
+  )
+  input <- .guardduty$start_malware_scan_input(ResourceArn = ResourceArn)
+  output <- .guardduty$start_malware_scan_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$start_malware_scan <- guardduty_start_malware_scan
+
 #' Turns on GuardDuty monitoring of the specified member accounts
 #'
 #' @description
@@ -4055,6 +4651,10 @@ guardduty_start_monitoring_members <- function(DetectorId, AccountIds) {
 #' Stops GuardDuty monitoring for the specified member accounts. Use the
 #' [`start_monitoring_members`][guardduty_start_monitoring_members]
 #' operation to restart monitoring for those accounts.
+#' 
+#' With `autoEnableOrganizationMembers` configuration for your organization
+#' set to `ALL`, you'll receive an error if you attempt to stop monitoring
+#' the member accounts in your organization.
 #'
 #' @usage
 #' guardduty_stop_monitoring_members(DetectorId, AccountIds)
@@ -4251,16 +4851,27 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @description
 #' Updates the Amazon GuardDuty detector specified by the detectorId.
+#' 
+#' There might be regional differences because some data sources might not
+#' be available in all the Amazon Web Services Regions where GuardDuty is
+#' presently supported. For more information, see [Regions and
+#' endpoints](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html).
 #'
 #' @usage
 #' guardduty_update_detector(DetectorId, Enable,
-#'   FindingPublishingFrequency, DataSources)
+#'   FindingPublishingFrequency, DataSources, Features)
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector to update.
 #' @param Enable Specifies whether the detector is enabled or not enabled.
 #' @param FindingPublishingFrequency An enum value that specifies how frequently findings are exported, such
 #' as to CloudWatch Events.
 #' @param DataSources Describes which data sources will be updated.
+#' 
+#' There might be regional differences because some data sources might not
+#' be available in all the Amazon Web Services Regions where GuardDuty is
+#' presently supported. For more information, see [Regions and
+#' endpoints](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html).
+#' @param Features Provides the features that will be updated for the detector.
 #'
 #' @return
 #' An empty list.
@@ -4285,6 +4896,18 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
 #'         EbsVolumes = TRUE|FALSE
 #'       )
 #'     )
+#'   ),
+#'   Features = list(
+#'     list(
+#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS",
+#'       Status = "ENABLED"|"DISABLED",
+#'       AdditionalConfiguration = list(
+#'         list(
+#'           Name = "EKS_ADDON_MANAGEMENT",
+#'           Status = "ENABLED"|"DISABLED"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -4294,14 +4917,14 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
 #' @rdname guardduty_update_detector
 #'
 #' @aliases guardduty_update_detector
-guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishingFrequency = NULL, DataSources = NULL) {
+guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishingFrequency = NULL, DataSources = NULL, Features = NULL) {
   op <- new_operation(
     name = "UpdateDetector",
     http_method = "POST",
     http_path = "/detector/{detectorId}",
     paginator = list()
   )
-  input <- .guardduty$update_detector_input(DetectorId = DetectorId, Enable = Enable, FindingPublishingFrequency = FindingPublishingFrequency, DataSources = DataSources)
+  input <- .guardduty$update_detector_input(DetectorId = DetectorId, Enable = Enable, FindingPublishingFrequency = FindingPublishingFrequency, DataSources = DataSources, Features = Features)
   output <- .guardduty$update_detector_output()
   config <- get_config()
   svc <- .guardduty$service(config)
@@ -4323,7 +4946,11 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that specifies the GuardDuty service where
 #' you want to update a filter.
 #' @param FilterName &#91;required&#93; The name of the filter.
-#' @param Description The description of the filter.
+#' @param Description The description of the filter. Valid characters include alphanumeric
+#' characters, and special characters such as hyphen, period, colon,
+#' underscore, parentheses (`{ }`, `[ ]`, and `( )`), forward slash,
+#' horizontal tab, vertical tab, newline, form feed, return, and
+#' whitespace.
 #' @param Action Specifies the action that is to be applied to the findings that match
 #' the filter.
 #' @param Rank Specifies the position of the filter in the list of current filters.
@@ -4506,6 +5133,11 @@ guardduty_update_ip_set <- function(DetectorId, IpSetId, Name = NULL, Location =
 #'
 #' @description
 #' Updates the malware scan settings.
+#' 
+#' There might be regional differences because some data sources might not
+#' be available in all the Amazon Web Services Regions where GuardDuty is
+#' presently supported. For more information, see [Regions and
+#' endpoints](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html).
 #'
 #' @usage
 #' guardduty_update_malware_scan_settings(DetectorId, ScanResourceCriteria,
@@ -4515,7 +5147,7 @@ guardduty_update_ip_set <- function(DetectorId, IpSetId, Name = NULL, Location =
 #' you want to update scan settings.
 #' @param ScanResourceCriteria Represents the criteria to be used in the filter for selecting resources
 #' to scan.
-#' @param EbsSnapshotPreservation An enum value representing possible snapshot preservations.
+#' @param EbsSnapshotPreservation An enum value representing possible snapshot preservation settings.
 #'
 #' @return
 #' An empty list.
@@ -4576,13 +5208,21 @@ guardduty_update_malware_scan_settings <- function(DetectorId, ScanResourceCrite
 #'
 #' @description
 #' Contains information on member accounts to be updated.
+#' 
+#' There might be regional differences because some data sources might not
+#' be available in all the Amazon Web Services Regions where GuardDuty is
+#' presently supported. For more information, see [Regions and
+#' endpoints](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html).
 #'
 #' @usage
-#' guardduty_update_member_detectors(DetectorId, AccountIds, DataSources)
+#' guardduty_update_member_detectors(DetectorId, AccountIds, DataSources,
+#'   Features)
 #'
 #' @param DetectorId &#91;required&#93; The detector ID of the administrator account.
 #' @param AccountIds &#91;required&#93; A list of member account IDs to be updated.
 #' @param DataSources Describes which data sources will be updated.
+#' @param Features A list of features that will be updated for the specified member
+#' accounts.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4618,6 +5258,18 @@ guardduty_update_malware_scan_settings <- function(DetectorId, ScanResourceCrite
 #'         EbsVolumes = TRUE|FALSE
 #'       )
 #'     )
+#'   ),
+#'   Features = list(
+#'     list(
+#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS",
+#'       Status = "ENABLED"|"DISABLED",
+#'       AdditionalConfiguration = list(
+#'         list(
+#'           Name = "EKS_ADDON_MANAGEMENT",
+#'           Status = "ENABLED"|"DISABLED"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -4627,14 +5279,14 @@ guardduty_update_malware_scan_settings <- function(DetectorId, ScanResourceCrite
 #' @rdname guardduty_update_member_detectors
 #'
 #' @aliases guardduty_update_member_detectors
-guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSources = NULL) {
+guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSources = NULL, Features = NULL) {
   op <- new_operation(
     name = "UpdateMemberDetectors",
     http_method = "POST",
     http_path = "/detector/{detectorId}/member/detector/update",
     paginator = list()
   )
-  input <- .guardduty$update_member_detectors_input(DetectorId = DetectorId, AccountIds = AccountIds, DataSources = DataSources)
+  input <- .guardduty$update_member_detectors_input(DetectorId = DetectorId, AccountIds = AccountIds, DataSources = DataSources, Features = Features)
   output <- .guardduty$update_member_detectors_output()
   config <- get_config()
   svc <- .guardduty$service(config)
@@ -4644,19 +5296,44 @@ guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSource
 }
 .guardduty$operations$update_member_detectors <- guardduty_update_member_detectors
 
-#' Updates the delegated administrator account with the values provided
+#' Configures the delegated administrator account with the provided values
 #'
 #' @description
-#' Updates the delegated administrator account with the values provided.
+#' Configures the delegated administrator account with the provided values.
+#' You must provide the value for either `autoEnableOrganizationMembers` or
+#' `autoEnable`.
+#' 
+#' There might be regional differences because some data sources might not
+#' be available in all the Amazon Web Services Regions where GuardDuty is
+#' presently supported. For more information, see [Regions and
+#' endpoints](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html).
 #'
 #' @usage
 #' guardduty_update_organization_configuration(DetectorId, AutoEnable,
-#'   DataSources)
+#'   DataSources, Features, AutoEnableOrganizationMembers)
 #'
-#' @param DetectorId &#91;required&#93; The ID of the detector to update the delegated administrator for.
-#' @param AutoEnable &#91;required&#93; Indicates whether to automatically enable member accounts in the
+#' @param DetectorId &#91;required&#93; The ID of the detector that configures the delegated administrator.
+#' @param AutoEnable Indicates whether to automatically enable member accounts in the
 #' organization.
+#' 
+#' Even though this is still supported, we recommend using
+#' `AutoEnableOrganizationMembers` to achieve the similar results.
 #' @param DataSources Describes which data sources will be updated.
+#' @param Features A list of features that will be configured for the organization.
+#' @param AutoEnableOrganizationMembers Indicates the auto-enablement configuration of GuardDuty for the member
+#' accounts in the organization.
+#' 
+#' -   `NEW`: Indicates that when a new account joins the organization,
+#'     they will have GuardDuty enabled automatically.
+#' 
+#' -   `ALL`: Indicates that all accounts in the Amazon Web Services
+#'     Organization have GuardDuty enabled automatically. This includes
+#'     `NEW` accounts that join the organization and accounts that may have
+#'     been suspended or removed from the organization in GuardDuty.
+#' 
+#' -   `NONE`: Indicates that GuardDuty will not be automatically enabled
+#'     for any accounts in the organization. GuardDuty must be managed for
+#'     each account individually by the administrator.
 #'
 #' @return
 #' An empty list.
@@ -4682,7 +5359,20 @@ guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSource
 #'         )
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   Features = list(
+#'     list(
+#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS",
+#'       AutoEnable = "NEW"|"NONE",
+#'       AdditionalConfiguration = list(
+#'         list(
+#'           Name = "EKS_ADDON_MANAGEMENT",
+#'           AutoEnable = "NEW"|"NONE"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   AutoEnableOrganizationMembers = "NEW"|"ALL"|"NONE"
 #' )
 #' ```
 #'
@@ -4691,14 +5381,14 @@ guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSource
 #' @rdname guardduty_update_organization_configuration
 #'
 #' @aliases guardduty_update_organization_configuration
-guardduty_update_organization_configuration <- function(DetectorId, AutoEnable, DataSources = NULL) {
+guardduty_update_organization_configuration <- function(DetectorId, AutoEnable = NULL, DataSources = NULL, Features = NULL, AutoEnableOrganizationMembers = NULL) {
   op <- new_operation(
     name = "UpdateOrganizationConfiguration",
     http_method = "POST",
     http_path = "/detector/{detectorId}/admin",
     paginator = list()
   )
-  input <- .guardduty$update_organization_configuration_input(DetectorId = DetectorId, AutoEnable = AutoEnable, DataSources = DataSources)
+  input <- .guardduty$update_organization_configuration_input(DetectorId = DetectorId, AutoEnable = AutoEnable, DataSources = DataSources, Features = Features, AutoEnableOrganizationMembers = AutoEnableOrganizationMembers)
   output <- .guardduty$update_organization_configuration_output()
   config <- get_config()
   svc <- .guardduty$service(config)

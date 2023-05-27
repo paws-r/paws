@@ -16,13 +16,14 @@ ec2_modify_image_attribute(
   Value = NULL,
   DryRun = NULL,
   OrganizationArns = NULL,
-  OrganizationalUnitArns = NULL
+  OrganizationalUnitArns = NULL,
+  ImdsSupport = NULL
 )
 }
 \arguments{
 \item{Attribute}{The name of the attribute to modify.
 
-Valid values: \code{description} | \code{launchPermission}}
+Valid values: \code{description} | \code{imdsSupport} | \code{launchPermission}}
 
 \item{Description}{A new description for the AMI.}
 
@@ -42,7 +43,7 @@ parameter is \code{launchPermission}.}
 when the \code{Attribute} parameter is \code{launchPermission}.}
 
 \item{Value}{The value of the attribute being modified. This parameter can be used
-only when the \code{Attribute} parameter is \code{description}.}
+only when the \code{Attribute} parameter is \code{description} or \code{imdsSupport}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -55,9 +56,21 @@ used only when the \code{Attribute} parameter is \code{launchPermission}.}
 \item{OrganizationalUnitArns}{The Amazon Resource Name (ARN) of an organizational unit (OU). This
 parameter can be used only when the \code{Attribute} parameter is
 \code{launchPermission}.}
+
+\item{ImdsSupport}{Set to \code{v2.0} to indicate that IMDSv2 is specified in the AMI. Instances
+launched from this AMI will have \code{HttpTokens} automatically set to
+\code{required} so that, by default, the instance requires that IMDSv2 is
+used when requesting instance metadata. In addition,
+\code{HttpPutResponseHopLimit} is set to \code{2}. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-IMDS-new-instances.html#configure-IMDS-new-instances-ami-configuration}{Configure the AMI}
+in the \emph{Amazon EC2 User Guide}.
+
+Do not use this parameter unless your AMI software supports IMDSv2.
+After you set the value to \code{v2.0}, you can't undo it. The only way to
+“reset” your AMI is to create a new AMI from the underlying snapshot.}
 }
 \description{
-Modifies the specified attribute of the specified AMI. You can specify only one attribute at a time. You can use the \code{Attribute} parameter to specify the attribute or one of the following parameters: \code{Description} or \code{LaunchPermission}.
+Modifies the specified attribute of the specified AMI. You can specify only one attribute at a time.
 
 See \url{https://paws-r.github.io/docs/ec2/modify_image_attribute.html} for full documentation.
 }

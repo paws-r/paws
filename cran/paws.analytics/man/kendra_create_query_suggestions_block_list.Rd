@@ -18,13 +18,13 @@ kendra_create_query_suggestions_block_list(
 \item{IndexId}{[required] The identifier of the index you want to create a query suggestions block
 list for.}
 
-\item{Name}{[required] A user friendly name for the block list.
+\item{Name}{[required] A name for the block list.
 
-For example, the block list named 'offensive-words' includes all
-offensive words that could appear in user queries and need to be blocked
-from suggestions.}
+For example, the name 'offensive-words', which includes all offensive
+words that could appear in user queries and need to be blocked from
+suggestions.}
 
-\item{Description}{A user-friendly description for the block list.
+\item{Description}{A description for the block list.
 
 For example, the description "List of all offensive words that can
 appear in user queries and need to be blocked from suggestions."}
@@ -38,16 +38,13 @@ For information on the current quota limits for block lists, see \href{https://d
 \item{ClientToken}{A token that you provide to identify the request to create a query
 suggestions block list.}
 
-\item{RoleArn}{[required] The IAM (Identity and Access Management) role used by Amazon Kendra to
-access the block list text file in your S3 bucket.
+\item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role with permission to access
+your S3 bucket that contains the block list text file. For more
+information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM access roles for Amazon Kendra}.}
 
-You need permissions to the role ARN (Amazon Web Services Resource
-Name). The role needs S3 read permissions to your file in S3 and needs
-to give STS (Security Token Service) assume role permissions to Amazon
-Kendra.}
-
-\item{Tags}{A tag that you can assign to a block list that categorizes the block
-list.}
+\item{Tags}{A list of key-value pairs that identify or categorize the block list.
+Tag keys and values can consist of Unicode letters, digits, white space,
+and any of the following symbols: _ . : / = + - @.}
 }
 \description{
 Creates a block list to exlcude certain queries from suggestions.

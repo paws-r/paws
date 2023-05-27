@@ -11,11 +11,11 @@ NULL
 #' the archive rule criteria.
 #'
 #' @usage
-#' accessanalyzer_apply_archive_rule(analyzerArn, clientToken, ruleName)
+#' accessanalyzer_apply_archive_rule(analyzerArn, ruleName, clientToken)
 #'
 #' @param analyzerArn &#91;required&#93; The Amazon resource name (ARN) of the analyzer.
-#' @param clientToken A client token.
 #' @param ruleName &#91;required&#93; The name of the rule to apply.
+#' @param clientToken A client token.
 #'
 #' @return
 #' An empty list.
@@ -24,8 +24,8 @@ NULL
 #' ```
 #' svc$apply_archive_rule(
 #'   analyzerArn = "string",
-#'   clientToken = "string",
-#'   ruleName = "string"
+#'   ruleName = "string",
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -34,14 +34,14 @@ NULL
 #' @rdname accessanalyzer_apply_archive_rule
 #'
 #' @aliases accessanalyzer_apply_archive_rule
-accessanalyzer_apply_archive_rule <- function(analyzerArn, clientToken = NULL, ruleName) {
+accessanalyzer_apply_archive_rule <- function(analyzerArn, ruleName, clientToken = NULL) {
   op <- new_operation(
     name = "ApplyArchiveRule",
     http_method = "PUT",
     http_path = "/archive-rule",
     paginator = list()
   )
-  input <- .accessanalyzer$apply_archive_rule_input(analyzerArn = analyzerArn, clientToken = clientToken, ruleName = ruleName)
+  input <- .accessanalyzer$apply_archive_rule_input(analyzerArn = analyzerArn, ruleName = ruleName, clientToken = clientToken)
   output <- .accessanalyzer$apply_archive_rule_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -107,18 +107,18 @@ accessanalyzer_cancel_policy_generation <- function(jobId) {
 #' findings for your resource before deploying resource permissions.
 #'
 #' @usage
-#' accessanalyzer_create_access_preview(analyzerArn, clientToken,
-#'   configurations)
+#' accessanalyzer_create_access_preview(analyzerArn, configurations,
+#'   clientToken)
 #'
 #' @param analyzerArn &#91;required&#93; The [ARN of the account
 #' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
 #' used to generate the access preview. You can only create an access
 #' preview for analyzers with an `Account` type and `Active` status.
-#' @param clientToken A client token.
 #' @param configurations &#91;required&#93; Access control configuration for your resource that is used to generate
 #' the access preview. The access preview includes findings for external
 #' access allowed to the resource with the proposed access control
 #' configuration. The configuration must contain exactly one element.
+#' @param clientToken A client token.
 #'
 #' @return
 #' A list with the following syntax:
@@ -132,15 +132,37 @@ accessanalyzer_cancel_policy_generation <- function(jobId) {
 #' ```
 #' svc$create_access_preview(
 #'   analyzerArn = "string",
-#'   clientToken = "string",
 #'   configurations = list(
 #'     list(
+#'       ebsSnapshot = list(
+#'         userIds = list(
+#'           "string"
+#'         ),
+#'         groups = list(
+#'           "string"
+#'         ),
+#'         kmsKeyId = "string"
+#'       ),
+#'       ecrRepository = list(
+#'         repositoryPolicy = "string"
+#'       ),
 #'       iamRole = list(
 #'         trustPolicy = "string"
 #'       ),
+#'       efsFileSystem = list(
+#'         fileSystemPolicy = "string"
+#'       ),
 #'       kmsKey = list(
+#'         keyPolicies = list(
+#'           "string"
+#'         ),
 #'         grants = list(
 #'           list(
+#'             operations = list(
+#'               "CreateGrant"|"Decrypt"|"DescribeKey"|"Encrypt"|"GenerateDataKey"|"GenerateDataKeyPair"|"GenerateDataKeyPairWithoutPlaintext"|"GenerateDataKeyWithoutPlaintext"|"GetPublicKey"|"ReEncryptFrom"|"ReEncryptTo"|"RetireGrant"|"Sign"|"Verify"
+#'             ),
+#'             granteePrincipal = "string",
+#'             retiringPrincipal = "string",
 #'             constraints = list(
 #'               encryptionContextEquals = list(
 #'                 "string"
@@ -149,58 +171,74 @@ accessanalyzer_cancel_policy_generation <- function(jobId) {
 #'                 "string"
 #'               )
 #'             ),
-#'             granteePrincipal = "string",
-#'             issuingAccount = "string",
-#'             operations = list(
-#'               "CreateGrant"|"Decrypt"|"DescribeKey"|"Encrypt"|"GenerateDataKey"|"GenerateDataKeyPair"|"GenerateDataKeyPairWithoutPlaintext"|"GenerateDataKeyWithoutPlaintext"|"GetPublicKey"|"ReEncryptFrom"|"ReEncryptTo"|"RetireGrant"|"Sign"|"Verify"
-#'             ),
-#'             retiringPrincipal = "string"
+#'             issuingAccount = "string"
 #'           )
-#'         ),
-#'         keyPolicies = list(
-#'           "string"
 #'         )
 #'       ),
-#'       s3Bucket = list(
-#'         accessPoints = list(
+#'       rdsDbClusterSnapshot = list(
+#'         attributes = list(
 #'           list(
-#'             accessPointPolicy = "string",
-#'             networkOrigin = list(
-#'               internetConfiguration = list(),
-#'               vpcConfiguration = list(
-#'                 vpcId = "string"
-#'               )
-#'             ),
-#'             publicAccessBlock = list(
-#'               ignorePublicAcls = TRUE|FALSE,
-#'               restrictPublicBuckets = TRUE|FALSE
+#'             accountIds = list(
+#'               "string"
 #'             )
 #'           )
 #'         ),
-#'         bucketAclGrants = list(
+#'         kmsKeyId = "string"
+#'       ),
+#'       rdsDbSnapshot = list(
+#'         attributes = list(
 #'           list(
-#'             grantee = list(
-#'               id = "string",
-#'               uri = "string"
-#'             ),
-#'             permission = "READ"|"WRITE"|"READ_ACP"|"WRITE_ACP"|"FULL_CONTROL"
+#'             accountIds = list(
+#'               "string"
+#'             )
 #'           )
 #'         ),
-#'         bucketPolicy = "string",
-#'         bucketPublicAccessBlock = list(
-#'           ignorePublicAcls = TRUE|FALSE,
-#'           restrictPublicBuckets = TRUE|FALSE
-#'         )
+#'         kmsKeyId = "string"
 #'       ),
 #'       secretsManagerSecret = list(
 #'         kmsKeyId = "string",
 #'         secretPolicy = "string"
 #'       ),
+#'       s3Bucket = list(
+#'         bucketPolicy = "string",
+#'         bucketAclGrants = list(
+#'           list(
+#'             permission = "READ"|"WRITE"|"READ_ACP"|"WRITE_ACP"|"FULL_CONTROL",
+#'             grantee = list(
+#'               id = "string",
+#'               uri = "string"
+#'             )
+#'           )
+#'         ),
+#'         bucketPublicAccessBlock = list(
+#'           ignorePublicAcls = TRUE|FALSE,
+#'           restrictPublicBuckets = TRUE|FALSE
+#'         ),
+#'         accessPoints = list(
+#'           list(
+#'             accessPointPolicy = "string",
+#'             publicAccessBlock = list(
+#'               ignorePublicAcls = TRUE|FALSE,
+#'               restrictPublicBuckets = TRUE|FALSE
+#'             ),
+#'             networkOrigin = list(
+#'               vpcConfiguration = list(
+#'                 vpcId = "string"
+#'               ),
+#'               internetConfiguration = list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       snsTopic = list(
+#'         topicPolicy = "string"
+#'       ),
 #'       sqsQueue = list(
 #'         queuePolicy = "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -209,14 +247,14 @@ accessanalyzer_cancel_policy_generation <- function(jobId) {
 #' @rdname accessanalyzer_create_access_preview
 #'
 #' @aliases accessanalyzer_create_access_preview
-accessanalyzer_create_access_preview <- function(analyzerArn, clientToken = NULL, configurations) {
+accessanalyzer_create_access_preview <- function(analyzerArn, configurations, clientToken = NULL) {
   op <- new_operation(
     name = "CreateAccessPreview",
     http_method = "PUT",
     http_path = "/access-preview",
     paginator = list()
   )
-  input <- .accessanalyzer$create_access_preview_input(analyzerArn = analyzerArn, clientToken = clientToken, configurations = configurations)
+  input <- .accessanalyzer$create_access_preview_input(analyzerArn = analyzerArn, configurations = configurations, clientToken = clientToken)
   output <- .accessanalyzer$create_access_preview_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -232,18 +270,18 @@ accessanalyzer_create_access_preview <- function(analyzerArn, clientToken = NULL
 #' Creates an analyzer for your account.
 #'
 #' @usage
-#' accessanalyzer_create_analyzer(analyzerName, archiveRules, clientToken,
-#'   tags, type)
+#' accessanalyzer_create_analyzer(analyzerName, type, archiveRules, tags,
+#'   clientToken)
 #'
 #' @param analyzerName &#91;required&#93; The name of the analyzer to create.
-#' @param archiveRules Specifies the archive rules to add for the analyzer. Archive rules
-#' automatically archive findings that meet the criteria you define for the
-#' rule.
-#' @param clientToken A client token.
-#' @param tags The tags to apply to the analyzer.
 #' @param type &#91;required&#93; The type of analyzer to create. Only ACCOUNT and ORGANIZATION analyzers
 #' are supported. You can create only one analyzer per account per Region.
 #' You can create up to 5 analyzers per organization per Region.
+#' @param archiveRules Specifies the archive rules to add for the analyzer. Archive rules
+#' automatically archive findings that meet the criteria you define for the
+#' rule.
+#' @param tags The tags to apply to the analyzer.
+#' @param clientToken A client token.
 #'
 #' @return
 #' A list with the following syntax:
@@ -257,30 +295,30 @@ accessanalyzer_create_access_preview <- function(analyzerArn, clientToken = NULL
 #' ```
 #' svc$create_analyzer(
 #'   analyzerName = "string",
+#'   type = "ACCOUNT"|"ORGANIZATION",
 #'   archiveRules = list(
 #'     list(
+#'       ruleName = "string",
 #'       filter = list(
 #'         list(
-#'           contains = list(
-#'             "string"
-#'           ),
 #'           eq = list(
 #'             "string"
 #'           ),
-#'           exists = TRUE|FALSE,
 #'           neq = list(
 #'             "string"
-#'           )
+#'           ),
+#'           contains = list(
+#'             "string"
+#'           ),
+#'           exists = TRUE|FALSE
 #'         )
-#'       ),
-#'       ruleName = "string"
+#'       )
 #'     )
 #'   ),
-#'   clientToken = "string",
 #'   tags = list(
 #'     "string"
 #'   ),
-#'   type = "ACCOUNT"|"ORGANIZATION"
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -289,14 +327,14 @@ accessanalyzer_create_access_preview <- function(analyzerArn, clientToken = NULL
 #' @rdname accessanalyzer_create_analyzer
 #'
 #' @aliases accessanalyzer_create_analyzer
-accessanalyzer_create_analyzer <- function(analyzerName, archiveRules = NULL, clientToken = NULL, tags = NULL, type) {
+accessanalyzer_create_analyzer <- function(analyzerName, type, archiveRules = NULL, tags = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateAnalyzer",
     http_method = "PUT",
     http_path = "/analyzer",
     paginator = list()
   )
-  input <- .accessanalyzer$create_analyzer_input(analyzerName = analyzerName, archiveRules = archiveRules, clientToken = clientToken, tags = tags, type = type)
+  input <- .accessanalyzer$create_analyzer_input(analyzerName = analyzerName, type = type, archiveRules = archiveRules, tags = tags, clientToken = clientToken)
   output <- .accessanalyzer$create_analyzer_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -319,13 +357,13 @@ accessanalyzer_create_analyzer <- function(analyzerName, archiveRules = NULL, cl
 #' in the **IAM User Guide**.
 #'
 #' @usage
-#' accessanalyzer_create_archive_rule(analyzerName, clientToken, filter,
-#'   ruleName)
+#' accessanalyzer_create_archive_rule(analyzerName, ruleName, filter,
+#'   clientToken)
 #'
 #' @param analyzerName &#91;required&#93; The name of the created analyzer.
-#' @param clientToken A client token.
-#' @param filter &#91;required&#93; The criteria for the rule.
 #' @param ruleName &#91;required&#93; The name of the rule to create.
+#' @param filter &#91;required&#93; The criteria for the rule.
+#' @param clientToken A client token.
 #'
 #' @return
 #' An empty list.
@@ -334,22 +372,22 @@ accessanalyzer_create_analyzer <- function(analyzerName, archiveRules = NULL, cl
 #' ```
 #' svc$create_archive_rule(
 #'   analyzerName = "string",
-#'   clientToken = "string",
+#'   ruleName = "string",
 #'   filter = list(
 #'     list(
-#'       contains = list(
-#'         "string"
-#'       ),
 #'       eq = list(
 #'         "string"
 #'       ),
-#'       exists = TRUE|FALSE,
 #'       neq = list(
 #'         "string"
-#'       )
+#'       ),
+#'       contains = list(
+#'         "string"
+#'       ),
+#'       exists = TRUE|FALSE
 #'     )
 #'   ),
-#'   ruleName = "string"
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -358,14 +396,14 @@ accessanalyzer_create_analyzer <- function(analyzerName, archiveRules = NULL, cl
 #' @rdname accessanalyzer_create_archive_rule
 #'
 #' @aliases accessanalyzer_create_archive_rule
-accessanalyzer_create_archive_rule <- function(analyzerName, clientToken = NULL, filter, ruleName) {
+accessanalyzer_create_archive_rule <- function(analyzerName, ruleName, filter, clientToken = NULL) {
   op <- new_operation(
     name = "CreateArchiveRule",
     http_method = "PUT",
     http_path = "/analyzer/{analyzerName}/archive-rule",
     paginator = list()
   )
-  input <- .accessanalyzer$create_archive_rule_input(analyzerName = analyzerName, clientToken = clientToken, filter = filter, ruleName = ruleName)
+  input <- .accessanalyzer$create_archive_rule_input(analyzerName = analyzerName, ruleName = ruleName, filter = filter, clientToken = clientToken)
   output <- .accessanalyzer$create_archive_rule_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -428,12 +466,12 @@ accessanalyzer_delete_analyzer <- function(analyzerName, clientToken = NULL) {
 #' Deletes the specified archive rule.
 #'
 #' @usage
-#' accessanalyzer_delete_archive_rule(analyzerName, clientToken, ruleName)
+#' accessanalyzer_delete_archive_rule(analyzerName, ruleName, clientToken)
 #'
 #' @param analyzerName &#91;required&#93; The name of the analyzer that associated with the archive rule to
 #' delete.
-#' @param clientToken A client token.
 #' @param ruleName &#91;required&#93; The name of the rule to delete.
+#' @param clientToken A client token.
 #'
 #' @return
 #' An empty list.
@@ -442,8 +480,8 @@ accessanalyzer_delete_analyzer <- function(analyzerName, clientToken = NULL) {
 #' ```
 #' svc$delete_archive_rule(
 #'   analyzerName = "string",
-#'   clientToken = "string",
-#'   ruleName = "string"
+#'   ruleName = "string",
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -452,14 +490,14 @@ accessanalyzer_delete_analyzer <- function(analyzerName, clientToken = NULL) {
 #' @rdname accessanalyzer_delete_archive_rule
 #'
 #' @aliases accessanalyzer_delete_archive_rule
-accessanalyzer_delete_archive_rule <- function(analyzerName, clientToken = NULL, ruleName) {
+accessanalyzer_delete_archive_rule <- function(analyzerName, ruleName, clientToken = NULL) {
   op <- new_operation(
     name = "DeleteArchiveRule",
     http_method = "DELETE",
     http_path = "/analyzer/{analyzerName}/archive-rule/{ruleName}",
     paginator = list()
   )
-  input <- .accessanalyzer$delete_archive_rule_input(analyzerName = analyzerName, clientToken = clientToken, ruleName = ruleName)
+  input <- .accessanalyzer$delete_archive_rule_input(analyzerName = analyzerName, ruleName = ruleName, clientToken = clientToken)
   output <- .accessanalyzer$delete_archive_rule_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -488,15 +526,39 @@ accessanalyzer_delete_archive_rule <- function(analyzerName, clientToken = NULL,
 #' ```
 #' list(
 #'   accessPreview = list(
+#'     id = "string",
 #'     analyzerArn = "string",
 #'     configurations = list(
 #'       list(
+#'         ebsSnapshot = list(
+#'           userIds = list(
+#'             "string"
+#'           ),
+#'           groups = list(
+#'             "string"
+#'           ),
+#'           kmsKeyId = "string"
+#'         ),
+#'         ecrRepository = list(
+#'           repositoryPolicy = "string"
+#'         ),
 #'         iamRole = list(
 #'           trustPolicy = "string"
 #'         ),
+#'         efsFileSystem = list(
+#'           fileSystemPolicy = "string"
+#'         ),
 #'         kmsKey = list(
+#'           keyPolicies = list(
+#'             "string"
+#'           ),
 #'           grants = list(
 #'             list(
+#'               operations = list(
+#'                 "CreateGrant"|"Decrypt"|"DescribeKey"|"Encrypt"|"GenerateDataKey"|"GenerateDataKeyPair"|"GenerateDataKeyPairWithoutPlaintext"|"GenerateDataKeyWithoutPlaintext"|"GetPublicKey"|"ReEncryptFrom"|"ReEncryptTo"|"RetireGrant"|"Sign"|"Verify"
+#'               ),
+#'               granteePrincipal = "string",
+#'               retiringPrincipal = "string",
 #'               constraints = list(
 #'                 encryptionContextEquals = list(
 #'                   "string"
@@ -505,52 +567,67 @@ accessanalyzer_delete_archive_rule <- function(analyzerName, clientToken = NULL,
 #'                   "string"
 #'                 )
 #'               ),
-#'               granteePrincipal = "string",
-#'               issuingAccount = "string",
-#'               operations = list(
-#'                 "CreateGrant"|"Decrypt"|"DescribeKey"|"Encrypt"|"GenerateDataKey"|"GenerateDataKeyPair"|"GenerateDataKeyPairWithoutPlaintext"|"GenerateDataKeyWithoutPlaintext"|"GetPublicKey"|"ReEncryptFrom"|"ReEncryptTo"|"RetireGrant"|"Sign"|"Verify"
-#'               ),
-#'               retiringPrincipal = "string"
+#'               issuingAccount = "string"
 #'             )
-#'           ),
-#'           keyPolicies = list(
-#'             "string"
 #'           )
 #'         ),
-#'         s3Bucket = list(
-#'           accessPoints = list(
+#'         rdsDbClusterSnapshot = list(
+#'           attributes = list(
 #'             list(
-#'               accessPointPolicy = "string",
-#'               networkOrigin = list(
-#'                 internetConfiguration = list(),
-#'                 vpcConfiguration = list(
-#'                   vpcId = "string"
-#'                 )
-#'               ),
-#'               publicAccessBlock = list(
-#'                 ignorePublicAcls = TRUE|FALSE,
-#'                 restrictPublicBuckets = TRUE|FALSE
+#'               accountIds = list(
+#'                 "string"
 #'               )
 #'             )
 #'           ),
-#'           bucketAclGrants = list(
+#'           kmsKeyId = "string"
+#'         ),
+#'         rdsDbSnapshot = list(
+#'           attributes = list(
 #'             list(
-#'               grantee = list(
-#'                 id = "string",
-#'                 uri = "string"
-#'               ),
-#'               permission = "READ"|"WRITE"|"READ_ACP"|"WRITE_ACP"|"FULL_CONTROL"
+#'               accountIds = list(
+#'                 "string"
+#'               )
 #'             )
 #'           ),
-#'           bucketPolicy = "string",
-#'           bucketPublicAccessBlock = list(
-#'             ignorePublicAcls = TRUE|FALSE,
-#'             restrictPublicBuckets = TRUE|FALSE
-#'           )
+#'           kmsKeyId = "string"
 #'         ),
 #'         secretsManagerSecret = list(
 #'           kmsKeyId = "string",
 #'           secretPolicy = "string"
+#'         ),
+#'         s3Bucket = list(
+#'           bucketPolicy = "string",
+#'           bucketAclGrants = list(
+#'             list(
+#'               permission = "READ"|"WRITE"|"READ_ACP"|"WRITE_ACP"|"FULL_CONTROL",
+#'               grantee = list(
+#'                 id = "string",
+#'                 uri = "string"
+#'               )
+#'             )
+#'           ),
+#'           bucketPublicAccessBlock = list(
+#'             ignorePublicAcls = TRUE|FALSE,
+#'             restrictPublicBuckets = TRUE|FALSE
+#'           ),
+#'           accessPoints = list(
+#'             list(
+#'               accessPointPolicy = "string",
+#'               publicAccessBlock = list(
+#'                 ignorePublicAcls = TRUE|FALSE,
+#'                 restrictPublicBuckets = TRUE|FALSE
+#'               ),
+#'               networkOrigin = list(
+#'                 vpcConfiguration = list(
+#'                   vpcId = "string"
+#'                 ),
+#'                 internetConfiguration = list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         snsTopic = list(
+#'           topicPolicy = "string"
 #'         ),
 #'         sqsQueue = list(
 #'           queuePolicy = "string"
@@ -560,7 +637,6 @@ accessanalyzer_delete_archive_rule <- function(analyzerName, clientToken = NULL,
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     id = "string",
 #'     status = "COMPLETED"|"CREATING"|"FAILED",
 #'     statusReason = list(
 #'       code = "INTERNAL_ERROR"|"INVALID_CONFIGURATION"
@@ -617,27 +693,27 @@ accessanalyzer_get_access_preview <- function(accessPreviewId, analyzerArn) {
 #' ```
 #' list(
 #'   resource = list(
-#'     actions = list(
-#'       "string"
+#'     resourceArn = "string",
+#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
 #'     ),
 #'     analyzedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     createdAt = as.POSIXct(
+#'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     error = "string",
 #'     isPublic = TRUE|FALSE,
-#'     resourceArn = "string",
-#'     resourceOwnerAccount = "string",
-#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret",
+#'     actions = list(
+#'       "string"
+#'     ),
 #'     sharedVia = list(
 #'       "string"
 #'     ),
 #'     status = "ACTIVE"|"ARCHIVED"|"RESOLVED",
-#'     updatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     )
+#'     resourceOwnerAccount = "string",
+#'     error = "string"
 #'   )
 #' )
 #' ```
@@ -688,6 +764,8 @@ accessanalyzer_get_analyzed_resource <- function(analyzerArn, resourceArn) {
 #' list(
 #'   analyzer = list(
 #'     arn = "string",
+#'     name = "string",
+#'     type = "ACCOUNT"|"ORGANIZATION",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -695,15 +773,13 @@ accessanalyzer_get_analyzed_resource <- function(analyzerArn, resourceArn) {
 #'     lastResourceAnalyzedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     name = "string",
-#'     status = "ACTIVE"|"CREATING"|"DISABLED"|"FAILED",
-#'     statusReason = list(
-#'       code = "AWS_SERVICE_ACCESS_DISABLED"|"DELEGATED_ADMINISTRATOR_DEREGISTERED"|"ORGANIZATION_DELETED"|"SERVICE_LINKED_ROLE_CREATION_FAILED"
-#'     ),
 #'     tags = list(
 #'       "string"
 #'     ),
-#'     type = "ACCOUNT"|"ORGANIZATION"
+#'     status = "ACTIVE"|"CREATING"|"DISABLED"|"FAILED",
+#'     statusReason = list(
+#'       code = "AWS_SERVICE_ACCESS_DISABLED"|"DELEGATED_ADMINISTRATOR_DEREGISTERED"|"ORGANIZATION_DELETED"|"SERVICE_LINKED_ROLE_CREATION_FAILED"
+#'     )
 #'   )
 #' )
 #' ```
@@ -758,24 +834,24 @@ accessanalyzer_get_analyzer <- function(analyzerName) {
 #' ```
 #' list(
 #'   archiveRule = list(
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
+#'     ruleName = "string",
 #'     filter = list(
 #'       list(
-#'         contains = list(
-#'           "string"
-#'         ),
 #'         eq = list(
 #'           "string"
 #'         ),
-#'         exists = TRUE|FALSE,
 #'         neq = list(
 #'           "string"
-#'         )
+#'         ),
+#'         contains = list(
+#'           "string"
+#'         ),
+#'         exists = TRUE|FALSE
 #'       )
 #'     ),
-#'     ruleName = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     )
@@ -831,38 +907,39 @@ accessanalyzer_get_archive_rule <- function(analyzerName, ruleName) {
 #' ```
 #' list(
 #'   finding = list(
+#'     id = "string",
+#'     principal = list(
+#'       "string"
+#'     ),
 #'     action = list(
 #'       "string"
 #'     ),
-#'     analyzedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
+#'     resource = "string",
+#'     isPublic = TRUE|FALSE,
+#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic",
 #'     condition = list(
 #'       "string"
 #'     ),
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     error = "string",
-#'     id = "string",
-#'     isPublic = TRUE|FALSE,
-#'     principal = list(
-#'       "string"
+#'     analyzedAt = as.POSIXct(
+#'       "2015-01-01"
 #'     ),
-#'     resource = "string",
-#'     resourceOwnerAccount = "string",
-#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret",
-#'     sources = list(
-#'       list(
-#'         detail = list(
-#'           accessPointArn = "string"
-#'         ),
-#'         type = "POLICY"|"BUCKET_ACL"|"S3_ACCESS_POINT"
-#'       )
-#'     ),
-#'     status = "ACTIVE"|"ARCHIVED"|"RESOLVED",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     status = "ACTIVE"|"ARCHIVED"|"RESOLVED",
+#'     resourceOwnerAccount = "string",
+#'     error = "string",
+#'     sources = list(
+#'       list(
+#'         type = "POLICY"|"BUCKET_ACL"|"S3_ACCESS_POINT"|"S3_ACCESS_POINT_ACCOUNT",
+#'         detail = list(
+#'           accessPointArn = "string",
+#'           accessPointAccount = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -905,9 +982,16 @@ accessanalyzer_get_finding <- function(analyzerArn, id) {
 #' [`start_policy_generation`][accessanalyzer_start_policy_generation].
 #'
 #' @usage
-#' accessanalyzer_get_generated_policy(includeResourcePlaceholders,
-#'   includeServiceLevelTemplate, jobId)
+#' accessanalyzer_get_generated_policy(jobId, includeResourcePlaceholders,
+#'   includeServiceLevelTemplate)
 #'
+#' @param jobId &#91;required&#93; The `JobId` that is returned by the
+#' [`start_policy_generation`][accessanalyzer_start_policy_generation]
+#' operation. The `JobId` can be used with
+#' [`get_generated_policy`][accessanalyzer_get_generated_policy] to
+#' retrieve the generated policies or used with
+#' [`cancel_policy_generation`][accessanalyzer_cancel_policy_generation] to
+#' cancel the policy generation request.
 #' @param includeResourcePlaceholders The level of detail that you want to generate. You can specify whether
 #' to generate policies with placeholders for resource ARNs for actions
 #' that support resource level granularity in policies.
@@ -920,59 +1004,52 @@ accessanalyzer_get_finding <- function(analyzerArn, id) {
 #' 
 #' IAM Access Analyzer uses `iam:servicelastaccessed` to identify services
 #' that have been used recently to create this service-level template.
-#' @param jobId &#91;required&#93; The `JobId` that is returned by the
-#' [`start_policy_generation`][accessanalyzer_start_policy_generation]
-#' operation. The `JobId` can be used with
-#' [`get_generated_policy`][accessanalyzer_get_generated_policy] to
-#' retrieve the generated policies or used with
-#' [`cancel_policy_generation`][accessanalyzer_cancel_policy_generation] to
-#' cancel the policy generation request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   generatedPolicyResult = list(
-#'     generatedPolicies = list(
-#'       list(
-#'         policy = "string"
-#'       )
-#'     ),
-#'     properties = list(
-#'       cloudTrailProperties = list(
-#'         endTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         startTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         trailProperties = list(
-#'           list(
-#'             allRegions = TRUE|FALSE,
-#'             cloudTrailArn = "string",
-#'             regions = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       isComplete = TRUE|FALSE,
-#'       principalArn = "string"
-#'     )
-#'   ),
 #'   jobDetails = list(
+#'     jobId = "string",
+#'     status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"CANCELED",
+#'     startedOn = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     completedOn = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     jobError = list(
 #'       code = "AUTHORIZATION_ERROR"|"RESOURCE_NOT_FOUND_ERROR"|"SERVICE_QUOTA_EXCEEDED_ERROR"|"SERVICE_ERROR",
 #'       message = "string"
+#'     )
+#'   ),
+#'   generatedPolicyResult = list(
+#'     properties = list(
+#'       isComplete = TRUE|FALSE,
+#'       principalArn = "string",
+#'       cloudTrailProperties = list(
+#'         trailProperties = list(
+#'           list(
+#'             cloudTrailArn = "string",
+#'             regions = list(
+#'               "string"
+#'             ),
+#'             allRegions = TRUE|FALSE
+#'           )
+#'         ),
+#'         startTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
 #'     ),
-#'     jobId = "string",
-#'     startedOn = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"CANCELED"
+#'     generatedPolicies = list(
+#'       list(
+#'         policy = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -980,9 +1057,9 @@ accessanalyzer_get_finding <- function(analyzerArn, id) {
 #' @section Request syntax:
 #' ```
 #' svc$get_generated_policy(
+#'   jobId = "string",
 #'   includeResourcePlaceholders = TRUE|FALSE,
-#'   includeServiceLevelTemplate = TRUE|FALSE,
-#'   jobId = "string"
+#'   includeServiceLevelTemplate = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -991,14 +1068,14 @@ accessanalyzer_get_finding <- function(analyzerArn, id) {
 #' @rdname accessanalyzer_get_generated_policy
 #'
 #' @aliases accessanalyzer_get_generated_policy
-accessanalyzer_get_generated_policy <- function(includeResourcePlaceholders = NULL, includeServiceLevelTemplate = NULL, jobId) {
+accessanalyzer_get_generated_policy <- function(jobId, includeResourcePlaceholders = NULL, includeServiceLevelTemplate = NULL) {
   op <- new_operation(
     name = "GetGeneratedPolicy",
     http_method = "GET",
     http_path = "/policy/generation/{jobId}",
     paginator = list()
   )
-  input <- .accessanalyzer$get_generated_policy_input(includeResourcePlaceholders = includeResourcePlaceholders, includeServiceLevelTemplate = includeServiceLevelTemplate, jobId = jobId)
+  input <- .accessanalyzer$get_generated_policy_input(jobId = jobId, includeResourcePlaceholders = includeResourcePlaceholders, includeServiceLevelTemplate = includeServiceLevelTemplate)
   output <- .accessanalyzer$get_generated_policy_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -1017,15 +1094,15 @@ accessanalyzer_get_generated_policy <- function(includeResourcePlaceholders = NU
 #'
 #' @usage
 #' accessanalyzer_list_access_preview_findings(accessPreviewId,
-#'   analyzerArn, filter, maxResults, nextToken)
+#'   analyzerArn, filter, nextToken, maxResults)
 #'
 #' @param accessPreviewId &#91;required&#93; The unique ID for the access preview.
 #' @param analyzerArn &#91;required&#93; The [ARN of the
 #' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
 #' used to generate the access.
 #' @param filter Criteria to filter the returned findings.
-#' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token used for pagination of results returned.
+#' @param maxResults The maximum number of results to return in the response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1033,36 +1110,37 @@ accessanalyzer_get_generated_policy <- function(includeResourcePlaceholders = NU
 #' list(
 #'   findings = list(
 #'     list(
-#'       action = list(
-#'         "string"
-#'       ),
-#'       changeType = "CHANGED"|"NEW"|"UNCHANGED",
-#'       condition = list(
-#'         "string"
-#'       ),
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       error = "string",
+#'       id = "string",
 #'       existingFindingId = "string",
 #'       existingFindingStatus = "ACTIVE"|"ARCHIVED"|"RESOLVED",
-#'       id = "string",
-#'       isPublic = TRUE|FALSE,
 #'       principal = list(
 #'         "string"
 #'       ),
+#'       action = list(
+#'         "string"
+#'       ),
+#'       condition = list(
+#'         "string"
+#'       ),
 #'       resource = "string",
+#'       isPublic = TRUE|FALSE,
+#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       changeType = "CHANGED"|"NEW"|"UNCHANGED",
+#'       status = "ACTIVE"|"ARCHIVED"|"RESOLVED",
 #'       resourceOwnerAccount = "string",
-#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret",
+#'       error = "string",
 #'       sources = list(
 #'         list(
+#'           type = "POLICY"|"BUCKET_ACL"|"S3_ACCESS_POINT"|"S3_ACCESS_POINT_ACCOUNT",
 #'           detail = list(
-#'             accessPointArn = "string"
-#'           ),
-#'           type = "POLICY"|"BUCKET_ACL"|"S3_ACCESS_POINT"
+#'             accessPointArn = "string",
+#'             accessPointAccount = "string"
+#'           )
 #'         )
-#'       ),
-#'       status = "ACTIVE"|"ARCHIVED"|"RESOLVED"
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1076,20 +1154,20 @@ accessanalyzer_get_generated_policy <- function(includeResourcePlaceholders = NU
 #'   analyzerArn = "string",
 #'   filter = list(
 #'     list(
-#'       contains = list(
-#'         "string"
-#'       ),
 #'       eq = list(
 #'         "string"
 #'       ),
-#'       exists = TRUE|FALSE,
 #'       neq = list(
 #'         "string"
-#'       )
+#'       ),
+#'       contains = list(
+#'         "string"
+#'       ),
+#'       exists = TRUE|FALSE
 #'     )
 #'   ),
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -1098,14 +1176,14 @@ accessanalyzer_get_generated_policy <- function(includeResourcePlaceholders = NU
 #' @rdname accessanalyzer_list_access_preview_findings
 #'
 #' @aliases accessanalyzer_list_access_preview_findings
-accessanalyzer_list_access_preview_findings <- function(accessPreviewId, analyzerArn, filter = NULL, maxResults = NULL, nextToken = NULL) {
+accessanalyzer_list_access_preview_findings <- function(accessPreviewId, analyzerArn, filter = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAccessPreviewFindings",
     http_method = "POST",
     http_path = "/access-preview/{accessPreviewId}",
     paginator = list()
   )
-  input <- .accessanalyzer$list_access_preview_findings_input(accessPreviewId = accessPreviewId, analyzerArn = analyzerArn, filter = filter, maxResults = maxResults, nextToken = nextToken)
+  input <- .accessanalyzer$list_access_preview_findings_input(accessPreviewId = accessPreviewId, analyzerArn = analyzerArn, filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .accessanalyzer$list_access_preview_findings_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -1121,13 +1199,13 @@ accessanalyzer_list_access_preview_findings <- function(accessPreviewId, analyze
 #' Retrieves a list of access previews for the specified analyzer.
 #'
 #' @usage
-#' accessanalyzer_list_access_previews(analyzerArn, maxResults, nextToken)
+#' accessanalyzer_list_access_previews(analyzerArn, nextToken, maxResults)
 #'
 #' @param analyzerArn &#91;required&#93; The [ARN of the
 #' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
 #' used to generate the access preview.
-#' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token used for pagination of results returned.
+#' @param maxResults The maximum number of results to return in the response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1135,11 +1213,11 @@ accessanalyzer_list_access_preview_findings <- function(accessPreviewId, analyze
 #' list(
 #'   accessPreviews = list(
 #'     list(
+#'       id = "string",
 #'       analyzerArn = "string",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       id = "string",
 #'       status = "COMPLETED"|"CREATING"|"FAILED",
 #'       statusReason = list(
 #'         code = "INTERNAL_ERROR"|"INVALID_CONFIGURATION"
@@ -1154,8 +1232,8 @@ accessanalyzer_list_access_preview_findings <- function(accessPreviewId, analyze
 #' ```
 #' svc$list_access_previews(
 #'   analyzerArn = "string",
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -1164,14 +1242,14 @@ accessanalyzer_list_access_preview_findings <- function(accessPreviewId, analyze
 #' @rdname accessanalyzer_list_access_previews
 #'
 #' @aliases accessanalyzer_list_access_previews
-accessanalyzer_list_access_previews <- function(analyzerArn, maxResults = NULL, nextToken = NULL) {
+accessanalyzer_list_access_previews <- function(analyzerArn, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAccessPreviews",
     http_method = "GET",
     http_path = "/access-preview",
     paginator = list()
   )
-  input <- .accessanalyzer$list_access_previews_input(analyzerArn = analyzerArn, maxResults = maxResults, nextToken = nextToken)
+  input <- .accessanalyzer$list_access_previews_input(analyzerArn = analyzerArn, nextToken = nextToken, maxResults = maxResults)
   output <- .accessanalyzer$list_access_previews_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -1189,15 +1267,15 @@ accessanalyzer_list_access_previews <- function(analyzerArn, maxResults = NULL, 
 #' analyzed by the specified analyzer..
 #'
 #' @usage
-#' accessanalyzer_list_analyzed_resources(analyzerArn, maxResults,
-#'   nextToken, resourceType)
+#' accessanalyzer_list_analyzed_resources(analyzerArn, resourceType,
+#'   nextToken, maxResults)
 #'
 #' @param analyzerArn &#91;required&#93; The [ARN of the
 #' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
 #' to retrieve a list of analyzed resources from.
-#' @param maxResults The maximum number of results to return in the response.
-#' @param nextToken A token used for pagination of results returned.
 #' @param resourceType The type of resource.
+#' @param nextToken A token used for pagination of results returned.
+#' @param maxResults The maximum number of results to return in the response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1207,7 +1285,7 @@ accessanalyzer_list_access_previews <- function(analyzerArn, maxResults = NULL, 
 #'     list(
 #'       resourceArn = "string",
 #'       resourceOwnerAccount = "string",
-#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"
+#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1218,9 +1296,9 @@ accessanalyzer_list_access_previews <- function(analyzerArn, maxResults = NULL, 
 #' ```
 #' svc$list_analyzed_resources(
 #'   analyzerArn = "string",
-#'   maxResults = 123,
+#'   resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic",
 #'   nextToken = "string",
-#'   resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -1229,14 +1307,14 @@ accessanalyzer_list_access_previews <- function(analyzerArn, maxResults = NULL, 
 #' @rdname accessanalyzer_list_analyzed_resources
 #'
 #' @aliases accessanalyzer_list_analyzed_resources
-accessanalyzer_list_analyzed_resources <- function(analyzerArn, maxResults = NULL, nextToken = NULL, resourceType = NULL) {
+accessanalyzer_list_analyzed_resources <- function(analyzerArn, resourceType = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAnalyzedResources",
     http_method = "POST",
     http_path = "/analyzed-resource",
     paginator = list()
   )
-  input <- .accessanalyzer$list_analyzed_resources_input(analyzerArn = analyzerArn, maxResults = maxResults, nextToken = nextToken, resourceType = resourceType)
+  input <- .accessanalyzer$list_analyzed_resources_input(analyzerArn = analyzerArn, resourceType = resourceType, nextToken = nextToken, maxResults = maxResults)
   output <- .accessanalyzer$list_analyzed_resources_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -1252,10 +1330,10 @@ accessanalyzer_list_analyzed_resources <- function(analyzerArn, maxResults = NUL
 #' Retrieves a list of analyzers.
 #'
 #' @usage
-#' accessanalyzer_list_analyzers(maxResults, nextToken, type)
+#' accessanalyzer_list_analyzers(nextToken, maxResults, type)
 #'
-#' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token used for pagination of results returned.
+#' @param maxResults The maximum number of results to return in the response.
 #' @param type The type of analyzer.
 #'
 #' @return
@@ -1265,6 +1343,8 @@ accessanalyzer_list_analyzed_resources <- function(analyzerArn, maxResults = NUL
 #'   analyzers = list(
 #'     list(
 #'       arn = "string",
+#'       name = "string",
+#'       type = "ACCOUNT"|"ORGANIZATION",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1272,15 +1352,13 @@ accessanalyzer_list_analyzed_resources <- function(analyzerArn, maxResults = NUL
 #'       lastResourceAnalyzedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       name = "string",
-#'       status = "ACTIVE"|"CREATING"|"DISABLED"|"FAILED",
-#'       statusReason = list(
-#'         code = "AWS_SERVICE_ACCESS_DISABLED"|"DELEGATED_ADMINISTRATOR_DEREGISTERED"|"ORGANIZATION_DELETED"|"SERVICE_LINKED_ROLE_CREATION_FAILED"
-#'       ),
 #'       tags = list(
 #'         "string"
 #'       ),
-#'       type = "ACCOUNT"|"ORGANIZATION"
+#'       status = "ACTIVE"|"CREATING"|"DISABLED"|"FAILED",
+#'       statusReason = list(
+#'         code = "AWS_SERVICE_ACCESS_DISABLED"|"DELEGATED_ADMINISTRATOR_DEREGISTERED"|"ORGANIZATION_DELETED"|"SERVICE_LINKED_ROLE_CREATION_FAILED"
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1290,8 +1368,8 @@ accessanalyzer_list_analyzed_resources <- function(analyzerArn, maxResults = NUL
 #' @section Request syntax:
 #' ```
 #' svc$list_analyzers(
-#'   maxResults = 123,
 #'   nextToken = "string",
+#'   maxResults = 123,
 #'   type = "ACCOUNT"|"ORGANIZATION"
 #' )
 #' ```
@@ -1301,14 +1379,14 @@ accessanalyzer_list_analyzed_resources <- function(analyzerArn, maxResults = NUL
 #' @rdname accessanalyzer_list_analyzers
 #'
 #' @aliases accessanalyzer_list_analyzers
-accessanalyzer_list_analyzers <- function(maxResults = NULL, nextToken = NULL, type = NULL) {
+accessanalyzer_list_analyzers <- function(nextToken = NULL, maxResults = NULL, type = NULL) {
   op <- new_operation(
     name = "ListAnalyzers",
     http_method = "GET",
     http_path = "/analyzer",
     paginator = list()
   )
-  input <- .accessanalyzer$list_analyzers_input(maxResults = maxResults, nextToken = nextToken, type = type)
+  input <- .accessanalyzer$list_analyzers_input(nextToken = nextToken, maxResults = maxResults, type = type)
   output <- .accessanalyzer$list_analyzers_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -1324,11 +1402,11 @@ accessanalyzer_list_analyzers <- function(maxResults = NULL, nextToken = NULL, t
 #' Retrieves a list of archive rules created for the specified analyzer.
 #'
 #' @usage
-#' accessanalyzer_list_archive_rules(analyzerName, maxResults, nextToken)
+#' accessanalyzer_list_archive_rules(analyzerName, nextToken, maxResults)
 #'
 #' @param analyzerName &#91;required&#93; The name of the analyzer to retrieve rules from.
-#' @param maxResults The maximum number of results to return in the request.
 #' @param nextToken A token used for pagination of results returned.
+#' @param maxResults The maximum number of results to return in the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1336,24 +1414,24 @@ accessanalyzer_list_analyzers <- function(maxResults = NULL, nextToken = NULL, t
 #' list(
 #'   archiveRules = list(
 #'     list(
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
+#'       ruleName = "string",
 #'       filter = list(
 #'         list(
-#'           contains = list(
-#'             "string"
-#'           ),
 #'           eq = list(
 #'             "string"
 #'           ),
-#'           exists = TRUE|FALSE,
 #'           neq = list(
 #'             "string"
-#'           )
+#'           ),
+#'           contains = list(
+#'             "string"
+#'           ),
+#'           exists = TRUE|FALSE
 #'         )
 #'       ),
-#'       ruleName = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -1367,8 +1445,8 @@ accessanalyzer_list_analyzers <- function(maxResults = NULL, nextToken = NULL, t
 #' ```
 #' svc$list_archive_rules(
 #'   analyzerName = "string",
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -1377,14 +1455,14 @@ accessanalyzer_list_analyzers <- function(maxResults = NULL, nextToken = NULL, t
 #' @rdname accessanalyzer_list_archive_rules
 #'
 #' @aliases accessanalyzer_list_archive_rules
-accessanalyzer_list_archive_rules <- function(analyzerName, maxResults = NULL, nextToken = NULL) {
+accessanalyzer_list_archive_rules <- function(analyzerName, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListArchiveRules",
     http_method = "GET",
     http_path = "/analyzer/{analyzerName}/archive-rule",
     paginator = list()
   )
-  input <- .accessanalyzer$list_archive_rules_input(analyzerName = analyzerName, maxResults = maxResults, nextToken = nextToken)
+  input <- .accessanalyzer$list_archive_rules_input(analyzerName = analyzerName, nextToken = nextToken, maxResults = maxResults)
   output <- .accessanalyzer$list_archive_rules_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -1405,16 +1483,16 @@ accessanalyzer_list_archive_rules <- function(analyzerName, maxResults = NULL, n
 #' in the **IAM User Guide**.
 #'
 #' @usage
-#' accessanalyzer_list_findings(analyzerArn, filter, maxResults, nextToken,
-#'   sort)
+#' accessanalyzer_list_findings(analyzerArn, filter, sort, nextToken,
+#'   maxResults)
 #'
 #' @param analyzerArn &#91;required&#93; The [ARN of the
 #' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
 #' to retrieve findings from.
 #' @param filter A filter to match for the findings to return.
-#' @param maxResults The maximum number of results to return in the response.
-#' @param nextToken A token used for pagination of results returned.
 #' @param sort The sort order for the findings returned.
+#' @param nextToken A token used for pagination of results returned.
+#' @param maxResults The maximum number of results to return in the response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1422,38 +1500,39 @@ accessanalyzer_list_archive_rules <- function(analyzerName, maxResults = NULL, n
 #' list(
 #'   findings = list(
 #'     list(
+#'       id = "string",
+#'       principal = list(
+#'         "string"
+#'       ),
 #'       action = list(
 #'         "string"
 #'       ),
-#'       analyzedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
+#'       resource = "string",
+#'       isPublic = TRUE|FALSE,
+#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic",
 #'       condition = list(
 #'         "string"
 #'       ),
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       error = "string",
-#'       id = "string",
-#'       isPublic = TRUE|FALSE,
-#'       principal = list(
-#'         "string"
+#'       analyzedAt = as.POSIXct(
+#'         "2015-01-01"
 #'       ),
-#'       resource = "string",
-#'       resourceOwnerAccount = "string",
-#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret",
-#'       sources = list(
-#'         list(
-#'           detail = list(
-#'             accessPointArn = "string"
-#'           ),
-#'           type = "POLICY"|"BUCKET_ACL"|"S3_ACCESS_POINT"
-#'         )
-#'       ),
-#'       status = "ACTIVE"|"ARCHIVED"|"RESOLVED",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       status = "ACTIVE"|"ARCHIVED"|"RESOLVED",
+#'       resourceOwnerAccount = "string",
+#'       error = "string",
+#'       sources = list(
+#'         list(
+#'           type = "POLICY"|"BUCKET_ACL"|"S3_ACCESS_POINT"|"S3_ACCESS_POINT_ACCOUNT",
+#'           detail = list(
+#'             accessPointArn = "string",
+#'             accessPointAccount = "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1467,24 +1546,24 @@ accessanalyzer_list_archive_rules <- function(analyzerName, maxResults = NULL, n
 #'   analyzerArn = "string",
 #'   filter = list(
 #'     list(
-#'       contains = list(
-#'         "string"
-#'       ),
 #'       eq = list(
 #'         "string"
 #'       ),
-#'       exists = TRUE|FALSE,
 #'       neq = list(
 #'         "string"
-#'       )
+#'       ),
+#'       contains = list(
+#'         "string"
+#'       ),
+#'       exists = TRUE|FALSE
 #'     )
 #'   ),
-#'   maxResults = 123,
-#'   nextToken = "string",
 #'   sort = list(
 #'     attributeName = "string",
 #'     orderBy = "ASC"|"DESC"
-#'   )
+#'   ),
+#'   nextToken = "string",
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -1493,14 +1572,14 @@ accessanalyzer_list_archive_rules <- function(analyzerName, maxResults = NULL, n
 #' @rdname accessanalyzer_list_findings
 #'
 #' @aliases accessanalyzer_list_findings
-accessanalyzer_list_findings <- function(analyzerArn, filter = NULL, maxResults = NULL, nextToken = NULL, sort = NULL) {
+accessanalyzer_list_findings <- function(analyzerArn, filter = NULL, sort = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListFindings",
     http_method = "POST",
     http_path = "/finding",
     paginator = list()
   )
-  input <- .accessanalyzer$list_findings_input(analyzerArn = analyzerArn, filter = filter, maxResults = maxResults, nextToken = nextToken, sort = sort)
+  input <- .accessanalyzer$list_findings_input(analyzerArn = analyzerArn, filter = filter, sort = sort, nextToken = nextToken, maxResults = maxResults)
   output <- .accessanalyzer$list_findings_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -1516,42 +1595,42 @@ accessanalyzer_list_findings <- function(analyzerArn, filter = NULL, maxResults 
 #' Lists all of the policy generations requested in the last seven days.
 #'
 #' @usage
-#' accessanalyzer_list_policy_generations(maxResults, nextToken,
-#'   principalArn)
+#' accessanalyzer_list_policy_generations(principalArn, maxResults,
+#'   nextToken)
 #'
-#' @param maxResults The maximum number of results to return in the response.
-#' @param nextToken A token used for pagination of results returned.
 #' @param principalArn The ARN of the IAM entity (user or role) for which you are generating a
 #' policy. Use this with `ListGeneratedPolicies` to filter the results to
 #' only include results for a specific principal.
+#' @param maxResults The maximum number of results to return in the response.
+#' @param nextToken A token used for pagination of results returned.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   nextToken = "string",
 #'   policyGenerations = list(
 #'     list(
-#'       completedOn = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
 #'       jobId = "string",
 #'       principalArn = "string",
+#'       status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"CANCELED",
 #'       startedOn = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"CANCELED"
+#'       completedOn = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_policy_generations(
+#'   principalArn = "string",
 #'   maxResults = 123,
-#'   nextToken = "string",
-#'   principalArn = "string"
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -1560,14 +1639,14 @@ accessanalyzer_list_findings <- function(analyzerArn, filter = NULL, maxResults 
 #' @rdname accessanalyzer_list_policy_generations
 #'
 #' @aliases accessanalyzer_list_policy_generations
-accessanalyzer_list_policy_generations <- function(maxResults = NULL, nextToken = NULL, principalArn = NULL) {
+accessanalyzer_list_policy_generations <- function(principalArn = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListPolicyGenerations",
     http_method = "GET",
     http_path = "/policy/generation",
     paginator = list()
   )
-  input <- .accessanalyzer$list_policy_generations_input(maxResults = maxResults, nextToken = nextToken, principalArn = principalArn)
+  input <- .accessanalyzer$list_policy_generations_input(principalArn = principalArn, maxResults = maxResults, nextToken = nextToken)
   output <- .accessanalyzer$list_policy_generations_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -1632,9 +1711,13 @@ accessanalyzer_list_tags_for_resource <- function(resourceArn) {
 #' Starts the policy generation request.
 #'
 #' @usage
-#' accessanalyzer_start_policy_generation(clientToken, cloudTrailDetails,
-#'   policyGenerationDetails)
+#' accessanalyzer_start_policy_generation(policyGenerationDetails,
+#'   cloudTrailDetails, clientToken)
 #'
+#' @param policyGenerationDetails &#91;required&#93; Contains the ARN of the IAM entity (user or role) for which you are
+#' generating a policy.
+#' @param cloudTrailDetails A `CloudTrailDetails` object that contains details about a `Trail` that
+#' you want to analyze to generate policies.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
 #' completes only once. With an idempotent request, if the original request
@@ -1644,10 +1727,6 @@ accessanalyzer_list_tags_for_resource <- function(resourceArn) {
 #' 
 #' If you do not specify a client token, one is automatically generated by
 #' the Amazon Web Services SDK.
-#' @param cloudTrailDetails A `CloudTrailDetails` object that contains details about a `Trail` that
-#' you want to analyze to generate policies.
-#' @param policyGenerationDetails &#91;required&#93; Contains the ARN of the IAM entity (user or role) for which you are
-#' generating a policy.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1660,28 +1739,28 @@ accessanalyzer_list_tags_for_resource <- function(resourceArn) {
 #' @section Request syntax:
 #' ```
 #' svc$start_policy_generation(
-#'   clientToken = "string",
+#'   policyGenerationDetails = list(
+#'     principalArn = "string"
+#'   ),
 #'   cloudTrailDetails = list(
-#'     accessRole = "string",
-#'     endTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     startTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
 #'     trails = list(
 #'       list(
-#'         allRegions = TRUE|FALSE,
 #'         cloudTrailArn = "string",
 #'         regions = list(
 #'           "string"
-#'         )
+#'         ),
+#'         allRegions = TRUE|FALSE
 #'       )
+#'     ),
+#'     accessRole = "string",
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
 #'     )
 #'   ),
-#'   policyGenerationDetails = list(
-#'     principalArn = "string"
-#'   )
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -1690,14 +1769,14 @@ accessanalyzer_list_tags_for_resource <- function(resourceArn) {
 #' @rdname accessanalyzer_start_policy_generation
 #'
 #' @aliases accessanalyzer_start_policy_generation
-accessanalyzer_start_policy_generation <- function(clientToken = NULL, cloudTrailDetails = NULL, policyGenerationDetails) {
+accessanalyzer_start_policy_generation <- function(policyGenerationDetails, cloudTrailDetails = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "StartPolicyGeneration",
     http_method = "PUT",
     http_path = "/policy/generation",
     paginator = list()
   )
-  input <- .accessanalyzer$start_policy_generation_input(clientToken = clientToken, cloudTrailDetails = cloudTrailDetails, policyGenerationDetails = policyGenerationDetails)
+  input <- .accessanalyzer$start_policy_generation_input(policyGenerationDetails = policyGenerationDetails, cloudTrailDetails = cloudTrailDetails, clientToken = clientToken)
   output <- .accessanalyzer$start_policy_generation_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -1715,12 +1794,16 @@ accessanalyzer_start_policy_generation <- function(clientToken = NULL, cloudTrai
 #' resource.
 #'
 #' @usage
-#' accessanalyzer_start_resource_scan(analyzerArn, resourceArn)
+#' accessanalyzer_start_resource_scan(analyzerArn, resourceArn,
+#'   resourceOwnerAccount)
 #'
 #' @param analyzerArn &#91;required&#93; The [ARN of the
 #' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
 #' to use to scan the policies applied to the specified resource.
 #' @param resourceArn &#91;required&#93; The ARN of the resource to scan.
+#' @param resourceOwnerAccount The Amazon Web Services account ID that owns the resource. For most
+#' Amazon Web Services resources, the owning account is the account in
+#' which the resource was created.
 #'
 #' @return
 #' An empty list.
@@ -1729,7 +1812,8 @@ accessanalyzer_start_policy_generation <- function(clientToken = NULL, cloudTrai
 #' ```
 #' svc$start_resource_scan(
 #'   analyzerArn = "string",
-#'   resourceArn = "string"
+#'   resourceArn = "string",
+#'   resourceOwnerAccount = "string"
 #' )
 #' ```
 #'
@@ -1738,14 +1822,14 @@ accessanalyzer_start_policy_generation <- function(clientToken = NULL, cloudTrai
 #' @rdname accessanalyzer_start_resource_scan
 #'
 #' @aliases accessanalyzer_start_resource_scan
-accessanalyzer_start_resource_scan <- function(analyzerArn, resourceArn) {
+accessanalyzer_start_resource_scan <- function(analyzerArn, resourceArn, resourceOwnerAccount = NULL) {
   op <- new_operation(
     name = "StartResourceScan",
     http_method = "POST",
     http_path = "/resource/scan",
     paginator = list()
   )
-  input <- .accessanalyzer$start_resource_scan_input(analyzerArn = analyzerArn, resourceArn = resourceArn)
+  input <- .accessanalyzer$start_resource_scan_input(analyzerArn = analyzerArn, resourceArn = resourceArn, resourceOwnerAccount = resourceOwnerAccount)
   output <- .accessanalyzer$start_resource_scan_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -1853,14 +1937,14 @@ accessanalyzer_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates the criteria and values for the specified archive rule.
 #'
 #' @usage
-#' accessanalyzer_update_archive_rule(analyzerName, clientToken, filter,
-#'   ruleName)
+#' accessanalyzer_update_archive_rule(analyzerName, ruleName, filter,
+#'   clientToken)
 #'
 #' @param analyzerName &#91;required&#93; The name of the analyzer to update the archive rules for.
-#' @param clientToken A client token.
+#' @param ruleName &#91;required&#93; The name of the rule to update.
 #' @param filter &#91;required&#93; A filter to match for the rules to update. Only rules that match the
 #' filter are updated.
-#' @param ruleName &#91;required&#93; The name of the rule to update.
+#' @param clientToken A client token.
 #'
 #' @return
 #' An empty list.
@@ -1869,22 +1953,22 @@ accessanalyzer_untag_resource <- function(resourceArn, tagKeys) {
 #' ```
 #' svc$update_archive_rule(
 #'   analyzerName = "string",
-#'   clientToken = "string",
+#'   ruleName = "string",
 #'   filter = list(
 #'     list(
-#'       contains = list(
-#'         "string"
-#'       ),
 #'       eq = list(
 #'         "string"
 #'       ),
-#'       exists = TRUE|FALSE,
 #'       neq = list(
 #'         "string"
-#'       )
+#'       ),
+#'       contains = list(
+#'         "string"
+#'       ),
+#'       exists = TRUE|FALSE
 #'     )
 #'   ),
-#'   ruleName = "string"
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -1893,14 +1977,14 @@ accessanalyzer_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname accessanalyzer_update_archive_rule
 #'
 #' @aliases accessanalyzer_update_archive_rule
-accessanalyzer_update_archive_rule <- function(analyzerName, clientToken = NULL, filter, ruleName) {
+accessanalyzer_update_archive_rule <- function(analyzerName, ruleName, filter, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateArchiveRule",
     http_method = "PUT",
     http_path = "/analyzer/{analyzerName}/archive-rule/{ruleName}",
     paginator = list()
   )
-  input <- .accessanalyzer$update_archive_rule_input(analyzerName = analyzerName, clientToken = clientToken, filter = filter, ruleName = ruleName)
+  input <- .accessanalyzer$update_archive_rule_input(analyzerName = analyzerName, ruleName = ruleName, filter = filter, clientToken = clientToken)
   output <- .accessanalyzer$update_archive_rule_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -1916,18 +2000,18 @@ accessanalyzer_update_archive_rule <- function(analyzerName, clientToken = NULL,
 #' Updates the status for the specified findings.
 #'
 #' @usage
-#' accessanalyzer_update_findings(analyzerArn, clientToken, ids,
-#'   resourceArn, status)
+#' accessanalyzer_update_findings(analyzerArn, status, ids, resourceArn,
+#'   clientToken)
 #'
 #' @param analyzerArn &#91;required&#93; The [ARN of the
 #' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
 #' that generated the findings to update.
-#' @param clientToken A client token.
-#' @param ids The IDs of the findings to update.
-#' @param resourceArn The ARN of the resource identified in the finding.
 #' @param status &#91;required&#93; The state represents the action to take to update the finding Status.
 #' Use `ARCHIVE` to change an Active finding to an Archived finding. Use
 #' `ACTIVE` to change an Archived finding to an Active finding.
+#' @param ids The IDs of the findings to update.
+#' @param resourceArn The ARN of the resource identified in the finding.
+#' @param clientToken A client token.
 #'
 #' @return
 #' An empty list.
@@ -1936,12 +2020,12 @@ accessanalyzer_update_archive_rule <- function(analyzerName, clientToken = NULL,
 #' ```
 #' svc$update_findings(
 #'   analyzerArn = "string",
-#'   clientToken = "string",
+#'   status = "ACTIVE"|"ARCHIVED",
 #'   ids = list(
 #'     "string"
 #'   ),
 #'   resourceArn = "string",
-#'   status = "ACTIVE"|"ARCHIVED"
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -1950,14 +2034,14 @@ accessanalyzer_update_archive_rule <- function(analyzerName, clientToken = NULL,
 #' @rdname accessanalyzer_update_findings
 #'
 #' @aliases accessanalyzer_update_findings
-accessanalyzer_update_findings <- function(analyzerArn, clientToken = NULL, ids = NULL, resourceArn = NULL, status) {
+accessanalyzer_update_findings <- function(analyzerArn, status, ids = NULL, resourceArn = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateFindings",
     http_method = "PUT",
     http_path = "/finding",
     paginator = list()
   )
-  input <- .accessanalyzer$update_findings_input(analyzerArn = analyzerArn, clientToken = clientToken, ids = ids, resourceArn = resourceArn, status = status)
+  input <- .accessanalyzer$update_findings_input(analyzerArn = analyzerArn, status = status, ids = ids, resourceArn = resourceArn, clientToken = clientToken)
   output <- .accessanalyzer$update_findings_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -2023,21 +2107,21 @@ accessanalyzer_update_findings <- function(analyzerArn, clientToken = NULL, ids 
 #'               index = 123,
 #'               key = "string",
 #'               substring = list(
-#'                 length = 123,
-#'                 start = 123
+#'                 start = 123,
+#'                 length = 123
 #'               ),
 #'               value = "string"
 #'             )
 #'           ),
 #'           span = list(
-#'             end = list(
-#'               column = 123,
+#'             start = list(
 #'               line = 123,
+#'               column = 123,
 #'               offset = 123
 #'             ),
-#'             start = list(
-#'               column = 123,
+#'             end = list(
 #'               line = 123,
+#'               column = 123,
 #'               offset = 123
 #'             )
 #'           )
@@ -2057,7 +2141,7 @@ accessanalyzer_update_findings <- function(analyzerArn, clientToken = NULL, ids 
 #'   nextToken = "string",
 #'   policyDocument = "string",
 #'   policyType = "IDENTITY_POLICY"|"RESOURCE_POLICY"|"SERVICE_CONTROL_POLICY",
-#'   validatePolicyResourceType = "AWS::S3::Bucket"|"AWS::S3::AccessPoint"|"AWS::S3::MultiRegionAccessPoint"|"AWS::S3ObjectLambda::AccessPoint"
+#'   validatePolicyResourceType = "AWS::S3::Bucket"|"AWS::S3::AccessPoint"|"AWS::S3::MultiRegionAccessPoint"|"AWS::S3ObjectLambda::AccessPoint"|"AWS::IAM::AssumeRolePolicyDocument"
 #' )
 #' ```
 #'

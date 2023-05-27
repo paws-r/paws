@@ -115,7 +115,7 @@ sagemaker_add_association <- function(SourceArn, DestinationArn, AssociationType
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -265,7 +265,7 @@ sagemaker_associate_trial_component <- function(TrialComponentName, TrialName) {
 #'           "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'         ),
 #'         SupportedRealtimeInferenceInstanceTypes = list(
-#'           "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"
+#'           "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge"
 #'         ),
 #'         SupportedContentTypes = list(
 #'           "string"
@@ -456,7 +456,7 @@ sagemaker_create_action <- function(ActionName, Source, ActionType, Description 
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -500,7 +500,7 @@ sagemaker_create_action <- function(ActionName, Source, ActionType, Description 
 #'       )
 #'     ),
 #'     SupportedTrainingInstanceTypes = list(
-#'       "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"
+#'       "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"
 #'     ),
 #'     SupportsDistributedTraining = TRUE|FALSE,
 #'     MetricDefinitions = list(
@@ -555,7 +555,7 @@ sagemaker_create_action <- function(ActionName, Source, ActionType, Description 
 #'       "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'     ),
 #'     SupportedRealtimeInferenceInstanceTypes = list(
-#'       "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"
+#'       "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge"
 #'     ),
 #'     SupportedContentTypes = list(
 #'       "string"
@@ -610,17 +610,18 @@ sagemaker_create_action <- function(ActionName, Source, ActionType, Description 
 #'             S3OutputPath = "string"
 #'           ),
 #'           ResourceConfig = list(
-#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'             InstanceCount = 123,
 #'             VolumeSizeInGB = 123,
 #'             VolumeKmsKeyId = "string",
 #'             InstanceGroups = list(
 #'               list(
-#'                 InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'                 InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'                 InstanceCount = 123,
 #'                 InstanceGroupName = "string"
 #'               )
-#'             )
+#'             ),
+#'             KeepAlivePeriodInSeconds = 123
 #'           ),
 #'           StoppingCondition = list(
 #'             MaxRuntimeInSeconds = 123,
@@ -695,20 +696,19 @@ sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NUL
 #' Creates a running app for the specified UserProfile
 #'
 #' @description
-#' Creates a running app for the specified UserProfile. Supported apps are
-#' `JupyterServer` and `KernelGateway`. This operation is automatically
-#' invoked by Amazon SageMaker Studio upon access to the associated Domain,
-#' and when new kernel configurations are selected by the user. A user may
-#' have multiple Apps active simultaneously.
+#' Creates a running app for the specified UserProfile. This operation is
+#' automatically invoked by Amazon SageMaker Studio upon access to the
+#' associated Domain, and when new kernel configurations are selected by
+#' the user. A user may have multiple Apps active simultaneously.
 #'
 #' @usage
 #' sagemaker_create_app(DomainId, UserProfileName, AppType, AppName, Tags,
-#'   ResourceSpec)
+#'   ResourceSpec, SpaceName)
 #'
 #' @param DomainId &#91;required&#93; The domain ID.
-#' @param UserProfileName &#91;required&#93; The user profile name.
-#' @param AppType &#91;required&#93; The type of app. Supported apps are `JupyterServer` and `KernelGateway`.
-#' `TensorBoard` is not supported.
+#' @param UserProfileName The user profile name. If this value is not set, then `SpaceName` must
+#' be set.
+#' @param AppType &#91;required&#93; The type of app.
 #' @param AppName &#91;required&#93; The name of the app.
 #' @param Tags Each tag consists of a key and an optional value. Tag keys must be
 #' unique per resource.
@@ -722,6 +722,8 @@ sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NUL
 #' `ResourceSpec` values for a `KernelGateway` app, the
 #' [`create_app`][sagemaker_create_app] call fails with a request
 #' validation error.
+#' @param SpaceName The name of the space. If this value is not set, then `UserProfileName`
+#' must be set.
 #'
 #' @return
 #' A list with the following syntax:
@@ -747,9 +749,10 @@ sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NUL
 #'   ResourceSpec = list(
 #'     SageMakerImageArn = "string",
 #'     SageMakerImageVersionArn = "string",
-#'     InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'     InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'     LifecycleConfigArn = "string"
-#'   )
+#'   ),
+#'   SpaceName = "string"
 #' )
 #' ```
 #'
@@ -758,14 +761,14 @@ sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NUL
 #' @rdname sagemaker_create_app
 #'
 #' @aliases sagemaker_create_app
-sagemaker_create_app <- function(DomainId, UserProfileName, AppType, AppName, Tags = NULL, ResourceSpec = NULL) {
+sagemaker_create_app <- function(DomainId, UserProfileName = NULL, AppType, AppName, Tags = NULL, ResourceSpec = NULL, SpaceName = NULL) {
   op <- new_operation(
     name = "CreateApp",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_app_input(DomainId = DomainId, UserProfileName = UserProfileName, AppType = AppType, AppName = AppName, Tags = Tags, ResourceSpec = ResourceSpec)
+  input <- .sagemaker$create_app_input(DomainId = DomainId, UserProfileName = UserProfileName, AppType = AppType, AppName = AppName, Tags = Tags, ResourceSpec = ResourceSpec, SpaceName = SpaceName)
   output <- .sagemaker$create_app_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -939,7 +942,7 @@ sagemaker_create_artifact <- function(ArtifactName = NULL, Source, ArtifactType,
 #' Creates an Autopilot job.
 #' 
 #' Find the best-performing model after you run an Autopilot job by calling
-#' .
+#' [`describe_auto_ml_job`][sagemaker_describe_auto_ml_job].
 #' 
 #' For information about how to use Autopilot, see [Automate Model
 #' Development with Amazon SageMaker
@@ -951,27 +954,36 @@ sagemaker_create_artifact <- function(ArtifactName = NULL, Source, ArtifactType,
 #'   RoleArn, GenerateCandidateDefinitionsOnly, Tags, ModelDeployConfig)
 #'
 #' @param AutoMLJobName &#91;required&#93; Identifies an Autopilot job. The name must be unique to your account and
-#' is case-insensitive.
+#' is case insensitive.
 #' @param InputDataConfig &#91;required&#93; An array of channel objects that describes the input data and its
 #' location. Each channel is a named input source. Similar to
-#' `InputDataConfig` supported by . Format(s) supported: CSV, Parquet. A
-#' minimum of 500 rows is required for the training dataset. There is not a
-#' minimum number of rows required for the validation dataset.
+#' `InputDataConfig` supported by
+#' [HyperParameterTrainingJobDefinition](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTrainingJobDefinition.html).
+#' Format(s) supported: CSV, Parquet. A minimum of 500 rows is required for
+#' the training dataset. There is not a minimum number of rows required for
+#' the validation dataset.
 #' @param OutputDataConfig &#91;required&#93; Provides information about encryption and the Amazon S3 output path
 #' needed to store artifacts from an AutoML job. Format(s) supported: CSV.
-#' @param ProblemType Defines the type of supervised learning available for the candidates.
-#' For more information, see [Amazon SageMaker Autopilot problem types and
-#' algorithm support](https://docs.aws.amazon.com/sagemaker/latest/dg/).
+#' @param ProblemType Defines the type of supervised learning problem available for the
+#' candidates. For more information, see [Amazon SageMaker Autopilot
+#' problem
+#' types](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-datasets-problem-types.html#autopilot-problem-types).
 #' @param AutoMLJobObjective Defines the objective metric used to measure the predictive quality of
-#' an AutoML job. You provide an AutoMLJobObjective$MetricName and
-#' Autopilot infers whether to minimize or maximize it.
+#' an AutoML job. You provide an
+#' [AutoMLJobObjective$MetricName](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobObjective.html)
+#' and Autopilot infers whether to minimize or maximize it. For
+#' [`create_auto_ml_job_v2`][sagemaker_create_auto_ml_job_v2], only
+#' `Accuracy` is supported.
 #' @param AutoMLJobConfig A collection of settings used to configure an AutoML job.
 #' @param RoleArn &#91;required&#93; The ARN of the role that is used to access the data.
 #' @param GenerateCandidateDefinitionsOnly Generates possible candidates without training the models. A candidate
 #' is a combination of data preprocessors, algorithms, and algorithm
 #' parameter settings.
-#' @param Tags Each tag consists of a key and an optional value. Tag keys must be
-#' unique per resource.
+#' @param Tags An array of key-value pairs. You can use tags to categorize your Amazon
+#' Web Services resources in different ways, for example, by purpose,
+#' owner, or environment. For more information, see [Tagging Amazon Web
+#' ServicesResources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
+#' Tag keys must be unique per resource.
 #' @param ModelDeployConfig Specifies how to generate the endpoint name for an automatic one-click
 #' Autopilot model deployment.
 #'
@@ -991,14 +1003,15 @@ sagemaker_create_artifact <- function(ArtifactName = NULL, Source, ArtifactType,
 #'     list(
 #'       DataSource = list(
 #'         S3DataSource = list(
-#'           S3DataType = "ManifestFile"|"S3Prefix",
+#'           S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
 #'           S3Uri = "string"
 #'         )
 #'       ),
 #'       CompressionType = "None"|"Gzip",
 #'       TargetAttributeName = "string",
 #'       ContentType = "string",
-#'       ChannelType = "training"|"validation"
+#'       ChannelType = "training"|"validation",
+#'       SampleWeightAttributeName = "string"
 #'     )
 #'   ),
 #'   OutputDataConfig = list(
@@ -1007,7 +1020,7 @@ sagemaker_create_artifact <- function(ArtifactName = NULL, Source, ArtifactType,
 #'   ),
 #'   ProblemType = "BinaryClassification"|"MulticlassClassification"|"Regression",
 #'   AutoMLJobObjective = list(
-#'     MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"
+#'     MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"|"RMSE"|"MAE"|"R2"|"BalancedAccuracy"|"Precision"|"PrecisionMacro"|"Recall"|"RecallMacro"
 #'   ),
 #'   AutoMLJobConfig = list(
 #'     CompletionCriteria = list(
@@ -1031,8 +1044,16 @@ sagemaker_create_artifact <- function(ArtifactName = NULL, Source, ArtifactType,
 #'       ValidationFraction = 123.0
 #'     ),
 #'     CandidateGenerationConfig = list(
-#'       FeatureSpecificationS3Uri = "string"
-#'     )
+#'       FeatureSpecificationS3Uri = "string",
+#'       AlgorithmsConfig = list(
+#'         list(
+#'           AutoMLAlgorithms = list(
+#'             "xgboost"|"linear-learner"|"mlp"|"lightgbm"|"catboost"|"randomforest"|"extra-trees"|"nn-torch"|"fastai"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     Mode = "AUTO"|"ENSEMBLING"|"HYPERPARAMETER_TUNING"
 #'   ),
 #'   RoleArn = "string",
 #'   GenerateCandidateDefinitionsOnly = TRUE|FALSE,
@@ -1071,6 +1092,170 @@ sagemaker_create_auto_ml_job <- function(AutoMLJobName, InputDataConfig, OutputD
 }
 .sagemaker$operations$create_auto_ml_job <- sagemaker_create_auto_ml_job
 
+#' Creates an Amazon SageMaker AutoML job that uses non-tabular data such
+#' as images or text for Computer Vision or Natural Language Processing
+#' problems
+#'
+#' @description
+#' Creates an Amazon SageMaker AutoML job that uses non-tabular data such
+#' as images or text for Computer Vision or Natural Language Processing
+#' problems.
+#' 
+#' Find the resulting model after you run an AutoML job V2 by calling
+#' [`describe_auto_ml_job_v2`][sagemaker_describe_auto_ml_job_v2].
+#' 
+#' To create an `AutoMLJob` using tabular data, see
+#' [`create_auto_ml_job`][sagemaker_create_auto_ml_job].
+#' 
+#' This API action is callable through SageMaker Canvas only. Calling it
+#' directly from the CLI or an SDK results in an error.
+#'
+#' @usage
+#' sagemaker_create_auto_ml_job_v2(AutoMLJobName, AutoMLJobInputDataConfig,
+#'   OutputDataConfig, AutoMLProblemTypeConfig, RoleArn, Tags,
+#'   SecurityConfig, AutoMLJobObjective, ModelDeployConfig, DataSplitConfig)
+#'
+#' @param AutoMLJobName &#91;required&#93; Identifies an Autopilot job. The name must be unique to your account and
+#' is case insensitive.
+#' @param AutoMLJobInputDataConfig &#91;required&#93; An array of channel objects describing the input data and their
+#' location. Each channel is a named input source. Similar to
+#' [InputDataConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJob.html#sagemaker-CreateAutoMLJob-request-InputDataConfig)
+#' supported by [`create_auto_ml_job`][sagemaker_create_auto_ml_job]. The
+#' supported formats depend on the problem type:
+#' 
+#' -   ImageClassification: S3Prefix, `ManifestFile`,
+#'     `AugmentedManifestFile`
+#' 
+#' -   TextClassification: S3Prefix
+#' @param OutputDataConfig &#91;required&#93; Provides information about encryption and the Amazon S3 output path
+#' needed to store artifacts from an AutoML job.
+#' @param AutoMLProblemTypeConfig &#91;required&#93; Defines the configuration settings of one of the supported problem
+#' types.
+#' @param RoleArn &#91;required&#93; The ARN of the role that is used to access the data.
+#' @param Tags An array of key-value pairs. You can use tags to categorize your Amazon
+#' Web Services resources in different ways, such as by purpose, owner, or
+#' environment. For more information, see [Tagging Amazon Web
+#' ServicesResources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
+#' Tag keys must be unique per resource.
+#' @param SecurityConfig The security configuration for traffic encryption or Amazon VPC
+#' settings.
+#' @param AutoMLJobObjective Specifies a metric to minimize or maximize as the objective of a job.
+#' For [`create_auto_ml_job_v2`][sagemaker_create_auto_ml_job_v2], only
+#' `Accuracy` is supported.
+#' @param ModelDeployConfig Specifies how to generate the endpoint name for an automatic one-click
+#' Autopilot model deployment.
+#' @param DataSplitConfig This structure specifies how to split the data into train and validation
+#' datasets.
+#' 
+#' If you are using the V1 API (for example
+#' [`create_auto_ml_job`][sagemaker_create_auto_ml_job]) or the V2 API for
+#' Natural Language Processing problems (for example
+#' [`create_auto_ml_job_v2`][sagemaker_create_auto_ml_job_v2] with a
+#' `TextClassificationJobConfig` problem type), the validation and training
+#' datasets must contain the same headers. Also, for V1 API jobs, the
+#' validation dataset must be less than 2 GB in size.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AutoMLJobArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_auto_ml_job_v2(
+#'   AutoMLJobName = "string",
+#'   AutoMLJobInputDataConfig = list(
+#'     list(
+#'       ChannelType = "training"|"validation",
+#'       ContentType = "string",
+#'       CompressionType = "None"|"Gzip",
+#'       DataSource = list(
+#'         S3DataSource = list(
+#'           S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
+#'           S3Uri = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   OutputDataConfig = list(
+#'     KmsKeyId = "string",
+#'     S3OutputPath = "string"
+#'   ),
+#'   AutoMLProblemTypeConfig = list(
+#'     ImageClassificationJobConfig = list(
+#'       CompletionCriteria = list(
+#'         MaxCandidates = 123,
+#'         MaxRuntimePerTrainingJobInSeconds = 123,
+#'         MaxAutoMLJobRuntimeInSeconds = 123
+#'       )
+#'     ),
+#'     TextClassificationJobConfig = list(
+#'       CompletionCriteria = list(
+#'         MaxCandidates = 123,
+#'         MaxRuntimePerTrainingJobInSeconds = 123,
+#'         MaxAutoMLJobRuntimeInSeconds = 123
+#'       ),
+#'       ContentColumn = "string",
+#'       TargetLabelColumn = "string"
+#'     )
+#'   ),
+#'   RoleArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   SecurityConfig = list(
+#'     VolumeKmsKeyId = "string",
+#'     EnableInterContainerTrafficEncryption = TRUE|FALSE,
+#'     VpcConfig = list(
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       Subnets = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   AutoMLJobObjective = list(
+#'     MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"|"RMSE"|"MAE"|"R2"|"BalancedAccuracy"|"Precision"|"PrecisionMacro"|"Recall"|"RecallMacro"
+#'   ),
+#'   ModelDeployConfig = list(
+#'     AutoGenerateEndpointName = TRUE|FALSE,
+#'     EndpointName = "string"
+#'   ),
+#'   DataSplitConfig = list(
+#'     ValidationFraction = 123.0
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_auto_ml_job_v2
+#'
+#' @aliases sagemaker_create_auto_ml_job_v2
+sagemaker_create_auto_ml_job_v2 <- function(AutoMLJobName, AutoMLJobInputDataConfig, OutputDataConfig, AutoMLProblemTypeConfig, RoleArn, Tags = NULL, SecurityConfig = NULL, AutoMLJobObjective = NULL, ModelDeployConfig = NULL, DataSplitConfig = NULL) {
+  op <- new_operation(
+    name = "CreateAutoMLJobV2",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_auto_ml_job_v2_input(AutoMLJobName = AutoMLJobName, AutoMLJobInputDataConfig = AutoMLJobInputDataConfig, OutputDataConfig = OutputDataConfig, AutoMLProblemTypeConfig = AutoMLProblemTypeConfig, RoleArn = RoleArn, Tags = Tags, SecurityConfig = SecurityConfig, AutoMLJobObjective = AutoMLJobObjective, ModelDeployConfig = ModelDeployConfig, DataSplitConfig = DataSplitConfig)
+  output <- .sagemaker$create_auto_ml_job_v2_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_auto_ml_job_v2 <- sagemaker_create_auto_ml_job_v2
+
 #' Creates a Git repository as a resource in your SageMaker account
 #'
 #' @description
@@ -1097,7 +1282,7 @@ sagemaker_create_auto_ml_job <- function(AutoMLJobName, InputDataConfig, OutputD
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1216,9 +1401,11 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig, Tags
 #' the model was trained.
 #' @param OutputConfig &#91;required&#93; Provides information about the output location for the compiled model
 #' and the target device the model runs on.
-#' @param VpcConfig A VpcConfig object that specifies the VPC that you want your compilation
-#' job to connect to. Control access to your models by configuring the VPC.
-#' For more information, see [Protect Compilation Jobs by Using an Amazon
+#' @param VpcConfig A
+#' [VpcConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_VpcConfig.html)
+#' object that specifies the VPC that you want your compilation job to
+#' connect to. Control access to your models by configuring the VPC. For
+#' more information, see [Protect Compilation Jobs by Using an Amazon
 #' Virtual Private
 #' Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-vpc.html).
 #' @param StoppingCondition &#91;required&#93; Specifies a limit to how long a model compilation job can run. When the
@@ -1228,7 +1415,7 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig, Tags
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1454,6 +1641,27 @@ sagemaker_create_context <- function(ContextName, Source, ContextType, Descripti
 #'       ProbabilityThresholdAttribute = 123.0,
 #'       StartTimeOffset = "string",
 #'       EndTimeOffset = "string"
+#'     ),
+#'     BatchTransformInput = list(
+#'       DataCapturedDestinationS3Uri = "string",
+#'       DatasetFormat = list(
+#'         Csv = list(
+#'           Header = TRUE|FALSE
+#'         ),
+#'         Json = list(
+#'           Line = TRUE|FALSE
+#'         ),
+#'         Parquet = list()
+#'       ),
+#'       LocalPath = "string",
+#'       S3InputMode = "Pipe"|"File",
+#'       S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'       FeaturesAttribute = "string",
+#'       InferenceAttribute = "string",
+#'       ProbabilityAttribute = "string",
+#'       ProbabilityThresholdAttribute = 123.0,
+#'       StartTimeOffset = "string",
+#'       EndTimeOffset = "string"
 #'     )
 #'   ),
 #'   DataQualityJobOutputConfig = list(
@@ -1598,9 +1806,8 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #' Creates a `Domain` used by Amazon SageMaker Studio. A domain consists of
 #' an associated Amazon Elastic File System (EFS) volume, a list of
 #' authorized users, and a variety of security, application, policy, and
-#' Amazon Virtual Private Cloud (VPC) configurations. An Amazon Web
-#' Services account is limited to one domain per region. Users within a
-#' domain can share notebook files and other artifacts with each other.
+#' Amazon Virtual Private Cloud (VPC) configurations. Users within a domain
+#' can share notebook files and other artifacts with each other.
 #' 
 #' **EFS storage**
 #' 
@@ -1647,7 +1854,8 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #' @usage
 #' sagemaker_create_domain(DomainName, AuthMode, DefaultUserSettings,
 #'   SubnetIds, VpcId, Tags, AppNetworkAccessType, HomeEfsFileSystemKmsKeyId,
-#'   KmsKeyId, AppSecurityGroupManagement, DomainSettings)
+#'   KmsKeyId, AppSecurityGroupManagement, DomainSettings,
+#'   DefaultSpaceSettings)
 #'
 #' @param DomainName &#91;required&#93; A name for the domain.
 #' @param AuthMode &#91;required&#93; The mode of authentication that members use to access the domain.
@@ -1684,8 +1892,10 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #' inter-app communication in `VPCOnly` mode. Required when
 #' `CreateDomain.AppNetworkAccessType` is `VPCOnly` and
 #' `DomainSettings.RStudioServerProDomainSettings.DomainExecutionRoleArn`
-#' is provided.
+#' is provided. If setting up the domain for use with RStudio, this value
+#' must be set to `Service`.
 #' @param DomainSettings A collection of `Domain` settings.
+#' @param DefaultSpaceSettings The default settings used to create a space.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1715,18 +1925,23 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       ),
 #'       LifecycleConfigArns = list(
 #'         "string"
+#'       ),
+#'       CodeRepositories = list(
+#'         list(
+#'           RepositoryUrl = "string"
+#'         )
 #'       )
 #'     ),
 #'     KernelGatewayAppSettings = list(
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       ),
 #'       CustomImages = list(
@@ -1744,7 +1959,7 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       )
 #'     ),
@@ -1756,7 +1971,7 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       ),
 #'       CustomImages = list(
@@ -1765,6 +1980,16 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #'           ImageVersionNumber = 123,
 #'           AppImageConfigName = "string"
 #'         )
+#'       )
+#'     ),
+#'     CanvasAppSettings = list(
+#'       TimeSeriesForecastingSettings = list(
+#'         Status = "ENABLED"|"DISABLED",
+#'         AmazonForecastRoleArn = "string"
+#'       ),
+#'       ModelRegisterSettings = list(
+#'         Status = "ENABLED"|"DISABLED",
+#'         CrossAccountModelRegisterRoleArn = "string"
 #'       )
 #'     )
 #'   ),
@@ -1793,8 +2018,49 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
+#'       )
+#'     ),
+#'     ExecutionRoleIdentityConfig = "USER_PROFILE_NAME"|"DISABLED"
+#'   ),
+#'   DefaultSpaceSettings = list(
+#'     ExecutionRole = "string",
+#'     SecurityGroups = list(
+#'       "string"
+#'     ),
+#'     JupyterServerAppSettings = list(
+#'       DefaultResourceSpec = list(
+#'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
+#'         LifecycleConfigArn = "string"
+#'       ),
+#'       LifecycleConfigArns = list(
+#'         "string"
+#'       ),
+#'       CodeRepositories = list(
+#'         list(
+#'           RepositoryUrl = "string"
+#'         )
+#'       )
+#'     ),
+#'     KernelGatewayAppSettings = list(
+#'       DefaultResourceSpec = list(
+#'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
+#'         LifecycleConfigArn = "string"
+#'       ),
+#'       CustomImages = list(
+#'         list(
+#'           ImageName = "string",
+#'           ImageVersionNumber = 123,
+#'           AppImageConfigName = "string"
+#'         )
+#'       ),
+#'       LifecycleConfigArns = list(
+#'         "string"
 #'       )
 #'     )
 #'   )
@@ -1806,14 +2072,14 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #' @rdname sagemaker_create_domain
 #'
 #' @aliases sagemaker_create_domain
-sagemaker_create_domain <- function(DomainName, AuthMode, DefaultUserSettings, SubnetIds, VpcId, Tags = NULL, AppNetworkAccessType = NULL, HomeEfsFileSystemKmsKeyId = NULL, KmsKeyId = NULL, AppSecurityGroupManagement = NULL, DomainSettings = NULL) {
+sagemaker_create_domain <- function(DomainName, AuthMode, DefaultUserSettings, SubnetIds, VpcId, Tags = NULL, AppNetworkAccessType = NULL, HomeEfsFileSystemKmsKeyId = NULL, KmsKeyId = NULL, AppSecurityGroupManagement = NULL, DomainSettings = NULL, DefaultSpaceSettings = NULL) {
   op <- new_operation(
     name = "CreateDomain",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_domain_input(DomainName = DomainName, AuthMode = AuthMode, DefaultUserSettings = DefaultUserSettings, SubnetIds = SubnetIds, VpcId = VpcId, Tags = Tags, AppNetworkAccessType = AppNetworkAccessType, HomeEfsFileSystemKmsKeyId = HomeEfsFileSystemKmsKeyId, KmsKeyId = KmsKeyId, AppSecurityGroupManagement = AppSecurityGroupManagement, DomainSettings = DomainSettings)
+  input <- .sagemaker$create_domain_input(DomainName = DomainName, AuthMode = AuthMode, DefaultUserSettings = DefaultUserSettings, SubnetIds = SubnetIds, VpcId = VpcId, Tags = Tags, AppNetworkAccessType = AppNetworkAccessType, HomeEfsFileSystemKmsKeyId = HomeEfsFileSystemKmsKeyId, KmsKeyId = KmsKeyId, AppSecurityGroupManagement = AppSecurityGroupManagement, DomainSettings = DomainSettings, DefaultSpaceSettings = DefaultSpaceSettings)
   output <- .sagemaker$create_domain_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -2090,8 +2356,8 @@ sagemaker_create_edge_packaging_job <- function(EdgePackagingJobName, Compilatio
 #' If any of the models hosted at this endpoint get model data from an
 #' Amazon S3 location, SageMaker uses Amazon Web Services Security Token
 #' Service to download model artifacts from the S3 path you provided.
-#' Amazon Web Services STS is activated in your IAM user account by
-#' default. If you previously deactivated Amazon Web Services STS for a
+#' Amazon Web Services STS is activated in your Amazon Web Services account
+#' by default. If you previously deactivated Amazon Web Services STS for a
 #' region, you need to reactivate Amazon Web Services STS for that region.
 #' For more information, see [Activating and Deactivating Amazon Web
 #' Services STS in an Amazon Web Services
@@ -2133,7 +2399,8 @@ sagemaker_create_edge_packaging_job <- function(EdgePackagingJobName, Compilatio
 #' @param EndpointName &#91;required&#93; The name of the endpoint.The name must be unique within an Amazon Web
 #' Services Region in your Amazon Web Services account. The name is
 #' case-insensitive in [`create_endpoint`][sagemaker_create_endpoint], but
-#' the case is preserved and must be matched in .
+#' the case is preserved and must be matched in
+#' [InvokeEndpoint](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html).
 #' @param EndpointConfigName &#91;required&#93; The name of an endpoint configuration. For more information, see
 #' [`create_endpoint_config`][sagemaker_create_endpoint_config].
 #' @param DeploymentConfig 
@@ -2141,7 +2408,7 @@ sagemaker_create_edge_packaging_job <- function(EdgePackagingJobName, Compilatio
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -2253,18 +2520,19 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Deployme
 #'
 #' @usage
 #' sagemaker_create_endpoint_config(EndpointConfigName, ProductionVariants,
-#'   DataCaptureConfig, Tags, KmsKeyId, AsyncInferenceConfig)
+#'   DataCaptureConfig, Tags, KmsKeyId, AsyncInferenceConfig,
+#'   ExplainerConfig, ShadowProductionVariants)
 #'
 #' @param EndpointConfigName &#91;required&#93; The name of the endpoint configuration. You specify this name in a
 #' [`create_endpoint`][sagemaker_create_endpoint] request.
-#' @param ProductionVariants &#91;required&#93; An list of `ProductionVariant` objects, one for each model that you want
-#' to host at this endpoint.
+#' @param ProductionVariants &#91;required&#93; An array of `ProductionVariant` objects, one for each model that you
+#' want to host at this endpoint.
 #' @param DataCaptureConfig 
 #' @param Tags An array of key-value pairs. You can use tags to categorize your Amazon
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #' @param KmsKeyId The Amazon Resource Name (ARN) of a Amazon Web Services Key Management
 #' Service key that SageMaker uses to encrypt data on the storage volume
 #' attached to the ML compute instance that hosts the endpoint.
@@ -2309,6 +2577,13 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Deployme
 #' inference. This is a required field in order for your Endpoint to be
 #' invoked using
 #' [InvokeEndpointAsync](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpointAsync.html).
+#' @param ExplainerConfig A member of [`create_endpoint_config`][sagemaker_create_endpoint_config]
+#' that enables explainers.
+#' @param ShadowProductionVariants An array of `ProductionVariant` objects, one for each model that you
+#' want to host at this endpoint in shadow mode with production traffic
+#' replicated from the model specified on `ProductionVariants`. If you use
+#' this field, you can only specify one variant for `ProductionVariants`
+#' and one variant for `ShadowProductionVariants`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2327,7 +2602,7 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Deployme
 #'       VariantName = "string",
 #'       ModelName = "string",
 #'       InitialInstanceCount = 123,
-#'       InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge",
+#'       InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge",
 #'       InitialVariantWeight = 123.0,
 #'       AcceleratorType = "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"|"ml.eia2.medium"|"ml.eia2.large"|"ml.eia2.xlarge",
 #'       CoreDumpConfig = list(
@@ -2336,8 +2611,13 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Deployme
 #'       ),
 #'       ServerlessConfig = list(
 #'         MemorySizeInMB = 123,
-#'         MaxConcurrency = 123
-#'       )
+#'         MaxConcurrency = 123,
+#'         ProvisionedConcurrency = 123
+#'       ),
+#'       VolumeSizeInGB = 123,
+#'       ModelDataDownloadTimeoutInSeconds = 123,
+#'       ContainerStartupHealthCheckTimeoutInSeconds = 123,
+#'       EnableSSMAccess = TRUE|FALSE
 #'     )
 #'   ),
 #'   DataCaptureConfig = list(
@@ -2375,8 +2655,73 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Deployme
 #'       S3OutputPath = "string",
 #'       NotificationConfig = list(
 #'         SuccessTopic = "string",
-#'         ErrorTopic = "string"
+#'         ErrorTopic = "string",
+#'         IncludeInferenceResponseIn = list(
+#'           "SUCCESS_NOTIFICATION_TOPIC"|"ERROR_NOTIFICATION_TOPIC"
+#'         )
+#'       ),
+#'       S3FailurePath = "string"
+#'     )
+#'   ),
+#'   ExplainerConfig = list(
+#'     ClarifyExplainerConfig = list(
+#'       EnableExplanations = "string",
+#'       InferenceConfig = list(
+#'         FeaturesAttribute = "string",
+#'         ContentTemplate = "string",
+#'         MaxRecordCount = 123,
+#'         MaxPayloadInMB = 123,
+#'         ProbabilityIndex = 123,
+#'         LabelIndex = 123,
+#'         ProbabilityAttribute = "string",
+#'         LabelAttribute = "string",
+#'         LabelHeaders = list(
+#'           "string"
+#'         ),
+#'         FeatureHeaders = list(
+#'           "string"
+#'         ),
+#'         FeatureTypes = list(
+#'           "numerical"|"categorical"|"text"
+#'         )
+#'       ),
+#'       ShapConfig = list(
+#'         ShapBaselineConfig = list(
+#'           MimeType = "string",
+#'           ShapBaseline = "string",
+#'           ShapBaselineUri = "string"
+#'         ),
+#'         NumberOfSamples = 123,
+#'         UseLogit = TRUE|FALSE,
+#'         Seed = 123,
+#'         TextConfig = list(
+#'           Language = "af"|"sq"|"ar"|"hy"|"eu"|"bn"|"bg"|"ca"|"zh"|"hr"|"cs"|"da"|"nl"|"en"|"et"|"fi"|"fr"|"de"|"el"|"gu"|"he"|"hi"|"hu"|"is"|"id"|"ga"|"it"|"kn"|"ky"|"lv"|"lt"|"lb"|"mk"|"ml"|"mr"|"ne"|"nb"|"fa"|"pl"|"pt"|"ro"|"ru"|"sa"|"sr"|"tn"|"si"|"sk"|"sl"|"es"|"sv"|"tl"|"ta"|"tt"|"te"|"tr"|"uk"|"ur"|"yo"|"lij"|"xx",
+#'           Granularity = "token"|"sentence"|"paragraph"
+#'         )
 #'       )
+#'     )
+#'   ),
+#'   ShadowProductionVariants = list(
+#'     list(
+#'       VariantName = "string",
+#'       ModelName = "string",
+#'       InitialInstanceCount = 123,
+#'       InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge",
+#'       InitialVariantWeight = 123.0,
+#'       AcceleratorType = "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"|"ml.eia2.medium"|"ml.eia2.large"|"ml.eia2.xlarge",
+#'       CoreDumpConfig = list(
+#'         DestinationS3Uri = "string",
+#'         KmsKeyId = "string"
+#'       ),
+#'       ServerlessConfig = list(
+#'         MemorySizeInMB = 123,
+#'         MaxConcurrency = 123,
+#'         ProvisionedConcurrency = 123
+#'       ),
+#'       VolumeSizeInGB = 123,
+#'       ModelDataDownloadTimeoutInSeconds = 123,
+#'       ContainerStartupHealthCheckTimeoutInSeconds = 123,
+#'       EnableSSMAccess = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -2387,14 +2732,14 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Deployme
 #' @rdname sagemaker_create_endpoint_config
 #'
 #' @aliases sagemaker_create_endpoint_config
-sagemaker_create_endpoint_config <- function(EndpointConfigName, ProductionVariants, DataCaptureConfig = NULL, Tags = NULL, KmsKeyId = NULL, AsyncInferenceConfig = NULL) {
+sagemaker_create_endpoint_config <- function(EndpointConfigName, ProductionVariants, DataCaptureConfig = NULL, Tags = NULL, KmsKeyId = NULL, AsyncInferenceConfig = NULL, ExplainerConfig = NULL, ShadowProductionVariants = NULL) {
   op <- new_operation(
     name = "CreateEndpointConfig",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_endpoint_config_input(EndpointConfigName = EndpointConfigName, ProductionVariants = ProductionVariants, DataCaptureConfig = DataCaptureConfig, Tags = Tags, KmsKeyId = KmsKeyId, AsyncInferenceConfig = AsyncInferenceConfig)
+  input <- .sagemaker$create_endpoint_config_input(EndpointConfigName = EndpointConfigName, ProductionVariants = ProductionVariants, DataCaptureConfig = DataCaptureConfig, Tags = Tags, KmsKeyId = KmsKeyId, AsyncInferenceConfig = AsyncInferenceConfig, ExplainerConfig = ExplainerConfig, ShadowProductionVariants = ShadowProductionVariants)
   output <- .sagemaker$create_endpoint_config_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -2404,13 +2749,16 @@ sagemaker_create_endpoint_config <- function(EndpointConfigName, ProductionVaria
 }
 .sagemaker$operations$create_endpoint_config <- sagemaker_create_endpoint_config
 
-#' Creates an SageMaker experiment
+#' Creates a SageMaker experiment
 #'
 #' @description
-#' Creates an SageMaker *experiment*. An experiment is a collection of
+#' Creates a SageMaker *experiment*. An experiment is a collection of
 #' *trials* that are observed, compared and evaluated as a group. A trial
 #' is a set of steps, called *trial components*, that produce a machine
 #' learning model.
+#' 
+#' In the Studio UI, trials are referred to as *run groups* and trial
+#' components are referred to as *runs*.
 #' 
 #' The goal of an experiment is to determine the components that produce
 #' the best model. Multiple trials are performed, each one isolating and
@@ -2569,11 +2917,12 @@ sagemaker_create_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #' 
 #' You can create up to 2,500 `FeatureDefinition`s per `FeatureGroup`.
 #' @param OnlineStoreConfig You can turn the `OnlineStore` on or off by specifying `True` for the
-#' `EnableOnlineStore` flag in `OnlineStoreConfig`; the default value is
-#' `False`.
+#' `EnableOnlineStore` flag in `OnlineStoreConfig`.
 #' 
 #' You can also include an Amazon Web Services KMS key ID (`KMSKeyId`) for
 #' at-rest encryption of the `OnlineStore`.
+#' 
+#' The default value is `False`.
 #' @param OfflineStoreConfig Use this to configure an `OfflineFeatureStore`. This parameter allows
 #' you to specify:
 #' 
@@ -2591,7 +2940,11 @@ sagemaker_create_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #'     for SSE, you can reduce Amazon Web Services KMS requests costs by up
 #'     to 99 percent.
 #' 
-#' To learn more about this parameter, see OfflineStoreConfig.
+#' -   Format for the offline store table. Supported formats are Glue
+#'     (Default) and [Apache Iceberg](https://iceberg.apache.org/).
+#' 
+#' To learn more about this parameter, see
+#' [OfflineStoreConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_OfflineStoreConfig.html).
 #' @param RoleArn The Amazon Resource Name (ARN) of the IAM execution role used to persist
 #' data into the `OfflineStore` if an `OfflineStoreConfig` is provided.
 #' @param Description A free-form description of a `FeatureGroup`.
@@ -2634,7 +2987,8 @@ sagemaker_create_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #'       TableName = "string",
 #'       Catalog = "string",
 #'       Database = "string"
-#'     )
+#'     ),
+#'     TableFormat = "Glue"|"Iceberg"
 #'   ),
 #'   RoleArn = "string",
 #'   Description = "string",
@@ -2771,6 +3125,75 @@ sagemaker_create_flow_definition <- function(FlowDefinitionName, HumanLoopReques
 }
 .sagemaker$operations$create_flow_definition <- sagemaker_create_flow_definition
 
+#' Create a hub
+#'
+#' @description
+#' Create a hub.
+#' 
+#' Hub APIs are only callable through SageMaker Studio.
+#'
+#' @usage
+#' sagemaker_create_hub(HubName, HubDescription, HubDisplayName,
+#'   HubSearchKeywords, S3StorageConfig, Tags)
+#'
+#' @param HubName &#91;required&#93; The name of the hub to create.
+#' @param HubDescription &#91;required&#93; A description of the hub.
+#' @param HubDisplayName The display name of the hub.
+#' @param HubSearchKeywords The searchable keywords for the hub.
+#' @param S3StorageConfig The Amazon S3 storage configuration for the hub.
+#' @param Tags Any tags to associate with the hub.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HubArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_hub(
+#'   HubName = "string",
+#'   HubDescription = "string",
+#'   HubDisplayName = "string",
+#'   HubSearchKeywords = list(
+#'     "string"
+#'   ),
+#'   S3StorageConfig = list(
+#'     S3OutputPath = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_hub
+#'
+#' @aliases sagemaker_create_hub
+sagemaker_create_hub <- function(HubName, HubDescription, HubDisplayName = NULL, HubSearchKeywords = NULL, S3StorageConfig = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateHub",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_hub_input(HubName = HubName, HubDescription = HubDescription, HubDisplayName = HubDisplayName, HubSearchKeywords = HubSearchKeywords, S3StorageConfig = S3StorageConfig, Tags = Tags)
+  output <- .sagemaker$create_hub_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_hub <- sagemaker_create_hub
+
 #' Defines the settings you will use for the human review workflow user
 #' interface
 #'
@@ -2843,28 +3266,43 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #' within ranges that you specify. It then chooses the hyperparameter
 #' values that result in a model that performs the best, as measured by an
 #' objective metric that you choose.
+#' 
+#' A hyperparameter tuning job automatically creates Amazon SageMaker
+#' experiments, trials, and trial components for each training job that it
+#' runs. You can view these entities in Amazon SageMaker Studio. For more
+#' information, see [View Experiments, Trials, and Trial
+#' Components](https://docs.aws.amazon.com/sagemaker/latest/dg/experiments-view-compare.html#experiments-view).
+#' 
+#' Do not include any security-sensitive information including account
+#' access IDs, secrets or tokens in any hyperparameter field. If the use of
+#' security-sensitive credentials are detected, SageMaker will reject your
+#' training job request and return an exception error.
 #'
 #' @usage
 #' sagemaker_create_hyper_parameter_tuning_job(HyperParameterTuningJobName,
 #'   HyperParameterTuningJobConfig, TrainingJobDefinition,
-#'   TrainingJobDefinitions, WarmStartConfig, Tags)
+#'   TrainingJobDefinitions, WarmStartConfig, Tags, Autotune)
 #'
 #' @param HyperParameterTuningJobName &#91;required&#93; The name of the tuning job. This name is the prefix for the names of all
 #' training jobs that this tuning job launches. The name must be unique
 #' within the same Amazon Web Services account and Amazon Web Services
 #' Region. The name must have 1 to 32 characters. Valid characters are a-z,
 #' A-Z, 0-9, and : + = @@ _ % - (hyphen). The name is not case sensitive.
-#' @param HyperParameterTuningJobConfig &#91;required&#93; The HyperParameterTuningJobConfig object that describes the tuning job,
-#' including the search strategy, the objective metric used to evaluate
-#' training jobs, ranges of parameters to search, and resource limits for
-#' the tuning job. For more information, see [How Hyperparameter Tuning
+#' @param HyperParameterTuningJobConfig &#91;required&#93; The
+#' [HyperParameterTuningJobConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobConfig.html)
+#' object that describes the tuning job, including the search strategy, the
+#' objective metric used to evaluate training jobs, ranges of parameters to
+#' search, and resource limits for the tuning job. For more information,
+#' see [How Hyperparameter Tuning
 #' Works](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html).
-#' @param TrainingJobDefinition The HyperParameterTrainingJobDefinition object that describes the
-#' training jobs that this tuning job launches, including static
-#' hyperparameters, input data configuration, output data configuration,
-#' resource configuration, and stopping condition.
-#' @param TrainingJobDefinitions A list of the HyperParameterTrainingJobDefinition objects launched for
-#' this tuning job.
+#' @param TrainingJobDefinition The
+#' [HyperParameterTrainingJobDefinition](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTrainingJobDefinition.html)
+#' object that describes the training jobs that this tuning job launches,
+#' including static hyperparameters, input data configuration, output data
+#' configuration, resource configuration, and stopping condition.
+#' @param TrainingJobDefinitions A list of the
+#' [HyperParameterTrainingJobDefinition](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTrainingJobDefinition.html)
+#' objects launched for this tuning job.
 #' @param WarmStartConfig Specifies the configuration for starting the hyperparameter tuning job
 #' using one or more previous tuning jobs as a starting point. The results
 #' of previous tuning jobs are used to inform which combinations of
@@ -2885,10 +3323,37 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #' 
 #' Tags that you specify for the tuning job are also added to all training
 #' jobs that the tuning job launches.
+#' @param Autotune Configures SageMaker Automatic model tuning (AMT) to automatically find
+#' optimal parameters for the following fields:
+#' 
+#' -   [ParameterRanges](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobConfig.html#sagemaker-Type-HyperParameterTuningJobConfig-ParameterRanges):
+#'     The names and ranges of parameters that a hyperparameter tuning job
+#'     can optimize.
+#' 
+#' -   [ResourceLimits](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ResourceLimits.html):
+#'     The maximum resources that can be used for a training job. These
+#'     resources include the maximum number of training jobs, the maximum
+#'     runtime of a tuning job, and the maximum number of training jobs to
+#'     run at the same time.
+#' 
+#' -   [TrainingJobEarlyStoppingType](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobConfig.html#sagemaker-Type-HyperParameterTuningJobConfig-TrainingJobEarlyStoppingType):
+#'     A flag that specifies whether or not to use early stopping for
+#'     training jobs launched by a hyperparameter tuning job.
+#' 
+#' -   [RetryStrategy](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTrainingJobDefinition.html#sagemaker-Type-HyperParameterTrainingJobDefinition-RetryStrategy):
+#'     The number of times to retry a training job.
+#' 
+#' -   [Strategy](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobConfig.html):
+#'     Specifies how hyperparameter tuning chooses the combinations of
+#'     hyperparameter values to use for the training jobs that it launches.
+#' 
+#' -   [ConvergenceDetected](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ConvergenceDetected.html):
+#'     A flag to indicate that Automatic model tuning (AMT) has detected
+#'     model convergence.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2903,14 +3368,21 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #' svc$create_hyper_parameter_tuning_job(
 #'   HyperParameterTuningJobName = "string",
 #'   HyperParameterTuningJobConfig = list(
-#'     Strategy = "Bayesian"|"Random",
+#'     Strategy = "Bayesian"|"Random"|"Hyperband"|"Grid",
+#'     StrategyConfig = list(
+#'       HyperbandStrategyConfig = list(
+#'         MinResource = 123,
+#'         MaxResource = 123
+#'       )
+#'     ),
 #'     HyperParameterTuningJobObjective = list(
 #'       Type = "Maximize"|"Minimize",
 #'       MetricName = "string"
 #'     ),
 #'     ResourceLimits = list(
 #'       MaxNumberOfTrainingJobs = 123,
-#'       MaxParallelTrainingJobs = 123
+#'       MaxParallelTrainingJobs = 123,
+#'       MaxRuntimeInSeconds = 123
 #'     ),
 #'     ParameterRanges = list(
 #'       IntegerParameterRanges = list(
@@ -2936,12 +3408,25 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #'             "string"
 #'           )
 #'         )
+#'       ),
+#'       AutoParameters = list(
+#'         list(
+#'           Name = "string",
+#'           ValueHint = "string"
+#'         )
 #'       )
 #'     ),
 #'     TrainingJobEarlyStoppingType = "Off"|"Auto",
 #'     TuningJobCompletionCriteria = list(
-#'       TargetObjectiveMetricValue = 123.0
-#'     )
+#'       TargetObjectiveMetricValue = 123.0,
+#'       BestObjectiveNotImproving = list(
+#'         MaxNumberOfTrainingJobsNotImproving = 123
+#'       ),
+#'       ConvergenceDetected = list(
+#'         CompleteOnConvergence = "Disabled"|"Enabled"
+#'       )
+#'     ),
+#'     RandomSeed = 123
 #'   ),
 #'   TrainingJobDefinition = list(
 #'     DefinitionName = "string",
@@ -2972,6 +3457,12 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #'           Values = list(
 #'             "string"
 #'           )
+#'         )
+#'       ),
+#'       AutoParameters = list(
+#'         list(
+#'           Name = "string",
+#'           ValueHint = "string"
 #'         )
 #'       )
 #'     ),
@@ -3034,17 +3525,18 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #'       S3OutputPath = "string"
 #'     ),
 #'     ResourceConfig = list(
-#'       InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'       InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'       InstanceCount = 123,
 #'       VolumeSizeInGB = 123,
 #'       VolumeKmsKeyId = "string",
 #'       InstanceGroups = list(
 #'         list(
-#'           InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'           InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'           InstanceCount = 123,
 #'           InstanceGroupName = "string"
 #'         )
-#'       )
+#'       ),
+#'       KeepAlivePeriodInSeconds = 123
 #'     ),
 #'     StoppingCondition = list(
 #'       MaxRuntimeInSeconds = 123,
@@ -3061,18 +3553,21 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #'       MaximumRetryAttempts = 123
 #'     ),
 #'     HyperParameterTuningResourceConfig = list(
-#'       InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'       InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'       InstanceCount = 123,
 #'       VolumeSizeInGB = 123,
 #'       VolumeKmsKeyId = "string",
 #'       AllocationStrategy = "Prioritized",
 #'       InstanceConfigs = list(
 #'         list(
-#'           InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'           InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'           InstanceCount = 123,
 #'           VolumeSizeInGB = 123
 #'         )
 #'       )
+#'     ),
+#'     Environment = list(
+#'       "string"
 #'     )
 #'   ),
 #'   TrainingJobDefinitions = list(
@@ -3105,6 +3600,12 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #'             Values = list(
 #'               "string"
 #'             )
+#'           )
+#'         ),
+#'         AutoParameters = list(
+#'           list(
+#'             Name = "string",
+#'             ValueHint = "string"
 #'           )
 #'         )
 #'       ),
@@ -3167,17 +3668,18 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #'         S3OutputPath = "string"
 #'       ),
 #'       ResourceConfig = list(
-#'         InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'         InstanceCount = 123,
 #'         VolumeSizeInGB = 123,
 #'         VolumeKmsKeyId = "string",
 #'         InstanceGroups = list(
 #'           list(
-#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'             InstanceCount = 123,
 #'             InstanceGroupName = "string"
 #'           )
-#'         )
+#'         ),
+#'         KeepAlivePeriodInSeconds = 123
 #'       ),
 #'       StoppingCondition = list(
 #'         MaxRuntimeInSeconds = 123,
@@ -3194,18 +3696,21 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #'         MaximumRetryAttempts = 123
 #'       ),
 #'       HyperParameterTuningResourceConfig = list(
-#'         InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'         InstanceCount = 123,
 #'         VolumeSizeInGB = 123,
 #'         VolumeKmsKeyId = "string",
 #'         AllocationStrategy = "Prioritized",
 #'         InstanceConfigs = list(
 #'           list(
-#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'             InstanceCount = 123,
 #'             VolumeSizeInGB = 123
 #'           )
 #'         )
+#'       ),
+#'       Environment = list(
+#'         "string"
 #'       )
 #'     )
 #'   ),
@@ -3222,6 +3727,9 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #'       Key = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   Autotune = list(
+#'     Mode = "Enabled"
 #'   )
 #' )
 #' ```
@@ -3231,14 +3739,14 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #' @rdname sagemaker_create_hyper_parameter_tuning_job
 #'
 #' @aliases sagemaker_create_hyper_parameter_tuning_job
-sagemaker_create_hyper_parameter_tuning_job <- function(HyperParameterTuningJobName, HyperParameterTuningJobConfig, TrainingJobDefinition = NULL, TrainingJobDefinitions = NULL, WarmStartConfig = NULL, Tags = NULL) {
+sagemaker_create_hyper_parameter_tuning_job <- function(HyperParameterTuningJobName, HyperParameterTuningJobConfig, TrainingJobDefinition = NULL, TrainingJobDefinitions = NULL, WarmStartConfig = NULL, Tags = NULL, Autotune = NULL) {
   op <- new_operation(
     name = "CreateHyperParameterTuningJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_hyper_parameter_tuning_job_input(HyperParameterTuningJobName = HyperParameterTuningJobName, HyperParameterTuningJobConfig = HyperParameterTuningJobConfig, TrainingJobDefinition = TrainingJobDefinition, TrainingJobDefinitions = TrainingJobDefinitions, WarmStartConfig = WarmStartConfig, Tags = Tags)
+  input <- .sagemaker$create_hyper_parameter_tuning_job_input(HyperParameterTuningJobName = HyperParameterTuningJobName, HyperParameterTuningJobConfig = HyperParameterTuningJobConfig, TrainingJobDefinition = TrainingJobDefinition, TrainingJobDefinitions = TrainingJobDefinitions, WarmStartConfig = WarmStartConfig, Tags = Tags, Autotune = Autotune)
   output <- .sagemaker$create_hyper_parameter_tuning_job_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -3265,8 +3773,8 @@ sagemaker_create_hyper_parameter_tuning_job <- function(HyperParameterTuningJobN
 #' @param DisplayName The display name of the image. If not provided, `ImageName` is
 #' displayed.
 #' @param ImageName &#91;required&#93; The name of the image. Must be unique to your account.
-#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that enables Amazon
-#' SageMaker to perform tasks on your behalf.
+#' @param RoleArn &#91;required&#93; The ARN of an IAM role that enables Amazon SageMaker to perform tasks on
+#' your behalf.
 #' @param Tags A list of tags to apply to the image.
 #'
 #' @return
@@ -3323,7 +3831,9 @@ sagemaker_create_image <- function(Description = NULL, DisplayName = NULL, Image
 #' image specified by `BaseImage`.
 #'
 #' @usage
-#' sagemaker_create_image_version(BaseImage, ClientToken, ImageName)
+#' sagemaker_create_image_version(BaseImage, ClientToken, ImageName,
+#'   Aliases, VendorGuidance, JobType, MLFramework, ProgrammingLang,
+#'   Processor, Horovod, ReleaseNotes)
 #'
 #' @param BaseImage &#91;required&#93; The registry path of the container image to use as the starting point
 #' for this version. The path is an Amazon Elastic Container Registry (ECR)
@@ -3334,6 +3844,39 @@ sagemaker_create_image <- function(Description = NULL, DisplayName = NULL, Image
 #' Web Services SDKs, such as the SDK for Python (Boto3), add a unique
 #' value to the call.
 #' @param ImageName &#91;required&#93; The `ImageName` of the `Image` to create a version of.
+#' @param Aliases A list of aliases created with the image version.
+#' @param VendorGuidance The stability of the image version, specified by the maintainer.
+#' 
+#' -   `NOT_PROVIDED`: The maintainers did not provide a status for image
+#'     version stability.
+#' 
+#' -   `STABLE`: The image version is stable.
+#' 
+#' -   `TO_BE_ARCHIVED`: The image version is set to be archived. Custom
+#'     image versions that are set to be archived are automatically
+#'     archived after three months.
+#' 
+#' -   `ARCHIVED`: The image version is archived. Archived image versions
+#'     are not searchable and are no longer actively supported.
+#' @param JobType Indicates SageMaker job type compatibility.
+#' 
+#' -   `TRAINING`: The image version is compatible with SageMaker training
+#'     jobs.
+#' 
+#' -   `INFERENCE`: The image version is compatible with SageMaker
+#'     inference jobs.
+#' 
+#' -   `NOTEBOOK_KERNEL`: The image version is compatible with SageMaker
+#'     notebook kernels.
+#' @param MLFramework The machine learning framework vended in the image version.
+#' @param ProgrammingLang The supported programming language and its version.
+#' @param Processor Indicates CPU or GPU compatibility.
+#' 
+#' -   `CPU`: The image version is compatible with CPU.
+#' 
+#' -   `GPU`: The image version is compatible with GPU.
+#' @param Horovod Indicates Horovod compatibility.
+#' @param ReleaseNotes The maintainer description of the image version.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3348,7 +3891,17 @@ sagemaker_create_image <- function(Description = NULL, DisplayName = NULL, Image
 #' svc$create_image_version(
 #'   BaseImage = "string",
 #'   ClientToken = "string",
-#'   ImageName = "string"
+#'   ImageName = "string",
+#'   Aliases = list(
+#'     "string"
+#'   ),
+#'   VendorGuidance = "NOT_PROVIDED"|"STABLE"|"TO_BE_ARCHIVED"|"ARCHIVED",
+#'   JobType = "TRAINING"|"INFERENCE"|"NOTEBOOK_KERNEL",
+#'   MLFramework = "string",
+#'   ProgrammingLang = "string",
+#'   Processor = "CPU"|"GPU",
+#'   Horovod = TRUE|FALSE,
+#'   ReleaseNotes = "string"
 #' )
 #' ```
 #'
@@ -3357,14 +3910,14 @@ sagemaker_create_image <- function(Description = NULL, DisplayName = NULL, Image
 #' @rdname sagemaker_create_image_version
 #'
 #' @aliases sagemaker_create_image_version
-sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName) {
+sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName, Aliases = NULL, VendorGuidance = NULL, JobType = NULL, MLFramework = NULL, ProgrammingLang = NULL, Processor = NULL, Horovod = NULL, ReleaseNotes = NULL) {
   op <- new_operation(
     name = "CreateImageVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_image_version_input(BaseImage = BaseImage, ClientToken = ClientToken, ImageName = ImageName)
+  input <- .sagemaker$create_image_version_input(BaseImage = BaseImage, ClientToken = ClientToken, ImageName = ImageName, Aliases = Aliases, VendorGuidance = VendorGuidance, JobType = JobType, MLFramework = MLFramework, ProgrammingLang = ProgrammingLang, Processor = Processor, Horovod = Horovod, ReleaseNotes = ReleaseNotes)
   output <- .sagemaker$create_image_version_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -3373,6 +3926,197 @@ sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName) {
   return(response)
 }
 .sagemaker$operations$create_image_version <- sagemaker_create_image_version
+
+#' Creates an inference experiment using the configurations specified in
+#' the request
+#'
+#' @description
+#' Creates an inference experiment using the configurations specified in
+#' the request.
+#' 
+#' Use this API to setup and schedule an experiment to compare model
+#' variants on a Amazon SageMaker inference endpoint. For more information
+#' about inference experiments, see [Shadow
+#' tests](https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html).
+#' 
+#' Amazon SageMaker begins your experiment at the scheduled time and routes
+#' traffic to your endpoint's model variants based on your specified
+#' configuration.
+#' 
+#' While the experiment is in progress or after it has concluded, you can
+#' view metrics that compare your model variants. For more information, see
+#' [View, monitor, and edit shadow
+#' tests](https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests-view-monitor-edit.html).
+#'
+#' @usage
+#' sagemaker_create_inference_experiment(Name, Type, Schedule, Description,
+#'   RoleArn, EndpointName, ModelVariants, DataStorageConfig,
+#'   ShadowModeConfig, KmsKey, Tags)
+#'
+#' @param Name &#91;required&#93; The name for the inference experiment.
+#' @param Type &#91;required&#93; The type of the inference experiment that you want to run. The following
+#' types of experiments are possible:
+#' 
+#' -   `ShadowMode`: You can use this type to validate a shadow variant.
+#'     For more information, see [Shadow
+#'     tests](https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html).
+#' @param Schedule The duration for which you want the inference experiment to run. If you
+#' don't specify this field, the experiment automatically starts
+#' immediately upon creation and concludes after 7 days.
+#' @param Description A description for the inference experiment.
+#' @param RoleArn &#91;required&#93; The ARN of the IAM role that Amazon SageMaker can assume to access model
+#' artifacts and container images, and manage Amazon SageMaker Inference
+#' endpoints for model deployment.
+#' @param EndpointName &#91;required&#93; The name of the Amazon SageMaker endpoint on which you want to run the
+#' inference experiment.
+#' @param ModelVariants &#91;required&#93; An array of `ModelVariantConfig` objects. There is one for each variant
+#' in the inference experiment. Each `ModelVariantConfig` object in the
+#' array describes the infrastructure configuration for the corresponding
+#' variant.
+#' @param DataStorageConfig The Amazon S3 location and configuration for storing inference request
+#' and response data.
+#' 
+#' This is an optional parameter that you can use for data capture. For
+#' more information, see [Capture
+#' data](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-capture.html).
+#' @param ShadowModeConfig &#91;required&#93; The configuration of `ShadowMode` inference experiment type. Use this
+#' field to specify a production variant which takes all the inference
+#' requests, and a shadow variant to which Amazon SageMaker replicates a
+#' percentage of the inference requests. For the shadow variant also
+#' specify the percentage of requests that Amazon SageMaker replicates.
+#' @param KmsKey The Amazon Web Services Key Management Service (Amazon Web Services KMS)
+#' key that Amazon SageMaker uses to encrypt data on the storage volume
+#' attached to the ML compute instance that hosts the endpoint. The
+#' `KmsKey` can be any of the following formats:
+#' 
+#' -   KMS key ID
+#' 
+#'     `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' 
+#' -   Amazon Resource Name (ARN) of a KMS key
+#' 
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' 
+#' -   KMS key Alias
+#' 
+#'     `"alias/ExampleAlias"`
+#' 
+#' -   Amazon Resource Name (ARN) of a KMS key Alias
+#' 
+#'     `"arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias"`
+#' 
+#' If you use a KMS key ID or an alias of your KMS key, the Amazon
+#' SageMaker execution role must include permissions to call `kms:Encrypt`.
+#' If you don't provide a KMS key ID, Amazon SageMaker uses the default KMS
+#' key for Amazon S3 for your role's account. Amazon SageMaker uses
+#' server-side encryption with KMS managed keys for `OutputDataConfig`. If
+#' you use a bucket policy with an `s3:PutObject` permission that only
+#' allows objects with server-side encryption, set the condition key of
+#' `s3:x-amz-server-side-encryption` to `"aws:kms"`. For more information,
+#' see [KMS managed Encryption
+#' Keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)
+#' in the *Amazon Simple Storage Service Developer Guide.*
+#' 
+#' The KMS key policy must grant permission to the IAM role that you
+#' specify in your [`create_endpoint`][sagemaker_create_endpoint] and
+#' [`update_endpoint`][sagemaker_update_endpoint] requests. For more
+#' information, see [Using Key Policies in Amazon Web Services
+#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
+#' in the *Amazon Web Services Key Management Service Developer Guide*.
+#' @param Tags Array of key-value pairs. You can use tags to categorize your Amazon Web
+#' Services resources in different ways, for example, by purpose, owner, or
+#' environment. For more information, see [Tagging your Amazon Web Services
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InferenceExperimentArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_inference_experiment(
+#'   Name = "string",
+#'   Type = "ShadowMode",
+#'   Schedule = list(
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   Description = "string",
+#'   RoleArn = "string",
+#'   EndpointName = "string",
+#'   ModelVariants = list(
+#'     list(
+#'       ModelName = "string",
+#'       VariantName = "string",
+#'       InfrastructureConfig = list(
+#'         InfrastructureType = "RealTimeInference",
+#'         RealTimeInferenceConfig = list(
+#'           InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
+#'           InstanceCount = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   DataStorageConfig = list(
+#'     Destination = "string",
+#'     KmsKey = "string",
+#'     ContentType = list(
+#'       CsvContentTypes = list(
+#'         "string"
+#'       ),
+#'       JsonContentTypes = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   ShadowModeConfig = list(
+#'     SourceModelVariantName = "string",
+#'     ShadowModelVariants = list(
+#'       list(
+#'         ShadowModelVariantName = "string",
+#'         SamplingPercentage = 123
+#'       )
+#'     )
+#'   ),
+#'   KmsKey = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_inference_experiment
+#'
+#' @aliases sagemaker_create_inference_experiment
+sagemaker_create_inference_experiment <- function(Name, Type, Schedule = NULL, Description = NULL, RoleArn, EndpointName, ModelVariants, DataStorageConfig = NULL, ShadowModeConfig, KmsKey = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateInferenceExperiment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_inference_experiment_input(Name = Name, Type = Type, Schedule = Schedule, Description = Description, RoleArn = RoleArn, EndpointName = EndpointName, ModelVariants = ModelVariants, DataStorageConfig = DataStorageConfig, ShadowModeConfig = ShadowModeConfig, KmsKey = KmsKey, Tags = Tags)
+  output <- .sagemaker$create_inference_experiment_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_inference_experiment <- sagemaker_create_inference_experiment
 
 #' Starts a recommendation job
 #'
@@ -3387,6 +4131,10 @@ sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName) {
 #'
 #' @param JobName &#91;required&#93; A name for the recommendation job. The name must be unique within the
 #' Amazon Web Services Region and within your Amazon Web Services account.
+#' The job name is passed down to the resources created by the
+#' recommendation job. The names of resources (such as the model, endpoint
+#' configuration, endpoint, and compilation) that are prefixed with the job
+#' name are truncated at 40 characters.
 #' @param JobType &#91;required&#93; Defines the type of recommendation job. Specify `Default` to initiate an
 #' instance recommendation and `Advanced` to initiate a load test. If left
 #' unspecified, Amazon SageMaker Inference Recommender will run an instance
@@ -3404,7 +4152,7 @@ sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName) {
 #' categorize and organize them. Each tag consists of a key and a value,
 #' both of which you define. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the Amazon Web Services General Reference.
 #'
 #' @return
@@ -3440,7 +4188,7 @@ sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName) {
 #'     ),
 #'     EndpointConfigurations = list(
 #'       list(
-#'         InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge",
+#'         InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge",
 #'         InferenceSpecificationName = "string",
 #'         EnvironmentParameterRanges = list(
 #'           CategoricalParameterRanges = list(
@@ -3454,7 +4202,38 @@ sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName) {
 #'         )
 #'       )
 #'     ),
-#'     VolumeKmsKeyId = "string"
+#'     VolumeKmsKeyId = "string",
+#'     ContainerConfig = list(
+#'       Domain = "string",
+#'       Task = "string",
+#'       Framework = "string",
+#'       FrameworkVersion = "string",
+#'       PayloadConfig = list(
+#'         SamplePayloadUrl = "string",
+#'         SupportedContentTypes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       NearestModelName = "string",
+#'       SupportedInstanceTypes = list(
+#'         "string"
+#'       ),
+#'       DataInputConfig = "string"
+#'     ),
+#'     Endpoints = list(
+#'       list(
+#'         EndpointName = "string"
+#'       )
+#'     ),
+#'     VpcConfig = list(
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       Subnets = list(
+#'         "string"
+#'       )
+#'     ),
+#'     ModelName = "string"
 #'   ),
 #'   JobDescription = "string",
 #'   StoppingConditions = list(
@@ -3866,12 +4645,13 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
-#' @param VpcConfig A VpcConfig object that specifies the VPC that you want your model to
-#' connect to. Control access to and from your model container by
-#' configuring the VPC. `VpcConfig` is used in hosting services and in
-#' batch transform. For more information, see [Protect Endpoints by Using
-#' an Amazon Virtual Private
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
+#' @param VpcConfig A
+#' [VpcConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_VpcConfig.html)
+#' object that specifies the VPC that you want your model to connect to.
+#' Control access to and from your model container by configuring the VPC.
+#' `VpcConfig` is used in hosting services and in batch transform. For more
+#' information, see [Protect Endpoints by Using an Amazon Virtual Private
 #' Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html)
 #' and [Protect Data in Batch Transform Jobs by Using an Amazon Virtual
 #' Private
@@ -4042,6 +4822,27 @@ sagemaker_create_model <- function(ModelName, PrimaryContainer = NULL, Container
 #'       StartTimeOffset = "string",
 #'       EndTimeOffset = "string"
 #'     ),
+#'     BatchTransformInput = list(
+#'       DataCapturedDestinationS3Uri = "string",
+#'       DatasetFormat = list(
+#'         Csv = list(
+#'           Header = TRUE|FALSE
+#'         ),
+#'         Json = list(
+#'           Line = TRUE|FALSE
+#'         ),
+#'         Parquet = list()
+#'       ),
+#'       LocalPath = "string",
+#'       S3InputMode = "Pipe"|"File",
+#'       S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'       FeaturesAttribute = "string",
+#'       InferenceAttribute = "string",
+#'       ProbabilityAttribute = "string",
+#'       ProbabilityThresholdAttribute = 123.0,
+#'       StartTimeOffset = "string",
+#'       EndTimeOffset = "string"
+#'     ),
 #'     GroundTruthS3Input = list(
 #'       S3Uri = "string"
 #'     )
@@ -4113,6 +4914,146 @@ sagemaker_create_model_bias_job_definition <- function(JobDefinitionName, ModelB
 }
 .sagemaker$operations$create_model_bias_job_definition <- sagemaker_create_model_bias_job_definition
 
+#' Creates an Amazon SageMaker Model Card
+#'
+#' @description
+#' Creates an Amazon SageMaker Model Card.
+#' 
+#' For information about how to use model cards, see [Amazon SageMaker
+#' Model
+#' Card](https://docs.aws.amazon.com/sagemaker/latest/dg/model-cards.html).
+#'
+#' @usage
+#' sagemaker_create_model_card(ModelCardName, SecurityConfig, Content,
+#'   ModelCardStatus, Tags)
+#'
+#' @param ModelCardName &#91;required&#93; The unique name of the model card.
+#' @param SecurityConfig An optional Key Management Service key to encrypt, decrypt, and
+#' re-encrypt model card content for regulated workloads with highly
+#' sensitive data.
+#' @param Content &#91;required&#93; The content of the model card. Content must be in [model card JSON
+#' schema](https://docs.aws.amazon.com/sagemaker/latest/dg/model-cards.html#model-cards-json-schema)
+#' and provided as a string.
+#' @param ModelCardStatus &#91;required&#93; The approval status of the model card within your organization.
+#' Different organizations might have different criteria for model card
+#' review and approval.
+#' 
+#' -   `Draft`: The model card is a work in progress.
+#' 
+#' -   `PendingReview`: The model card is pending review.
+#' 
+#' -   `Approved`: The model card is approved.
+#' 
+#' -   `Archived`: The model card is archived. No more updates should be
+#'     made to the model card, but it can still be exported.
+#' @param Tags Key-value pairs used to manage metadata for model cards.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModelCardArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_model_card(
+#'   ModelCardName = "string",
+#'   SecurityConfig = list(
+#'     KmsKeyId = "string"
+#'   ),
+#'   Content = "string",
+#'   ModelCardStatus = "Draft"|"PendingReview"|"Approved"|"Archived",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_model_card
+#'
+#' @aliases sagemaker_create_model_card
+sagemaker_create_model_card <- function(ModelCardName, SecurityConfig = NULL, Content, ModelCardStatus, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateModelCard",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_model_card_input(ModelCardName = ModelCardName, SecurityConfig = SecurityConfig, Content = Content, ModelCardStatus = ModelCardStatus, Tags = Tags)
+  output <- .sagemaker$create_model_card_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_model_card <- sagemaker_create_model_card
+
+#' Creates an Amazon SageMaker Model Card export job
+#'
+#' @description
+#' Creates an Amazon SageMaker Model Card export job.
+#'
+#' @usage
+#' sagemaker_create_model_card_export_job(ModelCardName, ModelCardVersion,
+#'   ModelCardExportJobName, OutputConfig)
+#'
+#' @param ModelCardName &#91;required&#93; The name of the model card to export.
+#' @param ModelCardVersion The version of the model card to export. If a version is not provided,
+#' then the latest version of the model card is exported.
+#' @param ModelCardExportJobName &#91;required&#93; The name of the model card export job.
+#' @param OutputConfig &#91;required&#93; The model card output configuration that specifies the Amazon S3 path
+#' for exporting.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModelCardExportJobArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_model_card_export_job(
+#'   ModelCardName = "string",
+#'   ModelCardVersion = 123,
+#'   ModelCardExportJobName = "string",
+#'   OutputConfig = list(
+#'     S3OutputPath = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_model_card_export_job
+#'
+#' @aliases sagemaker_create_model_card_export_job
+sagemaker_create_model_card_export_job <- function(ModelCardName, ModelCardVersion = NULL, ModelCardExportJobName, OutputConfig) {
+  op <- new_operation(
+    name = "CreateModelCardExportJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_model_card_export_job_input(ModelCardName = ModelCardName, ModelCardVersion = ModelCardVersion, ModelCardExportJobName = ModelCardExportJobName, OutputConfig = OutputConfig)
+  output <- .sagemaker$create_model_card_export_job_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_model_card_export_job <- sagemaker_create_model_card_export_job
+
 #' Creates the definition for a model explainability job
 #'
 #' @description
@@ -4170,6 +5111,27 @@ sagemaker_create_model_bias_job_definition <- function(JobDefinitionName, ModelB
 #'   ModelExplainabilityJobInput = list(
 #'     EndpointInput = list(
 #'       EndpointName = "string",
+#'       LocalPath = "string",
+#'       S3InputMode = "Pipe"|"File",
+#'       S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'       FeaturesAttribute = "string",
+#'       InferenceAttribute = "string",
+#'       ProbabilityAttribute = "string",
+#'       ProbabilityThresholdAttribute = 123.0,
+#'       StartTimeOffset = "string",
+#'       EndTimeOffset = "string"
+#'     ),
+#'     BatchTransformInput = list(
+#'       DataCapturedDestinationS3Uri = "string",
+#'       DatasetFormat = list(
+#'         Csv = list(
+#'           Header = TRUE|FALSE
+#'         ),
+#'         Json = list(
+#'           Line = TRUE|FALSE
+#'         ),
+#'         Parquet = list()
+#'       ),
 #'       LocalPath = "string",
 #'       S3InputMode = "Pipe"|"File",
 #'       S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
@@ -4313,7 +5275,7 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #' versioned models.
 #' @param Tags A list of key value pairs associated with the model. For more
 #' information, see [Tagging Amazon Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference Guide*.
 #' @param ModelApprovalStatus Whether the model is approved for deployment.
 #' 
@@ -4343,8 +5305,12 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #' 
 #' Specify "OTHER" if none of the tasks listed fit your use case.
 #' @param SamplePayloadUrl The Amazon Simple Storage Service (Amazon S3) path where the sample
-#' payload are stored. This path must point to a single gzip compressed tar
-#' archive (.tar.gz suffix).
+#' payload is stored. This path must point to a single gzip compressed tar
+#' archive (.tar.gz suffix). This archive can hold multiple files that are
+#' all equally used in the load test. Each file in the archive must satisfy
+#' the size constraints of the
+#' [InvokeEndpoint](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html#API_runtime_InvokeEndpoint_RequestSyntax)
+#' call.
 #' @param AdditionalInferenceSpecifications An array of additional Inference Specification objects. Each additional
 #' Inference Specification specifies artifacts based on this model package
 #' that can be used on inference endpoints. Generally used with SageMaker
@@ -4387,7 +5353,7 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #'       "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'     ),
 #'     SupportedRealtimeInferenceInstanceTypes = list(
-#'       "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"
+#'       "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge"
 #'     ),
 #'     SupportedContentTypes = list(
 #'       "string"
@@ -4594,7 +5560,7 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #'         "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       ),
 #'       SupportedRealtimeInferenceInstanceTypes = list(
-#'         "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"
+#'         "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge"
 #'       ),
 #'       SupportedContentTypes = list(
 #'         "string"
@@ -4642,7 +5608,7 @@ sagemaker_create_model_package <- function(ModelPackageName = NULL, ModelPackage
 #' @param ModelPackageGroupDescription A description for the model group.
 #' @param Tags A list of key value pairs associated with the model group. For more
 #' information, see [Tagging Amazon Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference Guide*.
 #'
 #' @return
@@ -4764,6 +5730,27 @@ sagemaker_create_model_package_group <- function(ModelPackageGroupName, ModelPac
 #'       StartTimeOffset = "string",
 #'       EndTimeOffset = "string"
 #'     ),
+#'     BatchTransformInput = list(
+#'       DataCapturedDestinationS3Uri = "string",
+#'       DatasetFormat = list(
+#'         Csv = list(
+#'           Header = TRUE|FALSE
+#'         ),
+#'         Json = list(
+#'           Line = TRUE|FALSE
+#'         ),
+#'         Parquet = list()
+#'       ),
+#'       LocalPath = "string",
+#'       S3InputMode = "Pipe"|"File",
+#'       S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'       FeaturesAttribute = "string",
+#'       InferenceAttribute = "string",
+#'       ProbabilityAttribute = "string",
+#'       ProbabilityThresholdAttribute = 123.0,
+#'       StartTimeOffset = "string",
+#'       EndTimeOffset = "string"
+#'     ),
 #'     GroundTruthS3Input = list(
 #'       S3Uri = "string"
 #'     )
@@ -4836,11 +5823,11 @@ sagemaker_create_model_quality_job_definition <- function(JobDefinitionName, Mod
 .sagemaker$operations$create_model_quality_job_definition <- sagemaker_create_model_quality_job_definition
 
 #' Creates a schedule that regularly starts Amazon SageMaker Processing
-#' Jobs to monitor the data captured for an Amazon SageMaker Endoint
+#' Jobs to monitor the data captured for an Amazon SageMaker Endpoint
 #'
 #' @description
 #' Creates a schedule that regularly starts Amazon SageMaker Processing
-#' Jobs to monitor the data captured for an Amazon SageMaker Endoint.
+#' Jobs to monitor the data captured for an Amazon SageMaker Endpoint.
 #'
 #' @usage
 #' sagemaker_create_monitoring_schedule(MonitoringScheduleName,
@@ -4884,6 +5871,27 @@ sagemaker_create_model_quality_job_definition <- function(JobDefinitionName, Mod
 #'         list(
 #'           EndpointInput = list(
 #'             EndpointName = "string",
+#'             LocalPath = "string",
+#'             S3InputMode = "Pipe"|"File",
+#'             S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'             FeaturesAttribute = "string",
+#'             InferenceAttribute = "string",
+#'             ProbabilityAttribute = "string",
+#'             ProbabilityThresholdAttribute = 123.0,
+#'             StartTimeOffset = "string",
+#'             EndTimeOffset = "string"
+#'           ),
+#'           BatchTransformInput = list(
+#'             DataCapturedDestinationS3Uri = "string",
+#'             DatasetFormat = list(
+#'               Csv = list(
+#'                 Header = TRUE|FALSE
+#'               ),
+#'               Json = list(
+#'                 Line = TRUE|FALSE
+#'               ),
+#'               Parquet = list()
+#'             ),
 #'             LocalPath = "string",
 #'             S3InputMode = "Pipe"|"File",
 #'             S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
@@ -5059,7 +6067,7 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #' @param LifecycleConfigName The name of a lifecycle configuration to associate with the notebook
 #' instance. For information about lifestyle configurations, see [Step 2.1:
 #' (Optional) Customize a Notebook
@@ -5121,7 +6129,7 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' ```
 #' svc$create_notebook_instance(
 #'   NotebookInstanceName = "string",
-#'   InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'   InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'   SubnetId = "string",
 #'   SecurityGroupIds = list(
 #'     "string"
@@ -5349,7 +6357,7 @@ sagemaker_create_pipeline <- function(PipelineName, PipelineDisplayName = NULL, 
 #' This operation can only be called when the authentication mode equals
 #' IAM.
 #' 
-#' The IAM role or user used to call this API defines the permissions to
+#' The IAM role or user passed to this API defines the permissions to
 #' access the app. Once the presigned URL is created, no additional
 #' permission is required to access this URL. IAM authorization policies
 #' for this API are also enforced for every HTTP request and WebSocket
@@ -5371,7 +6379,7 @@ sagemaker_create_pipeline <- function(PipelineName, PipelineDisplayName = NULL, 
 #'
 #' @usage
 #' sagemaker_create_presigned_domain_url(DomainId, UserProfileName,
-#'   SessionExpirationDurationInSeconds, ExpiresInSeconds)
+#'   SessionExpirationDurationInSeconds, ExpiresInSeconds, SpaceName)
 #'
 #' @param DomainId &#91;required&#93; The domain ID.
 #' @param UserProfileName &#91;required&#93; The name of the UserProfile to sign-in as.
@@ -5379,6 +6387,7 @@ sagemaker_create_pipeline <- function(PipelineName, PipelineDisplayName = NULL, 
 #' 43200.
 #' @param ExpiresInSeconds The number of seconds until the pre-signed URL expires. This value
 #' defaults to 300.
+#' @param SpaceName The name of the space.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5394,7 +6403,8 @@ sagemaker_create_pipeline <- function(PipelineName, PipelineDisplayName = NULL, 
 #'   DomainId = "string",
 #'   UserProfileName = "string",
 #'   SessionExpirationDurationInSeconds = 123,
-#'   ExpiresInSeconds = 123
+#'   ExpiresInSeconds = 123,
+#'   SpaceName = "string"
 #' )
 #' ```
 #'
@@ -5403,14 +6413,14 @@ sagemaker_create_pipeline <- function(PipelineName, PipelineDisplayName = NULL, 
 #' @rdname sagemaker_create_presigned_domain_url
 #'
 #' @aliases sagemaker_create_presigned_domain_url
-sagemaker_create_presigned_domain_url <- function(DomainId, UserProfileName, SessionExpirationDurationInSeconds = NULL, ExpiresInSeconds = NULL) {
+sagemaker_create_presigned_domain_url <- function(DomainId, UserProfileName, SessionExpirationDurationInSeconds = NULL, ExpiresInSeconds = NULL, SpaceName = NULL) {
   op <- new_operation(
     name = "CreatePresignedDomainUrl",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_presigned_domain_url_input(DomainId = DomainId, UserProfileName = UserProfileName, SessionExpirationDurationInSeconds = SessionExpirationDurationInSeconds, ExpiresInSeconds = ExpiresInSeconds)
+  input <- .sagemaker$create_presigned_domain_url_input(DomainId = DomainId, UserProfileName = UserProfileName, SessionExpirationDurationInSeconds = SessionExpirationDurationInSeconds, ExpiresInSeconds = ExpiresInSeconds, SpaceName = SpaceName)
   output <- .sagemaker$create_presigned_domain_url_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -5644,7 +6654,8 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #'   ExperimentConfig = list(
 #'     ExperimentName = "string",
 #'     TrialName = "string",
-#'     TrialComponentDisplayName = "string"
+#'     TrialComponentDisplayName = "string",
+#'     RunName = "string"
 #'   )
 #' )
 #' ```
@@ -5695,7 +6706,7 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 #' @param Tags An array of key-value pairs that you want to use to organize and track
 #' your Amazon Web Services resource costs. For more information, see
 #' [Tagging Amazon Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference Guide*.
 #'
 #' @return
@@ -5753,6 +6764,101 @@ sagemaker_create_project <- function(ProjectName, ProjectDescription = NULL, Ser
   return(response)
 }
 .sagemaker$operations$create_project <- sagemaker_create_project
+
+#' Creates a space used for real time collaboration in a Domain
+#'
+#' @description
+#' Creates a space used for real time collaboration in a Domain.
+#'
+#' @usage
+#' sagemaker_create_space(DomainId, SpaceName, Tags, SpaceSettings)
+#'
+#' @param DomainId &#91;required&#93; The ID of the associated Domain.
+#' @param SpaceName &#91;required&#93; The name of the space.
+#' @param Tags Tags to associated with the space. Each tag consists of a key and an
+#' optional value. Tag keys must be unique for each resource. Tags are
+#' searchable using the [`search`][sagemaker_search] API.
+#' @param SpaceSettings A collection of space settings.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SpaceArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_space(
+#'   DomainId = "string",
+#'   SpaceName = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   SpaceSettings = list(
+#'     JupyterServerAppSettings = list(
+#'       DefaultResourceSpec = list(
+#'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
+#'         LifecycleConfigArn = "string"
+#'       ),
+#'       LifecycleConfigArns = list(
+#'         "string"
+#'       ),
+#'       CodeRepositories = list(
+#'         list(
+#'           RepositoryUrl = "string"
+#'         )
+#'       )
+#'     ),
+#'     KernelGatewayAppSettings = list(
+#'       DefaultResourceSpec = list(
+#'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
+#'         LifecycleConfigArn = "string"
+#'       ),
+#'       CustomImages = list(
+#'         list(
+#'           ImageName = "string",
+#'           ImageVersionNumber = 123,
+#'           AppImageConfigName = "string"
+#'         )
+#'       ),
+#'       LifecycleConfigArns = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_space
+#'
+#' @aliases sagemaker_create_space
+sagemaker_create_space <- function(DomainId, SpaceName, Tags = NULL, SpaceSettings = NULL) {
+  op <- new_operation(
+    name = "CreateSpace",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_space_input(DomainId = DomainId, SpaceName = SpaceName, Tags = Tags, SpaceSettings = SpaceSettings)
+  output <- .sagemaker$create_space_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_space <- sagemaker_create_space
 
 #' Creates a new Studio Lifecycle Configuration
 #'
@@ -5838,8 +6944,13 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #'     SageMaker, see
 #'     [Algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
 #' 
-#' -   `InputDataConfig` - Describes the training dataset and the Amazon
-#'     S3, EFS, or FSx location where it is stored.
+#'     Do not include any security-sensitive information including account
+#'     access IDs, secrets or tokens in any hyperparameter field. If the
+#'     use of security-sensitive credentials are detected, SageMaker will
+#'     reject your training job request and return an exception error.
+#' 
+#' -   `InputDataConfig` - Describes the input required by the training job
+#'     and the Amazon S3, EFS, or FSx location where it is stored.
 #' 
 #' -   `OutputDataConfig` - Identifies the Amazon S3 bucket where you want
 #'     SageMaker to save the results of model training.
@@ -5892,6 +7003,11 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #' You can specify a maximum of 100 hyperparameters. Each hyperparameter is
 #' a key-value pair. Each key and value is limited to 256 characters, as
 #' specified by the `Length Constraint`.
+#' 
+#' Do not include any security-sensitive information including account
+#' access IDs, secrets or tokens in any hyperparameter field. If the use of
+#' security-sensitive credentials are detected, SageMaker will reject your
+#' training job request and return an exception error.
 #' @param AlgorithmSpecification &#91;required&#93; The registry path of the Docker image that contains the training
 #' algorithm and algorithm-specific metadata, including the input mode. For
 #' more information about algorithms provided by SageMaker, see
@@ -5927,6 +7043,9 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #' the Docker container, or makes it available as input streams. For
 #' example, if you specify an EFS location, input data files are available
 #' as input streams. They do not need to be downloaded.
+#' 
+#' Your input must be in the same Amazon Web Services region as your
+#' training job.
 #' @param OutputDataConfig &#91;required&#93; Specifies the path to the S3 location where you want to store model
 #' artifacts. SageMaker creates subfolders for the artifacts.
 #' @param ResourceConfig &#91;required&#93; The resources, including the ML compute instances and ML storage
@@ -5938,10 +7057,12 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #' data, choose `File` as the `TrainingInputMode` in the algorithm
 #' specification. For distributed training algorithms, specify an instance
 #' count greater than 1.
-#' @param VpcConfig A VpcConfig object that specifies the VPC that you want your training
-#' job to connect to. Control access to and from your training container by
-#' configuring the VPC. For more information, see [Protect Training Jobs by
-#' Using an Amazon Virtual Private
+#' @param VpcConfig A
+#' [VpcConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_VpcConfig.html)
+#' object that specifies the VPC that you want your training job to connect
+#' to. Control access to and from your training container by configuring
+#' the VPC. For more information, see [Protect Training Jobs by Using an
+#' Amazon Virtual Private
 #' Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
 #' @param StoppingCondition &#91;required&#93; Specifies a limit to how long a model training job can run. It also
 #' specifies how long a managed Spot training job has to complete. When the
@@ -5956,7 +7077,7 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #' @param EnableNetworkIsolation Isolates the training container. No inbound or outbound network calls
 #' can be made, except for calls between peers within a training cluster
 #' for distributed training. If you enable network isolation for training
@@ -5985,13 +7106,13 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #' @param CheckpointConfig Contains information about the output location for managed spot training
 #' checkpoint data.
 #' @param DebugHookConfig 
-#' @param DebugRuleConfigurations Configuration information for Debugger rules for debugging output
-#' tensors.
+#' @param DebugRuleConfigurations Configuration information for Amazon SageMaker Debugger rules for
+#' debugging output tensors.
 #' @param TensorBoardOutputConfig 
 #' @param ExperimentConfig 
 #' @param ProfilerConfig 
-#' @param ProfilerRuleConfigurations Configuration information for Debugger rules for profiling system and
-#' framework metrics.
+#' @param ProfilerRuleConfigurations Configuration information for Amazon SageMaker Debugger rules for
+#' profiling system and framework metrics.
 #' @param Environment The environment variables to set in the Docker container.
 #' @param RetryStrategy The number of times to retry the job when the job fails due to an
 #' `InternalServerError`.
@@ -6021,7 +7142,19 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #'         Regex = "string"
 #'       )
 #'     ),
-#'     EnableSageMakerMetricsTimeSeries = TRUE|FALSE
+#'     EnableSageMakerMetricsTimeSeries = TRUE|FALSE,
+#'     ContainerEntrypoint = list(
+#'       "string"
+#'     ),
+#'     ContainerArguments = list(
+#'       "string"
+#'     ),
+#'     TrainingImageConfig = list(
+#'       TrainingRepositoryAccessMode = "Platform"|"Vpc",
+#'       TrainingRepositoryAuthConfig = list(
+#'         TrainingRepositoryCredentialsProviderArn = "string"
+#'       )
+#'     )
 #'   ),
 #'   RoleArn = "string",
 #'   InputDataConfig = list(
@@ -6060,17 +7193,18 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #'     S3OutputPath = "string"
 #'   ),
 #'   ResourceConfig = list(
-#'     InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'     InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'     InstanceCount = 123,
 #'     VolumeSizeInGB = 123,
 #'     VolumeKmsKeyId = "string",
 #'     InstanceGroups = list(
 #'       list(
-#'         InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'         InstanceCount = 123,
 #'         InstanceGroupName = "string"
 #'       )
-#'     )
+#'     ),
+#'     KeepAlivePeriodInSeconds = 123
 #'   ),
 #'   VpcConfig = list(
 #'     SecurityGroupIds = list(
@@ -6132,14 +7266,16 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #'   ExperimentConfig = list(
 #'     ExperimentName = "string",
 #'     TrialName = "string",
-#'     TrialComponentDisplayName = "string"
+#'     TrialComponentDisplayName = "string",
+#'     RunName = "string"
 #'   ),
 #'   ProfilerConfig = list(
 #'     S3OutputPath = "string",
 #'     ProfilingIntervalInMilliseconds = 123,
 #'     ProfilingParameters = list(
 #'       "string"
-#'     )
+#'     ),
+#'     DisableProfiler = TRUE|FALSE
 #'   ),
 #'   ProfilerRuleConfigurations = list(
 #'     list(
@@ -6222,7 +7358,8 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #' sagemaker_create_transform_job(TransformJobName, ModelName,
 #'   MaxConcurrentTransforms, ModelClientConfig, MaxPayloadInMB,
 #'   BatchStrategy, Environment, TransformInput, TransformOutput,
-#'   TransformResources, DataProcessing, Tags, ExperimentConfig)
+#'   DataCaptureConfig, TransformResources, DataProcessing, Tags,
+#'   ExperimentConfig)
 #'
 #' @param TransformJobName &#91;required&#93; The name of the transform job. The name must be unique within an Amazon
 #' Web Services Region in an Amazon Web Services account.
@@ -6275,6 +7412,7 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #' to 16 key and values entries in the map.
 #' @param TransformInput &#91;required&#93; Describes the input source and the way the transform job consumes it.
 #' @param TransformOutput &#91;required&#93; Describes the results of the transform job.
+#' @param DataCaptureConfig Configuration to control how SageMaker captures inference data.
 #' @param TransformResources &#91;required&#93; Describes the resources, including ML instance types and ML instance
 #' count, to use for the transform job.
 #' @param DataProcessing The data structure used to specify the data to be used for inference in
@@ -6332,6 +7470,11 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #'     AssembleWith = "None"|"Line",
 #'     KmsKeyId = "string"
 #'   ),
+#'   DataCaptureConfig = list(
+#'     DestinationS3Uri = "string",
+#'     KmsKeyId = "string",
+#'     GenerateInferenceId = TRUE|FALSE
+#'   ),
 #'   TransformResources = list(
 #'     InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge",
 #'     InstanceCount = 123,
@@ -6351,7 +7494,8 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #'   ExperimentConfig = list(
 #'     ExperimentName = "string",
 #'     TrialName = "string",
-#'     TrialComponentDisplayName = "string"
+#'     TrialComponentDisplayName = "string",
+#'     RunName = "string"
 #'   )
 #' )
 #' ```
@@ -6361,14 +7505,14 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #' @rdname sagemaker_create_transform_job
 #'
 #' @aliases sagemaker_create_transform_job
-sagemaker_create_transform_job <- function(TransformJobName, ModelName, MaxConcurrentTransforms = NULL, ModelClientConfig = NULL, MaxPayloadInMB = NULL, BatchStrategy = NULL, Environment = NULL, TransformInput, TransformOutput, TransformResources, DataProcessing = NULL, Tags = NULL, ExperimentConfig = NULL) {
+sagemaker_create_transform_job <- function(TransformJobName, ModelName, MaxConcurrentTransforms = NULL, ModelClientConfig = NULL, MaxPayloadInMB = NULL, BatchStrategy = NULL, Environment = NULL, TransformInput, TransformOutput, DataCaptureConfig = NULL, TransformResources, DataProcessing = NULL, Tags = NULL, ExperimentConfig = NULL) {
   op <- new_operation(
     name = "CreateTransformJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_transform_job_input(TransformJobName = TransformJobName, ModelName = ModelName, MaxConcurrentTransforms = MaxConcurrentTransforms, ModelClientConfig = ModelClientConfig, MaxPayloadInMB = MaxPayloadInMB, BatchStrategy = BatchStrategy, Environment = Environment, TransformInput = TransformInput, TransformOutput = TransformOutput, TransformResources = TransformResources, DataProcessing = DataProcessing, Tags = Tags, ExperimentConfig = ExperimentConfig)
+  input <- .sagemaker$create_transform_job_input(TransformJobName = TransformJobName, ModelName = ModelName, MaxConcurrentTransforms = MaxConcurrentTransforms, ModelClientConfig = ModelClientConfig, MaxPayloadInMB = MaxPayloadInMB, BatchStrategy = BatchStrategy, Environment = Environment, TransformInput = TransformInput, TransformOutput = TransformOutput, DataCaptureConfig = DataCaptureConfig, TransformResources = TransformResources, DataProcessing = DataProcessing, Tags = Tags, ExperimentConfig = ExperimentConfig)
   output <- .sagemaker$create_transform_job_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -6594,10 +7738,11 @@ sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = N
 #' domain, and is the main way to reference a "person" for the purposes of
 #' sharing, reporting, and other user-oriented features. This entity is
 #' created when a user onboards to Amazon SageMaker Studio. If an
-#' administrator invites a person by email or imports them from SSO, a user
-#' profile is automatically created. A user profile is the primary holder
-#' of settings for an individual user and has a reference to the user's
-#' private Amazon Elastic File System (EFS) home directory.
+#' administrator invites a person by email or imports them from IAM
+#' Identity Center, a user profile is automatically created. A user profile
+#' is the primary holder of settings for an individual user and has a
+#' reference to the user's private Amazon Elastic File System (EFS) home
+#' directory.
 #'
 #' @usage
 #' sagemaker_create_user_profile(DomainId, UserProfileName,
@@ -6607,12 +7752,13 @@ sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = N
 #' @param UserProfileName &#91;required&#93; A name for the UserProfile. This value is not case sensitive.
 #' @param SingleSignOnUserIdentifier A specifier for the type of value specified in SingleSignOnUserValue.
 #' Currently, the only supported value is "UserName". If the Domain's
-#' AuthMode is SSO, this field is required. If the Domain's AuthMode is not
-#' SSO, this field cannot be specified.
+#' AuthMode is IAM Identity Center, this field is required. If the Domain's
+#' AuthMode is not IAM Identity Center, this field cannot be specified.
 #' @param SingleSignOnUserValue The username of the associated Amazon Web Services Single Sign-On User
-#' for this UserProfile. If the Domain's AuthMode is SSO, this field is
-#' required, and must match a valid username of a user in your directory.
-#' If the Domain's AuthMode is not SSO, this field cannot be specified.
+#' for this UserProfile. If the Domain's AuthMode is IAM Identity Center,
+#' this field is required, and must match a valid username of a user in
+#' your directory. If the Domain's AuthMode is not IAM Identity Center,
+#' this field cannot be specified.
 #' @param Tags Each tag consists of a key and an optional value. Tag keys must be
 #' unique per resource.
 #' 
@@ -6655,18 +7801,23 @@ sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = N
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       ),
 #'       LifecycleConfigArns = list(
 #'         "string"
+#'       ),
+#'       CodeRepositories = list(
+#'         list(
+#'           RepositoryUrl = "string"
+#'         )
 #'       )
 #'     ),
 #'     KernelGatewayAppSettings = list(
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       ),
 #'       CustomImages = list(
@@ -6684,7 +7835,7 @@ sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = N
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       )
 #'     ),
@@ -6696,7 +7847,7 @@ sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = N
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       ),
 #'       CustomImages = list(
@@ -6705,6 +7856,16 @@ sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = N
 #'           ImageVersionNumber = 123,
 #'           AppImageConfigName = "string"
 #'         )
+#'       )
+#'     ),
+#'     CanvasAppSettings = list(
+#'       TimeSeriesForecastingSettings = list(
+#'         Status = "ENABLED"|"DISABLED",
+#'         AmazonForecastRoleArn = "string"
+#'       ),
+#'       ModelRegisterSettings = list(
+#'         Status = "ENABLED"|"DISABLED",
+#'         CrossAccountModelRegisterRoleArn = "string"
 #'       )
 #'     )
 #'   )
@@ -6742,8 +7903,9 @@ sagemaker_create_user_profile <- function(DomainId, UserProfileName, SingleSignO
 #' Services Region per Amazon Web Services account.
 #' 
 #' If you want to create a new workforce in an Amazon Web Services Region
-#' where a workforce already exists, use the API operation to delete the
-#' existing workforce and then use
+#' where a workforce already exists, use the
+#' [`delete_workforce`][sagemaker_delete_workforce] API operation to delete
+#' the existing workforce and then use
 #' [`create_workforce`][sagemaker_create_workforce] to create a new
 #' workforce.
 #' 
@@ -7056,12 +8218,16 @@ sagemaker_delete_algorithm <- function(AlgorithmName) {
 #' Used to stop and delete an app.
 #'
 #' @usage
-#' sagemaker_delete_app(DomainId, UserProfileName, AppType, AppName)
+#' sagemaker_delete_app(DomainId, UserProfileName, AppType, AppName,
+#'   SpaceName)
 #'
 #' @param DomainId &#91;required&#93; The domain ID.
-#' @param UserProfileName &#91;required&#93; The user profile name.
+#' @param UserProfileName The user profile name. If this value is not set, then `SpaceName` must
+#' be set.
 #' @param AppType &#91;required&#93; The type of app.
 #' @param AppName &#91;required&#93; The name of the app.
+#' @param SpaceName The name of the space. If this value is not set, then `UserProfileName`
+#' must be set.
 #'
 #' @return
 #' An empty list.
@@ -7072,7 +8238,8 @@ sagemaker_delete_algorithm <- function(AlgorithmName) {
 #'   DomainId = "string",
 #'   UserProfileName = "string",
 #'   AppType = "JupyterServer"|"KernelGateway"|"TensorBoard"|"RStudioServerPro"|"RSessionGateway",
-#'   AppName = "string"
+#'   AppName = "string",
+#'   SpaceName = "string"
 #' )
 #' ```
 #'
@@ -7081,14 +8248,14 @@ sagemaker_delete_algorithm <- function(AlgorithmName) {
 #' @rdname sagemaker_delete_app
 #'
 #' @aliases sagemaker_delete_app
-sagemaker_delete_app <- function(DomainId, UserProfileName, AppType, AppName) {
+sagemaker_delete_app <- function(DomainId, UserProfileName = NULL, AppType, AppName, SpaceName = NULL) {
   op <- new_operation(
     name = "DeleteApp",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$delete_app_input(DomainId = DomainId, UserProfileName = UserProfileName, AppType = AppType, AppName = AppName)
+  input <- .sagemaker$delete_app_input(DomainId = DomainId, UserProfileName = UserProfileName, AppType = AppType, AppName = AppName, SpaceName = SpaceName)
   output <- .sagemaker$delete_app_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -7424,9 +8591,9 @@ sagemaker_delete_device_fleet <- function(DeviceFleetName) {
 #'
 #' @description
 #' Used to delete a domain. If you onboarded with IAM mode, you will need
-#' to delete your domain to onboard again using SSO. Use with caution. All
-#' of the members of the domain will lose access to their EFS volume,
-#' including data, notebooks, and other artifacts.
+#' to delete your domain to onboard again using IAM Identity Center. Use
+#' with caution. All of the members of the domain will lose access to their
+#' EFS volume, including data, notebooks, and other artifacts.
 #'
 #' @usage
 #' sagemaker_delete_domain(DomainId, RetentionPolicy)
@@ -7814,6 +8981,101 @@ sagemaker_delete_flow_definition <- function(FlowDefinitionName) {
 }
 .sagemaker$operations$delete_flow_definition <- sagemaker_delete_flow_definition
 
+#' Delete a hub
+#'
+#' @description
+#' Delete a hub.
+#' 
+#' Hub APIs are only callable through SageMaker Studio.
+#'
+#' @usage
+#' sagemaker_delete_hub(HubName)
+#'
+#' @param HubName &#91;required&#93; The name of the hub to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_hub(
+#'   HubName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_hub
+#'
+#' @aliases sagemaker_delete_hub
+sagemaker_delete_hub <- function(HubName) {
+  op <- new_operation(
+    name = "DeleteHub",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_hub_input(HubName = HubName)
+  output <- .sagemaker$delete_hub_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_hub <- sagemaker_delete_hub
+
+#' Delete the contents of a hub
+#'
+#' @description
+#' Delete the contents of a hub.
+#' 
+#' Hub APIs are only callable through SageMaker Studio.
+#'
+#' @usage
+#' sagemaker_delete_hub_content(HubName, HubContentType, HubContentName,
+#'   HubContentVersion)
+#'
+#' @param HubName &#91;required&#93; The name of the hub that you want to delete content in.
+#' @param HubContentType &#91;required&#93; The type of content that you want to delete from a hub.
+#' @param HubContentName &#91;required&#93; The name of the content that you want to delete from a hub.
+#' @param HubContentVersion &#91;required&#93; The version of the content that you want to delete from a hub.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_hub_content(
+#'   HubName = "string",
+#'   HubContentType = "Model"|"Notebook",
+#'   HubContentName = "string",
+#'   HubContentVersion = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_hub_content
+#'
+#' @aliases sagemaker_delete_hub_content
+sagemaker_delete_hub_content <- function(HubName, HubContentType, HubContentName, HubContentVersion) {
+  op <- new_operation(
+    name = "DeleteHubContent",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_hub_content_input(HubName = HubName, HubContentType = HubContentType, HubContentName = HubContentName, HubContentVersion = HubContentVersion)
+  output <- .sagemaker$delete_hub_content_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_hub_content <- sagemaker_delete_hub_content
+
 #' Use this operation to delete a human task user interface (worker task
 #' template)
 #'
@@ -7822,8 +9084,9 @@ sagemaker_delete_flow_definition <- function(FlowDefinitionName) {
 #' template).
 #' 
 #' To see a list of human task user interfaces (work task templates) in
-#' your account, use . When you delete a worker task template, it no longer
-#' appears when you call
+#' your account, use
+#' [`list_human_task_uis`][sagemaker_list_human_task_uis]. When you delete
+#' a worker task template, it no longer appears when you call
 #' [`list_human_task_uis`][sagemaker_list_human_task_uis].
 #'
 #' @usage
@@ -7914,10 +9177,11 @@ sagemaker_delete_image <- function(ImageName) {
 #' represents isn't deleted.
 #'
 #' @usage
-#' sagemaker_delete_image_version(ImageName, Version)
+#' sagemaker_delete_image_version(ImageName, Version, Alias)
 #'
-#' @param ImageName &#91;required&#93; The name of the image.
-#' @param Version &#91;required&#93; The version to delete.
+#' @param ImageName &#91;required&#93; The name of the image to delete.
+#' @param Version The version to delete.
+#' @param Alias The alias of the image to delete.
 #'
 #' @return
 #' An empty list.
@@ -7926,7 +9190,8 @@ sagemaker_delete_image <- function(ImageName) {
 #' ```
 #' svc$delete_image_version(
 #'   ImageName = "string",
-#'   Version = 123
+#'   Version = 123,
+#'   Alias = "string"
 #' )
 #' ```
 #'
@@ -7935,14 +9200,14 @@ sagemaker_delete_image <- function(ImageName) {
 #' @rdname sagemaker_delete_image_version
 #'
 #' @aliases sagemaker_delete_image_version
-sagemaker_delete_image_version <- function(ImageName, Version) {
+sagemaker_delete_image_version <- function(ImageName, Version = NULL, Alias = NULL) {
   op <- new_operation(
     name = "DeleteImageVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$delete_image_version_input(ImageName = ImageName, Version = Version)
+  input <- .sagemaker$delete_image_version_input(ImageName = ImageName, Version = Version, Alias = Alias)
   output <- .sagemaker$delete_image_version_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -7951,6 +9216,57 @@ sagemaker_delete_image_version <- function(ImageName, Version) {
   return(response)
 }
 .sagemaker$operations$delete_image_version <- sagemaker_delete_image_version
+
+#' Deletes an inference experiment
+#'
+#' @description
+#' Deletes an inference experiment.
+#' 
+#' This operation does not delete your endpoint, variants, or any
+#' underlying resources. This operation only deletes the metadata of your
+#' experiment.
+#'
+#' @usage
+#' sagemaker_delete_inference_experiment(Name)
+#'
+#' @param Name &#91;required&#93; The name of the inference experiment you want to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InferenceExperimentArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_inference_experiment(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_inference_experiment
+#'
+#' @aliases sagemaker_delete_inference_experiment
+sagemaker_delete_inference_experiment <- function(Name) {
+  op <- new_operation(
+    name = "DeleteInferenceExperiment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_inference_experiment_input(Name = Name)
+  output <- .sagemaker$delete_inference_experiment_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_inference_experiment <- sagemaker_delete_inference_experiment
 
 #' Deletes a model
 #'
@@ -8039,6 +9355,48 @@ sagemaker_delete_model_bias_job_definition <- function(JobDefinitionName) {
   return(response)
 }
 .sagemaker$operations$delete_model_bias_job_definition <- sagemaker_delete_model_bias_job_definition
+
+#' Deletes an Amazon SageMaker Model Card
+#'
+#' @description
+#' Deletes an Amazon SageMaker Model Card.
+#'
+#' @usage
+#' sagemaker_delete_model_card(ModelCardName)
+#'
+#' @param ModelCardName &#91;required&#93; The name of the model card to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_model_card(
+#'   ModelCardName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_model_card
+#'
+#' @aliases sagemaker_delete_model_card
+sagemaker_delete_model_card <- function(ModelCardName) {
+  op <- new_operation(
+    name = "DeleteModelCard",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_model_card_input(ModelCardName = ModelCardName)
+  output <- .sagemaker$delete_model_card_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_model_card <- sagemaker_delete_model_card
 
 #' Deletes an Amazon SageMaker model explainability job definition
 #'
@@ -8489,6 +9847,50 @@ sagemaker_delete_project <- function(ProjectName) {
 }
 .sagemaker$operations$delete_project <- sagemaker_delete_project
 
+#' Used to delete a space
+#'
+#' @description
+#' Used to delete a space.
+#'
+#' @usage
+#' sagemaker_delete_space(DomainId, SpaceName)
+#'
+#' @param DomainId &#91;required&#93; The ID of the associated Domain.
+#' @param SpaceName &#91;required&#93; The name of the space.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_space(
+#'   DomainId = "string",
+#'   SpaceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_space
+#'
+#' @aliases sagemaker_delete_space
+sagemaker_delete_space <- function(DomainId, SpaceName) {
+  op <- new_operation(
+    name = "DeleteSpace",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_space_input(DomainId = DomainId, SpaceName = SpaceName)
+  output <- .sagemaker$delete_space_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_space <- sagemaker_delete_space
+
 #' Deletes the Studio Lifecycle Configuration
 #'
 #' @description
@@ -8747,12 +10149,15 @@ sagemaker_delete_user_profile <- function(DomainId, UserProfileName) {
 #' 
 #' If you want to create a new workforce in an Amazon Web Services Region
 #' where a workforce already exists, use this operation to delete the
-#' existing workforce and then use to create a new workforce.
+#' existing workforce and then use
+#' [`create_workforce`][sagemaker_create_workforce] to create a new
+#' workforce.
 #' 
 #' If a private workforce contains one or more work teams, you must use the
-#' operation to delete all work teams before you delete the workforce. If
-#' you try to delete a workforce that contains one or more work teams, you
-#' will recieve a `ResourceInUse` error.
+#' [`delete_workteam`][sagemaker_delete_workteam] operation to delete all
+#' work teams before you delete the workforce. If you try to delete a
+#' workforce that contains one or more work teams, you will recieve a
+#' `ResourceInUse` error.
 #'
 #' @usage
 #' sagemaker_delete_workforce(WorkforceName)
@@ -8918,7 +10323,12 @@ sagemaker_deregister_devices <- function(DeviceFleetName, DeviceNames) {
 #'   CreatedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   ),
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
@@ -8926,7 +10336,12 @@ sagemaker_deregister_devices <- function(DeviceFleetName, DeviceNames) {
 #'   LastModifiedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   ),
 #'   MetadataProperties = list(
 #'     CommitId = "string",
@@ -9017,7 +10432,7 @@ sagemaker_describe_action <- function(ActionName) {
 #'       )
 #'     ),
 #'     SupportedTrainingInstanceTypes = list(
-#'       "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"
+#'       "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"
 #'     ),
 #'     SupportsDistributedTraining = TRUE|FALSE,
 #'     MetricDefinitions = list(
@@ -9072,7 +10487,7 @@ sagemaker_describe_action <- function(ActionName) {
 #'       "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'     ),
 #'     SupportedRealtimeInferenceInstanceTypes = list(
-#'       "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"
+#'       "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge"
 #'     ),
 #'     SupportedContentTypes = list(
 #'       "string"
@@ -9127,17 +10542,18 @@ sagemaker_describe_action <- function(ActionName) {
 #'             S3OutputPath = "string"
 #'           ),
 #'           ResourceConfig = list(
-#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'             InstanceCount = 123,
 #'             VolumeSizeInGB = 123,
 #'             VolumeKmsKeyId = "string",
 #'             InstanceGroups = list(
 #'               list(
-#'                 InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'                 InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'                 InstanceCount = 123,
 #'                 InstanceGroupName = "string"
 #'               )
-#'             )
+#'             ),
+#'             KeepAlivePeriodInSeconds = 123
 #'           ),
 #'           StoppingCondition = list(
 #'             MaxRuntimeInSeconds = 123,
@@ -9234,12 +10650,15 @@ sagemaker_describe_algorithm <- function(AlgorithmName) {
 #' Describes the app.
 #'
 #' @usage
-#' sagemaker_describe_app(DomainId, UserProfileName, AppType, AppName)
+#' sagemaker_describe_app(DomainId, UserProfileName, AppType, AppName,
+#'   SpaceName)
 #'
 #' @param DomainId &#91;required&#93; The domain ID.
-#' @param UserProfileName &#91;required&#93; The user profile name.
+#' @param UserProfileName The user profile name. If this value is not set, then `SpaceName` must
+#' be set.
 #' @param AppType &#91;required&#93; The type of app.
 #' @param AppName &#91;required&#93; The name of the app.
+#' @param SpaceName The name of the space.
 #'
 #' @return
 #' A list with the following syntax:
@@ -9264,9 +10683,10 @@ sagemaker_describe_algorithm <- function(AlgorithmName) {
 #'   ResourceSpec = list(
 #'     SageMakerImageArn = "string",
 #'     SageMakerImageVersionArn = "string",
-#'     InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'     InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'     LifecycleConfigArn = "string"
-#'   )
+#'   ),
+#'   SpaceName = "string"
 #' )
 #' ```
 #'
@@ -9276,7 +10696,8 @@ sagemaker_describe_algorithm <- function(AlgorithmName) {
 #'   DomainId = "string",
 #'   UserProfileName = "string",
 #'   AppType = "JupyterServer"|"KernelGateway"|"TensorBoard"|"RStudioServerPro"|"RSessionGateway",
-#'   AppName = "string"
+#'   AppName = "string",
+#'   SpaceName = "string"
 #' )
 #' ```
 #'
@@ -9285,14 +10706,14 @@ sagemaker_describe_algorithm <- function(AlgorithmName) {
 #' @rdname sagemaker_describe_app
 #'
 #' @aliases sagemaker_describe_app
-sagemaker_describe_app <- function(DomainId, UserProfileName, AppType, AppName) {
+sagemaker_describe_app <- function(DomainId, UserProfileName = NULL, AppType, AppName, SpaceName = NULL) {
   op <- new_operation(
     name = "DescribeApp",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$describe_app_input(DomainId = DomainId, UserProfileName = UserProfileName, AppType = AppType, AppName = AppName)
+  input <- .sagemaker$describe_app_input(DomainId = DomainId, UserProfileName = UserProfileName, AppType = AppType, AppName = AppName, SpaceName = SpaceName)
   output <- .sagemaker$describe_app_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -9404,7 +10825,12 @@ sagemaker_describe_app_image_config <- function(AppImageConfigName) {
 #'   CreatedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   ),
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
@@ -9412,7 +10838,12 @@ sagemaker_describe_app_image_config <- function(AppImageConfigName) {
 #'   LastModifiedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   ),
 #'   MetadataProperties = list(
 #'     CommitId = "string",
@@ -9473,14 +10904,15 @@ sagemaker_describe_artifact <- function(ArtifactArn) {
 #'     list(
 #'       DataSource = list(
 #'         S3DataSource = list(
-#'           S3DataType = "ManifestFile"|"S3Prefix",
+#'           S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
 #'           S3Uri = "string"
 #'         )
 #'       ),
 #'       CompressionType = "None"|"Gzip",
 #'       TargetAttributeName = "string",
 #'       ContentType = "string",
-#'       ChannelType = "training"|"validation"
+#'       ChannelType = "training"|"validation",
+#'       SampleWeightAttributeName = "string"
 #'     )
 #'   ),
 #'   OutputDataConfig = list(
@@ -9489,7 +10921,7 @@ sagemaker_describe_artifact <- function(ArtifactArn) {
 #'   ),
 #'   RoleArn = "string",
 #'   AutoMLJobObjective = list(
-#'     MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"
+#'     MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"|"RMSE"|"MAE"|"R2"|"BalancedAccuracy"|"Precision"|"PrecisionMacro"|"Recall"|"RecallMacro"
 #'   ),
 #'   ProblemType = "BinaryClassification"|"MulticlassClassification"|"Regression",
 #'   AutoMLJobConfig = list(
@@ -9514,8 +10946,16 @@ sagemaker_describe_artifact <- function(ArtifactArn) {
 #'       ValidationFraction = 123.0
 #'     ),
 #'     CandidateGenerationConfig = list(
-#'       FeatureSpecificationS3Uri = "string"
-#'     )
+#'       FeatureSpecificationS3Uri = "string",
+#'       AlgorithmsConfig = list(
+#'         list(
+#'           AutoMLAlgorithms = list(
+#'             "xgboost"|"linear-learner"|"mlp"|"lightgbm"|"catboost"|"randomforest"|"extra-trees"|"nn-torch"|"fastai"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     Mode = "AUTO"|"ENSEMBLING"|"HYPERPARAMETER_TUNING"
 #'   ),
 #'   CreationTime = as.POSIXct(
 #'     "2015-01-01"
@@ -9536,8 +10976,9 @@ sagemaker_describe_artifact <- function(ArtifactArn) {
 #'     CandidateName = "string",
 #'     FinalAutoMLJobObjectiveMetric = list(
 #'       Type = "Maximize"|"Minimize",
-#'       MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC",
-#'       Value = 123.0
+#'       MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"|"RMSE"|"MAE"|"R2"|"BalancedAccuracy"|"Precision"|"PrecisionMacro"|"Recall"|"RecallMacro",
+#'       Value = 123.0,
+#'       StandardMetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"|"RMSE"|"MAE"|"R2"|"BalancedAccuracy"|"Precision"|"PrecisionMacro"|"Recall"|"RecallMacro"
 #'     ),
 #'     ObjectiveStatus = "Succeeded"|"Pending"|"Failed",
 #'     CandidateSteps = list(
@@ -9574,16 +11015,27 @@ sagemaker_describe_artifact <- function(ArtifactArn) {
 #'       ),
 #'       CandidateMetrics = list(
 #'         list(
-#'           MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC",
+#'           MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"|"RMSE"|"MAE"|"R2"|"BalancedAccuracy"|"Precision"|"PrecisionMacro"|"Recall"|"RecallMacro",
 #'           Value = 123.0,
 #'           Set = "Train"|"Validation"|"Test",
-#'           StandardMetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"|"RMSE"|"MAE"|"R2"|"BalancedAccuracy"|"Precision"|"PrecisionMacro"|"Recall"|"RecallMacro"|"LogLoss"
+#'           StandardMetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"|"RMSE"|"MAE"|"R2"|"BalancedAccuracy"|"Precision"|"PrecisionMacro"|"Recall"|"RecallMacro"|"LogLoss"|"InferenceLatency"
+#'         )
+#'       )
+#'     ),
+#'     InferenceContainerDefinitions = list(
+#'       list(
+#'         list(
+#'           Image = "string",
+#'           ModelDataUrl = "string",
+#'           Environment = list(
+#'             "string"
+#'           )
 #'         )
 #'       )
 #'     )
 #'   ),
 #'   AutoMLJobStatus = "Completed"|"InProgress"|"Failed"|"Stopped"|"Stopping",
-#'   AutoMLJobSecondaryStatus = "Starting"|"AnalyzingData"|"FeatureEngineering"|"ModelTuning"|"MaxCandidatesReached"|"Failed"|"Stopped"|"MaxAutoMLJobRuntimeReached"|"Stopping"|"CandidateDefinitionsGenerated"|"GeneratingExplainabilityReport"|"Completed"|"ExplainabilityError"|"DeployingModel"|"ModelDeploymentError"|"GeneratingModelInsightsReport"|"ModelInsightsError",
+#'   AutoMLJobSecondaryStatus = "Starting"|"AnalyzingData"|"FeatureEngineering"|"ModelTuning"|"MaxCandidatesReached"|"Failed"|"Stopped"|"MaxAutoMLJobRuntimeReached"|"Stopping"|"CandidateDefinitionsGenerated"|"GeneratingExplainabilityReport"|"Completed"|"ExplainabilityError"|"DeployingModel"|"ModelDeploymentError"|"GeneratingModelInsightsReport"|"ModelInsightsError"|"TrainingModels",
 #'   GenerateCandidateDefinitionsOnly = TRUE|FALSE,
 #'   AutoMLJobArtifacts = list(
 #'     CandidateDefinitionNotebookLocation = "string",
@@ -9591,7 +11043,7 @@ sagemaker_describe_artifact <- function(ArtifactArn) {
 #'   ),
 #'   ResolvedAttributes = list(
 #'     AutoMLJobObjective = list(
-#'       MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"
+#'       MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"|"RMSE"|"MAE"|"R2"|"BalancedAccuracy"|"Precision"|"PrecisionMacro"|"Recall"|"RecallMacro"
 #'     ),
 #'     ProblemType = "BinaryClassification"|"MulticlassClassification"|"Regression",
 #'     CompletionCriteria = list(
@@ -9638,6 +11090,197 @@ sagemaker_describe_auto_ml_job <- function(AutoMLJobName) {
   return(response)
 }
 .sagemaker$operations$describe_auto_ml_job <- sagemaker_describe_auto_ml_job
+
+#' Returns information about an Amazon SageMaker AutoML V2 job
+#'
+#' @description
+#' Returns information about an Amazon SageMaker AutoML V2 job.
+#' 
+#' This API action is callable through SageMaker Canvas only. Calling it
+#' directly from the CLI or an SDK results in an error.
+#'
+#' @usage
+#' sagemaker_describe_auto_ml_job_v2(AutoMLJobName)
+#'
+#' @param AutoMLJobName &#91;required&#93; Requests information about an AutoML V2 job using its unique name.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AutoMLJobName = "string",
+#'   AutoMLJobArn = "string",
+#'   AutoMLJobInputDataConfig = list(
+#'     list(
+#'       ChannelType = "training"|"validation",
+#'       ContentType = "string",
+#'       CompressionType = "None"|"Gzip",
+#'       DataSource = list(
+#'         S3DataSource = list(
+#'           S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
+#'           S3Uri = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   OutputDataConfig = list(
+#'     KmsKeyId = "string",
+#'     S3OutputPath = "string"
+#'   ),
+#'   RoleArn = "string",
+#'   AutoMLJobObjective = list(
+#'     MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"|"RMSE"|"MAE"|"R2"|"BalancedAccuracy"|"Precision"|"PrecisionMacro"|"Recall"|"RecallMacro"
+#'   ),
+#'   AutoMLProblemTypeConfig = list(
+#'     ImageClassificationJobConfig = list(
+#'       CompletionCriteria = list(
+#'         MaxCandidates = 123,
+#'         MaxRuntimePerTrainingJobInSeconds = 123,
+#'         MaxAutoMLJobRuntimeInSeconds = 123
+#'       )
+#'     ),
+#'     TextClassificationJobConfig = list(
+#'       CompletionCriteria = list(
+#'         MaxCandidates = 123,
+#'         MaxRuntimePerTrainingJobInSeconds = 123,
+#'         MaxAutoMLJobRuntimeInSeconds = 123
+#'       ),
+#'       ContentColumn = "string",
+#'       TargetLabelColumn = "string"
+#'     )
+#'   ),
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   FailureReason = "string",
+#'   PartialFailureReasons = list(
+#'     list(
+#'       PartialFailureMessage = "string"
+#'     )
+#'   ),
+#'   BestCandidate = list(
+#'     CandidateName = "string",
+#'     FinalAutoMLJobObjectiveMetric = list(
+#'       Type = "Maximize"|"Minimize",
+#'       MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"|"RMSE"|"MAE"|"R2"|"BalancedAccuracy"|"Precision"|"PrecisionMacro"|"Recall"|"RecallMacro",
+#'       Value = 123.0,
+#'       StandardMetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"|"RMSE"|"MAE"|"R2"|"BalancedAccuracy"|"Precision"|"PrecisionMacro"|"Recall"|"RecallMacro"
+#'     ),
+#'     ObjectiveStatus = "Succeeded"|"Pending"|"Failed",
+#'     CandidateSteps = list(
+#'       list(
+#'         CandidateStepType = "AWS::SageMaker::TrainingJob"|"AWS::SageMaker::TransformJob"|"AWS::SageMaker::ProcessingJob",
+#'         CandidateStepArn = "string",
+#'         CandidateStepName = "string"
+#'       )
+#'     ),
+#'     CandidateStatus = "Completed"|"InProgress"|"Failed"|"Stopped"|"Stopping",
+#'     InferenceContainers = list(
+#'       list(
+#'         Image = "string",
+#'         ModelDataUrl = "string",
+#'         Environment = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     FailureReason = "string",
+#'     CandidateProperties = list(
+#'       CandidateArtifactLocations = list(
+#'         Explainability = "string",
+#'         ModelInsights = "string"
+#'       ),
+#'       CandidateMetrics = list(
+#'         list(
+#'           MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"|"RMSE"|"MAE"|"R2"|"BalancedAccuracy"|"Precision"|"PrecisionMacro"|"Recall"|"RecallMacro",
+#'           Value = 123.0,
+#'           Set = "Train"|"Validation"|"Test",
+#'           StandardMetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"|"RMSE"|"MAE"|"R2"|"BalancedAccuracy"|"Precision"|"PrecisionMacro"|"Recall"|"RecallMacro"|"LogLoss"|"InferenceLatency"
+#'         )
+#'       )
+#'     ),
+#'     InferenceContainerDefinitions = list(
+#'       list(
+#'         list(
+#'           Image = "string",
+#'           ModelDataUrl = "string",
+#'           Environment = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   AutoMLJobStatus = "Completed"|"InProgress"|"Failed"|"Stopped"|"Stopping",
+#'   AutoMLJobSecondaryStatus = "Starting"|"AnalyzingData"|"FeatureEngineering"|"ModelTuning"|"MaxCandidatesReached"|"Failed"|"Stopped"|"MaxAutoMLJobRuntimeReached"|"Stopping"|"CandidateDefinitionsGenerated"|"GeneratingExplainabilityReport"|"Completed"|"ExplainabilityError"|"DeployingModel"|"ModelDeploymentError"|"GeneratingModelInsightsReport"|"ModelInsightsError"|"TrainingModels",
+#'   ModelDeployConfig = list(
+#'     AutoGenerateEndpointName = TRUE|FALSE,
+#'     EndpointName = "string"
+#'   ),
+#'   ModelDeployResult = list(
+#'     EndpointName = "string"
+#'   ),
+#'   DataSplitConfig = list(
+#'     ValidationFraction = 123.0
+#'   ),
+#'   SecurityConfig = list(
+#'     VolumeKmsKeyId = "string",
+#'     EnableInterContainerTrafficEncryption = TRUE|FALSE,
+#'     VpcConfig = list(
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       Subnets = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_auto_ml_job_v2(
+#'   AutoMLJobName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_auto_ml_job_v2
+#'
+#' @aliases sagemaker_describe_auto_ml_job_v2
+sagemaker_describe_auto_ml_job_v2 <- function(AutoMLJobName) {
+  op <- new_operation(
+    name = "DescribeAutoMLJobV2",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_auto_ml_job_v2_input(AutoMLJobName = AutoMLJobName)
+  output <- .sagemaker$describe_auto_ml_job_v2_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_auto_ml_job_v2 <- sagemaker_describe_auto_ml_job_v2
 
 #' Gets details about the specified Git repository
 #'
@@ -9835,7 +11478,12 @@ sagemaker_describe_compilation_job <- function(CompilationJobName) {
 #'   CreatedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   ),
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
@@ -9843,7 +11491,12 @@ sagemaker_describe_compilation_job <- function(CompilationJobName) {
 #'   LastModifiedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   ),
 #'   LineageGroupArn = "string"
 #' )
@@ -9923,6 +11576,27 @@ sagemaker_describe_context <- function(ContextName) {
 #'   DataQualityJobInput = list(
 #'     EndpointInput = list(
 #'       EndpointName = "string",
+#'       LocalPath = "string",
+#'       S3InputMode = "Pipe"|"File",
+#'       S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'       FeaturesAttribute = "string",
+#'       InferenceAttribute = "string",
+#'       ProbabilityAttribute = "string",
+#'       ProbabilityThresholdAttribute = 123.0,
+#'       StartTimeOffset = "string",
+#'       EndTimeOffset = "string"
+#'     ),
+#'     BatchTransformInput = list(
+#'       DataCapturedDestinationS3Uri = "string",
+#'       DatasetFormat = list(
+#'         Csv = list(
+#'           Header = TRUE|FALSE
+#'         ),
+#'         Json = list(
+#'           Line = TRUE|FALSE
+#'         ),
+#'         Parquet = list()
+#'       ),
 #'       LocalPath = "string",
 #'       S3InputMode = "Pipe"|"File",
 #'       S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
@@ -10183,18 +11857,23 @@ sagemaker_describe_device_fleet <- function(DeviceFleetName) {
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       ),
 #'       LifecycleConfigArns = list(
 #'         "string"
+#'       ),
+#'       CodeRepositories = list(
+#'         list(
+#'           RepositoryUrl = "string"
+#'         )
 #'       )
 #'     ),
 #'     KernelGatewayAppSettings = list(
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       ),
 #'       CustomImages = list(
@@ -10212,7 +11891,7 @@ sagemaker_describe_device_fleet <- function(DeviceFleetName) {
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       )
 #'     ),
@@ -10224,7 +11903,7 @@ sagemaker_describe_device_fleet <- function(DeviceFleetName) {
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       ),
 #'       CustomImages = list(
@@ -10233,6 +11912,16 @@ sagemaker_describe_device_fleet <- function(DeviceFleetName) {
 #'           ImageVersionNumber = 123,
 #'           AppImageConfigName = "string"
 #'         )
+#'       )
+#'     ),
+#'     CanvasAppSettings = list(
+#'       TimeSeriesForecastingSettings = list(
+#'         Status = "ENABLED"|"DISABLED",
+#'         AmazonForecastRoleArn = "string"
+#'       ),
+#'       ModelRegisterSettings = list(
+#'         Status = "ENABLED"|"DISABLED",
+#'         CrossAccountModelRegisterRoleArn = "string"
 #'       )
 #'     )
 #'   ),
@@ -10255,13 +11944,54 @@ sagemaker_describe_device_fleet <- function(DeviceFleetName) {
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       )
-#'     )
+#'     ),
+#'     ExecutionRoleIdentityConfig = "USER_PROFILE_NAME"|"DISABLED"
 #'   ),
 #'   AppSecurityGroupManagement = "Service"|"Customer",
-#'   SecurityGroupIdForDomainBoundary = "string"
+#'   SecurityGroupIdForDomainBoundary = "string",
+#'   DefaultSpaceSettings = list(
+#'     ExecutionRole = "string",
+#'     SecurityGroups = list(
+#'       "string"
+#'     ),
+#'     JupyterServerAppSettings = list(
+#'       DefaultResourceSpec = list(
+#'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
+#'         LifecycleConfigArn = "string"
+#'       ),
+#'       LifecycleConfigArns = list(
+#'         "string"
+#'       ),
+#'       CodeRepositories = list(
+#'         list(
+#'           RepositoryUrl = "string"
+#'         )
+#'       )
+#'     ),
+#'     KernelGatewayAppSettings = list(
+#'       DefaultResourceSpec = list(
+#'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
+#'         LifecycleConfigArn = "string"
+#'       ),
+#'       CustomImages = list(
+#'         list(
+#'           ImageName = "string",
+#'           ImageVersionNumber = 123,
+#'           AppImageConfigName = "string"
+#'         )
+#'       ),
+#'       LifecycleConfigArns = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -10510,11 +12240,13 @@ sagemaker_describe_edge_packaging_job <- function(EdgePackagingJobName) {
 #'       ),
 #'       CurrentServerlessConfig = list(
 #'         MemorySizeInMB = 123,
-#'         MaxConcurrency = 123
+#'         MaxConcurrency = 123,
+#'         ProvisionedConcurrency = 123
 #'       ),
 #'       DesiredServerlessConfig = list(
 #'         MemorySizeInMB = 123,
-#'         MaxConcurrency = 123
+#'         MaxConcurrency = 123,
+#'         ProvisionedConcurrency = 123
 #'       )
 #'     )
 #'   ),
@@ -10567,8 +12299,12 @@ sagemaker_describe_edge_packaging_job <- function(EdgePackagingJobName) {
 #'       S3OutputPath = "string",
 #'       NotificationConfig = list(
 #'         SuccessTopic = "string",
-#'         ErrorTopic = "string"
-#'       )
+#'         ErrorTopic = "string",
+#'         IncludeInferenceResponseIn = list(
+#'           "SUCCESS_NOTIFICATION_TOPIC"|"ERROR_NOTIFICATION_TOPIC"
+#'         )
+#'       ),
+#'       S3FailurePath = "string"
 #'     )
 #'   ),
 #'   PendingDeploymentSummary = list(
@@ -10589,7 +12325,7 @@ sagemaker_describe_edge_packaging_job <- function(EdgePackagingJobName) {
 #'         DesiredWeight = 123.0,
 #'         CurrentInstanceCount = 123,
 #'         DesiredInstanceCount = 123,
-#'         InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge",
+#'         InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge",
 #'         AcceleratorType = "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"|"ml.eia2.medium"|"ml.eia2.large"|"ml.eia2.xlarge",
 #'         VariantStatus = list(
 #'           list(
@@ -10602,16 +12338,132 @@ sagemaker_describe_edge_packaging_job <- function(EdgePackagingJobName) {
 #'         ),
 #'         CurrentServerlessConfig = list(
 #'           MemorySizeInMB = 123,
-#'           MaxConcurrency = 123
+#'           MaxConcurrency = 123,
+#'           ProvisionedConcurrency = 123
 #'         ),
 #'         DesiredServerlessConfig = list(
 #'           MemorySizeInMB = 123,
-#'           MaxConcurrency = 123
+#'           MaxConcurrency = 123,
+#'           ProvisionedConcurrency = 123
 #'         )
 #'       )
 #'     ),
 #'     StartTime = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     ShadowProductionVariants = list(
+#'       list(
+#'         VariantName = "string",
+#'         DeployedImages = list(
+#'           list(
+#'             SpecifiedImage = "string",
+#'             ResolvedImage = "string",
+#'             ResolutionTime = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         CurrentWeight = 123.0,
+#'         DesiredWeight = 123.0,
+#'         CurrentInstanceCount = 123,
+#'         DesiredInstanceCount = 123,
+#'         InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge",
+#'         AcceleratorType = "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"|"ml.eia2.medium"|"ml.eia2.large"|"ml.eia2.xlarge",
+#'         VariantStatus = list(
+#'           list(
+#'             Status = "Creating"|"Updating"|"Deleting"|"ActivatingTraffic"|"Baking",
+#'             StatusMessage = "string",
+#'             StartTime = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         CurrentServerlessConfig = list(
+#'           MemorySizeInMB = 123,
+#'           MaxConcurrency = 123,
+#'           ProvisionedConcurrency = 123
+#'         ),
+#'         DesiredServerlessConfig = list(
+#'           MemorySizeInMB = 123,
+#'           MaxConcurrency = 123,
+#'           ProvisionedConcurrency = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ExplainerConfig = list(
+#'     ClarifyExplainerConfig = list(
+#'       EnableExplanations = "string",
+#'       InferenceConfig = list(
+#'         FeaturesAttribute = "string",
+#'         ContentTemplate = "string",
+#'         MaxRecordCount = 123,
+#'         MaxPayloadInMB = 123,
+#'         ProbabilityIndex = 123,
+#'         LabelIndex = 123,
+#'         ProbabilityAttribute = "string",
+#'         LabelAttribute = "string",
+#'         LabelHeaders = list(
+#'           "string"
+#'         ),
+#'         FeatureHeaders = list(
+#'           "string"
+#'         ),
+#'         FeatureTypes = list(
+#'           "numerical"|"categorical"|"text"
+#'         )
+#'       ),
+#'       ShapConfig = list(
+#'         ShapBaselineConfig = list(
+#'           MimeType = "string",
+#'           ShapBaseline = "string",
+#'           ShapBaselineUri = "string"
+#'         ),
+#'         NumberOfSamples = 123,
+#'         UseLogit = TRUE|FALSE,
+#'         Seed = 123,
+#'         TextConfig = list(
+#'           Language = "af"|"sq"|"ar"|"hy"|"eu"|"bn"|"bg"|"ca"|"zh"|"hr"|"cs"|"da"|"nl"|"en"|"et"|"fi"|"fr"|"de"|"el"|"gu"|"he"|"hi"|"hu"|"is"|"id"|"ga"|"it"|"kn"|"ky"|"lv"|"lt"|"lb"|"mk"|"ml"|"mr"|"ne"|"nb"|"fa"|"pl"|"pt"|"ro"|"ru"|"sa"|"sr"|"tn"|"si"|"sk"|"sl"|"es"|"sv"|"tl"|"ta"|"tt"|"te"|"tr"|"uk"|"ur"|"yo"|"lij"|"xx",
+#'           Granularity = "token"|"sentence"|"paragraph"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ShadowProductionVariants = list(
+#'     list(
+#'       VariantName = "string",
+#'       DeployedImages = list(
+#'         list(
+#'           SpecifiedImage = "string",
+#'           ResolvedImage = "string",
+#'           ResolutionTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       CurrentWeight = 123.0,
+#'       DesiredWeight = 123.0,
+#'       CurrentInstanceCount = 123,
+#'       DesiredInstanceCount = 123,
+#'       VariantStatus = list(
+#'         list(
+#'           Status = "Creating"|"Updating"|"Deleting"|"ActivatingTraffic"|"Baking",
+#'           StatusMessage = "string",
+#'           StartTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       CurrentServerlessConfig = list(
+#'         MemorySizeInMB = 123,
+#'         MaxConcurrency = 123,
+#'         ProvisionedConcurrency = 123
+#'       ),
+#'       DesiredServerlessConfig = list(
+#'         MemorySizeInMB = 123,
+#'         MaxConcurrency = 123,
+#'         ProvisionedConcurrency = 123
+#'       )
 #'     )
 #'   )
 #' )
@@ -10669,7 +12521,7 @@ sagemaker_describe_endpoint <- function(EndpointName) {
 #'       VariantName = "string",
 #'       ModelName = "string",
 #'       InitialInstanceCount = 123,
-#'       InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge",
+#'       InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge",
 #'       InitialVariantWeight = 123.0,
 #'       AcceleratorType = "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"|"ml.eia2.medium"|"ml.eia2.large"|"ml.eia2.xlarge",
 #'       CoreDumpConfig = list(
@@ -10678,8 +12530,13 @@ sagemaker_describe_endpoint <- function(EndpointName) {
 #'       ),
 #'       ServerlessConfig = list(
 #'         MemorySizeInMB = 123,
-#'         MaxConcurrency = 123
-#'       )
+#'         MaxConcurrency = 123,
+#'         ProvisionedConcurrency = 123
+#'       ),
+#'       VolumeSizeInGB = 123,
+#'       ModelDataDownloadTimeoutInSeconds = 123,
+#'       ContainerStartupHealthCheckTimeoutInSeconds = 123,
+#'       EnableSSMAccess = TRUE|FALSE
 #'     )
 #'   ),
 #'   DataCaptureConfig = list(
@@ -10714,8 +12571,73 @@ sagemaker_describe_endpoint <- function(EndpointName) {
 #'       S3OutputPath = "string",
 #'       NotificationConfig = list(
 #'         SuccessTopic = "string",
-#'         ErrorTopic = "string"
+#'         ErrorTopic = "string",
+#'         IncludeInferenceResponseIn = list(
+#'           "SUCCESS_NOTIFICATION_TOPIC"|"ERROR_NOTIFICATION_TOPIC"
+#'         )
+#'       ),
+#'       S3FailurePath = "string"
+#'     )
+#'   ),
+#'   ExplainerConfig = list(
+#'     ClarifyExplainerConfig = list(
+#'       EnableExplanations = "string",
+#'       InferenceConfig = list(
+#'         FeaturesAttribute = "string",
+#'         ContentTemplate = "string",
+#'         MaxRecordCount = 123,
+#'         MaxPayloadInMB = 123,
+#'         ProbabilityIndex = 123,
+#'         LabelIndex = 123,
+#'         ProbabilityAttribute = "string",
+#'         LabelAttribute = "string",
+#'         LabelHeaders = list(
+#'           "string"
+#'         ),
+#'         FeatureHeaders = list(
+#'           "string"
+#'         ),
+#'         FeatureTypes = list(
+#'           "numerical"|"categorical"|"text"
+#'         )
+#'       ),
+#'       ShapConfig = list(
+#'         ShapBaselineConfig = list(
+#'           MimeType = "string",
+#'           ShapBaseline = "string",
+#'           ShapBaselineUri = "string"
+#'         ),
+#'         NumberOfSamples = 123,
+#'         UseLogit = TRUE|FALSE,
+#'         Seed = 123,
+#'         TextConfig = list(
+#'           Language = "af"|"sq"|"ar"|"hy"|"eu"|"bn"|"bg"|"ca"|"zh"|"hr"|"cs"|"da"|"nl"|"en"|"et"|"fi"|"fr"|"de"|"el"|"gu"|"he"|"hi"|"hu"|"is"|"id"|"ga"|"it"|"kn"|"ky"|"lv"|"lt"|"lb"|"mk"|"ml"|"mr"|"ne"|"nb"|"fa"|"pl"|"pt"|"ro"|"ru"|"sa"|"sr"|"tn"|"si"|"sk"|"sl"|"es"|"sv"|"tl"|"ta"|"tt"|"te"|"tr"|"uk"|"ur"|"yo"|"lij"|"xx",
+#'           Granularity = "token"|"sentence"|"paragraph"
+#'         )
 #'       )
+#'     )
+#'   ),
+#'   ShadowProductionVariants = list(
+#'     list(
+#'       VariantName = "string",
+#'       ModelName = "string",
+#'       InitialInstanceCount = 123,
+#'       InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge",
+#'       InitialVariantWeight = 123.0,
+#'       AcceleratorType = "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"|"ml.eia2.medium"|"ml.eia2.large"|"ml.eia2.xlarge",
+#'       CoreDumpConfig = list(
+#'         DestinationS3Uri = "string",
+#'         KmsKeyId = "string"
+#'       ),
+#'       ServerlessConfig = list(
+#'         MemorySizeInMB = 123,
+#'         MaxConcurrency = 123,
+#'         ProvisionedConcurrency = 123
+#'       ),
+#'       VolumeSizeInGB = 123,
+#'       ModelDataDownloadTimeoutInSeconds = 123,
+#'       ContainerStartupHealthCheckTimeoutInSeconds = 123,
+#'       EnableSSMAccess = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -10778,7 +12700,12 @@ sagemaker_describe_endpoint_config <- function(EndpointConfigName) {
 #'   CreatedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   ),
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
@@ -10786,7 +12713,12 @@ sagemaker_describe_endpoint_config <- function(EndpointConfigName) {
 #'   LastModifiedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -10871,7 +12803,8 @@ sagemaker_describe_experiment <- function(ExperimentName) {
 #'       TableName = "string",
 #'       Catalog = "string",
 #'       Database = "string"
-#'     )
+#'     ),
+#'     TableFormat = "Glue"|"Iceberg"
 #'   ),
 #'   RoleArn = "string",
 #'   FeatureGroupStatus = "Creating"|"Created"|"CreateFailed"|"Deleting"|"DeleteFailed",
@@ -11070,6 +13003,152 @@ sagemaker_describe_flow_definition <- function(FlowDefinitionName) {
 }
 .sagemaker$operations$describe_flow_definition <- sagemaker_describe_flow_definition
 
+#' Describe a hub
+#'
+#' @description
+#' Describe a hub.
+#' 
+#' Hub APIs are only callable through SageMaker Studio.
+#'
+#' @usage
+#' sagemaker_describe_hub(HubName)
+#'
+#' @param HubName &#91;required&#93; The name of the hub to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HubName = "string",
+#'   HubArn = "string",
+#'   HubDisplayName = "string",
+#'   HubDescription = "string",
+#'   HubSearchKeywords = list(
+#'     "string"
+#'   ),
+#'   S3StorageConfig = list(
+#'     S3OutputPath = "string"
+#'   ),
+#'   HubStatus = "InService"|"Creating"|"Updating"|"Deleting"|"CreateFailed"|"UpdateFailed"|"DeleteFailed",
+#'   FailureReason = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_hub(
+#'   HubName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_hub
+#'
+#' @aliases sagemaker_describe_hub
+sagemaker_describe_hub <- function(HubName) {
+  op <- new_operation(
+    name = "DescribeHub",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_hub_input(HubName = HubName)
+  output <- .sagemaker$describe_hub_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_hub <- sagemaker_describe_hub
+
+#' Describe the content of a hub
+#'
+#' @description
+#' Describe the content of a hub.
+#' 
+#' Hub APIs are only callable through SageMaker Studio.
+#'
+#' @usage
+#' sagemaker_describe_hub_content(HubName, HubContentType, HubContentName,
+#'   HubContentVersion)
+#'
+#' @param HubName &#91;required&#93; The name of the hub that contains the content to describe.
+#' @param HubContentType &#91;required&#93; The type of content in the hub.
+#' @param HubContentName &#91;required&#93; The name of the content to describe.
+#' @param HubContentVersion The version of the content to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HubContentName = "string",
+#'   HubContentArn = "string",
+#'   HubContentVersion = "string",
+#'   HubContentType = "Model"|"Notebook",
+#'   DocumentSchemaVersion = "string",
+#'   HubName = "string",
+#'   HubArn = "string",
+#'   HubContentDisplayName = "string",
+#'   HubContentDescription = "string",
+#'   HubContentMarkdown = "string",
+#'   HubContentDocument = "string",
+#'   HubContentSearchKeywords = list(
+#'     "string"
+#'   ),
+#'   HubContentDependencies = list(
+#'     list(
+#'       DependencyOriginPath = "string",
+#'       DependencyCopyPath = "string"
+#'     )
+#'   ),
+#'   HubContentStatus = "Available"|"Importing"|"Deleting"|"ImportFailed"|"DeleteFailed",
+#'   FailureReason = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_hub_content(
+#'   HubName = "string",
+#'   HubContentType = "Model"|"Notebook",
+#'   HubContentName = "string",
+#'   HubContentVersion = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_hub_content
+#'
+#' @aliases sagemaker_describe_hub_content
+sagemaker_describe_hub_content <- function(HubName, HubContentType, HubContentName, HubContentVersion = NULL) {
+  op <- new_operation(
+    name = "DescribeHubContent",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_hub_content_input(HubName = HubName, HubContentType = HubContentType, HubContentName = HubContentName, HubContentVersion = HubContentVersion)
+  output <- .sagemaker$describe_hub_content_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_hub_content <- sagemaker_describe_hub_content
+
 #' Returns information about the requested human task user interface
 #' (worker task template)
 #'
@@ -11129,10 +13208,13 @@ sagemaker_describe_human_task_ui <- function(HumanTaskUiName) {
 }
 .sagemaker$operations$describe_human_task_ui <- sagemaker_describe_human_task_ui
 
-#' Gets a description of a hyperparameter tuning job
+#' Returns a description of a hyperparameter tuning job, depending on the
+#' fields selected
 #'
 #' @description
-#' Gets a description of a hyperparameter tuning job.
+#' Returns a description of a hyperparameter tuning job, depending on the
+#' fields selected. These fields can include the name, Amazon Resource Name
+#' (ARN), job status of your tuning job and more.
 #'
 #' @usage
 #' sagemaker_describe_hyper_parameter_tuning_job(
@@ -11147,14 +13229,21 @@ sagemaker_describe_human_task_ui <- function(HumanTaskUiName) {
 #'   HyperParameterTuningJobName = "string",
 #'   HyperParameterTuningJobArn = "string",
 #'   HyperParameterTuningJobConfig = list(
-#'     Strategy = "Bayesian"|"Random",
+#'     Strategy = "Bayesian"|"Random"|"Hyperband"|"Grid",
+#'     StrategyConfig = list(
+#'       HyperbandStrategyConfig = list(
+#'         MinResource = 123,
+#'         MaxResource = 123
+#'       )
+#'     ),
 #'     HyperParameterTuningJobObjective = list(
 #'       Type = "Maximize"|"Minimize",
 #'       MetricName = "string"
 #'     ),
 #'     ResourceLimits = list(
 #'       MaxNumberOfTrainingJobs = 123,
-#'       MaxParallelTrainingJobs = 123
+#'       MaxParallelTrainingJobs = 123,
+#'       MaxRuntimeInSeconds = 123
 #'     ),
 #'     ParameterRanges = list(
 #'       IntegerParameterRanges = list(
@@ -11180,12 +13269,25 @@ sagemaker_describe_human_task_ui <- function(HumanTaskUiName) {
 #'             "string"
 #'           )
 #'         )
+#'       ),
+#'       AutoParameters = list(
+#'         list(
+#'           Name = "string",
+#'           ValueHint = "string"
+#'         )
 #'       )
 #'     ),
 #'     TrainingJobEarlyStoppingType = "Off"|"Auto",
 #'     TuningJobCompletionCriteria = list(
-#'       TargetObjectiveMetricValue = 123.0
-#'     )
+#'       TargetObjectiveMetricValue = 123.0,
+#'       BestObjectiveNotImproving = list(
+#'         MaxNumberOfTrainingJobsNotImproving = 123
+#'       ),
+#'       ConvergenceDetected = list(
+#'         CompleteOnConvergence = "Disabled"|"Enabled"
+#'       )
+#'     ),
+#'     RandomSeed = 123
 #'   ),
 #'   TrainingJobDefinition = list(
 #'     DefinitionName = "string",
@@ -11216,6 +13318,12 @@ sagemaker_describe_human_task_ui <- function(HumanTaskUiName) {
 #'           Values = list(
 #'             "string"
 #'           )
+#'         )
+#'       ),
+#'       AutoParameters = list(
+#'         list(
+#'           Name = "string",
+#'           ValueHint = "string"
 #'         )
 #'       )
 #'     ),
@@ -11278,17 +13386,18 @@ sagemaker_describe_human_task_ui <- function(HumanTaskUiName) {
 #'       S3OutputPath = "string"
 #'     ),
 #'     ResourceConfig = list(
-#'       InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'       InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'       InstanceCount = 123,
 #'       VolumeSizeInGB = 123,
 #'       VolumeKmsKeyId = "string",
 #'       InstanceGroups = list(
 #'         list(
-#'           InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'           InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'           InstanceCount = 123,
 #'           InstanceGroupName = "string"
 #'         )
-#'       )
+#'       ),
+#'       KeepAlivePeriodInSeconds = 123
 #'     ),
 #'     StoppingCondition = list(
 #'       MaxRuntimeInSeconds = 123,
@@ -11305,18 +13414,21 @@ sagemaker_describe_human_task_ui <- function(HumanTaskUiName) {
 #'       MaximumRetryAttempts = 123
 #'     ),
 #'     HyperParameterTuningResourceConfig = list(
-#'       InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'       InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'       InstanceCount = 123,
 #'       VolumeSizeInGB = 123,
 #'       VolumeKmsKeyId = "string",
 #'       AllocationStrategy = "Prioritized",
 #'       InstanceConfigs = list(
 #'         list(
-#'           InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'           InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'           InstanceCount = 123,
 #'           VolumeSizeInGB = 123
 #'         )
 #'       )
+#'     ),
+#'     Environment = list(
+#'       "string"
 #'     )
 #'   ),
 #'   TrainingJobDefinitions = list(
@@ -11349,6 +13461,12 @@ sagemaker_describe_human_task_ui <- function(HumanTaskUiName) {
 #'             Values = list(
 #'               "string"
 #'             )
+#'           )
+#'         ),
+#'         AutoParameters = list(
+#'           list(
+#'             Name = "string",
+#'             ValueHint = "string"
 #'           )
 #'         )
 #'       ),
@@ -11411,17 +13529,18 @@ sagemaker_describe_human_task_ui <- function(HumanTaskUiName) {
 #'         S3OutputPath = "string"
 #'       ),
 #'       ResourceConfig = list(
-#'         InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'         InstanceCount = 123,
 #'         VolumeSizeInGB = 123,
 #'         VolumeKmsKeyId = "string",
 #'         InstanceGroups = list(
 #'           list(
-#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'             InstanceCount = 123,
 #'             InstanceGroupName = "string"
 #'           )
-#'         )
+#'         ),
+#'         KeepAlivePeriodInSeconds = 123
 #'       ),
 #'       StoppingCondition = list(
 #'         MaxRuntimeInSeconds = 123,
@@ -11438,18 +13557,21 @@ sagemaker_describe_human_task_ui <- function(HumanTaskUiName) {
 #'         MaximumRetryAttempts = 123
 #'       ),
 #'       HyperParameterTuningResourceConfig = list(
-#'         InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'         InstanceCount = 123,
 #'         VolumeSizeInGB = 123,
 #'         VolumeKmsKeyId = "string",
 #'         AllocationStrategy = "Prioritized",
 #'         InstanceConfigs = list(
 #'           list(
-#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'             InstanceCount = 123,
 #'             VolumeSizeInGB = 123
 #'           )
 #'         )
+#'       ),
+#'       Environment = list(
+#'         "string"
 #'       )
 #'     )
 #'   ),
@@ -11535,7 +13657,19 @@ sagemaker_describe_human_task_ui <- function(HumanTaskUiName) {
 #'     ),
 #'     WarmStartType = "IdenticalDataAndAlgorithm"|"TransferLearning"
 #'   ),
-#'   FailureReason = "string"
+#'   FailureReason = "string",
+#'   TuningJobCompletionDetails = list(
+#'     NumberOfTrainingJobsObjectiveNotImproving = 123,
+#'     ConvergenceDetectedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   ConsumedResources = list(
+#'     RuntimeInSeconds = 123
+#'   ),
+#'   Autotune = list(
+#'     Mode = "Enabled"
+#'   )
 #' )
 #' ```
 #'
@@ -11633,11 +13767,12 @@ sagemaker_describe_image <- function(ImageName) {
 #' Describes a version of a SageMaker image.
 #'
 #' @usage
-#' sagemaker_describe_image_version(ImageName, Version)
+#' sagemaker_describe_image_version(ImageName, Version, Alias)
 #'
 #' @param ImageName &#91;required&#93; The name of the image.
 #' @param Version The version of the image. If not specified, the latest version is
 #' described.
+#' @param Alias The alias of the image version.
 #'
 #' @return
 #' A list with the following syntax:
@@ -11655,7 +13790,14 @@ sagemaker_describe_image <- function(ImageName) {
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   Version = 123
+#'   Version = 123,
+#'   VendorGuidance = "NOT_PROVIDED"|"STABLE"|"TO_BE_ARCHIVED"|"ARCHIVED",
+#'   JobType = "TRAINING"|"INFERENCE"|"NOTEBOOK_KERNEL",
+#'   MLFramework = "string",
+#'   ProgrammingLang = "string",
+#'   Processor = "CPU"|"GPU",
+#'   Horovod = TRUE|FALSE,
+#'   ReleaseNotes = "string"
 #' )
 #' ```
 #'
@@ -11663,7 +13805,8 @@ sagemaker_describe_image <- function(ImageName) {
 #' ```
 #' svc$describe_image_version(
 #'   ImageName = "string",
-#'   Version = 123
+#'   Version = 123,
+#'   Alias = "string"
 #' )
 #' ```
 #'
@@ -11672,14 +13815,14 @@ sagemaker_describe_image <- function(ImageName) {
 #' @rdname sagemaker_describe_image_version
 #'
 #' @aliases sagemaker_describe_image_version
-sagemaker_describe_image_version <- function(ImageName, Version = NULL) {
+sagemaker_describe_image_version <- function(ImageName, Version = NULL, Alias = NULL) {
   op <- new_operation(
     name = "DescribeImageVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$describe_image_version_input(ImageName = ImageName, Version = Version)
+  input <- .sagemaker$describe_image_version_input(ImageName = ImageName, Version = Version, Alias = Alias)
   output <- .sagemaker$describe_image_version_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -11688,6 +13831,118 @@ sagemaker_describe_image_version <- function(ImageName, Version = NULL) {
   return(response)
 }
 .sagemaker$operations$describe_image_version <- sagemaker_describe_image_version
+
+#' Returns details about an inference experiment
+#'
+#' @description
+#' Returns details about an inference experiment.
+#'
+#' @usage
+#' sagemaker_describe_inference_experiment(Name)
+#'
+#' @param Name &#91;required&#93; The name of the inference experiment to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Name = "string",
+#'   Type = "ShadowMode",
+#'   Schedule = list(
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   Status = "Creating"|"Created"|"Updating"|"Running"|"Starting"|"Stopping"|"Completed"|"Cancelled",
+#'   StatusReason = "string",
+#'   Description = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CompletionTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   RoleArn = "string",
+#'   EndpointMetadata = list(
+#'     EndpointName = "string",
+#'     EndpointConfigName = "string",
+#'     EndpointStatus = "OutOfService"|"Creating"|"Updating"|"SystemUpdating"|"RollingBack"|"InService"|"Deleting"|"Failed",
+#'     FailureReason = "string"
+#'   ),
+#'   ModelVariants = list(
+#'     list(
+#'       ModelName = "string",
+#'       VariantName = "string",
+#'       InfrastructureConfig = list(
+#'         InfrastructureType = "RealTimeInference",
+#'         RealTimeInferenceConfig = list(
+#'           InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
+#'           InstanceCount = 123
+#'         )
+#'       ),
+#'       Status = "Creating"|"Updating"|"InService"|"Deleting"|"Deleted"
+#'     )
+#'   ),
+#'   DataStorageConfig = list(
+#'     Destination = "string",
+#'     KmsKey = "string",
+#'     ContentType = list(
+#'       CsvContentTypes = list(
+#'         "string"
+#'       ),
+#'       JsonContentTypes = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   ShadowModeConfig = list(
+#'     SourceModelVariantName = "string",
+#'     ShadowModelVariants = list(
+#'       list(
+#'         ShadowModelVariantName = "string",
+#'         SamplingPercentage = 123
+#'       )
+#'     )
+#'   ),
+#'   KmsKey = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_inference_experiment(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_inference_experiment
+#'
+#' @aliases sagemaker_describe_inference_experiment
+sagemaker_describe_inference_experiment <- function(Name) {
+  op <- new_operation(
+    name = "DescribeInferenceExperiment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_inference_experiment_input(Name = Name)
+  output <- .sagemaker$describe_inference_experiment_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_inference_experiment <- sagemaker_describe_inference_experiment
 
 #' Provides the results of the Inference Recommender job
 #'
@@ -11740,7 +13995,7 @@ sagemaker_describe_image_version <- function(ImageName, Version = NULL) {
 #'     ),
 #'     EndpointConfigurations = list(
 #'       list(
-#'         InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge",
+#'         InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge",
 #'         InferenceSpecificationName = "string",
 #'         EnvironmentParameterRanges = list(
 #'           CategoricalParameterRanges = list(
@@ -11754,7 +14009,38 @@ sagemaker_describe_image_version <- function(ImageName, Version = NULL) {
 #'         )
 #'       )
 #'     ),
-#'     VolumeKmsKeyId = "string"
+#'     VolumeKmsKeyId = "string",
+#'     ContainerConfig = list(
+#'       Domain = "string",
+#'       Task = "string",
+#'       Framework = "string",
+#'       FrameworkVersion = "string",
+#'       PayloadConfig = list(
+#'         SamplePayloadUrl = "string",
+#'         SupportedContentTypes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       NearestModelName = "string",
+#'       SupportedInstanceTypes = list(
+#'         "string"
+#'       ),
+#'       DataInputConfig = "string"
+#'     ),
+#'     Endpoints = list(
+#'       list(
+#'         EndpointName = "string"
+#'       )
+#'     ),
+#'     VpcConfig = list(
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       Subnets = list(
+#'         "string"
+#'       )
+#'     ),
+#'     ModelName = "string"
 #'   ),
 #'   StoppingConditions = list(
 #'     MaxInvocations = 123,
@@ -11771,12 +14057,14 @@ sagemaker_describe_image_version <- function(ImageName, Version = NULL) {
 #'         CostPerHour = 123.0,
 #'         CostPerInference = 123.0,
 #'         MaxInvocations = 123,
-#'         ModelLatency = 123
+#'         ModelLatency = 123,
+#'         CpuUtilization = 123.0,
+#'         MemoryUtilization = 123.0
 #'       ),
 #'       EndpointConfiguration = list(
 #'         EndpointName = "string",
 #'         VariantName = "string",
-#'         InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge",
+#'         InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge",
 #'         InitialInstanceCount = 123
 #'       ),
 #'       ModelConfiguration = list(
@@ -11787,7 +14075,26 @@ sagemaker_describe_image_version <- function(ImageName, Version = NULL) {
 #'             ValueType = "string",
 #'             Value = "string"
 #'           )
-#'         )
+#'         ),
+#'         CompilationJobName = "string"
+#'       ),
+#'       RecommendationId = "string",
+#'       InvocationEndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InvocationStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   EndpointPerformances = list(
+#'     list(
+#'       Metrics = list(
+#'         MaxInvocations = 123,
+#'         ModelLatency = 123
+#'       ),
+#'       EndpointInfo = list(
+#'         EndpointName = "string"
 #'       )
 #'     )
 #'   )
@@ -11993,7 +14300,12 @@ sagemaker_describe_labeling_job <- function(LabelingJobName) {
 #'   CreatedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   ),
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
@@ -12001,7 +14313,12 @@ sagemaker_describe_labeling_job <- function(LabelingJobName) {
 #'   LastModifiedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -12109,7 +14426,19 @@ sagemaker_describe_lineage_group <- function(LineageGroupName) {
 #'     "2015-01-01"
 #'   ),
 #'   ModelArn = "string",
-#'   EnableNetworkIsolation = TRUE|FALSE
+#'   EnableNetworkIsolation = TRUE|FALSE,
+#'   DeploymentRecommendation = list(
+#'     RecommendationStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED"|"NOT_APPLICABLE",
+#'     RealTimeInferenceRecommendations = list(
+#'       list(
+#'         RecommendationId = "string",
+#'         InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge",
+#'         Environment = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -12178,6 +14507,27 @@ sagemaker_describe_model <- function(ModelName) {
 #'   ModelBiasJobInput = list(
 #'     EndpointInput = list(
 #'       EndpointName = "string",
+#'       LocalPath = "string",
+#'       S3InputMode = "Pipe"|"File",
+#'       S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'       FeaturesAttribute = "string",
+#'       InferenceAttribute = "string",
+#'       ProbabilityAttribute = "string",
+#'       ProbabilityThresholdAttribute = 123.0,
+#'       StartTimeOffset = "string",
+#'       EndTimeOffset = "string"
+#'     ),
+#'     BatchTransformInput = list(
+#'       DataCapturedDestinationS3Uri = "string",
+#'       DatasetFormat = list(
+#'         Csv = list(
+#'           Header = TRUE|FALSE
+#'         ),
+#'         Json = list(
+#'           Line = TRUE|FALSE
+#'         ),
+#'         Parquet = list()
+#'       ),
 #'       LocalPath = "string",
 #'       S3InputMode = "Pipe"|"File",
 #'       S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
@@ -12260,6 +14610,156 @@ sagemaker_describe_model_bias_job_definition <- function(JobDefinitionName) {
 }
 .sagemaker$operations$describe_model_bias_job_definition <- sagemaker_describe_model_bias_job_definition
 
+#' Describes the content, creation time, and security configuration of an
+#' Amazon SageMaker Model Card
+#'
+#' @description
+#' Describes the content, creation time, and security configuration of an
+#' Amazon SageMaker Model Card.
+#'
+#' @usage
+#' sagemaker_describe_model_card(ModelCardName, ModelCardVersion)
+#'
+#' @param ModelCardName &#91;required&#93; The name of the model card to describe.
+#' @param ModelCardVersion The version of the model card to describe. If a version is not provided,
+#' then the latest version of the model card is described.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModelCardArn = "string",
+#'   ModelCardName = "string",
+#'   ModelCardVersion = 123,
+#'   Content = "string",
+#'   ModelCardStatus = "Draft"|"PendingReview"|"Approved"|"Archived",
+#'   SecurityConfig = list(
+#'     KmsKeyId = "string"
+#'   ),
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreatedBy = list(
+#'     UserProfileArn = "string",
+#'     UserProfileName = "string",
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedBy = list(
+#'     UserProfileArn = "string",
+#'     UserProfileName = "string",
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
+#'   ),
+#'   ModelCardProcessingStatus = "DeleteInProgress"|"DeletePending"|"ContentDeleted"|"ExportJobsDeleted"|"DeleteCompleted"|"DeleteFailed"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_model_card(
+#'   ModelCardName = "string",
+#'   ModelCardVersion = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_model_card
+#'
+#' @aliases sagemaker_describe_model_card
+sagemaker_describe_model_card <- function(ModelCardName, ModelCardVersion = NULL) {
+  op <- new_operation(
+    name = "DescribeModelCard",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_model_card_input(ModelCardName = ModelCardName, ModelCardVersion = ModelCardVersion)
+  output <- .sagemaker$describe_model_card_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_model_card <- sagemaker_describe_model_card
+
+#' Describes an Amazon SageMaker Model Card export job
+#'
+#' @description
+#' Describes an Amazon SageMaker Model Card export job.
+#'
+#' @usage
+#' sagemaker_describe_model_card_export_job(ModelCardExportJobArn)
+#'
+#' @param ModelCardExportJobArn &#91;required&#93; The Amazon Resource Name (ARN) of the model card export job to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModelCardExportJobName = "string",
+#'   ModelCardExportJobArn = "string",
+#'   Status = "InProgress"|"Completed"|"Failed",
+#'   ModelCardName = "string",
+#'   ModelCardVersion = 123,
+#'   OutputConfig = list(
+#'     S3OutputPath = "string"
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   FailureReason = "string",
+#'   ExportArtifacts = list(
+#'     S3ExportArtifacts = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_model_card_export_job(
+#'   ModelCardExportJobArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_model_card_export_job
+#'
+#' @aliases sagemaker_describe_model_card_export_job
+sagemaker_describe_model_card_export_job <- function(ModelCardExportJobArn) {
+  op <- new_operation(
+    name = "DescribeModelCardExportJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_model_card_export_job_input(ModelCardExportJobArn = ModelCardExportJobArn)
+  output <- .sagemaker$describe_model_card_export_job_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_model_card_export_job <- sagemaker_describe_model_card_export_job
+
 #' Returns a description of a model explainability job definition
 #'
 #' @description
@@ -12298,6 +14798,27 @@ sagemaker_describe_model_bias_job_definition <- function(JobDefinitionName) {
 #'   ModelExplainabilityJobInput = list(
 #'     EndpointInput = list(
 #'       EndpointName = "string",
+#'       LocalPath = "string",
+#'       S3InputMode = "Pipe"|"File",
+#'       S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'       FeaturesAttribute = "string",
+#'       InferenceAttribute = "string",
+#'       ProbabilityAttribute = "string",
+#'       ProbabilityThresholdAttribute = 123.0,
+#'       StartTimeOffset = "string",
+#'       EndTimeOffset = "string"
+#'     ),
+#'     BatchTransformInput = list(
+#'       DataCapturedDestinationS3Uri = "string",
+#'       DatasetFormat = list(
+#'         Csv = list(
+#'           Header = TRUE|FALSE
+#'         ),
+#'         Json = list(
+#'           Line = TRUE|FALSE
+#'         ),
+#'         Parquet = list()
+#'       ),
 #'       LocalPath = "string",
 #'       S3InputMode = "Pipe"|"File",
 #'       S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
@@ -12430,7 +14951,7 @@ sagemaker_describe_model_explainability_job_definition <- function(JobDefinition
 #'       "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'     ),
 #'     SupportedRealtimeInferenceInstanceTypes = list(
-#'       "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"
+#'       "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge"
 #'     ),
 #'     SupportedContentTypes = list(
 #'       "string"
@@ -12507,7 +15028,12 @@ sagemaker_describe_model_explainability_job_definition <- function(JobDefinition
 #'   CreatedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   ),
 #'   MetadataProperties = list(
 #'     CommitId = "string",
@@ -12571,7 +15097,12 @@ sagemaker_describe_model_explainability_job_definition <- function(JobDefinition
 #'   LastModifiedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   ),
 #'   ApprovalDescription = "string",
 #'   CustomerMetadataProperties = list(
@@ -12661,7 +15192,7 @@ sagemaker_describe_model_explainability_job_definition <- function(JobDefinition
 #'         "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       ),
 #'       SupportedRealtimeInferenceInstanceTypes = list(
-#'         "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"
+#'         "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge"
 #'       ),
 #'       SupportedContentTypes = list(
 #'         "string"
@@ -12726,7 +15257,12 @@ sagemaker_describe_model_package <- function(ModelPackageName) {
 #'   CreatedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   ),
 #'   ModelPackageGroupStatus = "Pending"|"InProgress"|"Completed"|"Failed"|"Deleting"|"DeleteFailed"
 #' )
@@ -12805,6 +15341,27 @@ sagemaker_describe_model_package_group <- function(ModelPackageGroupName) {
 #'   ModelQualityJobInput = list(
 #'     EndpointInput = list(
 #'       EndpointName = "string",
+#'       LocalPath = "string",
+#'       S3InputMode = "Pipe"|"File",
+#'       S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'       FeaturesAttribute = "string",
+#'       InferenceAttribute = "string",
+#'       ProbabilityAttribute = "string",
+#'       ProbabilityThresholdAttribute = 123.0,
+#'       StartTimeOffset = "string",
+#'       EndTimeOffset = "string"
+#'     ),
+#'     BatchTransformInput = list(
+#'       DataCapturedDestinationS3Uri = "string",
+#'       DatasetFormat = list(
+#'         Csv = list(
+#'           Header = TRUE|FALSE
+#'         ),
+#'         Json = list(
+#'           Line = TRUE|FALSE
+#'         ),
+#'         Parquet = list()
+#'       ),
 #'       LocalPath = "string",
 #'       S3InputMode = "Pipe"|"File",
 #'       S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
@@ -12930,6 +15487,27 @@ sagemaker_describe_model_quality_job_definition <- function(JobDefinitionName) {
 #'         list(
 #'           EndpointInput = list(
 #'             EndpointName = "string",
+#'             LocalPath = "string",
+#'             S3InputMode = "Pipe"|"File",
+#'             S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'             FeaturesAttribute = "string",
+#'             InferenceAttribute = "string",
+#'             ProbabilityAttribute = "string",
+#'             ProbabilityThresholdAttribute = 123.0,
+#'             StartTimeOffset = "string",
+#'             EndTimeOffset = "string"
+#'           ),
+#'           BatchTransformInput = list(
+#'             DataCapturedDestinationS3Uri = "string",
+#'             DatasetFormat = list(
+#'               Csv = list(
+#'                 Header = TRUE|FALSE
+#'               ),
+#'               Json = list(
+#'                 Line = TRUE|FALSE
+#'               ),
+#'               Parquet = list()
+#'             ),
 #'             LocalPath = "string",
 #'             S3InputMode = "Pipe"|"File",
 #'             S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
@@ -13066,7 +15644,7 @@ sagemaker_describe_monitoring_schedule <- function(MonitoringScheduleName) {
 #'   NotebookInstanceStatus = "Pending"|"InService"|"Stopping"|"Stopped"|"Failed"|"Deleting"|"Updating",
 #'   FailureReason = "string",
 #'   Url = "string",
-#'   InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'   InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'   SubnetId = "string",
 #'   SecurityGroups = list(
 #'     "string"
@@ -13229,12 +15807,22 @@ sagemaker_describe_notebook_instance_lifecycle_config <- function(NotebookInstan
 #'   CreatedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   ),
 #'   LastModifiedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   ),
 #'   ParallelismConfiguration = list(
 #'     MaxParallelExecutionSteps = 123
@@ -13355,12 +15943,22 @@ sagemaker_describe_pipeline_definition_for_execution <- function(PipelineExecuti
 #'   CreatedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   ),
 #'   LastModifiedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   ),
 #'   ParallelismConfiguration = list(
 #'     MaxParallelExecutionSteps = 123
@@ -13509,7 +16107,8 @@ sagemaker_describe_pipeline_execution <- function(PipelineExecutionArn) {
 #'   ExperimentConfig = list(
 #'     ExperimentName = "string",
 #'     TrialName = "string",
-#'     TrialComponentDisplayName = "string"
+#'     TrialComponentDisplayName = "string",
+#'     RunName = "string"
 #'   ),
 #'   ProcessingJobArn = "string",
 #'   ProcessingJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
@@ -13599,7 +16198,12 @@ sagemaker_describe_processing_job <- function(ProcessingJobName) {
 #'   CreatedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   ),
 #'   CreationTime = as.POSIXct(
 #'     "2015-01-01"
@@ -13610,7 +16214,12 @@ sagemaker_describe_processing_job <- function(ProcessingJobName) {
 #'   LastModifiedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -13643,6 +16252,102 @@ sagemaker_describe_project <- function(ProjectName) {
   return(response)
 }
 .sagemaker$operations$describe_project <- sagemaker_describe_project
+
+#' Describes the space
+#'
+#' @description
+#' Describes the space.
+#'
+#' @usage
+#' sagemaker_describe_space(DomainId, SpaceName)
+#'
+#' @param DomainId &#91;required&#93; The ID of the associated Domain.
+#' @param SpaceName &#91;required&#93; The name of the space.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainId = "string",
+#'   SpaceArn = "string",
+#'   SpaceName = "string",
+#'   HomeEfsFileSystemUid = "string",
+#'   Status = "Deleting"|"Failed"|"InService"|"Pending"|"Updating"|"Update_Failed"|"Delete_Failed",
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   FailureReason = "string",
+#'   SpaceSettings = list(
+#'     JupyterServerAppSettings = list(
+#'       DefaultResourceSpec = list(
+#'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
+#'         LifecycleConfigArn = "string"
+#'       ),
+#'       LifecycleConfigArns = list(
+#'         "string"
+#'       ),
+#'       CodeRepositories = list(
+#'         list(
+#'           RepositoryUrl = "string"
+#'         )
+#'       )
+#'     ),
+#'     KernelGatewayAppSettings = list(
+#'       DefaultResourceSpec = list(
+#'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
+#'         LifecycleConfigArn = "string"
+#'       ),
+#'       CustomImages = list(
+#'         list(
+#'           ImageName = "string",
+#'           ImageVersionNumber = 123,
+#'           AppImageConfigName = "string"
+#'         )
+#'       ),
+#'       LifecycleConfigArns = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_space(
+#'   DomainId = "string",
+#'   SpaceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_space
+#'
+#' @aliases sagemaker_describe_space
+sagemaker_describe_space <- function(DomainId, SpaceName) {
+  op <- new_operation(
+    name = "DescribeSpace",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_space_input(DomainId = DomainId, SpaceName = SpaceName)
+  output <- .sagemaker$describe_space_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_space <- sagemaker_describe_space
 
 #' Describes the Studio Lifecycle Configuration
 #'
@@ -13799,7 +16504,19 @@ sagemaker_describe_subscribed_workteam <- function(WorkteamArn) {
 #'         Regex = "string"
 #'       )
 #'     ),
-#'     EnableSageMakerMetricsTimeSeries = TRUE|FALSE
+#'     EnableSageMakerMetricsTimeSeries = TRUE|FALSE,
+#'     ContainerEntrypoint = list(
+#'       "string"
+#'     ),
+#'     ContainerArguments = list(
+#'       "string"
+#'     ),
+#'     TrainingImageConfig = list(
+#'       TrainingRepositoryAccessMode = "Platform"|"Vpc",
+#'       TrainingRepositoryAuthConfig = list(
+#'         TrainingRepositoryCredentialsProviderArn = "string"
+#'       )
+#'     )
 #'   ),
 #'   RoleArn = "string",
 #'   InputDataConfig = list(
@@ -13838,17 +16555,18 @@ sagemaker_describe_subscribed_workteam <- function(WorkteamArn) {
 #'     S3OutputPath = "string"
 #'   ),
 #'   ResourceConfig = list(
-#'     InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'     InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'     InstanceCount = 123,
 #'     VolumeSizeInGB = 123,
 #'     VolumeKmsKeyId = "string",
 #'     InstanceGroups = list(
 #'       list(
-#'         InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'         InstanceCount = 123,
 #'         InstanceGroupName = "string"
 #'       )
-#'     )
+#'     ),
+#'     KeepAlivePeriodInSeconds = 123
 #'   ),
 #'   VpcConfig = list(
 #'     SecurityGroupIds = list(
@@ -13922,7 +16640,8 @@ sagemaker_describe_subscribed_workteam <- function(WorkteamArn) {
 #'   ExperimentConfig = list(
 #'     ExperimentName = "string",
 #'     TrialName = "string",
-#'     TrialComponentDisplayName = "string"
+#'     TrialComponentDisplayName = "string",
+#'     RunName = "string"
 #'   ),
 #'   DebugRuleConfigurations = list(
 #'     list(
@@ -13957,7 +16676,8 @@ sagemaker_describe_subscribed_workteam <- function(WorkteamArn) {
 #'     ProfilingIntervalInMilliseconds = 123,
 #'     ProfilingParameters = list(
 #'       "string"
-#'     )
+#'     ),
+#'     DisableProfiler = TRUE|FALSE
 #'   ),
 #'   ProfilerRuleConfigurations = list(
 #'     list(
@@ -13989,6 +16709,11 @@ sagemaker_describe_subscribed_workteam <- function(WorkteamArn) {
 #'   ),
 #'   Environment = list(
 #'     "string"
+#'   ),
+#'   WarmPoolStatus = list(
+#'     Status = "Available"|"Terminated"|"Reused"|"InUse",
+#'     ResourceRetainedBillableTimeInSeconds = 123,
+#'     ReusedByJob = "string"
 #'   )
 #' )
 #' ```
@@ -14068,6 +16793,11 @@ sagemaker_describe_training_job <- function(TrainingJobName) {
 #'     AssembleWith = "None"|"Line",
 #'     KmsKeyId = "string"
 #'   ),
+#'   DataCaptureConfig = list(
+#'     DestinationS3Uri = "string",
+#'     KmsKeyId = "string",
+#'     GenerateInferenceId = TRUE|FALSE
+#'   ),
 #'   TransformResources = list(
 #'     InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge",
 #'     InstanceCount = 123,
@@ -14092,7 +16822,8 @@ sagemaker_describe_training_job <- function(TrainingJobName) {
 #'   ExperimentConfig = list(
 #'     ExperimentName = "string",
 #'     TrialName = "string",
-#'     TrialComponentDisplayName = "string"
+#'     TrialComponentDisplayName = "string",
+#'     RunName = "string"
 #'   )
 #' )
 #' ```
@@ -14154,7 +16885,12 @@ sagemaker_describe_transform_job <- function(TransformJobName) {
 #'   CreatedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   ),
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
@@ -14162,7 +16898,12 @@ sagemaker_describe_transform_job <- function(TransformJobName) {
 #'   LastModifiedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   ),
 #'   MetadataProperties = list(
 #'     CommitId = "string",
@@ -14239,7 +16980,12 @@ sagemaker_describe_trial <- function(TrialName) {
 #'   CreatedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   ),
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
@@ -14247,7 +16993,12 @@ sagemaker_describe_trial <- function(TrialName) {
 #'   LastModifiedBy = list(
 #'     UserProfileArn = "string",
 #'     UserProfileName = "string",
-#'     DomainId = "string"
+#'     DomainId = "string",
+#'     IamIdentity = list(
+#'       Arn = "string",
+#'       PrincipalId = "string",
+#'       SourceIdentity = "string"
+#'     )
 #'   ),
 #'   Parameters = list(
 #'     list(
@@ -14288,7 +17039,13 @@ sagemaker_describe_trial <- function(TrialName) {
 #'       StdDev = 123.0
 #'     )
 #'   ),
-#'   LineageGroupArn = "string"
+#'   LineageGroupArn = "string",
+#'   Sources = list(
+#'     list(
+#'       SourceArn = "string",
+#'       SourceType = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -14365,18 +17122,23 @@ sagemaker_describe_trial_component <- function(TrialComponentName) {
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       ),
 #'       LifecycleConfigArns = list(
 #'         "string"
+#'       ),
+#'       CodeRepositories = list(
+#'         list(
+#'           RepositoryUrl = "string"
+#'         )
 #'       )
 #'     ),
 #'     KernelGatewayAppSettings = list(
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       ),
 #'       CustomImages = list(
@@ -14394,7 +17156,7 @@ sagemaker_describe_trial_component <- function(TrialComponentName) {
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       )
 #'     ),
@@ -14406,7 +17168,7 @@ sagemaker_describe_trial_component <- function(TrialComponentName) {
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       ),
 #'       CustomImages = list(
@@ -14415,6 +17177,16 @@ sagemaker_describe_trial_component <- function(TrialComponentName) {
 #'           ImageVersionNumber = 123,
 #'           AppImageConfigName = "string"
 #'         )
+#'       )
+#'     ),
+#'     CanvasAppSettings = list(
+#'       TimeSeriesForecastingSettings = list(
+#'         Status = "ENABLED"|"DISABLED",
+#'         AmazonForecastRoleArn = "string"
+#'       ),
+#'       ModelRegisterSettings = list(
+#'         Status = "ENABLED"|"DISABLED",
+#'         CrossAccountModelRegisterRoleArn = "string"
 #'       )
 #'     )
 #'   )
@@ -14987,19 +17759,19 @@ sagemaker_get_sagemaker_servicecatalog_portfolio_status <- function() {
 }
 .sagemaker$operations$get_sagemaker_servicecatalog_portfolio_status <- sagemaker_get_sagemaker_servicecatalog_portfolio_status
 
-#' An auto-complete API for the search functionality in the Amazon
-#' SageMaker console
+#' An auto-complete API for the search functionality in the SageMaker
+#' console
 #'
 #' @description
-#' An auto-complete API for the search functionality in the Amazon
-#' SageMaker console. It returns suggestions of possible matches for the
-#' property name to use in [`search`][sagemaker_search] queries. Provides
+#' An auto-complete API for the search functionality in the SageMaker
+#' console. It returns suggestions of possible matches for the property
+#' name to use in [`search`][sagemaker_search] queries. Provides
 #' suggestions for `HyperParameters`, `Tags`, and `Metrics`.
 #'
 #' @usage
 #' sagemaker_get_search_suggestions(Resource, SuggestionQuery)
 #'
-#' @param Resource &#91;required&#93; The name of the Amazon SageMaker resource to search for.
+#' @param Resource &#91;required&#93; The name of the SageMaker resource to search for.
 #' @param SuggestionQuery Limits the property names that are included in the response.
 #'
 #' @return
@@ -15017,7 +17789,7 @@ sagemaker_get_sagemaker_servicecatalog_portfolio_status <- function() {
 #' @section Request syntax:
 #' ```
 #' svc$get_search_suggestions(
-#'   Resource = "TrainingJob"|"Experiment"|"ExperimentTrial"|"ExperimentTrialComponent"|"Endpoint"|"ModelPackage"|"ModelPackageGroup"|"Pipeline"|"PipelineExecution"|"FeatureGroup"|"Project"|"FeatureMetadata",
+#'   Resource = "TrainingJob"|"Experiment"|"ExperimentTrial"|"ExperimentTrialComponent"|"Endpoint"|"ModelPackage"|"ModelPackageGroup"|"Pipeline"|"PipelineExecution"|"FeatureGroup"|"Project"|"FeatureMetadata"|"HyperParameterTuningJob"|"ModelCard"|"Model",
 #'   SuggestionQuery = list(
 #'     PropertyNameQuery = list(
 #'       PropertyNameHint = "string"
@@ -15047,6 +17819,88 @@ sagemaker_get_search_suggestions <- function(Resource, SuggestionQuery = NULL) {
   return(response)
 }
 .sagemaker$operations$get_search_suggestions <- sagemaker_get_search_suggestions
+
+#' Import hub content
+#'
+#' @description
+#' Import hub content.
+#' 
+#' Hub APIs are only callable through SageMaker Studio.
+#'
+#' @usage
+#' sagemaker_import_hub_content(HubContentName, HubContentVersion,
+#'   HubContentType, DocumentSchemaVersion, HubName, HubContentDisplayName,
+#'   HubContentDescription, HubContentMarkdown, HubContentDocument,
+#'   HubContentSearchKeywords, Tags)
+#'
+#' @param HubContentName &#91;required&#93; The name of the hub content to import.
+#' @param HubContentVersion The version of the hub content to import.
+#' @param HubContentType &#91;required&#93; The type of hub content to import.
+#' @param DocumentSchemaVersion &#91;required&#93; The version of the hub content schema to import.
+#' @param HubName &#91;required&#93; The name of the hub to import content into.
+#' @param HubContentDisplayName The display name of the hub content to import.
+#' @param HubContentDescription A description of the hub content to import.
+#' @param HubContentMarkdown A string that provides a description of the hub content. This string can
+#' include links, tables, and standard markdown formating.
+#' @param HubContentDocument &#91;required&#93; The hub content document that describes information about the hub
+#' content such as type, associated containers, scripts, and more.
+#' @param HubContentSearchKeywords The searchable keywords of the hub content.
+#' @param Tags Any tags associated with the hub content.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HubArn = "string",
+#'   HubContentArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$import_hub_content(
+#'   HubContentName = "string",
+#'   HubContentVersion = "string",
+#'   HubContentType = "Model"|"Notebook",
+#'   DocumentSchemaVersion = "string",
+#'   HubName = "string",
+#'   HubContentDisplayName = "string",
+#'   HubContentDescription = "string",
+#'   HubContentMarkdown = "string",
+#'   HubContentDocument = "string",
+#'   HubContentSearchKeywords = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_import_hub_content
+#'
+#' @aliases sagemaker_import_hub_content
+sagemaker_import_hub_content <- function(HubContentName, HubContentVersion = NULL, HubContentType, DocumentSchemaVersion, HubName, HubContentDisplayName = NULL, HubContentDescription = NULL, HubContentMarkdown = NULL, HubContentDocument, HubContentSearchKeywords = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "ImportHubContent",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$import_hub_content_input(HubContentName = HubContentName, HubContentVersion = HubContentVersion, HubContentType = HubContentType, DocumentSchemaVersion = DocumentSchemaVersion, HubName = HubName, HubContentDisplayName = HubContentDisplayName, HubContentDescription = HubContentDescription, HubContentMarkdown = HubContentMarkdown, HubContentDocument = HubContentDocument, HubContentSearchKeywords = HubContentSearchKeywords, Tags = Tags)
+  output <- .sagemaker$import_hub_content_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$import_hub_content <- sagemaker_import_hub_content
 
 #' Lists the actions in your account and their properties
 #'
@@ -15220,6 +18074,67 @@ sagemaker_list_algorithms <- function(CreationTimeAfter = NULL, CreationTimeBefo
 }
 .sagemaker$operations$list_algorithms <- sagemaker_list_algorithms
 
+#' Lists the aliases of a specified image or image version
+#'
+#' @description
+#' Lists the aliases of a specified image or image version.
+#'
+#' @usage
+#' sagemaker_list_aliases(ImageName, Alias, Version, MaxResults, NextToken)
+#'
+#' @param ImageName &#91;required&#93; The name of the image.
+#' @param Alias The alias of the image version.
+#' @param Version The version of the image. If image version is not specified, the aliases
+#' of all versions of the image are listed.
+#' @param MaxResults The maximum number of aliases to return.
+#' @param NextToken If the previous call to [`list_aliases`][sagemaker_list_aliases] didn't
+#' return the full set of aliases, the call returns a token for retrieving
+#' the next set of aliases.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SageMakerImageVersionAliases = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_aliases(
+#'   ImageName = "string",
+#'   Alias = "string",
+#'   Version = 123,
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_aliases
+#'
+#' @aliases sagemaker_list_aliases
+sagemaker_list_aliases <- function(ImageName, Alias = NULL, Version = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListAliases",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_aliases_input(ImageName = ImageName, Alias = Alias, Version = Version, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .sagemaker$list_aliases_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_aliases <- sagemaker_list_aliases
+
 #' Lists the AppImageConfigs in your account and their properties
 #'
 #' @description
@@ -15335,7 +18250,7 @@ sagemaker_list_app_image_configs <- function(MaxResults = NULL, NextToken = NULL
 #'
 #' @usage
 #' sagemaker_list_apps(NextToken, MaxResults, SortOrder, SortBy,
-#'   DomainIdEquals, UserProfileNameEquals)
+#'   DomainIdEquals, UserProfileNameEquals, SpaceNameEquals)
 #'
 #' @param NextToken If the previous response was truncated, you will receive this token. Use
 #' it in your next request to receive the next set of results.
@@ -15343,7 +18258,10 @@ sagemaker_list_app_image_configs <- function(MaxResults = NULL, NextToken = NULL
 #' @param SortOrder The sort order for the results. The default is Ascending.
 #' @param SortBy The parameter by which to sort the results. The default is CreationTime.
 #' @param DomainIdEquals A parameter to search for the domain ID.
-#' @param UserProfileNameEquals A parameter to search by user profile name.
+#' @param UserProfileNameEquals A parameter to search by user profile name. If `SpaceNameEquals` is set,
+#' then this value cannot be set.
+#' @param SpaceNameEquals A parameter to search by space name. If `UserProfileNameEquals` is set,
+#' then this value cannot be set.
 #'
 #' @return
 #' A list with the following syntax:
@@ -15358,7 +18276,8 @@ sagemaker_list_app_image_configs <- function(MaxResults = NULL, NextToken = NULL
 #'       Status = "Deleted"|"Deleting"|"Failed"|"InService"|"Pending",
 #'       CreationTime = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       SpaceName = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -15373,7 +18292,8 @@ sagemaker_list_app_image_configs <- function(MaxResults = NULL, NextToken = NULL
 #'   SortOrder = "Ascending"|"Descending",
 #'   SortBy = "CreationTime",
 #'   DomainIdEquals = "string",
-#'   UserProfileNameEquals = "string"
+#'   UserProfileNameEquals = "string",
+#'   SpaceNameEquals = "string"
 #' )
 #' ```
 #'
@@ -15382,14 +18302,14 @@ sagemaker_list_app_image_configs <- function(MaxResults = NULL, NextToken = NULL
 #' @rdname sagemaker_list_apps
 #'
 #' @aliases sagemaker_list_apps
-sagemaker_list_apps <- function(NextToken = NULL, MaxResults = NULL, SortOrder = NULL, SortBy = NULL, DomainIdEquals = NULL, UserProfileNameEquals = NULL) {
+sagemaker_list_apps <- function(NextToken = NULL, MaxResults = NULL, SortOrder = NULL, SortBy = NULL, DomainIdEquals = NULL, UserProfileNameEquals = NULL, SpaceNameEquals = NULL) {
   op <- new_operation(
     name = "ListApps",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$list_apps_input(NextToken = NextToken, MaxResults = MaxResults, SortOrder = SortOrder, SortBy = SortBy, DomainIdEquals = DomainIdEquals, UserProfileNameEquals = UserProfileNameEquals)
+  input <- .sagemaker$list_apps_input(NextToken = NextToken, MaxResults = MaxResults, SortOrder = SortOrder, SortBy = SortBy, DomainIdEquals = DomainIdEquals, UserProfileNameEquals = UserProfileNameEquals, SpaceNameEquals = SpaceNameEquals)
   output <- .sagemaker$list_apps_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -15541,7 +18461,12 @@ sagemaker_list_artifacts <- function(SourceUri = NULL, ArtifactType = NULL, Crea
 #'       CreatedBy = list(
 #'         UserProfileArn = "string",
 #'         UserProfileName = "string",
-#'         DomainId = "string"
+#'         DomainId = "string",
+#'         IamIdentity = list(
+#'           Arn = "string",
+#'           PrincipalId = "string",
+#'           SourceIdentity = "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -15623,7 +18548,7 @@ sagemaker_list_associations <- function(SourceArn = NULL, DestinationArn = NULL,
 #'       AutoMLJobName = "string",
 #'       AutoMLJobArn = "string",
 #'       AutoMLJobStatus = "Completed"|"InProgress"|"Failed"|"Stopped"|"Stopping",
-#'       AutoMLJobSecondaryStatus = "Starting"|"AnalyzingData"|"FeatureEngineering"|"ModelTuning"|"MaxCandidatesReached"|"Failed"|"Stopped"|"MaxAutoMLJobRuntimeReached"|"Stopping"|"CandidateDefinitionsGenerated"|"GeneratingExplainabilityReport"|"Completed"|"ExplainabilityError"|"DeployingModel"|"ModelDeploymentError"|"GeneratingModelInsightsReport"|"ModelInsightsError",
+#'       AutoMLJobSecondaryStatus = "Starting"|"AnalyzingData"|"FeatureEngineering"|"ModelTuning"|"MaxCandidatesReached"|"Failed"|"Stopped"|"MaxAutoMLJobRuntimeReached"|"Stopping"|"CandidateDefinitionsGenerated"|"GeneratingExplainabilityReport"|"Completed"|"ExplainabilityError"|"DeployingModel"|"ModelDeploymentError"|"GeneratingModelInsightsReport"|"ModelInsightsError"|"TrainingModels",
 #'       CreationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -15718,8 +18643,9 @@ sagemaker_list_auto_ml_jobs <- function(CreationTimeAfter = NULL, CreationTimeBe
 #'       CandidateName = "string",
 #'       FinalAutoMLJobObjectiveMetric = list(
 #'         Type = "Maximize"|"Minimize",
-#'         MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC",
-#'         Value = 123.0
+#'         MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"|"RMSE"|"MAE"|"R2"|"BalancedAccuracy"|"Precision"|"PrecisionMacro"|"Recall"|"RecallMacro",
+#'         Value = 123.0,
+#'         StandardMetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"|"RMSE"|"MAE"|"R2"|"BalancedAccuracy"|"Precision"|"PrecisionMacro"|"Recall"|"RecallMacro"
 #'       ),
 #'       ObjectiveStatus = "Succeeded"|"Pending"|"Failed",
 #'       CandidateSteps = list(
@@ -15756,10 +18682,21 @@ sagemaker_list_auto_ml_jobs <- function(CreationTimeAfter = NULL, CreationTimeBe
 #'         ),
 #'         CandidateMetrics = list(
 #'           list(
-#'             MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC",
+#'             MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"|"RMSE"|"MAE"|"R2"|"BalancedAccuracy"|"Precision"|"PrecisionMacro"|"Recall"|"RecallMacro",
 #'             Value = 123.0,
 #'             Set = "Train"|"Validation"|"Test",
-#'             StandardMetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"|"RMSE"|"MAE"|"R2"|"BalancedAccuracy"|"Precision"|"PrecisionMacro"|"Recall"|"RecallMacro"|"LogLoss"
+#'             StandardMetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"|"RMSE"|"MAE"|"R2"|"BalancedAccuracy"|"Precision"|"PrecisionMacro"|"Recall"|"RecallMacro"|"LogLoss"|"InferenceLatency"
+#'           )
+#'         )
+#'       ),
+#'       InferenceContainerDefinitions = list(
+#'         list(
+#'           list(
+#'             Image = "string",
+#'             ModelDataUrl = "string",
+#'             Environment = list(
+#'               "string"
+#'             )
 #'           )
 #'         )
 #'       )
@@ -15932,7 +18869,7 @@ sagemaker_list_code_repositories <- function(CreationTimeAfter = NULL, CreationT
 #' @param NameContains A filter that returns the model compilation jobs whose name contains a
 #' specified string.
 #' @param StatusEquals A filter that retrieves model compilation jobs with a specific
-#' DescribeCompilationJobResponse$CompilationJobStatus status.
+#' `CompilationJobStatus` status.
 #' @param SortBy The field by which to sort results. The default is `CreationTime`.
 #' @param SortOrder The sort order for results. The default is `Ascending`.
 #'
@@ -17036,6 +19973,293 @@ sagemaker_list_flow_definitions <- function(CreationTimeAfter = NULL, CreationTi
 }
 .sagemaker$operations$list_flow_definitions <- sagemaker_list_flow_definitions
 
+#' List hub content versions
+#'
+#' @description
+#' List hub content versions.
+#' 
+#' Hub APIs are only callable through SageMaker Studio.
+#'
+#' @usage
+#' sagemaker_list_hub_content_versions(HubName, HubContentType,
+#'   HubContentName, MinVersion, MaxSchemaVersion, CreationTimeBefore,
+#'   CreationTimeAfter, SortBy, SortOrder, MaxResults, NextToken)
+#'
+#' @param HubName &#91;required&#93; The name of the hub to list the content versions of.
+#' @param HubContentType &#91;required&#93; The type of hub content to list versions of.
+#' @param HubContentName &#91;required&#93; The name of the hub content.
+#' @param MinVersion The lower bound of the hub content versions to list.
+#' @param MaxSchemaVersion The upper bound of the hub content schema version.
+#' @param CreationTimeBefore Only list hub content versions that were created before the time
+#' specified.
+#' @param CreationTimeAfter Only list hub content versions that were created after the time
+#' specified.
+#' @param SortBy Sort hub content versions by either name or creation time.
+#' @param SortOrder Sort hub content versions by ascending or descending order.
+#' @param MaxResults The maximum number of hub content versions to list.
+#' @param NextToken If the response to a previous
+#' [`list_hub_content_versions`][sagemaker_list_hub_content_versions]
+#' request was truncated, the response includes a `NextToken`. To retrieve
+#' the next set of hub content versions, use the token in the next request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HubContentSummaries = list(
+#'     list(
+#'       HubContentName = "string",
+#'       HubContentArn = "string",
+#'       HubContentVersion = "string",
+#'       HubContentType = "Model"|"Notebook",
+#'       DocumentSchemaVersion = "string",
+#'       HubContentDisplayName = "string",
+#'       HubContentDescription = "string",
+#'       HubContentSearchKeywords = list(
+#'         "string"
+#'       ),
+#'       HubContentStatus = "Available"|"Importing"|"Deleting"|"ImportFailed"|"DeleteFailed",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_hub_content_versions(
+#'   HubName = "string",
+#'   HubContentType = "Model"|"Notebook",
+#'   HubContentName = "string",
+#'   MinVersion = "string",
+#'   MaxSchemaVersion = "string",
+#'   CreationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SortBy = "HubContentName"|"CreationTime"|"HubContentStatus",
+#'   SortOrder = "Ascending"|"Descending",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_hub_content_versions
+#'
+#' @aliases sagemaker_list_hub_content_versions
+sagemaker_list_hub_content_versions <- function(HubName, HubContentType, HubContentName, MinVersion = NULL, MaxSchemaVersion = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL, SortBy = NULL, SortOrder = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListHubContentVersions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_hub_content_versions_input(HubName = HubName, HubContentType = HubContentType, HubContentName = HubContentName, MinVersion = MinVersion, MaxSchemaVersion = MaxSchemaVersion, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, SortBy = SortBy, SortOrder = SortOrder, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .sagemaker$list_hub_content_versions_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_hub_content_versions <- sagemaker_list_hub_content_versions
+
+#' List the contents of a hub
+#'
+#' @description
+#' List the contents of a hub.
+#' 
+#' Hub APIs are only callable through SageMaker Studio.
+#'
+#' @usage
+#' sagemaker_list_hub_contents(HubName, HubContentType, NameContains,
+#'   MaxSchemaVersion, CreationTimeBefore, CreationTimeAfter, SortBy,
+#'   SortOrder, MaxResults, NextToken)
+#'
+#' @param HubName &#91;required&#93; The name of the hub to list the contents of.
+#' @param HubContentType &#91;required&#93; The type of hub content to list.
+#' @param NameContains Only list hub content if the name contains the specified string.
+#' @param MaxSchemaVersion The upper bound of the hub content schema verion.
+#' @param CreationTimeBefore Only list hub content that was created before the time specified.
+#' @param CreationTimeAfter Only list hub content that was created after the time specified.
+#' @param SortBy Sort hub content versions by either name or creation time.
+#' @param SortOrder Sort hubs by ascending or descending order.
+#' @param MaxResults The maximum amount of hub content to list.
+#' @param NextToken If the response to a previous
+#' [`list_hub_contents`][sagemaker_list_hub_contents] request was
+#' truncated, the response includes a `NextToken`. To retrieve the next set
+#' of hub content, use the token in the next request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HubContentSummaries = list(
+#'     list(
+#'       HubContentName = "string",
+#'       HubContentArn = "string",
+#'       HubContentVersion = "string",
+#'       HubContentType = "Model"|"Notebook",
+#'       DocumentSchemaVersion = "string",
+#'       HubContentDisplayName = "string",
+#'       HubContentDescription = "string",
+#'       HubContentSearchKeywords = list(
+#'         "string"
+#'       ),
+#'       HubContentStatus = "Available"|"Importing"|"Deleting"|"ImportFailed"|"DeleteFailed",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_hub_contents(
+#'   HubName = "string",
+#'   HubContentType = "Model"|"Notebook",
+#'   NameContains = "string",
+#'   MaxSchemaVersion = "string",
+#'   CreationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SortBy = "HubContentName"|"CreationTime"|"HubContentStatus",
+#'   SortOrder = "Ascending"|"Descending",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_hub_contents
+#'
+#' @aliases sagemaker_list_hub_contents
+sagemaker_list_hub_contents <- function(HubName, HubContentType, NameContains = NULL, MaxSchemaVersion = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL, SortBy = NULL, SortOrder = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListHubContents",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_hub_contents_input(HubName = HubName, HubContentType = HubContentType, NameContains = NameContains, MaxSchemaVersion = MaxSchemaVersion, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, SortBy = SortBy, SortOrder = SortOrder, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .sagemaker$list_hub_contents_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_hub_contents <- sagemaker_list_hub_contents
+
+#' List all existing hubs
+#'
+#' @description
+#' List all existing hubs.
+#' 
+#' Hub APIs are only callable through SageMaker Studio.
+#'
+#' @usage
+#' sagemaker_list_hubs(NameContains, CreationTimeBefore, CreationTimeAfter,
+#'   LastModifiedTimeBefore, LastModifiedTimeAfter, SortBy, SortOrder,
+#'   MaxResults, NextToken)
+#'
+#' @param NameContains Only list hubs with names that contain the specified string.
+#' @param CreationTimeBefore Only list hubs that were created before the time specified.
+#' @param CreationTimeAfter Only list hubs that were created after the time specified.
+#' @param LastModifiedTimeBefore Only list hubs that were last modified before the time specified.
+#' @param LastModifiedTimeAfter Only list hubs that were last modified after the time specified.
+#' @param SortBy Sort hubs by either name or creation time.
+#' @param SortOrder Sort hubs by ascending or descending order.
+#' @param MaxResults The maximum number of hubs to list.
+#' @param NextToken If the response to a previous [`list_hubs`][sagemaker_list_hubs] request
+#' was truncated, the response includes a `NextToken`. To retrieve the next
+#' set of hubs, use the token in the next request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HubSummaries = list(
+#'     list(
+#'       HubName = "string",
+#'       HubArn = "string",
+#'       HubDisplayName = "string",
+#'       HubDescription = "string",
+#'       HubSearchKeywords = list(
+#'         "string"
+#'       ),
+#'       HubStatus = "InService"|"Creating"|"Updating"|"Deleting"|"CreateFailed"|"UpdateFailed"|"DeleteFailed",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_hubs(
+#'   NameContains = "string",
+#'   CreationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SortBy = "HubName"|"CreationTime"|"HubStatus"|"AccountIdOwner",
+#'   SortOrder = "Ascending"|"Descending",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_hubs
+#'
+#' @aliases sagemaker_list_hubs
+sagemaker_list_hubs <- function(NameContains = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL, LastModifiedTimeBefore = NULL, LastModifiedTimeAfter = NULL, SortBy = NULL, SortOrder = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListHubs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_hubs_input(NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, SortBy = SortBy, SortOrder = SortOrder, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .sagemaker$list_hubs_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_hubs <- sagemaker_list_hubs
+
 #' Returns information about the human task user interfaces in your account
 #'
 #' @description
@@ -17116,8 +20340,10 @@ sagemaker_list_human_task_uis <- function(CreationTimeAfter = NULL, CreationTime
 #' hyperparameter tuning jobs launched in your account
 #'
 #' @description
-#' Gets a list of HyperParameterTuningJobSummary objects that describe the
-#' hyperparameter tuning jobs launched in your account.
+#' Gets a list of
+#' [HyperParameterTuningJobSummary](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobSummary.html)
+#' objects that describe the hyperparameter tuning jobs launched in your
+#' account.
 #'
 #' @usage
 #' sagemaker_list_hyper_parameter_tuning_jobs(NextToken, MaxResults,
@@ -17152,7 +20378,7 @@ sagemaker_list_human_task_uis <- function(CreationTimeAfter = NULL, CreationTime
 #'       HyperParameterTuningJobName = "string",
 #'       HyperParameterTuningJobArn = "string",
 #'       HyperParameterTuningJobStatus = "Completed"|"InProgress"|"Failed"|"Stopped"|"Stopping",
-#'       Strategy = "Bayesian"|"Random",
+#'       Strategy = "Bayesian"|"Random"|"Hyperband"|"Grid",
 #'       CreationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -17176,7 +20402,8 @@ sagemaker_list_human_task_uis <- function(CreationTimeAfter = NULL, CreationTime
 #'       ),
 #'       ResourceLimits = list(
 #'         MaxNumberOfTrainingJobs = 123,
-#'         MaxParallelTrainingJobs = 123
+#'         MaxParallelTrainingJobs = 123,
+#'         MaxRuntimeInSeconds = 123
 #'       )
 #'     )
 #'   ),
@@ -17426,6 +20653,227 @@ sagemaker_list_images <- function(CreationTimeAfter = NULL, CreationTimeBefore =
 }
 .sagemaker$operations$list_images <- sagemaker_list_images
 
+#' Returns the list of all inference experiments
+#'
+#' @description
+#' Returns the list of all inference experiments.
+#'
+#' @usage
+#' sagemaker_list_inference_experiments(NameContains, Type, StatusEquals,
+#'   CreationTimeAfter, CreationTimeBefore, LastModifiedTimeAfter,
+#'   LastModifiedTimeBefore, SortBy, SortOrder, NextToken, MaxResults)
+#'
+#' @param NameContains Selects inference experiments whose names contain this name.
+#' @param Type Selects inference experiments of this type. For the possible types of
+#' inference experiments, see
+#' [`create_inference_experiment`][sagemaker_create_inference_experiment].
+#' @param StatusEquals Selects inference experiments which are in this status. For the possible
+#' statuses, see
+#' [`describe_inference_experiment`][sagemaker_describe_inference_experiment].
+#' @param CreationTimeAfter Selects inference experiments which were created after this timestamp.
+#' @param CreationTimeBefore Selects inference experiments which were created before this timestamp.
+#' @param LastModifiedTimeAfter Selects inference experiments which were last modified after this
+#' timestamp.
+#' @param LastModifiedTimeBefore Selects inference experiments which were last modified before this
+#' timestamp.
+#' @param SortBy The column by which to sort the listed inference experiments.
+#' @param SortOrder The direction of sorting (ascending or descending).
+#' @param NextToken The response from the last list when returning a list large enough to
+#' need tokening.
+#' @param MaxResults The maximum number of results to select.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InferenceExperiments = list(
+#'     list(
+#'       Name = "string",
+#'       Type = "ShadowMode",
+#'       Schedule = list(
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       Status = "Creating"|"Created"|"Updating"|"Running"|"Starting"|"Stopping"|"Completed"|"Cancelled",
+#'       StatusReason = "string",
+#'       Description = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CompletionTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RoleArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_inference_experiments(
+#'   NameContains = "string",
+#'   Type = "ShadowMode",
+#'   StatusEquals = "Creating"|"Created"|"Updating"|"Running"|"Starting"|"Stopping"|"Completed"|"Cancelled",
+#'   CreationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SortBy = "Name"|"CreationTime"|"Status",
+#'   SortOrder = "Ascending"|"Descending",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_inference_experiments
+#'
+#' @aliases sagemaker_list_inference_experiments
+sagemaker_list_inference_experiments <- function(NameContains = NULL, Type = NULL, StatusEquals = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListInferenceExperiments",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_inference_experiments_input(NameContains = NameContains, Type = Type, StatusEquals = StatusEquals, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .sagemaker$list_inference_experiments_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_inference_experiments <- sagemaker_list_inference_experiments
+
+#' Returns a list of the subtasks for an Inference Recommender job
+#'
+#' @description
+#' Returns a list of the subtasks for an Inference Recommender job.
+#' 
+#' The supported subtasks are benchmarks, which evaluate the performance of
+#' your model on different instance types.
+#'
+#' @usage
+#' sagemaker_list_inference_recommendations_job_steps(JobName, Status,
+#'   StepType, MaxResults, NextToken)
+#'
+#' @param JobName &#91;required&#93; The name for the Inference Recommender job.
+#' @param Status A filter to return benchmarks of a specified status. If this field is
+#' left empty, then all benchmarks are returned.
+#' @param StepType A filter to return details about the specified type of subtask.
+#' 
+#' `BENCHMARK`: Evaluate the performance of your model on different
+#' instance types.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken A token that you can specify to return more results from the list.
+#' Specify this field if you have a token that was returned from a previous
+#' request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Steps = list(
+#'     list(
+#'       StepType = "BENCHMARK",
+#'       JobName = "string",
+#'       Status = "PENDING"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOPPING"|"STOPPED",
+#'       InferenceBenchmark = list(
+#'         Metrics = list(
+#'           CostPerHour = 123.0,
+#'           CostPerInference = 123.0,
+#'           MaxInvocations = 123,
+#'           ModelLatency = 123,
+#'           CpuUtilization = 123.0,
+#'           MemoryUtilization = 123.0
+#'         ),
+#'         EndpointConfiguration = list(
+#'           EndpointName = "string",
+#'           VariantName = "string",
+#'           InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge",
+#'           InitialInstanceCount = 123
+#'         ),
+#'         ModelConfiguration = list(
+#'           InferenceSpecificationName = "string",
+#'           EnvironmentParameters = list(
+#'             list(
+#'               Key = "string",
+#'               ValueType = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           CompilationJobName = "string"
+#'         ),
+#'         FailureReason = "string",
+#'         EndpointMetrics = list(
+#'           MaxInvocations = 123,
+#'           ModelLatency = 123
+#'         ),
+#'         InvocationEndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         InvocationStartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_inference_recommendations_job_steps(
+#'   JobName = "string",
+#'   Status = "PENDING"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOPPING"|"STOPPED",
+#'   StepType = "BENCHMARK",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_inference_recommendations_job_steps
+#'
+#' @aliases sagemaker_list_inference_recommendations_job_steps
+sagemaker_list_inference_recommendations_job_steps <- function(JobName, Status = NULL, StepType = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListInferenceRecommendationsJobSteps",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_inference_recommendations_job_steps_input(JobName = JobName, Status = Status, StepType = StepType, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .sagemaker$list_inference_recommendations_job_steps_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_inference_recommendations_job_steps <- sagemaker_list_inference_recommendations_job_steps
+
 #' Lists recommendation jobs that satisfy various filters
 #'
 #' @description
@@ -17434,7 +20882,8 @@ sagemaker_list_images <- function(CreationTimeAfter = NULL, CreationTimeBefore =
 #' @usage
 #' sagemaker_list_inference_recommendations_jobs(CreationTimeAfter,
 #'   CreationTimeBefore, LastModifiedTimeAfter, LastModifiedTimeBefore,
-#'   NameContains, StatusEquals, SortBy, SortOrder, NextToken, MaxResults)
+#'   NameContains, StatusEquals, SortBy, SortOrder, NextToken, MaxResults,
+#'   ModelNameEquals, ModelPackageVersionArnEquals)
 #'
 #' @param CreationTimeAfter A filter that returns only jobs created after the specified time
 #' (timestamp).
@@ -17454,6 +20903,9 @@ sagemaker_list_images <- function(CreationTimeAfter = NULL, CreationTimeBefore =
 #' request was truncated, the response includes a `NextToken`. To retrieve
 #' the next set of recommendations, use the token in the next request.
 #' @param MaxResults The maximum number of recommendations to return in the response.
+#' @param ModelNameEquals A filter that returns only jobs that were created for this model.
+#' @param ModelPackageVersionArnEquals A filter that returns only jobs that were created for this versioned
+#' model package.
 #'
 #' @return
 #' A list with the following syntax:
@@ -17476,7 +20928,10 @@ sagemaker_list_images <- function(CreationTimeAfter = NULL, CreationTimeBefore =
 #'       LastModifiedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       FailureReason = "string"
+#'       FailureReason = "string",
+#'       ModelName = "string",
+#'       SamplePayloadUrl = "string",
+#'       ModelPackageVersionArn = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -17503,7 +20958,9 @@ sagemaker_list_images <- function(CreationTimeAfter = NULL, CreationTimeBefore =
 #'   SortBy = "Name"|"CreationTime"|"Status",
 #'   SortOrder = "Ascending"|"Descending",
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   ModelNameEquals = "string",
+#'   ModelPackageVersionArnEquals = "string"
 #' )
 #' ```
 #'
@@ -17512,14 +20969,14 @@ sagemaker_list_images <- function(CreationTimeAfter = NULL, CreationTimeBefore =
 #' @rdname sagemaker_list_inference_recommendations_jobs
 #'
 #' @aliases sagemaker_list_inference_recommendations_jobs
-sagemaker_list_inference_recommendations_jobs <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, NameContains = NULL, StatusEquals = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
+sagemaker_list_inference_recommendations_jobs <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, NameContains = NULL, StatusEquals = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL, ModelNameEquals = NULL, ModelPackageVersionArnEquals = NULL) {
   op <- new_operation(
     name = "ListInferenceRecommendationsJobs",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$list_inference_recommendations_jobs_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .sagemaker$list_inference_recommendations_jobs_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, ModelNameEquals = ModelNameEquals, ModelPackageVersionArnEquals = ModelPackageVersionArnEquals)
   output <- .sagemaker$list_inference_recommendations_jobs_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -17912,6 +21369,269 @@ sagemaker_list_model_bias_job_definitions <- function(EndpointName = NULL, SortB
   return(response)
 }
 .sagemaker$operations$list_model_bias_job_definitions <- sagemaker_list_model_bias_job_definitions
+
+#' List the export jobs for the Amazon SageMaker Model Card
+#'
+#' @description
+#' List the export jobs for the Amazon SageMaker Model Card.
+#'
+#' @usage
+#' sagemaker_list_model_card_export_jobs(ModelCardName, ModelCardVersion,
+#'   CreationTimeAfter, CreationTimeBefore, ModelCardExportJobNameContains,
+#'   StatusEquals, SortBy, SortOrder, NextToken, MaxResults)
+#'
+#' @param ModelCardName &#91;required&#93; List export jobs for the model card with the specified name.
+#' @param ModelCardVersion List export jobs for the model card with the specified version.
+#' @param CreationTimeAfter Only list model card export jobs that were created after the time
+#' specified.
+#' @param CreationTimeBefore Only list model card export jobs that were created before the time
+#' specified.
+#' @param ModelCardExportJobNameContains Only list model card export jobs with names that contain the specified
+#' string.
+#' @param StatusEquals Only list model card export jobs with the specified status.
+#' @param SortBy Sort model card export jobs by either name or creation time. Sorts by
+#' creation time by default.
+#' @param SortOrder Sort model card export jobs by ascending or descending order.
+#' @param NextToken If the response to a previous
+#' [`list_model_card_export_jobs`][sagemaker_list_model_card_export_jobs]
+#' request was truncated, the response includes a `NextToken`. To retrieve
+#' the next set of model card export jobs, use the token in the next
+#' request.
+#' @param MaxResults The maximum number of model card export jobs to list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModelCardExportJobSummaries = list(
+#'     list(
+#'       ModelCardExportJobName = "string",
+#'       ModelCardExportJobArn = "string",
+#'       Status = "InProgress"|"Completed"|"Failed",
+#'       ModelCardName = "string",
+#'       ModelCardVersion = 123,
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_model_card_export_jobs(
+#'   ModelCardName = "string",
+#'   ModelCardVersion = 123,
+#'   CreationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ModelCardExportJobNameContains = "string",
+#'   StatusEquals = "InProgress"|"Completed"|"Failed",
+#'   SortBy = "Name"|"CreationTime"|"Status",
+#'   SortOrder = "Ascending"|"Descending",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_model_card_export_jobs
+#'
+#' @aliases sagemaker_list_model_card_export_jobs
+sagemaker_list_model_card_export_jobs <- function(ModelCardName, ModelCardVersion = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, ModelCardExportJobNameContains = NULL, StatusEquals = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListModelCardExportJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_model_card_export_jobs_input(ModelCardName = ModelCardName, ModelCardVersion = ModelCardVersion, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, ModelCardExportJobNameContains = ModelCardExportJobNameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .sagemaker$list_model_card_export_jobs_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_model_card_export_jobs <- sagemaker_list_model_card_export_jobs
+
+#' List existing versions of an Amazon SageMaker Model Card
+#'
+#' @description
+#' List existing versions of an Amazon SageMaker Model Card.
+#'
+#' @usage
+#' sagemaker_list_model_card_versions(CreationTimeAfter,
+#'   CreationTimeBefore, MaxResults, ModelCardName, ModelCardStatus,
+#'   NextToken, SortBy, SortOrder)
+#'
+#' @param CreationTimeAfter Only list model card versions that were created after the time
+#' specified.
+#' @param CreationTimeBefore Only list model card versions that were created before the time
+#' specified.
+#' @param MaxResults The maximum number of model card versions to list.
+#' @param ModelCardName &#91;required&#93; List model card versions for the model card with the specified name.
+#' @param ModelCardStatus Only list model card versions with the specified approval status.
+#' @param NextToken If the response to a previous
+#' [`list_model_card_versions`][sagemaker_list_model_card_versions] request
+#' was truncated, the response includes a `NextToken`. To retrieve the next
+#' set of model card versions, use the token in the next request.
+#' @param SortBy Sort listed model card versions by version. Sorts by version by default.
+#' @param SortOrder Sort model card versions by ascending or descending order.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModelCardVersionSummaryList = list(
+#'     list(
+#'       ModelCardName = "string",
+#'       ModelCardArn = "string",
+#'       ModelCardStatus = "Draft"|"PendingReview"|"Approved"|"Archived",
+#'       ModelCardVersion = 123,
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_model_card_versions(
+#'   CreationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   MaxResults = 123,
+#'   ModelCardName = "string",
+#'   ModelCardStatus = "Draft"|"PendingReview"|"Approved"|"Archived",
+#'   NextToken = "string",
+#'   SortBy = "Version",
+#'   SortOrder = "Ascending"|"Descending"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_model_card_versions
+#'
+#' @aliases sagemaker_list_model_card_versions
+sagemaker_list_model_card_versions <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, MaxResults = NULL, ModelCardName, ModelCardStatus = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
+  op <- new_operation(
+    name = "ListModelCardVersions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_model_card_versions_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, ModelCardName = ModelCardName, ModelCardStatus = ModelCardStatus, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
+  output <- .sagemaker$list_model_card_versions_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_model_card_versions <- sagemaker_list_model_card_versions
+
+#' List existing model cards
+#'
+#' @description
+#' List existing model cards.
+#'
+#' @usage
+#' sagemaker_list_model_cards(CreationTimeAfter, CreationTimeBefore,
+#'   MaxResults, NameContains, ModelCardStatus, NextToken, SortBy, SortOrder)
+#'
+#' @param CreationTimeAfter Only list model cards that were created after the time specified.
+#' @param CreationTimeBefore Only list model cards that were created before the time specified.
+#' @param MaxResults The maximum number of model cards to list.
+#' @param NameContains Only list model cards with names that contain the specified string.
+#' @param ModelCardStatus Only list model cards with the specified approval status.
+#' @param NextToken If the response to a previous
+#' [`list_model_cards`][sagemaker_list_model_cards] request was truncated,
+#' the response includes a `NextToken`. To retrieve the next set of model
+#' cards, use the token in the next request.
+#' @param SortBy Sort model cards by either name or creation time. Sorts by creation time
+#' by default.
+#' @param SortOrder Sort model cards by ascending or descending order.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModelCardSummaries = list(
+#'     list(
+#'       ModelCardName = "string",
+#'       ModelCardArn = "string",
+#'       ModelCardStatus = "Draft"|"PendingReview"|"Approved"|"Archived",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_model_cards(
+#'   CreationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   MaxResults = 123,
+#'   NameContains = "string",
+#'   ModelCardStatus = "Draft"|"PendingReview"|"Approved"|"Archived",
+#'   NextToken = "string",
+#'   SortBy = "Name"|"CreationTime",
+#'   SortOrder = "Ascending"|"Descending"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_model_cards
+#'
+#' @aliases sagemaker_list_model_cards
+sagemaker_list_model_cards <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, MaxResults = NULL, NameContains = NULL, ModelCardStatus = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
+  op <- new_operation(
+    name = "ListModelCards",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_model_cards_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, NameContains = NameContains, ModelCardStatus = ModelCardStatus, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
+  output <- .sagemaker$list_model_cards_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_model_cards <- sagemaker_list_model_cards
 
 #' Lists model explainability job definitions that satisfy various filters
 #'
@@ -18422,6 +22142,166 @@ sagemaker_list_models <- function(SortBy = NULL, SortOrder = NULL, NextToken = N
 }
 .sagemaker$operations$list_models <- sagemaker_list_models
 
+#' Gets a list of past alerts in a model monitoring schedule
+#'
+#' @description
+#' Gets a list of past alerts in a model monitoring schedule.
+#'
+#' @usage
+#' sagemaker_list_monitoring_alert_history(MonitoringScheduleName,
+#'   MonitoringAlertName, SortBy, SortOrder, NextToken, MaxResults,
+#'   CreationTimeBefore, CreationTimeAfter, StatusEquals)
+#'
+#' @param MonitoringScheduleName The name of a monitoring schedule.
+#' @param MonitoringAlertName The name of a monitoring alert.
+#' @param SortBy The field used to sort results. The default is `CreationTime`.
+#' @param SortOrder The sort order, whether `Ascending` or `Descending`, of the alert
+#' history. The default is `Descending`.
+#' @param NextToken If the result of the previous
+#' [`list_monitoring_alert_history`][sagemaker_list_monitoring_alert_history]
+#' request was truncated, the response includes a `NextToken`. To retrieve
+#' the next set of alerts in the history, use the token in the next
+#' request.
+#' @param MaxResults The maximum number of results to display. The default is 100.
+#' @param CreationTimeBefore A filter that returns only alerts created on or before the specified
+#' time.
+#' @param CreationTimeAfter A filter that returns only alerts created on or after the specified
+#' time.
+#' @param StatusEquals A filter that retrieves only alerts with a specific status.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MonitoringAlertHistory = list(
+#'     list(
+#'       MonitoringScheduleName = "string",
+#'       MonitoringAlertName = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AlertStatus = "InAlert"|"OK"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_monitoring_alert_history(
+#'   MonitoringScheduleName = "string",
+#'   MonitoringAlertName = "string",
+#'   SortBy = "CreationTime"|"Status",
+#'   SortOrder = "Ascending"|"Descending",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   CreationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   StatusEquals = "InAlert"|"OK"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_monitoring_alert_history
+#'
+#' @aliases sagemaker_list_monitoring_alert_history
+sagemaker_list_monitoring_alert_history <- function(MonitoringScheduleName = NULL, MonitoringAlertName = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL, StatusEquals = NULL) {
+  op <- new_operation(
+    name = "ListMonitoringAlertHistory",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_monitoring_alert_history_input(MonitoringScheduleName = MonitoringScheduleName, MonitoringAlertName = MonitoringAlertName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, StatusEquals = StatusEquals)
+  output <- .sagemaker$list_monitoring_alert_history_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_monitoring_alert_history <- sagemaker_list_monitoring_alert_history
+
+#' Gets the alerts for a single monitoring schedule
+#'
+#' @description
+#' Gets the alerts for a single monitoring schedule.
+#'
+#' @usage
+#' sagemaker_list_monitoring_alerts(MonitoringScheduleName, NextToken,
+#'   MaxResults)
+#'
+#' @param MonitoringScheduleName &#91;required&#93; The name of a monitoring schedule.
+#' @param NextToken If the result of the previous
+#' [`list_monitoring_alerts`][sagemaker_list_monitoring_alerts] request was
+#' truncated, the response includes a `NextToken`. To retrieve the next set
+#' of alerts in the history, use the token in the next request.
+#' @param MaxResults The maximum number of results to display. The default is 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MonitoringAlertSummaries = list(
+#'     list(
+#'       MonitoringAlertName = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AlertStatus = "InAlert"|"OK",
+#'       DatapointsToAlert = 123,
+#'       EvaluationPeriod = 123,
+#'       Actions = list(
+#'         ModelDashboardIndicator = list(
+#'           Enabled = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_monitoring_alerts(
+#'   MonitoringScheduleName = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_monitoring_alerts
+#'
+#' @aliases sagemaker_list_monitoring_alerts
+sagemaker_list_monitoring_alerts <- function(MonitoringScheduleName, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListMonitoringAlerts",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_monitoring_alerts_input(MonitoringScheduleName = MonitoringScheduleName, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .sagemaker$list_monitoring_alerts_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_monitoring_alerts <- sagemaker_list_monitoring_alerts
+
 #' Returns list of all monitoring job executions
 #'
 #' @description
@@ -18805,7 +22685,7 @@ sagemaker_list_notebook_instance_lifecycle_configs <- function(NextToken = NULL,
 #'       NotebookInstanceArn = "string",
 #'       NotebookInstanceStatus = "Pending"|"InService"|"Stopping"|"Stopped"|"Failed"|"Deleting"|"Updating",
 #'       Url = "string",
-#'       InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'       InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'       CreationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -18982,6 +22862,9 @@ sagemaker_list_notebook_instances <- function(NextToken = NULL, MaxResults = NUL
 #'         ),
 #'         Fail = list(
 #'           ErrorMessage = "string"
+#'         ),
+#'         AutoMLJob = list(
+#'           Arn = "string"
 #'         )
 #'       )
 #'     )
@@ -19433,6 +23316,79 @@ sagemaker_list_projects <- function(CreationTimeAfter = NULL, CreationTimeBefore
 }
 .sagemaker$operations$list_projects <- sagemaker_list_projects
 
+#' Lists spaces
+#'
+#' @description
+#' Lists spaces.
+#'
+#' @usage
+#' sagemaker_list_spaces(NextToken, MaxResults, SortOrder, SortBy,
+#'   DomainIdEquals, SpaceNameContains)
+#'
+#' @param NextToken If the previous response was truncated, you will receive this token. Use
+#' it in your next request to receive the next set of results.
+#' @param MaxResults Returns a list up to a specified limit.
+#' @param SortOrder The sort order for the results. The default is `Ascending`.
+#' @param SortBy The parameter by which to sort the results. The default is
+#' `CreationTime`.
+#' @param DomainIdEquals A parameter to search for the Domain ID.
+#' @param SpaceNameContains A parameter by which to filter the results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Spaces = list(
+#'     list(
+#'       DomainId = "string",
+#'       SpaceName = "string",
+#'       Status = "Deleting"|"Failed"|"InService"|"Pending"|"Updating"|"Update_Failed"|"Delete_Failed",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_spaces(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   SortOrder = "Ascending"|"Descending",
+#'   SortBy = "CreationTime"|"LastModifiedTime",
+#'   DomainIdEquals = "string",
+#'   SpaceNameContains = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_spaces
+#'
+#' @aliases sagemaker_list_spaces
+sagemaker_list_spaces <- function(NextToken = NULL, MaxResults = NULL, SortOrder = NULL, SortBy = NULL, DomainIdEquals = NULL, SpaceNameContains = NULL) {
+  op <- new_operation(
+    name = "ListSpaces",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_spaces_input(NextToken = NextToken, MaxResults = MaxResults, SortOrder = SortOrder, SortBy = SortBy, DomainIdEquals = DomainIdEquals, SpaceNameContains = SpaceNameContains)
+  output <- .sagemaker$list_spaces_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_spaces <- sagemaker_list_spaces
+
 #' Lists devices allocated to the stage, containing detailed device
 #' information and deployment status
 #'
@@ -19763,7 +23719,7 @@ sagemaker_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL
 #' @usage
 #' sagemaker_list_training_jobs(NextToken, MaxResults, CreationTimeAfter,
 #'   CreationTimeBefore, LastModifiedTimeAfter, LastModifiedTimeBefore,
-#'   NameContains, StatusEquals, SortBy, SortOrder)
+#'   NameContains, StatusEquals, SortBy, SortOrder, WarmPoolStatusEquals)
 #'
 #' @param NextToken If the result of the previous
 #' [`list_training_jobs`][sagemaker_list_training_jobs] request was
@@ -19783,6 +23739,8 @@ sagemaker_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL
 #' @param StatusEquals A filter that retrieves only training jobs with a specific status.
 #' @param SortBy The field to sort results by. The default is `CreationTime`.
 #' @param SortOrder The sort order for results. The default is `Ascending`.
+#' @param WarmPoolStatusEquals A filter that retrieves only training jobs with a specific warm pool
+#' status.
 #'
 #' @return
 #' A list with the following syntax:
@@ -19801,7 +23759,12 @@ sagemaker_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL
 #'       LastModifiedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       TrainingJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped"
+#'       TrainingJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+#'       WarmPoolStatus = list(
+#'         Status = "Available"|"Terminated"|"Reused"|"InUse",
+#'         ResourceRetainedBillableTimeInSeconds = 123,
+#'         ReusedByJob = "string"
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -19828,7 +23791,8 @@ sagemaker_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL
 #'   NameContains = "string",
 #'   StatusEquals = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
 #'   SortBy = "Name"|"CreationTime"|"Status",
-#'   SortOrder = "Ascending"|"Descending"
+#'   SortOrder = "Ascending"|"Descending",
+#'   WarmPoolStatusEquals = "Available"|"Terminated"|"Reused"|"InUse"
 #' )
 #' ```
 #'
@@ -19837,14 +23801,14 @@ sagemaker_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL
 #' @rdname sagemaker_list_training_jobs
 #'
 #' @aliases sagemaker_list_training_jobs
-sagemaker_list_training_jobs <- function(NextToken = NULL, MaxResults = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, NameContains = NULL, StatusEquals = NULL, SortBy = NULL, SortOrder = NULL) {
+sagemaker_list_training_jobs <- function(NextToken = NULL, MaxResults = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, NameContains = NULL, StatusEquals = NULL, SortBy = NULL, SortOrder = NULL, WarmPoolStatusEquals = NULL) {
   op <- new_operation(
     name = "ListTrainingJobs",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$list_training_jobs_input(NextToken = NextToken, MaxResults = MaxResults, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder)
+  input <- .sagemaker$list_training_jobs_input(NextToken = NextToken, MaxResults = MaxResults, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder, WarmPoolStatusEquals = WarmPoolStatusEquals)
   output <- .sagemaker$list_training_jobs_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -19858,8 +23822,10 @@ sagemaker_list_training_jobs <- function(NextToken = NULL, MaxResults = NULL, Cr
 #' jobs that a hyperparameter tuning job launched
 #'
 #' @description
-#' Gets a list of TrainingJobSummary objects that describe the training
-#' jobs that a hyperparameter tuning job launched.
+#' Gets a list of
+#' [TrainingJobSummary](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TrainingJobSummary.html)
+#' objects that describe the training jobs that a hyperparameter tuning job
+#' launched.
 #'
 #' @usage
 #' sagemaker_list_training_jobs_for_hyper_parameter_tuning_job(
@@ -20117,7 +24083,12 @@ sagemaker_list_transform_jobs <- function(CreationTimeAfter = NULL, CreationTime
 #'       CreatedBy = list(
 #'         UserProfileArn = "string",
 #'         UserProfileName = "string",
-#'         DomainId = "string"
+#'         DomainId = "string",
+#'         IamIdentity = list(
+#'           Arn = "string",
+#'           PrincipalId = "string",
+#'           SourceIdentity = "string"
+#'         )
 #'       ),
 #'       LastModifiedTime = as.POSIXct(
 #'         "2015-01-01"
@@ -20125,7 +24096,12 @@ sagemaker_list_transform_jobs <- function(CreationTimeAfter = NULL, CreationTime
 #'       LastModifiedBy = list(
 #'         UserProfileArn = "string",
 #'         UserProfileName = "string",
-#'         DomainId = "string"
+#'         DomainId = "string",
+#'         IamIdentity = list(
+#'           Arn = "string",
+#'           PrincipalId = "string",
+#'           SourceIdentity = "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -20791,7 +24767,7 @@ sagemaker_register_devices <- function(DeviceFleetName, Devices, Tags = NULL) {
 #' provide a `HumanTaskUiArn` if you use the `UiTemplate` parameter.
 #' 
 #' See a list of available Human Ui Amazon Resource Names (ARNs) in
-#' UiConfig.
+#' [UiConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UiConfig.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -20900,22 +24876,27 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 }
 .sagemaker$operations$retry_pipeline_execution <- sagemaker_retry_pipeline_execution
 
-#' Finds Amazon SageMaker resources that match a search query
+#' Finds SageMaker resources that match a search query
 #'
 #' @description
-#' Finds Amazon SageMaker resources that match a search query. Matching
-#' resources are returned as a list of `SearchRecord` objects in the
-#' response. You can sort the search results by any resource property in a
-#' ascending or descending order.
+#' Finds SageMaker resources that match a search query. Matching resources
+#' are returned as a list of `SearchRecord` objects in the response. You
+#' can sort the search results by any resource property in a ascending or
+#' descending order.
 #' 
 #' You can query against the following value types: numeric, text, Boolean,
 #' and timestamp.
+#' 
+#' The Search API may provide access to otherwise restricted data. See
+#' [Amazon SageMaker API Permissions: Actions, Permissions, and Resources
+#' Reference](https://docs.aws.amazon.com/sagemaker/latest/dg/api-permissions-reference.html)
+#' for more information.
 #'
 #' @usage
 #' sagemaker_search(Resource, SearchExpression, SortBy, SortOrder,
 #'   NextToken, MaxResults)
 #'
-#' @param Resource &#91;required&#93; The name of the Amazon SageMaker resource to search for.
+#' @param Resource &#91;required&#93; The name of the SageMaker resource to search for.
 #' @param SearchExpression A Boolean conditional statement. Resources must satisfy this condition
 #' to be included in search results. You must provide at least one
 #' subexpression, filter, or nested filter. The maximum number of recursive
@@ -20962,7 +24943,19 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'               Regex = "string"
 #'             )
 #'           ),
-#'           EnableSageMakerMetricsTimeSeries = TRUE|FALSE
+#'           EnableSageMakerMetricsTimeSeries = TRUE|FALSE,
+#'           ContainerEntrypoint = list(
+#'             "string"
+#'           ),
+#'           ContainerArguments = list(
+#'             "string"
+#'           ),
+#'           TrainingImageConfig = list(
+#'             TrainingRepositoryAccessMode = "Platform"|"Vpc",
+#'             TrainingRepositoryAuthConfig = list(
+#'               TrainingRepositoryCredentialsProviderArn = "string"
+#'             )
+#'           )
 #'         ),
 #'         RoleArn = "string",
 #'         InputDataConfig = list(
@@ -21001,17 +24994,18 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'           S3OutputPath = "string"
 #'         ),
 #'         ResourceConfig = list(
-#'           InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'           InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'           InstanceCount = 123,
 #'           VolumeSizeInGB = 123,
 #'           VolumeKmsKeyId = "string",
 #'           InstanceGroups = list(
 #'             list(
-#'               InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'               InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'               InstanceCount = 123,
 #'               InstanceGroupName = "string"
 #'             )
-#'           )
+#'           ),
+#'           KeepAlivePeriodInSeconds = 123
 #'         ),
 #'         VpcConfig = list(
 #'           SecurityGroupIds = list(
@@ -21085,7 +25079,8 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'         ExperimentConfig = list(
 #'           ExperimentName = "string",
 #'           TrialName = "string",
-#'           TrialComponentDisplayName = "string"
+#'           TrialComponentDisplayName = "string",
+#'           RunName = "string"
 #'         ),
 #'         DebugRuleConfigurations = list(
 #'           list(
@@ -21143,7 +25138,12 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'         CreatedBy = list(
 #'           UserProfileArn = "string",
 #'           UserProfileName = "string",
-#'           DomainId = "string"
+#'           DomainId = "string",
+#'           IamIdentity = list(
+#'             Arn = "string",
+#'             PrincipalId = "string",
+#'             SourceIdentity = "string"
+#'           )
 #'         ),
 #'         LastModifiedTime = as.POSIXct(
 #'           "2015-01-01"
@@ -21151,7 +25151,12 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'         LastModifiedBy = list(
 #'           UserProfileArn = "string",
 #'           UserProfileName = "string",
-#'           DomainId = "string"
+#'           DomainId = "string",
+#'           IamIdentity = list(
+#'             Arn = "string",
+#'             PrincipalId = "string",
+#'             SourceIdentity = "string"
+#'           )
 #'         ),
 #'         Tags = list(
 #'           list(
@@ -21175,7 +25180,12 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'         CreatedBy = list(
 #'           UserProfileArn = "string",
 #'           UserProfileName = "string",
-#'           DomainId = "string"
+#'           DomainId = "string",
+#'           IamIdentity = list(
+#'             Arn = "string",
+#'             PrincipalId = "string",
+#'             SourceIdentity = "string"
+#'           )
 #'         ),
 #'         LastModifiedTime = as.POSIXct(
 #'           "2015-01-01"
@@ -21183,7 +25193,12 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'         LastModifiedBy = list(
 #'           UserProfileArn = "string",
 #'           UserProfileName = "string",
-#'           DomainId = "string"
+#'           DomainId = "string",
+#'           IamIdentity = list(
+#'             Arn = "string",
+#'             PrincipalId = "string",
+#'             SourceIdentity = "string"
+#'           )
 #'         ),
 #'         MetadataProperties = list(
 #'           CommitId = "string",
@@ -21211,7 +25226,12 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'             CreatedBy = list(
 #'               UserProfileArn = "string",
 #'               UserProfileName = "string",
-#'               DomainId = "string"
+#'               DomainId = "string",
+#'               IamIdentity = list(
+#'                 Arn = "string",
+#'                 PrincipalId = "string",
+#'                 SourceIdentity = "string"
+#'               )
 #'             )
 #'           )
 #'         )
@@ -21240,7 +25260,12 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'         CreatedBy = list(
 #'           UserProfileArn = "string",
 #'           UserProfileName = "string",
-#'           DomainId = "string"
+#'           DomainId = "string",
+#'           IamIdentity = list(
+#'             Arn = "string",
+#'             PrincipalId = "string",
+#'             SourceIdentity = "string"
+#'           )
 #'         ),
 #'         LastModifiedTime = as.POSIXct(
 #'           "2015-01-01"
@@ -21248,7 +25273,12 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'         LastModifiedBy = list(
 #'           UserProfileArn = "string",
 #'           UserProfileName = "string",
-#'           DomainId = "string"
+#'           DomainId = "string",
+#'           IamIdentity = list(
+#'             Arn = "string",
+#'             PrincipalId = "string",
+#'             SourceIdentity = "string"
+#'           )
 #'         ),
 #'         Parameters = list(
 #'           list(
@@ -21316,7 +25346,19 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'                   Regex = "string"
 #'                 )
 #'               ),
-#'               EnableSageMakerMetricsTimeSeries = TRUE|FALSE
+#'               EnableSageMakerMetricsTimeSeries = TRUE|FALSE,
+#'               ContainerEntrypoint = list(
+#'                 "string"
+#'               ),
+#'               ContainerArguments = list(
+#'                 "string"
+#'               ),
+#'               TrainingImageConfig = list(
+#'                 TrainingRepositoryAccessMode = "Platform"|"Vpc",
+#'                 TrainingRepositoryAuthConfig = list(
+#'                   TrainingRepositoryCredentialsProviderArn = "string"
+#'                 )
+#'               )
 #'             ),
 #'             RoleArn = "string",
 #'             InputDataConfig = list(
@@ -21355,17 +25397,18 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'               S3OutputPath = "string"
 #'             ),
 #'             ResourceConfig = list(
-#'               InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'               InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'               InstanceCount = 123,
 #'               VolumeSizeInGB = 123,
 #'               VolumeKmsKeyId = "string",
 #'               InstanceGroups = list(
 #'                 list(
-#'                   InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'                   InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
 #'                   InstanceCount = 123,
 #'                   InstanceGroupName = "string"
 #'                 )
-#'               )
+#'               ),
+#'               KeepAlivePeriodInSeconds = 123
 #'             ),
 #'             VpcConfig = list(
 #'               SecurityGroupIds = list(
@@ -21439,7 +25482,8 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'             ExperimentConfig = list(
 #'               ExperimentName = "string",
 #'               TrialName = "string",
-#'               TrialComponentDisplayName = "string"
+#'               TrialComponentDisplayName = "string",
+#'               RunName = "string"
 #'             ),
 #'             DebugRuleConfigurations = list(
 #'               list(
@@ -21580,7 +25624,8 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'             ExperimentConfig = list(
 #'               ExperimentName = "string",
 #'               TrialName = "string",
-#'               TrialComponentDisplayName = "string"
+#'               TrialComponentDisplayName = "string",
+#'               RunName = "string"
 #'             ),
 #'             ProcessingJobArn = "string",
 #'             ProcessingJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
@@ -21665,7 +25710,8 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'             ExperimentConfig = list(
 #'               ExperimentName = "string",
 #'               TrialName = "string",
-#'               TrialComponentDisplayName = "string"
+#'               TrialComponentDisplayName = "string",
+#'               RunName = "string"
 #'             ),
 #'             Tags = list(
 #'               list(
@@ -21687,7 +25733,8 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'             TrialName = "string",
 #'             ExperimentName = "string"
 #'           )
-#'         )
+#'         ),
+#'         RunName = "string"
 #'       ),
 #'       Endpoint = list(
 #'         EndpointName = "string",
@@ -21720,11 +25767,13 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'             ),
 #'             CurrentServerlessConfig = list(
 #'               MemorySizeInMB = 123,
-#'               MaxConcurrency = 123
+#'               MaxConcurrency = 123,
+#'               ProvisionedConcurrency = 123
 #'             ),
 #'             DesiredServerlessConfig = list(
 #'               MemorySizeInMB = 123,
-#'               MaxConcurrency = 123
+#'               MaxConcurrency = 123,
+#'               ProvisionedConcurrency = 123
 #'             )
 #'           )
 #'         ),
@@ -21774,6 +25823,27 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'                   list(
 #'                     EndpointInput = list(
 #'                       EndpointName = "string",
+#'                       LocalPath = "string",
+#'                       S3InputMode = "Pipe"|"File",
+#'                       S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'                       FeaturesAttribute = "string",
+#'                       InferenceAttribute = "string",
+#'                       ProbabilityAttribute = "string",
+#'                       ProbabilityThresholdAttribute = 123.0,
+#'                       StartTimeOffset = "string",
+#'                       EndTimeOffset = "string"
+#'                     ),
+#'                     BatchTransformInput = list(
+#'                       DataCapturedDestinationS3Uri = "string",
+#'                       DatasetFormat = list(
+#'                         Csv = list(
+#'                           Header = TRUE|FALSE
+#'                         ),
+#'                         Json = list(
+#'                           Line = TRUE|FALSE
+#'                         ),
+#'                         Parquet = list()
+#'                       ),
 #'                       LocalPath = "string",
 #'                       S3InputMode = "Pipe"|"File",
 #'                       S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
@@ -21872,6 +25942,43 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'             Key = "string",
 #'             Value = "string"
 #'           )
+#'         ),
+#'         ShadowProductionVariants = list(
+#'           list(
+#'             VariantName = "string",
+#'             DeployedImages = list(
+#'               list(
+#'                 SpecifiedImage = "string",
+#'                 ResolvedImage = "string",
+#'                 ResolutionTime = as.POSIXct(
+#'                   "2015-01-01"
+#'                 )
+#'               )
+#'             ),
+#'             CurrentWeight = 123.0,
+#'             DesiredWeight = 123.0,
+#'             CurrentInstanceCount = 123,
+#'             DesiredInstanceCount = 123,
+#'             VariantStatus = list(
+#'               list(
+#'                 Status = "Creating"|"Updating"|"Deleting"|"ActivatingTraffic"|"Baking",
+#'                 StatusMessage = "string",
+#'                 StartTime = as.POSIXct(
+#'                   "2015-01-01"
+#'                 )
+#'               )
+#'             ),
+#'             CurrentServerlessConfig = list(
+#'               MemorySizeInMB = 123,
+#'               MaxConcurrency = 123,
+#'               ProvisionedConcurrency = 123
+#'             ),
+#'             DesiredServerlessConfig = list(
+#'               MemorySizeInMB = 123,
+#'               MaxConcurrency = 123,
+#'               ProvisionedConcurrency = 123
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       ModelPackage = list(
@@ -21906,7 +26013,7 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'             "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'           ),
 #'           SupportedRealtimeInferenceInstanceTypes = list(
-#'             "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"
+#'             "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge"
 #'           ),
 #'           SupportedContentTypes = list(
 #'             "string"
@@ -21983,7 +26090,12 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'         CreatedBy = list(
 #'           UserProfileArn = "string",
 #'           UserProfileName = "string",
-#'           DomainId = "string"
+#'           DomainId = "string",
+#'           IamIdentity = list(
+#'             Arn = "string",
+#'             PrincipalId = "string",
+#'             SourceIdentity = "string"
+#'           )
 #'         ),
 #'         MetadataProperties = list(
 #'           CommitId = "string",
@@ -22047,7 +26159,12 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'         LastModifiedBy = list(
 #'           UserProfileArn = "string",
 #'           UserProfileName = "string",
-#'           DomainId = "string"
+#'           DomainId = "string",
+#'           IamIdentity = list(
+#'             Arn = "string",
+#'             PrincipalId = "string",
+#'             SourceIdentity = "string"
+#'           )
 #'         ),
 #'         ApprovalDescription = "string",
 #'         Domain = "string",
@@ -22079,7 +26196,7 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'               "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'             ),
 #'             SupportedRealtimeInferenceInstanceTypes = list(
-#'               "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"
+#'               "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge"
 #'             ),
 #'             SupportedContentTypes = list(
 #'               "string"
@@ -22164,7 +26281,12 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'         CreatedBy = list(
 #'           UserProfileArn = "string",
 #'           UserProfileName = "string",
-#'           DomainId = "string"
+#'           DomainId = "string",
+#'           IamIdentity = list(
+#'             Arn = "string",
+#'             PrincipalId = "string",
+#'             SourceIdentity = "string"
+#'           )
 #'         ),
 #'         ModelPackageGroupStatus = "Pending"|"InProgress"|"Completed"|"Failed"|"Deleting"|"DeleteFailed",
 #'         Tags = list(
@@ -22193,12 +26315,22 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'         CreatedBy = list(
 #'           UserProfileArn = "string",
 #'           UserProfileName = "string",
-#'           DomainId = "string"
+#'           DomainId = "string",
+#'           IamIdentity = list(
+#'             Arn = "string",
+#'             PrincipalId = "string",
+#'             SourceIdentity = "string"
+#'           )
 #'         ),
 #'         LastModifiedBy = list(
 #'           UserProfileArn = "string",
 #'           UserProfileName = "string",
-#'           DomainId = "string"
+#'           DomainId = "string",
+#'           IamIdentity = list(
+#'             Arn = "string",
+#'             PrincipalId = "string",
+#'             SourceIdentity = "string"
+#'           )
 #'         ),
 #'         ParallelismConfiguration = list(
 #'           MaxParallelExecutionSteps = 123
@@ -22230,12 +26362,22 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'         CreatedBy = list(
 #'           UserProfileArn = "string",
 #'           UserProfileName = "string",
-#'           DomainId = "string"
+#'           DomainId = "string",
+#'           IamIdentity = list(
+#'             Arn = "string",
+#'             PrincipalId = "string",
+#'             SourceIdentity = "string"
+#'           )
 #'         ),
 #'         LastModifiedBy = list(
 #'           UserProfileArn = "string",
 #'           UserProfileName = "string",
-#'           DomainId = "string"
+#'           DomainId = "string",
+#'           IamIdentity = list(
+#'             Arn = "string",
+#'             PrincipalId = "string",
+#'             SourceIdentity = "string"
+#'           )
 #'         ),
 #'         ParallelismConfiguration = list(
 #'           MaxParallelExecutionSteps = 123
@@ -22281,7 +26423,8 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'             TableName = "string",
 #'             Catalog = "string",
 #'             Database = "string"
-#'           )
+#'           ),
+#'           TableFormat = "Glue"|"Iceberg"
 #'         ),
 #'         RoleArn = "string",
 #'         FeatureGroupStatus = "Creating"|"Created"|"CreateFailed"|"Deleting"|"DeleteFailed",
@@ -22326,7 +26469,12 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'         CreatedBy = list(
 #'           UserProfileArn = "string",
 #'           UserProfileName = "string",
-#'           DomainId = "string"
+#'           DomainId = "string",
+#'           IamIdentity = list(
+#'             Arn = "string",
+#'             PrincipalId = "string",
+#'             SourceIdentity = "string"
+#'           )
 #'         ),
 #'         CreationTime = as.POSIXct(
 #'           "2015-01-01"
@@ -22343,7 +26491,12 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'         LastModifiedBy = list(
 #'           UserProfileArn = "string",
 #'           UserProfileName = "string",
-#'           DomainId = "string"
+#'           DomainId = "string",
+#'           IamIdentity = list(
+#'             Arn = "string",
+#'             PrincipalId = "string",
+#'             SourceIdentity = "string"
+#'           )
 #'         )
 #'       ),
 #'       FeatureMetadata = list(
@@ -22364,6 +26517,862 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'             Value = "string"
 #'           )
 #'         )
+#'       ),
+#'       HyperParameterTuningJob = list(
+#'         HyperParameterTuningJobName = "string",
+#'         HyperParameterTuningJobArn = "string",
+#'         HyperParameterTuningJobConfig = list(
+#'           Strategy = "Bayesian"|"Random"|"Hyperband"|"Grid",
+#'           StrategyConfig = list(
+#'             HyperbandStrategyConfig = list(
+#'               MinResource = 123,
+#'               MaxResource = 123
+#'             )
+#'           ),
+#'           HyperParameterTuningJobObjective = list(
+#'             Type = "Maximize"|"Minimize",
+#'             MetricName = "string"
+#'           ),
+#'           ResourceLimits = list(
+#'             MaxNumberOfTrainingJobs = 123,
+#'             MaxParallelTrainingJobs = 123,
+#'             MaxRuntimeInSeconds = 123
+#'           ),
+#'           ParameterRanges = list(
+#'             IntegerParameterRanges = list(
+#'               list(
+#'                 Name = "string",
+#'                 MinValue = "string",
+#'                 MaxValue = "string",
+#'                 ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
+#'               )
+#'             ),
+#'             ContinuousParameterRanges = list(
+#'               list(
+#'                 Name = "string",
+#'                 MinValue = "string",
+#'                 MaxValue = "string",
+#'                 ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
+#'               )
+#'             ),
+#'             CategoricalParameterRanges = list(
+#'               list(
+#'                 Name = "string",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             AutoParameters = list(
+#'               list(
+#'                 Name = "string",
+#'                 ValueHint = "string"
+#'               )
+#'             )
+#'           ),
+#'           TrainingJobEarlyStoppingType = "Off"|"Auto",
+#'           TuningJobCompletionCriteria = list(
+#'             TargetObjectiveMetricValue = 123.0,
+#'             BestObjectiveNotImproving = list(
+#'               MaxNumberOfTrainingJobsNotImproving = 123
+#'             ),
+#'             ConvergenceDetected = list(
+#'               CompleteOnConvergence = "Disabled"|"Enabled"
+#'             )
+#'           ),
+#'           RandomSeed = 123
+#'         ),
+#'         TrainingJobDefinition = list(
+#'           DefinitionName = "string",
+#'           TuningObjective = list(
+#'             Type = "Maximize"|"Minimize",
+#'             MetricName = "string"
+#'           ),
+#'           HyperParameterRanges = list(
+#'             IntegerParameterRanges = list(
+#'               list(
+#'                 Name = "string",
+#'                 MinValue = "string",
+#'                 MaxValue = "string",
+#'                 ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
+#'               )
+#'             ),
+#'             ContinuousParameterRanges = list(
+#'               list(
+#'                 Name = "string",
+#'                 MinValue = "string",
+#'                 MaxValue = "string",
+#'                 ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
+#'               )
+#'             ),
+#'             CategoricalParameterRanges = list(
+#'               list(
+#'                 Name = "string",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             AutoParameters = list(
+#'               list(
+#'                 Name = "string",
+#'                 ValueHint = "string"
+#'               )
+#'             )
+#'           ),
+#'           StaticHyperParameters = list(
+#'             "string"
+#'           ),
+#'           AlgorithmSpecification = list(
+#'             TrainingImage = "string",
+#'             TrainingInputMode = "Pipe"|"File"|"FastFile",
+#'             AlgorithmName = "string",
+#'             MetricDefinitions = list(
+#'               list(
+#'                 Name = "string",
+#'                 Regex = "string"
+#'               )
+#'             )
+#'           ),
+#'           RoleArn = "string",
+#'           InputDataConfig = list(
+#'             list(
+#'               ChannelName = "string",
+#'               DataSource = list(
+#'                 S3DataSource = list(
+#'                   S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
+#'                   S3Uri = "string",
+#'                   S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'                   AttributeNames = list(
+#'                     "string"
+#'                   ),
+#'                   InstanceGroupNames = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 FileSystemDataSource = list(
+#'                   FileSystemId = "string",
+#'                   FileSystemAccessMode = "rw"|"ro",
+#'                   FileSystemType = "EFS"|"FSxLustre",
+#'                   DirectoryPath = "string"
+#'                 )
+#'               ),
+#'               ContentType = "string",
+#'               CompressionType = "None"|"Gzip",
+#'               RecordWrapperType = "None"|"RecordIO",
+#'               InputMode = "Pipe"|"File"|"FastFile",
+#'               ShuffleConfig = list(
+#'                 Seed = 123
+#'               )
+#'             )
+#'           ),
+#'           VpcConfig = list(
+#'             SecurityGroupIds = list(
+#'               "string"
+#'             ),
+#'             Subnets = list(
+#'               "string"
+#'             )
+#'           ),
+#'           OutputDataConfig = list(
+#'             KmsKeyId = "string",
+#'             S3OutputPath = "string"
+#'           ),
+#'           ResourceConfig = list(
+#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
+#'             InstanceCount = 123,
+#'             VolumeSizeInGB = 123,
+#'             VolumeKmsKeyId = "string",
+#'             InstanceGroups = list(
+#'               list(
+#'                 InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
+#'                 InstanceCount = 123,
+#'                 InstanceGroupName = "string"
+#'               )
+#'             ),
+#'             KeepAlivePeriodInSeconds = 123
+#'           ),
+#'           StoppingCondition = list(
+#'             MaxRuntimeInSeconds = 123,
+#'             MaxWaitTimeInSeconds = 123
+#'           ),
+#'           EnableNetworkIsolation = TRUE|FALSE,
+#'           EnableInterContainerTrafficEncryption = TRUE|FALSE,
+#'           EnableManagedSpotTraining = TRUE|FALSE,
+#'           CheckpointConfig = list(
+#'             S3Uri = "string",
+#'             LocalPath = "string"
+#'           ),
+#'           RetryStrategy = list(
+#'             MaximumRetryAttempts = 123
+#'           ),
+#'           HyperParameterTuningResourceConfig = list(
+#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
+#'             InstanceCount = 123,
+#'             VolumeSizeInGB = 123,
+#'             VolumeKmsKeyId = "string",
+#'             AllocationStrategy = "Prioritized",
+#'             InstanceConfigs = list(
+#'               list(
+#'                 InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
+#'                 InstanceCount = 123,
+#'                 VolumeSizeInGB = 123
+#'               )
+#'             )
+#'           ),
+#'           Environment = list(
+#'             "string"
+#'           )
+#'         ),
+#'         TrainingJobDefinitions = list(
+#'           list(
+#'             DefinitionName = "string",
+#'             TuningObjective = list(
+#'               Type = "Maximize"|"Minimize",
+#'               MetricName = "string"
+#'             ),
+#'             HyperParameterRanges = list(
+#'               IntegerParameterRanges = list(
+#'                 list(
+#'                   Name = "string",
+#'                   MinValue = "string",
+#'                   MaxValue = "string",
+#'                   ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
+#'                 )
+#'               ),
+#'               ContinuousParameterRanges = list(
+#'                 list(
+#'                   Name = "string",
+#'                   MinValue = "string",
+#'                   MaxValue = "string",
+#'                   ScalingType = "Auto"|"Linear"|"Logarithmic"|"ReverseLogarithmic"
+#'                 )
+#'               ),
+#'               CategoricalParameterRanges = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               AutoParameters = list(
+#'                 list(
+#'                   Name = "string",
+#'                   ValueHint = "string"
+#'                 )
+#'               )
+#'             ),
+#'             StaticHyperParameters = list(
+#'               "string"
+#'             ),
+#'             AlgorithmSpecification = list(
+#'               TrainingImage = "string",
+#'               TrainingInputMode = "Pipe"|"File"|"FastFile",
+#'               AlgorithmName = "string",
+#'               MetricDefinitions = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Regex = "string"
+#'                 )
+#'               )
+#'             ),
+#'             RoleArn = "string",
+#'             InputDataConfig = list(
+#'               list(
+#'                 ChannelName = "string",
+#'                 DataSource = list(
+#'                   S3DataSource = list(
+#'                     S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
+#'                     S3Uri = "string",
+#'                     S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'                     AttributeNames = list(
+#'                       "string"
+#'                     ),
+#'                     InstanceGroupNames = list(
+#'                       "string"
+#'                     )
+#'                   ),
+#'                   FileSystemDataSource = list(
+#'                     FileSystemId = "string",
+#'                     FileSystemAccessMode = "rw"|"ro",
+#'                     FileSystemType = "EFS"|"FSxLustre",
+#'                     DirectoryPath = "string"
+#'                   )
+#'                 ),
+#'                 ContentType = "string",
+#'                 CompressionType = "None"|"Gzip",
+#'                 RecordWrapperType = "None"|"RecordIO",
+#'                 InputMode = "Pipe"|"File"|"FastFile",
+#'                 ShuffleConfig = list(
+#'                   Seed = 123
+#'                 )
+#'               )
+#'             ),
+#'             VpcConfig = list(
+#'               SecurityGroupIds = list(
+#'                 "string"
+#'               ),
+#'               Subnets = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             OutputDataConfig = list(
+#'               KmsKeyId = "string",
+#'               S3OutputPath = "string"
+#'             ),
+#'             ResourceConfig = list(
+#'               InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
+#'               InstanceCount = 123,
+#'               VolumeSizeInGB = 123,
+#'               VolumeKmsKeyId = "string",
+#'               InstanceGroups = list(
+#'                 list(
+#'                   InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
+#'                   InstanceCount = 123,
+#'                   InstanceGroupName = "string"
+#'                 )
+#'               ),
+#'               KeepAlivePeriodInSeconds = 123
+#'             ),
+#'             StoppingCondition = list(
+#'               MaxRuntimeInSeconds = 123,
+#'               MaxWaitTimeInSeconds = 123
+#'             ),
+#'             EnableNetworkIsolation = TRUE|FALSE,
+#'             EnableInterContainerTrafficEncryption = TRUE|FALSE,
+#'             EnableManagedSpotTraining = TRUE|FALSE,
+#'             CheckpointConfig = list(
+#'               S3Uri = "string",
+#'               LocalPath = "string"
+#'             ),
+#'             RetryStrategy = list(
+#'               MaximumRetryAttempts = 123
+#'             ),
+#'             HyperParameterTuningResourceConfig = list(
+#'               InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
+#'               InstanceCount = 123,
+#'               VolumeSizeInGB = 123,
+#'               VolumeKmsKeyId = "string",
+#'               AllocationStrategy = "Prioritized",
+#'               InstanceConfigs = list(
+#'                 list(
+#'                   InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge",
+#'                   InstanceCount = 123,
+#'                   VolumeSizeInGB = 123
+#'                 )
+#'               )
+#'             ),
+#'             Environment = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         HyperParameterTuningJobStatus = "Completed"|"InProgress"|"Failed"|"Stopped"|"Stopping",
+#'         CreationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         HyperParameterTuningEndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LastModifiedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         TrainingJobStatusCounters = list(
+#'           Completed = 123,
+#'           InProgress = 123,
+#'           RetryableError = 123,
+#'           NonRetryableError = 123,
+#'           Stopped = 123
+#'         ),
+#'         ObjectiveStatusCounters = list(
+#'           Succeeded = 123,
+#'           Pending = 123,
+#'           Failed = 123
+#'         ),
+#'         BestTrainingJob = list(
+#'           TrainingJobDefinitionName = "string",
+#'           TrainingJobName = "string",
+#'           TrainingJobArn = "string",
+#'           TuningJobName = "string",
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           TrainingStartTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           TrainingEndTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           TrainingJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+#'           TunedHyperParameters = list(
+#'             "string"
+#'           ),
+#'           FailureReason = "string",
+#'           FinalHyperParameterTuningJobObjectiveMetric = list(
+#'             Type = "Maximize"|"Minimize",
+#'             MetricName = "string",
+#'             Value = 123.0
+#'           ),
+#'           ObjectiveStatus = "Succeeded"|"Pending"|"Failed"
+#'         ),
+#'         OverallBestTrainingJob = list(
+#'           TrainingJobDefinitionName = "string",
+#'           TrainingJobName = "string",
+#'           TrainingJobArn = "string",
+#'           TuningJobName = "string",
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           TrainingStartTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           TrainingEndTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           TrainingJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+#'           TunedHyperParameters = list(
+#'             "string"
+#'           ),
+#'           FailureReason = "string",
+#'           FinalHyperParameterTuningJobObjectiveMetric = list(
+#'             Type = "Maximize"|"Minimize",
+#'             MetricName = "string",
+#'             Value = 123.0
+#'           ),
+#'           ObjectiveStatus = "Succeeded"|"Pending"|"Failed"
+#'         ),
+#'         WarmStartConfig = list(
+#'           ParentHyperParameterTuningJobs = list(
+#'             list(
+#'               HyperParameterTuningJobName = "string"
+#'             )
+#'           ),
+#'           WarmStartType = "IdenticalDataAndAlgorithm"|"TransferLearning"
+#'         ),
+#'         FailureReason = "string",
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         TuningJobCompletionDetails = list(
+#'           NumberOfTrainingJobsObjectiveNotImproving = 123,
+#'           ConvergenceDetectedTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         ),
+#'         ConsumedResources = list(
+#'           RuntimeInSeconds = 123
+#'         )
+#'       ),
+#'       Model = list(
+#'         Model = list(
+#'           ModelName = "string",
+#'           PrimaryContainer = list(
+#'             ContainerHostname = "string",
+#'             Image = "string",
+#'             ImageConfig = list(
+#'               RepositoryAccessMode = "Platform"|"Vpc",
+#'               RepositoryAuthConfig = list(
+#'                 RepositoryCredentialsProviderArn = "string"
+#'               )
+#'             ),
+#'             Mode = "SingleModel"|"MultiModel",
+#'             ModelDataUrl = "string",
+#'             Environment = list(
+#'               "string"
+#'             ),
+#'             ModelPackageName = "string",
+#'             InferenceSpecificationName = "string",
+#'             MultiModelConfig = list(
+#'               ModelCacheSetting = "Enabled"|"Disabled"
+#'             )
+#'           ),
+#'           Containers = list(
+#'             list(
+#'               ContainerHostname = "string",
+#'               Image = "string",
+#'               ImageConfig = list(
+#'                 RepositoryAccessMode = "Platform"|"Vpc",
+#'                 RepositoryAuthConfig = list(
+#'                   RepositoryCredentialsProviderArn = "string"
+#'                 )
+#'               ),
+#'               Mode = "SingleModel"|"MultiModel",
+#'               ModelDataUrl = "string",
+#'               Environment = list(
+#'                 "string"
+#'               ),
+#'               ModelPackageName = "string",
+#'               InferenceSpecificationName = "string",
+#'               MultiModelConfig = list(
+#'                 ModelCacheSetting = "Enabled"|"Disabled"
+#'               )
+#'             )
+#'           ),
+#'           InferenceExecutionConfig = list(
+#'             Mode = "Serial"|"Direct"
+#'           ),
+#'           ExecutionRoleArn = "string",
+#'           VpcConfig = list(
+#'             SecurityGroupIds = list(
+#'               "string"
+#'             ),
+#'             Subnets = list(
+#'               "string"
+#'             )
+#'           ),
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ModelArn = "string",
+#'           EnableNetworkIsolation = TRUE|FALSE,
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           DeploymentRecommendation = list(
+#'             RecommendationStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED"|"NOT_APPLICABLE",
+#'             RealTimeInferenceRecommendations = list(
+#'               list(
+#'                 RecommendationId = "string",
+#'                 InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge",
+#'                 Environment = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Endpoints = list(
+#'           list(
+#'             EndpointName = "string",
+#'             EndpointArn = "string",
+#'             CreationTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             LastModifiedTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             EndpointStatus = "OutOfService"|"Creating"|"Updating"|"SystemUpdating"|"RollingBack"|"InService"|"Deleting"|"Failed"
+#'           )
+#'         ),
+#'         LastBatchTransformJob = list(
+#'           TransformJobName = "string",
+#'           TransformJobArn = "string",
+#'           TransformJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+#'           FailureReason = "string",
+#'           ModelName = "string",
+#'           MaxConcurrentTransforms = 123,
+#'           ModelClientConfig = list(
+#'             InvocationsTimeoutInSeconds = 123,
+#'             InvocationsMaxRetries = 123
+#'           ),
+#'           MaxPayloadInMB = 123,
+#'           BatchStrategy = "MultiRecord"|"SingleRecord",
+#'           Environment = list(
+#'             "string"
+#'           ),
+#'           TransformInput = list(
+#'             DataSource = list(
+#'               S3DataSource = list(
+#'                 S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
+#'                 S3Uri = "string"
+#'               )
+#'             ),
+#'             ContentType = "string",
+#'             CompressionType = "None"|"Gzip",
+#'             SplitType = "None"|"Line"|"RecordIO"|"TFRecord"
+#'           ),
+#'           TransformOutput = list(
+#'             S3OutputPath = "string",
+#'             Accept = "string",
+#'             AssembleWith = "None"|"Line",
+#'             KmsKeyId = "string"
+#'           ),
+#'           TransformResources = list(
+#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge",
+#'             InstanceCount = 123,
+#'             VolumeKmsKeyId = "string"
+#'           ),
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           TransformStartTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           TransformEndTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           LabelingJobArn = "string",
+#'           AutoMLJobArn = "string",
+#'           DataProcessing = list(
+#'             InputFilter = "string",
+#'             OutputFilter = "string",
+#'             JoinSource = "Input"|"None"
+#'           ),
+#'           ExperimentConfig = list(
+#'             ExperimentName = "string",
+#'             TrialName = "string",
+#'             TrialComponentDisplayName = "string",
+#'             RunName = "string"
+#'           ),
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           )
+#'         ),
+#'         MonitoringSchedules = list(
+#'           list(
+#'             MonitoringScheduleArn = "string",
+#'             MonitoringScheduleName = "string",
+#'             MonitoringScheduleStatus = "Pending"|"Failed"|"Scheduled"|"Stopped",
+#'             MonitoringType = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability",
+#'             FailureReason = "string",
+#'             CreationTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             LastModifiedTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             MonitoringScheduleConfig = list(
+#'               ScheduleConfig = list(
+#'                 ScheduleExpression = "string"
+#'               ),
+#'               MonitoringJobDefinition = list(
+#'                 BaselineConfig = list(
+#'                   BaseliningJobName = "string",
+#'                   ConstraintsResource = list(
+#'                     S3Uri = "string"
+#'                   ),
+#'                   StatisticsResource = list(
+#'                     S3Uri = "string"
+#'                   )
+#'                 ),
+#'                 MonitoringInputs = list(
+#'                   list(
+#'                     EndpointInput = list(
+#'                       EndpointName = "string",
+#'                       LocalPath = "string",
+#'                       S3InputMode = "Pipe"|"File",
+#'                       S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'                       FeaturesAttribute = "string",
+#'                       InferenceAttribute = "string",
+#'                       ProbabilityAttribute = "string",
+#'                       ProbabilityThresholdAttribute = 123.0,
+#'                       StartTimeOffset = "string",
+#'                       EndTimeOffset = "string"
+#'                     ),
+#'                     BatchTransformInput = list(
+#'                       DataCapturedDestinationS3Uri = "string",
+#'                       DatasetFormat = list(
+#'                         Csv = list(
+#'                           Header = TRUE|FALSE
+#'                         ),
+#'                         Json = list(
+#'                           Line = TRUE|FALSE
+#'                         ),
+#'                         Parquet = list()
+#'                       ),
+#'                       LocalPath = "string",
+#'                       S3InputMode = "Pipe"|"File",
+#'                       S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'                       FeaturesAttribute = "string",
+#'                       InferenceAttribute = "string",
+#'                       ProbabilityAttribute = "string",
+#'                       ProbabilityThresholdAttribute = 123.0,
+#'                       StartTimeOffset = "string",
+#'                       EndTimeOffset = "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 MonitoringOutputConfig = list(
+#'                   MonitoringOutputs = list(
+#'                     list(
+#'                       S3Output = list(
+#'                         S3Uri = "string",
+#'                         LocalPath = "string",
+#'                         S3UploadMode = "Continuous"|"EndOfJob"
+#'                       )
+#'                     )
+#'                   ),
+#'                   KmsKeyId = "string"
+#'                 ),
+#'                 MonitoringResources = list(
+#'                   ClusterConfig = list(
+#'                     InstanceCount = 123,
+#'                     InstanceType = "ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge",
+#'                     VolumeSizeInGB = 123,
+#'                     VolumeKmsKeyId = "string"
+#'                   )
+#'                 ),
+#'                 MonitoringAppSpecification = list(
+#'                   ImageUri = "string",
+#'                   ContainerEntrypoint = list(
+#'                     "string"
+#'                   ),
+#'                   ContainerArguments = list(
+#'                     "string"
+#'                   ),
+#'                   RecordPreprocessorSourceUri = "string",
+#'                   PostAnalyticsProcessorSourceUri = "string"
+#'                 ),
+#'                 StoppingCondition = list(
+#'                   MaxRuntimeInSeconds = 123
+#'                 ),
+#'                 Environment = list(
+#'                   "string"
+#'                 ),
+#'                 NetworkConfig = list(
+#'                   EnableInterContainerTrafficEncryption = TRUE|FALSE,
+#'                   EnableNetworkIsolation = TRUE|FALSE,
+#'                   VpcConfig = list(
+#'                     SecurityGroupIds = list(
+#'                       "string"
+#'                     ),
+#'                     Subnets = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 RoleArn = "string"
+#'               ),
+#'               MonitoringJobDefinitionName = "string",
+#'               MonitoringType = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability"
+#'             ),
+#'             EndpointName = "string",
+#'             MonitoringAlertSummaries = list(
+#'               list(
+#'                 MonitoringAlertName = "string",
+#'                 CreationTime = as.POSIXct(
+#'                   "2015-01-01"
+#'                 ),
+#'                 LastModifiedTime = as.POSIXct(
+#'                   "2015-01-01"
+#'                 ),
+#'                 AlertStatus = "InAlert"|"OK",
+#'                 DatapointsToAlert = 123,
+#'                 EvaluationPeriod = 123,
+#'                 Actions = list(
+#'                   ModelDashboardIndicator = list(
+#'                     Enabled = TRUE|FALSE
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             LastMonitoringExecutionSummary = list(
+#'               MonitoringScheduleName = "string",
+#'               ScheduledTime = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               CreationTime = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               LastModifiedTime = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               MonitoringExecutionStatus = "Pending"|"Completed"|"CompletedWithViolations"|"InProgress"|"Failed"|"Stopping"|"Stopped",
+#'               ProcessingJobArn = "string",
+#'               EndpointName = "string",
+#'               FailureReason = "string",
+#'               MonitoringJobDefinitionName = "string",
+#'               MonitoringType = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability"
+#'             )
+#'           )
+#'         ),
+#'         ModelCard = list(
+#'           ModelCardArn = "string",
+#'           ModelCardName = "string",
+#'           ModelCardVersion = 123,
+#'           ModelCardStatus = "Draft"|"PendingReview"|"Approved"|"Archived",
+#'           SecurityConfig = list(
+#'             KmsKeyId = "string"
+#'           ),
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           CreatedBy = list(
+#'             UserProfileArn = "string",
+#'             UserProfileName = "string",
+#'             DomainId = "string",
+#'             IamIdentity = list(
+#'               Arn = "string",
+#'               PrincipalId = "string",
+#'               SourceIdentity = "string"
+#'             )
+#'           ),
+#'           LastModifiedTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           LastModifiedBy = list(
+#'             UserProfileArn = "string",
+#'             UserProfileName = "string",
+#'             DomainId = "string",
+#'             IamIdentity = list(
+#'               Arn = "string",
+#'               PrincipalId = "string",
+#'               SourceIdentity = "string"
+#'             )
+#'           ),
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           ModelId = "string",
+#'           RiskRating = "string"
+#'         )
+#'       ),
+#'       ModelCard = list(
+#'         ModelCardArn = "string",
+#'         ModelCardName = "string",
+#'         ModelCardVersion = 123,
+#'         Content = "string",
+#'         ModelCardStatus = "Draft"|"PendingReview"|"Approved"|"Archived",
+#'         SecurityConfig = list(
+#'           KmsKeyId = "string"
+#'         ),
+#'         CreationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         CreatedBy = list(
+#'           UserProfileArn = "string",
+#'           UserProfileName = "string",
+#'           DomainId = "string",
+#'           IamIdentity = list(
+#'             Arn = "string",
+#'             PrincipalId = "string",
+#'             SourceIdentity = "string"
+#'           )
+#'         ),
+#'         LastModifiedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LastModifiedBy = list(
+#'           UserProfileArn = "string",
+#'           UserProfileName = "string",
+#'           DomainId = "string",
+#'           IamIdentity = list(
+#'             Arn = "string",
+#'             PrincipalId = "string",
+#'             SourceIdentity = "string"
+#'           )
+#'         ),
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         ModelId = "string",
+#'         RiskRating = "string"
 #'       )
 #'     )
 #'   ),
@@ -22374,7 +27383,7 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #' @section Request syntax:
 #' ```
 #' svc$search(
-#'   Resource = "TrainingJob"|"Experiment"|"ExperimentTrial"|"ExperimentTrialComponent"|"Endpoint"|"ModelPackage"|"ModelPackageGroup"|"Pipeline"|"PipelineExecution"|"FeatureGroup"|"Project"|"FeatureMetadata",
+#'   Resource = "TrainingJob"|"Experiment"|"ExperimentTrial"|"ExperimentTrialComponent"|"Endpoint"|"ModelPackage"|"ModelPackageGroup"|"Pipeline"|"PipelineExecution"|"FeatureGroup"|"Project"|"FeatureMetadata"|"HyperParameterTuningJob"|"ModelCard"|"Model",
 #'   SearchExpression = list(
 #'     Filters = list(
 #'       list(
@@ -22594,6 +27603,53 @@ sagemaker_start_edge_deployment_stage <- function(EdgeDeploymentPlanName, StageN
 }
 .sagemaker$operations$start_edge_deployment_stage <- sagemaker_start_edge_deployment_stage
 
+#' Starts an inference experiment
+#'
+#' @description
+#' Starts an inference experiment.
+#'
+#' @usage
+#' sagemaker_start_inference_experiment(Name)
+#'
+#' @param Name &#91;required&#93; The name of the inference experiment to start.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InferenceExperimentArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_inference_experiment(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_start_inference_experiment
+#'
+#' @aliases sagemaker_start_inference_experiment
+sagemaker_start_inference_experiment <- function(Name) {
+  op <- new_operation(
+    name = "StartInferenceExperiment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$start_inference_experiment_input(Name = Name)
+  output <- .sagemaker$start_inference_experiment_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$start_inference_experiment <- sagemaker_start_inference_experiment
+
 #' Starts a previously stopped monitoring schedule
 #'
 #' @description
@@ -22756,10 +27812,10 @@ sagemaker_start_pipeline_execution <- function(PipelineName, PipelineExecutionDi
 }
 .sagemaker$operations$start_pipeline_execution <- sagemaker_start_pipeline_execution
 
-#' A method for forcing the termination of a running job
+#' A method for forcing a running job to shut down
 #'
 #' @description
-#' A method for forcing the termination of a running job.
+#' A method for forcing a running job to shut down.
 #'
 #' @usage
 #' sagemaker_stop_auto_ml_job(AutoMLJobName)
@@ -22809,9 +27865,9 @@ sagemaker_stop_auto_ml_job <- function(AutoMLJobName) {
 #' 
 #' When it receives a
 #' [`stop_compilation_job`][sagemaker_stop_compilation_job] request, Amazon
-#' SageMaker changes the CompilationJobSummary$CompilationJobStatus of the
-#' job to `Stopping`. After Amazon SageMaker stops the job, it sets the
-#' CompilationJobSummary$CompilationJobStatus to `Stopped`.
+#' SageMaker changes the `CompilationJobStatus` of the job to `Stopping`.
+#' After Amazon SageMaker stops the job, it sets the `CompilationJobStatus`
+#' to `Stopped`.
 #'
 #' @usage
 #' sagemaker_stop_compilation_job(CompilationJobName)
@@ -22985,6 +28041,91 @@ sagemaker_stop_hyper_parameter_tuning_job <- function(HyperParameterTuningJobNam
   return(response)
 }
 .sagemaker$operations$stop_hyper_parameter_tuning_job <- sagemaker_stop_hyper_parameter_tuning_job
+
+#' Stops an inference experiment
+#'
+#' @description
+#' Stops an inference experiment.
+#'
+#' @usage
+#' sagemaker_stop_inference_experiment(Name, ModelVariantActions,
+#'   DesiredModelVariants, DesiredState, Reason)
+#'
+#' @param Name &#91;required&#93; The name of the inference experiment to stop.
+#' @param ModelVariantActions &#91;required&#93; Array of key-value pairs, with names of variants mapped to actions. The
+#' possible actions are the following:
+#' 
+#' -   `Promote` - Promote the shadow variant to a production variant
+#' 
+#' -   `Remove` - Delete the variant
+#' 
+#' -   `Retain` - Keep the variant as it is
+#' @param DesiredModelVariants An array of `ModelVariantConfig` objects. There is one for each variant
+#' that you want to deploy after the inference experiment stops. Each
+#' `ModelVariantConfig` describes the infrastructure configuration for
+#' deploying the corresponding variant.
+#' @param DesiredState The desired state of the experiment after stopping. The possible states
+#' are the following:
+#' 
+#' -   `Completed`: The experiment completed successfully
+#' 
+#' -   `Cancelled`: The experiment was canceled
+#' @param Reason The reason for stopping the experiment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InferenceExperimentArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_inference_experiment(
+#'   Name = "string",
+#'   ModelVariantActions = list(
+#'     "Retain"|"Remove"|"Promote"
+#'   ),
+#'   DesiredModelVariants = list(
+#'     list(
+#'       ModelName = "string",
+#'       VariantName = "string",
+#'       InfrastructureConfig = list(
+#'         InfrastructureType = "RealTimeInference",
+#'         RealTimeInferenceConfig = list(
+#'           InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
+#'           InstanceCount = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   DesiredState = "Completed"|"Cancelled",
+#'   Reason = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_stop_inference_experiment
+#'
+#' @aliases sagemaker_stop_inference_experiment
+sagemaker_stop_inference_experiment <- function(Name, ModelVariantActions, DesiredModelVariants = NULL, DesiredState = NULL, Reason = NULL) {
+  op <- new_operation(
+    name = "StopInferenceExperiment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$stop_inference_experiment_input(Name = Name, ModelVariantActions = ModelVariantActions, DesiredModelVariants = DesiredModelVariants, DesiredState = DesiredState, Reason = Reason)
+  output <- .sagemaker$stop_inference_experiment_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$stop_inference_experiment <- sagemaker_stop_inference_experiment
 
 #' Stops an Inference Recommender job
 #'
@@ -23801,11 +28942,19 @@ sagemaker_update_devices <- function(DeviceFleetName, Devices) {
 #'
 #' @usage
 #' sagemaker_update_domain(DomainId, DefaultUserSettings,
-#'   DomainSettingsForUpdate)
+#'   DomainSettingsForUpdate, DefaultSpaceSettings,
+#'   AppSecurityGroupManagement)
 #'
 #' @param DomainId &#91;required&#93; The ID of the domain to be updated.
 #' @param DefaultUserSettings A collection of settings.
 #' @param DomainSettingsForUpdate A collection of `DomainSettings` configuration values to update.
+#' @param DefaultSpaceSettings The default settings used to create a space within the Domain.
+#' @param AppSecurityGroupManagement The entity that creates and manages the required security groups for
+#' inter-app communication in `VPCOnly` mode. Required when
+#' `CreateDomain.AppNetworkAccessType` is `VPCOnly` and
+#' `DomainSettings.RStudioServerProDomainSettings.DomainExecutionRoleArn`
+#' is provided. If setting up the domain for use with RStudio, this value
+#' must be set to `Service`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -23833,18 +28982,23 @@ sagemaker_update_devices <- function(DeviceFleetName, Devices) {
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       ),
 #'       LifecycleConfigArns = list(
 #'         "string"
+#'       ),
+#'       CodeRepositories = list(
+#'         list(
+#'           RepositoryUrl = "string"
+#'         )
 #'       )
 #'     ),
 #'     KernelGatewayAppSettings = list(
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       ),
 #'       CustomImages = list(
@@ -23862,7 +29016,7 @@ sagemaker_update_devices <- function(DeviceFleetName, Devices) {
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       )
 #'     ),
@@ -23874,7 +29028,7 @@ sagemaker_update_devices <- function(DeviceFleetName, Devices) {
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       ),
 #'       CustomImages = list(
@@ -23884,6 +29038,16 @@ sagemaker_update_devices <- function(DeviceFleetName, Devices) {
 #'           AppImageConfigName = "string"
 #'         )
 #'       )
+#'     ),
+#'     CanvasAppSettings = list(
+#'       TimeSeriesForecastingSettings = list(
+#'         Status = "ENABLED"|"DISABLED",
+#'         AmazonForecastRoleArn = "string"
+#'       ),
+#'       ModelRegisterSettings = list(
+#'         Status = "ENABLED"|"DISABLED",
+#'         CrossAccountModelRegisterRoleArn = "string"
+#'       )
 #'     )
 #'   ),
 #'   DomainSettingsForUpdate = list(
@@ -23892,11 +29056,58 @@ sagemaker_update_devices <- function(DeviceFleetName, Devices) {
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
+#'       ),
+#'       RStudioConnectUrl = "string",
+#'       RStudioPackageManagerUrl = "string"
+#'     ),
+#'     ExecutionRoleIdentityConfig = "USER_PROFILE_NAME"|"DISABLED",
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   DefaultSpaceSettings = list(
+#'     ExecutionRole = "string",
+#'     SecurityGroups = list(
+#'       "string"
+#'     ),
+#'     JupyterServerAppSettings = list(
+#'       DefaultResourceSpec = list(
+#'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
+#'         LifecycleConfigArn = "string"
+#'       ),
+#'       LifecycleConfigArns = list(
+#'         "string"
+#'       ),
+#'       CodeRepositories = list(
+#'         list(
+#'           RepositoryUrl = "string"
+#'         )
+#'       )
+#'     ),
+#'     KernelGatewayAppSettings = list(
+#'       DefaultResourceSpec = list(
+#'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
+#'         LifecycleConfigArn = "string"
+#'       ),
+#'       CustomImages = list(
+#'         list(
+#'           ImageName = "string",
+#'           ImageVersionNumber = 123,
+#'           AppImageConfigName = "string"
+#'         )
+#'       ),
+#'       LifecycleConfigArns = list(
+#'         "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   AppSecurityGroupManagement = "Service"|"Customer"
 #' )
 #' ```
 #'
@@ -23905,14 +29116,14 @@ sagemaker_update_devices <- function(DeviceFleetName, Devices) {
 #' @rdname sagemaker_update_domain
 #'
 #' @aliases sagemaker_update_domain
-sagemaker_update_domain <- function(DomainId, DefaultUserSettings = NULL, DomainSettingsForUpdate = NULL) {
+sagemaker_update_domain <- function(DomainId, DefaultUserSettings = NULL, DomainSettingsForUpdate = NULL, DefaultSpaceSettings = NULL, AppSecurityGroupManagement = NULL) {
   op <- new_operation(
     name = "UpdateDomain",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$update_domain_input(DomainId = DomainId, DefaultUserSettings = DefaultUserSettings, DomainSettingsForUpdate = DomainSettingsForUpdate)
+  input <- .sagemaker$update_domain_input(DomainId = DomainId, DefaultUserSettings = DefaultUserSettings, DomainSettingsForUpdate = DomainSettingsForUpdate, DefaultSpaceSettings = DefaultSpaceSettings, AppSecurityGroupManagement = AppSecurityGroupManagement)
   output <- .sagemaker$update_domain_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -23965,11 +29176,12 @@ sagemaker_update_domain <- function(DomainId, DefaultUserSettings = NULL, Domain
 #' specified in a new `EndpointConfig` call when updating an endpoint, set
 #' `RetainAllVariantProperties` to `false`. The default is `false`.
 #' @param ExcludeRetainedVariantProperties When you are updating endpoint resources with
-#' UpdateEndpointInput$RetainAllVariantProperties, whose value is set to
-#' `true`, `ExcludeRetainedVariantProperties` specifies the list of type
-#' VariantProperty to override with the values provided by
-#' `EndpointConfig`. If you don't specify a value for
-#' `ExcludeAllVariantProperties`, no variant properties are overridden.
+#' `RetainAllVariantProperties`, whose value is set to `true`,
+#' `ExcludeRetainedVariantProperties` specifies the list of type
+#' [VariantProperty](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_VariantProperty.html)
+#' to override with the values provided by `EndpointConfig`. If you don't
+#' specify a value for `ExcludeRetainedVariantProperties`, no variant
+#' properties are overridden.
 #' @param DeploymentConfig The deployment configuration for an endpoint, which contains the desired
 #' deployment strategy and rollback configurations.
 #' @param RetainDeploymentConfig Specifies whether to reuse the last deployment configuration. The
@@ -24080,7 +29292,11 @@ sagemaker_update_endpoint <- function(EndpointName, EndpointConfigName, RetainAl
 #'     list(
 #'       VariantName = "string",
 #'       DesiredWeight = 123.0,
-#'       DesiredInstanceCount = 123
+#'       DesiredInstanceCount = 123,
+#'       ServerlessUpdateConfig = list(
+#'         MaxConcurrency = 123,
+#'         ProvisionedConcurrency = 123
+#'       )
 #'     )
 #'   )
 #' )
@@ -24279,6 +29495,64 @@ sagemaker_update_feature_metadata <- function(FeatureGroupName, FeatureName, Des
 }
 .sagemaker$operations$update_feature_metadata <- sagemaker_update_feature_metadata
 
+#' Update a hub
+#'
+#' @description
+#' Update a hub.
+#' 
+#' Hub APIs are only callable through SageMaker Studio.
+#'
+#' @usage
+#' sagemaker_update_hub(HubName, HubDescription, HubDisplayName,
+#'   HubSearchKeywords)
+#'
+#' @param HubName &#91;required&#93; The name of the hub to update.
+#' @param HubDescription A description of the updated hub.
+#' @param HubDisplayName The display name of the hub.
+#' @param HubSearchKeywords The searchable keywords for the hub.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HubArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_hub(
+#'   HubName = "string",
+#'   HubDescription = "string",
+#'   HubDisplayName = "string",
+#'   HubSearchKeywords = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_hub
+#'
+#' @aliases sagemaker_update_hub
+sagemaker_update_hub <- function(HubName, HubDescription = NULL, HubDisplayName = NULL, HubSearchKeywords = NULL) {
+  op <- new_operation(
+    name = "UpdateHub",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$update_hub_input(HubName = HubName, HubDescription = HubDescription, HubDisplayName = HubDisplayName, HubSearchKeywords = HubSearchKeywords)
+  output <- .sagemaker$update_hub_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_hub <- sagemaker_update_hub
+
 #' Updates the properties of a SageMaker image
 #'
 #' @description
@@ -24295,8 +29569,8 @@ sagemaker_update_feature_metadata <- function(FeatureGroupName, FeatureName, Des
 #' @param Description The new description for the image.
 #' @param DisplayName The new display name for the image.
 #' @param ImageName &#91;required&#93; The name of the image to update.
-#' @param RoleArn The new Amazon Resource Name (ARN) for the IAM role that enables Amazon
-#' SageMaker to perform tasks on your behalf.
+#' @param RoleArn The new ARN for the IAM role that enables Amazon SageMaker to perform
+#' tasks on your behalf.
 #'
 #' @return
 #' A list with the following syntax:
@@ -24340,6 +29614,284 @@ sagemaker_update_image <- function(DeleteProperties = NULL, Description = NULL, 
   return(response)
 }
 .sagemaker$operations$update_image <- sagemaker_update_image
+
+#' Updates the properties of a SageMaker image version
+#'
+#' @description
+#' Updates the properties of a SageMaker image version.
+#'
+#' @usage
+#' sagemaker_update_image_version(ImageName, Alias, Version, AliasesToAdd,
+#'   AliasesToDelete, VendorGuidance, JobType, MLFramework, ProgrammingLang,
+#'   Processor, Horovod, ReleaseNotes)
+#'
+#' @param ImageName &#91;required&#93; The name of the image.
+#' @param Alias The alias of the image version.
+#' @param Version The version of the image.
+#' @param AliasesToAdd A list of aliases to add.
+#' @param AliasesToDelete A list of aliases to delete.
+#' @param VendorGuidance The availability of the image version specified by the maintainer.
+#' 
+#' -   `NOT_PROVIDED`: The maintainers did not provide a status for image
+#'     version stability.
+#' 
+#' -   `STABLE`: The image version is stable.
+#' 
+#' -   `TO_BE_ARCHIVED`: The image version is set to be archived. Custom
+#'     image versions that are set to be archived are automatically
+#'     archived after three months.
+#' 
+#' -   `ARCHIVED`: The image version is archived. Archived image versions
+#'     are not searchable and are no longer actively supported.
+#' @param JobType Indicates SageMaker job type compatibility.
+#' 
+#' -   `TRAINING`: The image version is compatible with SageMaker training
+#'     jobs.
+#' 
+#' -   `INFERENCE`: The image version is compatible with SageMaker
+#'     inference jobs.
+#' 
+#' -   `NOTEBOOK_KERNEL`: The image version is compatible with SageMaker
+#'     notebook kernels.
+#' @param MLFramework The machine learning framework vended in the image version.
+#' @param ProgrammingLang The supported programming language and its version.
+#' @param Processor Indicates CPU or GPU compatibility.
+#' 
+#' -   `CPU`: The image version is compatible with CPU.
+#' 
+#' -   `GPU`: The image version is compatible with GPU.
+#' @param Horovod Indicates Horovod compatibility.
+#' @param ReleaseNotes The maintainer description of the image version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImageVersionArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_image_version(
+#'   ImageName = "string",
+#'   Alias = "string",
+#'   Version = 123,
+#'   AliasesToAdd = list(
+#'     "string"
+#'   ),
+#'   AliasesToDelete = list(
+#'     "string"
+#'   ),
+#'   VendorGuidance = "NOT_PROVIDED"|"STABLE"|"TO_BE_ARCHIVED"|"ARCHIVED",
+#'   JobType = "TRAINING"|"INFERENCE"|"NOTEBOOK_KERNEL",
+#'   MLFramework = "string",
+#'   ProgrammingLang = "string",
+#'   Processor = "CPU"|"GPU",
+#'   Horovod = TRUE|FALSE,
+#'   ReleaseNotes = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_image_version
+#'
+#' @aliases sagemaker_update_image_version
+sagemaker_update_image_version <- function(ImageName, Alias = NULL, Version = NULL, AliasesToAdd = NULL, AliasesToDelete = NULL, VendorGuidance = NULL, JobType = NULL, MLFramework = NULL, ProgrammingLang = NULL, Processor = NULL, Horovod = NULL, ReleaseNotes = NULL) {
+  op <- new_operation(
+    name = "UpdateImageVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$update_image_version_input(ImageName = ImageName, Alias = Alias, Version = Version, AliasesToAdd = AliasesToAdd, AliasesToDelete = AliasesToDelete, VendorGuidance = VendorGuidance, JobType = JobType, MLFramework = MLFramework, ProgrammingLang = ProgrammingLang, Processor = Processor, Horovod = Horovod, ReleaseNotes = ReleaseNotes)
+  output <- .sagemaker$update_image_version_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_image_version <- sagemaker_update_image_version
+
+#' Updates an inference experiment that you created
+#'
+#' @description
+#' Updates an inference experiment that you created. The status of the
+#' inference experiment has to be either `Created`, `Running`. For more
+#' information on the status of an inference experiment, see
+#' [`describe_inference_experiment`][sagemaker_describe_inference_experiment].
+#'
+#' @usage
+#' sagemaker_update_inference_experiment(Name, Schedule, Description,
+#'   ModelVariants, DataStorageConfig, ShadowModeConfig)
+#'
+#' @param Name &#91;required&#93; The name of the inference experiment to be updated.
+#' @param Schedule The duration for which the inference experiment will run. If the status
+#' of the inference experiment is `Created`, then you can update both the
+#' start and end dates. If the status of the inference experiment is
+#' `Running`, then you can update only the end date.
+#' @param Description The description of the inference experiment.
+#' @param ModelVariants An array of `ModelVariantConfig` objects. There is one for each variant,
+#' whose infrastructure configuration you want to update.
+#' @param DataStorageConfig The Amazon S3 location and configuration for storing inference request
+#' and response data.
+#' @param ShadowModeConfig The configuration of `ShadowMode` inference experiment type. Use this
+#' field to specify a production variant which takes all the inference
+#' requests, and a shadow variant to which Amazon SageMaker replicates a
+#' percentage of the inference requests. For the shadow variant also
+#' specify the percentage of requests that Amazon SageMaker replicates.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InferenceExperimentArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_inference_experiment(
+#'   Name = "string",
+#'   Schedule = list(
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   Description = "string",
+#'   ModelVariants = list(
+#'     list(
+#'       ModelName = "string",
+#'       VariantName = "string",
+#'       InfrastructureConfig = list(
+#'         InfrastructureType = "RealTimeInference",
+#'         RealTimeInferenceConfig = list(
+#'           InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
+#'           InstanceCount = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   DataStorageConfig = list(
+#'     Destination = "string",
+#'     KmsKey = "string",
+#'     ContentType = list(
+#'       CsvContentTypes = list(
+#'         "string"
+#'       ),
+#'       JsonContentTypes = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   ShadowModeConfig = list(
+#'     SourceModelVariantName = "string",
+#'     ShadowModelVariants = list(
+#'       list(
+#'         ShadowModelVariantName = "string",
+#'         SamplingPercentage = 123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_inference_experiment
+#'
+#' @aliases sagemaker_update_inference_experiment
+sagemaker_update_inference_experiment <- function(Name, Schedule = NULL, Description = NULL, ModelVariants = NULL, DataStorageConfig = NULL, ShadowModeConfig = NULL) {
+  op <- new_operation(
+    name = "UpdateInferenceExperiment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$update_inference_experiment_input(Name = Name, Schedule = Schedule, Description = Description, ModelVariants = ModelVariants, DataStorageConfig = DataStorageConfig, ShadowModeConfig = ShadowModeConfig)
+  output <- .sagemaker$update_inference_experiment_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_inference_experiment <- sagemaker_update_inference_experiment
+
+#' Update an Amazon SageMaker Model Card
+#'
+#' @description
+#' Update an Amazon SageMaker Model Card.
+#' 
+#' You cannot update both model card content and model card status in a
+#' single call.
+#'
+#' @usage
+#' sagemaker_update_model_card(ModelCardName, Content, ModelCardStatus)
+#'
+#' @param ModelCardName &#91;required&#93; The name of the model card to update.
+#' @param Content The updated model card content. Content must be in [model card JSON
+#' schema](https://docs.aws.amazon.com/sagemaker/latest/dg/model-cards.html#model-cards-json-schema)
+#' and provided as a string.
+#' 
+#' When updating model card content, be sure to include the full content
+#' and not just updated content.
+#' @param ModelCardStatus The approval status of the model card within your organization.
+#' Different organizations might have different criteria for model card
+#' review and approval.
+#' 
+#' -   `Draft`: The model card is a work in progress.
+#' 
+#' -   `PendingReview`: The model card is pending review.
+#' 
+#' -   `Approved`: The model card is approved.
+#' 
+#' -   `Archived`: The model card is archived. No more updates should be
+#'     made to the model card, but it can still be exported.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModelCardArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_model_card(
+#'   ModelCardName = "string",
+#'   Content = "string",
+#'   ModelCardStatus = "Draft"|"PendingReview"|"Approved"|"Archived"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_model_card
+#'
+#' @aliases sagemaker_update_model_card
+sagemaker_update_model_card <- function(ModelCardName, Content = NULL, ModelCardStatus = NULL) {
+  op <- new_operation(
+    name = "UpdateModelCard",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$update_model_card_input(ModelCardName = ModelCardName, Content = Content, ModelCardStatus = ModelCardStatus)
+  output <- .sagemaker$update_model_card_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_model_card <- sagemaker_update_model_card
 
 #' Updates a versioned model
 #'
@@ -24411,7 +29963,7 @@ sagemaker_update_image <- function(DeleteProperties = NULL, Description = NULL, 
 #'         "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       ),
 #'       SupportedRealtimeInferenceInstanceTypes = list(
-#'         "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"
+#'         "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|"ml.c7g.large"|"ml.c7g.xlarge"|"ml.c7g.2xlarge"|"ml.c7g.4xlarge"|"ml.c7g.8xlarge"|"ml.c7g.12xlarge"|"ml.c7g.16xlarge"|"ml.m6g.large"|"ml.m6g.xlarge"|"ml.m6g.2xlarge"|"ml.m6g.4xlarge"|"ml.m6g.8xlarge"|"ml.m6g.12xlarge"|"ml.m6g.16xlarge"|"ml.m6gd.large"|"ml.m6gd.xlarge"|"ml.m6gd.2xlarge"|"ml.m6gd.4xlarge"|"ml.m6gd.8xlarge"|"ml.m6gd.12xlarge"|"ml.m6gd.16xlarge"|"ml.c6g.large"|"ml.c6g.xlarge"|"ml.c6g.2xlarge"|"ml.c6g.4xlarge"|"ml.c6g.8xlarge"|"ml.c6g.12xlarge"|"ml.c6g.16xlarge"|"ml.c6gd.large"|"ml.c6gd.xlarge"|"ml.c6gd.2xlarge"|"ml.c6gd.4xlarge"|"ml.c6gd.8xlarge"|"ml.c6gd.12xlarge"|"ml.c6gd.16xlarge"|"ml.c6gn.large"|"ml.c6gn.xlarge"|"ml.c6gn.2xlarge"|"ml.c6gn.4xlarge"|"ml.c6gn.8xlarge"|"ml.c6gn.12xlarge"|"ml.c6gn.16xlarge"|"ml.r6g.large"|"ml.r6g.xlarge"|"ml.r6g.2xlarge"|"ml.r6g.4xlarge"|"ml.r6g.8xlarge"|"ml.r6g.12xlarge"|"ml.r6g.16xlarge"|"ml.r6gd.large"|"ml.r6gd.xlarge"|"ml.r6gd.2xlarge"|"ml.r6gd.4xlarge"|"ml.r6gd.8xlarge"|"ml.r6gd.12xlarge"|"ml.r6gd.16xlarge"|"ml.p4de.24xlarge"|"ml.trn1.2xlarge"|"ml.trn1.32xlarge"|"ml.inf2.xlarge"|"ml.inf2.8xlarge"|"ml.inf2.24xlarge"|"ml.inf2.48xlarge"
 #'       ),
 #'       SupportedContentTypes = list(
 #'         "string"
@@ -24445,6 +29997,63 @@ sagemaker_update_model_package <- function(ModelPackageArn, ModelApprovalStatus 
   return(response)
 }
 .sagemaker$operations$update_model_package <- sagemaker_update_model_package
+
+#' Update the parameters of a model monitor alert
+#'
+#' @description
+#' Update the parameters of a model monitor alert.
+#'
+#' @usage
+#' sagemaker_update_monitoring_alert(MonitoringScheduleName,
+#'   MonitoringAlertName, DatapointsToAlert, EvaluationPeriod)
+#'
+#' @param MonitoringScheduleName &#91;required&#93; The name of a monitoring schedule.
+#' @param MonitoringAlertName &#91;required&#93; The name of a monitoring alert.
+#' @param DatapointsToAlert &#91;required&#93; Within `EvaluationPeriod`, how many execution failures will raise an
+#' alert.
+#' @param EvaluationPeriod &#91;required&#93; The number of most recent monitoring executions to consider when
+#' evaluating alert status.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MonitoringScheduleArn = "string",
+#'   MonitoringAlertName = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_monitoring_alert(
+#'   MonitoringScheduleName = "string",
+#'   MonitoringAlertName = "string",
+#'   DatapointsToAlert = 123,
+#'   EvaluationPeriod = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_monitoring_alert
+#'
+#' @aliases sagemaker_update_monitoring_alert
+sagemaker_update_monitoring_alert <- function(MonitoringScheduleName, MonitoringAlertName, DatapointsToAlert, EvaluationPeriod) {
+  op <- new_operation(
+    name = "UpdateMonitoringAlert",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$update_monitoring_alert_input(MonitoringScheduleName = MonitoringScheduleName, MonitoringAlertName = MonitoringAlertName, DatapointsToAlert = DatapointsToAlert, EvaluationPeriod = EvaluationPeriod)
+  output <- .sagemaker$update_monitoring_alert_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_monitoring_alert <- sagemaker_update_monitoring_alert
 
 #' Updates a previously created schedule
 #'
@@ -24490,6 +30099,27 @@ sagemaker_update_model_package <- function(ModelPackageArn, ModelApprovalStatus 
 #'         list(
 #'           EndpointInput = list(
 #'             EndpointName = "string",
+#'             LocalPath = "string",
+#'             S3InputMode = "Pipe"|"File",
+#'             S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'             FeaturesAttribute = "string",
+#'             InferenceAttribute = "string",
+#'             ProbabilityAttribute = "string",
+#'             ProbabilityThresholdAttribute = 123.0,
+#'             StartTimeOffset = "string",
+#'             EndTimeOffset = "string"
+#'           ),
+#'           BatchTransformInput = list(
+#'             DataCapturedDestinationS3Uri = "string",
+#'             DatasetFormat = list(
+#'               Csv = list(
+#'                 Header = TRUE|FALSE
+#'               ),
+#'               Json = list(
+#'                 Line = TRUE|FALSE
+#'               ),
+#'               Parquet = list()
+#'             ),
 #'             LocalPath = "string",
 #'             S3InputMode = "Pipe"|"File",
 #'             S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
@@ -24671,7 +30301,7 @@ sagemaker_update_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' ```
 #' svc$update_notebook_instance(
 #'   NotebookInstanceName = "string",
-#'   InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'   InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'   RoleArn = "string",
 #'   LifecycleConfigName = "string",
 #'   DisassociateLifecycleConfig = TRUE|FALSE,
@@ -24932,7 +30562,7 @@ sagemaker_update_pipeline_execution <- function(PipelineExecutionArn, PipelineEx
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #' In addition, the project must have tag update constraints set in order
 #' to include this parameter in the request. For more information, see
 #' [Amazon Web Services Service Catalog Tag Update
@@ -24991,23 +30621,110 @@ sagemaker_update_project <- function(ProjectName, ProjectDescription = NULL, Ser
 }
 .sagemaker$operations$update_project <- sagemaker_update_project
 
+#' Updates the settings of a space
+#'
+#' @description
+#' Updates the settings of a space.
+#'
+#' @usage
+#' sagemaker_update_space(DomainId, SpaceName, SpaceSettings)
+#'
+#' @param DomainId &#91;required&#93; The ID of the associated Domain.
+#' @param SpaceName &#91;required&#93; The name of the space.
+#' @param SpaceSettings A collection of space settings.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SpaceArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_space(
+#'   DomainId = "string",
+#'   SpaceName = "string",
+#'   SpaceSettings = list(
+#'     JupyterServerAppSettings = list(
+#'       DefaultResourceSpec = list(
+#'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
+#'         LifecycleConfigArn = "string"
+#'       ),
+#'       LifecycleConfigArns = list(
+#'         "string"
+#'       ),
+#'       CodeRepositories = list(
+#'         list(
+#'           RepositoryUrl = "string"
+#'         )
+#'       )
+#'     ),
+#'     KernelGatewayAppSettings = list(
+#'       DefaultResourceSpec = list(
+#'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
+#'         LifecycleConfigArn = "string"
+#'       ),
+#'       CustomImages = list(
+#'         list(
+#'           ImageName = "string",
+#'           ImageVersionNumber = 123,
+#'           AppImageConfigName = "string"
+#'         )
+#'       ),
+#'       LifecycleConfigArns = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_space
+#'
+#' @aliases sagemaker_update_space
+sagemaker_update_space <- function(DomainId, SpaceName, SpaceSettings = NULL) {
+  op <- new_operation(
+    name = "UpdateSpace",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$update_space_input(DomainId = DomainId, SpaceName = SpaceName, SpaceSettings = SpaceSettings)
+  output <- .sagemaker$update_space_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_space <- sagemaker_update_space
+
 #' Update a model training job to request a new Debugger profiling
-#' configuration
+#' configuration or to change warm pool retention length
 #'
 #' @description
 #' Update a model training job to request a new Debugger profiling
-#' configuration.
+#' configuration or to change warm pool retention length.
 #'
 #' @usage
 #' sagemaker_update_training_job(TrainingJobName, ProfilerConfig,
-#'   ProfilerRuleConfigurations)
+#'   ProfilerRuleConfigurations, ResourceConfig)
 #'
 #' @param TrainingJobName &#91;required&#93; The name of a training job to update the Debugger profiling
 #' configuration.
-#' @param ProfilerConfig Configuration information for Debugger system monitoring, framework
-#' profiling, and storage paths.
-#' @param ProfilerRuleConfigurations Configuration information for Debugger rules for profiling system and
-#' framework metrics.
+#' @param ProfilerConfig Configuration information for Amazon SageMaker Debugger system
+#' monitoring, framework profiling, and storage paths.
+#' @param ProfilerRuleConfigurations Configuration information for Amazon SageMaker Debugger rules for
+#' profiling system and framework metrics.
+#' @param ResourceConfig The training job `ResourceConfig` to update warm pool retention length.
 #'
 #' @return
 #' A list with the following syntax:
@@ -25041,6 +30758,9 @@ sagemaker_update_project <- function(ProjectName, ProjectDescription = NULL, Ser
 #'         "string"
 #'       )
 #'     )
+#'   ),
+#'   ResourceConfig = list(
+#'     KeepAlivePeriodInSeconds = 123
 #'   )
 #' )
 #' ```
@@ -25050,14 +30770,14 @@ sagemaker_update_project <- function(ProjectName, ProjectDescription = NULL, Ser
 #' @rdname sagemaker_update_training_job
 #'
 #' @aliases sagemaker_update_training_job
-sagemaker_update_training_job <- function(TrainingJobName, ProfilerConfig = NULL, ProfilerRuleConfigurations = NULL) {
+sagemaker_update_training_job <- function(TrainingJobName, ProfilerConfig = NULL, ProfilerRuleConfigurations = NULL, ResourceConfig = NULL) {
   op <- new_operation(
     name = "UpdateTrainingJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$update_training_job_input(TrainingJobName = TrainingJobName, ProfilerConfig = ProfilerConfig, ProfilerRuleConfigurations = ProfilerRuleConfigurations)
+  input <- .sagemaker$update_training_job_input(TrainingJobName = TrainingJobName, ProfilerConfig = ProfilerConfig, ProfilerRuleConfigurations = ProfilerRuleConfigurations, ResourceConfig = ResourceConfig)
   output <- .sagemaker$update_training_job_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -25136,13 +30856,19 @@ sagemaker_update_trial <- function(TrialName, DisplayName = NULL) {
 #' @param StartTime When the component started.
 #' @param EndTime When the component ended.
 #' @param Parameters Replaces all of the component's hyperparameters with the specified
-#' hyperparameters.
+#' hyperparameters or add new hyperparameters. Existing hyperparameters are
+#' replaced if the trial component is updated with an identical
+#' hyperparameter key.
 #' @param ParametersToRemove The hyperparameters to remove from the component.
 #' @param InputArtifacts Replaces all of the component's input artifacts with the specified
-#' artifacts.
+#' artifacts or adds new input artifacts. Existing input artifacts are
+#' replaced if the trial component is updated with an identical input
+#' artifact key.
 #' @param InputArtifactsToRemove The input artifacts to remove from the component.
 #' @param OutputArtifacts Replaces all of the component's output artifacts with the specified
-#' artifacts.
+#' artifacts or adds new output artifacts. Existing output artifacts are
+#' replaced if the trial component is updated with an identical output
+#' artifact key.
 #' @param OutputArtifactsToRemove The output artifacts to remove from the component.
 #'
 #' @return
@@ -25259,18 +30985,23 @@ sagemaker_update_trial_component <- function(TrialComponentName, DisplayName = N
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       ),
 #'       LifecycleConfigArns = list(
 #'         "string"
+#'       ),
+#'       CodeRepositories = list(
+#'         list(
+#'           RepositoryUrl = "string"
+#'         )
 #'       )
 #'     ),
 #'     KernelGatewayAppSettings = list(
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       ),
 #'       CustomImages = list(
@@ -25288,7 +31019,7 @@ sagemaker_update_trial_component <- function(TrialComponentName, DisplayName = N
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       )
 #'     ),
@@ -25300,7 +31031,7 @@ sagemaker_update_trial_component <- function(TrialComponentName, DisplayName = N
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
 #'         SageMakerImageVersionArn = "string",
-#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge",
+#'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.8xlarge"|"ml.m5d.12xlarge"|"ml.m5d.16xlarge"|"ml.m5d.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.16xlarge"|"ml.g5.12xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.geospatial.interactive"|"ml.p4d.24xlarge"|"ml.p4de.24xlarge",
 #'         LifecycleConfigArn = "string"
 #'       ),
 #'       CustomImages = list(
@@ -25309,6 +31040,16 @@ sagemaker_update_trial_component <- function(TrialComponentName, DisplayName = N
 #'           ImageVersionNumber = 123,
 #'           AppImageConfigName = "string"
 #'         )
+#'       )
+#'     ),
+#'     CanvasAppSettings = list(
+#'       TimeSeriesForecastingSettings = list(
+#'         Status = "ENABLED"|"DISABLED",
+#'         AmazonForecastRoleArn = "string"
+#'       ),
+#'       ModelRegisterSettings = list(
+#'         Status = "ENABLED"|"DISABLED",
+#'         CrossAccountModelRegisterRoleArn = "string"
 #'       )
 #'     )
 #'   )
@@ -25357,7 +31098,7 @@ sagemaker_update_user_profile <- function(DomainId, UserProfileName, UserSetting
 #' `Not Found` error message on the worker portal.
 #' 
 #' To restrict access to all the workers in public internet, add the
-#' `SourceIpConfig` CIDR value as "0.0.0.0/0".
+#' `SourceIpConfig` CIDR value as "10.0.0.0/16".
 #' 
 #' Amazon SageMaker does not support Source Ip restriction for worker
 #' portals in VPC.
@@ -25367,11 +31108,12 @@ sagemaker_update_user_profile <- function(DomainId, UserProfileName, UserSetting
 #' 
 #' You can only update your OIDC IdP configuration when there are no work
 #' teams associated with your workforce. You can delete work teams using
-#' the operation.
+#' the [`delete_workteam`][sagemaker_delete_workteam] operation.
 #' 
 #' After restricting access to a range of IP addresses or updating your
 #' OIDC IdP configuration with this operation, you can view details about
-#' your update workforce using the operation.
+#' your update workforce using the
+#' [`describe_workforce`][sagemaker_describe_workforce] operation.
 #' 
 #' This operation only applies to private workforces.
 #'
@@ -25380,7 +31122,8 @@ sagemaker_update_user_profile <- function(DomainId, UserProfileName, UserSetting
 #'   WorkforceVpcConfig)
 #'
 #' @param WorkforceName &#91;required&#93; The name of the private workforce that you want to update. You can find
-#' your workforce name by using the operation.
+#' your workforce name by using the
+#' [`list_workforces`][sagemaker_list_workforces] operation.
 #' @param SourceIpConfig A list of one to ten worker IP address ranges
 #' ([CIDRs](https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html))
 #' that can be used to access tasks assigned to this workforce.

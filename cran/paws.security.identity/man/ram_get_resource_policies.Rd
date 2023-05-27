@@ -13,7 +13,7 @@ ram_get_resource_policies(
 )
 }
 \arguments{
-\item{resourceArns}{[required] Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+\item{resourceArns}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 of the resources whose policies you want to retrieve.}
 
 \item{principal}{Specifies the principal.}

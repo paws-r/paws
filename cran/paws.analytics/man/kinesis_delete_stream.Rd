@@ -4,15 +4,21 @@
 \alias{kinesis_delete_stream}
 \title{Deletes a Kinesis data stream and all its shards and data}
 \usage{
-kinesis_delete_stream(StreamName, EnforceConsumerDeletion = NULL)
+kinesis_delete_stream(
+  StreamName = NULL,
+  EnforceConsumerDeletion = NULL,
+  StreamARN = NULL
+)
 }
 \arguments{
-\item{StreamName}{[required] The name of the stream to delete.}
+\item{StreamName}{The name of the stream to delete.}
 
 \item{EnforceConsumerDeletion}{If this parameter is unset (\code{null}) or if you set it to \code{false}, and the
 stream has registered consumers, the call to
 \code{\link[=kinesis_delete_stream]{delete_stream}} fails with a
 \code{ResourceInUseException}.}
+
+\item{StreamARN}{The ARN of the stream.}
 }
 \description{
 Deletes a Kinesis data stream and all its shards and data. You must shut down any applications that are operating on the stream before you delete the stream. If an application attempts to operate on a deleted stream, it receives the exception \code{ResourceNotFoundException}.

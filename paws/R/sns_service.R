@@ -85,6 +85,7 @@ NULL
 #'  \link[=sns_delete_platform_application]{delete_platform_application} \tab Deletes a platform application object for one of the supported push notification services, such as APNS and GCM (Firebase Cloud Messaging)\cr
 #'  \link[=sns_delete_sms_sandbox_phone_number]{delete_sms_sandbox_phone_number} \tab Deletes an Amazon Web Services account's verified or pending phone number from the SMS sandbox\cr
 #'  \link[=sns_delete_topic]{delete_topic} \tab Deletes a topic and all its subscriptions\cr
+#'  \link[=sns_get_data_protection_policy]{get_data_protection_policy} \tab Retrieves the specified inline DataProtectionPolicy document that is stored in the specified Amazon SNS topic\cr
 #'  \link[=sns_get_endpoint_attributes]{get_endpoint_attributes} \tab Retrieves the endpoint attributes for a device on one of the supported push notification services, such as GCM (Firebase Cloud Messaging) and APNS\cr
 #'  \link[=sns_get_platform_application_attributes]{get_platform_application_attributes} \tab Retrieves the attributes of the platform application object for the supported push notification services, such as APNS and GCM (Firebase Cloud Messaging)\cr
 #'  \link[=sns_get_sms_attributes]{get_sms_attributes} \tab Returns the settings for sending SMS messages from your Amazon Web Services account\cr
@@ -103,6 +104,7 @@ NULL
 #'  \link[=sns_opt_in_phone_number]{opt_in_phone_number} \tab Use this request to opt in a phone number that is opted out, which enables you to resume sending SMS messages to the number\cr
 #'  \link[=sns_publish]{publish} \tab Sends a message to an Amazon SNS topic, a text message (SMS message) directly to a phone number, or a message to a mobile platform endpoint (when you specify the TargetArn)\cr
 #'  \link[=sns_publish_batch]{publish_batch} \tab Publishes up to ten messages to the specified topic\cr
+#'  \link[=sns_put_data_protection_policy]{put_data_protection_policy} \tab Adds or updates an inline policy document that is stored in the specified Amazon SNS topic\cr
 #'  \link[=sns_remove_permission]{remove_permission} \tab Removes a statement from a topic's access control policy\cr
 #'  \link[=sns_set_endpoint_attributes]{set_endpoint_attributes} \tab Sets the attributes for an endpoint for a device on one of the supported push notification services, such as GCM (Firebase Cloud Messaging) and APNS\cr
 #'  \link[=sns_set_platform_application_attributes]{set_platform_application_attributes} \tab Sets the attributes of the platform application object for the supported push notification services, such as APNS and GCM (Firebase Cloud Messaging)\cr

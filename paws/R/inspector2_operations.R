@@ -8,7 +8,12 @@ NULL
 #'
 #' @description
 #' Associates an Amazon Web Services account with an Amazon Inspector
-#' delegated administrator.
+#' delegated administrator. An HTTP 200 response indicates the association
+#' was successfully started, but doesn’t indicate whether it was completed.
+#' You can check if the association completed by using
+#' [`list_members`][inspector2_list_members] for multiple accounts or
+#' [GetMembers](https://docs.aws.amazon.com/inspector/v2/APIReference/API_GetMember.html)
+#' for a single account.
 #'
 #' @usage
 #' inspector2_associate_member(accountId)
@@ -83,6 +88,11 @@ inspector2_associate_member <- function(accountId) {
 #'           errorCode = "ALREADY_ENABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"SUSPEND_IN_PROGRESS"|"RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"SSM_UNAVAILABLE"|"SSM_THROTTLED"|"EVENTBRIDGE_UNAVAILABLE"|"EVENTBRIDGE_THROTTLED"|"RESOURCE_SCAN_NOT_DISABLED"|"DISASSOCIATE_ALL_MEMBERS"|"ACCOUNT_IS_ISOLATED",
 #'           errorMessage = "string",
 #'           status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
+#'         ),
+#'         lambda = list(
+#'           errorCode = "ALREADY_ENABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS"|"SUSPEND_IN_PROGRESS"|"RESOURCE_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"SSM_UNAVAILABLE"|"SSM_THROTTLED"|"EVENTBRIDGE_UNAVAILABLE"|"EVENTBRIDGE_THROTTLED"|"RESOURCE_SCAN_NOT_DISABLED"|"DISASSOCIATE_ALL_MEMBERS"|"ACCOUNT_IS_ISOLATED",
+#'           errorMessage = "string",
+#'           status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
 #'         )
 #'       ),
 #'       state = list(
@@ -99,7 +109,8 @@ inspector2_associate_member <- function(accountId) {
 #'       errorMessage = "string",
 #'       resourceStatus = list(
 #'         ec2 = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
-#'         ecr = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
+#'         ecr = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
+#'         lambda = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
 #'       ),
 #'       status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
 #'     )
@@ -164,7 +175,7 @@ inspector2_batch_get_account_status <- function(accountIds = NULL) {
 #'             "2015-01-01"
 #'           ),
 #'           status = "ACTIVE"|"INACTIVE",
-#'           type = "EC2"|"ECR"
+#'           type = "EC2"|"ECR"|"LAMBDA"
 #'         )
 #'       )
 #'     )
@@ -209,6 +220,143 @@ inspector2_batch_get_free_trial_info <- function(accountIds) {
   return(response)
 }
 .inspector2$operations$batch_get_free_trial_info <- inspector2_batch_get_free_trial_info
+
+#' Retrieves Amazon Inspector deep inspection activation status of multiple
+#' member accounts within your organization
+#'
+#' @description
+#' Retrieves Amazon Inspector deep inspection activation status of multiple
+#' member accounts within your organization. You must be the delegated
+#' administrator of an organization in Amazon Inspector to use this API.
+#'
+#' @usage
+#' inspector2_batch_get_member_ec_2_deep_inspection_status(accountIds)
+#'
+#' @param accountIds The unique identifiers for the Amazon Web Services accounts to retrieve
+#' Amazon Inspector deep inspection activation status for.
+#' 
+#'      </p> 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   accountIds = list(
+#'     list(
+#'       accountId = "string",
+#'       errorMessage = "string",
+#'       status = "ACTIVATED"|"DEACTIVATED"|"PENDING"|"FAILED"
+#'     )
+#'   ),
+#'   failedAccountIds = list(
+#'     list(
+#'       accountId = "string",
+#'       ec2ScanStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_get_member_ec_2_deep_inspection_status(
+#'   accountIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_batch_get_member_ec_2_deep_inspection_status
+#'
+#' @aliases inspector2_batch_get_member_ec_2_deep_inspection_status
+inspector2_batch_get_member_ec_2_deep_inspection_status <- function(accountIds = NULL) {
+  op <- new_operation(
+    name = "BatchGetMemberEc2DeepInspectionStatus",
+    http_method = "POST",
+    http_path = "/ec2deepinspectionstatus/member/batch/get",
+    paginator = list()
+  )
+  input <- .inspector2$batch_get_member_ec_2_deep_inspection_status_input(accountIds = accountIds)
+  output <- .inspector2$batch_get_member_ec_2_deep_inspection_status_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$batch_get_member_ec_2_deep_inspection_status <- inspector2_batch_get_member_ec_2_deep_inspection_status
+
+#' Activates or deactivates Amazon Inspector deep inspection for the
+#' provided member accounts in your organization
+#'
+#' @description
+#' Activates or deactivates Amazon Inspector deep inspection for the
+#' provided member accounts in your organization. You must be the delegated
+#' administrator of an organization in Amazon Inspector to use this API.
+#'
+#' @usage
+#' inspector2_batch_update_member_ec_2_deep_inspection_status(accountIds)
+#'
+#' @param accountIds &#91;required&#93; The unique identifiers for the Amazon Web Services accounts to change
+#' Amazon Inspector deep inspection status for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   accountIds = list(
+#'     list(
+#'       accountId = "string",
+#'       errorMessage = "string",
+#'       status = "ACTIVATED"|"DEACTIVATED"|"PENDING"|"FAILED"
+#'     )
+#'   ),
+#'   failedAccountIds = list(
+#'     list(
+#'       accountId = "string",
+#'       ec2ScanStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
+#'       errorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_update_member_ec_2_deep_inspection_status(
+#'   accountIds = list(
+#'     list(
+#'       accountId = "string",
+#'       activateDeepInspection = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_batch_update_member_ec_2_deep_inspection_status
+#'
+#' @aliases inspector2_batch_update_member_ec_2_deep_inspection_status
+inspector2_batch_update_member_ec_2_deep_inspection_status <- function(accountIds) {
+  op <- new_operation(
+    name = "BatchUpdateMemberEc2DeepInspectionStatus",
+    http_method = "POST",
+    http_path = "/ec2deepinspectionstatus/member/batch/update",
+    paginator = list()
+  )
+  input <- .inspector2$batch_update_member_ec_2_deep_inspection_status_input(accountIds = accountIds)
+  output <- .inspector2$batch_update_member_ec_2_deep_inspection_status_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$batch_update_member_ec_2_deep_inspection_status <- inspector2_batch_update_member_ec_2_deep_inspection_status
 
 #' Cancels the given findings report
 #'
@@ -366,6 +514,12 @@ inspector2_cancel_findings_report <- function(reportId) {
 #'         value = "string"
 #'       )
 #'     ),
+#'     exploitAvailable = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
 #'     findingArn = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
@@ -394,10 +548,50 @@ inspector2_cancel_findings_report <- function(reportId) {
 #'         )
 #'       )
 #'     ),
+#'     fixAvailable = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
 #'     inspectorScore = list(
 #'       list(
 #'         lowerInclusive = 123.0,
 #'         upperInclusive = 123.0
+#'       )
+#'     ),
+#'     lambdaFunctionExecutionRoleArn = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionLastModifiedAt = list(
+#'       list(
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     lambdaFunctionLayers = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
 #'       )
 #'     ),
 #'     lastObservedAt = list(
@@ -505,6 +699,10 @@ inspector2_cancel_findings_report <- function(reportId) {
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'           value = "string"
 #'         ),
+#'         sourceLambdaLayerArn = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
 #'         sourceLayerHash = list(
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'           value = "string"
@@ -549,7 +747,9 @@ inspector2_create_filter <- function(action, description = NULL, filterCriteria,
 #' Creates a finding report
 #'
 #' @description
-#' Creates a finding report.
+#' Creates a finding report. By default only `ACTIVE` findings are returned
+#' in the report. To see `SUPRESSED` or `CLOSED` findings you must specify
+#' a value for the `findingStatus` filter criteria.
 #'
 #' @usage
 #' inspector2_create_findings_report(filterCriteria, reportFormat,
@@ -647,6 +847,12 @@ inspector2_create_filter <- function(action, description = NULL, filterCriteria,
 #'         value = "string"
 #'       )
 #'     ),
+#'     exploitAvailable = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
 #'     findingArn = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
@@ -675,10 +881,50 @@ inspector2_create_filter <- function(action, description = NULL, filterCriteria,
 #'         )
 #'       )
 #'     ),
+#'     fixAvailable = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
 #'     inspectorScore = list(
 #'       list(
 #'         lowerInclusive = 123.0,
 #'         upperInclusive = 123.0
+#'       )
+#'     ),
+#'     lambdaFunctionExecutionRoleArn = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionLastModifiedAt = list(
+#'       list(
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     lambdaFunctionLayers = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
 #'       )
 #'     ),
 #'     lastObservedAt = list(
@@ -786,6 +1032,10 @@ inspector2_create_filter <- function(action, description = NULL, filterCriteria,
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'           value = "string"
 #'         ),
+#'         sourceLambdaLayerArn = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
 #'         sourceLayerHash = list(
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'           value = "string"
@@ -880,7 +1130,7 @@ inspector2_delete_filter <- function(arn) {
 #'
 #' @description
 #' Describe Amazon Inspector configuration settings for an Amazon Web
-#' Services organization
+#' Services organization.
 #'
 #' @usage
 #' inspector2_describe_organization_configuration()
@@ -891,7 +1141,8 @@ inspector2_delete_filter <- function(arn) {
 #' list(
 #'   autoEnable = list(
 #'     ec2 = TRUE|FALSE,
-#'     ecr = TRUE|FALSE
+#'     ecr = TRUE|FALSE,
+#'     lambda = TRUE|FALSE
 #'   ),
 #'   maxAccountLimitReached = TRUE|FALSE
 #' )
@@ -947,7 +1198,8 @@ inspector2_describe_organization_configuration <- function() {
 #'       accountId = "string",
 #'       resourceStatus = list(
 #'         ec2 = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
-#'         ecr = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
+#'         ecr = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
+#'         lambda = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
 #'       ),
 #'       status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
 #'     )
@@ -959,7 +1211,8 @@ inspector2_describe_organization_configuration <- function() {
 #'       errorMessage = "string",
 #'       resourceStatus = list(
 #'         ec2 = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
-#'         ecr = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
+#'         ecr = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
+#'         lambda = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
 #'       ),
 #'       status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
 #'     )
@@ -974,7 +1227,7 @@ inspector2_describe_organization_configuration <- function() {
 #'     "string"
 #'   ),
 #'   resourceTypes = list(
-#'     "EC2"|"ECR"
+#'     "EC2"|"ECR"|"LAMBDA"
 #'   )
 #' )
 #' ```
@@ -1124,7 +1377,8 @@ inspector2_disassociate_member <- function(accountId) {
 #'       accountId = "string",
 #'       resourceStatus = list(
 #'         ec2 = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
-#'         ecr = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
+#'         ecr = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
+#'         lambda = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
 #'       ),
 #'       status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
 #'     )
@@ -1136,7 +1390,8 @@ inspector2_disassociate_member <- function(accountId) {
 #'       errorMessage = "string",
 #'       resourceStatus = list(
 #'         ec2 = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
-#'         ecr = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
+#'         ecr = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED",
+#'         lambda = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
 #'       ),
 #'       status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"SUSPENDING"|"SUSPENDED"
 #'     )
@@ -1152,7 +1407,7 @@ inspector2_disassociate_member <- function(accountId) {
 #'   ),
 #'   clientToken = "string",
 #'   resourceTypes = list(
-#'     "EC2"|"ECR"
+#'     "EC2"|"ECR"|"LAMBDA"
 #'   )
 #' )
 #' ```
@@ -1331,6 +1586,58 @@ inspector2_get_delegated_admin_account <- function() {
 }
 .inspector2$operations$get_delegated_admin_account <- inspector2_get_delegated_admin_account
 
+#' Retrieves the activation status of Amazon Inspector deep inspection and
+#' custom paths associated with your account
+#'
+#' @description
+#' Retrieves the activation status of Amazon Inspector deep inspection and
+#' custom paths associated with your account.
+#'
+#' @usage
+#' inspector2_get_ec_2_deep_inspection_configuration()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   errorMessage = "string",
+#'   orgPackagePaths = list(
+#'     "string"
+#'   ),
+#'   packagePaths = list(
+#'     "string"
+#'   ),
+#'   status = "ACTIVATED"|"DEACTIVATED"|"PENDING"|"FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_ec_2_deep_inspection_configuration()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_get_ec_2_deep_inspection_configuration
+#'
+#' @aliases inspector2_get_ec_2_deep_inspection_configuration
+inspector2_get_ec_2_deep_inspection_configuration <- function() {
+  op <- new_operation(
+    name = "GetEc2DeepInspectionConfiguration",
+    http_method = "POST",
+    http_path = "/ec2deepinspectionconfiguration/get",
+    paginator = list()
+  )
+  input <- .inspector2$get_ec_2_deep_inspection_configuration_input()
+  output <- .inspector2$get_ec_2_deep_inspection_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$get_ec_2_deep_inspection_configuration <- inspector2_get_ec_2_deep_inspection_configuration
+
 #' Gets the status of a findings report
 #'
 #' @description
@@ -1429,6 +1736,12 @@ inspector2_get_delegated_admin_account <- function() {
 #'         value = "string"
 #'       )
 #'     ),
+#'     exploitAvailable = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
 #'     findingArn = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
@@ -1457,10 +1770,50 @@ inspector2_get_delegated_admin_account <- function() {
 #'         )
 #'       )
 #'     ),
+#'     fixAvailable = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
 #'     inspectorScore = list(
 #'       list(
 #'         lowerInclusive = 123.0,
 #'         upperInclusive = 123.0
+#'       )
+#'     ),
+#'     lambdaFunctionExecutionRoleArn = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionLastModifiedAt = list(
+#'       list(
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     lambdaFunctionLayers = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
 #'       )
 #'     ),
 #'     lastObservedAt = list(
@@ -1565,6 +1918,10 @@ inspector2_get_delegated_admin_account <- function() {
 #'           value = "string"
 #'         ),
 #'         release = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         sourceLambdaLayerArn = list(
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'           value = "string"
 #'         ),
@@ -1691,7 +2048,7 @@ inspector2_get_member <- function(accountId) {
 #'   permissions = list(
 #'     list(
 #'       operation = "ENABLE_SCANNING"|"DISABLE_SCANNING"|"ENABLE_REPOSITORY"|"DISABLE_REPOSITORY",
-#'       service = "EC2"|"ECR"
+#'       service = "EC2"|"ECR"|"LAMBDA"
 #'     )
 #'   )
 #' )
@@ -1702,7 +2059,7 @@ inspector2_get_member <- function(accountId) {
 #' svc$list_account_permissions(
 #'   maxResults = 123,
 #'   nextToken = "string",
-#'   service = "EC2"|"ECR"
+#'   service = "EC2"|"ECR"|"LAMBDA"
 #' )
 #' ```
 #'
@@ -1768,11 +2125,21 @@ inspector2_list_account_permissions <- function(maxResults = NULL, nextToken = N
 #'         ecrRepository = list(
 #'           name = "string",
 #'           scanFrequency = "MANUAL"|"SCAN_ON_PUSH"|"CONTINUOUS_SCAN"
+#'         ),
+#'         lambdaFunction = list(
+#'           functionName = "string",
+#'           functionTags = list(
+#'             "string"
+#'           ),
+#'           layers = list(
+#'             "string"
+#'           ),
+#'           runtime = "NODEJS"|"NODEJS_12_X"|"NODEJS_14_X"|"NODEJS_16_X"|"JAVA_8"|"JAVA_8_AL2"|"JAVA_11"|"PYTHON_3_7"|"PYTHON_3_8"|"PYTHON_3_9"|"UNSUPPORTED"|"NODEJS_18_X"|"GO_1_X"
 #'         )
 #'       ),
-#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY",
+#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION",
 #'       scanStatus = list(
-#'         reason = "PENDING_INITIAL_SCAN"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"UNMANAGED_EC2_INSTANCE"|"UNSUPPORTED_OS"|"SCAN_ELIGIBILITY_EXPIRED"|"RESOURCE_TERMINATED"|"SUCCESSFUL"|"NO_RESOURCES_FOUND"|"IMAGE_SIZE_EXCEEDED"|"SCAN_FREQUENCY_MANUAL"|"SCAN_FREQUENCY_SCAN_ON_PUSH"|"EC2_INSTANCE_STOPPED"|"PENDING_DISABLE",
+#'         reason = "PENDING_INITIAL_SCAN"|"ACCESS_DENIED"|"INTERNAL_ERROR"|"UNMANAGED_EC2_INSTANCE"|"UNSUPPORTED_OS"|"SCAN_ELIGIBILITY_EXPIRED"|"RESOURCE_TERMINATED"|"SUCCESSFUL"|"NO_RESOURCES_FOUND"|"IMAGE_SIZE_EXCEEDED"|"SCAN_FREQUENCY_MANUAL"|"SCAN_FREQUENCY_SCAN_ON_PUSH"|"EC2_INSTANCE_STOPPED"|"PENDING_DISABLE"|"NO_INVENTORY"|"STALE_INVENTORY"|"EXCLUDED_BY_TAG"|"UNSUPPORTED_RUNTIME"|"UNSUPPORTED_MEDIA_TYPE"|"UNSUPPORTED_CONFIG_FILE"|"DEEP_INSPECTION_PACKAGE_COLLECTION_LIMIT_EXCEEDED"|"DEEP_INSPECTION_DAILY_SSM_INVENTORY_LIMIT_EXCEEDED"|"DEEP_INSPECTION_COLLECTION_TIME_LIMIT_EXCEEDED"|"DEEP_INSPECTION_NO_INVENTORY",
 #'         statusCode = "ACTIVE"|"INACTIVE"
 #'       ),
 #'       scanType = "NETWORK"|"PACKAGE"
@@ -1808,6 +2175,25 @@ inspector2_list_account_permissions <- function(maxResults = NULL, nextToken = N
 #'     ecrRepositoryName = list(
 #'       list(
 #'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionTags = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         key = "string",
 #'         value = "string"
 #'       )
 #'     ),
@@ -1926,6 +2312,25 @@ inspector2_list_coverage <- function(filterCriteria = NULL, maxResults = NULL, n
 #'     ecrRepositoryName = list(
 #'       list(
 #'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionTags = list(
+#'       list(
+#'         comparison = "EQUALS",
+#'         key = "string",
 #'         value = "string"
 #'       )
 #'     ),
@@ -2151,6 +2556,12 @@ inspector2_list_delegated_admin_accounts <- function(maxResults = NULL, nextToke
 #'             value = "string"
 #'           )
 #'         ),
+#'         exploitAvailable = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
 #'         findingArn = list(
 #'           list(
 #'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
@@ -2179,10 +2590,50 @@ inspector2_list_delegated_admin_accounts <- function(maxResults = NULL, nextToke
 #'             )
 #'           )
 #'         ),
+#'         fixAvailable = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
 #'         inspectorScore = list(
 #'           list(
 #'             lowerInclusive = 123.0,
 #'             upperInclusive = 123.0
+#'           )
+#'         ),
+#'         lambdaFunctionExecutionRoleArn = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         lambdaFunctionLastModifiedAt = list(
+#'           list(
+#'             endInclusive = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             startInclusive = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         lambdaFunctionLayers = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         lambdaFunctionName = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
+#'           )
+#'         ),
+#'         lambdaFunctionRuntime = list(
+#'           list(
+#'             comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'             value = "string"
 #'           )
 #'         ),
 #'         lastObservedAt = list(
@@ -2290,6 +2741,10 @@ inspector2_list_delegated_admin_accounts <- function(maxResults = NULL, nextToke
 #'               comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'               value = "string"
 #'             ),
+#'             sourceLambdaLayerArn = list(
+#'               comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'               value = "string"
+#'             ),
 #'             sourceLayerHash = list(
 #'               comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'               value = "string"
@@ -2377,7 +2832,7 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   aggregationType = "FINDING_TYPE"|"PACKAGE"|"TITLE"|"REPOSITORY"|"AMI"|"AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER"|"IMAGE_LAYER"|"ACCOUNT",
+#'   aggregationType = "FINDING_TYPE"|"PACKAGE"|"TITLE"|"REPOSITORY"|"AMI"|"AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER"|"IMAGE_LAYER"|"ACCOUNT"|"AWS_LAMBDA_FUNCTION"|"LAMBDA_LAYER",
 #'   nextToken = "string",
 #'   responses = list(
 #'     list(
@@ -2454,6 +2909,36 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
 #'           medium = 123
 #'         )
 #'       ),
+#'       lambdaFunctionAggregation = list(
+#'         accountId = "string",
+#'         functionName = "string",
+#'         lambdaTags = list(
+#'           "string"
+#'         ),
+#'         lastModifiedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         resourceId = "string",
+#'         runtime = "string",
+#'         severityCounts = list(
+#'           all = 123,
+#'           critical = 123,
+#'           high = 123,
+#'           medium = 123
+#'         )
+#'       ),
+#'       lambdaLayerAggregation = list(
+#'         accountId = "string",
+#'         functionName = "string",
+#'         layerArn = "string",
+#'         resourceId = "string",
+#'         severityCounts = list(
+#'           all = 123,
+#'           critical = 123,
+#'           high = 123,
+#'           medium = 123
+#'         )
+#'       ),
 #'       packageAggregation = list(
 #'         accountId = "string",
 #'         packageName = "string",
@@ -2503,7 +2988,7 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
 #'   aggregationRequest = list(
 #'     accountAggregation = list(
 #'       findingType = "NETWORK_REACHABILITY"|"PACKAGE_VULNERABILITY",
-#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE",
+#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_LAMBDA_FUNCTION",
 #'       sortBy = "CRITICAL"|"HIGH"|"ALL",
 #'       sortOrder = "ASC"|"DESC"
 #'     ),
@@ -2582,7 +3067,7 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
 #'     ),
 #'     findingTypeAggregation = list(
 #'       findingType = "NETWORK_REACHABILITY"|"PACKAGE_VULNERABILITY",
-#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE",
+#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_LAMBDA_FUNCTION",
 #'       sortBy = "CRITICAL"|"HIGH"|"ALL",
 #'       sortOrder = "ASC"|"DESC"
 #'     ),
@@ -2594,6 +3079,57 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
 #'         )
 #'       ),
 #'       repositories = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       resourceIds = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       sortBy = "CRITICAL"|"HIGH"|"ALL",
+#'       sortOrder = "ASC"|"DESC"
+#'     ),
+#'     lambdaFunctionAggregation = list(
+#'       functionNames = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       functionTags = list(
+#'         list(
+#'           comparison = "EQUALS",
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       resourceIds = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       runtimes = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       sortBy = "CRITICAL"|"HIGH"|"ALL",
+#'       sortOrder = "ASC"|"DESC"
+#'     ),
+#'     lambdaLayerAggregation = list(
+#'       functionNames = list(
+#'         list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         )
+#'       ),
+#'       layerArns = list(
 #'         list(
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'           value = "string"
@@ -2629,7 +3165,7 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
 #'       sortOrder = "ASC"|"DESC"
 #'     ),
 #'     titleAggregation = list(
-#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE",
+#'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_LAMBDA_FUNCTION",
 #'       sortBy = "CRITICAL"|"HIGH"|"ALL",
 #'       sortOrder = "ASC"|"DESC",
 #'       titles = list(
@@ -2646,7 +3182,7 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
 #'       )
 #'     )
 #'   ),
-#'   aggregationType = "FINDING_TYPE"|"PACKAGE"|"TITLE"|"REPOSITORY"|"AMI"|"AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER"|"IMAGE_LAYER"|"ACCOUNT",
+#'   aggregationType = "FINDING_TYPE"|"PACKAGE"|"TITLE"|"REPOSITORY"|"AMI"|"AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER"|"IMAGE_LAYER"|"ACCOUNT"|"AWS_LAMBDA_FUNCTION"|"LAMBDA_LAYER",
 #'   maxResults = 123,
 #'   nextToken = "string"
 #' )
@@ -2699,10 +3235,17 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
 #'     list(
 #'       awsAccountId = "string",
 #'       description = "string",
+#'       exploitAvailable = "YES"|"NO",
+#'       exploitabilityDetails = list(
+#'         lastKnownExploitAt = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
 #'       findingArn = "string",
 #'       firstObservedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       fixAvailable = "YES"|"NO"|"PARTIAL",
 #'       inspectorScore = 123.0,
 #'       inspectorScoreDetails = list(
 #'         adjustedCvss = list(
@@ -2769,8 +3312,10 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
 #'             filePath = "string",
 #'             fixedInVersion = "string",
 #'             name = "string",
-#'             packageManager = "BUNDLER"|"CARGO"|"COMPOSER"|"NPM"|"NUGET"|"PIPENV"|"POETRY"|"YARN"|"GOBINARY"|"GOMOD"|"JAR"|"OS"|"PIP"|"PYTHONPKG"|"NODEPKG"|"POM",
+#'             packageManager = "BUNDLER"|"CARGO"|"COMPOSER"|"NPM"|"NUGET"|"PIPENV"|"POETRY"|"YARN"|"GOBINARY"|"GOMOD"|"JAR"|"OS"|"PIP"|"PYTHONPKG"|"NODEPKG"|"POM"|"GEMSPEC",
 #'             release = "string",
+#'             remediation = "string",
+#'             sourceLambdaLayerArn = "string",
 #'             sourceLayerHash = "string",
 #'             version = "string"
 #'           )
@@ -2816,6 +3361,32 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
 #'               ),
 #'               registry = "string",
 #'               repositoryName = "string"
+#'             ),
+#'             awsLambdaFunction = list(
+#'               architectures = list(
+#'                 "X86_64"|"ARM64"
+#'               ),
+#'               codeSha256 = "string",
+#'               executionRoleArn = "string",
+#'               functionName = "string",
+#'               lastModifiedAt = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               layers = list(
+#'                 "string"
+#'               ),
+#'               packageType = "IMAGE"|"ZIP",
+#'               runtime = "NODEJS"|"NODEJS_12_X"|"NODEJS_14_X"|"NODEJS_16_X"|"JAVA_8"|"JAVA_8_AL2"|"JAVA_11"|"PYTHON_3_7"|"PYTHON_3_8"|"PYTHON_3_9"|"UNSUPPORTED"|"NODEJS_18_X"|"GO_1_X",
+#'               version = "string",
+#'               vpcConfig = list(
+#'                 securityGroupIds = list(
+#'                   "string"
+#'                 ),
+#'                 subnetIds = list(
+#'                   "string"
+#'                 ),
+#'                 vpcId = "string"
+#'               )
 #'             )
 #'           ),
 #'           id = "string",
@@ -2824,7 +3395,7 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
 #'           tags = list(
 #'             "string"
 #'           ),
-#'           type = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"
+#'           type = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION"
 #'         )
 #'       ),
 #'       severity = "INFORMATIONAL"|"LOW"|"MEDIUM"|"HIGH"|"CRITICAL"|"UNTRIAGED",
@@ -2920,6 +3491,12 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
 #'         value = "string"
 #'       )
 #'     ),
+#'     exploitAvailable = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
 #'     findingArn = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
@@ -2948,10 +3525,50 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
 #'         )
 #'       )
 #'     ),
+#'     fixAvailable = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
 #'     inspectorScore = list(
 #'       list(
 #'         lowerInclusive = 123.0,
 #'         upperInclusive = 123.0
+#'       )
+#'     ),
+#'     lambdaFunctionExecutionRoleArn = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionLastModifiedAt = list(
+#'       list(
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     lambdaFunctionLayers = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
 #'       )
 #'     ),
 #'     lastObservedAt = list(
@@ -3056,6 +3673,10 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
 #'           value = "string"
 #'         ),
 #'         release = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
+#'         sourceLambdaLayerArn = list(
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'           value = "string"
 #'         ),
@@ -3245,7 +3866,7 @@ inspector2_list_tags_for_resource <- function(resourceArn) {
 #'           currency = "USD",
 #'           estimatedMonthlyCost = 123.0,
 #'           total = 123.0,
-#'           type = "EC2_INSTANCE_HOURS"|"ECR_INITIAL_SCAN"|"ECR_RESCAN"
+#'           type = "EC2_INSTANCE_HOURS"|"ECR_INITIAL_SCAN"|"ECR_RESCAN"|"LAMBDA_FUNCTION_HOURS"
 #'         )
 #'       )
 #'     )
@@ -3285,6 +3906,131 @@ inspector2_list_usage_totals <- function(accountIds = NULL, maxResults = NULL, n
   return(response)
 }
 .inspector2$operations$list_usage_totals <- inspector2_list_usage_totals
+
+#' Lists Amazon Inspector coverage details for a specific vulnerability
+#'
+#' @description
+#' Lists Amazon Inspector coverage details for a specific vulnerability.
+#'
+#' @usage
+#' inspector2_search_vulnerabilities(filterCriteria, nextToken)
+#'
+#' @param filterCriteria &#91;required&#93; The criteria used to filter the results of a vulnerability search.
+#' @param nextToken A token to use for paginating results that are returned in the response.
+#' Set the value of this parameter to null for the first request to a list
+#' action. For subsequent calls, use the `NextToken` value returned from
+#' the previous request to continue listing results after the first page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   vulnerabilities = list(
+#'     list(
+#'       atigData = list(
+#'         firstSeen = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastSeen = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         targets = list(
+#'           "string"
+#'         ),
+#'         ttps = list(
+#'           "string"
+#'         )
+#'       ),
+#'       cisaData = list(
+#'         action = "string",
+#'         dateAdded = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         dateDue = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       cvss2 = list(
+#'         baseScore = 123.0,
+#'         scoringVector = "string"
+#'       ),
+#'       cvss3 = list(
+#'         baseScore = 123.0,
+#'         scoringVector = "string"
+#'       ),
+#'       cwes = list(
+#'         "string"
+#'       ),
+#'       description = "string",
+#'       detectionPlatforms = list(
+#'         "string"
+#'       ),
+#'       epss = list(
+#'         score = 123.0
+#'       ),
+#'       exploitObserved = list(
+#'         firstSeen = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastSeen = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       id = "string",
+#'       referenceUrls = list(
+#'         "string"
+#'       ),
+#'       relatedVulnerabilities = list(
+#'         "string"
+#'       ),
+#'       source = "NVD",
+#'       sourceUrl = "string",
+#'       vendorCreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       vendorSeverity = "string",
+#'       vendorUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_vulnerabilities(
+#'   filterCriteria = list(
+#'     vulnerabilityIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_search_vulnerabilities
+#'
+#' @aliases inspector2_search_vulnerabilities
+inspector2_search_vulnerabilities <- function(filterCriteria, nextToken = NULL) {
+  op <- new_operation(
+    name = "SearchVulnerabilities",
+    http_method = "POST",
+    http_path = "/vulnerabilities/search",
+    paginator = list()
+  )
+  input <- .inspector2$search_vulnerabilities_input(filterCriteria = filterCriteria, nextToken = nextToken)
+  output <- .inspector2$search_vulnerabilities_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$search_vulnerabilities <- inspector2_search_vulnerabilities
 
 #' Adds tags to a resource
 #'
@@ -3426,6 +4172,72 @@ inspector2_update_configuration <- function(ecrConfiguration) {
 }
 .inspector2$operations$update_configuration <- inspector2_update_configuration
 
+#' Activates, deactivates Amazon Inspector deep inspection, or updates
+#' custom paths for your account
+#'
+#' @description
+#' Activates, deactivates Amazon Inspector deep inspection, or updates
+#' custom paths for your account.
+#'
+#' @usage
+#' inspector2_update_ec_2_deep_inspection_configuration(
+#'   activateDeepInspection, packagePaths)
+#'
+#' @param activateDeepInspection Specify `TRUE` to activate Amazon Inspector deep inspection in your
+#' account, or `FALSE` to deactivate. Member accounts in an organization
+#' cannot deactivate deep inspection, instead the delegated administrator
+#' for the organization can deactivate a member account using
+#' [`batch_update_member_ec_2_deep_inspection_status`][inspector2_batch_update_member_ec_2_deep_inspection_status].
+#' @param packagePaths The Amazon Inspector deep inspection custom paths you are adding for
+#' your account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   errorMessage = "string",
+#'   orgPackagePaths = list(
+#'     "string"
+#'   ),
+#'   packagePaths = list(
+#'     "string"
+#'   ),
+#'   status = "ACTIVATED"|"DEACTIVATED"|"PENDING"|"FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_ec_2_deep_inspection_configuration(
+#'   activateDeepInspection = TRUE|FALSE,
+#'   packagePaths = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_update_ec_2_deep_inspection_configuration
+#'
+#' @aliases inspector2_update_ec_2_deep_inspection_configuration
+inspector2_update_ec_2_deep_inspection_configuration <- function(activateDeepInspection = NULL, packagePaths = NULL) {
+  op <- new_operation(
+    name = "UpdateEc2DeepInspectionConfiguration",
+    http_method = "POST",
+    http_path = "/ec2deepinspectionconfiguration/update",
+    paginator = list()
+  )
+  input <- .inspector2$update_ec_2_deep_inspection_configuration_input(activateDeepInspection = activateDeepInspection, packagePaths = packagePaths)
+  output <- .inspector2$update_ec_2_deep_inspection_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$update_ec_2_deep_inspection_configuration <- inspector2_update_ec_2_deep_inspection_configuration
+
 #' Specifies the action that is to be applied to the findings that match
 #' the filter
 #'
@@ -3536,6 +4348,12 @@ inspector2_update_configuration <- function(ecrConfiguration) {
 #'         value = "string"
 #'       )
 #'     ),
+#'     exploitAvailable = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
 #'     findingArn = list(
 #'       list(
 #'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
@@ -3564,10 +4382,50 @@ inspector2_update_configuration <- function(ecrConfiguration) {
 #'         )
 #'       )
 #'     ),
+#'     fixAvailable = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
 #'     inspectorScore = list(
 #'       list(
 #'         lowerInclusive = 123.0,
 #'         upperInclusive = 123.0
+#'       )
+#'     ),
+#'     lambdaFunctionExecutionRoleArn = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionLastModifiedAt = list(
+#'       list(
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     lambdaFunctionLayers = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionName = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
+#'       )
+#'     ),
+#'     lambdaFunctionRuntime = list(
+#'       list(
+#'         comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'         value = "string"
 #'       )
 #'     ),
 #'     lastObservedAt = list(
@@ -3675,6 +4533,10 @@ inspector2_update_configuration <- function(ecrConfiguration) {
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'           value = "string"
 #'         ),
+#'         sourceLambdaLayerArn = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
 #'         sourceLayerHash = list(
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'           value = "string"
@@ -3713,6 +4575,55 @@ inspector2_update_filter <- function(action = NULL, description = NULL, filterAr
 }
 .inspector2$operations$update_filter <- inspector2_update_filter
 
+#' Updates the Amazon Inspector deep inspection custom paths for your
+#' organization
+#'
+#' @description
+#' Updates the Amazon Inspector deep inspection custom paths for your
+#' organization. You must be an Amazon Inspector delegated administrator to
+#' use this API.
+#'
+#' @usage
+#' inspector2_update_org_ec_2_deep_inspection_configuration(
+#'   orgPackagePaths)
+#'
+#' @param orgPackagePaths &#91;required&#93; The Amazon Inspector deep inspection custom paths you are adding for
+#' your organization.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_org_ec_2_deep_inspection_configuration(
+#'   orgPackagePaths = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_update_org_ec_2_deep_inspection_configuration
+#'
+#' @aliases inspector2_update_org_ec_2_deep_inspection_configuration
+inspector2_update_org_ec_2_deep_inspection_configuration <- function(orgPackagePaths) {
+  op <- new_operation(
+    name = "UpdateOrgEc2DeepInspectionConfiguration",
+    http_method = "POST",
+    http_path = "/ec2deepinspectionconfiguration/org/update",
+    paginator = list()
+  )
+  input <- .inspector2$update_org_ec_2_deep_inspection_configuration_input(orgPackagePaths = orgPackagePaths)
+  output <- .inspector2$update_org_ec_2_deep_inspection_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$update_org_ec_2_deep_inspection_configuration <- inspector2_update_org_ec_2_deep_inspection_configuration
+
 #' Updates the configurations for your Amazon Inspector organization
 #'
 #' @description
@@ -3730,7 +4641,8 @@ inspector2_update_filter <- function(action = NULL, description = NULL, filterAr
 #' list(
 #'   autoEnable = list(
 #'     ec2 = TRUE|FALSE,
-#'     ecr = TRUE|FALSE
+#'     ecr = TRUE|FALSE,
+#'     lambda = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -3740,7 +4652,8 @@ inspector2_update_filter <- function(action = NULL, description = NULL, filterAr
 #' svc$update_organization_configuration(
 #'   autoEnable = list(
 #'     ec2 = TRUE|FALSE,
-#'     ecr = TRUE|FALSE
+#'     ecr = TRUE|FALSE,
+#'     lambda = TRUE|FALSE
 #'   )
 #' )
 #' ```

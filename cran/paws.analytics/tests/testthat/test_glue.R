@@ -24,6 +24,38 @@ test_that("list_custom_entity_types", {
   expect_error(svc$list_custom_entity_types(MaxResults = 20), NA)
 })
 
+test_that("list_data_quality_results", {
+  expect_error(svc$list_data_quality_results(), NA)
+})
+
+test_that("list_data_quality_results", {
+  expect_error(svc$list_data_quality_results(MaxResults = 20), NA)
+})
+
+test_that("list_data_quality_rule_recommendation_runs", {
+  expect_error(svc$list_data_quality_rule_recommendation_runs(), NA)
+})
+
+test_that("list_data_quality_rule_recommendation_runs", {
+  expect_error(svc$list_data_quality_rule_recommendation_runs(MaxResults = 20), NA)
+})
+
+test_that("list_data_quality_ruleset_evaluation_runs", {
+  expect_error(svc$list_data_quality_ruleset_evaluation_runs(), NA)
+})
+
+test_that("list_data_quality_ruleset_evaluation_runs", {
+  expect_error(svc$list_data_quality_ruleset_evaluation_runs(MaxResults = 20), NA)
+})
+
+test_that("list_data_quality_rulesets", {
+  expect_error(svc$list_data_quality_rulesets(), NA)
+})
+
+test_that("list_data_quality_rulesets", {
+  expect_error(svc$list_data_quality_rulesets(MaxResults = 20), NA)
+})
+
 test_that("list_dev_endpoints", {
   expect_error(svc$list_dev_endpoints(), NA)
 })

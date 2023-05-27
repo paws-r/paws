@@ -7,7 +7,7 @@ NULL
 #' delegated administrator
 #'
 #' @description
-#' Associates an Amazon Web Services account with an Amazon Inspector delegated administrator.
+#' Associates an Amazon Web Services account with an Amazon Inspector delegated administrator. An HTTP 200 response indicates the association was successfully started, but doesn’t indicate whether it was completed. You can check if the association completed by using [`list_members`][inspector2_list_members] for multiple accounts or [GetMembers](https://docs.aws.amazon.com/inspector/v2/APIReference/API_GetMember.html) for a single account.
 #'
 #' See [https://paws-r.github.io/docs/inspector2/associate_member.html](https://paws-r.github.io/docs/inspector2/associate_member.html) for full documentation.
 #'
@@ -94,6 +94,70 @@ inspector2_batch_get_free_trial_info <- function(accountIds) {
 }
 .inspector2$operations$batch_get_free_trial_info <- inspector2_batch_get_free_trial_info
 
+#' Retrieves Amazon Inspector deep inspection activation status of multiple
+#' member accounts within your organization
+#'
+#' @description
+#' Retrieves Amazon Inspector deep inspection activation status of multiple member accounts within your organization. You must be the delegated administrator of an organization in Amazon Inspector to use this API.
+#'
+#' See [https://paws-r.github.io/docs/inspector2/batch_get_member_ec_2_deep_inspection_status.html](https://paws-r.github.io/docs/inspector2/batch_get_member_ec_2_deep_inspection_status.html) for full documentation.
+#'
+#' @param accountIds The unique identifiers for the Amazon Web Services accounts to retrieve
+#' Amazon Inspector deep inspection activation status for.
+#' 
+#'      </p> 
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_batch_get_member_ec_2_deep_inspection_status
+inspector2_batch_get_member_ec_2_deep_inspection_status <- function(accountIds = NULL) {
+  op <- new_operation(
+    name = "BatchGetMemberEc2DeepInspectionStatus",
+    http_method = "POST",
+    http_path = "/ec2deepinspectionstatus/member/batch/get",
+    paginator = list()
+  )
+  input <- .inspector2$batch_get_member_ec_2_deep_inspection_status_input(accountIds = accountIds)
+  output <- .inspector2$batch_get_member_ec_2_deep_inspection_status_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$batch_get_member_ec_2_deep_inspection_status <- inspector2_batch_get_member_ec_2_deep_inspection_status
+
+#' Activates or deactivates Amazon Inspector deep inspection for the
+#' provided member accounts in your organization
+#'
+#' @description
+#' Activates or deactivates Amazon Inspector deep inspection for the provided member accounts in your organization. You must be the delegated administrator of an organization in Amazon Inspector to use this API.
+#'
+#' See [https://paws-r.github.io/docs/inspector2/batch_update_member_ec_2_deep_inspection_status.html](https://paws-r.github.io/docs/inspector2/batch_update_member_ec_2_deep_inspection_status.html) for full documentation.
+#'
+#' @param accountIds &#91;required&#93; The unique identifiers for the Amazon Web Services accounts to change
+#' Amazon Inspector deep inspection status for.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_batch_update_member_ec_2_deep_inspection_status
+inspector2_batch_update_member_ec_2_deep_inspection_status <- function(accountIds) {
+  op <- new_operation(
+    name = "BatchUpdateMemberEc2DeepInspectionStatus",
+    http_method = "POST",
+    http_path = "/ec2deepinspectionstatus/member/batch/update",
+    paginator = list()
+  )
+  input <- .inspector2$batch_update_member_ec_2_deep_inspection_status_input(accountIds = accountIds)
+  output <- .inspector2$batch_update_member_ec_2_deep_inspection_status_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$batch_update_member_ec_2_deep_inspection_status <- inspector2_batch_update_member_ec_2_deep_inspection_status
+
 #' Cancels the given findings report
 #'
 #' @description
@@ -163,7 +227,7 @@ inspector2_create_filter <- function(action, description = NULL, filterCriteria,
 #' Creates a finding report
 #'
 #' @description
-#' Creates a finding report.
+#' Creates a finding report. By default only `ACTIVE` findings are returned in the report. To see `SUPRESSED` or `CLOSED` findings you must specify a value for the `findingStatus` filter criteria.
 #'
 #' See [https://paws-r.github.io/docs/inspector2/create_findings_report.html](https://paws-r.github.io/docs/inspector2/create_findings_report.html) for full documentation.
 #'
@@ -224,7 +288,7 @@ inspector2_delete_filter <- function(arn) {
 #' Services organization
 #'
 #' @description
-#' Describe Amazon Inspector configuration settings for an Amazon Web Services organization
+#' Describe Amazon Inspector configuration settings for an Amazon Web Services organization.
 #'
 #' See [https://paws-r.github.io/docs/inspector2/describe_organization_configuration.html](https://paws-r.github.io/docs/inspector2/describe_organization_configuration.html) for full documentation.
 #'
@@ -459,6 +523,34 @@ inspector2_get_delegated_admin_account <- function() {
   return(response)
 }
 .inspector2$operations$get_delegated_admin_account <- inspector2_get_delegated_admin_account
+
+#' Retrieves the activation status of Amazon Inspector deep inspection and
+#' custom paths associated with your account
+#'
+#' @description
+#' Retrieves the activation status of Amazon Inspector deep inspection and custom paths associated with your account.
+#'
+#' See [https://paws-r.github.io/docs/inspector2/get_ec_2_deep_inspection_configuration.html](https://paws-r.github.io/docs/inspector2/get_ec_2_deep_inspection_configuration.html) for full documentation.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_get_ec_2_deep_inspection_configuration
+inspector2_get_ec_2_deep_inspection_configuration <- function() {
+  op <- new_operation(
+    name = "GetEc2DeepInspectionConfiguration",
+    http_method = "POST",
+    http_path = "/ec2deepinspectionconfiguration/get",
+    paginator = list()
+  )
+  input <- .inspector2$get_ec_2_deep_inspection_configuration_input()
+  output <- .inspector2$get_ec_2_deep_inspection_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$get_ec_2_deep_inspection_configuration <- inspector2_get_ec_2_deep_inspection_configuration
 
 #' Gets the status of a findings report
 #'
@@ -865,6 +957,39 @@ inspector2_list_usage_totals <- function(accountIds = NULL, maxResults = NULL, n
 }
 .inspector2$operations$list_usage_totals <- inspector2_list_usage_totals
 
+#' Lists Amazon Inspector coverage details for a specific vulnerability
+#'
+#' @description
+#' Lists Amazon Inspector coverage details for a specific vulnerability.
+#'
+#' See [https://paws-r.github.io/docs/inspector2/search_vulnerabilities.html](https://paws-r.github.io/docs/inspector2/search_vulnerabilities.html) for full documentation.
+#'
+#' @param filterCriteria &#91;required&#93; The criteria used to filter the results of a vulnerability search.
+#' @param nextToken A token to use for paginating results that are returned in the response.
+#' Set the value of this parameter to null for the first request to a list
+#' action. For subsequent calls, use the `NextToken` value returned from
+#' the previous request to continue listing results after the first page.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_search_vulnerabilities
+inspector2_search_vulnerabilities <- function(filterCriteria, nextToken = NULL) {
+  op <- new_operation(
+    name = "SearchVulnerabilities",
+    http_method = "POST",
+    http_path = "/vulnerabilities/search",
+    paginator = list()
+  )
+  input <- .inspector2$search_vulnerabilities_input(filterCriteria = filterCriteria, nextToken = nextToken)
+  output <- .inspector2$search_vulnerabilities_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$search_vulnerabilities <- inspector2_search_vulnerabilities
+
 #' Adds tags to a resource
 #'
 #' @description
@@ -955,6 +1080,42 @@ inspector2_update_configuration <- function(ecrConfiguration) {
 }
 .inspector2$operations$update_configuration <- inspector2_update_configuration
 
+#' Activates, deactivates Amazon Inspector deep inspection, or updates
+#' custom paths for your account
+#'
+#' @description
+#' Activates, deactivates Amazon Inspector deep inspection, or updates custom paths for your account.
+#'
+#' See [https://paws-r.github.io/docs/inspector2/update_ec_2_deep_inspection_configuration.html](https://paws-r.github.io/docs/inspector2/update_ec_2_deep_inspection_configuration.html) for full documentation.
+#'
+#' @param activateDeepInspection Specify `TRUE` to activate Amazon Inspector deep inspection in your
+#' account, or `FALSE` to deactivate. Member accounts in an organization
+#' cannot deactivate deep inspection, instead the delegated administrator
+#' for the organization can deactivate a member account using
+#' [`batch_update_member_ec_2_deep_inspection_status`][inspector2_batch_update_member_ec_2_deep_inspection_status].
+#' @param packagePaths The Amazon Inspector deep inspection custom paths you are adding for
+#' your account.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_update_ec_2_deep_inspection_configuration
+inspector2_update_ec_2_deep_inspection_configuration <- function(activateDeepInspection = NULL, packagePaths = NULL) {
+  op <- new_operation(
+    name = "UpdateEc2DeepInspectionConfiguration",
+    http_method = "POST",
+    http_path = "/ec2deepinspectionconfiguration/update",
+    paginator = list()
+  )
+  input <- .inspector2$update_ec_2_deep_inspection_configuration_input(activateDeepInspection = activateDeepInspection, packagePaths = packagePaths)
+  output <- .inspector2$update_ec_2_deep_inspection_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$update_ec_2_deep_inspection_configuration <- inspector2_update_ec_2_deep_inspection_configuration
+
 #' Specifies the action that is to be applied to the findings that match
 #' the filter
 #'
@@ -990,6 +1151,37 @@ inspector2_update_filter <- function(action = NULL, description = NULL, filterAr
   return(response)
 }
 .inspector2$operations$update_filter <- inspector2_update_filter
+
+#' Updates the Amazon Inspector deep inspection custom paths for your
+#' organization
+#'
+#' @description
+#' Updates the Amazon Inspector deep inspection custom paths for your organization. You must be an Amazon Inspector delegated administrator to use this API.
+#'
+#' See [https://paws-r.github.io/docs/inspector2/update_org_ec_2_deep_inspection_configuration.html](https://paws-r.github.io/docs/inspector2/update_org_ec_2_deep_inspection_configuration.html) for full documentation.
+#'
+#' @param orgPackagePaths &#91;required&#93; The Amazon Inspector deep inspection custom paths you are adding for
+#' your organization.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_update_org_ec_2_deep_inspection_configuration
+inspector2_update_org_ec_2_deep_inspection_configuration <- function(orgPackagePaths) {
+  op <- new_operation(
+    name = "UpdateOrgEc2DeepInspectionConfiguration",
+    http_method = "POST",
+    http_path = "/ec2deepinspectionconfiguration/org/update",
+    paginator = list()
+  )
+  input <- .inspector2$update_org_ec_2_deep_inspection_configuration_input(orgPackagePaths = orgPackagePaths)
+  output <- .inspector2$update_org_ec_2_deep_inspection_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$update_org_ec_2_deep_inspection_configuration <- inspector2_update_org_ec_2_deep_inspection_configuration
 
 #' Updates the configurations for your Amazon Inspector organization
 #'

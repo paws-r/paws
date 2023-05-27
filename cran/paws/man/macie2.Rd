@@ -28,15 +28,7 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon Macie is a fully managed data security and data privacy service
-that uses machine learning and pattern matching to discover and protect
-your sensitive data in AWS. Macie automates the discovery of sensitive
-data, such as PII and intellectual property, to provide you with insight
-into the data that your organization stores in AWS. Macie also provides
-an inventory of your Amazon S3 buckets, which it continually monitors
-for you. If Macie detects sensitive data or potential data access
-issues, it generates detailed findings for you to review and act upon as
-necessary.
+Amazon Macie
 }
 \section{Service syntax}{
 
@@ -67,6 +59,7 @@ necessary.
 \tabular{ll}{
 \link[paws.security.identity:macie2_accept_invitation]{accept_invitation} \tab Accepts an Amazon Macie membership invitation that was received from a specific account\cr
 \link[paws.security.identity:macie2_batch_get_custom_data_identifiers]{batch_get_custom_data_identifiers} \tab Retrieves information about one or more custom data identifiers\cr
+\link[paws.security.identity:macie2_create_allow_list]{create_allow_list} \tab Creates and defines the settings for an allow list\cr
 \link[paws.security.identity:macie2_create_classification_job]{create_classification_job} \tab Creates and defines the settings for a classification job\cr
 \link[paws.security.identity:macie2_create_custom_data_identifier]{create_custom_data_identifier} \tab Creates and defines the criteria and other settings for a custom data identifier\cr
 \link[paws.security.identity:macie2_create_findings_filter]{create_findings_filter} \tab Creates and defines the criteria and other settings for a findings filter\cr
@@ -74,11 +67,12 @@ necessary.
 \link[paws.security.identity:macie2_create_member]{create_member} \tab Associates an account with an Amazon Macie administrator account\cr
 \link[paws.security.identity:macie2_create_sample_findings]{create_sample_findings} \tab Creates sample findings\cr
 \link[paws.security.identity:macie2_decline_invitations]{decline_invitations} \tab Declines Amazon Macie membership invitations that were received from specific accounts\cr
+\link[paws.security.identity:macie2_delete_allow_list]{delete_allow_list} \tab Deletes an allow list\cr
 \link[paws.security.identity:macie2_delete_custom_data_identifier]{delete_custom_data_identifier} \tab Soft deletes a custom data identifier\cr
 \link[paws.security.identity:macie2_delete_findings_filter]{delete_findings_filter} \tab Deletes a findings filter\cr
 \link[paws.security.identity:macie2_delete_invitations]{delete_invitations} \tab Deletes Amazon Macie membership invitations that were received from specific accounts\cr
 \link[paws.security.identity:macie2_delete_member]{delete_member} \tab Deletes the association between an Amazon Macie administrator account and an account\cr
-\link[paws.security.identity:macie2_describe_buckets]{describe_buckets} \tab Retrieves (queries) statistical data and other information about one or more S3 buckets that Amazon Macie monitors and analyzes\cr
+\link[paws.security.identity:macie2_describe_buckets]{describe_buckets} \tab Retrieves (queries) statistical data and other information about one or more S3 buckets that Amazon Macie monitors and analyzes for an account\cr
 \link[paws.security.identity:macie2_describe_classification_job]{describe_classification_job} \tab Retrieves the status and settings for a classification job\cr
 \link[paws.security.identity:macie2_describe_organization_configuration]{describe_organization_configuration} \tab Retrieves the Amazon Macie configuration settings for an organization in Organizations\cr
 \link[paws.security.identity:macie2_disable_macie]{disable_macie} \tab Disables Amazon Macie and deletes all settings and resources for a Macie account\cr
@@ -89,23 +83,30 @@ necessary.
 \link[paws.security.identity:macie2_enable_macie]{enable_macie} \tab Enables Amazon Macie and specifies the configuration settings for a Macie account\cr
 \link[paws.security.identity:macie2_enable_organization_admin_account]{enable_organization_admin_account} \tab Designates an account as the delegated Amazon Macie administrator account for an organization in Organizations\cr
 \link[paws.security.identity:macie2_get_administrator_account]{get_administrator_account} \tab Retrieves information about the Amazon Macie administrator account for an account\cr
-\link[paws.security.identity:macie2_get_bucket_statistics]{get_bucket_statistics} \tab Retrieves (queries) aggregated statistical data about S3 buckets that Amazon Macie monitors and analyzes\cr
+\link[paws.security.identity:macie2_get_allow_list]{get_allow_list} \tab Retrieves the settings and status of an allow list\cr
+\link[paws.security.identity:macie2_get_automated_discovery_configuration]{get_automated_discovery_configuration} \tab Retrieves the configuration settings and status of automated sensitive data discovery for an account\cr
+\link[paws.security.identity:macie2_get_bucket_statistics]{get_bucket_statistics} \tab Retrieves (queries) aggregated statistical data about all the S3 buckets that Amazon Macie monitors and analyzes for an account\cr
 \link[paws.security.identity:macie2_get_classification_export_configuration]{get_classification_export_configuration} \tab Retrieves the configuration settings for storing data classification results\cr
+\link[paws.security.identity:macie2_get_classification_scope]{get_classification_scope} \tab Retrieves the classification scope settings for an account\cr
 \link[paws.security.identity:macie2_get_custom_data_identifier]{get_custom_data_identifier} \tab Retrieves the criteria and other settings for a custom data identifier\cr
 \link[paws.security.identity:macie2_get_findings]{get_findings} \tab Retrieves the details of one or more findings\cr
 \link[paws.security.identity:macie2_get_findings_filter]{get_findings_filter} \tab Retrieves the criteria and other settings for a findings filter\cr
 \link[paws.security.identity:macie2_get_findings_publication_configuration]{get_findings_publication_configuration} \tab Retrieves the configuration settings for publishing findings to Security Hub\cr
 \link[paws.security.identity:macie2_get_finding_statistics]{get_finding_statistics} \tab Retrieves (queries) aggregated statistical data about findings\cr
 \link[paws.security.identity:macie2_get_invitations_count]{get_invitations_count} \tab Retrieves the count of Amazon Macie membership invitations that were received by an account\cr
-\link[paws.security.identity:macie2_get_macie_session]{get_macie_session} \tab Retrieves the current status and configuration settings for an Amazon Macie account\cr
+\link[paws.security.identity:macie2_get_macie_session]{get_macie_session} \tab Retrieves the status and configuration settings for an Amazon Macie account\cr
 \link[paws.security.identity:macie2_get_master_account]{get_master_account} \tab (Deprecated) Retrieves information about the Amazon Macie administrator account for an account\cr
 \link[paws.security.identity:macie2_get_member]{get_member} \tab Retrieves information about an account that's associated with an Amazon Macie administrator account\cr
-\link[paws.security.identity:macie2_get_reveal_configuration]{get_reveal_configuration} \tab Retrieves the status and configuration settings for retrieving (revealing) occurrences of sensitive data reported by findings\cr
-\link[paws.security.identity:macie2_get_sensitive_data_occurrences]{get_sensitive_data_occurrences} \tab Retrieves (reveals) occurrences of sensitive data reported by a finding\cr
-\link[paws.security.identity:macie2_get_sensitive_data_occurrences_availability]{get_sensitive_data_occurrences_availability} \tab Checks whether occurrences of sensitive data can be retrieved (revealed) for a finding\cr
+\link[paws.security.identity:macie2_get_resource_profile]{get_resource_profile} \tab Retrieves (queries) sensitive data discovery statistics and the sensitivity score for an S3 bucket\cr
+\link[paws.security.identity:macie2_get_reveal_configuration]{get_reveal_configuration} \tab Retrieves the status and configuration settings for retrieving occurrences of sensitive data reported by findings\cr
+\link[paws.security.identity:macie2_get_sensitive_data_occurrences]{get_sensitive_data_occurrences} \tab Retrieves occurrences of sensitive data reported by a finding\cr
+\link[paws.security.identity:macie2_get_sensitive_data_occurrences_availability]{get_sensitive_data_occurrences_availability} \tab Checks whether occurrences of sensitive data can be retrieved for a finding\cr
+\link[paws.security.identity:macie2_get_sensitivity_inspection_template]{get_sensitivity_inspection_template} \tab Retrieves the settings for the sensitivity inspection template for an account\cr
 \link[paws.security.identity:macie2_get_usage_statistics]{get_usage_statistics} \tab Retrieves (queries) quotas and aggregated usage data for one or more accounts\cr
 \link[paws.security.identity:macie2_get_usage_totals]{get_usage_totals} \tab Retrieves (queries) aggregated usage data for an account\cr
+\link[paws.security.identity:macie2_list_allow_lists]{list_allow_lists} \tab Retrieves a subset of information about all the allow lists for an account\cr
 \link[paws.security.identity:macie2_list_classification_jobs]{list_classification_jobs} \tab Retrieves a subset of information about one or more classification jobs\cr
+\link[paws.security.identity:macie2_list_classification_scopes]{list_classification_scopes} \tab Retrieves a subset of information about the classification scope for an account\cr
 \link[paws.security.identity:macie2_list_custom_data_identifiers]{list_custom_data_identifiers} \tab Retrieves a subset of information about all the custom data identifiers for an account\cr
 \link[paws.security.identity:macie2_list_findings]{list_findings} \tab Retrieves a subset of information about one or more findings\cr
 \link[paws.security.identity:macie2_list_findings_filters]{list_findings_filters} \tab Retrieves a subset of information about all the findings filters for an account\cr
@@ -113,19 +114,28 @@ necessary.
 \link[paws.security.identity:macie2_list_managed_data_identifiers]{list_managed_data_identifiers} \tab Retrieves information about all the managed data identifiers that Amazon Macie currently provides\cr
 \link[paws.security.identity:macie2_list_members]{list_members} \tab Retrieves information about the accounts that are associated with an Amazon Macie administrator account\cr
 \link[paws.security.identity:macie2_list_organization_admin_accounts]{list_organization_admin_accounts} \tab Retrieves information about the delegated Amazon Macie administrator account for an organization in Organizations\cr
-\link[paws.security.identity:macie2_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the tags (keys and values) that are associated with a classification job, custom data identifier, findings filter, or member account\cr
+\link[paws.security.identity:macie2_list_resource_profile_artifacts]{list_resource_profile_artifacts} \tab Retrieves information about objects that were selected from an S3 bucket for automated sensitive data discovery\cr
+\link[paws.security.identity:macie2_list_resource_profile_detections]{list_resource_profile_detections} \tab Retrieves information about the types and amount of sensitive data that Amazon Macie found in an S3 bucket\cr
+\link[paws.security.identity:macie2_list_sensitivity_inspection_templates]{list_sensitivity_inspection_templates} \tab Retrieves a subset of information about the sensitivity inspection template for an account\cr
+\link[paws.security.identity:macie2_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the tags (keys and values) that are associated with an Amazon Macie resource\cr
 \link[paws.security.identity:macie2_put_classification_export_configuration]{put_classification_export_configuration} \tab Creates or updates the configuration settings for storing data classification results\cr
 \link[paws.security.identity:macie2_put_findings_publication_configuration]{put_findings_publication_configuration} \tab Updates the configuration settings for publishing findings to Security Hub\cr
 \link[paws.security.identity:macie2_search_resources]{search_resources} \tab Retrieves (queries) statistical data and other information about Amazon Web Services resources that Amazon Macie monitors and analyzes\cr
-\link[paws.security.identity:macie2_tag_resource]{tag_resource} \tab Adds or updates one or more tags (keys and values) that are associated with a classification job, custom data identifier, findings filter, or member account\cr
+\link[paws.security.identity:macie2_tag_resource]{tag_resource} \tab Adds or updates one or more tags (keys and values) that are associated with an Amazon Macie resource\cr
 \link[paws.security.identity:macie2_test_custom_data_identifier]{test_custom_data_identifier} \tab Tests a custom data identifier\cr
-\link[paws.security.identity:macie2_untag_resource]{untag_resource} \tab Removes one or more tags (keys and values) from a classification job, custom data identifier, findings filter, or member account\cr
+\link[paws.security.identity:macie2_untag_resource]{untag_resource} \tab Removes one or more tags (keys and values) from an Amazon Macie resource\cr
+\link[paws.security.identity:macie2_update_allow_list]{update_allow_list} \tab Updates the settings for an allow list\cr
+\link[paws.security.identity:macie2_update_automated_discovery_configuration]{update_automated_discovery_configuration} \tab Enables or disables automated sensitive data discovery for an account\cr
 \link[paws.security.identity:macie2_update_classification_job]{update_classification_job} \tab Changes the status of a classification job\cr
+\link[paws.security.identity:macie2_update_classification_scope]{update_classification_scope} \tab Updates the classification scope settings for an account\cr
 \link[paws.security.identity:macie2_update_findings_filter]{update_findings_filter} \tab Updates the criteria and other settings for a findings filter\cr
 \link[paws.security.identity:macie2_update_macie_session]{update_macie_session} \tab Suspends or re-enables Amazon Macie, or updates the configuration settings for a Macie account\cr
 \link[paws.security.identity:macie2_update_member_session]{update_member_session} \tab Enables an Amazon Macie administrator to suspend or re-enable Macie for a member account\cr
 \link[paws.security.identity:macie2_update_organization_configuration]{update_organization_configuration} \tab Updates the Amazon Macie configuration settings for an organization in Organizations\cr
-\link[paws.security.identity:macie2_update_reveal_configuration]{update_reveal_configuration} \tab Updates the status and configuration settings for retrieving (revealing) occurrences of sensitive data reported by findings
+\link[paws.security.identity:macie2_update_resource_profile]{update_resource_profile} \tab Updates the sensitivity score for an S3 bucket\cr
+\link[paws.security.identity:macie2_update_resource_profile_detections]{update_resource_profile_detections} \tab Updates the sensitivity scoring settings for an S3 bucket\cr
+\link[paws.security.identity:macie2_update_reveal_configuration]{update_reveal_configuration} \tab Updates the status and configuration settings for retrieving occurrences of sensitive data reported by findings\cr
+\link[paws.security.identity:macie2_update_sensitivity_inspection_template]{update_sensitivity_inspection_template} \tab Updates the settings for the sensitivity inspection template for an account
 }
 }
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_create_user}
 \alias{workmail_create_user}
-\title{Creates a user who can be used in Amazon WorkMail by calling the
+\title{Creates a user who can be used in WorkMail by calling the
 RegisterToWorkMail operation}
 \usage{
 workmail_create_user(OrganizationId, Name, DisplayName, Password)
@@ -18,7 +18,7 @@ length of 64. All others have a maximum length of 20.}
 \item{Password}{[required] The password for the new user.}
 }
 \description{
-Creates a user who can be used in Amazon WorkMail by calling the \code{\link[=workmail_register_to_work_mail]{register_to_work_mail}} operation.
+Creates a user who can be used in WorkMail by calling the \code{\link[=workmail_register_to_work_mail]{register_to_work_mail}} operation.
 
 See \url{https://paws-r.github.io/docs/workmail/create_user.html} for full documentation.
 }

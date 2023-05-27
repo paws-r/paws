@@ -68,7 +68,8 @@ instances.
 \link[paws.management:licensemanagerusersubscriptions_list_user_associations]{list_user_associations} \tab Lists user associations for an identity provider\cr
 \link[paws.management:licensemanagerusersubscriptions_register_identity_provider]{register_identity_provider} \tab Registers an identity provider for user-based subscriptions\cr
 \link[paws.management:licensemanagerusersubscriptions_start_product_subscription]{start_product_subscription} \tab Starts a product subscription for a user with the specified identity provider\cr
-\link[paws.management:licensemanagerusersubscriptions_stop_product_subscription]{stop_product_subscription} \tab Stops a product subscription for a user with the specified identity provider
+\link[paws.management:licensemanagerusersubscriptions_stop_product_subscription]{stop_product_subscription} \tab Stops a product subscription for a user with the specified identity provider\cr
+\link[paws.management:licensemanagerusersubscriptions_update_identity_provider_settings]{update_identity_provider_settings} \tab Updates additional product configuration settings for the registered identity provider
 }
 }
 

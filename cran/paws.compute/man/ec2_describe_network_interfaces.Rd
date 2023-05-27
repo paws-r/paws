@@ -102,16 +102,18 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{NetworkInterfaceIds}{One or more network interface IDs.
+\item{NetworkInterfaceIds}{The network interface IDs.
 
 Default: Describes all your network interfaces.}
 
-\item{NextToken}{The token to retrieve the next page of results.}
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
 
-\item{MaxResults}{The maximum number of items to return for this request. The request
-returns a token that you can specify in a subsequent call to get the
-next set of results. You cannot specify this parameter and the network
-interface IDs parameter in the same request.}
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. You cannot specify this parameter and the network interface IDs
+parameter in the same request. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 }
 \description{
 Describes one or more of your network interfaces.

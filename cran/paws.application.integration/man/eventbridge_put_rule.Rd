@@ -21,8 +21,8 @@ eventbridge_put_rule(
 \item{ScheduleExpression}{The scheduling expression. For example, "cron(0 20 * * ? *)" or
 "rate(5 minutes)".}
 
-\item{EventPattern}{The event pattern. For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/}{EventBridge event patterns} in
-the \emph{Amazon EventBridge User Guide}.}
+\item{EventPattern}{The event pattern. For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-event-patterns.html}{Amazon EventBridge event patterns}
+in the \emph{Amazon EventBridge User Guide}.}
 
 \item{State}{Indicates whether the rule is enabled or disabled.}
 

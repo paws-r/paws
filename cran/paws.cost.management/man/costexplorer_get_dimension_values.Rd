@@ -26,7 +26,9 @@ usage data is retrieved from \code{2017-01-01} up to and including
 \code{2017-04-30} but not including \code{2017-05-01}.}
 
 \item{Dimension}{[required] The name of the dimension. Each \code{Dimension} is available for a different
-\code{Context}. For more information, see \code{Context}.}
+\code{Context}. For more information, see \code{Context}. \code{LINK_ACCOUNT_NAME} and
+\code{SERVICE_CODE} can only be used in
+\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/}{CostCategoryRule}.}
 
 \item{Context}{The context for the call to
 \code{\link[=costexplorer_get_dimension_values]{get_dimension_values}}. This can be

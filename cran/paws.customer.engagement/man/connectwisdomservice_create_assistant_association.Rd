@@ -22,7 +22,9 @@ URLs cannot contain the ARN.}
 \item{associationType}{[required] The type of association.}
 
 \item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
+idempotency of the request. If not provided, the Amazon Web Services SDK
+populates this field. For more information about idempotency, see
+\href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.}
 
 \item{tags}{The tags used to organize, track, or control access for this resource.}
 }

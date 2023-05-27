@@ -2,20 +2,20 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_associate_kms_key}
 \alias{cloudwatchlogs_associate_kms_key}
-\title{Associates the specified Key Management Service customer master key
-(CMK) with the specified log group}
+\title{Associates the specified KMS key with the specified log group}
 \usage{
 cloudwatchlogs_associate_kms_key(logGroupName, kmsKeyId)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
 
-\item{kmsKeyId}{[required] The Amazon Resource Name (ARN) of the CMK to use when encrypting log
-data. This must be a symmetric CMK. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms}{Amazon Resource Names - Key Management Service}
+\item{kmsKeyId}{[required] The Amazon Resource Name (ARN) of the KMS key to use when encrypting log
+data. This must be a symmetric KMS key. For more information, see
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kms}{Amazon Resource Names}
 and \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric Keys}.}
 }
 \description{
-Associates the specified Key Management Service customer master key (CMK) with the specified log group.
+Associates the specified KMS key with the specified log group.
 
 See \url{https://paws-r.github.io/docs/cloudwatchlogs/associate_kms_key.html} for full documentation.
 }

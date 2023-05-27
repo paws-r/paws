@@ -21,10 +21,12 @@ kendra_query(
 )
 }
 \arguments{
-\item{IndexId}{[required] The unique identifier of the index to search. The identifier is returned
-in the response from the \code{\link[=kendra_create_index]{create_index}} API.}
+\item{IndexId}{[required] The identifier of the index to search. The identifier is returned in the
+response from the \code{\link[=kendra_create_index]{create_index}} API.}
 
-\item{QueryText}{The text to search for.}
+\item{QueryText}{The input query text for the search. Amazon Kendra truncates queries at
+30 token words, which excludes punctuation and stop words. Truncation
+still applies if you use Boolean or more advanced, complex queries.}
 
 \item{AttributeFilter}{Enables filtered searches based on document attributes. You can only
 provide one attribute filter; however, the \code{AndAllFilters}, \code{NotFilter},

@@ -10,9 +10,10 @@ quicksight_create_analysis(
   Name,
   Parameters = NULL,
   Permissions = NULL,
-  SourceEntity,
+  SourceEntity = NULL,
   ThemeArn = NULL,
-  Tags = NULL
+  Tags = NULL,
+  Definition = NULL
 )
 }
 \arguments{
@@ -37,9 +38,12 @@ Name (ARN).
 
 To specify no permissions, omit \code{Permissions}.}
 
-\item{SourceEntity}{[required] A source entity to use for the analysis that you're creating. This
+\item{SourceEntity}{A source entity to use for the analysis that you're creating. This
 metadata structure contains details that describe a source template and
-one or more datasets.}
+one or more datasets.
+
+Either a \code{SourceEntity} or a \code{Definition} must be provided in order for
+the request to be valid.}
 
 \item{ThemeArn}{The ARN for the theme to apply to the analysis that you're creating. To
 see the theme in the Amazon QuickSight console, make sure that you have
@@ -47,9 +51,17 @@ access to it.}
 
 \item{Tags}{Contains a map of the key-value pairs for the resource tag or tags
 assigned to the analysis.}
+
+\item{Definition}{The definition of an analysis.
+
+A definition is the data model of all features in a Dashboard, Template,
+or Analysis.
+
+Either a \code{SourceEntity} or a \code{Definition} must be provided in order for
+the request to be valid.}
 }
 \description{
-Creates an analysis in Amazon QuickSight.
+Creates an analysis in Amazon QuickSight. Analyses can be created either from a template or from an \code{AnalysisDefinition}.
 
 See \url{https://paws-r.github.io/docs/quicksight/create_analysis.html} for full documentation.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_experiment}
 \alias{sagemaker_create_experiment}
-\title{Creates an SageMaker experiment}
+\title{Creates a SageMaker experiment}
 \usage{
 sagemaker_create_experiment(
   ExperimentName,
@@ -25,7 +25,7 @@ unique. If you don't specify \code{DisplayName}, the value in
 \code{\link[=sagemaker_search]{search}} API to search on the tags.}
 }
 \description{
-Creates an SageMaker \emph{experiment}. An experiment is a collection of \emph{trials} that are observed, compared and evaluated as a group. A trial is a set of steps, called \emph{trial components}, that produce a machine learning model.
+Creates a SageMaker \emph{experiment}. An experiment is a collection of \emph{trials} that are observed, compared and evaluated as a group. A trial is a set of steps, called \emph{trial components}, that produce a machine learning model.
 
 See \url{https://paws-r.github.io/docs/sagemaker/create_experiment.html} for full documentation.
 }

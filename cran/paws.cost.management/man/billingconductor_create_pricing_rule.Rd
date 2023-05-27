@@ -11,31 +11,61 @@ billingconductor_create_pricing_rule(
   Description = NULL,
   Scope,
   Type,
-  ModifierPercentage,
+  ModifierPercentage = NULL,
   Service = NULL,
-  Tags = NULL
+  Tags = NULL,
+  BillingEntity = NULL,
+  Tiering = NULL,
+  UsageType = NULL,
+  Operation = NULL
 )
 }
 \arguments{
-\item{ClientToken}{The token that is needed to support idempotency. Idempotency isn't
+\item{ClientToken}{The token that's needed to support idempotency. Idempotency isn't
 currently supported, but will be implemented in a future update.}
 
 \item{Name}{[required] The pricing rule name. The names must be unique to each pricing rule.}
 
 \item{Description}{The pricing rule description.}
 
-\item{Scope}{[required] The scope of pricing rule that indicates if it is globally applicable,
-or is service-specific.}
+\item{Scope}{[required] The scope of pricing rule that indicates if it's globally applicable, or
+it's service-specific.}
 
 \item{Type}{[required] The type of pricing rule.}
 
-\item{ModifierPercentage}{[required] A percentage modifier applied on the public pricing rates.}
+\item{ModifierPercentage}{A percentage modifier that's applied on the public pricing rates.}
 
-\item{Service}{If the \code{Scope} attribute is set to \code{SERVICE}, the attribute indicates
-which service the \code{PricingRule} is applicable for.}
+\item{Service}{If the \code{Scope} attribute is set to \code{SERVICE} or \code{SKU}, the attribute
+indicates which service the \code{PricingRule} is applicable for.}
 
 \item{Tags}{A map that contains tag keys and tag values that are attached to a
 pricing rule.}
+
+\item{BillingEntity}{The seller of services provided by Amazon Web Services, their
+affiliates, or third-party providers selling services via Amazon Web
+Services Marketplace.}
+
+\item{Tiering}{The set of tiering configurations for the pricing rule.}
+
+\item{UsageType}{Usage type is the unit that each service uses to measure the usage of a
+specific type of resource.
+
+If the \code{Scope} attribute is set to \code{SKU}, this attribute indicates which
+usage type the \code{PricingRule} is modifying. For example,
+\code{USW2-BoxUsage:m2.2xlarge} describes
+an\verb{ M2 High Memory Double Extra Large} instance in the US West (Oregon)
+Region.
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{</p>
+}\if{html}{\out{</div>}}}
+
+\item{Operation}{Operation is the specific Amazon Web Services action covered by this
+line item. This describes the specific usage of the line item.
+
+If the \code{Scope} attribute is set to \code{SKU}, this attribute indicates which
+operation the \code{PricingRule} is modifying. For example, a value of
+\code{RunInstances:0202} indicates the operation of running an Amazon EC2
+instance.}
 }
 \description{
 Creates a pricing rule can be associated to a pricing plan, or a set of pricing plans.

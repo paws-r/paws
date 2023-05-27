@@ -2,7 +2,8 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_claim_phone_number}
 \alias{connect_claim_phone_number}
-\title{Claims an available phone number to your Amazon Connect instance}
+\title{Claims an available phone number to your Amazon Connect instance or
+traffic distribution group}
 \usage{
 connect_claim_phone_number(
   TargetArn,
@@ -13,21 +14,27 @@ connect_claim_phone_number(
 )
 }
 \arguments{
-\item{TargetArn}{[required] The Amazon Resource Name (ARN) for Amazon Connect instances that phone
-numbers are claimed to.}
+\item{TargetArn}{[required] The Amazon Resource Name (ARN) for Amazon Connect instances or traffic
+distribution groups that phone numbers are claimed to.}
 
 \item{PhoneNumber}{[required] The phone number you want to claim. Phone numbers are formatted
 \verb{[+] [country code] [subscriber number including area code]}.}
 
 \item{PhoneNumberDescription}{The description of the phone number.}
 
-\item{Tags}{The tags used to organize, track, or control access for this resource.}
+\item{Tags}{The tags used to organize, track, or control access for this resource.
+For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
+idempotency of the request. If not provided, the Amazon Web Services SDK
+populates this field. For more information about idempotency, see
+\href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.
+
+Pattern:
+\verb{^[a-f0-9]\{8\}-[a-f0-9]\{4\}-[a-f0-9]\{4\}-[a-f0-9]\{4\}-[a-f0-9]\{12\}$}}
 }
 \description{
-Claims an available phone number to your Amazon Connect instance.
+Claims an available phone number to your Amazon Connect instance or traffic distribution group. You can call this API only in the same Amazon Web Services Region where the Amazon Connect instance or traffic distribution group was created.
 
 See \url{https://paws-r.github.io/docs/connect/claim_phone_number.html} for full documentation.
 }

@@ -5,46 +5,59 @@
 \title{Starts a notebook execution}
 \usage{
 emr_start_notebook_execution(
-  EditorId,
-  RelativePath,
+  EditorId = NULL,
+  RelativePath = NULL,
   NotebookExecutionName = NULL,
   NotebookParams = NULL,
   ExecutionEngine,
   ServiceRole,
   NotebookInstanceSecurityGroupId = NULL,
-  Tags = NULL
+  Tags = NULL,
+  NotebookS3Location = NULL,
+  OutputNotebookS3Location = NULL,
+  OutputNotebookFormat = NULL,
+  EnvironmentVariables = NULL
 )
 }
 \arguments{
-\item{EditorId}{[required] The unique identifier of the EMR Notebook to use for notebook execution.}
+\item{EditorId}{The unique identifier of the Amazon EMR Notebook to use for notebook
+execution.}
 
-\item{RelativePath}{[required] The path and file name of the notebook file for this execution, relative
-to the path specified for the EMR Notebook. For example, if you specify
-a path of \verb{s3://MyBucket/MyNotebooks} when you create an EMR Notebook
-for a notebook with an ID of \code{e-ABCDEFGHIJK1234567890ABCD} (the
-\code{EditorID} of this request), and you specify a \code{RelativePath} of
+\item{RelativePath}{The path and file name of the notebook file for this execution, relative
+to the path specified for the Amazon EMR Notebook. For example, if you
+specify a path of \verb{s3://MyBucket/MyNotebooks} when you create an Amazon
+EMR Notebook for a notebook with an ID of \code{e-ABCDEFGHIJK1234567890ABCD}
+(the \code{EditorID} of this request), and you specify a \code{RelativePath} of
 \code{my_notebook_executions/notebook_execution.ipynb}, the location of the
 file for the notebook execution is
 \verb{s3://MyBucket/MyNotebooks/e-ABCDEFGHIJK1234567890ABCD/my_notebook_executions/notebook_execution.ipynb}.}
 
 \item{NotebookExecutionName}{An optional name for the notebook execution.}
 
-\item{NotebookParams}{Input parameters in JSON format passed to the EMR Notebook at runtime
-for execution.}
+\item{NotebookParams}{Input parameters in JSON format passed to the Amazon EMR Notebook at
+runtime for execution.}
 
 \item{ExecutionEngine}{[required] Specifies the execution engine (cluster) that runs the notebook
 execution.}
 
 \item{ServiceRole}{[required] The name or ARN of the IAM role that is used as the service role for
-Amazon EMR (the EMR role) for the notebook execution.}
+Amazon EMR (the Amazon EMR role) for the notebook execution.}
 
 \item{NotebookInstanceSecurityGroupId}{The unique identifier of the Amazon EC2 security group to associate with
-the EMR Notebook for this notebook execution.}
+the Amazon EMR Notebook for this notebook execution.}
 
 \item{Tags}{A list of tags associated with a notebook execution. Tags are
 user-defined key-value pairs that consist of a required key string with
 a maximum of 128 characters and an optional value string with a maximum
 of 256 characters.}
+
+\item{NotebookS3Location}{The Amazon S3 location for the notebook execution input.}
+
+\item{OutputNotebookS3Location}{The Amazon S3 location for the notebook execution output.}
+
+\item{OutputNotebookFormat}{The output format for the notebook execution.}
+
+\item{EnvironmentVariables}{The environment variables associated with the notebook execution.}
 }
 \description{
 Starts a notebook execution.

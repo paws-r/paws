@@ -2,7 +2,7 @@
 % Please edit documentation in R/elasticache_operations.R
 \name{elasticache_failover_global_replication_group}
 \alias{elasticache_failover_global_replication_group}
-\title{Used to failover the primary region to a selected secondary region}
+\title{Used to failover the primary region to a secondary region}
 \usage{
 elasticache_failover_global_replication_group(
   GlobalReplicationGroupId,
@@ -18,7 +18,7 @@ elasticache_failover_global_replication_group(
 \item{PrimaryReplicationGroupId}{[required] The name of the primary replication group}
 }
 \description{
-Used to failover the primary region to a selected secondary region. The selected secondary region will become primary, and all other clusters will become secondary.
+Used to failover the primary region to a secondary region. The secondary region will become primary, and all other clusters will become secondary.
 
 See \url{https://paws-r.github.io/docs/elasticache/failover_global_replication_group.html} for full documentation.
 }

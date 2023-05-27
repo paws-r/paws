@@ -32,6 +32,10 @@ test_that("list_global_tables", {
   expect_error(svc$list_global_tables(), NA)
 })
 
+test_that("list_imports", {
+  expect_error(svc$list_imports(), NA)
+})
+
 test_that("list_tables", {
   expect_error(svc$list_tables(), NA)
 })

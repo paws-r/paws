@@ -12,7 +12,7 @@ ec2_describe_network_interface_permissions(
 )
 }
 \arguments{
-\item{NetworkInterfacePermissionIds}{One or more network interface permission IDs.}
+\item{NetworkInterfacePermissionIds}{The network interface permission IDs.}
 
 \item{Filters}{One or more filters.
 \itemize{
@@ -27,12 +27,14 @@ Services account ID.
 (\code{INSTANCE-ATTACH} | \code{EIP-ASSOCIATE}).
 }}
 
-\item{NextToken}{The token to request the next page of results.}
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
 
-\item{MaxResults}{The maximum number of results to return in a single call. To retrieve
-the remaining results, make another call with the returned \code{NextToken}
-value. If this parameter is not specified, up to 50 results are returned
-by default.}
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. If this parameter is not specified, up to 50 results are
+returned by default. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 }
 \description{
 Describes the permissions for your network interfaces.

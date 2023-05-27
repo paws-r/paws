@@ -47,12 +47,12 @@ numbers, and spaces representable in UTF-8, and the following
 characters: + - = . _ : / @.
 \item Tag keys and values are case sensitive.
 \item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
-such as a prefix for keys as it is reserved for AWS use. You cannot
-edit or delete tag keys with this prefix. Values can have this
-prefix. If a tag value has \code{aws} as its prefix but the key does not,
-then Forecast considers it to be a user tag and will count against
-the limit of 50 tags. Tags with only the key prefix of \code{aws} do not
-count against your tags per resource limit.
+such as a prefix for keys as it is reserved for Amazon Web Services
+use. You cannot edit or delete tag keys with this prefix. Values can
+have this prefix. If a tag value has \code{aws} as its prefix but the key
+does not, then Forecast considers it to be a user tag and will count
+against the limit of 50 tags. Tags with only the key prefix of \code{aws}
+do not count against your tags per resource limit.
 }}
 
 \item{TimeSeriesSelector}{Defines the set of time series that are used to create the forecasts in

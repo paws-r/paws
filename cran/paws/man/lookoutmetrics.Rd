@@ -73,6 +73,7 @@ introduction to the service with tutorials for getting started, visit
 \link[paws.machine.learning:lookoutmetrics_describe_metric_set]{describe_metric_set} \tab Describes a dataset\cr
 \link[paws.machine.learning:lookoutmetrics_detect_metric_set_config]{detect_metric_set_config} \tab Detects an Amazon S3 dataset's file format, interval, and offset\cr
 \link[paws.machine.learning:lookoutmetrics_get_anomaly_group]{get_anomaly_group} \tab Returns details about a group of anomalous metrics\cr
+\link[paws.machine.learning:lookoutmetrics_get_data_quality_metrics]{get_data_quality_metrics} \tab Returns details about the requested data quality metrics\cr
 \link[paws.machine.learning:lookoutmetrics_get_feedback]{get_feedback} \tab Get feedback for an anomaly group\cr
 \link[paws.machine.learning:lookoutmetrics_get_sample_data]{get_sample_data} \tab Returns a selection of sample records from an Amazon S3 datasource\cr
 \link[paws.machine.learning:lookoutmetrics_list_alerts]{list_alerts} \tab Lists the alerts attached to a detector\cr

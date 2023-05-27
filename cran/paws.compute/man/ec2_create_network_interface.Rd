@@ -34,14 +34,20 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{Groups}{The IDs of one or more security groups.}
 
 \item{Ipv6AddressCount}{The number of IPv6 addresses to assign to a network interface. Amazon
-EC2 automatically selects the IPv6 addresses from the subnet range. You
-can't use this option if specifying specific IPv6 addresses. If your
-subnet has the \code{AssignIpv6AddressOnCreation} attribute set to \code{true},
-you can specify \code{0} to override this setting.}
+EC2 automatically selects the IPv6 addresses from the subnet range.
 
-\item{Ipv6Addresses}{One or more specific IPv6 addresses from the IPv6 CIDR block range of
-your subnet. You can't use this option if you're specifying a number of
-IPv6 addresses.}
+You can't specify a count of IPv6 addresses using this parameter if
+you've specified one of the following: specific IPv6 addresses, specific
+IPv6 prefixes, or a count of IPv6 prefixes.
+
+If your subnet has the \code{AssignIpv6AddressOnCreation} attribute set, you
+can override that setting by specifying 0 as the IPv6 address count.}
+
+\item{Ipv6Addresses}{The IPv6 addresses from the IPv6 CIDR block range of your subnet.
+
+You can't specify IPv6 addresses using this parameter if you've
+specified one of the following: a count of IPv6 addresses, specific IPv6
+prefixes, or a count of IPv6 prefixes.}
 
 \item{PrivateIpAddress}{The primary private IPv4 address of the network interface. If you don't
 specify an IPv4 address, Amazon EC2 selects one for you from the
@@ -49,7 +55,11 @@ subnet's IPv4 CIDR range. If you specify an IP address, you cannot
 indicate any IP addresses specified in \code{privateIpAddresses} as primary
 (only one IP address can be designated as primary).}
 
-\item{PrivateIpAddresses}{One or more private IPv4 addresses.}
+\item{PrivateIpAddresses}{The private IPv4 addresses.
+
+You can't specify private IPv4 addresses if you've specified one of the
+following: a count of private IPv4 addresses, specific IPv4 prefixes, or
+a count of IPv4 prefixes.}
 
 \item{SecondaryPrivateIpAddressCount}{The number of secondary private IPv4 addresses to assign to a network
 interface. When you specify a number of secondary IPv4 addresses, Amazon
@@ -57,23 +67,35 @@ EC2 selects these IP addresses within the subnet's IPv4 CIDR range. You
 can't specify this option and specify more than one private IP address
 using \code{privateIpAddresses}.
 
-The number of IP addresses you can assign to a network interface varies
-by instance type. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI}{IP Addresses Per ENI Per Instance Type}
-in the \emph{Amazon Virtual Private Cloud User Guide}.}
+You can't specify a count of private IPv4 addresses if you've specified
+one of the following: specific private IPv4 addresses, specific IPv4
+prefixes, or a count of IPv4 prefixes.}
 
-\item{Ipv4Prefixes}{One or more IPv4 prefixes assigned to the network interface. You cannot
-use this option if you use the \code{Ipv4PrefixCount} option.}
+\item{Ipv4Prefixes}{The IPv4 prefixes assigned to the network interface.
+
+You can't specify IPv4 prefixes if you've specified one of the
+following: a count of IPv4 prefixes, specific private IPv4 addresses, or
+a count of private IPv4 addresses.}
 
 \item{Ipv4PrefixCount}{The number of IPv4 prefixes that Amazon Web Services automatically
-assigns to the network interface. You cannot use this option if you use
-the \verb{Ipv4 Prefixes} option.}
+assigns to the network interface.
 
-\item{Ipv6Prefixes}{One or more IPv6 prefixes assigned to the network interface. You cannot
-use this option if you use the \code{Ipv6PrefixCount} option.}
+You can't specify a count of IPv4 prefixes if you've specified one of
+the following: specific IPv4 prefixes, specific private IPv4 addresses,
+or a count of private IPv4 addresses.}
+
+\item{Ipv6Prefixes}{The IPv6 prefixes assigned to the network interface.
+
+You can't specify IPv6 prefixes if you've specified one of the
+following: a count of IPv6 prefixes, specific IPv6 addresses, or a count
+of IPv6 addresses.}
 
 \item{Ipv6PrefixCount}{The number of IPv6 prefixes that Amazon Web Services automatically
-assigns to the network interface. You cannot use this option if you use
-the \code{Ipv6Prefixes} option.}
+assigns to the network interface.
+
+You can't specify a count of IPv6 prefixes if you've specified one of
+the following: specific IPv6 prefixes, specific IPv6 addresses, or a
+count of IPv6 addresses.}
 
 \item{InterfaceType}{The type of network interface. The default is \code{interface}.
 

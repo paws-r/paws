@@ -2,8 +2,7 @@
 % Please edit documentation in R/qldb_operations.R
 \name{qldb_list_journal_kinesis_streams_for_ledger}
 \alias{qldb_list_journal_kinesis_streams_for_ledger}
-\title{Returns an array of all Amazon QLDB journal stream descriptors for a
-given ledger}
+\title{Returns all Amazon QLDB journal streams for a given ledger}
 \usage{
 qldb_list_journal_kinesis_streams_for_ledger(
   LedgerName,
@@ -25,7 +24,7 @@ a previous
 call, you should use that value as input here.}
 }
 \description{
-Returns an array of all Amazon QLDB journal stream descriptors for a given ledger. The output of each stream descriptor includes the same details that are returned by \code{\link[=qldb_describe_journal_kinesis_stream]{describe_journal_kinesis_stream}}.
+Returns all Amazon QLDB journal streams for a given ledger.
 
 See \url{https://paws-r.github.io/docs/qldb/list_journal_kinesis_streams_for_ledger.html} for full documentation.
 }

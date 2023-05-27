@@ -2,7 +2,8 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_list_domains_for_package}
 \alias{opensearchservice_list_domains_for_package}
-\title{Lists all Amazon OpenSearch Service domains associated with the package}
+\title{Lists all Amazon OpenSearch Service domains associated with a given
+package}
 \usage{
 opensearchservice_list_domains_for_package(
   PackageID,
@@ -11,16 +12,21 @@ opensearchservice_list_domains_for_package(
 )
 }
 \arguments{
-\item{PackageID}{[required] The package for which to list associated domains.}
+\item{PackageID}{[required] The unique identifier of the package for which to list associated
+domains.}
 
-\item{MaxResults}{Limits the results to a maximum number of domains.}
+\item{MaxResults}{An optional parameter that specifies the maximum number of results to
+return. You can use \code{nextToken} to get the next page of results.}
 
-\item{NextToken}{Used for pagination. Only necessary if a previous API call includes a
-non-null NextToken value. If provided, returns results for the next
-page.}
+\item{NextToken}{If your initial
+\code{\link[=opensearchservice_list_domains_for_package]{list_domains_for_package}}
+operation returns a \code{nextToken}, you can include the returned
+\code{nextToken} in subsequent
+\code{\link[=opensearchservice_list_domains_for_package]{list_domains_for_package}}
+operations, which returns results in the next page.}
 }
 \description{
-Lists all Amazon OpenSearch Service domains associated with the package.
+Lists all Amazon OpenSearch Service domains associated with a given package. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html}{Custom packages for Amazon OpenSearch Service}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/list_domains_for_package.html} for full documentation.
 }

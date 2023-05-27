@@ -2,7 +2,7 @@
 % Please edit documentation in R/wellarchitected_operations.R
 \name{wellarchitected_update_share_invitation}
 \alias{wellarchitected_update_share_invitation}
-\title{Update a workload invitation}
+\title{Update a workload or custom lens share invitation}
 \usage{
 wellarchitected_update_share_invitation(
   ShareInvitationId,
@@ -15,7 +15,7 @@ wellarchitected_update_share_invitation(
 \item{ShareInvitationAction}{[required]}
 }
 \description{
-Update a workload invitation.
+Update a workload or custom lens share invitation.
 
 See \url{https://paws-r.github.io/docs/wellarchitected/update_share_invitation.html} for full documentation.
 }

@@ -36,7 +36,7 @@ NULL
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' Amazon Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' @param Tags &#91;required&#93; A list of tags to be added to this resource. A tag is a key-value pair.
 #' A tag key must be accompanied by a tag value, although null is accepted.
 #'
@@ -364,7 +364,10 @@ elasticache_batch_stop_update_action <- function(ReplicationGroupIds = NULL, Cac
 #'           ),
 #'           LogFormat = "text"|"json"
 #'         )
-#'       )
+#'       ),
+#'       TransitEncryptionEnabled = TRUE|FALSE,
+#'       TransitEncryptionMode = "preferred"|"required",
+#'       ClusterMode = "enabled"|"disabled"|"compatible"
 #'     ),
 #'     MemberClusters = list(
 #'       "string"
@@ -443,7 +446,11 @@ elasticache_batch_stop_update_action <- function(ReplicationGroupIds = NULL, Cac
 #'       "2015-01-01"
 #'     ),
 #'     DataTiering = "enabled"|"disabled",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'     IpDiscovery = "ipv4"|"ipv6",
+#'     TransitEncryptionMode = "preferred"|"required",
+#'     ClusterMode = "enabled"|"disabled"|"compatible"
 #'   )
 #' )
 #' ```
@@ -704,7 +711,8 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'   PreferredMaintenanceWindow, Port, NotificationTopicArn,
 #'   AutoMinorVersionUpgrade, SnapshotRetentionLimit, SnapshotWindow,
 #'   AuthToken, OutpostMode, PreferredOutpostArn, PreferredOutpostArns,
-#'   LogDeliveryConfigurations, TransitEncryptionEnabled)
+#'   LogDeliveryConfigurations, TransitEncryptionEnabled, NetworkType,
+#'   IpDiscovery)
 #'
 #' @param CacheClusterId &#91;required&#93; The node group (shard) identifier. This parameter is stored as a
 #' lowercase string.
@@ -969,13 +977,15 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' @param PreferredOutpostArn The outpost ARN in which the cache cluster is created.
 #' @param PreferredOutpostArns The outpost ARNs in which the cache cluster is created.
 #' @param LogDeliveryConfigurations Specifies the destination, format and type of the logs.
-#' @param TransitEncryptionEnabled A flag that enables in-transit encryption when set to true. You cannot
-#' modify the value of `TransitEncryptionEnabled` after the cluster is
-#' created. To enable in-transit encryption on a cluster you must set
-#' `TransitEncryptionEnabled` to true when you create a cluster.
-#' 
-#' **Required:** Only available when creating a cache cluster in an Amazon
-#' VPC using Memcached version `1.6.12` or later.
+#' @param TransitEncryptionEnabled A flag that enables in-transit encryption when set to true.
+#' @param NetworkType Must be either `ipv4` | `ipv6` | `dual_stack`. IPv6 is supported for
+#' workloads using Redis engine version 6.2 onward or Memcached engine
+#' version 1.6.6 on all instances built on the [Nitro
+#' system](https://aws.amazon.com/ec2/nitro/).
+#' @param IpDiscovery The network type you choose when modifying a cluster, either `ipv4` |
+#' `ipv6`. IPv6 is supported for workloads using Redis engine version 6.2
+#' onward or Memcached engine version 1.6.6 on all instances built on the
+#' [Nitro system](https://aws.amazon.com/ec2/nitro/).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1021,7 +1031,9 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'           ),
 #'           LogFormat = "text"|"json"
 #'         )
-#'       )
+#'       ),
+#'       TransitEncryptionEnabled = TRUE|FALSE,
+#'       TransitEncryptionMode = "preferred"|"required"
 #'     ),
 #'     NotificationConfiguration = list(
 #'       TopicArn = "string",
@@ -1092,7 +1104,10 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'         Status = "active"|"enabling"|"modifying"|"disabling"|"error",
 #'         Message = "string"
 #'       )
-#'     )
+#'     ),
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'     IpDiscovery = "ipv4"|"ipv6",
+#'     TransitEncryptionMode = "preferred"|"required"
 #'   )
 #' )
 #' ```
@@ -1157,7 +1172,9 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'       Enabled = TRUE|FALSE
 #'     )
 #'   ),
-#'   TransitEncryptionEnabled = TRUE|FALSE
+#'   TransitEncryptionEnabled = TRUE|FALSE,
+#'   NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'   IpDiscovery = "ipv4"|"ipv6"
 #' )
 #' ```
 #'
@@ -1166,14 +1183,14 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' @rdname elasticache_create_cache_cluster
 #'
 #' @aliases elasticache_create_cache_cluster
-elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId = NULL, AZMode = NULL, PreferredAvailabilityZone = NULL, PreferredAvailabilityZones = NULL, NumCacheNodes = NULL, CacheNodeType = NULL, Engine = NULL, EngineVersion = NULL, CacheParameterGroupName = NULL, CacheSubnetGroupName = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, Tags = NULL, SnapshotArns = NULL, SnapshotName = NULL, PreferredMaintenanceWindow = NULL, Port = NULL, NotificationTopicArn = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, AuthToken = NULL, OutpostMode = NULL, PreferredOutpostArn = NULL, PreferredOutpostArns = NULL, LogDeliveryConfigurations = NULL, TransitEncryptionEnabled = NULL) {
+elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId = NULL, AZMode = NULL, PreferredAvailabilityZone = NULL, PreferredAvailabilityZones = NULL, NumCacheNodes = NULL, CacheNodeType = NULL, Engine = NULL, EngineVersion = NULL, CacheParameterGroupName = NULL, CacheSubnetGroupName = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, Tags = NULL, SnapshotArns = NULL, SnapshotName = NULL, PreferredMaintenanceWindow = NULL, Port = NULL, NotificationTopicArn = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, AuthToken = NULL, OutpostMode = NULL, PreferredOutpostArn = NULL, PreferredOutpostArns = NULL, LogDeliveryConfigurations = NULL, TransitEncryptionEnabled = NULL, NetworkType = NULL, IpDiscovery = NULL) {
   op <- new_operation(
     name = "CreateCacheCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$create_cache_cluster_input(CacheClusterId = CacheClusterId, ReplicationGroupId = ReplicationGroupId, AZMode = AZMode, PreferredAvailabilityZone = PreferredAvailabilityZone, PreferredAvailabilityZones = PreferredAvailabilityZones, NumCacheNodes = NumCacheNodes, CacheNodeType = CacheNodeType, Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, CacheSubnetGroupName = CacheSubnetGroupName, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, Tags = Tags, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Port = Port, NotificationTopicArn = NotificationTopicArn, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, AuthToken = AuthToken, OutpostMode = OutpostMode, PreferredOutpostArn = PreferredOutpostArn, PreferredOutpostArns = PreferredOutpostArns, LogDeliveryConfigurations = LogDeliveryConfigurations, TransitEncryptionEnabled = TransitEncryptionEnabled)
+  input <- .elasticache$create_cache_cluster_input(CacheClusterId = CacheClusterId, ReplicationGroupId = ReplicationGroupId, AZMode = AZMode, PreferredAvailabilityZone = PreferredAvailabilityZone, PreferredAvailabilityZones = PreferredAvailabilityZones, NumCacheNodes = NumCacheNodes, CacheNodeType = CacheNodeType, Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, CacheSubnetGroupName = CacheSubnetGroupName, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, Tags = Tags, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Port = Port, NotificationTopicArn = NotificationTopicArn, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, AuthToken = AuthToken, OutpostMode = OutpostMode, PreferredOutpostArn = PreferredOutpostArn, PreferredOutpostArns = PreferredOutpostArns, LogDeliveryConfigurations = LogDeliveryConfigurations, TransitEncryptionEnabled = TransitEncryptionEnabled, NetworkType = NetworkType, IpDiscovery = IpDiscovery)
   output <- .elasticache$create_cache_cluster_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -1213,7 +1230,7 @@ elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId 
 #' 
 #' Valid values are: `memcached1.4` | `memcached1.5` | `memcached1.6` |
 #' `redis2.6` | `redis2.8` | `redis3.2` | `redis4.0` | `redis5.0` |
-#' `redis6.x`
+#' `redis6.x` | `redis7`
 #' @param Description &#91;required&#93; A user-specified description for the cache parameter group.
 #' @param Tags A list of tags to be added to this resource. A tag is a key-value pair.
 #' A tag key must be accompanied by a tag value, although null is accepted.
@@ -1392,10 +1409,16 @@ elasticache_create_cache_security_group <- function(CacheSecurityGroupName, Desc
 #'         ),
 #'         SubnetOutpost = list(
 #'           SubnetOutpostArn = "string"
+#'         ),
+#'         SupportedNetworkTypes = list(
+#'           "ipv4"|"ipv6"|"dual_stack"
 #'         )
 #'       )
 #'     ),
-#'     ARN = "string"
+#'     ARN = "string",
+#'     SupportedNetworkTypes = list(
+#'       "ipv4"|"ipv6"|"dual_stack"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1603,7 +1626,8 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'   PreferredMaintenanceWindow, Port, NotificationTopicArn,
 #'   AutoMinorVersionUpgrade, SnapshotRetentionLimit, SnapshotWindow,
 #'   AuthToken, TransitEncryptionEnabled, AtRestEncryptionEnabled, KmsKeyId,
-#'   UserGroupIds, LogDeliveryConfigurations, DataTieringEnabled)
+#'   UserGroupIds, LogDeliveryConfigurations, DataTieringEnabled,
+#'   NetworkType, IpDiscovery, TransitEncryptionMode, ClusterMode)
 #'
 #' @param ReplicationGroupId &#91;required&#93; The replication group identifier. This parameter is stored as a
 #' lowercase string.
@@ -1737,17 +1761,6 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' 
 #'         **C1 node types:** `cache.c1.xlarge`
 #' 
-#' -   Memory optimized with data tiering:
-#' 
-#'     -   Current generation:
-#' 
-#'         **R6gd node types** (available only for Redis engine version 6.2
-#'         onward).
-#' 
-#'         `cache.r6gd.xlarge`, `cache.r6gd.2xlarge`, `cache.r6gd.4xlarge`,
-#'         `cache.r6gd.8xlarge`, `cache.r6gd.12xlarge`,
-#'         `cache.r6gd.16xlarge`
-#' 
 #' -   Memory optimized:
 #' 
 #'     -   Current generation:
@@ -1794,7 +1807,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' -   Redis configuration variables `appendonly` and `appendfsync` are not
 #'     supported on Redis version 2.8.22 and later.
 #' @param Engine The name of the cache engine to be used for the clusters in this
-#' replication group. Must be Redis.
+#' replication group. The value must be set to `Redis`.
 #' @param EngineVersion The version number of the cache engine to be used for the clusters in
 #' this replication group. To view the supported cache engine versions, use
 #' the
@@ -1926,10 +1939,6 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' http://redis.io/commands/AUTH.
 #' @param TransitEncryptionEnabled A flag that enables in-transit encryption when set to `true`.
 #' 
-#' You cannot modify the value of `TransitEncryptionEnabled` after the
-#' cluster is created. To enable in-transit encryption on a cluster you
-#' must set `TransitEncryptionEnabled` to `true` when you create a cluster.
-#' 
 #' This parameter is valid only if the `Engine` parameter is `redis`, the
 #' `EngineVersion` parameter is `3.2.6`, `4.x` or later, and the cluster is
 #' being created in an Amazon VPC.
@@ -1962,6 +1971,34 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' groups using the r6gd node type. This parameter must be set to true when
 #' using r6gd nodes. For more information, see [Data
 #' tiering](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/data-tiering.html).
+#' @param NetworkType Must be either `ipv4` | `ipv6` | `dual_stack`. IPv6 is supported for
+#' workloads using Redis engine version 6.2 onward or Memcached engine
+#' version 1.6.6 on all instances built on the [Nitro
+#' system](https://aws.amazon.com/ec2/nitro/).
+#' @param IpDiscovery The network type you choose when creating a replication group, either
+#' `ipv4` | `ipv6`. IPv6 is supported for workloads using Redis engine
+#' version 6.2 onward or Memcached engine version 1.6.6 on all instances
+#' built on the [Nitro system](https://aws.amazon.com/ec2/nitro/).
+#' @param TransitEncryptionMode A setting that allows you to migrate your clients to use in-transit
+#' encryption, with no downtime.
+#' 
+#' When setting `TransitEncryptionEnabled` to `true`, you can set your
+#' `TransitEncryptionMode` to `preferred` in the same request, to allow
+#' both encrypted and unencrypted connections at the same time. Once you
+#' migrate all your Redis clients to use encrypted connections you can
+#' modify the value to `required` to allow encrypted connections only.
+#' 
+#' Setting `TransitEncryptionMode` to `required` is a two-step process that
+#' requires you to first set the `TransitEncryptionMode` to `preferred`,
+#' after that you can set `TransitEncryptionMode` to `required`.
+#' 
+#' This process will not trigger the replacement of the replication group.
+#' @param ClusterMode Enabled or Disabled. To modify cluster mode from Disabled to Enabled,
+#' you must first set the cluster mode to Compatible. Compatible mode
+#' allows your Redis clients to connect using both cluster mode enabled and
+#' cluster mode disabled. After you migrate all Redis clients to use
+#' cluster mode enabled, you can then complete cluster mode configuration
+#' and set the cluster mode to Enabled.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2006,7 +2043,10 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'           ),
 #'           LogFormat = "text"|"json"
 #'         )
-#'       )
+#'       ),
+#'       TransitEncryptionEnabled = TRUE|FALSE,
+#'       TransitEncryptionMode = "preferred"|"required",
+#'       ClusterMode = "enabled"|"disabled"|"compatible"
 #'     ),
 #'     MemberClusters = list(
 #'       "string"
@@ -2085,7 +2125,11 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'       "2015-01-01"
 #'     ),
 #'     DataTiering = "enabled"|"disabled",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'     IpDiscovery = "ipv4"|"ipv6",
+#'     TransitEncryptionMode = "preferred"|"required",
+#'     ClusterMode = "enabled"|"disabled"|"compatible"
 #'   )
 #' )
 #' ```
@@ -2170,7 +2214,11 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'       Enabled = TRUE|FALSE
 #'     )
 #'   ),
-#'   DataTieringEnabled = TRUE|FALSE
+#'   DataTieringEnabled = TRUE|FALSE,
+#'   NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'   IpDiscovery = "ipv4"|"ipv6",
+#'   TransitEncryptionMode = "preferred"|"required",
+#'   ClusterMode = "enabled"|"disabled"|"compatible"
 #' )
 #' ```
 #'
@@ -2179,14 +2227,14 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' @rdname elasticache_create_replication_group
 #'
 #' @aliases elasticache_create_replication_group
-elasticache_create_replication_group <- function(ReplicationGroupId, ReplicationGroupDescription, GlobalReplicationGroupId = NULL, PrimaryClusterId = NULL, AutomaticFailoverEnabled = NULL, MultiAZEnabled = NULL, NumCacheClusters = NULL, PreferredCacheClusterAZs = NULL, NumNodeGroups = NULL, ReplicasPerNodeGroup = NULL, NodeGroupConfiguration = NULL, CacheNodeType = NULL, Engine = NULL, EngineVersion = NULL, CacheParameterGroupName = NULL, CacheSubnetGroupName = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, Tags = NULL, SnapshotArns = NULL, SnapshotName = NULL, PreferredMaintenanceWindow = NULL, Port = NULL, NotificationTopicArn = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, AuthToken = NULL, TransitEncryptionEnabled = NULL, AtRestEncryptionEnabled = NULL, KmsKeyId = NULL, UserGroupIds = NULL, LogDeliveryConfigurations = NULL, DataTieringEnabled = NULL) {
+elasticache_create_replication_group <- function(ReplicationGroupId, ReplicationGroupDescription, GlobalReplicationGroupId = NULL, PrimaryClusterId = NULL, AutomaticFailoverEnabled = NULL, MultiAZEnabled = NULL, NumCacheClusters = NULL, PreferredCacheClusterAZs = NULL, NumNodeGroups = NULL, ReplicasPerNodeGroup = NULL, NodeGroupConfiguration = NULL, CacheNodeType = NULL, Engine = NULL, EngineVersion = NULL, CacheParameterGroupName = NULL, CacheSubnetGroupName = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, Tags = NULL, SnapshotArns = NULL, SnapshotName = NULL, PreferredMaintenanceWindow = NULL, Port = NULL, NotificationTopicArn = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, AuthToken = NULL, TransitEncryptionEnabled = NULL, AtRestEncryptionEnabled = NULL, KmsKeyId = NULL, UserGroupIds = NULL, LogDeliveryConfigurations = NULL, DataTieringEnabled = NULL, NetworkType = NULL, IpDiscovery = NULL, TransitEncryptionMode = NULL, ClusterMode = NULL) {
   op <- new_operation(
     name = "CreateReplicationGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$create_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, GlobalReplicationGroupId = GlobalReplicationGroupId, PrimaryClusterId = PrimaryClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, MultiAZEnabled = MultiAZEnabled, NumCacheClusters = NumCacheClusters, PreferredCacheClusterAZs = PreferredCacheClusterAZs, NumNodeGroups = NumNodeGroups, ReplicasPerNodeGroup = ReplicasPerNodeGroup, NodeGroupConfiguration = NodeGroupConfiguration, CacheNodeType = CacheNodeType, Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, CacheSubnetGroupName = CacheSubnetGroupName, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, Tags = Tags, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Port = Port, NotificationTopicArn = NotificationTopicArn, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, AuthToken = AuthToken, TransitEncryptionEnabled = TransitEncryptionEnabled, AtRestEncryptionEnabled = AtRestEncryptionEnabled, KmsKeyId = KmsKeyId, UserGroupIds = UserGroupIds, LogDeliveryConfigurations = LogDeliveryConfigurations, DataTieringEnabled = DataTieringEnabled)
+  input <- .elasticache$create_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, GlobalReplicationGroupId = GlobalReplicationGroupId, PrimaryClusterId = PrimaryClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, MultiAZEnabled = MultiAZEnabled, NumCacheClusters = NumCacheClusters, PreferredCacheClusterAZs = PreferredCacheClusterAZs, NumNodeGroups = NumNodeGroups, ReplicasPerNodeGroup = ReplicasPerNodeGroup, NodeGroupConfiguration = NodeGroupConfiguration, CacheNodeType = CacheNodeType, Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, CacheSubnetGroupName = CacheSubnetGroupName, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, Tags = Tags, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Port = Port, NotificationTopicArn = NotificationTopicArn, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, AuthToken = AuthToken, TransitEncryptionEnabled = TransitEncryptionEnabled, AtRestEncryptionEnabled = AtRestEncryptionEnabled, KmsKeyId = KmsKeyId, UserGroupIds = UserGroupIds, LogDeliveryConfigurations = LogDeliveryConfigurations, DataTieringEnabled = DataTieringEnabled, NetworkType = NetworkType, IpDiscovery = IpDiscovery, TransitEncryptionMode = TransitEncryptionMode, ClusterMode = ClusterMode)
   output <- .elasticache$create_replication_group_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -2330,7 +2378,7 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
 #'
 #' @usage
 #' elasticache_create_user(UserId, UserName, Engine, Passwords,
-#'   AccessString, NoPasswordRequired, Tags)
+#'   AccessString, NoPasswordRequired, Tags, AuthenticationMode)
 #'
 #' @param UserId &#91;required&#93; The ID of the user.
 #' @param UserName &#91;required&#93; The username of the user.
@@ -2341,6 +2389,7 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
 #' @param NoPasswordRequired Indicates a password is not required for this user.
 #' @param Tags A list of tags to be added to this resource. A tag is a key-value pair.
 #' A tag key must be accompanied by a tag value, although null is accepted.
+#' @param AuthenticationMode Specifies how to authenticate the user.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2356,7 +2405,7 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
 #'     "string"
 #'   ),
 #'   Authentication = list(
-#'     Type = "password"|"no-password",
+#'     Type = "password"|"no-password"|"iam",
 #'     PasswordCount = 123
 #'   ),
 #'   ARN = "string"
@@ -2379,6 +2428,12 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
 #'       Key = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   AuthenticationMode = list(
+#'     Type = "password"|"no-password-required"|"iam",
+#'     Passwords = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2388,14 +2443,14 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
 #' @rdname elasticache_create_user
 #'
 #' @aliases elasticache_create_user
-elasticache_create_user <- function(UserId, UserName, Engine, Passwords = NULL, AccessString, NoPasswordRequired = NULL, Tags = NULL) {
+elasticache_create_user <- function(UserId, UserName, Engine, Passwords = NULL, AccessString, NoPasswordRequired = NULL, Tags = NULL, AuthenticationMode = NULL) {
   op <- new_operation(
     name = "CreateUser",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$create_user_input(UserId = UserId, UserName = UserName, Engine = Engine, Passwords = Passwords, AccessString = AccessString, NoPasswordRequired = NoPasswordRequired, Tags = Tags)
+  input <- .elasticache$create_user_input(UserId = UserId, UserName = UserName, Engine = Engine, Passwords = Passwords, AccessString = AccessString, NoPasswordRequired = NoPasswordRequired, Tags = Tags, AuthenticationMode = AuthenticationMode)
   output <- .elasticache$create_user_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -2669,7 +2724,10 @@ elasticache_decrease_node_groups_in_global_replication_group <- function(GlobalR
 #'           ),
 #'           LogFormat = "text"|"json"
 #'         )
-#'       )
+#'       ),
+#'       TransitEncryptionEnabled = TRUE|FALSE,
+#'       TransitEncryptionMode = "preferred"|"required",
+#'       ClusterMode = "enabled"|"disabled"|"compatible"
 #'     ),
 #'     MemberClusters = list(
 #'       "string"
@@ -2748,7 +2806,11 @@ elasticache_decrease_node_groups_in_global_replication_group <- function(GlobalR
 #'       "2015-01-01"
 #'     ),
 #'     DataTiering = "enabled"|"disabled",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'     IpDiscovery = "ipv4"|"ipv6",
+#'     TransitEncryptionMode = "preferred"|"required",
+#'     ClusterMode = "enabled"|"disabled"|"compatible"
 #'   )
 #' )
 #' ```
@@ -2879,7 +2941,9 @@ elasticache_decrease_replica_count <- function(ReplicationGroupId, NewReplicaCou
 #'           ),
 #'           LogFormat = "text"|"json"
 #'         )
-#'       )
+#'       ),
+#'       TransitEncryptionEnabled = TRUE|FALSE,
+#'       TransitEncryptionMode = "preferred"|"required"
 #'     ),
 #'     NotificationConfiguration = list(
 #'       TopicArn = "string",
@@ -2950,7 +3014,10 @@ elasticache_decrease_replica_count <- function(ReplicationGroupId, NewReplicaCou
 #'         Status = "active"|"enabling"|"modifying"|"disabling"|"error",
 #'         Message = "string"
 #'       )
-#'     )
+#'     ),
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'     IpDiscovery = "ipv4"|"ipv6",
+#'     TransitEncryptionMode = "preferred"|"required"
 #'   )
 #' )
 #' ```
@@ -3297,7 +3364,10 @@ elasticache_delete_global_replication_group <- function(GlobalReplicationGroupId
 #'           ),
 #'           LogFormat = "text"|"json"
 #'         )
-#'       )
+#'       ),
+#'       TransitEncryptionEnabled = TRUE|FALSE,
+#'       TransitEncryptionMode = "preferred"|"required",
+#'       ClusterMode = "enabled"|"disabled"|"compatible"
 #'     ),
 #'     MemberClusters = list(
 #'       "string"
@@ -3376,7 +3446,11 @@ elasticache_delete_global_replication_group <- function(GlobalReplicationGroupId
 #'       "2015-01-01"
 #'     ),
 #'     DataTiering = "enabled"|"disabled",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'     IpDiscovery = "ipv4"|"ipv6",
+#'     TransitEncryptionMode = "preferred"|"required",
+#'     ClusterMode = "enabled"|"disabled"|"compatible"
 #'   )
 #' )
 #' ```
@@ -3547,7 +3621,7 @@ elasticache_delete_snapshot <- function(SnapshotName) {
 #'     "string"
 #'   ),
 #'   Authentication = list(
-#'     Type = "password"|"no-password",
+#'     Type = "password"|"no-password"|"iam",
 #'     PasswordCount = 123
 #'   ),
 #'   ARN = "string"
@@ -3752,7 +3826,9 @@ elasticache_delete_user_group <- function(UserGroupId) {
 #'             ),
 #'             LogFormat = "text"|"json"
 #'           )
-#'         )
+#'         ),
+#'         TransitEncryptionEnabled = TRUE|FALSE,
+#'         TransitEncryptionMode = "preferred"|"required"
 #'       ),
 #'       NotificationConfiguration = list(
 #'         TopicArn = "string",
@@ -3823,7 +3899,10 @@ elasticache_delete_user_group <- function(UserGroupId) {
 #'           Status = "active"|"enabling"|"modifying"|"disabling"|"error",
 #'           Message = "string"
 #'         )
-#'       )
+#'       ),
+#'       NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'       IpDiscovery = "ipv4"|"ipv6",
+#'       TransitEncryptionMode = "preferred"|"required"
 #'     )
 #'   )
 #' )
@@ -3880,7 +3959,7 @@ elasticache_describe_cache_clusters <- function(CacheClusterId = NULL, MaxRecord
 #' 
 #' Valid values are: `memcached1.4` | `memcached1.5` | `memcached1.6` |
 #' `redis2.6` | `redis2.8` | `redis3.2` | `redis4.0` | `redis5.0` |
-#' `redis6.x` | `redis6.2`
+#' `redis6.x` | `redis6.2` | `redis7`
 #' 
 #' Constraints:
 #' 
@@ -4245,10 +4324,16 @@ elasticache_describe_cache_security_groups <- function(CacheSecurityGroupName = 
 #'           ),
 #'           SubnetOutpost = list(
 #'             SubnetOutpostArn = "string"
+#'           ),
+#'           SupportedNetworkTypes = list(
+#'             "ipv4"|"ipv6"|"dual_stack"
 #'           )
 #'         )
 #'       ),
-#'       ARN = "string"
+#'       ARN = "string",
+#'       SupportedNetworkTypes = list(
+#'         "ipv4"|"ipv6"|"dual_stack"
+#'       )
 #'     )
 #'   )
 #' )
@@ -4300,7 +4385,7 @@ elasticache_describe_cache_subnet_groups <- function(CacheSubnetGroupName = NULL
 #' 
 #' Valid values are: `memcached1.4` | `memcached1.5` | `memcached1.6` |
 #' `redis2.6` | `redis2.8` | `redis3.2` | `redis4.0` | `redis5.0` |
-#' `redis6.x` | `redis6.2`
+#' `redis6.x` | `redis6.2` | `redis7`
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a marker is
 #' included in the response so that the remaining results can be retrieved.
@@ -4651,7 +4736,10 @@ elasticache_describe_global_replication_groups <- function(GlobalReplicationGrou
 #'             ),
 #'             LogFormat = "text"|"json"
 #'           )
-#'         )
+#'         ),
+#'         TransitEncryptionEnabled = TRUE|FALSE,
+#'         TransitEncryptionMode = "preferred"|"required",
+#'         ClusterMode = "enabled"|"disabled"|"compatible"
 #'       ),
 #'       MemberClusters = list(
 #'         "string"
@@ -4730,7 +4818,11 @@ elasticache_describe_global_replication_groups <- function(GlobalReplicationGrou
 #'         "2015-01-01"
 #'       ),
 #'       DataTiering = "enabled"|"disabled",
-#'       AutoMinorVersionUpgrade = TRUE|FALSE
+#'       AutoMinorVersionUpgrade = TRUE|FALSE,
+#'       NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'       IpDiscovery = "ipv4"|"ipv6",
+#'       TransitEncryptionMode = "preferred"|"required",
+#'       ClusterMode = "enabled"|"disabled"|"compatible"
 #'     )
 #'   )
 #' )
@@ -4795,7 +4887,7 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #' 
 #'     -   Current generation:
 #' 
-#'         **M6g node types:** (available only for Redis engine version
+#'         **M6g node types** (available only for Redis engine version
 #'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
 #'         `cache.m6g.large`, `cache.m6g.xlarge`, `cache.m6g.2xlarge`,
 #'         `cache.m6g.4xlarge`, `cache.m6g.8xlarge`, `cache.m6g.12xlarge`,
@@ -4812,7 +4904,7 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #'         `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
 #' 
 #'         **T4g node types** (available only for Redis engine version
-#'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
+#'         5.0.6 onward and Memcached engine version 1.5.16 onward):
 #'         `cache.t4g.micro`, `cache.t4g.small`, `cache.t4g.medium`
 #' 
 #'         **T3 node types:** `cache.t3.micro`, `cache.t3.small`,
@@ -4840,17 +4932,6 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #'         for these types.)
 #' 
 #'         **C1 node types:** `cache.c1.xlarge`
-#' 
-#' -   Memory optimized with data tiering:
-#' 
-#'     -   Current generation:
-#' 
-#'         **R6gd node types** (available only for Redis engine version 6.2
-#'         onward).
-#' 
-#'         `cache.r6gd.xlarge`, `cache.r6gd.2xlarge`, `cache.r6gd.4xlarge`,
-#'         `cache.r6gd.8xlarge`, `cache.r6gd.12xlarge`,
-#'         `cache.r6gd.16xlarge`
 #' 
 #' -   Memory optimized:
 #' 
@@ -5015,8 +5096,8 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #' 
 #'     -   Current generation:
 #' 
-#'         **M6g node types:** (available only for Redis engine version
-#'         5.0.6 onward and for Memcached engine version 1.5.16 onward)
+#'         **M6g node types** (available only for Redis engine version
+#'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
 #'         `cache.m6g.large`, `cache.m6g.xlarge`, `cache.m6g.2xlarge`,
 #'         `cache.m6g.4xlarge`, `cache.m6g.8xlarge`, `cache.m6g.12xlarge`,
 #'         `cache.m6g.16xlarge`
@@ -5032,7 +5113,7 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #'         `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
 #' 
 #'         **T4g node types** (available only for Redis engine version
-#'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
+#'         5.0.6 onward and Memcached engine version 1.5.16 onward):
 #'         `cache.t4g.micro`, `cache.t4g.small`, `cache.t4g.medium`
 #' 
 #'         **T3 node types:** `cache.t3.micro`, `cache.t3.small`,
@@ -5060,17 +5141,6 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #'         for these types.)
 #' 
 #'         **C1 node types:** `cache.c1.xlarge`
-#' 
-#' -   Memory optimized with data tiering:
-#' 
-#'     -   Current generation:
-#' 
-#'         **R6gd node types** (available only for Redis engine version 6.2
-#'         onward).
-#' 
-#'         `cache.r6gd.xlarge`, `cache.r6gd.2xlarge`, `cache.r6gd.4xlarge`,
-#'         `cache.r6gd.8xlarge`, `cache.r6gd.12xlarge`,
-#'         `cache.r6gd.16xlarge`
 #' 
 #' -   Memory optimized:
 #' 
@@ -5702,7 +5772,7 @@ elasticache_describe_user_groups <- function(UserGroupId = NULL, MaxRecords = NU
 #'         "string"
 #'       ),
 #'       Authentication = list(
-#'         Type = "password"|"no-password",
+#'         Type = "password"|"no-password"|"iam",
 #'         PasswordCount = 123
 #'       ),
 #'       ARN = "string"
@@ -5837,12 +5907,12 @@ elasticache_disassociate_global_replication_group <- function(GlobalReplicationG
 }
 .elasticache$operations$disassociate_global_replication_group <- elasticache_disassociate_global_replication_group
 
-#' Used to failover the primary region to a selected secondary region
+#' Used to failover the primary region to a secondary region
 #'
 #' @description
-#' Used to failover the primary region to a selected secondary region. The
-#' selected secondary region will become primary, and all other clusters
-#' will become secondary.
+#' Used to failover the primary region to a secondary region. The secondary
+#' region will become primary, and all other clusters will become
+#' secondary.
 #'
 #' @usage
 #' elasticache_failover_global_replication_group(GlobalReplicationGroupId,
@@ -6087,7 +6157,10 @@ elasticache_increase_node_groups_in_global_replication_group <- function(GlobalR
 #'           ),
 #'           LogFormat = "text"|"json"
 #'         )
-#'       )
+#'       ),
+#'       TransitEncryptionEnabled = TRUE|FALSE,
+#'       TransitEncryptionMode = "preferred"|"required",
+#'       ClusterMode = "enabled"|"disabled"|"compatible"
 #'     ),
 #'     MemberClusters = list(
 #'       "string"
@@ -6166,7 +6239,11 @@ elasticache_increase_node_groups_in_global_replication_group <- function(GlobalR
 #'       "2015-01-01"
 #'     ),
 #'     DataTiering = "enabled"|"disabled",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'     IpDiscovery = "ipv4"|"ipv6",
+#'     TransitEncryptionMode = "preferred"|"required",
+#'     ClusterMode = "enabled"|"disabled"|"compatible"
 #'   )
 #' )
 #' ```
@@ -6317,7 +6394,7 @@ elasticache_list_allowed_node_type_modifications <- function(CacheClusterId = NU
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' Amazon Web Services Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -6375,7 +6452,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #'   NotificationTopicArn, CacheParameterGroupName, NotificationTopicStatus,
 #'   ApplyImmediately, EngineVersion, AutoMinorVersionUpgrade,
 #'   SnapshotRetentionLimit, SnapshotWindow, CacheNodeType, AuthToken,
-#'   AuthTokenUpdateStrategy, LogDeliveryConfigurations)
+#'   AuthTokenUpdateStrategy, LogDeliveryConfigurations, IpDiscovery)
 #'
 #' @param CacheClusterId &#91;required&#93; The cluster identifier. This value is stored as a lowercase string.
 #' @param NumCacheNodes The number of cache nodes that the cluster should have. If the value for
@@ -6622,6 +6699,10 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' For more information, see [Authenticating Users with Redis
 #' AUTH](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html)
 #' @param LogDeliveryConfigurations Specifies the destination, format and type of the logs.
+#' @param IpDiscovery The network type you choose when modifying a cluster, either `ipv4` |
+#' `ipv6`. IPv6 is supported for workloads using Redis engine version 6.2
+#' onward or Memcached engine version 1.6.6 on all instances built on the
+#' [Nitro system](https://aws.amazon.com/ec2/nitro/).
 #'
 #' @return
 #' A list with the following syntax:
@@ -6667,7 +6748,9 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #'           ),
 #'           LogFormat = "text"|"json"
 #'         )
-#'       )
+#'       ),
+#'       TransitEncryptionEnabled = TRUE|FALSE,
+#'       TransitEncryptionMode = "preferred"|"required"
 #'     ),
 #'     NotificationConfiguration = list(
 #'       TopicArn = "string",
@@ -6738,7 +6821,10 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #'         Status = "active"|"enabling"|"modifying"|"disabling"|"error",
 #'         Message = "string"
 #'       )
-#'     )
+#'     ),
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'     IpDiscovery = "ipv4"|"ipv6",
+#'     TransitEncryptionMode = "preferred"|"required"
 #'   )
 #' )
 #' ```
@@ -6788,7 +6874,8 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #'       LogFormat = "text"|"json",
 #'       Enabled = TRUE|FALSE
 #'     )
-#'   )
+#'   ),
+#'   IpDiscovery = "ipv4"|"ipv6"
 #' )
 #' ```
 #'
@@ -6797,14 +6884,14 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' @rdname elasticache_modify_cache_cluster
 #'
 #' @aliases elasticache_modify_cache_cluster
-elasticache_modify_cache_cluster <- function(CacheClusterId, NumCacheNodes = NULL, CacheNodeIdsToRemove = NULL, AZMode = NULL, NewAvailabilityZones = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, CacheParameterGroupName = NULL, NotificationTopicStatus = NULL, ApplyImmediately = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, CacheNodeType = NULL, AuthToken = NULL, AuthTokenUpdateStrategy = NULL, LogDeliveryConfigurations = NULL) {
+elasticache_modify_cache_cluster <- function(CacheClusterId, NumCacheNodes = NULL, CacheNodeIdsToRemove = NULL, AZMode = NULL, NewAvailabilityZones = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, CacheParameterGroupName = NULL, NotificationTopicStatus = NULL, ApplyImmediately = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, CacheNodeType = NULL, AuthToken = NULL, AuthTokenUpdateStrategy = NULL, LogDeliveryConfigurations = NULL, IpDiscovery = NULL) {
   op <- new_operation(
     name = "ModifyCacheCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$modify_cache_cluster_input(CacheClusterId = CacheClusterId, NumCacheNodes = NumCacheNodes, CacheNodeIdsToRemove = CacheNodeIdsToRemove, AZMode = AZMode, NewAvailabilityZones = NewAvailabilityZones, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, CacheParameterGroupName = CacheParameterGroupName, NotificationTopicStatus = NotificationTopicStatus, ApplyImmediately = ApplyImmediately, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, CacheNodeType = CacheNodeType, AuthToken = AuthToken, AuthTokenUpdateStrategy = AuthTokenUpdateStrategy, LogDeliveryConfigurations = LogDeliveryConfigurations)
+  input <- .elasticache$modify_cache_cluster_input(CacheClusterId = CacheClusterId, NumCacheNodes = NumCacheNodes, CacheNodeIdsToRemove = CacheNodeIdsToRemove, AZMode = AZMode, NewAvailabilityZones = NewAvailabilityZones, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, CacheParameterGroupName = CacheParameterGroupName, NotificationTopicStatus = NotificationTopicStatus, ApplyImmediately = ApplyImmediately, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, CacheNodeType = CacheNodeType, AuthToken = AuthToken, AuthTokenUpdateStrategy = AuthTokenUpdateStrategy, LogDeliveryConfigurations = LogDeliveryConfigurations, IpDiscovery = IpDiscovery)
   output <- .elasticache$modify_cache_cluster_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -6908,10 +6995,16 @@ elasticache_modify_cache_parameter_group <- function(CacheParameterGroupName, Pa
 #'         ),
 #'         SubnetOutpost = list(
 #'           SubnetOutpostArn = "string"
+#'         ),
+#'         SupportedNetworkTypes = list(
+#'           "ipv4"|"ipv6"|"dual_stack"
 #'         )
 #'       )
 #'     ),
-#'     ARN = "string"
+#'     ARN = "string",
+#'     SupportedNetworkTypes = list(
+#'       "ipv4"|"ipv6"|"dual_stack"
+#'     )
 #'   )
 #' )
 #' ```
@@ -7067,7 +7160,8 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #'   ApplyImmediately, EngineVersion, AutoMinorVersionUpgrade,
 #'   SnapshotRetentionLimit, SnapshotWindow, CacheNodeType, AuthToken,
 #'   AuthTokenUpdateStrategy, UserGroupIdsToAdd, UserGroupIdsToRemove,
-#'   RemoveUserGroups, LogDeliveryConfigurations)
+#'   RemoveUserGroups, LogDeliveryConfigurations, IpDiscovery,
+#'   TransitEncryptionEnabled, TransitEncryptionMode, ClusterMode)
 #'
 #' @param ReplicationGroupId &#91;required&#93; The identifier of the replication group to modify.
 #' @param ReplicationGroupDescription A description for the replication group. Maximum length is 255
@@ -7204,6 +7298,32 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' group.
 #' @param RemoveUserGroups Removes the user group associated with this replication group.
 #' @param LogDeliveryConfigurations Specifies the destination, format and type of the logs.
+#' @param IpDiscovery The network type you choose when modifying a cluster, either `ipv4` |
+#' `ipv6`. IPv6 is supported for workloads using Redis engine version 6.2
+#' onward or Memcached engine version 1.6.6 on all instances built on the
+#' [Nitro system](https://aws.amazon.com/ec2/nitro/).
+#' @param TransitEncryptionEnabled A flag that enables in-transit encryption when set to true. If you are
+#' enabling in-transit encryption for an existing cluster, you must also
+#' set `TransitEncryptionMode` to `preferred`.
+#' @param TransitEncryptionMode A setting that allows you to migrate your clients to use in-transit
+#' encryption, with no downtime.
+#' 
+#' You must set `TransitEncryptionEnabled` to `true`, for your existing
+#' cluster, and set `TransitEncryptionMode` to `preferred` in the same
+#' request to allow both encrypted and unencrypted connections at the same
+#' time. Once you migrate all your Redis clients to use encrypted
+#' connections you can set the value to `required` to allow encrypted
+#' connections only.
+#' 
+#' Setting `TransitEncryptionMode` to `required` is a two-step process that
+#' requires you to first set the `TransitEncryptionMode` to `preferred`,
+#' after that you can set `TransitEncryptionMode` to `required`.
+#' @param ClusterMode Enabled or Disabled. To modify cluster mode from Disabled to Enabled,
+#' you must first set the cluster mode to Compatible. Compatible mode
+#' allows your Redis clients to connect using both cluster mode enabled and
+#' cluster mode disabled. After you migrate all Redis clients to use
+#' cluster mode enabled, you can then complete cluster mode configuration
+#' and set the cluster mode to Enabled.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7248,7 +7368,10 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #'           ),
 #'           LogFormat = "text"|"json"
 #'         )
-#'       )
+#'       ),
+#'       TransitEncryptionEnabled = TRUE|FALSE,
+#'       TransitEncryptionMode = "preferred"|"required",
+#'       ClusterMode = "enabled"|"disabled"|"compatible"
 #'     ),
 #'     MemberClusters = list(
 #'       "string"
@@ -7327,7 +7450,11 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #'       "2015-01-01"
 #'     ),
 #'     DataTiering = "enabled"|"disabled",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'     IpDiscovery = "ipv4"|"ipv6",
+#'     TransitEncryptionMode = "preferred"|"required",
+#'     ClusterMode = "enabled"|"disabled"|"compatible"
 #'   )
 #' )
 #' ```
@@ -7382,7 +7509,11 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #'       LogFormat = "text"|"json",
 #'       Enabled = TRUE|FALSE
 #'     )
-#'   )
+#'   ),
+#'   IpDiscovery = "ipv4"|"ipv6",
+#'   TransitEncryptionEnabled = TRUE|FALSE,
+#'   TransitEncryptionMode = "preferred"|"required",
+#'   ClusterMode = "enabled"|"disabled"|"compatible"
 #' )
 #' ```
 #'
@@ -7391,14 +7522,14 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' @rdname elasticache_modify_replication_group
 #'
 #' @aliases elasticache_modify_replication_group
-elasticache_modify_replication_group <- function(ReplicationGroupId, ReplicationGroupDescription = NULL, PrimaryClusterId = NULL, SnapshottingClusterId = NULL, AutomaticFailoverEnabled = NULL, MultiAZEnabled = NULL, NodeGroupId = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, CacheParameterGroupName = NULL, NotificationTopicStatus = NULL, ApplyImmediately = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, CacheNodeType = NULL, AuthToken = NULL, AuthTokenUpdateStrategy = NULL, UserGroupIdsToAdd = NULL, UserGroupIdsToRemove = NULL, RemoveUserGroups = NULL, LogDeliveryConfigurations = NULL) {
+elasticache_modify_replication_group <- function(ReplicationGroupId, ReplicationGroupDescription = NULL, PrimaryClusterId = NULL, SnapshottingClusterId = NULL, AutomaticFailoverEnabled = NULL, MultiAZEnabled = NULL, NodeGroupId = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, CacheParameterGroupName = NULL, NotificationTopicStatus = NULL, ApplyImmediately = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, CacheNodeType = NULL, AuthToken = NULL, AuthTokenUpdateStrategy = NULL, UserGroupIdsToAdd = NULL, UserGroupIdsToRemove = NULL, RemoveUserGroups = NULL, LogDeliveryConfigurations = NULL, IpDiscovery = NULL, TransitEncryptionEnabled = NULL, TransitEncryptionMode = NULL, ClusterMode = NULL) {
   op <- new_operation(
     name = "ModifyReplicationGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$modify_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, PrimaryClusterId = PrimaryClusterId, SnapshottingClusterId = SnapshottingClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, MultiAZEnabled = MultiAZEnabled, NodeGroupId = NodeGroupId, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, CacheParameterGroupName = CacheParameterGroupName, NotificationTopicStatus = NotificationTopicStatus, ApplyImmediately = ApplyImmediately, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, CacheNodeType = CacheNodeType, AuthToken = AuthToken, AuthTokenUpdateStrategy = AuthTokenUpdateStrategy, UserGroupIdsToAdd = UserGroupIdsToAdd, UserGroupIdsToRemove = UserGroupIdsToRemove, RemoveUserGroups = RemoveUserGroups, LogDeliveryConfigurations = LogDeliveryConfigurations)
+  input <- .elasticache$modify_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, PrimaryClusterId = PrimaryClusterId, SnapshottingClusterId = SnapshottingClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, MultiAZEnabled = MultiAZEnabled, NodeGroupId = NodeGroupId, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, CacheParameterGroupName = CacheParameterGroupName, NotificationTopicStatus = NotificationTopicStatus, ApplyImmediately = ApplyImmediately, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, CacheNodeType = CacheNodeType, AuthToken = AuthToken, AuthTokenUpdateStrategy = AuthTokenUpdateStrategy, UserGroupIdsToAdd = UserGroupIdsToAdd, UserGroupIdsToRemove = UserGroupIdsToRemove, RemoveUserGroups = RemoveUserGroups, LogDeliveryConfigurations = LogDeliveryConfigurations, IpDiscovery = IpDiscovery, TransitEncryptionEnabled = TransitEncryptionEnabled, TransitEncryptionMode = TransitEncryptionMode, ClusterMode = ClusterMode)
   output <- .elasticache$modify_replication_group_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -7496,7 +7627,10 @@ elasticache_modify_replication_group <- function(ReplicationGroupId, Replication
 #'           ),
 #'           LogFormat = "text"|"json"
 #'         )
-#'       )
+#'       ),
+#'       TransitEncryptionEnabled = TRUE|FALSE,
+#'       TransitEncryptionMode = "preferred"|"required",
+#'       ClusterMode = "enabled"|"disabled"|"compatible"
 #'     ),
 #'     MemberClusters = list(
 #'       "string"
@@ -7575,7 +7709,11 @@ elasticache_modify_replication_group <- function(ReplicationGroupId, Replication
 #'       "2015-01-01"
 #'     ),
 #'     DataTiering = "enabled"|"disabled",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'     IpDiscovery = "ipv4"|"ipv6",
+#'     TransitEncryptionMode = "preferred"|"required",
+#'     ClusterMode = "enabled"|"disabled"|"compatible"
 #'   )
 #' )
 #' ```
@@ -7632,13 +7770,14 @@ elasticache_modify_replication_group_shard_configuration <- function(Replication
 #'
 #' @usage
 #' elasticache_modify_user(UserId, AccessString, AppendAccessString,
-#'   Passwords, NoPasswordRequired)
+#'   Passwords, NoPasswordRequired, AuthenticationMode)
 #'
 #' @param UserId &#91;required&#93; The ID of the user.
 #' @param AccessString Access permissions string used for this user.
 #' @param AppendAccessString Adds additional user permissions to the access string.
 #' @param Passwords The passwords belonging to the user. You are allowed up to two.
 #' @param NoPasswordRequired Indicates no password is required for the user.
+#' @param AuthenticationMode Specifies how to authenticate the user.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7654,7 +7793,7 @@ elasticache_modify_replication_group_shard_configuration <- function(Replication
 #'     "string"
 #'   ),
 #'   Authentication = list(
-#'     Type = "password"|"no-password",
+#'     Type = "password"|"no-password"|"iam",
 #'     PasswordCount = 123
 #'   ),
 #'   ARN = "string"
@@ -7670,7 +7809,13 @@ elasticache_modify_replication_group_shard_configuration <- function(Replication
 #'   Passwords = list(
 #'     "string"
 #'   ),
-#'   NoPasswordRequired = TRUE|FALSE
+#'   NoPasswordRequired = TRUE|FALSE,
+#'   AuthenticationMode = list(
+#'     Type = "password"|"no-password-required"|"iam",
+#'     Passwords = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -7679,14 +7824,14 @@ elasticache_modify_replication_group_shard_configuration <- function(Replication
 #' @rdname elasticache_modify_user
 #'
 #' @aliases elasticache_modify_user
-elasticache_modify_user <- function(UserId, AccessString = NULL, AppendAccessString = NULL, Passwords = NULL, NoPasswordRequired = NULL) {
+elasticache_modify_user <- function(UserId, AccessString = NULL, AppendAccessString = NULL, Passwords = NULL, NoPasswordRequired = NULL, AuthenticationMode = NULL) {
   op <- new_operation(
     name = "ModifyUser",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$modify_user_input(UserId = UserId, AccessString = AccessString, AppendAccessString = AppendAccessString, Passwords = Passwords, NoPasswordRequired = NoPasswordRequired)
+  input <- .elasticache$modify_user_input(UserId = UserId, AccessString = AccessString, AppendAccessString = AppendAccessString, Passwords = Passwords, NoPasswordRequired = NoPasswordRequired, AuthenticationMode = AuthenticationMode)
   output <- .elasticache$modify_user_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -8021,7 +8166,9 @@ elasticache_rebalance_slots_in_global_replication_group <- function(GlobalReplic
 #'           ),
 #'           LogFormat = "text"|"json"
 #'         )
-#'       )
+#'       ),
+#'       TransitEncryptionEnabled = TRUE|FALSE,
+#'       TransitEncryptionMode = "preferred"|"required"
 #'     ),
 #'     NotificationConfiguration = list(
 #'       TopicArn = "string",
@@ -8092,7 +8239,10 @@ elasticache_rebalance_slots_in_global_replication_group <- function(GlobalReplic
 #'         Status = "active"|"enabling"|"modifying"|"disabling"|"error",
 #'         Message = "string"
 #'       )
-#'     )
+#'     ),
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'     IpDiscovery = "ipv4"|"ipv6",
+#'     TransitEncryptionMode = "preferred"|"required"
 #'   )
 #' )
 #' ```
@@ -8151,7 +8301,7 @@ elasticache_reboot_cache_cluster <- function(CacheClusterId, CacheNodeIdsToReboo
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' Amazon Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' @param TagKeys &#91;required&#93; A list of `TagKeys` identifying the tags you want removed from the named
 #' resource.
 #'
@@ -8393,7 +8543,10 @@ elasticache_revoke_cache_security_group_ingress <- function(CacheSecurityGroupNa
 #'           ),
 #'           LogFormat = "text"|"json"
 #'         )
-#'       )
+#'       ),
+#'       TransitEncryptionEnabled = TRUE|FALSE,
+#'       TransitEncryptionMode = "preferred"|"required",
+#'       ClusterMode = "enabled"|"disabled"|"compatible"
 #'     ),
 #'     MemberClusters = list(
 #'       "string"
@@ -8472,7 +8625,11 @@ elasticache_revoke_cache_security_group_ingress <- function(CacheSecurityGroupNa
 #'       "2015-01-01"
 #'     ),
 #'     DataTiering = "enabled"|"disabled",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'     IpDiscovery = "ipv4"|"ipv6",
+#'     TransitEncryptionMode = "preferred"|"required",
+#'     ClusterMode = "enabled"|"disabled"|"compatible"
 #'   )
 #' )
 #' ```
@@ -8627,7 +8784,10 @@ elasticache_start_migration <- function(ReplicationGroupId, CustomerNodeEndpoint
 #'           ),
 #'           LogFormat = "text"|"json"
 #'         )
-#'       )
+#'       ),
+#'       TransitEncryptionEnabled = TRUE|FALSE,
+#'       TransitEncryptionMode = "preferred"|"required",
+#'       ClusterMode = "enabled"|"disabled"|"compatible"
 #'     ),
 #'     MemberClusters = list(
 #'       "string"
@@ -8706,7 +8866,11 @@ elasticache_start_migration <- function(ReplicationGroupId, CustomerNodeEndpoint
 #'       "2015-01-01"
 #'     ),
 #'     DataTiering = "enabled"|"disabled",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'     IpDiscovery = "ipv4"|"ipv6",
+#'     TransitEncryptionMode = "preferred"|"required",
+#'     ClusterMode = "enabled"|"disabled"|"compatible"
 #'   )
 #' )
 #' ```

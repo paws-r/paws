@@ -92,7 +92,7 @@ applications can access. For more information about IAM, see \href{https://aws.a
 \link[paws.security.identity:iam_delete_group]{delete_group} \tab Deletes the specified IAM group\cr
 \link[paws.security.identity:iam_delete_group_policy]{delete_group_policy} \tab Deletes the specified inline policy that is embedded in the specified IAM group\cr
 \link[paws.security.identity:iam_delete_instance_profile]{delete_instance_profile} \tab Deletes the specified instance profile\cr
-\link[paws.security.identity:iam_delete_login_profile]{delete_login_profile} \tab Deletes the password for the specified IAM user, which terminates the user's ability to access Amazon Web Services services through the Amazon Web Services Management Console\cr
+\link[paws.security.identity:iam_delete_login_profile]{delete_login_profile} \tab Deletes the password for the specified IAM user, For more information, see Managing passwords for IAM users\cr
 \link[paws.security.identity:iam_delete_open_id_connect_provider]{delete_open_id_connect_provider} \tab Deletes an OpenID Connect identity provider (IdP) resource object in IAM\cr
 \link[paws.security.identity:iam_delete_policy]{delete_policy} \tab Deletes the specified managed policy\cr
 \link[paws.security.identity:iam_delete_policy_version]{delete_policy_version} \tab Deletes the specified version from the specified managed policy\cr

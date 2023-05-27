@@ -12,7 +12,9 @@ ec2_get_groups_for_capacity_reservation(
 )
 }
 \arguments{
-\item{CapacityReservationId}{[required] The ID of the Capacity Reservation.}
+\item{CapacityReservationId}{[required] The ID of the Capacity Reservation. If you specify a Capacity
+Reservation that is shared with you, the operation returns only Capacity
+Reservation groups that you own.}
 
 \item{NextToken}{The token to use to retrieve the next page of results.}
 

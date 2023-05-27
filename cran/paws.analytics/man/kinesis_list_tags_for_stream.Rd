@@ -5,13 +5,14 @@
 \title{Lists the tags for the specified Kinesis data stream}
 \usage{
 kinesis_list_tags_for_stream(
-  StreamName,
+  StreamName = NULL,
   ExclusiveStartTagKey = NULL,
-  Limit = NULL
+  Limit = NULL,
+  StreamARN = NULL
 )
 }
 \arguments{
-\item{StreamName}{[required] The name of the stream.}
+\item{StreamName}{The name of the stream.}
 
 \item{ExclusiveStartTagKey}{The key to use as the starting point for the list of tags. If this
 parameter is set, \code{\link[=kinesis_list_tags_for_stream]{list_tags_for_stream}}
@@ -21,6 +22,8 @@ gets all tags that occur after \code{ExclusiveStartTagKey}.}
 number of tags associated with the stream, \code{HasMoreTags} is set to
 \code{true}. To list additional tags, set \code{ExclusiveStartTagKey} to the last
 key in the response.}
+
+\item{StreamARN}{The ARN of the stream.}
 }
 \description{
 Lists the tags for the specified Kinesis data stream. This operation has a limit of five transactions per second per account.

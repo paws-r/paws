@@ -144,7 +144,7 @@ billingconductor_batch_disassociate_resources_from_custom_line_item <- function(
 #' @param ComputationPreference &#91;required&#93; The preferences and settings that will be used to compute the Amazon Web
 #' Services charges for a billing group.
 #' @param PrimaryAccountId The account ID that serves as the main account in a billing group.
-#' @param Description The billing group description.
+#' @param Description The description of the billing group.
 #' @param Tags A map that contains tag keys and tag values that are attached to a
 #' billing group. This feature isn't available during the beta.
 #'
@@ -220,8 +220,9 @@ billingconductor_create_custom_line_item <- function(ClientToken = NULL, Name, D
 #'
 #' @param ClientToken The token that is needed to support idempotency. Idempotency isn't
 #' currently supported, but will be implemented in a future update.
-#' @param Name &#91;required&#93; The pricing plan name. The names must be unique to each pricing plan.
-#' @param Description The pricing plan description.
+#' @param Name &#91;required&#93; The name of the pricing plan. The names must be unique to each pricing
+#' plan.
+#' @param Description The description of the pricing plan.
 #' @param PricingRuleArns A list of Amazon Resource Names (ARNs) that define the pricing plan
 #' parameters.
 #' @param Tags A map that contains tag keys and tag values that are attached to a
@@ -255,30 +256,51 @@ billingconductor_create_pricing_plan <- function(ClientToken = NULL, Name, Descr
 #'
 #' See [https://paws-r.github.io/docs/billingconductor/create_pricing_rule.html](https://paws-r.github.io/docs/billingconductor/create_pricing_rule.html) for full documentation.
 #'
-#' @param ClientToken The token that is needed to support idempotency. Idempotency isn't
+#' @param ClientToken The token that's needed to support idempotency. Idempotency isn't
 #' currently supported, but will be implemented in a future update.
 #' @param Name &#91;required&#93; The pricing rule name. The names must be unique to each pricing rule.
 #' @param Description The pricing rule description.
-#' @param Scope &#91;required&#93; The scope of pricing rule that indicates if it is globally applicable,
-#' or is service-specific.
+#' @param Scope &#91;required&#93; The scope of pricing rule that indicates if it's globally applicable, or
+#' it's service-specific.
 #' @param Type &#91;required&#93; The type of pricing rule.
-#' @param ModifierPercentage &#91;required&#93; A percentage modifier applied on the public pricing rates.
-#' @param Service If the `Scope` attribute is set to `SERVICE`, the attribute indicates
-#' which service the `PricingRule` is applicable for.
+#' @param ModifierPercentage A percentage modifier that's applied on the public pricing rates.
+#' @param Service If the `Scope` attribute is set to `SERVICE` or `SKU`, the attribute
+#' indicates which service the `PricingRule` is applicable for.
 #' @param Tags A map that contains tag keys and tag values that are attached to a
 #' pricing rule.
+#' @param BillingEntity The seller of services provided by Amazon Web Services, their
+#' affiliates, or third-party providers selling services via Amazon Web
+#' Services Marketplace.
+#' @param Tiering The set of tiering configurations for the pricing rule.
+#' @param UsageType Usage type is the unit that each service uses to measure the usage of a
+#' specific type of resource.
+#' 
+#' If the `Scope` attribute is set to `SKU`, this attribute indicates which
+#' usage type the `PricingRule` is modifying. For example,
+#' `USW2-BoxUsage:m2.2xlarge` describes
+#' an` M2 High Memory Double Extra Large` instance in the US West (Oregon)
+#' Region.
+#' 
+#'     </p> 
+#' @param Operation Operation is the specific Amazon Web Services action covered by this
+#' line item. This describes the specific usage of the line item.
+#' 
+#' If the `Scope` attribute is set to `SKU`, this attribute indicates which
+#' operation the `PricingRule` is modifying. For example, a value of
+#' `RunInstances:0202` indicates the operation of running an Amazon EC2
+#' instance.
 #'
 #' @keywords internal
 #'
 #' @rdname billingconductor_create_pricing_rule
-billingconductor_create_pricing_rule <- function(ClientToken = NULL, Name, Description = NULL, Scope, Type, ModifierPercentage, Service = NULL, Tags = NULL) {
+billingconductor_create_pricing_rule <- function(ClientToken = NULL, Name, Description = NULL, Scope, Type, ModifierPercentage = NULL, Service = NULL, Tags = NULL, BillingEntity = NULL, Tiering = NULL, UsageType = NULL, Operation = NULL) {
   op <- new_operation(
     name = "CreatePricingRule",
     http_method = "POST",
     http_path = "/create-pricing-rule",
     paginator = list()
   )
-  input <- .billingconductor$create_pricing_rule_input(ClientToken = ClientToken, Name = Name, Description = Description, Scope = Scope, Type = Type, ModifierPercentage = ModifierPercentage, Service = Service, Tags = Tags)
+  input <- .billingconductor$create_pricing_rule_input(ClientToken = ClientToken, Name = Name, Description = Description, Scope = Scope, Type = Type, ModifierPercentage = ModifierPercentage, Service = Service, Tags = Tags, BillingEntity = BillingEntity, Tiering = Tiering, UsageType = UsageType, Operation = Operation)
   output <- .billingconductor$create_pricing_rule_output()
   config <- get_config()
   svc <- .billingconductor$service(config)
@@ -295,7 +317,8 @@ billingconductor_create_pricing_rule <- function(ClientToken = NULL, Name, Descr
 #'
 #' See [https://paws-r.github.io/docs/billingconductor/delete_billing_group.html](https://paws-r.github.io/docs/billingconductor/delete_billing_group.html) for full documentation.
 #'
-#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the billing group you're deleting.
+#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the billing group that you're
+#' deleting.
 #'
 #' @keywords internal
 #'
@@ -355,7 +378,7 @@ billingconductor_delete_custom_line_item <- function(Arn, BillingPeriodRange = N
 #'
 #' See [https://paws-r.github.io/docs/billingconductor/delete_pricing_plan.html](https://paws-r.github.io/docs/billingconductor/delete_pricing_plan.html) for full documentation.
 #'
-#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the pricing plan you're deleting.
+#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the pricing plan that you're deleting.
 #'
 #' @keywords internal
 #'
@@ -377,15 +400,16 @@ billingconductor_delete_pricing_plan <- function(Arn) {
 }
 .billingconductor$operations$delete_pricing_plan <- billingconductor_delete_pricing_plan
 
-#' Deletes the pricing rule identified by the input Amazon Resource Name
-#' (ARN)
+#' Deletes the pricing rule that's identified by the input Amazon Resource
+#' Name (ARN)
 #'
 #' @description
-#' Deletes the pricing rule identified by the input Amazon Resource Name (ARN).
+#' Deletes the pricing rule that's identified by the input Amazon Resource Name (ARN).
 #'
 #' See [https://paws-r.github.io/docs/billingconductor/delete_pricing_rule.html](https://paws-r.github.io/docs/billingconductor/delete_pricing_rule.html) for full documentation.
 #'
-#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the pricing rule you are deleting.
+#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the pricing rule that you are
+#' deleting.
 #'
 #' @keywords internal
 #'
@@ -470,11 +494,11 @@ billingconductor_disassociate_pricing_rules <- function(Arn, PricingRuleArns) {
 }
 .billingconductor$operations$disassociate_pricing_rules <- billingconductor_disassociate_pricing_rules
 
-#' Amazon Web Services Billing Conductor is in beta release and is subject
-#' to change
+#' This is a paginated call to list linked accounts that are linked to the
+#' payer account for the specified time period
 #'
 #' @description
-#' *Amazon Web Services Billing Conductor is in beta release and is subject to change. Your use of Amazon Web Services Billing Conductor is subject to the Beta Service Participation terms of the <span href="https://aws.amazon.com/service-terms/">Amazon Web Services Service Terms</span> (Section 1.10).*
+#' This is a paginated call to list linked accounts that are linked to the payer account for the specified time period. If no information is provided, the current billing period is used. The response will optionally include the billing group that's associated with the linked account.
 #'
 #' See [https://paws-r.github.io/docs/billingconductor/list_account_associations.html](https://paws-r.github.io/docs/billingconductor/list_account_associations.html) for full documentation.
 #'
@@ -484,12 +508,12 @@ billingconductor_disassociate_pricing_rules <- function(Arn, PricingRuleArns) {
 #' 
 #' `MONITORED`: linked accounts that are associated to billing groups.
 #' 
-#' `UNMONITORED`: linked accounts that are not associated to billing
-#' groups.
+#' `UNMONITORED`: linked accounts that aren't associated to billing groups.
 #' 
 #' `Billing Group Arn`: linked accounts that are associated to the provided
 #' billing group Arn.
-#' @param NextToken The pagination token used on subsequent calls to retrieve accounts.
+#' @param NextToken The pagination token that's used on subsequent calls to retrieve
+#' accounts.
 #'
 #' @keywords internal
 #'
@@ -522,7 +546,7 @@ billingconductor_list_account_associations <- function(BillingPeriod = NULL, Fil
 #'
 #' @param BillingPeriod The preferred billing period for your report.
 #' @param MaxResults The maximum number of reports to retrieve.
-#' @param NextToken The pagination token used on subsequent calls to get reports.
+#' @param NextToken The pagination token that's used on subsequent calls to get reports.
 #' @param Filters A `ListBillingGroupCostReportsFilter` to specify billing groups to
 #' retrieve reports from.
 #'
@@ -556,7 +580,8 @@ billingconductor_list_billing_group_cost_reports <- function(BillingPeriod = NUL
 #'
 #' @param BillingPeriod The preferred billing period to get billing groups.
 #' @param MaxResults The maximum number of billing groups to retrieve.
-#' @param NextToken The pagination token used on subsequent calls to get billing groups.
+#' @param NextToken The pagination token that's used on subsequent calls to get billing
+#' groups.
 #' @param Filters A `ListBillingGroupsFilter` that specifies the billing group and pricing
 #' plan to retrieve billing group information.
 #'
@@ -580,6 +605,40 @@ billingconductor_list_billing_groups <- function(BillingPeriod = NULL, MaxResult
 }
 .billingconductor$operations$list_billing_groups <- billingconductor_list_billing_groups
 
+#' A paginated call to get a list of all custom line item versions
+#'
+#' @description
+#' A paginated call to get a list of all custom line item versions.
+#'
+#' See [https://paws-r.github.io/docs/billingconductor/list_custom_line_item_versions.html](https://paws-r.github.io/docs/billingconductor/list_custom_line_item_versions.html) for full documentation.
+#'
+#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) for the custom line item.
+#' @param MaxResults The maximum number of custom line item versions to retrieve.
+#' @param NextToken The pagination token that's used on subsequent calls to retrieve custom
+#' line item versions.
+#' @param Filters A `ListCustomLineItemVersionsFilter` that specifies the billing period
+#' range in which the custom line item versions are applied.
+#'
+#' @keywords internal
+#'
+#' @rdname billingconductor_list_custom_line_item_versions
+billingconductor_list_custom_line_item_versions <- function(Arn, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListCustomLineItemVersions",
+    http_method = "POST",
+    http_path = "/list-custom-line-item-versions",
+    paginator = list()
+  )
+  input <- .billingconductor$list_custom_line_item_versions_input(Arn = Arn, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
+  output <- .billingconductor$list_custom_line_item_versions_output()
+  config <- get_config()
+  svc <- .billingconductor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billingconductor$operations$list_custom_line_item_versions <- billingconductor_list_custom_line_item_versions
+
 #' A paginated call to get a list of all custom line items (FFLIs) for the
 #' given billing period
 #'
@@ -590,8 +649,8 @@ billingconductor_list_billing_groups <- function(BillingPeriod = NULL, MaxResult
 #'
 #' @param BillingPeriod The preferred billing period to get custom line items (FFLIs).
 #' @param MaxResults The maximum number of billing groups to retrieve.
-#' @param NextToken The pagination token used on subsequent calls to get custom line items
-#' (FFLIs).
+#' @param NextToken The pagination token that's used on subsequent calls to get custom line
+#' items (FFLIs).
 #' @param Filters A `ListCustomLineItemsFilter` that specifies the custom line item names
 #' and/or billing group Amazon Resource Names (ARNs) to retrieve FFLI
 #' information.
@@ -627,7 +686,8 @@ billingconductor_list_custom_line_items <- function(BillingPeriod = NULL, MaxRes
 #' @param Filters A `ListPricingPlansFilter` that specifies the Amazon Resource Name
 #' (ARNs) of pricing plans to retrieve pricing plans information.
 #' @param MaxResults The maximum number of pricing plans to retrieve.
-#' @param NextToken The pagination token used on subsequent call to get pricing plans.
+#' @param NextToken The pagination token that's used on subsequent call to get pricing
+#' plans.
 #'
 #' @keywords internal
 #'
@@ -649,10 +709,10 @@ billingconductor_list_pricing_plans <- function(BillingPeriod = NULL, Filters = 
 }
 .billingconductor$operations$list_pricing_plans <- billingconductor_list_pricing_plans
 
-#' A list of the pricing plans associated with a pricing rule
+#' A list of the pricing plans that are associated with a pricing rule
 #'
 #' @description
-#' A list of the pricing plans associated with a pricing rule.
+#' A list of the pricing plans that are associated with a pricing rule.
 #'
 #' See [https://paws-r.github.io/docs/billingconductor/list_pricing_plans_associated_with_pricing_rule.html](https://paws-r.github.io/docs/billingconductor/list_pricing_plans_associated_with_pricing_rule.html) for full documentation.
 #'
@@ -694,7 +754,8 @@ billingconductor_list_pricing_plans_associated_with_pricing_rule <- function(Bil
 #' @param Filters A `DescribePricingRuleFilter` that specifies the Amazon Resource Name
 #' (ARNs) of pricing rules to retrieve pricing rules information.
 #' @param MaxResults The maximum number of pricing rules to retrieve.
-#' @param NextToken The pagination token used on subsequent call to get pricing rules.
+#' @param NextToken The pagination token that's used on subsequent call to get pricing
+#' rules.
 #'
 #' @keywords internal
 #'
@@ -716,10 +777,10 @@ billingconductor_list_pricing_rules <- function(BillingPeriod = NULL, Filters = 
 }
 .billingconductor$operations$list_pricing_rules <- billingconductor_list_pricing_rules
 
-#' Lists the pricing rules associated with a pricing plan
+#' Lists the pricing rules that are associated with a pricing plan
 #'
 #' @description
-#' Lists the pricing rules associated with a pricing plan.
+#' Lists the pricing rules that are associated with a pricing plan.
 #'
 #' See [https://paws-r.github.io/docs/billingconductor/list_pricing_rules_associated_to_pricing_plan.html](https://paws-r.github.io/docs/billingconductor/list_pricing_rules_associated_to_pricing_plan.html) for full documentation.
 #'
@@ -750,10 +811,10 @@ billingconductor_list_pricing_rules_associated_to_pricing_plan <- function(Billi
 }
 .billingconductor$operations$list_pricing_rules_associated_to_pricing_plan <- billingconductor_list_pricing_rules_associated_to_pricing_plan
 
-#' List the resources associated to a custom line item
+#' List the resources that are associated to a custom line item
 #'
 #' @description
-#' List the resources associated to a custom line item.
+#' List the resources that are associated to a custom line item.
 #'
 #' See [https://paws-r.github.io/docs/billingconductor/list_resources_associated_to_custom_line_item.html](https://paws-r.github.io/docs/billingconductor/list_resources_associated_to_custom_line_item.html) for full documentation.
 #'
@@ -761,7 +822,7 @@ billingconductor_list_pricing_rules_associated_to_pricing_plan <- function(Billi
 #' @param Arn &#91;required&#93; The ARN of the custom line item for which the resource associations will
 #' be listed.
 #' @param MaxResults (Optional) The maximum number of resource associations to be retrieved.
-#' @param NextToken (Optional) The pagination token returned by a previous request.
+#' @param NextToken (Optional) The pagination token that's returned by a previous request.
 #' @param Filters (Optional) A `ListResourcesAssociatedToCustomLineItemFilter` that can
 #' specify the types of resources that should be retrieved.
 #'
@@ -954,10 +1015,10 @@ billingconductor_update_custom_line_item <- function(Arn, Name = NULL, Descripti
 #'
 #' See [https://paws-r.github.io/docs/billingconductor/update_pricing_plan.html](https://paws-r.github.io/docs/billingconductor/update_pricing_plan.html) for full documentation.
 #'
-#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the pricing plan you're updating.
+#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the pricing plan that you're updating.
 #' @param Name The name of the pricing plan. The name must be unique to each pricing
 #' plan.
-#' @param Description The pricing plan description.
+#' @param Description The description of the pricing plan.
 #'
 #' @keywords internal
 #'
@@ -992,18 +1053,19 @@ billingconductor_update_pricing_plan <- function(Arn, Name = NULL, Description =
 #' @param Description The new description for the pricing rule.
 #' @param Type The new pricing rule type.
 #' @param ModifierPercentage The new modifier to show pricing plan rates as a percentage.
+#' @param Tiering The set of tiering configurations for the pricing rule.
 #'
 #' @keywords internal
 #'
 #' @rdname billingconductor_update_pricing_rule
-billingconductor_update_pricing_rule <- function(Arn, Name = NULL, Description = NULL, Type = NULL, ModifierPercentage = NULL) {
+billingconductor_update_pricing_rule <- function(Arn, Name = NULL, Description = NULL, Type = NULL, ModifierPercentage = NULL, Tiering = NULL) {
   op <- new_operation(
     name = "UpdatePricingRule",
     http_method = "PUT",
     http_path = "/update-pricing-rule",
     paginator = list()
   )
-  input <- .billingconductor$update_pricing_rule_input(Arn = Arn, Name = Name, Description = Description, Type = Type, ModifierPercentage = ModifierPercentage)
+  input <- .billingconductor$update_pricing_rule_input(Arn = Arn, Name = Name, Description = Description, Type = Type, ModifierPercentage = ModifierPercentage, Tiering = Tiering)
   output <- .billingconductor$update_pricing_rule_output()
   config <- get_config()
   svc <- .billingconductor$service(config)

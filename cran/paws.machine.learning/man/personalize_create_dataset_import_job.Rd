@@ -11,7 +11,8 @@ personalize_create_dataset_import_job(
   dataSource,
   roleArn,
   tags = NULL,
-  importMode = NULL
+  importMode = NULL,
+  publishAttributionMetricsToS3 = NULL
 )
 }
 \arguments{
@@ -36,6 +37,9 @@ Data you imported individually is not replaced.
 in your dataset. Amazon Personalize replaces any record with the
 same ID with the new one.
 }}
+
+\item{publishAttributionMetricsToS3}{If you created a metric attribution, specify whether to publish metrics
+for this import job to Amazon S3}
 }
 \description{
 Creates a job that imports training data from your data source (an Amazon S3 bucket) to an Amazon Personalize dataset. To allow Amazon Personalize to import the training data, you must specify an IAM service role that has permission to read from the data source, as Amazon Personalize makes a copy of your data and processes it internally. For information on granting access to your Amazon S3 bucket, see \href{https://docs.aws.amazon.com/personalize/latest/dg/granting-personalize-s3-access.html}{Giving Amazon Personalize Access to Amazon S3 Resources}.

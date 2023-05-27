@@ -35,8 +35,12 @@ times, client-side errors, and user behavior. When you view this data,
 you can see it all aggregated together and also see breakdowns by the
 browsers and devices that your customers use.
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{ <p>You can use the collected data to quickly identify and debug client-side performance issues. CloudWatch RUM helps you visualize anomalies in your application performance and find relevant debugging data such as error messages, stack traces, and user sessions. You can also use RUM to understand the range of end-user impact including the number of users, geolocations, and browsers used.</p> 
-}\if{html}{\out{</div>}}
+You can use the collected data to quickly identify and debug client-side
+performance issues. CloudWatch RUM helps you visualize anomalies in your
+application performance and find relevant debugging data such as error
+messages, stack traces, and user sessions. You can also use RUM to
+understand the range of end-user impact including the number of users,
+geolocations, and browsers used.
 }
 \section{Service syntax}{
 
@@ -65,23 +69,30 @@ browsers and devices that your customers use.
 \section{Operations}{
 
 \tabular{ll}{
+\link[paws.management:cloudwatchrum_batch_create_rum_metric_definitions]{batch_create_rum_metric_definitions} \tab Specifies the extended metrics and custom metrics that you want a CloudWatch RUM app monitor to send to a destination\cr
+\link[paws.management:cloudwatchrum_batch_delete_rum_metric_definitions]{batch_delete_rum_metric_definitions} \tab Removes the specified metrics from being sent to an extended metrics destination\cr
+\link[paws.management:cloudwatchrum_batch_get_rum_metric_definitions]{batch_get_rum_metric_definitions} \tab Retrieves the list of metrics and dimensions that a RUM app monitor is sending to a single destination\cr
 \link[paws.management:cloudwatchrum_create_app_monitor]{create_app_monitor} \tab Creates a Amazon CloudWatch RUM app monitor, which collects telemetry data from your application and sends that data to RUM\cr
 \link[paws.management:cloudwatchrum_delete_app_monitor]{delete_app_monitor} \tab Deletes an existing app monitor\cr
+\link[paws.management:cloudwatchrum_delete_rum_metrics_destination]{delete_rum_metrics_destination} \tab Deletes a destination for CloudWatch RUM extended metrics, so that the specified app monitor stops sending extended metrics to that destination\cr
 \link[paws.management:cloudwatchrum_get_app_monitor]{get_app_monitor} \tab Retrieves the complete configuration information for one app monitor\cr
 \link[paws.management:cloudwatchrum_get_app_monitor_data]{get_app_monitor_data} \tab Retrieves the raw performance events that RUM has collected from your web application, so that you can do your own processing or analysis of this data\cr
 \link[paws.management:cloudwatchrum_list_app_monitors]{list_app_monitors} \tab Returns a list of the Amazon CloudWatch RUM app monitors in the account\cr
+\link[paws.management:cloudwatchrum_list_rum_metrics_destinations]{list_rum_metrics_destinations} \tab Returns a list of destinations that you have created to receive RUM extended metrics, for the specified app monitor\cr
 \link[paws.management:cloudwatchrum_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a CloudWatch RUM resource\cr
 \link[paws.management:cloudwatchrum_put_rum_events]{put_rum_events} \tab Sends telemetry events about your application performance and user behavior to CloudWatch RUM\cr
+\link[paws.management:cloudwatchrum_put_rum_metrics_destination]{put_rum_metrics_destination} \tab Creates or updates a destination to receive extended metrics from CloudWatch RUM\cr
 \link[paws.management:cloudwatchrum_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified CloudWatch RUM resource\cr
 \link[paws.management:cloudwatchrum_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
-\link[paws.management:cloudwatchrum_update_app_monitor]{update_app_monitor} \tab Updates the configuration of an existing app monitor
+\link[paws.management:cloudwatchrum_update_app_monitor]{update_app_monitor} \tab Updates the configuration of an existing app monitor\cr
+\link[paws.management:cloudwatchrum_update_rum_metric_definition]{update_rum_metric_definition} \tab Modifies one existing metric definition for CloudWatch RUM extended metrics
 }
 }
 
 \examples{
 \dontrun{
 svc <- cloudwatchrum()
-svc$create_app_monitor(
+svc$batch_create_rum_metric_definitions(
   Foo = 123
 )
 }

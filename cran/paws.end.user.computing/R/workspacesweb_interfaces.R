@@ -39,6 +39,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workspacesweb$associate_user_access_logging_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(portalArn = structure(logical(0), tags = list(location = "uri", locationName = "portalArn", type = "string")), userAccessLoggingSettingsArn = structure(logical(0), tags = list(location = "querystring", locationName = "userAccessLoggingSettingsArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$associate_user_access_logging_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(portalArn = structure(logical(0), tags = list(type = "string")), userAccessLoggingSettingsArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workspacesweb$associate_user_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(portalArn = structure(logical(0), tags = list(location = "uri", locationName = "portalArn", type = "string")), userSettingsArn = structure(logical(0), tags = list(location = "querystring", locationName = "userSettingsArn", type = "string"))), tags = list(type = "structure"))
@@ -89,7 +101,7 @@ NULL
 
 .workspacesweb$create_portal_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(additionalEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), customerManagedKey = structure(logical(0), tags = list(type = "string")), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(additionalEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), authenticationType = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), customerManagedKey = structure(logical(0), tags = list(type = "string")), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -108,6 +120,18 @@ NULL
 .workspacesweb$create_trust_store_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(trustStoreArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$create_user_access_logging_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), kinesisStreamArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$create_user_access_logging_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(userAccessLoggingSettingsArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -183,6 +207,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workspacesweb$delete_user_access_logging_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(userAccessLoggingSettingsArn = structure(logical(0), tags = list(location = "uri", locationName = "userAccessLoggingSettingsArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$delete_user_access_logging_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workspacesweb$delete_user_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(userSettingsArn = structure(logical(0), tags = list(location = "uri", locationName = "userSettingsArn", type = "string"))), tags = list(type = "structure"))
@@ -226,6 +262,18 @@ NULL
 }
 
 .workspacesweb$disassociate_trust_store_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$disassociate_user_access_logging_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(portalArn = structure(logical(0), tags = list(location = "uri", locationName = "portalArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$disassociate_user_access_logging_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -287,7 +335,7 @@ NULL
 
 .workspacesweb$get_portal_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(portal = structure(list(browserSettingsArn = structure(logical(0), tags = list(type = "string")), browserType = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), networkSettingsArn = structure(logical(0), tags = list(type = "string")), portalArn = structure(logical(0), tags = list(type = "string")), portalEndpoint = structure(logical(0), tags = list(type = "string")), portalStatus = structure(logical(0), tags = list(type = "string")), rendererType = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), trustStoreArn = structure(logical(0), tags = list(type = "string")), userSettingsArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(portal = structure(list(authenticationType = structure(logical(0), tags = list(type = "string")), browserSettingsArn = structure(logical(0), tags = list(type = "string")), browserType = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), networkSettingsArn = structure(logical(0), tags = list(type = "string")), portalArn = structure(logical(0), tags = list(type = "string")), portalEndpoint = structure(logical(0), tags = list(type = "string")), portalStatus = structure(logical(0), tags = list(type = "string")), rendererType = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), trustStoreArn = structure(logical(0), tags = list(type = "string")), userAccessLoggingSettingsArn = structure(logical(0), tags = list(type = "string")), userSettingsArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -324,6 +372,18 @@ NULL
 .workspacesweb$get_trust_store_certificate_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(certificate = structure(list(body = structure(logical(0), tags = list(type = "blob")), issuer = structure(logical(0), tags = list(type = "string")), notValidAfter = structure(logical(0), tags = list(type = "timestamp")), notValidBefore = structure(logical(0), tags = list(type = "timestamp")), subject = structure(logical(0), tags = list(type = "string")), thumbprint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), trustStoreArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$get_user_access_logging_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(userAccessLoggingSettingsArn = structure(logical(0), tags = list(location = "uri", locationName = "userAccessLoggingSettingsArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$get_user_access_logging_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(userAccessLoggingSettings = structure(list(associatedPortalArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), kinesisStreamArn = structure(logical(0), tags = list(type = "string")), userAccessLoggingSettingsArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -383,7 +443,7 @@ NULL
 
 .workspacesweb$list_portals_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), portals = structure(list(structure(list(browserSettingsArn = structure(logical(0), tags = list(type = "string")), browserType = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), networkSettingsArn = structure(logical(0), tags = list(type = "string")), portalArn = structure(logical(0), tags = list(type = "string")), portalEndpoint = structure(logical(0), tags = list(type = "string")), portalStatus = structure(logical(0), tags = list(type = "string")), rendererType = structure(logical(0), tags = list(type = "string")), trustStoreArn = structure(logical(0), tags = list(type = "string")), userSettingsArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), portals = structure(list(structure(list(authenticationType = structure(logical(0), tags = list(type = "string")), browserSettingsArn = structure(logical(0), tags = list(type = "string")), browserType = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), networkSettingsArn = structure(logical(0), tags = list(type = "string")), portalArn = structure(logical(0), tags = list(type = "string")), portalEndpoint = structure(logical(0), tags = list(type = "string")), portalStatus = structure(logical(0), tags = list(type = "string")), rendererType = structure(logical(0), tags = list(type = "string")), trustStoreArn = structure(logical(0), tags = list(type = "string")), userAccessLoggingSettingsArn = structure(logical(0), tags = list(type = "string")), userSettingsArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -420,6 +480,18 @@ NULL
 .workspacesweb$list_trust_stores_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), trustStores = structure(list(structure(list(trustStoreArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$list_user_access_logging_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$list_user_access_logging_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), userAccessLoggingSettings = structure(list(structure(list(kinesisStreamArn = structure(logical(0), tags = list(type = "string")), userAccessLoggingSettingsArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -497,13 +569,13 @@ NULL
 
 .workspacesweb$update_portal_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), portalArn = structure(logical(0), tags = list(location = "uri", locationName = "portalArn", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(authenticationType = structure(logical(0), tags = list(type = "string")), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), portalArn = structure(logical(0), tags = list(location = "uri", locationName = "portalArn", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workspacesweb$update_portal_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(portal = structure(list(browserSettingsArn = structure(logical(0), tags = list(type = "string")), browserType = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), networkSettingsArn = structure(logical(0), tags = list(type = "string")), portalArn = structure(logical(0), tags = list(type = "string")), portalEndpoint = structure(logical(0), tags = list(type = "string")), portalStatus = structure(logical(0), tags = list(type = "string")), rendererType = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), trustStoreArn = structure(logical(0), tags = list(type = "string")), userSettingsArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(portal = structure(list(authenticationType = structure(logical(0), tags = list(type = "string")), browserSettingsArn = structure(logical(0), tags = list(type = "string")), browserType = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), networkSettingsArn = structure(logical(0), tags = list(type = "string")), portalArn = structure(logical(0), tags = list(type = "string")), portalEndpoint = structure(logical(0), tags = list(type = "string")), portalStatus = structure(logical(0), tags = list(type = "string")), rendererType = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), trustStoreArn = structure(logical(0), tags = list(type = "string")), userAccessLoggingSettingsArn = structure(logical(0), tags = list(type = "string")), userSettingsArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -516,6 +588,18 @@ NULL
 .workspacesweb$update_trust_store_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(trustStoreArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$update_user_access_logging_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), kinesisStreamArn = structure(logical(0), tags = list(type = "string")), userAccessLoggingSettingsArn = structure(logical(0), tags = list(location = "uri", locationName = "userAccessLoggingSettingsArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$update_user_access_logging_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(userAccessLoggingSettings = structure(list(associatedPortalArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), kinesisStreamArn = structure(logical(0), tags = list(type = "string")), userAccessLoggingSettingsArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

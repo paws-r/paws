@@ -2,8 +2,8 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_describe_instance_type_limits}
 \alias{opensearchservice_describe_instance_type_limits}
-\title{Describe the limits for a given instance type and OpenSearch or
-Elasticsearch version}
+\title{Describes the instance count, storage, and master node limits for a
+given OpenSearch or Elasticsearch version and instance type}
 \usage{
 opensearchservice_describe_instance_type_limits(
   DomainName = NULL,
@@ -12,16 +12,17 @@ opensearchservice_describe_instance_type_limits(
 )
 }
 \arguments{
-\item{DomainName}{The name of the domain you want to modify. Only include this value if
-you're querying OpenSearch \code{Limits} for an existing domain.}
+\item{DomainName}{The name of the domain. Only specify if you need the limits for an
+existing domain.}
 
-\item{InstanceType}{[required] The instance type for an OpenSearch cluster for which OpenSearch
-\code{Limits} are needed.}
+\item{InstanceType}{[required] The OpenSearch Service instance type for which you need limit
+information.}
 
-\item{EngineVersion}{[required] Version of OpenSearch for which \code{Limits} are needed.}
+\item{EngineVersion}{[required] Version of OpenSearch or Elasticsearch, in the format Elasticsearch_X.Y
+or OpenSearch_X.Y. Defaults to the latest version of OpenSearch.}
 }
 \description{
-Describe the limits for a given instance type and OpenSearch or Elasticsearch version. When modifying an existing domain, specify the \code{DomainName} to see which limits you can modify.
+Describes the instance count, storage, and master node limits for a given OpenSearch or Elasticsearch version and instance type.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/describe_instance_type_limits.html} for full documentation.
 }

@@ -8,8 +8,7 @@ organization, user, and device}
 workmail_delete_mobile_device_access_override(OrganizationId, UserId, DeviceId)
 }
 \arguments{
-\item{OrganizationId}{[required] The Amazon WorkMail organization for which the access override will be
-deleted.}
+\item{OrganizationId}{[required] The WorkMail organization for which the access override will be deleted.}
 
 \item{UserId}{[required] The WorkMail user for which you want to delete the override. Accepts the
 following types of user identities:

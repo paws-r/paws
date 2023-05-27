@@ -30,12 +30,12 @@ example, \verb{AWS::EC2::Instance}, or \verb{AWS::S3::Bucket}.
 }
 
 When you specify a \code{resource-type} filter for
-\code{\link[=resourcegroups_list_group_resources]{list_group_resources}}, AWS
-Resource Groups validates your filter resource types against the types
-that are defined in the query associated with the group. For example, if
-a group contains only S3 buckets because its query specifies only that
-resource type, but your \code{resource-type} filter includes EC2 instances,
-AWS Resource Groups does not filter for EC2 instances. In this case, a
+\code{\link[=resourcegroups_list_group_resources]{list_group_resources}}, Resource
+Groups validates your filter resource types against the types that are
+defined in the query associated with the group. For example, if a group
+contains only S3 buckets because its query specifies only that resource
+type, but your \code{resource-type} filter includes EC2 instances, AWS
+Resource Groups does not filter for EC2 instances. In this case, a
 \code{\link[=resourcegroups_list_group_resources]{list_group_resources}} request
 returns a \code{BadRequestException} error with a message similar to the
 following:
@@ -46,8 +46,8 @@ The error includes a list of resource types that failed the validation
 because they are not part of the query associated with the group. This
 validation doesn't occur when the group query specifies
 \code{AWS::AllSupported}, because a group based on such a query can contain
-any of the allowed resource types for the query type (tag-based or AWS
-CloudFormation stack-based queries).}
+any of the allowed resource types for the query type (tag-based or
+Amazon CloudFront stack-based queries).}
 
 \item{MaxResults}{The total number of results that you want included on each page of the
 response. If you do not include this parameter, it defaults to a value

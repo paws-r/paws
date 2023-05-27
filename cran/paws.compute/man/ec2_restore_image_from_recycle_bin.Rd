@@ -15,7 +15,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Restores an AMI from the Recycle Bin. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html}{Recycle Bin} in the Amazon Elastic Compute Cloud User Guide.
+Restores an AMI from the Recycle Bin. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html}{Recycle Bin} in the \emph{Amazon EC2 User Guide}.
 
 See \url{https://paws-r.github.io/docs/ec2/restore_image_from_recycle_bin.html} for full documentation.
 }

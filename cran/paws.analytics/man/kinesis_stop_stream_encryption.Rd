@@ -4,10 +4,15 @@
 \alias{kinesis_stop_stream_encryption}
 \title{Disables server-side encryption for a specified stream}
 \usage{
-kinesis_stop_stream_encryption(StreamName, EncryptionType, KeyId)
+kinesis_stop_stream_encryption(
+  StreamName = NULL,
+  EncryptionType,
+  KeyId,
+  StreamARN = NULL
+)
 }
 \arguments{
-\item{StreamName}{[required] The name of the stream on which to stop encrypting records.}
+\item{StreamName}{The name of the stream on which to stop encrypting records.}
 
 \item{EncryptionType}{[required] The encryption type. The only valid value is \code{KMS}.}
 
@@ -26,6 +31,8 @@ Kinesis Data Streams by specifying the alias \code{aws/kinesis}.
 \item Alias name example: \code{alias/MyAliasName}
 \item Master key owned by Kinesis Data Streams: \code{alias/aws/kinesis}
 }}
+
+\item{StreamARN}{The ARN of the stream.}
 }
 \description{
 Disables server-side encryption for a specified stream.

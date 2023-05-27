@@ -14,7 +14,7 @@ workmail_get_mobile_device_access_effect(
 )
 }
 \arguments{
-\item{OrganizationId}{[required] The Amazon WorkMail organization to simulate the access effect for.}
+\item{OrganizationId}{[required] The WorkMail organization to simulate the access effect for.}
 
 \item{DeviceType}{Device type the simulated user will report.}
 
@@ -25,7 +25,7 @@ workmail_get_mobile_device_access_effect(
 \item{DeviceUserAgent}{Device user agent the simulated user will report.}
 }
 \description{
-Simulates the effect of the mobile device access rules for the given attributes of a sample access event. Use this method to test the effects of the current set of mobile device access rules for the Amazon WorkMail organization for a particular user's attributes.
+Simulates the effect of the mobile device access rules for the given attributes of a sample access event. Use this method to test the effects of the current set of mobile device access rules for the WorkMail organization for a particular user's attributes.
 
 See \url{https://paws-r.github.io/docs/workmail/get_mobile_device_access_effect.html} for full documentation.
 }

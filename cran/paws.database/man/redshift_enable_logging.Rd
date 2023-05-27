@@ -46,8 +46,8 @@ invalid characters are:
 \item{LogDestinationType}{The log destination type. An enum with possible values of \code{s3} and
 \code{cloudwatch}.}
 
-\item{LogExports}{The collection of exported log types. Log types include the connection
-log, user log and user activity log.}
+\item{LogExports}{The collection of exported log types. Possible values are
+\code{connectionlog}, \code{useractivitylog}, and \code{userlog}.}
 }
 \description{
 Starts logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster.

@@ -14,8 +14,8 @@ workdocs_delete_labels(
 \arguments{
 \item{ResourceId}{[required] The ID of the resource.}
 
-\item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
-administrator credentials to access the API.}
+\item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using Amazon Web
+Services administrator credentials to access the API.}
 
 \item{Labels}{List of labels to delete from the resource.}
 

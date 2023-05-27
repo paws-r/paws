@@ -7,7 +7,7 @@
 voiceid_describe_domain(DomainId)
 }
 \arguments{
-\item{DomainId}{[required] The identifier of the domain you are describing.}
+\item{DomainId}{[required] The identifier of the domain that you are describing.}
 }
 \description{
 Describes the specified domain.

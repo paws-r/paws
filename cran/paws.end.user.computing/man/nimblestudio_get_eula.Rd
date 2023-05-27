@@ -2,7 +2,7 @@
 % Please edit documentation in R/nimblestudio_operations.R
 \name{nimblestudio_get_eula}
 \alias{nimblestudio_get_eula}
-\title{Get Eula}
+\title{Get EULA}
 \usage{
 nimblestudio_get_eula(eulaId)
 }
@@ -10,7 +10,7 @@ nimblestudio_get_eula(eulaId)
 \item{eulaId}{[required] The EULA ID.}
 }
 \description{
-Get Eula.
+Get EULA.
 
 See \url{https://paws-r.github.io/docs/nimblestudio/get_eula.html} for full documentation.
 }

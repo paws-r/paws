@@ -2,12 +2,12 @@
 % Please edit documentation in R/servicecatalog_operations.R
 \name{servicecatalog_disable_aws_organizations_access}
 \alias{servicecatalog_disable_aws_organizations_access}
-\title{Disable portfolio sharing through AWS Organizations feature}
+\title{Disable portfolio sharing through the Organizations service}
 \usage{
 servicecatalog_disable_aws_organizations_access()
 }
 \description{
-Disable portfolio sharing through AWS Organizations feature. This feature will not delete your current shares but it will prevent you from creating new shares throughout your organization. Current shares will not be in sync with your organization structure if it changes after calling this API. This API can only be called by the management account in the organization.
+Disable portfolio sharing through the Organizations service. This command will not delete your current shares, but prevents you from creating new shares throughout your organization. Current shares are not kept in sync with your organization structure if the structure changes after calling this API. Only the management account in the organization can call this API.
 
 See \url{https://paws-r.github.io/docs/servicecatalog/disable_aws_organizations_access.html} for full documentation.
 }

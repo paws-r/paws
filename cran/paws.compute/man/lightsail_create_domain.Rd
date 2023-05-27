@@ -7,12 +7,7 @@
 lightsail_create_domain(domainName, tags = NULL)
 }
 \arguments{
-\item{domainName}{[required] The domain name to manage (e.g., \code{example.com}).
-
-You cannot register a new domain name using Lightsail. You must register
-a domain name using Amazon Route 53 or another domain name registrar. If
-you have already registered your domain, you can enter its name in this
-parameter to manage the DNS records for that domain using Lightsail.}
+\item{domainName}{[required] The domain name to manage (e.g., \code{example.com}).}
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 

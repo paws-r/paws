@@ -438,6 +438,91 @@ workspaces_create_ip_group <- function(GroupName, GroupDesc = NULL, UserRules = 
 }
 .workspaces$operations$create_ip_group <- workspaces_create_ip_group
 
+#' Creates a standby WorkSpace in a secondary Region
+#'
+#' @description
+#' Creates a standby WorkSpace in a secondary Region.
+#'
+#' @usage
+#' workspaces_create_standby_workspaces(PrimaryRegion, StandbyWorkspaces)
+#'
+#' @param PrimaryRegion &#91;required&#93; The Region of the primary WorkSpace.
+#' @param StandbyWorkspaces &#91;required&#93; Information about the standby WorkSpace to be created.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FailedStandbyRequests = list(
+#'     list(
+#'       StandbyWorkspaceRequest = list(
+#'         PrimaryWorkspaceId = "string",
+#'         VolumeEncryptionKey = "string",
+#'         DirectoryId = "string",
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       ),
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   ),
+#'   PendingStandbyRequests = list(
+#'     list(
+#'       UserName = "string",
+#'       DirectoryId = "string",
+#'       State = "PENDING"|"AVAILABLE"|"IMPAIRED"|"UNHEALTHY"|"REBOOTING"|"STARTING"|"REBUILDING"|"RESTORING"|"MAINTENANCE"|"ADMIN_MAINTENANCE"|"TERMINATING"|"TERMINATED"|"SUSPENDED"|"UPDATING"|"STOPPING"|"STOPPED"|"ERROR",
+#'       WorkspaceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_standby_workspaces(
+#'   PrimaryRegion = "string",
+#'   StandbyWorkspaces = list(
+#'     list(
+#'       PrimaryWorkspaceId = "string",
+#'       VolumeEncryptionKey = "string",
+#'       DirectoryId = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_create_standby_workspaces
+#'
+#' @aliases workspaces_create_standby_workspaces
+workspaces_create_standby_workspaces <- function(PrimaryRegion, StandbyWorkspaces) {
+  op <- new_operation(
+    name = "CreateStandbyWorkspaces",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$create_standby_workspaces_input(PrimaryRegion = PrimaryRegion, StandbyWorkspaces = StandbyWorkspaces)
+  output <- .workspaces$create_standby_workspaces_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$create_standby_workspaces <- workspaces_create_standby_workspaces
+
 #' Creates the specified tags for the specified WorkSpaces resource
 #'
 #' @description
@@ -501,7 +586,7 @@ workspaces_create_tags <- function(ResourceId, Tags) {
 #' Amazon WorkSpaces requirements, use
 #' [DescribeWorkspaceImages](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceImages.html).
 #' 
-#' -   Only Windows 10, Windows Sever 2016, and Windows Server 2019
+#' -   Only Windows 10, Windows Server 2016, and Windows Server 2019
 #'     WorkSpace images can be programmatically updated at this time.
 #' 
 #' -   Microsoft Windows updates and other application updates are not
@@ -616,7 +701,9 @@ workspaces_create_updated_workspace_image <- function(Name, Description, SourceI
 #'     ),
 #'     CreationTime = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     State = "AVAILABLE"|"PENDING"|"ERROR",
+#'     BundleType = "REGULAR"|"STANDBY"
 #'   )
 #' )
 #' ```
@@ -745,6 +832,11 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #' 
 #' This operation is asynchronous and returns before the WorkSpaces are
 #' created.
+#' 
+#' The `MANUAL` running mode value is only supported by Amazon WorkSpaces
+#' Core. Contact your account team to be allow-listed to use this value.
+#' For more information, see [Amazon WorkSpaces
+#' Core](https://aws.amazon.com/workspaces/core/).
 #'
 #' @usage
 #' workspaces_create_workspaces(Workspaces)
@@ -765,11 +857,14 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'         UserVolumeEncryptionEnabled = TRUE|FALSE,
 #'         RootVolumeEncryptionEnabled = TRUE|FALSE,
 #'         WorkspaceProperties = list(
-#'           RunningMode = "AUTO_STOP"|"ALWAYS_ON",
+#'           RunningMode = "AUTO_STOP"|"ALWAYS_ON"|"MANUAL",
 #'           RunningModeAutoStopTimeoutInMinutes = 123,
 #'           RootVolumeSizeGib = 123,
 #'           UserVolumeSizeGib = 123,
-#'           ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
+#'           ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
+#'           Protocols = list(
+#'             "PCOIP"|"WSP"
+#'           )
 #'         ),
 #'         Tags = list(
 #'           list(
@@ -798,16 +893,27 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'       UserVolumeEncryptionEnabled = TRUE|FALSE,
 #'       RootVolumeEncryptionEnabled = TRUE|FALSE,
 #'       WorkspaceProperties = list(
-#'         RunningMode = "AUTO_STOP"|"ALWAYS_ON",
+#'         RunningMode = "AUTO_STOP"|"ALWAYS_ON"|"MANUAL",
 #'         RunningModeAutoStopTimeoutInMinutes = 123,
 #'         RootVolumeSizeGib = 123,
 #'         UserVolumeSizeGib = 123,
-#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
+#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
+#'         Protocols = list(
+#'           "PCOIP"|"WSP"
+#'         )
 #'       ),
 #'       ModificationStates = list(
 #'         list(
 #'           Resource = "ROOT_VOLUME"|"USER_VOLUME"|"COMPUTE_TYPE",
 #'           State = "UPDATE_INITIATED"|"UPDATE_IN_PROGRESS"
+#'         )
+#'       ),
+#'       RelatedWorkspaces = list(
+#'         list(
+#'           WorkspaceId = "string",
+#'           Region = "string",
+#'           State = "PENDING"|"AVAILABLE"|"IMPAIRED"|"UNHEALTHY"|"REBOOTING"|"STARTING"|"REBUILDING"|"RESTORING"|"MAINTENANCE"|"ADMIN_MAINTENANCE"|"TERMINATING"|"TERMINATED"|"SUSPENDED"|"UPDATING"|"STOPPING"|"STOPPED"|"ERROR",
+#'           Type = "PRIMARY"|"STANDBY"
 #'         )
 #'       )
 #'     )
@@ -827,11 +933,14 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'       UserVolumeEncryptionEnabled = TRUE|FALSE,
 #'       RootVolumeEncryptionEnabled = TRUE|FALSE,
 #'       WorkspaceProperties = list(
-#'         RunningMode = "AUTO_STOP"|"ALWAYS_ON",
+#'         RunningMode = "AUTO_STOP"|"ALWAYS_ON"|"MANUAL",
 #'         RunningModeAutoStopTimeoutInMinutes = 123,
 #'         RootVolumeSizeGib = 123,
 #'         UserVolumeSizeGib = 123,
-#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
+#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
+#'         Protocols = list(
+#'           "PCOIP"|"WSP"
+#'         )
 #'       ),
 #'       Tags = list(
 #'         list(
@@ -1500,7 +1609,8 @@ workspaces_describe_client_branding <- function(ResourceId) {
 #'     list(
 #'       ResourceId = "string",
 #'       ClientProperties = list(
-#'         ReconnectEnabled = "ENABLED"|"DISABLED"
+#'         ReconnectEnabled = "ENABLED"|"DISABLED",
+#'         LogUploadEnabled = "ENABLED"|"DISABLED"
 #'       )
 #'     )
 #'   )
@@ -1911,7 +2021,9 @@ workspaces_describe_tags <- function(ResourceId) {
 #'       ),
 #'       CreationTime = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       State = "AVAILABLE"|"PENDING"|"ERROR",
+#'       BundleType = "REGULAR"|"STANDBY"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2022,6 +2134,10 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #'         Status = "DISABLED"|"ENABLED"|"ENABLED_WITH_DIRECTORY_LOGIN_FALLBACK",
 #'         UserAccessUrl = "string",
 #'         RelayStateParameterName = "string"
+#'       ),
+#'       CertificateBasedAuthProperties = list(
+#'         Status = "DISABLED"|"ENABLED",
+#'         CertificateAuthorityArn = "string"
 #'       )
 #'     )
 #'   ),
@@ -2317,16 +2433,27 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 #'       UserVolumeEncryptionEnabled = TRUE|FALSE,
 #'       RootVolumeEncryptionEnabled = TRUE|FALSE,
 #'       WorkspaceProperties = list(
-#'         RunningMode = "AUTO_STOP"|"ALWAYS_ON",
+#'         RunningMode = "AUTO_STOP"|"ALWAYS_ON"|"MANUAL",
 #'         RunningModeAutoStopTimeoutInMinutes = 123,
 #'         RootVolumeSizeGib = 123,
 #'         UserVolumeSizeGib = 123,
-#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
+#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
+#'         Protocols = list(
+#'           "PCOIP"|"WSP"
+#'         )
 #'       ),
 #'       ModificationStates = list(
 #'         list(
 #'           Resource = "ROOT_VOLUME"|"USER_VOLUME"|"COMPUTE_TYPE",
 #'           State = "UPDATE_INITIATED"|"UPDATE_IN_PROGRESS"
+#'         )
+#'       ),
+#'       RelatedWorkspaces = list(
+#'         list(
+#'           WorkspaceId = "string",
+#'           Region = "string",
+#'           State = "PENDING"|"AVAILABLE"|"IMPAIRED"|"UNHEALTHY"|"REBOOTING"|"STARTING"|"REBUILDING"|"RESTORING"|"MAINTENANCE"|"ADMIN_MAINTENANCE"|"TERMINATING"|"TERMINATED"|"SUSPENDED"|"UPDATING"|"STOPPING"|"STOPPED"|"ERROR",
+#'           Type = "PRIMARY"|"STANDBY"
 #'         )
 #'       )
 #'     )
@@ -2722,15 +2849,15 @@ workspaces_import_client_branding <- function(ResourceId, DeviceTypeWindows = NU
 }
 .workspaces$operations$import_client_branding <- workspaces_import_client_branding
 
-#' Imports the specified Windows 10 Bring Your Own License (BYOL) image
-#' into Amazon WorkSpaces
+#' Imports the specified Windows 10 or 11 Bring Your Own License (BYOL)
+#' image into Amazon WorkSpaces
 #'
 #' @description
-#' Imports the specified Windows 10 Bring Your Own License (BYOL) image
-#' into Amazon WorkSpaces. The image must be an already licensed Amazon EC2
-#' image that is in your Amazon Web Services account, and you must own the
-#' image. For more information about creating BYOL images, see [Bring Your
-#' Own Windows Desktop
+#' Imports the specified Windows 10 or 11 Bring Your Own License (BYOL)
+#' image into Amazon WorkSpaces. The image must be an already licensed
+#' Amazon EC2 image that is in your Amazon Web Services account, and you
+#' must own the image. For more information about creating BYOL images, see
+#' [Bring Your Own Windows Desktop
 #' Licenses](https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
 #'
 #' @usage
@@ -2740,23 +2867,32 @@ workspaces_import_client_branding <- function(ResourceId, DeviceTypeWindows = NU
 #' @param Ec2ImageId &#91;required&#93; The identifier of the EC2 image.
 #' @param IngestionProcess &#91;required&#93; The ingestion process to be used when importing the image, depending on
 #' which protocol you want to use for your BYOL Workspace image, either
-#' PCoIP or WorkSpaces Streaming Protocol (WSP). To use WSP, specify a
-#' value that ends in `_WSP`. To use PCoIP, specify a value that does not
-#' end in `_WSP`.
+#' PCoIP, WorkSpaces Streaming Protocol (WSP), or bring your own protocol
+#' (BYOP). To use WSP, specify a value that ends in `_WSP`. To use PCoIP,
+#' specify a value that does not end in `_WSP`. To use BYOP, specify a
+#' value that ends in `_BYOP`.
 #' 
 #' For non-GPU-enabled bundles (bundles other than Graphics or
-#' GraphicsPro), specify `BYOL_REGULAR` or `BYOL_REGULAR_WSP`, depending on
-#' the protocol.
+#' GraphicsPro), specify `BYOL_REGULAR`, `BYOL_REGULAR_WSP`, or
+#' `BYOL_REGULAR_BYOP`, depending on the protocol.
+#' 
+#' The `BYOL_REGULAR_BYOP` and `BYOL_GRAPHICS_G4DN_BYOP` values are only
+#' supported by Amazon WorkSpaces Core. Contact your account team to be
+#' allow-listed to use these values. For more information, see [Amazon
+#' WorkSpaces Core](https://aws.amazon.com/workspaces/core/).
 #' @param ImageName &#91;required&#93; The name of the WorkSpace image.
 #' @param ImageDescription &#91;required&#93; The description of the WorkSpace image.
 #' @param Tags The tags. Each WorkSpaces resource can have a maximum of 50 tags.
 #' @param Applications If specified, the version of Microsoft Office to subscribe to. Valid
-#' only for Windows 10 BYOL images. For more information about subscribing
-#' to Office for BYOL images, see [Bring Your Own Windows Desktop
+#' only for Windows 10 and 11 BYOL images. For more information about
+#' subscribing to Office for BYOL images, see [Bring Your Own Windows
+#' Desktop
 #' Licenses](https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
 #' 
-#' Although this parameter is an array, only one item is allowed at this
-#' time.
+#' -   Although this parameter is an array, only one item is allowed at
+#'     this time.
+#' 
+#' -   Windows 11 only supports `Microsoft_Office_2019`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2770,7 +2906,7 @@ workspaces_import_client_branding <- function(ResourceId, DeviceTypeWindows = NU
 #' ```
 #' svc$import_workspace_image(
 #'   Ec2ImageId = "string",
-#'   IngestionProcess = "BYOL_REGULAR"|"BYOL_GRAPHICS"|"BYOL_GRAPHICSPRO"|"BYOL_GRAPHICS_G4DN"|"BYOL_REGULAR_WSP",
+#'   IngestionProcess = "BYOL_REGULAR"|"BYOL_GRAPHICS"|"BYOL_GRAPHICSPRO"|"BYOL_GRAPHICS_G4DN"|"BYOL_REGULAR_WSP"|"BYOL_REGULAR_BYOP"|"BYOL_GRAPHICS_G4DN_BYOP",
 #'   ImageName = "string",
 #'   ImageDescription = "string",
 #'   Tags = list(
@@ -2995,6 +3131,61 @@ workspaces_modify_account <- function(DedicatedTenancySupport = NULL, DedicatedT
 }
 .workspaces$operations$modify_account <- workspaces_modify_account
 
+#' Modifies the properties of the certificate-based authentication you want
+#' to use with your WorkSpaces
+#'
+#' @description
+#' Modifies the properties of the certificate-based authentication you want
+#' to use with your WorkSpaces.
+#'
+#' @usage
+#' workspaces_modify_certificate_based_auth_properties(ResourceId,
+#'   CertificateBasedAuthProperties, PropertiesToDelete)
+#'
+#' @param ResourceId &#91;required&#93; The resource identifiers, in the form of directory IDs.
+#' @param CertificateBasedAuthProperties The properties of the certificate-based authentication.
+#' @param PropertiesToDelete The properties of the certificate-based authentication you want to
+#' delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_certificate_based_auth_properties(
+#'   ResourceId = "string",
+#'   CertificateBasedAuthProperties = list(
+#'     Status = "DISABLED"|"ENABLED",
+#'     CertificateAuthorityArn = "string"
+#'   ),
+#'   PropertiesToDelete = list(
+#'     "CERTIFICATE_BASED_AUTH_PROPERTIES_CERTIFICATE_AUTHORITY_ARN"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_modify_certificate_based_auth_properties
+#'
+#' @aliases workspaces_modify_certificate_based_auth_properties
+workspaces_modify_certificate_based_auth_properties <- function(ResourceId, CertificateBasedAuthProperties = NULL, PropertiesToDelete = NULL) {
+  op <- new_operation(
+    name = "ModifyCertificateBasedAuthProperties",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$modify_certificate_based_auth_properties_input(ResourceId = ResourceId, CertificateBasedAuthProperties = CertificateBasedAuthProperties, PropertiesToDelete = PropertiesToDelete)
+  output <- .workspaces$modify_certificate_based_auth_properties_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$modify_certificate_based_auth_properties <- workspaces_modify_certificate_based_auth_properties
+
 #' Modifies the properties of the specified Amazon WorkSpaces clients
 #'
 #' @description
@@ -3014,7 +3205,8 @@ workspaces_modify_account <- function(DedicatedTenancySupport = NULL, DedicatedT
 #' svc$modify_client_properties(
 #'   ResourceId = "string",
 #'   ClientProperties = list(
-#'     ReconnectEnabled = "ENABLED"|"DISABLED"
+#'     ReconnectEnabled = "ENABLED"|"DISABLED",
+#'     LogUploadEnabled = "ENABLED"|"DISABLED"
 #'   )
 #' )
 #' ```
@@ -3275,6 +3467,11 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
 #' Modifies the specified WorkSpace properties. For important information
 #' about how to modify the size of the root and user volumes, see [Modify a
 #' WorkSpace](https://docs.aws.amazon.com/workspaces/latest/adminguide/modify-workspaces.html).
+#' 
+#' The `MANUAL` running mode value is only supported by Amazon WorkSpaces
+#' Core. Contact your account team to be allow-listed to use this value.
+#' For more information, see [Amazon WorkSpaces
+#' Core](https://aws.amazon.com/workspaces/core/).
 #'
 #' @usage
 #' workspaces_modify_workspace_properties(WorkspaceId, WorkspaceProperties)
@@ -3290,11 +3487,14 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
 #' svc$modify_workspace_properties(
 #'   WorkspaceId = "string",
 #'   WorkspaceProperties = list(
-#'     RunningMode = "AUTO_STOP"|"ALWAYS_ON",
+#'     RunningMode = "AUTO_STOP"|"ALWAYS_ON"|"MANUAL",
 #'     RunningModeAutoStopTimeoutInMinutes = 123,
 #'     RootVolumeSizeGib = 123,
 #'     UserVolumeSizeGib = 123,
-#'     ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
+#'     ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
+#'     Protocols = list(
+#'       "PCOIP"|"WSP"
+#'     )
 #'   )
 #' )
 #' ```

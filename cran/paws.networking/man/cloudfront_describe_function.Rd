@@ -3,17 +3,17 @@
 \name{cloudfront_describe_function}
 \alias{cloudfront_describe_function}
 \title{Gets configuration information and metadata about a CloudFront function,
-but not the function’s code}
+but not the function's code}
 \usage{
 cloudfront_describe_function(Name, Stage = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the function that you are getting information about.}
 
-\item{Stage}{The function’s stage, either \code{DEVELOPMENT} or \code{LIVE}.}
+\item{Stage}{The function's stage, either \code{DEVELOPMENT} or \code{LIVE}.}
 }
 \description{
-Gets configuration information and metadata about a CloudFront function, but not the function’s code. To get a function’s code, use \code{\link[=cloudfront_get_function]{get_function}}.
+Gets configuration information and metadata about a CloudFront function, but not the function's code. To get a function's code, use \code{\link[=cloudfront_get_function]{get_function}}.
 
 See \url{https://paws-r.github.io/docs/cloudfront/describe_function.html} for full documentation.
 }

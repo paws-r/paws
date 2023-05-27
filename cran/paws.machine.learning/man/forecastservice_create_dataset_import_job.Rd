@@ -13,7 +13,8 @@ forecastservice_create_dataset_import_job(
   UseGeolocationForTimeZone = NULL,
   GeolocationFormat = NULL,
   Tags = NULL,
-  Format = NULL
+  Format = NULL,
+  ImportMode = NULL
 )
 }
 \arguments{
@@ -24,11 +25,11 @@ help you avoid getting a \code{ResourceAlreadyExistsException} exception.}
 \item{DatasetArn}{[required] The Amazon Resource Name (ARN) of the Amazon Forecast dataset that you
 want to import data to.}
 
-\item{DataSource}{[required] The location of the training data to import and an AWS Identity and
-Access Management (IAM) role that Amazon Forecast can assume to access
-the data. The training data must be stored in an Amazon S3 bucket.
+\item{DataSource}{[required] The location of the training data to import and an Identity and Access
+Management (IAM) role that Amazon Forecast can assume to access the
+data. The training data must be stored in an Amazon S3 bucket.
 
-If encryption is used, \code{DataSource} must include an AWS Key Management
+If encryption is used, \code{DataSource} must include an Key Management
 Service (KMS) key and the IAM role must allow Amazon Forecast permission
 to access the key. The KMS key and IAM role must match those specified
 in the \code{EncryptionConfig} parameter of the
@@ -88,16 +89,21 @@ numbers, and spaces representable in UTF-8, and the following
 characters: + - = . _ : / @.
 \item Tag keys and values are case sensitive.
 \item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
-such as a prefix for keys as it is reserved for AWS use. You cannot
-edit or delete tag keys with this prefix. Values can have this
-prefix. If a tag value has \code{aws} as its prefix but the key does not,
-then Forecast considers it to be a user tag and will count against
-the limit of 50 tags. Tags with only the key prefix of \code{aws} do not
-count against your tags per resource limit.
+such as a prefix for keys as it is reserved for Amazon Web Services
+use. You cannot edit or delete tag keys with this prefix. Values can
+have this prefix. If a tag value has \code{aws} as its prefix but the key
+does not, then Forecast considers it to be a user tag and will count
+against the limit of 50 tags. Tags with only the key prefix of \code{aws}
+do not count against your tags per resource limit.
 }}
 
 \item{Format}{The format of the imported data, CSV or PARQUET. The default value is
 CSV.}
+
+\item{ImportMode}{Specifies whether the dataset import job is a \code{FULL} or \code{INCREMENTAL}
+import. A \code{FULL} dataset import replaces all of the existing data with
+the newly imported data. An \code{INCREMENTAL} import appends the imported
+data to the existing data.}
 }
 \description{
 Imports your training data to an Amazon Forecast dataset. You provide the location of your training data in an Amazon Simple Storage Service (Amazon S3) bucket and the Amazon Resource Name (ARN) of the dataset that you want to import the data to.

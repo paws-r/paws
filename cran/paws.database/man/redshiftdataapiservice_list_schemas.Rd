@@ -29,7 +29,8 @@ with your authentication credentials.}
 connect to with your authentication credentials.}
 
 \item{DbUser}{The database user name. This parameter is required when connecting to a
-cluster and authenticating using temporary credentials.}
+cluster as a database user and authenticating using temporary
+credentials.}
 
 \item{MaxResults}{The maximum number of schemas to return in the response. If more schemas
 exist than fit in one response, then \code{NextToken} is returned to page
@@ -50,9 +51,9 @@ are returned.}
 \item{SecretArn}{The name or ARN of the secret that enables access to the database. This
 parameter is required when authenticating using Secrets Manager.}
 
-\item{WorkgroupName}{The serverless workgroup name. This parameter is required when
-connecting to a serverless workgroup and authenticating using either
-Secrets Manager or temporary credentials.}
+\item{WorkgroupName}{The serverless workgroup name or Amazon Resource Name (ARN). This
+parameter is required when connecting to a serverless workgroup and
+authenticating using either Secrets Manager or temporary credentials.}
 }
 \description{
 Lists the schemas in a database. A token is returned to page through the schema list. Depending on the authorization method, use one of the following combinations of request parameters:

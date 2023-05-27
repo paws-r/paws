@@ -55,7 +55,7 @@ endpoints and quotas in the \emph{Amazon Web Services General Reference.}.
 
 When making the API calls, you will need to authenticate your request by
 providing a signature. Lambda supports signature version 4. For more
-information, see \href{https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html}{Signature Version 4 signing process}
+information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html}{Signature Version 4 signing process}
 in the \emph{Amazon Web Services General Reference.}.
 
 \strong{CA certificates}
@@ -125,7 +125,7 @@ To learn more about ACM-provided certificates, see \href{https://aws.amazon.com/
 
 \tabular{ll}{
 \link[paws.compute:lambda_add_layer_version_permission]{add_layer_version_permission} \tab Adds permissions to the resource-based policy of a version of an Lambda layer\cr
-\link[paws.compute:lambda_add_permission]{add_permission} \tab Grants an Amazon Web Services service, account, or organization permission to use a function\cr
+\link[paws.compute:lambda_add_permission]{add_permission} \tab Grants an Amazon Web Service, Amazon Web Services account, or Amazon Web Services organization permission to use a function\cr
 \link[paws.compute:lambda_create_alias]{create_alias} \tab Creates an alias for a Lambda function version\cr
 \link[paws.compute:lambda_create_code_signing_config]{create_code_signing_config} \tab Creates a code signing configuration\cr
 \link[paws.compute:lambda_create_event_source_mapping]{create_event_source_mapping} \tab Creates a mapping between an event source and an Lambda function\cr
@@ -156,8 +156,10 @@ To learn more about ACM-provided certificates, see \href{https://aws.amazon.com/
 \link[paws.compute:lambda_get_layer_version_policy]{get_layer_version_policy} \tab Returns the permission policy for a version of an Lambda layer\cr
 \link[paws.compute:lambda_get_policy]{get_policy} \tab Returns the resource-based IAM policy for a function, version, or alias\cr
 \link[paws.compute:lambda_get_provisioned_concurrency_config]{get_provisioned_concurrency_config} \tab Retrieves the provisioned concurrency configuration for a function's alias or version\cr
+\link[paws.compute:lambda_get_runtime_management_config]{get_runtime_management_config} \tab Retrieves the runtime management configuration for a function's version\cr
 \link[paws.compute:lambda_invoke]{invoke} \tab Invokes a Lambda function\cr
 \link[paws.compute:lambda_invoke_async]{invoke_async} \tab For asynchronous function invocation, use Invoke\cr
+\link[paws.compute:lambda_invoke_with_response_stream]{invoke_with_response_stream} \tab Configure your Lambda functions to stream response payloads back to clients\cr
 \link[paws.compute:lambda_list_aliases]{list_aliases} \tab Returns a list of aliases for a Lambda function\cr
 \link[paws.compute:lambda_list_code_signing_configs]{list_code_signing_configs} \tab Returns a list of code signing configurations\cr
 \link[paws.compute:lambda_list_event_source_mappings]{list_event_source_mappings} \tab Lists event source mappings\cr
@@ -176,8 +178,9 @@ To learn more about ACM-provided certificates, see \href{https://aws.amazon.com/
 \link[paws.compute:lambda_put_function_concurrency]{put_function_concurrency} \tab Sets the maximum number of simultaneous executions for a function, and reserves capacity for that concurrency level\cr
 \link[paws.compute:lambda_put_function_event_invoke_config]{put_function_event_invoke_config} \tab Configures options for asynchronous invocation on a function, version, or alias\cr
 \link[paws.compute:lambda_put_provisioned_concurrency_config]{put_provisioned_concurrency_config} \tab Adds a provisioned concurrency configuration to a function's alias or version\cr
+\link[paws.compute:lambda_put_runtime_management_config]{put_runtime_management_config} \tab Sets the runtime management configuration for a function's version\cr
 \link[paws.compute:lambda_remove_layer_version_permission]{remove_layer_version_permission} \tab Removes a statement from the permissions policy for a version of an Lambda layer\cr
-\link[paws.compute:lambda_remove_permission]{remove_permission} \tab Revokes function-use permission from an Amazon Web Services service or another account\cr
+\link[paws.compute:lambda_remove_permission]{remove_permission} \tab Revokes function-use permission from an Amazon Web Service or another Amazon Web Services account\cr
 \link[paws.compute:lambda_tag_resource]{tag_resource} \tab Adds tags to a function\cr
 \link[paws.compute:lambda_untag_resource]{untag_resource} \tab Removes tags from a function\cr
 \link[paws.compute:lambda_update_alias]{update_alias} \tab Updates the configuration of a Lambda function alias\cr

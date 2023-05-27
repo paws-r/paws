@@ -2,8 +2,8 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_describe_load_balancer_target_groups}
 \alias{autoscaling_describe_load_balancer_target_groups}
-\title{Gets information about the Elastic Load Balancing target groups for the
-specified Auto Scaling group}
+\title{This API operation is superseded by DescribeTrafficSources, which can
+describe multiple traffic sources types}
 \usage{
 autoscaling_describe_load_balancer_target_groups(
   AutoScalingGroupName,
@@ -21,7 +21,7 @@ from a previous call.)}
 is \code{100} and the maximum value is \code{100}.}
 }
 \description{
-Gets information about the Elastic Load Balancing target groups for the specified Auto Scaling group.
+This API operation is superseded by \code{\link[=autoscaling_describe_traffic_sources]{describe_traffic_sources}}, which can describe multiple traffic sources types. We recommend using \code{\link[=autoscaling_detach_traffic_sources]{detach_traffic_sources}} to simplify how you manage traffic sources. However, we continue to support \code{\link[=autoscaling_describe_load_balancer_target_groups]{describe_load_balancer_target_groups}}. You can use both the original \code{\link[=autoscaling_describe_load_balancer_target_groups]{describe_load_balancer_target_groups}} API operation and \code{\link[=autoscaling_describe_traffic_sources]{describe_traffic_sources}} on the same Auto Scaling group.
 
 See \url{https://paws-r.github.io/docs/autoscaling/describe_load_balancer_target_groups.html} for full documentation.
 }

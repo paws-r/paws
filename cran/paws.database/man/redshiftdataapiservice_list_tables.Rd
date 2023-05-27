@@ -30,7 +30,8 @@ with your authentication credentials.}
 connect to with your authentication credentials.}
 
 \item{DbUser}{The database user name. This parameter is required when connecting to a
-cluster and authenticating using temporary credentials.}
+cluster as a database user and authenticating using temporary
+credentials.}
 
 \item{MaxResults}{The maximum number of tables to return in the response. If more tables
 exist than fit in one response, then \code{NextToken} is returned to page
@@ -60,9 +61,9 @@ are returned. If \code{TablePattern} is not specified, then all tables that
 match \code{SchemaPattern}are returned. If neither \code{SchemaPattern} or
 \code{TablePattern} are specified, then all tables are returned.}
 
-\item{WorkgroupName}{The serverless workgroup name. This parameter is required when
-connecting to a serverless workgroup and authenticating using either
-Secrets Manager or temporary credentials.}
+\item{WorkgroupName}{The serverless workgroup name or Amazon Resource Name (ARN). This
+parameter is required when connecting to a serverless workgroup and
+authenticating using either Secrets Manager or temporary credentials.}
 }
 \description{
 List the tables in a database. If neither \code{SchemaPattern} nor \code{TablePattern} are specified, then all tables in the database are returned. A token is returned to page through the table list. Depending on the authorization method, use one of the following combinations of request parameters:

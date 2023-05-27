@@ -11,7 +11,7 @@ resourcegroupstaggingapi_tag_resources(ResourceARNList, Tags)
 to.
 
 An ARN (Amazon Resource Name) uniquely identifies a resource. For more
-information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}
+information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{Tags}{[required] Specifies a list of tags that you want to add to the specified

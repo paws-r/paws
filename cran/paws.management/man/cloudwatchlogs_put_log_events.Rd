@@ -19,13 +19,13 @@ cloudwatchlogs_put_log_events(
 \item{logEvents}{[required] The log events.}
 
 \item{sequenceToken}{The sequence token obtained from the response of the previous
-\code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} call. An upload in a
-newly created log stream does not require a sequence token. You can also
-get the sequence token using
-\code{\link[=cloudwatchlogs_describe_log_streams]{describe_log_streams}}. If you
-call \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} twice within a
-narrow time period using the same value for \code{sequenceToken}, both calls
-might be successful or one might be rejected.}
+\code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} call.
+
+The \code{sequenceToken} parameter is now ignored in
+\code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} actions.
+\code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} actions are now
+accepted and never return \code{InvalidSequenceTokenException} or
+\code{DataAlreadyAcceptedException} even if the sequence token is not valid.}
 }
 \description{
 Uploads a batch of log events to the specified log stream.

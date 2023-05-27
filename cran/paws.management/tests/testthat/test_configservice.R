@@ -76,6 +76,10 @@ test_that("list_conformance_pack_compliance_scores", {
   expect_error(svc$list_conformance_pack_compliance_scores(), NA)
 })
 
+test_that("list_resource_evaluations", {
+  expect_error(svc$list_resource_evaluations(), NA)
+})
+
 test_that("list_stored_queries", {
   expect_error(svc$list_stored_queries(), NA)
 })

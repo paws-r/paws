@@ -8,7 +8,7 @@ with a CloudFront distribution}
 cloudfront_associate_alias(TargetDistributionId, Alias)
 }
 \arguments{
-\item{TargetDistributionId}{[required] The ID of the distribution that you’re associating the alias with.}
+\item{TargetDistributionId}{[required] The ID of the distribution that you're associating the alias with.}
 
 \item{Alias}{[required] The alias (also known as a CNAME) to add to the target distribution.}
 }

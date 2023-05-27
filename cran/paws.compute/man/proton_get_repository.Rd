@@ -2,7 +2,7 @@
 % Please edit documentation in R/proton_operations.R
 \name{proton_get_repository}
 \alias{proton_get_repository}
-\title{Get detail data for a repository}
+\title{Get detail data for a linked repository}
 \usage{
 proton_get_repository(name, provider)
 }
@@ -12,7 +12,7 @@ proton_get_repository(name, provider)
 \item{provider}{[required] The repository provider.}
 }
 \description{
-Get detail data for a repository.
+Get detail data for a linked repository.
 
 See \url{https://paws-r.github.io/docs/proton/get_repository.html} for full documentation.
 }

@@ -3,7 +3,7 @@
 \name{quicksight_describe_account_subscription}
 \alias{quicksight_describe_account_subscription}
 \title{Use the DescribeAccountSubscription operation to receive a description
-of a Amazon QuickSight account's subscription}
+of an Amazon QuickSight account's subscription}
 \usage{
 quicksight_describe_account_subscription(AwsAccountId)
 }
@@ -12,7 +12,7 @@ quicksight_describe_account_subscription(AwsAccountId)
 QuickSight account.}
 }
 \description{
-Use the DescribeAccountSubscription operation to receive a description of a Amazon QuickSight account's subscription. A successful API call returns an \code{AccountInfo} object that includes an account's name, subscription status, authentication type, edition, and notification email address.
+Use the DescribeAccountSubscription operation to receive a description of an Amazon QuickSight account's subscription. A successful API call returns an \code{AccountInfo} object that includes an account's name, subscription status, authentication type, edition, and notification email address.
 
 See \url{https://paws-r.github.io/docs/quicksight/describe_account_subscription.html} for full documentation.
 }

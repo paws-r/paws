@@ -6,6 +6,7 @@
 the API request is processed}
 \usage{
 ivschat_list_rooms(
+  loggingConfigurationIdentifier = NULL,
   maxResults = NULL,
   messageReviewHandlerUri = NULL,
   name = NULL,
@@ -13,6 +14,8 @@ ivschat_list_rooms(
 )
 }
 \arguments{
+\item{loggingConfigurationIdentifier}{Logging-configuration identifier.}
+
 \item{maxResults}{Maximum number of rooms to return. Default: 50.}
 
 \item{messageReviewHandlerUri}{Filters the list to match the specified message review handler URI.}

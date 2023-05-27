@@ -6,7 +6,7 @@
 \usage{
 fsx_create_data_repository_association(
   FileSystemId,
-  FileSystemPath,
+  FileSystemPath = NULL,
   DataRepositoryPath,
   BatchImportMetaDataOnCreate = NULL,
   ImportedFileChunkSize = NULL,
@@ -18,7 +18,7 @@ fsx_create_data_repository_association(
 \arguments{
 \item{FileSystemId}{[required]}
 
-\item{FileSystemPath}{[required] A path on the file system that points to a high-level directory (such as
+\item{FileSystemPath}{A path on the file system that points to a high-level directory (such as
 \verb{/ns1/}) or subdirectory (such as \verb{/ns1/subdir/}) that will be mapped
 1-1 with \code{DataRepositoryPath}. The leading forward slash in the name is
 required. Two data repository associations cannot have overlapping file
@@ -32,9 +32,9 @@ one Amazon S3 bucket, and no other S3 bucket can be linked to the
 directory.
 
 If you specify only a forward slash (\code{/}) as the file system path, you
-can link only 1 data repository to the file system. You can only specify
-"/" as the file system path for the first data repository associated
-with a file system.}
+can link only one data repository to the file system. You can only
+specify "/" as the file system path for the first data repository
+associated with a file system.}
 
 \item{DataRepositoryPath}{[required] The path to the Amazon S3 data repository that will be linked to the
 file system. The path can be an S3 bucket or prefix in the format
@@ -66,7 +66,7 @@ system to the data repository.}
 \item{Tags}{}
 }
 \description{
-Creates an Amazon FSx for Lustre data repository association (DRA). A data repository association is a link between a directory on the file system and an Amazon S3 bucket or prefix. You can have a maximum of 8 data repository associations on a file system. Data repository associations are supported only for file systems with the \code{Persistent_2} deployment type.
+Creates an Amazon FSx for Lustre data repository association (DRA). A data repository association is a link between a directory on the file system and an Amazon S3 bucket or prefix. You can have a maximum of 8 data repository associations on a file system. Data repository associations are supported for all file systems except for \code{Scratch_1} deployment type.
 
 See \url{https://paws-r.github.io/docs/fsx/create_data_repository_association.html} for full documentation.
 }

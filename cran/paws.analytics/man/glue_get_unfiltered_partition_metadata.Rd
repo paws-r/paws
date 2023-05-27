@@ -2,7 +2,8 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_get_unfiltered_partition_metadata}
 \alias{glue_get_unfiltered_partition_metadata}
-\title{Get unfiltered partition metadata}
+\title{Retrieves partition metadata from the Data Catalog that contains
+unfiltered metadata}
 \usage{
 glue_get_unfiltered_partition_metadata(
   CatalogId,
@@ -14,20 +15,20 @@ glue_get_unfiltered_partition_metadata(
 )
 }
 \arguments{
-\item{CatalogId}{[required]}
+\item{CatalogId}{[required] The catalog ID where the partition resides.}
 
-\item{DatabaseName}{[required]}
+\item{DatabaseName}{[required] (Required) Specifies the name of a database that contains the partition.}
 
-\item{TableName}{[required]}
+\item{TableName}{[required] (Required) Specifies the name of a table that contains the partition.}
 
-\item{PartitionValues}{[required]}
+\item{PartitionValues}{[required] (Required) A list of partition key values.}
 
-\item{AuditContext}{}
+\item{AuditContext}{A structure containing Lake Formation audit context information.}
 
-\item{SupportedPermissionTypes}{[required]}
+\item{SupportedPermissionTypes}{[required] (Required) A list of supported permission types.}
 }
 \description{
-Get unfiltered partition metadata
+Retrieves partition metadata from the Data Catalog that contains unfiltered metadata.
 
 See \url{https://paws-r.github.io/docs/glue/get_unfiltered_partition_metadata.html} for full documentation.
 }

@@ -12,8 +12,6 @@ NULL
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -91,14 +89,19 @@ servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
-#' @param PrincipalARN &#91;required&#93; The ARN of the principal (IAM user, role, or group).
-#' @param PrincipalType &#91;required&#93; The principal type. The supported value is `IAM`.
+#' @param PrincipalARN &#91;required&#93; The ARN of the principal (user, role, or group). This field allows an
+#' ARN with no `accountID` if `PrincipalType` is `IAM_PATTERN`.
+#' 
+#' You can associate multiple `IAM` patterns even if the account has no
+#' principal with that name. This is useful in Principal Name Sharing if
+#' you want to share a principal without creating it in the account that
+#' owns the portfolio.
+#' @param PrincipalType &#91;required&#93; The principal type. The supported value is `IAM` if you use a fully
+#' defined ARN, or `IAM_PATTERN` if you use an ARN with no `accountID`.
 #'
 #' @keywords internal
 #'
@@ -128,8 +131,6 @@ servicecatalog_associate_principal_with_portfolio <- function(AcceptLanguage = N
 #' See [https://paws-r.github.io/docs/servicecatalog/associate_product_with_portfolio.html](https://paws-r.github.io/docs/servicecatalog/associate_product_with_portfolio.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -170,8 +171,6 @@ servicecatalog_associate_product_with_portfolio <- function(AcceptLanguage = NUL
 #' `pa-4abcdjnxjj6ne`.
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -239,8 +238,6 @@ servicecatalog_associate_tag_option_with_resource <- function(ResourceId, TagOpt
 #' ID, and the Provisioning Artifact ID.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -277,8 +274,6 @@ servicecatalog_batch_associate_service_action_with_provisioning_artifact <- func
 #' ID, and the Provisioning Artifact ID.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -312,8 +307,6 @@ servicecatalog_batch_disassociate_service_action_from_provisioning_artifact <- f
 #' See [https://paws-r.github.io/docs/servicecatalog/copy_product.html](https://paws-r.github.io/docs/servicecatalog/copy_product.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -360,8 +353,6 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' See [https://paws-r.github.io/docs/servicecatalog/create_constraint.html](https://paws-r.github.io/docs/servicecatalog/create_constraint.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -424,7 +415,7 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' You also cannot have more than one `STACKSET` constraint on a product
 #' and portfolio.
 #' 
-#' Products with a `STACKSET` constraint will launch an AWS CloudFormation
+#' Products with a `STACKSET` constraint will launch an CloudFormation
 #' stack set.
 #' 
 #' **TEMPLATE**
@@ -477,8 +468,6 @@ servicecatalog_create_constraint <- function(AcceptLanguage = NULL, PortfolioId,
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -520,33 +509,39 @@ servicecatalog_create_portfolio <- function(AcceptLanguage = NULL, DisplayName, 
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
-#' @param AccountId The AWS account ID. For example, `123456789012`.
-#' @param OrganizationNode The organization node to whom you are going to share. If
-#' `OrganizationNode` is passed in, `PortfolioShare` will be created for
-#' the node an ListOrganizationPortfolioAccessd its children (when
-#' applies), and a `PortfolioShareToken` will be returned in the output in
-#' order for the administrator to monitor the status of the
-#' `PortfolioShare` creation process.
+#' @param AccountId The Amazon Web Services account ID. For example, `123456789012`.
+#' @param OrganizationNode The organization node to whom you are going to share. When you pass
+#' `OrganizationNode`, it creates `PortfolioShare` for all of the Amazon
+#' Web Services accounts that are associated to the `OrganizationNode`. The
+#' output returns a `PortfolioShareToken`, which enables the administrator
+#' to monitor the status of the `PortfolioShare` creation process.
 #' @param ShareTagOptions Enables or disables `TagOptions ` sharing when creating the portfolio
 #' share. If this flag is not provided, TagOptions sharing is disabled.
+#' @param SharePrincipals Enables or disables `Principal` sharing when creating the portfolio
+#' share. If this flag is not provided, principal sharing is disabled.
+#' 
+#' When you enable Principal Name Sharing for a portfolio share, the share
+#' recipient account end users with a principal that matches any of the
+#' associated IAM patterns can provision products from the portfolio. Once
+#' shared, the share recipient can view associations of `PrincipalType`:
+#' `IAM_PATTERN` on their portfolio. You can create the principals in the
+#' recipient account before or after creating the share.
 #'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_create_portfolio_share
-servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, PortfolioId, AccountId = NULL, OrganizationNode = NULL, ShareTagOptions = NULL) {
+servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, PortfolioId, AccountId = NULL, OrganizationNode = NULL, ShareTagOptions = NULL, SharePrincipals = NULL) {
   op <- new_operation(
     name = "CreatePortfolioShare",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicecatalog$create_portfolio_share_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, AccountId = AccountId, OrganizationNode = OrganizationNode, ShareTagOptions = ShareTagOptions)
+  input <- .servicecatalog$create_portfolio_share_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, AccountId = AccountId, OrganizationNode = OrganizationNode, ShareTagOptions = ShareTagOptions, SharePrincipals = SharePrincipals)
   output <- .servicecatalog$create_portfolio_share_output()
   config <- get_config()
   svc <- .servicecatalog$service(config)
@@ -565,8 +560,6 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -581,22 +574,30 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' `^https?:\/\// `/ is the pattern used to validate SupportUrl.
 #' @param ProductType &#91;required&#93; The type of product.
 #' @param Tags One or more tags.
-#' @param ProvisioningArtifactParameters &#91;required&#93; The configuration of the provisioning artifact.
+#' @param ProvisioningArtifactParameters The configuration of the provisioning artifact.
 #' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
+#' @param SourceConnection Specifies connection details for the created product and syncs the
+#' product to the connection source artifact. This automatically manages
+#' the product's artifacts based on changes to the source. The
+#' `SourceConnection` parameter consists of the following sub-fields.
+#' 
+#' -   `Type`
+#' 
+#' -   `ConnectionParamters`
 #'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_create_product
-servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, Description = NULL, Distributor = NULL, SupportDescription = NULL, SupportEmail = NULL, SupportUrl = NULL, ProductType, Tags = NULL, ProvisioningArtifactParameters, IdempotencyToken) {
+servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, Description = NULL, Distributor = NULL, SupportDescription = NULL, SupportEmail = NULL, SupportUrl = NULL, ProductType, Tags = NULL, ProvisioningArtifactParameters = NULL, IdempotencyToken, SourceConnection = NULL) {
   op <- new_operation(
     name = "CreateProduct",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicecatalog$create_product_input(AcceptLanguage = AcceptLanguage, Name = Name, Owner = Owner, Description = Description, Distributor = Distributor, SupportDescription = SupportDescription, SupportEmail = SupportEmail, SupportUrl = SupportUrl, ProductType = ProductType, Tags = Tags, ProvisioningArtifactParameters = ProvisioningArtifactParameters, IdempotencyToken = IdempotencyToken)
+  input <- .servicecatalog$create_product_input(AcceptLanguage = AcceptLanguage, Name = Name, Owner = Owner, Description = Description, Distributor = Distributor, SupportDescription = SupportDescription, SupportEmail = SupportEmail, SupportUrl = SupportUrl, ProductType = ProductType, Tags = Tags, ProvisioningArtifactParameters = ProvisioningArtifactParameters, IdempotencyToken = IdempotencyToken, SourceConnection = SourceConnection)
   output <- .servicecatalog$create_product_output()
   config <- get_config()
   svc <- .servicecatalog$service(config)
@@ -609,13 +610,11 @@ servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, De
 #' Creates a plan
 #'
 #' @description
-#' Creates a plan. A plan includes the list of resources to be created (when provisioning a new product) or modified (when updating a provisioned product) when the plan is executed.
+#' Creates a plan.
 #'
 #' See [https://paws-r.github.io/docs/servicecatalog/create_provisioned_product_plan.html](https://paws-r.github.io/docs/servicecatalog/create_provisioned_product_plan.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -630,8 +629,8 @@ servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, De
 #' [`list_launch_paths`][servicecatalog_list_launch_paths].
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param ProvisionedProductName &#91;required&#93; A user-friendly name for the provisioned product. This value must be
-#' unique for the AWS account and cannot be updated after the product is
-#' provisioned.
+#' unique for the Amazon Web Services account and cannot be updated after
+#' the product is provisioned.
 #' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact.
 #' @param ProvisioningParameters Parameters specified by the administrator that are required for
 #' provisioning the product.
@@ -673,8 +672,6 @@ servicecatalog_create_provisioned_product_plan <- function(AcceptLanguage = NULL
 #' See [https://paws-r.github.io/docs/servicecatalog/create_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/create_provisioning_artifact.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -718,16 +715,16 @@ servicecatalog_create_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' 
 #' **Name**
 #' 
-#' The name of the AWS Systems Manager document (SSM document). For
-#' example, `AWS-RestartEC2Instance`.
+#' The name of the Amazon Web Services Systems Manager document (SSM
+#' document). For example, `AWS-RestartEC2Instance`.
 #' 
 #' If you are using a shared SSM document, you must provide the ARN instead
 #' of the name.
 #' 
 #' **Version**
 #' 
-#' The AWS Systems Manager automation document version. For example,
-#' `"Version": "1"`
+#' The Amazon Web Services Systems Manager automation document version. For
+#' example, `"Version": "1"`
 #' 
 #' **AssumeRole**
 #' 
@@ -746,8 +743,6 @@ servicecatalog_create_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' `[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]`.
 #' @param Description The self-service action description.
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -815,8 +810,6 @@ servicecatalog_create_tag_option <- function(Key, Value) {
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -850,8 +843,6 @@ servicecatalog_delete_constraint <- function(AcceptLanguage = NULL, Id) {
 #' See [https://paws-r.github.io/docs/servicecatalog/delete_portfolio.html](https://paws-r.github.io/docs/servicecatalog/delete_portfolio.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -888,13 +879,11 @@ servicecatalog_delete_portfolio <- function(AcceptLanguage = NULL, Id) {
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
-#' @param AccountId The AWS account ID.
+#' @param AccountId The Amazon Web Services account ID.
 #' @param OrganizationNode The organization node to whom you are going to stop sharing.
 #'
 #' @keywords internal
@@ -925,8 +914,6 @@ servicecatalog_delete_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' See [https://paws-r.github.io/docs/servicecatalog/delete_product.html](https://paws-r.github.io/docs/servicecatalog/delete_product.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -962,14 +949,12 @@ servicecatalog_delete_product <- function(AcceptLanguage = NULL, Id) {
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
 #' @param PlanId &#91;required&#93; The plan identifier.
-#' @param IgnoreErrors If set to true, AWS Service Catalog stops managing the specified
-#' provisioned product even if it cannot delete the underlying resources.
+#' @param IgnoreErrors If set to true, Service Catalog stops managing the specified provisioned
+#' product even if it cannot delete the underlying resources.
 #'
 #' @keywords internal
 #'
@@ -1000,8 +985,6 @@ servicecatalog_delete_provisioned_product_plan <- function(AcceptLanguage = NULL
 #' See [https://paws-r.github.io/docs/servicecatalog/delete_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/delete_provisioning_artifact.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -1038,8 +1021,6 @@ servicecatalog_delete_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #'
 #' @param Id &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -1103,8 +1084,6 @@ servicecatalog_delete_tag_option <- function(Id) {
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -1138,8 +1117,6 @@ servicecatalog_describe_constraint <- function(AcceptLanguage = NULL, Id) {
 #' See [https://paws-r.github.io/docs/servicecatalog/describe_copy_product_status.html](https://paws-r.github.io/docs/servicecatalog/describe_copy_product_status.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -1175,8 +1152,6 @@ servicecatalog_describe_copy_product_status <- function(AcceptLanguage = NULL, C
 #' See [https://paws-r.github.io/docs/servicecatalog/describe_portfolio.html](https://paws-r.github.io/docs/servicecatalog/describe_portfolio.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -1289,8 +1264,6 @@ servicecatalog_describe_portfolio_shares <- function(PortfolioId, Type, PageToke
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -1325,8 +1298,6 @@ servicecatalog_describe_product <- function(AcceptLanguage = NULL, Id = NULL, Na
 #' See [https://paws-r.github.io/docs/servicecatalog/describe_product_as_admin.html](https://paws-r.github.io/docs/servicecatalog/describe_product_as_admin.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -1371,8 +1342,6 @@ servicecatalog_describe_product_as_admin <- function(AcceptLanguage = NULL, Id =
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -1406,8 +1375,6 @@ servicecatalog_describe_product_view <- function(AcceptLanguage = NULL, Id) {
 #' See [https://paws-r.github.io/docs/servicecatalog/describe_provisioned_product.html](https://paws-r.github.io/docs/servicecatalog/describe_provisioned_product.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -1452,8 +1419,6 @@ servicecatalog_describe_provisioned_product <- function(AcceptLanguage = NULL, I
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -1491,8 +1456,6 @@ servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NU
 #' See [https://paws-r.github.io/docs/servicecatalog/describe_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/describe_provisioning_artifact.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -1532,8 +1495,6 @@ servicecatalog_describe_provisioning_artifact <- function(AcceptLanguage = NULL,
 #' See [https://paws-r.github.io/docs/servicecatalog/describe_provisioning_parameters.html](https://paws-r.github.io/docs/servicecatalog/describe_provisioning_parameters.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -1581,8 +1542,6 @@ servicecatalog_describe_provisioning_parameters <- function(AcceptLanguage = NUL
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -1622,8 +1581,6 @@ servicecatalog_describe_record <- function(AcceptLanguage = NULL, Id, PageToken 
 #' @param Id &#91;required&#93; The self-service action identifier.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -1660,8 +1617,6 @@ servicecatalog_describe_service_action <- function(Id, AcceptLanguage = NULL) {
 #' @param ProvisionedProductId &#91;required&#93; The identifier of the provisioned product.
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier.
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -1716,10 +1671,10 @@ servicecatalog_describe_tag_option <- function(Id) {
 }
 .servicecatalog$operations$describe_tag_option <- servicecatalog_describe_tag_option
 
-#' Disable portfolio sharing through AWS Organizations feature
+#' Disable portfolio sharing through the Organizations service
 #'
 #' @description
-#' Disable portfolio sharing through AWS Organizations feature. This feature will not delete your current shares but it will prevent you from creating new shares throughout your organization. Current shares will not be in sync with your organization structure if it changes after calling this API. This API can only be called by the management account in the organization.
+#' Disable portfolio sharing through the Organizations service. This command will not delete your current shares, but prevents you from creating new shares throughout your organization. Current shares are not kept in sync with your organization structure if the structure changes after calling this API. Only the management account in the organization can call this API.
 #'
 #' See [https://paws-r.github.io/docs/servicecatalog/disable_aws_organizations_access.html](https://paws-r.github.io/docs/servicecatalog/disable_aws_organizations_access.html) for full documentation.
 #'
@@ -1784,25 +1739,26 @@ servicecatalog_disassociate_budget_from_resource <- function(BudgetName, Resourc
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
-#' @param PrincipalARN &#91;required&#93; The ARN of the principal (IAM user, role, or group).
+#' @param PrincipalARN &#91;required&#93; The ARN of the principal (user, role, or group). This field allows an
+#' ARN with no `accountID` if `PrincipalType` is `IAM_PATTERN`.
+#' @param PrincipalType The supported value is `IAM` if you use a fully defined ARN, or
+#' `IAM_PATTERN` if you use no `accountID`.
 #'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_disassociate_principal_from_portfolio
-servicecatalog_disassociate_principal_from_portfolio <- function(AcceptLanguage = NULL, PortfolioId, PrincipalARN) {
+servicecatalog_disassociate_principal_from_portfolio <- function(AcceptLanguage = NULL, PortfolioId, PrincipalARN, PrincipalType = NULL) {
   op <- new_operation(
     name = "DisassociatePrincipalFromPortfolio",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicecatalog$disassociate_principal_from_portfolio_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, PrincipalARN = PrincipalARN)
+  input <- .servicecatalog$disassociate_principal_from_portfolio_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, PrincipalARN = PrincipalARN, PrincipalType = PrincipalType)
   output <- .servicecatalog$disassociate_principal_from_portfolio_output()
   config <- get_config()
   svc <- .servicecatalog$service(config)
@@ -1820,8 +1776,6 @@ servicecatalog_disassociate_principal_from_portfolio <- function(AcceptLanguage 
 #' See [https://paws-r.github.io/docs/servicecatalog/disassociate_product_from_portfolio.html](https://paws-r.github.io/docs/servicecatalog/disassociate_product_from_portfolio.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -1862,8 +1816,6 @@ servicecatalog_disassociate_product_from_portfolio <- function(AcceptLanguage = 
 #' `pa-4abcdjnxjj6ne`.
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -1919,10 +1871,10 @@ servicecatalog_disassociate_tag_option_from_resource <- function(ResourceId, Tag
 }
 .servicecatalog$operations$disassociate_tag_option_from_resource <- servicecatalog_disassociate_tag_option_from_resource
 
-#' Enable portfolio sharing feature through AWS Organizations
+#' Enable portfolio sharing feature through Organizations
 #'
 #' @description
-#' Enable portfolio sharing feature through AWS Organizations. This API will allow Service Catalog to receive updates on your organization in order to sync your shares with the current structure. This API can only be called by the management account in the organization.
+#' Enable portfolio sharing feature through Organizations. This API will allow Service Catalog to receive updates on your organization in order to sync your shares with the current structure. This API can only be called by the management account in the organization.
 #'
 #' See [https://paws-r.github.io/docs/servicecatalog/enable_aws_organizations_access.html](https://paws-r.github.io/docs/servicecatalog/enable_aws_organizations_access.html) for full documentation.
 #'
@@ -1955,8 +1907,6 @@ servicecatalog_enable_aws_organizations_access <- function() {
 #' See [https://paws-r.github.io/docs/servicecatalog/execute_provisioned_product_plan.html](https://paws-r.github.io/docs/servicecatalog/execute_provisioned_product_plan.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -1998,15 +1948,13 @@ servicecatalog_execute_provisioned_product_plan <- function(AcceptLanguage = NUL
 #' @param ExecuteToken &#91;required&#93; An idempotency token that uniquely identifies the execute request.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
 #' @param Parameters A map of all self-service action parameters and their values. If a
 #' provided parameter is of a special type, such as `TARGET`, the provided
-#' value will override the default value generated by AWS Service Catalog.
-#' If the parameters field is not provided, no additional parameters are
+#' value will override the default value generated by Service Catalog. If
+#' the parameters field is not provided, no additional parameters are
 #' passed and default values will be used for any special parameters such
 #' as `TARGET`.
 #'
@@ -2030,10 +1978,10 @@ servicecatalog_execute_provisioned_product_service_action <- function(Provisione
 }
 .servicecatalog$operations$execute_provisioned_product_service_action <- servicecatalog_execute_provisioned_product_service_action
 
-#' Get the Access Status for AWS Organization portfolio share feature
+#' Get the Access Status for Organizations portfolio share feature
 #'
 #' @description
-#' Get the Access Status for AWS Organization portfolio share feature. This API can only be called by the management account in the organization or by a delegated admin.
+#' Get the Access Status for Organizations portfolio share feature. This API can only be called by the management account in the organization or by a delegated admin.
 #'
 #' See [https://paws-r.github.io/docs/servicecatalog/get_aws_organizations_access_status.html](https://paws-r.github.io/docs/servicecatalog/get_aws_organizations_access_status.html) for full documentation.
 #'
@@ -2068,8 +2016,6 @@ servicecatalog_get_aws_organizations_access_status <- function() {
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -2103,18 +2049,16 @@ servicecatalog_get_provisioned_product_outputs <- function(AcceptLanguage = NULL
 }
 .servicecatalog$operations$get_provisioned_product_outputs <- servicecatalog_get_provisioned_product_outputs
 
-#' Requests the import of a resource as a Service Catalog provisioned
-#' product that is associated to a Service Catalog product and provisioning
-#' artifact
+#' Requests the import of a resource as an Service Catalog provisioned
+#' product that is associated to an Service Catalog product and
+#' provisioning artifact
 #'
 #' @description
-#' Requests the import of a resource as a Service Catalog provisioned product that is associated to a Service Catalog product and provisioning artifact. Once imported, all supported Service Catalog governance actions are supported on the provisioned product.
+#' Requests the import of a resource as an Service Catalog provisioned product that is associated to an Service Catalog product and provisioning artifact. Once imported, all supported governance actions are supported on the provisioned product.
 #'
 #' See [https://paws-r.github.io/docs/servicecatalog/import_as_provisioned_product.html](https://paws-r.github.io/docs/servicecatalog/import_as_provisioned_product.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -2122,8 +2066,8 @@ servicecatalog_get_provisioned_product_outputs <- function(AcceptLanguage = NULL
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact.
 #' @param ProvisionedProductName &#91;required&#93; The user-friendly name of the provisioned product. The value must be
-#' unique for the AWS account. The name cannot be updated after the product
-#' is provisioned.
+#' unique for the Amazon Web Services account. The name cannot be updated
+#' after the product is provisioned.
 #' @param PhysicalId &#91;required&#93; The unique identifier of the resource to be imported. It only currently
 #' supports CloudFormation stack IDs.
 #' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
@@ -2159,8 +2103,6 @@ servicecatalog_import_as_provisioned_product <- function(AcceptLanguage = NULL, 
 #' See [https://paws-r.github.io/docs/servicecatalog/list_accepted_portfolio_shares.html](https://paws-r.github.io/docs/servicecatalog/list_accepted_portfolio_shares.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -2209,8 +2151,6 @@ servicecatalog_list_accepted_portfolio_shares <- function(AcceptLanguage = NULL,
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -2248,8 +2188,6 @@ servicecatalog_list_budgets_for_resource <- function(AcceptLanguage = NULL, Reso
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -2282,13 +2220,11 @@ servicecatalog_list_constraints_for_portfolio <- function(AcceptLanguage = NULL,
 #' Lists the paths to the specified product
 #'
 #' @description
-#' Lists the paths to the specified product. A path is how the user has access to a specified product, and is necessary when provisioning a product. A path also determines the constraints put on the product.
+#' Lists the paths to the specified product. A path describes how the user gets access to a specified product and is necessary when provisioning a product. A path also determines the constraints that are put on a product. A path is dependent on a specific product, porfolio, and principal.
 #'
 #' See [https://paws-r.github.io/docs/servicecatalog/list_launch_paths.html](https://paws-r.github.io/docs/servicecatalog/list_launch_paths.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -2326,8 +2262,6 @@ servicecatalog_list_launch_paths <- function(AcceptLanguage = NULL, ProductId, P
 #' See [https://paws-r.github.io/docs/servicecatalog/list_organization_portfolio_access.html](https://paws-r.github.io/docs/servicecatalog/list_organization_portfolio_access.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -2375,8 +2309,6 @@ servicecatalog_list_organization_portfolio_access <- function(AcceptLanguage = N
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -2417,8 +2349,6 @@ servicecatalog_list_portfolio_access <- function(AcceptLanguage = NULL, Portfoli
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -2455,8 +2385,6 @@ servicecatalog_list_portfolios <- function(AcceptLanguage = NULL, PageToken = NU
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -2485,16 +2413,15 @@ servicecatalog_list_portfolios_for_product <- function(AcceptLanguage = NULL, Pr
 }
 .servicecatalog$operations$list_portfolios_for_product <- servicecatalog_list_portfolios_for_product
 
-#' Lists all principal ARNs associated with the specified portfolio
+#' Lists all PrincipalARNs and corresponding PrincipalTypes associated with
+#' the specified portfolio
 #'
 #' @description
-#' Lists all principal ARNs associated with the specified portfolio.
+#' Lists all `PrincipalARN`s and corresponding `PrincipalType`s associated with the specified portfolio.
 #'
 #' See [https://paws-r.github.io/docs/servicecatalog/list_principals_for_portfolio.html](https://paws-r.github.io/docs/servicecatalog/list_principals_for_portfolio.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -2533,8 +2460,6 @@ servicecatalog_list_principals_for_portfolio <- function(AcceptLanguage = NULL, 
 #' See [https://paws-r.github.io/docs/servicecatalog/list_provisioned_product_plans.html](https://paws-r.github.io/docs/servicecatalog/list_provisioned_product_plans.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -2575,8 +2500,6 @@ servicecatalog_list_provisioned_product_plans <- function(AcceptLanguage = NULL,
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -2616,8 +2539,6 @@ servicecatalog_list_provisioning_artifacts <- function(AcceptLanguage = NULL, Pr
 #' results, use null.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -2650,8 +2571,6 @@ servicecatalog_list_provisioning_artifacts_for_service_action <- function(Servic
 #' See [https://paws-r.github.io/docs/servicecatalog/list_record_history.html](https://paws-r.github.io/docs/servicecatalog/list_record_history.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -2728,8 +2647,6 @@ servicecatalog_list_resources_for_tag_option <- function(TagOptionId, ResourceTy
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -2773,8 +2690,6 @@ servicecatalog_list_service_actions <- function(AcceptLanguage = NULL, PageSize 
 #' results, use null.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -2803,13 +2718,11 @@ servicecatalog_list_service_actions_for_provisioning_artifact <- function(Produc
 #' with the specified CFN_STACKSET type provisioned product
 #'
 #' @description
-#' Returns summary information about stack instances that are associated with the specified `CFN_STACKSET` type provisioned product. You can filter for stack instances that are associated with a specific AWS account name or region.
+#' Returns summary information about stack instances that are associated with the specified `CFN_STACKSET` type provisioned product. You can filter for stack instances that are associated with a specific Amazon Web Services account name or Region.
 #'
 #' See [https://paws-r.github.io/docs/servicecatalog/list_stack_instances_for_provisioned_product.html](https://paws-r.github.io/docs/servicecatalog/list_stack_instances_for_provisioned_product.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -2872,6 +2785,115 @@ servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, Pag
 }
 .servicecatalog$operations$list_tag_options <- servicecatalog_list_tag_options
 
+#' Notifies the result of the provisioning engine execution
+#'
+#' @description
+#' Notifies the result of the provisioning engine execution.
+#'
+#' See [https://paws-r.github.io/docs/servicecatalog/notify_provision_product_engine_workflow_result.html](https://paws-r.github.io/docs/servicecatalog/notify_provision_product_engine_workflow_result.html) for full documentation.
+#'
+#' @param WorkflowToken &#91;required&#93; The encrypted contents of the provisioning engine execution payload that
+#' Service Catalog sends after the Terraform product provisioning workflow
+#' starts.
+#' @param RecordId &#91;required&#93; The identifier of the record.
+#' @param Status &#91;required&#93; The status of the provisioning engine execution.
+#' @param FailureReason The reason why the provisioning engine execution failed.
+#' @param ResourceIdentifier The ID for the provisioned product resources that are part of a resource
+#' group.
+#' @param Outputs The output of the provisioning engine execution.
+#' @param IdempotencyToken &#91;required&#93; The idempotency token that identifies the provisioning engine execution.
+#'
+#' @keywords internal
+#'
+#' @rdname servicecatalog_notify_provis_produc_engine_workfl_result
+servicecatalog_notify_provision_product_engine_workflow_result <- function(WorkflowToken, RecordId, Status, FailureReason = NULL, ResourceIdentifier = NULL, Outputs = NULL, IdempotencyToken) {
+  op <- new_operation(
+    name = "NotifyProvisionProductEngineWorkflowResult",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .servicecatalog$notify_provision_product_engine_workflow_result_input(WorkflowToken = WorkflowToken, RecordId = RecordId, Status = Status, FailureReason = FailureReason, ResourceIdentifier = ResourceIdentifier, Outputs = Outputs, IdempotencyToken = IdempotencyToken)
+  output <- .servicecatalog$notify_provision_product_engine_workflow_result_output()
+  config <- get_config()
+  svc <- .servicecatalog$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicecatalog$operations$notify_provision_product_engine_workflow_result <- servicecatalog_notify_provision_product_engine_workflow_result
+
+#' Notifies the result of the terminate engine execution
+#'
+#' @description
+#' Notifies the result of the terminate engine execution.
+#'
+#' See [https://paws-r.github.io/docs/servicecatalog/notify_terminate_provisioned_product_engine_workflow_result.html](https://paws-r.github.io/docs/servicecatalog/notify_terminate_provisioned_product_engine_workflow_result.html) for full documentation.
+#'
+#' @param WorkflowToken &#91;required&#93; The encrypted contents of the terminate engine execution payload that
+#' Service Catalog sends after the Terraform product terminate workflow
+#' starts.
+#' @param RecordId &#91;required&#93; The identifier of the record.
+#' @param Status &#91;required&#93; The status of the terminate engine execution.
+#' @param FailureReason The reason why the terminate engine execution failed.
+#' @param IdempotencyToken &#91;required&#93; The idempotency token that identifies the terminate engine execution.
+#'
+#' @keywords internal
+#'
+#' @rdname servicecatalog_notif_termi_provi_produ_engin_workf_resul
+servicecatalog_notify_terminate_provisioned_product_engine_workflow_result <- function(WorkflowToken, RecordId, Status, FailureReason = NULL, IdempotencyToken) {
+  op <- new_operation(
+    name = "NotifyTerminateProvisionedProductEngineWorkflowResult",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .servicecatalog$notify_terminate_provisioned_product_engine_workflow_result_input(WorkflowToken = WorkflowToken, RecordId = RecordId, Status = Status, FailureReason = FailureReason, IdempotencyToken = IdempotencyToken)
+  output <- .servicecatalog$notify_terminate_provisioned_product_engine_workflow_result_output()
+  config <- get_config()
+  svc <- .servicecatalog$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicecatalog$operations$notify_terminate_provisioned_product_engine_workflow_result <- servicecatalog_notify_terminate_provisioned_product_engine_workflow_result
+
+#' Notifies the result of the update engine execution
+#'
+#' @description
+#' Notifies the result of the update engine execution.
+#'
+#' See [https://paws-r.github.io/docs/servicecatalog/notify_update_provisioned_product_engine_workflow_result.html](https://paws-r.github.io/docs/servicecatalog/notify_update_provisioned_product_engine_workflow_result.html) for full documentation.
+#'
+#' @param WorkflowToken &#91;required&#93; The encrypted contents of the update engine execution payload that
+#' Service Catalog sends after the Terraform product update workflow
+#' starts.
+#' @param RecordId &#91;required&#93; The identifier of the record.
+#' @param Status &#91;required&#93; The status of the update engine execution.
+#' @param FailureReason The reason why the update engine execution failed.
+#' @param Outputs The output of the update engine execution.
+#' @param IdempotencyToken &#91;required&#93; The idempotency token that identifies the update engine execution.
+#'
+#' @keywords internal
+#'
+#' @rdname servicecatalog_notif_updat_provi_produ_engin_workf_resul
+servicecatalog_notify_update_provisioned_product_engine_workflow_result <- function(WorkflowToken, RecordId, Status, FailureReason = NULL, Outputs = NULL, IdempotencyToken) {
+  op <- new_operation(
+    name = "NotifyUpdateProvisionedProductEngineWorkflowResult",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .servicecatalog$notify_update_provisioned_product_engine_workflow_result_input(WorkflowToken = WorkflowToken, RecordId = RecordId, Status = Status, FailureReason = FailureReason, Outputs = Outputs, IdempotencyToken = IdempotencyToken)
+  output <- .servicecatalog$notify_update_provisioned_product_engine_workflow_result_output()
+  config <- get_config()
+  svc <- .servicecatalog$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicecatalog$operations$notify_update_provisioned_product_engine_workflow_result <- servicecatalog_notify_update_provisioned_product_engine_workflow_result
+
 #' Provisions the specified product
 #'
 #' @description
@@ -2880,8 +2902,6 @@ servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, Pag
 #' See [https://paws-r.github.io/docs/servicecatalog/provision_product.html](https://paws-r.github.io/docs/servicecatalog/provision_product.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -2899,8 +2919,8 @@ servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, Pag
 #' provide the name or ID, but not both.
 #' @param PathName The name of the path. You must provide the name or ID, but not both.
 #' @param ProvisionedProductName &#91;required&#93; A user-friendly name for the provisioned product. This value must be
-#' unique for the AWS account and cannot be updated after the product is
-#' provisioned.
+#' unique for the Amazon Web Services account and cannot be updated after
+#' the product is provisioned.
 #' @param ProvisioningParameters Parameters specified by the administrator that are required for
 #' provisioning the product.
 #' @param ProvisioningPreferences An object that contains information about the provisioning preferences
@@ -2938,8 +2958,6 @@ servicecatalog_provision_product <- function(AcceptLanguage = NULL, ProductId = 
 #' See [https://paws-r.github.io/docs/servicecatalog/reject_portfolio_share.html](https://paws-r.github.io/docs/servicecatalog/reject_portfolio_share.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -2988,8 +3006,6 @@ servicecatalog_reject_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -3026,8 +3042,6 @@ servicecatalog_scan_provisioned_products <- function(AcceptLanguage = NULL, Acce
 #' See [https://paws-r.github.io/docs/servicecatalog/search_products.html](https://paws-r.github.io/docs/servicecatalog/search_products.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -3069,8 +3083,6 @@ servicecatalog_search_products <- function(AcceptLanguage = NULL, Filters = NULL
 #' See [https://paws-r.github.io/docs/servicecatalog/search_products_as_admin.html](https://paws-r.github.io/docs/servicecatalog/search_products_as_admin.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -3114,8 +3126,6 @@ servicecatalog_search_products_as_admin <- function(AcceptLanguage = NULL, Portf
 #' See [https://paws-r.github.io/docs/servicecatalog/search_provisioned_products.html](https://paws-r.github.io/docs/servicecatalog/search_provisioned_products.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -3173,11 +3183,9 @@ servicecatalog_search_provisioned_products <- function(AcceptLanguage = NULL, Ac
 #' This token is only valid during the termination process. After the
 #' provisioned product is terminated, subsequent requests to terminate the
 #' same provisioned product always return **ResourceNotFound**.
-#' @param IgnoreErrors If set to true, AWS Service Catalog stops managing the specified
-#' provisioned product even if it cannot delete the underlying resources.
+#' @param IgnoreErrors If set to true, Service Catalog stops managing the specified provisioned
+#' product even if it cannot delete the underlying resources.
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -3217,8 +3225,6 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' See [https://paws-r.github.io/docs/servicecatalog/update_constraint.html](https://paws-r.github.io/docs/servicecatalog/update_constraint.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -3281,7 +3287,7 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' You also cannot have more than one `STACKSET` constraint on a product
 #' and portfolio.
 #' 
-#' Products with a `STACKSET` constraint will launch an AWS CloudFormation
+#' Products with a `STACKSET` constraint will launch an CloudFormation
 #' stack set.
 #' 
 #' **TEMPLATE**
@@ -3319,8 +3325,6 @@ servicecatalog_update_constraint <- function(AcceptLanguage = NULL, Id, Descript
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -3354,37 +3358,38 @@ servicecatalog_update_portfolio <- function(AcceptLanguage = NULL, Id, DisplayNa
 #' Updates the specified portfolio share
 #'
 #' @description
-#' Updates the specified portfolio share. You can use this API to enable or disable TagOptions sharing for an existing portfolio share.
+#' Updates the specified portfolio share. You can use this API to enable or disable `TagOptions` sharing or Principal sharing for an existing portfolio share.
 #'
 #' See [https://paws-r.github.io/docs/servicecatalog/update_portfolio_share.html](https://paws-r.github.io/docs/servicecatalog/update_portfolio_share.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The unique identifier of the portfolio for which the share will be
 #' updated.
-#' @param AccountId The AWS Account Id of the recipient account. This field is required when
-#' updating an external account to account type share.
+#' @param AccountId The Amazon Web Services account Id of the recipient account. This field
+#' is required when updating an external account to account type share.
 #' @param OrganizationNode 
-#' @param ShareTagOptions A flag to enable or disable TagOptions sharing for the portfolio share.
-#' If this field is not provided, the current state of TagOptions sharing
-#' on the portfolio share will not be modified.
+#' @param ShareTagOptions Enables or disables `TagOptions` sharing for the portfolio share. If
+#' this field is not provided, the current state of TagOptions sharing on
+#' the portfolio share will not be modified.
+#' @param SharePrincipals A flag to enables or disables `Principals` sharing in the portfolio. If
+#' this field is not provided, the current state of the `Principals`
+#' sharing on the portfolio share will not be modified.
 #'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_update_portfolio_share
-servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, PortfolioId, AccountId = NULL, OrganizationNode = NULL, ShareTagOptions = NULL) {
+servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, PortfolioId, AccountId = NULL, OrganizationNode = NULL, ShareTagOptions = NULL, SharePrincipals = NULL) {
   op <- new_operation(
     name = "UpdatePortfolioShare",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicecatalog$update_portfolio_share_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, AccountId = AccountId, OrganizationNode = OrganizationNode, ShareTagOptions = ShareTagOptions)
+  input <- .servicecatalog$update_portfolio_share_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, AccountId = AccountId, OrganizationNode = OrganizationNode, ShareTagOptions = ShareTagOptions, SharePrincipals = SharePrincipals)
   output <- .servicecatalog$update_portfolio_share_output()
   config <- get_config()
   svc <- .servicecatalog$service(config)
@@ -3403,8 +3408,6 @@ servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -3418,18 +3421,26 @@ servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @param SupportUrl The updated support URL for the product.
 #' @param AddTags The tags to add to the product.
 #' @param RemoveTags The tags to remove from the product.
+#' @param SourceConnection Specifies connection details for the updated product and syncs the
+#' product to the connection source artifact. This automatically manages
+#' the product's artifacts based on changes to the source. The
+#' `SourceConnection` parameter consists of the following sub-fields.
+#' 
+#' -   `Type`
+#' 
+#' -   `ConnectionParamters`
 #'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_update_product
-servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL, Owner = NULL, Description = NULL, Distributor = NULL, SupportDescription = NULL, SupportEmail = NULL, SupportUrl = NULL, AddTags = NULL, RemoveTags = NULL) {
+servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL, Owner = NULL, Description = NULL, Distributor = NULL, SupportDescription = NULL, SupportEmail = NULL, SupportUrl = NULL, AddTags = NULL, RemoveTags = NULL, SourceConnection = NULL) {
   op <- new_operation(
     name = "UpdateProduct",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicecatalog$update_product_input(AcceptLanguage = AcceptLanguage, Id = Id, Name = Name, Owner = Owner, Description = Description, Distributor = Distributor, SupportDescription = SupportDescription, SupportEmail = SupportEmail, SupportUrl = SupportUrl, AddTags = AddTags, RemoveTags = RemoveTags)
+  input <- .servicecatalog$update_product_input(AcceptLanguage = AcceptLanguage, Id = Id, Name = Name, Owner = Owner, Description = Description, Distributor = Distributor, SupportDescription = SupportDescription, SupportEmail = SupportEmail, SupportUrl = SupportUrl, AddTags = AddTags, RemoveTags = RemoveTags, SourceConnection = SourceConnection)
   output <- .servicecatalog$update_product_output()
   config <- get_config()
   svc <- .servicecatalog$service(config)
@@ -3448,8 +3459,6 @@ servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL
 #' See [https://paws-r.github.io/docs/servicecatalog/update_provisioned_product.html](https://paws-r.github.io/docs/servicecatalog/update_provisioned_product.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -3506,8 +3515,6 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -3526,13 +3533,13 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 #' [`execute_provisioned_product_service_action`][servicecatalog_execute_provisioned_product_service_action].
 #' Only a role ARN is valid. A user ARN is invalid.
 #' 
-#' The `OWNER` key accepts user ARNs and role ARNs. The owner is the user
-#' that has permission to see, update, terminate, and execute service
-#' actions in the provisioned product.
+#' The `OWNER` key accepts user ARNs, IAM role ARNs, and STS assumed-role
+#' ARNs. The owner is the user that has permission to see, update,
+#' terminate, and execute service actions in the provisioned product.
 #' 
 #' The administrator can change the owner of a provisioned product to
-#' another IAM user within the same account. Both end user owners and
-#' administrators can see ownership history of the provisioned product
+#' another IAM or STS entity within the same account. Both end user owners
+#' and administrators can see ownership history of the provisioned product
 #' using the [`list_record_history`][servicecatalog_list_record_history]
 #' API. The new owner can describe all past records for the provisioned
 #' product using the [`describe_record`][servicecatalog_describe_record]
@@ -3579,8 +3586,6 @@ servicecatalog_update_provisioned_product_properties <- function(AcceptLanguage 
 #' See [https://paws-r.github.io/docs/servicecatalog/update_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/update_provisioning_artifact.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -3636,8 +3641,6 @@ servicecatalog_update_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' @param Definition A map that defines the self-service action.
 #' @param Description The self-service action description.
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 

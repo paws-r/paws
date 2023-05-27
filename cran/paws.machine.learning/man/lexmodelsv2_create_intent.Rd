@@ -18,7 +18,8 @@ lexmodelsv2_create_intent(
   kendraConfiguration = NULL,
   botId,
   botVersion,
-  localeId
+  localeId,
+  initialResponseSetting = NULL
 )
 }
 \arguments{
@@ -105,6 +106,9 @@ determine another intent to invoke.}
 \item{localeId}{[required] The identifier of the language and locale where this intent is used. All
 of the bots, slot types, and slots used by the intent must have the same
 locale. For more information, see \href{https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html}{Supported languages}.}
+
+\item{initialResponseSetting}{Configuration settings for the response that is sent to the user at the
+beginning of a conversation, before eliciting slot values.}
 }
 \description{
 Creates an intent.

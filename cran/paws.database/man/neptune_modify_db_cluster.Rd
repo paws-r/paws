@@ -22,7 +22,8 @@ neptune_modify_db_cluster(
   AllowMajorVersionUpgrade = NULL,
   DBInstanceParameterGroupName = NULL,
   DeletionProtection = NULL,
-  CopyTagsToSnapshot = NULL
+  CopyTagsToSnapshot = NULL,
+  ServerlessV2ScalingConfiguration = NULL
 )
 }
 \arguments{
@@ -159,6 +160,8 @@ enabled. By default, deletion protection is disabled.}
 
 \item{CopyTagsToSnapshot}{\emph{If set to true, tags are copied to any snapshot of the DB cluster that
 is created.}}
+
+\item{ServerlessV2ScalingConfiguration}{}
 }
 \description{
 Modify a setting for a DB cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request.

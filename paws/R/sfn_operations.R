@@ -7,7 +7,7 @@ NULL
 #'
 #' @description
 #' Creates an activity. An activity is a task that you write in any
-#' programming language and host on any machine that has access to AWS Step
+#' programming language and host on any machine that has access to Step
 #' Functions. Activities must poll Step Functions using the
 #' [`get_activity_task`][sfn_get_activity_task] API action and respond
 #' using `SendTask*` API actions. This function lets Step Functions know
@@ -29,10 +29,10 @@ NULL
 #' sfn_create_activity(name, tags)
 #'
 #' @param name &#91;required&#93; The name of the activity to create. This name must be unique for your
-#' AWS account and region for 90 days. For more information, see [Limits
-#' Related to State Machine
+#' Amazon Web Services account and region for 90 days. For more
+#' information, see [Limits Related to State Machine
 #' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions)
-#' in the *AWS Step Functions Developer Guide*.
+#' in the *Step Functions Developer Guide*.
 #' 
 #' A name must *not* contain:
 #' 
@@ -53,8 +53,8 @@ NULL
 #' An array of key-value pairs. For more information, see [Using Cost
 #' Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
-#' in the *AWS Billing and Cost Management User Guide*, and [Controlling
-#' Access Using IAM
+#' in the *Amazon Web Services Billing and Cost Management User Guide*, and
+#' [Controlling Access Using IAM
 #' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html).
 #' 
 #' Tags may only contain Unicode letters, digits, white space, or these
@@ -116,7 +116,7 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' JSON-based, structured language. For more information, see [Amazon
 #' States
 #' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html)
-#' in the AWS Step Functions User Guide.
+#' in the Step Functions User Guide.
 #' 
 #' This operation is eventually consistent. The results are best effort and
 #' may not reflect very recent updates and changes.
@@ -164,19 +164,19 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' 
 #' By default, the `level` is set to `OFF`. For more information see [Log
 #' Levels](https://docs.aws.amazon.com/step-functions/latest/dg/cloudwatch-log-level.html)
-#' in the AWS Step Functions User Guide.
+#' in the Step Functions User Guide.
 #' @param tags Tags to be added when creating a state machine.
 #' 
 #' An array of key-value pairs. For more information, see [Using Cost
 #' Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
-#' in the *AWS Billing and Cost Management User Guide*, and [Controlling
-#' Access Using IAM
+#' in the *Amazon Web Services Billing and Cost Management User Guide*, and
+#' [Controlling Access Using IAM
 #' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html).
 #' 
 #' Tags may only contain Unicode letters, digits, white space, or these
 #' symbols: `_ . : / = + - @@`.
-#' @param tracingConfiguration Selects whether AWS X-Ray tracing is enabled.
+#' @param tracingConfiguration Selects whether X-Ray tracing is enabled.
 #'
 #' @return
 #' A list with the following syntax:
@@ -289,7 +289,17 @@ sfn_delete_activity <- function(activityArn) {
 #' Deletes a state machine. This is an asynchronous operation: It sets the
 #' state machine's status to `DELETING` and begins the deletion process.
 #' 
-#' For `EXPRESS`state machines, the deletion will happen eventually
+#' If the given state machine Amazon Resource Name (ARN) is a qualified
+#' state machine ARN, it will fail with ValidationException.
+#' 
+#' A qualified state machine ARN refers to a *Distributed Map state*
+#' defined within a state machine. For example, the qualified state machine
+#' ARN
+#' `arn:partition:states:region:account-id:stateMachine:stateMachineName/mapStateLabel`
+#' refers to a *Distributed Map state* with a label `mapStateLabel` in the
+#' state machine named `stateMachineName`.
+#' 
+#' For `EXPRESS` state machines, the deletion will happen eventually
 #' (usually less than a minute). Running executions may emit logs after
 #' [`delete_state_machine`][sfn_delete_state_machine] API is called.
 #'
@@ -384,15 +394,21 @@ sfn_describe_activity <- function(activityArn) {
 }
 .sfn$operations$describe_activity <- sfn_describe_activity
 
-#' Describes an execution
+#' Provides all information about a state machine execution, such as the
+#' state machine associated with the execution, the execution input and
+#' output, and relevant execution metadata
 #'
 #' @description
-#' Describes an execution.
+#' Provides all information about a state machine execution, such as the
+#' state machine associated with the execution, the execution input and
+#' output, and relevant execution metadata. Use this API action to return
+#' the Map Run ARN if the execution was dispatched by a Map Run.
 #' 
 #' This operation is eventually consistent. The results are best effort and
 #' may not reflect very recent updates and changes.
 #' 
-#' This API action is not supported by `EXPRESS` state machines.
+#' This API action is not supported by `EXPRESS` state machine executions
+#' unless they were dispatched by a Map Run.
 #'
 #' @usage
 #' sfn_describe_execution(executionArn)
@@ -421,7 +437,10 @@ sfn_describe_activity <- function(activityArn) {
 #'   outputDetails = list(
 #'     included = TRUE|FALSE
 #'   ),
-#'   traceHeader = "string"
+#'   traceHeader = "string",
+#'   mapRunArn = "string",
+#'   error = "string",
+#'   cause = "string"
 #' )
 #' ```
 #'
@@ -454,10 +473,103 @@ sfn_describe_execution <- function(executionArn) {
 }
 .sfn$operations$describe_execution <- sfn_describe_execution
 
-#' Describes a state machine
+#' Provides information about a Map Run's configuration, progress, and
+#' results
 #'
 #' @description
-#' Describes a state machine.
+#' Provides information about a Map Run's configuration, progress, and
+#' results. For more information, see [Examining Map
+#' Run](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-examine-map-run.html)
+#' in the *Step Functions Developer Guide*.
+#'
+#' @usage
+#' sfn_describe_map_run(mapRunArn)
+#'
+#' @param mapRunArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies a Map Run.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   mapRunArn = "string",
+#'   executionArn = "string",
+#'   status = "RUNNING"|"SUCCEEDED"|"FAILED"|"ABORTED",
+#'   startDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   stopDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   maxConcurrency = 123,
+#'   toleratedFailurePercentage = 123.0,
+#'   toleratedFailureCount = 123,
+#'   itemCounts = list(
+#'     pending = 123,
+#'     running = 123,
+#'     succeeded = 123,
+#'     failed = 123,
+#'     timedOut = 123,
+#'     aborted = 123,
+#'     total = 123,
+#'     resultsWritten = 123
+#'   ),
+#'   executionCounts = list(
+#'     pending = 123,
+#'     running = 123,
+#'     succeeded = 123,
+#'     failed = 123,
+#'     timedOut = 123,
+#'     aborted = 123,
+#'     total = 123,
+#'     resultsWritten = 123
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_map_run(
+#'   mapRunArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sfn_describe_map_run
+#'
+#' @aliases sfn_describe_map_run
+sfn_describe_map_run <- function(mapRunArn) {
+  op <- new_operation(
+    name = "DescribeMapRun",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sfn$describe_map_run_input(mapRunArn = mapRunArn)
+  output <- .sfn$describe_map_run_output()
+  config <- get_config()
+  svc <- .sfn$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sfn$operations$describe_map_run <- sfn_describe_map_run
+
+#' Provides information about a state machine's definition, its IAM role
+#' Amazon Resource Name (ARN), and configuration
+#'
+#' @description
+#' Provides information about a state machine's definition, its IAM role
+#' Amazon Resource Name (ARN), and configuration. If the state machine ARN
+#' is a qualified state machine ARN, the response returned includes the
+#' `Map` state's label.
+#' 
+#' A qualified state machine ARN refers to a *Distributed Map state*
+#' defined within a state machine. For example, the qualified state machine
+#' ARN
+#' `arn:partition:states:region:account-id:stateMachine:stateMachineName/mapStateLabel`
+#' refers to a *Distributed Map state* with a label `mapStateLabel` in the
+#' state machine named `stateMachineName`.
 #' 
 #' This operation is eventually consistent. The results are best effort and
 #' may not reflect very recent updates and changes.
@@ -493,7 +605,8 @@ sfn_describe_execution <- function(executionArn) {
 #'   ),
 #'   tracingConfiguration = list(
 #'     enabled = TRUE|FALSE
-#'   )
+#'   ),
+#'   label = "string"
 #' )
 #' ```
 #'
@@ -526,10 +639,14 @@ sfn_describe_state_machine <- function(stateMachineArn) {
 }
 .sfn$operations$describe_state_machine <- sfn_describe_state_machine
 
-#' Describes the state machine associated with a specific execution
+#' Provides information about a state machine's definition, its execution
+#' role ARN, and configuration
 #'
 #' @description
-#' Describes the state machine associated with a specific execution.
+#' Provides information about a state machine's definition, its execution
+#' role ARN, and configuration. If an execution was dispatched by a Map
+#' Run, the Map Run is returned in the response. Additionally, the state
+#' machine returned will be the state machine associated with the Map Run.
 #' 
 #' This operation is eventually consistent. The results are best effort and
 #' may not reflect very recent updates and changes.
@@ -566,7 +683,9 @@ sfn_describe_state_machine <- function(stateMachineArn) {
 #'   ),
 #'   tracingConfiguration = list(
 #'     enabled = TRUE|FALSE
-#'   )
+#'   ),
+#'   mapRunArn = "string",
+#'   label = "string"
 #' )
 #' ```
 #'
@@ -610,6 +729,8 @@ sfn_describe_state_machine_for_execution <- function(executionArn) {
 #' task of this type is needed.) The maximum time the service holds on to
 #' the request before responding is 60 seconds. If no task is available
 #' within 60 seconds, the poll returns a `taskToken` with a null string.
+#' 
+#' This API action isn't logged in CloudTrail.
 #' 
 #' Workers should set their client side socket timeout to at least 65
 #' seconds (5 seconds higher than the maximum time the service may hold the
@@ -717,7 +838,7 @@ sfn_get_activity_task <- function(activityArn, workerName = NULL) {
 #'       timestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       type = "ActivityFailed"|"ActivityScheduled"|"ActivityScheduleFailed"|"ActivityStarted"|"ActivitySucceeded"|"ActivityTimedOut"|"ChoiceStateEntered"|"ChoiceStateExited"|"ExecutionAborted"|"ExecutionFailed"|"ExecutionStarted"|"ExecutionSucceeded"|"ExecutionTimedOut"|"FailStateEntered"|"LambdaFunctionFailed"|"LambdaFunctionScheduled"|"LambdaFunctionScheduleFailed"|"LambdaFunctionStarted"|"LambdaFunctionStartFailed"|"LambdaFunctionSucceeded"|"LambdaFunctionTimedOut"|"MapIterationAborted"|"MapIterationFailed"|"MapIterationStarted"|"MapIterationSucceeded"|"MapStateAborted"|"MapStateEntered"|"MapStateExited"|"MapStateFailed"|"MapStateStarted"|"MapStateSucceeded"|"ParallelStateAborted"|"ParallelStateEntered"|"ParallelStateExited"|"ParallelStateFailed"|"ParallelStateStarted"|"ParallelStateSucceeded"|"PassStateEntered"|"PassStateExited"|"SucceedStateEntered"|"SucceedStateExited"|"TaskFailed"|"TaskScheduled"|"TaskStarted"|"TaskStartFailed"|"TaskStateAborted"|"TaskStateEntered"|"TaskStateExited"|"TaskSubmitFailed"|"TaskSubmitted"|"TaskSucceeded"|"TaskTimedOut"|"WaitStateAborted"|"WaitStateEntered"|"WaitStateExited",
+#'       type = "ActivityFailed"|"ActivityScheduled"|"ActivityScheduleFailed"|"ActivityStarted"|"ActivitySucceeded"|"ActivityTimedOut"|"ChoiceStateEntered"|"ChoiceStateExited"|"ExecutionAborted"|"ExecutionFailed"|"ExecutionStarted"|"ExecutionSucceeded"|"ExecutionTimedOut"|"FailStateEntered"|"LambdaFunctionFailed"|"LambdaFunctionScheduled"|"LambdaFunctionScheduleFailed"|"LambdaFunctionStarted"|"LambdaFunctionStartFailed"|"LambdaFunctionSucceeded"|"LambdaFunctionTimedOut"|"MapIterationAborted"|"MapIterationFailed"|"MapIterationStarted"|"MapIterationSucceeded"|"MapStateAborted"|"MapStateEntered"|"MapStateExited"|"MapStateFailed"|"MapStateStarted"|"MapStateSucceeded"|"ParallelStateAborted"|"ParallelStateEntered"|"ParallelStateExited"|"ParallelStateFailed"|"ParallelStateStarted"|"ParallelStateSucceeded"|"PassStateEntered"|"PassStateExited"|"SucceedStateEntered"|"SucceedStateExited"|"TaskFailed"|"TaskScheduled"|"TaskStarted"|"TaskStartFailed"|"TaskStateAborted"|"TaskStateEntered"|"TaskStateExited"|"TaskSubmitFailed"|"TaskSubmitted"|"TaskSucceeded"|"TaskTimedOut"|"WaitStateAborted"|"WaitStateEntered"|"WaitStateExited"|"MapRunAborted"|"MapRunFailed"|"MapRunStarted"|"MapRunSucceeded",
 #'       id = 123,
 #'       previousEventId = 123,
 #'       activityFailedEventDetails = list(
@@ -762,7 +883,10 @@ sfn_get_activity_task <- function(activityArn, workerName = NULL) {
 #'         region = "string",
 #'         parameters = "string",
 #'         timeoutInSeconds = 123,
-#'         heartbeatInSeconds = 123
+#'         heartbeatInSeconds = 123,
+#'         taskCredentials = list(
+#'           roleArn = "string"
+#'         )
 #'       ),
 #'       taskStartFailedEventDetails = list(
 #'         resourceType = "string",
@@ -860,7 +984,10 @@ sfn_get_activity_task <- function(activityArn, workerName = NULL) {
 #'         inputDetails = list(
 #'           truncated = TRUE|FALSE
 #'         ),
-#'         timeoutInSeconds = 123
+#'         timeoutInSeconds = 123,
+#'         taskCredentials = list(
+#'           roleArn = "string"
+#'         )
 #'       ),
 #'       lambdaFunctionStartFailedEventDetails = list(
 #'         error = "string",
@@ -889,6 +1016,13 @@ sfn_get_activity_task <- function(activityArn, workerName = NULL) {
 #'         outputDetails = list(
 #'           truncated = TRUE|FALSE
 #'         )
+#'       ),
+#'       mapRunStartedEventDetails = list(
+#'         mapRunArn = "string"
+#'       ),
+#'       mapRunFailedEventDetails = list(
+#'         error = "string",
+#'         cause = "string"
 #'       )
 #'     )
 #'   ),
@@ -1007,12 +1141,15 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 }
 .sfn$operations$list_activities <- sfn_list_activities
 
-#' Lists the executions of a state machine that meet the filtering criteria
+#' Lists all executions of a state machine or a Map Run
 #'
 #' @description
-#' Lists the executions of a state machine that meet the filtering
-#' criteria. Results are sorted by time, with the most recent execution
-#' first.
+#' Lists all executions of a state machine or a Map Run. You can list all
+#' executions related to a state machine by specifying a state machine
+#' Amazon Resource Name (ARN), or those related to a Map Run by specifying
+#' a Map Run ARN.
+#' 
+#' Results are sorted by time, with the most recent execution first.
 #' 
 #' If `nextToken` is returned, there are more results available. The value
 #' of `nextToken` is a unique pagination token for each page. Make the call
@@ -1028,12 +1165,107 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' @usage
 #' sfn_list_executions(stateMachineArn, statusFilter, maxResults,
-#'   nextToken)
+#'   nextToken, mapRunArn)
 #'
-#' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine whose executions is
+#' @param stateMachineArn The Amazon Resource Name (ARN) of the state machine whose executions is
 #' listed.
+#' 
+#' You can specify either a `mapRunArn` or a `stateMachineArn`, but not
+#' both.
 #' @param statusFilter If specified, only list the executions whose current execution status
 #' matches the given filter.
+#' @param maxResults The maximum number of results that are returned per call. You can use
+#' `nextToken` to obtain further pages of results. The default is 100 and
+#' the maximum allowed page size is 1000. A value of 0 uses the default.
+#' 
+#' This is only an upper limit. The actual number of results returned per
+#' call might be fewer than the specified maximum.
+#' @param nextToken If `nextToken` is returned, there are more results available. The value
+#' of `nextToken` is a unique pagination token for each page. Make the call
+#' again using the returned token to retrieve the next page. Keep all other
+#' arguments unchanged. Each pagination token expires after 24 hours. Using
+#' an expired pagination token will return an *HTTP 400 InvalidToken*
+#' error.
+#' @param mapRunArn The Amazon Resource Name (ARN) of the Map Run that started the child
+#' workflow executions. If the `mapRunArn` field is specified, a list of
+#' all of the child workflow executions started by a Map Run is returned.
+#' For more information, see [Examining Map
+#' Run](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-examine-map-run.html)
+#' in the *Step Functions Developer Guide*.
+#' 
+#' You can specify either a `mapRunArn` or a `stateMachineArn`, but not
+#' both.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   executions = list(
+#'     list(
+#'       executionArn = "string",
+#'       stateMachineArn = "string",
+#'       name = "string",
+#'       status = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED",
+#'       startDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       stopDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       mapRunArn = "string",
+#'       itemCount = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_executions(
+#'   stateMachineArn = "string",
+#'   statusFilter = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED",
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   mapRunArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sfn_list_executions
+#'
+#' @aliases sfn_list_executions
+sfn_list_executions <- function(stateMachineArn = NULL, statusFilter = NULL, maxResults = NULL, nextToken = NULL, mapRunArn = NULL) {
+  op <- new_operation(
+    name = "ListExecutions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sfn$list_executions_input(stateMachineArn = stateMachineArn, statusFilter = statusFilter, maxResults = maxResults, nextToken = nextToken, mapRunArn = mapRunArn)
+  output <- .sfn$list_executions_output()
+  config <- get_config()
+  svc <- .sfn$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sfn$operations$list_executions <- sfn_list_executions
+
+#' Lists all Map Runs that were started by a given state machine execution
+#'
+#' @description
+#' Lists all Map Runs that were started by a given state machine execution.
+#' Use this API action to obtain Map Run ARNs, and then call
+#' [`describe_map_run`][sfn_describe_map_run] to obtain more information,
+#' if needed.
+#'
+#' @usage
+#' sfn_list_map_runs(executionArn, maxResults, nextToken)
+#'
+#' @param executionArn &#91;required&#93; The Amazon Resource Name (ARN) of the execution for which the Map Runs
+#' must be listed.
 #' @param maxResults The maximum number of results that are returned per call. You can use
 #' `nextToken` to obtain further pages of results. The default is 100 and
 #' the maximum allowed page size is 1000. A value of 0 uses the default.
@@ -1051,12 +1283,11 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   executions = list(
+#'   mapRuns = list(
 #'     list(
 #'       executionArn = "string",
+#'       mapRunArn = "string",
 #'       stateMachineArn = "string",
-#'       name = "string",
-#'       status = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED",
 #'       startDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1071,9 +1302,8 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' @section Request syntax:
 #' ```
-#' svc$list_executions(
-#'   stateMachineArn = "string",
-#'   statusFilter = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED",
+#' svc$list_map_runs(
+#'   executionArn = "string",
 #'   maxResults = 123,
 #'   nextToken = "string"
 #' )
@@ -1081,25 +1311,25 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' @keywords internal
 #'
-#' @rdname sfn_list_executions
+#' @rdname sfn_list_map_runs
 #'
-#' @aliases sfn_list_executions
-sfn_list_executions <- function(stateMachineArn, statusFilter = NULL, maxResults = NULL, nextToken = NULL) {
+#' @aliases sfn_list_map_runs
+sfn_list_map_runs <- function(executionArn, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
-    name = "ListExecutions",
+    name = "ListMapRuns",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sfn$list_executions_input(stateMachineArn = stateMachineArn, statusFilter = statusFilter, maxResults = maxResults, nextToken = nextToken)
-  output <- .sfn$list_executions_output()
+  input <- .sfn$list_map_runs_input(executionArn = executionArn, maxResults = maxResults, nextToken = nextToken)
+  output <- .sfn$list_map_runs_output()
   config <- get_config()
   svc <- .sfn$service(config)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
-.sfn$operations$list_executions <- sfn_list_executions
+.sfn$operations$list_map_runs <- sfn_list_map_runs
 
 #' Lists the existing state machines
 #'
@@ -1412,24 +1642,37 @@ sfn_send_task_success <- function(taskToken, output) {
 #' Starts a state machine execution
 #'
 #' @description
-#' Starts a state machine execution.
+#' Starts a state machine execution. If the given state machine Amazon
+#' Resource Name (ARN) is a qualified state machine ARN, it will fail with
+#' ValidationException.
 #' 
-#' [`start_execution`][sfn_start_execution] is idempotent. If
+#' A qualified state machine ARN refers to a *Distributed Map state*
+#' defined within a state machine. For example, the qualified state machine
+#' ARN
+#' `arn:partition:states:region:account-id:stateMachine:stateMachineName/mapStateLabel`
+#' refers to a *Distributed Map state* with a label `mapStateLabel` in the
+#' state machine named `stateMachineName`.
+#' 
+#' [`start_execution`][sfn_start_execution] is idempotent for `STANDARD`
+#' workflows. For a `STANDARD` workflow, if
 #' [`start_execution`][sfn_start_execution] is called with the same name
 #' and input as a running execution, the call will succeed and return the
 #' same response as the original request. If the execution is closed or if
-#' the input is different, it will return a 400 `ExecutionAlreadyExists`
+#' the input is different, it will return a `400 ExecutionAlreadyExists`
 #' error. Names can be reused after 90 days.
+#' 
+#' [`start_execution`][sfn_start_execution] is not idempotent for `EXPRESS`
+#' workflows.
 #'
 #' @usage
 #' sfn_start_execution(stateMachineArn, name, input, traceHeader)
 #'
 #' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine to execute.
-#' @param name The name of the execution. This name must be unique for your AWS
-#' account, region, and state machine for 90 days. For more information,
-#' see [Limits Related to State Machine
+#' @param name The name of the execution. This name must be unique for your Amazon Web
+#' Services account, region, and state machine for 90 days. For more
+#' information, see [Limits Related to State Machine
 #' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions)
-#' in the *AWS Step Functions Developer Guide*.
+#' in the *Step Functions Developer Guide*.
 #' 
 #' A name must *not* contain:
 #' 
@@ -1455,8 +1698,8 @@ sfn_send_task_success <- function(taskToken, output) {
 #' 
 #' Length constraints apply to the payload size, and are expressed as bytes
 #' in UTF-8 encoding.
-#' @param traceHeader Passes the AWS X-Ray trace header. The trace header can also be passed
-#' in the request payload.
+#' @param traceHeader Passes the X-Ray trace header. The trace header can also be passed in
+#' the request payload.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1505,6 +1748,17 @@ sfn_start_execution <- function(stateMachineArn, name = NULL, input = NULL, trac
 #'
 #' @description
 #' Starts a Synchronous Express state machine execution.
+#' [`start_sync_execution`][sfn_start_sync_execution] is not available for
+#' `STANDARD` workflows.
+#' 
+#' [`start_sync_execution`][sfn_start_sync_execution] will return a
+#' `200 OK` response, even if your execution fails, because the status code
+#' in the API response doesn't reflect function errors. Error codes are
+#' reserved for errors that prevent your execution from running, such as
+#' permissions errors, limit errors, or issues with your state machine code
+#' and configuration.
+#' 
+#' This API action isn't logged in CloudTrail.
 #'
 #' @usage
 #' sfn_start_sync_execution(stateMachineArn, name, input, traceHeader)
@@ -1521,8 +1775,8 @@ sfn_start_execution <- function(stateMachineArn, name = NULL, input = NULL, trac
 #' 
 #' Length constraints apply to the payload size, and are expressed as bytes
 #' in UTF-8 encoding.
-#' @param traceHeader Passes the AWS X-Ray trace header. The trace header can also be passed
-#' in the request payload.
+#' @param traceHeader Passes the X-Ray trace header. The trace header can also be passed in
+#' the request payload.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1651,8 +1905,8 @@ sfn_stop_execution <- function(executionArn, error = NULL, cause = NULL) {
 #' An array of key-value pairs. For more information, see [Using Cost
 #' Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
-#' in the *AWS Billing and Cost Management User Guide*, and [Controlling
-#' Access Using IAM
+#' in the *Amazon Web Services Billing and Cost Management User Guide*, and
+#' [Controlling Access Using IAM
 #' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html).
 #' 
 #' Tags may only contain Unicode letters, digits, white space, or these
@@ -1753,6 +2007,58 @@ sfn_untag_resource <- function(resourceArn, tagKeys) {
 }
 .sfn$operations$untag_resource <- sfn_untag_resource
 
+#' Updates an in-progress Map Run's configuration to include changes to the
+#' settings that control maximum concurrency and Map Run failure
+#'
+#' @description
+#' Updates an in-progress Map Run's configuration to include changes to the
+#' settings that control maximum concurrency and Map Run failure.
+#'
+#' @usage
+#' sfn_update_map_run(mapRunArn, maxConcurrency,
+#'   toleratedFailurePercentage, toleratedFailureCount)
+#'
+#' @param mapRunArn &#91;required&#93; The Amazon Resource Name (ARN) of a Map Run.
+#' @param maxConcurrency The maximum number of child workflow executions that can be specified to
+#' run in parallel for the Map Run at the same time.
+#' @param toleratedFailurePercentage The maximum percentage of failed items before the Map Run fails.
+#' @param toleratedFailureCount The maximum number of failed items before the Map Run fails.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_map_run(
+#'   mapRunArn = "string",
+#'   maxConcurrency = 123,
+#'   toleratedFailurePercentage = 123.0,
+#'   toleratedFailureCount = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sfn_update_map_run
+#'
+#' @aliases sfn_update_map_run
+sfn_update_map_run <- function(mapRunArn, maxConcurrency = NULL, toleratedFailurePercentage = NULL, toleratedFailureCount = NULL) {
+  op <- new_operation(
+    name = "UpdateMapRun",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sfn$update_map_run_input(mapRunArn = mapRunArn, maxConcurrency = maxConcurrency, toleratedFailurePercentage = toleratedFailurePercentage, toleratedFailureCount = toleratedFailureCount)
+  output <- .sfn$update_map_run_output()
+  config <- get_config()
+  svc <- .sfn$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sfn$operations$update_map_run <- sfn_update_map_run
+
 #' Updates an existing state machine by modifying its definition, roleArn,
 #' or loggingConfiguration
 #'
@@ -1762,6 +2068,16 @@ sfn_untag_resource <- function(resourceArn, tagKeys) {
 #' to use the previous `definition` and `roleArn`. You must include at
 #' least one of `definition` or `roleArn` or you will receive a
 #' `MissingRequiredParameter` error.
+#' 
+#' If the given state machine Amazon Resource Name (ARN) is a qualified
+#' state machine ARN, it will fail with ValidationException.
+#' 
+#' A qualified state machine ARN refers to a *Distributed Map state*
+#' defined within a state machine. For example, the qualified state machine
+#' ARN
+#' `arn:partition:states:region:account-id:stateMachine:stateMachineName/mapStateLabel`
+#' refers to a *Distributed Map state* with a label `mapStateLabel` in the
+#' state machine named `stateMachineName`.
 #' 
 #' All [`start_execution`][sfn_start_execution] calls within a few seconds
 #' will use the updated `definition` and `roleArn`. Executions started
@@ -1780,7 +2096,7 @@ sfn_untag_resource <- function(resourceArn, tagKeys) {
 #' @param roleArn The Amazon Resource Name (ARN) of the IAM role of the state machine.
 #' @param loggingConfiguration The `LoggingConfiguration` data type is used to set CloudWatch Logs
 #' options.
-#' @param tracingConfiguration Selects whether AWS X-Ray tracing is enabled.
+#' @param tracingConfiguration Selects whether X-Ray tracing is enabled.
 #'
 #' @return
 #' A list with the following syntax:

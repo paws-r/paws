@@ -8,24 +8,26 @@ ec2_create_network_insights_path(
   SourceIp = NULL,
   DestinationIp = NULL,
   Source,
-  Destination,
+  Destination = NULL,
   Protocol,
   DestinationPort = NULL,
   TagSpecifications = NULL,
   DryRun = NULL,
-  ClientToken
+  ClientToken,
+  FilterAtSource = NULL,
+  FilterAtDestination = NULL
 )
 }
 \arguments{
-\item{SourceIp}{The IP address of the Amazon Web Services resource that is the source of
-the path.}
+\item{SourceIp}{The IP address of the source.}
 
-\item{DestinationIp}{The IP address of the Amazon Web Services resource that is the
-destination of the path.}
+\item{DestinationIp}{The IP address of the destination.}
 
-\item{Source}{[required] The Amazon Web Services resource that is the source of the path.}
+\item{Source}{[required] The ID or ARN of the source. If the resource is in another account, you
+must specify an ARN.}
 
-\item{Destination}{[required] The Amazon Web Services resource that is the destination of the path.}
+\item{Destination}{The ID or ARN of the destination. If the resource is in another account,
+you must specify an ARN.}
 
 \item{Protocol}{[required] The protocol.}
 
@@ -40,6 +42,14 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to ensure idempotency}.}
+
+\item{FilterAtSource}{Scopes the analysis to network paths that match specific filters at the
+source. If you specify this parameter, you can't specify the parameters
+for the source IP address or the destination port.}
+
+\item{FilterAtDestination}{Scopes the analysis to network paths that match specific filters at the
+destination. If you specify this parameter, you can't specify the
+parameter for the destination IP address.}
 }
 \description{
 Creates a path to analyze for reachability.

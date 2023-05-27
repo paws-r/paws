@@ -3,14 +3,12 @@
 \name{macie2_tag_resource}
 \alias{macie2_tag_resource}
 \title{Adds or updates one or more tags (keys and values) that are associated
-with a classification job, custom data identifier, findings filter, or
-member account}
+with an Amazon Macie resource}
 \usage{
 macie2_tag_resource(resourceArn, tags)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the classification job, custom data
-identifier, findings filter, or member account.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 
 \item{tags}{[required] A map of key-value pairs that specifies the tags to associate with the
 resource.
@@ -20,7 +18,7 @@ and an associated tag value. The maximum length of a tag key is 128
 characters. The maximum length of a tag value is 256 characters.}
 }
 \description{
-Adds or updates one or more tags (keys and values) that are associated with a classification job, custom data identifier, findings filter, or member account.
+Adds or updates one or more tags (keys and values) that are associated with an Amazon Macie resource.
 
 See \url{https://paws-r.github.io/docs/macie2/tag_resource.html} for full documentation.
 }

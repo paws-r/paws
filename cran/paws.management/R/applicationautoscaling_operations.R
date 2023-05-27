@@ -82,6 +82,10 @@ NULL
 #' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
+#' 
+#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#'     the unique identifier is the resource ID. Example:
+#'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
@@ -114,7 +118,7 @@ NULL
 #'     Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2
-#'     instances for an SageMaker model endpoint variant.
+#'     instances for a SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for
 #'     a custom resource provided by your own application or service.
@@ -147,6 +151,9 @@ NULL
 #' 
 #' -   `neptune:cluster:ReadReplicaCount` - The count of read replicas in
 #'     an Amazon Neptune DB cluster.
+#' 
+#' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
+#'     concurrency for a SageMaker Serverless endpoint.
 #'
 #' @keywords internal
 #'
@@ -247,6 +254,10 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
+#' 
+#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#'     the unique identifier is the resource ID. Example:
+#'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
@@ -279,7 +290,7 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #'     Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2
-#'     instances for an SageMaker model endpoint variant.
+#'     instances for a SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for
 #'     a custom resource provided by your own application or service.
@@ -312,6 +323,9 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' 
 #' -   `neptune:cluster:ReadReplicaCount` - The count of read replicas in
 #'     an Amazon Neptune DB cluster.
+#' 
+#' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
+#'     concurrency for a SageMaker Serverless endpoint.
 #'
 #' @keywords internal
 #'
@@ -411,6 +425,10 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
+#' 
+#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#'     the unique identifier is the resource ID. Example:
+#'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension associated with the scalable target. This string
 #' consists of the service namespace, resource type, and scaling property.
 #' 
@@ -443,7 +461,7 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #'     Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2
-#'     instances for an SageMaker model endpoint variant.
+#'     instances for a SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for
 #'     a custom resource provided by your own application or service.
@@ -476,6 +494,9 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' 
 #' -   `neptune:cluster:ReadReplicaCount` - The count of read replicas in
 #'     an Amazon Neptune DB cluster.
+#' 
+#' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
+#'     concurrency for a SageMaker Serverless endpoint.
 #'
 #' @keywords internal
 #'
@@ -574,6 +595,10 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
+#' 
+#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#'     the unique identifier is the resource ID. Example:
+#'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' @param ScalableDimension The scalable dimension associated with the scalable target. This string
 #' consists of the service namespace, resource type, and scaling property.
 #' If you specify a scalable dimension, you must also specify a resource
@@ -608,7 +633,7 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #'     Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2
-#'     instances for an SageMaker model endpoint variant.
+#'     instances for a SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for
 #'     a custom resource provided by your own application or service.
@@ -641,6 +666,9 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' 
 #' -   `neptune:cluster:ReadReplicaCount` - The count of read replicas in
 #'     an Amazon Neptune DB cluster.
+#' 
+#' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
+#'     concurrency for a SageMaker Serverless endpoint.
 #' @param MaxResults The maximum number of scalable targets. This value can be between 1 and
 #' 50. The default value is 50.
 #' 
@@ -749,6 +777,10 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
+#' 
+#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#'     the unique identifier is the resource ID. Example:
+#'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property. If you specify a scalable
 #' dimension, you must also specify a resource ID.
@@ -782,7 +814,7 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #'     Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2
-#'     instances for an SageMaker model endpoint variant.
+#'     instances for a SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for
 #'     a custom resource provided by your own application or service.
@@ -815,6 +847,9 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' 
 #' -   `neptune:cluster:ReadReplicaCount` - The count of read replicas in
 #'     an Amazon Neptune DB cluster.
+#' 
+#' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
+#'     concurrency for a SageMaker Serverless endpoint.
 #' @param MaxResults The maximum number of scalable targets. This value can be between 1 and
 #' 50. The default value is 50.
 #' 
@@ -824,18 +859,24 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' parameter is not used, the operation returns up to 50 results and a
 #' `NextToken` value, if applicable.
 #' @param NextToken The token for the next set of results.
+#' @param IncludeNotScaledActivities Specifies whether to include activities that aren't scaled (*not scaled
+#' activities*) in the response. Not scaled activities are activities that
+#' aren't completed or started for various reasons, such as preventing
+#' infinite scaling loops. For help interpreting the not scaled reason
+#' details in the response, see [Scaling activities for Application Auto
+#' Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scaling-activities.html).
 #'
 #' @keywords internal
 #'
 #' @rdname applicationautoscaling_describe_scaling_activities
-applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace, ResourceId = NULL, ScalableDimension = NULL, MaxResults = NULL, NextToken = NULL) {
+applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace, ResourceId = NULL, ScalableDimension = NULL, MaxResults = NULL, NextToken = NULL, IncludeNotScaledActivities = NULL) {
   op <- new_operation(
     name = "DescribeScalingActivities",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationautoscaling$describe_scaling_activities_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .applicationautoscaling$describe_scaling_activities_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken, IncludeNotScaledActivities = IncludeNotScaledActivities)
   output <- .applicationautoscaling$describe_scaling_activities_output()
   config <- get_config()
   svc <- .applicationautoscaling$service(config)
@@ -924,6 +965,10 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
+#' 
+#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#'     the unique identifier is the resource ID. Example:
+#'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property. If you specify a scalable
 #' dimension, you must also specify a resource ID.
@@ -957,7 +1002,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #'     Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2
-#'     instances for an SageMaker model endpoint variant.
+#'     instances for a SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for
 #'     a custom resource provided by your own application or service.
@@ -990,6 +1035,9 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' 
 #' -   `neptune:cluster:ReadReplicaCount` - The count of read replicas in
 #'     an Amazon Neptune DB cluster.
+#' 
+#' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
+#'     concurrency for a SageMaker Serverless endpoint.
 #' @param MaxResults The maximum number of scalable targets. This value can be between 1 and
 #' 10. The default value is 10.
 #' 
@@ -1099,6 +1147,10 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
+#' 
+#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#'     the unique identifier is the resource ID. Example:
+#'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property. If you specify a scalable
 #' dimension, you must also specify a resource ID.
@@ -1132,7 +1184,7 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #'     Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2
-#'     instances for an SageMaker model endpoint variant.
+#'     instances for a SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for
 #'     a custom resource provided by your own application or service.
@@ -1165,6 +1217,9 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' 
 #' -   `neptune:cluster:ReadReplicaCount` - The count of read replicas in
 #'     an Amazon Neptune DB cluster.
+#' 
+#' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
+#'     concurrency for a SageMaker Serverless endpoint.
 #' @param MaxResults The maximum number of scheduled action results. This value can be
 #' between 1 and 50. The default value is 50.
 #' 
@@ -1195,6 +1250,42 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 }
 .applicationautoscaling$operations$describe_scheduled_actions <- applicationautoscaling_describe_scheduled_actions
 
+#' Returns all the tags on the specified Application Auto Scaling scalable
+#' target
+#'
+#' @description
+#' Returns all the tags on the specified Application Auto Scaling scalable target.
+#'
+#' See [https://paws-r.github.io/docs/applicationautoscaling/list_tags_for_resource.html](https://paws-r.github.io/docs/applicationautoscaling/list_tags_for_resource.html) for full documentation.
+#'
+#' @param ResourceARN &#91;required&#93; Specify the ARN of the scalable target.
+#' 
+#' For example:
+#' `arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123`
+#' 
+#' To get the ARN for a scalable target, use
+#' [`describe_scalable_targets`][applicationautoscaling_describe_scalable_targets].
+#'
+#' @keywords internal
+#'
+#' @rdname applicationautoscaling_list_tags_for_resource
+applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationautoscaling$list_tags_for_resource_input(ResourceARN = ResourceARN)
+  output <- .applicationautoscaling$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .applicationautoscaling$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationautoscaling$operations$list_tags_for_resource <- applicationautoscaling_list_tags_for_resource
+
 #' Creates or updates a scaling policy for an Application Auto Scaling
 #' scalable target
 #'
@@ -1204,6 +1295,10 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' See [https://paws-r.github.io/docs/applicationautoscaling/put_scaling_policy.html](https://paws-r.github.io/docs/applicationautoscaling/put_scaling_policy.html) for full documentation.
 #'
 #' @param PolicyName &#91;required&#93; The name of the scaling policy.
+#' 
+#' You cannot change the name of a scaling policy, but you can delete the
+#' original scaling policy and create a new scaling policy with the same
+#' settings and a different name.
 #' @param ServiceNamespace &#91;required&#93; The namespace of the Amazon Web Services service that provides the
 #' resource. For a resource provided by your own application or service,
 #' use `custom-resource` instead.
@@ -1274,6 +1369,10 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
+#' 
+#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#'     the unique identifier is the resource ID. Example:
+#'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
@@ -1306,7 +1405,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #'     Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2
-#'     instances for an SageMaker model endpoint variant.
+#'     instances for a SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for
 #'     a custom resource provided by your own application or service.
@@ -1339,8 +1438,11 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' 
 #' -   `neptune:cluster:ReadReplicaCount` - The count of read replicas in
 #'     an Amazon Neptune DB cluster.
-#' @param PolicyType The policy type. This parameter is required if you are creating a
-#' scaling policy.
+#' 
+#' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
+#'     concurrency for a SageMaker Serverless endpoint.
+#' @param PolicyType The scaling policy type. This parameter is required if you are creating
+#' a scaling policy.
 #' 
 #' The following policy types are supported:
 #' 
@@ -1497,6 +1599,10 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
+#' 
+#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#'     the unique identifier is the resource ID. Example:
+#'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
@@ -1529,7 +1635,7 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #'     Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2
-#'     instances for an SageMaker model endpoint variant.
+#'     instances for a SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for
 #'     a custom resource provided by your own application or service.
@@ -1562,6 +1668,9 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' 
 #' -   `neptune:cluster:ReadReplicaCount` - The count of read replicas in
 #'     an Amazon Neptune DB cluster.
+#' 
+#' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
+#'     concurrency for a SageMaker Serverless endpoint.
 #' @param StartTime The date and time for this scheduled action to start, in UTC.
 #' @param EndTime The date and time for the recurring schedule to end, in UTC.
 #' @param ScalableTargetAction The new minimum and maximum capacity. You can set both values or just
@@ -1590,10 +1699,11 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 }
 .applicationautoscaling$operations$put_scheduled_action <- applicationautoscaling_put_scheduled_action
 
-#' Registers or updates a scalable target
+#' Registers or updates a scalable target, which is the resource that you
+#' want to scale
 #'
 #' @description
-#' Registers or updates a scalable target.
+#' Registers or updates a scalable target, which is the resource that you want to scale.
 #'
 #' See [https://paws-r.github.io/docs/applicationautoscaling/register_scalable_target.html](https://paws-r.github.io/docs/applicationautoscaling/register_scalable_target.html) for full documentation.
 #'
@@ -1667,6 +1777,10 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
+#' 
+#' -   SageMaker Serverless endpoint - The resource type is `variant` and
+#'     the unique identifier is the resource ID. Example:
+#'     `endpoint/my-end-point/variant/KMeansClustering`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension associated with the scalable target. This string
 #' consists of the service namespace, resource type, and scaling property.
 #' 
@@ -1699,7 +1813,7 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #'     Aurora PostgreSQL-compatible edition.
 #' 
 #' -   `sagemaker:variant:DesiredInstanceCount` - The number of EC2
-#'     instances for an SageMaker model endpoint variant.
+#'     instances for a SageMaker model endpoint variant.
 #' 
 #' -   `custom-resource:ResourceType:Property` - The scalable dimension for
 #'     a custom resource provided by your own application or service.
@@ -1732,27 +1846,56 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' 
 #' -   `neptune:cluster:ReadReplicaCount` - The count of read replicas in
 #'     an Amazon Neptune DB cluster.
+#' 
+#' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
+#'     concurrency for a SageMaker Serverless endpoint.
 #' @param MinCapacity The minimum value that you plan to scale in to. When a scaling policy is
 #' in effect, Application Auto Scaling can scale in (contract) as needed to
 #' the minimum capacity limit in response to changing demand. This property
 #' is required when registering a new scalable target.
 #' 
-#' For certain resources, the minimum value allowed is 0. This includes
-#' Lambda provisioned concurrency, Spot Fleet, ECS services, Aurora DB
-#' clusters, EMR clusters, and custom resources. For all other resources,
-#' the minimum value allowed is 1.
+#' For the following resources, the minimum value allowed is 0.
+#' 
+#' -   AppStream 2.0 fleets
+#' 
+#' -   Aurora DB clusters
+#' 
+#' -   ECS services
+#' 
+#' -   EMR clusters
+#' 
+#' -   Lambda provisioned concurrency
+#' 
+#' -   SageMaker endpoint variants
+#' 
+#' -   SageMaker Serverless endpoint provisioned concurrency
+#' 
+#' -   Spot Fleets
+#' 
+#' -   custom resources
+#' 
+#' It's strongly recommended that you specify a value greater than 0. A
+#' value greater than 0 means that data points are continuously reported to
+#' CloudWatch that scaling policies can use to scale on a metric like
+#' average CPU utilization.
+#' 
+#' For all other resources, the minimum allowed value depends on the type
+#' of resource that you are using. If you provide a value that is lower
+#' than what a resource can accept, an error occurs. In which case, the
+#' error message will provide the minimum value that the resource can
+#' accept.
 #' @param MaxCapacity The maximum value that you plan to scale out to. When a scaling policy
 #' is in effect, Application Auto Scaling can scale out (expand) as needed
 #' to the maximum capacity limit in response to changing demand. This
 #' property is required when registering a new scalable target.
 #' 
 #' Although you can specify a large maximum capacity, note that service
-#' quotas may impose lower limits. Each service has its own default quotas
-#' for the maximum capacity of the resource. If you want to specify a
-#' higher limit, you can request an increase. For more information, consult
-#' the documentation for that service. For information about the default
-#' quotas for each service, see [Service Endpoints and
-#' Quotas](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html)
+#' quotas might impose lower limits. Each service has its own default
+#' quotas for the maximum capacity of the resource. If you want to specify
+#' a higher limit, you can request an increase. For more information,
+#' consult the documentation for that service. For information about the
+#' default quotas for each service, see [Service endpoints and
+#' quotas](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param RoleARN This parameter is required for services that do not support
 #' service-linked roles (such as Amazon EMR), and it must specify the ARN
@@ -1785,18 +1928,31 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' For more information, see [Suspending and resuming
 #' scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html)
 #' in the *Application Auto Scaling User Guide*.
+#' @param Tags Assigns one or more tags to the scalable target. Use this parameter to
+#' tag the scalable target when it is created. To tag an existing scalable
+#' target, use the [`tag_resource`][applicationautoscaling_tag_resource]
+#' operation.
+#' 
+#' Each tag consists of a tag key and a tag value. Both the tag key and the
+#' tag value are required. You cannot have more than one tag on a scalable
+#' target with the same tag key.
+#' 
+#' Use tags to control access to a scalable target. For more information,
+#' see [Tagging support for Application Auto
+#' Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/resource-tagging-support.html)
+#' in the *Application Auto Scaling User Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationautoscaling_register_scalable_target
-applicationautoscaling_register_scalable_target <- function(ServiceNamespace, ResourceId, ScalableDimension, MinCapacity = NULL, MaxCapacity = NULL, RoleARN = NULL, SuspendedState = NULL) {
+applicationautoscaling_register_scalable_target <- function(ServiceNamespace, ResourceId, ScalableDimension, MinCapacity = NULL, MaxCapacity = NULL, RoleARN = NULL, SuspendedState = NULL, Tags = NULL) {
   op <- new_operation(
     name = "RegisterScalableTarget",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationautoscaling$register_scalable_target_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MinCapacity = MinCapacity, MaxCapacity = MaxCapacity, RoleARN = RoleARN, SuspendedState = SuspendedState)
+  input <- .applicationautoscaling$register_scalable_target_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MinCapacity = MinCapacity, MaxCapacity = MaxCapacity, RoleARN = RoleARN, SuspendedState = SuspendedState, Tags = Tags)
   output <- .applicationautoscaling$register_scalable_target_output()
   config <- get_config()
   svc <- .applicationautoscaling$service(config)
@@ -1805,3 +1961,90 @@ applicationautoscaling_register_scalable_target <- function(ServiceNamespace, Re
   return(response)
 }
 .applicationautoscaling$operations$register_scalable_target <- applicationautoscaling_register_scalable_target
+
+#' Adds or edits tags on an Application Auto Scaling scalable target
+#'
+#' @description
+#' Adds or edits tags on an Application Auto Scaling scalable target.
+#'
+#' See [https://paws-r.github.io/docs/applicationautoscaling/tag_resource.html](https://paws-r.github.io/docs/applicationautoscaling/tag_resource.html) for full documentation.
+#'
+#' @param ResourceARN &#91;required&#93; Identifies the Application Auto Scaling scalable target that you want to
+#' apply tags to.
+#' 
+#' For example:
+#' `arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123`
+#' 
+#' To get the ARN for a scalable target, use
+#' [`describe_scalable_targets`][applicationautoscaling_describe_scalable_targets].
+#' @param Tags &#91;required&#93; The tags assigned to the resource. A tag is a label that you assign to
+#' an Amazon Web Services resource.
+#' 
+#' Each tag consists of a tag key and a tag value.
+#' 
+#' You cannot have more than one tag on an Application Auto Scaling
+#' scalable target with the same tag key. If you specify an existing tag
+#' key with a different tag value, Application Auto Scaling replaces the
+#' current tag value with the specified one.
+#' 
+#' For information about the rules that apply to tag keys and tag values,
+#' see [User-defined tag
+#' restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html)
+#' in the *Amazon Web Services Billing and Cost Management User Guide*.
+#'
+#' @keywords internal
+#'
+#' @rdname applicationautoscaling_tag_resource
+applicationautoscaling_tag_resource <- function(ResourceARN, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationautoscaling$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
+  output <- .applicationautoscaling$tag_resource_output()
+  config <- get_config()
+  svc <- .applicationautoscaling$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationautoscaling$operations$tag_resource <- applicationautoscaling_tag_resource
+
+#' Deletes tags from an Application Auto Scaling scalable target
+#'
+#' @description
+#' Deletes tags from an Application Auto Scaling scalable target. To delete a tag, specify the tag key and the Application Auto Scaling scalable target.
+#'
+#' See [https://paws-r.github.io/docs/applicationautoscaling/untag_resource.html](https://paws-r.github.io/docs/applicationautoscaling/untag_resource.html) for full documentation.
+#'
+#' @param ResourceARN &#91;required&#93; Identifies the Application Auto Scaling scalable target from which to
+#' remove tags.
+#' 
+#' For example:
+#' `arn:aws:application-autoscaling:us-east-1:123456789012:scalable-target/1234abcd56ab78cd901ef1234567890ab123`
+#' 
+#' To get the ARN for a scalable target, use
+#' [`describe_scalable_targets`][applicationautoscaling_describe_scalable_targets].
+#' @param TagKeys &#91;required&#93; One or more tag keys. Specify only the tag keys, not the tag values.
+#'
+#' @keywords internal
+#'
+#' @rdname applicationautoscaling_untag_resource
+applicationautoscaling_untag_resource <- function(ResourceARN, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationautoscaling$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
+  output <- .applicationautoscaling$untag_resource_output()
+  config <- get_config()
+  svc <- .applicationautoscaling$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationautoscaling$operations$untag_resource <- applicationautoscaling_untag_resource

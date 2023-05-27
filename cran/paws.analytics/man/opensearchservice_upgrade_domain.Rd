@@ -2,8 +2,9 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_upgrade_domain}
 \alias{opensearchservice_upgrade_domain}
-\title{Allows you to either upgrade your domain or perform an upgrade
-eligibility check to a compatible version of OpenSearch or Elasticsearch}
+\title{Allows you to either upgrade your Amazon OpenSearch Service domain or
+perform an upgrade eligibility check to a compatible version of
+OpenSearch or Elasticsearch}
 \usage{
 opensearchservice_upgrade_domain(
   DomainName,
@@ -13,17 +14,22 @@ opensearchservice_upgrade_domain(
 )
 }
 \arguments{
-\item{DomainName}{[required]}
+\item{DomainName}{[required] Name of the OpenSearch Service domain that you want to upgrade.}
 
-\item{TargetVersion}{[required] The version of OpenSearch you intend to upgrade the domain to.}
+\item{TargetVersion}{[required] OpenSearch or Elasticsearch version to which you want to upgrade, in the
+format Opensearch_X.Y or Elasticsearch_X.Y.}
 
 \item{PerformCheckOnly}{When true, indicates that an upgrade eligibility check needs to be
 performed. Does not actually perform the upgrade.}
 
-\item{AdvancedOptions}{}
+\item{AdvancedOptions}{Only supports the \code{override_main_response_version} parameter and not
+other advanced options. You can only include this option when upgrading
+to an OpenSearch version. Specifies whether the domain reports its
+version as 7.10 so that it continues to work with Elasticsearch OSS
+clients and plugins.}
 }
 \description{
-Allows you to either upgrade your domain or perform an upgrade eligibility check to a compatible version of OpenSearch or Elasticsearch.
+Allows you to either upgrade your Amazon OpenSearch Service domain or perform an upgrade eligibility check to a compatible version of OpenSearch or Elasticsearch.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/upgrade_domain.html} for full documentation.
 }

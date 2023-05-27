@@ -13,7 +13,8 @@ ec2_describe_launch_template_versions(
   MaxVersion = NULL,
   NextToken = NULL,
   MaxResults = NULL,
-  Filters = NULL
+  Filters = NULL,
+  ResolveAlias = NULL
 )
 }
 \arguments{
@@ -86,6 +87,17 @@ template version is the default version.
 \item \code{network-card-index} - The index of the network card.
 \item \code{ram-disk-id} - The RAM disk ID.
 }}
+
+\item{ResolveAlias}{If \code{true}, and if a Systems Manager parameter is specified for
+\code{ImageId}, the AMI ID is displayed in the response for \code{imageId}.
+
+If \code{false}, and if a Systems Manager parameter is specified for
+\code{ImageId}, the parameter is displayed in the response for \code{imageId}.
+
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#use-an-ssm-parameter-instead-of-an-ami-id}{Use a Systems Manager parameter instead of an AMI ID}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.
+
+Default: \code{false}}
 }
 \description{
 Describes one or more versions of a specified launch template. You can describe all versions, individual versions, or a range of versions. You can also describe all the latest versions or all the default versions of all the launch templates in your account.

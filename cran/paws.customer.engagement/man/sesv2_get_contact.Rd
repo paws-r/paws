@@ -9,7 +9,7 @@ sesv2_get_contact(ContactListName, EmailAddress)
 \arguments{
 \item{ContactListName}{[required] The name of the contact list to which the contact belongs.}
 
-\item{EmailAddress}{[required] The contact's email addres.}
+\item{EmailAddress}{[required] The contact's email address.}
 }
 \description{
 Returns a contact from a contact list.

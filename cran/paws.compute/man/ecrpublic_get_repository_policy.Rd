@@ -7,9 +7,9 @@
 ecrpublic_get_repository_policy(registryId = NULL, repositoryName)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the public registry that contains the
-repository. If you do not specify a registry, the default public
-registry is assumed.}
+\item{registryId}{The Amazon Web Services account ID that's associated with the public
+registry that contains the repository. If you do not specify a registry,
+the default public registry is assumed.}
 
 \item{repositoryName}{[required] The name of the repository with the policy to retrieve.}
 }

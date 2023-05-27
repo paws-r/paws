@@ -10,7 +10,8 @@ kinesis_list_shards(
   ExclusiveStartShardId = NULL,
   MaxResults = NULL,
   StreamCreationTimestamp = NULL,
-  ShardFilter = NULL
+  ShardFilter = NULL,
+  StreamARN = NULL
 )
 }
 \arguments{
@@ -94,6 +95,8 @@ specify the AT_TIMESTAMP type, then all shards that were open at the
 provided timestamp are returned. If you specify the FROM_TIMESTAMP type,
 then all shards starting from the provided timestamp to TIP are
 returned.}
+
+\item{StreamARN}{The ARN of the stream.}
 }
 \description{
 Lists the shards in a stream and provides information about each shard. This operation has a limit of 1000 transactions per second per data stream.

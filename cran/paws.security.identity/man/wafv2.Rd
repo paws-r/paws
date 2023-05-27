@@ -47,27 +47,27 @@ For information, including how to migrate your WAF resources to this
 version, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{WAF Developer Guide}.
 
 WAF is a web application firewall that lets you monitor the HTTP and
-HTTPS requests that are forwarded to Amazon CloudFront, an Amazon API
-Gateway REST API, an Application Load Balancer, an AppSync GraphQL API,
-or an Amazon Cognito user pool. WAF also lets you control access to your
-content. Based on conditions that you specify, such as the IP addresses
-that requests originate from or the values of query strings, the Amazon
-API Gateway REST API, CloudFront distribution, the Application Load
-Balancer, the AppSync GraphQL API, or the Amazon Cognito user pool
-responds to requests either with the requested content or with an HTTP
-403 status code (Forbidden). You also can configure CloudFront to return
-a custom error page when a request is blocked.
+HTTPS requests that are forwarded to an Amazon CloudFront distribution,
+Amazon API Gateway REST API, Application Load Balancer, AppSync GraphQL
+API, Amazon Cognito user pool, App Runner service, or Amazon Web
+Services Verified Access instance. WAF also lets you control access to
+your content, to protect the Amazon Web Services resource that WAF is
+monitoring. Based on conditions that you specify, such as the IP
+addresses that requests originate from or the values of query strings,
+the protected resource responds to requests with either the requested
+content, an HTTP 403 status code (Forbidden), or with a custom response.
 
 This API guide is for developers who need detailed information about WAF
 API actions, data types, and errors. For detailed information about WAF
-features and an overview of how to use WAF, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html}{WAF Developer Guide}.
+features and guidance for configuring and using WAF, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html}{WAF Developer Guide}.
 
 You can make calls using the endpoints listed in \href{https://docs.aws.amazon.com/general/latest/gr/waf.html}{WAF endpoints and quotas}.
 \itemize{
 \item For regional applications, you can use any of the endpoints in the
 list. A regional application can be an Application Load Balancer
-(ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, or an
-Amazon Cognito user pool.
+(ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an
+Amazon Cognito user pool, an App Runner service, or an Amazon Web
+Services Verified Access instance.
 \item For Amazon CloudFront applications, you must use the API endpoint
 listed for US East (N. Virginia): us-east-1.
 }
@@ -122,6 +122,7 @@ it.
 \tabular{ll}{
 \link[=wafv2_associate_web_acl]{associate_web_acl} \tab Associates a web ACL with a regional application resource, to protect the resource\cr
 \link[=wafv2_check_capacity]{check_capacity} \tab Returns the web ACL capacity unit (WCU) requirements for a specified scope and set of rules\cr
+\link[=wafv2_create_api_key]{create_api_key} \tab Creates an API key that contains a set of token domains\cr
 \link[=wafv2_create_ip_set]{create_ip_set} \tab Creates an IPSet, which you use to identify web requests that originate from specific IP addresses or ranges of IP addresses\cr
 \link[=wafv2_create_regex_pattern_set]{create_regex_pattern_set} \tab Creates a RegexPatternSet, which you reference in a RegexPatternSetReferenceStatement, to have WAF inspect a web request component for the specified patterns\cr
 \link[=wafv2_create_rule_group]{create_rule_group} \tab Creates a RuleGroup per the specifications provided\cr
@@ -136,17 +137,19 @@ it.
 \link[=wafv2_describe_managed_rule_group]{describe_managed_rule_group} \tab Provides high-level information for a managed rule group, including descriptions of the rules\cr
 \link[=wafv2_disassociate_web_acl]{disassociate_web_acl} \tab Disassociates the specified regional application resource from any existing web ACL association\cr
 \link[=wafv2_generate_mobile_sdk_release_url]{generate_mobile_sdk_release_url} \tab Generates a presigned download URL for the specified release of the mobile SDK\cr
+\link[=wafv2_get_decrypted_api_key]{get_decrypted_api_key} \tab Returns your API key in decrypted form\cr
 \link[=wafv2_get_ip_set]{get_ip_set} \tab Retrieves the specified IPSet\cr
 \link[=wafv2_get_logging_configuration]{get_logging_configuration} \tab Returns the LoggingConfiguration for the specified web ACL\cr
 \link[=wafv2_get_managed_rule_set]{get_managed_rule_set} \tab Retrieves the specified managed rule set\cr
 \link[=wafv2_get_mobile_sdk_release]{get_mobile_sdk_release} \tab Retrieves information for the specified mobile SDK release, including release notes and tags\cr
 \link[=wafv2_get_permission_policy]{get_permission_policy} \tab Returns the IAM policy that is attached to the specified rule group\cr
-\link[=wafv2_get_rate_based_statement_managed_keys]{get_rate_based_statement_managed_keys} \tab Retrieves the keys that are currently blocked by a rate-based rule instance\cr
+\link[=wafv2_get_rate_based_statement_managed_keys]{get_rate_based_statement_managed_keys} \tab Retrieves the IP addresses that are currently blocked by a rate-based rule instance\cr
 \link[=wafv2_get_regex_pattern_set]{get_regex_pattern_set} \tab Retrieves the specified RegexPatternSet\cr
 \link[=wafv2_get_rule_group]{get_rule_group} \tab Retrieves the specified RuleGroup\cr
 \link[=wafv2_get_sampled_requests]{get_sampled_requests} \tab Gets detailed information about a specified number of requests--a sample--that WAF randomly selects from among the first 5,000 requests that your Amazon Web Services resource received during a time range that you choose\cr
 \link[=wafv2_get_web_acl]{get_web_acl} \tab Retrieves the specified WebACL\cr
 \link[=wafv2_get_web_acl_for_resource]{get_web_acl_for_resource} \tab Retrieves the WebACL for the specified resource\cr
+\link[=wafv2_list_api_keys]{list_api_keys} \tab Retrieves a list of the API keys that you've defined for the specified scope\cr
 \link[=wafv2_list_available_managed_rule_groups]{list_available_managed_rule_groups} \tab Retrieves an array of managed rule groups that are available for you to use\cr
 \link[=wafv2_list_available_managed_rule_group_versions]{list_available_managed_rule_group_versions} \tab Returns a list of the available versions for the specified managed rule group\cr
 \link[=wafv2_list_ip_sets]{list_ip_sets} \tab Retrieves an array of IPSetSummary objects for the IP sets that you manage\cr

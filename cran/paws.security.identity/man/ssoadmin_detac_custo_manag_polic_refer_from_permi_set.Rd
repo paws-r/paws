@@ -12,14 +12,14 @@ ssoadmin_detach_customer_managed_policy_reference_from_permission_set(
 )
 }
 \arguments{
-\item{InstanceArn}{[required] The ARN of the Amazon Web Services SSO instance under which the
-operation will be executed.}
+\item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
+will be executed.}
 
 \item{PermissionSetArn}{[required] The ARN of the \code{PermissionSet}.}
 
 \item{CustomerManagedPolicyReference}{[required] Specifies the name and path of a customer managed policy. You must have
-an IAM policy that matches the name and path in each Amazon Web Services
-account where you want to deploy your permission set.}
+an IAM policy that matches the name and path in each AWS account where
+you want to deploy your permission set.}
 }
 \description{
 Detaches the specified customer managed policy from the specified PermissionSet.

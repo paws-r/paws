@@ -2,16 +2,16 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_accept_inbound_connection}
 \alias{opensearchservice_accept_inbound_connection}
-\title{Allows the remote domain owner to accept an inbound cross-cluster
-connection request}
+\title{Allows the destination Amazon OpenSearch Service domain owner to accept
+an inbound cross-cluster search connection request}
 \usage{
 opensearchservice_accept_inbound_connection(ConnectionId)
 }
 \arguments{
-\item{ConnectionId}{[required] The ID of the inbound connection you want to accept.}
+\item{ConnectionId}{[required] The ID of the inbound connection to accept.}
 }
 \description{
-Allows the remote domain owner to accept an inbound cross-cluster connection request.
+Allows the destination Amazon OpenSearch Service domain owner to accept an inbound cross-cluster search connection request. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html}{Cross-cluster search for Amazon OpenSearch Service}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/accept_inbound_connection.html} for full documentation.
 }

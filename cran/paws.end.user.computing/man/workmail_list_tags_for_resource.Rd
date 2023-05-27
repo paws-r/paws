@@ -2,7 +2,7 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_list_tags_for_resource}
 \alias{workmail_list_tags_for_resource}
-\title{Lists the tags applied to an Amazon WorkMail organization resource}
+\title{Lists the tags applied to an WorkMail organization resource}
 \usage{
 workmail_list_tags_for_resource(ResourceARN)
 }
@@ -10,7 +10,7 @@ workmail_list_tags_for_resource(ResourceARN)
 \item{ResourceARN}{[required] The resource ARN.}
 }
 \description{
-Lists the tags applied to an Amazon WorkMail organization resource.
+Lists the tags applied to an WorkMail organization resource.
 
 See \url{https://paws-r.github.io/docs/workmail/list_tags_for_resource.html} for full documentation.
 }

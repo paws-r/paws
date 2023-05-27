@@ -10,13 +10,20 @@ costexplorer_update_anomaly_subscription(
   Frequency = NULL,
   MonitorArnList = NULL,
   Subscribers = NULL,
-  SubscriptionName = NULL
+  SubscriptionName = NULL,
+  ThresholdExpression = NULL
 )
 }
 \arguments{
 \item{SubscriptionArn}{[required] A cost anomaly subscription Amazon Resource Name (ARN).}
 
-\item{Threshold}{The update to the threshold value for receiving notifications.}
+\item{Threshold}{(deprecated)
+
+The update to the threshold value for receiving notifications.
+
+This field has been deprecated. To update a threshold, use
+ThresholdExpression. Continued use of Threshold will be treated as
+shorthand syntax for a ThresholdExpression.}
 
 \item{Frequency}{The update to the frequency value that subscribers receive
 notifications.}
@@ -26,6 +33,27 @@ notifications.}
 \item{Subscribers}{The update to the subscriber list.}
 
 \item{SubscriptionName}{The new name of the subscription.}
+
+\item{ThresholdExpression}{The update to the
+\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}
+object used to specify the anomalies that you want to generate alerts
+for. This supports dimensions and nested expressions. The supported
+dimensions are \code{ANOMALY_TOTAL_IMPACT_ABSOLUTE} and
+\code{ANOMALY_TOTAL_IMPACT_PERCENTAGE}. The supported nested expression types
+are \code{AND} and \code{OR}. The match option \code{GREATER_THAN_OR_EQUAL} is
+required. Values must be numbers between 0 and 10,000,000,000.
+
+The following are examples of valid ThresholdExpressions:
+\itemize{
+\item Absolute threshold:
+\verb{\{ "Dimensions": \{ "Key": "ANOMALY_TOTAL_IMPACT_ABSOLUTE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] \} \}}
+\item Percentage threshold:
+\verb{\{ "Dimensions": \{ "Key": "ANOMALY_TOTAL_IMPACT_PERCENTAGE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] \} \}}
+\item \code{AND} two thresholds together:
+\verb{\{ "And": [ \{ "Dimensions": \{ "Key": "ANOMALY_TOTAL_IMPACT_ABSOLUTE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] \} \}, \{ "Dimensions": \{ "Key": "ANOMALY_TOTAL_IMPACT_PERCENTAGE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] \} \} ] \}}
+\item \code{OR} two thresholds together:
+\verb{\{ "Or": [ \{ "Dimensions": \{ "Key": "ANOMALY_TOTAL_IMPACT_ABSOLUTE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] \} \}, \{ "Dimensions": \{ "Key": "ANOMALY_TOTAL_IMPACT_PERCENTAGE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] \} \} ] \}}
+}}
 }
 \description{
 Updates an existing cost anomaly monitor subscription.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/codepipeline_operations.R
 \name{codepipeline_list_action_types}
 \alias{codepipeline_list_action_types}
-\title{Gets a summary of all AWS CodePipeline action types associated with your
+\title{Gets a summary of all CodePipeline action types associated with your
 account}
 \usage{
 codepipeline_list_action_types(
@@ -21,7 +21,7 @@ list.}
 \item{regionFilter}{The Region to filter on for the list of action types.}
 }
 \description{
-Gets a summary of all AWS CodePipeline action types associated with your account.
+Gets a summary of all CodePipeline action types associated with your account.
 
 See \url{https://paws-r.github.io/docs/codepipeline/list_action_types.html} for full documentation.
 }

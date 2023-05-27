@@ -2,7 +2,7 @@
 % Please edit documentation in R/ecrpublic_operations.R
 \name{ecrpublic_put_registry_catalog_data}
 \alias{ecrpublic_put_registry_catalog_data}
-\title{Create or updates the catalog data for a public registry}
+\title{Create or update the catalog data for a public registry}
 \usage{
 ecrpublic_put_registry_catalog_data(displayName = NULL)
 }
@@ -14,7 +14,7 @@ The registry display name is only publicly visible in the Amazon ECR
 Public Gallery for verified accounts.}
 }
 \description{
-Create or updates the catalog data for a public registry.
+Create or update the catalog data for a public registry.
 
 See \url{https://paws-r.github.io/docs/ecrpublic/put_registry_catalog_data.html} for full documentation.
 }

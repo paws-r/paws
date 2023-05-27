@@ -28,12 +28,13 @@ more information, see Images in the Amazon Rekognition developer guide.}
 
 \item{ExternalImageId}{The ID you want to assign to all the faces detected in the image.}
 
-\item{DetectionAttributes}{An array of facial attributes that you want to be returned. This can be
-the default list of attributes or all attributes. If you don't specify a
-value for \code{Attributes} or if you specify \verb{["DEFAULT"]}, the API returns
-the following subset of facial attributes: \code{BoundingBox}, \code{Confidence},
-\code{Pose}, \code{Quality}, and \code{Landmarks}. If you provide \verb{["ALL"]}, all facial
-attributes are returned, but the operation takes longer to complete.
+\item{DetectionAttributes}{An array of facial attributes you want to be returned. A \code{DEFAULT}
+subset of facial attributes - \code{BoundingBox}, \code{Confidence}, \code{Pose},
+\code{Quality}, and \code{Landmarks} - will always be returned. You can request
+for specific facial attributes (in addition to the default list) - by
+using \verb{["DEFAULT", "FACE_OCCLUDED"]} or just \verb{["FACE_OCCLUDED"]}. You
+can request for all facial attributes by using \verb{["ALL"]}. Requesting
+more attributes may increase response time.
 
 If you provide both, \verb{["ALL", "DEFAULT"]}, the service uses a logical
 AND operator to determine which attributes to return (in this case, all

@@ -97,7 +97,7 @@ environment.
 \link[paws.developer.tools:cloud9_create_environment_ec2]{create_environment_ec2} \tab Creates an Cloud9 development environment, launches an Amazon Elastic Compute Cloud (Amazon EC2) instance, and then connects from the instance to the environment\cr
 \link[paws.developer.tools:cloud9_create_environment_membership]{create_environment_membership} \tab Adds an environment member to an Cloud9 development environment\cr
 \link[paws.developer.tools:cloud9_delete_environment]{delete_environment} \tab Deletes an Cloud9 development environment\cr
-\link[paws.developer.tools:cloud9_delete_environment_membership]{delete_environment_membership} \tab Deletes an environment member from an Cloud9 development environment\cr
+\link[paws.developer.tools:cloud9_delete_environment_membership]{delete_environment_membership} \tab Deletes an environment member from a development environment\cr
 \link[paws.developer.tools:cloud9_describe_environment_memberships]{describe_environment_memberships} \tab Gets information about environment members for an Cloud9 development environment\cr
 \link[paws.developer.tools:cloud9_describe_environments]{describe_environments} \tab Gets information about Cloud9 development environments\cr
 \link[paws.developer.tools:cloud9_describe_environment_status]{describe_environment_status} \tab Gets status information for an Cloud9 development environment\cr

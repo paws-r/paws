@@ -19,6 +19,8 @@ NULL
 #' 
 #' -   `public:npmjs` - for the npm public repository.
 #' 
+#' -   `public:nuget-org` - for the NuGet Gallery.
+#' 
 #' -   `public:pypi` - for the Python Package Index.
 #' 
 #' -   `public:maven-central` - for Maven Central.
@@ -28,6 +30,8 @@ NULL
 #' -   `public:maven-gradleplugins` - for the Gradle plugins repository.
 #' 
 #' -   `public:maven-commonsware` - for the CommonsWare Android repository.
+#' 
+#' -   `public:maven-clojars` - for the Clojars repository.
 #'
 #' @keywords internal
 #'
@@ -76,6 +80,8 @@ codeartifact_associate_external_connection <- function(domain, domainOwner = NUL
 #' -   Python and NuGet package versions do not contain a corresponding
 #'     component, package versions of those formats do not have a
 #'     namespace.
+#' 
+#' -   The namespace of a generic package is its `namespace`.
 #' @param package &#91;required&#93; The name of the package that contains the versions to be copied.
 #' @param versions The versions of the package to be copied.
 #' 
@@ -274,10 +280,56 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
 }
 .codeartifact$operations$delete_domain_permissions_policy <- codeartifact_delete_domain_permissions_policy
 
+#' Deletes a package and all associated package versions
+#'
+#' @description
+#' Deletes a package and all associated package versions. A deleted package cannot be restored. To delete one or more package versions, use the [`delete_package_versions`][codeartifact_delete_package_versions] API.
+#'
+#' See [https://paws-r.github.io/docs/codeartifact/delete_package.html](https://paws-r.github.io/docs/codeartifact/delete_package.html) for full documentation.
+#'
+#' @param domain &#91;required&#93; The name of the domain that contains the package to delete.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
+#' @param repository &#91;required&#93; The name of the repository that contains the package to delete.
+#' @param format &#91;required&#93; The format of the requested package to delete.
+#' @param namespace The namespace of the package to delete. The package component that
+#' specifies its namespace depends on its type. For example:
+#' 
+#' -   The namespace of a Maven package is its `groupId`. The namespace is
+#'     required when deleting Maven package versions.
+#' 
+#' -   The namespace of an npm package is its `scope`.
+#' 
+#' -   Python and NuGet packages do not contain corresponding components,
+#'     packages of those formats do not have a namespace.
+#' 
+#' -   The namespace of a generic package is its `namespace`.
+#' @param package &#91;required&#93; The name of the package to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname codeartifact_delete_package
+codeartifact_delete_package <- function(domain, domainOwner = NULL, repository, format, namespace = NULL, package) {
+  op <- new_operation(
+    name = "DeletePackage",
+    http_method = "DELETE",
+    http_path = "/v1/package",
+    paginator = list()
+  )
+  input <- .codeartifact$delete_package_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package)
+  output <- .codeartifact$delete_package_output()
+  config <- get_config()
+  svc <- .codeartifact$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeartifact$operations$delete_package <- codeartifact_delete_package
+
 #' Deletes one or more versions of a package
 #'
 #' @description
-#' Deletes one or more versions of a package. A deleted package version cannot be restored in your repository. If you want to remove a package version from your repository and be able to restore it later, set its status to `Archived`. Archived packages cannot be downloaded from a repository and don't show up with list package APIs (for example, [ListackageVersions](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html)), but you can restore them using [`update_package_versions_status`][codeartifact_update_package_versions_status].
+#' Deletes one or more versions of a package. A deleted package version cannot be restored in your repository. If you want to remove a package version from your repository and be able to restore it later, set its status to `Archived`. Archived packages cannot be downloaded from a repository and don't show up with list package APIs (for example, [`list_package_versions`][codeartifact_list_package_versions]), but you can restore them using [`update_package_versions_status`][codeartifact_update_package_versions_status].
 #'
 #' See [https://paws-r.github.io/docs/codeartifact/delete_package_versions.html](https://paws-r.github.io/docs/codeartifact/delete_package_versions.html) for full documentation.
 #'
@@ -297,6 +349,8 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
 #' -   Python and NuGet package versions do not contain a corresponding
 #'     component, package versions of those formats do not have a
 #'     namespace.
+#' 
+#' -   The namespace of a generic package is its `namespace`.
 #' @param package &#91;required&#93; The name of the package with the versions to delete.
 #' @param versions &#91;required&#93; An array of strings that specify the versions of the package to delete.
 #' @param expectedStatus The expected status of the package version to delete.
@@ -447,6 +501,8 @@ codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
 #' 
 #' -   Python and NuGet packages do not contain a corresponding component,
 #'     packages of those formats do not have a namespace.
+#' 
+#' -   The namespace of a generic package is its `namespace`.
 #' @param package &#91;required&#93; The name of the requested package.
 #'
 #' @keywords internal
@@ -493,6 +549,8 @@ codeartifact_describe_package <- function(domain, domainOwner = NULL, repository
 #' -   Python and NuGet package versions do not contain a corresponding
 #'     component, package versions of those formats do not have a
 #'     namespace.
+#' 
+#' -   The namespace of a generic package is its `namespace`.
 #' @param package &#91;required&#93; The name of the requested package version.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
 #'
@@ -610,6 +668,8 @@ codeartifact_disassociate_external_connection <- function(domain, domainOwner = 
 #' -   Python and NuGet package versions do not contain a corresponding
 #'     component, package versions of those formats do not have a
 #'     namespace.
+#' 
+#' -   The namespace of a generic package is its `namespace`.
 #' @param package &#91;required&#93; The name of the package with the versions you want to dispose.
 #' @param versions &#91;required&#93; The versions of the package you want to dispose.
 #' @param versionRevisions The revisions of the package versions you want to dispose.
@@ -730,6 +790,8 @@ codeartifact_get_domain_permissions_policy <- function(domain, domainOwner = NUL
 #' -   Python and NuGet package versions do not contain a corresponding
 #'     component, package versions of those formats do not have a
 #'     namespace.
+#' 
+#' -   The namespace of a generic package is its `namespace`.
 #' @param package &#91;required&#93; The name of the package that contains the requested asset.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
 #' @param asset &#91;required&#93; The name of the requested asset.
@@ -759,7 +821,7 @@ codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, r
 #' Gets the readme file or descriptive text for a package version
 #'
 #' @description
-#' Gets the readme file or descriptive text for a package version. For packages that do not contain a readme file, CodeArtifact extracts a description from a metadata file. For example, from the `<description>` element in the `pom.xml` file of a Maven package.
+#' Gets the readme file or descriptive text for a package version.
 #'
 #' See [https://paws-r.github.io/docs/codeartifact/get_package_version_readme.html](https://paws-r.github.io/docs/codeartifact/get_package_version_readme.html) for full documentation.
 #'
@@ -773,8 +835,6 @@ codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, r
 #' @param namespace The namespace of the package version with the requested readme file. The
 #' package version component that specifies its namespace depends on its
 #' type. For example:
-#' 
-#' -   The namespace of a Maven package version is its `groupId`.
 #' 
 #' -   The namespace of an npm package version is its `scope`.
 #' 
@@ -932,6 +992,8 @@ codeartifact_list_domains <- function(maxResults = NULL, nextToken = NULL) {
 #' -   Python and NuGet package versions do not contain a corresponding
 #'     component, package versions of those formats do not have a
 #'     namespace.
+#' 
+#' -   The namespace of a generic package is its `namespace`.
 #' @param package &#91;required&#93; The name of the package that contains the requested package version
 #' assets.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
@@ -984,6 +1046,8 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
 #' -   Python and NuGet package versions do not contain a corresponding
 #'     component, package versions of those formats do not have a
 #'     namespace.
+#' 
+#' -   The namespace of a generic package is its `namespace`.
 #' @param package &#91;required&#93; The name of the package versions' package.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
 #' @param nextToken The token for the next set of results. Use the value returned in the
@@ -1014,7 +1078,7 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
 #' a repository that match the request parameters
 #'
 #' @description
-#' Returns a list of [PackageVersionSummary](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionSummary.html) objects for package versions in a repository that match the request parameters.
+#' Returns a list of [PackageVersionSummary](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionSummary.html) objects for package versions in a repository that match the request parameters. Package versions of all statuses will be returned by default when calling `list-package-versions` with no `--status` parameter.
 #'
 #' See [https://paws-r.github.io/docs/codeartifact/list_package_versions.html](https://paws-r.github.io/docs/codeartifact/list_package_versions.html) for full documentation.
 #'
@@ -1023,7 +1087,7 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
 #' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
 #' the domain. It does not include dashes or spaces.
 #' @param repository &#91;required&#93; The name of the repository that contains the requested package versions.
-#' @param format &#91;required&#93; The format of the returned package versions.
+#' @param format &#91;required&#93; The format of the package versions you want to list.
 #' @param namespace The namespace of the package that contains the requested package
 #' versions. The package component that specifies its namespace depends on
 #' its type. For example:
@@ -1034,6 +1098,8 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
 #' 
 #' -   Python and NuGet packages do not contain a corresponding component,
 #'     packages of those formats do not have a namespace.
+#' 
+#' -   The namespace of a generic package is its `namespace`.
 #' @param package &#91;required&#93; The name of the package for which you want to request package versions.
 #' @param status A string that filters the requested package versions by status.
 #' @param sortBy How to sort the requested list of package versions.
@@ -1079,9 +1145,12 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
 #' @param repository &#91;required&#93; The name of the repository that contains the requested packages.
 #' @param format The format used to filter requested packages. Only packages from the
 #' provided format will be returned.
-#' @param namespace The namespace used to filter requested packages. Only packages with the
-#' provided namespace will be returned. The package component that
-#' specifies its namespace depends on its type. For example:
+#' @param namespace The namespace prefix used to filter requested packages. Only packages
+#' with a namespace that starts with the provided string value are
+#' returned. Note that although this option is called `--namespace` and not
+#' `--namespace-prefix`, it has prefix-matching behavior.
+#' 
+#' Each package format uses namespace as follows:
 #' 
 #' -   The namespace of a Maven package is its `groupId`.
 #' 
@@ -1089,6 +1158,8 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
 #' 
 #' -   Python and NuGet packages do not contain a corresponding component,
 #'     packages of those formats do not have a namespace.
+#' 
+#' -   The namespace of a generic package is its `namespace`.
 #' @param packagePrefix A prefix used to filter requested packages. Only packages with names
 #' that start with `packagePrefix` are returned.
 #' @param maxResults The maximum number of results to return per page.
@@ -1227,6 +1298,64 @@ codeartifact_list_tags_for_resource <- function(resourceArn) {
 }
 .codeartifact$operations$list_tags_for_resource <- codeartifact_list_tags_for_resource
 
+#' Creates a new package version containing one or more assets (or files)
+#'
+#' @description
+#' Creates a new package version containing one or more assets (or files).
+#'
+#' See [https://paws-r.github.io/docs/codeartifact/publish_package_version.html](https://paws-r.github.io/docs/codeartifact/publish_package_version.html) for full documentation.
+#'
+#' @param domain &#91;required&#93; The name of the domain that contains the repository that contains the
+#' package version to publish.
+#' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
+#' does not include dashes or spaces.
+#' @param repository &#91;required&#93; The name of the repository that the package version will be published
+#' to.
+#' @param format &#91;required&#93; A format that specifies the type of the package version with the
+#' requested asset file.
+#' @param namespace The namespace of the package version to publish.
+#' @param package &#91;required&#93; The name of the package version to publish.
+#' @param packageVersion &#91;required&#93; The package version to publish (for example, `3.5.2`).
+#' @param assetContent &#91;required&#93; The content of the asset to publish.
+#' @param assetName &#91;required&#93; The name of the asset to publish. Asset names can include Unicode
+#' letters and numbers, and the following special characters:
+#' `` ~ ! @@ ^ & ( ) - ` _ + [ ] { } ; , . ` ``
+#' @param assetSHA256 &#91;required&#93; The SHA256 hash of the `assetContent` to publish. This value must be
+#' calculated by the caller and provided with the request (see [Publishing
+#' a generic
+#' package](https://docs.aws.amazon.com/codeartifact/latest/ug/using-generic.html#publishing-generic-packages)
+#' in the *CodeArtifact User Guide*).
+#' 
+#' This value is used as an integrity check to verify that the
+#' `assetContent` has not changed after it was originally sent.
+#' @param unfinished Specifies whether the package version should remain in the `unfinished`
+#' state. If omitted, the package version status will be set to `Published`
+#' (see [Package version
+#' status](https://docs.aws.amazon.com/codeartifact/latest/ug/packages-overview.html#package-version-status)
+#' in the *CodeArtifact User Guide*).
+#' 
+#' Valid values: `unfinished`
+#'
+#' @keywords internal
+#'
+#' @rdname codeartifact_publish_package_version
+codeartifact_publish_package_version <- function(domain, domainOwner = NULL, repository, format, namespace = NULL, package, packageVersion, assetContent, assetName, assetSHA256, unfinished = NULL) {
+  op <- new_operation(
+    name = "PublishPackageVersion",
+    http_method = "POST",
+    http_path = "/v1/package/version/publish",
+    paginator = list()
+  )
+  input <- .codeartifact$publish_package_version_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, packageVersion = packageVersion, assetContent = assetContent, assetName = assetName, assetSHA256 = assetSHA256, unfinished = unfinished)
+  output <- .codeartifact$publish_package_version_output()
+  config <- get_config()
+  svc <- .codeartifact$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeartifact$operations$publish_package_version <- codeartifact_publish_package_version
+
 #' Sets a resource policy on a domain that specifies permissions to access
 #' it
 #'
@@ -1286,6 +1415,8 @@ codeartifact_put_domain_permissions_policy <- function(domain, domainOwner = NUL
 #' 
 #' -   Python and NuGet packages do not contain a corresponding component,
 #'     packages of those formats do not have a namespace.
+#' 
+#' -   The namespace of a generic package is its `namespace`.
 #' @param package &#91;required&#93; The name of the package to be updated.
 #' @param restrictions &#91;required&#93; A
 #' [PackageOriginRestrictions](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageOriginRestrictions.html)
@@ -1445,6 +1576,8 @@ codeartifact_untag_resource <- function(resourceArn, tagKeys) {
 #' -   Python and NuGet package versions do not contain a corresponding
 #'     component, package versions of those formats do not have a
 #'     namespace.
+#' 
+#' -   The namespace of a generic package is its `namespace`.
 #' @param package &#91;required&#93; The name of the package with the version statuses to update.
 #' @param versions &#91;required&#93; An array of strings that specify the versions of the package with the
 #' statuses to update.

@@ -26,7 +26,7 @@ periods (.), and underscores (_).
 
 \item{Description}{An optional description for the geofence collection.}
 
-\item{KmsKeyId}{A key identifier for an \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html}{AWS KMS customer managed key}.
+\item{KmsKeyId}{A key identifier for an \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html}{Amazon Web Services KMS customer managed key}.
 Enter a key ID, key ARN, alias name, or alias ARN.}
 
 \item{PricingPlan}{No longer used. If included, the only allowed value is

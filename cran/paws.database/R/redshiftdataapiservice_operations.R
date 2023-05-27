@@ -11,35 +11,40 @@ NULL
 #'
 #' See [https://paws-r.github.io/docs/redshiftdataapiservice/batch_execute_statement.html](https://paws-r.github.io/docs/redshiftdataapiservice/batch_execute_statement.html) for full documentation.
 #'
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
 #' @param ClusterIdentifier The cluster identifier. This parameter is required when connecting to a
 #' cluster and authenticating using either Secrets Manager or temporary
 #' credentials.
 #' @param Database &#91;required&#93; The name of the database. This parameter is required when authenticating
 #' using either Secrets Manager or temporary credentials.
 #' @param DbUser The database user name. This parameter is required when connecting to a
-#' cluster and authenticating using temporary credentials.
+#' cluster as a database user and authenticating using temporary
+#' credentials.
 #' @param SecretArn The name or ARN of the secret that enables access to the database. This
 #' parameter is required when authenticating using Secrets Manager.
 #' @param Sqls &#91;required&#93; One or more SQL statements to run.
+#' 
+#'      The SQL statements are run as a single transaction. They run serially in the order of the array. Subsequent SQL statements don\'t start until the previous statement in the array completes. If any SQL statement fails, then because they are run as one transaction, all work is rolled back.</p> 
 #' @param StatementName The name of the SQL statements. You can name the SQL statements when you
 #' create them to identify the query.
 #' @param WithEvent A value that indicates whether to send an event to the Amazon
 #' EventBridge event bus after the SQL statements run.
-#' @param WorkgroupName The serverless workgroup name. This parameter is required when
-#' connecting to a serverless workgroup and authenticating using either
-#' Secrets Manager or temporary credentials.
+#' @param WorkgroupName The serverless workgroup name or Amazon Resource Name (ARN). This
+#' parameter is required when connecting to a serverless workgroup and
+#' authenticating using either Secrets Manager or temporary credentials.
 #'
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_batch_execute_statement
-redshiftdataapiservice_batch_execute_statement <- function(ClusterIdentifier = NULL, Database, DbUser = NULL, SecretArn = NULL, Sqls, StatementName = NULL, WithEvent = NULL, WorkgroupName = NULL) {
+redshiftdataapiservice_batch_execute_statement <- function(ClientToken = NULL, ClusterIdentifier = NULL, Database, DbUser = NULL, SecretArn = NULL, Sqls, StatementName = NULL, WithEvent = NULL, WorkgroupName = NULL) {
   op <- new_operation(
     name = "BatchExecuteStatement",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshiftdataapiservice$batch_execute_statement_input(ClusterIdentifier = ClusterIdentifier, Database = Database, DbUser = DbUser, SecretArn = SecretArn, Sqls = Sqls, StatementName = StatementName, WithEvent = WithEvent, WorkgroupName = WorkgroupName)
+  input <- .redshiftdataapiservice$batch_execute_statement_input(ClientToken = ClientToken, ClusterIdentifier = ClusterIdentifier, Database = Database, DbUser = DbUser, SecretArn = SecretArn, Sqls = Sqls, StatementName = StatementName, WithEvent = WithEvent, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$batch_execute_statement_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config)
@@ -136,7 +141,8 @@ redshiftdataapiservice_describe_statement <- function(Id) {
 #' `ConnectedDatabase` is not specified, this is also the database to
 #' connect to with your authentication credentials.
 #' @param DbUser The database user name. This parameter is required when connecting to a
-#' cluster and authenticating using temporary credentials.
+#' cluster as a database user and authenticating using temporary
+#' credentials.
 #' @param MaxResults The maximum number of tables to return in the response. If more tables
 #' exist than fit in one response, then `NextToken` is returned to page
 #' through the results.
@@ -153,9 +159,9 @@ redshiftdataapiservice_describe_statement <- function(Id) {
 #' @param Table The table name. If no table is specified, then all tables for all
 #' matching schemas are returned. If no table and no schema is specified,
 #' then all tables for all schemas in the database are returned
-#' @param WorkgroupName The serverless workgroup name. This parameter is required when
-#' connecting to a serverless workgroup and authenticating using either
-#' Secrets Manager or temporary credentials.
+#' @param WorkgroupName The serverless workgroup name or Amazon Resource Name (ARN). This
+#' parameter is required when connecting to a serverless workgroup and
+#' authenticating using either Secrets Manager or temporary credentials.
 #'
 #' @keywords internal
 #'
@@ -185,13 +191,16 @@ redshiftdataapiservice_describe_table <- function(ClusterIdentifier = NULL, Conn
 #'
 #' See [https://paws-r.github.io/docs/redshiftdataapiservice/execute_statement.html](https://paws-r.github.io/docs/redshiftdataapiservice/execute_statement.html) for full documentation.
 #'
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
 #' @param ClusterIdentifier The cluster identifier. This parameter is required when connecting to a
 #' cluster and authenticating using either Secrets Manager or temporary
 #' credentials.
 #' @param Database &#91;required&#93; The name of the database. This parameter is required when authenticating
 #' using either Secrets Manager or temporary credentials.
 #' @param DbUser The database user name. This parameter is required when connecting to a
-#' cluster and authenticating using temporary credentials.
+#' cluster as a database user and authenticating using temporary
+#' credentials.
 #' @param Parameters The parameters for the SQL statement.
 #' @param SecretArn The name or ARN of the secret that enables access to the database. This
 #' parameter is required when authenticating using Secrets Manager.
@@ -200,21 +209,21 @@ redshiftdataapiservice_describe_table <- function(ClusterIdentifier = NULL, Conn
 #' create it to identify the query.
 #' @param WithEvent A value that indicates whether to send an event to the Amazon
 #' EventBridge event bus after the SQL statement runs.
-#' @param WorkgroupName The serverless workgroup name. This parameter is required when
-#' connecting to a serverless workgroup and authenticating using either
-#' Secrets Manager or temporary credentials.
+#' @param WorkgroupName The serverless workgroup name or Amazon Resource Name (ARN). This
+#' parameter is required when connecting to a serverless workgroup and
+#' authenticating using either Secrets Manager or temporary credentials.
 #'
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_execute_statement
-redshiftdataapiservice_execute_statement <- function(ClusterIdentifier = NULL, Database, DbUser = NULL, Parameters = NULL, SecretArn = NULL, Sql, StatementName = NULL, WithEvent = NULL, WorkgroupName = NULL) {
+redshiftdataapiservice_execute_statement <- function(ClientToken = NULL, ClusterIdentifier = NULL, Database, DbUser = NULL, Parameters = NULL, SecretArn = NULL, Sql, StatementName = NULL, WithEvent = NULL, WorkgroupName = NULL) {
   op <- new_operation(
     name = "ExecuteStatement",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshiftdataapiservice$execute_statement_input(ClusterIdentifier = ClusterIdentifier, Database = Database, DbUser = DbUser, Parameters = Parameters, SecretArn = SecretArn, Sql = Sql, StatementName = StatementName, WithEvent = WithEvent, WorkgroupName = WorkgroupName)
+  input <- .redshiftdataapiservice$execute_statement_input(ClientToken = ClientToken, ClusterIdentifier = ClusterIdentifier, Database = Database, DbUser = DbUser, Parameters = Parameters, SecretArn = SecretArn, Sql = Sql, StatementName = StatementName, WithEvent = WithEvent, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$execute_statement_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config)
@@ -278,7 +287,8 @@ redshiftdataapiservice_get_statement_result <- function(Id, NextToken = NULL) {
 #' @param Database &#91;required&#93; The name of the database. This parameter is required when authenticating
 #' using either Secrets Manager or temporary credentials.
 #' @param DbUser The database user name. This parameter is required when connecting to a
-#' cluster and authenticating using temporary credentials.
+#' cluster as a database user and authenticating using temporary
+#' credentials.
 #' @param MaxResults The maximum number of databases to return in the response. If more
 #' databases exist than fit in one response, then `NextToken` is returned
 #' to page through the results.
@@ -290,9 +300,9 @@ redshiftdataapiservice_get_statement_result <- function(Id, NextToken = NULL) {
 #' retrieved for the request.
 #' @param SecretArn The name or ARN of the secret that enables access to the database. This
 #' parameter is required when authenticating using Secrets Manager.
-#' @param WorkgroupName The serverless workgroup name. This parameter is required when
-#' connecting to a serverless workgroup and authenticating using either
-#' Secrets Manager or temporary credentials.
+#' @param WorkgroupName The serverless workgroup name or Amazon Resource Name (ARN). This
+#' parameter is required when connecting to a serverless workgroup and
+#' authenticating using either Secrets Manager or temporary credentials.
 #'
 #' @keywords internal
 #'
@@ -330,7 +340,8 @@ redshiftdataapiservice_list_databases <- function(ClusterIdentifier = NULL, Data
 #' `ConnectedDatabase` is not specified, this is also the database to
 #' connect to with your authentication credentials.
 #' @param DbUser The database user name. This parameter is required when connecting to a
-#' cluster and authenticating using temporary credentials.
+#' cluster as a database user and authenticating using temporary
+#' credentials.
 #' @param MaxResults The maximum number of schemas to return in the response. If more schemas
 #' exist than fit in one response, then `NextToken` is returned to page
 #' through the results.
@@ -346,9 +357,9 @@ redshiftdataapiservice_list_databases <- function(ClusterIdentifier = NULL, Data
 #' are returned.
 #' @param SecretArn The name or ARN of the secret that enables access to the database. This
 #' parameter is required when authenticating using Secrets Manager.
-#' @param WorkgroupName The serverless workgroup name. This parameter is required when
-#' connecting to a serverless workgroup and authenticating using either
-#' Secrets Manager or temporary credentials.
+#' @param WorkgroupName The serverless workgroup name or Amazon Resource Name (ARN). This
+#' parameter is required when connecting to a serverless workgroup and
+#' authenticating using either Secrets Manager or temporary credentials.
 #'
 #' @keywords internal
 #'
@@ -452,7 +463,8 @@ redshiftdataapiservice_list_statements <- function(MaxResults = NULL, NextToken 
 #' `ConnectedDatabase` is not specified, this is also the database to
 #' connect to with your authentication credentials.
 #' @param DbUser The database user name. This parameter is required when connecting to a
-#' cluster and authenticating using temporary credentials.
+#' cluster as a database user and authenticating using temporary
+#' credentials.
 #' @param MaxResults The maximum number of tables to return in the response. If more tables
 #' exist than fit in one response, then `NextToken` is returned to page
 #' through the results.
@@ -476,9 +488,9 @@ redshiftdataapiservice_list_statements <- function(MaxResults = NULL, NextToken 
 #' are returned. If `TablePattern` is not specified, then all tables that
 #' match `SchemaPattern`are returned. If neither `SchemaPattern` or
 #' `TablePattern` are specified, then all tables are returned.
-#' @param WorkgroupName The serverless workgroup name. This parameter is required when
-#' connecting to a serverless workgroup and authenticating using either
-#' Secrets Manager or temporary credentials.
+#' @param WorkgroupName The serverless workgroup name or Amazon Resource Name (ARN). This
+#' parameter is required when connecting to a serverless workgroup and
+#' authenticating using either Secrets Manager or temporary credentials.
 #'
 #' @keywords internal
 #'

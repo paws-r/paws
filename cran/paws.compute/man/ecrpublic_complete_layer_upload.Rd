@@ -2,7 +2,7 @@
 % Please edit documentation in R/ecrpublic_operations.R
 \name{ecrpublic_complete_layer_upload}
 \alias{ecrpublic_complete_layer_upload}
-\title{Informs Amazon ECR that the image layer upload has completed for a
+\title{Informs Amazon ECR that the image layer upload is complete for a
 specified public registry, repository name, and upload ID}
 \usage{
 ecrpublic_complete_layer_upload(
@@ -13,9 +13,9 @@ ecrpublic_complete_layer_upload(
 )
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry to which to upload
-layers. If you do not specify a registry, the default public registry is
-assumed.}
+\item{registryId}{The Amazon Web Services account ID, or registry alias, associated with
+the registry where layers are uploaded. If you do not specify a
+registry, the default public registry is assumed.}
 
 \item{repositoryName}{[required] The name of the repository in a public registry to associate with the
 image layer.}
@@ -27,7 +27,7 @@ associate with the image layer.}
 \item{layerDigests}{[required] The \code{sha256} digest of the image layer.}
 }
 \description{
-Informs Amazon ECR that the image layer upload has completed for a specified public registry, repository name, and upload ID. You can optionally provide a \code{sha256} digest of the image layer for data validation purposes.
+Informs Amazon ECR that the image layer upload is complete for a specified public registry, repository name, and upload ID. You can optionally provide a \code{sha256} digest of the image layer for data validation purposes.
 
 See \url{https://paws-r.github.io/docs/ecrpublic/complete_layer_upload.html} for full documentation.
 }

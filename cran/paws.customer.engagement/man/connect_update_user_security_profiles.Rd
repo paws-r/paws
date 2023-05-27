@@ -11,8 +11,8 @@ connect_update_user_security_profiles(SecurityProfileIds, UserId, InstanceId)
 
 \item{UserId}{[required] The identifier of the user account.}
 
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 }
 \description{
 Assigns the specified security profiles to the specified user.

@@ -2,8 +2,8 @@
 % Please edit documentation in R/ssoadmin_operations.R
 \name{ssoadmin_list_accounts_for_provisioned_permission_set}
 \alias{ssoadmin_list_accounts_for_provisioned_permission_set}
-\title{Lists all the Amazon Web Services accounts where the specified
-permission set is provisioned}
+\title{Lists all the AWS accounts where the specified permission set is
+provisioned}
 \usage{
 ssoadmin_list_accounts_for_provisioned_permission_set(
   InstanceArn,
@@ -14,16 +14,14 @@ ssoadmin_list_accounts_for_provisioned_permission_set(
 )
 }
 \arguments{
-\item{InstanceArn}{[required] The ARN of the Amazon Web Services SSO instance under which the
-operation will be executed. For more information about ARNs, see Amazon
-Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-\emph{Amazon Web Services General Reference}.}
+\item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
+will be executed. For more information about ARNs, see Amazon Resource
+Names (ARNs) and AWS Service Namespaces in the \emph{AWS General Reference}.}
 
-\item{PermissionSetArn}{[required] The ARN of the PermissionSet from which the associated Amazon Web
-Services accounts will be listed.}
+\item{PermissionSetArn}{[required] The ARN of the PermissionSet from which the associated AWS accounts will
+be listed.}
 
-\item{ProvisioningStatus}{The permission set provisioning status for an Amazon Web Services
-account.}
+\item{ProvisioningStatus}{The permission set provisioning status for an AWS account.}
 
 \item{MaxResults}{The maximum number of results to display for the PermissionSet.}
 
@@ -31,7 +29,7 @@ account.}
 the output of previous API calls to make subsequent calls.}
 }
 \description{
-Lists all the Amazon Web Services accounts where the specified permission set is provisioned.
+Lists all the AWS accounts where the specified permission set is provisioned.
 
 See \url{https://paws-r.github.io/docs/ssoadmin/list_accounts_for_provisioned_permission_set.html} for full documentation.
 }

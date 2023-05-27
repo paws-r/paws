@@ -71,7 +71,7 @@ service receive an answer that contains up to eight healthy records.
 \link[paws.networking:servicediscovery_create_service]{create_service} \tab Creates a service\cr
 \link[paws.networking:servicediscovery_delete_namespace]{delete_namespace} \tab Deletes a namespace from the current account\cr
 \link[paws.networking:servicediscovery_delete_service]{delete_service} \tab Deletes a specified service\cr
-\link[paws.networking:servicediscovery_deregister_instance]{deregister_instance} \tab Deletes the Amazon Route 53 DNS records and health check, if any, that Cloud Map created for the specified instance\cr
+\link[paws.networking:servicediscovery_deregister_instance]{deregister_instance} \tab Deletes the Amazon Route 53 DNS records and health check, if any, that Cloud Map created for the specified instance\cr
 \link[paws.networking:servicediscovery_discover_instances]{discover_instances} \tab Discovers registered instances for a specified namespace and service\cr
 \link[paws.networking:servicediscovery_get_instance]{get_instance} \tab Gets information about a specified instance\cr
 \link[paws.networking:servicediscovery_get_instances_health_status]{get_instances_health_status} \tab Gets the current health status (Healthy, Unhealthy, or Unknown) of one or more instances that are associated with a specified service\cr
@@ -79,7 +79,7 @@ service receive an answer that contains up to eight healthy records.
 \link[paws.networking:servicediscovery_get_operation]{get_operation} \tab Gets information about any operation that returns an operation ID in the response, such as a CreateService request\cr
 \link[paws.networking:servicediscovery_get_service]{get_service} \tab Gets the settings for a specified service\cr
 \link[paws.networking:servicediscovery_list_instances]{list_instances} \tab Lists summary information about the instances that you registered by using a specified service\cr
-\link[paws.networking:servicediscovery_list_namespaces]{list_namespaces} \tab Lists summary information about the namespaces that were created by the current account\cr
+\link[paws.networking:servicediscovery_list_namespaces]{list_namespaces} \tab Lists summary information about the namespaces that were created by the current Amazon Web Services account\cr
 \link[paws.networking:servicediscovery_list_operations]{list_operations} \tab Lists operations that match the criteria that you specify\cr
 \link[paws.networking:servicediscovery_list_services]{list_services} \tab Lists summary information for all the services that are associated with one or more specified namespaces\cr
 \link[paws.networking:servicediscovery_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for the specified resource\cr

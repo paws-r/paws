@@ -2,19 +2,19 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_dissociate_package}
 \alias{opensearchservice_dissociate_package}
-\title{Dissociates a package from the Amazon OpenSearch Service domain}
+\title{Removes a package from the specified Amazon OpenSearch Service domain}
 \usage{
 opensearchservice_dissociate_package(PackageID, DomainName)
 }
 \arguments{
-\item{PackageID}{[required] The internal ID of the package to associate with a domain. Use
-\code{\link[=opensearchservice_describe_packages]{describe_packages}} to find this
-value.}
+\item{PackageID}{[required] Internal ID of the package to dissociate from the domain. Use
+\code{\link[=opensearchservice_list_packages_for_domain]{list_packages_for_domain}}
+to find this value.}
 
-\item{DomainName}{[required] The name of the domain to associate the package with.}
+\item{DomainName}{[required] Name of the domain to dissociate the package from.}
 }
 \description{
-Dissociates a package from the Amazon OpenSearch Service domain.
+Removes a package from the specified Amazon OpenSearch Service domain. The package can't be in use with any OpenSearch index for the dissociation to succeed. The package is still available in OpenSearch Service for association later. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html}{Custom packages for Amazon OpenSearch Service}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/dissociate_package.html} for full documentation.
 }

@@ -7,10 +7,10 @@
 appregistry_get_application(application)
 }
 \arguments{
-\item{application}{[required] The name or ID of the application.}
+\item{application}{[required] The name, ID, or ARN of the application.}
 }
 \description{
-Retrieves metadata information about one of your applications. The application can be specified either by its unique ID or by its name (which is unique within one account in one region at a given point in time). Specify by ID in automated workflows if you want to make sure that the exact same application is returned or a \code{ResourceNotFoundException} is thrown, avoiding the ABA addressing problem.
+Retrieves metadata information about one of your applications. The application can be specified by its ARN, ID, or name (which is unique within one account in one region at a given point in time). Specify by ARN or ID in automated workflows if you want to make sure that the exact same application is returned or a \code{ResourceNotFoundException} is thrown, avoiding the ABA addressing problem.
 
 See \url{https://paws-r.github.io/docs/appregistry/get_application.html} for full documentation.
 }

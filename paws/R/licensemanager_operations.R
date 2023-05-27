@@ -111,7 +111,8 @@ licensemanager_check_in_license <- function(LicenseConsumptionToken, Beneficiary
 #' @param Entitlements &#91;required&#93; License entitlements. Partial checkouts are not supported.
 #' @param DigitalSignatureMethod &#91;required&#93; Digital signature method. The possible value is JSON Web Signature (JWS)
 #' algorithm PS384. For more information, see [RFC 7518 Digital Signature
-#' with RSASSA-PSS](https://www.rfc-editor.org/rfc/rfc7518#section-3.5).
+#' with
+#' RSASSA-PSS](https://datatracker.ietf.org/doc/html/rfc7518#section-3.5).
 #' @param NodeId Node ID.
 #' @param CheckoutMetadata Information about constraints.
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
@@ -192,6 +193,9 @@ licensemanager_checkout_borrow_license <- function(LicenseArn, Entitlements, Dig
 #'
 #' @description
 #' Checks out the specified license.
+#' 
+#' If the account that created the license is the same that is performing
+#' the check out, you must specify the account as the beneficiary.
 #'
 #' @usage
 #' licensemanager_checkout_license(ProductSKU, CheckoutType,
@@ -272,7 +276,11 @@ licensemanager_checkout_license <- function(ProductSKU, CheckoutType, KeyFingerp
 #'
 #' @description
 #' Creates a grant for the specified license. A grant shares the use of
-#' license entitlements with specific Amazon Web Services accounts.
+#' license entitlements with a specific Amazon Web Services account, an
+#' organization, or an organizational unit (OU). For more information, see
+#' [Granted licenses in License
+#' Manager](https://docs.aws.amazon.com/license-manager/latest/userguide/granted-licenses.html)
+#' in the *License Manager User Guide*.
 #'
 #' @usage
 #' licensemanager_create_grant(ClientToken, GrantName, LicenseArn,
@@ -282,7 +290,18 @@ licensemanager_checkout_license <- function(ProductSKU, CheckoutType, KeyFingerp
 #' idempotency of the request.
 #' @param GrantName &#91;required&#93; Grant name.
 #' @param LicenseArn &#91;required&#93; Amazon Resource Name (ARN) of the license.
-#' @param Principals &#91;required&#93; The grant principals.
+#' @param Principals &#91;required&#93; The grant principals. You can specify one of the following as an Amazon
+#' Resource Name (ARN):
+#' 
+#' -   An Amazon Web Services account, which includes only the account
+#'     specified.
+#' 
+#' 
+#' -   An organizational unit (OU), which includes all accounts in the OU.
+#' 
+#' 
+#' -   An organization, which will include all accounts across your
+#'     organization.
 #' @param HomeRegion &#91;required&#93; Home Region of the grant.
 #' @param AllowedOperations &#91;required&#93; Allowed operations for the grant.
 #'
@@ -337,11 +356,14 @@ licensemanager_create_grant <- function(ClientToken, GrantName, LicenseArn, Prin
 #' Creates a new version of the specified grant
 #'
 #' @description
-#' Creates a new version of the specified grant.
+#' Creates a new version of the specified grant. For more information, see
+#' [Granted licenses in License
+#' Manager](https://docs.aws.amazon.com/license-manager/latest/userguide/granted-licenses.html)
+#' in the *License Manager User Guide*.
 #'
 #' @usage
 #' licensemanager_create_grant_version(ClientToken, GrantArn, GrantName,
-#'   AllowedOperations, Status, StatusReason, SourceVersion)
+#'   AllowedOperations, Status, StatusReason, SourceVersion, Options)
 #'
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
@@ -351,6 +373,7 @@ licensemanager_create_grant <- function(ClientToken, GrantName, LicenseArn, Prin
 #' @param Status Grant status.
 #' @param StatusReason Grant status reason.
 #' @param SourceVersion Current version of the grant.
+#' @param Options The options specified for the grant.
 #'
 #' @return
 #' A list with the following syntax:
@@ -373,7 +396,10 @@ licensemanager_create_grant <- function(ClientToken, GrantName, LicenseArn, Prin
 #'   ),
 #'   Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED"|"WORKFLOW_COMPLETED",
 #'   StatusReason = "string",
-#'   SourceVersion = "string"
+#'   SourceVersion = "string",
+#'   Options = list(
+#'     ActivationOverrideBehavior = "DISTRIBUTED_GRANTS_ONLY"|"ALL_GRANTS_PERMITTED_BY_ISSUER"
+#'   )
 #' )
 #' ```
 #'
@@ -382,14 +408,14 @@ licensemanager_create_grant <- function(ClientToken, GrantName, LicenseArn, Prin
 #' @rdname licensemanager_create_grant_version
 #'
 #' @aliases licensemanager_create_grant_version
-licensemanager_create_grant_version <- function(ClientToken, GrantArn, GrantName = NULL, AllowedOperations = NULL, Status = NULL, StatusReason = NULL, SourceVersion = NULL) {
+licensemanager_create_grant_version <- function(ClientToken, GrantArn, GrantName = NULL, AllowedOperations = NULL, Status = NULL, StatusReason = NULL, SourceVersion = NULL, Options = NULL) {
   op <- new_operation(
     name = "CreateGrantVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .licensemanager$create_grant_version_input(ClientToken = ClientToken, GrantArn = GrantArn, GrantName = GrantName, AllowedOperations = AllowedOperations, Status = Status, StatusReason = StatusReason, SourceVersion = SourceVersion)
+  input <- .licensemanager$create_grant_version_input(ClientToken = ClientToken, GrantArn = GrantArn, GrantName = GrantName, AllowedOperations = AllowedOperations, Status = Status, StatusReason = StatusReason, SourceVersion = SourceVersion, Options = Options)
   output <- .licensemanager$create_grant_version_output()
   config <- get_config()
   svc <- .licensemanager$service(config)
@@ -630,12 +656,12 @@ licensemanager_create_license_configuration <- function(Name, Description = NULL
 #' license type for.
 #' @param SourceLicenseContext &#91;required&#93; Information that identifies the license type you are converting from.
 #' For the structure of the source license, see [Convert a license type
-#' using the AWS
+#' using the
 #' CLI](https://docs.aws.amazon.com/license-manager/latest/userguide/conversion-procedures.html#conversion-cli)
 #' in the *License Manager User Guide*.
 #' @param DestinationLicenseContext &#91;required&#93; Information that identifies the license type you are converting to. For
 #' the structure of the destination license, see [Convert a license type
-#' using the AWS
+#' using the
 #' CLI](https://docs.aws.amazon.com/license-manager/latest/userguide/conversion-procedures.html#conversion-cli)
 #' in the *License Manager User Guide*.
 #'
@@ -1311,6 +1337,9 @@ licensemanager_get_access_token <- function(Token, TokenProperties = NULL) {
 #'     Version = "string",
 #'     GrantedOperations = list(
 #'       "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
+#'     ),
+#'     Options = list(
+#'       ActivationOverrideBehavior = "DISTRIBUTED_GRANTS_ONLY"|"ALL_GRANTS_PERMITTED_BY_ISSUER"
 #'     )
 #'   )
 #' )
@@ -1894,6 +1923,9 @@ licensemanager_list_associations_for_license_configuration <- function(LicenseCo
 #'       Version = "string",
 #'       GrantedOperations = list(
 #'         "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
+#'       ),
+#'       Options = list(
+#'         ActivationOverrideBehavior = "DISTRIBUTED_GRANTS_ONLY"|"ALL_GRANTS_PERMITTED_BY_ISSUER"
 #'       )
 #'     )
 #'   ),
@@ -2593,10 +2625,13 @@ licensemanager_list_licenses <- function(LicenseArns = NULL, Filters = NULL, Nex
 }
 .licensemanager$operations$list_licenses <- licensemanager_list_licenses
 
-#' Lists grants that are received but not accepted
+#' Lists grants that are received
 #'
 #' @description
-#' Lists grants that are received but not accepted.
+#' Lists grants that are received. Received grants are grants created while
+#' specifying the recipient as this Amazon Web Services account, your
+#' organization, or an organizational unit (OU) to which this member
+#' account belongs.
 #'
 #' @usage
 #' licensemanager_list_received_grants(GrantArns, Filters, NextToken,
@@ -2634,6 +2669,9 @@ licensemanager_list_licenses <- function(LicenseArns = NULL, Filters = NULL, Nex
 #'       Version = "string",
 #'       GrantedOperations = list(
 #'         "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
+#'       ),
+#'       Options = list(
+#'         ActivationOverrideBehavior = "DISTRIBUTED_GRANTS_ONLY"|"ALL_GRANTS_PERMITTED_BY_ISSUER"
 #'       )
 #'     )
 #'   ),
@@ -2681,6 +2719,90 @@ licensemanager_list_received_grants <- function(GrantArns = NULL, Filters = NULL
   return(response)
 }
 .licensemanager$operations$list_received_grants <- licensemanager_list_received_grants
+
+#' Lists the grants received for all accounts in the organization
+#'
+#' @description
+#' Lists the grants received for all accounts in the organization.
+#'
+#' @usage
+#' licensemanager_list_received_grants_for_organization(LicenseArn,
+#'   Filters, NextToken, MaxResults)
+#'
+#' @param LicenseArn &#91;required&#93; The Amazon Resource Name (ARN) of the received license.
+#' @param Filters Filters to scope the results. The following filters are supported:
+#' 
+#' -   `ParentArn`
+#' 
+#' -   `GranteePrincipalArn`
+#' @param NextToken Token for the next set of results.
+#' @param MaxResults Maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Grants = list(
+#'     list(
+#'       GrantArn = "string",
+#'       GrantName = "string",
+#'       ParentArn = "string",
+#'       LicenseArn = "string",
+#'       GranteePrincipalArn = "string",
+#'       HomeRegion = "string",
+#'       GrantStatus = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED"|"WORKFLOW_COMPLETED",
+#'       StatusReason = "string",
+#'       Version = "string",
+#'       GrantedOperations = list(
+#'         "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
+#'       ),
+#'       Options = list(
+#'         ActivationOverrideBehavior = "DISTRIBUTED_GRANTS_ONLY"|"ALL_GRANTS_PERMITTED_BY_ISSUER"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_received_grants_for_organization(
+#'   LicenseArn = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_list_received_grants_for_organization
+#'
+#' @aliases licensemanager_list_received_grants_for_organization
+licensemanager_list_received_grants_for_organization <- function(LicenseArn, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListReceivedGrantsForOrganization",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .licensemanager$list_received_grants_for_organization_input(LicenseArn = LicenseArn, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .licensemanager$list_received_grants_for_organization_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$list_received_grants_for_organization <- licensemanager_list_received_grants_for_organization
 
 #' Lists received licenses
 #'
@@ -2809,6 +2931,124 @@ licensemanager_list_received_licenses <- function(LicenseArns = NULL, Filters = 
   return(response)
 }
 .licensemanager$operations$list_received_licenses <- licensemanager_list_received_licenses
+
+#' Lists the licenses received for all accounts in the organization
+#'
+#' @description
+#' Lists the licenses received for all accounts in the organization.
+#'
+#' @usage
+#' licensemanager_list_received_licenses_for_organization(Filters,
+#'   NextToken, MaxResults)
+#'
+#' @param Filters Filters to scope the results. The following filters are supported:
+#' 
+#' -   `Beneficiary`
+#' 
+#' -   `ProductSKU`
+#' @param NextToken Token for the next set of results.
+#' @param MaxResults Maximum number of results to return in a single call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Licenses = list(
+#'     list(
+#'       LicenseArn = "string",
+#'       LicenseName = "string",
+#'       ProductName = "string",
+#'       ProductSKU = "string",
+#'       Issuer = list(
+#'         Name = "string",
+#'         SignKey = "string",
+#'         KeyFingerprint = "string"
+#'       ),
+#'       HomeRegion = "string",
+#'       Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED",
+#'       Validity = list(
+#'         Begin = "string",
+#'         End = "string"
+#'       ),
+#'       Beneficiary = "string",
+#'       Entitlements = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string",
+#'           MaxCount = 123,
+#'           Overage = TRUE|FALSE,
+#'           Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second",
+#'           AllowCheckIn = TRUE|FALSE
+#'         )
+#'       ),
+#'       ConsumptionConfiguration = list(
+#'         RenewType = "None"|"Weekly"|"Monthly",
+#'         ProvisionalConfiguration = list(
+#'           MaxTimeToLiveInMinutes = 123
+#'         ),
+#'         BorrowConfiguration = list(
+#'           AllowEarlyCheckIn = TRUE|FALSE,
+#'           MaxTimeToLiveInMinutes = 123
+#'         )
+#'       ),
+#'       LicenseMetadata = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       CreateTime = "string",
+#'       Version = "string",
+#'       ReceivedMetadata = list(
+#'         ReceivedStatus = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"DISABLED"|"WORKFLOW_COMPLETED",
+#'         ReceivedStatusReason = "string",
+#'         AllowedOperations = list(
+#'           "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_received_licenses_for_organization(
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanager_list_received_licenses_for_organization
+#'
+#' @aliases licensemanager_list_received_licenses_for_organization
+licensemanager_list_received_licenses_for_organization <- function(Filters = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListReceivedLicensesForOrganization",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .licensemanager$list_received_licenses_for_organization_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .licensemanager$list_received_licenses_for_organization_output()
+  config <- get_config()
+  svc <- .licensemanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanager$operations$list_received_licenses_for_organization <- licensemanager_list_received_licenses_for_organization
 
 #' Lists resources managed using Systems Manager inventory
 #'

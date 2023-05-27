@@ -14,8 +14,10 @@ voiceid_create_domain(
 )
 }
 \arguments{
-\item{ClientToken}{The idempotency token for creating a new domain. If not provided, Amazon
-Web Services SDK populates this field.}
+\item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. If not provided, the Amazon Web Services SDK
+populates this field. For more information about idempotency, see
+\href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.}
 
 \item{Description}{A brief description of this domain.}
 
@@ -28,7 +30,7 @@ for more details on how the KMS key is used.}
 \item{Tags}{A list of tags you want added to the domain.}
 }
 \description{
-Creates a domain that contains all Amazon Connect Voice ID data, such as speakers, fraudsters, customer audio, and voiceprints.
+Creates a domain that contains all Amazon Connect Voice ID data, such as speakers, fraudsters, customer audio, and voiceprints. Every domain is created with a default watchlist that fraudsters can be a part of.
 
 See \url{https://paws-r.github.io/docs/voiceid/create_domain.html} for full documentation.
 }

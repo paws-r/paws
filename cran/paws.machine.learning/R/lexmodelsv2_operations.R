@@ -3,6 +3,123 @@
 #' @include lexmodelsv2_service.R
 NULL
 
+#' Create a batch of custom vocabulary items for a given bot locale's
+#' custom vocabulary
+#'
+#' @description
+#' Create a batch of custom vocabulary items for a given bot locale's custom vocabulary.
+#'
+#' See [https://paws-r.github.io/docs/lexmodelsv2/batch_create_custom_vocabulary_item.html](https://paws-r.github.io/docs/lexmodelsv2/batch_create_custom_vocabulary_item.html) for full documentation.
+#'
+#' @param botId &#91;required&#93; The identifier of the bot associated with this custom vocabulary.
+#' @param botVersion &#91;required&#93; The identifier of the version of the bot associated with this custom
+#' vocabulary.
+#' @param localeId &#91;required&#93; The identifier of the language and locale where this custom vocabulary
+#' is used. The string must match one of the supported locales. For more
+#' information, see [Supported
+#' Languages](https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html)
+#' .
+#' @param customVocabularyItemList &#91;required&#93; A list of new custom vocabulary items. Each entry must contain a phrase
+#' and can optionally contain a displayAs and/or a weight.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_batch_create_custom_vocabulary_item
+lexmodelsv2_batch_create_custom_vocabulary_item <- function(botId, botVersion, localeId, customVocabularyItemList) {
+  op <- new_operation(
+    name = "BatchCreateCustomVocabularyItem",
+    http_method = "PUT",
+    http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/customvocabulary/DEFAULT/batchcreate",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$batch_create_custom_vocabulary_item_input(botId = botId, botVersion = botVersion, localeId = localeId, customVocabularyItemList = customVocabularyItemList)
+  output <- .lexmodelsv2$batch_create_custom_vocabulary_item_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$batch_create_custom_vocabulary_item <- lexmodelsv2_batch_create_custom_vocabulary_item
+
+#' Delete a batch of custom vocabulary items for a given bot locale's
+#' custom vocabulary
+#'
+#' @description
+#' Delete a batch of custom vocabulary items for a given bot locale's custom vocabulary.
+#'
+#' See [https://paws-r.github.io/docs/lexmodelsv2/batch_delete_custom_vocabulary_item.html](https://paws-r.github.io/docs/lexmodelsv2/batch_delete_custom_vocabulary_item.html) for full documentation.
+#'
+#' @param botId &#91;required&#93; The identifier of the bot associated with this custom vocabulary.
+#' @param botVersion &#91;required&#93; The identifier of the version of the bot associated with this custom
+#' vocabulary.
+#' @param localeId &#91;required&#93; The identifier of the language and locale where this custom vocabulary
+#' is used. The string must match one of the supported locales. For more
+#' information, see [Supported
+#' Languages](https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html)
+#' .
+#' @param customVocabularyItemList &#91;required&#93; A list of custom vocabulary items requested to be deleted. Each entry
+#' must contain the unique custom vocabulary entry identifier.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_batch_delete_custom_vocabulary_item
+lexmodelsv2_batch_delete_custom_vocabulary_item <- function(botId, botVersion, localeId, customVocabularyItemList) {
+  op <- new_operation(
+    name = "BatchDeleteCustomVocabularyItem",
+    http_method = "POST",
+    http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/customvocabulary/DEFAULT/batchdelete",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$batch_delete_custom_vocabulary_item_input(botId = botId, botVersion = botVersion, localeId = localeId, customVocabularyItemList = customVocabularyItemList)
+  output <- .lexmodelsv2$batch_delete_custom_vocabulary_item_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$batch_delete_custom_vocabulary_item <- lexmodelsv2_batch_delete_custom_vocabulary_item
+
+#' Update a batch of custom vocabulary items for a given bot locale's
+#' custom vocabulary
+#'
+#' @description
+#' Update a batch of custom vocabulary items for a given bot locale's custom vocabulary.
+#'
+#' See [https://paws-r.github.io/docs/lexmodelsv2/batch_update_custom_vocabulary_item.html](https://paws-r.github.io/docs/lexmodelsv2/batch_update_custom_vocabulary_item.html) for full documentation.
+#'
+#' @param botId &#91;required&#93; The identifier of the bot associated with this custom vocabulary
+#' @param botVersion &#91;required&#93; The identifier of the version of the bot associated with this custom
+#' vocabulary.
+#' @param localeId &#91;required&#93; The identifier of the language and locale where this custom vocabulary
+#' is used. The string must match one of the supported locales. For more
+#' information, see [Supported
+#' Languages](https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html)
+#' .
+#' @param customVocabularyItemList &#91;required&#93; A list of custom vocabulary items with updated fields. Each entry must
+#' contain a phrase and can optionally contain a displayAs and/or a weight.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_batch_update_custom_vocabulary_item
+lexmodelsv2_batch_update_custom_vocabulary_item <- function(botId, botVersion, localeId, customVocabularyItemList) {
+  op <- new_operation(
+    name = "BatchUpdateCustomVocabularyItem",
+    http_method = "PUT",
+    http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/customvocabulary/DEFAULT/batchupdate",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$batch_update_custom_vocabulary_item_input(botId = botId, botVersion = botVersion, localeId = localeId, customVocabularyItemList = customVocabularyItemList)
+  output <- .lexmodelsv2$batch_update_custom_vocabulary_item_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$batch_update_custom_vocabulary_item <- lexmodelsv2_batch_update_custom_vocabulary_item
+
 #' Builds a bot, its intents, and its slot types into a specific locale
 #'
 #' @description
@@ -71,18 +188,20 @@ lexmodelsv2_build_bot_locale <- function(botId, botVersion, localeId) {
 #' when you create a bot. You can't use the `UpdateAlias` operation to
 #' update tags. To update tags on the test alias, use the
 #' [`tag_resource`][lexmodelsv2_tag_resource] operation.
+#' @param botType The type of a bot to create.
+#' @param botMembers The list of bot members in a network to be created.
 #'
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_create_bot
-lexmodelsv2_create_bot <- function(botName, description = NULL, roleArn, dataPrivacy, idleSessionTTLInSeconds, botTags = NULL, testBotAliasTags = NULL) {
+lexmodelsv2_create_bot <- function(botName, description = NULL, roleArn, dataPrivacy, idleSessionTTLInSeconds, botTags = NULL, testBotAliasTags = NULL, botType = NULL, botMembers = NULL) {
   op <- new_operation(
     name = "CreateBot",
     http_method = "PUT",
     http_path = "/bots/",
     paginator = list()
   )
-  input <- .lexmodelsv2$create_bot_input(botName = botName, description = description, roleArn = roleArn, dataPrivacy = dataPrivacy, idleSessionTTLInSeconds = idleSessionTTLInSeconds, botTags = botTags, testBotAliasTags = testBotAliasTags)
+  input <- .lexmodelsv2$create_bot_input(botName = botName, description = description, roleArn = roleArn, dataPrivacy = dataPrivacy, idleSessionTTLInSeconds = idleSessionTTLInSeconds, botTags = botTags, testBotAliasTags = testBotAliasTags, botType = botType, botMembers = botMembers)
   output <- .lexmodelsv2$create_bot_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config)
@@ -346,18 +465,20 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #' of the bots, slot types, and slots used by the intent must have the same
 #' locale. For more information, see [Supported
 #' languages](https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html).
+#' @param initialResponseSetting Configuration settings for the response that is sent to the user at the
+#' beginning of a conversation, before eliciting slot values.
 #'
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_create_intent
-lexmodelsv2_create_intent <- function(intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId) {
+lexmodelsv2_create_intent <- function(intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId, initialResponseSetting = NULL) {
   op <- new_operation(
     name = "CreateIntent",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/",
     paginator = list()
   )
-  input <- .lexmodelsv2$create_intent_input(intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId)
+  input <- .lexmodelsv2$create_intent_input(intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting)
   output <- .lexmodelsv2$create_intent_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config)
@@ -497,18 +618,20 @@ lexmodelsv2_create_resource_policy_statement <- function(resourceArn, statementI
 #' `ValidationException`.
 #' 
 #' If the `multipleValuesSetting` is not set, the default value is `false`.
+#' @param subSlotSetting Specifications for the constituent sub slots and the expression for the
+#' composite slot.
 #'
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_create_slot
-lexmodelsv2_create_slot <- function(slotName, description = NULL, slotTypeId = NULL, valueElicitationSetting, obfuscationSetting = NULL, botId, botVersion, localeId, intentId, multipleValuesSetting = NULL) {
+lexmodelsv2_create_slot <- function(slotName, description = NULL, slotTypeId = NULL, valueElicitationSetting, obfuscationSetting = NULL, botId, botVersion, localeId, intentId, multipleValuesSetting = NULL, subSlotSetting = NULL) {
   op <- new_operation(
     name = "CreateSlot",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/{intentId}/slots/",
     paginator = list()
   )
-  input <- .lexmodelsv2$create_slot_input(slotName = slotName, description = description, slotTypeId = slotTypeId, valueElicitationSetting = valueElicitationSetting, obfuscationSetting = obfuscationSetting, botId = botId, botVersion = botVersion, localeId = localeId, intentId = intentId, multipleValuesSetting = multipleValuesSetting)
+  input <- .lexmodelsv2$create_slot_input(slotName = slotName, description = description, slotTypeId = slotTypeId, valueElicitationSetting = valueElicitationSetting, obfuscationSetting = obfuscationSetting, botId = botId, botVersion = botVersion, localeId = localeId, intentId = intentId, multipleValuesSetting = multipleValuesSetting, subSlotSetting = subSlotSetting)
   output <- .lexmodelsv2$create_slot_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config)
@@ -559,18 +682,19 @@ lexmodelsv2_create_slot <- function(slotName, description = NULL, slotTypeId = N
 #' locale. For more information, see [Supported
 #' languages](https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html).
 #' @param externalSourceSetting Sets the type of external information used to create the slot type.
+#' @param compositeSlotTypeSetting Specifications for a composite slot type.
 #'
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_create_slot_type
-lexmodelsv2_create_slot_type <- function(slotTypeName, description = NULL, slotTypeValues = NULL, valueSelectionSetting = NULL, parentSlotTypeSignature = NULL, botId, botVersion, localeId, externalSourceSetting = NULL) {
+lexmodelsv2_create_slot_type <- function(slotTypeName, description = NULL, slotTypeValues = NULL, valueSelectionSetting = NULL, parentSlotTypeSignature = NULL, botId, botVersion, localeId, externalSourceSetting = NULL, compositeSlotTypeSetting = NULL) {
   op <- new_operation(
     name = "CreateSlotType",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/slottypes/",
     paginator = list()
   )
-  input <- .lexmodelsv2$create_slot_type_input(slotTypeName = slotTypeName, description = description, slotTypeValues = slotTypeValues, valueSelectionSetting = valueSelectionSetting, parentSlotTypeSignature = parentSlotTypeSignature, botId = botId, botVersion = botVersion, localeId = localeId, externalSourceSetting = externalSourceSetting)
+  input <- .lexmodelsv2$create_slot_type_input(slotTypeName = slotTypeName, description = description, slotTypeValues = slotTypeValues, valueSelectionSetting = valueSelectionSetting, parentSlotTypeSignature = parentSlotTypeSignature, botId = botId, botVersion = botVersion, localeId = localeId, externalSourceSetting = externalSourceSetting, compositeSlotTypeSetting = compositeSlotTypeSetting)
   output <- .lexmodelsv2$create_slot_type_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config)
@@ -616,8 +740,11 @@ lexmodelsv2_create_upload_url <- function() {
 #' See [https://paws-r.github.io/docs/lexmodelsv2/delete_bot.html](https://paws-r.github.io/docs/lexmodelsv2/delete_bot.html) for full documentation.
 #'
 #' @param botId &#91;required&#93; The identifier of the bot to delete.
-#' @param skipResourceInUseCheck When `true`, Amazon Lex doesn't check to see if another resource, such
-#' as an alias, is using the bot before it is deleted.
+#' @param skipResourceInUseCheck By default, Amazon Lex checks if any other resource, such as an alias or
+#' bot network, is using the bot version before it is deleted and throws a
+#' `ResourceInUseException` exception if the bot is being used by another
+#' resource. Set this parameter to `true` to skip this check and remove the
+#' bot even if it is being used by another resource.
 #'
 #' @keywords internal
 #'
@@ -648,8 +775,11 @@ lexmodelsv2_delete_bot <- function(botId, skipResourceInUseCheck = NULL) {
 #'
 #' @param botAliasId &#91;required&#93; The unique identifier of the bot alias to delete.
 #' @param botId &#91;required&#93; The unique identifier of the bot associated with the alias to delete.
-#' @param skipResourceInUseCheck When this parameter is true, Amazon Lex doesn't check to see if any
-#' other resource is using the alias before it is deleted.
+#' @param skipResourceInUseCheck By default, Amazon Lex checks if any other resource, such as a bot
+#' network, is using the bot alias before it is deleted and throws a
+#' `ResourceInUseException` exception if the alias is being used by another
+#' resource. Set this parameter to `true` to skip this check and remove the
+#' alias even if it is being used by another resource.
 #'
 #' @keywords internal
 #'
@@ -708,17 +838,17 @@ lexmodelsv2_delete_bot_locale <- function(botId, botVersion, localeId) {
 #' Deletes a specific version of a bot
 #'
 #' @description
-#' Deletes a specific version of a bot. To delete all version of a bot, use the [`delete_bot`][lexmodelsv2_delete_bot] operation.
+#' Deletes a specific version of a bot. To delete all versions of a bot, use the [`delete_bot`][lexmodelsv2_delete_bot] operation.
 #'
 #' See [https://paws-r.github.io/docs/lexmodelsv2/delete_bot_version.html](https://paws-r.github.io/docs/lexmodelsv2/delete_bot_version.html) for full documentation.
 #'
 #' @param botId &#91;required&#93; The identifier of the bot that contains the version.
 #' @param botVersion &#91;required&#93; The version of the bot to delete.
-#' @param skipResourceInUseCheck By default, the [`delete_bot_version`][lexmodelsv2_delete_bot_version]
-#' operations throws a `ResourceInUseException` exception if you try to
-#' delete a bot version that has an alias pointing at it. Set the
-#' `skipResourceInUseCheck` parameter to `true` to skip this check and
-#' remove the version even if an alias points to it.
+#' @param skipResourceInUseCheck By default, Amazon Lex checks if any other resource, such as an alias or
+#' bot network, is using the bot version before it is deleted and throws a
+#' `ResourceInUseException` exception if the version is being used by
+#' another resource. Set this parameter to `true` to skip this check and
+#' remove the version even if it is being used by another resource.
 #'
 #' @keywords internal
 #'
@@ -1782,6 +1912,44 @@ lexmodelsv2_list_built_in_slot_types <- function(localeId, sortBy = NULL, maxRes
 }
 .lexmodelsv2$operations$list_built_in_slot_types <- lexmodelsv2_list_built_in_slot_types
 
+#' Paginated list of custom vocabulary items for a given bot locale's
+#' custom vocabulary
+#'
+#' @description
+#' Paginated list of custom vocabulary items for a given bot locale's custom vocabulary.
+#'
+#' See [https://paws-r.github.io/docs/lexmodelsv2/list_custom_vocabulary_items.html](https://paws-r.github.io/docs/lexmodelsv2/list_custom_vocabulary_items.html) for full documentation.
+#'
+#' @param botId &#91;required&#93; The identifier of the version of the bot associated with this custom
+#' vocabulary.
+#' @param botVersion &#91;required&#93; The bot version of the bot to the list custom vocabulary request.
+#' @param localeId &#91;required&#93; The identifier of the language and locale where this custom vocabulary
+#' is used. The string must match one of the supported locales. For more
+#' information, see Supported languages
+#' (https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html).
+#' @param maxResults The maximum number of items returned by the list operation.
+#' @param nextToken The nextToken identifier to the list custom vocabulary request.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_list_custom_vocabulary_items
+lexmodelsv2_list_custom_vocabulary_items <- function(botId, botVersion, localeId, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListCustomVocabularyItems",
+    http_method = "POST",
+    http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/customvocabulary/DEFAULT/list",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$list_custom_vocabulary_items_input(botId = botId, botVersion = botVersion, localeId = localeId, maxResults = maxResults, nextToken = nextToken)
+  output <- .lexmodelsv2$list_custom_vocabulary_items_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$list_custom_vocabulary_items <- lexmodelsv2_list_custom_vocabulary_items
+
 #' Lists the exports for a bot, bot locale, or custom vocabulary
 #'
 #' @description
@@ -1939,7 +2107,7 @@ lexmodelsv2_list_intents <- function(botId, botVersion, localeId, sortBy = NULL,
 #' that you can use in your bot
 #'
 #' @description
-#' Gets a list of recommended intents provided by the bot recommendation that you can use in your bot.
+#' Gets a list of recommended intents provided by the bot recommendation that you can use in your bot. Intents in the response are ordered by relevance.
 #'
 #' See [https://paws-r.github.io/docs/lexmodelsv2/list_recommended_intents.html](https://paws-r.github.io/docs/lexmodelsv2/list_recommended_intents.html) for full documentation.
 #'
@@ -2232,6 +2400,42 @@ lexmodelsv2_start_import <- function(importId, resourceSpecification, mergeStrat
 }
 .lexmodelsv2$operations$start_import <- lexmodelsv2_start_import
 
+#' Stop an already running Bot Recommendation request
+#'
+#' @description
+#' Stop an already running Bot Recommendation request.
+#'
+#' See [https://paws-r.github.io/docs/lexmodelsv2/stop_bot_recommendation.html](https://paws-r.github.io/docs/lexmodelsv2/stop_bot_recommendation.html) for full documentation.
+#'
+#' @param botId &#91;required&#93; The unique identifier of the bot containing the bot recommendation to be
+#' stopped.
+#' @param botVersion &#91;required&#93; The version of the bot containing the bot recommendation.
+#' @param localeId &#91;required&#93; The identifier of the language and locale of the bot recommendation to
+#' stop. The string must match one of the supported locales. For more
+#' information, see [Supported
+#' languages](https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html)
+#' @param botRecommendationId &#91;required&#93; The unique identifier of the bot recommendation to be stopped.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_stop_bot_recommendation
+lexmodelsv2_stop_bot_recommendation <- function(botId, botVersion, localeId, botRecommendationId) {
+  op <- new_operation(
+    name = "StopBotRecommendation",
+    http_method = "PUT",
+    http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/botrecommendations/{botRecommendationId}/stopbotrecommendation",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$stop_bot_recommendation_input(botId = botId, botVersion = botVersion, localeId = localeId, botRecommendationId = botRecommendationId)
+  output <- .lexmodelsv2$stop_bot_recommendation_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$stop_bot_recommendation <- lexmodelsv2_stop_bot_recommendation
+
 #' Adds the specified tags to the specified resource
 #'
 #' @description
@@ -2319,18 +2523,21 @@ lexmodelsv2_untag_resource <- function(resourceARN, tagKeys) {
 #' Lex deletes any data provided before the timeout.
 #' 
 #' You can specify between 60 (1 minute) and 86,400 (24 hours) seconds.
+#' @param botType The type of the bot to be updated.
+#' @param botMembers The list of bot members in the network associated with the update
+#' action.
 #'
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_update_bot
-lexmodelsv2_update_bot <- function(botId, botName, description = NULL, roleArn, dataPrivacy, idleSessionTTLInSeconds) {
+lexmodelsv2_update_bot <- function(botId, botName, description = NULL, roleArn, dataPrivacy, idleSessionTTLInSeconds, botType = NULL, botMembers = NULL) {
   op <- new_operation(
     name = "UpdateBot",
     http_method = "PUT",
     http_path = "/bots/{botId}/",
     paginator = list()
   )
-  input <- .lexmodelsv2$update_bot_input(botId = botId, botName = botName, description = description, roleArn = roleArn, dataPrivacy = dataPrivacy, idleSessionTTLInSeconds = idleSessionTTLInSeconds)
+  input <- .lexmodelsv2$update_bot_input(botId = botId, botName = botName, description = description, roleArn = roleArn, dataPrivacy = dataPrivacy, idleSessionTTLInSeconds = idleSessionTTLInSeconds, botType = botType, botMembers = botMembers)
   output <- .lexmodelsv2$update_bot_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config)
@@ -2520,18 +2727,19 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #' string must match one of the supported locales. For more information,
 #' see [Supported
 #' languages](https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html).
+#' @param initialResponseSetting 
 #'
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_update_intent
-lexmodelsv2_update_intent <- function(intentId, intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, slotPriorities = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId) {
+lexmodelsv2_update_intent <- function(intentId, intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, slotPriorities = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId, initialResponseSetting = NULL) {
   op <- new_operation(
     name = "UpdateIntent",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/{intentId}/",
     paginator = list()
   )
-  input <- .lexmodelsv2$update_intent_input(intentId = intentId, intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, slotPriorities = slotPriorities, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId)
+  input <- .lexmodelsv2$update_intent_input(intentId = intentId, intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, slotPriorities = slotPriorities, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting)
   output <- .lexmodelsv2$update_intent_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config)
@@ -2614,18 +2822,20 @@ lexmodelsv2_update_resource_policy <- function(resourceArn, policy, expectedRevi
 #' `ValidationException`.
 #' 
 #' If the `multipleValuesSetting` is not set, the default value is `false`.
+#' @param subSlotSetting Specifications for the constituent sub slots and the expression for the
+#' composite slot.
 #'
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_update_slot
-lexmodelsv2_update_slot <- function(slotId, slotName, description = NULL, slotTypeId = NULL, valueElicitationSetting, obfuscationSetting = NULL, botId, botVersion, localeId, intentId, multipleValuesSetting = NULL) {
+lexmodelsv2_update_slot <- function(slotId, slotName, description = NULL, slotTypeId = NULL, valueElicitationSetting, obfuscationSetting = NULL, botId, botVersion, localeId, intentId, multipleValuesSetting = NULL, subSlotSetting = NULL) {
   op <- new_operation(
     name = "UpdateSlot",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/{intentId}/slots/{slotId}/",
     paginator = list()
   )
-  input <- .lexmodelsv2$update_slot_input(slotId = slotId, slotName = slotName, description = description, slotTypeId = slotTypeId, valueElicitationSetting = valueElicitationSetting, obfuscationSetting = obfuscationSetting, botId = botId, botVersion = botVersion, localeId = localeId, intentId = intentId, multipleValuesSetting = multipleValuesSetting)
+  input <- .lexmodelsv2$update_slot_input(slotId = slotId, slotName = slotName, description = description, slotTypeId = slotTypeId, valueElicitationSetting = valueElicitationSetting, obfuscationSetting = obfuscationSetting, botId = botId, botVersion = botVersion, localeId = localeId, intentId = intentId, multipleValuesSetting = multipleValuesSetting, subSlotSetting = subSlotSetting)
   output <- .lexmodelsv2$update_slot_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config)
@@ -2658,18 +2868,19 @@ lexmodelsv2_update_slot <- function(slotId, slotName, description = NULL, slotTy
 #' information, see [Supported
 #' languages](https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html).
 #' @param externalSourceSetting 
+#' @param compositeSlotTypeSetting Specifications for a composite slot type.
 #'
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_update_slot_type
-lexmodelsv2_update_slot_type <- function(slotTypeId, slotTypeName, description = NULL, slotTypeValues = NULL, valueSelectionSetting = NULL, parentSlotTypeSignature = NULL, botId, botVersion, localeId, externalSourceSetting = NULL) {
+lexmodelsv2_update_slot_type <- function(slotTypeId, slotTypeName, description = NULL, slotTypeValues = NULL, valueSelectionSetting = NULL, parentSlotTypeSignature = NULL, botId, botVersion, localeId, externalSourceSetting = NULL, compositeSlotTypeSetting = NULL) {
   op <- new_operation(
     name = "UpdateSlotType",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/slottypes/{slotTypeId}/",
     paginator = list()
   )
-  input <- .lexmodelsv2$update_slot_type_input(slotTypeId = slotTypeId, slotTypeName = slotTypeName, description = description, slotTypeValues = slotTypeValues, valueSelectionSetting = valueSelectionSetting, parentSlotTypeSignature = parentSlotTypeSignature, botId = botId, botVersion = botVersion, localeId = localeId, externalSourceSetting = externalSourceSetting)
+  input <- .lexmodelsv2$update_slot_type_input(slotTypeId = slotTypeId, slotTypeName = slotTypeName, description = description, slotTypeValues = slotTypeValues, valueSelectionSetting = valueSelectionSetting, parentSlotTypeSignature = parentSlotTypeSignature, botId = botId, botVersion = botVersion, localeId = localeId, externalSourceSetting = externalSourceSetting, compositeSlotTypeSetting = compositeSlotTypeSetting)
   output <- .lexmodelsv2$update_slot_type_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config)

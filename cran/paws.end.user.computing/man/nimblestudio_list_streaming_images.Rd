@@ -7,7 +7,8 @@
 nimblestudio_list_streaming_images(nextToken = NULL, owner = NULL, studioId)
 }
 \arguments{
-\item{nextToken}{The token to request the next page of results.}
+\item{nextToken}{The token for the next set of results, or null if there are no more
+results.}
 
 \item{owner}{Filter this request to streaming images with the given owner}
 

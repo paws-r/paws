@@ -759,7 +759,8 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #' See [https://paws-r.github.io/docs/directconnect/create_lag.html](https://paws-r.github.io/docs/directconnect/create_lag.html) for full documentation.
 #'
 #' @param numberOfConnections &#91;required&#93; The number of physical dedicated connections initially provisioned and
-#' bundled by the LAG.
+#' bundled by the LAG. You can have a maximum of four connections when the
+#' port speed is 1G or 10G, or two when the port speed is 100G.
 #' @param location &#91;required&#93; The location for the LAG.
 #' @param connectionsBandwidth &#91;required&#93; The bandwidth of the individual physical dedicated connections bundled
 #' by the LAG. The possible values are 1Gbps and 10Gbps.
@@ -1836,7 +1837,7 @@ directconnect_list_virtual_interface_test_history <- function(testId = NULL, vir
 #' @param bgpPeers The BGP peers to place in the DOWN state.
 #' @param testDurationInMinutes The time in minutes that the virtual interface failover test will last.
 #' 
-#' Maximum value: 180 minutes (3 hours).
+#' Maximum value: 4,320 minutes (72 hours).
 #' 
 #' Default: 180 minutes (3 hours).
 #'

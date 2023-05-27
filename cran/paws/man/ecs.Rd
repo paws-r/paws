@@ -80,11 +80,12 @@ also don't need to worry about scaling your management infrastructure.
 \link[paws.compute:ecs_create_cluster]{create_cluster} \tab Creates a new Amazon ECS cluster\cr
 \link[paws.compute:ecs_create_service]{create_service} \tab Runs and maintains your desired number of tasks from a specified task definition\cr
 \link[paws.compute:ecs_create_task_set]{create_task_set} \tab Create a task set in the specified cluster and service\cr
-\link[paws.compute:ecs_delete_account_setting]{delete_account_setting} \tab Disables an account setting for a specified IAM user, IAM role, or the root user for an account\cr
+\link[paws.compute:ecs_delete_account_setting]{delete_account_setting} \tab Disables an account setting for a specified user, role, or the root user for an account\cr
 \link[paws.compute:ecs_delete_attributes]{delete_attributes} \tab Deletes one or more custom attributes from an Amazon ECS resource\cr
 \link[paws.compute:ecs_delete_capacity_provider]{delete_capacity_provider} \tab Deletes the specified capacity provider\cr
 \link[paws.compute:ecs_delete_cluster]{delete_cluster} \tab Deletes the specified cluster\cr
 \link[paws.compute:ecs_delete_service]{delete_service} \tab Deletes a specified service within a cluster\cr
+\link[paws.compute:ecs_delete_task_definitions]{delete_task_definitions} \tab Deletes one or more task definitions\cr
 \link[paws.compute:ecs_delete_task_set]{delete_task_set} \tab Deletes a specified task set within a service\cr
 \link[paws.compute:ecs_deregister_container_instance]{deregister_container_instance} \tab Deregisters an Amazon ECS container instance from the specified cluster\cr
 \link[paws.compute:ecs_deregister_task_definition]{deregister_task_definition} \tab Deregisters the specified task definition by family and revision\cr
@@ -97,17 +98,19 @@ also don't need to worry about scaling your management infrastructure.
 \link[paws.compute:ecs_describe_task_sets]{describe_task_sets} \tab Describes the task sets in the specified cluster and service\cr
 \link[paws.compute:ecs_discover_poll_endpoint]{discover_poll_endpoint} \tab This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent\cr
 \link[paws.compute:ecs_execute_command]{execute_command} \tab Runs a command remotely on a container within a task\cr
+\link[paws.compute:ecs_get_task_protection]{get_task_protection} \tab Retrieves the protection status of tasks in an Amazon ECS service\cr
 \link[paws.compute:ecs_list_account_settings]{list_account_settings} \tab Lists the account settings for a specified principal\cr
 \link[paws.compute:ecs_list_attributes]{list_attributes} \tab Lists the attributes for Amazon ECS resources within a specified target type and cluster\cr
 \link[paws.compute:ecs_list_clusters]{list_clusters} \tab Returns a list of existing clusters\cr
 \link[paws.compute:ecs_list_container_instances]{list_container_instances} \tab Returns a list of container instances in a specified cluster\cr
 \link[paws.compute:ecs_list_services]{list_services} \tab Returns a list of services\cr
+\link[paws.compute:ecs_list_services_by_namespace]{list_services_by_namespace} \tab This operation lists all of the services that are associated with a Cloud Map namespace\cr
 \link[paws.compute:ecs_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for an Amazon ECS resource\cr
 \link[paws.compute:ecs_list_task_definition_families]{list_task_definition_families} \tab Returns a list of task definition families that are registered to your account\cr
 \link[paws.compute:ecs_list_task_definitions]{list_task_definitions} \tab Returns a list of task definitions that are registered to your account\cr
 \link[paws.compute:ecs_list_tasks]{list_tasks} \tab Returns a list of tasks\cr
 \link[paws.compute:ecs_put_account_setting]{put_account_setting} \tab Modifies an account setting\cr
-\link[paws.compute:ecs_put_account_setting_default]{put_account_setting_default} \tab Modifies an account setting for all IAM users on an account for whom no individual account setting has been specified\cr
+\link[paws.compute:ecs_put_account_setting_default]{put_account_setting_default} \tab Modifies an account setting for all users on an account for whom no individual account setting has been specified\cr
 \link[paws.compute:ecs_put_attributes]{put_attributes} \tab Create or update an attribute on an Amazon ECS resource\cr
 \link[paws.compute:ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers} \tab Modifies the available capacity providers and the default capacity provider strategy for a cluster\cr
 \link[paws.compute:ecs_register_container_instance]{register_container_instance} \tab This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent\cr
@@ -127,6 +130,7 @@ also don't need to worry about scaling your management infrastructure.
 \link[paws.compute:ecs_update_container_instances_state]{update_container_instances_state} \tab Modifies the status of an Amazon ECS container instance\cr
 \link[paws.compute:ecs_update_service]{update_service} \tab Modifies the parameters of a service\cr
 \link[paws.compute:ecs_update_service_primary_task_set]{update_service_primary_task_set} \tab Modifies which task set in a service is the primary task set\cr
+\link[paws.compute:ecs_update_task_protection]{update_task_protection} \tab Updates the protection status of a task\cr
 \link[paws.compute:ecs_update_task_set]{update_task_set} \tab Modifies a task set
 }
 }

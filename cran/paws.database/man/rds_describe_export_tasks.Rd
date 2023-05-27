@@ -2,32 +2,34 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_describe_export_tasks}
 \alias{rds_describe_export_tasks}
-\title{Returns information about a snapshot export to Amazon S3}
+\title{Returns information about a snapshot or cluster export to Amazon S3}
 \usage{
 rds_describe_export_tasks(
   ExportTaskIdentifier = NULL,
   SourceArn = NULL,
   Filters = NULL,
   Marker = NULL,
-  MaxRecords = NULL
+  MaxRecords = NULL,
+  SourceType = NULL
 )
 }
 \arguments{
-\item{ExportTaskIdentifier}{The identifier of the snapshot export task to be described.}
+\item{ExportTaskIdentifier}{The identifier of the snapshot or cluster export task to be described.}
 
-\item{SourceArn}{The Amazon Resource Name (ARN) of the snapshot exported to Amazon S3.}
+\item{SourceArn}{The Amazon Resource Name (ARN) of the snapshot or cluster exported to
+Amazon S3.}
 
-\item{Filters}{Filters specify one or more snapshot exports to describe. The filters
-are specified as name-value pairs that define what to include in the
-output. Filter names and values are case-sensitive.
+\item{Filters}{Filters specify one or more snapshot or cluster exports to describe. The
+filters are specified as name-value pairs that define what to include in
+the output. Filter names and values are case-sensitive.
 
 Supported filters include the following:
 \itemize{
-\item \code{export-task-identifier} - An identifier for the snapshot export
-task.
-\item \code{s3-bucket} - The Amazon S3 bucket the snapshot is exported to.
-\item \code{source-arn} - The Amazon Resource Name (ARN) of the snapshot
-exported to Amazon S3
+\item \code{export-task-identifier} - An identifier for the snapshot or cluster
+export task.
+\item \code{s3-bucket} - The Amazon S3 bucket the data is exported to.
+\item \code{source-arn} - The Amazon Resource Name (ARN) of the snapshot or
+cluster exported to Amazon S3.
 \item \code{status} - The status of the export task. Must be lowercase. Valid
 statuses are the following:
 \itemize{
@@ -54,9 +56,11 @@ the remaining results.
 Default: 100
 
 Constraints: Minimum 20, maximum 100.}
+
+\item{SourceType}{The type of source for the export.}
 }
 \description{
-Returns information about a snapshot export to Amazon S3. This API operation supports pagination.
+Returns information about a snapshot or cluster export to Amazon S3. This API operation supports pagination.
 
 See \url{https://paws-r.github.io/docs/rds/describe_export_tasks.html} for full documentation.
 }

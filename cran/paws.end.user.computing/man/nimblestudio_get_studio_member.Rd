@@ -7,8 +7,7 @@
 nimblestudio_get_studio_member(principalId, studioId)
 }
 \arguments{
-\item{principalId}{[required] The principal ID. This currently supports a Amazon Web Services SSO
-UserId.}
+\item{principalId}{[required] The principal ID. This currently supports a IAM Identity Center UserId.}
 
 \item{studioId}{[required] The studio ID.}
 }

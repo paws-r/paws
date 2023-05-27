@@ -44,6 +44,9 @@ with a symmetric encryption KMS key. The standard asymmetric encryption
 algorithms and HMAC algorithms that KMS uses do not support an
 encryption context.
 
+Do not include confidential or sensitive information in this field. This
+field may be displayed in plaintext in CloudTrail logs and other output.
+
 An \emph{encryption context} is a collection of non-secret key-value pairs
 that represent additional authenticated data. When you use an encryption
 context to encrypt data, you must specify the same (an exact
@@ -70,7 +73,9 @@ that you specify.
 This parameter is required only for asymmetric KMS keys. The default
 value, \code{SYMMETRIC_DEFAULT}, is the algorithm used for symmetric
 encryption KMS keys. If you are using an asymmetric KMS key, we
-recommend RSAES_OAEP_SHA_256.}
+recommend RSAES_OAEP_SHA_256.
+
+The SM2PKE algorithm is only available in China Regions.}
 }
 \description{
 Encrypts plaintext of up to 4,096 bytes using a KMS key. You can use a symmetric or asymmetric KMS key with a \code{KeyUsage} of \code{ENCRYPT_DECRYPT}.

@@ -4,11 +4,11 @@
 NULL
 
 #' Associates a new key value with a specific profile, such as a Contact
-#' Trace Record (CTR) ContactId
+#' Record ContactId
 #'
 #' @description
 #' Associates a new key value with a specific profile, such as a Contact
-#' Trace Record (CTR) ContactId.
+#' Record ContactId.
 #' 
 #' A profile object can have a single unique key and any number of
 #' additional keys that can be used to identify the profile that it belongs
@@ -397,7 +397,8 @@ customerprofiles_create_integration_workflow <- function(DomainName, WorkflowTyp
 #'   LastName, BirthDate, Gender, PhoneNumber, MobilePhoneNumber,
 #'   HomePhoneNumber, BusinessPhoneNumber, EmailAddress,
 #'   PersonalEmailAddress, BusinessEmailAddress, Address, ShippingAddress,
-#'   MailingAddress, BillingAddress, Attributes)
+#'   MailingAddress, BillingAddress, Attributes, PartyTypeString,
+#'   GenderString)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param AccountNumber A unique account number that you have given to the customer.
@@ -424,6 +425,8 @@ customerprofiles_create_integration_workflow <- function(DomainName, WorkflowTyp
 #' @param MailingAddress The customer’s mailing address.
 #' @param BillingAddress The customer’s billing address.
 #' @param Attributes A key value pair of attributes of a customer profile.
+#' @param PartyTypeString An alternative to `PartyType` which accepts any string as input.
+#' @param GenderString An alternative to `Gender` which accepts any string as input.
 #'
 #' @return
 #' A list with the following syntax:
@@ -503,7 +506,9 @@ customerprofiles_create_integration_workflow <- function(DomainName, WorkflowTyp
 #'   ),
 #'   Attributes = list(
 #'     "string"
-#'   )
+#'   ),
+#'   PartyTypeString = "string",
+#'   GenderString = "string"
 #' )
 #' ```
 #'
@@ -512,14 +517,14 @@ customerprofiles_create_integration_workflow <- function(DomainName, WorkflowTyp
 #' @rdname customerprofiles_create_profile
 #'
 #' @aliases customerprofiles_create_profile
-customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, AdditionalInformation = NULL, PartyType = NULL, BusinessName = NULL, FirstName = NULL, MiddleName = NULL, LastName = NULL, BirthDate = NULL, Gender = NULL, PhoneNumber = NULL, MobilePhoneNumber = NULL, HomePhoneNumber = NULL, BusinessPhoneNumber = NULL, EmailAddress = NULL, PersonalEmailAddress = NULL, BusinessEmailAddress = NULL, Address = NULL, ShippingAddress = NULL, MailingAddress = NULL, BillingAddress = NULL, Attributes = NULL) {
+customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, AdditionalInformation = NULL, PartyType = NULL, BusinessName = NULL, FirstName = NULL, MiddleName = NULL, LastName = NULL, BirthDate = NULL, Gender = NULL, PhoneNumber = NULL, MobilePhoneNumber = NULL, HomePhoneNumber = NULL, BusinessPhoneNumber = NULL, EmailAddress = NULL, PersonalEmailAddress = NULL, BusinessEmailAddress = NULL, Address = NULL, ShippingAddress = NULL, MailingAddress = NULL, BillingAddress = NULL, Attributes = NULL, PartyTypeString = NULL, GenderString = NULL) {
   op <- new_operation(
     name = "CreateProfile",
     http_method = "POST",
     http_path = "/domains/{DomainName}/profiles",
     paginator = list()
   )
-  input <- .customerprofiles$create_profile_input(DomainName = DomainName, AccountNumber = AccountNumber, AdditionalInformation = AdditionalInformation, PartyType = PartyType, BusinessName = BusinessName, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, BirthDate = BirthDate, Gender = Gender, PhoneNumber = PhoneNumber, MobilePhoneNumber = MobilePhoneNumber, HomePhoneNumber = HomePhoneNumber, BusinessPhoneNumber = BusinessPhoneNumber, EmailAddress = EmailAddress, PersonalEmailAddress = PersonalEmailAddress, BusinessEmailAddress = BusinessEmailAddress, Address = Address, ShippingAddress = ShippingAddress, MailingAddress = MailingAddress, BillingAddress = BillingAddress, Attributes = Attributes)
+  input <- .customerprofiles$create_profile_input(DomainName = DomainName, AccountNumber = AccountNumber, AdditionalInformation = AdditionalInformation, PartyType = PartyType, BusinessName = BusinessName, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, BirthDate = BirthDate, Gender = Gender, PhoneNumber = PhoneNumber, MobilePhoneNumber = MobilePhoneNumber, HomePhoneNumber = HomePhoneNumber, BusinessPhoneNumber = BusinessPhoneNumber, EmailAddress = EmailAddress, PersonalEmailAddress = PersonalEmailAddress, BusinessEmailAddress = BusinessEmailAddress, Address = Address, ShippingAddress = ShippingAddress, MailingAddress = MailingAddress, BillingAddress = BillingAddress, Attributes = Attributes, PartyTypeString = PartyTypeString, GenderString = GenderString)
   output <- .customerprofiles$create_profile_output()
   config <- get_config()
   svc <- .customerprofiles$service(config)
@@ -1192,7 +1197,8 @@ customerprofiles_get_identity_resolution_job <- function(DomainName, JobId) {
 #'   ObjectTypeNames = list(
 #'     "string"
 #'   ),
-#'   WorkflowId = "string"
+#'   WorkflowId = "string",
+#'   IsUnstructured = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1681,7 +1687,8 @@ customerprofiles_get_workflow_steps <- function(DomainName, WorkflowId, NextToke
 #'       ObjectTypeNames = list(
 #'         "string"
 #'       ),
-#'       WorkflowId = "string"
+#'       WorkflowId = "string",
+#'       IsUnstructured = TRUE|FALSE
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1901,7 +1908,8 @@ customerprofiles_list_identity_resolution_jobs <- function(DomainName, NextToken
 #'       ObjectTypeNames = list(
 #'         "string"
 #'       ),
-#'       WorkflowId = "string"
+#'       WorkflowId = "string",
+#'       IsUnstructured = TRUE|FALSE
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2391,6 +2399,11 @@ customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileId
 #' includes Amazon AppFlow and Amazon Connect.
 #' 
 #' An integration can belong to only one domain.
+#' 
+#' To add or remove tags on an existing Integration, see
+#' [TagResource](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_TagResource.html)
+#' /
+#' [UntagResource](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UntagResource.html).
 #'
 #' @usage
 #' customerprofiles_put_integration(DomainName, Uri, ObjectTypeName, Tags,
@@ -2429,7 +2442,8 @@ customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileId
 #'   ObjectTypeNames = list(
 #'     "string"
 #'   ),
-#'   WorkflowId = "string"
+#'   WorkflowId = "string",
+#'   IsUnstructured = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -2546,10 +2560,10 @@ customerprofiles_put_integration <- function(DomainName, Uri = NULL, ObjectTypeN
 #' @description
 #' Adds additional objects to customer profiles of a given ObjectType.
 #' 
-#' When adding a specific profile object, like a Contact Trace Record
-#' (CTR), an inferred profile can get created if it is not mapped to an
-#' existing profile. The resulting profile will only have a phone number
-#' populated in the standard ProfileObject. Any additional CTRs with the
+#' When adding a specific profile object, like a Contact Record, an
+#' inferred profile can get created if it is not mapped to an existing
+#' profile. The resulting profile will only have a phone number populated
+#' in the standard ProfileObject. Any additional Contact Records with the
 #' same phone number will be mapped to the same inferred profile.
 #' 
 #' When a ProfileObject is created and if a ProfileObjectType already
@@ -2609,6 +2623,9 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #'
 #' @description
 #' Defines a ProfileObjectType.
+#' 
+#' To add or remove tags on an existing ObjectType, see
+#' [TagResource](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_TagResource.html)/[`untag_resource`][customerprofiles_untag_resource].
 #'
 #' @usage
 #' customerprofiles_put_profile_object_type(DomainName, ObjectTypeName,
@@ -2742,19 +2759,27 @@ customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName,
 }
 .customerprofiles$operations$put_profile_object_type <- customerprofiles_put_profile_object_type
 
-#' Searches for profiles within a specific domain name using name, phone
-#' number, email address, account number, or a custom defined index
+#' Searches for profiles within a specific domain using one or more
+#' predefined search keys (e
 #'
 #' @description
-#' Searches for profiles within a specific domain name using name, phone
-#' number, email address, account number, or a custom defined index.
+#' Searches for profiles within a specific domain using one or more
+#' predefined search keys (e.g., _fullName, _phone, _email, _account,
+#' etc.) and/or custom-defined search keys. A search key is a data type
+#' pair that consists of a `KeyName` and `Values` list.
+#' 
+#' This operation supports searching for profiles with a minimum of 1
+#' key-value(s) pair and up to 5 key-value(s) pairs using either `AND` or
+#' `OR` logic.
 #'
 #' @usage
 #' customerprofiles_search_profiles(NextToken, MaxResults, DomainName,
-#'   KeyName, Values)
+#'   KeyName, Values, AdditionalSearchKeys, LogicalOperator)
 #'
 #' @param NextToken The pagination token from the previous SearchProfiles API call.
 #' @param MaxResults The maximum number of objects returned per page.
+#' 
+#' The default is 20 if this parameter is not included in the request.
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param KeyName &#91;required&#93; A searchable identifier of a customer profile. The predefined keys you
 #' can use to search include: _account, _profileId, _assetId, _caseId,
@@ -2764,6 +2789,29 @@ customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName,
 #' _zendeskTicketId, _serviceNowSystemId, _serviceNowIncidentId,
 #' _segmentUserId, _shopifyCustomerId, _shopifyOrderId.
 #' @param Values &#91;required&#93; A list of key values.
+#' @param AdditionalSearchKeys A list of `AdditionalSearchKey` objects that are each searchable
+#' identifiers of a profile. Each `AdditionalSearchKey` object contains a
+#' `KeyName` and a list of `Values` associated with that specific key
+#' (i.e., a key-value(s) pair). These additional search keys will be used
+#' in conjunction with the `LogicalOperator` and the required `KeyName` and
+#' `Values` parameters to search for profiles that satisfy the search
+#' criteria.
+#' @param LogicalOperator Relationship between all specified search keys that will be used to
+#' search for profiles. This includes the required `KeyName` and `Values`
+#' parameters as well as any key-value(s) pairs specified in the
+#' `AdditionalSearchKeys` list.
+#' 
+#' This parameter influences which profiles will be returned in the
+#' response in the following manner:
+#' 
+#' -   `AND` - The response only includes profiles that match all of the
+#'     search keys.
+#' 
+#' -   `OR` - The response includes profiles that match at least one of the
+#'     search keys.
+#' 
+#' The `OR` relationship is the default behavior if this parameter is not
+#' included in the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2838,7 +2886,17 @@ customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName,
 #'       ),
 #'       Attributes = list(
 #'         "string"
-#'       )
+#'       ),
+#'       FoundByItems = list(
+#'         list(
+#'           KeyName = "string",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       PartyTypeString = "string",
+#'       GenderString = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2854,7 +2912,16 @@ customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName,
 #'   KeyName = "string",
 #'   Values = list(
 #'     "string"
-#'   )
+#'   ),
+#'   AdditionalSearchKeys = list(
+#'     list(
+#'       KeyName = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   LogicalOperator = "AND"|"OR"
 #' )
 #' ```
 #'
@@ -2863,14 +2930,14 @@ customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName,
 #' @rdname customerprofiles_search_profiles
 #'
 #' @aliases customerprofiles_search_profiles
-customerprofiles_search_profiles <- function(NextToken = NULL, MaxResults = NULL, DomainName, KeyName, Values) {
+customerprofiles_search_profiles <- function(NextToken = NULL, MaxResults = NULL, DomainName, KeyName, Values, AdditionalSearchKeys = NULL, LogicalOperator = NULL) {
   op <- new_operation(
     name = "SearchProfiles",
     http_method = "POST",
     http_path = "/domains/{DomainName}/profiles/search",
     paginator = list()
   )
-  input <- .customerprofiles$search_profiles_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName, KeyName = KeyName, Values = Values)
+  input <- .customerprofiles$search_profiles_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName, KeyName = KeyName, Values = Values, AdditionalSearchKeys = AdditionalSearchKeys, LogicalOperator = LogicalOperator)
   output <- .customerprofiles$search_profiles_output()
   config <- get_config()
   svc <- .customerprofiles$service(config)
@@ -3010,6 +3077,9 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
 #' [Cross-service confused deputy
 #' prevention](https://docs.aws.amazon.com/connect/latest/adminguide/cross-service-confused-deputy-prevention.html)
 #' for sample policies that you should apply.
+#' 
+#' To add or remove tags on an existing Domain, see
+#' [`tag_resource`][customerprofiles_tag_resource]/[`untag_resource`][customerprofiles_untag_resource].
 #'
 #' @usage
 #' customerprofiles_update_domain(DomainName, DefaultExpirationDays,
@@ -3166,7 +3236,8 @@ customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = N
 #'   FirstName, MiddleName, LastName, BirthDate, Gender, PhoneNumber,
 #'   MobilePhoneNumber, HomePhoneNumber, BusinessPhoneNumber, EmailAddress,
 #'   PersonalEmailAddress, BusinessEmailAddress, Address, ShippingAddress,
-#'   MailingAddress, BillingAddress, Attributes)
+#'   MailingAddress, BillingAddress, Attributes, PartyTypeString,
+#'   GenderString)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param ProfileId &#91;required&#93; The unique identifier of a customer profile.
@@ -3194,6 +3265,8 @@ customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = N
 #' @param MailingAddress The customer’s mailing address.
 #' @param BillingAddress The customer’s billing address.
 #' @param Attributes A key value pair of attributes of a customer profile.
+#' @param PartyTypeString An alternative to `PartyType` which accepts any string as input.
+#' @param GenderString An alternative to `Gender` which accepts any string as input.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3274,7 +3347,9 @@ customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = N
 #'   ),
 #'   Attributes = list(
 #'     "string"
-#'   )
+#'   ),
+#'   PartyTypeString = "string",
+#'   GenderString = "string"
 #' )
 #' ```
 #'
@@ -3283,14 +3358,14 @@ customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = N
 #' @rdname customerprofiles_update_profile
 #'
 #' @aliases customerprofiles_update_profile
-customerprofiles_update_profile <- function(DomainName, ProfileId, AdditionalInformation = NULL, AccountNumber = NULL, PartyType = NULL, BusinessName = NULL, FirstName = NULL, MiddleName = NULL, LastName = NULL, BirthDate = NULL, Gender = NULL, PhoneNumber = NULL, MobilePhoneNumber = NULL, HomePhoneNumber = NULL, BusinessPhoneNumber = NULL, EmailAddress = NULL, PersonalEmailAddress = NULL, BusinessEmailAddress = NULL, Address = NULL, ShippingAddress = NULL, MailingAddress = NULL, BillingAddress = NULL, Attributes = NULL) {
+customerprofiles_update_profile <- function(DomainName, ProfileId, AdditionalInformation = NULL, AccountNumber = NULL, PartyType = NULL, BusinessName = NULL, FirstName = NULL, MiddleName = NULL, LastName = NULL, BirthDate = NULL, Gender = NULL, PhoneNumber = NULL, MobilePhoneNumber = NULL, HomePhoneNumber = NULL, BusinessPhoneNumber = NULL, EmailAddress = NULL, PersonalEmailAddress = NULL, BusinessEmailAddress = NULL, Address = NULL, ShippingAddress = NULL, MailingAddress = NULL, BillingAddress = NULL, Attributes = NULL, PartyTypeString = NULL, GenderString = NULL) {
   op <- new_operation(
     name = "UpdateProfile",
     http_method = "PUT",
     http_path = "/domains/{DomainName}/profiles",
     paginator = list()
   )
-  input <- .customerprofiles$update_profile_input(DomainName = DomainName, ProfileId = ProfileId, AdditionalInformation = AdditionalInformation, AccountNumber = AccountNumber, PartyType = PartyType, BusinessName = BusinessName, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, BirthDate = BirthDate, Gender = Gender, PhoneNumber = PhoneNumber, MobilePhoneNumber = MobilePhoneNumber, HomePhoneNumber = HomePhoneNumber, BusinessPhoneNumber = BusinessPhoneNumber, EmailAddress = EmailAddress, PersonalEmailAddress = PersonalEmailAddress, BusinessEmailAddress = BusinessEmailAddress, Address = Address, ShippingAddress = ShippingAddress, MailingAddress = MailingAddress, BillingAddress = BillingAddress, Attributes = Attributes)
+  input <- .customerprofiles$update_profile_input(DomainName = DomainName, ProfileId = ProfileId, AdditionalInformation = AdditionalInformation, AccountNumber = AccountNumber, PartyType = PartyType, BusinessName = BusinessName, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, BirthDate = BirthDate, Gender = Gender, PhoneNumber = PhoneNumber, MobilePhoneNumber = MobilePhoneNumber, HomePhoneNumber = HomePhoneNumber, BusinessPhoneNumber = BusinessPhoneNumber, EmailAddress = EmailAddress, PersonalEmailAddress = PersonalEmailAddress, BusinessEmailAddress = BusinessEmailAddress, Address = Address, ShippingAddress = ShippingAddress, MailingAddress = MailingAddress, BillingAddress = BillingAddress, Attributes = Attributes, PartyTypeString = PartyTypeString, GenderString = GenderString)
   output <- .customerprofiles$update_profile_output()
   config <- get_config()
   svc <- .customerprofiles$service(config)

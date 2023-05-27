@@ -2,7 +2,8 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_describe_reserved_instance_offerings}
 \alias{opensearchservice_describe_reserved_instance_offerings}
-\title{Lists available reserved OpenSearch instance offerings}
+\title{Describes the available Amazon OpenSearch Service Reserved Instance
+offerings for a given Region}
 \usage{
 opensearchservice_describe_reserved_instance_offerings(
   ReservedInstanceOfferingId = NULL,
@@ -11,17 +12,22 @@ opensearchservice_describe_reserved_instance_offerings(
 )
 }
 \arguments{
-\item{ReservedInstanceOfferingId}{The offering identifier filter value. Use this parameter to show only
-the available offering that matches the specified reservation
-identifier.}
+\item{ReservedInstanceOfferingId}{The Reserved Instance identifier filter value. Use this parameter to
+show only the available instance types that match the specified
+reservation identifier.}
 
-\item{MaxResults}{Set this value to limit the number of results returned. If not
-specified, defaults to 100.}
+\item{MaxResults}{An optional parameter that specifies the maximum number of results to
+return. You can use \code{nextToken} to get the next page of results.}
 
-\item{NextToken}{Provides an identifier to allow retrieval of paginated results.}
+\item{NextToken}{If your initial
+\code{\link[=opensearchservice_describe_reserved_instance_offerings]{describe_reserved_instance_offerings}}
+operation returns a \code{nextToken}, you can include the returned
+\code{nextToken} in subsequent
+\code{\link[=opensearchservice_describe_reserved_instance_offerings]{describe_reserved_instance_offerings}}
+operations, which returns results in the next page.}
 }
 \description{
-Lists available reserved OpenSearch instance offerings.
+Describes the available Amazon OpenSearch Service Reserved Instance offerings for a given Region. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/ri.html}{Reserved Instances in Amazon OpenSearch Service}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/describe_reserved_instance_offerings.html} for full documentation.
 }

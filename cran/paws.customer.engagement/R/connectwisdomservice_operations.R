@@ -11,7 +11,10 @@ NULL
 #' See [https://paws-r.github.io/docs/connectwisdomservice/create_assistant.html](https://paws-r.github.io/docs/connectwisdomservice/create_assistant.html) for full documentation.
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #' @param description The description of the assistant.
 #' @param name &#91;required&#93; The name of the assistant.
 #' @param serverSideEncryptionConfiguration The KMS key used for encryption.
@@ -51,7 +54,10 @@ connectwisdomservice_create_assistant <- function(clientToken = NULL, descriptio
 #' @param association &#91;required&#93; The identifier of the associated resource.
 #' @param associationType &#91;required&#93; The type of association.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #' @param tags The tags used to organize, track, or control access for this resource.
 #'
 #' @keywords internal
@@ -82,7 +88,10 @@ connectwisdomservice_create_assistant_association <- function(assistantId, assoc
 #' See [https://paws-r.github.io/docs/connectwisdomservice/create_content.html](https://paws-r.github.io/docs/connectwisdomservice/create_content.html) for full documentation.
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. Can be either the ID or the ARN.
 #' URLs cannot contain the ARN.
 #' @param metadata A key/value map to store attributes without affecting tagging or
@@ -129,7 +138,10 @@ connectwisdomservice_create_content <- function(clientToken = NULL, knowledgeBas
 #' See [https://paws-r.github.io/docs/connectwisdomservice/create_knowledge_base.html](https://paws-r.github.io/docs/connectwisdomservice/create_knowledge_base.html) for full documentation.
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #' @param description The description.
 #' @param knowledgeBaseType &#91;required&#93; The type of knowledge base. Only CUSTOM knowledge bases allow you to
 #' upload your own content. EXTERNAL knowledge bases support integrations
@@ -171,7 +183,10 @@ connectwisdomservice_create_knowledge_base <- function(clientToken = NULL, descr
 #' @param assistantId &#91;required&#93; The identifier of the Wisdom assistant. Can be either the ID or the ARN.
 #' URLs cannot contain the ARN.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #' @param description The description.
 #' @param name &#91;required&#93; The name of the session.
 #' @param tags The tags used to organize, track, or control access for this resource.

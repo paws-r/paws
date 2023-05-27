@@ -9,7 +9,7 @@ ec2_create_vpc_peering_connection(
   DryRun = NULL,
   PeerOwnerId = NULL,
   PeerVpcId = NULL,
-  VpcId = NULL,
+  VpcId,
   PeerRegion = NULL,
   TagSpecifications = NULL
 )
@@ -27,7 +27,7 @@ Default: Your Amazon Web Services account ID}
 \item{PeerVpcId}{The ID of the VPC with which you are creating the VPC peering
 connection. You must specify this parameter in the request.}
 
-\item{VpcId}{The ID of the requester VPC. You must specify this parameter in the
+\item{VpcId}{[required] The ID of the requester VPC. You must specify this parameter in the
 request.}
 
 \item{PeerRegion}{The Region code for the accepter VPC, if the accepter VPC is located in

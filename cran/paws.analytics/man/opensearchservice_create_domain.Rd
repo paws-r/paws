@@ -2,7 +2,7 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_create_domain}
 \alias{opensearchservice_create_domain}
-\title{Creates a new Amazon OpenSearch Service domain}
+\title{Creates an Amazon OpenSearch Service domain}
 \usage{
 opensearchservice_create_domain(
   DomainName,
@@ -20,69 +20,90 @@ opensearchservice_create_domain(
   DomainEndpointOptions = NULL,
   AdvancedSecurityOptions = NULL,
   TagList = NULL,
-  AutoTuneOptions = NULL
+  AutoTuneOptions = NULL,
+  OffPeakWindowOptions = NULL,
+  SoftwareUpdateOptions = NULL
 )
 }
 \arguments{
-\item{DomainName}{[required] The name of the Amazon OpenSearch Service domain you're creating. Domain
-names are unique across the domains owned by an account within an AWS
-region. Domain names must start with a lowercase letter and can contain
-the following characters: a-z (lowercase), 0-9, and - (hyphen).}
+\item{DomainName}{[required] Name of the OpenSearch Service domain to create. Domain names are unique
+across the domains owned by an account within an Amazon Web Services
+Region.}
 
 \item{EngineVersion}{String of format Elasticsearch_X.Y or OpenSearch_X.Y to specify the
-engine version for the Amazon OpenSearch Service domain. For example,
-"OpenSearch_1.0" or "Elasticsearch_7.9". For more information, see \if{html}{\out{<a
-href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#createdomains"
-target="_blank">}}Creating and managing Amazon OpenSearch Service
-domains\if{html}{\out{</a>}} .}
+engine version for the OpenSearch Service domain. For example,
+\code{OpenSearch_1.0} or \code{Elasticsearch_7.9}. For more information, see
+\href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#createdomains}{Creating and managing Amazon OpenSearch Service domains}.}
 
-\item{ClusterConfig}{Configuration options for a domain. Specifies the instance type and
-number of instances in the domain.}
+\item{ClusterConfig}{Container for the cluster configuration of a domain.}
 
-\item{EBSOptions}{Options to enable, disable, and specify the type and size of EBS storage
-volumes.}
+\item{EBSOptions}{Container for the parameters required to enable EBS-based storage for an
+OpenSearch Service domain.}
 
-\item{AccessPolicies}{IAM access policy as a JSON-formatted string.}
+\item{AccessPolicies}{Identity and Access Management (IAM) policy document specifying the
+access policies for the new domain.}
 
-\item{SnapshotOptions}{Option to set time, in UTC format, of the daily automated snapshot.
-Default value is 0 hours.}
+\item{SnapshotOptions}{DEPRECATED. Container for the parameters required to configure automated
+snapshots of domain indexes.}
 
-\item{VPCOptions}{Options to specify the subnets and security groups for a VPC endpoint.
-For more information, see \if{html}{\out{<a
-href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html"
-target="_blank">}}Launching your Amazon OpenSearch Service domains using a
-VPC\if{html}{\out{</a>}} .}
+\item{VPCOptions}{Container for the values required to configure VPC access domains. If
+you don't specify these values, OpenSearch Service creates the domain
+with a public endpoint. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html}{Launching your Amazon OpenSearch Service domains using a VPC}.}
 
-\item{CognitoOptions}{Options to specify the Cognito user and identity pools for OpenSearch
-Dashboards authentication. For more information, see \if{html}{\out{<a
-href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cognito-auth.html"
-target="_blank">}}Configuring Amazon Cognito authentication for OpenSearch
-Dashboards\if{html}{\out{</a>}}.}
+\item{CognitoOptions}{Key-value pairs to configure Amazon Cognito authentication. For more
+information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cognito-auth.html}{Configuring Amazon Cognito authentication for OpenSearch Dashboards}.}
 
-\item{EncryptionAtRestOptions}{Options for encryption of data at rest.}
+\item{EncryptionAtRestOptions}{Key-value pairs to enable encryption at rest.}
 
-\item{NodeToNodeEncryptionOptions}{Node-to-node encryption options.}
+\item{NodeToNodeEncryptionOptions}{Enables node-to-node encryption.}
 
-\item{AdvancedOptions}{Option to allow references to indices in an HTTP request body. Must be
-\code{false} when configuring access to individual sub-resources. By default,
-the value is \code{true}. See \if{html}{\out{<a
-href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#createdomain-configure-advanced-options"
-target="_blank">}}Advanced cluster parameters\if{html}{\out{</a>}} for more information.}
+\item{AdvancedOptions}{Key-value pairs to specify advanced configuration options. The following
+key-value pairs are supported:
+\itemize{
+\item \code{"rest.action.multi.allow_explicit_index": "true" | "false"} - Note
+the use of a string rather than a boolean. Specifies whether
+explicit references to indexes are allowed inside the body of HTTP
+requests. If you want to configure access policies for domain
+sub-resources, such as specific indexes and domain APIs, you must
+disable this property. Default is true.
+\item \code{"indices.fielddata.cache.size": "80" } - Note the use of a string
+rather than a boolean. Specifies the percentage of heap space
+allocated to field data. Default is unbounded.
+\item \code{"indices.query.bool.max_clause_count": "1024"} - Note the use of a
+string rather than a boolean. Specifies the maximum number of
+clauses allowed in a Lucene boolean query. Default is 1,024. Queries
+with more than the permitted number of clauses result in a
+\code{TooManyClauses} error.
+\item \code{"override_main_response_version": "true" | "false"} - Note the use
+of a string rather than a boolean. Specifies whether the domain
+reports its version as 7.10 to allow Elasticsearch OSS clients and
+plugins to continue working with it. Default is false when creating
+a domain and true when upgrading a domain.
+}
 
-\item{LogPublishingOptions}{Map of \code{LogType} and \code{LogPublishingOption}, each containing options to
-publish a given type of OpenSearch log.}
+For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#createdomain-configure-advanced-options}{Advanced cluster parameters}.}
 
-\item{DomainEndpointOptions}{Options to specify configurations that will be applied to the domain
-endpoint.}
+\item{LogPublishingOptions}{Key-value pairs to configure log publishing.}
 
-\item{AdvancedSecurityOptions}{Specifies advanced security options.}
+\item{DomainEndpointOptions}{Additional options for the domain endpoint, such as whether to require
+HTTPS for all traffic.}
 
-\item{TagList}{A list of \code{Tag} added during domain creation.}
+\item{AdvancedSecurityOptions}{Options for fine-grained access control.}
 
-\item{AutoTuneOptions}{Specifies Auto-Tune options.}
+\item{TagList}{List of tags to add to the domain upon creation.}
+
+\item{AutoTuneOptions}{Options for Auto-Tune.}
+
+\item{OffPeakWindowOptions}{Specifies a daily 10-hour time block during which OpenSearch Service can
+perform configuration changes on the domain, including service software
+updates and Auto-Tune enhancements that require a blue/green deployment.
+If no options are specified, the default start time of 10:00 P.M. local
+time (for the Region that the domain is created in) is used.}
+
+\item{SoftwareUpdateOptions}{Software update options for the domain.}
 }
 \description{
-Creates a new Amazon OpenSearch Service domain. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html" target="_blank">}}Creating and managing Amazon OpenSearch Service domains\if{html}{\out{</a>}} in the \emph{Amazon OpenSearch Service Developer Guide}.
+Creates an Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html}{Creating and managing Amazon OpenSearch Service domains}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/create_domain.html} for full documentation.
 }

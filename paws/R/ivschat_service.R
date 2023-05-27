@@ -30,11 +30,39 @@ NULL
 #' 
 #' **Resources**
 #' 
-#' The following resource is part of Amazon IVS Chat:
+#' The following resources are part of Amazon IVS Chat:
+#' 
+#' -   **LoggingConfiguration** — A configuration that allows customers to
+#'     store and record sent messages in a chat room. See the Logging
+#'     Configuration endpoints for more information.
 #' 
 #' -   **Room** — The central Amazon IVS Chat resource through which
 #'     clients connect to and exchange chat messages. See the Room
 #'     endpoints for more information.
+#' 
+#' **Tagging**
+#' 
+#' A *tag* is a metadata label that you assign to an AWS resource. A tag
+#' comprises a *key* and a *value*, both set by you. For example, you might
+#' set a tag as `topic:nature` to label a particular video category. See
+#' [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' for more information, including restrictions that apply to tags and "Tag
+#' naming limits and requirements"; Amazon IVS Chat has no service-specific
+#' constraints beyond what is documented there.
+#' 
+#' Tags can help you identify and organize your AWS resources. For example,
+#' you can use the same tag for different resources to indicate that they
+#' are related. You can also use tags to manage access (see [Access
+#' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)).
+#' 
+#' The Amazon IVS Chat API has these tag-related endpoints:
+#' [`tag_resource`][ivschat_tag_resource],
+#' [`untag_resource`][ivschat_untag_resource], and
+#' [`list_tags_for_resource`][ivschat_list_tags_for_resource]. The
+#' following resource supports tagging: Room.
+#' 
+#' At most 50 tags can be applied to a resource.
 #' 
 #' **API Access Security**
 #' 
@@ -78,6 +106,14 @@ NULL
 #'     Management](https://docs.aws.amazon.com/ivs/latest/userguide/security-iam.html)
 #'     on the Security page of the *Amazon IVS User Guide*.
 #' 
+#' **Amazon Resource Names (ARNs)**
+#' 
+#' ARNs uniquely identify AWS resources. An ARN is required when you need
+#' to specify a resource unambiguously across all of AWS, such as in IAM
+#' policies and API calls. For more information, see [Amazon Resource
+#' Names](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' in the *AWS General Reference*.
+#' 
 #' **Messaging Endpoints**
 #' 
 #' -   [`delete_message`][ivschat_delete_message] — Sends an event to a
@@ -102,10 +138,11 @@ NULL
 #' **Chat Token Endpoint**
 #' 
 #' -   [`create_chat_token`][ivschat_create_chat_token] — Creates an
-#'     encrypted token that is used to establish an individual WebSocket
-#'     connection to a room. The token is valid for one minute, and a
-#'     connection (session) established with the token is valid for the
-#'     specified duration.
+#'     encrypted token that is used by a chat participant to establish an
+#'     individual WebSocket chat connection to a room. When the token is
+#'     used to connect to chat, the connection is valid for the session
+#'     duration specified in the request. The token becomes invalid at the
+#'     token-expiration timestamp included in the response.
 #' 
 #' **Room Endpoints**
 #' 
@@ -121,6 +158,25 @@ NULL
 #' 
 #' -   [`update_room`][ivschat_update_room] — Updates a room’s
 #'     configuration.
+#' 
+#' **Logging Configuration Endpoints**
+#' 
+#' -   [`create_logging_configuration`][ivschat_create_logging_configuration]
+#'     — Creates a logging configuration that allows clients to store and
+#'     record sent messages.
+#' 
+#' -   [`delete_logging_configuration`][ivschat_delete_logging_configuration]
+#'     — Deletes the specified logging configuration.
+#' 
+#' -   [`get_logging_configuration`][ivschat_get_logging_configuration] —
+#'     Gets the specified logging configuration.
+#' 
+#' -   [`list_logging_configurations`][ivschat_list_logging_configurations]
+#'     — Gets summary information about all your logging configurations in
+#'     the AWS region where the API request is processed.
+#' 
+#' -   [`update_logging_configuration`][ivschat_update_logging_configuration]
+#'     — Updates a specified logging configuration.
 #' 
 #' **Tags Endpoints**
 #' 
@@ -185,17 +241,22 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=ivschat_create_chat_token]{create_chat_token} \tab Creates an encrypted token that is used to establish an individual WebSocket connection to a room\cr
+#'  \link[=ivschat_create_chat_token]{create_chat_token} \tab Creates an encrypted token that is used by a chat participant to establish an individual WebSocket chat connection to a room\cr
+#'  \link[=ivschat_create_logging_configuration]{create_logging_configuration} \tab Creates a logging configuration that allows clients to store and record sent messages\cr
 #'  \link[=ivschat_create_room]{create_room} \tab Creates a room that allows clients to connect and pass messages\cr
+#'  \link[=ivschat_delete_logging_configuration]{delete_logging_configuration} \tab Deletes the specified logging configuration\cr
 #'  \link[=ivschat_delete_message]{delete_message} \tab Sends an event to a specific room which directs clients to delete a specific message; that is, unrender it from view and delete it from the client’s chat history\cr
 #'  \link[=ivschat_delete_room]{delete_room} \tab Deletes the specified room\cr
 #'  \link[=ivschat_disconnect_user]{disconnect_user} \tab Disconnects all connections using a specified user ID from a room\cr
+#'  \link[=ivschat_get_logging_configuration]{get_logging_configuration} \tab Gets the specified logging configuration\cr
 #'  \link[=ivschat_get_room]{get_room} \tab Gets the specified room\cr
+#'  \link[=ivschat_list_logging_configurations]{list_logging_configurations} \tab Gets summary information about all your logging configurations in the AWS region where the API request is processed\cr
 #'  \link[=ivschat_list_rooms]{list_rooms} \tab Gets summary information about all your rooms in the AWS region where the API request is processed\cr
 #'  \link[=ivschat_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about AWS tags for the specified ARN\cr
 #'  \link[=ivschat_send_event]{send_event} \tab Sends an event to a room\cr
 #'  \link[=ivschat_tag_resource]{tag_resource} \tab Adds or updates tags for the AWS resource with the specified ARN\cr
 #'  \link[=ivschat_untag_resource]{untag_resource} \tab Removes tags from the resource with the specified ARN\cr
+#'  \link[=ivschat_update_logging_configuration]{update_logging_configuration} \tab Updates a specified logging configuration\cr
 #'  \link[=ivschat_update_room]{update_room} \tab Updates a room’s configuration
 #' }
 #'

@@ -3,6 +3,18 @@
 #' @include connect_service.R
 NULL
 
+.connect$activate_evaluation_form_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), EvaluationFormId = structure(logical(0), tags = list(location = "uri", locationName = "EvaluationFormId", type = "string")), EvaluationFormVersion = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$activate_evaluation_form_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EvaluationFormId = structure(logical(0), tags = list(type = "string")), EvaluationFormArn = structure(logical(0), tags = list(type = "string")), EvaluationFormVersion = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .connect$associate_approved_origin_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Origin = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -157,6 +169,18 @@ NULL
   return(populate(args, shape))
 }
 
+.connect$create_evaluation_form_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Title = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Items = structure(list(structure(list(Section = structure(list(Title = structure(logical(0), tags = list(type = "string")), RefId = structure(logical(0), tags = list(type = "string")), Instructions = structure(logical(0), tags = list(type = "string")), Items = structure(logical(0), tags = list(type = "list")), Weight = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), Question = structure(list(Title = structure(logical(0), tags = list(type = "string")), Instructions = structure(logical(0), tags = list(type = "string")), RefId = structure(logical(0), tags = list(type = "string")), NotApplicableEnabled = structure(logical(0), tags = list(type = "boolean")), QuestionType = structure(logical(0), tags = list(type = "string")), QuestionTypeProperties = structure(list(Numeric = structure(list(MinValue = structure(logical(0), tags = list(type = "integer")), MaxValue = structure(logical(0), tags = list(type = "integer")), Options = structure(list(structure(list(MinValue = structure(logical(0), tags = list(type = "integer")), MaxValue = structure(logical(0), tags = list(type = "integer")), Score = structure(logical(0), tags = list(type = "integer")), AutomaticFail = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), Automation = structure(list(PropertyValue = structure(list(Label = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), SingleSelect = structure(list(Options = structure(list(structure(list(RefId = structure(logical(0), tags = list(type = "string")), Text = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "integer")), AutomaticFail = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), DisplayAs = structure(logical(0), tags = list(type = "string")), Automation = structure(list(Options = structure(list(structure(list(RuleCategory = structure(list(Category = structure(logical(0), tags = list(type = "string")), Condition = structure(logical(0), tags = list(type = "string")), OptionRefId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), DefaultOptionRefId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Weight = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), ScoringStrategy = structure(list(Mode = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$create_evaluation_form_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EvaluationFormId = structure(logical(0), tags = list(type = "string")), EvaluationFormArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .connect$create_hours_of_operation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), TimeZone = structure(logical(0), tags = list(type = "string")), Config = structure(list(structure(list(Day = structure(logical(0), tags = list(type = "string")), StartTime = structure(list(Hours = structure(logical(0), tags = list(box = TRUE, type = "integer")), Minutes = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure")), EndTime = structure(list(Hours = structure(logical(0), tags = list(box = TRUE, type = "integer")), Minutes = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
@@ -193,6 +217,30 @@ NULL
   return(populate(args, shape))
 }
 
+.connect$create_participant_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), ContactId = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ParticipantDetails = structure(list(ParticipantRole = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$create_participant_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ParticipantCredentials = structure(list(ParticipantToken = structure(logical(0), tags = list(type = "string")), Expiry = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ParticipantId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$create_prompt_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), S3Uri = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$create_prompt_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(PromptARN = structure(logical(0), tags = list(type = "string")), PromptId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .connect$create_queue_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), OutboundCallerConfig = structure(list(OutboundCallerIdName = structure(logical(0), tags = list(type = "string")), OutboundCallerIdNumberId = structure(logical(0), tags = list(type = "string")), OutboundFlowId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HoursOfOperationId = structure(logical(0), tags = list(type = "string")), MaxContacts = structure(logical(0), tags = list(box = TRUE, type = "integer")), QuickConnectIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
@@ -219,7 +267,7 @@ NULL
 
 .connect$create_routing_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DefaultOutboundQueueId = structure(logical(0), tags = list(type = "string")), QueueConfigs = structure(list(structure(list(QueueReference = structure(list(QueueId = structure(logical(0), tags = list(type = "string")), Channel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Priority = structure(logical(0), tags = list(box = TRUE, type = "integer")), Delay = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), MediaConcurrencies = structure(list(structure(list(Channel = structure(logical(0), tags = list(type = "string")), Concurrency = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DefaultOutboundQueueId = structure(logical(0), tags = list(type = "string")), QueueConfigs = structure(list(structure(list(QueueReference = structure(list(QueueId = structure(logical(0), tags = list(type = "string")), Channel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Priority = structure(logical(0), tags = list(box = TRUE, type = "integer")), Delay = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), MediaConcurrencies = structure(list(structure(list(Channel = structure(logical(0), tags = list(type = "string")), Concurrency = structure(logical(0), tags = list(type = "integer")), CrossChannelBehavior = structure(list(BehaviorType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -229,9 +277,21 @@ NULL
   return(populate(args, shape))
 }
 
+.connect$create_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Name = structure(logical(0), tags = list(type = "string")), TriggerEventSource = structure(list(EventSourceName = structure(logical(0), tags = list(type = "string")), IntegrationAssociationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Function = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(list(ActionType = structure(logical(0), tags = list(type = "string")), TaskAction = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ContactFlowId = structure(logical(0), tags = list(type = "string")), References = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure")), EventBridgeAction = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AssignContactCategoryAction = structure(list(), tags = list(type = "structure")), SendNotificationAction = structure(list(DeliveryMethod = structure(logical(0), tags = list(type = "string")), Subject = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string")), Recipient = structure(list(UserTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), UserIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), PublishStatus = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$create_rule_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RuleArn = structure(logical(0), tags = list(type = "string")), RuleId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .connect$create_security_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecurityProfileName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Permissions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(SecurityProfileName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Permissions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), AllowedAccessControlTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), TagRestrictedResources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -253,6 +313,18 @@ NULL
   return(populate(args, shape))
 }
 
+.connect$create_traffic_distribution_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), InstanceId = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$create_traffic_distribution_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .connect$create_use_case_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), IntegrationAssociationId = structure(logical(0), tags = list(location = "uri", locationName = "IntegrationAssociationId", type = "string")), UseCaseType = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
@@ -267,7 +339,7 @@ NULL
 
 .connect$create_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Username = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string")), IdentityInfo = structure(list(FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PhoneConfig = structure(list(PhoneType = structure(logical(0), tags = list(type = "string")), AutoAccept = structure(logical(0), tags = list(type = "boolean")), AfterContactWorkTimeLimit = structure(logical(0), tags = list(type = "integer")), DeskPhoneNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DirectoryUserId = structure(logical(0), tags = list(type = "string")), SecurityProfileIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RoutingProfileId = structure(logical(0), tags = list(type = "string")), HierarchyGroupId = structure(logical(0), tags = list(type = "string")), InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(Username = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string")), IdentityInfo = structure(list(FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string")), SecondaryEmail = structure(logical(0), tags = list(type = "string")), Mobile = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PhoneConfig = structure(list(PhoneType = structure(logical(0), tags = list(type = "string")), AutoAccept = structure(logical(0), tags = list(type = "boolean")), AfterContactWorkTimeLimit = structure(logical(0), tags = list(type = "integer")), DeskPhoneNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DirectoryUserId = structure(logical(0), tags = list(type = "string")), SecurityProfileIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RoutingProfileId = structure(logical(0), tags = list(type = "string")), HierarchyGroupId = structure(logical(0), tags = list(type = "string")), InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -301,6 +373,28 @@ NULL
   return(populate(args, shape))
 }
 
+.connect$deactivate_evaluation_form_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), EvaluationFormId = structure(logical(0), tags = list(location = "uri", locationName = "EvaluationFormId", type = "string")), EvaluationFormVersion = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$deactivate_evaluation_form_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EvaluationFormId = structure(logical(0), tags = list(type = "string")), EvaluationFormArn = structure(logical(0), tags = list(type = "string")), EvaluationFormVersion = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$delete_contact_evaluation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), EvaluationId = structure(logical(0), tags = list(location = "uri", locationName = "EvaluationId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$delete_contact_evaluation_output <- function(...) {
+  list()
+}
+
 .connect$delete_contact_flow_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), ContactFlowId = structure(logical(0), tags = list(location = "uri", locationName = "ContactFlowId", type = "string"))), tags = list(type = "structure"))
@@ -308,7 +402,9 @@ NULL
 }
 
 .connect$delete_contact_flow_output <- function(...) {
-  list()
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .connect$delete_contact_flow_module_input <- function(...) {
@@ -321,6 +417,16 @@ NULL
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
+}
+
+.connect$delete_evaluation_form_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), EvaluationFormId = structure(logical(0), tags = list(location = "uri", locationName = "EvaluationFormId", type = "string")), EvaluationFormVersion = structure(logical(0), tags = list(location = "querystring", locationName = "version", type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$delete_evaluation_form_output <- function(...) {
+  list()
 }
 
 .connect$delete_hours_of_operation_input <- function(...) {
@@ -353,6 +459,16 @@ NULL
   list()
 }
 
+.connect$delete_prompt_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), PromptId = structure(logical(0), tags = list(location = "uri", locationName = "PromptId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$delete_prompt_output <- function(...) {
+  list()
+}
+
 .connect$delete_quick_connect_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), QuickConnectId = structure(logical(0), tags = list(location = "uri", locationName = "QuickConnectId", type = "string"))), tags = list(type = "structure"))
@@ -360,6 +476,16 @@ NULL
 }
 
 .connect$delete_quick_connect_output <- function(...) {
+  list()
+}
+
+.connect$delete_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), RuleId = structure(logical(0), tags = list(location = "uri", locationName = "RuleId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$delete_rule_output <- function(...) {
   list()
 }
 
@@ -380,6 +506,18 @@ NULL
 }
 
 .connect$delete_task_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$delete_traffic_distribution_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TrafficDistributionGroupId = structure(logical(0), tags = list(location = "uri", locationName = "TrafficDistributionGroupId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$delete_traffic_distribution_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -447,7 +585,19 @@ NULL
 
 .connect$describe_contact_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Contact = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), InitialContactId = structure(logical(0), tags = list(type = "string")), PreviousContactId = structure(logical(0), tags = list(type = "string")), InitiationMethod = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Channel = structure(logical(0), tags = list(type = "string")), QueueInfo = structure(list(Id = structure(logical(0), tags = list(type = "string")), EnqueueTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), AgentInfo = structure(list(Id = structure(logical(0), tags = list(type = "string")), ConnectedToAgentTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), InitiationTimestamp = structure(logical(0), tags = list(type = "timestamp")), DisconnectTimestamp = structure(logical(0), tags = list(type = "timestamp")), LastUpdateTimestamp = structure(logical(0), tags = list(type = "timestamp")), ScheduledTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Contact = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), InitialContactId = structure(logical(0), tags = list(type = "string")), PreviousContactId = structure(logical(0), tags = list(type = "string")), InitiationMethod = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Channel = structure(logical(0), tags = list(type = "string")), QueueInfo = structure(list(Id = structure(logical(0), tags = list(type = "string")), EnqueueTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), AgentInfo = structure(list(Id = structure(logical(0), tags = list(type = "string")), ConnectedToAgentTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), InitiationTimestamp = structure(logical(0), tags = list(type = "timestamp")), DisconnectTimestamp = structure(logical(0), tags = list(type = "timestamp")), LastUpdateTimestamp = structure(logical(0), tags = list(type = "timestamp")), ScheduledTimestamp = structure(logical(0), tags = list(type = "timestamp")), RelatedContactId = structure(logical(0), tags = list(type = "string")), WisdomInfo = structure(list(SessionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$describe_contact_evaluation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), EvaluationId = structure(logical(0), tags = list(location = "uri", locationName = "EvaluationId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$describe_contact_evaluation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Evaluation = structure(list(EvaluationId = structure(logical(0), tags = list(type = "string")), EvaluationArn = structure(logical(0), tags = list(type = "string")), Metadata = structure(list(ContactId = structure(logical(0), tags = list(type = "string")), EvaluatorArn = structure(logical(0), tags = list(type = "string")), ContactAgentId = structure(logical(0), tags = list(type = "string")), Score = structure(list(Percentage = structure(logical(0), tags = list(type = "double")), NotApplicable = structure(logical(0), tags = list(type = "boolean")), AutomaticFail = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), Answers = structure(list(structure(list(Value = structure(list(StringValue = structure(logical(0), tags = list(type = "string")), NumericValue = structure(logical(0), tags = list(type = "double")), NotApplicable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure", union = TRUE)), SystemSuggestedValue = structure(list(StringValue = structure(logical(0), tags = list(type = "string")), NumericValue = structure(logical(0), tags = list(type = "double")), NotApplicable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "map")), Notes = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), Status = structure(logical(0), tags = list(type = "string")), Scores = structure(list(structure(list(Percentage = structure(logical(0), tags = list(type = "double")), NotApplicable = structure(logical(0), tags = list(type = "boolean")), AutomaticFail = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "map")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), EvaluationForm = structure(list(EvaluationFormVersion = structure(logical(0), tags = list(type = "integer", box = TRUE)), EvaluationFormId = structure(logical(0), tags = list(type = "string")), EvaluationFormArn = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Items = structure(list(structure(list(Section = structure(list(Title = structure(logical(0), tags = list(type = "string")), RefId = structure(logical(0), tags = list(type = "string")), Instructions = structure(logical(0), tags = list(type = "string")), Items = structure(logical(0), tags = list(type = "list")), Weight = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), Question = structure(list(Title = structure(logical(0), tags = list(type = "string")), Instructions = structure(logical(0), tags = list(type = "string")), RefId = structure(logical(0), tags = list(type = "string")), NotApplicableEnabled = structure(logical(0), tags = list(type = "boolean")), QuestionType = structure(logical(0), tags = list(type = "string")), QuestionTypeProperties = structure(list(Numeric = structure(list(MinValue = structure(logical(0), tags = list(type = "integer")), MaxValue = structure(logical(0), tags = list(type = "integer")), Options = structure(list(structure(list(MinValue = structure(logical(0), tags = list(type = "integer")), MaxValue = structure(logical(0), tags = list(type = "integer")), Score = structure(logical(0), tags = list(type = "integer")), AutomaticFail = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), Automation = structure(list(PropertyValue = structure(list(Label = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), SingleSelect = structure(list(Options = structure(list(structure(list(RefId = structure(logical(0), tags = list(type = "string")), Text = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "integer")), AutomaticFail = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), DisplayAs = structure(logical(0), tags = list(type = "string")), Automation = structure(list(Options = structure(list(structure(list(RuleCategory = structure(list(Category = structure(logical(0), tags = list(type = "string")), Condition = structure(logical(0), tags = list(type = "string")), OptionRefId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), DefaultOptionRefId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Weight = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), ScoringStrategy = structure(list(Mode = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -472,6 +622,18 @@ NULL
 .connect$describe_contact_flow_module_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ContactFlowModule = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$describe_evaluation_form_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), EvaluationFormId = structure(logical(0), tags = list(location = "uri", locationName = "EvaluationFormId", type = "string")), EvaluationFormVersion = structure(logical(0), tags = list(location = "querystring", locationName = "version", type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$describe_evaluation_form_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EvaluationForm = structure(list(EvaluationFormId = structure(logical(0), tags = list(type = "string")), EvaluationFormVersion = structure(logical(0), tags = list(type = "integer", box = TRUE)), Locked = structure(logical(0), tags = list(type = "boolean")), EvaluationFormArn = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Items = structure(list(structure(list(Section = structure(list(Title = structure(logical(0), tags = list(type = "string")), RefId = structure(logical(0), tags = list(type = "string")), Instructions = structure(logical(0), tags = list(type = "string")), Items = structure(logical(0), tags = list(type = "list")), Weight = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), Question = structure(list(Title = structure(logical(0), tags = list(type = "string")), Instructions = structure(logical(0), tags = list(type = "string")), RefId = structure(logical(0), tags = list(type = "string")), NotApplicableEnabled = structure(logical(0), tags = list(type = "boolean")), QuestionType = structure(logical(0), tags = list(type = "string")), QuestionTypeProperties = structure(list(Numeric = structure(list(MinValue = structure(logical(0), tags = list(type = "integer")), MaxValue = structure(logical(0), tags = list(type = "integer")), Options = structure(list(structure(list(MinValue = structure(logical(0), tags = list(type = "integer")), MaxValue = structure(logical(0), tags = list(type = "integer")), Score = structure(logical(0), tags = list(type = "integer")), AutomaticFail = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), Automation = structure(list(PropertyValue = structure(list(Label = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), SingleSelect = structure(list(Options = structure(list(structure(list(RefId = structure(logical(0), tags = list(type = "string")), Text = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "integer")), AutomaticFail = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), DisplayAs = structure(logical(0), tags = list(type = "string")), Automation = structure(list(Options = structure(list(structure(list(RuleCategory = structure(list(Category = structure(logical(0), tags = list(type = "string")), Condition = structure(logical(0), tags = list(type = "string")), OptionRefId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), DefaultOptionRefId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Weight = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), ScoringStrategy = structure(list(Mode = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), CreatedBy = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedBy = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -535,6 +697,18 @@ NULL
   return(populate(args, shape))
 }
 
+.connect$describe_prompt_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), PromptId = structure(logical(0), tags = list(location = "uri", locationName = "PromptId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$describe_prompt_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Prompt = structure(list(PromptARN = structure(logical(0), tags = list(type = "string")), PromptId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .connect$describe_queue_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), QueueId = structure(logical(0), tags = list(location = "uri", locationName = "QueueId", type = "string"))), tags = list(type = "structure"))
@@ -567,7 +741,19 @@ NULL
 
 .connect$describe_routing_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoutingProfile = structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), RoutingProfileArn = structure(logical(0), tags = list(type = "string")), RoutingProfileId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), MediaConcurrencies = structure(list(structure(list(Channel = structure(logical(0), tags = list(type = "string")), Concurrency = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), DefaultOutboundQueueId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(RoutingProfile = structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), RoutingProfileArn = structure(logical(0), tags = list(type = "string")), RoutingProfileId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), MediaConcurrencies = structure(list(structure(list(Channel = structure(logical(0), tags = list(type = "string")), Concurrency = structure(logical(0), tags = list(type = "integer")), CrossChannelBehavior = structure(list(BehaviorType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), DefaultOutboundQueueId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), NumberOfAssociatedQueues = structure(logical(0), tags = list(type = "long")), NumberOfAssociatedUsers = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$describe_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), RuleId = structure(logical(0), tags = list(location = "uri", locationName = "RuleId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$describe_rule_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Rule = structure(list(Name = structure(logical(0), tags = list(type = "string")), RuleId = structure(logical(0), tags = list(type = "string")), RuleArn = structure(logical(0), tags = list(type = "string")), TriggerEventSource = structure(list(EventSourceName = structure(logical(0), tags = list(type = "string")), IntegrationAssociationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Function = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(list(ActionType = structure(logical(0), tags = list(type = "string")), TaskAction = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ContactFlowId = structure(logical(0), tags = list(type = "string")), References = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure")), EventBridgeAction = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AssignContactCategoryAction = structure(list(), tags = list(type = "structure")), SendNotificationAction = structure(list(DeliveryMethod = structure(logical(0), tags = list(type = "string")), Subject = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string")), Recipient = structure(list(UserTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), UserIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), PublishStatus = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedBy = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -579,7 +765,19 @@ NULL
 
 .connect$describe_security_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SecurityProfile = structure(list(Id = structure(logical(0), tags = list(type = "string")), OrganizationResourceId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), SecurityProfileName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(SecurityProfile = structure(list(Id = structure(logical(0), tags = list(type = "string")), OrganizationResourceId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), SecurityProfileName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), AllowedAccessControlTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), TagRestrictedResources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$describe_traffic_distribution_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TrafficDistributionGroupId = structure(logical(0), tags = list(location = "uri", locationName = "TrafficDistributionGroupId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$describe_traffic_distribution_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TrafficDistributionGroup = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), InstanceArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -591,7 +789,7 @@ NULL
 
 .connect$describe_user_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(User = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Username = structure(logical(0), tags = list(type = "string")), IdentityInfo = structure(list(FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PhoneConfig = structure(list(PhoneType = structure(logical(0), tags = list(type = "string")), AutoAccept = structure(logical(0), tags = list(type = "boolean")), AfterContactWorkTimeLimit = structure(logical(0), tags = list(type = "integer")), DeskPhoneNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DirectoryUserId = structure(logical(0), tags = list(type = "string")), SecurityProfileIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RoutingProfileId = structure(logical(0), tags = list(type = "string")), HierarchyGroupId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(User = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Username = structure(logical(0), tags = list(type = "string")), IdentityInfo = structure(list(FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string")), SecondaryEmail = structure(logical(0), tags = list(type = "string")), Mobile = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PhoneConfig = structure(list(PhoneType = structure(logical(0), tags = list(type = "string")), AutoAccept = structure(logical(0), tags = list(type = "boolean")), AfterContactWorkTimeLimit = structure(logical(0), tags = list(type = "integer")), DeskPhoneNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DirectoryUserId = structure(logical(0), tags = list(type = "string")), SecurityProfileIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RoutingProfileId = structure(logical(0), tags = list(type = "string")), HierarchyGroupId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -721,6 +919,18 @@ NULL
   list()
 }
 
+.connect$dismiss_user_contact_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(UserId = structure(logical(0), tags = list(location = "uri", locationName = "UserId", type = "string")), InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), ContactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$dismiss_user_contact_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .connect$get_contact_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), InitialContactId = structure(logical(0), tags = list(location = "uri", locationName = "InitialContactId", type = "string"))), tags = list(type = "structure"))
@@ -735,25 +945,25 @@ NULL
 
 .connect$get_current_metric_data_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Filters = structure(list(Queues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Channels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Groupings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CurrentMetrics = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Filters = structure(list(Queues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Channels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RoutingProfiles = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Groupings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CurrentMetrics = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), SortCriteria = structure(list(structure(list(SortByMetric = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .connect$get_current_metric_data_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MetricResults = structure(list(structure(list(Dimensions = structure(list(Queue = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Channel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Collections = structure(list(structure(list(Metric = structure(list(Name = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Value = structure(logical(0), tags = list(box = TRUE, type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), DataSnapshotTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MetricResults = structure(list(structure(list(Dimensions = structure(list(Queue = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Channel = structure(logical(0), tags = list(type = "string")), RoutingProfile = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Collections = structure(list(structure(list(Metric = structure(list(Name = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Value = structure(logical(0), tags = list(box = TRUE, type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), DataSnapshotTime = structure(logical(0), tags = list(type = "timestamp")), ApproximateTotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .connect$get_current_user_data_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Filters = structure(list(Queues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ContactFilter = structure(list(ContactStates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Filters = structure(list(Queues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ContactFilter = structure(list(ContactStates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), RoutingProfiles = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Agents = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), UserHierarchyGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .connect$get_current_user_data_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), UserDataList = structure(list(structure(list(User = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RoutingProfile = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HierarchyPath = structure(list(LevelOne = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LevelTwo = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LevelThree = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LevelFour = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LevelFive = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(list(StatusStartTimestamp = structure(logical(0), tags = list(type = "timestamp")), StatusArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AvailableSlotsByChannel = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), MaxSlotsByChannel = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), ActiveSlotsByChannel = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), Contacts = structure(list(structure(list(ContactId = structure(logical(0), tags = list(type = "string")), Channel = structure(logical(0), tags = list(type = "string")), InitiationMethod = structure(logical(0), tags = list(type = "string")), AgentContactState = structure(logical(0), tags = list(type = "string")), StateStartTimestamp = structure(logical(0), tags = list(type = "timestamp")), ConnectedToAgentTimestamp = structure(logical(0), tags = list(type = "timestamp")), Queue = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), UserDataList = structure(list(structure(list(User = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RoutingProfile = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HierarchyPath = structure(list(LevelOne = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LevelTwo = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LevelThree = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LevelFour = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LevelFive = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(list(StatusStartTimestamp = structure(logical(0), tags = list(type = "timestamp")), StatusArn = structure(logical(0), tags = list(type = "string")), StatusName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AvailableSlotsByChannel = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), MaxSlotsByChannel = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), ActiveSlotsByChannel = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), Contacts = structure(list(structure(list(ContactId = structure(logical(0), tags = list(type = "string")), Channel = structure(logical(0), tags = list(type = "string")), InitiationMethod = structure(logical(0), tags = list(type = "string")), AgentContactState = structure(logical(0), tags = list(type = "string")), StateStartTimestamp = structure(logical(0), tags = list(type = "timestamp")), ConnectedToAgentTimestamp = structure(logical(0), tags = list(type = "timestamp")), Queue = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ApproximateTotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -765,19 +975,43 @@ NULL
 
 .connect$get_federation_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Credentials = structure(list(AccessToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccessTokenExpiration = structure(logical(0), tags = list(type = "timestamp")), RefreshToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), RefreshTokenExpiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Credentials = structure(list(AccessToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccessTokenExpiration = structure(logical(0), tags = list(type = "timestamp")), RefreshToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), RefreshTokenExpiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), SignInUrl = structure(logical(0), tags = list(type = "string")), UserArn = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .connect$get_metric_data_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Filters = structure(list(Queues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Channels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Groupings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HistoricalMetrics = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Threshold = structure(list(Comparison = structure(logical(0), tags = list(type = "string")), ThresholdValue = structure(logical(0), tags = list(box = TRUE, type = "double"))), tags = list(box = TRUE, type = "structure")), Statistic = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Filters = structure(list(Queues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Channels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RoutingProfiles = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Groupings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HistoricalMetrics = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Threshold = structure(list(Comparison = structure(logical(0), tags = list(type = "string")), ThresholdValue = structure(logical(0), tags = list(box = TRUE, type = "double"))), tags = list(box = TRUE, type = "structure")), Statistic = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .connect$get_metric_data_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MetricResults = structure(list(structure(list(Dimensions = structure(list(Queue = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Channel = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Collections = structure(list(structure(list(Metric = structure(list(Name = structure(logical(0), tags = list(type = "string")), Threshold = structure(list(Comparison = structure(logical(0), tags = list(type = "string")), ThresholdValue = structure(logical(0), tags = list(box = TRUE, type = "double"))), tags = list(box = TRUE, type = "structure")), Statistic = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Value = structure(logical(0), tags = list(box = TRUE, type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MetricResults = structure(list(structure(list(Dimensions = structure(list(Queue = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Channel = structure(logical(0), tags = list(type = "string")), RoutingProfile = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Collections = structure(list(structure(list(Metric = structure(list(Name = structure(logical(0), tags = list(type = "string")), Threshold = structure(list(Comparison = structure(logical(0), tags = list(type = "string")), ThresholdValue = structure(logical(0), tags = list(box = TRUE, type = "double"))), tags = list(box = TRUE, type = "structure")), Statistic = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Value = structure(logical(0), tags = list(box = TRUE, type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$get_metric_data_v2_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Filters = structure(list(structure(list(FilterKey = structure(logical(0), tags = list(type = "string")), FilterValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Groupings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Metrics = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Threshold = structure(list(structure(list(Comparison = structure(logical(0), tags = list(type = "string")), ThresholdValue = structure(logical(0), tags = list(box = TRUE, type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), MetricFilters = structure(list(structure(list(MetricFilterKey = structure(logical(0), tags = list(type = "string")), MetricFilterValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$get_metric_data_v2_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MetricResults = structure(list(structure(list(Dimensions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Collections = structure(list(structure(list(Metric = structure(list(Name = structure(logical(0), tags = list(type = "string")), Threshold = structure(list(structure(list(Comparison = structure(logical(0), tags = list(type = "string")), ThresholdValue = structure(logical(0), tags = list(box = TRUE, type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), MetricFilters = structure(list(structure(list(MetricFilterKey = structure(logical(0), tags = list(type = "string")), MetricFilterValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Value = structure(logical(0), tags = list(box = TRUE, type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$get_prompt_file_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), PromptId = structure(logical(0), tags = list(location = "uri", locationName = "PromptId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$get_prompt_file_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(PromptPresignedUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -790,6 +1024,18 @@ NULL
 .connect$get_task_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ContactFlowId = structure(logical(0), tags = list(type = "string")), Constraints = structure(list(RequiredFields = structure(list(structure(list(Id = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), ReadOnlyFields = structure(list(structure(list(Id = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), InvisibleFields = structure(list(structure(list(Id = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Defaults = structure(list(DefaultFieldValues = structure(list(structure(list(Id = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DefaultValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Fields = structure(list(structure(list(Id = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), SingleSelectOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$get_traffic_distribution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Id = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$get_traffic_distribution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TelephonyConfig = structure(list(Distributions = structure(list(structure(list(Region = structure(logical(0), tags = list(type = "string")), Percentage = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -826,6 +1072,18 @@ NULL
 .connect$list_bots_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(LexBots = structure(list(structure(list(LexBot = structure(list(Name = structure(logical(0), tags = list(type = "string")), LexRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LexV2Bot = structure(list(AliasArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$list_contact_evaluations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), ContactId = structure(logical(0), tags = list(location = "querystring", locationName = "contactId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$list_contact_evaluations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EvaluationSummaryList = structure(list(structure(list(EvaluationId = structure(logical(0), tags = list(type = "string")), EvaluationArn = structure(logical(0), tags = list(type = "string")), EvaluationFormTitle = structure(logical(0), tags = list(type = "string")), EvaluationFormId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), EvaluatorArn = structure(logical(0), tags = list(type = "string")), Score = structure(list(Percentage = structure(logical(0), tags = list(type = "double")), NotApplicable = structure(logical(0), tags = list(type = "boolean")), AutomaticFail = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -874,6 +1132,30 @@ NULL
 .connect$list_default_vocabularies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DefaultVocabularyList = structure(list(structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), VocabularyId = structure(logical(0), tags = list(type = "string")), VocabularyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$list_evaluation_form_versions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), EvaluationFormId = structure(logical(0), tags = list(location = "uri", locationName = "EvaluationFormId", type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$list_evaluation_form_versions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EvaluationFormVersionSummaryList = structure(list(structure(list(EvaluationFormArn = structure(logical(0), tags = list(type = "string")), EvaluationFormId = structure(logical(0), tags = list(type = "string")), EvaluationFormVersion = structure(logical(0), tags = list(type = "integer", box = TRUE)), Locked = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), CreatedBy = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$list_evaluation_forms_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$list_evaluation_forms_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EvaluationFormSummaryList = structure(list(structure(list(EvaluationFormId = structure(logical(0), tags = list(type = "string")), EvaluationFormArn = structure(logical(0), tags = list(type = "string")), Title = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), CreatedBy = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedBy = structure(logical(0), tags = list(type = "string")), LastActivatedTime = structure(logical(0), tags = list(type = "timestamp")), LastActivatedBy = structure(logical(0), tags = list(type = "string")), LatestVersion = structure(logical(0), tags = list(type = "integer", box = TRUE)), ActiveVersion = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1057,6 +1339,18 @@ NULL
   return(populate(args, shape))
 }
 
+.connect$list_rules_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), PublishStatus = structure(logical(0), tags = list(location = "querystring", locationName = "publishStatus", type = "string")), EventSourceName = structure(logical(0), tags = list(location = "querystring", locationName = "eventSourceName", type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$list_rules_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RuleSummaryList = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), RuleId = structure(logical(0), tags = list(type = "string")), RuleArn = structure(logical(0), tags = list(type = "string")), EventSourceName = structure(logical(0), tags = list(type = "string")), PublishStatus = structure(logical(0), tags = list(type = "string")), ActionSummaries = structure(list(structure(list(ActionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .connect$list_security_keys_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
@@ -1117,6 +1411,18 @@ NULL
   return(populate(args, shape))
 }
 
+.connect$list_traffic_distribution_groups_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), InstanceId = structure(logical(0), tags = list(location = "querystring", locationName = "instanceId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$list_traffic_distribution_groups_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), TrafficDistributionGroupSummaryList = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), InstanceArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .connect$list_use_cases_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), IntegrationAssociationId = structure(logical(0), tags = list(location = "uri", locationName = "IntegrationAssociationId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
@@ -1153,6 +1459,18 @@ NULL
   return(populate(args, shape))
 }
 
+.connect$monitor_contact_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), ContactId = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string")), AllowedMonitorCapabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$monitor_contact_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ContactId = structure(logical(0), tags = list(type = "string")), ContactArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .connect$put_user_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(UserId = structure(logical(0), tags = list(location = "uri", locationName = "UserId", type = "string")), InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), AgentStatusId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -1173,6 +1491,18 @@ NULL
 
 .connect$release_phone_number_output <- function(...) {
   list()
+}
+
+.connect$replicate_instance_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), ReplicaRegion = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ReplicaAlias = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$replicate_instance_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .connect$resume_contact_recording_input <- function(...) {
@@ -1196,6 +1526,42 @@ NULL
 .connect$search_available_phone_numbers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), AvailableNumbersList = structure(list(structure(list(PhoneNumber = structure(logical(0), tags = list(type = "string")), PhoneNumberCountryCode = structure(logical(0), tags = list(type = "string")), PhoneNumberType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$search_queues_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), SearchFilter = structure(list(TagFilter = structure(list(OrConditions = structure(list(structure(list(structure(list(TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "list")), AndConditions = structure(list(structure(list(TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TagCondition = structure(list(TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), SearchCriteria = structure(list(OrConditions = structure(list(structure(logical(0), tags = list(type = "structure"))), tags = list(type = "list")), AndConditions = structure(list(structure(logical(0), tags = list(type = "structure"))), tags = list(type = "list")), StringCondition = structure(list(FieldName = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), ComparisonType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), QueueTypeCondition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$search_queues_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Queues = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), QueueArn = structure(logical(0), tags = list(type = "string")), QueueId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), OutboundCallerConfig = structure(list(OutboundCallerIdName = structure(logical(0), tags = list(type = "string")), OutboundCallerIdNumberId = structure(logical(0), tags = list(type = "string")), OutboundFlowId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HoursOfOperationId = structure(logical(0), tags = list(type = "string")), MaxContacts = structure(logical(0), tags = list(box = TRUE, type = "integer")), Status = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), ApproximateTotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$search_routing_profiles_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), SearchFilter = structure(list(TagFilter = structure(list(OrConditions = structure(list(structure(list(structure(list(TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "list")), AndConditions = structure(list(structure(list(TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TagCondition = structure(list(TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), SearchCriteria = structure(list(OrConditions = structure(list(structure(logical(0), tags = list(type = "structure"))), tags = list(type = "list")), AndConditions = structure(list(structure(logical(0), tags = list(type = "structure"))), tags = list(type = "list")), StringCondition = structure(list(FieldName = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), ComparisonType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$search_routing_profiles_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RoutingProfiles = structure(list(structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), RoutingProfileArn = structure(logical(0), tags = list(type = "string")), RoutingProfileId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), MediaConcurrencies = structure(list(structure(list(Channel = structure(logical(0), tags = list(type = "string")), Concurrency = structure(logical(0), tags = list(type = "integer")), CrossChannelBehavior = structure(list(BehaviorType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), DefaultOutboundQueueId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), NumberOfAssociatedQueues = structure(logical(0), tags = list(type = "long")), NumberOfAssociatedUsers = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), ApproximateTotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$search_security_profiles_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), SearchCriteria = structure(list(OrConditions = structure(list(structure(logical(0), tags = list(type = "structure"))), tags = list(type = "list")), AndConditions = structure(list(structure(logical(0), tags = list(type = "structure"))), tags = list(type = "list")), StringCondition = structure(list(FieldName = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), ComparisonType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), SearchFilter = structure(list(TagFilter = structure(list(OrConditions = structure(list(structure(list(structure(list(TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "list")), AndConditions = structure(list(structure(list(TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TagCondition = structure(list(TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$search_security_profiles_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SecurityProfiles = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), OrganizationResourceId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), SecurityProfileName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), ApproximateTotalCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1225,13 +1591,25 @@ NULL
 
 .connect$start_chat_contact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), ContactFlowId = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ParticipantDetails = structure(list(DisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), InitialMessage = structure(list(ContentType = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ChatDurationInMinutes = structure(logical(0), tags = list(type = "integer")), SupportedMessagingContentTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), ContactFlowId = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ParticipantDetails = structure(list(DisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), InitialMessage = structure(list(ContentType = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ChatDurationInMinutes = structure(logical(0), tags = list(type = "integer")), SupportedMessagingContentTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PersistentChat = structure(list(RehydrationType = structure(logical(0), tags = list(type = "string")), SourceContactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RelatedContactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .connect$start_chat_contact_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContactId = structure(logical(0), tags = list(type = "string")), ParticipantId = structure(logical(0), tags = list(type = "string")), ParticipantToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ContactId = structure(logical(0), tags = list(type = "string")), ParticipantId = structure(logical(0), tags = list(type = "string")), ParticipantToken = structure(logical(0), tags = list(type = "string")), ContinuedFromContactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$start_contact_evaluation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), ContactId = structure(logical(0), tags = list(type = "string")), EvaluationFormId = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$start_contact_evaluation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EvaluationId = structure(logical(0), tags = list(type = "string")), EvaluationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1273,7 +1651,7 @@ NULL
 
 .connect$start_task_contact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), PreviousContactId = structure(logical(0), tags = list(type = "string")), ContactFlowId = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Name = structure(logical(0), tags = list(type = "string")), References = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), Description = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ScheduledTime = structure(logical(0), tags = list(type = "timestamp")), TaskTemplateId = structure(logical(0), tags = list(type = "string")), QuickConnectId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), PreviousContactId = structure(logical(0), tags = list(type = "string")), ContactFlowId = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Name = structure(logical(0), tags = list(type = "string")), References = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), Description = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ScheduledTime = structure(logical(0), tags = list(type = "timestamp")), TaskTemplateId = structure(logical(0), tags = list(type = "string")), QuickConnectId = structure(logical(0), tags = list(type = "string")), RelatedContactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1316,6 +1694,18 @@ NULL
 .connect$stop_contact_streaming_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$submit_contact_evaluation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), EvaluationId = structure(logical(0), tags = list(location = "uri", locationName = "EvaluationId", type = "string")), Answers = structure(list(structure(list(Value = structure(list(StringValue = structure(logical(0), tags = list(type = "string")), NumericValue = structure(logical(0), tags = list(type = "double")), NotApplicable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "map")), Notes = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$submit_contact_evaluation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EvaluationId = structure(logical(0), tags = list(type = "string")), EvaluationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1397,6 +1787,18 @@ NULL
   return(populate(args, shape))
 }
 
+.connect$update_contact_evaluation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), EvaluationId = structure(logical(0), tags = list(location = "uri", locationName = "EvaluationId", type = "string")), Answers = structure(list(structure(list(Value = structure(list(StringValue = structure(logical(0), tags = list(type = "string")), NumericValue = structure(logical(0), tags = list(type = "double")), NotApplicable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "map")), Notes = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$update_contact_evaluation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EvaluationId = structure(logical(0), tags = list(type = "string")), EvaluationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .connect$update_contact_flow_content_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), ContactFlowId = structure(logical(0), tags = list(location = "uri", locationName = "ContactFlowId", type = "string")), Content = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -1404,7 +1806,9 @@ NULL
 }
 
 .connect$update_contact_flow_content_output <- function(...) {
-  list()
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .connect$update_contact_flow_metadata_input <- function(...) {
@@ -1414,7 +1818,9 @@ NULL
 }
 
 .connect$update_contact_flow_metadata_output <- function(...) {
-  list()
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .connect$update_contact_flow_module_content_input <- function(...) {
@@ -1448,7 +1854,9 @@ NULL
 }
 
 .connect$update_contact_flow_name_output <- function(...) {
-  list()
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .connect$update_contact_schedule_input <- function(...) {
@@ -1460,6 +1868,18 @@ NULL
 .connect$update_contact_schedule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$update_evaluation_form_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), EvaluationFormId = structure(logical(0), tags = list(location = "uri", locationName = "EvaluationFormId", type = "string")), EvaluationFormVersion = structure(logical(0), tags = list(type = "integer", box = TRUE)), CreateNewVersion = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Title = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Items = structure(list(structure(list(Section = structure(list(Title = structure(logical(0), tags = list(type = "string")), RefId = structure(logical(0), tags = list(type = "string")), Instructions = structure(logical(0), tags = list(type = "string")), Items = structure(logical(0), tags = list(type = "list")), Weight = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), Question = structure(list(Title = structure(logical(0), tags = list(type = "string")), Instructions = structure(logical(0), tags = list(type = "string")), RefId = structure(logical(0), tags = list(type = "string")), NotApplicableEnabled = structure(logical(0), tags = list(type = "boolean")), QuestionType = structure(logical(0), tags = list(type = "string")), QuestionTypeProperties = structure(list(Numeric = structure(list(MinValue = structure(logical(0), tags = list(type = "integer")), MaxValue = structure(logical(0), tags = list(type = "integer")), Options = structure(list(structure(list(MinValue = structure(logical(0), tags = list(type = "integer")), MaxValue = structure(logical(0), tags = list(type = "integer")), Score = structure(logical(0), tags = list(type = "integer")), AutomaticFail = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), Automation = structure(list(PropertyValue = structure(list(Label = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), SingleSelect = structure(list(Options = structure(list(structure(list(RefId = structure(logical(0), tags = list(type = "string")), Text = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "integer")), AutomaticFail = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), DisplayAs = structure(logical(0), tags = list(type = "string")), Automation = structure(list(Options = structure(list(structure(list(RuleCategory = structure(list(Category = structure(logical(0), tags = list(type = "string")), Condition = structure(logical(0), tags = list(type = "string")), OptionRefId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), DefaultOptionRefId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Weight = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), ScoringStrategy = structure(list(Mode = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$update_evaluation_form_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EvaluationFormId = structure(logical(0), tags = list(type = "string")), EvaluationFormArn = structure(logical(0), tags = list(type = "string")), EvaluationFormVersion = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1493,6 +1913,18 @@ NULL
   list()
 }
 
+.connect$update_participant_role_config_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), ContactId = structure(logical(0), tags = list(location = "uri", locationName = "ContactId", type = "string")), ChannelConfiguration = structure(list(Chat = structure(list(ParticipantTimerConfigList = structure(list(structure(list(ParticipantRole = structure(logical(0), tags = list(type = "string")), TimerType = structure(logical(0), tags = list(type = "string")), TimerValue = structure(list(ParticipantTimerAction = structure(logical(0), tags = list(type = "string")), ParticipantTimerDurationInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$update_participant_role_config_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .connect$update_phone_number_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PhoneNumberId = structure(logical(0), tags = list(location = "uri", locationName = "PhoneNumberId", type = "string")), TargetArn = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
@@ -1502,6 +1934,18 @@ NULL
 .connect$update_phone_number_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PhoneNumberId = structure(logical(0), tags = list(type = "string")), PhoneNumberArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$update_prompt_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), PromptId = structure(logical(0), tags = list(location = "uri", locationName = "PromptId", type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$update_prompt_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(PromptARN = structure(logical(0), tags = list(type = "string")), PromptId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1577,7 +2021,7 @@ NULL
 
 .connect$update_routing_profile_concurrency_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), RoutingProfileId = structure(logical(0), tags = list(location = "uri", locationName = "RoutingProfileId", type = "string")), MediaConcurrencies = structure(list(structure(list(Channel = structure(logical(0), tags = list(type = "string")), Concurrency = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), RoutingProfileId = structure(logical(0), tags = list(location = "uri", locationName = "RoutingProfileId", type = "string")), MediaConcurrencies = structure(list(structure(list(Channel = structure(logical(0), tags = list(type = "string")), Concurrency = structure(logical(0), tags = list(type = "integer")), CrossChannelBehavior = structure(list(BehaviorType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1615,9 +2059,19 @@ NULL
   list()
 }
 
+.connect$update_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RuleId = structure(logical(0), tags = list(location = "uri", locationName = "RuleId", type = "string")), InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Name = structure(logical(0), tags = list(type = "string")), Function = structure(logical(0), tags = list(type = "string")), Actions = structure(list(structure(list(ActionType = structure(logical(0), tags = list(type = "string")), TaskAction = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ContactFlowId = structure(logical(0), tags = list(type = "string")), References = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure")), EventBridgeAction = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AssignContactCategoryAction = structure(list(), tags = list(type = "structure")), SendNotificationAction = structure(list(DeliveryMethod = structure(logical(0), tags = list(type = "string")), Subject = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string")), Recipient = structure(list(UserTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), UserIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), PublishStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$update_rule_output <- function(...) {
+  list()
+}
+
 .connect$update_security_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Description = structure(logical(0), tags = list(type = "string")), Permissions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityProfileId = structure(logical(0), tags = list(location = "uri", locationName = "SecurityProfileId", type = "string")), InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Description = structure(logical(0), tags = list(type = "string")), Permissions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityProfileId = structure(logical(0), tags = list(location = "uri", locationName = "SecurityProfileId", type = "string")), InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), AllowedAccessControlTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), TagRestrictedResources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1634,6 +2088,18 @@ NULL
 .connect$update_task_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ContactFlowId = structure(logical(0), tags = list(type = "string")), Constraints = structure(list(RequiredFields = structure(list(structure(list(Id = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), ReadOnlyFields = structure(list(structure(list(Id = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), InvisibleFields = structure(list(structure(list(Id = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Defaults = structure(list(DefaultFieldValues = structure(list(structure(list(Id = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DefaultValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Fields = structure(list(structure(list(Id = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), SingleSelectOptions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), CreatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$update_traffic_distribution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Id = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), TelephonyConfig = structure(list(Distributions = structure(list(structure(list(Region = structure(logical(0), tags = list(type = "string")), Percentage = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$update_traffic_distribution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1669,7 +2135,7 @@ NULL
 
 .connect$update_user_identity_info_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityInfo = structure(list(FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), UserId = structure(logical(0), tags = list(location = "uri", locationName = "UserId", type = "string")), InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(IdentityInfo = structure(list(FirstName = structure(logical(0), tags = list(type = "string")), LastName = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string")), SecondaryEmail = structure(logical(0), tags = list(type = "string")), Mobile = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), UserId = structure(logical(0), tags = list(location = "uri", locationName = "UserId", type = "string")), InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

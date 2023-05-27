@@ -2,7 +2,7 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_delete_group}
 \alias{workmail_delete_group}
-\title{Deletes a group from Amazon WorkMail}
+\title{Deletes a group from WorkMail}
 \usage{
 workmail_delete_group(OrganizationId, GroupId)
 }
@@ -12,7 +12,7 @@ workmail_delete_group(OrganizationId, GroupId)
 \item{GroupId}{[required] The identifier of the group to be deleted.}
 }
 \description{
-Deletes a group from Amazon WorkMail.
+Deletes a group from WorkMail.
 
 See \url{https://paws-r.github.io/docs/workmail/delete_group.html} for full documentation.
 }

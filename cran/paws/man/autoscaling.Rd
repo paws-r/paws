@@ -65,11 +65,12 @@ For more information, see the \href{https://docs.aws.amazon.com/autoscaling/ec2/
 
 \tabular{ll}{
 \link[paws.management:autoscaling_attach_instances]{attach_instances} \tab Attaches one or more EC2 instances to the specified Auto Scaling group\cr
-\link[paws.management:autoscaling_attach_load_balancers]{attach_load_balancers} \tab To attach an Application Load Balancer, Network Load Balancer, or Gateway Load Balancer, use the AttachLoadBalancerTargetGroups API operation instead\cr
-\link[paws.management:autoscaling_attach_load_balancer_target_groups]{attach_load_balancer_target_groups} \tab Attaches one or more target groups to the specified Auto Scaling group\cr
+\link[paws.management:autoscaling_attach_load_balancers]{attach_load_balancers} \tab This API operation is superseded by AttachTrafficSources, which can attach multiple traffic sources types\cr
+\link[paws.management:autoscaling_attach_load_balancer_target_groups]{attach_load_balancer_target_groups} \tab This API operation is superseded by AttachTrafficSources, which can attach multiple traffic sources types\cr
+\link[paws.management:autoscaling_attach_traffic_sources]{attach_traffic_sources} \tab Attaches one or more traffic sources to the specified Auto Scaling group\cr
 \link[paws.management:autoscaling_batch_delete_scheduled_action]{batch_delete_scheduled_action} \tab Deletes one or more scheduled actions for the specified Auto Scaling group\cr
 \link[paws.management:autoscaling_batch_put_scheduled_update_group_action]{batch_put_scheduled_update_group_action} \tab Creates or updates one or more scheduled scaling actions for an Auto Scaling group\cr
-\link[paws.management:autoscaling_cancel_instance_refresh]{cancel_instance_refresh} \tab Cancels an instance refresh operation in progress\cr
+\link[paws.management:autoscaling_cancel_instance_refresh]{cancel_instance_refresh} \tab Cancels an instance refresh or rollback that is in progress\cr
 \link[paws.management:autoscaling_complete_lifecycle_action]{complete_lifecycle_action} \tab Completes the lifecycle action for the specified token or instance with the specified result\cr
 \link[paws.management:autoscaling_create_auto_scaling_group]{create_auto_scaling_group} \tab We strongly recommend using a launch template when calling this operation to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2\cr
 \link[paws.management:autoscaling_create_launch_configuration]{create_launch_configuration} \tab Creates a launch configuration\cr
@@ -91,8 +92,8 @@ For more information, see the \href{https://docs.aws.amazon.com/autoscaling/ec2/
 \link[paws.management:autoscaling_describe_launch_configurations]{describe_launch_configurations} \tab Gets information about the launch configurations in the account and Region\cr
 \link[paws.management:autoscaling_describe_lifecycle_hooks]{describe_lifecycle_hooks} \tab Gets information about the lifecycle hooks for the specified Auto Scaling group\cr
 \link[paws.management:autoscaling_describe_lifecycle_hook_types]{describe_lifecycle_hook_types} \tab Describes the available types of lifecycle hooks\cr
-\link[paws.management:autoscaling_describe_load_balancers]{describe_load_balancers} \tab Gets information about the load balancers for the specified Auto Scaling group\cr
-\link[paws.management:autoscaling_describe_load_balancer_target_groups]{describe_load_balancer_target_groups} \tab Gets information about the Elastic Load Balancing target groups for the specified Auto Scaling group\cr
+\link[paws.management:autoscaling_describe_load_balancers]{describe_load_balancers} \tab This API operation is superseded by DescribeTrafficSources, which can describe multiple traffic sources types\cr
+\link[paws.management:autoscaling_describe_load_balancer_target_groups]{describe_load_balancer_target_groups} \tab This API operation is superseded by DescribeTrafficSources, which can describe multiple traffic sources types\cr
 \link[paws.management:autoscaling_describe_metric_collection_types]{describe_metric_collection_types} \tab Describes the available CloudWatch metrics for Amazon EC2 Auto Scaling\cr
 \link[paws.management:autoscaling_describe_notification_configurations]{describe_notification_configurations} \tab Gets information about the Amazon SNS notifications that are configured for one or more Auto Scaling groups\cr
 \link[paws.management:autoscaling_describe_policies]{describe_policies} \tab Gets information about the scaling policies in the account and Region\cr
@@ -101,10 +102,12 @@ For more information, see the \href{https://docs.aws.amazon.com/autoscaling/ec2/
 \link[paws.management:autoscaling_describe_scheduled_actions]{describe_scheduled_actions} \tab Gets information about the scheduled actions that haven't run or that have not reached their end time\cr
 \link[paws.management:autoscaling_describe_tags]{describe_tags} \tab Describes the specified tags\cr
 \link[paws.management:autoscaling_describe_termination_policy_types]{describe_termination_policy_types} \tab Describes the termination policies supported by Amazon EC2 Auto Scaling\cr
+\link[paws.management:autoscaling_describe_traffic_sources]{describe_traffic_sources} \tab Gets information about the traffic sources for the specified Auto Scaling group\cr
 \link[paws.management:autoscaling_describe_warm_pool]{describe_warm_pool} \tab Gets information about a warm pool and its instances\cr
 \link[paws.management:autoscaling_detach_instances]{detach_instances} \tab Removes one or more instances from the specified Auto Scaling group\cr
-\link[paws.management:autoscaling_detach_load_balancers]{detach_load_balancers} \tab Detaches one or more Classic Load Balancers from the specified Auto Scaling group\cr
-\link[paws.management:autoscaling_detach_load_balancer_target_groups]{detach_load_balancer_target_groups} \tab Detaches one or more target groups from the specified Auto Scaling group\cr
+\link[paws.management:autoscaling_detach_load_balancers]{detach_load_balancers} \tab This API operation is superseded by DetachTrafficSources, which can detach multiple traffic sources types\cr
+\link[paws.management:autoscaling_detach_load_balancer_target_groups]{detach_load_balancer_target_groups} \tab This API operation is superseded by DetachTrafficSources, which can detach multiple traffic sources types\cr
+\link[paws.management:autoscaling_detach_traffic_sources]{detach_traffic_sources} \tab Detaches one or more traffic sources from the specified Auto Scaling group\cr
 \link[paws.management:autoscaling_disable_metrics_collection]{disable_metrics_collection} \tab Disables group metrics collection for the specified Auto Scaling group\cr
 \link[paws.management:autoscaling_enable_metrics_collection]{enable_metrics_collection} \tab Enables group metrics collection for the specified Auto Scaling group\cr
 \link[paws.management:autoscaling_enter_standby]{enter_standby} \tab Moves the specified instances into the standby state\cr
@@ -118,10 +121,11 @@ For more information, see the \href{https://docs.aws.amazon.com/autoscaling/ec2/
 \link[paws.management:autoscaling_put_warm_pool]{put_warm_pool} \tab Creates or updates a warm pool for the specified Auto Scaling group\cr
 \link[paws.management:autoscaling_record_lifecycle_action_heartbeat]{record_lifecycle_action_heartbeat} \tab Records a heartbeat for the lifecycle action associated with the specified token or instance\cr
 \link[paws.management:autoscaling_resume_processes]{resume_processes} \tab Resumes the specified suspended auto scaling processes, or all suspended process, for the specified Auto Scaling group\cr
+\link[paws.management:autoscaling_rollback_instance_refresh]{rollback_instance_refresh} \tab Cancels an instance refresh that is in progress and rolls back any changes that it made\cr
 \link[paws.management:autoscaling_set_desired_capacity]{set_desired_capacity} \tab Sets the size of the specified Auto Scaling group\cr
 \link[paws.management:autoscaling_set_instance_health]{set_instance_health} \tab Sets the health status of the specified instance\cr
 \link[paws.management:autoscaling_set_instance_protection]{set_instance_protection} \tab Updates the instance protection settings of the specified instances\cr
-\link[paws.management:autoscaling_start_instance_refresh]{start_instance_refresh} \tab Starts a new instance refresh operation\cr
+\link[paws.management:autoscaling_start_instance_refresh]{start_instance_refresh} \tab Starts an instance refresh\cr
 \link[paws.management:autoscaling_suspend_processes]{suspend_processes} \tab Suspends the specified auto scaling processes, or all processes, for the specified Auto Scaling group\cr
 \link[paws.management:autoscaling_terminate_instance_in_auto_scaling_group]{terminate_instance_in_auto_scaling_group} \tab Terminates the specified instance and optionally adjusts the desired group size\cr
 \link[paws.management:autoscaling_update_auto_scaling_group]{update_auto_scaling_group} \tab We strongly recommend that all Auto Scaling groups use launch templates to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2

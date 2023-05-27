@@ -8,11 +8,14 @@ emrcontainers_start_job_run(
   name = NULL,
   virtualClusterId,
   clientToken,
-  executionRoleArn,
-  releaseLabel,
-  jobDriver,
+  executionRoleArn = NULL,
+  releaseLabel = NULL,
+  jobDriver = NULL,
   configurationOverrides = NULL,
-  tags = NULL
+  tags = NULL,
+  jobTemplateId = NULL,
+  jobTemplateParameters = NULL,
+  retryPolicyConfiguration = NULL
 )
 }
 \arguments{
@@ -22,15 +25,21 @@ emrcontainers_start_job_run(
 
 \item{clientToken}{[required] The client idempotency token of the job run request.}
 
-\item{executionRoleArn}{[required] The execution role ARN for the job run.}
+\item{executionRoleArn}{The execution role ARN for the job run.}
 
-\item{releaseLabel}{[required] The Amazon EMR release version to use for the job run.}
+\item{releaseLabel}{The Amazon EMR release version to use for the job run.}
 
-\item{jobDriver}{[required] The job driver for the job run.}
+\item{jobDriver}{The job driver for the job run.}
 
 \item{configurationOverrides}{The configuration overrides for the job run.}
 
 \item{tags}{The tags assigned to job runs.}
+
+\item{jobTemplateId}{The job template ID to be used to start the job run.}
+
+\item{jobTemplateParameters}{The values of job template parameters to start a job run.}
+
+\item{retryPolicyConfiguration}{The retry policy configuration for the job run.}
 }
 \description{
 Starts a job run. A job run is a unit of work, such as a Spark jar, PySpark script, or SparkSQL query, that you submit to Amazon EMR on EKS.

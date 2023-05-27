@@ -9,7 +9,8 @@ cloudformation_list_stack_set_operation_results(
   OperationId,
   NextToken = NULL,
   MaxResults = NULL,
-  CallAs = NULL
+  CallAs = NULL,
+  Filters = NULL
 )
 }
 \arguments{
@@ -47,6 +48,8 @@ administrator in the management account. For more information, see
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
 in the \emph{CloudFormation User Guide}.
 }}
+
+\item{Filters}{The filter to apply to operation results.}
 }
 \description{
 Returns summary information about the results of a stack set operation.

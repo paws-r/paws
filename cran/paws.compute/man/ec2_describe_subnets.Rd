@@ -25,9 +25,18 @@ subnet that are available.
 specify must exactly match the subnet's CIDR block for information
 to be returned for the subnet. You can also use \code{cidr} or
 \code{cidrBlock} as the filter names.
+\item \code{customer-owned-ipv4-pool} - The customer-owned IPv4 address pool
+associated with the subnet.
 \item \verb{default-for-az} - Indicates whether this is the default subnet for
 the Availability Zone (\code{true} | \code{false}). You can also use
 \code{defaultForAz} as the filter name.
+\item \code{enable-dns64} - Indicates whether DNS queries made to the
+Amazon-provided DNS Resolver in this subnet should return synthetic
+IPv6 addresses for IPv4-only destinations.
+\item \code{enable-lni-at-device-index} - Indicates the device position for
+local network interfaces in this subnet. For example, \code{1} indicates
+local network interfaces in this subnet are the secondary network
+interface (eth1).
 \item \code{ipv6-cidr-block-association.ipv6-cidr-block} - An IPv6 CIDR block
 associated with the subnet.
 \item \code{ipv6-cidr-block-association.association-id} - An association ID for
@@ -36,9 +45,27 @@ an IPv6 CIDR block associated with the subnet.
 block associated with the subnet.
 \item \code{ipv6-native} - Indicates whether this is an IPv6 only subnet
 (\code{true} | \code{false}).
+\item \code{map-customer-owned-ip-on-launch} - Indicates whether a network
+interface created in this subnet (including a network interface
+created by \code{\link[=ec2_run_instances]{run_instances}}) receives a
+customer-owned IPv4 address.
+\item \code{map-public-ip-on-launch} - Indicates whether instances launched in
+this subnet receive a public IPv4 address.
 \item \code{outpost-arn} - The Amazon Resource Name (ARN) of the Outpost.
 \item \code{owner-id} - The ID of the Amazon Web Services account that owns the
 subnet.
+\item \code{private-dns-name-options-on-launch.hostname-type} - The type of
+hostname to assign to instances in the subnet at launch. For
+IPv4-only and dual-stack (IPv4 and IPv6) subnets, an instance DNS
+name can be based on the instance IPv4 address (ip-name) or the
+instance ID (resource-name). For IPv6 only subnets, an instance DNS
+name must be based on the instance ID (resource-name).
+\item \code{private-dns-name-options-on-launch.enable-resource-name-dns-a-record} -
+Indicates whether to respond to DNS queries for instance hostnames
+with DNS A records.
+\item \code{private-dns-name-options-on-launch.enable-resource-name-dns-aaaa-record} -
+Indicates whether to respond to DNS queries for instance hostnames
+with DNS AAAA records.
 \item \code{state} - The state of the subnet (\code{pending} | \code{available}).
 \item \code{subnet-arn} - The Amazon Resource Name (ARN) of the subnet.
 \item \code{subnet-id} - The ID of the subnet.
@@ -62,11 +89,13 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{NextToken}{The token for the next page of results.}
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
 
-\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
-the remaining results, make another call with the returned \code{nextToken}
-value.}
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 }
 \description{
 Describes one or more of your subnets.

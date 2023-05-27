@@ -30,7 +30,7 @@ neptune_create_db_instance(
   CharacterSetName = NULL,
   PubliclyAccessible = NULL,
   Tags = NULL,
-  DBClusterIdentifier = NULL,
+  DBClusterIdentifier,
   StorageType = NULL,
   TdeCredentialArn = NULL,
   TdeCredentialPassword = NULL,
@@ -187,7 +187,7 @@ be initially allocated for the DB instance.}
 
 \item{Tags}{The tags to assign to the new instance.}
 
-\item{DBClusterIdentifier}{The identifier of the DB cluster that the instance will belong to.
+\item{DBClusterIdentifier}{[required] The identifier of the DB cluster that the instance will belong to.
 
 For information on creating a DB cluster, see
 \code{\link[=neptune_create_db_cluster]{create_db_cluster}}.

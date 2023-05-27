@@ -9,11 +9,11 @@ connect_describe_user(UserId, InstanceId)
 \arguments{
 \item{UserId}{[required] The identifier of the user account.}
 
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 }
 \description{
-Describes the specified user account. You can find the instance ID in the console (it’s the final part of the ARN). The console does not display the user IDs. Instead, list the users and note the IDs provided in the output.
+Describes the specified user account. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID in the Amazon Connect console} (it’s the final part of the ARN). The console does not display the user IDs. Instead, list the users and note the IDs provided in the output.
 
 See \url{https://paws-r.github.io/docs/connect/describe_user.html} for full documentation.
 }

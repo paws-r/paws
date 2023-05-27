@@ -2,18 +2,19 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_list_tags}
 \alias{cloudtrail_list_tags}
-\title{Lists the tags for the trail or event data store in the current region}
+\title{Lists the tags for the trail, event data store, or channel in the
+current region}
 \usage{
 cloudtrail_list_tags(ResourceIdList, NextToken = NULL)
 }
 \arguments{
-\item{ResourceIdList}{[required] Specifies a list of trail and event data store ARNs whose tags will be
-listed. The list has a limit of 20 ARNs.}
+\item{ResourceIdList}{[required] Specifies a list of trail, event data store, or channel ARNs whose tags
+will be listed. The list has a limit of 20 ARNs.}
 
 \item{NextToken}{Reserved for future use.}
 }
 \description{
-Lists the tags for the trail or event data store in the current region.
+Lists the tags for the trail, event data store, or channel in the current region.
 
 See \url{https://paws-r.github.io/docs/cloudtrail/list_tags.html} for full documentation.
 }

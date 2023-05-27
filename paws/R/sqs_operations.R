@@ -58,7 +58,7 @@ NULL
 #' [principals](https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P)
 #' who are to receive permission. For information about locating the Amazon
 #' Web Services account identification, see [Your Amazon Web Services
-#' Identifiers](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html#sqs-api-request-authentication)
+#' Identifiers](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests-xml.html#sqs-api-request-authentication)
 #' in the *Amazon SQS Developer Guide*.
 #' @param Actions &#91;required&#93; The action the client wants to allow for the specified principal. Valid
 #' values: the name of any action or `*`.

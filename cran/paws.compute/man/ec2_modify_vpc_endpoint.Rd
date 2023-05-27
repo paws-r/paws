@@ -35,23 +35,23 @@ default policy. The default policy allows full access to the service.}
 that controls access to the service. The policy must be in valid JSON
 format.}
 
-\item{AddRouteTableIds}{(Gateway endpoint) One or more route tables IDs to associate with the
+\item{AddRouteTableIds}{(Gateway endpoint) The IDs of the route tables to associate with the
 endpoint.}
 
-\item{RemoveRouteTableIds}{(Gateway endpoint) One or more route table IDs to disassociate from the
+\item{RemoveRouteTableIds}{(Gateway endpoint) The IDs of the route tables to disassociate from the
 endpoint.}
 
-\item{AddSubnetIds}{(Interface and Gateway Load Balancer endpoints) One or more subnet IDs
+\item{AddSubnetIds}{(Interface and Gateway Load Balancer endpoints) The IDs of the subnets
 in which to serve the endpoint. For a Gateway Load Balancer endpoint,
 you can specify only one subnet.}
 
-\item{RemoveSubnetIds}{(Interface endpoint) One or more subnets IDs in which to remove the
+\item{RemoveSubnetIds}{(Interface endpoint) The IDs of the subnets from which to remove the
 endpoint.}
 
-\item{AddSecurityGroupIds}{(Interface endpoint) One or more security group IDs to associate with
+\item{AddSecurityGroupIds}{(Interface endpoint) The IDs of the security groups to associate with
 the network interface.}
 
-\item{RemoveSecurityGroupIds}{(Interface endpoint) One or more security group IDs to disassociate from
+\item{RemoveSecurityGroupIds}{(Interface endpoint) The IDs of the security groups to disassociate from
 the network interface.}
 
 \item{IpAddressType}{The IP address type for the endpoint.}

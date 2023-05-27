@@ -2,7 +2,7 @@
 % Please edit documentation in R/costexplorer_operations.R
 \name{costexplorer_create_anomaly_subscription}
 \alias{costexplorer_create_anomaly_subscription}
-\title{Adds a subscription to a cost anomaly detection monitor}
+\title{Adds an alert subscription to a cost anomaly detection monitor}
 \usage{
 costexplorer_create_anomaly_subscription(
   AnomalySubscription,
@@ -34,7 +34,7 @@ for Amazon Web Services use
 }}
 }
 \description{
-Adds a subscription to a cost anomaly detection monitor. You can use each subscription to define subscribers with email or SNS notifications. Email subscribers can set a dollar threshold and a time frequency for receiving notifications.
+Adds an alert subscription to a cost anomaly detection monitor. You can use each subscription to define subscribers with email or SNS notifications. Email subscribers can set an absolute or percentage threshold and a time frequency for receiving notifications.
 
 See \url{https://paws-r.github.io/docs/costexplorer/create_anomaly_subscription.html} for full documentation.
 }

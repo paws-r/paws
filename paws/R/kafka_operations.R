@@ -69,7 +69,8 @@ kafka_batch_associate_scram_secret <- function(ClusterArn, SecretArnList) {
 #' @usage
 #' kafka_create_cluster(BrokerNodeGroupInfo, ClientAuthentication,
 #'   ClusterName, ConfigurationInfo, EncryptionInfo, EnhancedMonitoring,
-#'   OpenMonitoring, KafkaVersion, LoggingInfo, NumberOfBrokerNodes, Tags)
+#'   OpenMonitoring, KafkaVersion, LoggingInfo, NumberOfBrokerNodes, Tags,
+#'   StorageMode)
 #'
 #' @param BrokerNodeGroupInfo &#91;required&#93; Information about the broker nodes in the cluster.
 #' @param ClientAuthentication Includes all client authentication related information.
@@ -85,6 +86,7 @@ kafka_batch_associate_scram_secret <- function(ClusterArn, SecretArnList) {
 #' @param LoggingInfo 
 #' @param NumberOfBrokerNodes &#91;required&#93; The number of broker nodes in the cluster.
 #' @param Tags Create tags when creating the cluster.
+#' @param StorageMode This controls storage mode for supported storage tiers.
 #'
 #' @return
 #' A list with the following syntax:
@@ -120,7 +122,25 @@ kafka_batch_associate_scram_secret <- function(ClusterArn, SecretArnList) {
 #'     ConnectivityInfo = list(
 #'       PublicAccess = list(
 #'         Type = "string"
+#'       ),
+#'       VpcConnectivity = list(
+#'         ClientAuthentication = list(
+#'           Sasl = list(
+#'             Scram = list(
+#'               Enabled = TRUE|FALSE
+#'             ),
+#'             Iam = list(
+#'               Enabled = TRUE|FALSE
+#'             )
+#'           ),
+#'           Tls = list(
+#'             Enabled = TRUE|FALSE
+#'           )
+#'         )
 #'       )
+#'     ),
+#'     ZoneIds = list(
+#'       "string"
 #'     )
 #'   ),
 #'   ClientAuthentication = list(
@@ -188,7 +208,8 @@ kafka_batch_associate_scram_secret <- function(ClusterArn, SecretArnList) {
 #'   NumberOfBrokerNodes = 123,
 #'   Tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   StorageMode = "LOCAL"|"TIERED"
 #' )
 #' ```
 #'
@@ -197,14 +218,14 @@ kafka_batch_associate_scram_secret <- function(ClusterArn, SecretArnList) {
 #' @rdname kafka_create_cluster
 #'
 #' @aliases kafka_create_cluster
-kafka_create_cluster <- function(BrokerNodeGroupInfo, ClientAuthentication = NULL, ClusterName, ConfigurationInfo = NULL, EncryptionInfo = NULL, EnhancedMonitoring = NULL, OpenMonitoring = NULL, KafkaVersion, LoggingInfo = NULL, NumberOfBrokerNodes, Tags = NULL) {
+kafka_create_cluster <- function(BrokerNodeGroupInfo, ClientAuthentication = NULL, ClusterName, ConfigurationInfo = NULL, EncryptionInfo = NULL, EnhancedMonitoring = NULL, OpenMonitoring = NULL, KafkaVersion, LoggingInfo = NULL, NumberOfBrokerNodes, Tags = NULL, StorageMode = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/v1/clusters",
     paginator = list()
   )
-  input <- .kafka$create_cluster_input(BrokerNodeGroupInfo = BrokerNodeGroupInfo, ClientAuthentication = ClientAuthentication, ClusterName = ClusterName, ConfigurationInfo = ConfigurationInfo, EncryptionInfo = EncryptionInfo, EnhancedMonitoring = EnhancedMonitoring, OpenMonitoring = OpenMonitoring, KafkaVersion = KafkaVersion, LoggingInfo = LoggingInfo, NumberOfBrokerNodes = NumberOfBrokerNodes, Tags = Tags)
+  input <- .kafka$create_cluster_input(BrokerNodeGroupInfo = BrokerNodeGroupInfo, ClientAuthentication = ClientAuthentication, ClusterName = ClusterName, ConfigurationInfo = ConfigurationInfo, EncryptionInfo = EncryptionInfo, EnhancedMonitoring = EnhancedMonitoring, OpenMonitoring = OpenMonitoring, KafkaVersion = KafkaVersion, LoggingInfo = LoggingInfo, NumberOfBrokerNodes = NumberOfBrokerNodes, Tags = Tags, StorageMode = StorageMode)
   output <- .kafka$create_cluster_output()
   config <- get_config()
   svc <- .kafka$service(config)
@@ -267,7 +288,25 @@ kafka_create_cluster <- function(BrokerNodeGroupInfo, ClientAuthentication = NUL
 #'       ConnectivityInfo = list(
 #'         PublicAccess = list(
 #'           Type = "string"
+#'         ),
+#'         VpcConnectivity = list(
+#'           ClientAuthentication = list(
+#'             Sasl = list(
+#'               Scram = list(
+#'                 Enabled = TRUE|FALSE
+#'               ),
+#'               Iam = list(
+#'                 Enabled = TRUE|FALSE
+#'               )
+#'             ),
+#'             Tls = list(
+#'               Enabled = TRUE|FALSE
+#'             )
+#'           )
 #'         )
+#'       ),
+#'       ZoneIds = list(
+#'         "string"
 #'       )
 #'     ),
 #'     ClientAuthentication = list(
@@ -331,7 +370,8 @@ kafka_create_cluster <- function(BrokerNodeGroupInfo, ClientAuthentication = NUL
 #'         )
 #'       )
 #'     ),
-#'     NumberOfBrokerNodes = 123
+#'     NumberOfBrokerNodes = 123,
+#'     StorageMode = "LOCAL"|"TIERED"
 #'   ),
 #'   Serverless = list(
 #'     VpcConfigs = list(
@@ -449,6 +489,85 @@ kafka_create_configuration <- function(Description = NULL, KafkaVersions = NULL,
 }
 .kafka$operations$create_configuration <- kafka_create_configuration
 
+#' Creates a new MSK VPC connection
+#'
+#' @description
+#' Creates a new MSK VPC connection.
+#'
+#' @usage
+#' kafka_create_vpc_connection(TargetClusterArn, Authentication, VpcId,
+#'   ClientSubnets, SecurityGroups, Tags)
+#'
+#' @param TargetClusterArn &#91;required&#93; The cluster Amazon Resource Name (ARN) for the VPC connection.
+#' @param Authentication &#91;required&#93; The authentication type of VPC connection.
+#' @param VpcId &#91;required&#93; The VPC ID of VPC connection.
+#' @param ClientSubnets &#91;required&#93; The list of client subnets.
+#' @param SecurityGroups &#91;required&#93; The list of security groups.
+#' @param Tags A map of tags for the VPC connection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcConnectionArn = "string",
+#'   State = "CREATING"|"AVAILABLE"|"INACTIVE"|"DEACTIVATING"|"DELETING"|"FAILED"|"REJECTED"|"REJECTING",
+#'   Authentication = "string",
+#'   VpcId = "string",
+#'   ClientSubnets = list(
+#'     "string"
+#'   ),
+#'   SecurityGroups = list(
+#'     "string"
+#'   ),
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_vpc_connection(
+#'   TargetClusterArn = "string",
+#'   Authentication = "string",
+#'   VpcId = "string",
+#'   ClientSubnets = list(
+#'     "string"
+#'   ),
+#'   SecurityGroups = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_create_vpc_connection
+#'
+#' @aliases kafka_create_vpc_connection
+kafka_create_vpc_connection <- function(TargetClusterArn, Authentication, VpcId, ClientSubnets, SecurityGroups, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateVpcConnection",
+    http_method = "POST",
+    http_path = "/v1/vpc-connection",
+    paginator = list()
+  )
+  input <- .kafka$create_vpc_connection_input(TargetClusterArn = TargetClusterArn, Authentication = Authentication, VpcId = VpcId, ClientSubnets = ClientSubnets, SecurityGroups = SecurityGroups, Tags = Tags)
+  output <- .kafka$create_vpc_connection_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$create_vpc_connection <- kafka_create_vpc_connection
+
 #' Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in
 #' the request
 #'
@@ -501,6 +620,50 @@ kafka_delete_cluster <- function(ClusterArn, CurrentVersion = NULL) {
 }
 .kafka$operations$delete_cluster <- kafka_delete_cluster
 
+#' Deletes the MSK cluster policy specified by the Amazon Resource Name
+#' (ARN) in the request
+#'
+#' @description
+#' Deletes the MSK cluster policy specified by the Amazon Resource Name
+#' (ARN) in the request.
+#'
+#' @usage
+#' kafka_delete_cluster_policy(ClusterArn)
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the cluster.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_cluster_policy(
+#'   ClusterArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_delete_cluster_policy
+#'
+#' @aliases kafka_delete_cluster_policy
+kafka_delete_cluster_policy <- function(ClusterArn) {
+  op <- new_operation(
+    name = "DeleteClusterPolicy",
+    http_method = "DELETE",
+    http_path = "/v1/clusters/{clusterArn}/policy",
+    paginator = list()
+  )
+  input <- .kafka$delete_cluster_policy_input(ClusterArn = ClusterArn)
+  output <- .kafka$delete_cluster_policy_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$delete_cluster_policy <- kafka_delete_cluster_policy
+
 #' Deletes an MSK Configuration
 #'
 #' @description
@@ -550,6 +713,55 @@ kafka_delete_configuration <- function(Arn) {
 }
 .kafka$operations$delete_configuration <- kafka_delete_configuration
 
+#' Deletes a MSK VPC connection
+#'
+#' @description
+#' Deletes a MSK VPC connection.
+#'
+#' @usage
+#' kafka_delete_vpc_connection(Arn)
+#'
+#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies an MSK VPC
+#' connection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcConnectionArn = "string",
+#'   State = "CREATING"|"AVAILABLE"|"INACTIVE"|"DEACTIVATING"|"DELETING"|"FAILED"|"REJECTED"|"REJECTING"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_vpc_connection(
+#'   Arn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_delete_vpc_connection
+#'
+#' @aliases kafka_delete_vpc_connection
+kafka_delete_vpc_connection <- function(Arn) {
+  op <- new_operation(
+    name = "DeleteVpcConnection",
+    http_method = "DELETE",
+    http_path = "/v1/vpc-connection/{arn}",
+    paginator = list()
+  )
+  input <- .kafka$delete_vpc_connection_input(Arn = Arn)
+  output <- .kafka$delete_vpc_connection_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$delete_vpc_connection <- kafka_delete_vpc_connection
+
 #' Returns a description of the MSK cluster whose Amazon Resource Name
 #' (ARN) is specified in the request
 #'
@@ -589,7 +801,25 @@ kafka_delete_configuration <- function(Arn) {
 #'       ConnectivityInfo = list(
 #'         PublicAccess = list(
 #'           Type = "string"
+#'         ),
+#'         VpcConnectivity = list(
+#'           ClientAuthentication = list(
+#'             Sasl = list(
+#'               Scram = list(
+#'                 Enabled = TRUE|FALSE
+#'               ),
+#'               Iam = list(
+#'                 Enabled = TRUE|FALSE
+#'               )
+#'             ),
+#'             Tls = list(
+#'               Enabled = TRUE|FALSE
+#'             )
+#'           )
 #'         )
+#'       ),
+#'       ZoneIds = list(
+#'         "string"
 #'       )
 #'     ),
 #'     ClientAuthentication = list(
@@ -669,7 +899,8 @@ kafka_delete_configuration <- function(Arn) {
 #'       "string"
 #'     ),
 #'     ZookeeperConnectString = "string",
-#'     ZookeeperConnectStringTls = "string"
+#'     ZookeeperConnectStringTls = "string",
+#'     StorageMode = "LOCAL"|"TIERED"
 #'   )
 #' )
 #' ```
@@ -758,7 +989,25 @@ kafka_describe_cluster <- function(ClusterArn) {
 #'         ConnectivityInfo = list(
 #'           PublicAccess = list(
 #'             Type = "string"
+#'           ),
+#'           VpcConnectivity = list(
+#'             ClientAuthentication = list(
+#'               Sasl = list(
+#'                 Scram = list(
+#'                   Enabled = TRUE|FALSE
+#'                 ),
+#'                 Iam = list(
+#'                   Enabled = TRUE|FALSE
+#'                 )
+#'               ),
+#'               Tls = list(
+#'                 Enabled = TRUE|FALSE
+#'               )
+#'             )
 #'           )
+#'         ),
+#'         ZoneIds = list(
+#'           "string"
 #'         )
 #'       ),
 #'       CurrentBrokerSoftwareInfo = list(
@@ -824,7 +1073,8 @@ kafka_describe_cluster <- function(ClusterArn) {
 #'       ),
 #'       NumberOfBrokerNodes = 123,
 #'       ZookeeperConnectString = "string",
-#'       ZookeeperConnectStringTls = "string"
+#'       ZookeeperConnectStringTls = "string",
+#'       StorageMode = "LOCAL"|"TIERED"
 #'     ),
 #'     Serverless = list(
 #'       VpcConfigs = list(
@@ -994,8 +1244,24 @@ kafka_describe_cluster_v2 <- function(ClusterArn) {
 #'       ConnectivityInfo = list(
 #'         PublicAccess = list(
 #'           Type = "string"
+#'         ),
+#'         VpcConnectivity = list(
+#'           ClientAuthentication = list(
+#'             Sasl = list(
+#'               Scram = list(
+#'                 Enabled = TRUE|FALSE
+#'               ),
+#'               Iam = list(
+#'                 Enabled = TRUE|FALSE
+#'               )
+#'             ),
+#'             Tls = list(
+#'               Enabled = TRUE|FALSE
+#'             )
+#'           )
 #'         )
-#'       )
+#'       ),
+#'       StorageMode = "LOCAL"|"TIERED"
 #'     ),
 #'     TargetClusterInfo = list(
 #'       BrokerEBSVolumeInfo = list(
@@ -1074,7 +1340,34 @@ kafka_describe_cluster_v2 <- function(ClusterArn) {
 #'       ConnectivityInfo = list(
 #'         PublicAccess = list(
 #'           Type = "string"
+#'         ),
+#'         VpcConnectivity = list(
+#'           ClientAuthentication = list(
+#'             Sasl = list(
+#'               Scram = list(
+#'                 Enabled = TRUE|FALSE
+#'               ),
+#'               Iam = list(
+#'                 Enabled = TRUE|FALSE
+#'               )
+#'             ),
+#'             Tls = list(
+#'               Enabled = TRUE|FALSE
+#'             )
+#'           )
 #'         )
+#'       ),
+#'       StorageMode = "LOCAL"|"TIERED"
+#'     ),
+#'     VpcConnectionInfo = list(
+#'       VpcConnectionArn = "string",
+#'       Owner = "string",
+#'       UserIdentity = list(
+#'         Type = "AWSACCOUNT"|"AWSSERVICE",
+#'         PrincipalId = "string"
+#'       ),
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
 #'       )
 #'     )
 #'   )
@@ -1230,6 +1523,70 @@ kafka_describe_configuration_revision <- function(Arn, Revision) {
 }
 .kafka$operations$describe_configuration_revision <- kafka_describe_configuration_revision
 
+#' Returns a description of this MSK VPC connection
+#'
+#' @description
+#' Returns a description of this MSK VPC connection.
+#'
+#' @usage
+#' kafka_describe_vpc_connection(Arn)
+#'
+#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies a MSK VPC
+#' connection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcConnectionArn = "string",
+#'   TargetClusterArn = "string",
+#'   State = "CREATING"|"AVAILABLE"|"INACTIVE"|"DEACTIVATING"|"DELETING"|"FAILED"|"REJECTED"|"REJECTING",
+#'   Authentication = "string",
+#'   VpcId = "string",
+#'   Subnets = list(
+#'     "string"
+#'   ),
+#'   SecurityGroups = list(
+#'     "string"
+#'   ),
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_vpc_connection(
+#'   Arn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_describe_vpc_connection
+#'
+#' @aliases kafka_describe_vpc_connection
+kafka_describe_vpc_connection <- function(Arn) {
+  op <- new_operation(
+    name = "DescribeVpcConnection",
+    http_method = "GET",
+    http_path = "/v1/vpc-connection/{arn}",
+    paginator = list()
+  )
+  input <- .kafka$describe_vpc_connection_input(Arn = Arn)
+  output <- .kafka$describe_vpc_connection_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$describe_vpc_connection <- kafka_describe_vpc_connection
+
 #' Disassociates one or more Scram Secrets from an Amazon MSK cluster
 #'
 #' @description
@@ -1308,7 +1665,10 @@ kafka_batch_disassociate_scram_secret <- function(ClusterArn, SecretArnList) {
 #'   BootstrapBrokerStringSaslIam = "string",
 #'   BootstrapBrokerStringPublicTls = "string",
 #'   BootstrapBrokerStringPublicSaslScram = "string",
-#'   BootstrapBrokerStringPublicSaslIam = "string"
+#'   BootstrapBrokerStringPublicSaslIam = "string",
+#'   BootstrapBrokerStringVpcConnectivityTls = "string",
+#'   BootstrapBrokerStringVpcConnectivitySaslScram = "string",
+#'   BootstrapBrokerStringVpcConnectivitySaslIam = "string"
 #' )
 #' ```
 #'
@@ -1394,6 +1754,56 @@ kafka_get_compatible_kafka_versions <- function(ClusterArn = NULL) {
   return(response)
 }
 .kafka$operations$get_compatible_kafka_versions <- kafka_get_compatible_kafka_versions
+
+#' Get the MSK cluster policy specified by the Amazon Resource Name (ARN)
+#' in the request
+#'
+#' @description
+#' Get the MSK cluster policy specified by the Amazon Resource Name (ARN)
+#' in the request.
+#'
+#' @usage
+#' kafka_get_cluster_policy(ClusterArn)
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the cluster.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CurrentVersion = "string",
+#'   Policy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_cluster_policy(
+#'   ClusterArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_get_cluster_policy
+#'
+#' @aliases kafka_get_cluster_policy
+kafka_get_cluster_policy <- function(ClusterArn) {
+  op <- new_operation(
+    name = "GetClusterPolicy",
+    http_method = "GET",
+    http_path = "/v1/clusters/{clusterArn}/policy",
+    paginator = list()
+  )
+  input <- .kafka$get_cluster_policy_input(ClusterArn = ClusterArn)
+  output <- .kafka$get_cluster_policy_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$get_cluster_policy <- kafka_get_cluster_policy
 
 #' Returns a list of all the operations that have been performed on the
 #' specified MSK cluster
@@ -1518,8 +1928,24 @@ kafka_get_compatible_kafka_versions <- function(ClusterArn = NULL) {
 #'         ConnectivityInfo = list(
 #'           PublicAccess = list(
 #'             Type = "string"
+#'           ),
+#'           VpcConnectivity = list(
+#'             ClientAuthentication = list(
+#'               Sasl = list(
+#'                 Scram = list(
+#'                   Enabled = TRUE|FALSE
+#'                 ),
+#'                 Iam = list(
+#'                   Enabled = TRUE|FALSE
+#'                 )
+#'               ),
+#'               Tls = list(
+#'                 Enabled = TRUE|FALSE
+#'               )
+#'             )
 #'           )
-#'         )
+#'         ),
+#'         StorageMode = "LOCAL"|"TIERED"
 #'       ),
 #'       TargetClusterInfo = list(
 #'         BrokerEBSVolumeInfo = list(
@@ -1598,7 +2024,34 @@ kafka_get_compatible_kafka_versions <- function(ClusterArn = NULL) {
 #'         ConnectivityInfo = list(
 #'           PublicAccess = list(
 #'             Type = "string"
+#'           ),
+#'           VpcConnectivity = list(
+#'             ClientAuthentication = list(
+#'               Sasl = list(
+#'                 Scram = list(
+#'                   Enabled = TRUE|FALSE
+#'                 ),
+#'                 Iam = list(
+#'                   Enabled = TRUE|FALSE
+#'                 )
+#'               ),
+#'               Tls = list(
+#'                 Enabled = TRUE|FALSE
+#'               )
+#'             )
 #'           )
+#'         ),
+#'         StorageMode = "LOCAL"|"TIERED"
+#'       ),
+#'       VpcConnectionInfo = list(
+#'         VpcConnectionArn = "string",
+#'         Owner = "string",
+#'         UserIdentity = list(
+#'           Type = "AWSACCOUNT"|"AWSSERVICE",
+#'           PrincipalId = "string"
+#'         ),
+#'         CreationTime = as.POSIXct(
+#'           "2015-01-01"
 #'         )
 #'       )
 #'     )
@@ -1682,7 +2135,25 @@ kafka_list_cluster_operations <- function(ClusterArn, MaxResults = NULL, NextTok
 #'         ConnectivityInfo = list(
 #'           PublicAccess = list(
 #'             Type = "string"
+#'           ),
+#'           VpcConnectivity = list(
+#'             ClientAuthentication = list(
+#'               Sasl = list(
+#'                 Scram = list(
+#'                   Enabled = TRUE|FALSE
+#'                 ),
+#'                 Iam = list(
+#'                   Enabled = TRUE|FALSE
+#'                 )
+#'               ),
+#'               Tls = list(
+#'                 Enabled = TRUE|FALSE
+#'               )
+#'             )
 #'           )
+#'         ),
+#'         ZoneIds = list(
+#'           "string"
 #'         )
 #'       ),
 #'       ClientAuthentication = list(
@@ -1762,7 +2233,8 @@ kafka_list_cluster_operations <- function(ClusterArn, MaxResults = NULL, NextTok
 #'         "string"
 #'       ),
 #'       ZookeeperConnectString = "string",
-#'       ZookeeperConnectStringTls = "string"
+#'       ZookeeperConnectStringTls = "string",
+#'       StorageMode = "LOCAL"|"TIERED"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1862,7 +2334,25 @@ kafka_list_clusters <- function(ClusterNameFilter = NULL, MaxResults = NULL, Nex
 #'           ConnectivityInfo = list(
 #'             PublicAccess = list(
 #'               Type = "string"
+#'             ),
+#'             VpcConnectivity = list(
+#'               ClientAuthentication = list(
+#'                 Sasl = list(
+#'                   Scram = list(
+#'                     Enabled = TRUE|FALSE
+#'                   ),
+#'                   Iam = list(
+#'                     Enabled = TRUE|FALSE
+#'                   )
+#'                 ),
+#'                 Tls = list(
+#'                   Enabled = TRUE|FALSE
+#'                 )
+#'               )
 #'             )
+#'           ),
+#'           ZoneIds = list(
+#'             "string"
 #'           )
 #'         ),
 #'         CurrentBrokerSoftwareInfo = list(
@@ -1928,7 +2418,8 @@ kafka_list_clusters <- function(ClusterNameFilter = NULL, MaxResults = NULL, Nex
 #'         ),
 #'         NumberOfBrokerNodes = 123,
 #'         ZookeeperConnectString = "string",
-#'         ZookeeperConnectStringTls = "string"
+#'         ZookeeperConnectStringTls = "string",
+#'         StorageMode = "LOCAL"|"TIERED"
 #'       ),
 #'       Serverless = list(
 #'         VpcConfigs = list(
@@ -2373,6 +2864,232 @@ kafka_list_tags_for_resource <- function(ResourceArn) {
 }
 .kafka$operations$list_tags_for_resource <- kafka_list_tags_for_resource
 
+#' Returns a list of all the VPC connections in this Region
+#'
+#' @description
+#' Returns a list of all the VPC connections in this Region.
+#'
+#' @usage
+#' kafka_list_client_vpc_connections(ClusterArn, MaxResults, NextToken)
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the cluster.
+#' @param MaxResults The maximum number of results to return in the response. If there are
+#' more results, the response includes a NextToken parameter.
+#' @param NextToken The paginated results marker. When the result of the operation is
+#' truncated, the call returns NextToken in the response. To get the next
+#' batch, provide this token in your next request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClientVpcConnections = list(
+#'     list(
+#'       Authentication = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       State = "CREATING"|"AVAILABLE"|"INACTIVE"|"DEACTIVATING"|"DELETING"|"FAILED"|"REJECTED"|"REJECTING",
+#'       VpcConnectionArn = "string",
+#'       Owner = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_client_vpc_connections(
+#'   ClusterArn = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_list_client_vpc_connections
+#'
+#' @aliases kafka_list_client_vpc_connections
+kafka_list_client_vpc_connections <- function(ClusterArn, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListClientVpcConnections",
+    http_method = "GET",
+    http_path = "/v1/clusters/{clusterArn}/client-vpc-connections",
+    paginator = list()
+  )
+  input <- .kafka$list_client_vpc_connections_input(ClusterArn = ClusterArn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .kafka$list_client_vpc_connections_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$list_client_vpc_connections <- kafka_list_client_vpc_connections
+
+#' Returns a list of all the VPC connections in this Region
+#'
+#' @description
+#' Returns a list of all the VPC connections in this Region.
+#'
+#' @usage
+#' kafka_list_vpc_connections(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of results to return in the response. If there are
+#' more results, the response includes a NextToken parameter.
+#' @param NextToken The paginated results marker. When the result of the operation is
+#' truncated, the call returns NextToken in the response. To get the next
+#' batch, provide this token in your next request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcConnections = list(
+#'     list(
+#'       VpcConnectionArn = "string",
+#'       TargetClusterArn = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Authentication = "string",
+#'       VpcId = "string",
+#'       State = "CREATING"|"AVAILABLE"|"INACTIVE"|"DEACTIVATING"|"DELETING"|"FAILED"|"REJECTED"|"REJECTING"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_vpc_connections(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_list_vpc_connections
+#'
+#' @aliases kafka_list_vpc_connections
+kafka_list_vpc_connections <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListVpcConnections",
+    http_method = "GET",
+    http_path = "/v1/vpc-connections",
+    paginator = list()
+  )
+  input <- .kafka$list_vpc_connections_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .kafka$list_vpc_connections_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$list_vpc_connections <- kafka_list_vpc_connections
+
+#' Returns empty response
+#'
+#' @description
+#' Returns empty response.
+#'
+#' @usage
+#' kafka_reject_client_vpc_connection(ClusterArn, VpcConnectionArn)
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the cluster.
+#' @param VpcConnectionArn &#91;required&#93; The VPC connection ARN.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$reject_client_vpc_connection(
+#'   ClusterArn = "string",
+#'   VpcConnectionArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_reject_client_vpc_connection
+#'
+#' @aliases kafka_reject_client_vpc_connection
+kafka_reject_client_vpc_connection <- function(ClusterArn, VpcConnectionArn) {
+  op <- new_operation(
+    name = "RejectClientVpcConnection",
+    http_method = "PUT",
+    http_path = "/v1/clusters/{clusterArn}/client-vpc-connection",
+    paginator = list()
+  )
+  input <- .kafka$reject_client_vpc_connection_input(ClusterArn = ClusterArn, VpcConnectionArn = VpcConnectionArn)
+  output <- .kafka$reject_client_vpc_connection_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$reject_client_vpc_connection <- kafka_reject_client_vpc_connection
+
+#' Creates or updates the MSK cluster policy specified by the cluster
+#' Amazon Resource Name (ARN) in the request
+#'
+#' @description
+#' Creates or updates the MSK cluster policy specified by the cluster
+#' Amazon Resource Name (ARN) in the request.
+#'
+#' @usage
+#' kafka_put_cluster_policy(ClusterArn, CurrentVersion, Policy)
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the cluster.
+#' @param CurrentVersion The policy version.
+#' @param Policy &#91;required&#93; The policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CurrentVersion = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_cluster_policy(
+#'   ClusterArn = "string",
+#'   CurrentVersion = "string",
+#'   Policy = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_put_cluster_policy
+#'
+#' @aliases kafka_put_cluster_policy
+kafka_put_cluster_policy <- function(ClusterArn, CurrentVersion = NULL, Policy) {
+  op <- new_operation(
+    name = "PutClusterPolicy",
+    http_method = "PUT",
+    http_path = "/v1/clusters/{clusterArn}/policy",
+    paginator = list()
+  )
+  input <- .kafka$put_cluster_policy_input(ClusterArn = ClusterArn, CurrentVersion = CurrentVersion, Policy = Policy)
+  output <- .kafka$put_cluster_policy_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$put_cluster_policy <- kafka_put_cluster_policy
+
 #' Reboots brokers
 #'
 #' @description
@@ -2799,6 +3516,21 @@ kafka_update_configuration <- function(Arn, Description = NULL, ServerProperties
 #'   ConnectivityInfo = list(
 #'     PublicAccess = list(
 #'       Type = "string"
+#'     ),
+#'     VpcConnectivity = list(
+#'       ClientAuthentication = list(
+#'         Sasl = list(
+#'           Scram = list(
+#'             Enabled = TRUE|FALSE
+#'           ),
+#'           Iam = list(
+#'             Enabled = TRUE|FALSE
+#'           )
+#'         ),
+#'         Tls = list(
+#'           Enabled = TRUE|FALSE
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   CurrentVersion = "string"
@@ -3116,3 +3848,66 @@ kafka_update_security <- function(ClientAuthentication = NULL, ClusterArn, Curre
   return(response)
 }
 .kafka$operations$update_security <- kafka_update_security
+
+#' Updates cluster broker volume size (or) sets cluster storage mode to
+#' TIERED
+#'
+#' @description
+#' Updates cluster broker volume size (or) sets cluster storage mode to
+#' TIERED.
+#'
+#' @usage
+#' kafka_update_storage(ClusterArn, CurrentVersion, ProvisionedThroughput,
+#'   StorageMode, VolumeSizeGB)
+#'
+#' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the cluster to be updated.
+#' @param CurrentVersion &#91;required&#93; The version of cluster to update from. A successful operation will then
+#' generate a new version.
+#' @param ProvisionedThroughput EBS volume provisioned throughput information.
+#' @param StorageMode Controls storage mode for supported storage tiers.
+#' @param VolumeSizeGB size of the EBS volume to update.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClusterArn = "string",
+#'   ClusterOperationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_storage(
+#'   ClusterArn = "string",
+#'   CurrentVersion = "string",
+#'   ProvisionedThroughput = list(
+#'     Enabled = TRUE|FALSE,
+#'     VolumeThroughput = 123
+#'   ),
+#'   StorageMode = "LOCAL"|"TIERED",
+#'   VolumeSizeGB = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_update_storage
+#'
+#' @aliases kafka_update_storage
+kafka_update_storage <- function(ClusterArn, CurrentVersion, ProvisionedThroughput = NULL, StorageMode = NULL, VolumeSizeGB = NULL) {
+  op <- new_operation(
+    name = "UpdateStorage",
+    http_method = "PUT",
+    http_path = "/v1/clusters/{clusterArn}/storage",
+    paginator = list()
+  )
+  input <- .kafka$update_storage_input(ClusterArn = ClusterArn, CurrentVersion = CurrentVersion, ProvisionedThroughput = ProvisionedThroughput, StorageMode = StorageMode, VolumeSizeGB = VolumeSizeGB)
+  output <- .kafka$update_storage_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$update_storage <- kafka_update_storage

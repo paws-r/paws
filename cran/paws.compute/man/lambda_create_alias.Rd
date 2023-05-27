@@ -36,7 +36,7 @@ the function name, it is limited to 64 characters in length.}
 of the alias.}
 }
 \description{
-Creates an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{alias} for a Lambda function version. Use aliases to provide clients with a function identifier that you can update to invoke a different version.
+Creates an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html}{alias} for a Lambda function version. Use aliases to provide clients with a function identifier that you can update to invoke a different version.
 
 See \url{https://paws-r.github.io/docs/lambda/create_alias.html} for full documentation.
 }

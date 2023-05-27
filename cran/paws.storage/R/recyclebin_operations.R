@@ -34,18 +34,19 @@ NULL
 #' It retains all deleted resources of the specified resource type in the
 #' Region in which the rule is created, even if the resources are not
 #' tagged.
+#' @param LockConfiguration Information about the retention rule lock configuration.
 #'
 #' @keywords internal
 #'
 #' @rdname recyclebin_create_rule
-recyclebin_create_rule <- function(RetentionPeriod, Description = NULL, Tags = NULL, ResourceType, ResourceTags = NULL) {
+recyclebin_create_rule <- function(RetentionPeriod, Description = NULL, Tags = NULL, ResourceType, ResourceTags = NULL, LockConfiguration = NULL) {
   op <- new_operation(
     name = "CreateRule",
     http_method = "POST",
     http_path = "/rules",
     paginator = list()
   )
-  input <- .recyclebin$create_rule_input(RetentionPeriod = RetentionPeriod, Description = Description, Tags = Tags, ResourceType = ResourceType, ResourceTags = ResourceTags)
+  input <- .recyclebin$create_rule_input(RetentionPeriod = RetentionPeriod, Description = Description, Tags = Tags, ResourceType = ResourceType, ResourceTags = ResourceTags, LockConfiguration = LockConfiguration)
   output <- .recyclebin$create_rule_output()
   config <- get_config()
   svc <- .recyclebin$service(config)
@@ -131,18 +132,20 @@ recyclebin_get_rule <- function(Identifier) {
 #' retention rules that retain EBS-backed AMIs, specify `EC2_IMAGE`.
 #' @param ResourceTags Information about the resource tags used to identify resources that are
 #' retained by the retention rule.
+#' @param LockState The lock state of the retention rules to list. Only retention rules with
+#' the specified lock state are returned.
 #'
 #' @keywords internal
 #'
 #' @rdname recyclebin_list_rules
-recyclebin_list_rules <- function(MaxResults = NULL, NextToken = NULL, ResourceType, ResourceTags = NULL) {
+recyclebin_list_rules <- function(MaxResults = NULL, NextToken = NULL, ResourceType, ResourceTags = NULL, LockState = NULL) {
   op <- new_operation(
     name = "ListRules",
     http_method = "POST",
     http_path = "/list-rules",
     paginator = list()
   )
-  input <- .recyclebin$list_rules_input(MaxResults = MaxResults, NextToken = NextToken, ResourceType = ResourceType, ResourceTags = ResourceTags)
+  input <- .recyclebin$list_rules_input(MaxResults = MaxResults, NextToken = NextToken, ResourceType = ResourceType, ResourceTags = ResourceTags, LockState = LockState)
   output <- .recyclebin$list_rules_output()
   config <- get_config()
   svc <- .recyclebin$service(config)
@@ -181,6 +184,36 @@ recyclebin_list_tags_for_resource <- function(ResourceArn) {
 }
 .recyclebin$operations$list_tags_for_resource <- recyclebin_list_tags_for_resource
 
+#' Locks a retention rule
+#'
+#' @description
+#' Locks a retention rule. A locked retention rule can't be modified or deleted.
+#'
+#' See [https://paws-r.github.io/docs/recyclebin/lock_rule.html](https://paws-r.github.io/docs/recyclebin/lock_rule.html) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; The unique ID of the retention rule.
+#' @param LockConfiguration &#91;required&#93; Information about the retention rule lock configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname recyclebin_lock_rule
+recyclebin_lock_rule <- function(Identifier, LockConfiguration) {
+  op <- new_operation(
+    name = "LockRule",
+    http_method = "PATCH",
+    http_path = "/rules/{identifier}/lock",
+    paginator = list()
+  )
+  input <- .recyclebin$lock_rule_input(Identifier = Identifier, LockConfiguration = LockConfiguration)
+  output <- .recyclebin$lock_rule_output()
+  config <- get_config()
+  svc <- .recyclebin$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.recyclebin$operations$lock_rule <- recyclebin_lock_rule
+
 #' Assigns tags to the specified retention rule
 #'
 #' @description
@@ -210,6 +243,35 @@ recyclebin_tag_resource <- function(ResourceArn, Tags) {
   return(response)
 }
 .recyclebin$operations$tag_resource <- recyclebin_tag_resource
+
+#' Unlocks a retention rule
+#'
+#' @description
+#' Unlocks a retention rule. After a retention rule is unlocked, it can be modified or deleted only after the unlock delay period expires.
+#'
+#' See [https://paws-r.github.io/docs/recyclebin/unlock_rule.html](https://paws-r.github.io/docs/recyclebin/unlock_rule.html) for full documentation.
+#'
+#' @param Identifier &#91;required&#93; The unique ID of the retention rule.
+#'
+#' @keywords internal
+#'
+#' @rdname recyclebin_unlock_rule
+recyclebin_unlock_rule <- function(Identifier) {
+  op <- new_operation(
+    name = "UnlockRule",
+    http_method = "PATCH",
+    http_path = "/rules/{identifier}/unlock",
+    paginator = list()
+  )
+  input <- .recyclebin$unlock_rule_input(Identifier = Identifier)
+  output <- .recyclebin$unlock_rule_output()
+  config <- get_config()
+  svc <- .recyclebin$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.recyclebin$operations$unlock_rule <- recyclebin_unlock_rule
 
 #' Unassigns a tag from a retention rule
 #'
@@ -245,7 +307,7 @@ recyclebin_untag_resource <- function(ResourceArn, TagKeys) {
 #' Updates an existing Recycle Bin retention rule
 #'
 #' @description
-#' Updates an existing Recycle Bin retention rule. For more information, see [Update Recycle Bin retention rules](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-update-rule) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Updates an existing Recycle Bin retention rule. You can update a retention rule's description, resource tags, and retention period at any time after creation. You can't update a retention rule's resource type after creation. For more information, see [Update Recycle Bin retention rules](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-update-rule) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' See [https://paws-r.github.io/docs/recyclebin/update_rule.html](https://paws-r.github.io/docs/recyclebin/update_rule.html) for full documentation.
 #'
@@ -253,10 +315,8 @@ recyclebin_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param RetentionPeriod Information about the retention period for which the retention rule is
 #' to retain resources.
 #' @param Description The retention rule description.
-#' @param ResourceType The resource type to be retained by the retention rule. Currently, only
-#' Amazon EBS snapshots and EBS-backed AMIs are supported. To retain
-#' snapshots, specify `EBS_SNAPSHOT`. To retain EBS-backed AMIs, specify
-#' `EC2_IMAGE`.
+#' @param ResourceType This parameter is currently not supported. You can't update a retention
+#' rule's resource type after creation.
 #' @param ResourceTags Specifies the resource tags to use to identify resources that are to be
 #' retained by a tag-level retention rule. For tag-level retention rules,
 #' only deleted resources, of the specified resource type, that have one or

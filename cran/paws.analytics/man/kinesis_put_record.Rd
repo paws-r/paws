@@ -5,15 +5,16 @@
 \title{Writes a single data record into an Amazon Kinesis data stream}
 \usage{
 kinesis_put_record(
-  StreamName,
+  StreamName = NULL,
   Data,
   PartitionKey,
   ExplicitHashKey = NULL,
-  SequenceNumberForOrdering = NULL
+  SequenceNumberForOrdering = NULL,
+  StreamARN = NULL
 )
 }
 \arguments{
-\item{StreamName}{[required] The name of the stream to put the data record into.}
+\item{StreamName}{The name of the stream to put the data record into.}
 
 \item{Data}{[required] The data blob to put into the record, which is base64-encoded when the
 blob is serialized. When the data blob (the payload before
@@ -39,6 +40,8 @@ client and to the same partition key. Usage: set the
 record \emph{n-1} (as returned in the result when putting record \emph{n-1}). If
 this parameter is not set, records are coarsely ordered based on arrival
 time.}
+
+\item{StreamARN}{The ARN of the stream.}
 }
 \description{
 Writes a single data record into an Amazon Kinesis data stream. Call \code{\link[=kinesis_put_record]{put_record}} to send data into the stream for real-time ingestion and subsequent processing, one record at a time. Each shard can support writes up to 1,000 records per second, up to a maximum data write total of 1 MiB per second.

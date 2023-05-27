@@ -17,7 +17,7 @@ cloudwatchevidently_create_segment(
 \item{name}{[required] A name for the segment.}
 
 \item{pattern}{[required] The pattern to use for the segment. For more information about pattern
-syntax, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/}{Segment rule pattern syntax}.}
+syntax, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html#CloudWatch-Evidently-segments-syntax.html}{Segment rule pattern syntax}.}
 
 \item{tags}{Assigns one or more tags (key-value pairs) to the segment.
 
@@ -28,8 +28,9 @@ access or change only resources with certain tag values.
 Tags don't have any semantic meaning to Amazon Web Services and are
 interpreted strictly as strings of characters.
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{ <p>You can associate as many as 50 tags with a segment.</p> <p>For more information, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging Amazon Web Services resources</a>.</p>
-}\if{html}{\out{</div>}}}
+You can associate as many as 50 tags with a segment.
+
+For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}.}
 }
 \description{
 Use this operation to define a \emph{segment} of your audience. A segment is a portion of your audience that share one or more characteristics. Examples could be Chrome browser users, users in Europe, or Firefox browser users in Europe who also fit other criteria that your application collects, such as age.

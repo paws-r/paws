@@ -2,12 +2,12 @@
 % Please edit documentation in R/proton_operations.R
 \name{proton_get_account_settings}
 \alias{proton_get_account_settings}
-\title{Get detail data for the Proton pipeline service role}
+\title{Get detail data for Proton account-wide settings}
 \usage{
 proton_get_account_settings()
 }
 \description{
-Get detail data for the Proton pipeline service role.
+Get detail data for Proton account-wide settings.
 
 See \url{https://paws-r.github.io/docs/proton/get_account_settings.html} for full documentation.
 }

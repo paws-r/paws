@@ -10,13 +10,14 @@ ec2_modify_network_interface_attribute(
   DryRun = NULL,
   Groups = NULL,
   NetworkInterfaceId,
-  SourceDestCheck = NULL
+  SourceDestCheck = NULL,
+  EnaSrdSpecification = NULL
 )
 }
 \arguments{
-\item{Attachment}{Information about the interface attachment. If modifying the 'delete on
-termination' attribute, you must specify the ID of the interface
-attachment.}
+\item{Attachment}{Information about the interface attachment. If modifying the
+\verb{delete on termination} attribute, you must specify the ID of the
+interface attachment.}
 
 \item{Description}{A description for the network interface.}
 
@@ -38,6 +39,9 @@ receives. If the value is \code{true}, source/destination checks are enabled;
 otherwise, they are disabled. The default value is \code{true}. You must
 disable source/destination checks if the instance runs services such as
 network address translation, routing, or firewalls.}
+
+\item{EnaSrdSpecification}{Updates the ENA Express configuration for the network interface that’s
+attached to the instance.}
 }
 \description{
 Modifies the specified network interface attribute. You can specify only one attribute at a time. You can use this action to attach and detach security groups from an existing EC2 instance.

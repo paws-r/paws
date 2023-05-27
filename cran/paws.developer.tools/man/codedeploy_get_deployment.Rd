@@ -7,8 +7,8 @@
 codedeploy_get_deployment(deploymentId)
 }
 \arguments{
-\item{deploymentId}{[required] The unique ID of a deployment associated with the IAM user or AWS
-account.}
+\item{deploymentId}{[required] The unique ID of a deployment associated with the IAM user or Amazon Web
+Services account.}
 }
 \description{
 Gets information about a deployment.

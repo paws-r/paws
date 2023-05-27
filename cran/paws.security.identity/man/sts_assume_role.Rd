@@ -3,8 +3,7 @@
 \name{sts_assume_role}
 \alias{sts_assume_role}
 \title{Returns a set of temporary security credentials that you can use to
-access Amazon Web Services resources that you might not normally have
-access to}
+access Amazon Web Services resources}
 \usage{
 sts_assume_role(
   RoleArn,
@@ -46,15 +45,15 @@ same account as the role.
 This parameter is optional. You can provide up to 10 managed policy
 ARNs. However, the plaintext that you use for both inline and managed
 session policies can't exceed 2,048 characters. For more information
-about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}
+about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}
 in the Amazon Web Services General Reference.
 
-An Amazon Web Services conversion compresses the passed session policies
-and session tags into a packed binary format that has a separate limit.
-Your request can fail for this limit even if your plaintext meets the
-other requirements. The \code{PackedPolicySize} response element indicates by
-percentage how close the policies and tags for your request are to the
-upper size limit.
+An Amazon Web Services conversion compresses the passed inline session
+policy, managed policy ARNs, and session tags into a packed binary
+format that has a separate limit. Your request can fail for this limit
+even if your plaintext meets the other requirements. The
+\code{PackedPolicySize} response element indicates by percentage how close
+the policies and tags for your request are to the upper size limit.
 
 Passing policies to this operation returns new temporary credentials.
 The resulting session's permissions are the intersection of the role's
@@ -85,12 +84,12 @@ ASCII character from the space character to the end of the valid
 character list (\\code{U+0020} through \\verb{U+00FF}). It can also include the tab
 (\\code{U+0009}), linefeed (\\verb{U+000A}), and carriage return (\\verb{U+000D}) characters.
 
-An Amazon Web Services conversion compresses the passed session policies
-and session tags into a packed binary format that has a separate limit.
-Your request can fail for this limit even if your plaintext meets the
-other requirements. The \code{PackedPolicySize} response element indicates by
-percentage how close the policies and tags for your request are to the
-upper size limit.}
+An Amazon Web Services conversion compresses the passed inline session
+policy, managed policy ARNs, and session tags into a packed binary
+format that has a separate limit. Your request can fail for this limit
+even if your plaintext meets the other requirements. The
+\code{PackedPolicySize} response element indicates by percentage how close
+the policies and tags for your request are to the upper size limit.}
 
 \item{DurationSeconds}{The duration, in seconds, of the role session. The value specified can
 range from 900 seconds (15 minutes) up to the maximum session duration
@@ -131,12 +130,12 @@ plaintext session tag keys can’t exceed 128 characters, and the values
 can’t exceed 256 characters. For these and additional limits, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html#reference_iam-limits-entity-length}{IAM and STS Character Limits}
 in the \emph{IAM User Guide}.
 
-An Amazon Web Services conversion compresses the passed session policies
-and session tags into a packed binary format that has a separate limit.
-Your request can fail for this limit even if your plaintext meets the
-other requirements. The \code{PackedPolicySize} response element indicates by
-percentage how close the policies and tags for your request are to the
-upper size limit.
+An Amazon Web Services conversion compresses the passed inline session
+policy, managed policy ARNs, and session tags into a packed binary
+format that has a separate limit. Your request can fail for this limit
+even if your plaintext meets the other requirements. The
+\code{PackedPolicySize} response element indicates by percentage how close
+the policies and tags for your request are to the upper size limit.
 
 You can pass a session tag with the same key as a tag that is already
 attached to the role. When you do, session tags override a role tag with
@@ -226,7 +225,7 @@ characters: =,.@-. You cannot use a value that begins with the text
 \verb{aws:}. This prefix is reserved for Amazon Web Services internal use.}
 }
 \description{
-Returns a set of temporary security credentials that you can use to access Amazon Web Services resources that you might not normally have access to. These temporary credentials consist of an access key ID, a secret access key, and a security token. Typically, you use \code{\link[=sts_assume_role]{assume_role}} within your account or for cross-account access. For a comparison of \code{\link[=sts_assume_role]{assume_role}} with other API operations that produce temporary credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials} and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison}{Comparing the Amazon Web Services STS API operations} in the \emph{IAM User Guide}.
+Returns a set of temporary security credentials that you can use to access Amazon Web Services resources. These temporary credentials consist of an access key ID, a secret access key, and a security token. Typically, you use \code{\link[=sts_assume_role]{assume_role}} within your account or for cross-account access. For a comparison of \code{\link[=sts_assume_role]{assume_role}} with other API operations that produce temporary credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials} and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison}{Comparing the Amazon Web Services STS API operations} in the \emph{IAM User Guide}.
 
 See \url{https://paws-r.github.io/docs/sts/assume_role.html} for full documentation.
 }

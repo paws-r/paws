@@ -22,7 +22,10 @@ eventbridge_create_endpoint(
 \item{RoutingConfig}{[required] Configure the routing policy, including the health check and secondary
 Region..}
 
-\item{ReplicationConfig}{Enable or disable event replication.}
+\item{ReplicationConfig}{Enable or disable event replication. The default state is \code{ENABLED}
+which means you must supply a \code{RoleArn}. If you don't have a \code{RoleArn}
+or you don't want event replication enabled, set the state to
+\code{DISABLED}.}
 
 \item{EventBuses}{[required] Define the event buses used.
 

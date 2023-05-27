@@ -8,7 +8,8 @@ account}
 quicksight_update_account_settings(
   AwsAccountId,
   DefaultNamespace,
-  NotificationEmail = NULL
+  NotificationEmail = NULL,
+  TerminationProtectionEnabled = NULL
 )
 }
 \arguments{
@@ -16,13 +17,19 @@ quicksight_update_account_settings(
 QuickSight settings that you want to list.}
 
 \item{DefaultNamespace}{[required] The default namespace for this Amazon Web Services account. Currently,
-the default is \code{default}. Identity and Access Management (IAM) users
-that register for the first time with Amazon QuickSight provide an email
-address that becomes associated with the default namespace.}
+the default is \code{default}. IAM users that register for the first time
+with Amazon QuickSight provide an email address that becomes associated
+with the default namespace.}
 
 \item{NotificationEmail}{The email address that you want Amazon QuickSight to send notifications
 to regarding your Amazon Web Services account or Amazon QuickSight
 subscription.}
+
+\item{TerminationProtectionEnabled}{A boolean value that determines whether or not an Amazon QuickSight
+account can be deleted. A \code{True} value doesn't allow the account to be
+deleted and results in an error message if a user tries to make a
+\code{\link[=quicksight_delete_account_subscription]{delete_account_subscription}}
+request. A \code{False} value will allow the account to be deleted.}
 }
 \description{
 Updates the Amazon QuickSight settings in your Amazon Web Services account.

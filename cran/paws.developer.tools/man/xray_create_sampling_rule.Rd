@@ -12,7 +12,7 @@ xray_create_sampling_rule(SamplingRule, Tags = NULL)
 
 \item{Tags}{A map that contains one or more tag keys and tag values to attach to an
 X-Ray sampling rule. For more information about ways to use tags, see
-\href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services resources}
+\href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}
 in the \emph{Amazon Web Services General Reference}.
 
 The following restrictions apply to tags:

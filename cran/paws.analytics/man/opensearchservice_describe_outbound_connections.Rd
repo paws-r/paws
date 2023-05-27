@@ -2,7 +2,8 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_describe_outbound_connections}
 \alias{opensearchservice_describe_outbound_connections}
-\title{Lists all the outbound cross-cluster connections for a local domain}
+\title{Lists all the outbound cross-cluster connections for a local (source)
+Amazon OpenSearch Service domain}
 \usage{
 opensearchservice_describe_outbound_connections(
   Filters = NULL,
@@ -11,24 +12,20 @@ opensearchservice_describe_outbound_connections(
 )
 }
 \arguments{
-\item{Filters}{A list of filters used to match properties for outbound cross-cluster
-connections. Available \code{Filter} names for this operation are:
-\itemize{
-\item connection-id
-\item remote-domain-info.domain-name
-\item remote-domain-info.owner-id
-\item remote-domain-info.region
-\item local-domain-info.domain-name
-}}
+\item{Filters}{List of filter names and values that you can use for requests.}
 
-\item{MaxResults}{Set this value to limit the number of results returned. If not
-specified, defaults to 100.}
+\item{MaxResults}{An optional parameter that specifies the maximum number of results to
+return. You can use \code{nextToken} to get the next page of results.}
 
-\item{NextToken}{NextToken is sent in case the earlier API call results contain the
-NextToken parameter. Used for pagination.}
+\item{NextToken}{If your initial
+\code{\link[=opensearchservice_describe_outbound_connections]{describe_outbound_connections}}
+operation returns a \code{nextToken}, you can include the returned
+\code{nextToken} in subsequent
+\code{\link[=opensearchservice_describe_outbound_connections]{describe_outbound_connections}}
+operations, which returns results in the next page.}
 }
 \description{
-Lists all the outbound cross-cluster connections for a local domain.
+Lists all the outbound cross-cluster connections for a local (source) Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html}{Cross-cluster search for Amazon OpenSearch Service}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/describe_outbound_connections.html} for full documentation.
 }

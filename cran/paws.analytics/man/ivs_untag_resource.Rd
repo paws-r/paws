@@ -7,9 +7,14 @@
 ivs_untag_resource(resourceArn, tagKeys)
 }
 \arguments{
-\item{resourceArn}{[required] ARN of the resource for which tags are to be removed.}
+\item{resourceArn}{[required] ARN of the resource for which tags are to be removed. The ARN must be
+URL-encoded.}
 
-\item{tagKeys}{[required] Array of tags to be removed.}
+\item{tagKeys}{[required] Array of tags to be removed. Array of maps, each of the form
+s\code{tring:string (key:value)}. See \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}
+for more information, including restrictions that apply to tags and "Tag
+naming limits and requirements"; Amazon IVS has no service-specific
+constraints beyond what is documented there.}
 }
 \description{
 Removes tags from the resource with the specified ARN.

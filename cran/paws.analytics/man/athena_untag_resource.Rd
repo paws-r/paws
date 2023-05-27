@@ -2,7 +2,7 @@
 % Please edit documentation in R/athena_operations.R
 \name{athena_untag_resource}
 \alias{athena_untag_resource}
-\title{Removes one or more tags from a data catalog or workgroup resource}
+\title{Removes one or more tags from an Athena resource}
 \usage{
 athena_untag_resource(ResourceARN, TagKeys)
 }
@@ -13,7 +13,7 @@ athena_untag_resource(ResourceARN, TagKeys)
 removed from the specified resource.}
 }
 \description{
-Removes one or more tags from a data catalog or workgroup resource.
+Removes one or more tags from an Athena resource.
 
 See \url{https://paws-r.github.io/docs/athena/untag_resource.html} for full documentation.
 }

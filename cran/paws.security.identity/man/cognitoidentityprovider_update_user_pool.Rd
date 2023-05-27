@@ -7,6 +7,7 @@
 cognitoidentityprovider_update_user_pool(
   UserPoolId,
   Policies = NULL,
+  DeletionProtection = NULL,
   LambdaConfig = NULL,
   AutoVerifiedAttributes = NULL,
   SmsVerificationMessage = NULL,
@@ -30,17 +31,33 @@ cognitoidentityprovider_update_user_pool(
 
 \item{Policies}{A container with the policies you want to update in a user pool.}
 
+\item{DeletionProtection}{When active, \code{DeletionProtection} prevents accidental deletion of your
+user pool. Before you can delete a user pool that you have protected
+against deletion, you must deactivate this feature.
+
+When you try to delete a protected user pool in a
+\code{\link[=cognitoidentityprovider_delete_user_pool]{delete_user_pool}} API
+request, Amazon Cognito returns an \code{InvalidParameterException} error. To
+delete a protected user pool, send a new
+\code{\link[=cognitoidentityprovider_delete_user_pool]{delete_user_pool}} request
+after you deactivate deletion protection in an
+\code{\link[=cognitoidentityprovider_update_user_pool]{update_user_pool}} API
+request.}
+
 \item{LambdaConfig}{The Lambda configuration information from the request to update the user
 pool.}
 
 \item{AutoVerifiedAttributes}{The attributes that are automatically verified when Amazon Cognito
 requests to update user pools.}
 
-\item{SmsVerificationMessage}{A container with information about the SMS verification message.}
+\item{SmsVerificationMessage}{This parameter is no longer used. See
+\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_VerificationMessageTemplateType.html}{VerificationMessageTemplateType}.}
 
-\item{EmailVerificationMessage}{The contents of the email verification message.}
+\item{EmailVerificationMessage}{This parameter is no longer used. See
+\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_VerificationMessageTemplateType.html}{VerificationMessageTemplateType}.}
 
-\item{EmailVerificationSubject}{The subject of the email verification message.}
+\item{EmailVerificationSubject}{This parameter is no longer used. See
+\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_VerificationMessageTemplateType.html}{VerificationMessageTemplateType}.}
 
 \item{VerificationMessageTemplate}{The template for verification messages.}
 

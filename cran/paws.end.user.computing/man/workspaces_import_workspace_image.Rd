@@ -2,8 +2,8 @@
 % Please edit documentation in R/workspaces_operations.R
 \name{workspaces_import_workspace_image}
 \alias{workspaces_import_workspace_image}
-\title{Imports the specified Windows 10 Bring Your Own License (BYOL) image
-into Amazon WorkSpaces}
+\title{Imports the specified Windows 10 or 11 Bring Your Own License (BYOL)
+image into Amazon WorkSpaces}
 \usage{
 workspaces_import_workspace_image(
   Ec2ImageId,
@@ -19,13 +19,18 @@ workspaces_import_workspace_image(
 
 \item{IngestionProcess}{[required] The ingestion process to be used when importing the image, depending on
 which protocol you want to use for your BYOL Workspace image, either
-PCoIP or WorkSpaces Streaming Protocol (WSP). To use WSP, specify a
-value that ends in \verb{_WSP}. To use PCoIP, specify a value that does not
-end in \verb{_WSP}.
+PCoIP, WorkSpaces Streaming Protocol (WSP), or bring your own protocol
+(BYOP). To use WSP, specify a value that ends in \verb{_WSP}. To use PCoIP,
+specify a value that does not end in \verb{_WSP}. To use BYOP, specify a
+value that ends in \verb{_BYOP}.
 
 For non-GPU-enabled bundles (bundles other than Graphics or
-GraphicsPro), specify \code{BYOL_REGULAR} or \code{BYOL_REGULAR_WSP}, depending on
-the protocol.}
+GraphicsPro), specify \code{BYOL_REGULAR}, \code{BYOL_REGULAR_WSP}, or
+\code{BYOL_REGULAR_BYOP}, depending on the protocol.
+
+The \code{BYOL_REGULAR_BYOP} and \code{BYOL_GRAPHICS_G4DN_BYOP} values are only
+supported by Amazon WorkSpaces Core. Contact your account team to be
+allow-listed to use these values. For more information, see \href{https://aws.amazon.com/workspaces/core/}{Amazon WorkSpaces Core}.}
 
 \item{ImageName}{[required] The name of the WorkSpace image.}
 
@@ -34,14 +39,16 @@ the protocol.}
 \item{Tags}{The tags. Each WorkSpaces resource can have a maximum of 50 tags.}
 
 \item{Applications}{If specified, the version of Microsoft Office to subscribe to. Valid
-only for Windows 10 BYOL images. For more information about subscribing
-to Office for BYOL images, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html}{Bring Your Own Windows Desktop Licenses}.
-
-Although this parameter is an array, only one item is allowed at this
-time.}
+only for Windows 10 and 11 BYOL images. For more information about
+subscribing to Office for BYOL images, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html}{Bring Your Own Windows Desktop Licenses}.
+\itemize{
+\item Although this parameter is an array, only one item is allowed at
+this time.
+\item Windows 11 only supports \code{Microsoft_Office_2019}.
+}}
 }
 \description{
-Imports the specified Windows 10 Bring Your Own License (BYOL) image into Amazon WorkSpaces. The image must be an already licensed Amazon EC2 image that is in your Amazon Web Services account, and you must own the image. For more information about creating BYOL images, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html}{Bring Your Own Windows Desktop Licenses}.
+Imports the specified Windows 10 or 11 Bring Your Own License (BYOL) image into Amazon WorkSpaces. The image must be an already licensed Amazon EC2 image that is in your Amazon Web Services account, and you must own the image. For more information about creating BYOL images, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html}{Bring Your Own Windows Desktop Licenses}.
 
 See \url{https://paws-r.github.io/docs/workspaces/import_workspace_image.html} for full documentation.
 }

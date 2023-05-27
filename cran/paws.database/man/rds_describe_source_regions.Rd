@@ -38,7 +38,7 @@ the marker, up to the value specified by \code{MaxRecords}.}
 \item{Filters}{This parameter isn't currently supported.}
 }
 \description{
-Returns a list of the source Amazon Web Services Regions where the current Amazon Web Services Region can create a read replica, copy a DB snapshot from, or replicate automated backups from. This API action supports pagination.
+Returns a list of the source Amazon Web Services Regions where the current Amazon Web Services Region can create a read replica, copy a DB snapshot from, or replicate automated backups from.
 
 See \url{https://paws-r.github.io/docs/rds/describe_source_regions.html} for full documentation.
 }

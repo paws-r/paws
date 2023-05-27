@@ -27,34 +27,34 @@ comprehend_create_document_classifier(
 \item{VersionName}{The version name given to the newly created classifier. Version names
 can have a maximum of 256 characters. Alphanumeric characters, hyphens
 (-) and underscores (_) are allowed. The version name must be unique
-among all models with the same classifier name in the account/AWS
-Region.}
+among all models with the same classifier name in the Amazon Web
+Services account/Amazon Web Services Region.}
 
-\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM)
-role that grants Amazon Comprehend read access to your input data.}
+\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that grants Amazon
+Comprehend read access to your input data.}
 
-\item{Tags}{Tags to be associated with the document classifier being created. A tag
-is a key-value pair that adds as a metadata to a resource used by Amazon
-Comprehend. For example, a tag with "Sales" as the key might be added to
-a resource to indicate its use by the sales department.}
+\item{Tags}{Tags to associate with the document classifier. A tag is a key-value
+pair that adds as a metadata to a resource used by Amazon Comprehend.
+For example, a tag with "Sales" as the key might be added to a resource
+to indicate its use by the sales department.}
 
 \item{InputDataConfig}{[required] Specifies the format and location of the input data for the job.}
 
-\item{OutputDataConfig}{Enables the addition of output results configuration parameters for
-custom classifier jobs.}
+\item{OutputDataConfig}{Specifies the location for the output files from a custom classifier
+job. This parameter is required for a request that creates a native
+classifier model.}
 
 \item{ClientRequestToken}{A unique identifier for the request. If you don't set the client request
 token, Amazon Comprehend generates one.}
 
 \item{LanguageCode}{[required] The language of the input documents. You can specify any of the
-following languages supported by Amazon Comprehend: German ("de"),
-English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
-Portuguese ("pt"). All documents must be in the same language.}
+languages supported by Amazon Comprehend. All documents must be in the
+same language.}
 
-\item{VolumeKmsKeyId}{ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
-uses to encrypt data on the storage volume attached to the ML compute
-instance(s) that process the analysis job. The VolumeKmsKeyId can be
-either of the following formats:
+\item{VolumeKmsKeyId}{ID for the Amazon Web Services Key Management Service (KMS) key that
+Amazon Comprehend uses to encrypt data on the storage volume attached to
+the ML compute instance(s) that process the analysis job. The
+VolumeKmsKeyId can be either of the following formats:
 \itemize{
 \item KMS Key ID: \code{"1234abcd-12ab-34cd-56ef-1234567890ab"}
 \item Amazon Resource Name (ARN) of a KMS Key:
@@ -72,9 +72,8 @@ one or more labels for each document. In multi-label mode, multiple
 labels for an individual document are separated by a delimiter. The
 default delimiter between labels is a pipe (|).}
 
-\item{ModelKmsKeyId}{ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
-uses to encrypt trained custom models. The ModelKmsKeyId can be either
-of the following formats:
+\item{ModelKmsKeyId}{ID for the KMS key that Amazon Comprehend uses to encrypt trained custom
+models. The ModelKmsKeyId can be either of the following formats:
 \itemize{
 \item KMS Key ID: \code{"1234abcd-12ab-34cd-56ef-1234567890ab"}
 \item Amazon Resource Name (ARN) of a KMS Key:
@@ -82,8 +81,8 @@ of the following formats:
 }}
 
 \item{ModelPolicy}{The resource-based policy to attach to your custom document classifier
-model. You can use this policy to allow another AWS account to import
-your custom model.
+model. You can use this policy to allow another Amazon Web Services
+account to import your custom model.
 
 Provide your policy as a JSON body that you enter as a UTF-8 encoded
 string without line breaks. To provide valid JSON, enclose the attribute
@@ -99,7 +98,7 @@ policy and double quotes to enclose the JSON names and values:
 \code{'{"attribute": "value", "attribute": ["value"]}'}}
 }
 \description{
-Creates a new document classifier that you can use to categorize documents. To create a classifier, you provide a set of training documents that labeled with the categories that you want to use. After the classifier is trained you can use it to categorize a set of labeled documents into the categories. For more information, see how-document-classification.
+Creates a new document classifier that you can use to categorize documents. To create a classifier, you provide a set of training documents that are labeled with the categories that you want to use. For more information, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/training-classifier-model.html}{Training classifier models} in the Comprehend Developer Guide.
 
 See \url{https://paws-r.github.io/docs/comprehend/create_document_classifier.html} for full documentation.
 }

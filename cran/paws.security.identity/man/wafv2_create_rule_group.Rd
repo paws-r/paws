@@ -22,7 +22,8 @@ after you create it.}
 \item{Scope}{[required] Specifies whether this is for an Amazon CloudFront distribution or for a
 regional application. A regional application can be an Application Load
 Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-or an Amazon Cognito user pool.
+an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+Services Verified Access instance.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:
@@ -45,7 +46,8 @@ capacity differently for each rule type, to reflect the relative cost of
 each rule. Simple rules that cost little to run use fewer WCUs than more
 complex rules that use more processing power. Rule group capacity is
 fixed at creation, which helps users plan their web ACL WCU usage when
-they use a rule group. The WCU limit for web ACLs is 1,500.}
+they use a rule group. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/aws-waf-capacity-units.html}{WAF web ACL capacity units (WCU)}
+in the \emph{WAF Developer Guide}.}
 
 \item{Description}{A description of the rule group that helps with identification.}
 
@@ -66,11 +68,11 @@ you define in the rule group.
 
 For information about customizing web requests and responses, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html}{Customizing web requests and responses in WAF}
-in the \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{WAF Developer Guide}.
+in the \emph{WAF Developer Guide}.
 
 For information about the limits on count and size for custom request
 and response settings, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/limits.html}{WAF quotas}
-in the \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{WAF Developer Guide}.}
+in the \emph{WAF Developer Guide}.}
 }
 \description{
 Creates a RuleGroup per the specifications provided.

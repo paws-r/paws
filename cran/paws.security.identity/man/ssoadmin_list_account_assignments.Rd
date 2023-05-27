@@ -2,8 +2,8 @@
 % Please edit documentation in R/ssoadmin_operations.R
 \name{ssoadmin_list_account_assignments}
 \alias{ssoadmin_list_account_assignments}
-\title{Lists the assignee of the specified Amazon Web Services account with the
-specified permission set}
+\title{Lists the assignee of the specified AWS account with the specified
+permission set}
 \usage{
 ssoadmin_list_account_assignments(
   InstanceArn,
@@ -14,13 +14,11 @@ ssoadmin_list_account_assignments(
 )
 }
 \arguments{
-\item{InstanceArn}{[required] The ARN of the Amazon Web Services SSO instance under which the
-operation will be executed. For more information about ARNs, see Amazon
-Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-\emph{Amazon Web Services General Reference}.}
+\item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
+will be executed. For more information about ARNs, see Amazon Resource
+Names (ARNs) and AWS Service Namespaces in the \emph{AWS General Reference}.}
 
-\item{AccountId}{[required] The identifier of the Amazon Web Services account from which to list the
-assignments.}
+\item{AccountId}{[required] The identifier of the AWS account from which to list the assignments.}
 
 \item{PermissionSetArn}{[required] The ARN of the permission set from which to list assignments.}
 
@@ -30,7 +28,7 @@ assignments.}
 the output of previous API calls to make subsequent calls.}
 }
 \description{
-Lists the assignee of the specified Amazon Web Services account with the specified permission set.
+Lists the assignee of the specified AWS account with the specified permission set.
 
 See \url{https://paws-r.github.io/docs/ssoadmin/list_account_assignments.html} for full documentation.
 }

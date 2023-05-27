@@ -10,7 +10,8 @@ eks_update_addon(
   addonVersion = NULL,
   serviceAccountRoleArn = NULL,
   resolveConflicts = NULL,
-  clientRequestToken = NULL
+  clientRequestToken = NULL,
+  configurationValues = NULL
 )
 }
 \arguments{
@@ -37,11 +38,26 @@ To specify an existing IAM role, you must have an IAM OpenID Connect
 \href{https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html}{Enabling IAM roles for service accounts on your cluster}
 in the \emph{Amazon EKS User Guide}.}
 
-\item{resolveConflicts}{How to resolve parameter value conflicts when applying the new version
-of the add-on to the cluster.}
+\item{resolveConflicts}{How to resolve field value conflicts for an Amazon EKS add-on if you've
+changed a value from the Amazon EKS default value. Conflicts are handled
+based on the option you choose:
+\itemize{
+\item \strong{None} – Amazon EKS doesn't change the value. The update might
+fail.
+\item \strong{Overwrite} – Amazon EKS overwrites the changed value back to the
+Amazon EKS default value.
+\item \strong{Preserve} – Amazon EKS preserves the value. If you choose this
+option, we recommend that you test any field and value changes on a
+non-production cluster before updating the add-on on your production
+cluster.
+}}
 
 \item{clientRequestToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
+
+\item{configurationValues}{The set of configuration values for the add-on that's created. The
+values that you provide are validated against the schema in
+\code{\link[=eks_describe_addon_configuration]{describe_addon_configuration}}.}
 }
 \description{
 Updates an Amazon EKS add-on.

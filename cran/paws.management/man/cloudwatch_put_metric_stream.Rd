@@ -12,7 +12,8 @@ cloudwatch_put_metric_stream(
   RoleArn,
   OutputFormat,
   Tags = NULL,
-  StatisticsConfigurations = NULL
+  StatisticsConfigurations = NULL,
+  IncludeLinkedAccountsMetrics = NULL
 )
 }
 \arguments{
@@ -37,14 +38,14 @@ namespaces except for the namespaces that you specify here.
 You cannot include \code{ExcludeFilters} and \code{IncludeFilters} in the same
 operation.}
 
-\item{FirehoseArn}{[required] The ARN of the Amazon Kinesis Firehose delivery stream to use for this
-metric stream. This Amazon Kinesis Firehose delivery stream must already
-exist and must be in the same account as the metric stream.}
+\item{FirehoseArn}{[required] The ARN of the Amazon Kinesis Data Firehose delivery stream to use for
+this metric stream. This Amazon Kinesis Data Firehose delivery stream
+must already exist and must be in the same account as the metric stream.}
 
 \item{RoleArn}{[required] The ARN of an IAM role that this metric stream will use to access Amazon
-Kinesis Firehose resources. This IAM role must already exist and must be
-in the same account as the metric stream. This IAM role must include the
-following permissions:
+Kinesis Data Firehose resources. This IAM role must already exist and
+must be in the same account as the metric stream. This IAM role must
+include the following permissions:
 \itemize{
 \item firehose:PutRecord
 \item firehose:PutRecordBatch
@@ -80,10 +81,13 @@ additional statistics that you can stream depend on the stream's
 additional statistic that is supported by CloudWatch, listed in
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/}{CloudWatch statistics definitions}.
 If the \code{OutputFormat} is \code{opentelemetry0.7}, you can stream percentile
-statistics such as p95, p99.9 and so on.}
+statistics such as p95, p99.9, and so on.}
+
+\item{IncludeLinkedAccountsMetrics}{If you are creating a metric stream in a monitoring account, specify
+\code{true} to include metrics from source accounts in the metric stream.}
 }
 \description{
-Creates or updates a metric stream. Metric streams can automatically stream CloudWatch metrics to Amazon Web Services destinations including Amazon S3 and to many third-party solutions.
+Creates or updates a metric stream. Metric streams can automatically stream CloudWatch metrics to Amazon Web Services destinations, including Amazon S3, and to many third-party solutions.
 
 See \url{https://paws-r.github.io/docs/cloudwatch/put_metric_stream.html} for full documentation.
 }

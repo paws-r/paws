@@ -16,7 +16,9 @@ eventbridge_create_connection(
 
 \item{Description}{A description for the connection to create.}
 
-\item{AuthorizationType}{[required] The type of authorization to use for the connection.}
+\item{AuthorizationType}{[required] The type of authorization to use for the connection.
+
+OAUTH tokens are refreshed when a 401 or 407 response is returned.}
 
 \item{AuthParameters}{[required] A \code{CreateConnectionAuthRequestParameters} object that contains the
 authorization parameters to use to authorize with the endpoint.}

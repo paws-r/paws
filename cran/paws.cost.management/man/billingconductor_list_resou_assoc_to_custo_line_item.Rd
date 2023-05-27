@@ -2,7 +2,7 @@
 % Please edit documentation in R/billingconductor_operations.R
 \name{billingconductor_list_resources_associated_to_custom_line_item}
 \alias{billingconductor_list_resources_associated_to_custom_line_item}
-\title{List the resources associated to a custom line item}
+\title{List the resources that are associated to a custom line item}
 \usage{
 billingconductor_list_resources_associated_to_custom_line_item(
   BillingPeriod = NULL,
@@ -20,13 +20,13 @@ be listed.}
 
 \item{MaxResults}{(Optional) The maximum number of resource associations to be retrieved.}
 
-\item{NextToken}{(Optional) The pagination token returned by a previous request.}
+\item{NextToken}{(Optional) The pagination token that's returned by a previous request.}
 
 \item{Filters}{(Optional) A \code{ListResourcesAssociatedToCustomLineItemFilter} that can
 specify the types of resources that should be retrieved.}
 }
 \description{
-List the resources associated to a custom line item.
+List the resources that are associated to a custom line item.
 
 See \url{https://paws-r.github.io/docs/billingconductor/list_resources_associated_to_custom_line_item.html} for full documentation.
 }

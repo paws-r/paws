@@ -89,10 +89,9 @@ health_describe_affected_accounts_for_organization <- function(eventArn, nextTok
 #' Returns a list of entities that have been affected by the specified
 #' events, based on the specified filter criteria. Entities can refer to
 #' individual customer resources, groups of customer resources, or any
-#' other construct, depending on the Amazon Web Services service. Events
-#' that have impact beyond that of the affected entities, or where the
-#' extent of impact is unknown, include at least one entity indicating
-#' this.
+#' other construct, depending on the Amazon Web Service. Events that have
+#' impact beyond that of the affected entities, or where the extent of
+#' impact is unknown, include at least one entity indicating this.
 #' 
 #' At least one event ARN is required.
 #' 
@@ -213,7 +212,7 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
 #' for one or more accounts in your organization in Organizations, based on
 #' the filter criteria. Entities can refer to individual customer
 #' resources, groups of customer resources, or any other construct,
-#' depending on the Amazon Web Services service.
+#' depending on the Amazon Web Service.
 #' 
 #' At least one event Amazon Resource Name (ARN) and account ID are
 #' required.
@@ -751,8 +750,8 @@ health_describe_event_details_for_organization <- function(organizationEventDeta
 #' @description
 #' Returns the event types that meet the specified filter criteria. You can
 #' use this API operation to find information about the Health event, such
-#' as the category, Amazon Web Services service, and event code. The
-#' metadata for each event appears in the
+#' as the category, Amazon Web Service, and event code. The metadata for
+#' each event appears in the
 #' [EventType](https://docs.aws.amazon.com/health/latest/APIReference/API_EventType.html)
 #' object.
 #' 
@@ -775,6 +774,9 @@ health_describe_event_details_for_organization <- function(organizationEventDeta
 #' returned, the response does not contain a pagination token value.
 #' @param maxResults The maximum number of items to return in one batch, between 10 and 100,
 #' inclusive.
+#' 
+#' If you don't specify the `maxResults` parameter, this operation returns
+#' a maximum of 30 items by default.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1161,8 +1163,7 @@ health_describe_events_for_organization <- function(filter = NULL, nextToken = N
 #' @description
 #' This operation provides status information on enabling or disabling
 #' Health to work with your organization. To call this operation, you must
-#' sign in as an IAM user, assume an IAM role, or sign in as the root user
-#' (not recommended) in the organization's management account.
+#' use the organization's management account.
 #'
 #' @usage
 #' health_describe_health_service_status_for_organization()
@@ -1205,10 +1206,8 @@ health_describe_health_service_status_for_organization <- function() {
 #'
 #' @description
 #' Disables Health from working with Organizations. To call this operation,
-#' you must sign in as an Identity and Access Management (IAM) user, assume
-#' an IAM role, or sign in as the root user (not recommended) in the
-#' organization's management account. For more information, see
-#' [Aggregating Health
+#' you must sign in to the organization's management account. For more
+#' information, see [Aggregating Health
 #' events](https://docs.aws.amazon.com/health/latest/ug/aggregate-events.html)
 #' in the *Health User Guide*.
 #' 

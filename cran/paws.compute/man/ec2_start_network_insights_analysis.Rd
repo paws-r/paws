@@ -6,6 +6,7 @@
 \usage{
 ec2_start_network_insights_analysis(
   NetworkInsightsPathId,
+  AdditionalAccounts = NULL,
   FilterInArns = NULL,
   DryRun = NULL,
   TagSpecifications = NULL,
@@ -14,6 +15,8 @@ ec2_start_network_insights_analysis(
 }
 \arguments{
 \item{NetworkInsightsPathId}{[required] The ID of the path.}
+
+\item{AdditionalAccounts}{The member accounts that contain resources that the path can traverse.}
 
 \item{FilterInArns}{The Amazon Resource Names (ARN) of the resources that the path must
 traverse.}

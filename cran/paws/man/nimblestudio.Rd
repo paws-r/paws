@@ -68,7 +68,7 @@ within a scalable, private cloud service.
 \link[paws.end.user.computing:nimblestudio_create_streaming_image]{create_streaming_image} \tab Creates a streaming image resource in a studio\cr
 \link[paws.end.user.computing:nimblestudio_create_streaming_session]{create_streaming_session} \tab Creates a streaming session in a studio\cr
 \link[paws.end.user.computing:nimblestudio_create_streaming_session_stream]{create_streaming_session_stream} \tab Creates a streaming session stream for a streaming session\cr
-\link[paws.end.user.computing:nimblestudio_create_studio]{create_studio} \tab Create a new Studio\cr
+\link[paws.end.user.computing:nimblestudio_create_studio]{create_studio} \tab Create a new studio\cr
 \link[paws.end.user.computing:nimblestudio_create_studio_component]{create_studio_component} \tab Creates a studio component resource\cr
 \link[paws.end.user.computing:nimblestudio_delete_launch_profile]{delete_launch_profile} \tab Permanently delete a launch profile\cr
 \link[paws.end.user.computing:nimblestudio_delete_launch_profile_member]{delete_launch_profile_member} \tab Delete a user from launch profile membership\cr
@@ -77,31 +77,33 @@ within a scalable, private cloud service.
 \link[paws.end.user.computing:nimblestudio_delete_studio]{delete_studio} \tab Delete a studio resource\cr
 \link[paws.end.user.computing:nimblestudio_delete_studio_component]{delete_studio_component} \tab Deletes a studio component resource\cr
 \link[paws.end.user.computing:nimblestudio_delete_studio_member]{delete_studio_member} \tab Delete a user from studio membership\cr
-\link[paws.end.user.computing:nimblestudio_get_eula]{get_eula} \tab Get Eula\cr
+\link[paws.end.user.computing:nimblestudio_get_eula]{get_eula} \tab Get EULA\cr
 \link[paws.end.user.computing:nimblestudio_get_launch_profile]{get_launch_profile} \tab Get a launch profile\cr
 \link[paws.end.user.computing:nimblestudio_get_launch_profile_details]{get_launch_profile_details} \tab Launch profile details include the launch profile resource and summary information of resources that are used by, or available to, the launch profile\cr
 \link[paws.end.user.computing:nimblestudio_get_launch_profile_initialization]{get_launch_profile_initialization} \tab Get a launch profile initialization\cr
 \link[paws.end.user.computing:nimblestudio_get_launch_profile_member]{get_launch_profile_member} \tab Get a user persona in launch profile membership\cr
 \link[paws.end.user.computing:nimblestudio_get_streaming_image]{get_streaming_image} \tab Get streaming image\cr
 \link[paws.end.user.computing:nimblestudio_get_streaming_session]{get_streaming_session} \tab Gets StreamingSession resource\cr
+\link[paws.end.user.computing:nimblestudio_get_streaming_session_backup]{get_streaming_session_backup} \tab Gets StreamingSessionBackup resource\cr
 \link[paws.end.user.computing:nimblestudio_get_streaming_session_stream]{get_streaming_session_stream} \tab Gets a StreamingSessionStream for a streaming session\cr
-\link[paws.end.user.computing:nimblestudio_get_studio]{get_studio} \tab Get a Studio resource\cr
+\link[paws.end.user.computing:nimblestudio_get_studio]{get_studio} \tab Get a studio resource\cr
 \link[paws.end.user.computing:nimblestudio_get_studio_component]{get_studio_component} \tab Gets a studio component resource\cr
 \link[paws.end.user.computing:nimblestudio_get_studio_member]{get_studio_member} \tab Get a user's membership in a studio\cr
-\link[paws.end.user.computing:nimblestudio_list_eula_acceptances]{list_eula_acceptances} \tab List Eula Acceptances\cr
-\link[paws.end.user.computing:nimblestudio_list_eulas]{list_eulas} \tab List Eulas\cr
+\link[paws.end.user.computing:nimblestudio_list_eula_acceptances]{list_eula_acceptances} \tab List EULA acceptances\cr
+\link[paws.end.user.computing:nimblestudio_list_eulas]{list_eulas} \tab List EULAs\cr
 \link[paws.end.user.computing:nimblestudio_list_launch_profile_members]{list_launch_profile_members} \tab Get all users in a given launch profile membership\cr
 \link[paws.end.user.computing:nimblestudio_list_launch_profiles]{list_launch_profiles} \tab List all the launch profiles a studio\cr
 \link[paws.end.user.computing:nimblestudio_list_streaming_images]{list_streaming_images} \tab List the streaming image resources available to this studio\cr
+\link[paws.end.user.computing:nimblestudio_list_streaming_session_backups]{list_streaming_session_backups} \tab Lists the backups of a streaming session in a studio\cr
 \link[paws.end.user.computing:nimblestudio_list_streaming_sessions]{list_streaming_sessions} \tab Lists the streaming sessions in a studio\cr
 \link[paws.end.user.computing:nimblestudio_list_studio_components]{list_studio_components} \tab Lists the StudioComponents in a studio\cr
 \link[paws.end.user.computing:nimblestudio_list_studio_members]{list_studio_members} \tab Get all users in a given studio membership\cr
-\link[paws.end.user.computing:nimblestudio_list_studios]{list_studios} \tab List studios in your Amazon Web Services account in the requested Amazon Web Services Region\cr
+\link[paws.end.user.computing:nimblestudio_list_studios]{list_studios} \tab List studios in your Amazon Web Services accounts in the requested Amazon Web Services Region\cr
 \link[paws.end.user.computing:nimblestudio_list_tags_for_resource]{list_tags_for_resource} \tab Gets the tags for a resource, given its Amazon Resource Names (ARN)\cr
 \link[paws.end.user.computing:nimblestudio_put_launch_profile_members]{put_launch_profile_members} \tab Add/update users with given persona to launch profile membership\cr
 \link[paws.end.user.computing:nimblestudio_put_studio_members]{put_studio_members} \tab Add/update users with given persona to studio membership\cr
 \link[paws.end.user.computing:nimblestudio_start_streaming_session]{start_streaming_session} \tab Transitions sessions from the STOPPED state into the READY state\cr
-\link[paws.end.user.computing:nimblestudio_start_studio_sso_configuration_repair]{start_studio_sso_configuration_repair} \tab Repairs the Amazon Web Services SSO configuration for a given studio\cr
+\link[paws.end.user.computing:nimblestudio_start_studio_sso_configuration_repair]{start_studio_sso_configuration_repair} \tab Repairs the IAM Identity Center configuration for a given studio\cr
 \link[paws.end.user.computing:nimblestudio_stop_streaming_session]{stop_streaming_session} \tab Transitions sessions from the READY state into the STOPPED state\cr
 \link[paws.end.user.computing:nimblestudio_tag_resource]{tag_resource} \tab Creates tags for a resource, given its ARN\cr
 \link[paws.end.user.computing:nimblestudio_untag_resource]{untag_resource} \tab Deletes the tags for a resource\cr

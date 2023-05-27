@@ -34,6 +34,7 @@ component that specifies its namespace depends on its type. For example:
 \item Python and NuGet package versions do not contain a corresponding
 component, package versions of those formats do not have a
 namespace.
+\item The namespace of a generic package is its \code{namespace}.
 }}
 
 \item{package}{[required] The name of the requested package version.}

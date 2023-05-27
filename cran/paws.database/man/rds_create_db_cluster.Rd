@@ -50,6 +50,10 @@ rds_create_db_cluster(
   PerformanceInsightsKMSKeyId = NULL,
   PerformanceInsightsRetentionPeriod = NULL,
   ServerlessV2ScalingConfiguration = NULL,
+  NetworkType = NULL,
+  DBSystemId = NULL,
+  ManageMasterUserPassword = NULL,
+  MasterUserSecretKmsKeyId = NULL,
   SourceRegion = NULL
 )
 }
@@ -130,9 +134,7 @@ Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 Valid Values:
 \itemize{
-\item \code{aurora} (for MySQL 5.6-compatible Aurora)
-\item \code{aurora-mysql} (for MySQL 5.7-compatible and MySQL 8.0-compatible
-Aurora)
+\item \code{aurora-mysql}
 \item \code{aurora-postgresql}
 \item \code{mysql}
 \item \code{postgres}
@@ -142,15 +144,14 @@ Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{EngineVersion}{The version number of the database engine to use.
 
-To list all of the available engine versions for MySQL 5.6-compatible
-Aurora, use the following command:
-
-\verb{aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"}
-
-To list all of the available engine versions for MySQL 5.7-compatible
-and MySQL 8.0-compatible Aurora, use the following command:
+To list all of the available engine versions for Aurora MySQL version 2
+(5.7-compatible) and version 3 (MySQL 8.0-compatible), use the following
+command:
 
 \verb{aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"}
+
+You can supply either \code{5.7} or \code{8.0} to use the default engine version
+for Aurora MySQL version 2 or version 3, respectively.
 
 To list all of the available engine versions for Aurora PostgreSQL, use
 the following command:
@@ -169,7 +170,7 @@ the following command:
 
 \strong{Aurora MySQL}
 
-For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html}{MySQL on Amazon RDS Versions}
+For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html}{Database engine updates for Amazon Aurora MySQL}
 in the \emph{Amazon Aurora User Guide}.
 
 \strong{Aurora PostgreSQL}
@@ -179,12 +180,12 @@ in the \emph{Amazon Aurora User Guide}.
 
 \strong{MySQL}
 
-For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html#MySQL.Concepts.VersionMgmt}{MySQL on Amazon RDS Versions}
+For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html#MySQL.Concepts.VersionMgmt}{Amazon RDS for MySQL}
 in the \emph{Amazon RDS User Guide}.
 
 \strong{PostgreSQL}
 
-For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts}{Amazon RDS for PostgreSQL versions and extensions}
+For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts}{Amazon RDS for PostgreSQL}
 in the \emph{Amazon RDS User Guide}.
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
@@ -220,7 +221,11 @@ Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 \item{MasterUserPassword}{The password for the master database user. This password can contain any
 printable ASCII character except "/", """, or "@".
 
-Constraints: Must contain from 8 to 41 characters.
+Constraints:
+\itemize{
+\item Must contain from 8 to 41 characters.
+\item Can't be specified if \code{ManageMasterUserPassword} is turned on.
+}
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
@@ -268,7 +273,7 @@ Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 \item{ReplicationSourceIdentifier}{The Amazon Resource Name (ARN) of the source DB instance or DB cluster
 if this DB cluster is created as a read replica.
 
-Valid for: Aurora DB clusters only}
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{Tags}{Tags to assign to the DB cluster.
 
@@ -340,7 +345,7 @@ the us-west-2 Amazon Web Services Region, then your
 
 To learn how to generate a Signature Version 4 signed request, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (Amazon Web Services Signature Version 4)}
-and \href{https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html}{Signature Version 4 Signing Process}.
+and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html}{Signature Version 4 Signing Process}.
 
 If you are using an Amazon Web Services SDK tool or the CLI, you can
 specify \code{SourceRegion} (or \code{--source-region} for the CLI) instead of
@@ -405,35 +410,17 @@ in the \emph{Amazon Aurora User Guide}.
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
-\item{EngineMode}{The DB engine mode of the DB cluster, either \code{provisioned},
-\code{serverless}, \code{parallelquery}, \code{global}, or \code{multimaster}.
-
-The \code{parallelquery} engine mode isn't required for Aurora MySQL version
-1.23 and higher 1.x versions, and version 2.09 and higher 2.x versions.
-
-The \code{global} engine mode isn't required for Aurora MySQL version 1.22
-and higher 1.x versions, and \code{global} engine mode isn't required for any
-2.x versions.
-
-The \code{multimaster} engine mode only applies for DB clusters created with
-Aurora MySQL version 5.6.10a.
+\item{EngineMode}{The DB engine mode of the DB cluster, either \code{provisioned} or
+\code{serverless}.
 
 The \code{serverless} engine mode only applies for Aurora Serverless v1 DB
 clusters.
 
-For Aurora PostgreSQL, the \code{global} engine mode isn't required, and both
-the \code{parallelquery} and the \code{multimaster} engine modes currently aren't
-supported.
-
-Limitations and requirements apply to some DB engine modes. For more
-information, see the following sections in the \emph{Amazon Aurora User
-Guide}:
+For information about limitations and requirements for Serverless DB
+clusters, see the following sections in the \emph{Amazon Aurora User Guide}:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html#aurora-serverless.limitations}{Limitations of Aurora Serverless v1}
 \item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless-v2.requirements.html}{Requirements for Aurora Serverless v2}
-\item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-mysql-parallel-query.html#aurora-mysql-parallel-query-limitations}{Limitations of Parallel Query}
-\item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations}{Limitations of Aurora Global Databases}
-\item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Replication.html#aurora-multi-master-limitations}{Limitations of Multi-Master Clusters}
 }
 
 Valid for: Aurora DB clusters only}
@@ -504,7 +491,7 @@ but it does nothing until then.
 Valid for: Aurora DB clusters only}
 
 \item{DBClusterInstanceClass}{The compute and memory capacity of each DB instance in the Multi-AZ DB
-cluster, for example db.m6g.xlarge. Not all DB instance classes are
+cluster, for example db.m6gd.xlarge. Not all DB instance classes are
 available in all Amazon Web Services Regions, or for all database
 engines.
 
@@ -527,18 +514,20 @@ Valid for: Multi-AZ DB clusters only}
 
 This setting is required to create a Multi-AZ DB cluster.
 
-Valid values: \code{io1}
+When specified for a Multi-AZ DB cluster, a value for the \code{Iops}
+parameter is required.
 
-When specified, a value for the \code{Iops} parameter is required.
+Valid values: \code{aurora}, \code{aurora-iopt1} (Aurora DB clusters); \code{io1}
+(Multi-AZ DB clusters)
 
-Default: \code{io1}
+Default: \code{aurora} (Aurora DB clusters); \code{io1} (Multi-AZ DB clusters)
 
-Valid for: Multi-AZ DB clusters only}
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{Iops}{The amount of Provisioned IOPS (input/output operations per second) to
 be initially allocated for each DB instance in the Multi-AZ DB cluster.
 
-For information about valid \code{Iops} values, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS storage to improve performance}
+For information about valid IOPS values, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Provisioned IOPS storage}
 in the \emph{Amazon RDS User Guide}.
 
 This setting is required to create a Multi-AZ DB cluster.
@@ -655,6 +644,63 @@ RDS issues an error.
 Valid for: Multi-AZ DB clusters only}
 
 \item{ServerlessV2ScalingConfiguration}{}
+
+\item{NetworkType}{The network type of the DB cluster.
+
+Valid values:
+\itemize{
+\item \code{IPV4}
+\item \code{DUAL}
+}
+
+The network type is determined by the \code{DBSubnetGroup} specified for the
+DB cluster. A \code{DBSubnetGroup} can support only the IPv4 protocol or the
+IPv4 and the IPv6 protocols (\code{DUAL}).
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
+in the \emph{Amazon Aurora User Guide.}
+
+Valid for: Aurora DB clusters only}
+
+\item{DBSystemId}{Reserved for future use.}
+
+\item{ManageMasterUserPassword}{A value that indicates whether to manage the master user password with
+Amazon Web Services Secrets Manager.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html}{Password management with Amazon Web Services Secrets Manager}
+in the \emph{Amazon RDS User Guide} and \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/rds-secrets-manager.html}{Password management with Amazon Web Services Secrets Manager}
+in the \emph{Amazon Aurora User Guide.}
+
+Constraints:
+\itemize{
+\item Can't manage the master user password with Amazon Web Services
+Secrets Manager if \code{MasterUserPassword} is specified.
+}
+
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+
+\item{MasterUserSecretKmsKeyId}{The Amazon Web Services KMS key identifier to encrypt a secret that is
+automatically generated and managed in Amazon Web Services Secrets
+Manager.
+
+This setting is valid only if the master user password is managed by RDS
+in Amazon Web Services Secrets Manager for the DB cluster.
+
+The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+ARN, or alias name for the KMS key. To use a KMS key in a different
+Amazon Web Services account, specify the key ARN or alias ARN.
+
+If you don't specify \code{MasterUserSecretKmsKeyId}, then the
+\code{aws/secretsmanager} KMS key is used to encrypt the secret. If the
+secret is in a different Amazon Web Services account, then you can't use
+the \code{aws/secretsmanager} KMS key to encrypt the secret, and you must use
+a customer managed KMS key.
+
+There is a default KMS key for your Amazon Web Services account. Your
+Amazon Web Services account has a different default KMS key for each
+Amazon Web Services Region.
+
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }

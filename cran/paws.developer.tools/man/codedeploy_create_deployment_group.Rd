@@ -26,13 +26,13 @@ codedeploy_create_deployment_group(
 )
 }
 \arguments{
-\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the IAM user
-or AWS account.}
+\item{applicationName}{[required] The name of an CodeDeploy application associated with the IAM user or
+Amazon Web Services account.}
 
 \item{deploymentGroupName}{[required] The name of a new deployment group for the specified application.}
 
 \item{deploymentConfigName}{If specified, the deployment configuration name can be either one of the
-predefined configurations provided with AWS CodeDeploy or a custom
+predefined configurations provided with CodeDeploy or a custom
 deployment configuration that you create by calling the create
 deployment configuration operation.
 
@@ -41,12 +41,12 @@ It is used if a configuration isn't specified for the deployment or
 deployment group.
 
 For more information about the predefined deployment configurations in
-AWS CodeDeploy, see \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html}{Working with Deployment Configurations in CodeDeploy}
-in the \emph{AWS CodeDeploy User Guide}.}
+CodeDeploy, see \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html}{Working with Deployment Configurations in CodeDeploy}
+in the \emph{CodeDeploy User Guide}.}
 
 \item{ec2TagFilters}{The Amazon EC2 tags on which to filter. The deployment group includes
-EC2 instances with any of the specified tags. Cannot be used in the same
-call as ec2TagSet.}
+Amazon EC2 instances with any of the specified tags. Cannot be used in
+the same call as ec2TagSet.}
 
 \item{onPremisesInstanceTagFilters}{The on-premises instance tags on which to filter. The deployment group
 includes on-premises instances with any of the specified tags. Cannot be
@@ -54,12 +54,12 @@ used in the same call as \code{OnPremisesTagSet}.}
 
 \item{autoScalingGroups}{A list of associated Amazon EC2 Auto Scaling groups.}
 
-\item{serviceRoleArn}{[required] A service role Amazon Resource Name (ARN) that allows AWS CodeDeploy to
-act on the user's behalf when interacting with AWS services.}
+\item{serviceRoleArn}{[required] A service role Amazon Resource Name (ARN) that allows CodeDeploy to act
+on the user's behalf when interacting with Amazon Web Services services.}
 
 \item{triggerConfigurations}{Information about triggers to create when the deployment group is
-created. For examples, see \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-create-trigger.html}{Create a Trigger for an AWS CodeDeploy Event}
-in the \emph{AWS CodeDeploy User Guide}.}
+created. For examples, see \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-create-trigger.html}{Create a Trigger for an CodeDeploy Event}
+in the \emph{CodeDeploy User Guide}.}
 
 \item{alarmConfiguration}{Information to add about Amazon CloudWatch alarms when the deployment
 group is created.}
@@ -67,16 +67,16 @@ group is created.}
 \item{autoRollbackConfiguration}{Configuration information for an automatic rollback that is added when a
 deployment group is created.}
 
-\item{outdatedInstancesStrategy}{Indicates what happens when new EC2 instances are launched
+\item{outdatedInstancesStrategy}{Indicates what happens when new Amazon EC2 instances are launched
 mid-deployment and do not receive the deployed application revision.
 
 If this option is set to \code{UPDATE} or is unspecified, CodeDeploy
 initiates one or more 'auto-update outdated instances' deployments to
-apply the deployed application revision to the new EC2 instances.
+apply the deployed application revision to the new Amazon EC2 instances.
 
 If this option is set to \code{IGNORE}, CodeDeploy does not initiate a
-deployment to update the new EC2 instances. This may result in instances
-having different revisions.}
+deployment to update the new Amazon EC2 instances. This may result in
+instances having different revisions.}
 
 \item{deploymentStyle}{Information about the type of deployment, in-place or blue/green, that
 you want to run and whether to route deployment traffic behind a load
@@ -86,9 +86,9 @@ balancer.}
 
 \item{loadBalancerInfo}{Information about the load balancer used in a deployment.}
 
-\item{ec2TagSet}{Information about groups of tags applied to EC2 instances. The
-deployment group includes only EC2 instances identified by all the tag
-groups. Cannot be used in the same call as \code{ec2TagFilters}.}
+\item{ec2TagSet}{Information about groups of tags applied to Amazon EC2 instances. The
+deployment group includes only Amazon EC2 instances identified by all
+the tag groups. Cannot be used in the same call as \code{ec2TagFilters}.}
 
 \item{ecsServices}{The target Amazon ECS services in the deployment group. This applies
 only to deployment groups that use the Amazon ECS compute platform. A

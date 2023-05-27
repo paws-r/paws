@@ -2,18 +2,19 @@
 % Please edit documentation in R/resiliencehub_operations.R
 \name{resiliencehub_describe_app}
 \alias{resiliencehub_describe_app}
-\title{Describes an AWS Resilience Hub application}
+\title{Describes an Resilience Hub application}
 \usage{
 resiliencehub_describe_app(appArn)
 }
 \arguments{
-\item{appArn}{[required] The Amazon Resource Name (ARN) of the application. The format for this
-ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}.
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference}.}
+\item{appArn}{[required] The Amazon Resource Name (ARN) of the Resilience Hub application. The
+format for this ARN is:
+arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
+information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
+in the \emph{AWS General Reference} guide.}
 }
 \description{
-Describes an AWS Resilience Hub application.
+Describes an Resilience Hub application.
 
 See \url{https://paws-r.github.io/docs/resiliencehub/describe_app.html} for full documentation.
 }

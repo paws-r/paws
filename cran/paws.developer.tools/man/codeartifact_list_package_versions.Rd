@@ -28,7 +28,7 @@ the domain. It does not include dashes or spaces.}
 
 \item{repository}{[required] The name of the repository that contains the requested package versions.}
 
-\item{format}{[required] The format of the returned package versions.}
+\item{format}{[required] The format of the package versions you want to list.}
 
 \item{namespace}{The namespace of the package that contains the requested package
 versions. The package component that specifies its namespace depends on
@@ -38,6 +38,7 @@ its type. For example:
 \item The namespace of an npm package is its \code{scope}.
 \item Python and NuGet packages do not contain a corresponding component,
 packages of those formats do not have a namespace.
+\item The namespace of a generic package is its \code{namespace}.
 }}
 
 \item{package}{[required] The name of the package for which you want to request package versions.}
@@ -56,7 +57,7 @@ results.}
 with the provided \code{originType} will be returned.}
 }
 \description{
-Returns a list of \href{https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionSummary.html}{PackageVersionSummary} objects for package versions in a repository that match the request parameters.
+Returns a list of \href{https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionSummary.html}{PackageVersionSummary} objects for package versions in a repository that match the request parameters. Package versions of all statuses will be returned by default when calling \code{list-package-versions} with no \code{--status} parameter.
 
 See \url{https://paws-r.github.io/docs/codeartifact/list_package_versions.html} for full documentation.
 }

@@ -119,7 +119,7 @@ queries), or both.
 \link[paws.networking:route53resolver_get_firewall_rule_group]{get_firewall_rule_group} \tab Retrieves the specified firewall rule group\cr
 \link[paws.networking:route53resolver_get_firewall_rule_group_association]{get_firewall_rule_group_association} \tab Retrieves a firewall rule group association, which enables DNS filtering for a VPC with one rule group\cr
 \link[paws.networking:route53resolver_get_firewall_rule_group_policy]{get_firewall_rule_group_policy} \tab Returns the Identity and Access Management (Amazon Web Services IAM) policy for sharing the specified rule group\cr
-\link[paws.networking:route53resolver_get_resolver_config]{get_resolver_config} \tab Retrieves the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud\cr
+\link[paws.networking:route53resolver_get_resolver_config]{get_resolver_config} \tab Retrieves the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud\cr
 \link[paws.networking:route53resolver_get_resolver_dnssec_config]{get_resolver_dnssec_config} \tab Gets DNSSEC validation information for a specified resource\cr
 \link[paws.networking:route53resolver_get_resolver_endpoint]{get_resolver_endpoint} \tab Gets information about a specified Resolver endpoint, such as whether it's an inbound or an outbound Resolver endpoint, and the current status of the endpoint\cr
 \link[paws.networking:route53resolver_get_resolver_query_log_config]{get_resolver_query_log_config} \tab Gets information about a specified Resolver query logging configuration, such as the number of VPCs that the configuration is logging queries for and the location that logs are sent to\cr
@@ -153,9 +153,9 @@ queries), or both.
 \link[paws.networking:route53resolver_update_firewall_domains]{update_firewall_domains} \tab Updates the firewall domain list from an array of domain specifications\cr
 \link[paws.networking:route53resolver_update_firewall_rule]{update_firewall_rule} \tab Updates the specified firewall rule\cr
 \link[paws.networking:route53resolver_update_firewall_rule_group_association]{update_firewall_rule_group_association} \tab Changes the association of a FirewallRuleGroup with a VPC\cr
-\link[paws.networking:route53resolver_update_resolver_config]{update_resolver_config} \tab Updates the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud\cr
+\link[paws.networking:route53resolver_update_resolver_config]{update_resolver_config} \tab Updates the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud\cr
 \link[paws.networking:route53resolver_update_resolver_dnssec_config]{update_resolver_dnssec_config} \tab Updates an existing DNSSEC validation configuration\cr
-\link[paws.networking:route53resolver_update_resolver_endpoint]{update_resolver_endpoint} \tab Updates the name of an inbound or an outbound Resolver endpoint\cr
+\link[paws.networking:route53resolver_update_resolver_endpoint]{update_resolver_endpoint} \tab Updates the name, or enpoint type for an inbound or an outbound Resolver endpoint\cr
 \link[paws.networking:route53resolver_update_resolver_rule]{update_resolver_rule} \tab Updates settings for a specified Resolver rule
 }
 }

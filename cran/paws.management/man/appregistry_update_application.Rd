@@ -7,7 +7,7 @@
 appregistry_update_application(application, name = NULL, description = NULL)
 }
 \arguments{
-\item{application}{[required] The name or ID of the application that will be updated.}
+\item{application}{[required] The name, ID, or ARN of the application that will be updated.}
 
 \item{name}{Deprecated: The new name of the application. The name must be unique in
 the region in which you are updating the application. Please do not use

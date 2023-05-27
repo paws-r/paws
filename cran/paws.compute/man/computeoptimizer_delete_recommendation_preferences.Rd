@@ -29,11 +29,7 @@ organization level (for management accounts of an organization only),
 account level, and resource level. For more information, see \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/enhanced-infrastructure-metrics.html}{Activating enhanced infrastructure metrics}
 in the \emph{Compute Optimizer User Guide}.}
 
-\item{recommendationPreferenceNames}{[required] The name of the recommendation preference to delete.
-
-Enhanced infrastructure metrics (\code{EnhancedInfrastructureMetrics}) is the
-only feature that can be activated through preferences. Therefore, it is
-also the only recommendation preference that can be deleted.}
+\item{recommendationPreferenceNames}{[required] The name of the recommendation preference to delete.}
 }
 \description{
 Deletes a recommendation preference, such as enhanced infrastructure metrics.

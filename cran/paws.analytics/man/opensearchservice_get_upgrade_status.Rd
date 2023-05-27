@@ -2,16 +2,16 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_get_upgrade_status}
 \alias{opensearchservice_get_upgrade_status}
-\title{Retrieves the latest status of the last upgrade or upgrade eligibility
-check performed on the domain}
+\title{Returns the most recent status of the last upgrade or upgrade
+eligibility check performed on an Amazon OpenSearch Service domain}
 \usage{
 opensearchservice_get_upgrade_status(DomainName)
 }
 \arguments{
-\item{DomainName}{[required]}
+\item{DomainName}{[required] The domain of the domain to get upgrade status information for.}
 }
 \description{
-Retrieves the latest status of the last upgrade or upgrade eligibility check performed on the domain.
+Returns the most recent status of the last upgrade or upgrade eligibility check performed on an Amazon OpenSearch Service domain.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/get_upgrade_status.html} for full documentation.
 }

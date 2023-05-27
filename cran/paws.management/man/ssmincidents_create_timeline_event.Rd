@@ -8,27 +8,36 @@ incident record}
 ssmincidents_create_timeline_event(
   clientToken = NULL,
   eventData,
+  eventReferences = NULL,
   eventTime,
   eventType,
   incidentRecordArn
 )
 }
 \arguments{
-\item{clientToken}{A token ensuring that the action is called only once with the specified
-details.}
+\item{clientToken}{A token that ensures that a client calls the action only once with the
+specified details.}
 
 \item{eventData}{[required] A short description of the event.}
 
+\item{eventReferences}{Adds one or more references to the \code{TimelineEvent}. A reference is an
+Amazon Web Services resource involved or associated with the incident.
+To specify a reference, enter its Amazon Resource Name (ARN). You can
+also specify a related item associated with a resource. For example, to
+specify an Amazon DynamoDB (DynamoDB) table as a resource, use the
+table's ARN. You can also specify an Amazon CloudWatch metric associated
+with the DynamoDB table as a related item.}
+
 \item{eventTime}{[required] The time that the event occurred.}
 
-\item{eventType}{[required] The type of the event. You can create timeline events of type
+\item{eventType}{[required] The type of event. You can create timeline events of type
 \verb{Custom Event}.}
 
-\item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident record to which the event
-will be added.}
+\item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident record that the action
+adds the incident to.}
 }
 \description{
-Creates a custom timeline event on the incident details page of an incident record. Timeline events are automatically created by Incident Manager, marking key moment during an incident. You can create custom timeline events to mark important events that are automatically detected by Incident Manager.
+Creates a custom timeline event on the incident details page of an incident record. Incident Manager automatically creates timeline events that mark key moments during an incident. You can create custom timeline events to mark important events that Incident Manager can detect automatically.
 
 See \url{https://paws-r.github.io/docs/ssmincidents/create_timeline_event.html} for full documentation.
 }

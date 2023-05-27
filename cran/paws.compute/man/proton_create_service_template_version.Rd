@@ -40,13 +40,13 @@ sources can be attached to service instances based on this service
 template version.
 
 For more information about components, see \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html}{Proton components}
-in the \emph{Proton Administrator Guide}.}
+in the \emph{Proton User Guide}.}
 
 \item{tags}{An optional list of metadata items that you can associate with the
 Proton service template version. A tag is a key-value pair.
 
-For more information, see \emph{Proton resources and tagging} in the \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton Administrator Guide}
-or \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton resources and tagging}
+in the \emph{Proton User Guide}.}
 
 \item{templateName}{[required] The name of the service template.}
 }

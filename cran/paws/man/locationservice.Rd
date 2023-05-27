@@ -68,16 +68,19 @@ and Geofencing"
 \link[paws.application.integration:locationservice_calculate_route]{calculate_route} \tab Calculates a route given the following required parameters: DeparturePosition and DestinationPosition\cr
 \link[paws.application.integration:locationservice_calculate_route_matrix]{calculate_route_matrix} \tab Calculates a route matrix given the following required parameters: DeparturePositions and DestinationPositions\cr
 \link[paws.application.integration:locationservice_create_geofence_collection]{create_geofence_collection} \tab Creates a geofence collection, which manages and stores geofences\cr
-\link[paws.application.integration:locationservice_create_map]{create_map} \tab Creates a map resource in your AWS account, which provides map tiles of different styles sourced from global location data providers\cr
-\link[paws.application.integration:locationservice_create_place_index]{create_place_index} \tab Creates a place index resource in your AWS account\cr
-\link[paws.application.integration:locationservice_create_route_calculator]{create_route_calculator} \tab Creates a route calculator resource in your AWS account\cr
-\link[paws.application.integration:locationservice_create_tracker]{create_tracker} \tab Creates a tracker resource in your AWS account, which lets you retrieve current and historical location of devices\cr
-\link[paws.application.integration:locationservice_delete_geofence_collection]{delete_geofence_collection} \tab Deletes a geofence collection from your AWS account\cr
-\link[paws.application.integration:locationservice_delete_map]{delete_map} \tab Deletes a map resource from your AWS account\cr
-\link[paws.application.integration:locationservice_delete_place_index]{delete_place_index} \tab Deletes a place index resource from your AWS account\cr
-\link[paws.application.integration:locationservice_delete_route_calculator]{delete_route_calculator} \tab Deletes a route calculator resource from your AWS account\cr
-\link[paws.application.integration:locationservice_delete_tracker]{delete_tracker} \tab Deletes a tracker resource from your AWS account\cr
+\link[paws.application.integration:locationservice_create_key]{create_key} \tab Creates an API key resource in your Amazon Web Services account, which lets you grant geo:GetMap* actions for Amazon Location Map resources to the API key bearer\cr
+\link[paws.application.integration:locationservice_create_map]{create_map} \tab Creates a map resource in your Amazon Web Services account, which provides map tiles of different styles sourced from global location data providers\cr
+\link[paws.application.integration:locationservice_create_place_index]{create_place_index} \tab Creates a place index resource in your Amazon Web Services account\cr
+\link[paws.application.integration:locationservice_create_route_calculator]{create_route_calculator} \tab Creates a route calculator resource in your Amazon Web Services account\cr
+\link[paws.application.integration:locationservice_create_tracker]{create_tracker} \tab Creates a tracker resource in your Amazon Web Services account, which lets you retrieve current and historical location of devices\cr
+\link[paws.application.integration:locationservice_delete_geofence_collection]{delete_geofence_collection} \tab Deletes a geofence collection from your Amazon Web Services account\cr
+\link[paws.application.integration:locationservice_delete_key]{delete_key} \tab Deletes the specified API key\cr
+\link[paws.application.integration:locationservice_delete_map]{delete_map} \tab Deletes a map resource from your Amazon Web Services account\cr
+\link[paws.application.integration:locationservice_delete_place_index]{delete_place_index} \tab Deletes a place index resource from your Amazon Web Services account\cr
+\link[paws.application.integration:locationservice_delete_route_calculator]{delete_route_calculator} \tab Deletes a route calculator resource from your Amazon Web Services account\cr
+\link[paws.application.integration:locationservice_delete_tracker]{delete_tracker} \tab Deletes a tracker resource from your Amazon Web Services account\cr
 \link[paws.application.integration:locationservice_describe_geofence_collection]{describe_geofence_collection} \tab Retrieves the geofence collection details\cr
+\link[paws.application.integration:locationservice_describe_key]{describe_key} \tab Retrieves the API key resource details\cr
 \link[paws.application.integration:locationservice_describe_map]{describe_map} \tab Retrieves the map resource details\cr
 \link[paws.application.integration:locationservice_describe_place_index]{describe_place_index} \tab Retrieves the place index resource details\cr
 \link[paws.application.integration:locationservice_describe_route_calculator]{describe_route_calculator} \tab Retrieves the route calculator resource details\cr
@@ -90,15 +93,17 @@ and Geofencing"
 \link[paws.application.integration:locationservice_get_map_sprites]{get_map_sprites} \tab Retrieves the sprite sheet corresponding to a map resource\cr
 \link[paws.application.integration:locationservice_get_map_style_descriptor]{get_map_style_descriptor} \tab Retrieves the map style descriptor from a map resource\cr
 \link[paws.application.integration:locationservice_get_map_tile]{get_map_tile} \tab Retrieves a vector data tile from the map resource\cr
+\link[paws.application.integration:locationservice_get_place]{get_place} \tab Finds a place by its unique ID\cr
 \link[paws.application.integration:locationservice_list_device_positions]{list_device_positions} \tab A batch request to retrieve all device positions\cr
-\link[paws.application.integration:locationservice_list_geofence_collections]{list_geofence_collections} \tab Lists geofence collections in your AWS account\cr
+\link[paws.application.integration:locationservice_list_geofence_collections]{list_geofence_collections} \tab Lists geofence collections in your Amazon Web Services account\cr
 \link[paws.application.integration:locationservice_list_geofences]{list_geofences} \tab Lists geofences stored in a given geofence collection\cr
-\link[paws.application.integration:locationservice_list_maps]{list_maps} \tab Lists map resources in your AWS account\cr
-\link[paws.application.integration:locationservice_list_place_indexes]{list_place_indexes} \tab Lists place index resources in your AWS account\cr
-\link[paws.application.integration:locationservice_list_route_calculators]{list_route_calculators} \tab Lists route calculator resources in your AWS account\cr
+\link[paws.application.integration:locationservice_list_keys]{list_keys} \tab Lists API key resources in your Amazon Web Services account\cr
+\link[paws.application.integration:locationservice_list_maps]{list_maps} \tab Lists map resources in your Amazon Web Services account\cr
+\link[paws.application.integration:locationservice_list_place_indexes]{list_place_indexes} \tab Lists place index resources in your Amazon Web Services account\cr
+\link[paws.application.integration:locationservice_list_route_calculators]{list_route_calculators} \tab Lists route calculator resources in your Amazon Web Services account\cr
 \link[paws.application.integration:locationservice_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags that are applied to the specified Amazon Location resource\cr
 \link[paws.application.integration:locationservice_list_tracker_consumers]{list_tracker_consumers} \tab Lists geofence collections currently associated to the given tracker resource\cr
-\link[paws.application.integration:locationservice_list_trackers]{list_trackers} \tab Lists tracker resources in your AWS account\cr
+\link[paws.application.integration:locationservice_list_trackers]{list_trackers} \tab Lists tracker resources in your Amazon Web Services account\cr
 \link[paws.application.integration:locationservice_put_geofence]{put_geofence} \tab Stores a geofence geometry in a given geofence collection, or updates the geometry of an existing geofence if a geofence ID is included in the request\cr
 \link[paws.application.integration:locationservice_search_place_index_for_position]{search_place_index_for_position} \tab Reverse geocodes a given coordinate and returns a legible address\cr
 \link[paws.application.integration:locationservice_search_place_index_for_suggestions]{search_place_index_for_suggestions} \tab Generates suggestions for addresses and points of interest based on partial or misspelled free-form text\cr
@@ -106,6 +111,7 @@ and Geofencing"
 \link[paws.application.integration:locationservice_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified Amazon Location Service resource\cr
 \link[paws.application.integration:locationservice_untag_resource]{untag_resource} \tab Removes one or more tags from the specified Amazon Location resource\cr
 \link[paws.application.integration:locationservice_update_geofence_collection]{update_geofence_collection} \tab Updates the specified properties of a given geofence collection\cr
+\link[paws.application.integration:locationservice_update_key]{update_key} \tab Updates the specified properties of a given API key resource\cr
 \link[paws.application.integration:locationservice_update_map]{update_map} \tab Updates the specified properties of a given map resource\cr
 \link[paws.application.integration:locationservice_update_place_index]{update_place_index} \tab Updates the specified properties of a given place index resource\cr
 \link[paws.application.integration:locationservice_update_route_calculator]{update_route_calculator} \tab Updates the specified properties for a given route calculator resource\cr

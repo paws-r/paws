@@ -17,8 +17,8 @@ workmail_create_availability_configuration(
 \item{ClientToken}{An idempotent token that ensures that an API request is executed only
 once.}
 
-\item{OrganizationId}{[required] The Amazon WorkMail organization for which the
-\code{AvailabilityConfiguration} will be created.}
+\item{OrganizationId}{[required] The WorkMail organization for which the \code{AvailabilityConfiguration} will
+be created.}
 
 \item{DomainName}{[required] The domain to which the provider applies.}
 

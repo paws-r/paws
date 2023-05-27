@@ -39,14 +39,43 @@ get the alias name and alias ARN, use
 \code{\link[=kms_list_aliases]{list_aliases}}.}
 
 \item{Message}{[required] Specifies the message or message digest to sign. Messages can be 0-4096
-bytes. To sign a larger message, provide the message digest.
+bytes. To sign a larger message, provide a message digest.
 
-If you provide a message, KMS generates a hash digest of the message and
-then signs it.}
+If you provide a message digest, use the \code{DIGEST} value of \code{MessageType}
+to prevent the digest from being hashed again while signing.}
 
-\item{MessageType}{Tells KMS whether the value of the \code{Message} parameter is a message or
-message digest. The default value, RAW, indicates a message. To indicate
-a message digest, enter \code{DIGEST}.}
+\item{MessageType}{Tells KMS whether the value of the \code{Message} parameter should be hashed
+as part of the signing algorithm. Use \code{RAW} for unhashed messages; use
+\code{DIGEST} for message digests, which are already hashed.
+
+When the value of \code{MessageType} is \code{RAW}, KMS uses the standard signing
+algorithm, which begins with a hash function. When the value is
+\code{DIGEST}, KMS skips the hashing step in the signing algorithm.
+
+Use the \code{DIGEST} value only when the value of the \code{Message} parameter is
+a message digest. If you use the \code{DIGEST} value with an unhashed
+message, the security of the signing operation can be compromised.
+
+When the value of \code{MessageType}is \code{DIGEST}, the length of the \code{Message}
+value must match the length of hashed messages for the specified signing
+algorithm.
+
+You can submit a message digest and omit the \code{MessageType} or specify
+\code{RAW} so the digest is hashed again while signing. However, this can
+cause verification failures when verifying with a system that assumes a
+single hash.
+
+The hashing algorithm in that \code{\link[=kms_sign]{sign}} uses is based on the
+\code{SigningAlgorithm} value.
+\itemize{
+\item Signing algorithms that end in SHA_256 use the SHA_256 hashing
+algorithm.
+\item Signing algorithms that end in SHA_384 use the SHA_384 hashing
+algorithm.
+\item Signing algorithms that end in SHA_512 use the SHA_512 hashing
+algorithm.
+\item SM2DSA uses the SM3 hashing algorithm. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/asymmetric-key-specs.html#key-spec-sm-offline-verification}{Offline verification with SM2 key pairs}.
+}}
 
 \item{GrantTokens}{A list of grant tokens.
 
@@ -59,7 +88,9 @@ in the \emph{Key Management Service Developer Guide}.}
 \item{SigningAlgorithm}{[required] Specifies the signing algorithm to use when signing the message.
 
 Choose an algorithm that is compatible with the type and size of the
-specified asymmetric KMS key.}
+specified asymmetric KMS key. When signing with RSA key pairs,
+RSASSA-PSS algorithms are preferred. We include RSASSA-PKCS1-v1_5
+algorithms for compatibility with existing applications.}
 }
 \description{
 Creates a \href{https://en.wikipedia.org/wiki/Digital_signature}{digital signature} for a message or message digest by using the private key in an asymmetric signing KMS key. To verify the signature, use the \code{\link[=kms_verify]{verify}} operation, or use the public key in the same asymmetric KMS key outside of KMS. For information about asymmetric KMS keys, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Asymmetric KMS keys} in the \emph{Key Management Service Developer Guide}.

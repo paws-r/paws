@@ -9,13 +9,13 @@ qldb_update_ledger(Name, DeletionProtection = NULL, KmsKey = NULL)
 \arguments{
 \item{Name}{[required] The name of the ledger.}
 
-\item{DeletionProtection}{The flag that prevents a ledger from being deleted by any user. If not
-provided on ledger creation, this feature is enabled (\code{true}) by
-default.
+\item{DeletionProtection}{Specifies whether the ledger is protected from being deleted by any
+user. If not defined during ledger creation, this feature is enabled
+(\code{true}) by default.
 
 If deletion protection is enabled, you must first disable it before you
 can delete the ledger. You can disable it by calling the
-\code{\link[=qldb_update_ledger]{update_ledger}} operation to set the flag to
+\code{\link[=qldb_update_ledger]{update_ledger}} operation to set this parameter to
 \code{false}.}
 
 \item{KmsKey}{The key in Key Management Service (KMS) to use for encryption of data at
@@ -28,7 +28,8 @@ Use one of the following options to specify this parameter:
 Amazon Web Services on your behalf.
 \item \strong{Undefined}: Make no changes to the KMS key of the ledger.
 \item \strong{A valid symmetric customer managed KMS key}: Use the specified
-KMS key in your account that you create, own, and manage.
+symmetric encryption KMS key in your account that you create, own,
+and manage.
 
 Amazon QLDB does not support asymmetric keys. For more information,
 see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using symmetric and asymmetric keys}

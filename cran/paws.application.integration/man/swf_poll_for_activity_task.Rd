@@ -14,7 +14,7 @@ swf_poll_for_activity_task(domain, taskList, identity = NULL)
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\verb{U+0000`-`U+001f} | \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
+characters (\verb{U+0000`-`U+001f} | \verb{U+007f`-`U+009f}). Also, it must \emph{not} be
 the literal string \code{arn}.}
 
 \item{identity}{Identity of the worker making the request, recorded in the

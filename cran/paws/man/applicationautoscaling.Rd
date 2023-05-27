@@ -45,9 +45,12 @@ capacity
 \item Amazon Managed Streaming for Apache Kafka broker storage
 \item Amazon Neptune clusters
 \item Amazon SageMaker endpoint variants
+\item Amazon SageMaker Serverless endpoint provisioned concurrency
 \item Spot Fleets (Amazon EC2)
 \item Custom resources provided by your own applications or services
 }
+
+To learn more about Application Auto Scaling, see the \href{https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html}{Application Auto Scaling User Guide}.
 
 \strong{API Summary}
 
@@ -71,10 +74,6 @@ activities that are triggered by a scaling policy, scale-in
 activities that are triggered by a scaling policy, and scheduled
 scaling.
 }
-
-To learn more about Application Auto Scaling, including information
-about granting IAM users required permissions for Application Auto
-Scaling actions, see the \href{https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html}{Application Auto Scaling User Guide}.
 }
 \section{Service syntax}{
 
@@ -110,9 +109,12 @@ Scaling actions, see the \href{https://docs.aws.amazon.com/autoscaling/applicati
 \link[paws.management:applicationautoscaling_describe_scaling_activities]{describe_scaling_activities} \tab Provides descriptive information about the scaling activities in the specified namespace from the previous six weeks\cr
 \link[paws.management:applicationautoscaling_describe_scaling_policies]{describe_scaling_policies} \tab Describes the Application Auto Scaling scaling policies for the specified service namespace\cr
 \link[paws.management:applicationautoscaling_describe_scheduled_actions]{describe_scheduled_actions} \tab Describes the Application Auto Scaling scheduled actions for the specified service namespace\cr
+\link[paws.management:applicationautoscaling_list_tags_for_resource]{list_tags_for_resource} \tab Returns all the tags on the specified Application Auto Scaling scalable target\cr
 \link[paws.management:applicationautoscaling_put_scaling_policy]{put_scaling_policy} \tab Creates or updates a scaling policy for an Application Auto Scaling scalable target\cr
 \link[paws.management:applicationautoscaling_put_scheduled_action]{put_scheduled_action} \tab Creates or updates a scheduled action for an Application Auto Scaling scalable target\cr
-\link[paws.management:applicationautoscaling_register_scalable_target]{register_scalable_target} \tab Registers or updates a scalable target
+\link[paws.management:applicationautoscaling_register_scalable_target]{register_scalable_target} \tab Registers or updates a scalable target, which is the resource that you want to scale\cr
+\link[paws.management:applicationautoscaling_tag_resource]{tag_resource} \tab Adds or edits tags on an Application Auto Scaling scalable target\cr
+\link[paws.management:applicationautoscaling_untag_resource]{untag_resource} \tab Deletes tags from an Application Auto Scaling scalable target
 }
 }
 

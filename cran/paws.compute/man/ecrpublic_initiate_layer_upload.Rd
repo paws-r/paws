@@ -7,11 +7,11 @@
 ecrpublic_initiate_layer_upload(registryId = NULL, repositoryName)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry to which you intend to
-upload layers. If you do not specify a registry, the default public
-registry is assumed.}
+\item{registryId}{The Amazon Web Services account ID, or registry alias, that's associated
+with the registry to which you intend to upload layers. If you do not
+specify a registry, the default public registry is assumed.}
 
-\item{repositoryName}{[required] The name of the repository to which you intend to upload layers.}
+\item{repositoryName}{[required] The name of the repository that you want to upload layers to.}
 }
 \description{
 Notifies Amazon ECR that you intend to upload an image layer.

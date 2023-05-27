@@ -124,6 +124,9 @@ Doc Engage API - Amazon Pinpoint API
 \link[paws.customer.engagement:pinpoint_get_journey_date_range_kpi]{get_journey_date_range_kpi} \tab Retrieves (queries) pre-aggregated data for a standard engagement metric that applies to a journey\cr
 \link[paws.customer.engagement:pinpoint_get_journey_execution_activity_metrics]{get_journey_execution_activity_metrics} \tab Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey activity\cr
 \link[paws.customer.engagement:pinpoint_get_journey_execution_metrics]{get_journey_execution_metrics} \tab Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey\cr
+\link[paws.customer.engagement:pinpoint_get_journey_run_execution_activity_metrics]{get_journey_run_execution_activity_metrics} \tab Retrieves (queries) pre-aggregated data for a standard run execution metric that applies to a journey activity\cr
+\link[paws.customer.engagement:pinpoint_get_journey_run_execution_metrics]{get_journey_run_execution_metrics} \tab Retrieves (queries) pre-aggregated data for a standard run execution metric that applies to a journey\cr
+\link[paws.customer.engagement:pinpoint_get_journey_runs]{get_journey_runs} \tab Provides information about the runs of a journey\cr
 \link[paws.customer.engagement:pinpoint_get_push_template]{get_push_template} \tab Retrieves the content and settings of a message template for messages that are sent through a push notification channel\cr
 \link[paws.customer.engagement:pinpoint_get_recommender_configuration]{get_recommender_configuration} \tab Retrieves information about an Amazon Pinpoint configuration for a recommender model\cr
 \link[paws.customer.engagement:pinpoint_get_recommender_configurations]{get_recommender_configurations} \tab Retrieves information about all the recommender model configurations that are associated with your Amazon Pinpoint account\cr
@@ -182,8 +185,13 @@ Doc Engage API - Amazon Pinpoint API
 \examples{
 \dontrun{
 svc <- pinpoint()
-svc$create_app(
-  Foo = 123
+# The following example gets activity execution metrics for a single run
+# of a journey.
+svc$get_journey_run_execution_activity_metrics(
+  ApplicationId = "11111111112222222222333333333344",
+  JourneyId = "aaaaaaaaaabbbbbbbbbbccccccccccdd",
+  RunId = "99999999998888888888777777777766",
+  JourneyActivityId = "AAAAAAAAAA"
 )
 }
 

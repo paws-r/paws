@@ -17,7 +17,7 @@ NULL
 
 .sagemakerfeaturestoreruntime$delete_record_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FeatureGroupName = structure(logical(0), tags = list(location = "uri", locationName = "FeatureGroupName", type = "string")), RecordIdentifierValueAsString = structure(logical(0), tags = list(location = "querystring", locationName = "RecordIdentifierValueAsString", type = "string")), EventTime = structure(logical(0), tags = list(location = "querystring", locationName = "EventTime", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(FeatureGroupName = structure(logical(0), tags = list(location = "uri", locationName = "FeatureGroupName", type = "string")), RecordIdentifierValueAsString = structure(logical(0), tags = list(location = "querystring", locationName = "RecordIdentifierValueAsString", type = "string")), EventTime = structure(logical(0), tags = list(location = "querystring", locationName = "EventTime", type = "string")), TargetStores = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "TargetStores", type = "list")), DeletionMode = structure(logical(0), tags = list(location = "querystring", locationName = "DeletionMode", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -39,7 +39,7 @@ NULL
 
 .sagemakerfeaturestoreruntime$put_record_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FeatureGroupName = structure(logical(0), tags = list(location = "uri", locationName = "FeatureGroupName", type = "string")), Record = structure(list(structure(list(FeatureName = structure(logical(0), tags = list(type = "string")), ValueAsString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(FeatureGroupName = structure(logical(0), tags = list(location = "uri", locationName = "FeatureGroupName", type = "string")), Record = structure(list(structure(list(FeatureName = structure(logical(0), tags = list(type = "string")), ValueAsString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TargetStores = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

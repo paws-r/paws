@@ -2,18 +2,19 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_remove_tags}
 \alias{opensearchservice_remove_tags}
-\title{Removes the specified set of tags from the given domain}
+\title{Removes the specified set of tags from an Amazon OpenSearch Service
+domain}
 \usage{
 opensearchservice_remove_tags(ARN, TagKeys)
 }
 \arguments{
-\item{ARN}{[required] The \code{ARN} of the domain from which you want to delete the specified
-tags.}
+\item{ARN}{[required] The Amazon Resource Name (ARN) of the domain from which you want to
+delete the specified tags.}
 
-\item{TagKeys}{[required] The \code{TagKey} list you want to remove from the domain.}
+\item{TagKeys}{[required] The list of tag keys to remove from the domain.}
 }
 \description{
-Removes the specified set of tags from the given domain.
+Removes the specified set of tags from an Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/#managedomains-awsresorcetagging}{Tagging Amazon OpenSearch Service domains}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/remove_tags.html} for full documentation.
 }

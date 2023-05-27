@@ -88,7 +88,10 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' This value becomes the `VersionId` of the new version.
 #' @param Description The description of the secret.
 #' @param KmsKeyId The ARN, key ID, or alias of the KMS key that Secrets Manager uses to
-#' encrypt the secret value in the secret.
+#' encrypt the secret value in the secret. An alias is always prefixed by
+#' `alias/`, for example `alias/aws/secretsmanager`. For more information,
+#' see [About
+#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/alias-about.html).
 #' 
 #' To use a KMS key in a different account, use the key ARN or the alias
 #' ARN.
@@ -166,7 +169,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #'     characters: + - = . _ : / @@.
 #' @param AddReplicaRegions A list of Regions and KMS keys to replicate secrets.
 #' @param ForceOverwriteReplicaSecret Specifies whether to overwrite a secret with the same name in the
-#' destination Region.
+#' destination Region. By default, secrets aren't overwritten.
 #'
 #' @keywords internal
 #'
@@ -237,21 +240,24 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #' @param RecoveryWindowInDays The number of days from 7 to 30 that Secrets Manager waits before
 #' permanently deleting the secret. You can't use both this parameter and
 #' `ForceDeleteWithoutRecovery` in the same call. If you don't use either,
-#' then Secrets Manager defaults to a 30 day recovery window.
+#' then by default Secrets Manager uses a 30 day recovery window.
 #' @param ForceDeleteWithoutRecovery Specifies whether to delete the secret without any recovery window. You
 #' can't use both this parameter and `RecoveryWindowInDays` in the same
-#' call. If you don't use either, then Secrets Manager defaults to a 30 day
-#' recovery window.
+#' call. If you don't use either, then by default Secrets Manager uses a 30
+#' day recovery window.
 #' 
 #' Secrets Manager performs the actual deletion with an asynchronous
 #' background process, so there might be a short delay before the secret is
 #' permanently deleted. If you delete a secret and then immediately create
 #' a secret with the same name, use appropriate back off and retry logic.
 #' 
+#' If you forcibly delete an already deleted or nonexistent secret, the
+#' operation does not return `ResourceNotFoundException`.
+#' 
 #' Use this parameter with caution. This parameter causes the operation to
 #' skip the normal recovery window before the permanent deletion that
 #' Secrets Manager would normally impose with the `RecoveryWindowInDays`
-#' parameter. If you delete a secret with the `ForceDeleteWithouRecovery`
+#' parameter. If you delete a secret with the `ForceDeleteWithoutRecovery`
 #' parameter, then you have no opportunity to recover the secret. You lose
 #' the secret permanently.
 #'
@@ -464,7 +470,8 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 #' again with this value.
 #' @param IncludeDeprecated Specifies whether to include versions of secrets that don't have any
 #' staging labels attached to them. Versions without staging labels are
-#' considered deprecated and are subject to deletion by Secrets Manager.
+#' considered deprecated and are subject to deletion by Secrets Manager. By
+#' default, versions without staging labels aren't included.
 #'
 #' @keywords internal
 #'
@@ -494,6 +501,8 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #'
 #' See [https://paws-r.github.io/docs/secretsmanager/list_secrets.html](https://paws-r.github.io/docs/secretsmanager/list_secrets.html) for full documentation.
 #'
+#' @param IncludePlannedDeletion Specifies whether to include secrets scheduled for deletion. By default,
+#' secrets scheduled for deletion aren't included.
 #' @param MaxResults The number of results to include in the response.
 #' 
 #' If there are more results available, in the response, Secrets Manager
@@ -504,19 +513,19 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' previous call did not show all results. To get the next results, call
 #' [`list_secrets`][secretsmanager_list_secrets] again with this value.
 #' @param Filters The filters to apply to the list of secrets.
-#' @param SortOrder Lists secrets in the requested order.
+#' @param SortOrder Secrets are listed by `CreatedDate`.
 #'
 #' @keywords internal
 #'
 #' @rdname secretsmanager_list_secrets
-secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL, SortOrder = NULL) {
+secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResults = NULL, NextToken = NULL, Filters = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListSecrets",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .secretsmanager$list_secrets_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortOrder = SortOrder)
+  input <- .secretsmanager$list_secrets_input(IncludePlannedDeletion = IncludePlannedDeletion, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortOrder = SortOrder)
   output <- .secretsmanager$list_secrets_output()
   config <- get_config()
   svc <- .secretsmanager$service(config)
@@ -543,7 +552,7 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #' examples](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html).
 #' @param BlockPublicPolicy Specifies whether to block resource-based policies that allow broad
 #' access to the secret, for example those that use a wildcard for the
-#' principal.
+#' principal. By default, public policies aren't blocked.
 #'
 #' @keywords internal
 #'
@@ -700,7 +709,7 @@ secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveRepli
 #' @param SecretId &#91;required&#93; The ARN or name of the secret to replicate.
 #' @param AddReplicaRegions &#91;required&#93; A list of Regions in which to replicate the secret.
 #' @param ForceOverwriteReplicaSecret Specifies whether to overwrite a secret with the same name in the
-#' destination Region.
+#' destination Region. By default, secrets aren't overwritten.
 #'
 #' @keywords internal
 #'
@@ -759,7 +768,7 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' Configures and starts the asynchronous process of rotating the secret
 #'
 #' @description
-#' Configures and starts the asynchronous process of rotating the secret. For more information about rotation, see [Rotate secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html).
+#' Configures and starts the asynchronous process of rotating the secret. For information about rotation, see [Rotate secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html) in the *Secrets Manager User Guide*. If you include the configuration parameters, the operation sets the values for the secret and then immediately starts a rotation. If you don't include the configuration parameters, the operation starts a rotation with the values already stored in the secret.
 #'
 #' See [https://paws-r.github.io/docs/secretsmanager/rotate_secret.html](https://paws-r.github.io/docs/secretsmanager/rotate_secret.html) for full documentation.
 #'
@@ -786,20 +795,26 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' create a secret version twice. We recommend that you generate a
 #' [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
 #' value to ensure uniqueness within the specified secret.
-#' @param RotationLambdaARN The ARN of the Lambda rotation function that can rotate the secret.
+#' @param RotationLambdaARN For secrets that use a Lambda rotation function to rotate, the ARN of
+#' the Lambda rotation function.
+#' 
+#' For secrets that use *managed rotation*, omit this field. For more
+#' information, see [Managed
+#' rotation](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_managed.html)
+#' in the *Secrets Manager User Guide*.
 #' @param RotationRules A structure that defines the rotation configuration for this secret.
 #' @param RotateImmediately Specifies whether to rotate the secret immediately or wait until the
 #' next scheduled rotation window. The rotation schedule is defined in
 #' RotateSecretRequest$RotationRules.
 #' 
-#' If you don't immediately rotate the secret, Secrets Manager tests the
-#' rotation configuration by running the [`testSecret`
+#' For secrets that use a Lambda rotation function to rotate, if you don't
+#' immediately rotate the secret, Secrets Manager tests the rotation
+#' configuration by running the [`testSecret`
 #' step](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html#rotate-secrets_how)
 #' of the Lambda rotation function. The test creates an `AWSPENDING`
 #' version of the secret and then removes it.
 #' 
-#' If you don't specify this value, then by default, Secrets Manager
-#' rotates the secret immediately.
+#' By default, Secrets Manager rotates the secret immediately.
 #'
 #' @keywords internal
 #'
@@ -964,10 +979,22 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' This value becomes the `VersionId` of the new version.
 #' @param Description The description of the secret.
 #' @param KmsKeyId The ARN, key ID, or alias of the KMS key that Secrets Manager uses to
-#' encrypt new secret versions as well as any existing versions the staging
-#' labels `AWSCURRENT`, `AWSPENDING`, or `AWSPREVIOUS`. For more
+#' encrypt new secret versions as well as any existing versions with the
+#' staging labels `AWSCURRENT`, `AWSPENDING`, or `AWSPREVIOUS`. For more
 #' information about versions and staging labels, see [Concepts:
 #' Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version).
+#' 
+#' A key alias is always prefixed by `alias/`, for example
+#' `alias/aws/secretsmanager`. For more information, see [About
+#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/alias-about.html).
+#' 
+#' If you set this to an empty string, Secrets Manager uses the Amazon Web
+#' Services managed key `aws/secretsmanager`. If this key doesn't already
+#' exist in your account, then Secrets Manager creates it for you
+#' automatically. All users and roles in the Amazon Web Services account
+#' automatically have access to use `aws/secretsmanager`. Creating
+#' `aws/secretsmanager` can result in a one-time significant delay in
+#' returning the result.
 #' 
 #' You can only use the Amazon Web Services managed key
 #' `aws/secretsmanager` if you call this operation using credentials from

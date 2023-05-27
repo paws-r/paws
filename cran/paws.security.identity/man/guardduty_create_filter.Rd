@@ -19,11 +19,17 @@ guardduty_create_filter(
 \item{DetectorId}{[required] The ID of the detector belonging to the GuardDuty account that you want
 to create a filter for.}
 
-\item{Name}{[required] The name of the filter. Minimum length of 3. Maximum length of 64. Valid
-characters include alphanumeric characters, dot (.), underscore (_),
-and dash (-). Spaces are not allowed.}
+\item{Name}{[required] The name of the filter. Valid characters include period (.), underscore
+(_), dash (-), and alphanumeric characters. A whitespace is considered
+to be an invalid character.}
 
-\item{Description}{The description of the filter.}
+\item{Description}{The description of the filter. Valid characters include alphanumeric
+characters, and special characters such as hyphen, period, colon,
+underscore, parentheses (\code{{ }}, \verb{[ ]}, and \verb{( )}), forward slash,
+horizontal tab, vertical tab, newline, form feed, return, and
+whitespace.
+
+[ ]: R:\%20}
 
 \item{Action}{Specifies the action that is to be applied to the findings that match
 the filter.}
@@ -38,7 +44,6 @@ You can only use the following attributes to query findings:
 \itemize{
 \item accountId
 \item region
-\item confidence
 \item id
 \item resource.accessKeyDetails.accessKeyId
 \item resource.accessKeyDetails.principalId
@@ -88,11 +93,6 @@ You can only use the following attributes to query findings:
 \item resource.s3BucketDetails.tags.key
 \item resource.s3BucketDetails.tags.value
 \item resource.s3BucketDetails.type
-\item service.archived
-
-When this attribute is set to TRUE, only archived findings are
-listed. When it's set to FALSE, only unarchived findings are listed.
-When this attribute is not set, all existing findings are listed.
 \item service.resourceRole
 \item severity
 \item type
@@ -108,7 +108,7 @@ milliseconds.
 \item{Tags}{The tags to be added to a new filter resource.}
 }
 \description{
-Creates a filter using the specified finding criteria.
+Creates a filter using the specified finding criteria. The maximum number of saved filters per Amazon Web Services account per Region is 100. For more information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_limits.html}{Quotas for GuardDuty}.
 
 See \url{https://paws-r.github.io/docs/guardduty/create_filter.html} for full documentation.
 }

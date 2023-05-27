@@ -7,8 +7,8 @@
 ecrpublic_list_tags_for_resource(resourceArn)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) that identifies the resource for which to
-list the tags. Currently, the supported resource is an Amazon ECR Public
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) that identifies the resource to list the
+tags for. Currently, the supported resource is an Amazon ECR Public
 repository.}
 }
 \description{

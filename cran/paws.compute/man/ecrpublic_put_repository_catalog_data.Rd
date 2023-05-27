@@ -12,9 +12,9 @@ ecrpublic_put_repository_catalog_data(
 )
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the public registry the repository is
-in. If you do not specify a registry, the default public registry is
-assumed.}
+\item{registryId}{The Amazon Web Services account ID that's associated with the public
+registry the repository is in. If you do not specify a registry, the
+default public registry is assumed.}
 
 \item{repositoryName}{[required] The name of the repository to create or update the catalog data for.}
 

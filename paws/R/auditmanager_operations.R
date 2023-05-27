@@ -3,12 +3,12 @@
 #' @include auditmanager_service.R
 NULL
 
-#' Associates an evidence folder to an assessment report in a Audit Manager
-#' assessment
+#' Associates an evidence folder to an assessment report in an Audit
+#' Manager assessment
 #'
 #' @description
-#' Associates an evidence folder to an assessment report in a Audit Manager
-#' assessment.
+#' Associates an evidence folder to an assessment report in an Audit
+#' Manager assessment.
 #'
 #' @usage
 #' auditmanager_associate_assessment_report_evidence_folder(assessmentId,
@@ -330,7 +330,30 @@ auditmanager_batch_disassociate_assessment_report_evidence <- function(assessmen
 #'
 #' @description
 #' Uploads one or more pieces of evidence to a control in an Audit Manager
-#' assessment.
+#' assessment. You can upload manual evidence from any Amazon Simple
+#' Storage Service (Amazon S3) bucket by specifying the S3 URI of the
+#' evidence.
+#' 
+#' You must upload manual evidence to your S3 bucket before you can upload
+#' it to your assessment. For instructions, see
+#' [CreateBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html)
+#' and
+#' [PutObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
+#' in the *Amazon Simple Storage Service API Reference.*
+#' 
+#' The following restrictions apply to this action:
+#' 
+#' -   Maximum size of an individual evidence file: 100 MB
+#' 
+#' -   Number of daily manual evidence uploads per control: 100
+#' 
+#' -   Supported file formats: See [Supported file types for manual
+#'     evidence](https://docs.aws.amazon.com/audit-manager/latest/userguide/upload-evidence.html#supported-manual-evidence-files)
+#'     in the *Audit Manager User Guide*
+#' 
+#' For more information about Audit Manager service restrictions, see
+#' [Quotas and restrictions for Audit
+#' Manager](https://docs.aws.amazon.com/audit-manager/latest/userguide/service-quotas.html).
 #'
 #' @usage
 #' auditmanager_batch_import_evidence_to_assessment_control(assessmentId,
@@ -750,11 +773,31 @@ auditmanager_create_assessment_framework <- function(name, description = NULL, c
 #' Creates an assessment report for the specified assessment.
 #'
 #' @usage
-#' auditmanager_create_assessment_report(name, description, assessmentId)
+#' auditmanager_create_assessment_report(name, description, assessmentId,
+#'   queryStatement)
 #'
 #' @param name &#91;required&#93; The name of the new assessment report.
 #' @param description The description of the assessment report.
 #' @param assessmentId &#91;required&#93; The identifier for the assessment.
+#' @param queryStatement A SQL statement that represents an evidence finder query.
+#' 
+#' Provide this parameter when you want to generate an assessment report
+#' from the results of an evidence finder search query. When you use this
+#' parameter, Audit Manager generates a one-time report using only the
+#' evidence from the query output. This report does not include any
+#' assessment evidence that was manually [added to a report using the
+#' console](https://docs.aws.amazon.com/audit-manager/latest/userguide/generate-assessment-report.html#generate-assessment-report-include-evidence),
+#' or [associated with a report using the
+#' API](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_BatchAssociateAssessmentReportEvidence.html).
+#' 
+#' To use this parameter, the
+#' [enablementStatus](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_EvidenceFinderEnablement.html#auditmanager-Type-EvidenceFinderEnablement-enablementStatus)
+#' of evidence finder must be `ENABLED`.
+#' 
+#' For examples and help resolving `queryStatement` validation exceptions,
+#' see [Troubleshooting evidence finder
+#' issues](https://docs.aws.amazon.com/audit-manager/latest/userguide/evidence-finder-issues.html#querystatement-exceptions)
+#' in the *Audit Manager User Guide.*
 #'
 #' @return
 #' A list with the following syntax:
@@ -781,7 +824,8 @@ auditmanager_create_assessment_framework <- function(name, description = NULL, c
 #' svc$create_assessment_report(
 #'   name = "string",
 #'   description = "string",
-#'   assessmentId = "string"
+#'   assessmentId = "string",
+#'   queryStatement = "string"
 #' )
 #' ```
 #'
@@ -790,14 +834,14 @@ auditmanager_create_assessment_framework <- function(name, description = NULL, c
 #' @rdname auditmanager_create_assessment_report
 #'
 #' @aliases auditmanager_create_assessment_report
-auditmanager_create_assessment_report <- function(name, description = NULL, assessmentId) {
+auditmanager_create_assessment_report <- function(name, description = NULL, assessmentId, queryStatement = NULL) {
   op <- new_operation(
     name = "CreateAssessmentReport",
     http_method = "POST",
     http_path = "/assessments/{assessmentId}/reports",
     paginator = list()
   )
-  input <- .auditmanager$create_assessment_report_input(name = name, description = description, assessmentId = assessmentId)
+  input <- .auditmanager$create_assessment_report_input(name = name, description = description, assessmentId = assessmentId, queryStatement = queryStatement)
   output <- .auditmanager$create_assessment_report_output()
   config <- get_config()
   svc <- .auditmanager$service(config)
@@ -1166,42 +1210,15 @@ auditmanager_delete_control <- function(controlId) {
 #' @description
 #' Deregisters an account in Audit Manager.
 #' 
-#' When you deregister your account from Audit Manager, your data isn’t
-#' deleted. If you want to delete your resource data, you must perform that
-#' task separately before you deregister your account. Either, you can do
-#' this in the Audit Manager console. Or, you can use one of the delete API
-#' operations that are provided by Audit Manager.
+#' Before you deregister, you can use the
+#' [`update_settings`][auditmanager_update_settings] API operation to set
+#' your preferred data retention policy. By default, Audit Manager retains
+#' your data. If you want to delete your data, you can use the
+#' `DeregistrationPolicy` attribute to request the deletion of your data.
 #' 
-#' To delete your Audit Manager resource data, see the following
-#' instructions:
-#' 
-#' -   [`delete_assessment`][auditmanager_delete_assessment] (see also:
-#'     [Deleting an
-#'     assessment](https://docs.aws.amazon.com/audit-manager/latest/userguide/delete-assessment.html)
-#'     in the *Audit Manager User Guide*)
-#' 
-#' -   [`delete_assessment_framework`][auditmanager_delete_assessment_framework]
-#'     (see also: [Deleting a custom
-#'     framework](https://docs.aws.amazon.com/audit-manager/latest/userguide/delete-custom-framework.html)
-#'     in the *Audit Manager User Guide*)
-#' 
-#' -   [`delete_assessment_framework_share`][auditmanager_delete_assessment_framework_share]
-#'     (see also: [Deleting a share
-#'     request](https://docs.aws.amazon.com/audit-manager/latest/userguide/deleting-shared-framework-requests.html)
-#'     in the *Audit Manager User Guide*)
-#' 
-#' -   [`delete_assessment_report`][auditmanager_delete_assessment_report]
-#'     (see also: [Deleting an assessment
-#'     report](https://docs.aws.amazon.com/audit-manager/latest/userguide/generate-assessment-report.html#delete-assessment-report-steps)
-#'     in the *Audit Manager User Guide*)
-#' 
-#' -   [`delete_control`][auditmanager_delete_control] (see also: [Deleting
-#'     a custom
-#'     control](https://docs.aws.amazon.com/audit-manager/latest/userguide/delete-controls.html)
-#'     in the *Audit Manager User Guide*)
-#' 
-#' At this time, Audit Manager doesn't provide an option to delete
-#' evidence. All available delete operations are listed above.
+#' For more information about data retention, see [Data
+#' Protection](https://docs.aws.amazon.com/audit-manager/latest/userguide/data-protection.html)
+#' in the *Audit Manager User Guide*.
 #'
 #' @usage
 #' auditmanager_deregister_account()
@@ -1252,8 +1269,27 @@ auditmanager_deregister_account <- function() {
 #' settings, you continue to have access to the evidence that you
 #' previously collected under that account. This is also the case when you
 #' deregister a delegated administrator from Organizations. However, Audit
-#' Manager will stop collecting and attaching evidence to that delegated
+#' Manager stops collecting and attaching evidence to that delegated
 #' administrator account moving forward.
+#' 
+#' Keep in mind the following cleanup task if you use evidence finder:
+#' 
+#' Before you use your management account to remove a delegated
+#' administrator, make sure that the current delegated administrator
+#' account signs in to Audit Manager and disables evidence finder first.
+#' Disabling evidence finder automatically deletes the event data store
+#' that was created in their account when they enabled evidence finder. If
+#' this task isn’t completed, the event data store remains in their
+#' account. In this case, we recommend that the original delegated
+#' administrator goes to CloudTrail Lake and manually [deletes the event
+#' data
+#' store](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-eds-disable-termination.html).
+#' 
+#' This cleanup task is necessary to ensure that you don't end up with
+#' multiple event data stores. Audit Manager ignores an unused event data
+#' store after you remove or change a delegated administrator account.
+#' However, the unused event data store continues to incur storage costs
+#' from CloudTrail Lake if you don't delete it.
 #' 
 #' When you deregister a delegated administrator account for Audit Manager,
 #' the data for that account isn’t deleted. If you want to delete resource
@@ -1290,8 +1326,10 @@ auditmanager_deregister_account <- function() {
 #'     control](https://docs.aws.amazon.com/audit-manager/latest/userguide/delete-controls.html)
 #'     in the *Audit Manager User Guide*)
 #' 
-#' At this time, Audit Manager doesn't provide an option to delete
-#' evidence. All available delete operations are listed above.
+#' At this time, Audit Manager doesn't provide an option to delete evidence
+#' for a specific delegated administrator. Instead, when your management
+#' account deregisters Audit Manager, we perform a cleanup for the current
+#' delegated administrator account at the time of deregistration.
 #'
 #' @usage
 #' auditmanager_deregister_organization_admin_account(adminAccountId)
@@ -2012,7 +2050,8 @@ auditmanager_get_delegations <- function(nextToken = NULL, maxResults = NULL) {
 #'     resourcesIncluded = list(
 #'       list(
 #'         arn = "string",
-#'         value = "string"
+#'         value = "string",
+#'         complianceCheck = "string"
 #'       )
 #'     ),
 #'     attributes = list(
@@ -2094,7 +2133,8 @@ auditmanager_get_evidence <- function(assessmentId, controlSetId, evidenceFolder
 #'       resourcesIncluded = list(
 #'         list(
 #'           arn = "string",
-#'           value = "string"
+#'           value = "string",
+#'           complianceCheck = "string"
 #'         )
 #'       ),
 #'       attributes = list(
@@ -2301,11 +2341,11 @@ auditmanager_get_evidence_folders_by_assessment <- function(assessmentId, nextTo
 .auditmanager$operations$get_evidence_folders_by_assessment <- auditmanager_get_evidence_folders_by_assessment
 
 #' Returns a list of evidence folders that are associated with a specified
-#' control of an assessment in Audit Manager
+#' control in an Audit Manager assessment
 #'
 #' @description
 #' Returns a list of evidence folders that are associated with a specified
-#' control of an assessment in Audit Manager.
+#' control in an Audit Manager assessment.
 #'
 #' @usage
 #' auditmanager_get_evidence_folders_by_assessment_control(assessmentId,
@@ -2538,12 +2578,16 @@ auditmanager_get_organization_admin_account <- function() {
 }
 .auditmanager$operations$get_organization_admin_account <- auditmanager_get_organization_admin_account
 
-#' Returns a list of the in-scope Amazon Web Services for the specified
-#' assessment
+#' Returns a list of all of the Amazon Web Services that you can choose to
+#' include in your assessment
 #'
 #' @description
-#' Returns a list of the in-scope Amazon Web Services for the specified
-#' assessment.
+#' Returns a list of all of the Amazon Web Services that you can choose to
+#' include in your assessment. When you [create an
+#' assessment](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_CreateAssessment.html),
+#' specify which of these services you want to include to narrow the
+#' assessment's
+#' [scope](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Scope.html).
 #'
 #' @usage
 #' auditmanager_get_services_in_scope()
@@ -2598,7 +2642,7 @@ auditmanager_get_services_in_scope <- function() {
 #' @usage
 #' auditmanager_get_settings(attribute)
 #'
-#' @param attribute &#91;required&#93; The list of `SettingAttribute` enum values.
+#' @param attribute &#91;required&#93; The list of setting attribute enum values.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2617,7 +2661,16 @@ auditmanager_get_services_in_scope <- function() {
 #'         roleArn = "string"
 #'       )
 #'     ),
-#'     kmsKey = "string"
+#'     kmsKey = "string",
+#'     evidenceFinderEnablement = list(
+#'       eventDataStoreArn = "string",
+#'       enablementStatus = "ENABLED"|"DISABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS",
+#'       backfillStatus = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED",
+#'       error = "string"
+#'     ),
+#'     deregistrationPolicy = list(
+#'       deleteResources = "ALL"|"DEFAULT"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2625,7 +2678,7 @@ auditmanager_get_services_in_scope <- function() {
 #' @section Request syntax:
 #' ```
 #' svc$get_settings(
-#'   attribute = "ALL"|"IS_AWS_ORG_ENABLED"|"SNS_TOPIC"|"DEFAULT_ASSESSMENT_REPORTS_DESTINATION"|"DEFAULT_PROCESS_OWNERS"
+#'   attribute = "ALL"|"IS_AWS_ORG_ENABLED"|"SNS_TOPIC"|"DEFAULT_ASSESSMENT_REPORTS_DESTINATION"|"DEFAULT_PROCESS_OWNERS"|"EVIDENCE_FINDER_ENABLEMENT"|"DEREGISTRATION_POLICY"
 #' )
 #' ```
 #'
@@ -4707,20 +4760,35 @@ auditmanager_update_control <- function(controlId, name, description = NULL, tes
 }
 .auditmanager$operations$update_control <- auditmanager_update_control
 
-#' Updates Audit Manager settings for the current user account
+#' Updates Audit Manager settings for the current account
 #'
 #' @description
-#' Updates Audit Manager settings for the current user account.
+#' Updates Audit Manager settings for the current account.
 #'
 #' @usage
 #' auditmanager_update_settings(snsTopic,
-#'   defaultAssessmentReportsDestination, defaultProcessOwners, kmsKey)
+#'   defaultAssessmentReportsDestination, defaultProcessOwners, kmsKey,
+#'   evidenceFinderEnabled, deregistrationPolicy)
 #'
 #' @param snsTopic The Amazon Simple Notification Service (Amazon SNS) topic that Audit
 #' Manager sends notifications to.
 #' @param defaultAssessmentReportsDestination The default storage destination for assessment reports.
 #' @param defaultProcessOwners A list of the default audit owners.
 #' @param kmsKey The KMS key details.
+#' @param evidenceFinderEnabled Specifies whether the evidence finder feature is enabled. Change this
+#' attribute to enable or disable evidence finder.
+#' 
+#' When you use this attribute to disable evidence finder, Audit Manager
+#' deletes the event data store that’s used to query your evidence data. As
+#' a result, you can’t re-enable evidence finder and use the feature again.
+#' Your only alternative is to
+#' [deregister](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeregisterAccount.html)
+#' and then
+#' [re-register](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_RegisterAccount.html)
+#' Audit Manager.
+#' @param deregistrationPolicy The deregistration policy for your Audit Manager data. You can use this
+#' attribute to determine how your data is handled when you deregister
+#' Audit Manager.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4739,7 +4807,16 @@ auditmanager_update_control <- function(controlId, name, description = NULL, tes
 #'         roleArn = "string"
 #'       )
 #'     ),
-#'     kmsKey = "string"
+#'     kmsKey = "string",
+#'     evidenceFinderEnablement = list(
+#'       eventDataStoreArn = "string",
+#'       enablementStatus = "ENABLED"|"DISABLED"|"ENABLE_IN_PROGRESS"|"DISABLE_IN_PROGRESS",
+#'       backfillStatus = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED",
+#'       error = "string"
+#'     ),
+#'     deregistrationPolicy = list(
+#'       deleteResources = "ALL"|"DEFAULT"
+#'     )
 #'   )
 #' )
 #' ```
@@ -4758,7 +4835,11 @@ auditmanager_update_control <- function(controlId, name, description = NULL, tes
 #'       roleArn = "string"
 #'     )
 #'   ),
-#'   kmsKey = "string"
+#'   kmsKey = "string",
+#'   evidenceFinderEnabled = TRUE|FALSE,
+#'   deregistrationPolicy = list(
+#'     deleteResources = "ALL"|"DEFAULT"
+#'   )
 #' )
 #' ```
 #'
@@ -4767,14 +4848,14 @@ auditmanager_update_control <- function(controlId, name, description = NULL, tes
 #' @rdname auditmanager_update_settings
 #'
 #' @aliases auditmanager_update_settings
-auditmanager_update_settings <- function(snsTopic = NULL, defaultAssessmentReportsDestination = NULL, defaultProcessOwners = NULL, kmsKey = NULL) {
+auditmanager_update_settings <- function(snsTopic = NULL, defaultAssessmentReportsDestination = NULL, defaultProcessOwners = NULL, kmsKey = NULL, evidenceFinderEnabled = NULL, deregistrationPolicy = NULL) {
   op <- new_operation(
     name = "UpdateSettings",
     http_method = "PUT",
     http_path = "/settings",
     paginator = list()
   )
-  input <- .auditmanager$update_settings_input(snsTopic = snsTopic, defaultAssessmentReportsDestination = defaultAssessmentReportsDestination, defaultProcessOwners = defaultProcessOwners, kmsKey = kmsKey)
+  input <- .auditmanager$update_settings_input(snsTopic = snsTopic, defaultAssessmentReportsDestination = defaultAssessmentReportsDestination, defaultProcessOwners = defaultProcessOwners, kmsKey = kmsKey, evidenceFinderEnabled = evidenceFinderEnabled, deregistrationPolicy = deregistrationPolicy)
   output <- .auditmanager$update_settings_output()
   config <- get_config()
   svc <- .auditmanager$service(config)

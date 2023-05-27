@@ -41,7 +41,7 @@ specified. Use this option to avoid modifying an alias that has changed
 since you last read it.}
 }
 \description{
-Updates the configuration of a Lambda function \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{alias}.
+Updates the configuration of a Lambda function \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html}{alias}.
 
 See \url{https://paws-r.github.io/docs/lambda/update_alias.html} for full documentation.
 }

@@ -68,12 +68,12 @@ NULL
 #'       ),
 #'       Not = list(),
 #'       Dimensions = list(
-#'         Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY",
+#'         Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'         Values = list(
 #'           "string"
 #'         ),
 #'         MatchOptions = list(
-#'           "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'           "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'         )
 #'       ),
 #'       Tags = list(
@@ -82,7 +82,7 @@ NULL
 #'           "string"
 #'         ),
 #'         MatchOptions = list(
-#'           "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'           "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'         )
 #'       ),
 #'       CostCategories = list(
@@ -91,7 +91,7 @@ NULL
 #'           "string"
 #'         ),
 #'         MatchOptions = list(
-#'           "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'           "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'         )
 #'       )
 #'     ),
@@ -128,13 +128,13 @@ costexplorer_create_anomaly_monitor <- function(AnomalyMonitor, ResourceTags = N
 }
 .costexplorer$operations$create_anomaly_monitor <- costexplorer_create_anomaly_monitor
 
-#' Adds a subscription to a cost anomaly detection monitor
+#' Adds an alert subscription to a cost anomaly detection monitor
 #'
 #' @description
-#' Adds a subscription to a cost anomaly detection monitor. You can use
-#' each subscription to define subscribers with email or SNS notifications.
-#' Email subscribers can set a dollar threshold and a time frequency for
-#' receiving notifications.
+#' Adds an alert subscription to a cost anomaly detection monitor. You can
+#' use each subscription to define subscribers with email or SNS
+#' notifications. Email subscribers can set an absolute or percentage
+#' threshold and a time frequency for receiving notifications.
 #'
 #' @usage
 #' costexplorer_create_anomaly_subscription(AnomalySubscription,
@@ -193,7 +193,43 @@ costexplorer_create_anomaly_monitor <- function(AnomalyMonitor, ResourceTags = N
 #'     ),
 #'     Threshold = 123.0,
 #'     Frequency = "DAILY"|"IMMEDIATE"|"WEEKLY",
-#'     SubscriptionName = "string"
+#'     SubscriptionName = "string",
+#'     ThresholdExpression = list(
+#'       Or = list(
+#'         list()
+#'       ),
+#'       And = list(
+#'         list()
+#'       ),
+#'       Not = list(),
+#'       Dimensions = list(
+#'         Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'         Values = list(
+#'           "string"
+#'         ),
+#'         MatchOptions = list(
+#'           "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
+#'         )
+#'       ),
+#'       Tags = list(
+#'         Key = "string",
+#'         Values = list(
+#'           "string"
+#'         ),
+#'         MatchOptions = list(
+#'           "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
+#'         )
+#'       ),
+#'       CostCategories = list(
+#'         Key = "string",
+#'         Values = list(
+#'           "string"
+#'         ),
+#'         MatchOptions = list(
+#'           "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   ResourceTags = list(
 #'     list(
@@ -232,10 +268,14 @@ costexplorer_create_anomaly_subscription <- function(AnomalySubscription, Resour
 #' Creates a new Cost Category with the requested name and rules.
 #'
 #' @usage
-#' costexplorer_create_cost_category_definition(Name, RuleVersion, Rules,
-#'   DefaultValue, SplitChargeRules, ResourceTags)
+#' costexplorer_create_cost_category_definition(Name, EffectiveStart,
+#'   RuleVersion, Rules, DefaultValue, SplitChargeRules, ResourceTags)
 #'
 #' @param Name &#91;required&#93; 
+#' @param EffectiveStart The Cost Category's effective start date. It can only be a billing start
+#' date (first day of the month). If the date isn't provided, it's the
+#' first day of the current month. Dates can't be before the previous
+#' twelve months, or in the future.
 #' @param RuleVersion &#91;required&#93; 
 #' @param Rules &#91;required&#93; The Cost Category rules used to categorize costs. For more information,
 #' see
@@ -282,6 +322,7 @@ costexplorer_create_anomaly_subscription <- function(AnomalySubscription, Resour
 #' ```
 #' svc$create_cost_category_definition(
 #'   Name = "string",
+#'   EffectiveStart = "string",
 #'   RuleVersion = "CostCategoryExpression.v1",
 #'   Rules = list(
 #'     list(
@@ -295,12 +336,12 @@ costexplorer_create_anomaly_subscription <- function(AnomalySubscription, Resour
 #'         ),
 #'         Not = list(),
 #'         Dimensions = list(
-#'           Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY",
+#'           Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'           Values = list(
 #'             "string"
 #'           ),
 #'           MatchOptions = list(
-#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'           )
 #'         ),
 #'         Tags = list(
@@ -309,7 +350,7 @@ costexplorer_create_anomaly_subscription <- function(AnomalySubscription, Resour
 #'             "string"
 #'           ),
 #'           MatchOptions = list(
-#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'           )
 #'         ),
 #'         CostCategories = list(
@@ -318,7 +359,7 @@ costexplorer_create_anomaly_subscription <- function(AnomalySubscription, Resour
 #'             "string"
 #'           ),
 #'           MatchOptions = list(
-#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'           )
 #'         )
 #'       ),
@@ -361,14 +402,14 @@ costexplorer_create_anomaly_subscription <- function(AnomalySubscription, Resour
 #' @rdname costexplorer_create_cost_category_definition
 #'
 #' @aliases costexplorer_create_cost_category_definition
-costexplorer_create_cost_category_definition <- function(Name, RuleVersion, Rules, DefaultValue = NULL, SplitChargeRules = NULL, ResourceTags = NULL) {
+costexplorer_create_cost_category_definition <- function(Name, EffectiveStart = NULL, RuleVersion, Rules, DefaultValue = NULL, SplitChargeRules = NULL, ResourceTags = NULL) {
   op <- new_operation(
     name = "CreateCostCategoryDefinition",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .costexplorer$create_cost_category_definition_input(Name = Name, RuleVersion = RuleVersion, Rules = Rules, DefaultValue = DefaultValue, SplitChargeRules = SplitChargeRules, ResourceTags = ResourceTags)
+  input <- .costexplorer$create_cost_category_definition_input(Name = Name, EffectiveStart = EffectiveStart, RuleVersion = RuleVersion, Rules = Rules, DefaultValue = DefaultValue, SplitChargeRules = SplitChargeRules, ResourceTags = ResourceTags)
   output <- .costexplorer$create_cost_category_definition_output()
   config <- get_config()
   svc <- .costexplorer$service(config)
@@ -554,12 +595,12 @@ costexplorer_delete_cost_category_definition <- function(CostCategoryArn) {
 #'           ),
 #'           Not = list(),
 #'           Dimensions = list(
-#'             Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY",
+#'             Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'             Values = list(
 #'               "string"
 #'             ),
 #'             MatchOptions = list(
-#'               "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'               "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'             )
 #'           ),
 #'           Tags = list(
@@ -568,7 +609,7 @@ costexplorer_delete_cost_category_definition <- function(CostCategoryArn) {
 #'               "string"
 #'             ),
 #'             MatchOptions = list(
-#'               "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'               "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'             )
 #'           ),
 #'           CostCategories = list(
@@ -577,7 +618,7 @@ costexplorer_delete_cost_category_definition <- function(CostCategoryArn) {
 #'               "string"
 #'             ),
 #'             MatchOptions = list(
-#'               "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'               "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'             )
 #'           )
 #'         ),
@@ -651,7 +692,8 @@ costexplorer_describe_cost_category_definition <- function(CostCategoryArn, Effe
 #'
 #' @description
 #' Retrieves all of the cost anomalies detected on your account during the
-#' time period that's specified by the `DateInterval` object.
+#' time period that's specified by the `DateInterval` object. Anomalies are
+#' available for up to 90 days.
 #'
 #' @usage
 #' costexplorer_get_anomalies(MonitorArn, DateInterval, Feedback,
@@ -686,7 +728,8 @@ costexplorer_describe_cost_category_definition <- function(CostCategoryArn, Effe
 #'           Service = "string",
 #'           Region = "string",
 #'           LinkedAccount = "string",
-#'           UsageType = "string"
+#'           UsageType = "string",
+#'           LinkedAccountName = "string"
 #'         )
 #'       ),
 #'       AnomalyScore = list(
@@ -695,7 +738,10 @@ costexplorer_describe_cost_category_definition <- function(CostCategoryArn, Effe
 #'       ),
 #'       Impact = list(
 #'         MaxImpact = 123.0,
-#'         TotalImpact = 123.0
+#'         TotalImpact = 123.0,
+#'         TotalActualSpend = 123.0,
+#'         TotalExpectedSpend = 123.0,
+#'         TotalImpactPercentage = 123.0
 #'       ),
 #'       MonitorArn = "string",
 #'       Feedback = "YES"|"NO"|"PLANNED_ACTIVITY"
@@ -785,12 +831,12 @@ costexplorer_get_anomalies <- function(MonitorArn = NULL, DateInterval, Feedback
 #'         ),
 #'         Not = list(),
 #'         Dimensions = list(
-#'           Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY",
+#'           Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'           Values = list(
 #'             "string"
 #'           ),
 #'           MatchOptions = list(
-#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'           )
 #'         ),
 #'         Tags = list(
@@ -799,7 +845,7 @@ costexplorer_get_anomalies <- function(MonitorArn = NULL, DateInterval, Feedback
 #'             "string"
 #'           ),
 #'           MatchOptions = list(
-#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'           )
 #'         ),
 #'         CostCategories = list(
@@ -808,7 +854,7 @@ costexplorer_get_anomalies <- function(MonitorArn = NULL, DateInterval, Feedback
 #'             "string"
 #'           ),
 #'           MatchOptions = list(
-#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'           )
 #'         )
 #'       ),
@@ -890,7 +936,43 @@ costexplorer_get_anomaly_monitors <- function(MonitorArnList = NULL, NextPageTok
 #'       ),
 #'       Threshold = 123.0,
 #'       Frequency = "DAILY"|"IMMEDIATE"|"WEEKLY",
-#'       SubscriptionName = "string"
+#'       SubscriptionName = "string",
+#'       ThresholdExpression = list(
+#'         Or = list(
+#'           list()
+#'         ),
+#'         And = list(
+#'           list()
+#'         ),
+#'         Not = list(),
+#'         Dimensions = list(
+#'           Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'           Values = list(
+#'             "string"
+#'           ),
+#'           MatchOptions = list(
+#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
+#'           )
+#'         ),
+#'         Tags = list(
+#'           Key = "string",
+#'           Values = list(
+#'             "string"
+#'           ),
+#'           MatchOptions = list(
+#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
+#'           )
+#'         ),
+#'         CostCategories = list(
+#'           Key = "string",
+#'           Values = list(
+#'             "string"
+#'           ),
+#'           MatchOptions = list(
+#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextPageToken = "string"
@@ -973,9 +1055,8 @@ costexplorer_get_anomaly_subscriptions <- function(SubscriptionArnList = NULL, M
 #' `EQUALS`, `ABSENT`, and `CASE_SENSITIVE`. Default values are `EQUALS`
 #' and `CASE_SENSITIVE`.
 #' @param Metrics &#91;required&#93; Which metrics are returned in the query. For more information about
-#' blended and unblended rates, see [Why does the "blended" annotation
-#' appear on some line items in my
-#' bill?](https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/).
+#' blended and unblended rates, see Why does the "blended" annotation
+#' appear on some line items in my bill?.
 #' 
 #' Valid values are `AmortizedCost`, `BlendedCost`, `NetAmortizedCost`,
 #' `NetUnblendedCost`, `NormalizedUsageAmount`, `UnblendedCost`, and
@@ -1073,12 +1154,12 @@ costexplorer_get_anomaly_subscriptions <- function(SubscriptionArnList = NULL, M
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     Tags = list(
@@ -1087,7 +1168,7 @@ costexplorer_get_anomaly_subscriptions <- function(SubscriptionArnList = NULL, M
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     CostCategories = list(
@@ -1096,7 +1177,7 @@ costexplorer_get_anomaly_subscriptions <- function(SubscriptionArnList = NULL, M
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     )
 #'   ),
@@ -1189,9 +1270,8 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NU
 #' `EQUALS`, `ABSENT`, and `CASE_SENSITIVE`. Default values are `EQUALS`
 #' and `CASE_SENSITIVE`.
 #' @param Metrics Which metrics are returned in the query. For more information about
-#' blended and unblended rates, see [Why does the "blended" annotation
-#' appear on some line items in my
-#' bill?](https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/).
+#' blended and unblended rates, see Why does the "blended" annotation
+#' appear on some line items in my bill?.
 #' 
 #' Valid values are `AmortizedCost`, `BlendedCost`, `NetAmortizedCost`,
 #' `NetUnblendedCost`, `NormalizedUsageAmount`, `UnblendedCost`, and
@@ -1281,12 +1361,12 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NU
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     Tags = list(
@@ -1295,7 +1375,7 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NU
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     CostCategories = list(
@@ -1304,7 +1384,7 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NU
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     )
 #'   ),
@@ -1436,12 +1516,12 @@ costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granulari
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     Tags = list(
@@ -1450,7 +1530,7 @@ costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granulari
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     CostCategories = list(
@@ -1459,7 +1539,7 @@ costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granulari
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     )
 #'   ),
@@ -1513,9 +1593,8 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
 #' must be equal to or no later than the current date to avoid a validation
 #' error.
 #' @param Metric &#91;required&#93; Which metric Cost Explorer uses to create your forecast. For more
-#' information about blended and unblended rates, see [Why does the
-#' "blended" annotation appear on some line items in my
-#' bill?](https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/).
+#' information about blended and unblended rates, see Why does the
+#' "blended" annotation appear on some line items in my bill?.
 #' 
 #' Valid values for a [`get_cost_forecast`][costexplorer_get_cost_forecast]
 #' call are the following:
@@ -1629,12 +1708,12 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     Tags = list(
@@ -1643,7 +1722,7 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     CostCategories = list(
@@ -1652,7 +1731,7 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     )
 #'   ),
@@ -1701,7 +1780,9 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #' usage data is retrieved from `2017-01-01` up to and including
 #' `2017-04-30` but not including `2017-05-01`.
 #' @param Dimension &#91;required&#93; The name of the dimension. Each `Dimension` is available for a different
-#' `Context`. For more information, see `Context`.
+#' `Context`. For more information, see `Context`. `LINK_ACCOUNT_NAME` and
+#' `SERVICE_CODE` can only be used in
+#' [CostCategoryRule](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/).
 #' @param Context The context for the call to
 #' [`get_dimension_values`][costexplorer_get_dimension_values]. This can be
 #' `RESERVATIONS` or `COST_AND_USAGE`. The default value is
@@ -1913,7 +1994,7 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #'     Start = "string",
 #'     End = "string"
 #'   ),
-#'   Dimension = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY",
+#'   Dimension = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'   Context = "COST_AND_USAGE"|"RESERVATIONS"|"SAVINGS_PLANS",
 #'   Filter = list(
 #'     Or = list(
@@ -1924,12 +2005,12 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     Tags = list(
@@ -1938,7 +2019,7 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     CostCategories = list(
@@ -1947,7 +2028,7 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     )
 #'   ),
@@ -2240,12 +2321,12 @@ costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, D
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     Tags = list(
@@ -2254,7 +2335,7 @@ costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, D
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     CostCategories = list(
@@ -2263,7 +2344,7 @@ costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, D
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     )
 #'   ),
@@ -2463,12 +2544,12 @@ costexplorer_get_reservation_coverage <- function(TimePeriod, GroupBy = NULL, Gr
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     Tags = list(
@@ -2477,7 +2558,7 @@ costexplorer_get_reservation_coverage <- function(TimePeriod, GroupBy = NULL, Gr
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     CostCategories = list(
@@ -2486,7 +2567,7 @@ costexplorer_get_reservation_coverage <- function(TimePeriod, GroupBy = NULL, Gr
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     )
 #'   ),
@@ -2738,12 +2819,12 @@ costexplorer_get_reservation_purchase_recommendation <- function(AccountId = NUL
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     Tags = list(
@@ -2752,7 +2833,7 @@ costexplorer_get_reservation_purchase_recommendation <- function(AccountId = NUL
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     CostCategories = list(
@@ -2761,7 +2842,7 @@ costexplorer_get_reservation_purchase_recommendation <- function(AccountId = NUL
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     )
 #'   ),
@@ -2859,7 +2940,7 @@ costexplorer_get_reservation_utilization <- function(TimePeriod, GroupBy = NULL,
 #'               "string"
 #'             ),
 #'             MatchOptions = list(
-#'               "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'               "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'             )
 #'           )
 #'         ),
@@ -2989,12 +3070,12 @@ costexplorer_get_reservation_utilization <- function(TimePeriod, GroupBy = NULL,
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     Tags = list(
@@ -3003,7 +3084,7 @@ costexplorer_get_reservation_utilization <- function(TimePeriod, GroupBy = NULL,
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     CostCategories = list(
@@ -3012,7 +3093,7 @@ costexplorer_get_reservation_utilization <- function(TimePeriod, GroupBy = NULL,
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     )
 #'   ),
@@ -3179,12 +3260,12 @@ costexplorer_get_rightsizing_recommendation <- function(Filter = NULL, Configura
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     Tags = list(
@@ -3193,7 +3274,7 @@ costexplorer_get_rightsizing_recommendation <- function(Filter = NULL, Configura
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     CostCategories = list(
@@ -3202,7 +3283,7 @@ costexplorer_get_rightsizing_recommendation <- function(Filter = NULL, Configura
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     )
 #'   ),
@@ -3240,12 +3321,14 @@ costexplorer_get_savings_plans_coverage <- function(TimePeriod, GroupBy = NULL, 
 }
 .costexplorer$operations$get_savings_plans_coverage <- costexplorer_get_savings_plans_coverage
 
-#' Retrieves your request parameters, Savings Plan Recommendations Summary
-#' and Details
+#' Retrieves the Savings Plans recommendations for your account
 #'
 #' @description
-#' Retrieves your request parameters, Savings Plan Recommendations Summary
-#' and Details.
+#' Retrieves the Savings Plans recommendations for your account. First use
+#' [`start_savings_plans_purchase_recommendation_generation`][costexplorer_start_savings_plans_purchase_recommendation_generation]
+#' to generate a new set of recommendations, and then use
+#' [`get_savings_plans_purchase_recommendation`][costexplorer_get_savings_plans_purchase_recommendation]
+#' to retrieve them.
 #'
 #' @usage
 #' costexplorer_get_savings_plans_purchase_recommendation(SavingsPlansType,
@@ -3356,12 +3439,12 @@ costexplorer_get_savings_plans_coverage <- function(TimePeriod, GroupBy = NULL, 
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     Tags = list(
@@ -3370,7 +3453,7 @@ costexplorer_get_savings_plans_coverage <- function(TimePeriod, GroupBy = NULL, 
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     CostCategories = list(
@@ -3379,7 +3462,7 @@ costexplorer_get_savings_plans_coverage <- function(TimePeriod, GroupBy = NULL, 
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     )
 #'   )
@@ -3535,12 +3618,12 @@ costexplorer_get_savings_plans_purchase_recommendation <- function(SavingsPlansT
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     Tags = list(
@@ -3549,7 +3632,7 @@ costexplorer_get_savings_plans_purchase_recommendation <- function(SavingsPlansT
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     CostCategories = list(
@@ -3558,7 +3641,7 @@ costexplorer_get_savings_plans_purchase_recommendation <- function(SavingsPlansT
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     )
 #'   ),
@@ -3727,12 +3810,12 @@ costexplorer_get_savings_plans_utilization <- function(TimePeriod, Granularity =
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     Tags = list(
@@ -3741,7 +3824,7 @@ costexplorer_get_savings_plans_utilization <- function(TimePeriod, Granularity =
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     CostCategories = list(
@@ -3750,7 +3833,7 @@ costexplorer_get_savings_plans_utilization <- function(TimePeriod, Granularity =
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     )
 #'   ),
@@ -3871,12 +3954,12 @@ costexplorer_get_savings_plans_utilization_details <- function(TimePeriod, Filte
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     Tags = list(
@@ -3885,7 +3968,7 @@ costexplorer_get_savings_plans_utilization_details <- function(TimePeriod, Filte
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     CostCategories = list(
@@ -3894,7 +3977,7 @@ costexplorer_get_savings_plans_utilization_details <- function(TimePeriod, Filte
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     )
 #'   ),
@@ -4061,12 +4144,12 @@ costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL
 #'     ),
 #'     Not = list(),
 #'     Dimensions = list(
-#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY",
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'       Values = list(
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     Tags = list(
@@ -4075,7 +4158,7 @@ costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     ),
 #'     CostCategories = list(
@@ -4084,7 +4167,7 @@ costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL
 #'         "string"
 #'       ),
 #'       MatchOptions = list(
-#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'       )
 #'     )
 #'   ),
@@ -4271,6 +4354,74 @@ costexplorer_list_cost_category_definitions <- function(EffectiveOn = NULL, Next
 }
 .costexplorer$operations$list_cost_category_definitions <- costexplorer_list_cost_category_definitions
 
+#' Retrieves a list of your historical recommendation generations within
+#' the past 30 days
+#'
+#' @description
+#' Retrieves a list of your historical recommendation generations within
+#' the past 30 days.
+#'
+#' @usage
+#' costexplorer_list_savings_plans_purchase_recommendation_generation(
+#'   GenerationStatus, RecommendationIds, PageSize, NextPageToken)
+#'
+#' @param GenerationStatus The status of the recommendation generation.
+#' @param RecommendationIds The IDs for each specific recommendation.
+#' @param PageSize The number of recommendations that you want returned in a single
+#' response object.
+#' @param NextPageToken The token to retrieve the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GenerationSummaryList = list(
+#'     list(
+#'       RecommendationId = "string",
+#'       GenerationStatus = "SUCCEEDED"|"PROCESSING"|"FAILED",
+#'       GenerationStartedTime = "string",
+#'       GenerationCompletionTime = "string",
+#'       EstimatedCompletionTime = "string"
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_savings_plans_purchase_recommendation_generation(
+#'   GenerationStatus = "SUCCEEDED"|"PROCESSING"|"FAILED",
+#'   RecommendationIds = list(
+#'     "string"
+#'   ),
+#'   PageSize = 123,
+#'   NextPageToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname costexplorer_list_saving_plans_purcha_recomm_genera
+#'
+#' @aliases costexplorer_list_savings_plans_purchase_recommendation_generation
+costexplorer_list_savings_plans_purchase_recommendation_generation <- function(GenerationStatus = NULL, RecommendationIds = NULL, PageSize = NULL, NextPageToken = NULL) {
+  op <- new_operation(
+    name = "ListSavingsPlansPurchaseRecommendationGeneration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .costexplorer$list_savings_plans_purchase_recommendation_generation_input(GenerationStatus = GenerationStatus, RecommendationIds = RecommendationIds, PageSize = PageSize, NextPageToken = NextPageToken)
+  output <- .costexplorer$list_savings_plans_purchase_recommendation_generation_output()
+  config <- get_config()
+  svc <- .costexplorer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costexplorer$operations$list_savings_plans_purchase_recommendation_generation <- costexplorer_list_savings_plans_purchase_recommendation_generation
+
 #' Returns a list of resource tags associated with the resource specified
 #' by the Amazon Resource Name (ARN)
 #'
@@ -4376,6 +4527,59 @@ costexplorer_provide_anomaly_feedback <- function(AnomalyId, Feedback) {
   return(response)
 }
 .costexplorer$operations$provide_anomaly_feedback <- costexplorer_provide_anomaly_feedback
+
+#' Requests a Savings Plans recommendation generation
+#'
+#' @description
+#' Requests a Savings Plans recommendation generation. This enables you to
+#' calculate a fresh set of Savings Plans recommendations that takes your
+#' latest usage data and current Savings Plans inventory into account. You
+#' can refresh Savings Plans recommendations up to three times daily for a
+#' consolidated billing family.
+#' 
+#' [`start_savings_plans_purchase_recommendation_generation`][costexplorer_start_savings_plans_purchase_recommendation_generation]
+#' has no request syntax because no input parameters are needed to support
+#' this operation.
+#'
+#' @usage
+#' costexplorer_start_savings_plans_purchase_recommendation_generation()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecommendationId = "string",
+#'   GenerationStartedTime = "string",
+#'   EstimatedCompletionTime = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_savings_plans_purchase_recommendation_generation()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname costexplorer_start_saving_plans_purcha_recomm_genera
+#'
+#' @aliases costexplorer_start_savings_plans_purchase_recommendation_generation
+costexplorer_start_savings_plans_purchase_recommendation_generation <- function() {
+  op <- new_operation(
+    name = "StartSavingsPlansPurchaseRecommendationGeneration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .costexplorer$start_savings_plans_purchase_recommendation_generation_input()
+  output <- .costexplorer$start_savings_plans_purchase_recommendation_generation_output()
+  config <- get_config()
+  svc <- .costexplorer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costexplorer$operations$start_savings_plans_purchase_recommendation_generation <- costexplorer_start_savings_plans_purchase_recommendation_generation
 
 #' An API operation for adding one or more tags (key-value pairs) to a
 #' resource
@@ -4570,15 +4774,44 @@ costexplorer_update_anomaly_monitor <- function(MonitorArn, MonitorName = NULL) 
 #'
 #' @usage
 #' costexplorer_update_anomaly_subscription(SubscriptionArn, Threshold,
-#'   Frequency, MonitorArnList, Subscribers, SubscriptionName)
+#'   Frequency, MonitorArnList, Subscribers, SubscriptionName,
+#'   ThresholdExpression)
 #'
 #' @param SubscriptionArn &#91;required&#93; A cost anomaly subscription Amazon Resource Name (ARN).
-#' @param Threshold The update to the threshold value for receiving notifications.
+#' @param Threshold (deprecated)
+#' 
+#' The update to the threshold value for receiving notifications.
+#' 
+#' This field has been deprecated. To update a threshold, use
+#' ThresholdExpression. Continued use of Threshold will be treated as
+#' shorthand syntax for a ThresholdExpression.
 #' @param Frequency The update to the frequency value that subscribers receive
 #' notifications.
 #' @param MonitorArnList A list of cost anomaly monitor ARNs.
 #' @param Subscribers The update to the subscriber list.
 #' @param SubscriptionName The new name of the subscription.
+#' @param ThresholdExpression The update to the
+#' [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html)
+#' object used to specify the anomalies that you want to generate alerts
+#' for. This supports dimensions and nested expressions. The supported
+#' dimensions are `ANOMALY_TOTAL_IMPACT_ABSOLUTE` and
+#' `ANOMALY_TOTAL_IMPACT_PERCENTAGE`. The supported nested expression types
+#' are `AND` and `OR`. The match option `GREATER_THAN_OR_EQUAL` is
+#' required. Values must be numbers between 0 and 10,000,000,000.
+#' 
+#' The following are examples of valid ThresholdExpressions:
+#' 
+#' -   Absolute threshold:
+#'     `{ "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_ABSOLUTE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } }`
+#' 
+#' -   Percentage threshold:
+#'     `{ "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_PERCENTAGE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } }`
+#' 
+#' -   `AND` two thresholds together:
+#'     `{ "And": [ { "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_ABSOLUTE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } }, { "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_PERCENTAGE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } } ] }`
+#' 
+#' -   `OR` two thresholds together:
+#'     `{ "Or": [ { "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_ABSOLUTE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } }, { "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_PERCENTAGE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } } ] }`
 #'
 #' @return
 #' A list with the following syntax:
@@ -4604,7 +4837,43 @@ costexplorer_update_anomaly_monitor <- function(MonitorArn, MonitorName = NULL) 
 #'       Status = "CONFIRMED"|"DECLINED"
 #'     )
 #'   ),
-#'   SubscriptionName = "string"
+#'   SubscriptionName = "string",
+#'   ThresholdExpression = list(
+#'     Or = list(
+#'       list()
+#'     ),
+#'     And = list(
+#'       list()
+#'     ),
+#'     Not = list(),
+#'     Dimensions = list(
+#'       Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
+#'       Values = list(
+#'         "string"
+#'       ),
+#'       MatchOptions = list(
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       Key = "string",
+#'       Values = list(
+#'         "string"
+#'       ),
+#'       MatchOptions = list(
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
+#'       )
+#'     ),
+#'     CostCategories = list(
+#'       Key = "string",
+#'       Values = list(
+#'         "string"
+#'       ),
+#'       MatchOptions = list(
+#'         "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -4613,14 +4882,14 @@ costexplorer_update_anomaly_monitor <- function(MonitorArn, MonitorName = NULL) 
 #' @rdname costexplorer_update_anomaly_subscription
 #'
 #' @aliases costexplorer_update_anomaly_subscription
-costexplorer_update_anomaly_subscription <- function(SubscriptionArn, Threshold = NULL, Frequency = NULL, MonitorArnList = NULL, Subscribers = NULL, SubscriptionName = NULL) {
+costexplorer_update_anomaly_subscription <- function(SubscriptionArn, Threshold = NULL, Frequency = NULL, MonitorArnList = NULL, Subscribers = NULL, SubscriptionName = NULL, ThresholdExpression = NULL) {
   op <- new_operation(
     name = "UpdateAnomalySubscription",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .costexplorer$update_anomaly_subscription_input(SubscriptionArn = SubscriptionArn, Threshold = Threshold, Frequency = Frequency, MonitorArnList = MonitorArnList, Subscribers = Subscribers, SubscriptionName = SubscriptionName)
+  input <- .costexplorer$update_anomaly_subscription_input(SubscriptionArn = SubscriptionArn, Threshold = Threshold, Frequency = Frequency, MonitorArnList = MonitorArnList, Subscribers = Subscribers, SubscriptionName = SubscriptionName, ThresholdExpression = ThresholdExpression)
   output <- .costexplorer$update_anomaly_subscription_output()
   config <- get_config()
   svc <- .costexplorer$service(config)
@@ -4703,9 +4972,13 @@ costexplorer_update_cost_allocation_tags_status <- function(CostAllocationTagsSt
 #'
 #' @usage
 #' costexplorer_update_cost_category_definition(CostCategoryArn,
-#'   RuleVersion, Rules, DefaultValue, SplitChargeRules)
+#'   EffectiveStart, RuleVersion, Rules, DefaultValue, SplitChargeRules)
 #'
 #' @param CostCategoryArn &#91;required&#93; The unique identifier for your Cost Category.
+#' @param EffectiveStart The Cost Category's effective start date. It can only be a billing start
+#' date (first day of the month). If the date isn't provided, it's the
+#' first day of the current month. Dates can't be before the previous
+#' twelve months, or in the future.
 #' @param RuleVersion &#91;required&#93; 
 #' @param Rules &#91;required&#93; The `Expression` object used to categorize costs. For more information,
 #' see
@@ -4728,6 +5001,7 @@ costexplorer_update_cost_allocation_tags_status <- function(CostAllocationTagsSt
 #' ```
 #' svc$update_cost_category_definition(
 #'   CostCategoryArn = "string",
+#'   EffectiveStart = "string",
 #'   RuleVersion = "CostCategoryExpression.v1",
 #'   Rules = list(
 #'     list(
@@ -4741,12 +5015,12 @@ costexplorer_update_cost_allocation_tags_status <- function(CostAllocationTagsSt
 #'         ),
 #'         Not = list(),
 #'         Dimensions = list(
-#'           Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY",
+#'           Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE"|"INVOICING_ENTITY"|"ANOMALY_TOTAL_IMPACT_ABSOLUTE"|"ANOMALY_TOTAL_IMPACT_PERCENTAGE",
 #'           Values = list(
 #'             "string"
 #'           ),
 #'           MatchOptions = list(
-#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'           )
 #'         ),
 #'         Tags = list(
@@ -4755,7 +5029,7 @@ costexplorer_update_cost_allocation_tags_status <- function(CostAllocationTagsSt
 #'             "string"
 #'           ),
 #'           MatchOptions = list(
-#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'           )
 #'         ),
 #'         CostCategories = list(
@@ -4764,7 +5038,7 @@ costexplorer_update_cost_allocation_tags_status <- function(CostAllocationTagsSt
 #'             "string"
 #'           ),
 #'           MatchOptions = list(
-#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+#'             "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"|"GREATER_THAN_OR_EQUAL"
 #'           )
 #'         )
 #'       ),
@@ -4801,14 +5075,14 @@ costexplorer_update_cost_allocation_tags_status <- function(CostAllocationTagsSt
 #' @rdname costexplorer_update_cost_category_definition
 #'
 #' @aliases costexplorer_update_cost_category_definition
-costexplorer_update_cost_category_definition <- function(CostCategoryArn, RuleVersion, Rules, DefaultValue = NULL, SplitChargeRules = NULL) {
+costexplorer_update_cost_category_definition <- function(CostCategoryArn, EffectiveStart = NULL, RuleVersion, Rules, DefaultValue = NULL, SplitChargeRules = NULL) {
   op <- new_operation(
     name = "UpdateCostCategoryDefinition",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .costexplorer$update_cost_category_definition_input(CostCategoryArn = CostCategoryArn, RuleVersion = RuleVersion, Rules = Rules, DefaultValue = DefaultValue, SplitChargeRules = SplitChargeRules)
+  input <- .costexplorer$update_cost_category_definition_input(CostCategoryArn = CostCategoryArn, EffectiveStart = EffectiveStart, RuleVersion = RuleVersion, Rules = Rules, DefaultValue = DefaultValue, SplitChargeRules = SplitChargeRules)
   output <- .costexplorer$update_cost_category_definition_output()
   config <- get_config()
   svc <- .costexplorer$service(config)

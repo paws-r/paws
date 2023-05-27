@@ -2,18 +2,18 @@
 % Please edit documentation in R/ssoadmin_operations.R
 \name{ssoadmin_describe_instance_access_control_attribute_configuration}
 \alias{ssoadmin_describe_instance_access_control_attribute_configuration}
-\title{Returns the list of Amazon Web Services SSO identity store attributes
-that have been configured to work with attributes-based access control
-(ABAC) for the specified Amazon Web Services SSO instance}
+\title{Returns the list of IAM Identity Center identity store attributes that
+have been configured to work with attributes-based access control (ABAC)
+for the specified IAM Identity Center instance}
 \usage{
 ssoadmin_describe_instance_access_control_attribute_configuration(InstanceArn)
 }
 \arguments{
-\item{InstanceArn}{[required] The ARN of the Amazon Web Services SSO instance under which the
-operation will be executed.}
+\item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
+will be executed.}
 }
 \description{
-Returns the list of Amazon Web Services SSO identity store attributes that have been configured to work with attributes-based access control (ABAC) for the specified Amazon Web Services SSO instance. This will not return attributes configured and sent by an external identity provider. For more information about ABAC, see Attribute-Based Access Control in the \emph{Amazon Web Services SSO User Guide}.
+Returns the list of IAM Identity Center identity store attributes that have been configured to work with attributes-based access control (ABAC) for the specified IAM Identity Center instance. This will not return attributes configured and sent by an external identity provider. For more information about ABAC, see Attribute-Based Access Control in the \emph{IAM Identity Center User Guide}.
 
 See \url{https://paws-r.github.io/docs/ssoadmin/describe_instance_access_control_attribute_configuration.html} for full documentation.
 }

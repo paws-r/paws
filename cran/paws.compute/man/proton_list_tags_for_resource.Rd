@@ -16,7 +16,7 @@ previously requested.}
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource for the listed tags.}
 }
 \description{
-List tags for a resource. For more information, see \emph{Proton resources and tagging} in the \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton Administrator Guide} or \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton User Guide}.
+List tags for a resource. For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton resources and tagging} in the \emph{Proton User Guide}.
 
 See \url{https://paws-r.github.io/docs/proton/list_tags_for_resource.html} for full documentation.
 }

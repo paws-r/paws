@@ -7,6 +7,7 @@ data from your application and sends that data to RUM}
 \usage{
 cloudwatchrum_create_app_monitor(
   AppMonitorConfiguration = NULL,
+  CustomEvents = NULL,
   CwLogEnabled = NULL,
   Domain,
   Name,
@@ -24,6 +25,12 @@ application to send data to Amazon Web Services.
 
 If you omit this argument, the sample rate used for RUM is set to 10\% of
 the user sessions.}
+
+\item{CustomEvents}{Specifies whether this app monitor allows the web client to define and
+send custom events. If you omit this parameter, custom events are
+\code{DISABLED}.
+
+For more information about custom events, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-custom-events.html}{Send custom events}.}
 
 \item{CwLogEnabled}{Data collected by RUM is kept by RUM for 30 days and then deleted. This
 parameter specifies whether RUM sends a copy of this telemetry data to
@@ -47,8 +54,9 @@ access or change only resources with certain tag values.
 Tags don't have any semantic meaning to Amazon Web Services and are
 interpreted strictly as strings of characters.
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{ <p>You can associate as many as 50 tags with an app monitor.</p> <p>For more information, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging Amazon Web Services resources</a>.</p>
-}\if{html}{\out{</div>}}}
+You can associate as many as 50 tags with an app monitor.
+
+For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}.}
 }
 \description{
 Creates a Amazon CloudWatch RUM app monitor, which collects telemetry data from your application and sends that data to RUM. The data includes performance and reliability information such as page load time, client-side errors, and user behavior.

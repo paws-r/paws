@@ -22,14 +22,14 @@ comprehend_start_targeted_sentiment_detection_job(
 
 \item{OutputDataConfig}{[required] Specifies where to send the output files.}
 
-\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-(IAM) role that grants Amazon Comprehend read access to your input data.
-For more information, see Role-based permissions.}
+\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that grants Amazon
+Comprehend read access to your input data. For more information, see
+Role-based permissions.}
 
 \item{JobName}{The identifier of the job.}
 
 \item{LanguageCode}{[required] The language of the input documents. Currently, English is the only
-valid language.}
+supported language.}
 
 \item{ClientRequestToken}{A unique identifier for the request. If you don't set the client request
 token, Amazon Comprehend generates one.}
@@ -45,13 +45,13 @@ analysis job. The VolumeKmsKeyId can be either of the following formats:
 
 \item{VpcConfig}{}
 
-\item{Tags}{Tags to be associated with the targeted sentiment detection job. A tag
-is a key-value pair that adds metadata to a resource used by Amazon
+\item{Tags}{Tags to associate with the targeted sentiment detection job. A tag is a
+key-value pair that adds metadata to a resource used by Amazon
 Comprehend. For example, a tag with "Sales" as the key might be added to
 a resource to indicate its use by the sales department.}
 }
 \description{
-Starts an asynchronous targeted sentiment detection job for a collection of documents. Use the operation to track the status of a job.
+Starts an asynchronous targeted sentiment detection job for a collection of documents. Use the \code{\link[=comprehend_describe_targeted_sentiment_detection_job]{describe_targeted_sentiment_detection_job}} operation to track the status of a job.
 
 See \url{https://paws-r.github.io/docs/comprehend/start_targeted_sentiment_detection_job.html} for full documentation.
 }

@@ -2401,7 +2401,7 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
 #' number of available results exceeds this maximum, the response includes
 #' a `NextToken` value that you can assign to the `NextToken` request
 #' parameter to get the next set of results.
-#' @param Filters The status that stack instances are filtered by.
+#' @param Filters The filter to apply to stack instances
 #' @param StackInstanceAccount The name of the Amazon Web Services account that you want to list stack
 #' instances for.
 #' @param StackInstanceRegion The name of the Region where you want to list stack instances.
@@ -2520,18 +2520,19 @@ cloudformation_list_stack_resources <- function(StackName, NextToken = NULL) {
 #'     [Register a delegated
 #'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
 #'     in the *CloudFormation User Guide*.
+#' @param Filters The filter to apply to operation results.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudformation_list_stack_set_operation_results
-cloudformation_list_stack_set_operation_results <- function(StackSetName, OperationId, NextToken = NULL, MaxResults = NULL, CallAs = NULL) {
+cloudformation_list_stack_set_operation_results <- function(StackSetName, OperationId, NextToken = NULL, MaxResults = NULL, CallAs = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListStackSetOperationResults",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$list_stack_set_operation_results_input(StackSetName = StackSetName, OperationId = OperationId, NextToken = NextToken, MaxResults = MaxResults, CallAs = CallAs)
+  input <- .cloudformation$list_stack_set_operation_results_input(StackSetName = StackSetName, OperationId = OperationId, NextToken = NextToken, MaxResults = MaxResults, CallAs = CallAs, Filters = Filters)
   output <- .cloudformation$list_stack_set_operation_results_output()
   config <- get_config()
   svc <- .cloudformation$service(config)

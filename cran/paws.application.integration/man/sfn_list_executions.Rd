@@ -2,18 +2,22 @@
 % Please edit documentation in R/sfn_operations.R
 \name{sfn_list_executions}
 \alias{sfn_list_executions}
-\title{Lists the executions of a state machine that meet the filtering criteria}
+\title{Lists all executions of a state machine or a Map Run}
 \usage{
 sfn_list_executions(
-  stateMachineArn,
+  stateMachineArn = NULL,
   statusFilter = NULL,
   maxResults = NULL,
-  nextToken = NULL
+  nextToken = NULL,
+  mapRunArn = NULL
 )
 }
 \arguments{
-\item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine whose executions is
-listed.}
+\item{stateMachineArn}{The Amazon Resource Name (ARN) of the state machine whose executions is
+listed.
+
+You can specify either a \code{mapRunArn} or a \code{stateMachineArn}, but not
+both.}
 
 \item{statusFilter}{If specified, only list the executions whose current execution status
 matches the given filter.}
@@ -31,9 +35,18 @@ again using the returned token to retrieve the next page. Keep all other
 arguments unchanged. Each pagination token expires after 24 hours. Using
 an expired pagination token will return an \emph{HTTP 400 InvalidToken}
 error.}
+
+\item{mapRunArn}{The Amazon Resource Name (ARN) of the Map Run that started the child
+workflow executions. If the \code{mapRunArn} field is specified, a list of
+all of the child workflow executions started by a Map Run is returned.
+For more information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-examine-map-run.html}{Examining Map Run}
+in the \emph{Step Functions Developer Guide}.
+
+You can specify either a \code{mapRunArn} or a \code{stateMachineArn}, but not
+both.}
 }
 \description{
-Lists the executions of a state machine that meet the filtering criteria. Results are sorted by time, with the most recent execution first.
+Lists all executions of a state machine or a Map Run. You can list all executions related to a state machine by specifying a state machine Amazon Resource Name (ARN), or those related to a Map Run by specifying a Map Run ARN.
 
 See \url{https://paws-r.github.io/docs/sfn/list_executions.html} for full documentation.
 }

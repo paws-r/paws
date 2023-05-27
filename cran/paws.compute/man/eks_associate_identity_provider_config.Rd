@@ -14,7 +14,7 @@ eks_associate_identity_provider_config(
 \arguments{
 \item{clusterName}{[required] The name of the cluster to associate the configuration to.}
 
-\item{oidc}{[required] An object that represents an OpenID Connect (OIDC) identity provider
+\item{oidc}{[required] An object representing an OpenID Connect (OIDC) identity provider
 configuration.}
 
 \item{tags}{The metadata to apply to the configuration to assist with categorization

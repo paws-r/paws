@@ -46,28 +46,47 @@ managedgrafana_associate_license <- function(licenseType, workspaceId) {
 #' organization. If you specify `ORGANIZATION`, you must specify which
 #' organizational units the workspace can access in the
 #' `workspaceOrganizationalUnits` parameter.
-#' @param authenticationProviders &#91;required&#93; Specifies whether this workspace uses SAML 2.0, Amazon Web Services
-#' Single Sign On, or both to authenticate users for using the Grafana
-#' console within a workspace. For more information, see [User
+#' @param authenticationProviders &#91;required&#93; Specifies whether this workspace uses SAML 2.0, IAM Identity Center
+#' (successor to Single Sign-On), or both to authenticate users for using
+#' the Grafana console within a workspace. For more information, see [User
 #' authentication in Amazon Managed
 #' Grafana](https://docs.aws.amazon.com/grafana/latest/userguide/authentication-in-AMG.html).
 #' @param clientToken A unique, case-sensitive, user-provided identifier to ensure the
 #' idempotency of the request.
+#' @param configuration The configuration string for the workspace that you create. For more
+#' information about the format and configuration options available, see
+#' [Working in your Grafana
+#' workspace](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-workspace.html).
+#' @param grafanaVersion Specifies the version of Grafana to support in the new workspace.
+#' 
+#' Supported values are `8.4` and `9.4`.
+#' @param networkAccessControl Configuration for network access to your workspace.
+#' 
+#' When this is configured, only listed IP addresses and VPC endpoints will
+#' be able to access your workspace. Standard Grafana authentication and
+#' authorization will still be required.
+#' 
+#' If this is not configured, or is removed, then all IP addresses and VPC
+#' endpoints will be allowed. Standard Grafana authentication and
+#' authorization will still be required.
 #' @param organizationRoleName The name of an IAM role that already exists to use with Organizations to
 #' access Amazon Web Services data sources and notification channels in
 #' other accounts in an organization.
-#' @param permissionType &#91;required&#93; If you specify `SERVICE_MANAGED` on AWS Grafana console, Amazon Managed
-#' Grafana automatically creates the IAM roles and provisions the
-#' permissions that the workspace needs to use Amazon Web Services data
-#' sources and notification channels. In CLI mode, the permissionType
-#' `SERVICE_MANAGED` will not create the IAM role for you.
+#' @param permissionType &#91;required&#93; When creating a workspace through the Amazon Web Services API, CLI or
+#' Amazon Web Services CloudFormation, you must manage IAM roles and
+#' provision the permissions that the workspace needs to use Amazon Web
+#' Services data sources and notification channels.
 #' 
-#' If you specify `CUSTOMER_MANAGED`, you will manage those roles and
-#' permissions yourself. If you are creating this workspace in a member
-#' account of an organization that is not a delegated administrator
-#' account, and you want the workspace to access data sources in other
-#' Amazon Web Services accounts in the organization, you must choose
-#' `CUSTOMER_MANAGED`.
+#' You must also specify a `workspaceRoleArn` for a role that you will
+#' manage for the workspace to use when accessing those datasources and
+#' notification channels.
+#' 
+#' The ability for Amazon Managed Grafana to create and update IAM roles on
+#' behalf of the user is supported only in the Amazon Managed Grafana
+#' console, where this value may be set to `SERVICE_MANAGED`.
+#' 
+#' Use only the `CUSTOMER_MANAGED` permission type when creating a
+#' workspace with the API, CLI or Amazon Web Services CloudFormation.
 #' 
 #' For more information, see [Amazon Managed Grafana permissions and
 #' policies for Amazon Web Services data sources and notification
@@ -75,15 +94,9 @@ managedgrafana_associate_license <- function(licenseType, workspaceId) {
 #' @param stackSetName The name of the CloudFormation stack set to use to generate IAM roles to
 #' be used for this workspace.
 #' @param tags The list of tags associated with the workspace.
-#' @param workspaceDataSources Specify the Amazon Web Services data sources that you want to be queried
-#' in this workspace. Specifying these data sources here enables Amazon
-#' Managed Grafana to create IAM roles and permissions that allow Amazon
-#' Managed Grafana to read data from these sources. You must still add them
-#' as data sources in the Grafana console in the workspace.
-#' 
-#' If you don't specify a data source here, you can still add it as a data
-#' source in the workspace console later. However, you will then have to
-#' manually configure permissions for it.
+#' @param vpcConfiguration The configuration settings for an Amazon VPC that contains data sources
+#' for your Grafana workspace to connect to.
+#' @param workspaceDataSources This parameter is for internal use only, and should not be used.
 #' @param workspaceDescription A description for the workspace. This is used only to help you identify
 #' this workspace.
 #' 
@@ -96,22 +109,23 @@ managedgrafana_associate_license <- function(licenseType, workspaceId) {
 #' @param workspaceOrganizationalUnits Specifies the organizational units that this workspace is allowed to use
 #' data sources from, if this workspace is in an account that is part of an
 #' organization.
-#' @param workspaceRoleArn The workspace needs an IAM role that grants permissions to the Amazon
-#' Web Services resources that the workspace will view data from. If you
-#' already have a role that you want to use, specify it here. The
-#' permission type should be set to `CUSTOMER_MANAGED`.
+#' @param workspaceRoleArn Specified the IAM role that grants permissions to the Amazon Web
+#' Services resources that the workspace will view data from, including
+#' both data sources and notification channels. You are responsible for
+#' managing the permissions for this role as new data sources or
+#' notification channels are added.
 #'
 #' @keywords internal
 #'
 #' @rdname managedgrafana_create_workspace
-managedgrafana_create_workspace <- function(accountAccessType, authenticationProviders, clientToken = NULL, organizationRoleName = NULL, permissionType, stackSetName = NULL, tags = NULL, workspaceDataSources = NULL, workspaceDescription = NULL, workspaceName = NULL, workspaceNotificationDestinations = NULL, workspaceOrganizationalUnits = NULL, workspaceRoleArn = NULL) {
+managedgrafana_create_workspace <- function(accountAccessType, authenticationProviders, clientToken = NULL, configuration = NULL, grafanaVersion = NULL, networkAccessControl = NULL, organizationRoleName = NULL, permissionType, stackSetName = NULL, tags = NULL, vpcConfiguration = NULL, workspaceDataSources = NULL, workspaceDescription = NULL, workspaceName = NULL, workspaceNotificationDestinations = NULL, workspaceOrganizationalUnits = NULL, workspaceRoleArn = NULL) {
   op <- new_operation(
     name = "CreateWorkspace",
     http_method = "POST",
     http_path = "/workspaces",
     paginator = list()
   )
-  input <- .managedgrafana$create_workspace_input(accountAccessType = accountAccessType, authenticationProviders = authenticationProviders, clientToken = clientToken, organizationRoleName = organizationRoleName, permissionType = permissionType, stackSetName = stackSetName, tags = tags, workspaceDataSources = workspaceDataSources, workspaceDescription = workspaceDescription, workspaceName = workspaceName, workspaceNotificationDestinations = workspaceNotificationDestinations, workspaceOrganizationalUnits = workspaceOrganizationalUnits, workspaceRoleArn = workspaceRoleArn)
+  input <- .managedgrafana$create_workspace_input(accountAccessType = accountAccessType, authenticationProviders = authenticationProviders, clientToken = clientToken, configuration = configuration, grafanaVersion = grafanaVersion, networkAccessControl = networkAccessControl, organizationRoleName = organizationRoleName, permissionType = permissionType, stackSetName = stackSetName, tags = tags, vpcConfiguration = vpcConfiguration, workspaceDataSources = workspaceDataSources, workspaceDescription = workspaceDescription, workspaceName = workspaceName, workspaceNotificationDestinations = workspaceNotificationDestinations, workspaceOrganizationalUnits = workspaceOrganizationalUnits, workspaceRoleArn = workspaceRoleArn)
   output <- .managedgrafana$create_workspace_output()
   config <- get_config()
   svc <- .managedgrafana$service(config)
@@ -121,21 +135,20 @@ managedgrafana_create_workspace <- function(accountAccessType, authenticationPro
 }
 .managedgrafana$operations$create_workspace <- managedgrafana_create_workspace
 
-#' Creates an API key for the workspace
+#' Creates a Grafana API key for the workspace
 #'
 #' @description
-#' Creates an API key for the workspace. This key can be used to authenticate requests sent to the workspace's HTTP API. See https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html for available APIs and example requests.
+#' Creates a Grafana API key for the workspace. This key can be used to authenticate requests sent to the workspace's HTTP API. See <https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html> for available APIs and example requests.
 #'
 #' See [https://paws-r.github.io/docs/managedgrafana/create_workspace_api_key.html](https://paws-r.github.io/docs/managedgrafana/create_workspace_api_key.html) for full documentation.
 #'
-#' @param keyName &#91;required&#93; Specifies the name of the key to create. Key names must be unique to the
-#' workspace.
+#' @param keyName &#91;required&#93; Specifies the name of the key. Keynames must be unique to the workspace.
 #' @param keyRole &#91;required&#93; Specifies the permission level of the key.
 #' 
-#' Valid Values: `VIEWER` | `EDITOR` | `ADMIN`
+#' Valid values: `VIEWER`|`EDITOR`|`ADMIN`
 #' @param secondsToLive &#91;required&#93; Specifies the time in seconds until the key expires. Keys can be valid
 #' for up to 30 days.
-#' @param workspaceId &#91;required&#93; The ID of the workspace in which to create an API key.
+#' @param workspaceId &#91;required&#93; The ID of the workspace to create an API key.
 #'
 #' @keywords internal
 #'
@@ -186,10 +199,10 @@ managedgrafana_delete_workspace <- function(workspaceId) {
 }
 .managedgrafana$operations$delete_workspace <- managedgrafana_delete_workspace
 
-#' Deletes an API key for a workspace
+#' Deletes a Grafana API key for the workspace
 #'
 #' @description
-#' Deletes an API key for a workspace.
+#' Deletes a Grafana API key for the workspace.
 #'
 #' See [https://paws-r.github.io/docs/managedgrafana/delete_workspace_api_key.html](https://paws-r.github.io/docs/managedgrafana/delete_workspace_api_key.html) for full documentation.
 #'
@@ -275,6 +288,35 @@ managedgrafana_describe_workspace_authentication <- function(workspaceId) {
 }
 .managedgrafana$operations$describe_workspace_authentication <- managedgrafana_describe_workspace_authentication
 
+#' Gets the current configuration string for the given workspace
+#'
+#' @description
+#' Gets the current configuration string for the given workspace.
+#'
+#' See [https://paws-r.github.io/docs/managedgrafana/describe_workspace_configuration.html](https://paws-r.github.io/docs/managedgrafana/describe_workspace_configuration.html) for full documentation.
+#'
+#' @param workspaceId &#91;required&#93; The ID of the workspace to get configuration information for.
+#'
+#' @keywords internal
+#'
+#' @rdname managedgrafana_describe_workspace_configuration
+managedgrafana_describe_workspace_configuration <- function(workspaceId) {
+  op <- new_operation(
+    name = "DescribeWorkspaceConfiguration",
+    http_method = "GET",
+    http_path = "/workspaces/{workspaceId}/configuration",
+    paginator = list()
+  )
+  input <- .managedgrafana$describe_workspace_configuration_input(workspaceId = workspaceId)
+  output <- .managedgrafana$describe_workspace_configuration_output()
+  config <- get_config()
+  svc <- .managedgrafana$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.managedgrafana$operations$describe_workspace_configuration <- managedgrafana_describe_workspace_configuration
+
 #' Removes the Grafana Enterprise license from a workspace
 #'
 #' @description
@@ -319,9 +361,9 @@ managedgrafana_disassociate_license <- function(licenseType, workspaceId) {
 #' this token from a previous
 #' [`list_permissions`][managedgrafana_list_permissions] operation.
 #' @param userId (Optional) Limits the results to only the user that matches this ID.
-#' @param userType (Optional) If you specify `SSO_USER`, then only the permissions of
-#' Amazon Web Services SSO users are returned. If you specify `SSO_GROUP`,
-#' only the permissions of Amazon Web Services SSO groups are returned.
+#' @param userType (Optional) If you specify `SSO_USER`, then only the permissions of IAM
+#' Identity Center users are returned. If you specify `SSO_GROUP`, only the
+#' permissions of IAM Identity Center groups are returned.
 #' @param workspaceId &#91;required&#93; The ID of the workspace to list permissions for. This parameter is
 #' required.
 #'
@@ -517,33 +559,61 @@ managedgrafana_update_permissions <- function(updateInstructionBatch, workspaceI
 #' organization. If you specify `ORGANIZATION`, you must specify which
 #' organizational units the workspace can access in the
 #' `workspaceOrganizationalUnits` parameter.
-#' @param organizationRoleName The name of an IAM role that already exists to use to access resources
-#' through Organizations.
-#' @param permissionType If you specify `Service Managed`, Amazon Managed Grafana automatically
-#' creates the IAM roles and provisions the permissions that the workspace
-#' needs to use Amazon Web Services data sources and notification channels.
+#' @param networkAccessControl The configuration settings for network access to your workspace.
 #' 
-#' If you specify `CUSTOMER_MANAGED`, you will manage those roles and
-#' permissions yourself. If you are creating this workspace in a member
-#' account of an organization and that account is not a delegated
+#' When this is configured, only listed IP addresses and VPC endpoints will
+#' be able to access your workspace. Standard Grafana authentication and
+#' authorization will still be required.
+#' 
+#' If this is not configured, or is removed, then all IP addresses and VPC
+#' endpoints will be allowed. Standard Grafana authentication and
+#' authorization will still be required.
+#' @param organizationRoleName The name of an IAM role that already exists to use to access resources
+#' through Organizations. This can only be used with a workspace that has
+#' the `permissionType` set to `CUSTOMER_MANAGED`.
+#' @param permissionType Use this parameter if you want to change a workspace from
+#' `SERVICE_MANAGED` to `CUSTOMER_MANAGED`. This allows you to manage the
+#' permissions that the workspace uses to access datasources and
+#' notification channels. If the workspace is in a member Amazon Web
+#' Services account of an organization, and that account is not a delegated
 #' administrator account, and you want the workspace to access data sources
 #' in other Amazon Web Services accounts in the organization, you must
 #' choose `CUSTOMER_MANAGED`.
 #' 
-#' For more information, see [Amazon Managed Grafana permissions and
-#' policies for Amazon Web Services data sources and notification
+#' If you specify this as `CUSTOMER_MANAGED`, you must also specify a
+#' `workspaceRoleArn` that the workspace will use for accessing Amazon Web
+#' Services resources.
+#' 
+#' For more information on the role and permissions needed, see [Amazon
+#' Managed Grafana permissions and policies for Amazon Web Services data
+#' sources and notification
 #' channels](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-manage-permissions.html)
+#' 
+#' Do not use this to convert a `CUSTOMER_MANAGED` workspace to
+#' `SERVICE_MANAGED`. Do not include this parameter if you want to leave
+#' the workspace as `SERVICE_MANAGED`.
+#' 
+#' You can convert a `CUSTOMER_MANAGED` workspace to `SERVICE_MANAGED`
+#' using the Amazon Managed Grafana console. For more information, see
+#' [Managing permissions for data sources and notification
+#' channels](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-datasource-and-notification.html).
+#' @param removeNetworkAccessConfiguration Whether to remove the network access configuration from the workspace.
+#' 
+#' Setting this to `true` and providing a `networkAccessControl` to set
+#' will return an error.
+#' 
+#' If you remove this configuration by setting this to `true`, then all IP
+#' addresses and VPC endpoints will be allowed. Standard Grafana
+#' authentication and authorization will still be required.
+#' @param removeVpcConfiguration Whether to remove the VPC configuration from the workspace.
+#' 
+#' Setting this to `true` and providing a `vpcConfiguration` to set will
+#' return an error.
 #' @param stackSetName The name of the CloudFormation stack set to use to generate IAM roles to
 #' be used for this workspace.
-#' @param workspaceDataSources Specify the Amazon Web Services data sources that you want to be queried
-#' in this workspace. Specifying these data sources here enables Amazon
-#' Managed Grafana to create IAM roles and permissions that allow Amazon
-#' Managed Grafana to read data from these sources. You must still add them
-#' as data sources in the Grafana console in the workspace.
-#' 
-#' If you don't specify a data source here, you can still add it as a data
-#' source later in the workspace console. However, you will then have to
-#' manually configure permissions for it.
+#' @param vpcConfiguration The configuration settings for an Amazon VPC that contains data sources
+#' for your Grafana workspace to connect to.
+#' @param workspaceDataSources This parameter is for internal use only, and should not be used.
 #' @param workspaceDescription A description for the workspace. This is used only to help you identify
 #' this workspace.
 #' @param workspaceId &#91;required&#93; The ID of the workspace to update.
@@ -555,24 +625,22 @@ managedgrafana_update_permissions <- function(updateInstructionBatch, workspaceI
 #' @param workspaceOrganizationalUnits Specifies the organizational units that this workspace is allowed to use
 #' data sources from, if this workspace is in an account that is part of an
 #' organization.
-#' @param workspaceRoleArn The workspace needs an IAM role that grants permissions to the Amazon
-#' Web Services resources that the workspace will view data from. If you
-#' already have a role that you want to use, specify it here. If you omit
-#' this field and you specify some Amazon Web Services resources in
-#' `workspaceDataSources` or `workspaceNotificationDestinations`, a new IAM
-#' role with the necessary permissions is automatically created.
+#' @param workspaceRoleArn Specifies an IAM role that grants permissions to Amazon Web Services
+#' resources that the workspace accesses, such as data sources and
+#' notification channels. If this workspace has `permissionType`
+#' `CUSTOMER_MANAGED`, then this role is required.
 #'
 #' @keywords internal
 #'
 #' @rdname managedgrafana_update_workspace
-managedgrafana_update_workspace <- function(accountAccessType = NULL, organizationRoleName = NULL, permissionType = NULL, stackSetName = NULL, workspaceDataSources = NULL, workspaceDescription = NULL, workspaceId, workspaceName = NULL, workspaceNotificationDestinations = NULL, workspaceOrganizationalUnits = NULL, workspaceRoleArn = NULL) {
+managedgrafana_update_workspace <- function(accountAccessType = NULL, networkAccessControl = NULL, organizationRoleName = NULL, permissionType = NULL, removeNetworkAccessConfiguration = NULL, removeVpcConfiguration = NULL, stackSetName = NULL, vpcConfiguration = NULL, workspaceDataSources = NULL, workspaceDescription = NULL, workspaceId, workspaceName = NULL, workspaceNotificationDestinations = NULL, workspaceOrganizationalUnits = NULL, workspaceRoleArn = NULL) {
   op <- new_operation(
     name = "UpdateWorkspace",
     http_method = "PUT",
     http_path = "/workspaces/{workspaceId}",
     paginator = list()
   )
-  input <- .managedgrafana$update_workspace_input(accountAccessType = accountAccessType, organizationRoleName = organizationRoleName, permissionType = permissionType, stackSetName = stackSetName, workspaceDataSources = workspaceDataSources, workspaceDescription = workspaceDescription, workspaceId = workspaceId, workspaceName = workspaceName, workspaceNotificationDestinations = workspaceNotificationDestinations, workspaceOrganizationalUnits = workspaceOrganizationalUnits, workspaceRoleArn = workspaceRoleArn)
+  input <- .managedgrafana$update_workspace_input(accountAccessType = accountAccessType, networkAccessControl = networkAccessControl, organizationRoleName = organizationRoleName, permissionType = permissionType, removeNetworkAccessConfiguration = removeNetworkAccessConfiguration, removeVpcConfiguration = removeVpcConfiguration, stackSetName = stackSetName, vpcConfiguration = vpcConfiguration, workspaceDataSources = workspaceDataSources, workspaceDescription = workspaceDescription, workspaceId = workspaceId, workspaceName = workspaceName, workspaceNotificationDestinations = workspaceNotificationDestinations, workspaceOrganizationalUnits = workspaceOrganizationalUnits, workspaceRoleArn = workspaceRoleArn)
   output <- .managedgrafana$update_workspace_output()
   config <- get_config()
   svc <- .managedgrafana$service(config)
@@ -590,9 +658,9 @@ managedgrafana_update_workspace <- function(accountAccessType = NULL, organizati
 #'
 #' See [https://paws-r.github.io/docs/managedgrafana/update_workspace_authentication.html](https://paws-r.github.io/docs/managedgrafana/update_workspace_authentication.html) for full documentation.
 #'
-#' @param authenticationProviders &#91;required&#93; Specifies whether this workspace uses SAML 2.0, Amazon Web Services
-#' Single Sign On, or both to authenticate users for using the Grafana
-#' console within a workspace. For more information, see [User
+#' @param authenticationProviders &#91;required&#93; Specifies whether this workspace uses SAML 2.0, IAM Identity Center
+#' (successor to Single Sign-On), or both to authenticate users for using
+#' the Grafana console within a workspace. For more information, see [User
 #' authentication in Amazon Managed
 #' Grafana](https://docs.aws.amazon.com/grafana/latest/userguide/authentication-in-AMG.html).
 #' @param samlConfiguration If the workspace uses SAML, use this structure to map SAML assertion
@@ -620,3 +688,36 @@ managedgrafana_update_workspace_authentication <- function(authenticationProvide
   return(response)
 }
 .managedgrafana$operations$update_workspace_authentication <- managedgrafana_update_workspace_authentication
+
+#' Updates the configuration string for the given workspace
+#'
+#' @description
+#' Updates the configuration string for the given workspace
+#'
+#' See [https://paws-r.github.io/docs/managedgrafana/update_workspace_configuration.html](https://paws-r.github.io/docs/managedgrafana/update_workspace_configuration.html) for full documentation.
+#'
+#' @param configuration &#91;required&#93; The new configuration string for the workspace. For more information
+#' about the format and configuration options available, see [Working in
+#' your Grafana
+#' workspace](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-workspace.html).
+#' @param workspaceId &#91;required&#93; The ID of the workspace to update.
+#'
+#' @keywords internal
+#'
+#' @rdname managedgrafana_update_workspace_configuration
+managedgrafana_update_workspace_configuration <- function(configuration, workspaceId) {
+  op <- new_operation(
+    name = "UpdateWorkspaceConfiguration",
+    http_method = "PUT",
+    http_path = "/workspaces/{workspaceId}/configuration",
+    paginator = list()
+  )
+  input <- .managedgrafana$update_workspace_configuration_input(configuration = configuration, workspaceId = workspaceId)
+  output <- .managedgrafana$update_workspace_configuration_output()
+  config <- get_config()
+  svc <- .managedgrafana$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.managedgrafana$operations$update_workspace_configuration <- managedgrafana_update_workspace_configuration

@@ -15,9 +15,9 @@ nimblestudio_create_streaming_image(
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. If you don’t specify a client token, the AWS
-SDK automatically generates a client token and uses it for the request
-to ensure idempotency.}
+idempotency of the request. If you don’t specify a client token, the
+Amazon Web Services SDK automatically generates a client token and uses
+it for the request to ensure idempotency.}
 
 \item{description}{A human-readable description of the streaming image.}
 
@@ -28,7 +28,7 @@ image.}
 
 \item{studioId}{[required] The studio ID.}
 
-\item{tags}{A collection of labels, in the form of key:value pairs, that apply to
+\item{tags}{A collection of labels, in the form of key-value pairs, that apply to
 this resource.}
 }
 \description{

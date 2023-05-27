@@ -8,7 +8,8 @@ NULL
 #' @description
 #' Creates a Kinesis Data Firehose delivery stream.
 #' 
-#' By default, you can create up to 50 delivery streams per AWS Region.
+#' By default, you can create up to 50 delivery streams per Amazon Web
+#' Services Region.
 #' 
 #' This is an asynchronous operation that immediately returns. The initial
 #' status of the delivery stream is `CREATING`. After the delivery stream
@@ -95,12 +96,12 @@ NULL
 #'   ElasticsearchDestinationConfiguration,
 #'   AmazonopensearchserviceDestinationConfiguration,
 #'   SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration,
-#'   Tags)
+#'   Tags, AmazonOpenSearchServerlessDestinationConfiguration)
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream. This name must be unique per AWS
-#' account in the same AWS Region. If the delivery streams are in different
-#' accounts or different Regions, you can have multiple delivery streams
-#' with the same name.
+#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream. This name must be unique per Amazon Web
+#' Services account in the same Amazon Web Services Region. If the delivery
+#' streams are in different accounts or different Regions, you can have
+#' multiple delivery streams with the same name.
 #' @param DeliveryStreamType The delivery stream type. This parameter can be one of the following
 #' values:
 #' 
@@ -121,19 +122,23 @@ NULL
 #' @param RedshiftDestinationConfiguration The destination in Amazon Redshift. You can specify only one
 #' destination.
 #' @param ElasticsearchDestinationConfiguration The destination in Amazon ES. You can specify only one destination.
-#' @param AmazonopensearchserviceDestinationConfiguration 
+#' @param AmazonopensearchserviceDestinationConfiguration The destination in Amazon OpenSearch Service. You can specify only one
+#' destination.
 #' @param SplunkDestinationConfiguration The destination in Splunk. You can specify only one destination.
 #' @param HttpEndpointDestinationConfiguration Enables configuring Kinesis Firehose to deliver data to any HTTP
 #' endpoint destination. You can specify only one destination.
 #' @param Tags A set of tags to assign to the delivery stream. A tag is a key-value
-#' pair that you can define and assign to AWS resources. Tags are metadata.
-#' For example, you can add friendly names and descriptions or other types
-#' of information that can help you distinguish the delivery stream. For
-#' more information about tags, see [Using Cost Allocation
+#' pair that you can define and assign to Amazon Web Services resources.
+#' Tags are metadata. For example, you can add friendly names and
+#' descriptions or other types of information that can help you distinguish
+#' the delivery stream. For more information about tags, see [Using Cost
+#' Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
-#' in the AWS Billing and Cost Management User Guide.
+#' in the Amazon Web Services Billing and Cost Management User Guide.
 #' 
 #' You can specify up to 50 tags when creating a delivery stream.
+#' @param AmazonOpenSearchServerlessDestinationConfiguration The destination in the Serverless offering for Amazon OpenSearch
+#' Service. You can specify only one destination.
 #'
 #' @return
 #' A list with the following syntax:
@@ -628,6 +633,69 @@ NULL
 #'       Key = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   AmazonOpenSearchServerlessDestinationConfiguration = list(
+#'     RoleARN = "string",
+#'     CollectionEndpoint = "string",
+#'     IndexName = "string",
+#'     BufferingHints = list(
+#'       IntervalInSeconds = 123,
+#'       SizeInMBs = 123
+#'     ),
+#'     RetryOptions = list(
+#'       DurationInSeconds = 123
+#'     ),
+#'     S3BackupMode = "FailedDocumentsOnly"|"AllDocuments",
+#'     S3Configuration = list(
+#'       RoleARN = "string",
+#'       BucketARN = "string",
+#'       Prefix = "string",
+#'       ErrorOutputPrefix = "string",
+#'       BufferingHints = list(
+#'         SizeInMBs = 123,
+#'         IntervalInSeconds = 123
+#'       ),
+#'       CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
+#'       EncryptionConfiguration = list(
+#'         NoEncryptionConfig = "NoEncryption",
+#'         KMSEncryptionConfig = list(
+#'           AWSKMSKeyARN = "string"
+#'         )
+#'       ),
+#'       CloudWatchLoggingOptions = list(
+#'         Enabled = TRUE|FALSE,
+#'         LogGroupName = "string",
+#'         LogStreamName = "string"
+#'       )
+#'     ),
+#'     ProcessingConfiguration = list(
+#'       Enabled = TRUE|FALSE,
+#'       Processors = list(
+#'         list(
+#'           Type = "RecordDeAggregation"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'           Parameters = list(
+#'             list(
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter",
+#'               ParameterValue = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     CloudWatchLoggingOptions = list(
+#'       Enabled = TRUE|FALSE,
+#'       LogGroupName = "string",
+#'       LogStreamName = "string"
+#'     ),
+#'     VpcConfiguration = list(
+#'       SubnetIds = list(
+#'         "string"
+#'       ),
+#'       RoleARN = "string",
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -637,14 +705,14 @@ NULL
 #' @rdname firehose_create_delivery_stream
 #'
 #' @aliases firehose_create_delivery_stream
-firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamType = NULL, KinesisStreamSourceConfiguration = NULL, DeliveryStreamEncryptionConfigurationInput = NULL, S3DestinationConfiguration = NULL, ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, ElasticsearchDestinationConfiguration = NULL, AmazonopensearchserviceDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, HttpEndpointDestinationConfiguration = NULL, Tags = NULL) {
+firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamType = NULL, KinesisStreamSourceConfiguration = NULL, DeliveryStreamEncryptionConfigurationInput = NULL, S3DestinationConfiguration = NULL, ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, ElasticsearchDestinationConfiguration = NULL, AmazonopensearchserviceDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, HttpEndpointDestinationConfiguration = NULL, Tags = NULL, AmazonOpenSearchServerlessDestinationConfiguration = NULL) {
   op <- new_operation(
     name = "CreateDeliveryStream",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, AmazonopensearchserviceDestinationConfiguration = AmazonopensearchserviceDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration = HttpEndpointDestinationConfiguration, Tags = Tags)
+  input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, AmazonopensearchserviceDestinationConfiguration = AmazonopensearchserviceDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration = HttpEndpointDestinationConfiguration, Tags = Tags, AmazonOpenSearchServerlessDestinationConfiguration = AmazonOpenSearchServerlessDestinationConfiguration)
   output <- .firehose$create_delivery_stream_output()
   config <- get_config()
   svc <- .firehose$service(config)
@@ -684,8 +752,8 @@ firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamTy
 #' force deletion, you can then use the
 #' [RevokeGrant](https://docs.aws.amazon.com/kms/latest/APIReference/API_RevokeGrant.html)
 #' operation to revoke the grant you gave to Kinesis Data Firehose. If a
-#' failure to retire the grant happens due to an AWS KMS issue, Kinesis
-#' Data Firehose keeps retrying the delete operation.
+#' failure to retire the grant happens due to an Amazon Web Services KMS
+#' issue, Kinesis Data Firehose keeps retrying the delete operation.
 #' 
 #' The default value is false.
 #'
@@ -1257,6 +1325,70 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #'               LogGroupName = "string",
 #'               LogStreamName = "string"
 #'             )
+#'           )
+#'         ),
+#'         AmazonOpenSearchServerlessDestinationDescription = list(
+#'           RoleARN = "string",
+#'           CollectionEndpoint = "string",
+#'           IndexName = "string",
+#'           BufferingHints = list(
+#'             IntervalInSeconds = 123,
+#'             SizeInMBs = 123
+#'           ),
+#'           RetryOptions = list(
+#'             DurationInSeconds = 123
+#'           ),
+#'           S3BackupMode = "FailedDocumentsOnly"|"AllDocuments",
+#'           S3DestinationDescription = list(
+#'             RoleARN = "string",
+#'             BucketARN = "string",
+#'             Prefix = "string",
+#'             ErrorOutputPrefix = "string",
+#'             BufferingHints = list(
+#'               SizeInMBs = 123,
+#'               IntervalInSeconds = 123
+#'             ),
+#'             CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
+#'             EncryptionConfiguration = list(
+#'               NoEncryptionConfig = "NoEncryption",
+#'               KMSEncryptionConfig = list(
+#'                 AWSKMSKeyARN = "string"
+#'               )
+#'             ),
+#'             CloudWatchLoggingOptions = list(
+#'               Enabled = TRUE|FALSE,
+#'               LogGroupName = "string",
+#'               LogStreamName = "string"
+#'             )
+#'           ),
+#'           ProcessingConfiguration = list(
+#'             Enabled = TRUE|FALSE,
+#'             Processors = list(
+#'               list(
+#'                 Type = "RecordDeAggregation"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'                 Parameters = list(
+#'                   list(
+#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter",
+#'                     ParameterValue = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           CloudWatchLoggingOptions = list(
+#'             Enabled = TRUE|FALSE,
+#'             LogGroupName = "string",
+#'             LogStreamName = "string"
+#'           ),
+#'           VpcConfigurationDescription = list(
+#'             SubnetIds = list(
+#'               "string"
+#'             ),
+#'             RoleARN = "string",
+#'             SecurityGroupIds = list(
+#'               "string"
+#'             ),
+#'             VpcId = "string"
 #'           )
 #'         )
 #'       )
@@ -1844,14 +1976,14 @@ firehose_stop_delivery_stream_encryption <- function(DeliveryStreamName) {
 #'
 #' @description
 #' Adds or updates tags for the specified delivery stream. A tag is a
-#' key-value pair that you can define and assign to AWS resources. If you
-#' specify a tag that already exists, the tag value is replaced with the
-#' value that you specify in the request. Tags are metadata. For example,
-#' you can add friendly names and descriptions or other types of
-#' information that can help you distinguish the delivery stream. For more
-#' information about tags, see [Using Cost Allocation
+#' key-value pair that you can define and assign to Amazon Web Services
+#' resources. If you specify a tag that already exists, the tag value is
+#' replaced with the value that you specify in the request. Tags are
+#' metadata. For example, you can add friendly names and descriptions or
+#' other types of information that can help you distinguish the delivery
+#' stream. For more information about tags, see [Using Cost Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
-#' in the *AWS Billing and Cost Management User Guide*.
+#' in the *Amazon Web Services Billing and Cost Management User Guide*.
 #' 
 #' Each delivery stream can have up to 50 tags.
 #' 
@@ -1999,7 +2131,8 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'   ExtendedS3DestinationUpdate, RedshiftDestinationUpdate,
 #'   ElasticsearchDestinationUpdate,
 #'   AmazonopensearchserviceDestinationUpdate, SplunkDestinationUpdate,
-#'   HttpEndpointDestinationUpdate)
+#'   HttpEndpointDestinationUpdate,
+#'   AmazonOpenSearchServerlessDestinationUpdate)
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
 #' @param CurrentDeliveryStreamVersionId &#91;required&#93; Obtain this value from the `VersionId` result of
@@ -2014,9 +2147,11 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #' @param ExtendedS3DestinationUpdate Describes an update for a destination in Amazon S3.
 #' @param RedshiftDestinationUpdate Describes an update for a destination in Amazon Redshift.
 #' @param ElasticsearchDestinationUpdate Describes an update for a destination in Amazon ES.
-#' @param AmazonopensearchserviceDestinationUpdate 
+#' @param AmazonopensearchserviceDestinationUpdate Describes an update for a destination in Amazon OpenSearch Service.
 #' @param SplunkDestinationUpdate Describes an update for a destination in Splunk.
 #' @param HttpEndpointDestinationUpdate Describes an update to the specified HTTP endpoint destination.
+#' @param AmazonOpenSearchServerlessDestinationUpdate Describes an update for a destination in the Serverless offering for
+#' Amazon OpenSearch Service.
 #'
 #' @return
 #' An empty list.
@@ -2473,6 +2608,59 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'         LogStreamName = "string"
 #'       )
 #'     )
+#'   ),
+#'   AmazonOpenSearchServerlessDestinationUpdate = list(
+#'     RoleARN = "string",
+#'     CollectionEndpoint = "string",
+#'     IndexName = "string",
+#'     BufferingHints = list(
+#'       IntervalInSeconds = 123,
+#'       SizeInMBs = 123
+#'     ),
+#'     RetryOptions = list(
+#'       DurationInSeconds = 123
+#'     ),
+#'     S3Update = list(
+#'       RoleARN = "string",
+#'       BucketARN = "string",
+#'       Prefix = "string",
+#'       ErrorOutputPrefix = "string",
+#'       BufferingHints = list(
+#'         SizeInMBs = 123,
+#'         IntervalInSeconds = 123
+#'       ),
+#'       CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
+#'       EncryptionConfiguration = list(
+#'         NoEncryptionConfig = "NoEncryption",
+#'         KMSEncryptionConfig = list(
+#'           AWSKMSKeyARN = "string"
+#'         )
+#'       ),
+#'       CloudWatchLoggingOptions = list(
+#'         Enabled = TRUE|FALSE,
+#'         LogGroupName = "string",
+#'         LogStreamName = "string"
+#'       )
+#'     ),
+#'     ProcessingConfiguration = list(
+#'       Enabled = TRUE|FALSE,
+#'       Processors = list(
+#'         list(
+#'           Type = "RecordDeAggregation"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'           Parameters = list(
+#'             list(
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter",
+#'               ParameterValue = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     CloudWatchLoggingOptions = list(
+#'       Enabled = TRUE|FALSE,
+#'       LogGroupName = "string",
+#'       LogStreamName = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2482,14 +2670,14 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #' @rdname firehose_update_destination
 #'
 #' @aliases firehose_update_destination
-firehose_update_destination <- function(DeliveryStreamName, CurrentDeliveryStreamVersionId, DestinationId, S3DestinationUpdate = NULL, ExtendedS3DestinationUpdate = NULL, RedshiftDestinationUpdate = NULL, ElasticsearchDestinationUpdate = NULL, AmazonopensearchserviceDestinationUpdate = NULL, SplunkDestinationUpdate = NULL, HttpEndpointDestinationUpdate = NULL) {
+firehose_update_destination <- function(DeliveryStreamName, CurrentDeliveryStreamVersionId, DestinationId, S3DestinationUpdate = NULL, ExtendedS3DestinationUpdate = NULL, RedshiftDestinationUpdate = NULL, ElasticsearchDestinationUpdate = NULL, AmazonopensearchserviceDestinationUpdate = NULL, SplunkDestinationUpdate = NULL, HttpEndpointDestinationUpdate = NULL, AmazonOpenSearchServerlessDestinationUpdate = NULL) {
   op <- new_operation(
     name = "UpdateDestination",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .firehose$update_destination_input(DeliveryStreamName = DeliveryStreamName, CurrentDeliveryStreamVersionId = CurrentDeliveryStreamVersionId, DestinationId = DestinationId, S3DestinationUpdate = S3DestinationUpdate, ExtendedS3DestinationUpdate = ExtendedS3DestinationUpdate, RedshiftDestinationUpdate = RedshiftDestinationUpdate, ElasticsearchDestinationUpdate = ElasticsearchDestinationUpdate, AmazonopensearchserviceDestinationUpdate = AmazonopensearchserviceDestinationUpdate, SplunkDestinationUpdate = SplunkDestinationUpdate, HttpEndpointDestinationUpdate = HttpEndpointDestinationUpdate)
+  input <- .firehose$update_destination_input(DeliveryStreamName = DeliveryStreamName, CurrentDeliveryStreamVersionId = CurrentDeliveryStreamVersionId, DestinationId = DestinationId, S3DestinationUpdate = S3DestinationUpdate, ExtendedS3DestinationUpdate = ExtendedS3DestinationUpdate, RedshiftDestinationUpdate = RedshiftDestinationUpdate, ElasticsearchDestinationUpdate = ElasticsearchDestinationUpdate, AmazonopensearchserviceDestinationUpdate = AmazonopensearchserviceDestinationUpdate, SplunkDestinationUpdate = SplunkDestinationUpdate, HttpEndpointDestinationUpdate = HttpEndpointDestinationUpdate, AmazonOpenSearchServerlessDestinationUpdate = AmazonOpenSearchServerlessDestinationUpdate)
   output <- .firehose$update_destination_output()
   config <- get_config()
   svc <- .firehose$service(config)

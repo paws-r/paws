@@ -15,17 +15,22 @@ resource ID for your Amazon ECS tasks is affected. If
 for your Amazon ECS container instances is affected. If \code{awsvpcTrunking}
 is specified, the elastic network interface (ENI) limit for your Amazon
 ECS container instances is affected. If \code{containerInsights} is
-specified, the default setting for CloudWatch Container Insights for
-your clusters is affected.}
+specified, the default setting for Amazon Web Services CloudWatch
+Container Insights for your clusters is affected. If \code{fargateFIPSMode}
+is specified, Fargate FIPS 140 compliance is affected. If
+\code{tagResourceAuthorization} is specified, the opt-in option for tagging
+resources on creation is affected. For information about the opt-in
+timeline, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html#tag-resources}{Tagging authorization timeline}
+in the \emph{Amazon ECS Developer Guide}.}
 
 \item{value}{[required] The account setting value for the specified principal ARN. Accepted
-values are \code{enabled} and \code{disabled}.}
+values are \code{enabled}, \code{disabled}, \code{on}, and \code{off}.}
 
-\item{principalArn}{The ARN of the principal, which can be an IAM user, IAM role, or the
-root user. If you specify the root user, it modifies the account setting
-for all IAM users, IAM roles, and the root user of the account unless an
-IAM user or role explicitly overrides these settings. If this field is
-omitted, the setting is changed only for the authenticated user.
+\item{principalArn}{The ARN of the principal, which can be a user, role, or the root user.
+If you specify the root user, it modifies the account setting for all
+users, roles, and the root user of the account unless a user or role
+explicitly overrides these settings. If this field is omitted, the
+setting is changed only for the authenticated user.
 
 Federated users assume the account setting of the root user and can't
 have explicit account settings set for them.}

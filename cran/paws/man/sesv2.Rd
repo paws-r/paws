@@ -65,6 +65,7 @@ demonstrate how to use Amazon SES API v2 features programmatically.
 \section{Operations}{
 
 \tabular{ll}{
+\link[paws.customer.engagement:sesv2_batch_get_metric_data]{batch_get_metric_data} \tab Retrieves batches of metric data collected based on your sending activity\cr
 \link[paws.customer.engagement:sesv2_create_configuration_set]{create_configuration_set} \tab Create a configuration set\cr
 \link[paws.customer.engagement:sesv2_create_configuration_set_event_destination]{create_configuration_set_event_destination} \tab Create an event destination\cr
 \link[paws.customer.engagement:sesv2_create_contact]{create_contact} \tab Creates a contact, which is an end-user who is receiving the email, and adds them to a contact list\cr
@@ -94,6 +95,7 @@ demonstrate how to use Amazon SES API v2 features programmatically.
 \link[paws.customer.engagement:sesv2_get_contact_list]{get_contact_list} \tab Returns contact list metadata\cr
 \link[paws.customer.engagement:sesv2_get_custom_verification_email_template]{get_custom_verification_email_template} \tab Returns the custom email verification template for the template name you specify\cr
 \link[paws.customer.engagement:sesv2_get_dedicated_ip]{get_dedicated_ip} \tab Get information about a dedicated IP address, including the name of the dedicated IP pool that it's associated with, as well information about the automatic warm-up process for the address\cr
+\link[paws.customer.engagement:sesv2_get_dedicated_ip_pool]{get_dedicated_ip_pool} \tab Retrieve information about the dedicated pool\cr
 \link[paws.customer.engagement:sesv2_get_dedicated_ips]{get_dedicated_ips} \tab List the dedicated IP addresses that are associated with your Amazon Web Services account\cr
 \link[paws.customer.engagement:sesv2_get_deliverability_dashboard_options]{get_deliverability_dashboard_options} \tab Retrieve information about the status of the Deliverability dashboard for your account\cr
 \link[paws.customer.engagement:sesv2_get_deliverability_test_report]{get_deliverability_test_report} \tab Retrieve the results of a predictive inbox placement test\cr
@@ -114,18 +116,22 @@ demonstrate how to use Amazon SES API v2 features programmatically.
 \link[paws.customer.engagement:sesv2_list_email_identities]{list_email_identities} \tab Returns a list of all of the email identities that are associated with your Amazon Web Services account\cr
 \link[paws.customer.engagement:sesv2_list_email_templates]{list_email_templates} \tab Lists the email templates present in your Amazon SES account in the current Amazon Web Services Region\cr
 \link[paws.customer.engagement:sesv2_list_import_jobs]{list_import_jobs} \tab Lists all of the import jobs\cr
+\link[paws.customer.engagement:sesv2_list_recommendations]{list_recommendations} \tab Lists the recommendations present in your Amazon SES account in the current Amazon Web Services Region\cr
 \link[paws.customer.engagement:sesv2_list_suppressed_destinations]{list_suppressed_destinations} \tab Retrieves a list of email addresses that are on the suppression list for your account\cr
 \link[paws.customer.engagement:sesv2_list_tags_for_resource]{list_tags_for_resource} \tab Retrieve a list of the tags (keys and values) that are associated with a specified resource\cr
 \link[paws.customer.engagement:sesv2_put_account_dedicated_ip_warmup_attributes]{put_account_dedicated_ip_warmup_attributes} \tab Enable or disable the automatic warm-up feature for dedicated IP addresses\cr
 \link[paws.customer.engagement:sesv2_put_account_details]{put_account_details} \tab Update your Amazon SES account details\cr
 \link[paws.customer.engagement:sesv2_put_account_sending_attributes]{put_account_sending_attributes} \tab Enable or disable the ability of your account to send email\cr
 \link[paws.customer.engagement:sesv2_put_account_suppression_attributes]{put_account_suppression_attributes} \tab Change the settings for the account-level suppression list\cr
+\link[paws.customer.engagement:sesv2_put_account_vdm_attributes]{put_account_vdm_attributes} \tab Update your Amazon SES account VDM attributes\cr
 \link[paws.customer.engagement:sesv2_put_configuration_set_delivery_options]{put_configuration_set_delivery_options} \tab Associate a configuration set with a dedicated IP pool\cr
 \link[paws.customer.engagement:sesv2_put_configuration_set_reputation_options]{put_configuration_set_reputation_options} \tab Enable or disable collection of reputation metrics for emails that you send using a particular configuration set in a specific Amazon Web Services Region\cr
 \link[paws.customer.engagement:sesv2_put_configuration_set_sending_options]{put_configuration_set_sending_options} \tab Enable or disable email sending for messages that use a particular configuration set in a specific Amazon Web Services Region\cr
 \link[paws.customer.engagement:sesv2_put_configuration_set_suppression_options]{put_configuration_set_suppression_options} \tab Specify the account suppression list preferences for a configuration set\cr
 \link[paws.customer.engagement:sesv2_put_configuration_set_tracking_options]{put_configuration_set_tracking_options} \tab Specify a custom domain to use for open and click tracking elements in email that you send\cr
+\link[paws.customer.engagement:sesv2_put_configuration_set_vdm_options]{put_configuration_set_vdm_options} \tab Specify VDM preferences for email that you send using the configuration set\cr
 \link[paws.customer.engagement:sesv2_put_dedicated_ip_in_pool]{put_dedicated_ip_in_pool} \tab Move a dedicated IP address to an existing dedicated IP pool\cr
+\link[paws.customer.engagement:sesv2_put_dedicated_ip_pool_scaling_attributes]{put_dedicated_ip_pool_scaling_attributes} \tab Used to convert a dedicated IP pool to a different scaling mode\cr
 \link[paws.customer.engagement:sesv2_put_dedicated_ip_warmup_attributes]{put_dedicated_ip_warmup_attributes} \tab Put dedicated ip warmup attributes\cr
 \link[paws.customer.engagement:sesv2_put_deliverability_dashboard_option]{put_deliverability_dashboard_option} \tab Enable or disable the Deliverability dashboard\cr
 \link[paws.customer.engagement:sesv2_put_email_identity_configuration_set_attributes]{put_email_identity_configuration_set_attributes} \tab Used to associate a configuration set with an email identity\cr
@@ -152,8 +158,10 @@ demonstrate how to use Amazon SES API v2 features programmatically.
 \examples{
 \dontrun{
 svc <- sesv2()
-svc$create_configuration_set(
-  Foo = 123
+# This example converts a dedicated IP pool from STANDARD to MANAGED.
+svc$put_dedicated_ip_pool_scaling_attributes(
+  PoolName = "sample-ses-pool",
+  ScalingMode = "MANAGED"
 )
 }
 

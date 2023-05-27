@@ -35,7 +35,7 @@ results than the maximum page size.}
 \item{MaxResults}{The number of entries a paginated response contains.}
 }
 \description{
-Retrieves all of the cost anomalies detected on your account during the time period that's specified by the \code{DateInterval} object.
+Retrieves all of the cost anomalies detected on your account during the time period that's specified by the \code{DateInterval} object. Anomalies are available for up to 90 days.
 
 See \url{https://paws-r.github.io/docs/costexplorer/get_anomalies.html} for full documentation.
 }

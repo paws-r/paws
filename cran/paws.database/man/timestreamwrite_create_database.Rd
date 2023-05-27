@@ -11,13 +11,12 @@ timestreamwrite_create_database(DatabaseName, KmsKeyId = NULL, Tags = NULL)
 
 \item{KmsKeyId}{The KMS key for the database. If the KMS key is not specified, the
 database will be encrypted with a Timestream managed KMS key located in
-your account. Refer to \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed KMS keys}
-for more info.}
+your account. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed keys}.}
 
 \item{Tags}{A list of key-value pairs to label the table.}
 }
 \description{
-Creates a new Timestream database. If the KMS key is not specified, the database will be encrypted with a Timestream managed KMS key located in your account. Refer to \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed KMS keys} for more info. \href{https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html}{Service quotas apply}. See \href{https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-db.html}{code sample} for details.
+Creates a new Timestream database. If the KMS key is not specified, the database will be encrypted with a Timestream managed KMS key located in your account. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed keys}. \href{https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html}{Service quotas apply}. For details, see \href{https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-db.html}{code sample}.
 
 See \url{https://paws-r.github.io/docs/timestreamwrite/create_database.html} for full documentation.
 }

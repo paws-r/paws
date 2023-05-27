@@ -11,26 +11,43 @@ connect_get_current_metric_data(
   Groupings = NULL,
   CurrentMetrics,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  SortCriteria = NULL
 )
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 
-\item{Filters}{[required] The queues, up to 100, or channels, to use to filter the metrics
-returned. Metric data is retrieved only for the resources associated
-with the queues or channels included in the filter. You can include both
-queue IDs and queue ARNs in the same request. VOICE, CHAT, and TASK
-channels are supported.}
+\item{Filters}{[required] The filters to apply to returned metrics. You can filter up to the
+following limits:
+\itemize{
+\item Queues: 100
+\item Routing profiles: 100
+\item Channels: 3 (VOICE, CHAT, and TASK channels are supported.)
+}
+
+Metric data is retrieved only for the resources associated with the
+queues or routing profiles, and by any channels included in the filter.
+(You cannot filter by both queue AND routing profile.) You can include
+both resource IDs and resource ARNs in the same request.
+
+Currently tagging is only supported on the resources that are passed in
+the filter.}
 
 \item{Groupings}{The grouping applied to the metrics returned. For example, when grouped
 by \code{QUEUE}, the metrics returned apply to each queue rather than
-aggregated for all queues. If you group by \code{CHANNEL}, you should include
-a Channels filter. VOICE, CHAT, and TASK channels are supported.
-
-If no \code{Grouping} is included in the request, a summary of metrics is
-returned.}
+aggregated for all queues.
+\itemize{
+\item If you group by \code{CHANNEL}, you should include a Channels filter.
+VOICE, CHAT, and TASK channels are supported.
+\item If you group by \code{ROUTING_PROFILE}, you must include either a queue
+or routing profile filter. In addition, a routing profile filter is
+required for metrics \code{CONTACTS_SCHEDULED}, \code{CONTACTS_IN_QUEUE}, and
+\code{ OLDEST_CONTACT_AGE}.
+\item If no \code{Grouping} is included in the request, a summary of metrics is
+returned.
+}}
 
 \item{CurrentMetrics}{[required] The metrics to retrieve. Specify the name and unit for each metric. The
 following metrics are available. For a description of all the metrics,
@@ -143,6 +160,16 @@ Subsequent requests that use the token must use the same request
 parameters as the request that generated the token.}
 
 \item{MaxResults}{The maximum number of results to return per page.}
+
+\item{SortCriteria}{The way to sort the resulting response based on metrics. You can enter
+one sort criteria. By default resources are sorted based on
+\code{AGENTS_ONLINE}, \code{DESCENDING}. The metric collection is sorted based on
+the input metrics.
+
+Note the following:
+\itemize{
+\item Sorting on \code{SLOTS_ACTIVE} and \code{SLOTS_AVAILABLE} is not supported.
+}}
 }
 \description{
 Gets the real-time metric data from the specified Amazon Connect instance.

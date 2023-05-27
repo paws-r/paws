@@ -8,8 +8,8 @@ account}
 macie2_disassociate_member(id)
 }
 \arguments{
-\item{id}{[required] The unique identifier for the Amazon Macie resource or account that the
-request applies to.}
+\item{id}{[required] The unique identifier for the Amazon Macie resource that the request
+applies to.}
 }
 \description{
 Disassociates an Amazon Macie administrator account from a member account.

@@ -7,7 +7,8 @@
 ec2_modify_vpc_attribute(
   EnableDnsHostnames = NULL,
   EnableDnsSupport = NULL,
-  VpcId
+  VpcId,
+  EnableNetworkAddressUsageMetrics = NULL
 )
 }
 \arguments{
@@ -30,6 +31,9 @@ You cannot modify the DNS resolution and DNS hostnames attributes in the
 same request. Use separate requests for each attribute.}
 
 \item{VpcId}{[required] The ID of the VPC.}
+
+\item{EnableNetworkAddressUsageMetrics}{Indicates whether Network Address Usage metrics are enabled for your
+VPC.}
 }
 \description{
 Modifies the specified attribute of the specified VPC.

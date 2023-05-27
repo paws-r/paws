@@ -22,9 +22,9 @@ nimblestudio_update_studio_component(
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. If you don’t specify a client token, the AWS
-SDK automatically generates a client token and uses it for the request
-to ensure idempotency.}
+idempotency of the request. If you don’t specify a client token, the
+Amazon Web Services SDK automatically generates a client token and uses
+it for the request to ensure idempotency.}
 
 \item{configuration}{The configuration of the studio component, based on component type.}
 
@@ -37,14 +37,14 @@ to ensure idempotency.}
 \item{name}{The name for the studio component.}
 
 \item{runtimeRoleArn}{An IAM role attached to a Studio Component that gives the studio
-component access to AWS resources at anytime while the instance is
-running.}
+component access to Amazon Web Services resources at anytime while the
+instance is running.}
 
 \item{scriptParameters}{Parameters for the studio component scripts.}
 
 \item{secureInitializationRoleArn}{An IAM role attached to Studio Component when the system initialization
-script runs which give the studio component access to AWS resources when
-the system initialization script runs.}
+script runs which give the studio component access to Amazon Web
+Services resources when the system initialization script runs.}
 
 \item{studioComponentId}{[required] The studio component ID.}
 

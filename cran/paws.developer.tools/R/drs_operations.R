@@ -35,6 +35,41 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 }
 .drs$operations$create_extended_source_server <- drs_create_extended_source_server
 
+#' Creates a new Launch Configuration Template
+#'
+#' @description
+#' Creates a new Launch Configuration Template.
+#'
+#' See [https://paws-r.github.io/docs/drs/create_launch_configuration_template.html](https://paws-r.github.io/docs/drs/create_launch_configuration_template.html) for full documentation.
+#'
+#' @param copyPrivateIp Copy private IP.
+#' @param copyTags Copy tags.
+#' @param launchDisposition Launch disposition.
+#' @param licensing Licensing.
+#' @param tags Request to associate tags during creation of a Launch Configuration
+#' Template.
+#' @param targetInstanceTypeRightSizingMethod Target instance type right-sizing method.
+#'
+#' @keywords internal
+#'
+#' @rdname drs_create_launch_configuration_template
+drs_create_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, launchDisposition = NULL, licensing = NULL, tags = NULL, targetInstanceTypeRightSizingMethod = NULL) {
+  op <- new_operation(
+    name = "CreateLaunchConfigurationTemplate",
+    http_method = "POST",
+    http_path = "/CreateLaunchConfigurationTemplate",
+    paginator = list()
+  )
+  input <- .drs$create_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, launchDisposition = launchDisposition, licensing = licensing, tags = tags, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
+  output <- .drs$create_launch_configuration_template_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$create_launch_configuration_template <- drs_create_launch_configuration_template
+
 #' Creates a new ReplicationConfigurationTemplate
 #'
 #' @description
@@ -44,6 +79,8 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #'
 #' @param associateDefaultSecurityGroup &#91;required&#93; Whether to associate the default Elastic Disaster Recovery Security
 #' group with the Replication Configuration Template.
+#' @param autoReplicateNewDisks Whether to allow the AWS replication agent to automatically replicate
+#' newly added disks.
 #' @param bandwidthThrottling &#91;required&#93; Configure bandwidth throttling for the outbound data transfer rate of
 #' the Source Server in Mbps.
 #' @param createPublicIP &#91;required&#93; Whether to create a Public IP for the Recovery Instance by default.
@@ -67,14 +104,14 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname drs_create_replication_configuration_template
-drs_create_replication_configuration_template <- function(associateDefaultSecurityGroup, bandwidthThrottling, createPublicIP, dataPlaneRouting, defaultLargeStagingDiskType, ebsEncryption, ebsEncryptionKeyArn = NULL, pitPolicy, replicationServerInstanceType, replicationServersSecurityGroupsIDs, stagingAreaSubnetId, stagingAreaTags, tags = NULL, useDedicatedReplicationServer) {
+drs_create_replication_configuration_template <- function(associateDefaultSecurityGroup, autoReplicateNewDisks = NULL, bandwidthThrottling, createPublicIP, dataPlaneRouting, defaultLargeStagingDiskType, ebsEncryption, ebsEncryptionKeyArn = NULL, pitPolicy, replicationServerInstanceType, replicationServersSecurityGroupsIDs, stagingAreaSubnetId, stagingAreaTags, tags = NULL, useDedicatedReplicationServer) {
   op <- new_operation(
     name = "CreateReplicationConfigurationTemplate",
     http_method = "POST",
     http_path = "/CreateReplicationConfigurationTemplate",
     paginator = list()
   )
-  input <- .drs$create_replication_configuration_template_input(associateDefaultSecurityGroup = associateDefaultSecurityGroup, bandwidthThrottling = bandwidthThrottling, createPublicIP = createPublicIP, dataPlaneRouting = dataPlaneRouting, defaultLargeStagingDiskType = defaultLargeStagingDiskType, ebsEncryption = ebsEncryption, ebsEncryptionKeyArn = ebsEncryptionKeyArn, pitPolicy = pitPolicy, replicationServerInstanceType = replicationServerInstanceType, replicationServersSecurityGroupsIDs = replicationServersSecurityGroupsIDs, stagingAreaSubnetId = stagingAreaSubnetId, stagingAreaTags = stagingAreaTags, tags = tags, useDedicatedReplicationServer = useDedicatedReplicationServer)
+  input <- .drs$create_replication_configuration_template_input(associateDefaultSecurityGroup = associateDefaultSecurityGroup, autoReplicateNewDisks = autoReplicateNewDisks, bandwidthThrottling = bandwidthThrottling, createPublicIP = createPublicIP, dataPlaneRouting = dataPlaneRouting, defaultLargeStagingDiskType = defaultLargeStagingDiskType, ebsEncryption = ebsEncryption, ebsEncryptionKeyArn = ebsEncryptionKeyArn, pitPolicy = pitPolicy, replicationServerInstanceType = replicationServerInstanceType, replicationServersSecurityGroupsIDs = replicationServersSecurityGroupsIDs, stagingAreaSubnetId = stagingAreaSubnetId, stagingAreaTags = stagingAreaTags, tags = tags, useDedicatedReplicationServer = useDedicatedReplicationServer)
   output <- .drs$create_replication_configuration_template_output()
   config <- get_config()
   svc <- .drs$service(config)
@@ -112,6 +149,35 @@ drs_delete_job <- function(jobID) {
   return(response)
 }
 .drs$operations$delete_job <- drs_delete_job
+
+#' Deletes a single Launch Configuration Template by ID
+#'
+#' @description
+#' Deletes a single Launch Configuration Template by ID.
+#'
+#' See [https://paws-r.github.io/docs/drs/delete_launch_configuration_template.html](https://paws-r.github.io/docs/drs/delete_launch_configuration_template.html) for full documentation.
+#'
+#' @param launchConfigurationTemplateID &#91;required&#93; The ID of the Launch Configuration Template to be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname drs_delete_launch_configuration_template
+drs_delete_launch_configuration_template <- function(launchConfigurationTemplateID) {
+  op <- new_operation(
+    name = "DeleteLaunchConfigurationTemplate",
+    http_method = "POST",
+    http_path = "/DeleteLaunchConfigurationTemplate",
+    paginator = list()
+  )
+  input <- .drs$delete_launch_configuration_template_input(launchConfigurationTemplateID = launchConfigurationTemplateID)
+  output <- .drs$delete_launch_configuration_template_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$delete_launch_configuration_template <- drs_delete_launch_configuration_template
 
 #' Deletes a single Recovery Instance by ID
 #'
@@ -261,6 +327,39 @@ drs_describe_jobs <- function(filters = NULL, maxResults = NULL, nextToken = NUL
   return(response)
 }
 .drs$operations$describe_jobs <- drs_describe_jobs
+
+#' Lists all Launch Configuration Templates, filtered by Launch
+#' Configuration Template IDs
+#'
+#' @description
+#' Lists all Launch Configuration Templates, filtered by Launch Configuration Template IDs
+#'
+#' See [https://paws-r.github.io/docs/drs/describe_launch_configuration_templates.html](https://paws-r.github.io/docs/drs/describe_launch_configuration_templates.html) for full documentation.
+#'
+#' @param launchConfigurationTemplateIDs Request to filter Launch Configuration Templates list by Launch
+#' Configuration Template ID.
+#' @param maxResults Maximum results to be returned in DescribeLaunchConfigurationTemplates.
+#' @param nextToken The token of the next Launch Configuration Template to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname drs_describe_launch_configuration_templates
+drs_describe_launch_configuration_templates <- function(launchConfigurationTemplateIDs = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeLaunchConfigurationTemplates",
+    http_method = "POST",
+    http_path = "/DescribeLaunchConfigurationTemplates",
+    paginator = list()
+  )
+  input <- .drs$describe_launch_configuration_templates_input(launchConfigurationTemplateIDs = launchConfigurationTemplateIDs, maxResults = maxResults, nextToken = nextToken)
+  output <- .drs$describe_launch_configuration_templates_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$describe_launch_configuration_templates <- drs_describe_launch_configuration_templates
 
 #' Lists all Recovery Instances or multiple Recovery Instances by ID
 #'
@@ -658,12 +757,10 @@ drs_list_tags_for_resource <- function(resourceArn) {
 }
 .drs$operations$list_tags_for_resource <- drs_list_tags_for_resource
 
-#' Causes the data replication initiation sequence to begin immediately
-#' upon next Handshake for the specified Source Server ID, regardless of
-#' when the previous initiation started
+#' WARNING: RetryDataReplication is deprecated
 #'
 #' @description
-#' Causes the data replication initiation sequence to begin immediately upon next Handshake for the specified Source Server ID, regardless of when the previous initiation started. This command will work only if the Source Server is stalled or is in a DISCONNECTED or STOPPED state.
+#' WARNING: RetryDataReplication is deprecated. Causes the data replication initiation sequence to begin immediately upon next Handshake for the specified Source Server ID, regardless of when the previous initiation started. This command will work only if the Source Server is stalled or is in a DISCONNECTED or STOPPED state.
 #'
 #' See [https://paws-r.github.io/docs/drs/retry_data_replication.html](https://paws-r.github.io/docs/drs/retry_data_replication.html) for full documentation.
 #'
@@ -688,6 +785,37 @@ drs_retry_data_replication <- function(sourceServerID) {
   return(response)
 }
 .drs$operations$retry_data_replication <- drs_retry_data_replication
+
+#' Start replication to origin / target region - applies only to protected
+#' instances that originated in EC2
+#'
+#' @description
+#' Start replication to origin / target region - applies only to protected instances that originated in EC2. For recovery instances on target region - starts replication back to origin region. For failback instances on origin region - starts replication to target region to re-protect them.
+#'
+#' See [https://paws-r.github.io/docs/drs/reverse_replication.html](https://paws-r.github.io/docs/drs/reverse_replication.html) for full documentation.
+#'
+#' @param recoveryInstanceID &#91;required&#93; The ID of the Recovery Instance that we want to reverse the replication
+#' for.
+#'
+#' @keywords internal
+#'
+#' @rdname drs_reverse_replication
+drs_reverse_replication <- function(recoveryInstanceID) {
+  op <- new_operation(
+    name = "ReverseReplication",
+    http_method = "POST",
+    http_path = "/ReverseReplication",
+    paginator = list()
+  )
+  input <- .drs$reverse_replication_input(recoveryInstanceID = recoveryInstanceID)
+  output <- .drs$reverse_replication_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$reverse_replication <- drs_reverse_replication
 
 #' Initiates a Job for launching the machine that is being failed back to
 #' from the specified Recovery Instance
@@ -752,6 +880,35 @@ drs_start_recovery <- function(isDrill = NULL, sourceServers, tags = NULL) {
 }
 .drs$operations$start_recovery <- drs_start_recovery
 
+#' Starts replication for a stopped Source Server
+#'
+#' @description
+#' Starts replication for a stopped Source Server. This action would make the Source Server protected again and restart billing for it.
+#'
+#' See [https://paws-r.github.io/docs/drs/start_replication.html](https://paws-r.github.io/docs/drs/start_replication.html) for full documentation.
+#'
+#' @param sourceServerID &#91;required&#93; The ID of the Source Server to start replication for.
+#'
+#' @keywords internal
+#'
+#' @rdname drs_start_replication
+drs_start_replication <- function(sourceServerID) {
+  op <- new_operation(
+    name = "StartReplication",
+    http_method = "POST",
+    http_path = "/StartReplication",
+    paginator = list()
+  )
+  input <- .drs$start_replication_input(sourceServerID = sourceServerID)
+  output <- .drs$start_replication_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$start_replication <- drs_start_replication
+
 #' Stops the failback process for a specified Recovery Instance
 #'
 #' @description
@@ -780,6 +937,35 @@ drs_stop_failback <- function(recoveryInstanceID) {
   return(response)
 }
 .drs$operations$stop_failback <- drs_stop_failback
+
+#' Stops replication for a Source Server
+#'
+#' @description
+#' Stops replication for a Source Server. This action would make the Source Server unprotected, delete its existing snapshots and stop billing for it.
+#'
+#' See [https://paws-r.github.io/docs/drs/stop_replication.html](https://paws-r.github.io/docs/drs/stop_replication.html) for full documentation.
+#'
+#' @param sourceServerID &#91;required&#93; The ID of the Source Server to stop replication for.
+#'
+#' @keywords internal
+#'
+#' @rdname drs_stop_replication
+drs_stop_replication <- function(sourceServerID) {
+  op <- new_operation(
+    name = "StopReplication",
+    http_method = "POST",
+    http_path = "/StopReplication",
+    paginator = list()
+  )
+  input <- .drs$stop_replication_input(sourceServerID = sourceServerID)
+  output <- .drs$stop_replication_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$stop_replication <- drs_stop_replication
 
 #' Adds or overwrites only the specified tags for the specified Elastic
 #' Disaster Recovery resource or resources
@@ -949,6 +1135,40 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 }
 .drs$operations$update_launch_configuration <- drs_update_launch_configuration
 
+#' Updates an existing Launch Configuration Template by ID
+#'
+#' @description
+#' Updates an existing Launch Configuration Template by ID.
+#'
+#' See [https://paws-r.github.io/docs/drs/update_launch_configuration_template.html](https://paws-r.github.io/docs/drs/update_launch_configuration_template.html) for full documentation.
+#'
+#' @param copyPrivateIp Copy private IP.
+#' @param copyTags Copy tags.
+#' @param launchConfigurationTemplateID &#91;required&#93; Launch Configuration Template ID.
+#' @param launchDisposition Launch disposition.
+#' @param licensing Licensing.
+#' @param targetInstanceTypeRightSizingMethod Target instance type right-sizing method.
+#'
+#' @keywords internal
+#'
+#' @rdname drs_update_launch_configuration_template
+drs_update_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, launchConfigurationTemplateID, launchDisposition = NULL, licensing = NULL, targetInstanceTypeRightSizingMethod = NULL) {
+  op <- new_operation(
+    name = "UpdateLaunchConfigurationTemplate",
+    http_method = "POST",
+    http_path = "/UpdateLaunchConfigurationTemplate",
+    paginator = list()
+  )
+  input <- .drs$update_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, launchConfigurationTemplateID = launchConfigurationTemplateID, launchDisposition = launchDisposition, licensing = licensing, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
+  output <- .drs$update_launch_configuration_template_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$update_launch_configuration_template <- drs_update_launch_configuration_template
+
 #' Allows you to update a ReplicationConfiguration by Source Server ID
 #'
 #' @description
@@ -958,6 +1178,8 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 #'
 #' @param associateDefaultSecurityGroup Whether to associate the default Elastic Disaster Recovery Security
 #' group with the Replication Configuration.
+#' @param autoReplicateNewDisks Whether to allow the AWS replication agent to automatically replicate
+#' newly added disks.
 #' @param bandwidthThrottling Configure bandwidth throttling for the outbound data transfer rate of
 #' the Source Server in Mbps.
 #' @param createPublicIP Whether to create a Public IP for the Recovery Instance by default.
@@ -982,14 +1204,14 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 #' @keywords internal
 #'
 #' @rdname drs_update_replication_configuration
-drs_update_replication_configuration <- function(associateDefaultSecurityGroup = NULL, bandwidthThrottling = NULL, createPublicIP = NULL, dataPlaneRouting = NULL, defaultLargeStagingDiskType = NULL, ebsEncryption = NULL, ebsEncryptionKeyArn = NULL, name = NULL, pitPolicy = NULL, replicatedDisks = NULL, replicationServerInstanceType = NULL, replicationServersSecurityGroupsIDs = NULL, sourceServerID, stagingAreaSubnetId = NULL, stagingAreaTags = NULL, useDedicatedReplicationServer = NULL) {
+drs_update_replication_configuration <- function(associateDefaultSecurityGroup = NULL, autoReplicateNewDisks = NULL, bandwidthThrottling = NULL, createPublicIP = NULL, dataPlaneRouting = NULL, defaultLargeStagingDiskType = NULL, ebsEncryption = NULL, ebsEncryptionKeyArn = NULL, name = NULL, pitPolicy = NULL, replicatedDisks = NULL, replicationServerInstanceType = NULL, replicationServersSecurityGroupsIDs = NULL, sourceServerID, stagingAreaSubnetId = NULL, stagingAreaTags = NULL, useDedicatedReplicationServer = NULL) {
   op <- new_operation(
     name = "UpdateReplicationConfiguration",
     http_method = "POST",
     http_path = "/UpdateReplicationConfiguration",
     paginator = list()
   )
-  input <- .drs$update_replication_configuration_input(associateDefaultSecurityGroup = associateDefaultSecurityGroup, bandwidthThrottling = bandwidthThrottling, createPublicIP = createPublicIP, dataPlaneRouting = dataPlaneRouting, defaultLargeStagingDiskType = defaultLargeStagingDiskType, ebsEncryption = ebsEncryption, ebsEncryptionKeyArn = ebsEncryptionKeyArn, name = name, pitPolicy = pitPolicy, replicatedDisks = replicatedDisks, replicationServerInstanceType = replicationServerInstanceType, replicationServersSecurityGroupsIDs = replicationServersSecurityGroupsIDs, sourceServerID = sourceServerID, stagingAreaSubnetId = stagingAreaSubnetId, stagingAreaTags = stagingAreaTags, useDedicatedReplicationServer = useDedicatedReplicationServer)
+  input <- .drs$update_replication_configuration_input(associateDefaultSecurityGroup = associateDefaultSecurityGroup, autoReplicateNewDisks = autoReplicateNewDisks, bandwidthThrottling = bandwidthThrottling, createPublicIP = createPublicIP, dataPlaneRouting = dataPlaneRouting, defaultLargeStagingDiskType = defaultLargeStagingDiskType, ebsEncryption = ebsEncryption, ebsEncryptionKeyArn = ebsEncryptionKeyArn, name = name, pitPolicy = pitPolicy, replicatedDisks = replicatedDisks, replicationServerInstanceType = replicationServerInstanceType, replicationServersSecurityGroupsIDs = replicationServersSecurityGroupsIDs, sourceServerID = sourceServerID, stagingAreaSubnetId = stagingAreaSubnetId, stagingAreaTags = stagingAreaTags, useDedicatedReplicationServer = useDedicatedReplicationServer)
   output <- .drs$update_replication_configuration_output()
   config <- get_config()
   svc <- .drs$service(config)
@@ -1009,6 +1231,8 @@ drs_update_replication_configuration <- function(associateDefaultSecurityGroup =
 #' @param arn The Replication Configuration Template ARN.
 #' @param associateDefaultSecurityGroup Whether to associate the default Elastic Disaster Recovery Security
 #' group with the Replication Configuration Template.
+#' @param autoReplicateNewDisks Whether to allow the AWS replication agent to automatically replicate
+#' newly added disks.
 #' @param bandwidthThrottling Configure bandwidth throttling for the outbound data transfer rate of
 #' the Source Server in Mbps.
 #' @param createPublicIP Whether to create a Public IP for the Recovery Instance by default.
@@ -1031,14 +1255,14 @@ drs_update_replication_configuration <- function(associateDefaultSecurityGroup =
 #' @keywords internal
 #'
 #' @rdname drs_update_replication_configuration_template
-drs_update_replication_configuration_template <- function(arn = NULL, associateDefaultSecurityGroup = NULL, bandwidthThrottling = NULL, createPublicIP = NULL, dataPlaneRouting = NULL, defaultLargeStagingDiskType = NULL, ebsEncryption = NULL, ebsEncryptionKeyArn = NULL, pitPolicy = NULL, replicationConfigurationTemplateID, replicationServerInstanceType = NULL, replicationServersSecurityGroupsIDs = NULL, stagingAreaSubnetId = NULL, stagingAreaTags = NULL, useDedicatedReplicationServer = NULL) {
+drs_update_replication_configuration_template <- function(arn = NULL, associateDefaultSecurityGroup = NULL, autoReplicateNewDisks = NULL, bandwidthThrottling = NULL, createPublicIP = NULL, dataPlaneRouting = NULL, defaultLargeStagingDiskType = NULL, ebsEncryption = NULL, ebsEncryptionKeyArn = NULL, pitPolicy = NULL, replicationConfigurationTemplateID, replicationServerInstanceType = NULL, replicationServersSecurityGroupsIDs = NULL, stagingAreaSubnetId = NULL, stagingAreaTags = NULL, useDedicatedReplicationServer = NULL) {
   op <- new_operation(
     name = "UpdateReplicationConfigurationTemplate",
     http_method = "POST",
     http_path = "/UpdateReplicationConfigurationTemplate",
     paginator = list()
   )
-  input <- .drs$update_replication_configuration_template_input(arn = arn, associateDefaultSecurityGroup = associateDefaultSecurityGroup, bandwidthThrottling = bandwidthThrottling, createPublicIP = createPublicIP, dataPlaneRouting = dataPlaneRouting, defaultLargeStagingDiskType = defaultLargeStagingDiskType, ebsEncryption = ebsEncryption, ebsEncryptionKeyArn = ebsEncryptionKeyArn, pitPolicy = pitPolicy, replicationConfigurationTemplateID = replicationConfigurationTemplateID, replicationServerInstanceType = replicationServerInstanceType, replicationServersSecurityGroupsIDs = replicationServersSecurityGroupsIDs, stagingAreaSubnetId = stagingAreaSubnetId, stagingAreaTags = stagingAreaTags, useDedicatedReplicationServer = useDedicatedReplicationServer)
+  input <- .drs$update_replication_configuration_template_input(arn = arn, associateDefaultSecurityGroup = associateDefaultSecurityGroup, autoReplicateNewDisks = autoReplicateNewDisks, bandwidthThrottling = bandwidthThrottling, createPublicIP = createPublicIP, dataPlaneRouting = dataPlaneRouting, defaultLargeStagingDiskType = defaultLargeStagingDiskType, ebsEncryption = ebsEncryption, ebsEncryptionKeyArn = ebsEncryptionKeyArn, pitPolicy = pitPolicy, replicationConfigurationTemplateID = replicationConfigurationTemplateID, replicationServerInstanceType = replicationServerInstanceType, replicationServersSecurityGroupsIDs = replicationServersSecurityGroupsIDs, stagingAreaSubnetId = stagingAreaSubnetId, stagingAreaTags = stagingAreaTags, useDedicatedReplicationServer = useDedicatedReplicationServer)
   output <- .drs$update_replication_configuration_template_output()
   config <- get_config()
   svc <- .drs$service(config)

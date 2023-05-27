@@ -10,7 +10,7 @@ ivs_list_streams(filterBy = NULL, maxResults = NULL, nextToken = NULL)
 \arguments{
 \item{filterBy}{Filters the stream list to match the specified criterion.}
 
-\item{maxResults}{Maximum number of streams to return. Default: 50.}
+\item{maxResults}{Maximum number of streams to return. Default: 100.}
 
 \item{nextToken}{The first stream to retrieve. This is used for pagination; see the
 \code{nextToken} response field.}

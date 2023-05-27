@@ -5,12 +5,19 @@
 \title{Retrieves a list of available RAM permissions that you can use for the
 supported resource types}
 \usage{
-ram_list_permissions(resourceType = NULL, nextToken = NULL, maxResults = NULL)
+ram_list_permissions(
+  resourceType = NULL,
+  nextToken = NULL,
+  maxResults = NULL,
+  permissionType = NULL
+)
 }
 \arguments{
-\item{resourceType}{Specifies that you want to list permissions for only the specified
-resource type. For example, to list only permissions that apply to EC2
-subnets, specify \code{ec2:Subnet}. You can use the
+\item{resourceType}{Specifies that you want to list only those permissions that apply to the
+specified resource type. This parameter is not case sensitive.
+
+For example, to list only permissions that apply to Amazon EC2 subnets,
+specify \code{ec2:subnet}. You can use the
 \code{\link[=ram_list_resource_types]{list_resource_types}} operation to get the
 specific string required.}
 
@@ -30,6 +37,16 @@ the next part of the results. Note that the service might return fewer
 results than the maximum even when there are more results available. You
 should check \code{NextToken} after every operation to ensure that you
 receive all of the results.}
+
+\item{permissionType}{Specifies that you want to list only permissions of this type:
+\itemize{
+\item \code{AWS} – returns only Amazon Web Services managed permissions.
+\item \code{LOCAL} – returns only customer managed permissions
+\item \code{ALL} – returns both Amazon Web Services managed permissions and
+customer managed permissions.
+}
+
+If you don't specify this parameter, the default is \code{All}.}
 }
 \description{
 Retrieves a list of available RAM permissions that you can use for the supported resource types.

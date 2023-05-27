@@ -25,7 +25,7 @@ job queue is created, the fair share scheduling policy can be replaced
 but not removed. The format is
 \code{aws:Partition:batch:Region:Account:scheduling-policy/Name }. For
 example,
-\code{aws:aws:batch:us-west-2:012345678910:scheduling-policy/MySchedulingPolicy}.}
+\code{aws:aws:batch:us-west-2:123456789012:scheduling-policy/MySchedulingPolicy}.}
 
 \item{priority}{The priority of the job queue. Job queues with a higher priority (or a
 higher integer value for the \code{priority} parameter) are evaluated first

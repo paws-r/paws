@@ -8,10 +8,11 @@ environment account from a management account}
 \usage{
 proton_create_environment_account_connection(
   clientToken = NULL,
+  codebuildRoleArn = NULL,
   componentRoleArn = NULL,
   environmentName,
   managementAccountId,
-  roleArn,
+  roleArn = NULL,
   tags = NULL
 )
 }
@@ -19,6 +20,11 @@ proton_create_environment_account_connection(
 \item{clientToken}{When included, if two identical requests are made with the same client
 token, Proton returns the environment account connection that the first
 request created.}
+
+\item{codebuildRoleArn}{The Amazon Resource Name (ARN) of an IAM service role in the environment
+account. Proton uses this role to provision infrastructure resources
+using CodeBuild-based provisioning in the associated environment
+account.}
 
 \item{componentRoleArn}{The Amazon Resource Name (ARN) of the IAM service role that Proton uses
 when provisioning directly defined components in the associated
@@ -29,7 +35,7 @@ You must specify \code{componentRoleArn} to allow directly defined components
 to be associated with any environments running in this account.
 
 For more information about components, see \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html}{Proton components}
-in the \emph{Proton Administrator Guide}.}
+in the \emph{Proton User Guide}.}
 
 \item{environmentName}{[required] The name of the Proton environment that's created in the associated
 management account.}
@@ -41,7 +47,7 @@ connection, Proton can use the associated IAM role to provision
 environment infrastructure resources in the associated environment
 account.}
 
-\item{roleArn}{[required] The Amazon Resource Name (ARN) of the IAM service role that's created in
+\item{roleArn}{The Amazon Resource Name (ARN) of the IAM service role that's created in
 the environment account. Proton uses this role to provision
 infrastructure resources in the associated environment account.}
 
@@ -49,7 +55,7 @@ infrastructure resources in the associated environment account.}
 Proton environment account connection. A tag is a key-value pair.
 
 For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton resources and tagging}
-in the \emph{Proton Administrator Guide}.}
+in the \emph{Proton User Guide}.}
 }
 \description{
 Create an environment account connection in an environment account so that environment infrastructure resources can be provisioned in the environment account from a management account.

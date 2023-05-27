@@ -2,7 +2,7 @@
 % Please edit documentation in R/route53resolver_operations.R
 \name{route53resolver_update_resolver_config}
 \alias{route53resolver_update_resolver_config}
-\title{Updates the behavior configuration of Route 53 Resolver behavior for a
+\title{Updates the behavior configuration of Route 53 Resolver behavior for a
 single VPC from Amazon Virtual Private Cloud}
 \usage{
 route53resolver_update_resolver_config(ResourceId, AutodefinedReverseFlag)
@@ -18,10 +18,14 @@ information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html}{ClassicLink}
 in the \emph{Amazon EC2 guide}.
 
+We are retiring EC2-Classic on August 15, 2022. We recommend that you
+migrate from EC2-Classic to a VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html}{Migrate from EC2-Classic to a VPC}
+in the \emph{Amazon EC2 guide} and the blog \href{https://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/}{EC2-Classic Networking is Retiring – Here’s How to Prepare}.
+
 It can take some time for the status change to be completed.}
 }
 \description{
-Updates the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud.
+Updates the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud.
 
 See \url{https://paws-r.github.io/docs/route53resolver/update_resolver_config.html} for full documentation.
 }

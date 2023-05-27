@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_list_route_calculators}
 \alias{locationservice_list_route_calculators}
-\title{Lists route calculator resources in your AWS account}
+\title{Lists route calculator resources in your Amazon Web Services account}
 \usage{
 locationservice_list_route_calculators(MaxResults = NULL, NextToken = NULL)
 }
@@ -17,7 +17,7 @@ response. If no token is provided, the default page is the first page.
 Default Value: \code{null}}
 }
 \description{
-Lists route calculator resources in your AWS account.
+Lists route calculator resources in your Amazon Web Services account.
 
 See \url{https://paws-r.github.io/docs/locationservice/list_route_calculators.html} for full documentation.
 }

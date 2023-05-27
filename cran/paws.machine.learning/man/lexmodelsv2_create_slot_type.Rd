@@ -13,7 +13,8 @@ lexmodelsv2_create_slot_type(
   botId,
   botVersion,
   localeId,
-  externalSourceSetting = NULL
+  externalSourceSetting = NULL,
+  compositeSlotTypeSetting = NULL
 )
 }
 \arguments{
@@ -58,6 +59,8 @@ bots, intents, and slots used by the slot type must have the same
 locale. For more information, see \href{https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html}{Supported languages}.}
 
 \item{externalSourceSetting}{Sets the type of external information used to create the slot type.}
+
+\item{compositeSlotTypeSetting}{Specifications for a composite slot type.}
 }
 \description{
 Creates a custom slot type

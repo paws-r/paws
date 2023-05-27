@@ -55,7 +55,7 @@ returned marker value.
 
 Default: \code{100}
 
-Constraints: minimum 20, maximum 100.}
+Constraints: minimum 20, maximum 500.}
 
 \item{Marker}{An optional parameter that specifies the starting point to return a set
 of response records. When the results of a

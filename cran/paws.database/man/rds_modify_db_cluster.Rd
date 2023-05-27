@@ -40,7 +40,13 @@ rds_modify_db_cluster(
   EnablePerformanceInsights = NULL,
   PerformanceInsightsKMSKeyId = NULL,
   PerformanceInsightsRetentionPeriod = NULL,
-  ServerlessV2ScalingConfiguration = NULL
+  ServerlessV2ScalingConfiguration = NULL,
+  NetworkType = NULL,
+  ManageMasterUserPassword = NULL,
+  RotateMasterUserPassword = NULL,
+  MasterUserSecretKmsKeyId = NULL,
+  EngineMode = NULL,
+  AllowEngineModeChange = NULL
 )
 }
 \arguments{
@@ -64,7 +70,7 @@ Constraints:
 
 Example: \code{my-cluster2}
 
-Valid for: Aurora DB clusters only}
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{ApplyImmediately}{A value that indicates whether the modifications in this request and any
 pending modifications are asynchronously applied as soon as possible,
@@ -72,14 +78,10 @@ regardless of the \code{PreferredMaintenanceWindow} setting for the DB
 cluster. If this parameter is disabled, changes to the DB cluster are
 applied during the next maintenance window.
 
-The \code{ApplyImmediately} parameter only affects the
-\code{EnableIAMDatabaseAuthentication}, \code{MasterUserPassword}, and
-\code{NewDBClusterIdentifier} values. If the \code{ApplyImmediately} parameter is
-disabled, then changes to the \code{EnableIAMDatabaseAuthentication},
-\code{MasterUserPassword}, and \code{NewDBClusterIdentifier} values are applied
-during the next maintenance window. All other changes are applied
-immediately, regardless of the value of the \code{ApplyImmediately}
-parameter.
+Most modifications can be applied immediately or during the next
+scheduled maintenance window. Some modifications, such as turning on
+deletion protection and changing the master password, are applied
+immediately—regardless of when you choose to apply them.
 
 By default, this parameter is disabled.
 
@@ -116,7 +118,11 @@ Valid for: Aurora DB clusters only}
 \item{MasterUserPassword}{The new password for the master database user. This password can contain
 any printable ASCII character except "/", """, or "@".
 
-Constraints: Must contain from 8 to 41 characters.
+Constraints:
+\itemize{
+\item Must contain from 8 to 41 characters.
+\item Can't be specified if \code{ManageMasterUserPassword} is turned on.
+}
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
@@ -217,13 +223,12 @@ Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 Changing this parameter results in an outage. The change is applied
 during the next maintenance window unless \code{ApplyImmediately} is enabled.
 
-To list all of the available engine versions for MySQL 5.6-compatible
-Aurora, use the following command:
+If the cluster that you're modifying has one or more read replicas, all
+replicas must be running an engine version that's the same or later than
+the version you specify.
 
-\verb{aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"}
-
-To list all of the available engine versions for MySQL 5.7-compatible
-and MySQL 8.0-compatible Aurora, use the following command:
+To list all of the available engine versions for Aurora MySQL, use the
+following command:
 
 \verb{aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"}
 
@@ -333,7 +338,7 @@ but it does nothing until then.
 Valid for: Aurora DB clusters only}
 
 \item{DBClusterInstanceClass}{The compute and memory capacity of each DB instance in the Multi-AZ DB
-cluster, for example db.m6g.xlarge. Not all DB instance classes are
+cluster, for example db.m6gd.xlarge. Not all DB instance classes are
 available in all Amazon Web Services Regions, or for all database
 engines.
 
@@ -346,24 +351,24 @@ Valid for: Multi-AZ DB clusters only}
 \item{AllocatedStorage}{The amount of storage in gibibytes (GiB) to allocate to each DB instance
 in the Multi-AZ DB cluster.
 
-Type: Integer
-
 Valid for: Multi-AZ DB clusters only}
 
 \item{StorageType}{Specifies the storage type to be associated with the DB cluster.
 
-Valid values: \code{io1}
+When specified for a Multi-AZ DB cluster, a value for the \code{Iops}
+parameter is required.
 
-When specified, a value for the \code{Iops} parameter is required.
+Valid values: \code{aurora}, \code{aurora-iopt1} (Aurora DB clusters); \code{io1}
+(Multi-AZ DB clusters)
 
-Default: \code{io1}
+Default: \code{aurora} (Aurora DB clusters); \code{io1} (Multi-AZ DB clusters)
 
-Valid for: Multi-AZ DB clusters only}
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{Iops}{The amount of Provisioned IOPS (input/output operations per second) to
 be initially allocated for each DB instance in the Multi-AZ DB cluster.
 
-For information about valid Iops values, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS Storage to Improve Performance}
+For information about valid IOPS values, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS storage}
 in the \emph{Amazon RDS User Guide}.
 
 Constraints: Must be a multiple between .5 and 50 of the storage amount
@@ -442,6 +447,115 @@ RDS issues an error.
 Valid for: Multi-AZ DB clusters only}
 
 \item{ServerlessV2ScalingConfiguration}{}
+
+\item{NetworkType}{The network type of the DB cluster.
+
+Valid values:
+\itemize{
+\item \code{IPV4}
+\item \code{DUAL}
+}
+
+The network type is determined by the \code{DBSubnetGroup} specified for the
+DB cluster. A \code{DBSubnetGroup} can support only the IPv4 protocol or the
+IPv4 and the IPv6 protocols (\code{DUAL}).
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
+in the \emph{Amazon Aurora User Guide.}
+
+Valid for: Aurora DB clusters only}
+
+\item{ManageMasterUserPassword}{A value that indicates whether to manage the master user password with
+Amazon Web Services Secrets Manager.
+
+If the DB cluster doesn't manage the master user password with Amazon
+Web Services Secrets Manager, you can turn on this management. In this
+case, you can't specify \code{MasterUserPassword}.
+
+If the DB cluster already manages the master user password with Amazon
+Web Services Secrets Manager, and you specify that the master user
+password is not managed with Amazon Web Services Secrets Manager, then
+you must specify \code{MasterUserPassword}. In this case, RDS deletes the
+secret and uses the new password for the master user specified by
+\code{MasterUserPassword}.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html}{Password management with Amazon Web Services Secrets Manager}
+in the \emph{Amazon RDS User Guide} and \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/rds-secrets-manager.html}{Password management with Amazon Web Services Secrets Manager}
+in the \emph{Amazon Aurora User Guide.}
+
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+
+\item{RotateMasterUserPassword}{A value that indicates whether to rotate the secret managed by Amazon
+Web Services Secrets Manager for the master user password.
+
+This setting is valid only if the master user password is managed by RDS
+in Amazon Web Services Secrets Manager for the DB cluster. The secret
+value contains the updated password.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html}{Password management with Amazon Web Services Secrets Manager}
+in the \emph{Amazon RDS User Guide} and \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/rds-secrets-manager.html}{Password management with Amazon Web Services Secrets Manager}
+in the \emph{Amazon Aurora User Guide.}
+
+Constraints:
+\itemize{
+\item You must apply the change immediately when rotating the master user
+password.
+}
+
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+
+\item{MasterUserSecretKmsKeyId}{The Amazon Web Services KMS key identifier to encrypt a secret that is
+automatically generated and managed in Amazon Web Services Secrets
+Manager.
+
+This setting is valid only if both of the following conditions are met:
+\itemize{
+\item The DB cluster doesn't manage the master user password in Amazon Web
+Services Secrets Manager.
+
+If the DB cluster already manages the master user password in Amazon
+Web Services Secrets Manager, you can't change the KMS key that is
+used to encrypt the secret.
+\item You are turning on \code{ManageMasterUserPassword} to manage the master
+user password in Amazon Web Services Secrets Manager.
+
+If you are turning on \code{ManageMasterUserPassword} and don't specify
+\code{MasterUserSecretKmsKeyId}, then the \code{aws/secretsmanager} KMS key is
+used to encrypt the secret. If the secret is in a different Amazon
+Web Services account, then you can't use the \code{aws/secretsmanager}
+KMS key to encrypt the secret, and you must use a customer managed
+KMS key.
+}
+
+The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+ARN, or alias name for the KMS key. To use a KMS key in a different
+Amazon Web Services account, specify the key ARN or alias ARN.
+
+There is a default KMS key for your Amazon Web Services account. Your
+Amazon Web Services account has a different default KMS key for each
+Amazon Web Services Region.
+
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+
+\item{EngineMode}{The DB engine mode of the DB cluster, either \code{provisioned} or
+\code{serverless}.
+
+The DB engine mode can be modified only from \code{serverless} to
+\code{provisioned}.
+
+For more information, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBCluster.html}{CreateDBCluster}.
+
+Valid for: Aurora DB clusters only}
+
+\item{AllowEngineModeChange}{A value that indicates whether engine mode changes from \code{serverless} to
+\code{provisioned} are allowed.
+
+Constraints: You must allow engine mode changes when specifying a
+different value for the \code{EngineMode} parameter from the DB cluster's
+current engine mode.
+
+Valid for: Aurora Serverless v1 DB clusters only}
 }
 \description{
 Modify the settings for an Amazon Aurora DB cluster or a Multi-AZ DB cluster. You can change one or more settings by specifying these parameters and the new values in the request.

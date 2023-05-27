@@ -24,8 +24,7 @@ your Lake Formation environment.}
 \item{Resource}{[required] The resource to which permissions are to be revoked.}
 
 \item{Permissions}{[required] The permissions revoked to the principal on the resource. For
-information about permissions, see Security and Access Control to
-Metadata and Data.}
+information about permissions, see \href{https://docs.aws.amazon.com/lake-formation/latest/dg/security-data-access.html}{Security and Access Control to Metadata and Data}.}
 
 \item{PermissionsWithGrantOption}{Indicates a list of permissions for which to revoke the grant option
 allowing the principal to pass permissions to other principals.}

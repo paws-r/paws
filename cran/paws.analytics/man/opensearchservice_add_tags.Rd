@@ -2,17 +2,18 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_add_tags}
 \alias{opensearchservice_add_tags}
-\title{Attaches tags to an existing domain}
+\title{Attaches tags to an existing Amazon OpenSearch Service domain}
 \usage{
 opensearchservice_add_tags(ARN, TagList)
 }
 \arguments{
-\item{ARN}{[required] Specify the \code{ARN} of the domain you want to add tags to.}
+\item{ARN}{[required] Amazon Resource Name (ARN) for the OpenSearch Service domain to which
+you want to attach resource tags.}
 
-\item{TagList}{[required] List of \code{Tag} to add to the domain.}
+\item{TagList}{[required] List of resource tags.}
 }
 \description{
-Attaches tags to an existing domain. Tags are a set of case-sensitive key value pairs. An domain can have up to 10 tags. See \if{html}{\out{<a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/#managedomains-awsresorcetagging" target="_blank">}}Tagging Amazon OpenSearch Service domains\if{html}{\out{</a>}} for more information.
+Attaches tags to an existing Amazon OpenSearch Service domain. Tags are a set of case-sensitive key-value pairs. A domain can have up to 10 tags. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-awsresourcetagging.html}{Tagging Amazon OpenSearch Service domains}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/add_tags.html} for full documentation.
 }

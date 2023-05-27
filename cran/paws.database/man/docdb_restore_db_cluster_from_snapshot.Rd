@@ -16,7 +16,8 @@ docdb_restore_db_cluster_from_snapshot(
   Tags = NULL,
   KmsKeyId = NULL,
   EnableCloudwatchLogsExports = NULL,
-  DeletionProtection = NULL
+  DeletionProtection = NULL,
+  DBClusterParameterGroupName = NULL
 )
 }
 \arguments{
@@ -98,6 +99,17 @@ CloudWatch Logs.}
 is enabled, the cluster cannot be deleted unless it is modified and
 \code{DeletionProtection} is disabled. \code{DeletionProtection} protects clusters
 from being accidentally deleted.}
+
+\item{DBClusterParameterGroupName}{The name of the DB cluster parameter group to associate with this DB
+cluster.
+
+\emph{Type:} String.       \emph{Required:} No.
+
+If this argument is omitted, the default DB cluster parameter group is
+used. If supplied, must match the name of an existing default DB cluster
+parameter group. The string must consist of from 1 to 255 letters,
+numbers or hyphens. Its first character must be a letter, and it cannot
+end with a hyphen or contain two consecutive hyphens.}
 }
 \description{
 Creates a new cluster from a snapshot or cluster snapshot.

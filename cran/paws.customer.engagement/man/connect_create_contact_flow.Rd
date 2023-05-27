@@ -2,7 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_create_contact_flow}
 \alias{connect_create_contact_flow}
-\title{Creates a contact flow for the specified Amazon Connect instance}
+\title{Creates a flow for the specified Amazon Connect instance}
 \usage{
 connect_create_contact_flow(
   InstanceId,
@@ -16,20 +16,21 @@ connect_create_contact_flow(
 \arguments{
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 
-\item{Name}{[required] The name of the contact flow.}
+\item{Name}{[required] The name of the flow.}
 
-\item{Type}{[required] The type of the contact flow. For descriptions of the available types,
-see \href{https://docs.aws.amazon.com/connect/latest/adminguide/create-contact-flow.html#contact-flow-types}{Choose a Contact Flow Type}
+\item{Type}{[required] The type of the flow. For descriptions of the available types, see
+\href{https://docs.aws.amazon.com/connect/latest/adminguide/create-contact-flow.html#contact-flow-types}{Choose a flow type}
 in the \emph{Amazon Connect Administrator Guide}.}
 
-\item{Description}{The description of the contact flow.}
+\item{Description}{The description of the flow.}
 
-\item{Content}{[required] The content of the contact flow.}
+\item{Content}{[required] The content of the flow.}
 
-\item{Tags}{One or more tags.}
+\item{Tags}{The tags used to organize, track, or control access for this resource.
+For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.}
 }
 \description{
-Creates a contact flow for the specified Amazon Connect instance.
+Creates a flow for the specified Amazon Connect instance.
 
 See \url{https://paws-r.github.io/docs/connect/create_contact_flow.html} for full documentation.
 }

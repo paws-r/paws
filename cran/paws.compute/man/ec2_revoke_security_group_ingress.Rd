@@ -22,8 +22,9 @@ ec2_revoke_security_group_ingress(
 \item{CidrIp}{The CIDR IP address range. You can't specify this parameter when
 specifying a source security group.}
 
-\item{FromPort}{The start of port range for the TCP and UDP protocols, or an ICMP type
-number. For the ICMP type number, use \code{-1} to specify all ICMP types.}
+\item{FromPort}{If the protocol is TCP or UDP, this is the start of the port range. If
+the protocol is ICMP, this is the type number. A value of -1 indicates
+all ICMP types.}
 
 \item{GroupId}{The ID of the security group. You must specify either the security group
 ID or the security group name in the request. For security groups in a
@@ -31,7 +32,8 @@ nondefault VPC, you must specify the security group ID.}
 
 \item{GroupName}{[EC2-Classic, default VPC] The name of the security group. You must
 specify either the security group ID or the security group name in the
-request.}
+request. For security groups in a nondefault VPC, you must specify the
+security group ID.}
 
 \item{IpPermissions}{The sets of IP permissions. You can't specify a source security group
 and a CIDR IP address range in the same set of permissions.}
@@ -53,9 +55,9 @@ parameters: the CIDR IP address range, the IP protocol, the start of the
 port range, and the end of the port range. To revoke a specific rule for
 an IP protocol and port range, use a set of IP permissions instead.}
 
-\item{ToPort}{The end of port range for the TCP and UDP protocols, or an ICMP code
-number. For the ICMP code number, use \code{-1} to specify all ICMP codes for
-the ICMP type.}
+\item{ToPort}{If the protocol is TCP or UDP, this is the end of the port range. If the
+protocol is ICMP, this is the code. A value of -1 indicates all ICMP
+codes.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

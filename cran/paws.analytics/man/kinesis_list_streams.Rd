@@ -4,13 +4,19 @@
 \alias{kinesis_list_streams}
 \title{Lists your Kinesis data streams}
 \usage{
-kinesis_list_streams(Limit = NULL, ExclusiveStartStreamName = NULL)
+kinesis_list_streams(
+  Limit = NULL,
+  ExclusiveStartStreamName = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{Limit}{The maximum number of streams to list. The default value is 100. If you
 specify a value greater than 100, at most 100 results are returned.}
 
 \item{ExclusiveStartStreamName}{The name of the stream to start the list with.}
+
+\item{NextToken}{}
 }
 \description{
 Lists your Kinesis data streams.

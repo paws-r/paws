@@ -94,6 +94,15 @@ preferences:
 \item If traveling by \code{Truck} use the \code{TruckModeOptions} parameter.
 }
 
+\code{Bicycle} or \code{Motorcycle} are only valid when using \code{Grab} as a data
+provider, and only within Southeast Asia.
+
+\code{Truck} is not available for Grab.
+
+For more information about using Grab as a data provider, see
+\href{https://docs.aws.amazon.com/location/latest/developerguide/grab.html}{GrabMaps}
+in the \emph{Amazon Location Service Developer Guide}.
+
 Default Value: \code{Car}}
 
 \item{TruckModeOptions}{Specifies route preferences when traveling by \code{Truck}, such as avoiding

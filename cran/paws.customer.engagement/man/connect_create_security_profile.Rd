@@ -10,7 +10,9 @@ connect_create_security_profile(
   Description = NULL,
   Permissions = NULL,
   InstanceId,
-  Tags = NULL
+  Tags = NULL,
+  AllowedAccessControlTags = NULL,
+  TagRestrictedResources = NULL
 )
 }
 \arguments{
@@ -18,12 +20,21 @@ connect_create_security_profile(
 
 \item{Description}{The description of the security profile.}
 
-\item{Permissions}{Permissions assigned to the security profile.}
+\item{Permissions}{Permissions assigned to the security profile. For a list of valid
+permissions, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-list.html}{List of security profile permissions}.}
 
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 
-\item{Tags}{The tags used to organize, track, or control access for this resource.}
+\item{Tags}{The tags used to organize, track, or control access for this resource.
+For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.}
+
+\item{AllowedAccessControlTags}{The list of tags that a security profile uses to restrict access to
+resources in Amazon Connect.}
+
+\item{TagRestrictedResources}{The list of resources that a security profile applies tag restrictions
+to in Amazon Connect. Following are acceptable ResourceNames: \code{User} |
+\code{SecurityProfile} | \code{Queue} | \code{RoutingProfile}}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to change.

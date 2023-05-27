@@ -27,8 +27,8 @@ condition context keys.
 
 In the example resource policy, you would replace the value of
 \code{SourceArn} with the resource making the call from Route 53 to
-CloudWatch Logs and replace the value of \code{SourceAccount} with the Amazon
-Web Services account ID making that call.
+CloudWatch Logs. You would also replace the value of \code{SourceAccount}
+with the Amazon Web Services account ID making that call.
 
 \verb{\{ "Version": "2012-10-17", "Statement": [ \{ "Sid": "Route53LogsToCloudWatchLogs", "Effect": "Allow", "Principal": \{ "Service": [ "route53.amazonaws.com" ] \}, "Action": "logs:PutLogEvents", "Resource": "logArn", "Condition": \{ "ArnLike": \{ "aws:SourceArn": "myRoute53ResourceArn" \}, "StringEquals": \{ "aws:SourceAccount": "myAwsAccountId" \} \} \} ] \}}}
 }

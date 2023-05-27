@@ -26,8 +26,18 @@ IAM user, group, role, and policy names must be unique within the
 account. Names are not distinguished by case. For example, you cannot
 create resources named both "MyResource" and "myresource".}
 
-\item{PermissionsBoundary}{The ARN of the policy that is used to set the permissions boundary for
-the user.}
+\item{PermissionsBoundary}{The ARN of the managed policy that is used to set the permissions
+boundary for the user.
+
+A permissions boundary policy defines the maximum permissions that
+identity-based policies can grant to an entity, but does not grant
+permissions. Permissions boundaries do not define the maximum
+permissions that a resource-based policy can grant to an entity. To
+learn more, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html}{Permissions boundaries for IAM entities}
+in the \emph{IAM User Guide}.
+
+For more information about policy types, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policy-types}{Policy types}
+in the \emph{IAM User Guide}.}
 
 \item{Tags}{A list of tags that you want to attach to the new user. Each tag
 consists of a key name and an associated value. For more information

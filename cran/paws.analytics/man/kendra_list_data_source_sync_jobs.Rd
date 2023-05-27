@@ -2,7 +2,7 @@
 % Please edit documentation in R/kendra_operations.R
 \name{kendra_list_data_source_sync_jobs}
 \alias{kendra_list_data_source_sync_jobs}
-\title{Gets statistics about synchronizing Amazon Kendra with a data source}
+\title{Gets statistics about synchronizing a data source connector}
 \usage{
 kendra_list_data_source_sync_jobs(
   Id,
@@ -14,9 +14,9 @@ kendra_list_data_source_sync_jobs(
 )
 }
 \arguments{
-\item{Id}{[required] The identifier of the data source.}
+\item{Id}{[required] The identifier of the data source connector.}
 
-\item{IndexId}{[required] The identifier of the index used with the data source.}
+\item{IndexId}{[required] The identifier of the index used with the data source connector.}
 
 \item{NextToken}{If the previous response was incomplete (because there is more data to
 retrieve), Amazon Kendra returns a pagination token in the response. You
@@ -29,11 +29,11 @@ actual results.}
 \item{StartTimeFilter}{When specified, the synchronization jobs returned in the list are
 limited to jobs between the specified dates.}
 
-\item{StatusFilter}{When specified, only returns synchronization jobs with the \code{Status}
-field equal to the specified status.}
+\item{StatusFilter}{Only returns synchronization jobs with the \code{Status} field equal to the
+specified status.}
 }
 \description{
-Gets statistics about synchronizing Amazon Kendra with a data source.
+Gets statistics about synchronizing a data source connector.
 
 See \url{https://paws-r.github.io/docs/kendra/list_data_source_sync_jobs.html} for full documentation.
 }

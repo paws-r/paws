@@ -3,19 +3,19 @@
 \name{opensearchservice_describe_domain_change_progress}
 \alias{opensearchservice_describe_domain_change_progress}
 \title{Returns information about the current blue/green deployment happening on
-a domain, including a change ID, status, and progress stages}
+an Amazon OpenSearch Service domain}
 \usage{
 opensearchservice_describe_domain_change_progress(DomainName, ChangeId = NULL)
 }
 \arguments{
-\item{DomainName}{[required] The domain you want to get the progress information about.}
+\item{DomainName}{[required] The name of the domain to get progress information for.}
 
 \item{ChangeId}{The specific change ID for which you want to get progress information.
-This is an optional parameter. If omitted, the service returns
-information about the most recent configuration change.}
+If omitted, the request returns information about the most recent
+configuration change.}
 }
 \description{
-Returns information about the current blue/green deployment happening on a domain, including a change ID, status, and progress stages.
+Returns information about the current blue/green deployment happening on an Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-configuration-changes.html}{Making configuration changes in Amazon OpenSearch Service}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/describe_domain_change_progress.html} for full documentation.
 }

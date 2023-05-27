@@ -14,19 +14,19 @@ transcribeservice_create_language_model(
 }
 \arguments{
 \item{LanguageCode}{[required] The language code that represents the language of your model. Each
-language model must contain terms in only one language, and the language
-you select for your model must match the language of your training and
-tuning data.
+custom language model must contain terms in only one language, and the
+language you select for your custom language model must match the
+language of your training and tuning data.
 
 For a list of supported languages and their associated language codes,
 refer to the \href{https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html}{Supported languages}
-table. Note that U.S. English (\code{en-US}) is the only language supported
+table. Note that US English (\code{en-US}) is the only language supported
 with Amazon Transcribe Medical.
 
 A custom language model can only be used to transcribe files in the same
-language as the model. For example, if you create a language model using
-US English (\code{en-US}), you can only apply this model to files that
-contain English audio.}
+language as the model. For example, if you create a custom language
+model using US English (\code{en-US}), you can only apply this model to files
+that contain English audio.}
 
 \item{BaseModelName}{[required] The Amazon Transcribe standard language model, or base model, used to
 create your custom language model. Amazon Transcribe offers two options
@@ -39,9 +39,9 @@ than 16,000 Hz, choose \code{NarrowBand}.}
 \item{ModelName}{[required] A unique name, chosen by you, for your custom language model.
 
 This name is case sensitive, cannot contain spaces, and must be unique
-within an Amazon Web Services account. If you try to create a new
-language model with the same name as an existing language model, you get
-a \code{ConflictException} error.}
+within an Amazon Web Services account. If you try to create a new custom
+language model with the same name as an existing custom language model,
+you get a \code{ConflictException} error.}
 
 \item{InputDataConfig}{[required] Contains the Amazon S3 location of the training data you want to use to
 create a new custom language model, and permissions to access this

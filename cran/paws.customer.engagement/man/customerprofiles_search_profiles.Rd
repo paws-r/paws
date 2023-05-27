@@ -2,21 +2,25 @@
 % Please edit documentation in R/customerprofiles_operations.R
 \name{customerprofiles_search_profiles}
 \alias{customerprofiles_search_profiles}
-\title{Searches for profiles within a specific domain name using name, phone
-number, email address, account number, or a custom defined index}
+\title{Searches for profiles within a specific domain using one or more
+predefined search keys (e}
 \usage{
 customerprofiles_search_profiles(
   NextToken = NULL,
   MaxResults = NULL,
   DomainName,
   KeyName,
-  Values
+  Values,
+  AdditionalSearchKeys = NULL,
+  LogicalOperator = NULL
 )
 }
 \arguments{
 \item{NextToken}{The pagination token from the previous SearchProfiles API call.}
 
-\item{MaxResults}{The maximum number of objects returned per page.}
+\item{MaxResults}{The maximum number of objects returned per page.
+
+The default is 20 if this parameter is not included in the request.}
 
 \item{DomainName}{[required] The unique name of the domain.}
 
@@ -29,9 +33,34 @@ _zendeskTicketId, _serviceNowSystemId, _serviceNowIncidentId,
 _segmentUserId, _shopifyCustomerId, _shopifyOrderId.}
 
 \item{Values}{[required] A list of key values.}
+
+\item{AdditionalSearchKeys}{A list of \code{AdditionalSearchKey} objects that are each searchable
+identifiers of a profile. Each \code{AdditionalSearchKey} object contains a
+\code{KeyName} and a list of \code{Values} associated with that specific key
+(i.e., a key-value(s) pair). These additional search keys will be used
+in conjunction with the \code{LogicalOperator} and the required \code{KeyName} and
+\code{Values} parameters to search for profiles that satisfy the search
+criteria.}
+
+\item{LogicalOperator}{Relationship between all specified search keys that will be used to
+search for profiles. This includes the required \code{KeyName} and \code{Values}
+parameters as well as any key-value(s) pairs specified in the
+\code{AdditionalSearchKeys} list.
+
+This parameter influences which profiles will be returned in the
+response in the following manner:
+\itemize{
+\item \code{AND} - The response only includes profiles that match all of the
+search keys.
+\item \code{OR} - The response includes profiles that match at least one of the
+search keys.
+}
+
+The \code{OR} relationship is the default behavior if this parameter is not
+included in the request.}
 }
 \description{
-Searches for profiles within a specific domain name using name, phone number, email address, account number, or a custom defined index.
+Searches for profiles within a specific domain using one or more predefined search keys (e.g., _fullName, _phone, _email, _account, etc.) and/or custom-defined search keys. A search key is a data type pair that consists of a \code{KeyName} and \code{Values} list.
 
 See \url{https://paws-r.github.io/docs/customerprofiles/search_profiles.html} for full documentation.
 }

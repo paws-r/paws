@@ -34,7 +34,8 @@ eks_create_nodegroup(
 created for your node group.}
 
 \item{diskSize}{The root device disk size (in GiB) for your node group instances. The
-default disk size is 20 GiB. If you specify \code{launchTemplate}, then don't
+default disk size is 20 GiB for Linux and Bottlerocket. The default disk
+size is 50 GiB for Windows. If you specify \code{launchTemplate}, then don't
 specify \code{diskSize}, or the node group deployment will fail. For more
 information about using launch templates with Amazon EKS, see \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}
 in the \emph{Amazon EKS User Guide}.}
@@ -48,32 +49,32 @@ more information about using launch templates with Amazon EKS, see
 in the \emph{Amazon EKS User Guide}.}
 
 \item{instanceTypes}{Specify the instance types for a node group. If you specify a GPU
-instance type, be sure to specify \code{AL2_x86_64_GPU} with the \code{amiType}
-parameter. If you specify \code{launchTemplate}, then you can specify zero or
-one instance type in your launch template \emph{or} you can specify 0-20
-instance types for \code{instanceTypes}. If however, you specify an instance
-type in your launch template \emph{and} specify any \code{instanceTypes}, the node
-group deployment will fail. If you don't specify an instance type in a
-launch template or for \code{instanceTypes}, then \code{t3.medium} is used, by
-default. If you specify \code{Spot} for \code{capacityType}, then we recommend
-specifying multiple values for \code{instanceTypes}. For more information,
-see \href{https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html#managed-node-group-capacity-types}{Managed node group capacity types}
+instance type, make sure to also specify an applicable GPU AMI type with
+the \code{amiType} parameter. If you specify \code{launchTemplate}, then you can
+specify zero or one instance type in your launch template \emph{or} you can
+specify 0-20 instance types for \code{instanceTypes}. If however, you specify
+an instance type in your launch template \emph{and} specify any
+\code{instanceTypes}, the node group deployment will fail. If you don't
+specify an instance type in a launch template or for \code{instanceTypes},
+then \code{t3.medium} is used, by default. If you specify \code{Spot} for
+\code{capacityType}, then we recommend specifying multiple values for
+\code{instanceTypes}. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html#managed-node-group-capacity-types}{Managed node group capacity types}
 and \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}
 in the \emph{Amazon EKS User Guide}.}
 
-\item{amiType}{The AMI type for your node group. GPU instance types should use the
-\code{AL2_x86_64_GPU} AMI type. Non-GPU instances should use the \code{AL2_x86_64}
-AMI type. Arm instances should use the \code{AL2_ARM_64} AMI type. All types
-use the Amazon EKS optimized Amazon Linux 2 AMI. If you specify
-\code{launchTemplate}, and your launch template uses a custom AMI, then don't
-specify \code{amiType}, or the node group deployment will fail. For more
-information about using launch templates with Amazon EKS, see \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}
+\item{amiType}{The AMI type for your node group. If you specify \code{launchTemplate}, and
+your launch template uses a custom AMI, then don't specify \code{amiType}, or
+the node group deployment will fail. If your launch template uses a
+Windows custom AMI, then add \code{eks:kube-proxy-windows} to your Windows
+nodes \code{rolearn} in the \code{aws-auth} \code{ConfigMap}. For more information
+about using launch templates with Amazon EKS, see \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}
 in the \emph{Amazon EKS User Guide}.}
 
-\item{remoteAccess}{The remote access (SSH) configuration to use with your node group. If
-you specify \code{launchTemplate}, then don't specify \code{remoteAccess}, or the
-node group deployment will fail. For more information about using launch
-templates with Amazon EKS, see \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}
+\item{remoteAccess}{The remote access configuration to use with your node group. For Linux,
+the protocol is SSH. For Windows, the protocol is RDP. If you specify
+\code{launchTemplate}, then don't specify \code{remoteAccess}, or the node group
+deployment will fail. For more information about using launch templates
+with Amazon EKS, see \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}
 in the \emph{Amazon EKS User Guide}.}
 
 \item{nodeRole}{[required] The Amazon Resource Name (ARN) of the IAM role to associate with your
@@ -125,11 +126,17 @@ in the \emph{Amazon EKS User Guide}.}
 
 \item{releaseVersion}{The AMI version of the Amazon EKS optimized AMI to use with your node
 group. By default, the latest available AMI version for the node group's
-current Kubernetes version is used. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html}{Amazon EKS optimized Amazon Linux 2 AMI versions}
-in the \emph{Amazon EKS User Guide}. If you specify \code{launchTemplate}, and
-your launch template uses a custom AMI, then don't specify
-\code{releaseVersion}, or the node group deployment will fail. For more
-information about using launch templates with Amazon EKS, see \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}
+current Kubernetes version is used. For information about Linux
+versions, see \href{https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html}{Amazon EKS optimized Amazon Linux AMI versions}
+in the \emph{Amazon EKS User Guide}. Amazon EKS managed node groups support
+the November 2022 and later releases of the Windows AMIs. For
+information about Windows versions, see \href{https://docs.aws.amazon.com/eks/latest/userguide/eks-ami-versions-windows.html}{Amazon EKS optimized Windows AMI versions}
+in the \emph{Amazon EKS User Guide}.
+
+If you specify \code{launchTemplate}, and your launch template uses a custom
+AMI, then don't specify \code{releaseVersion}, or the node group deployment
+will fail. For more information about using launch templates with Amazon
+EKS, see \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}
 in the \emph{Amazon EKS User Guide}.}
 }
 \description{

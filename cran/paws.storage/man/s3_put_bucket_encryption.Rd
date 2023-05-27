@@ -3,7 +3,7 @@
 \name{s3_put_bucket_encryption}
 \alias{s3_put_bucket_encryption}
 \title{This action uses the encryption subresource to configure default
-encryption and Amazon S3 Bucket Key for an existing bucket}
+encryption and Amazon S3 Bucket Keys for an existing bucket}
 \usage{
 s3_put_bucket_encryption(
   Bucket,
@@ -15,9 +15,12 @@ s3_put_bucket_encryption(
 }
 \arguments{
 \item{Bucket}{[required] Specifies default encryption for a bucket using server-side encryption
-with Amazon S3-managed keys (SSE-S3) or customer managed keys (SSE-KMS).
-For information about the Amazon S3 default encryption feature, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html}{Amazon S3 Default Bucket Encryption}
+with different key options. By default, all buckets have a default
+encryption configuration that uses server-side encryption with Amazon S3
+managed keys (SSE-S3). You can optionally configure default encryption
+for a bucket by using server-side encryption with an Amazon Web Services
+KMS key (SSE-KMS) or a customer-provided key (SSE-C). For information
+about the bucket default encryption feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html}{Amazon S3 Bucket Default Encryption}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the server-side encryption
@@ -45,7 +48,7 @@ different account, the request fails with the HTTP status code
 \verb{403 Forbidden} (access denied).}
 }
 \description{
-This action uses the \code{encryption} subresource to configure default encryption and Amazon S3 Bucket Key for an existing bucket.
+This action uses the \code{encryption} subresource to configure default encryption and Amazon S3 Bucket Keys for an existing bucket.
 
 See \url{https://paws-r.github.io/docs/s3/put_bucket_encryption.html} for full documentation.
 }

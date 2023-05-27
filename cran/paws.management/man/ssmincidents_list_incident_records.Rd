@@ -11,8 +11,8 @@ ssmincidents_list_incident_records(
 )
 }
 \arguments{
-\item{filters}{Filters the list of incident records through which you are searching.
-You can filter on the following keys:
+\item{filters}{Filters the list of incident records you want to search through. You can
+filter on the following keys:
 \itemize{
 \item \code{creationTime}
 \item \code{impact}
@@ -20,7 +20,7 @@ You can filter on the following keys:
 \item \code{createdBy}
 }
 
-Note the following when deciding how to use Filters:
+Note the following when when you use Filters:
 \itemize{
 \item If you don't specify a Filter, the response includes all incident
 records.

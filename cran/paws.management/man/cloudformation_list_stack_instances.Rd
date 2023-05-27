@@ -32,7 +32,7 @@ number of available results exceeds this maximum, the response includes
 a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
 
-\item{Filters}{The status that stack instances are filtered by.}
+\item{Filters}{The filter to apply to stack instances}
 
 \item{StackInstanceAccount}{The name of the Amazon Web Services account that you want to list stack
 instances for.}

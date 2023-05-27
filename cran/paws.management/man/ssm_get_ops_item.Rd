@@ -4,10 +4,12 @@
 \alias{ssm_get_ops_item}
 \title{Get information about an OpsItem by using the ID}
 \usage{
-ssm_get_ops_item(OpsItemId)
+ssm_get_ops_item(OpsItemId, OpsItemArn = NULL)
 }
 \arguments{
 \item{OpsItemId}{[required] The ID of the OpsItem that you want to get.}
+
+\item{OpsItemArn}{The OpsItem Amazon Resource Name (ARN).}
 }
 \description{
 Get information about an OpsItem by using the ID. You must have permission in Identity and Access Management (IAM) to view information about an OpsItem. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Getting started with OpsCenter} in the \emph{Amazon Web Services Systems Manager User Guide}.

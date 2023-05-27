@@ -2,21 +2,27 @@
 % Please edit documentation in R/comprehend_operations.R
 \name{comprehend_detect_entities}
 \alias{comprehend_detect_entities}
-\title{Inspects text for named entities, and returns information about them}
+\title{Detects named entities in input text when you use the pre-trained model}
 \usage{
-comprehend_detect_entities(Text, LanguageCode = NULL, EndpointArn = NULL)
+comprehend_detect_entities(
+  Text = NULL,
+  LanguageCode = NULL,
+  EndpointArn = NULL,
+  Bytes = NULL,
+  DocumentReaderConfig = NULL
+)
 }
 \arguments{
-\item{Text}{[required] A UTF-8 text string. Each string must contain fewer that 5,000 bytes of
-UTF-8 encoded characters.}
+\item{Text}{A UTF-8 text string. The maximum string size is 100 KB. If you enter
+text using this parameter, do not use the \code{Bytes} parameter.}
 
 \item{LanguageCode}{The language of the input documents. You can specify any of the primary
-languages supported by Amazon Comprehend. All documents must be in the
-same language.
+languages supported by Amazon Comprehend. If your request includes the
+endpoint for a custom entity recognition model, Amazon Comprehend uses
+the language of your custom model, and it ignores any language code that
+you specify here.
 
-If your request includes the endpoint for a custom entity recognition
-model, Amazon Comprehend uses the language of your custom model, and it
-ignores any language code that you specify here.}
+All input documents must be in the same language.}
 
 \item{EndpointArn}{The Amazon Resource Name of an endpoint that is associated with a custom
 entity recognition model. Provide an endpoint if you want to detect
@@ -28,9 +34,34 @@ custom model, and it ignores any language code that you provide in your
 request.
 
 For information about endpoints, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html}{Managing endpoints}.}
+
+\item{Bytes}{This field applies only when you use a custom entity recognition model
+that was trained with PDF annotations. For other cases, enter your text
+input in the \code{Text} field.
+
+Use the \code{Bytes} parameter to input a text, PDF, Word or image file.
+Using a plain-text file in the \code{Bytes} parameter is equivelent to using
+the \code{Text} parameter (the \code{Entities} field in the response is
+identical).
+
+You can also use the \code{Bytes} parameter to input an Amazon Textract
+\code{DetectDocumentText} or \code{AnalyzeDocument} output file.
+
+Provide the input document as a sequence of base64-encoded bytes. If
+your code uses an Amazon Web Services SDK to detect entities, the SDK
+may encode the document file bytes for you.
+
+The maximum length of this field depends on the input document type. For
+details, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/idp-inputs-sync.html}{Inputs for real-time custom analysis}
+in the Comprehend Developer Guide.
+
+If you use the \code{Bytes} parameter, do not use the \code{Text} parameter.}
+
+\item{DocumentReaderConfig}{Provides configuration parameters to override the default actions for
+extracting text from PDF documents and image files.}
 }
 \description{
-Inspects text for named entities, and returns information about them. For more information, about named entities, see how-entities.
+Detects named entities in input text when you use the pre-trained model. Detects custom entities if you have a custom entity recognition model.
 
 See \url{https://paws-r.github.io/docs/comprehend/detect_entities.html} for full documentation.
 }

@@ -14,7 +14,8 @@ sagemaker_list_training_jobs(
   NameContains = NULL,
   StatusEquals = NULL,
   SortBy = NULL,
-  SortOrder = NULL
+  SortOrder = NULL,
+  WarmPoolStatusEquals = NULL
 )
 }
 \arguments{
@@ -45,6 +46,9 @@ jobs whose name contains the specified string.}
 \item{SortBy}{The field to sort results by. The default is \code{CreationTime}.}
 
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
+
+\item{WarmPoolStatusEquals}{A filter that retrieves only training jobs with a specific warm pool
+status.}
 }
 \description{
 Lists training jobs.

@@ -10,7 +10,7 @@ iamrolesanywhere_disable_trust_anchor(trustAnchorId)
 \item{trustAnchorId}{[required] The unique identifier of the trust anchor.}
 }
 \description{
-Disables a trust anchor. When disabled, \href{https://docs.aws.amazon.com/rolesanywhere/latest/APIReference/}{CreateSession} requests specifying this trust anchor are unauthorized.
+Disables a trust anchor. When disabled, temporary credential requests specifying this trust anchor are unauthorized.
 
 See \url{https://paws-r.github.io/docs/iamrolesanywhere/disable_trust_anchor.html} for full documentation.
 }

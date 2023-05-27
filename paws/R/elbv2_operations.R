@@ -1051,30 +1051,31 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #' the format /package.service/method. The default is /Amazon Web
 #' Services.ALB/healthcheck.
 #' @param HealthCheckIntervalSeconds The approximate amount of time, in seconds, between health checks of an
-#' individual target. If the target group protocol is HTTP or HTTPS, the
-#' default is 30 seconds. If the target group protocol is TCP, TLS, UDP, or
-#' TCP_UDP, the supported values are 10 and 30 seconds and the default is
-#' 30 seconds. If the target group protocol is GENEVE, the default is 10
-#' seconds. If the target type is `lambda`, the default is 35 seconds.
+#' individual target. The range is 5-300. If the target group protocol is
+#' TCP, TLS, UDP, TCP_UDP, HTTP or HTTPS, the default is 30 seconds. If the
+#' target group protocol is GENEVE, the default is 10 seconds. If the
+#' target type is `lambda`, the default is 35 seconds.
 #' @param HealthCheckTimeoutSeconds The amount of time, in seconds, during which no response from a target
-#' means a failed health check. For target groups with a protocol of HTTP,
-#' HTTPS, or GENEVE, the default is 5 seconds. For target groups with a
-#' protocol of TCP or TLS, this value must be 6 seconds for HTTP health
-#' checks and 10 seconds for TCP and HTTPS health checks. If the target
-#' type is `lambda`, the default is 30 seconds.
-#' @param HealthyThresholdCount The number of consecutive health checks successes required before
-#' considering an unhealthy target healthy. For target groups with a
-#' protocol of HTTP or HTTPS, the default is 5. For target groups with a
-#' protocol of TCP, TLS, or GENEVE, the default is 3. If the target type is
-#' `lambda`, the default is 5.
+#' means a failed health check. The range is 2–120 seconds. For target
+#' groups with a protocol of HTTP, the default is 6 seconds. For target
+#' groups with a protocol of TCP, TLS or HTTPS, the default is 10 seconds.
+#' For target groups with a protocol of GENEVE, the default is 5 seconds.
+#' If the target type is `lambda`, the default is 30 seconds.
+#' @param HealthyThresholdCount The number of consecutive health check successes required before
+#' considering a target healthy. The range is 2-10. If the target group
+#' protocol is TCP, TCP_UDP, UDP, TLS, HTTP or HTTPS, the default is 5. For
+#' target groups with a protocol of GENEVE, the default is 5. If the target
+#' type is `lambda`, the default is 5.
 #' @param UnhealthyThresholdCount The number of consecutive health check failures required before
-#' considering a target unhealthy. If the target group protocol is HTTP or
-#' HTTPS, the default is 2. If the target group protocol is TCP or TLS,
-#' this value must be the same as the healthy threshold count. If the
-#' target group protocol is GENEVE, the default is 3. If the target type is
-#' `lambda`, the default is 2.
+#' considering a target unhealthy. The range is 2-10. If the target group
+#' protocol is TCP, TCP_UDP, UDP, TLS, HTTP or HTTPS, the default is 2. For
+#' target groups with a protocol of GENEVE, the default is 2. If the target
+#' type is `lambda`, the default is 5.
 #' @param Matcher \[HTTP/HTTPS health checks\] The HTTP or gRPC codes to use when checking
-#' for a successful response from a target.
+#' for a successful response from a target. For target groups with a
+#' protocol of TCP, TCP_UDP, UDP or TLS the range is 200-599. For target
+#' groups with a protocol of HTTP or HTTPS, the range is 200-499. For
+#' target groups with a protocol of GENEVE, the range is 200-399.
 #' @param TargetType The type of target that you must specify when registering targets with
 #' this target group. You can't specify targets for a target group using
 #' more than one target type.
@@ -3235,10 +3236,6 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' @description
 #' Modifies the health checks used when evaluating the health state of the
 #' targets in the specified target group.
-#' 
-#' If the protocol of the target group is TCP, TLS, UDP, or TCP_UDP, you
-#' can't modify the health check protocol, interval, timeout, or success
-#' codes.
 #'
 #' @usage
 #' elbv2_modify_target_group(TargetGroupArn, HealthCheckProtocol,
@@ -3267,17 +3264,18 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' Services.ALB/healthcheck.
 #' @param HealthCheckEnabled Indicates whether health checks are enabled.
 #' @param HealthCheckIntervalSeconds The approximate amount of time, in seconds, between health checks of an
-#' individual target. For TCP health checks, the supported values are 10 or
-#' 30 seconds.
+#' individual target.
 #' @param HealthCheckTimeoutSeconds \[HTTP/HTTPS health checks\] The amount of time, in seconds, during
 #' which no response means a failed health check.
 #' @param HealthyThresholdCount The number of consecutive health checks successes required before
 #' considering an unhealthy target healthy.
 #' @param UnhealthyThresholdCount The number of consecutive health check failures required before
-#' considering the target unhealthy. For target groups with a protocol of
-#' TCP or TLS, this value must be the same as the healthy threshold count.
+#' considering the target unhealthy.
 #' @param Matcher \[HTTP/HTTPS health checks\] The HTTP or gRPC codes to use when checking
-#' for a successful response from a target.
+#' for a successful response from a target. For target groups with a
+#' protocol of TCP, TCP_UDP, UDP or TLS the range is 200-599. For target
+#' groups with a protocol of HTTP or HTTPS, the range is 200-499. For
+#' target groups with a protocol of GENEVE, the range is 200-399.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3656,12 +3654,12 @@ elbv2_remove_tags <- function(ResourceArns, TagKeys) {
 }
 .elbv2$operations$remove_tags <- elbv2_remove_tags
 
-#' Sets the type of IP addresses used by the subnets of the specified
-#' Application Load Balancer or Network Load Balancer
+#' Sets the type of IP addresses used by the subnets of the specified load
+#' balancer
 #'
 #' @description
-#' Sets the type of IP addresses used by the subnets of the specified
-#' Application Load Balancer or Network Load Balancer.
+#' Sets the type of IP addresses used by the subnets of the specified load
+#' balancer.
 #'
 #' @usage
 #' elbv2_set_ip_address_type(LoadBalancerArn, IpAddressType)

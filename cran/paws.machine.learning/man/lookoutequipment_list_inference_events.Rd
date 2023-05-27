@@ -21,11 +21,11 @@ inference events.}
 
 \item{InferenceSchedulerName}{[required] The name of the inference scheduler for the inference events listed.}
 
-\item{IntervalStartTime}{[required] Lookout for Equipment will return all the inference events with start
+\item{IntervalStartTime}{[required] Lookout for Equipment will return all the inference events with an end
 time equal to or greater than the start time given.}
 
-\item{IntervalEndTime}{[required] Lookout for Equipment will return all the inference events with end time
-equal to or less than the end time given.}
+\item{IntervalEndTime}{[required] Returns all the inference events with an end start time equal to or
+greater than less than the end time given}
 }
 \description{
 Lists all inference events that have been found for the specified inference scheduler.

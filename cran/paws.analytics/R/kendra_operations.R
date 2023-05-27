@@ -3,17 +3,17 @@
 #' @include kendra_service.R
 NULL
 
-#' Grants users or groups in your Amazon Web Services SSO identity source
+#' Grants users or groups in your IAM Identity Center identity source
 #' access to your Amazon Kendra experience
 #'
 #' @description
-#' Grants users or groups in your Amazon Web Services SSO identity source access to your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see [Building a search experience with no code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
+#' Grants users or groups in your IAM Identity Center identity source access to your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see [Building a search experience with no code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
 #'
 #' See [https://paws-r.github.io/docs/kendra/associate_entities_to_experience.html](https://paws-r.github.io/docs/kendra/associate_entities_to_experience.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience.
 #' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
-#' @param EntityList &#91;required&#93; Lists users or groups in your Amazon Web Services SSO identity source.
+#' @param EntityList &#91;required&#93; Lists users or groups in your IAM Identity Center identity source.
 #'
 #' @keywords internal
 #'
@@ -35,19 +35,18 @@ kendra_associate_entities_to_experience <- function(Id, IndexId, EntityList) {
 }
 .kendra$operations$associate_entities_to_experience <- kendra_associate_entities_to_experience
 
-#' Defines the specific permissions of users or groups in your Amazon Web
-#' Services SSO identity source with access to your Amazon Kendra
-#' experience
+#' Defines the specific permissions of users or groups in your IAM Identity
+#' Center identity source with access to your Amazon Kendra experience
 #'
 #' @description
-#' Defines the specific permissions of users or groups in your Amazon Web Services SSO identity source with access to your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see [Building a search experience with no code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
+#' Defines the specific permissions of users or groups in your IAM Identity Center identity source with access to your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see [Building a search experience with no code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
 #'
 #' See [https://paws-r.github.io/docs/kendra/associate_personas_to_entities.html](https://paws-r.github.io/docs/kendra/associate_personas_to_entities.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience.
 #' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
 #' @param Personas &#91;required&#93; The personas that define the specific permissions of users or groups in
-#' your Amazon Web Services SSO identity source. The available personas or
+#' your IAM Identity Center identity source. The available personas or
 #' access roles are `Owner` and `Viewer`. For more information on these
 #' personas, see [Providing access to your search
 #' page](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html#access-search-experience).
@@ -103,17 +102,47 @@ kendra_batch_delete_document <- function(IndexId, DocumentIdList, DataSourceSync
 }
 .kendra$operations$batch_delete_document <- kendra_batch_delete_document
 
+#' Removes one or more sets of featured results
+#'
+#' @description
+#' Removes one or more sets of featured results. Features results are placed above all other results for certain queries. If there's an exact match of a query, then one or more specific documents are featured in the search results.
+#'
+#' See [https://paws-r.github.io/docs/kendra/batch_delete_featured_results_set.html](https://paws-r.github.io/docs/kendra/batch_delete_featured_results_set.html) for full documentation.
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index used for featuring results.
+#' @param FeaturedResultsSetIds &#91;required&#93; The identifiers of the featured results sets that you want to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_batch_delete_featured_results_set
+kendra_batch_delete_featured_results_set <- function(IndexId, FeaturedResultsSetIds) {
+  op <- new_operation(
+    name = "BatchDeleteFeaturedResultsSet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$batch_delete_featured_results_set_input(IndexId = IndexId, FeaturedResultsSetIds = FeaturedResultsSetIds)
+  output <- .kendra$batch_delete_featured_results_set_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$batch_delete_featured_results_set <- kendra_batch_delete_featured_results_set
+
 #' Returns the indexing status for one or more documents submitted with the
 #' BatchPutDocument API
 #'
 #' @description
-#' Returns the indexing status for one or more documents submitted with the [BatchPutDocument](https://docs.aws.amazon.com/kendra/latest/dg/API_BatchPutDocument.html) API.
+#' Returns the indexing status for one or more documents submitted with the [BatchPutDocument](https://docs.aws.amazon.com/kendra/latest/APIReference/API_BatchPutDocument.html) API.
 #'
 #' See [https://paws-r.github.io/docs/kendra/batch_get_document_status.html](https://paws-r.github.io/docs/kendra/batch_get_document_status.html) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index to add documents to. The index ID is
 #' returned by the
-#' [CreateIndex](https://docs.aws.amazon.com/kendra/latest/dg/API_CreateIndex.html)
+#' [CreateIndex](https://docs.aws.amazon.com/kendra/latest/APIReference/API_CreateIndex.html)
 #' API.
 #' @param DocumentInfoList &#91;required&#93; A list of `DocumentInfo` objects that identify the documents for which
 #' to get the status. You identify the documents by their document ID and
@@ -148,22 +177,19 @@ kendra_batch_get_document_status <- function(IndexId, DocumentInfoList) {
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index to add the documents to. You need to create
 #' the index first using the [`create_index`][kendra_create_index] API.
-#' @param RoleArn The Amazon Resource Name (ARN) of a role that is allowed to run the
-#' [`batch_put_document`][kendra_batch_put_document] API. For more
-#' information, see [IAM Roles for Amazon
+#' @param RoleArn The Amazon Resource Name (ARN) of an IAM role with permission to access
+#' your S3 bucket. For more information, see [IAM access roles for Amazon
 #' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
 #' @param Documents &#91;required&#93; One or more documents to add to the index.
 #' 
 #' Documents have the following file size limits.
 #' 
-#' -   5 MB total size for inline documents
-#' 
-#' -   50 MB total size for files from an S3 bucket
+#' -   50 MB total size for any file
 #' 
 #' -   5 MB extracted text for any file
 #' 
-#' For more information about file size and transaction per second quotas,
-#' see [Quotas](https://docs.aws.amazon.com/kendra/latest/dg/quotas.html).
+#' For more information, see
+#' [Quotas](https://docs.aws.amazon.com/kendra/latest/dg/quotas.html).
 #' @param CustomDocumentEnrichmentConfiguration Configuration information for altering your document metadata and
 #' content during the document ingestion process when you use the
 #' [`batch_put_document`][kendra_batch_put_document] API.
@@ -239,7 +265,7 @@ kendra_clear_query_suggestions <- function(IndexId) {
 #' search results are filtered based on the user or their group access to
 #' documents.
 #' @param HierarchicalAccessControlList The list of
-#' [principal](https://docs.aws.amazon.com/kendra/latest/dg/API_Principal.html)
+#' [principal](https://docs.aws.amazon.com/kendra/latest/APIReference/API_Principal.html)
 #' lists that define the hierarchy for which documents users should have
 #' access to.
 #' @param ClientToken A token that you provide to identify the request to create an access
@@ -268,15 +294,15 @@ kendra_create_access_control_configuration <- function(IndexId, Name, Descriptio
 }
 .kendra$operations$create_access_control_configuration <- kendra_create_access_control_configuration
 
-#' Creates a data source that you want to use with an Amazon Kendra index
+#' Creates a data source connector that you want to use with an Amazon
+#' Kendra index
 #'
 #' @description
-#' Creates a data source that you want to use with an Amazon Kendra index.
+#' Creates a data source connector that you want to use with an Amazon Kendra index.
 #'
 #' See [https://paws-r.github.io/docs/kendra/create_data_source.html](https://paws-r.github.io/docs/kendra/create_data_source.html) for full documentation.
 #'
-#' @param Name &#91;required&#93; A unique name for the data source connector. A data source name can't be
-#' changed without deleting and recreating the data source connector.
+#' @param Name &#91;required&#93; A name for the data source connector.
 #' @param IndexId &#91;required&#93; The identifier of the index you want to use with the data source
 #' connector.
 #' @param Type &#91;required&#93; The type of data source repository. For example, `SHAREPOINT`.
@@ -287,6 +313,9 @@ kendra_create_access_control_configuration <- function(IndexId, Name, Descriptio
 #' `ValidationException` exception.
 #' 
 #' The `Configuration` parameter is required for all other data sources.
+#' @param VpcConfiguration Configuration information for an Amazon Virtual Private Cloud to connect
+#' to your data source. For more information, see [Configuring a
+#' VPC](https://docs.aws.amazon.com/kendra/latest/dg/vpc-configuration.html).
 #' @param Description A description for the data source connector.
 #' @param Schedule Sets the frequency for Amazon Kendra to check the documents in your data
 #' source repository and update the index. If you don't set a schedule
@@ -294,21 +323,26 @@ kendra_create_access_control_configuration <- function(IndexId, Name, Descriptio
 #' [`start_data_source_sync_job`][kendra_start_data_source_sync_job] API to
 #' update the index.
 #' 
+#' Specify a `cron-` format schedule string or an empty string to indicate
+#' that the index is updated on demand.
+#' 
 #' You can't specify the `Schedule` parameter when the `Type` parameter is
 #' set to `CUSTOM`. If you do, you receive a `ValidationException`
 #' exception.
-#' @param RoleArn The Amazon Resource Name (ARN) of a role with permission to access the
-#' data source connector. For more information, see [IAM Roles for Amazon
-#' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
+#' @param RoleArn The Amazon Resource Name (ARN) of an IAM role with permission to access
+#' the data source and required resources. For more information, see [IAM
+#' access roles for Amazon
+#' Kendra.](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
 #' 
 #' You can't specify the `RoleArn` parameter when the `Type` parameter is
 #' set to `CUSTOM`. If you do, you receive a `ValidationException`
 #' exception.
 #' 
 #' The `RoleArn` parameter is required for all other data sources.
-#' @param Tags A list of key-value pairs that identify the data source connector. You
-#' can use the tags to identify and organize your resources and to control
-#' access to resources.
+#' @param Tags A list of key-value pairs that identify or categorize the data source
+#' connector. You can also use tags to help control access to the data
+#' source connector. Tag keys and values can consist of Unicode letters,
+#' digits, white space, and any of the following symbols: _ . : / = + - @@.
 #' @param ClientToken A token that you provide to identify the request to create a data source
 #' connector. Multiple calls to the
 #' [`create_data_source`][kendra_create_data_source] API with the same
@@ -330,14 +364,14 @@ kendra_create_access_control_configuration <- function(IndexId, Name, Descriptio
 #' @keywords internal
 #'
 #' @rdname kendra_create_data_source
-kendra_create_data_source <- function(Name, IndexId, Type, Configuration = NULL, Description = NULL, Schedule = NULL, RoleArn = NULL, Tags = NULL, ClientToken = NULL, LanguageCode = NULL, CustomDocumentEnrichmentConfiguration = NULL) {
+kendra_create_data_source <- function(Name, IndexId, Type, Configuration = NULL, VpcConfiguration = NULL, Description = NULL, Schedule = NULL, RoleArn = NULL, Tags = NULL, ClientToken = NULL, LanguageCode = NULL, CustomDocumentEnrichmentConfiguration = NULL) {
   op <- new_operation(
     name = "CreateDataSource",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kendra$create_data_source_input(Name = Name, IndexId = IndexId, Type = Type, Configuration = Configuration, Description = Description, Schedule = Schedule, RoleArn = RoleArn, Tags = Tags, ClientToken = ClientToken, LanguageCode = LanguageCode, CustomDocumentEnrichmentConfiguration = CustomDocumentEnrichmentConfiguration)
+  input <- .kendra$create_data_source_input(Name = Name, IndexId = IndexId, Type = Type, Configuration = Configuration, VpcConfiguration = VpcConfiguration, Description = Description, Schedule = Schedule, RoleArn = RoleArn, Tags = Tags, ClientToken = ClientToken, LanguageCode = LanguageCode, CustomDocumentEnrichmentConfiguration = CustomDocumentEnrichmentConfiguration)
   output <- .kendra$create_data_source_output()
   config <- get_config()
   svc <- .kendra$service(config)
@@ -356,11 +390,13 @@ kendra_create_data_source <- function(Name, IndexId, Type, Configuration = NULL,
 #'
 #' @param Name &#91;required&#93; A name for your Amazon Kendra experience.
 #' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
-#' @param RoleArn The Amazon Resource Name (ARN) of a role with permission to access
-#' [`query`][kendra_query] API, `QuerySuggestions` API,
-#' [`submit_feedback`][kendra_submit_feedback] API, and Amazon Web Services
-#' SSO that stores your user and group information. For more information,
-#' see [IAM roles for Amazon
+#' @param RoleArn The Amazon Resource Name (ARN) of an IAM role with permission to access
+#' [`query`][kendra_query] API,
+#' [`get_query_suggestions`][kendra_get_query_suggestions] API, and other
+#' required APIs. The role also must include permission to access IAM
+#' Identity Center (successor to Single Sign-On) that stores your user and
+#' group information. For more information, see [IAM access roles for
+#' Amazon
 #' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
 #' @param Configuration Configuration information for your Amazon Kendra experience. This
 #' includes `ContentSourceConfiguration`, which specifies the data source
@@ -393,11 +429,11 @@ kendra_create_experience <- function(Name, IndexId, RoleArn = NULL, Configuratio
 }
 .kendra$operations$create_experience <- kendra_create_experience
 
-#' Creates an new set of frequently asked question (FAQ) questions and
-#' answers
+#' Creates a set of frequently ask questions (FAQs) using a specified FAQ
+#' file stored in an Amazon S3 bucket
 #'
 #' @description
-#' Creates an new set of frequently asked question (FAQ) questions and answers.
+#' Creates a set of frequently ask questions (FAQs) using a specified FAQ file stored in an Amazon S3 bucket.
 #'
 #' See [https://paws-r.github.io/docs/kendra/create_faq.html](https://paws-r.github.io/docs/kendra/create_faq.html) for full documentation.
 #'
@@ -405,9 +441,9 @@ kendra_create_experience <- function(Name, IndexId, RoleArn = NULL, Configuratio
 #' @param Name &#91;required&#93; A name for the FAQ.
 #' @param Description A description for the FAQ.
 #' @param S3Path &#91;required&#93; The path to the FAQ file in S3.
-#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of a role with permission to access the
-#' S3 bucket that contains the FAQs. For more information, see [IAM Roles
-#' for Amazon
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role with permission to access
+#' the S3 bucket that contains the FAQs. For more information, see [IAM
+#' access roles for Amazon
 #' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
 #' @param Tags A list of key-value pairs that identify the FAQ. You can use the tags to
 #' identify and organize your resources and to control access to resources.
@@ -449,6 +485,62 @@ kendra_create_faq <- function(IndexId, Name, Description = NULL, S3Path, RoleArn
 }
 .kendra$operations$create_faq <- kendra_create_faq
 
+#' Creates a set of featured results to display at the top of the search
+#' results page
+#'
+#' @description
+#' Creates a set of featured results to display at the top of the search results page. Featured results are placed above all other results for certain queries. You map specific queries to specific documents for featuring in the results. If a query contains an exact match, then one or more specific documents are featured in the search results.
+#'
+#' See [https://paws-r.github.io/docs/kendra/create_featured_results_set.html](https://paws-r.github.io/docs/kendra/create_featured_results_set.html) for full documentation.
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index that you want to use for featuring results.
+#' @param FeaturedResultsSetName &#91;required&#93; A name for the set of featured results.
+#' @param Description A description for the set of featured results.
+#' @param ClientToken A token that you provide to identify the request to create a set of
+#' featured results. Multiple calls to the
+#' [`create_featured_results_set`][kendra_create_featured_results_set] API
+#' with the same client token will create only one featured results set.
+#' @param Status The current status of the set of featured results. When the value is
+#' `ACTIVE`, featured results are ready for use. You can still configure
+#' your settings before setting the status to `ACTIVE`. You can set the
+#' status to `ACTIVE` or `INACTIVE` using the
+#' [`update_featured_results_set`][kendra_update_featured_results_set] API.
+#' The queries you specify for featured results must be unique per featured
+#' results set for each index, whether the status is `ACTIVE` or
+#' `INACTIVE`.
+#' @param QueryTexts A list of queries for featuring results. For more information on the
+#' list of queries, see
+#' [FeaturedResultsSet](https://docs.aws.amazon.com/kendra/latest/APIReference/API_FeaturedResultsSet.html).
+#' @param FeaturedDocuments A list of document IDs for the documents you want to feature at the top
+#' of the search results page. For more information on the list of
+#' documents, see
+#' [FeaturedResultsSet](https://docs.aws.amazon.com/kendra/latest/APIReference/API_FeaturedResultsSet.html).
+#' @param Tags A list of key-value pairs that identify or categorize the featured
+#' results set. You can also use tags to help control access to the
+#' featured results set. Tag keys and values can consist of Unicode
+#' letters, digits, white space, and any of the following symbols:_ . : /
+#' = + - @@.
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_create_featured_results_set
+kendra_create_featured_results_set <- function(IndexId, FeaturedResultsSetName, Description = NULL, ClientToken = NULL, Status = NULL, QueryTexts = NULL, FeaturedDocuments = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateFeaturedResultsSet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$create_featured_results_set_input(IndexId = IndexId, FeaturedResultsSetName = FeaturedResultsSetName, Description = Description, ClientToken = ClientToken, Status = Status, QueryTexts = QueryTexts, FeaturedDocuments = FeaturedDocuments, Tags = Tags)
+  output <- .kendra$create_featured_results_set_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$create_featured_results_set <- kendra_create_featured_results_set
+
 #' Creates an Amazon Kendra index
 #'
 #' @description
@@ -459,20 +551,19 @@ kendra_create_faq <- function(IndexId, Name, Description = NULL, S3Path, RoleArn
 #' @param Name &#91;required&#93; A name for the index.
 #' @param Edition The Amazon Kendra edition to use for the index. Choose
 #' `DEVELOPER_EDITION` for indexes intended for development, testing, or
-#' proof of concept. Use `ENTERPRISE_EDITION` for your production
-#' databases. Once you set the edition for an index, it can't be changed.
+#' proof of concept. Use `ENTERPRISE_EDITION` for production. Once you set
+#' the edition for an index, it can't be changed.
 #' 
 #' The `Edition` parameter is optional. If you don't supply a value, the
 #' default is `ENTERPRISE_EDITION`.
 #' 
-#' For more information on quota limits for enterprise and developer
+#' For more information on quota limits for Enterprise and Developer
 #' editions, see
 #' [Quotas](https://docs.aws.amazon.com/kendra/latest/dg/quotas.html).
-#' @param RoleArn &#91;required&#93; An Identity and Access Management (IAM) role that gives Amazon Kendra
-#' permissions to access your Amazon CloudWatch logs and metrics. This is
-#' also the role you use when you call the
-#' [`batch_put_document`][kendra_batch_put_document] API to index documents
-#' from an Amazon S3 bucket.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role with permission to access
+#' your Amazon CloudWatch logs and metrics. For more information, see [IAM
+#' access roles for Amazon
+#' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
 #' @param ServerSideEncryptionConfiguration The identifier of the KMS customer managed key (CMK) that's used to
 #' encrypt data indexed by Amazon Kendra. Amazon Kendra doesn't support
 #' asymmetric CMKs.
@@ -480,9 +571,10 @@ kendra_create_faq <- function(IndexId, Name, Description = NULL, S3Path, RoleArn
 #' @param ClientToken A token that you provide to identify the request to create an index.
 #' Multiple calls to the [`create_index`][kendra_create_index] API with the
 #' same client token will create only one index.
-#' @param Tags A list of key-value pairs that identify the index. You can use the tags
-#' to identify and organize your resources and to control access to
-#' resources.
+#' @param Tags A list of key-value pairs that identify or categorize the index. You can
+#' also use tags to help control access to the index. Tag keys and values
+#' can consist of Unicode letters, digits, white space, and any of the
+#' following symbols: _ . : / = + - @@.
 #' @param UserTokenConfigurations The user token configuration.
 #' @param UserContextPolicy The user context policy.
 #' 
@@ -498,9 +590,9 @@ kendra_create_faq <- function(IndexId, Name, Description = NULL, S3Path, RoleArn
 #' Enables token-based user access control to filter search results on user
 #' context. All documents with no access control and all documents
 #' accessible to the user will be searchable and displayable.
-#' @param UserGroupResolutionConfiguration Enables fetching access levels of groups and users from an Amazon Web
-#' Services Single Sign On identity source. To configure this, see
-#' [UserGroupResolutionConfiguration](https://docs.aws.amazon.com/kendra/latest/dg/API_UserGroupResolutionConfiguration.html).
+#' @param UserGroupResolutionConfiguration Gets users and groups from IAM Identity Center (successor to Single
+#' Sign-On) identity source. To configure this, see
+#' [UserGroupResolutionConfiguration](https://docs.aws.amazon.com/kendra/latest/APIReference/API_UserGroupResolutionConfiguration.html).
 #'
 #' @keywords internal
 #'
@@ -531,12 +623,12 @@ kendra_create_index <- function(Name, Edition = NULL, RoleArn, ServerSideEncrypt
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index you want to create a query suggestions block
 #' list for.
-#' @param Name &#91;required&#93; A user friendly name for the block list.
+#' @param Name &#91;required&#93; A name for the block list.
 #' 
-#' For example, the block list named 'offensive-words' includes all
-#' offensive words that could appear in user queries and need to be blocked
-#' from suggestions.
-#' @param Description A user-friendly description for the block list.
+#' For example, the name 'offensive-words', which includes all offensive
+#' words that could appear in user queries and need to be blocked from
+#' suggestions.
+#' @param Description A description for the block list.
 #' 
 #' For example, the description "List of all offensive words that can
 #' appear in user queries and need to be blocked from suggestions."
@@ -549,15 +641,13 @@ kendra_create_index <- function(Name, Edition = NULL, RoleArn, ServerSideEncrypt
 #' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/quotas.html).
 #' @param ClientToken A token that you provide to identify the request to create a query
 #' suggestions block list.
-#' @param RoleArn &#91;required&#93; The IAM (Identity and Access Management) role used by Amazon Kendra to
-#' access the block list text file in your S3 bucket.
-#' 
-#' You need permissions to the role ARN (Amazon Web Services Resource
-#' Name). The role needs S3 read permissions to your file in S3 and needs
-#' to give STS (Security Token Service) assume role permissions to Amazon
-#' Kendra.
-#' @param Tags A tag that you can assign to a block list that categorizes the block
-#' list.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role with permission to access
+#' your S3 bucket that contains the block list text file. For more
+#' information, see [IAM access roles for Amazon
+#' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
+#' @param Tags A list of key-value pairs that identify or categorize the block list.
+#' Tag keys and values can consist of Unicode letters, digits, white space,
+#' and any of the following symbols: _ . : / = + - @@.
 #'
 #' @keywords internal
 #'
@@ -589,11 +679,14 @@ kendra_create_query_suggestions_block_list <- function(IndexId, Name, Descriptio
 #' @param IndexId &#91;required&#93; The identifier of the index for the thesaurus.
 #' @param Name &#91;required&#93; A name for the thesaurus.
 #' @param Description A description for the thesaurus.
-#' @param RoleArn &#91;required&#93; An IAM role that gives Amazon Kendra permissions to access thesaurus
-#' file specified in `SourceS3Path`.
-#' @param Tags A list of key-value pairs that identify the thesaurus. You can use the
-#' tags to identify and organize your resources and to control access to
-#' resources.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role with permission to access
+#' your S3 bucket that contains the thesaurus file. For more information,
+#' see [IAM access roles for Amazon
+#' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
+#' @param Tags A list of key-value pairs that identify or categorize the thesaurus. You
+#' can also use tags to help control access to the thesaurus. Tag keys and
+#' values can consist of Unicode letters, digits, white space, and any of
+#' the following symbols: _ . : / = + - @@.
 #' @param SourceS3Path &#91;required&#93; The path to the thesaurus file in S3.
 #' @param ClientToken A token that you provide to identify the request to create a thesaurus.
 #' Multiple calls to the [`create_thesaurus`][kendra_create_thesaurus] API
@@ -650,15 +743,15 @@ kendra_delete_access_control_configuration <- function(IndexId, Id) {
 }
 .kendra$operations$delete_access_control_configuration <- kendra_delete_access_control_configuration
 
-#' Deletes an Amazon Kendra data source
+#' Deletes an Amazon Kendra data source connector
 #'
 #' @description
-#' Deletes an Amazon Kendra data source. An exception is not thrown if the data source is already being deleted. While the data source is being deleted, the `Status` field returned by a call to the [`describe_data_source`][kendra_describe_data_source] API is set to `DELETING`. For more information, see [Deleting Data Sources](https://docs.aws.amazon.com/kendra/latest/dg/delete-data-source.html).
+#' Deletes an Amazon Kendra data source connector. An exception is not thrown if the data source is already being deleted. While the data source is being deleted, the `Status` field returned by a call to the [`describe_data_source`][kendra_describe_data_source] API is set to `DELETING`. For more information, see [Deleting Data Sources](https://docs.aws.amazon.com/kendra/latest/dg/delete-data-source.html).
 #'
 #' See [https://paws-r.github.io/docs/kendra/delete_data_source.html](https://paws-r.github.io/docs/kendra/delete_data_source.html) for full documentation.
 #'
-#' @param Id &#91;required&#93; The identifier of the data source you want to delete.
-#' @param IndexId &#91;required&#93; The identifier of the index used with the data source.
+#' @param Id &#91;required&#93; The identifier of the data source connector you want to delete.
+#' @param IndexId &#91;required&#93; The identifier of the index used with the data source connector.
 #'
 #' @keywords internal
 #'
@@ -796,14 +889,14 @@ kendra_delete_index <- function(Id) {
 #' prevents previous actions with lower number IDs from possibly overriding
 #' the latest action.
 #' 
-#' The ordering ID can be the UNIX time of the last update you made to a
+#' The ordering ID can be the Unix time of the last update you made to a
 #' group members list. You would then provide this list when calling
 #' [`put_principal_mapping`][kendra_put_principal_mapping]. This ensures
 #' your `DELETE` action for that updated group with the latest members list
 #' doesn't get overwritten by earlier `DELETE` actions for the same group
 #' which are yet to be processed.
 #' 
-#' The default ordering ID is the current UNIX time in milliseconds that
+#' The default ordering ID is the current Unix time in milliseconds that
 #' the action was received by Amazon Kendra.
 #'
 #' @keywords internal
@@ -918,15 +1011,15 @@ kendra_describe_access_control_configuration <- function(IndexId, Id) {
 }
 .kendra$operations$describe_access_control_configuration <- kendra_describe_access_control_configuration
 
-#' Gets information about an Amazon Kendra data source
+#' Gets information about an Amazon Kendra data source connector
 #'
 #' @description
-#' Gets information about an Amazon Kendra data source.
+#' Gets information about an Amazon Kendra data source connector.
 #'
 #' See [https://paws-r.github.io/docs/kendra/describe_data_source.html](https://paws-r.github.io/docs/kendra/describe_data_source.html) for full documentation.
 #'
-#' @param Id &#91;required&#93; The identifier of the data source.
-#' @param IndexId &#91;required&#93; The identifier of the index used with the data source.
+#' @param Id &#91;required&#93; The identifier of the data source connector.
+#' @param IndexId &#91;required&#93; The identifier of the index used with the data source connector.
 #'
 #' @keywords internal
 #'
@@ -1009,6 +1102,37 @@ kendra_describe_faq <- function(Id, IndexId) {
   return(response)
 }
 .kendra$operations$describe_faq <- kendra_describe_faq
+
+#' Gets information about a set of featured results
+#'
+#' @description
+#' Gets information about a set of featured results. Features results are placed above all other results for certain queries. If there's an exact match of a query, then one or more specific documents are featured in the search results.
+#'
+#' See [https://paws-r.github.io/docs/kendra/describe_featured_results_set.html](https://paws-r.github.io/docs/kendra/describe_featured_results_set.html) for full documentation.
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index used for featuring results.
+#' @param FeaturedResultsSetId &#91;required&#93; The identifier of the set of featured results that you want to get
+#' information on.
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_describe_featured_results_set
+kendra_describe_featured_results_set <- function(IndexId, FeaturedResultsSetId) {
+  op <- new_operation(
+    name = "DescribeFeaturedResultsSet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$describe_featured_results_set_input(IndexId = IndexId, FeaturedResultsSetId = FeaturedResultsSetId)
+  output <- .kendra$describe_featured_results_set_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$describe_featured_results_set <- kendra_describe_featured_results_set
 
 #' Gets information about an existing Amazon Kendra index
 #'
@@ -1165,17 +1289,17 @@ kendra_describe_thesaurus <- function(Id, IndexId) {
 }
 .kendra$operations$describe_thesaurus <- kendra_describe_thesaurus
 
-#' Prevents users or groups in your Amazon Web Services SSO identity source
+#' Prevents users or groups in your IAM Identity Center identity source
 #' from accessing your Amazon Kendra experience
 #'
 #' @description
-#' Prevents users or groups in your Amazon Web Services SSO identity source from accessing your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see [Building a search experience with no code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
+#' Prevents users or groups in your IAM Identity Center identity source from accessing your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see [Building a search experience with no code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
 #'
 #' See [https://paws-r.github.io/docs/kendra/disassociate_entities_from_experience.html](https://paws-r.github.io/docs/kendra/disassociate_entities_from_experience.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience.
 #' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
-#' @param EntityList &#91;required&#93; Lists users or groups in your Amazon Web Services SSO identity source.
+#' @param EntityList &#91;required&#93; Lists users or groups in your IAM Identity Center identity source.
 #'
 #' @keywords internal
 #'
@@ -1197,19 +1321,18 @@ kendra_disassociate_entities_from_experience <- function(Id, IndexId, EntityList
 }
 .kendra$operations$disassociate_entities_from_experience <- kendra_disassociate_entities_from_experience
 
-#' Removes the specific permissions of users or groups in your Amazon Web
-#' Services SSO identity source with access to your Amazon Kendra
-#' experience
+#' Removes the specific permissions of users or groups in your IAM Identity
+#' Center identity source with access to your Amazon Kendra experience
 #'
 #' @description
-#' Removes the specific permissions of users or groups in your Amazon Web Services SSO identity source with access to your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see [Building a search experience with no code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
+#' Removes the specific permissions of users or groups in your IAM Identity Center identity source with access to your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see [Building a search experience with no code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
 #'
 #' See [https://paws-r.github.io/docs/kendra/disassociate_personas_from_entities.html](https://paws-r.github.io/docs/kendra/disassociate_personas_from_entities.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience.
 #' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
-#' @param EntityIds &#91;required&#93; The identifiers of users or groups in your Amazon Web Services SSO
-#' identity source. For example, user IDs could be user emails.
+#' @param EntityIds &#91;required&#93; The identifiers of users or groups in your IAM Identity Center identity
+#' source. For example, user IDs could be user emails.
 #'
 #' @keywords internal
 #'
@@ -1249,18 +1372,31 @@ kendra_disassociate_personas_from_entities <- function(Id, IndexId, EntityIds) {
 #' least one search result and contain at least one word of more than four
 #' characters.
 #' @param MaxSuggestionsCount The maximum number of query suggestions you want to show to your users.
+#' @param SuggestionTypes The suggestions type to base query suggestions on. The suggestion types
+#' are query history or document fields/attributes. You can set one type or
+#' the other.
+#' 
+#' If you set query history as your suggestions type, Amazon Kendra
+#' suggests queries relevant to your users based on popular queries in the
+#' query history.
+#' 
+#' If you set document fields/attributes as your suggestions type, Amazon
+#' Kendra suggests queries relevant to your users based on the contents of
+#' document fields.
+#' @param AttributeSuggestionsConfig Configuration information for the document fields/attributes that you
+#' want to base query suggestions on.
 #'
 #' @keywords internal
 #'
 #' @rdname kendra_get_query_suggestions
-kendra_get_query_suggestions <- function(IndexId, QueryText, MaxSuggestionsCount = NULL) {
+kendra_get_query_suggestions <- function(IndexId, QueryText, MaxSuggestionsCount = NULL, SuggestionTypes = NULL, AttributeSuggestionsConfig = NULL) {
   op <- new_operation(
     name = "GetQuerySuggestions",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kendra$get_query_suggestions_input(IndexId = IndexId, QueryText = QueryText, MaxSuggestionsCount = MaxSuggestionsCount)
+  input <- .kendra$get_query_suggestions_input(IndexId = IndexId, QueryText = QueryText, MaxSuggestionsCount = MaxSuggestionsCount, SuggestionTypes = SuggestionTypes, AttributeSuggestionsConfig = AttributeSuggestionsConfig)
   output <- .kendra$get_query_suggestions_output()
   config <- get_config()
   svc <- .kendra$service(config)
@@ -1365,15 +1501,15 @@ kendra_list_access_control_configurations <- function(IndexId, NextToken = NULL,
 }
 .kendra$operations$list_access_control_configurations <- kendra_list_access_control_configurations
 
-#' Gets statistics about synchronizing Amazon Kendra with a data source
+#' Gets statistics about synchronizing a data source connector
 #'
 #' @description
-#' Gets statistics about synchronizing Amazon Kendra with a data source.
+#' Gets statistics about synchronizing a data source connector.
 #'
 #' See [https://paws-r.github.io/docs/kendra/list_data_source_sync_jobs.html](https://paws-r.github.io/docs/kendra/list_data_source_sync_jobs.html) for full documentation.
 #'
-#' @param Id &#91;required&#93; The identifier of the data source.
-#' @param IndexId &#91;required&#93; The identifier of the index used with the data source.
+#' @param Id &#91;required&#93; The identifier of the data source connector.
+#' @param IndexId &#91;required&#93; The identifier of the index used with the data source connector.
 #' @param NextToken If the previous response was incomplete (because there is more data to
 #' retrieve), Amazon Kendra returns a pagination token in the response. You
 #' can use this pagination token to retrieve the next set of jobs.
@@ -1382,8 +1518,8 @@ kendra_list_access_control_configurations <- function(IndexId, NextToken = NULL,
 #' actual results.
 #' @param StartTimeFilter When specified, the synchronization jobs returned in the list are
 #' limited to jobs between the specified dates.
-#' @param StatusFilter When specified, only returns synchronization jobs with the `Status`
-#' field equal to the specified status.
+#' @param StatusFilter Only returns synchronization jobs with the `Status` field equal to the
+#' specified status.
 #'
 #' @keywords internal
 #'
@@ -1405,19 +1541,20 @@ kendra_list_data_source_sync_jobs <- function(Id, IndexId, NextToken = NULL, Max
 }
 .kendra$operations$list_data_source_sync_jobs <- kendra_list_data_source_sync_jobs
 
-#' Lists the data sources that you have created
+#' Lists the data source connectors that you have created
 #'
 #' @description
-#' Lists the data sources that you have created.
+#' Lists the data source connectors that you have created.
 #'
 #' See [https://paws-r.github.io/docs/kendra/list_data_sources.html](https://paws-r.github.io/docs/kendra/list_data_sources.html) for full documentation.
 #'
-#' @param IndexId &#91;required&#93; The identifier of the index used with one or more data sources.
+#' @param IndexId &#91;required&#93; The identifier of the index used with one or more data source
+#' connectors.
 #' @param NextToken If the previous response was incomplete (because there is more data to
 #' retrieve), Amazon Kendra returns a pagination token in the response. You
-#' can use this pagination token to retrieve the next set of data sources
-#' (`DataSourceSummaryItems`).
-#' @param MaxResults The maximum number of data sources to return.
+#' can use this pagination token to retrieve the next set of data source
+#' connectors.
+#' @param MaxResults The maximum number of data source connectors to return.
 #'
 #' @keywords internal
 #'
@@ -1475,11 +1612,11 @@ kendra_list_entity_personas <- function(Id, IndexId, NextToken = NULL, MaxResult
 }
 .kendra$operations$list_entity_personas <- kendra_list_entity_personas
 
-#' Lists users or groups in your Amazon Web Services SSO identity source
-#' that are granted access to your Amazon Kendra experience
+#' Lists users or groups in your IAM Identity Center identity source that
+#' are granted access to your Amazon Kendra experience
 #'
 #' @description
-#' Lists users or groups in your Amazon Web Services SSO identity source that are granted access to your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see [Building a search experience with no code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
+#' Lists users or groups in your IAM Identity Center identity source that are granted access to your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see [Building a search experience with no code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
 #'
 #' See [https://paws-r.github.io/docs/kendra/list_experience_entities.html](https://paws-r.github.io/docs/kendra/list_experience_entities.html) for full documentation.
 #'
@@ -1578,6 +1715,39 @@ kendra_list_faqs <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 }
 .kendra$operations$list_faqs <- kendra_list_faqs
 
+#' Lists all your sets of featured results for a given index
+#'
+#' @description
+#' Lists all your sets of featured results for a given index. Features results are placed above all other results for certain queries. If there's an exact match of a query, then one or more specific documents are featured in the search results.
+#'
+#' See [https://paws-r.github.io/docs/kendra/list_featured_results_sets.html](https://paws-r.github.io/docs/kendra/list_featured_results_sets.html) for full documentation.
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index used for featuring results.
+#' @param NextToken If the response is truncated, Amazon Kendra returns a pagination token
+#' in the response. You can use this pagination token to retrieve the next
+#' set of featured results sets.
+#' @param MaxResults The maximum number of featured results sets to return.
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_list_featured_results_sets
+kendra_list_featured_results_sets <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListFeaturedResultsSets",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$list_featured_results_sets_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .kendra$list_featured_results_sets_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$list_featured_results_sets <- kendra_list_featured_results_sets
+
 #' Provides a list of groups that are mapped to users before a given
 #' ordering or timestamp identifier
 #'
@@ -1628,9 +1798,8 @@ kendra_list_groups_older_than_ordering_id <- function(IndexId, DataSourceId = NU
 #'
 #' @param NextToken If the previous response was incomplete (because there is more data to
 #' retrieve), Amazon Kendra returns a pagination token in the response. You
-#' can use this pagination token to retrieve the next set of indexes
-#' (`DataSourceSummaryItems`).
-#' @param MaxResults The maximum number of data sources to return.
+#' can use this pagination token to retrieve the next set of indexes.
+#' @param MaxResults The maximum number of indices to return.
 #'
 #' @keywords internal
 #'
@@ -1791,14 +1960,14 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #' prevents previous actions with lower number IDs from possibly overriding
 #' the latest action.
 #' 
-#' The ordering ID can be the UNIX time of the last update you made to a
+#' The ordering ID can be the Unix time of the last update you made to a
 #' group members list. You would then provide this list when calling
 #' [`put_principal_mapping`][kendra_put_principal_mapping]. This ensures
 #' your `PUT` action for that updated group with the latest members list
 #' doesn't get overwritten by earlier `PUT` actions for the same group
 #' which are yet to be processed.
 #' 
-#' The default ordering ID is the current UNIX time in milliseconds that
+#' The default ordering ID is the current Unix time in milliseconds that
 #' the action was received by Amazon Kendra.
 #' @param RoleArn The Amazon Resource Name (ARN) of a role that has access to the S3 file
 #' that contains your list of users or sub groups that belong to a group.
@@ -1833,9 +2002,11 @@ kendra_put_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, 
 #'
 #' See [https://paws-r.github.io/docs/kendra/query.html](https://paws-r.github.io/docs/kendra/query.html) for full documentation.
 #'
-#' @param IndexId &#91;required&#93; The unique identifier of the index to search. The identifier is returned
-#' in the response from the [`create_index`][kendra_create_index] API.
-#' @param QueryText The text to search for.
+#' @param IndexId &#91;required&#93; The identifier of the index to search. The identifier is returned in the
+#' response from the [`create_index`][kendra_create_index] API.
+#' @param QueryText The input query text for the search. Amazon Kendra truncates queries at
+#' 30 token words, which excludes punctuation and stop words. Truncation
+#' still applies if you use Boolean or more advanced, complex queries.
 #' @param AttributeFilter Enables filtered searches based on document attributes. You can only
 #' provide one attribute filter; however, the `AndAllFilters`, `NotFilter`,
 #' and `OrAllFilters` parameters contain a list of other filters.
@@ -1904,15 +2075,15 @@ kendra_query <- function(IndexId, QueryText = NULL, AttributeFilter = NULL, Face
 }
 .kendra$operations$query <- kendra_query
 
-#' Starts a synchronization job for a data source
+#' Starts a synchronization job for a data source connector
 #'
 #' @description
-#' Starts a synchronization job for a data source. If a synchronization job is already in progress, Amazon Kendra returns a `ResourceInUseException` exception.
+#' Starts a synchronization job for a data source connector. If a synchronization job is already in progress, Amazon Kendra returns a `ResourceInUseException` exception.
 #'
 #' See [https://paws-r.github.io/docs/kendra/start_data_source_sync_job.html](https://paws-r.github.io/docs/kendra/start_data_source_sync_job.html) for full documentation.
 #'
-#' @param Id &#91;required&#93; The identifier of the data source to synchronize.
-#' @param IndexId &#91;required&#93; The identifier of the index that contains the data source.
+#' @param Id &#91;required&#93; The identifier of the data source connector to synchronize.
+#' @param IndexId &#91;required&#93; The identifier of the index used with the data source connector.
 #'
 #' @keywords internal
 #'
@@ -1941,9 +2112,9 @@ kendra_start_data_source_sync_job <- function(Id, IndexId) {
 #'
 #' See [https://paws-r.github.io/docs/kendra/stop_data_source_sync_job.html](https://paws-r.github.io/docs/kendra/stop_data_source_sync_job.html) for full documentation.
 #'
-#' @param Id &#91;required&#93; The identifier of the data source for which to stop the synchronization
-#' jobs.
-#' @param IndexId &#91;required&#93; The identifier of the index that contains the data source.
+#' @param Id &#91;required&#93; The identifier of the data source connector for which to stop the
+#' synchronization jobs.
+#' @param IndexId &#91;required&#93; The identifier of the index used with the data source connector.
 #'
 #' @keywords internal
 #'
@@ -2082,7 +2253,7 @@ kendra_untag_resource <- function(ResourceARN, TagKeys) {
 #' context filtering, where search results are filtered based on the user
 #' or their group access to documents.
 #' @param HierarchicalAccessControlList The updated list of
-#' [principal](https://docs.aws.amazon.com/kendra/latest/dg/API_Principal.html)
+#' [principal](https://docs.aws.amazon.com/kendra/latest/APIReference/API_Principal.html)
 #' lists that define the hierarchy for which documents users should have
 #' access to.
 #'
@@ -2106,23 +2277,26 @@ kendra_update_access_control_configuration <- function(IndexId, Id, Name = NULL,
 }
 .kendra$operations$update_access_control_configuration <- kendra_update_access_control_configuration
 
-#' Updates an existing Amazon Kendra data source
+#' Updates an existing Amazon Kendra data source connector
 #'
 #' @description
-#' Updates an existing Amazon Kendra data source.
+#' Updates an existing Amazon Kendra data source connector.
 #'
 #' See [https://paws-r.github.io/docs/kendra/update_data_source.html](https://paws-r.github.io/docs/kendra/update_data_source.html) for full documentation.
 #'
-#' @param Id &#91;required&#93; The identifier of the data source you want to update.
-#' @param Name A new name for the data source connector. You must first delete the data
-#' source and re-create it to change the name of the data source.
+#' @param Id &#91;required&#93; The identifier of the data source connector you want to update.
+#' @param Name A new name for the data source connector.
 #' @param IndexId &#91;required&#93; The identifier of the index used with the data source connector.
 #' @param Configuration Configuration information you want to update for the data source
 #' connector.
+#' @param VpcConfiguration Configuration information for an Amazon Virtual Private Cloud to connect
+#' to your data source. For more information, see [Configuring a
+#' VPC](https://docs.aws.amazon.com/kendra/latest/dg/vpc-configuration.html).
 #' @param Description A new description for the data source connector.
 #' @param Schedule The sync schedule you want to update for the data source connector.
 #' @param RoleArn The Amazon Resource Name (ARN) of a role with permission to access the
-#' data source. For more information, see [IAM Roles for Amazon
+#' data source and required resources. For more information, see [IAM roles
+#' for Amazon
 #' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
 #' @param LanguageCode The code for a language you want to update for the data source
 #' connector. This allows you to support a language for all documents when
@@ -2142,14 +2316,14 @@ kendra_update_access_control_configuration <- function(IndexId, Id, Name = NULL,
 #' @keywords internal
 #'
 #' @rdname kendra_update_data_source
-kendra_update_data_source <- function(Id, Name = NULL, IndexId, Configuration = NULL, Description = NULL, Schedule = NULL, RoleArn = NULL, LanguageCode = NULL, CustomDocumentEnrichmentConfiguration = NULL) {
+kendra_update_data_source <- function(Id, Name = NULL, IndexId, Configuration = NULL, VpcConfiguration = NULL, Description = NULL, Schedule = NULL, RoleArn = NULL, LanguageCode = NULL, CustomDocumentEnrichmentConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateDataSource",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kendra$update_data_source_input(Id = Id, Name = Name, IndexId = IndexId, Configuration = Configuration, Description = Description, Schedule = Schedule, RoleArn = RoleArn, LanguageCode = LanguageCode, CustomDocumentEnrichmentConfiguration = CustomDocumentEnrichmentConfiguration)
+  input <- .kendra$update_data_source_input(Id = Id, Name = Name, IndexId = IndexId, Configuration = Configuration, VpcConfiguration = VpcConfiguration, Description = Description, Schedule = Schedule, RoleArn = RoleArn, LanguageCode = LanguageCode, CustomDocumentEnrichmentConfiguration = CustomDocumentEnrichmentConfiguration)
   output <- .kendra$update_data_source_output()
   config <- get_config()
   svc <- .kendra$service(config)
@@ -2171,9 +2345,9 @@ kendra_update_data_source <- function(Id, Name = NULL, IndexId, Configuration = 
 #' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
 #' @param RoleArn The Amazon Resource Name (ARN) of a role with permission to access
 #' [`query`][kendra_query] API, `QuerySuggestions` API,
-#' [`submit_feedback`][kendra_submit_feedback] API, and Amazon Web Services
-#' SSO that stores your user and group information. For more information,
-#' see [IAM roles for Amazon
+#' [`submit_feedback`][kendra_submit_feedback] API, and IAM Identity Center
+#' that stores your user and group information. For more information, see
+#' [IAM roles for Amazon
 #' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
 #' @param Configuration Configuration information you want to update for your Amazon Kendra
 #' experience.
@@ -2198,6 +2372,50 @@ kendra_update_experience <- function(Id, Name = NULL, IndexId, RoleArn = NULL, C
   return(response)
 }
 .kendra$operations$update_experience <- kendra_update_experience
+
+#' Updates a set of featured results
+#'
+#' @description
+#' Updates a set of featured results. Features results are placed above all other results for certain queries. You map specific queries to specific documents for featuring in the results. If a query contains an exact match of a query, then one or more specific documents are featured in the search results.
+#'
+#' See [https://paws-r.github.io/docs/kendra/update_featured_results_set.html](https://paws-r.github.io/docs/kendra/update_featured_results_set.html) for full documentation.
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index used for featuring results.
+#' @param FeaturedResultsSetId &#91;required&#93; The identifier of the set of featured results that you want to update.
+#' @param FeaturedResultsSetName A new name for the set of featured results.
+#' @param Description A new description for the set of featured results.
+#' @param Status You can set the status to `ACTIVE` or `INACTIVE`. When the value is
+#' `ACTIVE`, featured results are ready for use. You can still configure
+#' your settings before setting the status to `ACTIVE`. The queries you
+#' specify for featured results must be unique per featured results set for
+#' each index, whether the status is `ACTIVE` or `INACTIVE`.
+#' @param QueryTexts A list of queries for featuring results. For more information on the
+#' list of queries, see
+#' [FeaturedResultsSet](https://docs.aws.amazon.com/kendra/latest/APIReference/API_FeaturedResultsSet.html).
+#' @param FeaturedDocuments A list of document IDs for the documents you want to feature at the top
+#' of the search results page. For more information on the list of featured
+#' documents, see
+#' [FeaturedResultsSet](https://docs.aws.amazon.com/kendra/latest/APIReference/API_FeaturedResultsSet.html).
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_update_featured_results_set
+kendra_update_featured_results_set <- function(IndexId, FeaturedResultsSetId, FeaturedResultsSetName = NULL, Description = NULL, Status = NULL, QueryTexts = NULL, FeaturedDocuments = NULL) {
+  op <- new_operation(
+    name = "UpdateFeaturedResultsSet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$update_featured_results_set_input(IndexId = IndexId, FeaturedResultsSetId = FeaturedResultsSetId, FeaturedResultsSetName = FeaturedResultsSetName, Description = Description, Status = Status, QueryTexts = QueryTexts, FeaturedDocuments = FeaturedDocuments)
+  output <- .kendra$update_featured_results_set_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$update_featured_results_set <- kendra_update_featured_results_set
 
 #' Updates an existing Amazon Kendra index
 #'
@@ -2224,9 +2442,10 @@ kendra_update_experience <- function(Id, Name = NULL, IndexId, RoleArn = NULL, C
 #' index.
 #' @param UserTokenConfigurations The user token configuration.
 #' @param UserContextPolicy The user context policy.
-#' @param UserGroupResolutionConfiguration Enables fetching access levels of groups and users from an Amazon Web
-#' Services Single Sign On identity source. To configure this, see
-#' [UserGroupResolutionConfiguration](https://docs.aws.amazon.com/kendra/latest/dg/API_UserGroupResolutionConfiguration.html).
+#' @param UserGroupResolutionConfiguration Enables fetching access levels of groups and users from an IAM Identity
+#' Center (successor to Single Sign-On) identity source. To configure this,
+#' see
+#' [UserGroupResolutionConfiguration](https://docs.aws.amazon.com/kendra/latest/APIReference/API_UserGroupResolutionConfiguration.html).
 #'
 #' @keywords internal
 #'
@@ -2346,18 +2565,20 @@ kendra_update_query_suggestions_block_list <- function(IndexId, Id, Name = NULL,
 #' to be considered popular to suggest to users.
 #' 
 #' How you tune this setting depends on your specific needs.
+#' @param AttributeSuggestionsConfig Configuration information for the document fields/attributes that you
+#' want to base query suggestions on.
 #'
 #' @keywords internal
 #'
 #' @rdname kendra_update_query_suggestions_config
-kendra_update_query_suggestions_config <- function(IndexId, Mode = NULL, QueryLogLookBackWindowInDays = NULL, IncludeQueriesWithoutUserInformation = NULL, MinimumNumberOfQueryingUsers = NULL, MinimumQueryCount = NULL) {
+kendra_update_query_suggestions_config <- function(IndexId, Mode = NULL, QueryLogLookBackWindowInDays = NULL, IncludeQueriesWithoutUserInformation = NULL, MinimumNumberOfQueryingUsers = NULL, MinimumQueryCount = NULL, AttributeSuggestionsConfig = NULL) {
   op <- new_operation(
     name = "UpdateQuerySuggestionsConfig",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kendra$update_query_suggestions_config_input(IndexId = IndexId, Mode = Mode, QueryLogLookBackWindowInDays = QueryLogLookBackWindowInDays, IncludeQueriesWithoutUserInformation = IncludeQueriesWithoutUserInformation, MinimumNumberOfQueryingUsers = MinimumNumberOfQueryingUsers, MinimumQueryCount = MinimumQueryCount)
+  input <- .kendra$update_query_suggestions_config_input(IndexId = IndexId, Mode = Mode, QueryLogLookBackWindowInDays = QueryLogLookBackWindowInDays, IncludeQueriesWithoutUserInformation = IncludeQueriesWithoutUserInformation, MinimumNumberOfQueryingUsers = MinimumNumberOfQueryingUsers, MinimumQueryCount = MinimumQueryCount, AttributeSuggestionsConfig = AttributeSuggestionsConfig)
   output <- .kendra$update_query_suggestions_config_output()
   config <- get_config()
   svc <- .kendra$service(config)

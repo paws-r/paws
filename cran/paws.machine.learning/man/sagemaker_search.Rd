@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_search}
 \alias{sagemaker_search}
-\title{Finds Amazon SageMaker resources that match a search query}
+\title{Finds SageMaker resources that match a search query}
 \usage{
 sagemaker_search(
   Resource,
@@ -14,7 +14,7 @@ sagemaker_search(
 )
 }
 \arguments{
-\item{Resource}{[required] The name of the Amazon SageMaker resource to search for.}
+\item{Resource}{[required] The name of the SageMaker resource to search for.}
 
 \item{SearchExpression}{A Boolean conditional statement. Resources must satisfy this condition
 to be included in search results. You must provide at least one
@@ -36,7 +36,7 @@ results.}
 \item{MaxResults}{The maximum number of results to return.}
 }
 \description{
-Finds Amazon SageMaker resources that match a search query. Matching resources are returned as a list of \code{SearchRecord} objects in the response. You can sort the search results by any resource property in a ascending or descending order.
+Finds SageMaker resources that match a search query. Matching resources are returned as a list of \code{SearchRecord} objects in the response. You can sort the search results by any resource property in a ascending or descending order.
 
 See \url{https://paws-r.github.io/docs/sagemaker/search.html} for full documentation.
 }

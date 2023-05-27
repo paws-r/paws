@@ -57,6 +57,9 @@ Amazon Lex Model Building V2
 \section{Operations}{
 
 \tabular{ll}{
+\link[=lexmodelsv2_batch_create_custom_vocabulary_item]{batch_create_custom_vocabulary_item} \tab Create a batch of custom vocabulary items for a given bot locale's custom vocabulary\cr
+\link[=lexmodelsv2_batch_delete_custom_vocabulary_item]{batch_delete_custom_vocabulary_item} \tab Delete a batch of custom vocabulary items for a given bot locale's custom vocabulary\cr
+\link[=lexmodelsv2_batch_update_custom_vocabulary_item]{batch_update_custom_vocabulary_item} \tab Update a batch of custom vocabulary items for a given bot locale's custom vocabulary\cr
 \link[=lexmodelsv2_build_bot_locale]{build_bot_locale} \tab Builds a bot, its intents, and its slot types into a specific locale\cr
 \link[=lexmodelsv2_create_bot]{create_bot} \tab Creates an Amazon Lex conversational bot\cr
 \link[=lexmodelsv2_create_bot_alias]{create_bot_alias} \tab Creates an alias for the specified version of a bot\cr
@@ -102,6 +105,7 @@ Amazon Lex Model Building V2
 \link[=lexmodelsv2_list_bot_versions]{list_bot_versions} \tab Gets information about all of the versions of a bot\cr
 \link[=lexmodelsv2_list_built_in_intents]{list_built_in_intents} \tab Gets a list of built-in intents provided by Amazon Lex that you can use in your bot\cr
 \link[=lexmodelsv2_list_built_in_slot_types]{list_built_in_slot_types} \tab Gets a list of built-in slot types that meet the specified criteria\cr
+\link[=lexmodelsv2_list_custom_vocabulary_items]{list_custom_vocabulary_items} \tab Paginated list of custom vocabulary items for a given bot locale's custom vocabulary\cr
 \link[=lexmodelsv2_list_exports]{list_exports} \tab Lists the exports for a bot, bot locale, or custom vocabulary\cr
 \link[=lexmodelsv2_list_imports]{list_imports} \tab Lists the imports for a bot, bot locale, or custom vocabulary\cr
 \link[=lexmodelsv2_list_intents]{list_intents} \tab Get a list of intents that meet the specified criteria\cr
@@ -112,6 +116,7 @@ Amazon Lex Model Building V2
 \link[=lexmodelsv2_search_associated_transcripts]{search_associated_transcripts} \tab Search for associated transcripts that meet the specified criteria\cr
 \link[=lexmodelsv2_start_bot_recommendation]{start_bot_recommendation} \tab Use this to provide your transcript data, and to start the bot recommendation process\cr
 \link[=lexmodelsv2_start_import]{start_import} \tab Starts importing a bot, bot locale, or custom vocabulary from a zip archive that you uploaded to an S3 bucket\cr
+\link[=lexmodelsv2_stop_bot_recommendation]{stop_bot_recommendation} \tab Stop an already running Bot Recommendation request\cr
 \link[=lexmodelsv2_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
 \link[=lexmodelsv2_untag_resource]{untag_resource} \tab Removes tags from a bot, bot alias, or bot channel\cr
 \link[=lexmodelsv2_update_bot]{update_bot} \tab Updates the configuration of an existing bot\cr
@@ -129,7 +134,7 @@ Amazon Lex Model Building V2
 \examples{
 \dontrun{
 svc <- lexmodelsv2()
-svc$build_bot_locale(
+svc$batch_create_custom_vocabulary_item(
   Foo = 123
 )
 }

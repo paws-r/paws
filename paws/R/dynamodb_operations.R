@@ -207,7 +207,8 @@ dynamodb_batch_execute_statement <- function(Statements, ReturnConsumedCapacity 
 #' `true` for any or all tables.
 #' 
 #' In order to minimize response latency,
-#' [`batch_get_item`][dynamodb_batch_get_item] retrieves items in parallel.
+#' [`batch_get_item`][dynamodb_batch_get_item] may retrieve items in
+#' parallel.
 #' 
 #' When designing your application, keep in mind that DynamoDB does not
 #' return items in any particular order. To help parse the response by
@@ -519,8 +520,11 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #' more details on this distinction, see [Naming Rules and Data
 #' Types](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html).
 #' 
-#' [`batch_write_item`][dynamodb_batch_write_item] cannot update items. To
-#' update items, use the [`update_item`][dynamodb_update_item] action.
+#' [`batch_write_item`][dynamodb_batch_write_item] cannot update items. If
+#' you perform a [`batch_write_item`][dynamodb_batch_write_item] operation
+#' on an existing item, that item's values will be overwritten by the
+#' operation and it will appear like it was updated. To update items, we
+#' recommend you use the [`update_item`][dynamodb_update_item] action.
 #' 
 #' The individual [`put_item`][dynamodb_put_item] and
 #' [`delete_item`][dynamodb_delete_item] operations specified in
@@ -1011,9 +1015,17 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #' replication relationship between two or more DynamoDB tables with the
 #' same table name in the provided Regions.
 #' 
-#' This operation only applies to [Version
-#' 2017.11.29](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
-#' of global tables.
+#' This operation only applies to [Version 2017.11.29
+#' (Legacy)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
+#' of global tables. We recommend using [Version 2019.11.21
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' when creating new global tables, as it provides greater flexibility,
+#' higher efficiency and consumes less write capacity than 2017.11.29
+#' (Legacy). To determine which version you are using, see [Determining the
+#' version](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
+#' To update existing global tables from version 2017.11.29 (Legacy) to
+#' version 2019.11.21 (Current), see [Updating global
+#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html).
 #' 
 #' If you want to add a new replica table to a global table, each of the
 #' following conditions must be true:
@@ -1166,7 +1178,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' dynamodb_create_table(AttributeDefinitions, TableName, KeySchema,
 #'   LocalSecondaryIndexes, GlobalSecondaryIndexes, BillingMode,
 #'   ProvisionedThroughput, StreamSpecification, SSESpecification, Tags,
-#'   TableClass)
+#'   TableClass, DeletionProtectionEnabled)
 #'
 #' @param AttributeDefinitions &#91;required&#93; An array of attributes that describe the key schema for the table and
 #' indexes.
@@ -1332,6 +1344,8 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html).
 #' @param TableClass The table class of the new table. Valid values are `STANDARD` and
 #' `STANDARD_INFREQUENT_ACCESS`.
+#' @param DeletionProtectionEnabled Indicates whether deletion protection is to be enabled (true) or
+#' disabled (false) on the table.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1493,7 +1507,8 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'       LastUpdateDateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
-#'     )
+#'     ),
+#'     DeletionProtectionEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -1572,7 +1587,8 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'       Value = "string"
 #'     )
 #'   ),
-#'   TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS"
+#'   TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
+#'   DeletionProtectionEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1613,14 +1629,14 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' @rdname dynamodb_create_table
 #'
 #' @aliases dynamodb_create_table
-dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, SSESpecification = NULL, Tags = NULL, TableClass = NULL) {
+dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, SSESpecification = NULL, Tags = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, Tags = Tags, TableClass = TableClass)
+  input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, Tags = Tags, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled)
   output <- .dynamodb$create_table_output()
   config <- get_config()
   svc <- .dynamodb$service(config)
@@ -1800,7 +1816,7 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' @param Key &#91;required&#93; A map of attribute names to `AttributeValue` objects, representing the
 #' primary key of the item to delete.
 #' 
-#' For the primary key, you must provide all of the attributes. For
+#' For the primary key, you must provide all of the key attributes. For
 #' example, with a simple primary key, you only need to provide a value for
 #' the partition key. For a composite primary key, you must provide values
 #' for both the partition key and the sort key.
@@ -2158,6 +2174,10 @@ dynamodb_delete_item <- function(TableName, Key, Expected = NULL, ConditionalOpe
 #' not exist, DynamoDB returns a `ResourceNotFoundException`. If table is
 #' already in the `DELETING` state, no error is returned.
 #' 
+#' This operation only applies to [Version 2019.11.21
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' of global tables.
+#' 
 #' DynamoDB might continue to accept data read and write operations, such
 #' as [`get_item`][dynamodb_get_item] and [`put_item`][dynamodb_put_item],
 #' on a table in the `DELETING` state until the table deletion is complete.
@@ -2336,7 +2356,8 @@ dynamodb_delete_item <- function(TableName, Key, Expected = NULL, ConditionalOpe
 #'       LastUpdateDateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
-#'     )
+#'     ),
+#'     DeletionProtectionEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -2594,11 +2615,11 @@ dynamodb_describe_continuous_backups <- function(TableName) {
 }
 .dynamodb$operations$describe_continuous_backups <- dynamodb_describe_continuous_backups
 
-#' Returns information about contributor insights, for a given table or
+#' Returns information about contributor insights for a given table or
 #' global secondary index
 #'
 #' @description
-#' Returns information about contributor insights, for a given table or
+#' Returns information about contributor insights for a given table or
 #' global secondary index.
 #'
 #' @usage
@@ -2660,7 +2681,11 @@ dynamodb_describe_contributor_insights <- function(TableName, IndexName = NULL) 
 #' Returns the regional endpoint information
 #'
 #' @description
-#' Returns the regional endpoint information.
+#' Returns the regional endpoint information. This action must be included
+#' in your VPC endpoint policies, or access to the DescribeEndpoints API
+#' will be denied. For more information on policy permissions, please see
+#' [Internetwork traffic
+#' privacy](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/inter-network-traffic-privacy.html#inter-network-traffic-DescribeEndpoints).
 #'
 #' @usage
 #' dynamodb_describe_endpoints()
@@ -2783,11 +2808,17 @@ dynamodb_describe_export <- function(ExportArn) {
 #' @description
 #' Returns information about the specified global table.
 #' 
-#' This operation only applies to [Version
-#' 2017.11.29](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
-#' of global tables. If you are using global tables [Version
-#' 2019.11.21](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
-#' you can use [`describe_table`][dynamodb_describe_table] instead.
+#' This operation only applies to [Version 2017.11.29
+#' (Legacy)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
+#' of global tables. We recommend using [Version 2019.11.21
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' when creating new global tables, as it provides greater flexibility,
+#' higher efficiency and consumes less write capacity than 2017.11.29
+#' (Legacy). To determine which version you are using, see [Determining the
+#' version](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
+#' To update existing global tables from version 2017.11.29 (Legacy) to
+#' version 2019.11.21 (Current), see [Updating global
+#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html).
 #'
 #' @usage
 #' dynamodb_describe_global_table(GlobalTableName)
@@ -2872,9 +2903,17 @@ dynamodb_describe_global_table <- function(GlobalTableName) {
 #' @description
 #' Describes Region-specific settings for a global table.
 #' 
-#' This operation only applies to [Version
-#' 2017.11.29](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
-#' of global tables.
+#' This operation only applies to [Version 2017.11.29
+#' (Legacy)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
+#' of global tables. We recommend using [Version 2019.11.21
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' when creating new global tables, as it provides greater flexibility,
+#' higher efficiency and consumes less write capacity than 2017.11.29
+#' (Legacy). To determine which version you are using, see [Determining the
+#' version](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
+#' To update existing global tables from version 2017.11.29 (Legacy) to
+#' version 2019.11.21 (Current), see [Updating global
+#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html).
 #'
 #' @usage
 #' dynamodb_describe_global_table_settings(GlobalTableName)
@@ -3013,6 +3052,134 @@ dynamodb_describe_global_table_settings <- function(GlobalTableName) {
   return(response)
 }
 .dynamodb$operations$describe_global_table_settings <- dynamodb_describe_global_table_settings
+
+#' Represents the properties of the import
+#'
+#' @description
+#' Represents the properties of the import.
+#'
+#' @usage
+#' dynamodb_describe_import(ImportArn)
+#'
+#' @param ImportArn &#91;required&#93; The Amazon Resource Name (ARN) associated with the table you're
+#' importing to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImportTableDescription = list(
+#'     ImportArn = "string",
+#'     ImportStatus = "IN_PROGRESS"|"COMPLETED"|"CANCELLING"|"CANCELLED"|"FAILED",
+#'     TableArn = "string",
+#'     TableId = "string",
+#'     ClientToken = "string",
+#'     S3BucketSource = list(
+#'       S3BucketOwner = "string",
+#'       S3Bucket = "string",
+#'       S3KeyPrefix = "string"
+#'     ),
+#'     ErrorCount = 123,
+#'     CloudWatchLogGroupArn = "string",
+#'     InputFormat = "DYNAMODB_JSON"|"ION"|"CSV",
+#'     InputFormatOptions = list(
+#'       Csv = list(
+#'         Delimiter = "string",
+#'         HeaderList = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     InputCompressionType = "GZIP"|"ZSTD"|"NONE",
+#'     TableCreationParameters = list(
+#'       TableName = "string",
+#'       AttributeDefinitions = list(
+#'         list(
+#'           AttributeName = "string",
+#'           AttributeType = "S"|"N"|"B"
+#'         )
+#'       ),
+#'       KeySchema = list(
+#'         list(
+#'           AttributeName = "string",
+#'           KeyType = "HASH"|"RANGE"
+#'         )
+#'       ),
+#'       BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
+#'       ProvisionedThroughput = list(
+#'         ReadCapacityUnits = 123,
+#'         WriteCapacityUnits = 123
+#'       ),
+#'       SSESpecification = list(
+#'         Enabled = TRUE|FALSE,
+#'         SSEType = "AES256"|"KMS",
+#'         KMSMasterKeyId = "string"
+#'       ),
+#'       GlobalSecondaryIndexes = list(
+#'         list(
+#'           IndexName = "string",
+#'           KeySchema = list(
+#'             list(
+#'               AttributeName = "string",
+#'               KeyType = "HASH"|"RANGE"
+#'             )
+#'           ),
+#'           Projection = list(
+#'             ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
+#'             NonKeyAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           ProvisionedThroughput = list(
+#'             ReadCapacityUnits = 123,
+#'             WriteCapacityUnits = 123
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ProcessedSizeBytes = 123,
+#'     ProcessedItemCount = 123,
+#'     ImportedItemCount = 123,
+#'     FailureCode = "string",
+#'     FailureMessage = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_import(
+#'   ImportArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname dynamodb_describe_import
+#'
+#' @aliases dynamodb_describe_import
+dynamodb_describe_import <- function(ImportArn) {
+  op <- new_operation(
+    name = "DescribeImport",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .dynamodb$describe_import_input(ImportArn = ImportArn)
+  output <- .dynamodb$describe_import_output()
+  config <- get_config()
+  svc <- .dynamodb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.dynamodb$operations$describe_import <- dynamodb_describe_import
 
 #' Returns information about the status of Kinesis streaming
 #'
@@ -3202,6 +3369,10 @@ dynamodb_describe_limits <- function() {
 #' table, when it was created, the primary key schema, and any indexes on
 #' the table.
 #' 
+#' This operation only applies to [Version 2019.11.21
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' of global tables.
+#' 
 #' If you issue a [`describe_table`][dynamodb_describe_table] request
 #' immediately after a [`create_table`][dynamodb_create_table] request,
 #' DynamoDB might return a `ResourceNotFoundException`. This is because
@@ -3375,7 +3546,8 @@ dynamodb_describe_limits <- function() {
 #'       LastUpdateDateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
-#'     )
+#'     ),
+#'     DeletionProtectionEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -3424,8 +3596,8 @@ dynamodb_describe_table <- function(TableName) {
 #' Describes auto scaling settings across replicas of the global table at
 #' once.
 #' 
-#' This operation only applies to [Version
-#' 2019.11.21](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' This operation only applies to [Version 2019.11.21
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
 #' of global tables.
 #'
 #' @usage
@@ -3730,7 +3902,8 @@ dynamodb_enable_kinesis_streaming_destination <- function(TableName, StreamArn) 
 #' of items (if using the Limit parameter) or a maximum of 1 MB of data
 #' (and then apply any filtering to the results using `WHERE` clause). If
 #' `LastEvaluatedKey` is present in the response, you need to paginate the
-#' result set.
+#' result set. If `NextToken` is present, you need to paginate the result
+#' set and include `NextToken`.
 #'
 #' @usage
 #' dynamodb_execute_statement(Statement, Parameters, ConsistentRead,
@@ -4068,7 +4241,7 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
 #' 
 #' If you submit a request with the same client token but a change in other
 #' parameters within the 8-hour idempotency window, DynamoDB returns an
-#' `IdempotentParameterMismatch` exception.
+#' `ImportConflictException`.
 #' @param S3Bucket &#91;required&#93; The name of the Amazon S3 bucket to export the snapshot to.
 #' @param S3BucketOwner The ID of the Amazon Web Services account that owns the bucket the
 #' export will be stored in.
@@ -4378,6 +4551,214 @@ dynamodb_get_item <- function(TableName, Key, AttributesToGet = NULL, Consistent
 }
 .dynamodb$operations$get_item <- dynamodb_get_item
 
+#' Imports table data from an S3 bucket
+#'
+#' @description
+#' Imports table data from an S3 bucket.
+#'
+#' @usage
+#' dynamodb_import_table(ClientToken, S3BucketSource, InputFormat,
+#'   InputFormatOptions, InputCompressionType, TableCreationParameters)
+#'
+#' @param ClientToken Providing a `ClientToken` makes the call to `ImportTableInput`
+#' idempotent, meaning that multiple identical calls have the same effect
+#' as one single call.
+#' 
+#' A client token is valid for 8 hours after the first request that uses it
+#' is completed. After 8 hours, any request with the same client token is
+#' treated as a new request. Do not resubmit the same request with the same
+#' client token for more than 8 hours, or the result might not be
+#' idempotent.
+#' 
+#' If you submit a request with the same client token but a change in other
+#' parameters within the 8-hour idempotency window, DynamoDB returns an
+#' `IdempotentParameterMismatch` exception.
+#' @param S3BucketSource &#91;required&#93; The S3 bucket that provides the source for the import.
+#' @param InputFormat &#91;required&#93; The format of the source data. Valid values for `ImportFormat` are
+#' `CSV`, `DYNAMODB_JSON` or `ION`.
+#' @param InputFormatOptions Additional properties that specify how the input is formatted,
+#' @param InputCompressionType Type of compression to be used on the input coming from the imported
+#' table.
+#' @param TableCreationParameters &#91;required&#93; Parameters for the table to import the data into.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImportTableDescription = list(
+#'     ImportArn = "string",
+#'     ImportStatus = "IN_PROGRESS"|"COMPLETED"|"CANCELLING"|"CANCELLED"|"FAILED",
+#'     TableArn = "string",
+#'     TableId = "string",
+#'     ClientToken = "string",
+#'     S3BucketSource = list(
+#'       S3BucketOwner = "string",
+#'       S3Bucket = "string",
+#'       S3KeyPrefix = "string"
+#'     ),
+#'     ErrorCount = 123,
+#'     CloudWatchLogGroupArn = "string",
+#'     InputFormat = "DYNAMODB_JSON"|"ION"|"CSV",
+#'     InputFormatOptions = list(
+#'       Csv = list(
+#'         Delimiter = "string",
+#'         HeaderList = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     InputCompressionType = "GZIP"|"ZSTD"|"NONE",
+#'     TableCreationParameters = list(
+#'       TableName = "string",
+#'       AttributeDefinitions = list(
+#'         list(
+#'           AttributeName = "string",
+#'           AttributeType = "S"|"N"|"B"
+#'         )
+#'       ),
+#'       KeySchema = list(
+#'         list(
+#'           AttributeName = "string",
+#'           KeyType = "HASH"|"RANGE"
+#'         )
+#'       ),
+#'       BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
+#'       ProvisionedThroughput = list(
+#'         ReadCapacityUnits = 123,
+#'         WriteCapacityUnits = 123
+#'       ),
+#'       SSESpecification = list(
+#'         Enabled = TRUE|FALSE,
+#'         SSEType = "AES256"|"KMS",
+#'         KMSMasterKeyId = "string"
+#'       ),
+#'       GlobalSecondaryIndexes = list(
+#'         list(
+#'           IndexName = "string",
+#'           KeySchema = list(
+#'             list(
+#'               AttributeName = "string",
+#'               KeyType = "HASH"|"RANGE"
+#'             )
+#'           ),
+#'           Projection = list(
+#'             ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
+#'             NonKeyAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           ProvisionedThroughput = list(
+#'             ReadCapacityUnits = 123,
+#'             WriteCapacityUnits = 123
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ProcessedSizeBytes = 123,
+#'     ProcessedItemCount = 123,
+#'     ImportedItemCount = 123,
+#'     FailureCode = "string",
+#'     FailureMessage = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$import_table(
+#'   ClientToken = "string",
+#'   S3BucketSource = list(
+#'     S3BucketOwner = "string",
+#'     S3Bucket = "string",
+#'     S3KeyPrefix = "string"
+#'   ),
+#'   InputFormat = "DYNAMODB_JSON"|"ION"|"CSV",
+#'   InputFormatOptions = list(
+#'     Csv = list(
+#'       Delimiter = "string",
+#'       HeaderList = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   InputCompressionType = "GZIP"|"ZSTD"|"NONE",
+#'   TableCreationParameters = list(
+#'     TableName = "string",
+#'     AttributeDefinitions = list(
+#'       list(
+#'         AttributeName = "string",
+#'         AttributeType = "S"|"N"|"B"
+#'       )
+#'     ),
+#'     KeySchema = list(
+#'       list(
+#'         AttributeName = "string",
+#'         KeyType = "HASH"|"RANGE"
+#'       )
+#'     ),
+#'     BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
+#'     ProvisionedThroughput = list(
+#'       ReadCapacityUnits = 123,
+#'       WriteCapacityUnits = 123
+#'     ),
+#'     SSESpecification = list(
+#'       Enabled = TRUE|FALSE,
+#'       SSEType = "AES256"|"KMS",
+#'       KMSMasterKeyId = "string"
+#'     ),
+#'     GlobalSecondaryIndexes = list(
+#'       list(
+#'         IndexName = "string",
+#'         KeySchema = list(
+#'           list(
+#'             AttributeName = "string",
+#'             KeyType = "HASH"|"RANGE"
+#'           )
+#'         ),
+#'         Projection = list(
+#'           ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
+#'           NonKeyAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         ProvisionedThroughput = list(
+#'           ReadCapacityUnits = 123,
+#'           WriteCapacityUnits = 123
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname dynamodb_import_table
+#'
+#' @aliases dynamodb_import_table
+dynamodb_import_table <- function(ClientToken = NULL, S3BucketSource, InputFormat, InputFormatOptions = NULL, InputCompressionType = NULL, TableCreationParameters) {
+  op <- new_operation(
+    name = "ImportTable",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .dynamodb$import_table_input(ClientToken = ClientToken, S3BucketSource = S3BucketSource, InputFormat = InputFormat, InputFormatOptions = InputFormatOptions, InputCompressionType = InputCompressionType, TableCreationParameters = TableCreationParameters)
+  output <- .dynamodb$import_table_output()
+  config <- get_config()
+  svc <- .dynamodb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.dynamodb$operations$import_table <- dynamodb_import_table
+
 #' List backups associated with an Amazon Web Services account
 #'
 #' @description
@@ -4609,9 +4990,17 @@ dynamodb_list_exports <- function(TableArn = NULL, MaxResults = NULL, NextToken 
 #' @description
 #' Lists all global tables that have a replica in the specified Region.
 #' 
-#' This operation only applies to [Version
-#' 2017.11.29](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
-#' of global tables.
+#' This operation only applies to [Version 2017.11.29
+#' (Legacy)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
+#' of global tables. We recommend using [Version 2019.11.21
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' when creating new global tables, as it provides greater flexibility,
+#' higher efficiency and consumes less write capacity than 2017.11.29
+#' (Legacy). To determine which version you are using, see [Determining the
+#' version](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
+#' To update existing global tables from version 2017.11.29 (Legacy) to
+#' version 2019.11.21 (Current), see [Updating global
+#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html).
 #'
 #' @usage
 #' dynamodb_list_global_tables(ExclusiveStartGlobalTableName, Limit,
@@ -4676,6 +5065,80 @@ dynamodb_list_global_tables <- function(ExclusiveStartGlobalTableName = NULL, Li
   return(response)
 }
 .dynamodb$operations$list_global_tables <- dynamodb_list_global_tables
+
+#' Lists completed imports within the past 90 days
+#'
+#' @description
+#' Lists completed imports within the past 90 days.
+#'
+#' @usage
+#' dynamodb_list_imports(TableArn, PageSize, NextToken)
+#'
+#' @param TableArn The Amazon Resource Name (ARN) associated with the table that was
+#' imported to.
+#' @param PageSize The number of `ImportSummary `objects returned in a single page.
+#' @param NextToken An optional string that, if supplied, must be copied from the output of
+#' a previous call to [`list_imports`][dynamodb_list_imports]. When
+#' provided in this manner, the API fetches the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ImportSummaryList = list(
+#'     list(
+#'       ImportArn = "string",
+#'       ImportStatus = "IN_PROGRESS"|"COMPLETED"|"CANCELLING"|"CANCELLED"|"FAILED",
+#'       TableArn = "string",
+#'       S3BucketSource = list(
+#'         S3BucketOwner = "string",
+#'         S3Bucket = "string",
+#'         S3KeyPrefix = "string"
+#'       ),
+#'       CloudWatchLogGroupArn = "string",
+#'       InputFormat = "DYNAMODB_JSON"|"ION"|"CSV",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_imports(
+#'   TableArn = "string",
+#'   PageSize = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname dynamodb_list_imports
+#'
+#' @aliases dynamodb_list_imports
+dynamodb_list_imports <- function(TableArn = NULL, PageSize = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListImports",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .dynamodb$list_imports_input(TableArn = TableArn, PageSize = PageSize, NextToken = NextToken)
+  output <- .dynamodb$list_imports_output()
+  config <- get_config()
+  svc <- .dynamodb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.dynamodb$operations$list_imports <- dynamodb_list_imports
 
 #' Returns an array of table names associated with the current account and
 #' endpoint
@@ -4817,7 +5280,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' in the same operation, using the `ReturnValues` parameter.
 #' 
 #' When you add an item, the primary key attributes are the only required
-#' attributes. Attribute values cannot be null.
+#' attributes.
 #' 
 #' Empty String and Binary attribute values are allowed. Attribute values
 #' of type String and Binary must have a length greater than zero if the
@@ -5311,7 +5774,9 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #'     is equivalent to specifying `ALL_ATTRIBUTES`.
 #' 
 #' -   `COUNT` - Returns the number of matching items, rather than the
-#'     matching items themselves.
+#'     matching items themselves. Note that this uses the same quantity of
+#'     read capacity units as getting the items, and is subject to the same
+#'     item size calculations.
 #' 
 #' -   `SPECIFIC_ATTRIBUTES` - Returns only the attributes listed in
 #'     `ProjectionExpression`. This return value is equivalent to
@@ -5813,7 +6278,7 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'
 #' @description
 #' Creates a new table from an existing backup. Any number of users can
-#' execute up to 4 concurrent restores (any type of restore) in a given
+#' execute up to 50 concurrent restores (any type of restore) in a given
 #' account.
 #' 
 #' You can call
@@ -6012,7 +6477,8 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'       LastUpdateDateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
-#'     )
+#'     ),
+#'     DeletionProtectionEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -6324,7 +6790,8 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'       LastUpdateDateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
-#'     )
+#'     ),
+#'     DeletionProtectionEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -6497,7 +6964,9 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #'     is equivalent to specifying `ALL_ATTRIBUTES`.
 #' 
 #' -   `COUNT` - Returns the number of matching items, rather than the
-#'     matching items themselves.
+#'     matching items themselves. Note that this uses the same quantity of
+#'     read capacity units as getting the items, and is subject to the same
+#'     item size calculations.
 #' 
 #' -   `SPECIFIC_ATTRIBUTES` - Returns only the attributes listed in
 #'     `ProjectionExpression`. This return value is equivalent to
@@ -6969,7 +7438,7 @@ dynamodb_tag_resource <- function(ResourceArn, Tags) {
 #' operation that atomically retrieves multiple items from one or more
 #' tables (but not from indexes) in a single account and Region. A
 #' [`transact_get_items`][dynamodb_transact_get_items] call can contain up
-#' to 25 `TransactGetItem` objects, each of which contains a `Get`
+#' to 100 `TransactGetItem` objects, each of which contains a `Get`
 #' structure that specifies an item to retrieve from a table in the account
 #' and Region. A call to
 #' [`transact_get_items`][dynamodb_transact_get_items] cannot retrieve
@@ -6989,13 +7458,12 @@ dynamodb_tag_resource <- function(ResourceArn, Tags) {
 #' 
 #' -   There is a user error, such as an invalid data format.
 #' 
-#' -   The aggregate size of the items in the transaction cannot exceed 4
-#'     MB.
+#' -   The aggregate size of the items in the transaction exceeded 4 MB.
 #'
 #' @usage
 #' dynamodb_transact_get_items(TransactItems, ReturnConsumedCapacity)
 #'
-#' @param TransactItems &#91;required&#93; An ordered array of up to 25 `TransactGetItem` objects, each of which
+#' @param TransactItems &#91;required&#93; An ordered array of up to 100 `TransactGetItem` objects, each of which
 #' contains a `Get` structure.
 #' @param ReturnConsumedCapacity A value of `TOTAL` causes consumed capacity information to be returned,
 #' and a value of `NONE` prevents that information from being returned. No
@@ -7127,12 +7595,12 @@ dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = 
 }
 .dynamodb$operations$transact_get_items <- dynamodb_transact_get_items
 
-#' TransactWriteItems is a synchronous write operation that groups up to 25
-#' action requests
+#' TransactWriteItems is a synchronous write operation that groups up to
+#' 100 action requests
 #'
 #' @description
 #' [`transact_write_items`][dynamodb_transact_write_items] is a synchronous
-#' write operation that groups up to 25 action requests. These actions can
+#' write operation that groups up to 100 action requests. These actions can
 #' target items in different tables, but not in different Amazon Web
 #' Services accounts or Regions, and no two actions can target the same
 #' item. For example, you cannot both `ConditionCheck` and `Update` the
@@ -7195,7 +7663,7 @@ dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = 
 #' dynamodb_transact_write_items(TransactItems, ReturnConsumedCapacity,
 #'   ReturnItemCollectionMetrics, ClientRequestToken)
 #'
-#' @param TransactItems &#91;required&#93; An ordered array of up to 25 `TransactWriteItem` objects, each of which
+#' @param TransactItems &#91;required&#93; An ordered array of up to 100 `TransactWriteItem` objects, each of which
 #' contains a `ConditionCheck`, `Put`, `Update`, or `Delete` object. These
 #' can operate on items in different tables, but the tables must reside in
 #' the same Amazon Web Services account and Region, and no two of them can
@@ -7212,7 +7680,7 @@ dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = 
 #' 
 #' Although multiple identical calls using the same client request token
 #' produce the same result on the server (no side effects), the responses
-#' to the calls might not be the same. If the `ReturnConsumedCapacity>`
+#' to the calls might not be the same. If the `ReturnConsumedCapacity`
 #' parameter is set, then the initial
 #' [`transact_write_items`][dynamodb_transact_write_items] call returns the
 #' amount of write capacity units consumed in making the changes.
@@ -7760,6 +8228,24 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
 #' same key schema, have DynamoDB Streams enabled, and have the same
 #' provisioned and maximum write capacity units.
 #' 
+#' This operation only applies to [Version 2017.11.29
+#' (Legacy)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
+#' of global tables. We recommend using [Version 2019.11.21
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' when creating new global tables, as it provides greater flexibility,
+#' higher efficiency and consumes less write capacity than 2017.11.29
+#' (Legacy). To determine which version you are using, see [Determining the
+#' version](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
+#' To update existing global tables from version 2017.11.29 (Legacy) to
+#' version 2019.11.21 (Current), see [Updating global
+#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html).
+#' 
+#' This operation only applies to [Version
+#' 2017.11.29](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
+#' of global tables. If you are using global tables [Version
+#' 2019.11.21](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' you can use [`describe_table`][dynamodb_describe_table] instead.
+#' 
 #' Although you can use
 #' [`update_global_table`][dynamodb_update_global_table] to add replicas
 #' and remove replicas in a single request, for simplicity we recommend
@@ -7869,6 +8355,18 @@ dynamodb_update_global_table <- function(GlobalTableName, ReplicaUpdates) {
 #'
 #' @description
 #' Updates settings for a global table.
+#' 
+#' This operation only applies to [Version 2017.11.29
+#' (Legacy)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
+#' of global tables. We recommend using [Version 2019.11.21
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' when creating new global tables, as it provides greater flexibility,
+#' higher efficiency and consumes less write capacity than 2017.11.29
+#' (Legacy). To determine which version you are using, see [Determining the
+#' version](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.DetermineVersion.html).
+#' To update existing global tables from version 2017.11.29 (Legacy) to
+#' version 2019.11.21 (Current), see [Updating global
+#' tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html).
 #'
 #' @usage
 #' dynamodb_update_global_table_settings(GlobalTableName,
@@ -8153,7 +8651,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' [ConditionalOperator](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ReturnValues Use `ReturnValues` if you want to get the item attributes as they appear
-#' before or after they are updated. For
+#' before or after they are successfully updated. For
 #' [`update_item`][dynamodb_update_item], the valid values are:
 #' 
 #' -   `NONE` - If `ReturnValues` is not specified, or if its value is
@@ -8629,6 +9127,10 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' Modifies the provisioned throughput settings, global secondary indexes,
 #' or DynamoDB Streams settings for a given table.
 #' 
+#' This operation only applies to [Version 2019.11.21
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' of global tables.
+#' 
 #' You can only perform one of the following operations at once:
 #' 
 #' -   Modify the provisioned throughput settings of the table.
@@ -8649,7 +9151,7 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' @usage
 #' dynamodb_update_table(AttributeDefinitions, TableName, BillingMode,
 #'   ProvisionedThroughput, GlobalSecondaryIndexUpdates, StreamSpecification,
-#'   SSESpecification, ReplicaUpdates, TableClass)
+#'   SSESpecification, ReplicaUpdates, TableClass, DeletionProtectionEnabled)
 #'
 #' @param AttributeDefinitions An array of attributes that describe the key schema for the table and
 #' indexes. If you are adding a new global secondary index to the table,
@@ -8697,11 +9199,13 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' @param ReplicaUpdates A list of replica update actions (create, delete, or update) for the
 #' table.
 #' 
-#' This property only applies to [Version
-#' 2019.11.21](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' This property only applies to [Version 2019.11.21
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
 #' of global tables.
 #' @param TableClass The table class of the table to be updated. Valid values are `STANDARD`
 #' and `STANDARD_INFREQUENT_ACCESS`.
+#' @param DeletionProtectionEnabled Indicates whether deletion protection is to be enabled (true) or
+#' disabled (false) on the table.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8863,7 +9367,8 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #'       LastUpdateDateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
-#'     )
+#'     ),
+#'     DeletionProtectionEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -8964,7 +9469,8 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #'       )
 #'     )
 #'   ),
-#'   TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS"
+#'   TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
+#'   DeletionProtectionEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -8986,14 +9492,14 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' @rdname dynamodb_update_table
 #'
 #' @aliases dynamodb_update_table
-dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL, SSESpecification = NULL, ReplicaUpdates = NULL, TableClass = NULL) {
+dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL, SSESpecification = NULL, ReplicaUpdates = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL) {
   op <- new_operation(
     name = "UpdateTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates, TableClass = TableClass)
+  input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled)
   output <- .dynamodb$update_table_output()
   config <- get_config()
   svc <- .dynamodb$service(config)
@@ -9008,8 +9514,8 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
 #' @description
 #' Updates auto scaling settings on your global tables at once.
 #' 
-#' This operation only applies to [Version
-#' 2019.11.21](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' This operation only applies to [Version 2019.11.21
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
 #' of global tables.
 #'
 #' @usage

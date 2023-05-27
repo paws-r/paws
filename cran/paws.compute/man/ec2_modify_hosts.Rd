@@ -9,7 +9,8 @@ ec2_modify_hosts(
   HostIds,
   HostRecovery = NULL,
   InstanceType = NULL,
-  InstanceFamily = NULL
+  InstanceFamily = NULL,
+  HostMaintenance = NULL
 )
 }
 \arguments{
@@ -38,6 +39,10 @@ If you want to modify a Dedicated Host to support a specific instance
 type only, omit this parameter and specify \strong{InstanceType} instead. You
 cannot specify \strong{InstanceFamily} and \strong{InstanceType} in the same
 request.}
+
+\item{HostMaintenance}{Indicates whether to enable or disable host maintenance for the
+Dedicated Host. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-maintenance.html}{Host maintenance}
+in the \emph{Amazon EC2 User Guide}.}
 }
 \description{
 Modify the auto-placement setting of a Dedicated Host. When auto-placement is enabled, any instances that you launch with a tenancy of \code{host} but without a specific host ID are placed onto any available Dedicated Host in your account that has auto-placement enabled. When auto-placement is disabled, you need to provide a host ID to have the instance launch onto a specific host. If no host ID is provided, the instance is launched onto a suitable host with auto-placement enabled.

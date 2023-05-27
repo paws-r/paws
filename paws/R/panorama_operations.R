@@ -72,16 +72,17 @@ panorama_create_application_instance <- function(ApplicationInstanceIdToReplace 
 }
 .panorama$operations$create_application_instance <- panorama_create_application_instance
 
-#' Creates a job to run on one or more devices
+#' Creates a job to run on a device
 #'
 #' @description
-#' Creates a job to run on one or more devices.
+#' Creates a job to run on a device. A job can update a device's software
+#' or reboot it.
 #'
 #' @usage
 #' panorama_create_job_for_devices(DeviceIds, DeviceJobConfig, JobType)
 #'
-#' @param DeviceIds &#91;required&#93; IDs of target devices.
-#' @param DeviceJobConfig &#91;required&#93; Configuration settings for the job.
+#' @param DeviceIds &#91;required&#93; ID of target device.
+#' @param DeviceJobConfig Configuration settings for a software update job.
 #' @param JobType &#91;required&#93; The type of job to run.
 #'
 #' @return
@@ -105,10 +106,11 @@ panorama_create_application_instance <- function(ApplicationInstanceIdToReplace 
 #'   ),
 #'   DeviceJobConfig = list(
 #'     OTAJobConfig = list(
+#'       AllowMajorVersionUpdate = TRUE|FALSE,
 #'       ImageVersion = "string"
 #'     )
 #'   ),
-#'   JobType = "OTA"
+#'   JobType = "OTA"|"REBOOT"
 #' )
 #' ```
 #'
@@ -117,7 +119,7 @@ panorama_create_application_instance <- function(ApplicationInstanceIdToReplace 
 #' @rdname panorama_create_job_for_devices
 #'
 #' @aliases panorama_create_job_for_devices
-panorama_create_job_for_devices <- function(DeviceIds, DeviceJobConfig, JobType) {
+panorama_create_job_for_devices <- function(DeviceIds, DeviceJobConfig = NULL, JobType) {
   op <- new_operation(
     name = "CreateJobForDevices",
     http_method = "POST",
@@ -514,6 +516,16 @@ panorama_deregister_package_version <- function(OwnerAccount = NULL, PackageId, 
 #'     "2015-01-01"
 #'   ),
 #'   Name = "string",
+#'   RuntimeContextStates = list(
+#'     list(
+#'       DesiredState = "RUNNING"|"STOPPED"|"REMOVED",
+#'       DeviceReportedStatus = "STOPPING"|"STOPPED"|"STOP_ERROR"|"REMOVAL_FAILED"|"REMOVAL_IN_PROGRESS"|"STARTING"|"RUNNING"|"INSTALL_ERROR"|"LAUNCHED"|"LAUNCH_ERROR"|"INSTALL_IN_PROGRESS",
+#'       DeviceReportedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RuntimeContextName = "string"
+#'     )
+#'   ),
 #'   RuntimeRoleArn = "string",
 #'   Status = "DEPLOYMENT_PENDING"|"DEPLOYMENT_REQUESTED"|"DEPLOYMENT_IN_PROGRESS"|"DEPLOYMENT_ERROR"|"DEPLOYMENT_SUCCEEDED"|"REMOVAL_PENDING"|"REMOVAL_REQUESTED"|"REMOVAL_IN_PROGRESS"|"REMOVAL_FAILED"|"REMOVAL_SUCCEEDED"|"DEPLOYMENT_FAILED",
 #'   StatusDescription = "string",
@@ -660,9 +672,15 @@ panorama_describe_application_instance_details <- function(ApplicationInstanceId
 #'   ),
 #'   CurrentSoftware = "string",
 #'   Description = "string",
+#'   DeviceAggregatedStatus = "ERROR"|"AWAITING_PROVISIONING"|"PENDING"|"FAILED"|"DELETING"|"ONLINE"|"OFFLINE"|"LEASE_EXPIRED"|"UPDATE_NEEDED"|"REBOOTING",
 #'   DeviceConnectionStatus = "ONLINE"|"OFFLINE"|"AWAITING_CREDENTIALS"|"NOT_AVAILABLE"|"ERROR",
 #'   DeviceId = "string",
 #'   LatestAlternateSoftware = "string",
+#'   LatestDeviceJob = list(
+#'     ImageVersion = "string",
+#'     JobType = "OTA"|"REBOOT",
+#'     Status = "PENDING"|"IN_PROGRESS"|"VERIFYING"|"REBOOTING"|"DOWNLOADING"|"COMPLETED"|"FAILED"
+#'   ),
 #'   LatestSoftware = "string",
 #'   LeaseExpirationTime = as.POSIXct(
 #'     "2015-01-01"
@@ -758,6 +776,7 @@ panorama_describe_device <- function(DeviceId) {
 #'   DeviceType = "PANORAMA_APPLIANCE_DEVELOPER_KIT"|"PANORAMA_APPLIANCE",
 #'   ImageVersion = "string",
 #'   JobId = "string",
+#'   JobType = "OTA"|"REBOOT",
 #'   Status = "PENDING"|"IN_PROGRESS"|"VERIFYING"|"REBOOTING"|"DOWNLOADING"|"COMPLETED"|"FAILED"
 #' )
 #' ```
@@ -1250,7 +1269,7 @@ panorama_list_application_instance_dependencies <- function(ApplicationInstanceI
 #'   NextToken = "string",
 #'   NodeInstances = list(
 #'     list(
-#'       CurrentStatus = "RUNNING"|"ERROR"|"NOT_AVAILABLE",
+#'       CurrentStatus = "RUNNING"|"ERROR"|"NOT_AVAILABLE"|"PAUSED",
 #'       NodeId = "string",
 #'       NodeInstanceId = "string",
 #'       NodeName = "string",
@@ -1325,6 +1344,16 @@ panorama_list_application_instance_node_instances <- function(ApplicationInstanc
 #'       Description = "string",
 #'       HealthStatus = "RUNNING"|"ERROR"|"NOT_AVAILABLE",
 #'       Name = "string",
+#'       RuntimeContextStates = list(
+#'         list(
+#'           DesiredState = "RUNNING"|"STOPPED"|"REMOVED",
+#'           DeviceReportedStatus = "STOPPING"|"STOPPED"|"STOP_ERROR"|"REMOVAL_FAILED"|"REMOVAL_IN_PROGRESS"|"STARTING"|"RUNNING"|"INSTALL_ERROR"|"LAUNCHED"|"LAUNCH_ERROR"|"INSTALL_IN_PROGRESS",
+#'           DeviceReportedTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           RuntimeContextName = "string"
+#'         )
+#'       ),
 #'       Status = "DEPLOYMENT_PENDING"|"DEPLOYMENT_REQUESTED"|"DEPLOYMENT_IN_PROGRESS"|"DEPLOYMENT_ERROR"|"DEPLOYMENT_SUCCEEDED"|"REMOVAL_PENDING"|"REMOVAL_REQUESTED"|"REMOVAL_IN_PROGRESS"|"REMOVAL_FAILED"|"REMOVAL_SUCCEEDED"|"DEPLOYMENT_FAILED",
 #'       StatusDescription = "string",
 #'       Tags = list(
@@ -1374,11 +1403,17 @@ panorama_list_application_instances <- function(DeviceId = NULL, MaxResults = NU
 #' Returns a list of devices.
 #'
 #' @usage
-#' panorama_list_devices(MaxResults, NextToken)
+#' panorama_list_devices(DeviceAggregatedStatusFilter, MaxResults,
+#'   NameFilter, NextToken, SortBy, SortOrder)
 #'
+#' @param DeviceAggregatedStatusFilter Filter based on a device's status.
 #' @param MaxResults The maximum number of devices to return in one page of results.
+#' @param NameFilter Filter based on device's name. Prefixes supported.
 #' @param NextToken Specify the pagination token from a previous request to retrieve the
 #' next page of results.
+#' @param SortBy The target column to be sorted on. Default column sort is CREATED_TIME.
+#' @param SortOrder The sorting order for the returned list. SortOrder is DESCENDING by
+#' default based on CREATED_TIME. Otherwise, SortOrder is ASCENDING.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1390,15 +1425,27 @@ panorama_list_application_instances <- function(DeviceId = NULL, MaxResults = NU
 #'       CreatedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       CurrentSoftware = "string",
+#'       Description = "string",
+#'       DeviceAggregatedStatus = "ERROR"|"AWAITING_PROVISIONING"|"PENDING"|"FAILED"|"DELETING"|"ONLINE"|"OFFLINE"|"LEASE_EXPIRED"|"UPDATE_NEEDED"|"REBOOTING",
 #'       DeviceId = "string",
 #'       LastUpdatedTime = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       LatestDeviceJob = list(
+#'         ImageVersion = "string",
+#'         JobType = "OTA"|"REBOOT",
+#'         Status = "PENDING"|"IN_PROGRESS"|"VERIFYING"|"REBOOTING"|"DOWNLOADING"|"COMPLETED"|"FAILED"
 #'       ),
 #'       LeaseExpirationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       Name = "string",
-#'       ProvisioningStatus = "AWAITING_PROVISIONING"|"PENDING"|"SUCCEEDED"|"FAILED"|"ERROR"|"DELETING"
+#'       ProvisioningStatus = "AWAITING_PROVISIONING"|"PENDING"|"SUCCEEDED"|"FAILED"|"ERROR"|"DELETING",
+#'       Tags = list(
+#'         "string"
+#'       ),
+#'       Type = "PANORAMA_APPLIANCE_DEVELOPER_KIT"|"PANORAMA_APPLIANCE"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1408,8 +1455,12 @@ panorama_list_application_instances <- function(DeviceId = NULL, MaxResults = NU
 #' @section Request syntax:
 #' ```
 #' svc$list_devices(
+#'   DeviceAggregatedStatusFilter = "ERROR"|"AWAITING_PROVISIONING"|"PENDING"|"FAILED"|"DELETING"|"ONLINE"|"OFFLINE"|"LEASE_EXPIRED"|"UPDATE_NEEDED"|"REBOOTING",
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NameFilter = "string",
+#'   NextToken = "string",
+#'   SortBy = "DEVICE_ID"|"CREATED_TIME"|"NAME"|"DEVICE_AGGREGATED_STATUS",
+#'   SortOrder = "ASCENDING"|"DESCENDING"
 #' )
 #' ```
 #'
@@ -1418,14 +1469,14 @@ panorama_list_application_instances <- function(DeviceId = NULL, MaxResults = NU
 #' @rdname panorama_list_devices
 #'
 #' @aliases panorama_list_devices
-panorama_list_devices <- function(MaxResults = NULL, NextToken = NULL) {
+panorama_list_devices <- function(DeviceAggregatedStatusFilter = NULL, MaxResults = NULL, NameFilter = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListDevices",
     http_method = "GET",
     http_path = "/devices",
     paginator = list()
   )
-  input <- .panorama$list_devices_input(MaxResults = MaxResults, NextToken = NextToken)
+  input <- .panorama$list_devices_input(DeviceAggregatedStatusFilter = DeviceAggregatedStatusFilter, MaxResults = MaxResults, NameFilter = NameFilter, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .panorama$list_devices_output()
   config <- get_config()
   svc <- .panorama$service(config)
@@ -1459,7 +1510,8 @@ panorama_list_devices <- function(MaxResults = NULL, NextToken = NULL) {
 #'       ),
 #'       DeviceId = "string",
 #'       DeviceName = "string",
-#'       JobId = "string"
+#'       JobId = "string",
+#'       JobType = "OTA"|"REBOOT"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2000,6 +2052,61 @@ panorama_remove_application_instance <- function(ApplicationInstanceId) {
   return(response)
 }
 .panorama$operations$remove_application_instance <- panorama_remove_application_instance
+
+#' Signal camera nodes to stop or resume
+#'
+#' @description
+#' Signal camera nodes to stop or resume.
+#'
+#' @usage
+#' panorama_signal_application_instance_node_instances(
+#'   ApplicationInstanceId, NodeSignals)
+#'
+#' @param ApplicationInstanceId &#91;required&#93; An application instance ID.
+#' @param NodeSignals &#91;required&#93; A list of signals.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationInstanceId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$signal_application_instance_node_instances(
+#'   ApplicationInstanceId = "string",
+#'   NodeSignals = list(
+#'     list(
+#'       NodeInstanceId = "string",
+#'       Signal = "PAUSE"|"RESUME"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname panorama_signal_application_instance_node_instances
+#'
+#' @aliases panorama_signal_application_instance_node_instances
+panorama_signal_application_instance_node_instances <- function(ApplicationInstanceId, NodeSignals) {
+  op <- new_operation(
+    name = "SignalApplicationInstanceNodeInstances",
+    http_method = "PUT",
+    http_path = "/application-instances/{ApplicationInstanceId}/node-signals",
+    paginator = list()
+  )
+  input <- .panorama$signal_application_instance_node_instances_input(ApplicationInstanceId = ApplicationInstanceId, NodeSignals = NodeSignals)
+  output <- .panorama$signal_application_instance_node_instances_output()
+  config <- get_config()
+  svc <- .panorama$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.panorama$operations$signal_application_instance_node_instances <- panorama_signal_application_instance_node_instances
 
 #' Tags a resource
 #'

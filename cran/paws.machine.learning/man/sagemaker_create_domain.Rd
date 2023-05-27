@@ -15,7 +15,8 @@ sagemaker_create_domain(
   HomeEfsFileSystemKmsKeyId = NULL,
   KmsKeyId = NULL,
   AppSecurityGroupManagement = NULL,
-  DomainSettings = NULL
+  DomainSettings = NULL,
+  DefaultSpaceSettings = NULL
 )
 }
 \arguments{
@@ -63,12 +64,15 @@ default. For more control, specify a customer managed key.}
 inter-app communication in \code{VPCOnly} mode. Required when
 \code{CreateDomain.AppNetworkAccessType} is \code{VPCOnly} and
 \code{DomainSettings.RStudioServerProDomainSettings.DomainExecutionRoleArn}
-is provided.}
+is provided. If setting up the domain for use with RStudio, this value
+must be set to \code{Service}.}
 
 \item{DomainSettings}{A collection of \code{Domain} settings.}
+
+\item{DefaultSpaceSettings}{The default settings used to create a space.}
 }
 \description{
-Creates a \code{Domain} used by Amazon SageMaker Studio. A domain consists of an associated Amazon Elastic File System (EFS) volume, a list of authorized users, and a variety of security, application, policy, and Amazon Virtual Private Cloud (VPC) configurations. An Amazon Web Services account is limited to one domain per region. Users within a domain can share notebook files and other artifacts with each other.
+Creates a \code{Domain} used by Amazon SageMaker Studio. A domain consists of an associated Amazon Elastic File System (EFS) volume, a list of authorized users, and a variety of security, application, policy, and Amazon Virtual Private Cloud (VPC) configurations. Users within a domain can share notebook files and other artifacts with each other.
 
 See \url{https://paws-r.github.io/docs/sagemaker/create_domain.html} for full documentation.
 }

@@ -12,6 +12,10 @@ test_that("describe_log_groups", {
   expect_error(svc$describe_log_groups(), NA)
 })
 
+test_that("describe_log_streams", {
+  expect_error(svc$describe_log_streams(), NA)
+})
+
 test_that("describe_metric_filters", {
   expect_error(svc$describe_metric_filters(), NA)
 })

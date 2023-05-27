@@ -49,7 +49,8 @@ NULL
 #'           rescannedStorageBytes = 123,
 #'           totalStorageBytes = 123
 #'         )
-#'       )
+#'       ),
+#'       stagingAvailabilityZone = "string"
 #'     ),
 #'     lastLaunchResult = "NOT_STARTED"|"PENDING"|"SUCCEEDED"|"FAILED",
 #'     lifeCycle = list(
@@ -61,11 +62,19 @@ NULL
 #'           apiCallDateTime = "string",
 #'           jobID = "string",
 #'           type = "RECOVERY"|"DRILL"
-#'         )
+#'         ),
+#'         status = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED"
 #'       ),
 #'       lastSeenByServiceDateTime = "string"
 #'     ),
 #'     recoveryInstanceId = "string",
+#'     replicationDirection = "FAILOVER"|"FAILBACK",
+#'     reversedDirectionSourceServerArn = "string",
+#'     sourceCloudProperties = list(
+#'       originAccountID = "string",
+#'       originAvailabilityZone = "string",
+#'       originRegion = "string"
+#'     ),
 #'     sourceProperties = list(
 #'       cpus = list(
 #'         list(
@@ -99,7 +108,8 @@ NULL
 #'         fullString = "string"
 #'       ),
 #'       ramBytes = 123,
-#'       recommendedInstanceType = "string"
+#'       recommendedInstanceType = "string",
+#'       supportsNitroInstances = TRUE|FALSE
 #'     ),
 #'     sourceServerID = "string",
 #'     stagingArea = list(
@@ -147,6 +157,82 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 }
 .drs$operations$create_extended_source_server <- drs_create_extended_source_server
 
+#' Creates a new Launch Configuration Template
+#'
+#' @description
+#' Creates a new Launch Configuration Template.
+#'
+#' @usage
+#' drs_create_launch_configuration_template(copyPrivateIp, copyTags,
+#'   launchDisposition, licensing, tags, targetInstanceTypeRightSizingMethod)
+#'
+#' @param copyPrivateIp Copy private IP.
+#' @param copyTags Copy tags.
+#' @param launchDisposition Launch disposition.
+#' @param licensing Licensing.
+#' @param tags Request to associate tags during creation of a Launch Configuration
+#' Template.
+#' @param targetInstanceTypeRightSizingMethod Target instance type right-sizing method.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   launchConfigurationTemplate = list(
+#'     arn = "string",
+#'     copyPrivateIp = TRUE|FALSE,
+#'     copyTags = TRUE|FALSE,
+#'     launchConfigurationTemplateID = "string",
+#'     launchDisposition = "STOPPED"|"STARTED",
+#'     licensing = list(
+#'       osByol = TRUE|FALSE
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_launch_configuration_template(
+#'   copyPrivateIp = TRUE|FALSE,
+#'   copyTags = TRUE|FALSE,
+#'   launchDisposition = "STOPPED"|"STARTED",
+#'   licensing = list(
+#'     osByol = TRUE|FALSE
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname drs_create_launch_configuration_template
+#'
+#' @aliases drs_create_launch_configuration_template
+drs_create_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, launchDisposition = NULL, licensing = NULL, tags = NULL, targetInstanceTypeRightSizingMethod = NULL) {
+  op <- new_operation(
+    name = "CreateLaunchConfigurationTemplate",
+    http_method = "POST",
+    http_path = "/CreateLaunchConfigurationTemplate",
+    paginator = list()
+  )
+  input <- .drs$create_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, launchDisposition = launchDisposition, licensing = licensing, tags = tags, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
+  output <- .drs$create_launch_configuration_template_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$create_launch_configuration_template <- drs_create_launch_configuration_template
+
 #' Creates a new ReplicationConfigurationTemplate
 #'
 #' @description
@@ -154,14 +240,17 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #'
 #' @usage
 #' drs_create_replication_configuration_template(
-#'   associateDefaultSecurityGroup, bandwidthThrottling, createPublicIP,
-#'   dataPlaneRouting, defaultLargeStagingDiskType, ebsEncryption,
-#'   ebsEncryptionKeyArn, pitPolicy, replicationServerInstanceType,
+#'   associateDefaultSecurityGroup, autoReplicateNewDisks,
+#'   bandwidthThrottling, createPublicIP, dataPlaneRouting,
+#'   defaultLargeStagingDiskType, ebsEncryption, ebsEncryptionKeyArn,
+#'   pitPolicy, replicationServerInstanceType,
 #'   replicationServersSecurityGroupsIDs, stagingAreaSubnetId,
 #'   stagingAreaTags, tags, useDedicatedReplicationServer)
 #'
 #' @param associateDefaultSecurityGroup &#91;required&#93; Whether to associate the default Elastic Disaster Recovery Security
 #' group with the Replication Configuration Template.
+#' @param autoReplicateNewDisks Whether to allow the AWS replication agent to automatically replicate
+#' newly added disks.
 #' @param bandwidthThrottling &#91;required&#93; Configure bandwidth throttling for the outbound data transfer rate of
 #' the Source Server in Mbps.
 #' @param createPublicIP &#91;required&#93; Whether to create a Public IP for the Recovery Instance by default.
@@ -188,6 +277,7 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #' list(
 #'   arn = "string",
 #'   associateDefaultSecurityGroup = TRUE|FALSE,
+#'   autoReplicateNewDisks = TRUE|FALSE,
 #'   bandwidthThrottling = 123,
 #'   createPublicIP = TRUE|FALSE,
 #'   dataPlaneRouting = "PRIVATE_IP"|"PUBLIC_IP",
@@ -223,6 +313,7 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #' ```
 #' svc$create_replication_configuration_template(
 #'   associateDefaultSecurityGroup = TRUE|FALSE,
+#'   autoReplicateNewDisks = TRUE|FALSE,
 #'   bandwidthThrottling = 123,
 #'   createPublicIP = TRUE|FALSE,
 #'   dataPlaneRouting = "PRIVATE_IP"|"PUBLIC_IP",
@@ -258,14 +349,14 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #' @rdname drs_create_replication_configuration_template
 #'
 #' @aliases drs_create_replication_configuration_template
-drs_create_replication_configuration_template <- function(associateDefaultSecurityGroup, bandwidthThrottling, createPublicIP, dataPlaneRouting, defaultLargeStagingDiskType, ebsEncryption, ebsEncryptionKeyArn = NULL, pitPolicy, replicationServerInstanceType, replicationServersSecurityGroupsIDs, stagingAreaSubnetId, stagingAreaTags, tags = NULL, useDedicatedReplicationServer) {
+drs_create_replication_configuration_template <- function(associateDefaultSecurityGroup, autoReplicateNewDisks = NULL, bandwidthThrottling, createPublicIP, dataPlaneRouting, defaultLargeStagingDiskType, ebsEncryption, ebsEncryptionKeyArn = NULL, pitPolicy, replicationServerInstanceType, replicationServersSecurityGroupsIDs, stagingAreaSubnetId, stagingAreaTags, tags = NULL, useDedicatedReplicationServer) {
   op <- new_operation(
     name = "CreateReplicationConfigurationTemplate",
     http_method = "POST",
     http_path = "/CreateReplicationConfigurationTemplate",
     paginator = list()
   )
-  input <- .drs$create_replication_configuration_template_input(associateDefaultSecurityGroup = associateDefaultSecurityGroup, bandwidthThrottling = bandwidthThrottling, createPublicIP = createPublicIP, dataPlaneRouting = dataPlaneRouting, defaultLargeStagingDiskType = defaultLargeStagingDiskType, ebsEncryption = ebsEncryption, ebsEncryptionKeyArn = ebsEncryptionKeyArn, pitPolicy = pitPolicy, replicationServerInstanceType = replicationServerInstanceType, replicationServersSecurityGroupsIDs = replicationServersSecurityGroupsIDs, stagingAreaSubnetId = stagingAreaSubnetId, stagingAreaTags = stagingAreaTags, tags = tags, useDedicatedReplicationServer = useDedicatedReplicationServer)
+  input <- .drs$create_replication_configuration_template_input(associateDefaultSecurityGroup = associateDefaultSecurityGroup, autoReplicateNewDisks = autoReplicateNewDisks, bandwidthThrottling = bandwidthThrottling, createPublicIP = createPublicIP, dataPlaneRouting = dataPlaneRouting, defaultLargeStagingDiskType = defaultLargeStagingDiskType, ebsEncryption = ebsEncryption, ebsEncryptionKeyArn = ebsEncryptionKeyArn, pitPolicy = pitPolicy, replicationServerInstanceType = replicationServerInstanceType, replicationServersSecurityGroupsIDs = replicationServersSecurityGroupsIDs, stagingAreaSubnetId = stagingAreaSubnetId, stagingAreaTags = stagingAreaTags, tags = tags, useDedicatedReplicationServer = useDedicatedReplicationServer)
   output <- .drs$create_replication_configuration_template_output()
   config <- get_config()
   svc <- .drs$service(config)
@@ -316,6 +407,48 @@ drs_delete_job <- function(jobID) {
   return(response)
 }
 .drs$operations$delete_job <- drs_delete_job
+
+#' Deletes a single Launch Configuration Template by ID
+#'
+#' @description
+#' Deletes a single Launch Configuration Template by ID.
+#'
+#' @usage
+#' drs_delete_launch_configuration_template(launchConfigurationTemplateID)
+#'
+#' @param launchConfigurationTemplateID &#91;required&#93; The ID of the Launch Configuration Template to be deleted.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_launch_configuration_template(
+#'   launchConfigurationTemplateID = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname drs_delete_launch_configuration_template
+#'
+#' @aliases drs_delete_launch_configuration_template
+drs_delete_launch_configuration_template <- function(launchConfigurationTemplateID) {
+  op <- new_operation(
+    name = "DeleteLaunchConfigurationTemplate",
+    http_method = "POST",
+    http_path = "/DeleteLaunchConfigurationTemplate",
+    paginator = list()
+  )
+  input <- .drs$delete_launch_configuration_template_input(launchConfigurationTemplateID = launchConfigurationTemplateID)
+  output <- .drs$delete_launch_configuration_template_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$delete_launch_configuration_template <- drs_delete_launch_configuration_template
 
 #' Deletes a single Recovery Instance by ID
 #'
@@ -607,6 +740,79 @@ drs_describe_jobs <- function(filters = NULL, maxResults = NULL, nextToken = NUL
 }
 .drs$operations$describe_jobs <- drs_describe_jobs
 
+#' Lists all Launch Configuration Templates, filtered by Launch
+#' Configuration Template IDs
+#'
+#' @description
+#' Lists all Launch Configuration Templates, filtered by Launch
+#' Configuration Template IDs
+#'
+#' @usage
+#' drs_describe_launch_configuration_templates(
+#'   launchConfigurationTemplateIDs, maxResults, nextToken)
+#'
+#' @param launchConfigurationTemplateIDs Request to filter Launch Configuration Templates list by Launch
+#' Configuration Template ID.
+#' @param maxResults Maximum results to be returned in DescribeLaunchConfigurationTemplates.
+#' @param nextToken The token of the next Launch Configuration Template to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       arn = "string",
+#'       copyPrivateIp = TRUE|FALSE,
+#'       copyTags = TRUE|FALSE,
+#'       launchConfigurationTemplateID = "string",
+#'       launchDisposition = "STOPPED"|"STARTED",
+#'       licensing = list(
+#'         osByol = TRUE|FALSE
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_launch_configuration_templates(
+#'   launchConfigurationTemplateIDs = list(
+#'     "string"
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname drs_describe_launch_configuration_templates
+#'
+#' @aliases drs_describe_launch_configuration_templates
+drs_describe_launch_configuration_templates <- function(launchConfigurationTemplateIDs = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeLaunchConfigurationTemplates",
+    http_method = "POST",
+    http_path = "/DescribeLaunchConfigurationTemplates",
+    paginator = list()
+  )
+  input <- .drs$describe_launch_configuration_templates_input(launchConfigurationTemplateIDs = launchConfigurationTemplateIDs, maxResults = maxResults, nextToken = nextToken)
+  output <- .drs$describe_launch_configuration_templates_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$describe_launch_configuration_templates <- drs_describe_launch_configuration_templates
+
 #' Lists all Recovery Instances or multiple Recovery Instances by ID
 #'
 #' @description
@@ -628,19 +834,19 @@ drs_describe_jobs <- function(filters = NULL, maxResults = NULL, nextToken = NUL
 #'       arn = "string",
 #'       dataReplicationInfo = list(
 #'         dataReplicationError = list(
-#'           error = "AGENT_NOT_SEEN"|"FAILBACK_CLIENT_NOT_SEEN"|"NOT_CONVERGING"|"UNSTABLE_NETWORK"|"FAILED_TO_ESTABLISH_RECOVERY_INSTANCE_COMMUNICATION"|"FAILED_TO_DOWNLOAD_REPLICATION_SOFTWARE_TO_FAILBACK_CLIENT"|"FAILED_TO_CONFIGURE_REPLICATION_SOFTWARE"|"FAILED_TO_PAIR_AGENT_WITH_REPLICATION_SOFTWARE"|"FAILED_TO_ESTABLISH_AGENT_REPLICATOR_SOFTWARE_COMMUNICATION",
+#'           error = "AGENT_NOT_SEEN"|"FAILBACK_CLIENT_NOT_SEEN"|"NOT_CONVERGING"|"UNSTABLE_NETWORK"|"FAILED_TO_ESTABLISH_RECOVERY_INSTANCE_COMMUNICATION"|"FAILED_TO_DOWNLOAD_REPLICATION_SOFTWARE_TO_FAILBACK_CLIENT"|"FAILED_TO_CONFIGURE_REPLICATION_SOFTWARE"|"FAILED_TO_PAIR_AGENT_WITH_REPLICATION_SOFTWARE"|"FAILED_TO_ESTABLISH_AGENT_REPLICATOR_SOFTWARE_COMMUNICATION"|"FAILED_GETTING_REPLICATION_STATE"|"SNAPSHOTS_FAILURE"|"FAILED_TO_CREATE_SECURITY_GROUP"|"FAILED_TO_LAUNCH_REPLICATION_SERVER"|"FAILED_TO_BOOT_REPLICATION_SERVER"|"FAILED_TO_AUTHENTICATE_WITH_SERVICE"|"FAILED_TO_DOWNLOAD_REPLICATION_SOFTWARE"|"FAILED_TO_CREATE_STAGING_DISKS"|"FAILED_TO_ATTACH_STAGING_DISKS"|"FAILED_TO_PAIR_REPLICATION_SERVER_WITH_AGENT"|"FAILED_TO_CONNECT_AGENT_TO_REPLICATION_SERVER"|"FAILED_TO_START_DATA_TRANSFER",
 #'           rawError = "string"
 #'         ),
 #'         dataReplicationInitiation = list(
 #'           startDateTime = "string",
 #'           steps = list(
 #'             list(
-#'               name = "LINK_FAILBACK_CLIENT_WITH_RECOVERY_INSTANCE"|"COMPLETE_VOLUME_MAPPING"|"ESTABLISH_RECOVERY_INSTANCE_COMMUNICATION"|"DOWNLOAD_REPLICATION_SOFTWARE_TO_FAILBACK_CLIENT"|"CONFIGURE_REPLICATION_SOFTWARE"|"PAIR_AGENT_WITH_REPLICATION_SOFTWARE"|"ESTABLISH_AGENT_REPLICATOR_SOFTWARE_COMMUNICATION",
+#'               name = "LINK_FAILBACK_CLIENT_WITH_RECOVERY_INSTANCE"|"COMPLETE_VOLUME_MAPPING"|"ESTABLISH_RECOVERY_INSTANCE_COMMUNICATION"|"DOWNLOAD_REPLICATION_SOFTWARE_TO_FAILBACK_CLIENT"|"CONFIGURE_REPLICATION_SOFTWARE"|"PAIR_AGENT_WITH_REPLICATION_SOFTWARE"|"ESTABLISH_AGENT_REPLICATOR_SOFTWARE_COMMUNICATION"|"WAIT"|"CREATE_SECURITY_GROUP"|"LAUNCH_REPLICATION_SERVER"|"BOOT_REPLICATION_SERVER"|"AUTHENTICATE_WITH_SERVICE"|"DOWNLOAD_REPLICATION_SOFTWARE"|"CREATE_STAGING_DISKS"|"ATTACH_STAGING_DISKS"|"PAIR_REPLICATION_SERVER_WITH_AGENT"|"CONNECT_AGENT_TO_REPLICATION_SERVER"|"START_DATA_TRANSFER",
 #'               status = "NOT_STARTED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"SKIPPED"
 #'             )
 #'           )
 #'         ),
-#'         dataReplicationState = "STOPPED"|"INITIATING"|"INITIAL_SYNC"|"BACKLOG"|"CREATING_SNAPSHOT"|"CONTINUOUS"|"PAUSED"|"RESCAN"|"STALLED"|"DISCONNECTED",
+#'         dataReplicationState = "STOPPED"|"INITIATING"|"INITIAL_SYNC"|"BACKLOG"|"CREATING_SNAPSHOT"|"CONTINUOUS"|"PAUSED"|"RESCAN"|"STALLED"|"DISCONNECTED"|"REPLICATION_STATE_NOT_AVAILABLE"|"NOT_STARTED",
 #'         etaDateTime = "string",
 #'         lagDuration = "string",
 #'         replicatedDisks = list(
@@ -651,7 +857,8 @@ drs_describe_jobs <- function(filters = NULL, maxResults = NULL, nextToken = NUL
 #'             rescannedStorageBytes = 123,
 #'             totalStorageBytes = 123
 #'           )
-#'         )
+#'         ),
+#'         stagingAvailabilityZone = "string"
 #'       ),
 #'       ec2InstanceID = "string",
 #'       ec2InstanceState = "PENDING"|"RUNNING"|"STOPPING"|"STOPPED"|"SHUTTING-DOWN"|"TERMINATED"|"NOT_FOUND",
@@ -662,12 +869,15 @@ drs_describe_jobs <- function(filters = NULL, maxResults = NULL, nextToken = NUL
 #'         failbackClientLastSeenByServiceDateTime = "string",
 #'         failbackInitiationTime = "string",
 #'         failbackJobID = "string",
+#'         failbackLaunchType = "RECOVERY"|"DRILL",
 #'         failbackToOriginalServer = TRUE|FALSE,
 #'         firstByteDateTime = "string",
-#'         state = "FAILBACK_NOT_STARTED"|"FAILBACK_IN_PROGRESS"|"FAILBACK_READY_FOR_LAUNCH"|"FAILBACK_COMPLETED"|"FAILBACK_ERROR"
+#'         state = "FAILBACK_NOT_STARTED"|"FAILBACK_IN_PROGRESS"|"FAILBACK_READY_FOR_LAUNCH"|"FAILBACK_COMPLETED"|"FAILBACK_ERROR"|"FAILBACK_NOT_READY_FOR_LAUNCH"|"FAILBACK_LAUNCH_STATE_NOT_AVAILABLE"
 #'       ),
 #'       isDrill = TRUE|FALSE,
 #'       jobID = "string",
+#'       originAvailabilityZone = "string",
+#'       originEnvironment = "ON_PREMISES"|"AWS",
 #'       pointInTimeSnapshotDateTime = "string",
 #'       recoveryInstanceID = "string",
 #'       recoveryInstanceProperties = list(
@@ -847,6 +1057,7 @@ drs_describe_recovery_snapshots <- function(filters = NULL, maxResults = NULL, n
 #'     list(
 #'       arn = "string",
 #'       associateDefaultSecurityGroup = TRUE|FALSE,
+#'       autoReplicateNewDisks = TRUE|FALSE,
 #'       bandwidthThrottling = 123,
 #'       createPublicIP = TRUE|FALSE,
 #'       dataPlaneRouting = "PRIVATE_IP"|"PUBLIC_IP",
@@ -959,7 +1170,8 @@ drs_describe_replication_configuration_templates <- function(maxResults = NULL, 
 #'             rescannedStorageBytes = 123,
 #'             totalStorageBytes = 123
 #'           )
-#'         )
+#'         ),
+#'         stagingAvailabilityZone = "string"
 #'       ),
 #'       lastLaunchResult = "NOT_STARTED"|"PENDING"|"SUCCEEDED"|"FAILED",
 #'       lifeCycle = list(
@@ -971,11 +1183,19 @@ drs_describe_replication_configuration_templates <- function(maxResults = NULL, 
 #'             apiCallDateTime = "string",
 #'             jobID = "string",
 #'             type = "RECOVERY"|"DRILL"
-#'           )
+#'           ),
+#'           status = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED"
 #'         ),
 #'         lastSeenByServiceDateTime = "string"
 #'       ),
 #'       recoveryInstanceId = "string",
+#'       replicationDirection = "FAILOVER"|"FAILBACK",
+#'       reversedDirectionSourceServerArn = "string",
+#'       sourceCloudProperties = list(
+#'         originAccountID = "string",
+#'         originAvailabilityZone = "string",
+#'         originRegion = "string"
+#'       ),
 #'       sourceProperties = list(
 #'         cpus = list(
 #'           list(
@@ -1009,7 +1229,8 @@ drs_describe_replication_configuration_templates <- function(maxResults = NULL, 
 #'           fullString = "string"
 #'         ),
 #'         ramBytes = 123,
-#'         recommendedInstanceType = "string"
+#'         recommendedInstanceType = "string",
+#'         supportsNitroInstances = TRUE|FALSE
 #'       ),
 #'       sourceServerID = "string",
 #'       stagingArea = list(
@@ -1174,7 +1395,8 @@ drs_disconnect_recovery_instance <- function(recoveryInstanceID) {
 #'         rescannedStorageBytes = 123,
 #'         totalStorageBytes = 123
 #'       )
-#'     )
+#'     ),
+#'     stagingAvailabilityZone = "string"
 #'   ),
 #'   lastLaunchResult = "NOT_STARTED"|"PENDING"|"SUCCEEDED"|"FAILED",
 #'   lifeCycle = list(
@@ -1186,11 +1408,19 @@ drs_disconnect_recovery_instance <- function(recoveryInstanceID) {
 #'         apiCallDateTime = "string",
 #'         jobID = "string",
 #'         type = "RECOVERY"|"DRILL"
-#'       )
+#'       ),
+#'       status = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED"
 #'     ),
 #'     lastSeenByServiceDateTime = "string"
 #'   ),
 #'   recoveryInstanceId = "string",
+#'   replicationDirection = "FAILOVER"|"FAILBACK",
+#'   reversedDirectionSourceServerArn = "string",
+#'   sourceCloudProperties = list(
+#'     originAccountID = "string",
+#'     originAvailabilityZone = "string",
+#'     originRegion = "string"
+#'   ),
 #'   sourceProperties = list(
 #'     cpus = list(
 #'       list(
@@ -1224,7 +1454,8 @@ drs_disconnect_recovery_instance <- function(recoveryInstanceID) {
 #'       fullString = "string"
 #'     ),
 #'     ramBytes = 123,
-#'     recommendedInstanceType = "string"
+#'     recommendedInstanceType = "string",
+#'     supportsNitroInstances = TRUE|FALSE
 #'   ),
 #'   sourceServerID = "string",
 #'   stagingArea = list(
@@ -1393,6 +1624,7 @@ drs_get_launch_configuration <- function(sourceServerID) {
 #' ```
 #' list(
 #'   associateDefaultSecurityGroup = TRUE|FALSE,
+#'   autoReplicateNewDisks = TRUE|FALSE,
 #'   bandwidthThrottling = 123,
 #'   createPublicIP = TRUE|FALSE,
 #'   dataPlaneRouting = "PRIVATE_IP"|"PUBLIC_IP",
@@ -1670,15 +1902,14 @@ drs_list_tags_for_resource <- function(resourceArn) {
 }
 .drs$operations$list_tags_for_resource <- drs_list_tags_for_resource
 
-#' Causes the data replication initiation sequence to begin immediately
-#' upon next Handshake for the specified Source Server ID, regardless of
-#' when the previous initiation started
+#' WARNING: RetryDataReplication is deprecated
 #'
 #' @description
-#' Causes the data replication initiation sequence to begin immediately
-#' upon next Handshake for the specified Source Server ID, regardless of
-#' when the previous initiation started. This command will work only if the
-#' Source Server is stalled or is in a DISCONNECTED or STOPPED state.
+#' WARNING: RetryDataReplication is deprecated. Causes the data replication
+#' initiation sequence to begin immediately upon next Handshake for the
+#' specified Source Server ID, regardless of when the previous initiation
+#' started. This command will work only if the Source Server is stalled or
+#' is in a DISCONNECTED or STOPPED state.
 #'
 #' @usage
 #' drs_retry_data_replication(sourceServerID)
@@ -1716,7 +1947,8 @@ drs_list_tags_for_resource <- function(resourceArn) {
 #'         rescannedStorageBytes = 123,
 #'         totalStorageBytes = 123
 #'       )
-#'     )
+#'     ),
+#'     stagingAvailabilityZone = "string"
 #'   ),
 #'   lastLaunchResult = "NOT_STARTED"|"PENDING"|"SUCCEEDED"|"FAILED",
 #'   lifeCycle = list(
@@ -1728,11 +1960,19 @@ drs_list_tags_for_resource <- function(resourceArn) {
 #'         apiCallDateTime = "string",
 #'         jobID = "string",
 #'         type = "RECOVERY"|"DRILL"
-#'       )
+#'       ),
+#'       status = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED"
 #'     ),
 #'     lastSeenByServiceDateTime = "string"
 #'   ),
 #'   recoveryInstanceId = "string",
+#'   replicationDirection = "FAILOVER"|"FAILBACK",
+#'   reversedDirectionSourceServerArn = "string",
+#'   sourceCloudProperties = list(
+#'     originAccountID = "string",
+#'     originAvailabilityZone = "string",
+#'     originRegion = "string"
+#'   ),
 #'   sourceProperties = list(
 #'     cpus = list(
 #'       list(
@@ -1766,7 +2006,8 @@ drs_list_tags_for_resource <- function(resourceArn) {
 #'       fullString = "string"
 #'     ),
 #'     ramBytes = 123,
-#'     recommendedInstanceType = "string"
+#'     recommendedInstanceType = "string",
+#'     supportsNitroInstances = TRUE|FALSE
 #'   ),
 #'   sourceServerID = "string",
 #'   stagingArea = list(
@@ -1809,6 +2050,59 @@ drs_retry_data_replication <- function(sourceServerID) {
   return(response)
 }
 .drs$operations$retry_data_replication <- drs_retry_data_replication
+
+#' Start replication to origin / target region - applies only to protected
+#' instances that originated in EC2
+#'
+#' @description
+#' Start replication to origin / target region - applies only to protected
+#' instances that originated in EC2. For recovery instances on target
+#' region - starts replication back to origin region. For failback
+#' instances on origin region - starts replication to target region to
+#' re-protect them.
+#'
+#' @usage
+#' drs_reverse_replication(recoveryInstanceID)
+#'
+#' @param recoveryInstanceID &#91;required&#93; The ID of the Recovery Instance that we want to reverse the replication
+#' for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   reversedDirectionSourceServerArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$reverse_replication(
+#'   recoveryInstanceID = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname drs_reverse_replication
+#'
+#' @aliases drs_reverse_replication
+drs_reverse_replication <- function(recoveryInstanceID) {
+  op <- new_operation(
+    name = "ReverseReplication",
+    http_method = "POST",
+    http_path = "/ReverseReplication",
+    paginator = list()
+  )
+  input <- .drs$reverse_replication_input(recoveryInstanceID = recoveryInstanceID)
+  output <- .drs$reverse_replication_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$reverse_replication <- drs_reverse_replication
 
 #' Initiates a Job for launching the machine that is being failed back to
 #' from the specified Recovery Instance
@@ -1964,6 +2258,154 @@ drs_start_recovery <- function(isDrill = NULL, sourceServers, tags = NULL) {
 }
 .drs$operations$start_recovery <- drs_start_recovery
 
+#' Starts replication for a stopped Source Server
+#'
+#' @description
+#' Starts replication for a stopped Source Server. This action would make
+#' the Source Server protected again and restart billing for it.
+#'
+#' @usage
+#' drs_start_replication(sourceServerID)
+#'
+#' @param sourceServerID &#91;required&#93; The ID of the Source Server to start replication for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   sourceServer = list(
+#'     arn = "string",
+#'     dataReplicationInfo = list(
+#'       dataReplicationError = list(
+#'         error = "AGENT_NOT_SEEN"|"SNAPSHOTS_FAILURE"|"NOT_CONVERGING"|"UNSTABLE_NETWORK"|"FAILED_TO_CREATE_SECURITY_GROUP"|"FAILED_TO_LAUNCH_REPLICATION_SERVER"|"FAILED_TO_BOOT_REPLICATION_SERVER"|"FAILED_TO_AUTHENTICATE_WITH_SERVICE"|"FAILED_TO_DOWNLOAD_REPLICATION_SOFTWARE"|"FAILED_TO_CREATE_STAGING_DISKS"|"FAILED_TO_ATTACH_STAGING_DISKS"|"FAILED_TO_PAIR_REPLICATION_SERVER_WITH_AGENT"|"FAILED_TO_CONNECT_AGENT_TO_REPLICATION_SERVER"|"FAILED_TO_START_DATA_TRANSFER",
+#'         rawError = "string"
+#'       ),
+#'       dataReplicationInitiation = list(
+#'         nextAttemptDateTime = "string",
+#'         startDateTime = "string",
+#'         steps = list(
+#'           list(
+#'             name = "WAIT"|"CREATE_SECURITY_GROUP"|"LAUNCH_REPLICATION_SERVER"|"BOOT_REPLICATION_SERVER"|"AUTHENTICATE_WITH_SERVICE"|"DOWNLOAD_REPLICATION_SOFTWARE"|"CREATE_STAGING_DISKS"|"ATTACH_STAGING_DISKS"|"PAIR_REPLICATION_SERVER_WITH_AGENT"|"CONNECT_AGENT_TO_REPLICATION_SERVER"|"START_DATA_TRANSFER",
+#'             status = "NOT_STARTED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"SKIPPED"
+#'           )
+#'         )
+#'       ),
+#'       dataReplicationState = "STOPPED"|"INITIATING"|"INITIAL_SYNC"|"BACKLOG"|"CREATING_SNAPSHOT"|"CONTINUOUS"|"PAUSED"|"RESCAN"|"STALLED"|"DISCONNECTED",
+#'       etaDateTime = "string",
+#'       lagDuration = "string",
+#'       replicatedDisks = list(
+#'         list(
+#'           backloggedStorageBytes = 123,
+#'           deviceName = "string",
+#'           replicatedStorageBytes = 123,
+#'           rescannedStorageBytes = 123,
+#'           totalStorageBytes = 123
+#'         )
+#'       ),
+#'       stagingAvailabilityZone = "string"
+#'     ),
+#'     lastLaunchResult = "NOT_STARTED"|"PENDING"|"SUCCEEDED"|"FAILED",
+#'     lifeCycle = list(
+#'       addedToServiceDateTime = "string",
+#'       elapsedReplicationDuration = "string",
+#'       firstByteDateTime = "string",
+#'       lastLaunch = list(
+#'         initiated = list(
+#'           apiCallDateTime = "string",
+#'           jobID = "string",
+#'           type = "RECOVERY"|"DRILL"
+#'         ),
+#'         status = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED"
+#'       ),
+#'       lastSeenByServiceDateTime = "string"
+#'     ),
+#'     recoveryInstanceId = "string",
+#'     replicationDirection = "FAILOVER"|"FAILBACK",
+#'     reversedDirectionSourceServerArn = "string",
+#'     sourceCloudProperties = list(
+#'       originAccountID = "string",
+#'       originAvailabilityZone = "string",
+#'       originRegion = "string"
+#'     ),
+#'     sourceProperties = list(
+#'       cpus = list(
+#'         list(
+#'           cores = 123,
+#'           modelName = "string"
+#'         )
+#'       ),
+#'       disks = list(
+#'         list(
+#'           bytes = 123,
+#'           deviceName = "string"
+#'         )
+#'       ),
+#'       identificationHints = list(
+#'         awsInstanceID = "string",
+#'         fqdn = "string",
+#'         hostname = "string",
+#'         vmWareUuid = "string"
+#'       ),
+#'       lastUpdatedDateTime = "string",
+#'       networkInterfaces = list(
+#'         list(
+#'           ips = list(
+#'             "string"
+#'           ),
+#'           isPrimary = TRUE|FALSE,
+#'           macAddress = "string"
+#'         )
+#'       ),
+#'       os = list(
+#'         fullString = "string"
+#'       ),
+#'       ramBytes = 123,
+#'       recommendedInstanceType = "string",
+#'       supportsNitroInstances = TRUE|FALSE
+#'     ),
+#'     sourceServerID = "string",
+#'     stagingArea = list(
+#'       errorMessage = "string",
+#'       stagingAccountID = "string",
+#'       stagingSourceServerArn = "string",
+#'       status = "EXTENDED"|"EXTENSION_ERROR"|"NOT_EXTENDED"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_replication(
+#'   sourceServerID = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname drs_start_replication
+#'
+#' @aliases drs_start_replication
+drs_start_replication <- function(sourceServerID) {
+  op <- new_operation(
+    name = "StartReplication",
+    http_method = "POST",
+    http_path = "/StartReplication",
+    paginator = list()
+  )
+  input <- .drs$start_replication_input(sourceServerID = sourceServerID)
+  output <- .drs$start_replication_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$start_replication <- drs_start_replication
+
 #' Stops the failback process for a specified Recovery Instance
 #'
 #' @description
@@ -2007,6 +2449,155 @@ drs_stop_failback <- function(recoveryInstanceID) {
   return(response)
 }
 .drs$operations$stop_failback <- drs_stop_failback
+
+#' Stops replication for a Source Server
+#'
+#' @description
+#' Stops replication for a Source Server. This action would make the Source
+#' Server unprotected, delete its existing snapshots and stop billing for
+#' it.
+#'
+#' @usage
+#' drs_stop_replication(sourceServerID)
+#'
+#' @param sourceServerID &#91;required&#93; The ID of the Source Server to stop replication for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   sourceServer = list(
+#'     arn = "string",
+#'     dataReplicationInfo = list(
+#'       dataReplicationError = list(
+#'         error = "AGENT_NOT_SEEN"|"SNAPSHOTS_FAILURE"|"NOT_CONVERGING"|"UNSTABLE_NETWORK"|"FAILED_TO_CREATE_SECURITY_GROUP"|"FAILED_TO_LAUNCH_REPLICATION_SERVER"|"FAILED_TO_BOOT_REPLICATION_SERVER"|"FAILED_TO_AUTHENTICATE_WITH_SERVICE"|"FAILED_TO_DOWNLOAD_REPLICATION_SOFTWARE"|"FAILED_TO_CREATE_STAGING_DISKS"|"FAILED_TO_ATTACH_STAGING_DISKS"|"FAILED_TO_PAIR_REPLICATION_SERVER_WITH_AGENT"|"FAILED_TO_CONNECT_AGENT_TO_REPLICATION_SERVER"|"FAILED_TO_START_DATA_TRANSFER",
+#'         rawError = "string"
+#'       ),
+#'       dataReplicationInitiation = list(
+#'         nextAttemptDateTime = "string",
+#'         startDateTime = "string",
+#'         steps = list(
+#'           list(
+#'             name = "WAIT"|"CREATE_SECURITY_GROUP"|"LAUNCH_REPLICATION_SERVER"|"BOOT_REPLICATION_SERVER"|"AUTHENTICATE_WITH_SERVICE"|"DOWNLOAD_REPLICATION_SOFTWARE"|"CREATE_STAGING_DISKS"|"ATTACH_STAGING_DISKS"|"PAIR_REPLICATION_SERVER_WITH_AGENT"|"CONNECT_AGENT_TO_REPLICATION_SERVER"|"START_DATA_TRANSFER",
+#'             status = "NOT_STARTED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"SKIPPED"
+#'           )
+#'         )
+#'       ),
+#'       dataReplicationState = "STOPPED"|"INITIATING"|"INITIAL_SYNC"|"BACKLOG"|"CREATING_SNAPSHOT"|"CONTINUOUS"|"PAUSED"|"RESCAN"|"STALLED"|"DISCONNECTED",
+#'       etaDateTime = "string",
+#'       lagDuration = "string",
+#'       replicatedDisks = list(
+#'         list(
+#'           backloggedStorageBytes = 123,
+#'           deviceName = "string",
+#'           replicatedStorageBytes = 123,
+#'           rescannedStorageBytes = 123,
+#'           totalStorageBytes = 123
+#'         )
+#'       ),
+#'       stagingAvailabilityZone = "string"
+#'     ),
+#'     lastLaunchResult = "NOT_STARTED"|"PENDING"|"SUCCEEDED"|"FAILED",
+#'     lifeCycle = list(
+#'       addedToServiceDateTime = "string",
+#'       elapsedReplicationDuration = "string",
+#'       firstByteDateTime = "string",
+#'       lastLaunch = list(
+#'         initiated = list(
+#'           apiCallDateTime = "string",
+#'           jobID = "string",
+#'           type = "RECOVERY"|"DRILL"
+#'         ),
+#'         status = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED"
+#'       ),
+#'       lastSeenByServiceDateTime = "string"
+#'     ),
+#'     recoveryInstanceId = "string",
+#'     replicationDirection = "FAILOVER"|"FAILBACK",
+#'     reversedDirectionSourceServerArn = "string",
+#'     sourceCloudProperties = list(
+#'       originAccountID = "string",
+#'       originAvailabilityZone = "string",
+#'       originRegion = "string"
+#'     ),
+#'     sourceProperties = list(
+#'       cpus = list(
+#'         list(
+#'           cores = 123,
+#'           modelName = "string"
+#'         )
+#'       ),
+#'       disks = list(
+#'         list(
+#'           bytes = 123,
+#'           deviceName = "string"
+#'         )
+#'       ),
+#'       identificationHints = list(
+#'         awsInstanceID = "string",
+#'         fqdn = "string",
+#'         hostname = "string",
+#'         vmWareUuid = "string"
+#'       ),
+#'       lastUpdatedDateTime = "string",
+#'       networkInterfaces = list(
+#'         list(
+#'           ips = list(
+#'             "string"
+#'           ),
+#'           isPrimary = TRUE|FALSE,
+#'           macAddress = "string"
+#'         )
+#'       ),
+#'       os = list(
+#'         fullString = "string"
+#'       ),
+#'       ramBytes = 123,
+#'       recommendedInstanceType = "string",
+#'       supportsNitroInstances = TRUE|FALSE
+#'     ),
+#'     sourceServerID = "string",
+#'     stagingArea = list(
+#'       errorMessage = "string",
+#'       stagingAccountID = "string",
+#'       stagingSourceServerArn = "string",
+#'       status = "EXTENDED"|"EXTENSION_ERROR"|"NOT_EXTENDED"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_replication(
+#'   sourceServerID = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname drs_stop_replication
+#'
+#' @aliases drs_stop_replication
+drs_stop_replication <- function(sourceServerID) {
+  op <- new_operation(
+    name = "StopReplication",
+    http_method = "POST",
+    http_path = "/StopReplication",
+    paginator = list()
+  )
+  input <- .drs$stop_replication_input(sourceServerID = sourceServerID)
+  output <- .drs$stop_replication_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$stop_replication <- drs_stop_replication
 
 #' Adds or overwrites only the specified tags for the specified Elastic
 #' Disaster Recovery resource or resources
@@ -2308,6 +2899,80 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 }
 .drs$operations$update_launch_configuration <- drs_update_launch_configuration
 
+#' Updates an existing Launch Configuration Template by ID
+#'
+#' @description
+#' Updates an existing Launch Configuration Template by ID.
+#'
+#' @usage
+#' drs_update_launch_configuration_template(copyPrivateIp, copyTags,
+#'   launchConfigurationTemplateID, launchDisposition, licensing,
+#'   targetInstanceTypeRightSizingMethod)
+#'
+#' @param copyPrivateIp Copy private IP.
+#' @param copyTags Copy tags.
+#' @param launchConfigurationTemplateID &#91;required&#93; Launch Configuration Template ID.
+#' @param launchDisposition Launch disposition.
+#' @param licensing Licensing.
+#' @param targetInstanceTypeRightSizingMethod Target instance type right-sizing method.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   launchConfigurationTemplate = list(
+#'     arn = "string",
+#'     copyPrivateIp = TRUE|FALSE,
+#'     copyTags = TRUE|FALSE,
+#'     launchConfigurationTemplateID = "string",
+#'     launchDisposition = "STOPPED"|"STARTED",
+#'     licensing = list(
+#'       osByol = TRUE|FALSE
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_launch_configuration_template(
+#'   copyPrivateIp = TRUE|FALSE,
+#'   copyTags = TRUE|FALSE,
+#'   launchConfigurationTemplateID = "string",
+#'   launchDisposition = "STOPPED"|"STARTED",
+#'   licensing = list(
+#'     osByol = TRUE|FALSE
+#'   ),
+#'   targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname drs_update_launch_configuration_template
+#'
+#' @aliases drs_update_launch_configuration_template
+drs_update_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, launchConfigurationTemplateID, launchDisposition = NULL, licensing = NULL, targetInstanceTypeRightSizingMethod = NULL) {
+  op <- new_operation(
+    name = "UpdateLaunchConfigurationTemplate",
+    http_method = "POST",
+    http_path = "/UpdateLaunchConfigurationTemplate",
+    paginator = list()
+  )
+  input <- .drs$update_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, launchConfigurationTemplateID = launchConfigurationTemplateID, launchDisposition = launchDisposition, licensing = licensing, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
+  output <- .drs$update_launch_configuration_template_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$update_launch_configuration_template <- drs_update_launch_configuration_template
+
 #' Allows you to update a ReplicationConfiguration by Source Server ID
 #'
 #' @description
@@ -2315,14 +2980,17 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 #'
 #' @usage
 #' drs_update_replication_configuration(associateDefaultSecurityGroup,
-#'   bandwidthThrottling, createPublicIP, dataPlaneRouting,
-#'   defaultLargeStagingDiskType, ebsEncryption, ebsEncryptionKeyArn, name,
-#'   pitPolicy, replicatedDisks, replicationServerInstanceType,
-#'   replicationServersSecurityGroupsIDs, sourceServerID,
-#'   stagingAreaSubnetId, stagingAreaTags, useDedicatedReplicationServer)
+#'   autoReplicateNewDisks, bandwidthThrottling, createPublicIP,
+#'   dataPlaneRouting, defaultLargeStagingDiskType, ebsEncryption,
+#'   ebsEncryptionKeyArn, name, pitPolicy, replicatedDisks,
+#'   replicationServerInstanceType, replicationServersSecurityGroupsIDs,
+#'   sourceServerID, stagingAreaSubnetId, stagingAreaTags,
+#'   useDedicatedReplicationServer)
 #'
 #' @param associateDefaultSecurityGroup Whether to associate the default Elastic Disaster Recovery Security
 #' group with the Replication Configuration.
+#' @param autoReplicateNewDisks Whether to allow the AWS replication agent to automatically replicate
+#' newly added disks.
 #' @param bandwidthThrottling Configure bandwidth throttling for the outbound data transfer rate of
 #' the Source Server in Mbps.
 #' @param createPublicIP Whether to create a Public IP for the Recovery Instance by default.
@@ -2349,6 +3017,7 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 #' ```
 #' list(
 #'   associateDefaultSecurityGroup = TRUE|FALSE,
+#'   autoReplicateNewDisks = TRUE|FALSE,
 #'   bandwidthThrottling = 123,
 #'   createPublicIP = TRUE|FALSE,
 #'   dataPlaneRouting = "PRIVATE_IP"|"PUBLIC_IP",
@@ -2392,6 +3061,7 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 #' ```
 #' svc$update_replication_configuration(
 #'   associateDefaultSecurityGroup = TRUE|FALSE,
+#'   autoReplicateNewDisks = TRUE|FALSE,
 #'   bandwidthThrottling = 123,
 #'   createPublicIP = TRUE|FALSE,
 #'   dataPlaneRouting = "PRIVATE_IP"|"PUBLIC_IP",
@@ -2436,14 +3106,14 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 #' @rdname drs_update_replication_configuration
 #'
 #' @aliases drs_update_replication_configuration
-drs_update_replication_configuration <- function(associateDefaultSecurityGroup = NULL, bandwidthThrottling = NULL, createPublicIP = NULL, dataPlaneRouting = NULL, defaultLargeStagingDiskType = NULL, ebsEncryption = NULL, ebsEncryptionKeyArn = NULL, name = NULL, pitPolicy = NULL, replicatedDisks = NULL, replicationServerInstanceType = NULL, replicationServersSecurityGroupsIDs = NULL, sourceServerID, stagingAreaSubnetId = NULL, stagingAreaTags = NULL, useDedicatedReplicationServer = NULL) {
+drs_update_replication_configuration <- function(associateDefaultSecurityGroup = NULL, autoReplicateNewDisks = NULL, bandwidthThrottling = NULL, createPublicIP = NULL, dataPlaneRouting = NULL, defaultLargeStagingDiskType = NULL, ebsEncryption = NULL, ebsEncryptionKeyArn = NULL, name = NULL, pitPolicy = NULL, replicatedDisks = NULL, replicationServerInstanceType = NULL, replicationServersSecurityGroupsIDs = NULL, sourceServerID, stagingAreaSubnetId = NULL, stagingAreaTags = NULL, useDedicatedReplicationServer = NULL) {
   op <- new_operation(
     name = "UpdateReplicationConfiguration",
     http_method = "POST",
     http_path = "/UpdateReplicationConfiguration",
     paginator = list()
   )
-  input <- .drs$update_replication_configuration_input(associateDefaultSecurityGroup = associateDefaultSecurityGroup, bandwidthThrottling = bandwidthThrottling, createPublicIP = createPublicIP, dataPlaneRouting = dataPlaneRouting, defaultLargeStagingDiskType = defaultLargeStagingDiskType, ebsEncryption = ebsEncryption, ebsEncryptionKeyArn = ebsEncryptionKeyArn, name = name, pitPolicy = pitPolicy, replicatedDisks = replicatedDisks, replicationServerInstanceType = replicationServerInstanceType, replicationServersSecurityGroupsIDs = replicationServersSecurityGroupsIDs, sourceServerID = sourceServerID, stagingAreaSubnetId = stagingAreaSubnetId, stagingAreaTags = stagingAreaTags, useDedicatedReplicationServer = useDedicatedReplicationServer)
+  input <- .drs$update_replication_configuration_input(associateDefaultSecurityGroup = associateDefaultSecurityGroup, autoReplicateNewDisks = autoReplicateNewDisks, bandwidthThrottling = bandwidthThrottling, createPublicIP = createPublicIP, dataPlaneRouting = dataPlaneRouting, defaultLargeStagingDiskType = defaultLargeStagingDiskType, ebsEncryption = ebsEncryption, ebsEncryptionKeyArn = ebsEncryptionKeyArn, name = name, pitPolicy = pitPolicy, replicatedDisks = replicatedDisks, replicationServerInstanceType = replicationServerInstanceType, replicationServersSecurityGroupsIDs = replicationServersSecurityGroupsIDs, sourceServerID = sourceServerID, stagingAreaSubnetId = stagingAreaSubnetId, stagingAreaTags = stagingAreaTags, useDedicatedReplicationServer = useDedicatedReplicationServer)
   output <- .drs$update_replication_configuration_output()
   config <- get_config()
   svc <- .drs$service(config)
@@ -2460,15 +3130,18 @@ drs_update_replication_configuration <- function(associateDefaultSecurityGroup =
 #'
 #' @usage
 #' drs_update_replication_configuration_template(arn,
-#'   associateDefaultSecurityGroup, bandwidthThrottling, createPublicIP,
-#'   dataPlaneRouting, defaultLargeStagingDiskType, ebsEncryption,
-#'   ebsEncryptionKeyArn, pitPolicy, replicationConfigurationTemplateID,
+#'   associateDefaultSecurityGroup, autoReplicateNewDisks,
+#'   bandwidthThrottling, createPublicIP, dataPlaneRouting,
+#'   defaultLargeStagingDiskType, ebsEncryption, ebsEncryptionKeyArn,
+#'   pitPolicy, replicationConfigurationTemplateID,
 #'   replicationServerInstanceType, replicationServersSecurityGroupsIDs,
 #'   stagingAreaSubnetId, stagingAreaTags, useDedicatedReplicationServer)
 #'
 #' @param arn The Replication Configuration Template ARN.
 #' @param associateDefaultSecurityGroup Whether to associate the default Elastic Disaster Recovery Security
 #' group with the Replication Configuration Template.
+#' @param autoReplicateNewDisks Whether to allow the AWS replication agent to automatically replicate
+#' newly added disks.
 #' @param bandwidthThrottling Configure bandwidth throttling for the outbound data transfer rate of
 #' the Source Server in Mbps.
 #' @param createPublicIP Whether to create a Public IP for the Recovery Instance by default.
@@ -2494,6 +3167,7 @@ drs_update_replication_configuration <- function(associateDefaultSecurityGroup =
 #' list(
 #'   arn = "string",
 #'   associateDefaultSecurityGroup = TRUE|FALSE,
+#'   autoReplicateNewDisks = TRUE|FALSE,
 #'   bandwidthThrottling = 123,
 #'   createPublicIP = TRUE|FALSE,
 #'   dataPlaneRouting = "PRIVATE_IP"|"PUBLIC_IP",
@@ -2530,6 +3204,7 @@ drs_update_replication_configuration <- function(associateDefaultSecurityGroup =
 #' svc$update_replication_configuration_template(
 #'   arn = "string",
 #'   associateDefaultSecurityGroup = TRUE|FALSE,
+#'   autoReplicateNewDisks = TRUE|FALSE,
 #'   bandwidthThrottling = 123,
 #'   createPublicIP = TRUE|FALSE,
 #'   dataPlaneRouting = "PRIVATE_IP"|"PUBLIC_IP",
@@ -2563,14 +3238,14 @@ drs_update_replication_configuration <- function(associateDefaultSecurityGroup =
 #' @rdname drs_update_replication_configuration_template
 #'
 #' @aliases drs_update_replication_configuration_template
-drs_update_replication_configuration_template <- function(arn = NULL, associateDefaultSecurityGroup = NULL, bandwidthThrottling = NULL, createPublicIP = NULL, dataPlaneRouting = NULL, defaultLargeStagingDiskType = NULL, ebsEncryption = NULL, ebsEncryptionKeyArn = NULL, pitPolicy = NULL, replicationConfigurationTemplateID, replicationServerInstanceType = NULL, replicationServersSecurityGroupsIDs = NULL, stagingAreaSubnetId = NULL, stagingAreaTags = NULL, useDedicatedReplicationServer = NULL) {
+drs_update_replication_configuration_template <- function(arn = NULL, associateDefaultSecurityGroup = NULL, autoReplicateNewDisks = NULL, bandwidthThrottling = NULL, createPublicIP = NULL, dataPlaneRouting = NULL, defaultLargeStagingDiskType = NULL, ebsEncryption = NULL, ebsEncryptionKeyArn = NULL, pitPolicy = NULL, replicationConfigurationTemplateID, replicationServerInstanceType = NULL, replicationServersSecurityGroupsIDs = NULL, stagingAreaSubnetId = NULL, stagingAreaTags = NULL, useDedicatedReplicationServer = NULL) {
   op <- new_operation(
     name = "UpdateReplicationConfigurationTemplate",
     http_method = "POST",
     http_path = "/UpdateReplicationConfigurationTemplate",
     paginator = list()
   )
-  input <- .drs$update_replication_configuration_template_input(arn = arn, associateDefaultSecurityGroup = associateDefaultSecurityGroup, bandwidthThrottling = bandwidthThrottling, createPublicIP = createPublicIP, dataPlaneRouting = dataPlaneRouting, defaultLargeStagingDiskType = defaultLargeStagingDiskType, ebsEncryption = ebsEncryption, ebsEncryptionKeyArn = ebsEncryptionKeyArn, pitPolicy = pitPolicy, replicationConfigurationTemplateID = replicationConfigurationTemplateID, replicationServerInstanceType = replicationServerInstanceType, replicationServersSecurityGroupsIDs = replicationServersSecurityGroupsIDs, stagingAreaSubnetId = stagingAreaSubnetId, stagingAreaTags = stagingAreaTags, useDedicatedReplicationServer = useDedicatedReplicationServer)
+  input <- .drs$update_replication_configuration_template_input(arn = arn, associateDefaultSecurityGroup = associateDefaultSecurityGroup, autoReplicateNewDisks = autoReplicateNewDisks, bandwidthThrottling = bandwidthThrottling, createPublicIP = createPublicIP, dataPlaneRouting = dataPlaneRouting, defaultLargeStagingDiskType = defaultLargeStagingDiskType, ebsEncryption = ebsEncryption, ebsEncryptionKeyArn = ebsEncryptionKeyArn, pitPolicy = pitPolicy, replicationConfigurationTemplateID = replicationConfigurationTemplateID, replicationServerInstanceType = replicationServerInstanceType, replicationServersSecurityGroupsIDs = replicationServersSecurityGroupsIDs, stagingAreaSubnetId = stagingAreaSubnetId, stagingAreaTags = stagingAreaTags, useDedicatedReplicationServer = useDedicatedReplicationServer)
   output <- .drs$update_replication_configuration_template_output()
   config <- get_config()
   svc <- .drs$service(config)

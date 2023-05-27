@@ -18,7 +18,7 @@ NULL
 #' @param ContactChannelId The ARN of the contact channel.
 #' @param AcceptType &#91;required&#93; The type indicates if the page was `DELIVERED` or `READ`.
 #' @param Note Information provided by the user when the user acknowledges the page.
-#' @param AcceptCode &#91;required&#93; The accept code is a 6-digit code used to acknowledge the page.
+#' @param AcceptCode &#91;required&#93; A 6-digit code used to acknowledge the page.
 #' @param AcceptCodeValidation An optional field that Incident Manager uses to `ENFORCE` `AcceptCode`
 #' validation when acknowledging an page. Acknowledgement can occur by
 #' replying to a page, or when entering the AcceptCode in the console.
@@ -44,17 +44,6 @@ NULL
 #'   AcceptCodeValidation = "IGNORE"|"ENFORCE"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following accept-page operation uses an accept code sent to the
-#' # contact channel to accept a page.
-#' svc$accept_page(
-#'   AcceptCode = "425440",
-#'   AcceptType = "READ",
-#'   PageId = "arn:aws:ssm-contacts:us-east-2:682428703967:page/akuam/94ea0c7b..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -100,16 +89,6 @@ ssmcontacts_accept_page <- function(PageId, ContactChannelId = NULL, AcceptType,
 #'   ActivationCode = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following activate-contact-channel example activates a contact
-#' # channel and makes it usable as part of an incident.
-#' svc$activate_contact_channel(
-#'   ActivationCode = "466136",
-#'   ContactChannelId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact-c..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -172,7 +151,7 @@ ssmcontacts_activate_contact_channel <- function(ContactChannelId, ActivationCod
 #' svc$create_contact(
 #'   Alias = "string",
 #'   DisplayName = "string",
-#'   Type = "PERSONAL"|"ESCALATION",
+#'   Type = "PERSONAL"|"ESCALATION"|"ONCALL_SCHEDULE",
 #'   Plan = list(
 #'     Stages = list(
 #'       list(
@@ -190,6 +169,9 @@ ssmcontacts_activate_contact_channel <- function(ContactChannelId, ActivationCod
 #'           )
 #'         )
 #'       )
+#'     ),
+#'     RotationIds = list(
+#'       "string"
 #'     )
 #'   ),
 #'   Tags = list(
@@ -201,23 +183,6 @@ ssmcontacts_activate_contact_channel <- function(ContactChannelId, ActivationCod
 #'   IdempotencyToken = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following create-contact example creates a contact in your
-#' # environment with a blank plan. The plan can be updated after creating
-#' # contact channels. Use the create-contact-channel operation with the
-#' # output ARN of this command. After you have created contact channels for
-#' # this contact use update-contact to update the plan.
-#' svc$create_contact(
-#'   Alias = "akuam",
-#'   DisplayName = "Akua Mansa",
-#'   Plan = list(
-#'     Stages = list()
-#'   ),
-#'   Type = "PERSONAL"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -299,20 +264,6 @@ ssmcontacts_create_contact <- function(Alias, DisplayName = NULL, Type, Plan, Ta
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # Creates a contact channel of type SMS for the contact Akua Mansa.
-#' # Contact channels can be created of type SMS, EMAIL, or VOICE.
-#' svc$create_contact_channel(
-#'   ContactId = "arn:aws:ssm-contacts:us-east-1:111122223333:contact/akuam",
-#'   DeliveryAddress = list(
-#'     SimpleAddress = "+15005550199"
-#'   ),
-#'   Name = "akuas sms-test",
-#'   Type = "SMS"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_create_contact_channel
@@ -334,6 +285,201 @@ ssmcontacts_create_contact_channel <- function(ContactId, Name, Type, DeliveryAd
   return(response)
 }
 .ssmcontacts$operations$create_contact_channel <- ssmcontacts_create_contact_channel
+
+#' Creates a rotation in an on-call schedule
+#'
+#' @description
+#' Creates a rotation in an on-call schedule.
+#'
+#' @usage
+#' ssmcontacts_create_rotation(Name, ContactIds, StartTime, TimeZoneId,
+#'   Recurrence, Tags, IdempotencyToken)
+#'
+#' @param Name &#91;required&#93; The name of the rotation.
+#' @param ContactIds &#91;required&#93; The Amazon Resource Names (ARNs) of the contacts to add to the rotation.
+#' 
+#' The order that you list the contacts in is their shift order in the
+#' rotation schedule. To change the order of the contact's shifts, use the
+#' [`update_rotation`][ssmcontacts_update_rotation] operation.
+#' @param StartTime The date and time that the rotation goes into effect.
+#' @param TimeZoneId &#91;required&#93; The time zone to base the rotation’s activity on in Internet Assigned
+#' Numbers Authority (IANA) format. For example: "America/Los_Angeles",
+#' "UTC", or "Asia/Seoul". For more information, see the [Time Zone
+#' Database](https://www.iana.org/time-zones) on the IANA website.
+#' 
+#' Designators for time zones that don’t support Daylight Savings Time
+#' rules, such as Pacific Standard Time (PST) and Pacific Daylight Time
+#' (PDT), are not supported.
+#' @param Recurrence &#91;required&#93; Information about the rule that specifies when a shift's team members
+#' rotate.
+#' @param Tags Optional metadata to assign to the rotation. Tags enable you to
+#' categorize a resource in different ways, such as by purpose, owner, or
+#' environment. For more information, see [Tagging Incident Manager
+#' resources](https://docs.aws.amazon.com/incident-manager/latest/userguide/tagging.html)
+#' in the *Incident Manager User Guide*.
+#' @param IdempotencyToken A token that ensures that the operation is called only once with the
+#' specified details.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RotationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_rotation(
+#'   Name = "string",
+#'   ContactIds = list(
+#'     "string"
+#'   ),
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   TimeZoneId = "string",
+#'   Recurrence = list(
+#'     MonthlySettings = list(
+#'       list(
+#'         DayOfMonth = 123,
+#'         HandOffTime = list(
+#'           HourOfDay = 123,
+#'           MinuteOfHour = 123
+#'         )
+#'       )
+#'     ),
+#'     WeeklySettings = list(
+#'       list(
+#'         DayOfWeek = "MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT"|"SUN",
+#'         HandOffTime = list(
+#'           HourOfDay = 123,
+#'           MinuteOfHour = 123
+#'         )
+#'       )
+#'     ),
+#'     DailySettings = list(
+#'       list(
+#'         HourOfDay = 123,
+#'         MinuteOfHour = 123
+#'       )
+#'     ),
+#'     NumberOfOnCalls = 123,
+#'     ShiftCoverages = list(
+#'       list(
+#'         list(
+#'           Start = list(
+#'             HourOfDay = 123,
+#'             MinuteOfHour = 123
+#'           ),
+#'           End = list(
+#'             HourOfDay = 123,
+#'             MinuteOfHour = 123
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     RecurrenceMultiplier = 123
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   IdempotencyToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_create_rotation
+#'
+#' @aliases ssmcontacts_create_rotation
+ssmcontacts_create_rotation <- function(Name, ContactIds, StartTime = NULL, TimeZoneId, Recurrence, Tags = NULL, IdempotencyToken = NULL) {
+  op <- new_operation(
+    name = "CreateRotation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$create_rotation_input(Name = Name, ContactIds = ContactIds, StartTime = StartTime, TimeZoneId = TimeZoneId, Recurrence = Recurrence, Tags = Tags, IdempotencyToken = IdempotencyToken)
+  output <- .ssmcontacts$create_rotation_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$create_rotation <- ssmcontacts_create_rotation
+
+#' Creates an override for a rotation in an on-call schedule
+#'
+#' @description
+#' Creates an override for a rotation in an on-call schedule.
+#'
+#' @usage
+#' ssmcontacts_create_rotation_override(RotationId, NewContactIds,
+#'   StartTime, EndTime, IdempotencyToken)
+#'
+#' @param RotationId &#91;required&#93; The Amazon Resource Name (ARN) of the rotation to create an override
+#' for.
+#' @param NewContactIds &#91;required&#93; The Amazon Resource Names (ARNs) of the contacts to replace those in the
+#' current on-call rotation with.
+#' 
+#' If you want to include any current team members in the override shift,
+#' you must include their ARNs in the new contact ID list.
+#' @param StartTime &#91;required&#93; The date and time when the override goes into effect.
+#' @param EndTime &#91;required&#93; The date and time when the override ends.
+#' @param IdempotencyToken A token that ensures that the operation is called only once with the
+#' specified details.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RotationOverrideId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_rotation_override(
+#'   RotationId = "string",
+#'   NewContactIds = list(
+#'     "string"
+#'   ),
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   IdempotencyToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_create_rotation_override
+#'
+#' @aliases ssmcontacts_create_rotation_override
+ssmcontacts_create_rotation_override <- function(RotationId, NewContactIds, StartTime, EndTime, IdempotencyToken = NULL) {
+  op <- new_operation(
+    name = "CreateRotationOverride",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$create_rotation_override_input(RotationId = RotationId, NewContactIds = NewContactIds, StartTime = StartTime, EndTime = EndTime, IdempotencyToken = IdempotencyToken)
+  output <- .ssmcontacts$create_rotation_override_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$create_rotation_override <- ssmcontacts_create_rotation_override
 
 #' To no longer receive Incident Manager engagements to a contact channel,
 #' you can deactivate the channel
@@ -357,18 +503,6 @@ ssmcontacts_create_contact_channel <- function(ContactId, Name, Type, DeliveryAd
 #'   ContactChannelId = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following `deactivate-contact-channel` example deactivates a
-#' # contact channel. Deactivating a contact channel means the contact
-#' # channel will no longer be paged during an incident. You can also
-#' # reactivate a contact channel at any time using the
-#' # activate-contact-channel operation.
-#' svc$deactivate_contact_channel(
-#'   ContactChannelId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact-c..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -415,15 +549,6 @@ ssmcontacts_deactivate_contact_channel <- function(ContactChannelId) {
 #'   ContactId = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following delete-contact example deletes a contact. The contact will
-#' # no longer be reachable from any escalation plan that refers to them.
-#' svc$delete_contact(
-#'   ContactId = "arn:aws:ssm-contacts:us-east-1:111122223333:contact/alejr"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -472,16 +597,6 @@ ssmcontacts_delete_contact <- function(ContactId) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following delete-contact-channel example deletes a contact channel.
-#' # Deleting a contact channel ensures the contact channel will not be paged
-#' # during an incident.
-#' svc$delete_contact_channel(
-#'   ContactChannelId = "arn:aws:ssm-contacts:us-east-1:111122223333:contact-c..."
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_delete_contact_channel
@@ -503,6 +618,94 @@ ssmcontacts_delete_contact_channel <- function(ContactChannelId) {
   return(response)
 }
 .ssmcontacts$operations$delete_contact_channel <- ssmcontacts_delete_contact_channel
+
+#' Deletes a rotation from the system
+#'
+#' @description
+#' Deletes a rotation from the system. If a rotation belongs to more than
+#' one on-call schedule, this operation deletes it from all of them.
+#'
+#' @usage
+#' ssmcontacts_delete_rotation(RotationId)
+#'
+#' @param RotationId &#91;required&#93; The Amazon Resource Name (ARN) of the on-call rotation to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_rotation(
+#'   RotationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_delete_rotation
+#'
+#' @aliases ssmcontacts_delete_rotation
+ssmcontacts_delete_rotation <- function(RotationId) {
+  op <- new_operation(
+    name = "DeleteRotation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$delete_rotation_input(RotationId = RotationId)
+  output <- .ssmcontacts$delete_rotation_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$delete_rotation <- ssmcontacts_delete_rotation
+
+#' Deletes an existing override for an on-call rotation
+#'
+#' @description
+#' Deletes an existing override for an on-call rotation.
+#'
+#' @usage
+#' ssmcontacts_delete_rotation_override(RotationId, RotationOverrideId)
+#'
+#' @param RotationId &#91;required&#93; The Amazon Resource Name (ARN) of the rotation that was overridden.
+#' @param RotationOverrideId &#91;required&#93; The Amazon Resource Name (ARN) of the on-call rotation override to
+#' delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_rotation_override(
+#'   RotationId = "string",
+#'   RotationOverrideId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_delete_rotation_override
+#'
+#' @aliases ssmcontacts_delete_rotation_override
+ssmcontacts_delete_rotation_override <- function(RotationId, RotationOverrideId) {
+  op <- new_operation(
+    name = "DeleteRotationOverride",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$delete_rotation_override_input(RotationId = RotationId, RotationOverrideId = RotationOverrideId)
+  output <- .ssmcontacts$delete_rotation_override_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$delete_rotation_override <- ssmcontacts_delete_rotation_override
 
 #' Incident Manager uses engagements to engage contacts and escalation
 #' plans during an incident
@@ -545,16 +748,6 @@ ssmcontacts_delete_contact_channel <- function(ContactChannelId) {
 #'   EngagementId = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following describe-engagement example lists the details of an
-#' # engagement to a contact or escalation plan. The subject and content are
-#' # sent to the contact channels.
-#' svc$describe_engagement(
-#'   EngagementId = "arn:aws:ssm-contacts:us-east-2:111122223333:engagement/ex..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -620,15 +813,6 @@ ssmcontacts_describe_engagement <- function(EngagementId) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following describe-page example lists details of a page to a contact
-#' # channel. The page will include the subject and content provided.
-#' svc$describe_page(
-#'   PageId = "arn:aws:ssm-contacts:us-east-2:111122223333:page/akuam/ad0052bd..."
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_describe_page
@@ -668,7 +852,7 @@ ssmcontacts_describe_page <- function(PageId) {
 #'   ContactArn = "string",
 #'   Alias = "string",
 #'   DisplayName = "string",
-#'   Type = "PERSONAL"|"ESCALATION",
+#'   Type = "PERSONAL"|"ESCALATION"|"ONCALL_SCHEDULE",
 #'   Plan = list(
 #'     Stages = list(
 #'       list(
@@ -686,6 +870,9 @@ ssmcontacts_describe_page <- function(PageId) {
 #'           )
 #'         )
 #'       )
+#'     ),
+#'     RotationIds = list(
+#'       "string"
 #'     )
 #'   )
 #' )
@@ -697,19 +884,6 @@ ssmcontacts_describe_page <- function(PageId) {
 #'   ContactId = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following get-contact example describes a contact.
-#' svc$get_contact(
-#'   ContactId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact/akuam"
-#' )
-#' 
-#' # The following get-contact example describes an escalation plan.
-#' svc$get_contact(
-#'   ContactId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact/example_escalation"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -766,15 +940,6 @@ ssmcontacts_get_contact <- function(ContactId) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following get-contact-channel example lists the details of a contact
-#' # channel.
-#' svc$get_contact_channel(
-#'   ContactChannelId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact-c..."
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_get_contact_channel
@@ -825,15 +990,6 @@ ssmcontacts_get_contact_channel <- function(ContactChannelId) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following get-contact-policy example lists the resource policies
-#' # associated with the specified contact.
-#' svc$get_contact_policy(
-#'   ContactArn = "arn:aws:ssm-contacts:us-east-1:111122223333:contact/akuam"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_get_contact_policy
@@ -855,6 +1011,168 @@ ssmcontacts_get_contact_policy <- function(ContactArn) {
   return(response)
 }
 .ssmcontacts$operations$get_contact_policy <- ssmcontacts_get_contact_policy
+
+#' Retrieves information about an on-call rotation
+#'
+#' @description
+#' Retrieves information about an on-call rotation.
+#'
+#' @usage
+#' ssmcontacts_get_rotation(RotationId)
+#'
+#' @param RotationId &#91;required&#93; The Amazon Resource Name (ARN) of the on-call rotation to retrieve
+#' information about.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RotationArn = "string",
+#'   Name = "string",
+#'   ContactIds = list(
+#'     "string"
+#'   ),
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   TimeZoneId = "string",
+#'   Recurrence = list(
+#'     MonthlySettings = list(
+#'       list(
+#'         DayOfMonth = 123,
+#'         HandOffTime = list(
+#'           HourOfDay = 123,
+#'           MinuteOfHour = 123
+#'         )
+#'       )
+#'     ),
+#'     WeeklySettings = list(
+#'       list(
+#'         DayOfWeek = "MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT"|"SUN",
+#'         HandOffTime = list(
+#'           HourOfDay = 123,
+#'           MinuteOfHour = 123
+#'         )
+#'       )
+#'     ),
+#'     DailySettings = list(
+#'       list(
+#'         HourOfDay = 123,
+#'         MinuteOfHour = 123
+#'       )
+#'     ),
+#'     NumberOfOnCalls = 123,
+#'     ShiftCoverages = list(
+#'       list(
+#'         list(
+#'           Start = list(
+#'             HourOfDay = 123,
+#'             MinuteOfHour = 123
+#'           ),
+#'           End = list(
+#'             HourOfDay = 123,
+#'             MinuteOfHour = 123
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     RecurrenceMultiplier = 123
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_rotation(
+#'   RotationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_get_rotation
+#'
+#' @aliases ssmcontacts_get_rotation
+ssmcontacts_get_rotation <- function(RotationId) {
+  op <- new_operation(
+    name = "GetRotation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$get_rotation_input(RotationId = RotationId)
+  output <- .ssmcontacts$get_rotation_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$get_rotation <- ssmcontacts_get_rotation
+
+#' Retrieves information about an override to an on-call rotation
+#'
+#' @description
+#' Retrieves information about an override to an on-call rotation.
+#'
+#' @usage
+#' ssmcontacts_get_rotation_override(RotationId, RotationOverrideId)
+#'
+#' @param RotationId &#91;required&#93; The Amazon Resource Name (ARN) of the overridden rotation to retrieve
+#' information about.
+#' @param RotationOverrideId &#91;required&#93; The Amazon Resource Name (ARN) of the on-call rotation override to
+#' retrieve information about.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RotationOverrideId = "string",
+#'   RotationArn = "string",
+#'   NewContactIds = list(
+#'     "string"
+#'   ),
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_rotation_override(
+#'   RotationId = "string",
+#'   RotationOverrideId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_get_rotation_override
+#'
+#' @aliases ssmcontacts_get_rotation_override
+ssmcontacts_get_rotation_override <- function(RotationId, RotationOverrideId) {
+  op <- new_operation(
+    name = "GetRotationOverride",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$get_rotation_override_input(RotationId = RotationId, RotationOverrideId = RotationOverrideId)
+  output <- .ssmcontacts$get_rotation_override_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$get_rotation_override <- ssmcontacts_get_rotation_override
 
 #' Lists all contact channels for the specified contact
 #'
@@ -896,15 +1214,6 @@ ssmcontacts_get_contact_policy <- function(ContactArn) {
 #'   MaxResults = 123
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following list-contact-channels example lists the available contact
-#' # channels of the specified contact.
-#' svc$list_contact_channels(
-#'   ContactId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact/akuam"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -953,7 +1262,7 @@ ssmcontacts_list_contact_channels <- function(ContactId, NextToken = NULL, MaxRe
 #'       ContactArn = "string",
 #'       Alias = "string",
 #'       DisplayName = "string",
-#'       Type = "PERSONAL"|"ESCALATION"
+#'       Type = "PERSONAL"|"ESCALATION"|"ONCALL_SCHEDULE"
 #'     )
 #'   )
 #' )
@@ -965,16 +1274,9 @@ ssmcontacts_list_contact_channels <- function(ContactId, NextToken = NULL, MaxRe
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   AliasPrefix = "string",
-#'   Type = "PERSONAL"|"ESCALATION"
+#'   Type = "PERSONAL"|"ESCALATION"|"ONCALL_SCHEDULE"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following list-contacts example lists the contacts and escalation
-#' # plans in your account.
-#' svc$list_contacts()
-#' }
 #'
 #' @keywords internal
 #'
@@ -1052,13 +1354,6 @@ ssmcontacts_list_contacts <- function(NextToken = NULL, MaxResults = NULL, Alias
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following list-engagements example lists engagements to escalation
-#' # plans and contacts. You can also list engagements for a single incident.
-#' svc$list_engagements()
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_list_engagements
@@ -1123,15 +1418,6 @@ ssmcontacts_list_engagements <- function(NextToken = NULL, MaxResults = NULL, In
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following command-name example lists whether a page was received or
-#' # not by a contact.
-#' svc$list_page_receipts(
-#'   PageId = "arn:aws:ssm-contacts:us-east-2:111122223333:page/akuam/94ea0c7b..."
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_list_page_receipts
@@ -1153,6 +1439,67 @@ ssmcontacts_list_page_receipts <- function(PageId, NextToken = NULL, MaxResults 
   return(response)
 }
 .ssmcontacts$operations$list_page_receipts <- ssmcontacts_list_page_receipts
+
+#' Returns the resolution path of an engagement
+#'
+#' @description
+#' Returns the resolution path of an engagement. For example, the
+#' escalation plan engaged in an incident might target an on-call schedule
+#' that includes several contacts in a rotation, but just one contact
+#' on-call when the incident starts. The resolution path indicates the
+#' hierarchy of *escalation plan \> on-call schedule \> contact*.
+#'
+#' @usage
+#' ssmcontacts_list_page_resolutions(NextToken, PageId)
+#'
+#' @param NextToken A token to start the list. Use this token to get the next set of
+#' results.
+#' @param PageId &#91;required&#93; The Amazon Resource Name (ARN) of the contact engaged for the incident.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   PageResolutions = list(
+#'     list(
+#'       ContactArn = "string",
+#'       Type = "PERSONAL"|"ESCALATION"|"ONCALL_SCHEDULE",
+#'       StageIndex = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_page_resolutions(
+#'   NextToken = "string",
+#'   PageId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_list_page_resolutions
+#'
+#' @aliases ssmcontacts_list_page_resolutions
+ssmcontacts_list_page_resolutions <- function(NextToken = NULL, PageId) {
+  op <- new_operation(
+    name = "ListPageResolutions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$list_page_resolutions_input(NextToken = NextToken, PageId = PageId)
+  output <- .ssmcontacts$list_page_resolutions_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$list_page_resolutions <- ssmcontacts_list_page_resolutions
 
 #' Lists the engagements to a contact's contact channels
 #'
@@ -1202,15 +1549,6 @@ ssmcontacts_list_page_receipts <- function(PageId, NextToken = NULL, MaxResults 
 #'   MaxResults = 123
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following list-pages-by-contact example lists all pages to the
-#' # specified contact.
-#' svc$list_pages_by_contact(
-#'   ContactId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact/akuam"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1285,15 +1623,6 @@ ssmcontacts_list_pages_by_contact <- function(ContactId, NextToken = NULL, MaxRe
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following list-pages-by-engagement example lists the pages that
-#' # occurred while engaging the defined engagement plan.
-#' svc$list_pages_by_engagement(
-#'   EngagementId = "arn:aws:ssm-contacts:us-east-2:111122223333:engagement/ak..."
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_list_pages_by_engagement
@@ -1315,6 +1644,442 @@ ssmcontacts_list_pages_by_engagement <- function(EngagementId, NextToken = NULL,
   return(response)
 }
 .ssmcontacts$operations$list_pages_by_engagement <- ssmcontacts_list_pages_by_engagement
+
+#' Returns a list of shifts based on rotation configuration parameters
+#'
+#' @description
+#' Returns a list of shifts based on rotation configuration parameters.
+#' 
+#' The Incident Manager primarily uses this operation to populate the
+#' **Preview** calendar. It is not typically run by end users.
+#'
+#' @usage
+#' ssmcontacts_list_preview_rotation_shifts(RotationStartTime, StartTime,
+#'   EndTime, Members, TimeZoneId, Recurrence, Overrides, NextToken,
+#'   MaxResults)
+#'
+#' @param RotationStartTime The date and time a rotation would begin. The first shift is calculated
+#' from this date and time.
+#' @param StartTime Used to filter the range of calculated shifts before sending the
+#' response back to the user.
+#' @param EndTime &#91;required&#93; The date and time a rotation shift would end.
+#' @param Members &#91;required&#93; The contacts that would be assigned to a rotation.
+#' @param TimeZoneId &#91;required&#93; The time zone the rotation’s activity would be based on, in Internet
+#' Assigned Numbers Authority (IANA) format. For example:
+#' "America/Los_Angeles", "UTC", or "Asia/Seoul".
+#' @param Recurrence &#91;required&#93; Information about how long a rotation would last before restarting at
+#' the beginning of the shift order.
+#' @param Overrides Information about changes that would be made in a rotation override.
+#' @param NextToken A token to start the list. This token is used to get the next set of
+#' results.
+#' @param MaxResults The maximum number of items to return for this call. The call also
+#' returns a token that can be specified in a subsequent call to get the
+#' next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RotationShifts = list(
+#'     list(
+#'       ContactIds = list(
+#'         "string"
+#'       ),
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Type = "REGULAR"|"OVERRIDDEN",
+#'       ShiftDetails = list(
+#'         OverriddenContactIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_preview_rotation_shifts(
+#'   RotationStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Members = list(
+#'     "string"
+#'   ),
+#'   TimeZoneId = "string",
+#'   Recurrence = list(
+#'     MonthlySettings = list(
+#'       list(
+#'         DayOfMonth = 123,
+#'         HandOffTime = list(
+#'           HourOfDay = 123,
+#'           MinuteOfHour = 123
+#'         )
+#'       )
+#'     ),
+#'     WeeklySettings = list(
+#'       list(
+#'         DayOfWeek = "MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT"|"SUN",
+#'         HandOffTime = list(
+#'           HourOfDay = 123,
+#'           MinuteOfHour = 123
+#'         )
+#'       )
+#'     ),
+#'     DailySettings = list(
+#'       list(
+#'         HourOfDay = 123,
+#'         MinuteOfHour = 123
+#'       )
+#'     ),
+#'     NumberOfOnCalls = 123,
+#'     ShiftCoverages = list(
+#'       list(
+#'         list(
+#'           Start = list(
+#'             HourOfDay = 123,
+#'             MinuteOfHour = 123
+#'           ),
+#'           End = list(
+#'             HourOfDay = 123,
+#'             MinuteOfHour = 123
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     RecurrenceMultiplier = 123
+#'   ),
+#'   Overrides = list(
+#'     list(
+#'       NewMembers = list(
+#'         "string"
+#'       ),
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_list_preview_rotation_shifts
+#'
+#' @aliases ssmcontacts_list_preview_rotation_shifts
+ssmcontacts_list_preview_rotation_shifts <- function(RotationStartTime = NULL, StartTime = NULL, EndTime, Members, TimeZoneId, Recurrence, Overrides = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListPreviewRotationShifts",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$list_preview_rotation_shifts_input(RotationStartTime = RotationStartTime, StartTime = StartTime, EndTime = EndTime, Members = Members, TimeZoneId = TimeZoneId, Recurrence = Recurrence, Overrides = Overrides, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .ssmcontacts$list_preview_rotation_shifts_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$list_preview_rotation_shifts <- ssmcontacts_list_preview_rotation_shifts
+
+#' Retrieves a list of overrides currently specified for an on-call
+#' rotation
+#'
+#' @description
+#' Retrieves a list of overrides currently specified for an on-call
+#' rotation.
+#'
+#' @usage
+#' ssmcontacts_list_rotation_overrides(RotationId, StartTime, EndTime,
+#'   NextToken, MaxResults)
+#'
+#' @param RotationId &#91;required&#93; The Amazon Resource Name (ARN) of the rotation to retrieve information
+#' about.
+#' @param StartTime &#91;required&#93; The date and time for the beginning of a time range for listing
+#' overrides.
+#' @param EndTime &#91;required&#93; The date and time for the end of a time range for listing overrides.
+#' @param NextToken A token to start the list. Use this token to get the next set of
+#' results.
+#' @param MaxResults The maximum number of items to return for this call. The call also
+#' returns a token that you can specify in a subsequent call to get the
+#' next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RotationOverrides = list(
+#'     list(
+#'       RotationOverrideId = "string",
+#'       NewContactIds = list(
+#'         "string"
+#'       ),
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_rotation_overrides(
+#'   RotationId = "string",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_list_rotation_overrides
+#'
+#' @aliases ssmcontacts_list_rotation_overrides
+ssmcontacts_list_rotation_overrides <- function(RotationId, StartTime, EndTime, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListRotationOverrides",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$list_rotation_overrides_input(RotationId = RotationId, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .ssmcontacts$list_rotation_overrides_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$list_rotation_overrides <- ssmcontacts_list_rotation_overrides
+
+#' Returns a list of shifts generated by an existing rotation in the system
+#'
+#' @description
+#' Returns a list of shifts generated by an existing rotation in the
+#' system.
+#'
+#' @usage
+#' ssmcontacts_list_rotation_shifts(RotationId, StartTime, EndTime,
+#'   NextToken, MaxResults)
+#'
+#' @param RotationId &#91;required&#93; The Amazon Resource Name (ARN) of the rotation to retrieve shift
+#' information about.
+#' @param StartTime The date and time for the beginning of the time range to list shifts
+#' for.
+#' @param EndTime &#91;required&#93; The date and time for the end of the time range to list shifts for.
+#' @param NextToken A token to start the list. Use this token to get the next set of
+#' results.
+#' @param MaxResults The maximum number of items to return for this call. The call also
+#' returns a token that you can specify in a subsequent call to get the
+#' next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RotationShifts = list(
+#'     list(
+#'       ContactIds = list(
+#'         "string"
+#'       ),
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Type = "REGULAR"|"OVERRIDDEN",
+#'       ShiftDetails = list(
+#'         OverriddenContactIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_rotation_shifts(
+#'   RotationId = "string",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_list_rotation_shifts
+#'
+#' @aliases ssmcontacts_list_rotation_shifts
+ssmcontacts_list_rotation_shifts <- function(RotationId, StartTime = NULL, EndTime, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListRotationShifts",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$list_rotation_shifts_input(RotationId = RotationId, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .ssmcontacts$list_rotation_shifts_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$list_rotation_shifts <- ssmcontacts_list_rotation_shifts
+
+#' Retrieves a list of on-call rotations
+#'
+#' @description
+#' Retrieves a list of on-call rotations.
+#'
+#' @usage
+#' ssmcontacts_list_rotations(RotationNamePrefix, NextToken, MaxResults)
+#'
+#' @param RotationNamePrefix A filter to include rotations in list results based on their common
+#' prefix. For example, entering prod returns a list of all rotation names
+#' that begin with `prod`, such as `production` and `prod-1`.
+#' @param NextToken A token to start the list. Use this token to get the next set of
+#' results.
+#' @param MaxResults The maximum number of items to return for this call. The call also
+#' returns a token that you can specify in a subsequent call to get the
+#' next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Rotations = list(
+#'     list(
+#'       RotationArn = "string",
+#'       Name = "string",
+#'       ContactIds = list(
+#'         "string"
+#'       ),
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TimeZoneId = "string",
+#'       Recurrence = list(
+#'         MonthlySettings = list(
+#'           list(
+#'             DayOfMonth = 123,
+#'             HandOffTime = list(
+#'               HourOfDay = 123,
+#'               MinuteOfHour = 123
+#'             )
+#'           )
+#'         ),
+#'         WeeklySettings = list(
+#'           list(
+#'             DayOfWeek = "MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT"|"SUN",
+#'             HandOffTime = list(
+#'               HourOfDay = 123,
+#'               MinuteOfHour = 123
+#'             )
+#'           )
+#'         ),
+#'         DailySettings = list(
+#'           list(
+#'             HourOfDay = 123,
+#'             MinuteOfHour = 123
+#'           )
+#'         ),
+#'         NumberOfOnCalls = 123,
+#'         ShiftCoverages = list(
+#'           list(
+#'             list(
+#'               Start = list(
+#'                 HourOfDay = 123,
+#'                 MinuteOfHour = 123
+#'               ),
+#'               End = list(
+#'                 HourOfDay = 123,
+#'                 MinuteOfHour = 123
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         RecurrenceMultiplier = 123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_rotations(
+#'   RotationNamePrefix = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_list_rotations
+#'
+#' @aliases ssmcontacts_list_rotations
+ssmcontacts_list_rotations <- function(RotationNamePrefix = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListRotations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$list_rotations_input(RotationNamePrefix = RotationNamePrefix, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .ssmcontacts$list_rotations_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$list_rotations <- ssmcontacts_list_rotations
 
 #' Lists the tags of an escalation plan or contact
 #'
@@ -1345,15 +2110,6 @@ ssmcontacts_list_pages_by_engagement <- function(EngagementId, NextToken = NULL,
 #'   ResourceARN = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following list-tags-for-resource example lists the tags of the
-#' # specified contact.
-#' svc$list_tags_for_resource(
-#'   ResourceARN = "arn:aws:ssm-contacts:us-east-1:111122223333:contact/akuam"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1403,17 +2159,6 @@ ssmcontacts_list_tags_for_resource <- function(ResourceARN) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following put-contact-policy example adds a resource policy to the
-#' # contact Akua that shares the contact and related engagements with the
-#' # principal.
-#' svc$put_contact_policy(
-#'   ContactArn = "arn:aws:ssm-contacts:us-east-1:111122223333:contact/akuam",
-#'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"ExampleResourcePol..."
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_put_contact_policy
@@ -1458,15 +2203,6 @@ ssmcontacts_put_contact_policy <- function(ContactArn, Policy) {
 #'   ContactChannelId = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following send-activation-code example sends an activation code and
-#' # message to the specified contact channel.
-#' svc$send_activation_code(
-#'   ContactChannelId = "arn:aws:ssm-contacts:us-east-1:111122223333:contact-c..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1536,35 +2272,6 @@ ssmcontacts_send_activation_code <- function(ContactChannelId) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following start-engagement pages contact's contact channels. Sender,
-#' # subject, public-subject, and public-content are all free from fields.
-#' # Incident Manager sends the subject and content to the provided VOICE or
-#' # EMAIL contact channels. Incident Manager sends the public-subject and
-#' # public-content to the provided SMS contact channels. Sender is used to
-#' # track who started the engagement.
-#' svc$start_engagement(
-#'   ContactId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact/akuam",
-#'   Content = "Testing engagements",
-#'   PublicContent = "Testing engagements",
-#'   PublicSubject = "test",
-#'   Sender = "tester",
-#'   Subject = "test"
-#' )
-#' 
-#' # The following start-engagement engages contact's through an escalation
-#' # plan. Each contact is paged according to their engagement plan.
-#' svc$start_engagement(
-#'   ContactId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact/example_escalation",
-#'   Content = "Testing engagements",
-#'   PublicContent = "Testing engagements",
-#'   PublicSubject = "test",
-#'   Sender = "tester",
-#'   Subject = "test"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_start_engagement
@@ -1610,15 +2317,6 @@ ssmcontacts_start_engagement <- function(ContactId, Sender, Subject, Content, Pu
 #'   Reason = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following stop-engagement example stops an engagement from paging
-#' # further contacts and contact channels.
-#' svc$stop_engagement(
-#'   EngagementId = "arn:aws:ssm-contacts:us-east-2:111122223333:engagement/ex..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1670,21 +2368,6 @@ ssmcontacts_stop_engagement <- function(EngagementId, Reason = NULL) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following tag-resource example tags a specified contact with the
-#' # provided tag key value pair.
-#' svc$tag_resource(
-#'   ResourceARN = "arn:aws:ssm-contacts:us-east-1:111122223333:contact/akuam",
-#'   Tags = list(
-#'     list(
-#'       Key = "group1",
-#'       Value = "1"
-#'     )
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_tag_resource
@@ -1730,18 +2413,6 @@ ssmcontacts_tag_resource <- function(ResourceARN, Tags) {
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following untag-resource example removes the group1 tag from the
-#' # specified contact.
-#' svc$untag_resource(
-#'   ResourceARN = "arn:aws:ssm-contacts:us-east-1:111122223333:contact/akuam",
-#'   TagKeys = list(
-#'     "group1"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1805,57 +2476,13 @@ ssmcontacts_untag_resource <- function(ResourceARN, TagKeys) {
 #'           )
 #'         )
 #'       )
+#'     ),
+#'     RotationIds = list(
+#'       "string"
 #'     )
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following update-contact example updates the engagement plan of the
-#' # contact Akua to include the three types of contacts channels. This is
-#' # done after creating contact channels for Akua.
-#' svc$update_contact(
-#'   ContactId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact/akuam",
-#'   Plan = list(
-#'     Stages = list(
-#'       list(
-#'         DurationInMinutes = 5L,
-#'         Targets = list(
-#'           list(
-#'             ChannelTargetInfo = list(
-#'               ContactChannelId = "arn:aws:ssm-contacts:us-east-2:1111222233...",
-#'               RetryIntervalInMinutes = 1L
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       list(
-#'         DurationInMinutes = 5L,
-#'         Targets = list(
-#'           list(
-#'             ChannelTargetInfo = list(
-#'               ContactChannelId = "arn:aws:ssm-contacts:us-east-2:1111222233...",
-#'               RetryIntervalInMinutes = 1L
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       list(
-#'         DurationInMinutes = 5L,
-#'         Targets = list(
-#'           list(
-#'             ChannelTargetInfo = list(
-#'               ContactChannelId = "arn:aws:ssm-contacts:us-east-2:1111222233...",
-#'               RetryIntervalInMinutes = 1L
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1908,19 +2535,6 @@ ssmcontacts_update_contact <- function(ContactId, DisplayName = NULL, Plan = NUL
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following update-contact-channel example updates the name and
-#' # delivery address of a contact channel.
-#' svc$update_contact_channel(
-#'   ContactChannelId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact-c...",
-#'   DeliveryAddress = list(
-#'     SimpleAddress = "+15005550198"
-#'   ),
-#'   Name = "akuas voice channel"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_update_contact_channel
@@ -1942,3 +2556,112 @@ ssmcontacts_update_contact_channel <- function(ContactChannelId, Name = NULL, De
   return(response)
 }
 .ssmcontacts$operations$update_contact_channel <- ssmcontacts_update_contact_channel
+
+#' Updates the information specified for an on-call rotation
+#'
+#' @description
+#' Updates the information specified for an on-call rotation.
+#'
+#' @usage
+#' ssmcontacts_update_rotation(RotationId, ContactIds, StartTime,
+#'   TimeZoneId, Recurrence)
+#'
+#' @param RotationId &#91;required&#93; The Amazon Resource Name (ARN) of the rotation to update.
+#' @param ContactIds The Amazon Resource Names (ARNs) of the contacts to include in the
+#' updated rotation.
+#' 
+#' The order in which you list the contacts is their shift order in the
+#' rotation schedule.
+#' @param StartTime The date and time the rotation goes into effect.
+#' @param TimeZoneId The time zone to base the updated rotation’s activity on, in Internet
+#' Assigned Numbers Authority (IANA) format. For example:
+#' "America/Los_Angeles", "UTC", or "Asia/Seoul". For more information, see
+#' the [Time Zone Database](https://www.iana.org/time-zones) on the IANA
+#' website.
+#' 
+#' Designators for time zones that don’t support Daylight Savings Time
+#' Rules, such as Pacific Standard Time (PST) and Pacific Daylight Time
+#' (PDT), aren't supported.
+#' @param Recurrence &#91;required&#93; Information about how long the updated rotation lasts before restarting
+#' at the beginning of the shift order.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_rotation(
+#'   RotationId = "string",
+#'   ContactIds = list(
+#'     "string"
+#'   ),
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   TimeZoneId = "string",
+#'   Recurrence = list(
+#'     MonthlySettings = list(
+#'       list(
+#'         DayOfMonth = 123,
+#'         HandOffTime = list(
+#'           HourOfDay = 123,
+#'           MinuteOfHour = 123
+#'         )
+#'       )
+#'     ),
+#'     WeeklySettings = list(
+#'       list(
+#'         DayOfWeek = "MON"|"TUE"|"WED"|"THU"|"FRI"|"SAT"|"SUN",
+#'         HandOffTime = list(
+#'           HourOfDay = 123,
+#'           MinuteOfHour = 123
+#'         )
+#'       )
+#'     ),
+#'     DailySettings = list(
+#'       list(
+#'         HourOfDay = 123,
+#'         MinuteOfHour = 123
+#'       )
+#'     ),
+#'     NumberOfOnCalls = 123,
+#'     ShiftCoverages = list(
+#'       list(
+#'         list(
+#'           Start = list(
+#'             HourOfDay = 123,
+#'             MinuteOfHour = 123
+#'           ),
+#'           End = list(
+#'             HourOfDay = 123,
+#'             MinuteOfHour = 123
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     RecurrenceMultiplier = 123
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssmcontacts_update_rotation
+#'
+#' @aliases ssmcontacts_update_rotation
+ssmcontacts_update_rotation <- function(RotationId, ContactIds = NULL, StartTime = NULL, TimeZoneId = NULL, Recurrence) {
+  op <- new_operation(
+    name = "UpdateRotation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssmcontacts$update_rotation_input(RotationId = RotationId, ContactIds = ContactIds, StartTime = StartTime, TimeZoneId = TimeZoneId, Recurrence = Recurrence)
+  output <- .ssmcontacts$update_rotation_output()
+  config <- get_config()
+  svc <- .ssmcontacts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmcontacts$operations$update_rotation <- ssmcontacts_update_rotation

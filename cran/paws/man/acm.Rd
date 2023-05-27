@@ -28,11 +28,11 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon Web Services Certificate Manager
+Certificate Manager
 
-You can use Amazon Web Services Certificate Manager (ACM) to manage
-SSL/TLS certificates for your Amazon Web Services-based websites and
-applications. For more information about using ACM, see the \href{https://docs.aws.amazon.com/acm/latest/userguide/}{Amazon Web Services Certificate Manager User Guide}.
+You can use Certificate Manager (ACM) to manage SSL/TLS certificates for
+your Amazon Web Services-based websites and applications. For more
+information about using ACM, see the \href{https://docs.aws.amazon.com/acm/latest/userguide/}{Certificate Manager User Guide}.
 }
 \section{Service syntax}{
 
@@ -67,7 +67,7 @@ applications. For more information about using ACM, see the \href{https://docs.a
 \link[paws.security.identity:acm_export_certificate]{export_certificate} \tab Exports a private certificate issued by a private certificate authority (CA) for use anywhere\cr
 \link[paws.security.identity:acm_get_account_configuration]{get_account_configuration} \tab Returns the account configuration options associated with an Amazon Web Services account\cr
 \link[paws.security.identity:acm_get_certificate]{get_certificate} \tab Retrieves an Amazon-issued certificate and its certificate chain\cr
-\link[paws.security.identity:acm_import_certificate]{import_certificate} \tab Imports a certificate into Amazon Web Services Certificate Manager (ACM) to use with services that are integrated with ACM\cr
+\link[paws.security.identity:acm_import_certificate]{import_certificate} \tab Imports a certificate into Certificate Manager (ACM) to use with services that are integrated with ACM\cr
 \link[paws.security.identity:acm_list_certificates]{list_certificates} \tab Retrieves a list of certificate ARNs and domain names\cr
 \link[paws.security.identity:acm_list_tags_for_certificate]{list_tags_for_certificate} \tab Lists the tags that have been applied to the ACM certificate\cr
 \link[paws.security.identity:acm_put_account_configuration]{put_account_configuration} \tab Adds or modifies account-level configurations in ACM\cr

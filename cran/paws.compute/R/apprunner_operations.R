@@ -282,6 +282,44 @@ apprunner_create_vpc_connector <- function(VpcConnectorName, Subnets, SecurityGr
 }
 .apprunner$operations$create_vpc_connector <- apprunner_create_vpc_connector
 
+#' Create an App Runner VPC Ingress Connection resource
+#'
+#' @description
+#' Create an App Runner VPC Ingress Connection resource. App Runner requires this resource when you want to associate your App Runner service with an Amazon VPC endpoint.
+#'
+#' See [https://paws-r.github.io/docs/apprunner/create_vpc_ingress_connection.html](https://paws-r.github.io/docs/apprunner/create_vpc_ingress_connection.html) for full documentation.
+#'
+#' @param ServiceArn &#91;required&#93; The Amazon Resource Name (ARN) for this App Runner service that is used
+#' to create the VPC Ingress Connection resource.
+#' @param VpcIngressConnectionName &#91;required&#93; A name for the VPC Ingress Connection resource. It must be unique across
+#' all the active VPC Ingress Connections in your Amazon Web Services
+#' account in the Amazon Web Services Region.
+#' @param IngressVpcConfiguration &#91;required&#93; Specifications for the customer’s Amazon VPC and the related Amazon Web
+#' Services PrivateLink VPC endpoint that are used to create the VPC
+#' Ingress Connection resource.
+#' @param Tags An optional list of metadata items that you can associate with the VPC
+#' Ingress Connection resource. A tag is a key-value pair.
+#'
+#' @keywords internal
+#'
+#' @rdname apprunner_create_vpc_ingress_connection
+apprunner_create_vpc_ingress_connection <- function(ServiceArn, VpcIngressConnectionName, IngressVpcConfiguration, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateVpcIngressConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .apprunner$create_vpc_ingress_connection_input(ServiceArn = ServiceArn, VpcIngressConnectionName = VpcIngressConnectionName, IngressVpcConfiguration = IngressVpcConfiguration, Tags = Tags)
+  output <- .apprunner$create_vpc_ingress_connection_output()
+  config <- get_config()
+  svc <- .apprunner$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apprunner$operations$create_vpc_ingress_connection <- apprunner_create_vpc_ingress_connection
+
 #' Delete an App Runner automatic scaling configuration resource
 #'
 #' @description
@@ -441,6 +479,37 @@ apprunner_delete_vpc_connector <- function(VpcConnectorArn) {
   return(response)
 }
 .apprunner$operations$delete_vpc_connector <- apprunner_delete_vpc_connector
+
+#' Delete an App Runner VPC Ingress Connection resource that's associated
+#' with an App Runner service
+#'
+#' @description
+#' Delete an App Runner VPC Ingress Connection resource that's associated with an App Runner service. The VPC Ingress Connection must be in one of the following states to be deleted:
+#'
+#' See [https://paws-r.github.io/docs/apprunner/delete_vpc_ingress_connection.html](https://paws-r.github.io/docs/apprunner/delete_vpc_ingress_connection.html) for full documentation.
+#'
+#' @param VpcIngressConnectionArn &#91;required&#93; The Amazon Resource Name (ARN) of the App Runner VPC Ingress Connection
+#' that you want to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname apprunner_delete_vpc_ingress_connection
+apprunner_delete_vpc_ingress_connection <- function(VpcIngressConnectionArn) {
+  op <- new_operation(
+    name = "DeleteVpcIngressConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .apprunner$delete_vpc_ingress_connection_input(VpcIngressConnectionArn = VpcIngressConnectionArn)
+  output <- .apprunner$delete_vpc_ingress_connection_output()
+  config <- get_config()
+  svc <- .apprunner$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apprunner$operations$delete_vpc_ingress_connection <- apprunner_delete_vpc_ingress_connection
 
 #' Return a full description of an App Runner automatic scaling
 #' configuration resource
@@ -615,6 +684,37 @@ apprunner_describe_vpc_connector <- function(VpcConnectorArn) {
   return(response)
 }
 .apprunner$operations$describe_vpc_connector <- apprunner_describe_vpc_connector
+
+#' Return a full description of an App Runner VPC Ingress Connection
+#' resource
+#'
+#' @description
+#' Return a full description of an App Runner VPC Ingress Connection resource.
+#'
+#' See [https://paws-r.github.io/docs/apprunner/describe_vpc_ingress_connection.html](https://paws-r.github.io/docs/apprunner/describe_vpc_ingress_connection.html) for full documentation.
+#'
+#' @param VpcIngressConnectionArn &#91;required&#93; The Amazon Resource Name (ARN) of the App Runner VPC Ingress Connection
+#' that you want a description for.
+#'
+#' @keywords internal
+#'
+#' @rdname apprunner_describe_vpc_ingress_connection
+apprunner_describe_vpc_ingress_connection <- function(VpcIngressConnectionArn) {
+  op <- new_operation(
+    name = "DescribeVpcIngressConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .apprunner$describe_vpc_ingress_connection_input(VpcIngressConnectionArn = VpcIngressConnectionArn)
+  output <- .apprunner$describe_vpc_ingress_connection_output()
+  config <- get_config()
+  svc <- .apprunner$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apprunner$operations$describe_vpc_ingress_connection <- apprunner_describe_vpc_ingress_connection
 
 #' Disassociate a custom domain name from an App Runner service
 #'
@@ -945,6 +1045,48 @@ apprunner_list_vpc_connectors <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .apprunner$operations$list_vpc_connectors <- apprunner_list_vpc_connectors
 
+#' Return a list of App Runner VPC Ingress Connections in your Amazon Web
+#' Services account
+#'
+#' @description
+#' Return a list of App Runner VPC Ingress Connections in your Amazon Web Services account.
+#'
+#' See [https://paws-r.github.io/docs/apprunner/list_vpc_ingress_connections.html](https://paws-r.github.io/docs/apprunner/list_vpc_ingress_connections.html) for full documentation.
+#'
+#' @param Filter The VPC Ingress Connections to be listed based on either the Service Arn
+#' or Vpc Endpoint Id, or both.
+#' @param MaxResults The maximum number of results to include in each response (result page).
+#' It's used for a paginated request.
+#' 
+#' If you don't specify `MaxResults`, the request retrieves all available
+#' results in a single response.
+#' @param NextToken A token from a previous result page. It's used for a paginated request.
+#' The request retrieves the next result page. All other parameter values
+#' must be identical to the ones that are specified in the initial request.
+#' 
+#' If you don't specify `NextToken`, the request retrieves the first result
+#' page.
+#'
+#' @keywords internal
+#'
+#' @rdname apprunner_list_vpc_ingress_connections
+apprunner_list_vpc_ingress_connections <- function(Filter = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListVpcIngressConnections",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .apprunner$list_vpc_ingress_connections_input(Filter = Filter, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .apprunner$list_vpc_ingress_connections_output()
+  config <- get_config()
+  svc <- .apprunner$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apprunner$operations$list_vpc_ingress_connections <- apprunner_list_vpc_ingress_connections
+
 #' Pause an active App Runner service
 #'
 #' @description
@@ -1154,3 +1296,36 @@ apprunner_update_service <- function(ServiceArn, SourceConfiguration = NULL, Ins
   return(response)
 }
 .apprunner$operations$update_service <- apprunner_update_service
+
+#' Update an existing App Runner VPC Ingress Connection resource
+#'
+#' @description
+#' Update an existing App Runner VPC Ingress Connection resource. The VPC Ingress Connection must be in one of the following states to be updated:
+#'
+#' See [https://paws-r.github.io/docs/apprunner/update_vpc_ingress_connection.html](https://paws-r.github.io/docs/apprunner/update_vpc_ingress_connection.html) for full documentation.
+#'
+#' @param VpcIngressConnectionArn &#91;required&#93; The Amazon Resource Name (Arn) for the App Runner VPC Ingress Connection
+#' resource that you want to update.
+#' @param IngressVpcConfiguration &#91;required&#93; Specifications for the customer’s Amazon VPC and the related Amazon Web
+#' Services PrivateLink VPC endpoint that are used to update the VPC
+#' Ingress Connection resource.
+#'
+#' @keywords internal
+#'
+#' @rdname apprunner_update_vpc_ingress_connection
+apprunner_update_vpc_ingress_connection <- function(VpcIngressConnectionArn, IngressVpcConfiguration) {
+  op <- new_operation(
+    name = "UpdateVpcIngressConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .apprunner$update_vpc_ingress_connection_input(VpcIngressConnectionArn = VpcIngressConnectionArn, IngressVpcConfiguration = IngressVpcConfiguration)
+  output <- .apprunner$update_vpc_ingress_connection_output()
+  config <- get_config()
+  svc <- .apprunner$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apprunner$operations$update_vpc_ingress_connection <- apprunner_update_vpc_ingress_connection

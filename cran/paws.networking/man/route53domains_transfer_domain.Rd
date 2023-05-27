@@ -49,7 +49,7 @@ Default: 1}
 current registrar.}
 
 \item{AutoRenew}{Indicates whether the domain will be automatically renewed (true) or not
-(false). Autorenewal only takes effect after the account is charged.
+(false). Auto renewal only takes effect after the account is charged.
 
 Default: true}
 

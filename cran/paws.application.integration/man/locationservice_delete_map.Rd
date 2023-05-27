@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_delete_map}
 \alias{locationservice_delete_map}
-\title{Deletes a map resource from your AWS account}
+\title{Deletes a map resource from your Amazon Web Services account}
 \usage{
 locationservice_delete_map(MapName)
 }
@@ -10,7 +10,7 @@ locationservice_delete_map(MapName)
 \item{MapName}{[required] The name of the map resource to be deleted.}
 }
 \description{
-Deletes a map resource from your AWS account.
+Deletes a map resource from your Amazon Web Services account.
 
 See \url{https://paws-r.github.io/docs/locationservice/delete_map.html} for full documentation.
 }

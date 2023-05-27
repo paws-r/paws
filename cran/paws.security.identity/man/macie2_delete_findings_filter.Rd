@@ -7,8 +7,8 @@
 macie2_delete_findings_filter(id)
 }
 \arguments{
-\item{id}{[required] The unique identifier for the Amazon Macie resource or account that the
-request applies to.}
+\item{id}{[required] The unique identifier for the Amazon Macie resource that the request
+applies to.}
 }
 \description{
 Deletes a findings filter.

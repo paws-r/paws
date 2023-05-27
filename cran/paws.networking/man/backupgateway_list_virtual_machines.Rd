@@ -4,9 +4,16 @@
 \alias{backupgateway_list_virtual_machines}
 \title{Lists your virtual machines}
 \usage{
-backupgateway_list_virtual_machines(MaxResults = NULL, NextToken = NULL)
+backupgateway_list_virtual_machines(
+  HypervisorArn = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
+\item{HypervisorArn}{The Amazon Resource Name (ARN) of the hypervisor connected to your
+virtual machine.}
+
 \item{MaxResults}{The maximum number of virtual machines to list.}
 
 \item{NextToken}{The next item following a partial list of returned resources. For

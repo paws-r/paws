@@ -9,7 +9,7 @@ resourcegroups_group_resources(Group, ResourceArns)
 \arguments{
 \item{Group}{[required] The name or the ARN of the resource group to add resources to.}
 
-\item{ResourceArns}{[required] The list of ARNs for resources to be added to the group.}
+\item{ResourceArns}{[required] The list of ARNs of the resources to be added to the group.}
 }
 \description{
 Adds the specified resources to the specified group.

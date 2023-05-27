@@ -8,7 +8,7 @@ ssooidc_create_token(
   clientId,
   clientSecret,
   grantType,
-  deviceCode,
+  deviceCode = NULL,
   code = NULL,
   refreshToken = NULL,
   scope = NULL,
@@ -34,7 +34,7 @@ For information about how to obtain the device code, see the
 \code{\link[=ssooidc_start_device_authorization]{start_device_authorization}}
 topic.}
 
-\item{deviceCode}{[required] Used only when calling this API for the device code grant type. This
+\item{deviceCode}{Used only when calling this API for the device code grant type. This
 short-term code is used to identify this authentication attempt. This
 should come from an in-memory reference to the result of the
 \code{\link[=ssooidc_start_device_authorization]{start_device_authorization}} API.}
@@ -45,8 +45,8 @@ access to a token.}
 
 \item{refreshToken}{Currently, \code{refreshToken} is not yet implemented and is not supported.
 For more information about the features and limitations of the current
-Amazon Web Services SSO OIDC implementation, see \emph{Considerations for
-Using this Guide} in the \href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html}{Amazon Web Services SSO OIDC API Reference}.
+IAM Identity Center OIDC implementation, see \emph{Considerations for Using
+this Guide} in the \href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html}{IAM Identity Center OIDC API Reference}.
 
 The token used to obtain an access token in the event that the access
 token is invalid or expired.}
@@ -58,7 +58,7 @@ this list is used to restrict permissions when granting an access token.}
 code. Users authorize the service to send the request to this location.}
 }
 \description{
-Creates and returns an access token for the authorized client. The access token issued will be used to fetch short-term credentials for the assigned roles in the Amazon Web Services account.
+Creates and returns an access token for the authorized client. The access token issued will be used to fetch short-term credentials for the assigned roles in the AWS account.
 
 See \url{https://paws-r.github.io/docs/ssooidc/create_token.html} for full documentation.
 }

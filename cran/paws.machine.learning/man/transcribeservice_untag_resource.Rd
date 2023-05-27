@@ -12,7 +12,7 @@ want to remove tags from. ARNs have the format
 \code{arn:partition:service:region:account-id:resource-type/resource-id}.
 
 For example,
-\code{arn:aws:transcribe:us-west-2:account-id:transcription-job/transcription-job-name}.
+\code{arn:aws:transcribe:us-west-2:111122223333:transcription-job/transcription-job-name}.
 
 Valid values for \code{resource-type} are: \code{transcription-job},
 \code{medical-transcription-job}, \code{vocabulary}, \code{medical-vocabulary},

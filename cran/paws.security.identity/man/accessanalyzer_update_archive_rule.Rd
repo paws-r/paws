@@ -6,20 +6,20 @@
 \usage{
 accessanalyzer_update_archive_rule(
   analyzerName,
-  clientToken = NULL,
+  ruleName,
   filter,
-  ruleName
+  clientToken = NULL
 )
 }
 \arguments{
 \item{analyzerName}{[required] The name of the analyzer to update the archive rules for.}
 
-\item{clientToken}{A client token.}
+\item{ruleName}{[required] The name of the rule to update.}
 
 \item{filter}{[required] A filter to match for the rules to update. Only rules that match the
 filter are updated.}
 
-\item{ruleName}{[required] The name of the rule to update.}
+\item{clientToken}{A client token.}
 }
 \description{
 Updates the criteria and values for the specified archive rule.

@@ -9,7 +9,7 @@ ivs_list_stream_keys(channelArn, maxResults = NULL, nextToken = NULL)
 \arguments{
 \item{channelArn}{[required] Channel ARN used to filter the list.}
 
-\item{maxResults}{Maximum number of streamKeys to return. Default: 50.}
+\item{maxResults}{Maximum number of streamKeys to return. Default: 1.}
 
 \item{nextToken}{The first stream key to retrieve. This is used for pagination; see the
 \code{nextToken} response field.}

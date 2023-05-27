@@ -78,6 +78,7 @@ For example, \verb{emr-serverless.us-east-2.amazonaws.com}.
 \link[paws.compute:emrserverless_create_application]{create_application} \tab Creates an application\cr
 \link[paws.compute:emrserverless_delete_application]{delete_application} \tab Deletes an application\cr
 \link[paws.compute:emrserverless_get_application]{get_application} \tab Displays detailed information about a specified application\cr
+\link[paws.compute:emrserverless_get_dashboard_for_job_run]{get_dashboard_for_job_run} \tab Returns a URL to access the job run dashboard\cr
 \link[paws.compute:emrserverless_get_job_run]{get_job_run} \tab Displays detailed information about a job run\cr
 \link[paws.compute:emrserverless_list_applications]{list_applications} \tab Lists applications based on a set of parameters\cr
 \link[paws.compute:emrserverless_list_job_runs]{list_job_runs} \tab Lists job runs based on a set of parameters\cr

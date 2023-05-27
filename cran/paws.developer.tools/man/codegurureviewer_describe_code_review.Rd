@@ -9,7 +9,7 @@ codegurureviewer_describe_code_review(CodeReviewArn)
 }
 \arguments{
 \item{CodeReviewArn}{[required] The Amazon Resource Name (ARN) of the
-\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReview.html}{\code{CodeReview}}
+\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReview.html}{CodeReview}
 object.}
 }
 \description{

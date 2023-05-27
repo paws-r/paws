@@ -35,10 +35,10 @@ For valid values, query the
 \code{\link[=ram_list_resource_types]{list_resource_types}} operation.}
 
 \item{resourceArns}{Specifies that you want to list only the resource shares that include
-resources with the specified \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}.}
+resources with the specified \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}.}
 
 \item{resourceShareArns}{Specifies that you want to list only resources in the resource shares
-identified by the specified \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}.}
+identified by the specified \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}.}
 
 \item{nextToken}{Specifies that you want to receive the next page of results. Valid only
 if you received a \code{NextToken} response in the previous request. If you

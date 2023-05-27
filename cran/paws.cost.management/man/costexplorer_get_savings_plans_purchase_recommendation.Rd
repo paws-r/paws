@@ -2,8 +2,7 @@
 % Please edit documentation in R/costexplorer_operations.R
 \name{costexplorer_get_savings_plans_purchase_recommendation}
 \alias{costexplorer_get_savings_plans_purchase_recommendation}
-\title{Retrieves your request parameters, Savings Plan Recommendations Summary
-and Details}
+\title{Retrieves the Savings Plans recommendations for your account}
 \usage{
 costexplorer_get_savings_plans_purchase_recommendation(
   SavingsPlansType,
@@ -53,7 +52,7 @@ Savings Plans Purchase Recommendations for. \code{AND} and \code{OR} operators a
 not supported.}
 }
 \description{
-Retrieves your request parameters, Savings Plan Recommendations Summary and Details.
+Retrieves the Savings Plans recommendations for your account. First use \code{\link[=costexplorer_start_savings_plans_purchase_recommendation_generation]{start_savings_plans_purchase_recommendation_generation}} to generate a new set of recommendations, and then use \code{\link[=costexplorer_get_savings_plans_purchase_recommendation]{get_savings_plans_purchase_recommendation}} to retrieve them.
 
 See \url{https://paws-r.github.io/docs/costexplorer/get_savings_plans_purchase_recommendation.html} for full documentation.
 }

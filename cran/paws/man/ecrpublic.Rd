@@ -28,14 +28,14 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon Elastic Container Registry (Amazon ECR) is a managed container
-image registry service. Amazon ECR provides both public and private
-registries to host your container images. You can use the familiar
-Docker CLI, or their preferred client, to push, pull, and manage images.
-Amazon ECR provides a secure, scalable, and reliable registry for your
-Docker or Open Container Initiative (OCI) images. Amazon ECR supports
-public repositories with this API. For information about the Amazon ECR
-API for private repositories, see \href{https://docs.aws.amazon.com/AmazonECR/latest/APIReference/Welcome.html}{Amazon Elastic Container Registry API Reference}.
+Amazon Elastic Container Registry Public (Amazon ECR Public) is a
+managed container image registry service. Amazon ECR provides both
+public and private registries to host your container images. You can use
+the Docker CLI or your preferred client to push, pull, and manage
+images. Amazon ECR provides a secure, scalable, and reliable registry
+for your Docker or Open Container Initiative (OCI) images. Amazon ECR
+supports public repositories with this API. For information about the
+Amazon ECR API for private repositories, see \href{https://docs.aws.amazon.com/AmazonECR/latest/APIReference/Welcome.html}{Amazon Elastic Container Registry API Reference}.
 }
 \section{Service syntax}{
 
@@ -64,24 +64,24 @@ API for private repositories, see \href{https://docs.aws.amazon.com/AmazonECR/la
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.compute:ecrpublic_batch_check_layer_availability]{batch_check_layer_availability} \tab Checks the availability of one or more image layers within a repository in a public registry\cr
-\link[paws.compute:ecrpublic_batch_delete_image]{batch_delete_image} \tab Deletes a list of specified images within a repository in a public registry\cr
-\link[paws.compute:ecrpublic_complete_layer_upload]{complete_layer_upload} \tab Informs Amazon ECR that the image layer upload has completed for a specified public registry, repository name, and upload ID\cr
+\link[paws.compute:ecrpublic_batch_check_layer_availability]{batch_check_layer_availability} \tab Checks the availability of one or more image layers that are within a repository in a public registry\cr
+\link[paws.compute:ecrpublic_batch_delete_image]{batch_delete_image} \tab Deletes a list of specified images that are within a repository in a public registry\cr
+\link[paws.compute:ecrpublic_complete_layer_upload]{complete_layer_upload} \tab Informs Amazon ECR that the image layer upload is complete for a specified public registry, repository name, and upload ID\cr
 \link[paws.compute:ecrpublic_create_repository]{create_repository} \tab Creates a repository in a public registry\cr
 \link[paws.compute:ecrpublic_delete_repository]{delete_repository} \tab Deletes a repository in a public registry\cr
-\link[paws.compute:ecrpublic_delete_repository_policy]{delete_repository_policy} \tab Deletes the repository policy associated with the specified repository\cr
-\link[paws.compute:ecrpublic_describe_images]{describe_images} \tab Returns metadata about the images in a repository in a public registry\cr
+\link[paws.compute:ecrpublic_delete_repository_policy]{delete_repository_policy} \tab Deletes the repository policy that's associated with the specified repository\cr
+\link[paws.compute:ecrpublic_describe_images]{describe_images} \tab Returns metadata that's related to the images in a repository in a public registry\cr
 \link[paws.compute:ecrpublic_describe_image_tags]{describe_image_tags} \tab Returns the image tag details for a repository in a public registry\cr
 \link[paws.compute:ecrpublic_describe_registries]{describe_registries} \tab Returns details for a public registry\cr
-\link[paws.compute:ecrpublic_describe_repositories]{describe_repositories} \tab Describes repositories in a public registry\cr
+\link[paws.compute:ecrpublic_describe_repositories]{describe_repositories} \tab Describes repositories that are in a public registry\cr
 \link[paws.compute:ecrpublic_get_authorization_token]{get_authorization_token} \tab Retrieves an authorization token\cr
 \link[paws.compute:ecrpublic_get_registry_catalog_data]{get_registry_catalog_data} \tab Retrieves catalog metadata for a public registry\cr
 \link[paws.compute:ecrpublic_get_repository_catalog_data]{get_repository_catalog_data} \tab Retrieve catalog metadata for a repository in a public registry\cr
 \link[paws.compute:ecrpublic_get_repository_policy]{get_repository_policy} \tab Retrieves the repository policy for the specified repository\cr
 \link[paws.compute:ecrpublic_initiate_layer_upload]{initiate_layer_upload} \tab Notifies Amazon ECR that you intend to upload an image layer\cr
 \link[paws.compute:ecrpublic_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for an Amazon ECR Public resource\cr
-\link[paws.compute:ecrpublic_put_image]{put_image} \tab Creates or updates the image manifest and tags associated with an image\cr
-\link[paws.compute:ecrpublic_put_registry_catalog_data]{put_registry_catalog_data} \tab Create or updates the catalog data for a public registry\cr
+\link[paws.compute:ecrpublic_put_image]{put_image} \tab Creates or updates the image manifest and tags that are associated with an image\cr
+\link[paws.compute:ecrpublic_put_registry_catalog_data]{put_registry_catalog_data} \tab Create or update the catalog data for a public registry\cr
 \link[paws.compute:ecrpublic_put_repository_catalog_data]{put_repository_catalog_data} \tab Creates or updates the catalog data for a repository in a public registry\cr
 \link[paws.compute:ecrpublic_set_repository_policy]{set_repository_policy} \tab Applies a repository policy to the specified public repository to control access permissions\cr
 \link[paws.compute:ecrpublic_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn\cr

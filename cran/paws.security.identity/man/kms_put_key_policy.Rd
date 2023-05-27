@@ -32,20 +32,18 @@ To get the key ID and key ARN for a KMS key, use
 
 The key policy must meet the following criteria:
 \itemize{
-\item If you don't set \code{BypassPolicyLockoutSafetyCheck} to true, the key
-policy must allow the principal that is making the
-\code{\link[=kms_put_key_policy]{put_key_policy}} request to make a subsequent
+\item The key policy must allow the calling principal to make a subsequent
 \code{\link[=kms_put_key_policy]{put_key_policy}} request on the KMS key. This
 reduces the risk that the KMS key becomes unmanageable. For more
-information, refer to the scenario in the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam}{Default Key Policy}
-section of the \emph{Key Management Service Developer Guide}.
+information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key}{Default key policy}
+in the \emph{Key Management Service Developer Guide}. (To omit this
+condition, set \code{BypassPolicyLockoutSafetyCheck} to true.)
 \item Each statement in the key policy must contain one or more
 principals. The principals in the key policy must exist and be
-visible to KMS. When you create a new Amazon Web Services principal
-(for example, an IAM user or role), you might need to enforce a
-delay before including the new principal in a key policy because the
-new principal might not be immediately visible to KMS. For more
-information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible}
+visible to KMS. When you create a new Amazon Web Services principal,
+you might need to enforce a delay before including the new principal
+in a key policy because the new principal might not be immediately
+visible to KMS. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible}
 in the \emph{Amazon Web Services Identity and Access Management User
 Guide}.
 }
@@ -61,24 +59,22 @@ character set (through \verb{U+00FF}).
 }
 
 For information about key policies, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html}{Key policies in KMS}
-in the \emph{Key Management Service Developer Guide}. For help writing and
+in the \emph{Key Management Service Developer Guide}.For help writing and
 formatting a JSON policy document, see the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html}{IAM JSON Policy Reference}
 in the \emph{Identity and Access Management User Guide} .}
 
-\item{BypassPolicyLockoutSafetyCheck}{A flag to indicate whether to bypass the key policy lockout safety
-check.
+\item{BypassPolicyLockoutSafetyCheck}{Skips ("bypasses") the key policy lockout safety check. The default
+value is false.
 
 Setting this value to true increases the risk that the KMS key becomes
 unmanageable. Do not set this value to true indiscriminately.
 
-For more information, refer to the scenario in the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam}{Default Key Policy}
-section in the \emph{Key Management Service Developer Guide}.
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key}{Default key policy}
+in the \emph{Key Management Service Developer Guide}.
 
 Use this parameter only when you intend to prevent the principal that is
 making the request from making a subsequent
-\code{\link[=kms_put_key_policy]{put_key_policy}} request on the KMS key.
-
-The default value is false.}
+\code{\link[=kms_put_key_policy]{put_key_policy}} request on the KMS key.}
 }
 \description{
 Attaches a key policy to the specified KMS key.

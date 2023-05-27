@@ -14,7 +14,8 @@ lexmodelsv2_update_slot_type(
   botId,
   botVersion,
   localeId,
-  externalSourceSetting = NULL
+  externalSourceSetting = NULL,
+  compositeSlotTypeSetting = NULL
 )
 }
 \arguments{
@@ -42,6 +43,8 @@ The string must match one of the supported locales. For more
 information, see \href{https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html}{Supported languages}.}
 
 \item{externalSourceSetting}{}
+
+\item{compositeSlotTypeSetting}{Specifications for a composite slot type.}
 }
 \description{
 Updates the configuration of an existing slot type.

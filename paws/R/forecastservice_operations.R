@@ -76,10 +76,28 @@ NULL
 #' store.
 #' @param ForecastFrequency The frequency of predictions in a forecast.
 #' 
-#' Valid intervals are Y (Year), M (Month), W (Week), D (Day), H (Hour),
-#' 30min (30 minutes), 15min (15 minutes), 10min (10 minutes), 5min (5
-#' minutes), and 1min (1 minute). For example, "Y" indicates every year and
-#' "5min" indicates every five minutes.
+#' Valid intervals are an integer followed by Y (Year), M (Month), W
+#' (Week), D (Day), H (Hour), and min (Minute). For example, "1D" indicates
+#' every day and "15min" indicates every 15 minutes. You cannot specify a
+#' value that would overlap with the next larger frequency. That means, for
+#' example, you cannot specify a frequency of 60 minutes, because that is
+#' equivalent to 1 hour. The valid values for each frequency are the
+#' following:
+#' 
+#' -   Minute - 1-59
+#' 
+#' -   Hour - 1-23
+#' 
+#' -   Day - 1-6
+#' 
+#' -   Week - 1-4
+#' 
+#' -   Month - 1-11
+#' 
+#' -   Year - 1
+#' 
+#' Thus, if you want every other week forecasts, specify "2W". Or, if you
+#' want quarterly forecasts, you specify "3M".
 #' 
 #' The frequency must be greater than or equal to the TARGET_TIME_SERIES
 #' dataset frequency.
@@ -284,17 +302,35 @@ forecastservice_create_auto_predictor <- function(PredictorName, ForecastHorizon
 #' @param DataFrequency The frequency of data collection. This parameter is required for
 #' RELATED_TIME_SERIES datasets.
 #' 
-#' Valid intervals are Y (Year), M (Month), W (Week), D (Day), H (Hour),
-#' 30min (30 minutes), 15min (15 minutes), 10min (10 minutes), 5min (5
-#' minutes), and 1min (1 minute). For example, "D" indicates every day and
-#' "15min" indicates every 15 minutes.
+#' Valid intervals are an integer followed by Y (Year), M (Month), W
+#' (Week), D (Day), H (Hour), and min (Minute). For example, "1D" indicates
+#' every day and "15min" indicates every 15 minutes. You cannot specify a
+#' value that would overlap with the next larger frequency. That means, for
+#' example, you cannot specify a frequency of 60 minutes, because that is
+#' equivalent to 1 hour. The valid values for each frequency are the
+#' following:
+#' 
+#' -   Minute - 1-59
+#' 
+#' -   Hour - 1-23
+#' 
+#' -   Day - 1-6
+#' 
+#' -   Week - 1-4
+#' 
+#' -   Month - 1-11
+#' 
+#' -   Year - 1
+#' 
+#' Thus, if you want every other week forecasts, specify "2W". Or, if you
+#' want quarterly forecasts, you specify "3M".
 #' @param Schema &#91;required&#93; The schema for the dataset. The schema attributes and their order must
 #' match the fields in your data. The dataset `Domain` and `DatasetType`
 #' that you choose determine the minimum required fields in your training
 #' data. For information about the required fields for a specific dataset
 #' domain and type, see [Dataset Domains and Dataset
 #' Types](https://docs.aws.amazon.com/forecast/latest/dg/howitworks-domains-ds-types.html).
-#' @param EncryptionConfig An AWS Key Management Service (KMS) key and the AWS Identity and Access
+#' @param EncryptionConfig An Key Management Service (KMS) key and the Identity and Access
 #' Management (IAM) role that Amazon Forecast can assume to access the key.
 #' @param Tags The optional metadata that you apply to the dataset to help you
 #' categorize and organize them. Each tag consists of a key and an optional
@@ -320,12 +356,12 @@ forecastservice_create_auto_predictor <- function(PredictorName, ForecastHorizon
 #' -   Tag keys and values are case sensitive.
 #' 
 #' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for keys as it is reserved for AWS use. You cannot
-#'     edit or delete tag keys with this prefix. Values can have this
-#'     prefix. If a tag value has `aws` as its prefix but the key does not,
-#'     then Forecast considers it to be a user tag and will count against
-#'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
-#'     count against your tags per resource limit.
+#'     such as a prefix for keys as it is reserved for Amazon Web Services
+#'     use. You cannot edit or delete tag keys with this prefix. Values can
+#'     have this prefix. If a tag value has `aws` as its prefix but the key
+#'     does not, then Forecast considers it to be a user tag and will count
+#'     against the limit of 50 tags. Tags with only the key prefix of `aws`
+#'     do not count against your tags per resource limit.
 #'
 #' @return
 #' A list with the following syntax:
@@ -449,12 +485,12 @@ forecastservice_create_dataset <- function(DatasetName, Domain, DatasetType, Dat
 #' -   Tag keys and values are case sensitive.
 #' 
 #' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for keys as it is reserved for AWS use. You cannot
-#'     edit or delete tag keys with this prefix. Values can have this
-#'     prefix. If a tag value has `aws` as its prefix but the key does not,
-#'     then Forecast considers it to be a user tag and will count against
-#'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
-#'     count against your tags per resource limit.
+#'     such as a prefix for keys as it is reserved for Amazon Web Services
+#'     use. You cannot edit or delete tag keys with this prefix. Values can
+#'     have this prefix. If a tag value has `aws` as its prefix but the key
+#'     does not, then Forecast considers it to be a user tag and will count
+#'     against the limit of 50 tags. Tags with only the key prefix of `aws`
+#'     do not count against your tags per resource limit.
 #'
 #' @return
 #' A list with the following syntax:
@@ -513,10 +549,10 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' 
 #' You must specify a
 #' [DataSource](https://docs.aws.amazon.com/forecast/latest/dg/API_DataSource.html)
-#' object that includes an AWS Identity and Access Management (IAM) role
-#' that Amazon Forecast can assume to access the data, as Amazon Forecast
-#' makes a copy of your data and processes it in an internal AWS system.
-#' For more information, see [Set up
+#' object that includes an Identity and Access Management (IAM) role that
+#' Amazon Forecast can assume to access the data, as Amazon Forecast makes
+#' a copy of your data and processes it in an internal Amazon Web Services
+#' system. For more information, see [Set up
 #' permissions](https://docs.aws.amazon.com/forecast/latest/dg/aws-forecast-iam-roles.html).
 #' 
 #' The training data must be in CSV or Parquet format. The delimiter must
@@ -540,18 +576,18 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' @usage
 #' forecastservice_create_dataset_import_job(DatasetImportJobName,
 #'   DatasetArn, DataSource, TimestampFormat, TimeZone,
-#'   UseGeolocationForTimeZone, GeolocationFormat, Tags, Format)
+#'   UseGeolocationForTimeZone, GeolocationFormat, Tags, Format, ImportMode)
 #'
 #' @param DatasetImportJobName &#91;required&#93; The name for the dataset import job. We recommend including the current
 #' timestamp in the name, for example, `20190721DatasetImport`. This can
 #' help you avoid getting a `ResourceAlreadyExistsException` exception.
 #' @param DatasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Forecast dataset that you
 #' want to import data to.
-#' @param DataSource &#91;required&#93; The location of the training data to import and an AWS Identity and
-#' Access Management (IAM) role that Amazon Forecast can assume to access
-#' the data. The training data must be stored in an Amazon S3 bucket.
+#' @param DataSource &#91;required&#93; The location of the training data to import and an Identity and Access
+#' Management (IAM) role that Amazon Forecast can assume to access the
+#' data. The training data must be stored in an Amazon S3 bucket.
 #' 
-#' If encryption is used, `DataSource` must include an AWS Key Management
+#' If encryption is used, `DataSource` must include an Key Management
 #' Service (KMS) key and the IAM role must allow Amazon Forecast permission
 #' to access the key. The KMS key and IAM role must match those specified
 #' in the `EncryptionConfig` parameter of the
@@ -613,14 +649,18 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' -   Tag keys and values are case sensitive.
 #' 
 #' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for keys as it is reserved for AWS use. You cannot
-#'     edit or delete tag keys with this prefix. Values can have this
-#'     prefix. If a tag value has `aws` as its prefix but the key does not,
-#'     then Forecast considers it to be a user tag and will count against
-#'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
-#'     count against your tags per resource limit.
+#'     such as a prefix for keys as it is reserved for Amazon Web Services
+#'     use. You cannot edit or delete tag keys with this prefix. Values can
+#'     have this prefix. If a tag value has `aws` as its prefix but the key
+#'     does not, then Forecast considers it to be a user tag and will count
+#'     against the limit of 50 tags. Tags with only the key prefix of `aws`
+#'     do not count against your tags per resource limit.
 #' @param Format The format of the imported data, CSV or PARQUET. The default value is
 #' CSV.
+#' @param ImportMode Specifies whether the dataset import job is a `FULL` or `INCREMENTAL`
+#' import. A `FULL` dataset import replaces all of the existing data with
+#' the newly imported data. An `INCREMENTAL` import appends the imported
+#' data to the existing data.
 #'
 #' @return
 #' A list with the following syntax:
@@ -652,7 +692,8 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #'       Value = "string"
 #'     )
 #'   ),
-#'   Format = "string"
+#'   Format = "string",
+#'   ImportMode = "FULL"|"INCREMENTAL"
 #' )
 #' ```
 #'
@@ -661,14 +702,14 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' @rdname forecastservice_create_dataset_import_job
 #'
 #' @aliases forecastservice_create_dataset_import_job
-forecastservice_create_dataset_import_job <- function(DatasetImportJobName, DatasetArn, DataSource, TimestampFormat = NULL, TimeZone = NULL, UseGeolocationForTimeZone = NULL, GeolocationFormat = NULL, Tags = NULL, Format = NULL) {
+forecastservice_create_dataset_import_job <- function(DatasetImportJobName, DatasetArn, DataSource, TimestampFormat = NULL, TimeZone = NULL, UseGeolocationForTimeZone = NULL, GeolocationFormat = NULL, Tags = NULL, Format = NULL, ImportMode = NULL) {
   op <- new_operation(
     name = "CreateDatasetImportJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .forecastservice$create_dataset_import_job_input(DatasetImportJobName = DatasetImportJobName, DatasetArn = DatasetArn, DataSource = DataSource, TimestampFormat = TimestampFormat, TimeZone = TimeZone, UseGeolocationForTimeZone = UseGeolocationForTimeZone, GeolocationFormat = GeolocationFormat, Tags = Tags, Format = Format)
+  input <- .forecastservice$create_dataset_import_job_input(DatasetImportJobName = DatasetImportJobName, DatasetArn = DatasetArn, DataSource = DataSource, TimestampFormat = TimestampFormat, TimeZone = TimeZone, UseGeolocationForTimeZone = UseGeolocationForTimeZone, GeolocationFormat = GeolocationFormat, Tags = Tags, Format = Format, ImportMode = ImportMode)
   output <- .forecastservice$create_dataset_import_job_output()
   config <- get_config()
   svc <- .forecastservice$service(config)
@@ -772,8 +813,8 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
 #' and time points for the Explainability.
 #' @param DataSource 
 #' @param Schema 
-#' @param EnableVisualization Create an Explainability visualization that is viewable within the AWS
-#' console.
+#' @param EnableVisualization Create an Explainability visualization that is viewable within the
+#' Amazon Web Services console.
 #' @param StartDateTime If `TimePointGranularity` is set to `SPECIFIC`, define the first point
 #' for the Explainability.
 #' 
@@ -887,7 +928,7 @@ forecastservice_create_explainability <- function(ExplainabilityName, ResourceAr
 #' Service (Amazon S3) bucket.
 #' 
 #' You must specify a DataDestination object that includes an Amazon S3
-#' bucket and an AWS Identity and Access Management (IAM) role that Amazon
+#' bucket and an Identity and Access Management (IAM) role that Amazon
 #' Forecast can assume to access the Amazon S3 bucket. For more
 #' information, see aws-forecast-iam-roles.
 #' 
@@ -1061,12 +1102,12 @@ forecastservice_create_explainability_export <- function(ExplainabilityExportNam
 #' -   Tag keys and values are case sensitive.
 #' 
 #' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for keys as it is reserved for AWS use. You cannot
-#'     edit or delete tag keys with this prefix. Values can have this
-#'     prefix. If a tag value has `aws` as its prefix but the key does not,
-#'     then Forecast considers it to be a user tag and will count against
-#'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
-#'     count against your tags per resource limit.
+#'     such as a prefix for keys as it is reserved for Amazon Web Services
+#'     use. You cannot edit or delete tag keys with this prefix. Values can
+#'     have this prefix. If a tag value has `aws` as its prefix but the key
+#'     does not, then Forecast considers it to be a user tag and will count
+#'     against the limit of 50 tags. Tags with only the key prefix of `aws`
+#'     do not count against your tags per resource limit.
 #' @param TimeSeriesSelector Defines the set of time series that are used to create the forecasts in
 #' a `TimeSeriesIdentifiers` object.
 #' 
@@ -1159,10 +1200,9 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #' where the \<ExportTimestamp\> component is in Java SimpleDateFormat
 #' (yyyy-MM-ddTHH-mm-ssZ).
 #' 
-#' You must specify a DataDestination object that includes an AWS Identity
-#' and Access Management (IAM) role that Amazon Forecast can assume to
-#' access the Amazon S3 bucket. For more information, see
-#' aws-forecast-iam-roles.
+#' You must specify a DataDestination object that includes an Identity and
+#' Access Management (IAM) role that Amazon Forecast can assume to access
+#' the Amazon S3 bucket. For more information, see aws-forecast-iam-roles.
 #' 
 #' For more information, see howitworks-forecast.
 #' 
@@ -1181,11 +1221,11 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #'
 #' @param ForecastExportJobName &#91;required&#93; The name for the forecast export job.
 #' @param ForecastArn &#91;required&#93; The Amazon Resource Name (ARN) of the forecast that you want to export.
-#' @param Destination &#91;required&#93; The location where you want to save the forecast and an AWS Identity and
+#' @param Destination &#91;required&#93; The location where you want to save the forecast and an Identity and
 #' Access Management (IAM) role that Amazon Forecast can assume to access
 #' the location. The forecast must be exported to an Amazon S3 bucket.
 #' 
-#' If encryption is used, `Destination` must include an AWS Key Management
+#' If encryption is used, `Destination` must include an Key Management
 #' Service (KMS) key. The IAM role must allow Amazon Forecast permission to
 #' access the key.
 #' @param Tags The optional metadata that you apply to the forecast export job to help
@@ -1212,12 +1252,12 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #' -   Tag keys and values are case sensitive.
 #' 
 #' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for keys as it is reserved for AWS use. You cannot
-#'     edit or delete tag keys with this prefix. Values can have this
-#'     prefix. If a tag value has `aws` as its prefix but the key does not,
-#'     then Forecast considers it to be a user tag and will count against
-#'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
-#'     count against your tags per resource limit.
+#'     such as a prefix for keys as it is reserved for Amazon Web Services
+#'     use. You cannot edit or delete tag keys with this prefix. Values can
+#'     have this prefix. If a tag value has `aws` as its prefix but the key
+#'     does not, then Forecast considers it to be a user tag and will count
+#'     against the limit of 50 tags. Tags with only the key prefix of `aws`
+#'     do not count against your tags per resource limit.
 #' @param Format The format of the exported data, CSV or PARQUET. The default value is
 #' CSV.
 #'
@@ -1451,8 +1491,8 @@ forecastservice_create_monitor <- function(MonitorName, ResourceArn, Tags = NULL
 #' This is a good option if you aren't sure which algorithm is suitable for
 #' your training data. In this case, `PerformHPO` must be false.
 #' @param AutoMLOverrideStrategy The `LatencyOptimized` AutoML override strategy is only available in
-#' private beta. Contact AWS Support or your account manager to learn more
-#' about access privileges.
+#' private beta. Contact Amazon Web Services Support or your account
+#' manager to learn more about access privileges.
 #' 
 #' Used to overide the default AutoML strategy, which is to optimize
 #' predictor accuracy. To apply an AutoML strategy that minimizes training
@@ -1496,7 +1536,7 @@ forecastservice_create_monitor <- function(MonitorName, ResourceArn, Tags = NULL
 #' @param InputDataConfig &#91;required&#93; Describes the dataset group that contains the data to use to train the
 #' predictor.
 #' @param FeaturizationConfig &#91;required&#93; The featurization configuration.
-#' @param EncryptionConfig An AWS Key Management Service (KMS) key and the AWS Identity and Access
+#' @param EncryptionConfig An Key Management Service (KMS) key and the Identity and Access
 #' Management (IAM) role that Amazon Forecast can assume to access the key.
 #' @param Tags The optional metadata that you apply to the predictor to help you
 #' categorize and organize them. Each tag consists of a key and an optional
@@ -1522,12 +1562,12 @@ forecastservice_create_monitor <- function(MonitorName, ResourceArn, Tags = NULL
 #' -   Tag keys and values are case sensitive.
 #' 
 #' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for keys as it is reserved for AWS use. You cannot
-#'     edit or delete tag keys with this prefix. Values can have this
-#'     prefix. If a tag value has `aws` as its prefix but the key does not,
-#'     then Forecast considers it to be a user tag and will count against
-#'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
-#'     count against your tags per resource limit.
+#'     such as a prefix for keys as it is reserved for Amazon Web Services
+#'     use. You cannot edit or delete tag keys with this prefix. Values can
+#'     have this prefix. If a tag value has `aws` as its prefix but the key
+#'     does not, then Forecast considers it to be a user tag and will count
+#'     against the limit of 50 tags. Tags with only the key prefix of `aws`
+#'     do not count against your tags per resource limit.
 #' @param OptimizationMetric The accuracy metric used to optimize the predictor.
 #'
 #' @return
@@ -1667,7 +1707,7 @@ forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL,
 #' (yyyy-MM-ddTHH-mm-ssZ).
 #' 
 #' You must specify a DataDestination object that includes an Amazon S3
-#' bucket and an AWS Identity and Access Management (IAM) role that Amazon
+#' bucket and an Identity and Access Management (IAM) role that Amazon
 #' Forecast can assume to access the Amazon S3 bucket. For more
 #' information, see aws-forecast-iam-roles.
 #' 
@@ -1763,6 +1803,342 @@ forecastservice_create_predictor_backtest_export_job <- function(PredictorBackte
   return(response)
 }
 .forecastservice$operations$create_predictor_backtest_export_job <- forecastservice_create_predictor_backtest_export_job
+
+#' What-if analysis is a scenario modeling technique where you make a
+#' hypothetical change to a time series and compare the forecasts generated
+#' by these changes against the baseline, unchanged time series
+#'
+#' @description
+#' What-if analysis is a scenario modeling technique where you make a
+#' hypothetical change to a time series and compare the forecasts generated
+#' by these changes against the baseline, unchanged time series. It is
+#' important to remember that the purpose of a what-if analysis is to
+#' understand how a forecast can change given different modifications to
+#' the baseline time series.
+#' 
+#' For example, imagine you are a clothing retailer who is considering an
+#' end of season sale to clear space for new styles. After creating a
+#' baseline forecast, you can use a what-if analysis to investigate how
+#' different sales tactics might affect your goals.
+#' 
+#' You could create a scenario where everything is given a 25% markdown,
+#' and another where everything is given a fixed dollar markdown. You could
+#' create a scenario where the sale lasts for one week and another where
+#' the sale lasts for one month. With a what-if analysis, you can compare
+#' many different scenarios against each other.
+#' 
+#' Note that a what-if analysis is meant to display what the forecasting
+#' model has learned and how it will behave in the scenarios that you are
+#' evaluating. Do not blindly use the results of the what-if analysis to
+#' make business decisions. For instance, forecasts might not be accurate
+#' for novel scenarios where there is no reference available to determine
+#' whether a forecast is good.
+#' 
+#' The TimeSeriesSelector object defines the items that you want in the
+#' what-if analysis.
+#'
+#' @usage
+#' forecastservice_create_what_if_analysis(WhatIfAnalysisName, ForecastArn,
+#'   TimeSeriesSelector, Tags)
+#'
+#' @param WhatIfAnalysisName &#91;required&#93; The name of the what-if analysis. Each name must be unique.
+#' @param ForecastArn &#91;required&#93; The Amazon Resource Name (ARN) of the baseline forecast.
+#' @param TimeSeriesSelector Defines the set of time series that are used in the what-if analysis
+#' with a `TimeSeriesIdentifiers` object. What-if analyses are performed
+#' only for the time series in this object.
+#' 
+#' The `TimeSeriesIdentifiers` object needs the following information:
+#' 
+#' -   `DataSource`
+#' 
+#' -   `Format`
+#' 
+#' -   `Schema`
+#' @param Tags A list of
+#' [tags](https://docs.aws.amazon.com/forecast/latest/dg/tagging-forecast-resources.html)
+#' to apply to the what if forecast.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WhatIfAnalysisArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_what_if_analysis(
+#'   WhatIfAnalysisName = "string",
+#'   ForecastArn = "string",
+#'   TimeSeriesSelector = list(
+#'     TimeSeriesIdentifiers = list(
+#'       DataSource = list(
+#'         S3Config = list(
+#'           Path = "string",
+#'           RoleArn = "string",
+#'           KMSKeyArn = "string"
+#'         )
+#'       ),
+#'       Schema = list(
+#'         Attributes = list(
+#'           list(
+#'             AttributeName = "string",
+#'             AttributeType = "string"|"integer"|"float"|"timestamp"|"geolocation"
+#'           )
+#'         )
+#'       ),
+#'       Format = "string"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_create_what_if_analysis
+#'
+#' @aliases forecastservice_create_what_if_analysis
+forecastservice_create_what_if_analysis <- function(WhatIfAnalysisName, ForecastArn, TimeSeriesSelector = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateWhatIfAnalysis",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$create_what_if_analysis_input(WhatIfAnalysisName = WhatIfAnalysisName, ForecastArn = ForecastArn, TimeSeriesSelector = TimeSeriesSelector, Tags = Tags)
+  output <- .forecastservice$create_what_if_analysis_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$create_what_if_analysis <- forecastservice_create_what_if_analysis
+
+#' A what-if forecast is a forecast that is created from a modified version
+#' of the baseline forecast
+#'
+#' @description
+#' A what-if forecast is a forecast that is created from a modified version
+#' of the baseline forecast. Each what-if forecast incorporates either a
+#' replacement dataset or a set of transformations to the original dataset.
+#'
+#' @usage
+#' forecastservice_create_what_if_forecast(WhatIfForecastName,
+#'   WhatIfAnalysisArn, TimeSeriesTransformations,
+#'   TimeSeriesReplacementsDataSource, Tags)
+#'
+#' @param WhatIfForecastName &#91;required&#93; The name of the what-if forecast. Names must be unique within each
+#' what-if analysis.
+#' @param WhatIfAnalysisArn &#91;required&#93; The Amazon Resource Name (ARN) of the what-if analysis.
+#' @param TimeSeriesTransformations The transformations that are applied to the baseline time series. Each
+#' transformation contains an action and a set of conditions. An action is
+#' applied only when all conditions are met. If no conditions are provided,
+#' the action is applied to all items.
+#' @param TimeSeriesReplacementsDataSource The replacement time series dataset, which contains the rows that you
+#' want to change in the related time series dataset. A replacement time
+#' series does not need to contain all rows that are in the baseline
+#' related time series. Include only the rows (measure-dimension
+#' combinations) that you want to include in the what-if forecast.
+#' 
+#' This dataset is merged with the original time series to create a
+#' transformed dataset that is used for the what-if analysis.
+#' 
+#' This dataset should contain the items to modify (such as item_id or
+#' workforce_type), any relevant dimensions, the timestamp column, and at
+#' least one of the related time series columns. This file should not
+#' contain duplicate timestamps for the same time series.
+#' 
+#' Timestamps and item_ids not included in this dataset are not included in
+#' the what-if analysis.
+#' @param Tags A list of
+#' [tags](https://docs.aws.amazon.com/forecast/latest/dg/tagging-forecast-resources.html)
+#' to apply to the what if forecast.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WhatIfForecastArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_what_if_forecast(
+#'   WhatIfForecastName = "string",
+#'   WhatIfAnalysisArn = "string",
+#'   TimeSeriesTransformations = list(
+#'     list(
+#'       Action = list(
+#'         AttributeName = "string",
+#'         Operation = "ADD"|"SUBTRACT"|"MULTIPLY"|"DIVIDE",
+#'         Value = 123.0
+#'       ),
+#'       TimeSeriesConditions = list(
+#'         list(
+#'           AttributeName = "string",
+#'           AttributeValue = "string",
+#'           Condition = "EQUALS"|"NOT_EQUALS"|"LESS_THAN"|"GREATER_THAN"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   TimeSeriesReplacementsDataSource = list(
+#'     S3Config = list(
+#'       Path = "string",
+#'       RoleArn = "string",
+#'       KMSKeyArn = "string"
+#'     ),
+#'     Schema = list(
+#'       Attributes = list(
+#'         list(
+#'           AttributeName = "string",
+#'           AttributeType = "string"|"integer"|"float"|"timestamp"|"geolocation"
+#'         )
+#'       )
+#'     ),
+#'     Format = "string",
+#'     TimestampFormat = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_create_what_if_forecast
+#'
+#' @aliases forecastservice_create_what_if_forecast
+forecastservice_create_what_if_forecast <- function(WhatIfForecastName, WhatIfAnalysisArn, TimeSeriesTransformations = NULL, TimeSeriesReplacementsDataSource = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateWhatIfForecast",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$create_what_if_forecast_input(WhatIfForecastName = WhatIfForecastName, WhatIfAnalysisArn = WhatIfAnalysisArn, TimeSeriesTransformations = TimeSeriesTransformations, TimeSeriesReplacementsDataSource = TimeSeriesReplacementsDataSource, Tags = Tags)
+  output <- .forecastservice$create_what_if_forecast_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$create_what_if_forecast <- forecastservice_create_what_if_forecast
+
+#' Exports a forecast created by the CreateWhatIfForecast operation to your
+#' Amazon Simple Storage Service (Amazon S3) bucket
+#'
+#' @description
+#' Exports a forecast created by the
+#' [`create_what_if_forecast`][forecastservice_create_what_if_forecast]
+#' operation to your Amazon Simple Storage Service (Amazon S3) bucket. The
+#' forecast file name will match the following conventions:
+#' 
+#' `≈<ForecastExportJobName>_<ExportTimestamp>_<PartNumber>`
+#' 
+#' The \<ExportTimestamp\> component is in Java SimpleDateFormat
+#' (yyyy-MM-ddTHH-mm-ssZ).
+#' 
+#' You must specify a DataDestination object that includes an Identity and
+#' Access Management (IAM) role that Amazon Forecast can assume to access
+#' the Amazon S3 bucket. For more information, see aws-forecast-iam-roles.
+#' 
+#' For more information, see howitworks-forecast.
+#' 
+#' To get a list of all your what-if forecast export jobs, use the
+#' [`list_what_if_forecast_exports`][forecastservice_list_what_if_forecast_exports]
+#' operation.
+#' 
+#' The `Status` of the forecast export job must be `ACTIVE` before you can
+#' access the forecast in your Amazon S3 bucket. To get the status, use the
+#' [`describe_what_if_forecast_export`][forecastservice_describe_what_if_forecast_export]
+#' operation.
+#'
+#' @usage
+#' forecastservice_create_what_if_forecast_export(WhatIfForecastExportName,
+#'   WhatIfForecastArns, Destination, Tags, Format)
+#'
+#' @param WhatIfForecastExportName &#91;required&#93; The name of the what-if forecast to export.
+#' @param WhatIfForecastArns &#91;required&#93; The list of what-if forecast Amazon Resource Names (ARNs) to export.
+#' @param Destination &#91;required&#93; The location where you want to save the forecast and an Identity and
+#' Access Management (IAM) role that Amazon Forecast can assume to access
+#' the location. The forecast must be exported to an Amazon S3 bucket.
+#' 
+#' If encryption is used, `Destination` must include an Key Management
+#' Service (KMS) key. The IAM role must allow Amazon Forecast permission to
+#' access the key.
+#' @param Tags A list of
+#' [tags](https://docs.aws.amazon.com/forecast/latest/dg/tagging-forecast-resources.html)
+#' to apply to the what if forecast.
+#' @param Format The format of the exported data, CSV or PARQUET.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WhatIfForecastExportArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_what_if_forecast_export(
+#'   WhatIfForecastExportName = "string",
+#'   WhatIfForecastArns = list(
+#'     "string"
+#'   ),
+#'   Destination = list(
+#'     S3Config = list(
+#'       Path = "string",
+#'       RoleArn = "string",
+#'       KMSKeyArn = "string"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   Format = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_create_what_if_forecast_export
+#'
+#' @aliases forecastservice_create_what_if_forecast_export
+forecastservice_create_what_if_forecast_export <- function(WhatIfForecastExportName, WhatIfForecastArns, Destination, Tags = NULL, Format = NULL) {
+  op <- new_operation(
+    name = "CreateWhatIfForecastExport",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$create_what_if_forecast_export_input(WhatIfForecastExportName = WhatIfForecastExportName, WhatIfForecastArns = WhatIfForecastArns, Destination = Destination, Tags = Tags, Format = Format)
+  output <- .forecastservice$create_what_if_forecast_export_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$create_what_if_forecast_export <- forecastservice_create_what_if_forecast_export
 
 #' Deletes an Amazon Forecast dataset that was created using the
 #' CreateDataset operation
@@ -2301,6 +2677,160 @@ forecastservice_delete_resource_tree <- function(ResourceArn) {
 }
 .forecastservice$operations$delete_resource_tree <- forecastservice_delete_resource_tree
 
+#' Deletes a what-if analysis created using the CreateWhatIfAnalysis
+#' operation
+#'
+#' @description
+#' Deletes a what-if analysis created using the
+#' [`create_what_if_analysis`][forecastservice_create_what_if_analysis]
+#' operation. You can delete only what-if analyses that have a status of
+#' `ACTIVE` or `CREATE_FAILED`. To get the status, use the
+#' [`describe_what_if_analysis`][forecastservice_describe_what_if_analysis]
+#' operation.
+#' 
+#' You can't delete a what-if analysis while any of its forecasts are being
+#' exported.
+#'
+#' @usage
+#' forecastservice_delete_what_if_analysis(WhatIfAnalysisArn)
+#'
+#' @param WhatIfAnalysisArn &#91;required&#93; The Amazon Resource Name (ARN) of the what-if analysis that you want to
+#' delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_what_if_analysis(
+#'   WhatIfAnalysisArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_delete_what_if_analysis
+#'
+#' @aliases forecastservice_delete_what_if_analysis
+forecastservice_delete_what_if_analysis <- function(WhatIfAnalysisArn) {
+  op <- new_operation(
+    name = "DeleteWhatIfAnalysis",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$delete_what_if_analysis_input(WhatIfAnalysisArn = WhatIfAnalysisArn)
+  output <- .forecastservice$delete_what_if_analysis_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$delete_what_if_analysis <- forecastservice_delete_what_if_analysis
+
+#' Deletes a what-if forecast created using the CreateWhatIfForecast
+#' operation
+#'
+#' @description
+#' Deletes a what-if forecast created using the
+#' [`create_what_if_forecast`][forecastservice_create_what_if_forecast]
+#' operation. You can delete only what-if forecasts that have a status of
+#' `ACTIVE` or `CREATE_FAILED`. To get the status, use the
+#' [`describe_what_if_forecast`][forecastservice_describe_what_if_forecast]
+#' operation.
+#' 
+#' You can't delete a what-if forecast while it is being exported. After a
+#' what-if forecast is deleted, you can no longer query the what-if
+#' analysis.
+#'
+#' @usage
+#' forecastservice_delete_what_if_forecast(WhatIfForecastArn)
+#'
+#' @param WhatIfForecastArn &#91;required&#93; The Amazon Resource Name (ARN) of the what-if forecast that you want to
+#' delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_what_if_forecast(
+#'   WhatIfForecastArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_delete_what_if_forecast
+#'
+#' @aliases forecastservice_delete_what_if_forecast
+forecastservice_delete_what_if_forecast <- function(WhatIfForecastArn) {
+  op <- new_operation(
+    name = "DeleteWhatIfForecast",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$delete_what_if_forecast_input(WhatIfForecastArn = WhatIfForecastArn)
+  output <- .forecastservice$delete_what_if_forecast_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$delete_what_if_forecast <- forecastservice_delete_what_if_forecast
+
+#' Deletes a what-if forecast export created using the
+#' CreateWhatIfForecastExport operation
+#'
+#' @description
+#' Deletes a what-if forecast export created using the
+#' [`create_what_if_forecast_export`][forecastservice_create_what_if_forecast_export]
+#' operation. You can delete only what-if forecast exports that have a
+#' status of `ACTIVE` or `CREATE_FAILED`. To get the status, use the
+#' [`describe_what_if_forecast_export`][forecastservice_describe_what_if_forecast_export]
+#' operation.
+#'
+#' @usage
+#' forecastservice_delete_what_if_forecast_export(WhatIfForecastExportArn)
+#'
+#' @param WhatIfForecastExportArn &#91;required&#93; The Amazon Resource Name (ARN) of the what-if forecast export that you
+#' want to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_what_if_forecast_export(
+#'   WhatIfForecastExportArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_delete_what_if_forecast_export
+#'
+#' @aliases forecastservice_delete_what_if_forecast_export
+forecastservice_delete_what_if_forecast_export <- function(WhatIfForecastExportArn) {
+  op <- new_operation(
+    name = "DeleteWhatIfForecastExport",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$delete_what_if_forecast_export_input(WhatIfForecastExportArn = WhatIfForecastExportArn)
+  output <- .forecastservice$delete_what_if_forecast_export_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$delete_what_if_forecast_export <- forecastservice_delete_what_if_forecast_export
+
 #' Describes a predictor created using the CreateAutoPredictor operation
 #'
 #' @description
@@ -2641,7 +3171,8 @@ forecastservice_describe_dataset_group <- function(DatasetGroupArn) {
 #'   LastModificationTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   Format = "string"
+#'   Format = "string",
+#'   ImportMode = "FULL"|"INCREMENTAL"
 #' )
 #' ```
 #'
@@ -3356,6 +3887,295 @@ forecastservice_describe_predictor_backtest_export_job <- function(PredictorBack
 }
 .forecastservice$operations$describe_predictor_backtest_export_job <- forecastservice_describe_predictor_backtest_export_job
 
+#' Describes the what-if analysis created using the CreateWhatIfAnalysis
+#' operation
+#'
+#' @description
+#' Describes the what-if analysis created using the
+#' [`create_what_if_analysis`][forecastservice_create_what_if_analysis]
+#' operation.
+#' 
+#' In addition to listing the properties provided in the
+#' [`create_what_if_analysis`][forecastservice_create_what_if_analysis]
+#' request, this operation lists the following properties:
+#' 
+#' -   `CreationTime`
+#' 
+#' -   `LastModificationTime`
+#' 
+#' -   `Message` - If an error occurred, information about the error.
+#' 
+#' -   `Status`
+#'
+#' @usage
+#' forecastservice_describe_what_if_analysis(WhatIfAnalysisArn)
+#'
+#' @param WhatIfAnalysisArn &#91;required&#93; The Amazon Resource Name (ARN) of the what-if analysis that you are
+#' interested in.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WhatIfAnalysisName = "string",
+#'   WhatIfAnalysisArn = "string",
+#'   ForecastArn = "string",
+#'   EstimatedTimeRemainingInMinutes = 123,
+#'   Status = "string",
+#'   Message = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModificationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   TimeSeriesSelector = list(
+#'     TimeSeriesIdentifiers = list(
+#'       DataSource = list(
+#'         S3Config = list(
+#'           Path = "string",
+#'           RoleArn = "string",
+#'           KMSKeyArn = "string"
+#'         )
+#'       ),
+#'       Schema = list(
+#'         Attributes = list(
+#'           list(
+#'             AttributeName = "string",
+#'             AttributeType = "string"|"integer"|"float"|"timestamp"|"geolocation"
+#'           )
+#'         )
+#'       ),
+#'       Format = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_what_if_analysis(
+#'   WhatIfAnalysisArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_describe_what_if_analysis
+#'
+#' @aliases forecastservice_describe_what_if_analysis
+forecastservice_describe_what_if_analysis <- function(WhatIfAnalysisArn) {
+  op <- new_operation(
+    name = "DescribeWhatIfAnalysis",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$describe_what_if_analysis_input(WhatIfAnalysisArn = WhatIfAnalysisArn)
+  output <- .forecastservice$describe_what_if_analysis_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$describe_what_if_analysis <- forecastservice_describe_what_if_analysis
+
+#' Describes the what-if forecast created using the CreateWhatIfForecast
+#' operation
+#'
+#' @description
+#' Describes the what-if forecast created using the
+#' [`create_what_if_forecast`][forecastservice_create_what_if_forecast]
+#' operation.
+#' 
+#' In addition to listing the properties provided in the
+#' [`create_what_if_forecast`][forecastservice_create_what_if_forecast]
+#' request, this operation lists the following properties:
+#' 
+#' -   `CreationTime`
+#' 
+#' -   `LastModificationTime`
+#' 
+#' -   `Message` - If an error occurred, information about the error.
+#' 
+#' -   `Status`
+#'
+#' @usage
+#' forecastservice_describe_what_if_forecast(WhatIfForecastArn)
+#'
+#' @param WhatIfForecastArn &#91;required&#93; The Amazon Resource Name (ARN) of the what-if forecast that you are
+#' interested in.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WhatIfForecastName = "string",
+#'   WhatIfForecastArn = "string",
+#'   WhatIfAnalysisArn = "string",
+#'   EstimatedTimeRemainingInMinutes = 123,
+#'   Status = "string",
+#'   Message = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModificationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   TimeSeriesTransformations = list(
+#'     list(
+#'       Action = list(
+#'         AttributeName = "string",
+#'         Operation = "ADD"|"SUBTRACT"|"MULTIPLY"|"DIVIDE",
+#'         Value = 123.0
+#'       ),
+#'       TimeSeriesConditions = list(
+#'         list(
+#'           AttributeName = "string",
+#'           AttributeValue = "string",
+#'           Condition = "EQUALS"|"NOT_EQUALS"|"LESS_THAN"|"GREATER_THAN"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   TimeSeriesReplacementsDataSource = list(
+#'     S3Config = list(
+#'       Path = "string",
+#'       RoleArn = "string",
+#'       KMSKeyArn = "string"
+#'     ),
+#'     Schema = list(
+#'       Attributes = list(
+#'         list(
+#'           AttributeName = "string",
+#'           AttributeType = "string"|"integer"|"float"|"timestamp"|"geolocation"
+#'         )
+#'       )
+#'     ),
+#'     Format = "string",
+#'     TimestampFormat = "string"
+#'   ),
+#'   ForecastTypes = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_what_if_forecast(
+#'   WhatIfForecastArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_describe_what_if_forecast
+#'
+#' @aliases forecastservice_describe_what_if_forecast
+forecastservice_describe_what_if_forecast <- function(WhatIfForecastArn) {
+  op <- new_operation(
+    name = "DescribeWhatIfForecast",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$describe_what_if_forecast_input(WhatIfForecastArn = WhatIfForecastArn)
+  output <- .forecastservice$describe_what_if_forecast_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$describe_what_if_forecast <- forecastservice_describe_what_if_forecast
+
+#' Describes the what-if forecast export created using the
+#' CreateWhatIfForecastExport operation
+#'
+#' @description
+#' Describes the what-if forecast export created using the
+#' [`create_what_if_forecast_export`][forecastservice_create_what_if_forecast_export]
+#' operation.
+#' 
+#' In addition to listing the properties provided in the
+#' [`create_what_if_forecast_export`][forecastservice_create_what_if_forecast_export]
+#' request, this operation lists the following properties:
+#' 
+#' -   `CreationTime`
+#' 
+#' -   `LastModificationTime`
+#' 
+#' -   `Message` - If an error occurred, information about the error.
+#' 
+#' -   `Status`
+#'
+#' @usage
+#' forecastservice_describe_what_if_forecast_export(
+#'   WhatIfForecastExportArn)
+#'
+#' @param WhatIfForecastExportArn &#91;required&#93; The Amazon Resource Name (ARN) of the what-if forecast export that you
+#' are interested in.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WhatIfForecastExportArn = "string",
+#'   WhatIfForecastExportName = "string",
+#'   WhatIfForecastArns = list(
+#'     "string"
+#'   ),
+#'   Destination = list(
+#'     S3Config = list(
+#'       Path = "string",
+#'       RoleArn = "string",
+#'       KMSKeyArn = "string"
+#'     )
+#'   ),
+#'   Message = "string",
+#'   Status = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EstimatedTimeRemainingInMinutes = 123,
+#'   LastModificationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Format = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_what_if_forecast_export(
+#'   WhatIfForecastExportArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_describe_what_if_forecast_export
+#'
+#' @aliases forecastservice_describe_what_if_forecast_export
+forecastservice_describe_what_if_forecast_export <- function(WhatIfForecastExportArn) {
+  op <- new_operation(
+    name = "DescribeWhatIfForecastExport",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$describe_what_if_forecast_export_input(WhatIfForecastExportArn = WhatIfForecastExportArn)
+  output <- .forecastservice$describe_what_if_forecast_export_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$describe_what_if_forecast_export <- forecastservice_describe_what_if_forecast_export
+
 #' Provides metrics on the accuracy of the models that were trained by the
 #' CreatePredictor operation
 #'
@@ -3601,7 +4421,8 @@ forecastservice_list_dataset_groups <- function(NextToken = NULL, MaxResults = N
 #'       ),
 #'       LastModificationTime = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       ImportMode = "FULL"|"INCREMENTAL"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -4619,6 +5440,325 @@ forecastservice_list_tags_for_resource <- function(ResourceArn) {
 }
 .forecastservice$operations$list_tags_for_resource <- forecastservice_list_tags_for_resource
 
+#' Returns a list of what-if analyses created using the
+#' CreateWhatIfAnalysis operation
+#'
+#' @description
+#' Returns a list of what-if analyses created using the
+#' [`create_what_if_analysis`][forecastservice_create_what_if_analysis]
+#' operation. For each what-if analysis, this operation returns a summary
+#' of its properties, including its Amazon Resource Name (ARN). You can
+#' retrieve the complete set of properties by using the what-if analysis
+#' ARN with the
+#' [`describe_what_if_analysis`][forecastservice_describe_what_if_analysis]
+#' operation.
+#'
+#' @usage
+#' forecastservice_list_what_if_analyses(NextToken, MaxResults, Filters)
+#'
+#' @param NextToken If the result of the previous request was truncated, the response
+#' includes a `NextToken`. To retrieve the next set of results, use the
+#' token in the next request. Tokens expire after 24 hours.
+#' @param MaxResults The number of items to return in the response.
+#' @param Filters An array of filters. For each filter, you provide a condition and a
+#' match statement. The condition is either `IS` or `IS_NOT`, which
+#' specifies whether to include or exclude the what-if analysis jobs that
+#' match the statement from the list, respectively. The match statement
+#' consists of a key and a value.
+#' 
+#' **Filter properties**
+#' 
+#' -   `Condition` - The condition to apply. Valid values are `IS` and
+#'     `IS_NOT`. To include the what-if analysis jobs that match the
+#'     statement, specify `IS`. To exclude matching what-if analysis jobs,
+#'     specify `IS_NOT`.
+#' 
+#' -   `Key` - The name of the parameter to filter on. Valid values are
+#'     `WhatIfAnalysisArn` and `Status`.
+#' 
+#' -   `Value` - The value to match.
+#' 
+#' For example, to list all jobs that export a forecast named
+#' *electricityWhatIf*, specify the following filter:
+#' 
+#' `"Filters": [ { "Condition": "IS", "Key": "WhatIfAnalysisArn", "Value": "arn:aws:forecast:us-west-2:<acct-id>:forecast/electricityWhatIf" } ]`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WhatIfAnalyses = list(
+#'     list(
+#'       WhatIfAnalysisArn = "string",
+#'       WhatIfAnalysisName = "string",
+#'       ForecastArn = "string",
+#'       Status = "string",
+#'       Message = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModificationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_what_if_analyses(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   Filters = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string",
+#'       Condition = "IS"|"IS_NOT"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_list_what_if_analyses
+#'
+#' @aliases forecastservice_list_what_if_analyses
+forecastservice_list_what_if_analyses <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListWhatIfAnalyses",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$list_what_if_analyses_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
+  output <- .forecastservice$list_what_if_analyses_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$list_what_if_analyses <- forecastservice_list_what_if_analyses
+
+#' Returns a list of what-if forecast exports created using the
+#' CreateWhatIfForecastExport operation
+#'
+#' @description
+#' Returns a list of what-if forecast exports created using the
+#' [`create_what_if_forecast_export`][forecastservice_create_what_if_forecast_export]
+#' operation. For each what-if forecast export, this operation returns a
+#' summary of its properties, including its Amazon Resource Name (ARN). You
+#' can retrieve the complete set of properties by using the what-if
+#' forecast export ARN with the
+#' [`describe_what_if_forecast_export`][forecastservice_describe_what_if_forecast_export]
+#' operation.
+#'
+#' @usage
+#' forecastservice_list_what_if_forecast_exports(NextToken, MaxResults,
+#'   Filters)
+#'
+#' @param NextToken If the result of the previous request was truncated, the response
+#' includes a `NextToken`. To retrieve the next set of results, use the
+#' token in the next request. Tokens expire after 24 hours.
+#' @param MaxResults The number of items to return in the response.
+#' @param Filters An array of filters. For each filter, you provide a condition and a
+#' match statement. The condition is either `IS` or `IS_NOT`, which
+#' specifies whether to include or exclude the what-if forecast export jobs
+#' that match the statement from the list, respectively. The match
+#' statement consists of a key and a value.
+#' 
+#' **Filter properties**
+#' 
+#' -   `Condition` - The condition to apply. Valid values are `IS` and
+#'     `IS_NOT`. To include the forecast export jobs that match the
+#'     statement, specify `IS`. To exclude matching forecast export jobs,
+#'     specify `IS_NOT`.
+#' 
+#' -   `Key` - The name of the parameter to filter on. Valid values are
+#'     `WhatIfForecastExportArn` and `Status`.
+#' 
+#' -   `Value` - The value to match.
+#' 
+#' For example, to list all jobs that export a forecast named
+#' *electricityWIFExport*, specify the following filter:
+#' 
+#' `"Filters": [ { "Condition": "IS", "Key": "WhatIfForecastExportArn", "Value": "arn:aws:forecast:us-west-2:<acct-id>:forecast/electricityWIFExport" } ]`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WhatIfForecastExports = list(
+#'     list(
+#'       WhatIfForecastExportArn = "string",
+#'       WhatIfForecastArns = list(
+#'         "string"
+#'       ),
+#'       WhatIfForecastExportName = "string",
+#'       Destination = list(
+#'         S3Config = list(
+#'           Path = "string",
+#'           RoleArn = "string",
+#'           KMSKeyArn = "string"
+#'         )
+#'       ),
+#'       Status = "string",
+#'       Message = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModificationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_what_if_forecast_exports(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   Filters = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string",
+#'       Condition = "IS"|"IS_NOT"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_list_what_if_forecast_exports
+#'
+#' @aliases forecastservice_list_what_if_forecast_exports
+forecastservice_list_what_if_forecast_exports <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListWhatIfForecastExports",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$list_what_if_forecast_exports_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
+  output <- .forecastservice$list_what_if_forecast_exports_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$list_what_if_forecast_exports <- forecastservice_list_what_if_forecast_exports
+
+#' Returns a list of what-if forecasts created using the
+#' CreateWhatIfForecast operation
+#'
+#' @description
+#' Returns a list of what-if forecasts created using the
+#' [`create_what_if_forecast`][forecastservice_create_what_if_forecast]
+#' operation. For each what-if forecast, this operation returns a summary
+#' of its properties, including its Amazon Resource Name (ARN). You can
+#' retrieve the complete set of properties by using the what-if forecast
+#' ARN with the
+#' [`describe_what_if_forecast`][forecastservice_describe_what_if_forecast]
+#' operation.
+#'
+#' @usage
+#' forecastservice_list_what_if_forecasts(NextToken, MaxResults, Filters)
+#'
+#' @param NextToken If the result of the previous request was truncated, the response
+#' includes a `NextToken`. To retrieve the next set of results, use the
+#' token in the next request. Tokens expire after 24 hours.
+#' @param MaxResults The number of items to return in the response.
+#' @param Filters An array of filters. For each filter, you provide a condition and a
+#' match statement. The condition is either `IS` or `IS_NOT`, which
+#' specifies whether to include or exclude the what-if forecast export jobs
+#' that match the statement from the list, respectively. The match
+#' statement consists of a key and a value.
+#' 
+#' **Filter properties**
+#' 
+#' -   `Condition` - The condition to apply. Valid values are `IS` and
+#'     `IS_NOT`. To include the forecast export jobs that match the
+#'     statement, specify `IS`. To exclude matching forecast export jobs,
+#'     specify `IS_NOT`.
+#' 
+#' -   `Key` - The name of the parameter to filter on. Valid values are
+#'     `WhatIfForecastArn` and `Status`.
+#' 
+#' -   `Value` - The value to match.
+#' 
+#' For example, to list all jobs that export a forecast named
+#' *electricityWhatIfForecast*, specify the following filter:
+#' 
+#' `"Filters": [ { "Condition": "IS", "Key": "WhatIfForecastArn", "Value": "arn:aws:forecast:us-west-2:<acct-id>:forecast/electricityWhatIfForecast" } ]`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WhatIfForecasts = list(
+#'     list(
+#'       WhatIfForecastArn = "string",
+#'       WhatIfForecastName = "string",
+#'       WhatIfAnalysisArn = "string",
+#'       Status = "string",
+#'       Message = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModificationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_what_if_forecasts(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   Filters = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string",
+#'       Condition = "IS"|"IS_NOT"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_list_what_if_forecasts
+#'
+#' @aliases forecastservice_list_what_if_forecasts
+forecastservice_list_what_if_forecasts <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListWhatIfForecasts",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$list_what_if_forecasts_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
+  output <- .forecastservice$list_what_if_forecasts_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$list_what_if_forecasts <- forecastservice_list_what_if_forecasts
+
 #' Resumes a stopped monitor resource
 #'
 #' @description
@@ -4762,12 +5902,12 @@ forecastservice_stop_resource <- function(ResourceArn) {
 #' -   Tag keys and values are case sensitive.
 #' 
 #' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for keys as it is reserved for AWS use. You cannot
-#'     edit or delete tag keys with this prefix. Values can have this
-#'     prefix. If a tag value has `aws` as its prefix but the key does not,
-#'     then Forecast considers it to be a user tag and will count against
-#'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
-#'     count against your tags per resource limit.
+#'     such as a prefix for keys as it is reserved for Amazon Web Services
+#'     use. You cannot edit or delete tag keys with this prefix. Values can
+#'     have this prefix. If a tag value has `aws` as its prefix but the key
+#'     does not, then Forecast considers it to be a user tag and will count
+#'     against the limit of 50 tags. Tags with only the key prefix of `aws`
+#'     do not count against your tags per resource limit.
 #'
 #' @return
 #' An empty list.

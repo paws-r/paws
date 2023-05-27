@@ -5,13 +5,10 @@
 \title{Returns the IAM roles that are associated with the specified ACM (ACM)
 certificate}
 \usage{
-ec2_get_associated_enclave_certificate_iam_roles(
-  CertificateArn = NULL,
-  DryRun = NULL
-)
+ec2_get_associated_enclave_certificate_iam_roles(CertificateArn, DryRun = NULL)
 }
 \arguments{
-\item{CertificateArn}{The ARN of the ACM certificate for which to view the associated IAM
+\item{CertificateArn}{[required] The ARN of the ACM certificate for which to view the associated IAM
 roles, encryption keys, and Amazon S3 object information.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without

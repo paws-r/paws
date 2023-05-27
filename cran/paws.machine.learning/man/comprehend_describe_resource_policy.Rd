@@ -8,7 +8,8 @@ model, including the JSON body of the policy}
 comprehend_describe_resource_policy(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the policy to describe.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the custom model version that has the
+resource policy.}
 }
 \description{
 Gets the details of a resource-based policy that is attached to a custom model, including the JSON body of the policy.

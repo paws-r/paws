@@ -11,15 +11,16 @@ eks_create_addon(
   serviceAccountRoleArn = NULL,
   resolveConflicts = NULL,
   clientRequestToken = NULL,
-  tags = NULL
+  tags = NULL,
+  configurationValues = NULL
 )
 }
 \arguments{
 \item{clusterName}{[required] The name of the cluster to create the add-on for.}
 
-\item{addonName}{[required] The name of the add-on. The name must match one of the names returned by
+\item{addonName}{[required] The name of the add-on. The name must match one of the names that
 \href{https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonVersions.html}{\code{describe_addon_versions}}
-.}
+returns.}
 
 \item{addonVersion}{The version of the add-on. The version must match one of the versions
 returned by
@@ -38,8 +39,25 @@ To specify an existing IAM role, you must have an IAM OpenID Connect
 \href{https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html}{Enabling IAM roles for service accounts on your cluster}
 in the \emph{Amazon EKS User Guide}.}
 
-\item{resolveConflicts}{How to resolve parameter value conflicts when migrating an existing
-add-on to an Amazon EKS add-on.}
+\item{resolveConflicts}{How to resolve field value conflicts for an Amazon EKS add-on. Conflicts
+are handled based on the value you choose:
+\itemize{
+\item \strong{None} – If the self-managed version of the add-on is installed on
+your cluster, Amazon EKS doesn't change the value. Creation of the
+add-on might fail.
+\item \strong{Overwrite} – If the self-managed version of the add-on is
+installed on your cluster and the Amazon EKS default value is
+different than the existing value, Amazon EKS changes the value to
+the Amazon EKS default value.
+\item \strong{Preserve} – Not supported. You can set this value when updating
+an add-on though. For more information, see
+\code{\link[=eks_update_addon]{update_addon}}.
+}
+
+If you don't currently have the self-managed version of the add-on
+installed on your cluster, the Amazon EKS add-on is installed. Amazon
+EKS sets all values to default values, regardless of the option that you
+specify.}
 
 \item{clientRequestToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
@@ -47,6 +65,11 @@ idempotency of the request.}
 \item{tags}{The metadata to apply to the cluster to assist with categorization and
 organization. Each tag consists of a key and an optional value. You
 define both.}
+
+\item{configurationValues}{The set of configuration values for the add-on that's created. The
+values that you provide are validated against the schema in
+\href{https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonConfiguration.html}{\code{describe_addon_configuration}}
+.}
 }
 \description{
 Creates an Amazon EKS add-on.

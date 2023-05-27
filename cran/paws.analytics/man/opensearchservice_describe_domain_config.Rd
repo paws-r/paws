@@ -2,17 +2,16 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_describe_domain_config}
 \alias{opensearchservice_describe_domain_config}
-\title{Provides cluster configuration information about the specified domain,
-such as the state, creation date, update version, and update date for
-cluster options}
+\title{Returns the configuration of an Amazon OpenSearch Service domain}
 \usage{
 opensearchservice_describe_domain_config(DomainName)
 }
 \arguments{
-\item{DomainName}{[required] The domain you want to get information about.}
+\item{DomainName}{[required] Name of the OpenSearch Service domain configuration that you want to
+describe.}
 }
 \description{
-Provides cluster configuration information about the specified domain, such as the state, creation date, update version, and update date for cluster options.
+Returns the configuration of an Amazon OpenSearch Service domain.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/describe_domain_config.html} for full documentation.
 }

@@ -4,6 +4,10 @@ test_that("describe_account_attributes", {
   expect_error(svc$describe_account_attributes(), NA)
 })
 
+test_that("describe_blue_green_deployments", {
+  expect_error(svc$describe_blue_green_deployments(), NA)
+})
+
 test_that("describe_certificates", {
   expect_error(svc$describe_certificates(), NA)
 })

@@ -10,7 +10,7 @@ cognitoidentityprovider_get_signing_certificate(UserPoolId)
 \item{UserPoolId}{[required] The user pool ID.}
 }
 \description{
-This method takes a user pool ID, and returns the signing certificate.
+This method takes a user pool ID, and returns the signing certificate. The issued certificate is valid for 10 years from the date of issue.
 
 See \url{https://paws-r.github.io/docs/cognitoidentityprovider/get_signing_certificate.html} for full documentation.
 }

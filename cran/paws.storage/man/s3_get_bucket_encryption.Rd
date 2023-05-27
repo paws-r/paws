@@ -15,7 +15,7 @@ different account, the request fails with the HTTP status code
 \verb{403 Forbidden} (access denied).}
 }
 \description{
-Returns the default encryption configuration for an Amazon S3 bucket. If the bucket does not have a default encryption configuration, GetBucketEncryption returns \code{ServerSideEncryptionConfigurationNotFoundError}.
+Returns the default encryption configuration for an Amazon S3 bucket. By default, all buckets have a default encryption configuration that uses server-side encryption with Amazon S3 managed keys (SSE-S3). For information about the bucket default encryption feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html}{Amazon S3 Bucket Default Encryption} in the \emph{Amazon S3 User Guide}.
 
 See \url{https://paws-r.github.io/docs/s3/get_bucket_encryption.html} for full documentation.
 }

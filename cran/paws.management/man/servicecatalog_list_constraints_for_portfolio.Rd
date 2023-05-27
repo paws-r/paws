@@ -15,7 +15,6 @@ servicecatalog_list_constraints_for_portfolio(
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}

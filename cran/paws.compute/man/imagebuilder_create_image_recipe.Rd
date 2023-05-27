@@ -39,7 +39,7 @@ assignment requirements for the nodes that you can assign. For example,
 you might choose a software version pattern, such as 1.0.0, or a date,
 such as 2021.01.01.}
 
-\item{components}{[required] The components of the image recipe.}
+\item{components}{[required] The components included in the image recipe.}
 
 \item{parentImage}{[required] The base image of the image recipe. The value of the string can be the
 ARN of the base image or an AMI ID. The format for the ARN follows this

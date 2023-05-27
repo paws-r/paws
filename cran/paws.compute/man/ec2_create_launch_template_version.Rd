@@ -11,7 +11,8 @@ ec2_create_launch_template_version(
   LaunchTemplateName = NULL,
   SourceVersion = NULL,
   VersionDescription = NULL,
-  LaunchTemplateData
+  LaunchTemplateData,
+  ResolveAlias = NULL
 )
 }
 \arguments{
@@ -44,6 +45,13 @@ ignored when creating a new version unless they are explicitly included.}
 \item{VersionDescription}{A description for the version of the launch template.}
 
 \item{LaunchTemplateData}{[required] The information for the launch template.}
+
+\item{ResolveAlias}{If \code{true}, and if a Systems Manager parameter is specified for
+\code{ImageId}, the AMI ID is displayed in the response for \code{imageID}. For
+more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#use-an-ssm-parameter-instead-of-an-ami-id}{Use a Systems Manager parameter instead of an AMI ID}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.
+
+Default: \code{false}}
 }
 \description{
 Creates a new version of a launch template. You can specify an existing version of launch template from which to base the new version.

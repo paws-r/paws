@@ -2,13 +2,15 @@
 % Please edit documentation in R/kendra_operations.R
 \name{kendra_create_data_source}
 \alias{kendra_create_data_source}
-\title{Creates a data source that you want to use with an Amazon Kendra index}
+\title{Creates a data source connector that you want to use with an Amazon
+Kendra index}
 \usage{
 kendra_create_data_source(
   Name,
   IndexId,
   Type,
   Configuration = NULL,
+  VpcConfiguration = NULL,
   Description = NULL,
   Schedule = NULL,
   RoleArn = NULL,
@@ -19,8 +21,7 @@ kendra_create_data_source(
 )
 }
 \arguments{
-\item{Name}{[required] A unique name for the data source connector. A data source name can't be
-changed without deleting and recreating the data source connector.}
+\item{Name}{[required] A name for the data source connector.}
 
 \item{IndexId}{[required] The identifier of the index you want to use with the data source
 connector.}
@@ -35,6 +36,9 @@ parameter is set to \code{CUSTOM}. If you do, you receive a
 
 The \code{Configuration} parameter is required for all other data sources.}
 
+\item{VpcConfiguration}{Configuration information for an Amazon Virtual Private Cloud to connect
+to your data source. For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/vpc-configuration.html}{Configuring a VPC}.}
+
 \item{Description}{A description for the data source connector.}
 
 \item{Schedule}{Sets the frequency for Amazon Kendra to check the documents in your data
@@ -43,12 +47,15 @@ Amazon Kendra will not periodically update the index. You can call the
 \code{\link[=kendra_start_data_source_sync_job]{start_data_source_sync_job}} API to
 update the index.
 
+Specify a \verb{cron-} format schedule string or an empty string to indicate
+that the index is updated on demand.
+
 You can't specify the \code{Schedule} parameter when the \code{Type} parameter is
 set to \code{CUSTOM}. If you do, you receive a \code{ValidationException}
 exception.}
 
-\item{RoleArn}{The Amazon Resource Name (ARN) of a role with permission to access the
-data source connector. For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM Roles for Amazon Kendra}.
+\item{RoleArn}{The Amazon Resource Name (ARN) of an IAM role with permission to access
+the data source and required resources. For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM access roles for Amazon Kendra.}.
 
 You can't specify the \code{RoleArn} parameter when the \code{Type} parameter is
 set to \code{CUSTOM}. If you do, you receive a \code{ValidationException}
@@ -56,9 +63,10 @@ exception.
 
 The \code{RoleArn} parameter is required for all other data sources.}
 
-\item{Tags}{A list of key-value pairs that identify the data source connector. You
-can use the tags to identify and organize your resources and to control
-access to resources.}
+\item{Tags}{A list of key-value pairs that identify or categorize the data source
+connector. You can also use tags to help control access to the data
+source connector. Tag keys and values can consist of Unicode letters,
+digits, white space, and any of the following symbols: _ . : / = + - @.}
 
 \item{ClientToken}{A token that you provide to identify the request to create a data source
 connector. Multiple calls to the
@@ -78,7 +86,7 @@ metadata, or make other content alterations when you ingest documents
 into Amazon Kendra, see \href{https://docs.aws.amazon.com/kendra/latest/dg/custom-document-enrichment.html}{Customizing document metadata during the ingestion process}.}
 }
 \description{
-Creates a data source that you want to use with an Amazon Kendra index.
+Creates a data source connector that you want to use with an Amazon Kendra index.
 
 See \url{https://paws-r.github.io/docs/kendra/create_data_source.html} for full documentation.
 }

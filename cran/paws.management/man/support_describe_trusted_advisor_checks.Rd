@@ -8,13 +8,27 @@ including the name, ID, category, description, and metadata}
 support_describe_trusted_advisor_checks(language)
 }
 \arguments{
-\item{language}{[required] The ISO 639-1 code for the language in which Amazon Web Services
-provides support. Amazon Web Services Support currently supports English
-("en") and Japanese ("ja"). Language parameters must be passed
-explicitly for operations that take them.}
+\item{language}{[required] The ISO 639-1 code for the language that you want your checks to appear
+in.
+
+The Amazon Web Services Support API currently supports the following
+languages for Trusted Advisor:
+\itemize{
+\item Chinese, Simplified - \code{zh}
+\item Chinese, Traditional - \code{zh_TW}
+\item English - \code{en}
+\item French - \code{fr}
+\item German - \code{de}
+\item Indonesian - \code{id}
+\item Italian - \code{it}
+\item Japanese - \code{ja}
+\item Korean - \code{ko}
+\item Portuguese, Brazilian - \code{pt_BR}
+\item Spanish - \code{es}
+}}
 }
 \description{
-Returns information about all available Trusted Advisor checks, including the name, ID, category, description, and metadata. You must specify a language code. The Amazon Web Services Support API currently supports English ("en") and Japanese ("ja"). The response contains a TrustedAdvisorCheckDescription object for each check. You must set the Amazon Web Services Region to us-east-1.
+Returns information about all available Trusted Advisor checks, including the name, ID, category, description, and metadata. You must specify a language code.
 
 See \url{https://paws-r.github.io/docs/support/describe_trusted_advisor_checks.html} for full documentation.
 }

@@ -75,33 +75,36 @@ Tool, see the \href{https://docs.aws.amazon.com/wellarchitected/latest/userguide
 \link[paws.developer.tools:wellarchitected_disassociate_lenses]{disassociate_lenses} \tab Disassociate a lens from a workload\cr
 \link[paws.developer.tools:wellarchitected_export_lens]{export_lens} \tab Export an existing lens\cr
 \link[paws.developer.tools:wellarchitected_get_answer]{get_answer} \tab Get the answer to a specific question in a workload review\cr
+\link[paws.developer.tools:wellarchitected_get_consolidated_report]{get_consolidated_report} \tab Get a consolidated report of your workloads\cr
 \link[paws.developer.tools:wellarchitected_get_lens]{get_lens} \tab Get an existing lens\cr
 \link[paws.developer.tools:wellarchitected_get_lens_review]{get_lens_review} \tab Get lens review\cr
 \link[paws.developer.tools:wellarchitected_get_lens_review_report]{get_lens_review_report} \tab Get lens review report\cr
 \link[paws.developer.tools:wellarchitected_get_lens_version_difference]{get_lens_version_difference} \tab Get lens version differences\cr
 \link[paws.developer.tools:wellarchitected_get_milestone]{get_milestone} \tab Get a milestone for an existing workload\cr
 \link[paws.developer.tools:wellarchitected_get_workload]{get_workload} \tab Get an existing workload\cr
-\link[paws.developer.tools:wellarchitected_import_lens]{import_lens} \tab Import a new lens\cr
-\link[paws.developer.tools:wellarchitected_list_answers]{list_answers} \tab List of answers\cr
+\link[paws.developer.tools:wellarchitected_import_lens]{import_lens} \tab Import a new custom lens or update an existing custom lens\cr
+\link[paws.developer.tools:wellarchitected_list_answers]{list_answers} \tab List of answers for a particular workload and lens\cr
+\link[paws.developer.tools:wellarchitected_list_check_details]{list_check_details} \tab List of Trusted Advisor check details by account related to the workload\cr
+\link[paws.developer.tools:wellarchitected_list_check_summaries]{list_check_summaries} \tab List of Trusted Advisor checks summarized for all accounts related to the workload\cr
 \link[paws.developer.tools:wellarchitected_list_lenses]{list_lenses} \tab List the available lenses\cr
 \link[paws.developer.tools:wellarchitected_list_lens_review_improvements]{list_lens_review_improvements} \tab List lens review improvements\cr
-\link[paws.developer.tools:wellarchitected_list_lens_reviews]{list_lens_reviews} \tab List lens reviews\cr
+\link[paws.developer.tools:wellarchitected_list_lens_reviews]{list_lens_reviews} \tab List lens reviews for a particular workload\cr
 \link[paws.developer.tools:wellarchitected_list_lens_shares]{list_lens_shares} \tab List the lens shares associated with the lens\cr
 \link[paws.developer.tools:wellarchitected_list_milestones]{list_milestones} \tab List all milestones for an existing workload\cr
 \link[paws.developer.tools:wellarchitected_list_notifications]{list_notifications} \tab List lens notifications\cr
 \link[paws.developer.tools:wellarchitected_list_share_invitations]{list_share_invitations} \tab List the workload invitations\cr
 \link[paws.developer.tools:wellarchitected_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for a resource\cr
-\link[paws.developer.tools:wellarchitected_list_workloads]{list_workloads} \tab List workloads\cr
+\link[paws.developer.tools:wellarchitected_list_workloads]{list_workloads} \tab Paginated list of workloads\cr
 \link[paws.developer.tools:wellarchitected_list_workload_shares]{list_workload_shares} \tab List the workload shares associated with the workload\cr
 \link[paws.developer.tools:wellarchitected_tag_resource]{tag_resource} \tab Adds one or more tags to the specified resource\cr
 \link[paws.developer.tools:wellarchitected_untag_resource]{untag_resource} \tab Deletes specified tags from a resource\cr
 \link[paws.developer.tools:wellarchitected_update_answer]{update_answer} \tab Update the answer to a specific question in a workload review\cr
-\link[paws.developer.tools:wellarchitected_update_global_settings]{update_global_settings} \tab Updates whether the Amazon Web Services account is opted into organization sharing features\cr
-\link[paws.developer.tools:wellarchitected_update_lens_review]{update_lens_review} \tab Update lens review\cr
-\link[paws.developer.tools:wellarchitected_update_share_invitation]{update_share_invitation} \tab Update a workload invitation\cr
+\link[paws.developer.tools:wellarchitected_update_global_settings]{update_global_settings} \tab Updates whether the Amazon Web Services account is opted into organization sharing and discovery integration features\cr
+\link[paws.developer.tools:wellarchitected_update_lens_review]{update_lens_review} \tab Update lens review for a particular workload\cr
+\link[paws.developer.tools:wellarchitected_update_share_invitation]{update_share_invitation} \tab Update a workload or custom lens share invitation\cr
 \link[paws.developer.tools:wellarchitected_update_workload]{update_workload} \tab Update an existing workload\cr
 \link[paws.developer.tools:wellarchitected_update_workload_share]{update_workload_share} \tab Update a workload share\cr
-\link[paws.developer.tools:wellarchitected_upgrade_lens_review]{upgrade_lens_review} \tab Upgrade lens review
+\link[paws.developer.tools:wellarchitected_upgrade_lens_review]{upgrade_lens_review} \tab Upgrade lens review for a particular workload
 }
 }
 

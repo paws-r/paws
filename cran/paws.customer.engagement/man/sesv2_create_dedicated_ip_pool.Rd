@@ -4,13 +4,15 @@
 \alias{sesv2_create_dedicated_ip_pool}
 \title{Create a new pool of dedicated IP addresses}
 \usage{
-sesv2_create_dedicated_ip_pool(PoolName, Tags = NULL)
+sesv2_create_dedicated_ip_pool(PoolName, Tags = NULL, ScalingMode = NULL)
 }
 \arguments{
 \item{PoolName}{[required] The name of the dedicated IP pool.}
 
 \item{Tags}{An object that defines the tags (keys and values) that you want to
 associate with the pool.}
+
+\item{ScalingMode}{The type of scaling mode.}
 }
 \description{
 Create a new pool of dedicated IP addresses. A pool can include one or more dedicated IP addresses that are associated with your Amazon Web Services account. You can associate a pool with a configuration set. When you send an email that uses that configuration set, the message is sent from one of the addresses in the associated pool.

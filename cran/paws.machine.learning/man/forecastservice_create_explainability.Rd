@@ -30,8 +30,8 @@ and time points for the Explainability.}
 
 \item{Schema}{}
 
-\item{EnableVisualization}{Create an Explainability visualization that is viewable within the AWS
-console.}
+\item{EnableVisualization}{Create an Explainability visualization that is viewable within the
+Amazon Web Services console.}
 
 \item{StartDateTime}{If \code{TimePointGranularity} is set to \code{SPECIFIC}, define the first point
 for the Explainability.

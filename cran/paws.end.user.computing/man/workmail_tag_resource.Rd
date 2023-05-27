@@ -2,7 +2,7 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_tag_resource}
 \alias{workmail_tag_resource}
-\title{Applies the specified tags to the specified Amazon WorkMail organization
+\title{Applies the specified tags to the specified WorkMailorganization
 resource}
 \usage{
 workmail_tag_resource(ResourceARN, Tags)
@@ -13,7 +13,7 @@ workmail_tag_resource(ResourceARN, Tags)
 \item{Tags}{[required] The tag key-value pairs.}
 }
 \description{
-Applies the specified tags to the specified Amazon WorkMail organization resource.
+Applies the specified tags to the specified WorkMailorganization resource.
 
 See \url{https://paws-r.github.io/docs/workmail/tag_resource.html} for full documentation.
 }

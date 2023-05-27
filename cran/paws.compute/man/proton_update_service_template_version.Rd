@@ -37,7 +37,7 @@ component attachments to instances based on this template version. A
 change only affects later associations.
 
 For more information about components, see \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html}{Proton components}
-in the \emph{Proton Administrator Guide}.}
+in the \emph{Proton User Guide}.}
 
 \item{templateName}{[required] The name of the service template.}
 }

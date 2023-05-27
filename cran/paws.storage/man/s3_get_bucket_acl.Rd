@@ -8,7 +8,16 @@ the access control list (ACL) of a bucket}
 s3_get_bucket_acl(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
-\item{Bucket}{[required] Specifies the S3 bucket whose ACL is being requested.}
+\item{Bucket}{[required] Specifies the S3 bucket whose ACL is being requested.
+
+To use this API operation against an access point, provide the alias of
+the access point in place of the bucket name.
+
+To use this API operation against an Object Lambda access point, provide
+the alias of the Object Lambda access point in place of the bucket name.
+If the Object Lambda access point alias in a request is not valid, the
+error code \code{InvalidAccessPointAliasError} is returned. For more
+information about \code{InvalidAccessPointAliasError}, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList}{List of Error Codes}.}
 
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request fails with the HTTP status code

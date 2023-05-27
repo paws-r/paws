@@ -15,21 +15,19 @@ kendra_batch_put_document(
 \item{IndexId}{[required] The identifier of the index to add the documents to. You need to create
 the index first using the \code{\link[=kendra_create_index]{create_index}} API.}
 
-\item{RoleArn}{The Amazon Resource Name (ARN) of a role that is allowed to run the
-\code{\link[=kendra_batch_put_document]{batch_put_document}} API. For more
-information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM Roles for Amazon Kendra}.}
+\item{RoleArn}{The Amazon Resource Name (ARN) of an IAM role with permission to access
+your S3 bucket. For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM access roles for Amazon Kendra}.}
 
 \item{Documents}{[required] One or more documents to add to the index.
 
 Documents have the following file size limits.
 \itemize{
-\item 5 MB total size for inline documents
-\item 50 MB total size for files from an S3 bucket
+\item 50 MB total size for any file
 \item 5 MB extracted text for any file
 }
 
-For more information about file size and transaction per second quotas,
-see \href{https://docs.aws.amazon.com/kendra/latest/dg/quotas.html}{Quotas}.}
+For more information, see
+\href{https://docs.aws.amazon.com/kendra/latest/dg/quotas.html}{Quotas}.}
 
 \item{CustomDocumentEnrichmentConfiguration}{Configuration information for altering your document metadata and
 content during the document ingestion process when you use the

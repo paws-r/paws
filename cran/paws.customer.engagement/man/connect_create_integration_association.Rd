@@ -16,12 +16,15 @@ connect_create_integration_association(
 )
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 
 \item{IntegrationType}{[required] The type of information to be ingested.}
 
-\item{IntegrationArn}{[required] The Amazon Resource Name (ARN) of the integration.}
+\item{IntegrationArn}{[required] The Amazon Resource Name (ARN) of the integration.
+
+When integrating with Amazon Pinpoint, the Amazon Connect and Amazon
+Pinpoint instances must be in the same account.}
 
 \item{SourceApplicationUrl}{The URL for the external application. This field is only required for
 the EVENT integration type.}
@@ -32,7 +35,8 @@ the EVENT integration type.}
 \item{SourceType}{The type of the data source. This field is only required for the EVENT
 integration type.}
 
-\item{Tags}{The tags used to organize, track, or control access for this resource.}
+\item{Tags}{The tags used to organize, track, or control access for this resource.
+For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.}
 }
 \description{
 Creates an Amazon Web Services resource association with an Amazon Connect instance.

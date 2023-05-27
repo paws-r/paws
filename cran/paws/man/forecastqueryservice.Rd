@@ -57,7 +57,8 @@ Provides APIs for creating and managing Amazon Forecast resources.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.machine.learning:forecastqueryservice_query_forecast]{query_forecast} \tab Retrieves a forecast for a single item, filtered by the supplied criteria
+\link[paws.machine.learning:forecastqueryservice_query_forecast]{query_forecast} \tab Retrieves a forecast for a single item, filtered by the supplied criteria\cr
+\link[paws.machine.learning:forecastqueryservice_query_what_if_forecast]{query_what_if_forecast} \tab Retrieves a what-if forecast
 }
 }
 

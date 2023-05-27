@@ -4,7 +4,19 @@
 \alias{sagemaker_create_image_version}
 \title{Creates a version of the SageMaker image specified by ImageName}
 \usage{
-sagemaker_create_image_version(BaseImage, ClientToken, ImageName)
+sagemaker_create_image_version(
+  BaseImage,
+  ClientToken,
+  ImageName,
+  Aliases = NULL,
+  VendorGuidance = NULL,
+  JobType = NULL,
+  MLFramework = NULL,
+  ProgrammingLang = NULL,
+  Processor = NULL,
+  Horovod = NULL,
+  ReleaseNotes = NULL
+)
 }
 \arguments{
 \item{BaseImage}{[required] The registry path of the container image to use as the starting point
@@ -18,6 +30,44 @@ Web Services SDKs, such as the SDK for Python (Boto3), add a unique
 value to the call.}
 
 \item{ImageName}{[required] The \code{ImageName} of the \code{Image} to create a version of.}
+
+\item{Aliases}{A list of aliases created with the image version.}
+
+\item{VendorGuidance}{The stability of the image version, specified by the maintainer.
+\itemize{
+\item \code{NOT_PROVIDED}: The maintainers did not provide a status for image
+version stability.
+\item \code{STABLE}: The image version is stable.
+\item \code{TO_BE_ARCHIVED}: The image version is set to be archived. Custom
+image versions that are set to be archived are automatically
+archived after three months.
+\item \code{ARCHIVED}: The image version is archived. Archived image versions
+are not searchable and are no longer actively supported.
+}}
+
+\item{JobType}{Indicates SageMaker job type compatibility.
+\itemize{
+\item \code{TRAINING}: The image version is compatible with SageMaker training
+jobs.
+\item \code{INFERENCE}: The image version is compatible with SageMaker
+inference jobs.
+\item \code{NOTEBOOK_KERNEL}: The image version is compatible with SageMaker
+notebook kernels.
+}}
+
+\item{MLFramework}{The machine learning framework vended in the image version.}
+
+\item{ProgrammingLang}{The supported programming language and its version.}
+
+\item{Processor}{Indicates CPU or GPU compatibility.
+\itemize{
+\item \code{CPU}: The image version is compatible with CPU.
+\item \code{GPU}: The image version is compatible with GPU.
+}}
+
+\item{Horovod}{Indicates Horovod compatibility.}
+
+\item{ReleaseNotes}{The maintainer description of the image version.}
 }
 \description{
 Creates a version of the SageMaker image specified by \code{ImageName}. The version represents the Amazon Elastic Container Registry (ECR) container image specified by \code{BaseImage}.

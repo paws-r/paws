@@ -8,7 +8,7 @@ transcribeservice_get_vocabulary_filter(VocabularyFilterName)
 }
 \arguments{
 \item{VocabularyFilterName}{[required] The name of the custom vocabulary filter you want information about.
-Vocabulary filter names are case sensitive.}
+Custom vocabulary filter names are case sensitive.}
 }
 \description{
 Provides information about the specified custom vocabulary filter.

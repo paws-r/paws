@@ -5,6 +5,7 @@
 \title{Create an Proton component}
 \usage{
 proton_create_component(
+  clientToken = NULL,
   description = NULL,
   environmentName = NULL,
   manifest,
@@ -17,6 +18,8 @@ proton_create_component(
 )
 }
 \arguments{
+\item{clientToken}{The client token for the created component.}
+
 \item{description}{An optional customer-provided description of the component.}
 
 \item{environmentName}{The name of the Proton environment that you want to associate this
@@ -46,8 +49,8 @@ instance.}
 \item{tags}{An optional list of metadata items that you can associate with the
 Proton component. A tag is a key-value pair.
 
-For more information, see \emph{Proton resources and tagging} in the \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton Administrator Guide}
-or \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton resources and tagging}
+in the \emph{Proton User Guide}.}
 
 \item{templateFile}{[required] A path to the Infrastructure as Code (IaC) file describing
 infrastructure that a custom component provisions.

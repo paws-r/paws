@@ -13,18 +13,22 @@ translate_translate_text(
 )
 }
 \arguments{
-\item{Text}{[required] The text to translate. The text string can be a maximum of 5,000 bytes
-long. Depending on your character set, this may be fewer than 5,000
+\item{Text}{[required] The text to translate. The text string can be a maximum of 10,000 bytes
+long. Depending on your character set, this may be fewer than 10,000
 characters.}
 
-\item{TerminologyNames}{The name of the terminology list file to be used in the TranslateText
-request. You can use 1 terminology list at most in a
-\code{\link[=translate_translate_text]{translate_text}} request. Terminology lists
-can contain a maximum of 256 terms.}
+\item{TerminologyNames}{The name of a terminology list file to add to the translation job. This
+file provides source terms and the desired translation for each term. A
+terminology list can contain a maximum of 256 terms. You can use one
+custom terminology resource in your translation request.
 
-\item{SourceLanguageCode}{[required] The language code for the language of the source text. The language must
-be a language supported by Amazon Translate. For a list of language
-codes, see what-is-languages.
+Use the \code{\link[=translate_list_terminologies]{list_terminologies}} operation
+to get the available terminology lists.
+
+For more information about custom terminology lists, see \href{https://docs.aws.amazon.com/translate/latest/dg/how-custom-terminology.html}{Custom terminology}.}
+
+\item{SourceLanguageCode}{[required] The language code for the language of the source text. For a list of
+language codes, see \href{https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html}{Supported languages}.
 
 To have Amazon Translate determine the source language of your text, you
 can specify \code{auto} in the \code{SourceLanguageCode} field. If you specify
@@ -36,15 +40,15 @@ If you specify \code{auto}, you must send the
 supports Amazon Comprehend. Otherwise, the request returns an error
 indicating that autodetect is not supported.}
 
-\item{TargetLanguageCode}{[required] The language code requested for the language of the target text. The
-language must be a language supported by Amazon Translate.}
+\item{TargetLanguageCode}{[required] The language code requested for the language of the target text. For a
+list of language codes, see \href{https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html}{Supported languages}.}
 
 \item{Settings}{Settings to configure your translation output, including the option to
 set the formality level of the output text and the option to mask
 profane words and phrases.}
 }
 \description{
-Translates input text from the source language to the target language. For a list of available languages and language codes, see what-is-languages.
+Translates input text from the source language to the target language. For a list of available languages and language codes, see \href{https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html}{Supported languages}.
 
 See \url{https://paws-r.github.io/docs/translate/translate_text.html} for full documentation.
 }

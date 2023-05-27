@@ -2,9 +2,9 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_iam_policy_assignments_for_user}
 \alias{quicksight_list_iam_policy_assignments_for_user}
-\title{Lists all the IAM policy assignments, including the Amazon Resource
-Names (ARNs) for the IAM policies assigned to the specified user and
-group or groups that the user belongs to}
+\title{Lists all of the IAM policy assignments, including the Amazon Resource
+Names (ARNs), for the IAM policies assigned to the specified user and
+group, or groups that the user belongs to}
 \usage{
 quicksight_list_iam_policy_assignments_for_user(
   AwsAccountId,
@@ -27,7 +27,7 @@ results.}
 \item{Namespace}{[required] The namespace of the assignment.}
 }
 \description{
-Lists all the IAM policy assignments, including the Amazon Resource Names (ARNs) for the IAM policies assigned to the specified user and group or groups that the user belongs to.
+Lists all of the IAM policy assignments, including the Amazon Resource Names (ARNs), for the IAM policies assigned to the specified user and group, or groups that the user belongs to.
 
 See \url{https://paws-r.github.io/docs/quicksight/list_iam_policy_assignments_for_user.html} for full documentation.
 }

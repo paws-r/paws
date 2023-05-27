@@ -83,6 +83,8 @@ data structures, APIs, and commands.
 \link[paws.database:memorydb_describe_events]{describe_events} \tab Returns events related to clusters, security groups, and parameter groups\cr
 \link[paws.database:memorydb_describe_parameter_groups]{describe_parameter_groups} \tab Returns a list of parameter group descriptions\cr
 \link[paws.database:memorydb_describe_parameters]{describe_parameters} \tab Returns the detailed parameter list for a particular parameter group\cr
+\link[paws.database:memorydb_describe_reserved_nodes]{describe_reserved_nodes} \tab Returns information about reserved nodes for this account, or about a specified reserved node\cr
+\link[paws.database:memorydb_describe_reserved_nodes_offerings]{describe_reserved_nodes_offerings} \tab Lists available reserved node offerings\cr
 \link[paws.database:memorydb_describe_service_updates]{describe_service_updates} \tab Returns details of the service updates\cr
 \link[paws.database:memorydb_describe_snapshots]{describe_snapshots} \tab Returns information about cluster snapshots\cr
 \link[paws.database:memorydb_describe_subnet_groups]{describe_subnet_groups} \tab Returns a list of subnet group descriptions\cr
@@ -90,6 +92,7 @@ data structures, APIs, and commands.
 \link[paws.database:memorydb_failover_shard]{failover_shard} \tab Used to failover a shard\cr
 \link[paws.database:memorydb_list_allowed_node_type_updates]{list_allowed_node_type_updates} \tab Lists all available node types that you can scale to from your cluster's current node type\cr
 \link[paws.database:memorydb_list_tags]{list_tags} \tab Lists all tags currently on a named resource\cr
+\link[paws.database:memorydb_purchase_reserved_nodes_offering]{purchase_reserved_nodes_offering} \tab Allows you to purchase a reserved node offering\cr
 \link[paws.database:memorydb_reset_parameter_group]{reset_parameter_group} \tab Modifies the parameters of a parameter group to the engine or system default value\cr
 \link[paws.database:memorydb_tag_resource]{tag_resource} \tab A tag is a key-value pair where the key and value are case-sensitive\cr
 \link[paws.database:memorydb_untag_resource]{untag_resource} \tab Use this operation to remove tags on a resource\cr

@@ -2,7 +2,8 @@
 % Please edit documentation in R/sfn_operations.R
 \name{sfn_describe_state_machine}
 \alias{sfn_describe_state_machine}
-\title{Describes a state machine}
+\title{Provides information about a state machine's definition, its IAM role
+Amazon Resource Name (ARN), and configuration}
 \usage{
 sfn_describe_state_machine(stateMachineArn)
 }
@@ -10,7 +11,7 @@ sfn_describe_state_machine(stateMachineArn)
 \item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine to describe.}
 }
 \description{
-Describes a state machine.
+Provides information about a state machine's definition, its IAM role Amazon Resource Name (ARN), and configuration. If the state machine ARN is a qualified state machine ARN, the response returned includes the \code{Map} state's label.
 
 See \url{https://paws-r.github.io/docs/sfn/describe_state_machine.html} for full documentation.
 }

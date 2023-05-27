@@ -1527,7 +1527,7 @@ detective_untag_resource <- function(ResourceArn, TagKeys) {
 #' svc$update_datasource_packages(
 #'   GraphArn = "string",
 #'   DatasourcePackages = list(
-#'     "DETECTIVE_CORE"|"EKS_AUDIT"
+#'     "DETECTIVE_CORE"|"EKS_AUDIT"|"ASFF_SECURITYHUB_FINDING"
 #'   )
 #' )
 #' ```

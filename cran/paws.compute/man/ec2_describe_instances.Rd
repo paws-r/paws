@@ -35,10 +35,6 @@ which the instance was launched.
 \item \code{client-token} - The idempotency token you provided when you
 launched the instance.
 \item \code{dns-name} - The public DNS name of the instance.
-\item \code{group-id} - The ID of the security group for the instance.
-EC2-Classic only.
-\item \code{group-name} - The name of the security group for the instance.
-EC2-Classic only.
 \item \code{hibernation-options.configured} - A Boolean that indicates whether
 the instance is enabled for hibernation. A value of \code{true} means
 that the instance is enabled for hibernation.
@@ -77,11 +73,13 @@ example, \verb{2021-09-29T11:04:43.305Z}. You can use a wildcard (\code{*}),
 for example, \verb{2021-09-29T*}, which matches an entire day.
 \item \code{metadata-options.http-tokens} - The metadata request authorization
 state (\code{optional} | \code{required})
-\item \code{metadata-options.http-put-response-hop-limit} - The http metadata
+\item \code{metadata-options.http-put-response-hop-limit} - The HTTP metadata
 request put response hop limit (integer, possible values \code{1} to
 \code{64})
-\item \code{metadata-options.http-endpoint} - Enable or disable metadata access
-on http endpoint (\code{enabled} | \code{disabled})
+\item \code{metadata-options.http-endpoint} - The status of access to the HTTP
+metadata endpoint on your instance (\code{enabled} | \code{disabled})
+\item \code{metadata-options.instance-metadata-tags} - The status of access to
+instance tags from the instance metadata (\code{enabled} | \code{disabled})
 \item \code{monitoring-state} - Indicates whether detailed monitoring is
 enabled (\code{disabled} | \code{enabled}).
 \item \code{network-interface.addresses.private-ip-address} - The private IPv4
@@ -218,12 +216,16 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{MaxResults}{The maximum number of results to return in a single call. To retrieve
-the remaining results, make another call with the returned \code{NextToken}
-value. This value can be between 5 and 1000. You cannot specify this
-parameter and the instance IDs parameter in the same call.}
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.
 
-\item{NextToken}{The token to request the next page of results.}
+You cannot specify this parameter and the instance IDs parameter in the
+same request.}
+
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
 }
 \description{
 Describes the specified instances or all instances.

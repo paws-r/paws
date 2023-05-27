@@ -2,16 +2,17 @@
 % Please edit documentation in R/resourcegroups_operations.R
 \name{resourcegroups_get_group_configuration}
 \alias{resourcegroups_get_group_configuration}
-\title{Returns the service configuration associated with the specified resource
-group}
+\title{Retrieves the service configuration associated with the specified
+resource group}
 \usage{
 resourcegroups_get_group_configuration(Group = NULL)
 }
 \arguments{
-\item{Group}{The name or the ARN of the resource group.}
+\item{Group}{The name or the ARN of the resource group for which you want to retrive
+the service configuration.}
 }
 \description{
-Returns the service configuration associated with the specified resource group. For details about the service configuration syntax, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html}{Service configurations for resource groups}.
+Retrieves the service configuration associated with the specified resource group. For details about the service configuration syntax, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html}{Service configurations for Resource Groups}.
 
 See \url{https://paws-r.github.io/docs/resourcegroups/get_group_configuration.html} for full documentation.
 }

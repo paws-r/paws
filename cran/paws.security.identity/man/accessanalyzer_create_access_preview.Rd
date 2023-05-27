@@ -7,8 +7,8 @@ findings for your resource before deploying resource permissions}
 \usage{
 accessanalyzer_create_access_preview(
   analyzerArn,
-  clientToken = NULL,
-  configurations
+  configurations,
+  clientToken = NULL
 )
 }
 \arguments{
@@ -16,12 +16,12 @@ accessanalyzer_create_access_preview(
 used to generate the access preview. You can only create an access
 preview for analyzers with an \code{Account} type and \code{Active} status.}
 
-\item{clientToken}{A client token.}
-
 \item{configurations}{[required] Access control configuration for your resource that is used to generate
 the access preview. The access preview includes findings for external
 access allowed to the resource with the proposed access control
 configuration. The configuration must contain exactly one element.}
+
+\item{clientToken}{A client token.}
 }
 \description{
 Creates an access preview that allows you to preview IAM Access Analyzer findings for your resource before deploying resource permissions.

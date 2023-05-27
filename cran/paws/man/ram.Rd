@@ -31,13 +31,11 @@ Operations section.
 This is the \emph{Resource Access Manager API Reference}. This documentation
 provides descriptions and syntax for each of the actions and data types
 in RAM. RAM is a service that helps you securely share your Amazon Web
-Services resources across Amazon Web Services accounts. If you have
-multiple Amazon Web Services accounts, you can use RAM to share those
-resources with other accounts. If you use Organizations to manage your
-accounts, then you share your resources with your organization or
-organizational units (OUs). For supported resource types, you can also
-share resources with individual Identity and Access Management (IAM)
-roles an users.
+Services resources to other Amazon Web Services accounts. If you use
+Organizations to manage your accounts, then you can share your resources
+with your entire organization or to organizational units (OUs). For
+supported resource types, you can also share resources with individual
+Identity and Access Management (IAM) roles and users.
 
 To learn more about RAM, see the following resources:
 \itemize{
@@ -75,27 +73,36 @@ To learn more about RAM, see the following resources:
 \link[paws.security.identity:ram_accept_resource_share_invitation]{accept_resource_share_invitation} \tab Accepts an invitation to a resource share from another Amazon Web Services account\cr
 \link[paws.security.identity:ram_associate_resource_share]{associate_resource_share} \tab Adds the specified list of principals and list of resources to a resource share\cr
 \link[paws.security.identity:ram_associate_resource_share_permission]{associate_resource_share_permission} \tab Adds or replaces the RAM permission for a resource type included in a resource share\cr
+\link[paws.security.identity:ram_create_permission]{create_permission} \tab Creates a customer managed permission for a specified resource type that you can attach to resource shares\cr
+\link[paws.security.identity:ram_create_permission_version]{create_permission_version} \tab Creates a new version of the specified customer managed permission\cr
 \link[paws.security.identity:ram_create_resource_share]{create_resource_share} \tab Creates a resource share\cr
+\link[paws.security.identity:ram_delete_permission]{delete_permission} \tab Deletes the specified customer managed permission in the Amazon Web Services Region in which you call this operation\cr
+\link[paws.security.identity:ram_delete_permission_version]{delete_permission_version} \tab Deletes one version of a customer managed permission\cr
 \link[paws.security.identity:ram_delete_resource_share]{delete_resource_share} \tab Deletes the specified resource share\cr
-\link[paws.security.identity:ram_disassociate_resource_share]{disassociate_resource_share} \tab Disassociates the specified principals or resources from the specified resource share\cr
-\link[paws.security.identity:ram_disassociate_resource_share_permission]{disassociate_resource_share_permission} \tab Disassociates an RAM permission from a resource share\cr
+\link[paws.security.identity:ram_disassociate_resource_share]{disassociate_resource_share} \tab Removes the specified principals or resources from participating in the specified resource share\cr
+\link[paws.security.identity:ram_disassociate_resource_share_permission]{disassociate_resource_share_permission} \tab Removes a managed permission from a resource share\cr
 \link[paws.security.identity:ram_enable_sharing_with_aws_organization]{enable_sharing_with_aws_organization} \tab Enables resource sharing within your organization in Organizations\cr
-\link[paws.security.identity:ram_get_permission]{get_permission} \tab Gets the contents of an RAM permission in JSON format\cr
+\link[paws.security.identity:ram_get_permission]{get_permission} \tab Retrieves the contents of a managed permission in JSON format\cr
 \link[paws.security.identity:ram_get_resource_policies]{get_resource_policies} \tab Retrieves the resource policies for the specified resources that you own and have shared\cr
-\link[paws.security.identity:ram_get_resource_share_associations]{get_resource_share_associations} \tab Retrieves the resource and principal associations for resource shares that you own\cr
+\link[paws.security.identity:ram_get_resource_share_associations]{get_resource_share_associations} \tab Retrieves the lists of resources and principals that associated for resource shares that you own\cr
 \link[paws.security.identity:ram_get_resource_share_invitations]{get_resource_share_invitations} \tab Retrieves details about invitations that you have received for resource shares\cr
 \link[paws.security.identity:ram_get_resource_shares]{get_resource_shares} \tab Retrieves details about the resource shares that you own or that are shared with you\cr
 \link[paws.security.identity:ram_list_pending_invitation_resources]{list_pending_invitation_resources} \tab Lists the resources in a resource share that is shared with you but for which the invitation is still PENDING\cr
+\link[paws.security.identity:ram_list_permission_associations]{list_permission_associations} \tab Lists information about the managed permission and its associations to any resource shares that use this managed permission\cr
 \link[paws.security.identity:ram_list_permissions]{list_permissions} \tab Retrieves a list of available RAM permissions that you can use for the supported resource types\cr
 \link[paws.security.identity:ram_list_permission_versions]{list_permission_versions} \tab Lists the available versions of the specified RAM permission\cr
 \link[paws.security.identity:ram_list_principals]{list_principals} \tab Lists the principals that you are sharing resources with or that are sharing resources with you\cr
+\link[paws.security.identity:ram_list_replace_permission_associations_work]{list_replace_permission_associations_work} \tab Retrieves the current status of the asynchronous tasks performed by RAM when you perform the ReplacePermissionAssociationsWork operation\cr
 \link[paws.security.identity:ram_list_resources]{list_resources} \tab Lists the resources that you added to a resource share or the resources that are shared with you\cr
 \link[paws.security.identity:ram_list_resource_share_permissions]{list_resource_share_permissions} \tab Lists the RAM permissions that are associated with a resource share\cr
 \link[paws.security.identity:ram_list_resource_types]{list_resource_types} \tab Lists the resource types that can be shared by RAM\cr
-\link[paws.security.identity:ram_promote_resource_share_created_from_policy]{promote_resource_share_created_from_policy} \tab When you attach a resource-based permission policy to a resource, it automatically creates a resource share\cr
+\link[paws.security.identity:ram_promote_permission_created_from_policy]{promote_permission_created_from_policy} \tab When you attach a resource-based policy to a resource, RAM automatically creates a resource share of featureSet=CREATED_FROM_POLICY with a managed permission that has the same IAM permissions as the original resource-based policy\cr
+\link[paws.security.identity:ram_promote_resource_share_created_from_policy]{promote_resource_share_created_from_policy} \tab When you attach a resource-based policy to a resource, RAM automatically creates a resource share of featureSet=CREATED_FROM_POLICY with a managed permission that has the same IAM permissions as the original resource-based policy\cr
 \link[paws.security.identity:ram_reject_resource_share_invitation]{reject_resource_share_invitation} \tab Rejects an invitation to a resource share from another Amazon Web Services account\cr
-\link[paws.security.identity:ram_tag_resource]{tag_resource} \tab Adds the specified tag keys and values to the specified resource share\cr
-\link[paws.security.identity:ram_untag_resource]{untag_resource} \tab Removes the specified tag key and value pairs from the specified resource share\cr
+\link[paws.security.identity:ram_replace_permission_associations]{replace_permission_associations} \tab Updates all resource shares that use a managed permission to a different managed permission\cr
+\link[paws.security.identity:ram_set_default_permission_version]{set_default_permission_version} \tab Designates the specified version number as the default version for the specified customer managed permission\cr
+\link[paws.security.identity:ram_tag_resource]{tag_resource} \tab Adds the specified tag keys and values to a resource share or managed permission\cr
+\link[paws.security.identity:ram_untag_resource]{untag_resource} \tab Removes the specified tag key and value pairs from the specified resource share or managed permission\cr
 \link[paws.security.identity:ram_update_resource_share]{update_resource_share} \tab Modifies some of the properties of the specified resource share
 }
 }

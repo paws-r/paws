@@ -14,7 +14,8 @@ connect_list_prompts(InstanceId, NextToken = NULL, MaxResults = NULL)
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximum number of results to return per page.}
+\item{MaxResults}{The maximum number of results to return per page. The default MaxResult
+size is 100.}
 }
 \description{
 Provides information about the prompts for the specified Amazon Connect instance.

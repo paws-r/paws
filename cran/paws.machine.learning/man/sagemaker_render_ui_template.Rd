@@ -23,7 +23,7 @@ are used by the template.}
 provide a \code{HumanTaskUiArn} if you use the \code{UiTemplate} parameter.
 
 See a list of available Human Ui Amazon Resource Names (ARNs) in
-UiConfig.}
+\href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UiConfig.html}{UiConfig}.}
 }
 \description{
 Renders the UI template so that you can preview the worker's experience.

@@ -6,6 +6,7 @@
 Services account, not including secrets that are marked for deletion}
 \usage{
 secretsmanager_list_secrets(
+  IncludePlannedDeletion = NULL,
   MaxResults = NULL,
   NextToken = NULL,
   Filters = NULL,
@@ -13,6 +14,9 @@ secretsmanager_list_secrets(
 )
 }
 \arguments{
+\item{IncludePlannedDeletion}{Specifies whether to include secrets scheduled for deletion. By default,
+secrets scheduled for deletion aren't included.}
+
 \item{MaxResults}{The number of results to include in the response.
 
 If there are more results available, in the response, Secrets Manager
@@ -26,7 +30,7 @@ previous call did not show all results. To get the next results, call
 
 \item{Filters}{The filters to apply to the list of secrets.}
 
-\item{SortOrder}{Lists secrets in the requested order.}
+\item{SortOrder}{Secrets are listed by \code{CreatedDate}.}
 }
 \description{
 Lists the secrets that are stored by Secrets Manager in the Amazon Web Services account, not including secrets that are marked for deletion. To see secrets marked for deletion, use the Secrets Manager console.

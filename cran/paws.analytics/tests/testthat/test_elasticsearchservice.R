@@ -51,3 +51,7 @@ test_that("list_elasticsearch_versions", {
 test_that("list_elasticsearch_versions", {
   expect_error(svc$list_elasticsearch_versions(MaxResults = 20), NA)
 })
+
+test_that("list_vpc_endpoints", {
+  expect_error(svc$list_vpc_endpoints(), NA)
+})

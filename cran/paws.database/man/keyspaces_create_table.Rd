@@ -14,7 +14,8 @@ keyspaces_create_table(
   pointInTimeRecovery = NULL,
   ttl = NULL,
   defaultTimeToLive = NULL,
-  tags = NULL
+  tags = NULL,
+  clientSideTimestamps = NULL
 )
 }
 \arguments{
@@ -25,47 +26,42 @@ keyspaces_create_table(
 \item{schemaDefinition}{[required] The \code{schemaDefinition} consists of the following parameters.
 
 For each column to be created:
-
-• \code{name} - The name of the column.
-
-• \code{type} - An Amazon Keyspaces data type. For more information, see
+\itemize{
+\item \code{name} - The name of the column.
+\item \code{type} - An Amazon Keyspaces data type. For more information, see
 \href{https://docs.aws.amazon.com/keyspaces/latest/devguide/cql.elements.html#cql.data-types}{Data types}
 in the \emph{Amazon Keyspaces Developer Guide}.
+}
 
 The primary key of the table consists of the following columns:
-
-• \code{partitionKeys} - The partition key can be a single column, or it can
-be a compound value composed of two or more columns. The partition key
-portion of the primary key is required and determines how Amazon
-Keyspaces stores your data.
-
-• \code{name} - The name of each partition key column.
-
-• \code{clusteringKeys} - The optional clustering column portion of your
-primary key determines how the data is clustered and sorted within each
-partition.
-
-• \code{name} - The name of the clustering column.
-
-• \code{orderBy} - Sets the ascendant (\code{ASC}) or descendant (\code{DESC}) order
+\itemize{
+\item \code{partitionKeys} - The partition key can be a single column, or it
+can be a compound value composed of two or more columns. The
+partition key portion of the primary key is required and determines
+how Amazon Keyspaces stores your data.
+\item \code{name} - The name of each partition key column.
+\item \code{clusteringKeys} - The optional clustering column portion of your
+primary key determines how the data is clustered and sorted within
+each partition.
+\item \code{name} - The name of the clustering column.
+\item \code{orderBy} - Sets the ascendant (\code{ASC}) or descendant (\code{DESC}) order
 modifier.
 
-To define a column as static use \code{staticColumns} - Static columns store
-values that are shared by all rows in the same partition:
-
-• \code{name} - The name of the column.
-
-• \code{type} - An Amazon Keyspaces data type.}
+To define a column as static use \code{staticColumns} - Static columns
+store values that are shared by all rows in the same partition:
+\item \code{name} - The name of the column.
+\item \code{type} - An Amazon Keyspaces data type.
+}}
 
 \item{comment}{This parameter allows to enter a description of the table.}
 
 \item{capacitySpecification}{Specifies the read/write throughput capacity mode for the table. The
 options are:
-
-• \code{throughputMode:PAY_PER_REQUEST} and
-
-• \code{throughputMode:PROVISIONED} - Provisioned capacity mode requires
+\itemize{
+\item \code{throughputMode:PAY_PER_REQUEST} and
+\item \code{throughputMode:PROVISIONED} - Provisioned capacity mode requires
 \code{readCapacityUnits} and \code{writeCapacityUnits} as input.
+}
 
 The default is \code{throughput_mode:PAY_PER_REQUEST}.
 
@@ -74,13 +70,13 @@ in the \emph{Amazon Keyspaces Developer Guide}.}
 
 \item{encryptionSpecification}{Specifies how the encryption key for encryption at rest is managed for
 the table. You can choose one of the following KMS key (KMS key):
-
-• \code{type:AWS_OWNED_KMS_KEY} - This key is owned by Amazon Keyspaces.
-
-• \code{type:CUSTOMER_MANAGED_KMS_KEY} - This key is stored in your account
+\itemize{
+\item \code{type:AWS_OWNED_KMS_KEY} - This key is owned by Amazon Keyspaces.
+\item \code{type:CUSTOMER_MANAGED_KMS_KEY} - This key is stored in your account
 and is created, owned, and managed by you. This option requires the
-\code{kms_key_identifier} of the KMS key in Amazon Resource Name (ARN) format
-as input.
+\code{kms_key_identifier} of the KMS key in Amazon Resource Name (ARN)
+format as input.
+}
 
 The default is \code{type:AWS_OWNED_KMS_KEY}.
 
@@ -89,21 +85,21 @@ in the \emph{Amazon Keyspaces Developer Guide}.}
 
 \item{pointInTimeRecovery}{Specifies if \code{pointInTimeRecovery} is enabled or disabled for the table.
 The options are:
+\itemize{
+\item \code{status=ENABLED}
+\item \code{status=DISABLED}
+}
 
-• \code{ENABLED}
-
-• \code{DISABLED}
-
-If it's not specified, the default is \code{DISABLED}.
+If it's not specified, the default is \code{status=DISABLED}.
 
 For more information, see \href{https://docs.aws.amazon.com/keyspaces/latest/devguide/PointInTimeRecovery.html}{Point-in-time recovery}
 in the \emph{Amazon Keyspaces Developer Guide}.}
 
 \item{ttl}{Enables Time to Live custom settings for the table. The options are:
-
-• \code{status:enabled}
-
-• \code{status:disabled}
+\itemize{
+\item \code{status:enabled}
+\item \code{status:disabled}
+}
 
 The default is \code{status:disabled}. After \code{ttl} is enabled, you can't
 disable it for the table.
@@ -120,6 +116,16 @@ in the \emph{Amazon Keyspaces Developer Guide}.}
 
 For more information, see \href{https://docs.aws.amazon.com/keyspaces/latest/devguide/tagging-keyspaces.html}{Adding tags and labels to Amazon Keyspaces resources}
 in the \emph{Amazon Keyspaces Developer Guide}.}
+
+\item{clientSideTimestamps}{Enables client-side timestamps for the table. By default, the setting is
+disabled. You can enable client-side timestamps with the following
+option:
+\itemize{
+\item \code{status: "enabled"}
+}
+
+Once client-side timestamps are enabled for a table, this setting cannot
+be disabled.}
 }
 \description{
 The \code{\link[=keyspaces_create_table]{create_table}} operation adds a new table to the specified keyspace. Within a keyspace, table names must be unique.

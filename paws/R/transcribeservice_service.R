@@ -81,7 +81,7 @@ NULL
 #'  \link[=transcribeservice_delete_medical_vocabulary]{delete_medical_vocabulary} \tab Deletes a custom medical vocabulary\cr
 #'  \link[=transcribeservice_delete_transcription_job]{delete_transcription_job} \tab Deletes a transcription job\cr
 #'  \link[=transcribeservice_delete_vocabulary]{delete_vocabulary} \tab Deletes a custom vocabulary\cr
-#'  \link[=transcribeservice_delete_vocabulary_filter]{delete_vocabulary_filter} \tab Deletes a vocabulary filter\cr
+#'  \link[=transcribeservice_delete_vocabulary_filter]{delete_vocabulary_filter} \tab Deletes a custom vocabulary filter\cr
 #'  \link[=transcribeservice_describe_language_model]{describe_language_model} \tab Provides information about the specified custom language model\cr
 #'  \link[=transcribeservice_get_call_analytics_category]{get_call_analytics_category} \tab Provides information about the specified Call Analytics category\cr
 #'  \link[=transcribeservice_get_call_analytics_job]{get_call_analytics_job} \tab Provides information about the specified Call Analytics job\cr

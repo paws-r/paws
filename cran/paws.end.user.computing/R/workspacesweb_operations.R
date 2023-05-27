@@ -93,6 +93,36 @@ workspacesweb_associate_trust_store <- function(portalArn, trustStoreArn) {
 }
 .workspacesweb$operations$associate_trust_store <- workspacesweb_associate_trust_store
 
+#' Associates a user access logging settings resource with a web portal
+#'
+#' @description
+#' Associates a user access logging settings resource with a web portal.
+#'
+#' See [https://paws-r.github.io/docs/workspacesweb/associate_user_access_logging_settings.html](https://paws-r.github.io/docs/workspacesweb/associate_user_access_logging_settings.html) for full documentation.
+#'
+#' @param portalArn &#91;required&#93; The ARN of the web portal.
+#' @param userAccessLoggingSettingsArn &#91;required&#93; The ARN of the user access logging settings.
+#'
+#' @keywords internal
+#'
+#' @rdname workspacesweb_associate_user_access_logging_settings
+workspacesweb_associate_user_access_logging_settings <- function(portalArn, userAccessLoggingSettingsArn) {
+  op <- new_operation(
+    name = "AssociateUserAccessLoggingSettings",
+    http_method = "PUT",
+    http_path = "/portals/{portalArn+}/userAccessLoggingSettings",
+    paginator = list()
+  )
+  input <- .workspacesweb$associate_user_access_logging_settings_input(portalArn = portalArn, userAccessLoggingSettingsArn = userAccessLoggingSettingsArn)
+  output <- .workspacesweb$associate_user_access_logging_settings_output()
+  config <- get_config()
+  svc <- .workspacesweb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspacesweb$operations$associate_user_access_logging_settings <- workspacesweb_associate_user_access_logging_settings
+
 #' Associates a user settings resource with a web portal
 #'
 #' @description
@@ -321,6 +351,21 @@ workspacesweb_create_network_settings <- function(clientToken = NULL, securityGr
 #' See [https://paws-r.github.io/docs/workspacesweb/create_portal.html](https://paws-r.github.io/docs/workspacesweb/create_portal.html) for full documentation.
 #'
 #' @param additionalEncryptionContext The additional encryption context of the portal.
+#' @param authenticationType The type of authentication integration points used when signing into the
+#' web portal. Defaults to `Standard`.
+#' 
+#' `Standard` web portals are authenticated directly through your identity
+#' provider. You need to call
+#' [`create_identity_provider`][workspacesweb_create_identity_provider] to
+#' integrate your identity provider with your web portal. User and group
+#' access to your web portal is controlled through your identity provider.
+#' 
+#' `IAM_Identity_Center` web portals are authenticated through AWS IAM
+#' Identity Center (successor to AWS Single Sign-On). They provide
+#' additional features, such as IdP-initiated authentication. Identity
+#' sources (including external identity provider integration), plus user
+#' and group access to your web portal, can be configured in the IAM
+#' Identity Center.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
 #' completes only once. With an idempotent request, if the original request
@@ -337,14 +382,14 @@ workspacesweb_create_network_settings <- function(clientToken = NULL, securityGr
 #' @keywords internal
 #'
 #' @rdname workspacesweb_create_portal
-workspacesweb_create_portal <- function(additionalEncryptionContext = NULL, clientToken = NULL, customerManagedKey = NULL, displayName = NULL, tags = NULL) {
+workspacesweb_create_portal <- function(additionalEncryptionContext = NULL, authenticationType = NULL, clientToken = NULL, customerManagedKey = NULL, displayName = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreatePortal",
     http_method = "POST",
     http_path = "/portals",
     paginator = list()
   )
-  input <- .workspacesweb$create_portal_input(additionalEncryptionContext = additionalEncryptionContext, clientToken = clientToken, customerManagedKey = customerManagedKey, displayName = displayName, tags = tags)
+  input <- .workspacesweb$create_portal_input(additionalEncryptionContext = additionalEncryptionContext, authenticationType = authenticationType, clientToken = clientToken, customerManagedKey = customerManagedKey, displayName = displayName, tags = tags)
   output <- .workspacesweb$create_portal_output()
   config <- get_config()
   svc <- .workspacesweb$service(config)
@@ -391,6 +436,46 @@ workspacesweb_create_trust_store <- function(certificateList, clientToken = NULL
   return(response)
 }
 .workspacesweb$operations$create_trust_store <- workspacesweb_create_trust_store
+
+#' Creates a user access logging settings resource that can be associated
+#' with a web portal
+#'
+#' @description
+#' Creates a user access logging settings resource that can be associated with a web portal.
+#'
+#' See [https://paws-r.github.io/docs/workspacesweb/create_user_access_logging_settings.html](https://paws-r.github.io/docs/workspacesweb/create_user_access_logging_settings.html) for full documentation.
+#'
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. Idempotency ensures that an API request
+#' completes only once. With an idempotent request, if the original request
+#' completes successfully, subsequent retries with the same client token
+#' returns the result from the original successful request.
+#' 
+#' If you do not specify a client token, one is automatically generated by
+#' the AWS SDK.
+#' @param kinesisStreamArn &#91;required&#93; The ARN of the Kinesis stream.
+#' @param tags The tags to add to the user settings resource. A tag is a key-value
+#' pair.
+#'
+#' @keywords internal
+#'
+#' @rdname workspacesweb_create_user_access_logging_settings
+workspacesweb_create_user_access_logging_settings <- function(clientToken = NULL, kinesisStreamArn, tags = NULL) {
+  op <- new_operation(
+    name = "CreateUserAccessLoggingSettings",
+    http_method = "POST",
+    http_path = "/userAccessLoggingSettings",
+    paginator = list()
+  )
+  input <- .workspacesweb$create_user_access_logging_settings_input(clientToken = clientToken, kinesisStreamArn = kinesisStreamArn, tags = tags)
+  output <- .workspacesweb$create_user_access_logging_settings_output()
+  config <- get_config()
+  svc <- .workspacesweb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspacesweb$operations$create_user_access_logging_settings <- workspacesweb_create_user_access_logging_settings
 
 #' Creates a user settings resource that can be associated with a web
 #' portal
@@ -590,6 +675,35 @@ workspacesweb_delete_trust_store <- function(trustStoreArn) {
 }
 .workspacesweb$operations$delete_trust_store <- workspacesweb_delete_trust_store
 
+#' Deletes user access logging settings
+#'
+#' @description
+#' Deletes user access logging settings.
+#'
+#' See [https://paws-r.github.io/docs/workspacesweb/delete_user_access_logging_settings.html](https://paws-r.github.io/docs/workspacesweb/delete_user_access_logging_settings.html) for full documentation.
+#'
+#' @param userAccessLoggingSettingsArn &#91;required&#93; The ARN of the user access logging settings.
+#'
+#' @keywords internal
+#'
+#' @rdname workspacesweb_delete_user_access_logging_settings
+workspacesweb_delete_user_access_logging_settings <- function(userAccessLoggingSettingsArn) {
+  op <- new_operation(
+    name = "DeleteUserAccessLoggingSettings",
+    http_method = "DELETE",
+    http_path = "/userAccessLoggingSettings/{userAccessLoggingSettingsArn+}",
+    paginator = list()
+  )
+  input <- .workspacesweb$delete_user_access_logging_settings_input(userAccessLoggingSettingsArn = userAccessLoggingSettingsArn)
+  output <- .workspacesweb$delete_user_access_logging_settings_output()
+  config <- get_config()
+  svc <- .workspacesweb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspacesweb$operations$delete_user_access_logging_settings <- workspacesweb_delete_user_access_logging_settings
+
 #' Deletes user settings
 #'
 #' @description
@@ -705,6 +819,35 @@ workspacesweb_disassociate_trust_store <- function(portalArn) {
   return(response)
 }
 .workspacesweb$operations$disassociate_trust_store <- workspacesweb_disassociate_trust_store
+
+#' Disassociates user access logging settings from a web portal
+#'
+#' @description
+#' Disassociates user access logging settings from a web portal.
+#'
+#' See [https://paws-r.github.io/docs/workspacesweb/disassociate_user_access_logging_settings.html](https://paws-r.github.io/docs/workspacesweb/disassociate_user_access_logging_settings.html) for full documentation.
+#'
+#' @param portalArn &#91;required&#93; The ARN of the web portal.
+#'
+#' @keywords internal
+#'
+#' @rdname workspacesweb_disassociate_user_access_logging_settings
+workspacesweb_disassociate_user_access_logging_settings <- function(portalArn) {
+  op <- new_operation(
+    name = "DisassociateUserAccessLoggingSettings",
+    http_method = "DELETE",
+    http_path = "/portals/{portalArn+}/userAccessLoggingSettings",
+    paginator = list()
+  )
+  input <- .workspacesweb$disassociate_user_access_logging_settings_input(portalArn = portalArn)
+  output <- .workspacesweb$disassociate_user_access_logging_settings_output()
+  config <- get_config()
+  svc <- .workspacesweb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspacesweb$operations$disassociate_user_access_logging_settings <- workspacesweb_disassociate_user_access_logging_settings
 
 #' Disassociates user settings from a web portal
 #'
@@ -938,6 +1081,35 @@ workspacesweb_get_trust_store_certificate <- function(thumbprint, trustStoreArn)
   return(response)
 }
 .workspacesweb$operations$get_trust_store_certificate <- workspacesweb_get_trust_store_certificate
+
+#' Gets user access logging settings
+#'
+#' @description
+#' Gets user access logging settings.
+#'
+#' See [https://paws-r.github.io/docs/workspacesweb/get_user_access_logging_settings.html](https://paws-r.github.io/docs/workspacesweb/get_user_access_logging_settings.html) for full documentation.
+#'
+#' @param userAccessLoggingSettingsArn &#91;required&#93; The ARN of the user access logging settings.
+#'
+#' @keywords internal
+#'
+#' @rdname workspacesweb_get_user_access_logging_settings
+workspacesweb_get_user_access_logging_settings <- function(userAccessLoggingSettingsArn) {
+  op <- new_operation(
+    name = "GetUserAccessLoggingSettings",
+    http_method = "GET",
+    http_path = "/userAccessLoggingSettings/{userAccessLoggingSettingsArn+}",
+    paginator = list()
+  )
+  input <- .workspacesweb$get_user_access_logging_settings_input(userAccessLoggingSettingsArn = userAccessLoggingSettingsArn)
+  output <- .workspacesweb$get_user_access_logging_settings_output()
+  config <- get_config()
+  svc <- .workspacesweb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspacesweb$operations$get_user_access_logging_settings <- workspacesweb_get_user_access_logging_settings
 
 #' Gets user settings
 #'
@@ -1184,6 +1356,37 @@ workspacesweb_list_trust_stores <- function(maxResults = NULL, nextToken = NULL)
   return(response)
 }
 .workspacesweb$operations$list_trust_stores <- workspacesweb_list_trust_stores
+
+#' Retrieves a list of user access logging settings
+#'
+#' @description
+#' Retrieves a list of user access logging settings.
+#'
+#' See [https://paws-r.github.io/docs/workspacesweb/list_user_access_logging_settings.html](https://paws-r.github.io/docs/workspacesweb/list_user_access_logging_settings.html) for full documentation.
+#'
+#' @param maxResults The maximum number of results to be included in the next page.
+#' @param nextToken The pagination token used to retrieve the next page of results for this
+#' operation.
+#'
+#' @keywords internal
+#'
+#' @rdname workspacesweb_list_user_access_logging_settings
+workspacesweb_list_user_access_logging_settings <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListUserAccessLoggingSettings",
+    http_method = "GET",
+    http_path = "/userAccessLoggingSettings",
+    paginator = list()
+  )
+  input <- .workspacesweb$list_user_access_logging_settings_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .workspacesweb$list_user_access_logging_settings_output()
+  config <- get_config()
+  svc <- .workspacesweb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspacesweb$operations$list_user_access_logging_settings <- workspacesweb_list_user_access_logging_settings
 
 #' Retrieves a list of user settings
 #'
@@ -1474,6 +1677,21 @@ workspacesweb_update_network_settings <- function(clientToken = NULL, networkSet
 #'
 #' See [https://paws-r.github.io/docs/workspacesweb/update_portal.html](https://paws-r.github.io/docs/workspacesweb/update_portal.html) for full documentation.
 #'
+#' @param authenticationType The type of authentication integration points used when signing into the
+#' web portal. Defaults to `Standard`.
+#' 
+#' `Standard` web portals are authenticated directly through your identity
+#' provider. You need to call
+#' [`create_identity_provider`][workspacesweb_create_identity_provider] to
+#' integrate your identity provider with your web portal. User and group
+#' access to your web portal is controlled through your identity provider.
+#' 
+#' `IAM_Identity_Center` web portals are authenticated through AWS IAM
+#' Identity Center (successor to AWS Single Sign-On). They provide
+#' additional features, such as IdP-initiated authentication. Identity
+#' sources (including external identity provider integration), plus user
+#' and group access to your web portal, can be configured in the IAM
+#' Identity Center.
 #' @param displayName The name of the web portal. This is not visible to users who log into
 #' the web portal.
 #' @param portalArn &#91;required&#93; The ARN of the web portal.
@@ -1481,14 +1699,14 @@ workspacesweb_update_network_settings <- function(clientToken = NULL, networkSet
 #' @keywords internal
 #'
 #' @rdname workspacesweb_update_portal
-workspacesweb_update_portal <- function(displayName = NULL, portalArn) {
+workspacesweb_update_portal <- function(authenticationType = NULL, displayName = NULL, portalArn) {
   op <- new_operation(
     name = "UpdatePortal",
     http_method = "PUT",
     http_path = "/portals/{portalArn+}",
     paginator = list()
   )
-  input <- .workspacesweb$update_portal_input(displayName = displayName, portalArn = portalArn)
+  input <- .workspacesweb$update_portal_input(authenticationType = authenticationType, displayName = displayName, portalArn = portalArn)
   output <- .workspacesweb$update_portal_output()
   config <- get_config()
   svc <- .workspacesweb$service(config)
@@ -1536,6 +1754,44 @@ workspacesweb_update_trust_store <- function(certificatesToAdd = NULL, certifica
   return(response)
 }
 .workspacesweb$operations$update_trust_store <- workspacesweb_update_trust_store
+
+#' Updates the user access logging settings
+#'
+#' @description
+#' Updates the user access logging settings.
+#'
+#' See [https://paws-r.github.io/docs/workspacesweb/update_user_access_logging_settings.html](https://paws-r.github.io/docs/workspacesweb/update_user_access_logging_settings.html) for full documentation.
+#'
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. Idempotency ensures that an API request
+#' completes only once. With an idempotent request, if the original request
+#' completes successfully, subsequent retries with the same client token
+#' return the result from the original successful request.
+#' 
+#' If you do not specify a client token, one is automatically generated by
+#' the AWS SDK.
+#' @param kinesisStreamArn The ARN of the Kinesis stream.
+#' @param userAccessLoggingSettingsArn &#91;required&#93; The ARN of the user access logging settings.
+#'
+#' @keywords internal
+#'
+#' @rdname workspacesweb_update_user_access_logging_settings
+workspacesweb_update_user_access_logging_settings <- function(clientToken = NULL, kinesisStreamArn = NULL, userAccessLoggingSettingsArn) {
+  op <- new_operation(
+    name = "UpdateUserAccessLoggingSettings",
+    http_method = "PATCH",
+    http_path = "/userAccessLoggingSettings/{userAccessLoggingSettingsArn+}",
+    paginator = list()
+  )
+  input <- .workspacesweb$update_user_access_logging_settings_input(clientToken = clientToken, kinesisStreamArn = kinesisStreamArn, userAccessLoggingSettingsArn = userAccessLoggingSettingsArn)
+  output <- .workspacesweb$update_user_access_logging_settings_output()
+  config <- get_config()
+  svc <- .workspacesweb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspacesweb$operations$update_user_access_logging_settings <- workspacesweb_update_user_access_logging_settings
 
 #' Updates the user settings
 #'

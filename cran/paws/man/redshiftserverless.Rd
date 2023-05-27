@@ -87,18 +87,21 @@ To learn more about Amazon Redshift Serverless, see \href{https://docs.aws.amazo
 \link[paws.database:redshiftserverless_get_recovery_point]{get_recovery_point} \tab Returns information about a recovery point\cr
 \link[paws.database:redshiftserverless_get_resource_policy]{get_resource_policy} \tab Returns a resource policy\cr
 \link[paws.database:redshiftserverless_get_snapshot]{get_snapshot} \tab Returns information about a specific snapshot\cr
+\link[paws.database:redshiftserverless_get_table_restore_status]{get_table_restore_status} \tab Returns information about a TableRestoreStatus object\cr
 \link[paws.database:redshiftserverless_get_usage_limit]{get_usage_limit} \tab Returns information about a usage limit\cr
 \link[paws.database:redshiftserverless_get_workgroup]{get_workgroup} \tab Returns information about a specific workgroup\cr
 \link[paws.database:redshiftserverless_list_endpoint_access]{list_endpoint_access} \tab Returns an array of EndpointAccess objects and relevant information\cr
 \link[paws.database:redshiftserverless_list_namespaces]{list_namespaces} \tab Returns information about a list of specified namespaces\cr
 \link[paws.database:redshiftserverless_list_recovery_points]{list_recovery_points} \tab Returns an array of recovery points\cr
 \link[paws.database:redshiftserverless_list_snapshots]{list_snapshots} \tab Returns a list of snapshots\cr
+\link[paws.database:redshiftserverless_list_table_restore_status]{list_table_restore_status} \tab Returns information about an array of TableRestoreStatus objects\cr
 \link[paws.database:redshiftserverless_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to a resource\cr
 \link[paws.database:redshiftserverless_list_usage_limits]{list_usage_limits} \tab Lists all usage limits within Amazon Redshift Serverless\cr
 \link[paws.database:redshiftserverless_list_workgroups]{list_workgroups} \tab Returns information about a list of specified workgroups\cr
 \link[paws.database:redshiftserverless_put_resource_policy]{put_resource_policy} \tab Creates or updates a resource policy\cr
 \link[paws.database:redshiftserverless_restore_from_recovery_point]{restore_from_recovery_point} \tab Restore the data from a recovery point\cr
 \link[paws.database:redshiftserverless_restore_from_snapshot]{restore_from_snapshot} \tab Restores a namespace from a snapshot\cr
+\link[paws.database:redshiftserverless_restore_table_from_snapshot]{restore_table_from_snapshot} \tab Restores a table from a snapshot to your Amazon Redshift Serverless instance\cr
 \link[paws.database:redshiftserverless_tag_resource]{tag_resource} \tab Assigns one or more tags to a resource\cr
 \link[paws.database:redshiftserverless_untag_resource]{untag_resource} \tab Removes a tag or set of tags from a resource\cr
 \link[paws.database:redshiftserverless_update_endpoint_access]{update_endpoint_access} \tab Updates an Amazon Redshift Serverless managed endpoint\cr

@@ -511,18 +511,19 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
 #' @param AccountId The ID of the Amazon Web Services account.
+#' @param Filters Specifies one or more service names that are used to list anomalies.
 #'
 #' @keywords internal
 #'
 #' @rdname devopsguru_list_anomalies_for_insight
-devopsguru_list_anomalies_for_insight <- function(InsightId, StartTimeRange = NULL, MaxResults = NULL, NextToken = NULL, AccountId = NULL) {
+devopsguru_list_anomalies_for_insight <- function(InsightId, StartTimeRange = NULL, MaxResults = NULL, NextToken = NULL, AccountId = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListAnomaliesForInsight",
     http_method = "POST",
     http_path = "/anomalies/insight/{InsightId}",
     paginator = list()
   )
-  input <- .devopsguru$list_anomalies_for_insight_input(InsightId = InsightId, StartTimeRange = StartTimeRange, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
+  input <- .devopsguru$list_anomalies_for_insight_input(InsightId = InsightId, StartTimeRange = StartTimeRange, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId, Filters = Filters)
   output <- .devopsguru$list_anomalies_for_insight_output()
   config <- get_config()
   svc <- .devopsguru$service(config)
@@ -645,7 +646,7 @@ devopsguru_list_insights <- function(StatusFilter, MaxResults = NULL, NextToken 
 #'
 #' See [https://paws-r.github.io/docs/devopsguru/list_monitored_resources.html](https://paws-r.github.io/docs/devopsguru/list_monitored_resources.html) for full documentation.
 #'
-#' @param Filters &#91;required&#93; Filters to determine which monitored resources you want to retrieve. You
+#' @param Filters Filters to determine which monitored resources you want to retrieve. You
 #' can filter by resource type or resource permission status.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
@@ -656,7 +657,7 @@ devopsguru_list_insights <- function(StatusFilter, MaxResults = NULL, NextToken 
 #' @keywords internal
 #'
 #' @rdname devopsguru_list_monitored_resources
-devopsguru_list_monitored_resources <- function(Filters, MaxResults = NULL, NextToken = NULL) {
+devopsguru_list_monitored_resources <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListMonitoredResources",
     http_method = "POST",
@@ -834,7 +835,7 @@ devopsguru_remove_notification_channel <- function(Id) {
 #' Returns a list of insights in your Amazon Web Services account
 #'
 #' @description
-#' Returns a list of insights in your Amazon Web Services account. You can specify which insights are returned by their start time, one or more statuses (`ONGOING`, `CLOSED`, and `CLOSED`), one or more severities (`LOW`, `MEDIUM`, and `HIGH`), and type (`REACTIVE` or `PROACTIVE`).
+#' Returns a list of insights in your Amazon Web Services account. You can specify which insights are returned by their start time, one or more statuses (`ONGOING` or `CLOSED`), one or more severities (`LOW`, `MEDIUM`, and `HIGH`), and type (`REACTIVE` or `PROACTIVE`).
 #'
 #' See [https://paws-r.github.io/docs/devopsguru/search_insights.html](https://paws-r.github.io/docs/devopsguru/search_insights.html) for full documentation.
 #'

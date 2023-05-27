@@ -8,8 +8,9 @@ locked (default) or unlocked}
 rds_modify_activity_stream(ResourceArn = NULL, AuditPolicyState = NULL)
 }
 \arguments{
-\item{ResourceArn}{The Amazon Resource Name (ARN) of the RDS for Oracle DB instance, for
-example, \code{arn:aws:rds:us-east-1:12345667890:instance:my-orcl-db}.}
+\item{ResourceArn}{The Amazon Resource Name (ARN) of the RDS for Oracle or Microsoft SQL
+Server DB instance. For example,
+\code{arn:aws:rds:us-east-1:12345667890:instance:my-orcl-db}.}
 
 \item{AuditPolicyState}{The audit policy state. When a policy is unlocked, it is read/write.
 When it is locked, it is read-only. You can edit your audit policy only

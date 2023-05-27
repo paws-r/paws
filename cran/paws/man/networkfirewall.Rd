@@ -35,7 +35,7 @@ actions, data types, and errors.
 \item The REST API requires you to handle connection details, such as
 calculating signatures, handling request retries, and error
 handling. For general information about using the Amazon Web
-Services REST APIs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-apis.html}{Amazon Web Services APIs}.
+Services REST APIs, see \href{https://docs.aws.amazon.com/general/latest/gr/}{Amazon Web Services APIs}.
 
 To access Network Firewall using the REST API endpoint:
 \verb{https://network-firewall.<region>.amazonaws.com }
@@ -53,9 +53,9 @@ detection and prevention service for Amazon Virtual Private Cloud
 perimeter of your VPC. This includes filtering traffic going to and
 coming from an internet gateway, NAT gateway, or over VPN or Direct
 Connect. Network Firewall uses rules that are compatible with Suricata,
-a free, open source intrusion detection system (IDS) engine. Network
-Firewall supports Suricata version 5.0.2. For information about
-Suricata, see the Suricata website.
+a free, open source network analysis and threat detection engine.
+Network Firewall supports Suricata version 6.0.9. For information about
+Suricata, see the \href{https://suricata.io/}{Suricata website}.
 
 You can use Network Firewall to monitor and protect your VPC traffic in
 a number of ways. The following are just a few examples:
@@ -126,21 +126,25 @@ through the new firewall endpoints.
 \link[paws.networking:networkfirewall_create_firewall]{create_firewall} \tab Creates an Network Firewall Firewall and accompanying FirewallStatus for a VPC\cr
 \link[paws.networking:networkfirewall_create_firewall_policy]{create_firewall_policy} \tab Creates the firewall policy for the firewall according to the specifications\cr
 \link[paws.networking:networkfirewall_create_rule_group]{create_rule_group} \tab Creates the specified stateless or stateful rule group, which includes the rules for network traffic inspection, a capacity setting, and tags\cr
+\link[paws.networking:networkfirewall_create_tls_inspection_configuration]{create_tls_inspection_configuration} \tab Creates an Network Firewall TLS inspection configuration\cr
 \link[paws.networking:networkfirewall_delete_firewall]{delete_firewall} \tab Deletes the specified Firewall and its FirewallStatus\cr
 \link[paws.networking:networkfirewall_delete_firewall_policy]{delete_firewall_policy} \tab Deletes the specified FirewallPolicy\cr
 \link[paws.networking:networkfirewall_delete_resource_policy]{delete_resource_policy} \tab Deletes a resource policy that you created in a PutResourcePolicy request\cr
 \link[paws.networking:networkfirewall_delete_rule_group]{delete_rule_group} \tab Deletes the specified RuleGroup\cr
+\link[paws.networking:networkfirewall_delete_tls_inspection_configuration]{delete_tls_inspection_configuration} \tab Deletes the specified TLSInspectionConfiguration\cr
 \link[paws.networking:networkfirewall_describe_firewall]{describe_firewall} \tab Returns the data objects for the specified firewall\cr
 \link[paws.networking:networkfirewall_describe_firewall_policy]{describe_firewall_policy} \tab Returns the data objects for the specified firewall policy\cr
 \link[paws.networking:networkfirewall_describe_logging_configuration]{describe_logging_configuration} \tab Returns the logging configuration for the specified firewall\cr
 \link[paws.networking:networkfirewall_describe_resource_policy]{describe_resource_policy} \tab Retrieves a resource policy that you created in a PutResourcePolicy request\cr
 \link[paws.networking:networkfirewall_describe_rule_group]{describe_rule_group} \tab Returns the data objects for the specified rule group\cr
 \link[paws.networking:networkfirewall_describe_rule_group_metadata]{describe_rule_group_metadata} \tab High-level information about a rule group, returned by operations like create and describe\cr
+\link[paws.networking:networkfirewall_describe_tls_inspection_configuration]{describe_tls_inspection_configuration} \tab Returns the data objects for the specified TLS inspection configuration\cr
 \link[paws.networking:networkfirewall_disassociate_subnets]{disassociate_subnets} \tab Removes the specified subnet associations from the firewall\cr
 \link[paws.networking:networkfirewall_list_firewall_policies]{list_firewall_policies} \tab Retrieves the metadata for the firewall policies that you have defined\cr
 \link[paws.networking:networkfirewall_list_firewalls]{list_firewalls} \tab Retrieves the metadata for the firewalls that you have defined\cr
 \link[paws.networking:networkfirewall_list_rule_groups]{list_rule_groups} \tab Retrieves the metadata for the rule groups that you have defined\cr
 \link[paws.networking:networkfirewall_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the tags associated with the specified resource\cr
+\link[paws.networking:networkfirewall_list_tls_inspection_configurations]{list_tls_inspection_configurations} \tab Retrieves the metadata for the TLS inspection configurations that you have defined\cr
 \link[paws.networking:networkfirewall_put_resource_policy]{put_resource_policy} \tab Creates or updates an IAM policy for your rule group or firewall policy\cr
 \link[paws.networking:networkfirewall_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
 \link[paws.networking:networkfirewall_untag_resource]{untag_resource} \tab Removes the tags with the specified keys from the specified resource\cr
@@ -151,7 +155,8 @@ through the new firewall endpoints.
 \link[paws.networking:networkfirewall_update_firewall_policy_change_protection]{update_firewall_policy_change_protection} \tab Modifies the flag, ChangeProtection, which indicates whether it is possible to change the firewall\cr
 \link[paws.networking:networkfirewall_update_logging_configuration]{update_logging_configuration} \tab Sets the logging configuration for the specified firewall\cr
 \link[paws.networking:networkfirewall_update_rule_group]{update_rule_group} \tab Updates the rule settings for the specified rule group\cr
-\link[paws.networking:networkfirewall_update_subnet_change_protection]{update_subnet_change_protection} \tab Update subnet change protection
+\link[paws.networking:networkfirewall_update_subnet_change_protection]{update_subnet_change_protection} \tab Update subnet change protection\cr
+\link[paws.networking:networkfirewall_update_tls_inspection_configuration]{update_tls_inspection_configuration} \tab Updates the TLS inspection configuration settings for the specified TLS inspection configuration
 }
 }
 

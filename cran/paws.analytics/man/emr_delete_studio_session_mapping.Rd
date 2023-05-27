@@ -19,7 +19,7 @@ from the Amazon EMR Studio. For more information, see
 \href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId}{UserId}
 and
 \href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-GroupId}{GroupId}
-in the \emph{Amazon Web Services SSO Identity Store API Reference}. Either
+in the \emph{IAM Identity Center Identity Store API Reference}. Either
 \code{IdentityName} or \code{IdentityId} must be specified.}
 
 \item{IdentityName}{The name of the user name or group to remove from the Amazon EMR Studio.
@@ -27,8 +27,8 @@ For more information, see
 \href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName}{UserName}
 and
 \href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName}{DisplayName}
-in the \emph{Amazon Web Services SSO Store API Reference}. Either
-\code{IdentityName} or \code{IdentityId} must be specified.}
+in the \emph{IAM Identity Center Store API Reference}. Either \code{IdentityName}
+or \code{IdentityId} must be specified.}
 
 \item{IdentityType}{[required] Specifies whether the identity to delete from the Amazon EMR Studio is a
 user or a group.}

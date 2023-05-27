@@ -8,6 +8,7 @@ redshiftserverless_update_workgroup(
   baseCapacity = NULL,
   configParameters = NULL,
   enhancedVpcRouting = NULL,
+  port = NULL,
   publiclyAccessible = NULL,
   securityGroupIds = NULL,
   subnetIds = NULL,
@@ -19,12 +20,18 @@ redshiftserverless_update_workgroup(
 (RPUs).}
 
 \item{configParameters}{An array of parameters to set for advanced control over a database. The
-options are \code{datestyle}, \code{enable_user_activity_logging}, \code{query_group},
-\code{search_path}, and \code{max_query_execution_time}.}
+options are \code{auto_mv}, \code{datestyle},
+\code{enable_case_sensitivity_identifier}, \code{enable_user_activity_logging},
+\code{query_group}, \code{search_path}, and query monitoring metrics that let you
+define performance boundaries. For more information about query
+monitoring rules and available metrics, see \href{https://docs.aws.amazon.com/redshift/latest/dg/cm-c-wlm-query-monitoring-rules.html#cm-c-wlm-query-monitoring-metrics-serverless}{Query monitoring metrics for Amazon Redshift Serverless}.}
 
 \item{enhancedVpcRouting}{The value that specifies whether to turn on enhanced virtual private
 cloud (VPC) routing, which forces Amazon Redshift Serverless to route
 traffic through your VPC.}
+
+\item{port}{The custom port to use when connecting to a workgroup. Valid port ranges
+are 5431-5455 and 8191-8215. The default is 5439.}
 
 \item{publiclyAccessible}{A value that specifies whether the workgroup can be accessible from a
 public network.}
@@ -33,10 +40,11 @@ public network.}
 
 \item{subnetIds}{An array of VPC subnet IDs to associate with the workgroup.}
 
-\item{workgroupName}{[required] The name of the workgroup to update.}
+\item{workgroupName}{[required] The name of the workgroup to update. You can't update the name of a
+workgroup once it is created.}
 }
 \description{
-Updates a workgroup with the specified configuration settings.
+Updates a workgroup with the specified configuration settings. You can't update multiple parameters in one request. For example, you can update \code{baseCapacity} or \code{port} in a single request, but you can't update both in the same request.
 
 See \url{https://paws-r.github.io/docs/redshiftserverless/update_workgroup.html} for full documentation.
 }

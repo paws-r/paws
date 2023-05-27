@@ -5,7 +5,8 @@
 \title{Lists the log streams for the specified log group}
 \usage{
 cloudwatchlogs_describe_log_streams(
-  logGroupName,
+  logGroupName = NULL,
+  logGroupIdentifier = NULL,
   logStreamNamePrefix = NULL,
   orderBy = NULL,
   descending = NULL,
@@ -14,7 +15,17 @@ cloudwatchlogs_describe_log_streams(
 )
 }
 \arguments{
-\item{logGroupName}{[required] The name of the log group.}
+\item{logGroupName}{The name of the log group.
+
+You must include either \code{logGroupIdentifier} or \code{logGroupName}, but not
+both.}
+
+\item{logGroupIdentifier}{Specify either the name or ARN of the log group to view. If the log
+group is in a source account and you are using a monitoring account, you
+must use the log group ARN.
+
+You must include either \code{logGroupIdentifier} or \code{logGroupName}, but not
+both.}
 
 \item{logStreamNamePrefix}{The prefix to match.
 
@@ -29,7 +40,7 @@ If you order the results by event time, you cannot specify the
 
 \code{lastEventTimestamp} represents the time of the most recent log event in
 the log stream in CloudWatch Logs. This number is expressed as the
-number of milliseconds after Jan 1, 1970 00:00:00 UTC.
+number of milliseconds after \verb{Jan 1, 1970 00:00:00 UTC}.
 \code{lastEventTimestamp} updates on an eventual consistency basis. It
 typically updates in less than an hour from ingestion, but in rare
 situations might take longer.}

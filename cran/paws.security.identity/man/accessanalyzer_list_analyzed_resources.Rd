@@ -7,20 +7,20 @@ analyzed by the specified analyzer}
 \usage{
 accessanalyzer_list_analyzed_resources(
   analyzerArn,
-  maxResults = NULL,
+  resourceType = NULL,
   nextToken = NULL,
-  resourceType = NULL
+  maxResults = NULL
 )
 }
 \arguments{
 \item{analyzerArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources}{ARN of the analyzer}
 to retrieve a list of analyzed resources from.}
 
-\item{maxResults}{The maximum number of results to return in the response.}
+\item{resourceType}{The type of resource.}
 
 \item{nextToken}{A token used for pagination of results returned.}
 
-\item{resourceType}{The type of resource.}
+\item{maxResults}{The maximum number of results to return in the response.}
 }
 \description{
 Retrieves a list of resources of the specified type that have been analyzed by the specified analyzer..

@@ -12,8 +12,8 @@ workdocs_create_labels(ResourceId, Labels, AuthenticationToken = NULL)
 
 \item{Labels}{[required] List of labels to add to the resource.}
 
-\item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
-administrator credentials to access the API.}
+\item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using Amazon Web
+Services administrator credentials to access the API.}
 }
 \description{
 Adds the specified list of labels to the given resource (a document or folder)

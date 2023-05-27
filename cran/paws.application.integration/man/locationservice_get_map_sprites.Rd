@@ -4,7 +4,7 @@
 \alias{locationservice_get_map_sprites}
 \title{Retrieves the sprite sheet corresponding to a map resource}
 \usage{
-locationservice_get_map_sprites(FileName, MapName)
+locationservice_get_map_sprites(FileName, Key = NULL, MapName)
 }
 \arguments{
 \item{FileName}{[required] The name of the sprite ﬁle. Use the following ﬁle names for the sprite
@@ -14,12 +14,15 @@ sheet:
 \item \verb{sprites@2x.png} for high pixel density displays
 }
 
-For the JSON document contain image offsets. Use the following ﬁle
+For the JSON document containing image offsets. Use the following ﬁle
 names:
 \itemize{
 \item \code{sprites.json}
 \item \verb{sprites@2x.json} for high pixel density displays
 }}
+
+\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
+to authorize the request.}
 
 \item{MapName}{[required] The map resource associated with the sprite ﬁle.}
 }

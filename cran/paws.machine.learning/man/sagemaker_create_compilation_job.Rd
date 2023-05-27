@@ -47,9 +47,11 @@ the model was trained.}
 \item{OutputConfig}{[required] Provides information about the output location for the compiled model
 and the target device the model runs on.}
 
-\item{VpcConfig}{A VpcConfig object that specifies the VPC that you want your compilation
-job to connect to. Control access to your models by configuring the VPC.
-For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/neo-vpc.html}{Protect Compilation Jobs by Using an Amazon Virtual Private Cloud}.}
+\item{VpcConfig}{A
+\href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_VpcConfig.html}{VpcConfig}
+object that specifies the VPC that you want your compilation job to
+connect to. Control access to your models by configuring the VPC. For
+more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/neo-vpc.html}{Protect Compilation Jobs by Using an Amazon Virtual Private Cloud}.}
 
 \item{StoppingCondition}{[required] Specifies a limit to how long a model compilation job can run. When the
 job reaches the time limit, Amazon SageMaker ends the compilation job.
@@ -57,7 +59,7 @@ Use this API to cap model training costs.}
 
 \item{Tags}{An array of key-value pairs. You can use tags to categorize your Amazon
 Web Services resources in different ways, for example, by purpose,
-owner, or environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}.}
+owner, or environment. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}.}
 }
 \description{
 Starts a model compilation job. After the model has been compiled, Amazon SageMaker saves the resulting model artifacts to an Amazon Simple Storage Service (Amazon S3) bucket that you specify.

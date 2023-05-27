@@ -58,12 +58,15 @@ Amazon Managed Service for Prometheus
 
 \tabular{ll}{
 \link[paws.management:prometheusservice_create_alert_manager_definition]{create_alert_manager_definition} \tab Create an alert manager definition\cr
+\link[paws.management:prometheusservice_create_logging_configuration]{create_logging_configuration} \tab Create logging configuration\cr
 \link[paws.management:prometheusservice_create_rule_groups_namespace]{create_rule_groups_namespace} \tab Create a rule group namespace\cr
 \link[paws.management:prometheusservice_create_workspace]{create_workspace} \tab Creates a new AMP workspace\cr
 \link[paws.management:prometheusservice_delete_alert_manager_definition]{delete_alert_manager_definition} \tab Deletes an alert manager definition\cr
+\link[paws.management:prometheusservice_delete_logging_configuration]{delete_logging_configuration} \tab Delete logging configuration\cr
 \link[paws.management:prometheusservice_delete_rule_groups_namespace]{delete_rule_groups_namespace} \tab Delete a rule groups namespace\cr
 \link[paws.management:prometheusservice_delete_workspace]{delete_workspace} \tab Deletes an AMP workspace\cr
 \link[paws.management:prometheusservice_describe_alert_manager_definition]{describe_alert_manager_definition} \tab Describes an alert manager definition\cr
+\link[paws.management:prometheusservice_describe_logging_configuration]{describe_logging_configuration} \tab Describes logging configuration\cr
 \link[paws.management:prometheusservice_describe_rule_groups_namespace]{describe_rule_groups_namespace} \tab Describe a rule groups namespace\cr
 \link[paws.management:prometheusservice_describe_workspace]{describe_workspace} \tab Describes an existing AMP workspace\cr
 \link[paws.management:prometheusservice_list_rule_groups_namespaces]{list_rule_groups_namespaces} \tab Lists rule groups namespaces\cr
@@ -73,6 +76,7 @@ Amazon Managed Service for Prometheus
 \link[paws.management:prometheusservice_put_rule_groups_namespace]{put_rule_groups_namespace} \tab Update a rule groups namespace\cr
 \link[paws.management:prometheusservice_tag_resource]{tag_resource} \tab Creates tags for the specified resource\cr
 \link[paws.management:prometheusservice_untag_resource]{untag_resource} \tab Deletes tags from the specified resource\cr
+\link[paws.management:prometheusservice_update_logging_configuration]{update_logging_configuration} \tab Update logging configuration\cr
 \link[paws.management:prometheusservice_update_workspace_alias]{update_workspace_alias} \tab Updates an AMP workspace alias
 }
 }

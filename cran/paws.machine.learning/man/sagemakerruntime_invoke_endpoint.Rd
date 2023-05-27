@@ -15,7 +15,8 @@ sagemakerruntime_invoke_endpoint(
   TargetModel = NULL,
   TargetVariant = NULL,
   TargetContainerHostname = NULL,
-  InferenceId = NULL
+  InferenceId = NULL,
+  EnableExplanations = NULL
 )
 }
 \arguments{
@@ -40,8 +41,8 @@ information is an opaque value that is forwarded verbatim. You could use
 this value, for example, to provide an ID that you can use to track a
 request or to provide other metadata that a service endpoint was
 programmed to process. The value must consist of no more than 1024
-visible US-ASCII characters as specified in \href{https://www.rfc-editor.org/rfc/rfc7230#section-3.2.6}{Section 3.3.6. Field Value Components} of the
-Hypertext Transfer Protocol (HTTP/1.1).
+visible US-ASCII characters as specified in \href{https://datatracker.ietf.org/doc/html/rfc7230#section-3.2.6}{Section 3.3.6. Field Value Components}
+of the Hypertext Transfer Protocol (HTTP/1.1).
 
 The code in your model is responsible for setting or updating any custom
 attributes in the response. If your code does not set this value in the
@@ -69,6 +70,12 @@ container to invoke.}
 \item{InferenceId}{If you provide a value, it is added to the captured data when you enable
 data capture on the endpoint. For information about data capture, see
 \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-capture.html}{Capture Data}.}
+
+\item{EnableExplanations}{An optional JMESPath expression used to override the
+\code{EnableExplanations} parameter of the \code{ClarifyExplainerConfig} API. See
+the
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-online-explainability-create-endpoint.html#clarify-online-explainability-create-endpoint-enable}{EnableExplanations}
+section in the developer guide for more information.}
 }
 \description{
 After you deploy a model into production using Amazon SageMaker hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint.

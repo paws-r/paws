@@ -32,7 +32,7 @@ The maximum length of the policy document that you can pass in this
 operation, including whitespace, is listed below. To view the maximum
 character counts of a managed policy with no whitespaces, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html#reference_iam-quotas-entity-length}{IAM and STS character quotas}.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{PolicyInputList}{An optional list of additional policy documents to include in the
@@ -97,8 +97,10 @@ specified resources. If you want to include a resource policy in the
 simulation, then you must include the policy as a string in the
 \code{ResourcePolicy} parameter.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
-in the \emph{Amazon Web Services General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
+in the \emph{Amazon Web Services General Reference}.
+
+Simulation of resource-based policies isn't supported for IAM roles.}
 
 \item{ResourcePolicy}{A resource-based policy to include in the simulation provided as a
 string. Each resource in the simulation is treated as if it had this
@@ -119,7 +121,9 @@ following:
 character set (through \verb{U+00FF})
 \item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
 carriage return (\verb{U+000D})
-}}
+}
+
+Simulation of resource-based policies isn't supported for IAM roles.}
 
 \item{ResourceOwner}{An Amazon Web Services account ID that specifies the owner of any
 simulated resource that does not identify its owner in the resource ARN.
@@ -148,7 +152,7 @@ of an assumed role, federated user, or a service principal.
 that the resource-based policy's \code{Principal} element has a value to use
 in evaluating the policy.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{ContextEntries}{A list of context keys and corresponding values for the simulation to
@@ -172,12 +176,6 @@ an IP subnet, then you must specify the subnet resource. For more
 information on the EC2 scenario options, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html}{Supported platforms}
 in the \emph{Amazon EC2 User Guide}.
 \itemize{
-\item \strong{EC2-Classic-InstanceStore}
-
-instance, image, security group
-\item \strong{EC2-Classic-EBS}
-
-instance, image, security group, volume
 \item \strong{EC2-VPC-InstanceStore}
 
 instance, image, security group, network interface

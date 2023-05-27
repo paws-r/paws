@@ -9,12 +9,13 @@ s3control_create_access_point(
   Name,
   Bucket,
   VpcConfiguration = NULL,
-  PublicAccessBlockConfiguration = NULL
+  PublicAccessBlockConfiguration = NULL,
+  BucketAccountId = NULL
 )
 }
 \arguments{
-\item{AccountId}{[required] The Amazon Web Services account ID for the owner of the bucket for which
-you want to create an access point.}
+\item{AccountId}{[required] The Amazon Web Services account ID for the account that owns the
+specified access point.}
 
 \item{Name}{[required] The name you want to assign to this access point.}
 
@@ -28,7 +29,7 @@ For using this parameter with S3 on Outposts with the Amazon Web
 Services SDK and CLI, you must specify the ARN of the bucket accessed in
 the format
 \verb{arn:aws:s3-outposts:<Region>:<account-id>:outpost/<outpost-id>/bucket/<my-bucket-name>}.
-For example, to access the bucket \code{reports} through outpost \code{my-outpost}
+For example, to access the bucket \code{reports} through Outpost \code{my-outpost}
 owned by account \code{123456789012} in Region \code{us-west-2}, use the URL
 encoding of
 \code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/bucket/reports}.
@@ -42,6 +43,9 @@ buckets.}
 
 \item{PublicAccessBlockConfiguration}{The \code{PublicAccessBlock} configuration that you want to apply to the
 access point.}
+
+\item{BucketAccountId}{The Amazon Web Services account ID associated with the S3 bucket
+associated with this access point.}
 }
 \description{
 Creates an access point and associates it with the specified bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{Managing Data Access with Amazon S3 Access Points} in the \emph{Amazon S3 User Guide}.

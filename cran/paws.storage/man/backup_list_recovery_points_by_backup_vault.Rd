@@ -13,7 +13,8 @@ backup_list_recovery_points_by_backup_vault(
   ByResourceType = NULL,
   ByBackupPlanId = NULL,
   ByCreatedBefore = NULL,
-  ByCreatedAfter = NULL
+  ByCreatedAfter = NULL,
+  ByParentRecoveryPointArn = NULL
 )
 }
 \arguments{
@@ -44,6 +45,9 @@ timestamp.}
 
 \item{ByCreatedAfter}{Returns only recovery points that were created after the specified
 timestamp.}
+
+\item{ByParentRecoveryPointArn}{This returns only recovery points that match the specified parent
+(composite) recovery point Amazon Resource Name (ARN).}
 }
 \description{
 Returns detailed information about the recovery points stored in a backup vault.

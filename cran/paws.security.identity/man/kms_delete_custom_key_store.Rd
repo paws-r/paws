@@ -13,7 +13,7 @@ of a custom key store, use the
 operation.}
 }
 \description{
-Deletes a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}. This operation does not delete the CloudHSM cluster that is associated with the custom key store, or affect any users or keys in the cluster.
+Deletes a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}. This operation does not affect any backing elements of the custom key store. It does not delete the CloudHSM cluster that is associated with an CloudHSM key store, or affect any users or keys in the cluster. For an external key store, it does not affect the external key store proxy, external key manager, or any external keys.
 
 See \url{https://paws-r.github.io/docs/kms/delete_custom_key_store.html} for full documentation.
 }

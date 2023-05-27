@@ -69,7 +69,7 @@ Use the following operations to configure your \code{OnlineStore} and
 
 \tabular{ll}{
 \link[paws.machine.learning:sagemakerfeaturestoreruntime_batch_get_record]{batch_get_record} \tab Retrieves a batch of Records from a FeatureGroup\cr
-\link[paws.machine.learning:sagemakerfeaturestoreruntime_delete_record]{delete_record} \tab Deletes a Record from a FeatureGroup\cr
+\link[paws.machine.learning:sagemakerfeaturestoreruntime_delete_record]{delete_record} \tab Deletes a Record from a FeatureGroup in the OnlineStore\cr
 \link[paws.machine.learning:sagemakerfeaturestoreruntime_get_record]{get_record} \tab Use for OnlineStore serving from a FeatureStore\cr
 \link[paws.machine.learning:sagemakerfeaturestoreruntime_put_record]{put_record} \tab Used for data ingestion into the FeatureStore
 }

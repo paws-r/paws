@@ -50,3 +50,50 @@ forecastqueryservice_query_forecast <- function(ForecastArn, StartDate = NULL, E
   return(response)
 }
 .forecastqueryservice$operations$query_forecast <- forecastqueryservice_query_forecast
+
+#' Retrieves a what-if forecast
+#'
+#' @description
+#' Retrieves a what-if forecast.
+#'
+#' See [https://paws-r.github.io/docs/forecastqueryservice/query_what_if_forecast.html](https://paws-r.github.io/docs/forecastqueryservice/query_what_if_forecast.html) for full documentation.
+#'
+#' @param WhatIfForecastArn &#91;required&#93; The Amazon Resource Name (ARN) of the what-if forecast to query.
+#' @param StartDate The start date for the what-if forecast. Specify the date using this
+#' format: yyyy-MM-dd'T'HH:mm:ss (ISO 8601 format). For example,
+#' 2015-01-01T08:00:00.
+#' @param EndDate The end date for the what-if forecast. Specify the date using this
+#' format: yyyy-MM-dd'T'HH:mm:ss (ISO 8601 format). For example,
+#' 2015-01-01T20:00:00.
+#' @param Filters &#91;required&#93; The filtering criteria to apply when retrieving the forecast. For
+#' example, to get the forecast for `client_21` in the electricity usage
+#' dataset, specify the following:
+#' 
+#' `{"item_id" : "client_21"}`
+#' 
+#' To get the full what-if forecast, use the
+#' [CreateForecastExportJob](https://docs.aws.amazon.com/en_us/forecast/latest/dg/API_CreateWhatIfForecastExport.html)
+#' operation.
+#' @param NextToken If the result of the previous request was truncated, the response
+#' includes a `NextToken`. To retrieve the next set of results, use the
+#' token in the next request. Tokens expire after 24 hours.
+#'
+#' @keywords internal
+#'
+#' @rdname forecastqueryservice_query_what_if_forecast
+forecastqueryservice_query_what_if_forecast <- function(WhatIfForecastArn, StartDate = NULL, EndDate = NULL, Filters, NextToken = NULL) {
+  op <- new_operation(
+    name = "QueryWhatIfForecast",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastqueryservice$query_what_if_forecast_input(WhatIfForecastArn = WhatIfForecastArn, StartDate = StartDate, EndDate = EndDate, Filters = Filters, NextToken = NextToken)
+  output <- .forecastqueryservice$query_what_if_forecast_output()
+  config <- get_config()
+  svc <- .forecastqueryservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastqueryservice$operations$query_what_if_forecast <- forecastqueryservice_query_what_if_forecast

@@ -11,7 +11,8 @@ swf_poll_for_decision_task(
   identity = NULL,
   nextPageToken = NULL,
   maximumPageSize = NULL,
-  reverseOrder = NULL
+  reverseOrder = NULL,
+  startAtPreviousStartedEvent = NULL
 )
 }
 \arguments{
@@ -19,10 +20,9 @@ swf_poll_for_decision_task(
 
 \item{taskList}{[required] Specifies the task list to poll for decision tasks.
 
-The specified string must not start or end with whitespace. It must not
-contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\verb{U+0000`-`U+001f} | \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
-the literal string \code{arn}.}
+The specified string must not contain a \code{:} (colon), \code{/} (slash), \code{|}
+(vertical bar), or any control characters (\verb{U+0000`-`U+001f} |
+\verb{U+007f`-`U+009f}). Also, it must \emph{not} be the literal string \code{arn}.}
 
 \item{identity}{Identity of the decider making the request, which is recorded in the
 DecisionTaskStarted event in the workflow history. This enables
@@ -33,7 +33,7 @@ user defined.}
 value of \code{NextPageToken} is a unique pagination token for each page.
 Make the call again using the returned token to retrieve the next page.
 Keep all other arguments unchanged. Each pagination token expires after
-60 seconds. Using an expired pagination token will return a \code{400} error:
+24 hours. Using an expired pagination token will return a \code{400} error:
 "\verb{Specified token has exceeded its maximum lifetime}".
 
 The configured \code{maximumPageSize} determines how many results can be
@@ -56,6 +56,11 @@ call may be fewer than the specified maximum.}
 \item{reverseOrder}{When set to \code{true}, returns the events in reverse order. By default the
 results are returned in ascending order of the \code{eventTimestamp} of the
 events.}
+
+\item{startAtPreviousStartedEvent}{When set to \code{true}, returns the events with \code{eventTimestamp} greater
+than or equal to \code{eventTimestamp} of the most recent
+\code{DecisionTaskStarted} event. By default, this parameter is set to
+\code{false}.}
 }
 \description{
 Used by deciders to get a DecisionTask from the specified decision \code{taskList}. A decision task may be returned for any open workflow execution that is using the specified task list. The task includes a paginated view of the history of the workflow execution. The decider should use the workflow type and the history to determine how to properly handle the task.

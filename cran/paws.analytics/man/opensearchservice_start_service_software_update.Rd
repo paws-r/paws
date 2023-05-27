@@ -5,14 +5,38 @@
 \title{Schedules a service software update for an Amazon OpenSearch Service
 domain}
 \usage{
-opensearchservice_start_service_software_update(DomainName)
+opensearchservice_start_service_software_update(
+  DomainName,
+  ScheduleAt = NULL,
+  DesiredStartTime = NULL
+)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to update to the latest service
 software.}
+
+\item{ScheduleAt}{When to start the service software update.
+\itemize{
+\item \code{NOW} - Immediately schedules the update to happen in the current
+hour if there's capacity available.
+\item \code{TIMESTAMP} - Lets you specify a custom date and time to apply the
+update. If you specify this value, you must also provide a value for
+\code{DesiredStartTime}.
+\item \code{OFF_PEAK_WINDOW} - Marks the update to be picked up during an
+upcoming off-peak window. There's no guarantee that the update will
+happen during the next immediate window. Depending on capacity, it
+might happen in subsequent days.
+}
+
+Default: \code{NOW} if you don't specify a value for \code{DesiredStartTime}, and
+\code{TIMESTAMP} if you do.}
+
+\item{DesiredStartTime}{The Epoch timestamp when you want the service software update to start.
+You only need to specify this parameter if you set \code{ScheduleAt} to
+\code{TIMESTAMP}.}
 }
 \description{
-Schedules a service software update for an Amazon OpenSearch Service domain.
+Schedules a service software update for an Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html}{Service software updates in Amazon OpenSearch Service}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/start_service_software_update.html} for full documentation.
 }

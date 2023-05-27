@@ -124,7 +124,7 @@ If a resource specified by this parameter doesn't exist, it doesn't
 generate an error; it simply isn't included in the response.
 
 An ARN (Amazon Resource Name) uniquely identifies a resource. For more
-information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}
+information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}
 in the \emph{Amazon Web Services General Reference}.}
 }
 \description{

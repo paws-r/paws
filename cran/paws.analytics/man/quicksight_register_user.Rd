@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_register_user}
 \alias{quicksight_register_user}
-\title{Creates an Amazon QuickSight user, whose identity is associated with the
+\title{Creates an Amazon QuickSight user whose identity is associated with the
 Identity and Access Management (IAM) identity or role specified in the
 request}
 \usage{
@@ -116,7 +116,7 @@ is set to \code{CUSTOM_OIDC}.}
 \item{ExternalLoginId}{The identity ID for a user in the external login provider.}
 }
 \description{
-Creates an Amazon QuickSight user, whose identity is associated with the Identity and Access Management (IAM) identity or role specified in the request.
+Creates an Amazon QuickSight user whose identity is associated with the Identity and Access Management (IAM) identity or role specified in the request. When you register a new user from the Amazon QuickSight API, Amazon QuickSight generates a registration URL. The user accesses this registration URL to create their account. Amazon QuickSight doesn't send a registration email to users who are registered from the Amazon QuickSight API. If you want new users to receive a registration email, then add those users in the Amazon QuickSight console. For more information on registering a new user in the Amazon QuickSight console, see \href{https://docs.aws.amazon.com/quicksight/latest/user/managing-users.html#inviting-users}{Inviting users to access Amazon QuickSight}.
 
 See \url{https://paws-r.github.io/docs/quicksight/register_user.html} for full documentation.
 }

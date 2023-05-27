@@ -12,7 +12,7 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{SpotInstanceRequestIds}{[required] One or more Spot Instance request IDs.}
+\item{SpotInstanceRequestIds}{[required] The IDs of the Spot Instance requests.}
 }
 \description{
 Cancels one or more Spot Instance requests.

@@ -3,6 +3,92 @@
 #' @include sesv2_service.R
 NULL
 
+#' Retrieves batches of metric data collected based on your sending
+#' activity
+#'
+#' @description
+#' Retrieves batches of metric data collected based on your sending
+#' activity.
+#' 
+#' You can execute this operation no more than 16 times per second, and
+#' with at most 160 queries from the batches per second (cumulative).
+#'
+#' @usage
+#' sesv2_batch_get_metric_data(Queries)
+#'
+#' @param Queries &#91;required&#93; A list of queries for metrics to be retrieved.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Results = list(
+#'     list(
+#'       Id = "string",
+#'       Timestamps = list(
+#'         as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       Values = list(
+#'         123
+#'       )
+#'     )
+#'   ),
+#'   Errors = list(
+#'     list(
+#'       Id = "string",
+#'       Code = "INTERNAL_FAILURE"|"ACCESS_DENIED",
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_get_metric_data(
+#'   Queries = list(
+#'     list(
+#'       Id = "string",
+#'       Namespace = "VDM",
+#'       Metric = "SEND"|"COMPLAINT"|"PERMANENT_BOUNCE"|"TRANSIENT_BOUNCE"|"OPEN"|"CLICK"|"DELIVERY"|"DELIVERY_OPEN"|"DELIVERY_CLICK"|"DELIVERY_COMPLAINT",
+#'       Dimensions = list(
+#'         "string"
+#'       ),
+#'       StartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_batch_get_metric_data
+#'
+#' @aliases sesv2_batch_get_metric_data
+sesv2_batch_get_metric_data <- function(Queries) {
+  op <- new_operation(
+    name = "BatchGetMetricData",
+    http_method = "POST",
+    http_path = "/v2/email/metrics/batch",
+    paginator = list()
+  )
+  input <- .sesv2$batch_get_metric_data_input(Queries = Queries)
+  output <- .sesv2$batch_get_metric_data_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$batch_get_metric_data <- sesv2_batch_get_metric_data
+
 #' Create a configuration set
 #'
 #' @description
@@ -16,7 +102,7 @@ NULL
 #' @usage
 #' sesv2_create_configuration_set(ConfigurationSetName, TrackingOptions,
 #'   DeliveryOptions, ReputationOptions, SendingOptions, Tags,
-#'   SuppressionOptions)
+#'   SuppressionOptions, VdmOptions)
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set. The name can contain up to 64
 #' alphanumeric characters, including letters, numbers, hyphens (-) and
@@ -32,6 +118,8 @@ NULL
 #' @param Tags An array of objects that define the tags (keys and values) to associate
 #' with the configuration set.
 #' @param SuppressionOptions 
+#' @param VdmOptions An object that defines the VDM options for emails that you send using
+#' the configuration set.
 #'
 #' @return
 #' An empty list.
@@ -66,6 +154,14 @@ NULL
 #'     SuppressedReasons = list(
 #'       "BOUNCE"|"COMPLAINT"
 #'     )
+#'   ),
+#'   VdmOptions = list(
+#'     DashboardOptions = list(
+#'       EngagementMetrics = "ENABLED"|"DISABLED"
+#'     ),
+#'     GuardianOptions = list(
+#'       OptimizedSharedDelivery = "ENABLED"|"DISABLED"
+#'     )
 #'   )
 #' )
 #' ```
@@ -75,14 +171,14 @@ NULL
 #' @rdname sesv2_create_configuration_set
 #'
 #' @aliases sesv2_create_configuration_set
-sesv2_create_configuration_set <- function(ConfigurationSetName, TrackingOptions = NULL, DeliveryOptions = NULL, ReputationOptions = NULL, SendingOptions = NULL, Tags = NULL, SuppressionOptions = NULL) {
+sesv2_create_configuration_set <- function(ConfigurationSetName, TrackingOptions = NULL, DeliveryOptions = NULL, ReputationOptions = NULL, SendingOptions = NULL, Tags = NULL, SuppressionOptions = NULL, VdmOptions = NULL) {
   op <- new_operation(
     name = "CreateConfigurationSet",
     http_method = "POST",
     http_path = "/v2/email/configuration-sets",
     paginator = list()
   )
-  input <- .sesv2$create_configuration_set_input(ConfigurationSetName = ConfigurationSetName, TrackingOptions = TrackingOptions, DeliveryOptions = DeliveryOptions, ReputationOptions = ReputationOptions, SendingOptions = SendingOptions, Tags = Tags, SuppressionOptions = SuppressionOptions)
+  input <- .sesv2$create_configuration_set_input(ConfigurationSetName = ConfigurationSetName, TrackingOptions = TrackingOptions, DeliveryOptions = DeliveryOptions, ReputationOptions = ReputationOptions, SendingOptions = SendingOptions, Tags = Tags, SuppressionOptions = SuppressionOptions, VdmOptions = VdmOptions)
   output <- .sesv2$create_configuration_set_output()
   config <- get_config()
   svc <- .sesv2$service(config)
@@ -297,9 +393,9 @@ sesv2_create_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 #' Creates a new custom verification email template.
 #' 
 #' For more information about custom verification email templates, see
-#' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/dg/) in the *Amazon
-#' SES Developer Guide*.
+#' [Using custom verification email
+#' templates](https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom)
+#' in the *Amazon SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -313,9 +409,9 @@ sesv2_create_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 #' @param TemplateSubject &#91;required&#93; The subject line of the custom verification email.
 #' @param TemplateContent &#91;required&#93; The content of the custom verification email. The total size of the
 #' email must be less than 10 MB. The message body may contain HTML, with
-#' some limitations. For more information, see [Custom Verification Email
-#' Frequently Asked
-#' Questions](https://docs.aws.amazon.com/ses/latest/dg/#custom-verification-emails-faq)
+#' some limitations. For more information, see [Custom verification email
+#' frequently asked
+#' questions](https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom-faq)
 #' in the *Amazon SES Developer Guide*.
 #' @param SuccessRedirectionURL &#91;required&#93; The URL that the recipient of the verification email is sent to if his
 #' or her address is successfully verified.
@@ -369,11 +465,12 @@ sesv2_create_custom_verification_email_template <- function(TemplateName, FromEm
 #' sent from one of the addresses in the associated pool.
 #'
 #' @usage
-#' sesv2_create_dedicated_ip_pool(PoolName, Tags)
+#' sesv2_create_dedicated_ip_pool(PoolName, Tags, ScalingMode)
 #'
 #' @param PoolName &#91;required&#93; The name of the dedicated IP pool.
 #' @param Tags An object that defines the tags (keys and values) that you want to
 #' associate with the pool.
+#' @param ScalingMode The type of scaling mode.
 #'
 #' @return
 #' An empty list.
@@ -387,7 +484,8 @@ sesv2_create_custom_verification_email_template <- function(TemplateName, FromEm
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   ScalingMode = "STANDARD"|"MANAGED"
 #' )
 #' ```
 #'
@@ -396,14 +494,14 @@ sesv2_create_custom_verification_email_template <- function(TemplateName, FromEm
 #' @rdname sesv2_create_dedicated_ip_pool
 #'
 #' @aliases sesv2_create_dedicated_ip_pool
-sesv2_create_dedicated_ip_pool <- function(PoolName, Tags = NULL) {
+sesv2_create_dedicated_ip_pool <- function(PoolName, Tags = NULL, ScalingMode = NULL) {
   op <- new_operation(
     name = "CreateDedicatedIpPool",
     http_method = "POST",
     http_path = "/v2/email/dedicated-ip-pools",
     paginator = list()
   )
-  input <- .sesv2$create_dedicated_ip_pool_input(PoolName = PoolName, Tags = Tags)
+  input <- .sesv2$create_dedicated_ip_pool_input(PoolName = PoolName, Tags = Tags, ScalingMode = ScalingMode)
   output <- .sesv2$create_dedicated_ip_pool_output()
   config <- get_config()
   svc <- .sesv2$service(config)
@@ -1005,9 +1103,9 @@ sesv2_delete_contact_list <- function(ContactListName) {
 #' Deletes an existing custom verification email template.
 #' 
 #' For more information about custom verification email templates, see
-#' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/dg/) in the *Amazon
-#' SES Developer Guide*.
+#' [Using custom verification email
+#' templates](https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom)
+#' in the *Amazon SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -1321,6 +1419,15 @@ sesv2_delete_suppressed_destination <- function(EmailAddress) {
 #'       Status = "PENDING"|"FAILED"|"GRANTED"|"DENIED",
 #'       CaseId = "string"
 #'     )
+#'   ),
+#'   VdmAttributes = list(
+#'     VdmEnabled = "ENABLED"|"DISABLED",
+#'     DashboardAttributes = list(
+#'       EngagementMetrics = "ENABLED"|"DISABLED"
+#'     ),
+#'     GuardianAttributes = list(
+#'       OptimizedSharedDelivery = "ENABLED"|"DISABLED"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1466,6 +1573,14 @@ sesv2_get_blacklist_reports <- function(BlacklistItemNames) {
 #'     SuppressedReasons = list(
 #'       "BOUNCE"|"COMPLAINT"
 #'     )
+#'   ),
+#'   VdmOptions = list(
+#'     DashboardOptions = list(
+#'       EngagementMetrics = "ENABLED"|"DISABLED"
+#'     ),
+#'     GuardianOptions = list(
+#'       OptimizedSharedDelivery = "ENABLED"|"DISABLED"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1591,7 +1706,7 @@ sesv2_get_configuration_set_event_destinations <- function(ConfigurationSetName)
 #' sesv2_get_contact(ContactListName, EmailAddress)
 #'
 #' @param ContactListName &#91;required&#93; The name of the contact list to which the contact belongs.
-#' @param EmailAddress &#91;required&#93; The contact's email addres.
+#' @param EmailAddress &#91;required&#93; The contact's email address.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1729,9 +1844,9 @@ sesv2_get_contact_list <- function(ContactListName) {
 #' specify.
 #' 
 #' For more information about custom verification email templates, see
-#' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/dg/) in the *Amazon
-#' SES Developer Guide*.
+#' [Using custom verification email
+#' templates](https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom)
+#' in the *Amazon SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -1840,6 +1955,56 @@ sesv2_get_dedicated_ip <- function(Ip) {
   return(response)
 }
 .sesv2$operations$get_dedicated_ip <- sesv2_get_dedicated_ip
+
+#' Retrieve information about the dedicated pool
+#'
+#' @description
+#' Retrieve information about the dedicated pool.
+#'
+#' @usage
+#' sesv2_get_dedicated_ip_pool(PoolName)
+#'
+#' @param PoolName &#91;required&#93; The name of the dedicated IP pool to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DedicatedIpPool = list(
+#'     PoolName = "string",
+#'     ScalingMode = "STANDARD"|"MANAGED"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_dedicated_ip_pool(
+#'   PoolName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_get_dedicated_ip_pool
+#'
+#' @aliases sesv2_get_dedicated_ip_pool
+sesv2_get_dedicated_ip_pool <- function(PoolName) {
+  op <- new_operation(
+    name = "GetDedicatedIpPool",
+    http_method = "GET",
+    http_path = "/v2/email/dedicated-ip-pools/{PoolName}",
+    paginator = list()
+  )
+  input <- .sesv2$get_dedicated_ip_pool_input(PoolName = PoolName)
+  output <- .sesv2$get_dedicated_ip_pool_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$get_dedicated_ip_pool <- sesv2_get_dedicated_ip_pool
 
 #' List the dedicated IP addresses that are associated with your Amazon Web
 #' Services account
@@ -2297,7 +2462,8 @@ sesv2_get_domain_statistics_report <- function(Domain, StartDate, EndDate) {
 #'       Value = "string"
 #'     )
 #'   ),
-#'   ConfigurationSetName = "string"
+#'   ConfigurationSetName = "string",
+#'   VerificationStatus = "PENDING"|"SUCCESS"|"FAILED"|"TEMPORARY_FAILURE"|"NOT_STARTED"
 #' )
 #' ```
 #'
@@ -2806,9 +2972,9 @@ sesv2_list_contacts <- function(ContactListName, Filter = NULL, PageSize = NULL,
 #' in the current Amazon Web Services Region.
 #' 
 #' For more information about custom verification email templates, see
-#' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/dg/) in the *Amazon
-#' SES Developer Guide*.
+#' [Using custom verification email
+#' templates](https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom)
+#' in the *Amazon SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -3023,11 +3189,10 @@ sesv2_list_deliverability_test_reports <- function(NextToken = NULL, PageSize = 
 #' sesv2_list_domain_deliverability_campaigns(StartDate, EndDate,
 #'   SubscribedDomain, NextToken, PageSize)
 #'
-#' @param StartDate &#91;required&#93; The first day, in Unix time format, that you want to obtain
-#' deliverability data for.
-#' @param EndDate &#91;required&#93; The last day, in Unix time format, that you want to obtain
-#' deliverability data for. This value has to be less than or equal to 30
-#' days after the value of the `StartDate` parameter.
+#' @param StartDate &#91;required&#93; The first day that you want to obtain deliverability data for.
+#' @param EndDate &#91;required&#93; The last day that you want to obtain deliverability data for. This value
+#' has to be less than or equal to 30 days after the value of the
+#' `StartDate` parameter.
 #' @param SubscribedDomain &#91;required&#93; The domain to obtain deliverability data for.
 #' @param NextToken A token that’s returned from a previous call to the
 #' [`list_domain_deliverability_campaigns`][sesv2_list_domain_deliverability_campaigns]
@@ -3144,7 +3309,8 @@ sesv2_list_domain_deliverability_campaigns <- function(StartDate, EndDate, Subsc
 #'     list(
 #'       IdentityType = "EMAIL_ADDRESS"|"DOMAIN"|"MANAGED_DOMAIN",
 #'       IdentityName = "string",
-#'       SendingEnabled = TRUE|FALSE
+#'       SendingEnabled = TRUE|FALSE,
+#'       VerificationStatus = "PENDING"|"SUCCESS"|"FAILED"|"TEMPORARY_FAILURE"|"NOT_STARTED"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3289,7 +3455,9 @@ sesv2_list_email_templates <- function(NextToken = NULL, PageSize = NULL) {
 #'       JobStatus = "CREATED"|"PROCESSING"|"COMPLETED"|"FAILED",
 #'       CreatedTimestamp = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       ProcessedRecordsCount = 123,
+#'       FailedRecordsCount = 123
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3327,6 +3495,88 @@ sesv2_list_import_jobs <- function(ImportDestinationType = NULL, NextToken = NUL
 }
 .sesv2$operations$list_import_jobs <- sesv2_list_import_jobs
 
+#' Lists the recommendations present in your Amazon SES account in the
+#' current Amazon Web Services Region
+#'
+#' @description
+#' Lists the recommendations present in your Amazon SES account in the
+#' current Amazon Web Services Region.
+#' 
+#' You can execute this operation no more than once per second.
+#'
+#' @usage
+#' sesv2_list_recommendations(Filter, NextToken, PageSize)
+#'
+#' @param Filter Filters applied when retrieving recommendations. Can eiter be an
+#' individual filter, or combinations of `STATUS` and `IMPACT` or `STATUS`
+#' and `TYPE`
+#' @param NextToken A token returned from a previous call to
+#' [`list_recommendations`][sesv2_list_recommendations] to indicate the
+#' position in the list of recommendations.
+#' @param PageSize The number of results to show in a single call to
+#' [`list_recommendations`][sesv2_list_recommendations]. If the number of
+#' results is larger than the number you specified in this parameter, then
+#' the response includes a `NextToken` element, which you can use to obtain
+#' additional results.
+#' 
+#' The value you specify has to be at least 1, and can be no more than 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Recommendations = list(
+#'     list(
+#'       ResourceArn = "string",
+#'       Type = "DKIM"|"DMARC"|"SPF"|"BIMI",
+#'       Description = "string",
+#'       Status = "OPEN"|"FIXED",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Impact = "LOW"|"HIGH"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_recommendations(
+#'   Filter = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string",
+#'   PageSize = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_list_recommendations
+#'
+#' @aliases sesv2_list_recommendations
+sesv2_list_recommendations <- function(Filter = NULL, NextToken = NULL, PageSize = NULL) {
+  op <- new_operation(
+    name = "ListRecommendations",
+    http_method = "POST",
+    http_path = "/v2/email/vdm/recommendations",
+    paginator = list()
+  )
+  input <- .sesv2$list_recommendations_input(Filter = Filter, NextToken = NextToken, PageSize = PageSize)
+  output <- .sesv2$list_recommendations_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$list_recommendations <- sesv2_list_recommendations
+
 #' Retrieves a list of email addresses that are on the suppression list for
 #' your account
 #'
@@ -3341,10 +3591,8 @@ sesv2_list_import_jobs <- function(ImportDestinationType = NULL, NextToken = NUL
 #' @param Reasons The factors that caused the email address to be added to .
 #' @param StartDate Used to filter the list of suppressed email destinations so that it only
 #' includes addresses that were added to the list after a specific date.
-#' The date that you specify should be in Unix time format.
 #' @param EndDate Used to filter the list of suppressed email destinations so that it only
 #' includes addresses that were added to the list before a specific date.
-#' The date that you specify should be in Unix time format.
 #' @param NextToken A token returned from a previous call to
 #' [`list_suppressed_destinations`][sesv2_list_suppressed_destinations] to
 #' indicate the position in the list of suppressed email addresses.
@@ -3686,6 +3934,58 @@ sesv2_put_account_suppression_attributes <- function(SuppressedReasons = NULL) {
 }
 .sesv2$operations$put_account_suppression_attributes <- sesv2_put_account_suppression_attributes
 
+#' Update your Amazon SES account VDM attributes
+#'
+#' @description
+#' Update your Amazon SES account VDM attributes.
+#' 
+#' You can execute this operation no more than once per second.
+#'
+#' @usage
+#' sesv2_put_account_vdm_attributes(VdmAttributes)
+#'
+#' @param VdmAttributes &#91;required&#93; The VDM attributes that you wish to apply to your Amazon SES account.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_account_vdm_attributes(
+#'   VdmAttributes = list(
+#'     VdmEnabled = "ENABLED"|"DISABLED",
+#'     DashboardAttributes = list(
+#'       EngagementMetrics = "ENABLED"|"DISABLED"
+#'     ),
+#'     GuardianAttributes = list(
+#'       OptimizedSharedDelivery = "ENABLED"|"DISABLED"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_put_account_vdm_attributes
+#'
+#' @aliases sesv2_put_account_vdm_attributes
+sesv2_put_account_vdm_attributes <- function(VdmAttributes) {
+  op <- new_operation(
+    name = "PutAccountVdmAttributes",
+    http_method = "PUT",
+    http_path = "/v2/email/account/vdm",
+    paginator = list()
+  )
+  input <- .sesv2$put_account_vdm_attributes_input(VdmAttributes = VdmAttributes)
+  output <- .sesv2$put_account_vdm_attributes_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$put_account_vdm_attributes <- sesv2_put_account_vdm_attributes
+
 #' Associate a configuration set with a dedicated IP pool
 #'
 #' @description
@@ -3946,6 +4246,62 @@ sesv2_put_configuration_set_tracking_options <- function(ConfigurationSetName, C
 }
 .sesv2$operations$put_configuration_set_tracking_options <- sesv2_put_configuration_set_tracking_options
 
+#' Specify VDM preferences for email that you send using the configuration
+#' set
+#'
+#' @description
+#' Specify VDM preferences for email that you send using the configuration
+#' set.
+#' 
+#' You can execute this operation no more than once per second.
+#'
+#' @usage
+#' sesv2_put_configuration_set_vdm_options(ConfigurationSetName,
+#'   VdmOptions)
+#'
+#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set.
+#' @param VdmOptions The VDM options to apply to the configuration set.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_configuration_set_vdm_options(
+#'   ConfigurationSetName = "string",
+#'   VdmOptions = list(
+#'     DashboardOptions = list(
+#'       EngagementMetrics = "ENABLED"|"DISABLED"
+#'     ),
+#'     GuardianOptions = list(
+#'       OptimizedSharedDelivery = "ENABLED"|"DISABLED"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_put_configuration_set_vdm_options
+#'
+#' @aliases sesv2_put_configuration_set_vdm_options
+sesv2_put_configuration_set_vdm_options <- function(ConfigurationSetName, VdmOptions = NULL) {
+  op <- new_operation(
+    name = "PutConfigurationSetVdmOptions",
+    http_method = "PUT",
+    http_path = "/v2/email/configuration-sets/{ConfigurationSetName}/vdm-options",
+    paginator = list()
+  )
+  input <- .sesv2$put_configuration_set_vdm_options_input(ConfigurationSetName = ConfigurationSetName, VdmOptions = VdmOptions)
+  output <- .sesv2$put_configuration_set_vdm_options_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$put_configuration_set_vdm_options <- sesv2_put_configuration_set_vdm_options
+
 #' Move a dedicated IP address to an existing dedicated IP pool
 #'
 #' @description
@@ -3999,6 +4355,63 @@ sesv2_put_dedicated_ip_in_pool <- function(Ip, DestinationPoolName) {
   return(response)
 }
 .sesv2$operations$put_dedicated_ip_in_pool <- sesv2_put_dedicated_ip_in_pool
+
+#' Used to convert a dedicated IP pool to a different scaling mode
+#'
+#' @description
+#' Used to convert a dedicated IP pool to a different scaling mode.
+#' 
+#' `MANAGED` pools cannot be converted to `STANDARD` scaling mode.
+#'
+#' @usage
+#' sesv2_put_dedicated_ip_pool_scaling_attributes(PoolName, ScalingMode)
+#'
+#' @param PoolName &#91;required&#93; The name of the dedicated IP pool.
+#' @param ScalingMode &#91;required&#93; The scaling mode to apply to the dedicated IP pool.
+#' 
+#' Changing the scaling mode from `MANAGED` to `STANDARD` is not supported.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_dedicated_ip_pool_scaling_attributes(
+#'   PoolName = "string",
+#'   ScalingMode = "STANDARD"|"MANAGED"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example converts a dedicated IP pool from STANDARD to MANAGED.
+#' svc$put_dedicated_ip_pool_scaling_attributes(
+#'   PoolName = "sample-ses-pool",
+#'   ScalingMode = "MANAGED"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_put_dedicated_ip_pool_scaling_attributes
+#'
+#' @aliases sesv2_put_dedicated_ip_pool_scaling_attributes
+sesv2_put_dedicated_ip_pool_scaling_attributes <- function(PoolName, ScalingMode) {
+  op <- new_operation(
+    name = "PutDedicatedIpPoolScalingAttributes",
+    http_method = "PUT",
+    http_path = "/v2/email/dedicated-ip-pools/{PoolName}/scaling",
+    paginator = list()
+  )
+  input <- .sesv2$put_dedicated_ip_pool_scaling_attributes_input(PoolName = PoolName, ScalingMode = ScalingMode)
+  output <- .sesv2$put_dedicated_ip_pool_scaling_attributes_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$put_dedicated_ip_pool_scaling_attributes <- sesv2_put_dedicated_ip_pool_scaling_attributes
 
 #' Put dedicated ip warmup attributes
 #'
@@ -4630,9 +5043,9 @@ sesv2_send_bulk_email <- function(FromEmailAddress = NULL, FromEmailAddressIdent
 #' 
 #' To use this operation, you must first create a custom verification email
 #' template. For more information about creating and using custom
-#' verification email templates, see [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/dg/) in the *Amazon
-#' SES Developer Guide*.
+#' verification email templates, see [Using custom verification email
+#' templates](https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom)
+#' in the *Amazon SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -5115,7 +5528,7 @@ sesv2_update_configuration_set_event_destination <- function(ConfigurationSetNam
 #'   UnsubscribeAll, AttributesData)
 #'
 #' @param ContactListName &#91;required&#93; The name of the contact list.
-#' @param EmailAddress &#91;required&#93; The contact's email addres.
+#' @param EmailAddress &#91;required&#93; The contact's email address.
 #' @param TopicPreferences The contact's preference for being opted-in to or opted-out of a topic.
 #' @param UnsubscribeAll A boolean value status noting if the contact is unsubscribed from all
 #' contact list topics.
@@ -5223,9 +5636,9 @@ sesv2_update_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 #' Updates an existing custom verification email template.
 #' 
 #' For more information about custom verification email templates, see
-#' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/dg/) in the *Amazon
-#' SES Developer Guide*.
+#' [Using custom verification email
+#' templates](https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom)
+#' in the *Amazon SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -5240,9 +5653,9 @@ sesv2_update_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 #' @param TemplateSubject &#91;required&#93; The subject line of the custom verification email.
 #' @param TemplateContent &#91;required&#93; The content of the custom verification email. The total size of the
 #' email must be less than 10 MB. The message body may contain HTML, with
-#' some limitations. For more information, see [Custom Verification Email
-#' Frequently Asked
-#' Questions](https://docs.aws.amazon.com/ses/latest/dg/#custom-verification-emails-faq)
+#' some limitations. For more information, see [Custom verification email
+#' frequently asked
+#' questions](https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom-faq)
 #' in the *Amazon SES Developer Guide*.
 #' @param SuccessRedirectionURL &#91;required&#93; The URL that the recipient of the verification email is sent to if his
 #' or her address is successfully verified.

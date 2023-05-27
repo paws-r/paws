@@ -11,7 +11,8 @@ ssmincidents_get_resource_policies(
 )
 }
 \arguments{
-\item{maxResults}{The maximum number of resource policies to display per page of results.}
+\item{maxResults}{The maximum number of resource policies to display for each page of
+results.}
 
 \item{nextToken}{The pagination token to continue to the next page of results.}
 

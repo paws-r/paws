@@ -13,9 +13,9 @@ NULL
 #'
 #' @param jobId &#91;required&#93; The unique system-generated ID of the job for which you want to confirm
 #' receipt.
-#' @param nonce &#91;required&#93; A system-generated random number that AWS CodePipeline uses to ensure
-#' that the job is being worked on by only one job worker. Get this number
-#' from the response of the [`poll_for_jobs`][codepipeline_poll_for_jobs]
+#' @param nonce &#91;required&#93; A system-generated random number that CodePipeline uses to ensure that
+#' the job is being worked on by only one job worker. Get this number from
+#' the response of the [`poll_for_jobs`][codepipeline_poll_for_jobs]
 #' request that returned this job.
 #'
 #' @keywords internal
@@ -46,9 +46,9 @@ codepipeline_acknowledge_job <- function(jobId, nonce) {
 #' See [https://paws-r.github.io/docs/codepipeline/acknowledge_third_party_job.html](https://paws-r.github.io/docs/codepipeline/acknowledge_third_party_job.html) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The unique system-generated ID of the job.
-#' @param nonce &#91;required&#93; A system-generated random number that AWS CodePipeline uses to ensure
-#' that the job is being worked on by only one job worker. Get this number
-#' from the response to a
+#' @param nonce &#91;required&#93; A system-generated random number that CodePipeline uses to ensure that
+#' the job is being worked on by only one job worker. Get this number from
+#' the response to a
 #' [`get_third_party_job_details`][codepipeline_get_third_party_job_details]
 #' request.
 #' @param clientToken &#91;required&#93; The clientToken portion of the clientId and clientToken pair used to
@@ -76,16 +76,16 @@ codepipeline_acknowledge_third_party_job <- function(jobId, nonce, clientToken) 
 .codepipeline$operations$acknowledge_third_party_job <- codepipeline_acknowledge_third_party_job
 
 #' Creates a new custom action that can be used in all pipelines associated
-#' with the AWS account
+#' with the Amazon Web Services account
 #'
 #' @description
-#' Creates a new custom action that can be used in all pipelines associated with the AWS account. Only used for custom actions.
+#' Creates a new custom action that can be used in all pipelines associated with the Amazon Web Services account. Only used for custom actions.
 #'
 #' See [https://paws-r.github.io/docs/codepipeline/create_custom_action_type.html](https://paws-r.github.io/docs/codepipeline/create_custom_action_type.html) for full documentation.
 #'
 #' @param category &#91;required&#93; The category of the custom action, such as a build action or a test
 #' action.
-#' @param provider &#91;required&#93; The provider of the service used in the custom action, such as AWS
+#' @param provider &#91;required&#93; The provider of the service used in the custom action, such as
 #' CodeDeploy.
 #' @param version &#91;required&#93; The version identifier of the custom action.
 #' @param settings URLs that provide users information about this custom action.
@@ -161,7 +161,7 @@ codepipeline_create_pipeline <- function(pipeline, tags = NULL) {
 #'
 #' @param category &#91;required&#93; The category of the custom action that you want to delete, such as
 #' source or deploy.
-#' @param provider &#91;required&#93; The provider of the service used in the custom action, such as AWS
+#' @param provider &#91;required&#93; The provider of the service used in the custom action, such as
 #' CodeDeploy.
 #' @param version &#91;required&#93; The version of the custom action to delete.
 #'
@@ -217,7 +217,7 @@ codepipeline_delete_pipeline <- function(name) {
 #' Deletes a previously created webhook by name
 #'
 #' @description
-#' Deletes a previously created webhook by name. Deleting the webhook stops AWS CodePipeline from starting a pipeline every time an external event occurs. The API returns successfully when trying to delete a webhook that is already deleted. If a deleted webhook is re-created by calling PutWebhook with the same name, it will have a different URL.
+#' Deletes a previously created webhook by name. Deleting the webhook stops CodePipeline from starting a pipeline every time an external event occurs. The API returns successfully when trying to delete a webhook that is already deleted. If a deleted webhook is re-created by calling PutWebhook with the same name, it will have a different URL.
 #'
 #' See [https://paws-r.github.io/docs/codepipeline/delete_webhook.html](https://paws-r.github.io/docs/codepipeline/delete_webhook.html) for full documentation.
 #'
@@ -436,7 +436,7 @@ codepipeline_get_job_details <- function(jobId) {
 #' See [https://paws-r.github.io/docs/codepipeline/get_pipeline.html](https://paws-r.github.io/docs/codepipeline/get_pipeline.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the pipeline for which you want to get information. Pipeline
-#' names must be unique under an AWS user account.
+#' names must be unique in an Amazon Web Services account.
 #' @param version The version number of the pipeline. If you do not specify a version,
 #' defaults to the current version.
 #'
@@ -597,11 +597,11 @@ codepipeline_list_action_executions <- function(pipelineName, filter = NULL, max
 }
 .codepipeline$operations$list_action_executions <- codepipeline_list_action_executions
 
-#' Gets a summary of all AWS CodePipeline action types associated with your
+#' Gets a summary of all CodePipeline action types associated with your
 #' account
 #'
 #' @description
-#' Gets a summary of all AWS CodePipeline action types associated with your account.
+#' Gets a summary of all CodePipeline action types associated with your account.
 #'
 #' See [https://paws-r.github.io/docs/codepipeline/list_action_types.html](https://paws-r.github.io/docs/codepipeline/list_action_types.html) for full documentation.
 #'
@@ -737,10 +737,11 @@ codepipeline_list_tags_for_resource <- function(resourceArn, nextToken = NULL, m
 }
 .codepipeline$operations$list_tags_for_resource <- codepipeline_list_tags_for_resource
 
-#' Gets a listing of all the webhooks in this AWS Region for this account
+#' Gets a listing of all the webhooks in this Amazon Web Services Region
+#' for this account
 #'
 #' @description
-#' Gets a listing of all the webhooks in this AWS Region for this account. The output lists all webhooks and includes the webhook URL and ARN and the configuration for each webhook.
+#' Gets a listing of all the webhooks in this Amazon Web Services Region for this account. The output lists all webhooks and includes the webhook URL and ARN and the configuration for each webhook.
 #'
 #' See [https://paws-r.github.io/docs/codepipeline/list_webhooks.html](https://paws-r.github.io/docs/codepipeline/list_webhooks.html) for full documentation.
 #'
@@ -770,10 +771,10 @@ codepipeline_list_webhooks <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .codepipeline$operations$list_webhooks <- codepipeline_list_webhooks
 
-#' Returns information about any jobs for AWS CodePipeline to act on
+#' Returns information about any jobs for CodePipeline to act on
 #'
 #' @description
-#' Returns information about any jobs for AWS CodePipeline to act on. [`poll_for_jobs`][codepipeline_poll_for_jobs] is valid only for action types with "Custom" in the owner field. If the action type contains "AWS" or "ThirdParty" in the owner field, the [`poll_for_jobs`][codepipeline_poll_for_jobs] action returns an error.
+#' Returns information about any jobs for CodePipeline to act on. [`poll_for_jobs`][codepipeline_poll_for_jobs] is valid only for action types with "Custom" in the owner field. If the action type contains `AWS` or `ThirdParty` in the owner field, the [`poll_for_jobs`][codepipeline_poll_for_jobs] action returns an error.
 #'
 #' See [https://paws-r.github.io/docs/codepipeline/poll_for_jobs.html](https://paws-r.github.io/docs/codepipeline/poll_for_jobs.html) for full documentation.
 #'
@@ -836,10 +837,10 @@ codepipeline_poll_for_third_party_jobs <- function(actionTypeId, maxBatchSize = 
 }
 .codepipeline$operations$poll_for_third_party_jobs <- codepipeline_poll_for_third_party_jobs
 
-#' Provides information to AWS CodePipeline about new revisions to a source
+#' Provides information to CodePipeline about new revisions to a source
 #'
 #' @description
-#' Provides information to AWS CodePipeline about new revisions to a source.
+#' Provides information to CodePipeline about new revisions to a source.
 #'
 #' See [https://paws-r.github.io/docs/codepipeline/put_action_revision.html](https://paws-r.github.io/docs/codepipeline/put_action_revision.html) for full documentation.
 #'
@@ -870,10 +871,10 @@ codepipeline_put_action_revision <- function(pipelineName, stageName, actionName
 }
 .codepipeline$operations$put_action_revision <- codepipeline_put_action_revision
 
-#' Provides the response to a manual approval request to AWS CodePipeline
+#' Provides the response to a manual approval request to CodePipeline
 #'
 #' @description
-#' Provides the response to a manual approval request to AWS CodePipeline. Valid responses include Approved and Rejected.
+#' Provides the response to a manual approval request to CodePipeline. Valid responses include Approved and Rejected.
 #'
 #' See [https://paws-r.github.io/docs/codepipeline/put_approval_result.html](https://paws-r.github.io/docs/codepipeline/put_approval_result.html) for full documentation.
 #'
@@ -951,12 +952,12 @@ codepipeline_put_job_failure_result <- function(jobId, failureDetails) {
 #' same ID returned from [`poll_for_jobs`][codepipeline_poll_for_jobs].
 #' @param currentRevision The ID of the current revision of the artifact successfully worked on by
 #' the job.
-#' @param continuationToken A token generated by a job worker, such as an AWS CodeDeploy deployment
-#' ID, that a successful job provides to identify a custom action in
-#' progress. Future jobs use this token to identify the running instance of
-#' the action. It can be reused to return more information about the
-#' progress of the custom action. When the action is complete, no
-#' continuation token should be supplied.
+#' @param continuationToken A token generated by a job worker, such as a CodeDeploy deployment ID,
+#' that a successful job provides to identify a custom action in progress.
+#' Future jobs use this token to identify the running instance of the
+#' action. It can be reused to return more information about the progress
+#' of the custom action. When the action is complete, no continuation token
+#' should be supplied.
 #' @param executionDetails The execution details of the successful job, such as the actions taken
 #' by the job worker.
 #' @param outputVariables Key-value pairs produced as output by a job worker that can be made
@@ -1033,12 +1034,12 @@ codepipeline_put_third_party_job_failure_result <- function(jobId, clientToken, 
 #' verify that the calling entity is allowed access to the job and its
 #' details.
 #' @param currentRevision Represents information about a current revision.
-#' @param continuationToken A token generated by a job worker, such as an AWS CodeDeploy deployment
-#' ID, that a successful job provides to identify a partner action in
-#' progress. Future jobs use this token to identify the running instance of
-#' the action. It can be reused to return more information about the
-#' progress of the partner action. When the action is complete, no
-#' continuation token should be supplied.
+#' @param continuationToken A token generated by a job worker, such as a CodeDeploy deployment ID,
+#' that a successful job provides to identify a partner action in progress.
+#' Future jobs use this token to identify the running instance of the
+#' action. It can be reused to return more information about the progress
+#' of the partner action. When the action is complete, no continuation
+#' token should be supplied.
 #' @param executionDetails The details of the actions taken and results produced on an artifact as
 #' it passes through stages in the pipeline.
 #'
@@ -1263,10 +1264,10 @@ codepipeline_tag_resource <- function(resourceArn, tags) {
 }
 .codepipeline$operations$tag_resource <- codepipeline_tag_resource
 
-#' Removes tags from an AWS resource
+#' Removes tags from an Amazon Web Services resource
 #'
 #' @description
-#' Removes tags from an AWS resource.
+#' Removes tags from an Amazon Web Services resource.
 #'
 #' See [https://paws-r.github.io/docs/codepipeline/untag_resource.html](https://paws-r.github.io/docs/codepipeline/untag_resource.html) for full documentation.
 #'

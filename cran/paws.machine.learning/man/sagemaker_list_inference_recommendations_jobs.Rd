@@ -14,7 +14,9 @@ sagemaker_list_inference_recommendations_jobs(
   SortBy = NULL,
   SortOrder = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  ModelNameEquals = NULL,
+  ModelPackageVersionArnEquals = NULL
 )
 }
 \arguments{
@@ -45,6 +47,11 @@ request was truncated, the response includes a \code{NextToken}. To retrieve
 the next set of recommendations, use the token in the next request.}
 
 \item{MaxResults}{The maximum number of recommendations to return in the response.}
+
+\item{ModelNameEquals}{A filter that returns only jobs that were created for this model.}
+
+\item{ModelPackageVersionArnEquals}{A filter that returns only jobs that were created for this versioned
+model package.}
 }
 \description{
 Lists recommendation jobs that satisfy various filters.

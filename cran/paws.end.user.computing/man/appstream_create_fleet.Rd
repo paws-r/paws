@@ -41,6 +41,8 @@ instance types are available:
 \item stream.standard.small
 \item stream.standard.medium
 \item stream.standard.large
+\item stream.standard.xlarge
+\item stream.standard.2xlarge
 \item stream.compute.large
 \item stream.compute.xlarge
 \item stream.compute.2xlarge
@@ -77,6 +79,9 @@ The following instance types are available for Elastic fleets:
 \itemize{
 \item stream.standard.small
 \item stream.standard.medium
+\item stream.standard.large
+\item stream.standard.xlarge
+\item stream.standard.2xlarge
 }}
 
 \item{FleetType}{The fleet type.
@@ -197,7 +202,7 @@ client. This is allowed but not required for Elastic fleets.}
 applies to Elastic fleets.}
 }
 \description{
-Creates a fleet. A fleet consists of streaming instances that run a specified image when using Always-On or On-Demand.
+Creates a fleet. A fleet consists of streaming instances that your users access for their applications and desktops.
 
 See \url{https://paws-r.github.io/docs/appstream/create_fleet.html} for full documentation.
 }

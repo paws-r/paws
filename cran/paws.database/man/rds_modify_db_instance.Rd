@@ -52,7 +52,11 @@ rds_modify_db_instance(
   AwsBackupRecoveryPointArn = NULL,
   AutomationMode = NULL,
   ResumeFullAutomationModeMinutes = NULL,
-  NetworkType = NULL
+  NetworkType = NULL,
+  StorageThroughput = NULL,
+  ManageMasterUserPassword = NULL,
+  RotateMasterUserPassword = NULL,
+  MasterUserSecretKmsKeyId = NULL
 )
 }
 \arguments{
@@ -75,17 +79,16 @@ For the valid values for allocated storage for each engine, see
 \code{\link[=rds_create_db_instance]{create_db_instance}}.}
 
 \item{DBInstanceClass}{The new compute and memory capacity of the DB instance, for example
-db.m5.large. Not all DB instance classes are available in all Amazon Web
+db.m4.large. Not all DB instance classes are available in all Amazon Web
 Services Regions, or for all database engines. For the full list of DB
-instance classes, and availability for your engine, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB instance classes}
+instance classes, and availability for your engine, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class}
 in the \emph{Amazon RDS User Guide} or \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.DBInstanceClass.html}{Aurora DB instance classes}
-in the \emph{Amazon Aurora User Guide}.
+in the \emph{Amazon Aurora User Guide}. For RDS Custom, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-reqs-limits.html#custom-reqs-limits.instances}{DB instance class support for RDS Custom for Oracle}
+and \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-reqs-limits-MS.html#custom-reqs-limits.instancesMS}{DB instance class support for RDS Custom for SQL Server}.
 
 If you modify the DB instance class, an outage occurs during the change.
-The change is applied during the next maintenance window, unless
-\code{ApplyImmediately} is enabled for this request.
-
-This setting doesn't apply to RDS Custom for Oracle.
+The change is applied during the next maintenance window, unless you
+specify \code{ApplyImmediately} in your request.
 
 Default: Uses existing setting}
 
@@ -165,6 +168,9 @@ cluster. For more information, see
 \code{\link[=rds_modify_db_cluster]{modify_db_cluster}}.
 
 Default: Uses existing setting
+
+Constraints: Can't be specified if \code{ManageMasterUserPassword} is turned
+on.
 
 \strong{MariaDB}
 
@@ -307,6 +313,10 @@ lower. For information about valid engine versions, see
 \code{\link[=rds_create_db_instance]{create_db_instance}}, or call
 \code{\link[=rds_describe_db_engine_versions]{describe_db_engine_versions}}.
 
+If the instance that you're modifying is acting as a read replica, the
+engine version that you specify must be the same or later than the
+version that the source DB instance or cluster is running.
+
 In RDS Custom for Oracle, this parameter is supported for read replicas
 only if they are in the \code{PATCH_DB_FAILURE} lifecycle.}
 
@@ -428,7 +438,7 @@ instance, including modifying the instance, rebooting the instance,
 deleting the instance, creating a read replica for the instance, and
 creating a DB snapshot of the instance.
 
-Valid values: \code{standard | gp2 | io1}
+Valid values: \code{gp2 | gp3 | io1 | standard}
 
 Default: \code{io1} if the \code{Iops} parameter is specified, otherwise \code{gp2}}
 
@@ -442,9 +452,14 @@ device.
 
 This setting doesn't apply to RDS Custom.}
 
-\item{CACertificateIdentifier}{Specifies the certificate to associate with the DB instance.
+\item{CACertificateIdentifier}{Specifies the CA certificate identifier to use for the DB instance’s
+server certificate.
 
-This setting doesn't apply to RDS Custom.}
+This setting doesn't apply to RDS Custom.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB instance}
+in the \emph{Amazon RDS User Guide} and \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB cluster}
+in the \emph{Amazon Aurora User Guide}.}
 
 \item{Domain}{The Active Directory directory ID to move the DB instance to. Specify
 \code{none} to remove the instance from its current domain. You must create
@@ -711,7 +726,7 @@ outside of its virtual private cloud (VPC) on your local network.
 For more information about RDS on Outposts, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on Amazon Web Services Outposts}
 in the \emph{Amazon RDS User Guide}.
 
-For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/#ip-addressing}{Customer-owned IP addresses}
+For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/routing.html#ip-addressing}{Customer-owned IP addresses}
 in the \emph{Amazon Web Services Outposts User Guide}.}
 
 \item{AwsBackupRecoveryPointArn}{The Amazon Resource Name (ARN) of the recovery point in Amazon Web
@@ -742,6 +757,82 @@ IPv4 and the IPv6 protocols (\code{DUAL}).
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
 in the \emph{Amazon RDS User Guide.}}
+
+\item{StorageThroughput}{Specifies the storage throughput value for the DB instance.
+
+This setting applies only to the \code{gp3} storage type.
+
+This setting doesn't apply to RDS Custom or Amazon Aurora.}
+
+\item{ManageMasterUserPassword}{A value that indicates whether to manage the master user password with
+Amazon Web Services Secrets Manager.
+
+If the DB instance doesn't manage the master user password with Amazon
+Web Services Secrets Manager, you can turn on this management. In this
+case, you can't specify \code{MasterUserPassword}.
+
+If the DB instance already manages the master user password with Amazon
+Web Services Secrets Manager, and you specify that the master user
+password is not managed with Amazon Web Services Secrets Manager, then
+you must specify \code{MasterUserPassword}. In this case, RDS deletes the
+secret and uses the new password for the master user specified by
+\code{MasterUserPassword}.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html}{Password management with Amazon Web Services Secrets Manager}
+in the \emph{Amazon RDS User Guide.}
+
+Constraints:
+\itemize{
+\item Can't manage the master user password with Amazon Web Services
+Secrets Manager if \code{MasterUserPassword} is specified.
+}}
+
+\item{RotateMasterUserPassword}{A value that indicates whether to rotate the secret managed by Amazon
+Web Services Secrets Manager for the master user password.
+
+This setting is valid only if the master user password is managed by RDS
+in Amazon Web Services Secrets Manager for the DB cluster. The secret
+value contains the updated password.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html}{Password management with Amazon Web Services Secrets Manager}
+in the \emph{Amazon RDS User Guide.}
+
+Constraints:
+\itemize{
+\item You must apply the change immediately when rotating the master user
+password.
+}}
+
+\item{MasterUserSecretKmsKeyId}{The Amazon Web Services KMS key identifier to encrypt a secret that is
+automatically generated and managed in Amazon Web Services Secrets
+Manager.
+
+This setting is valid only if both of the following conditions are met:
+\itemize{
+\item The DB instance doesn't manage the master user password in Amazon
+Web Services Secrets Manager.
+
+If the DB instance already manages the master user password in
+Amazon Web Services Secrets Manager, you can't change the KMS key
+used to encrypt the secret.
+\item You are turning on \code{ManageMasterUserPassword} to manage the master
+user password in Amazon Web Services Secrets Manager.
+
+If you are turning on \code{ManageMasterUserPassword} and don't specify
+\code{MasterUserSecretKmsKeyId}, then the \code{aws/secretsmanager} KMS key is
+used to encrypt the secret. If the secret is in a different Amazon
+Web Services account, then you can't use the \code{aws/secretsmanager}
+KMS key to encrypt the secret, and you must use a customer managed
+KMS key.
+}
+
+The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+ARN, or alias name for the KMS key. To use a KMS key in a different
+Amazon Web Services account, specify the key ARN or alias ARN.
+
+There is a default KMS key for your Amazon Web Services account. Your
+Amazon Web Services account has a different default KMS key for each
+Amazon Web Services Region.}
 }
 \description{
 Modifies settings for a DB instance. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. To learn what modifications you can make to your DB instance, call \code{\link[=rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications}} before you call \code{\link[=rds_modify_db_instance]{modify_db_instance}}.

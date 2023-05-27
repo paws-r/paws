@@ -3,7 +3,7 @@
 \name{codepipeline_create_custom_action_type}
 \alias{codepipeline_create_custom_action_type}
 \title{Creates a new custom action that can be used in all pipelines associated
-with the AWS account}
+with the Amazon Web Services account}
 \usage{
 codepipeline_create_custom_action_type(
   category,
@@ -20,7 +20,7 @@ codepipeline_create_custom_action_type(
 \item{category}{[required] The category of the custom action, such as a build action or a test
 action.}
 
-\item{provider}{[required] The provider of the service used in the custom action, such as AWS
+\item{provider}{[required] The provider of the service used in the custom action, such as
 CodeDeploy.}
 
 \item{version}{[required] The version identifier of the custom action.}
@@ -41,7 +41,7 @@ required and not secret. For more information, see \href{https://docs.aws.amazon
 \item{tags}{The tags for the custom action.}
 }
 \description{
-Creates a new custom action that can be used in all pipelines associated with the AWS account. Only used for custom actions.
+Creates a new custom action that can be used in all pipelines associated with the Amazon Web Services account. Only used for custom actions.
 
 See \url{https://paws-r.github.io/docs/codepipeline/create_custom_action_type.html} for full documentation.
 }

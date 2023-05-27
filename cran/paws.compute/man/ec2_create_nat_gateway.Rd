@@ -10,7 +10,11 @@ ec2_create_nat_gateway(
   DryRun = NULL,
   SubnetId,
   TagSpecifications = NULL,
-  ConnectivityType = NULL
+  ConnectivityType = NULL,
+  PrivateIpAddress = NULL,
+  SecondaryAllocationIds = NULL,
+  SecondaryPrivateIpAddresses = NULL,
+  SecondaryPrivateIpAddressCount = NULL
 )
 }
 \arguments{
@@ -29,12 +33,29 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{SubnetId}{[required] The subnet in which to create the NAT gateway.}
+\item{SubnetId}{[required] The ID of the subnet in which to create the NAT gateway.}
 
 \item{TagSpecifications}{The tags to assign to the NAT gateway.}
 
 \item{ConnectivityType}{Indicates whether the NAT gateway supports public or private
 connectivity. The default is public connectivity.}
+
+\item{PrivateIpAddress}{The private IPv4 address to assign to the NAT gateway. If you don't
+provide an address, a private IPv4 address will be automatically
+assigned.}
+
+\item{SecondaryAllocationIds}{Secondary EIP allocation IDs. For more information about secondary
+addresses, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-creating}{Create a NAT gateway}
+in the \emph{Amazon Virtual Private Cloud User Guide}.}
+
+\item{SecondaryPrivateIpAddresses}{Secondary private IPv4 addresses. For more information about secondary
+addresses, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-creating}{Create a NAT gateway}
+in the \emph{Amazon Virtual Private Cloud User Guide}.}
+
+\item{SecondaryPrivateIpAddressCount}{[Private NAT gateway only] The number of secondary private IPv4
+addresses you want to assign to the NAT gateway. For more information
+about secondary addresses, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-creating}{Create a NAT gateway}
+in the \emph{Amazon Virtual Private Cloud User Guide}.}
 }
 \description{
 Creates a NAT gateway in the specified subnet. This action creates a network interface in the specified subnet with a private IP address from the IP address range of the subnet. You can create either a public NAT gateway or a private NAT gateway.

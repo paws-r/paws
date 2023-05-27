@@ -87,11 +87,12 @@ Region, providing built-in high availability and data durability.
 \link[paws.database:dynamodb_delete_table]{delete_table} \tab The DeleteTable operation deletes a table and all of its items\cr
 \link[paws.database:dynamodb_describe_backup]{describe_backup} \tab Describes an existing backup of a table\cr
 \link[paws.database:dynamodb_describe_continuous_backups]{describe_continuous_backups} \tab Checks the status of continuous backups and point in time recovery on the specified table\cr
-\link[paws.database:dynamodb_describe_contributor_insights]{describe_contributor_insights} \tab Returns information about contributor insights, for a given table or global secondary index\cr
+\link[paws.database:dynamodb_describe_contributor_insights]{describe_contributor_insights} \tab Returns information about contributor insights for a given table or global secondary index\cr
 \link[paws.database:dynamodb_describe_endpoints]{describe_endpoints} \tab Returns the regional endpoint information\cr
 \link[paws.database:dynamodb_describe_export]{describe_export} \tab Describes an existing table export\cr
 \link[paws.database:dynamodb_describe_global_table]{describe_global_table} \tab Returns information about the specified global table\cr
 \link[paws.database:dynamodb_describe_global_table_settings]{describe_global_table_settings} \tab Describes Region-specific settings for a global table\cr
+\link[paws.database:dynamodb_describe_import]{describe_import} \tab Represents the properties of the import\cr
 \link[paws.database:dynamodb_describe_kinesis_streaming_destination]{describe_kinesis_streaming_destination} \tab Returns information about the status of Kinesis streaming\cr
 \link[paws.database:dynamodb_describe_limits]{describe_limits} \tab Returns the current provisioned-capacity quotas for your Amazon Web Services account in a Region, both for the Region as a whole and for any one DynamoDB table that you create there\cr
 \link[paws.database:dynamodb_describe_table]{describe_table} \tab Returns information about the table, including the current status of the table, when it was created, the primary key schema, and any indexes on the table\cr
@@ -103,10 +104,12 @@ Region, providing built-in high availability and data durability.
 \link[paws.database:dynamodb_execute_transaction]{execute_transaction} \tab This operation allows you to perform transactional reads or writes on data stored in DynamoDB, using PartiQL\cr
 \link[paws.database:dynamodb_export_table_to_point_in_time]{export_table_to_point_in_time} \tab Exports table data to an S3 bucket\cr
 \link[paws.database:dynamodb_get_item]{get_item} \tab The GetItem operation returns a set of attributes for the item with the given primary key\cr
+\link[paws.database:dynamodb_import_table]{import_table} \tab Imports table data from an S3 bucket\cr
 \link[paws.database:dynamodb_list_backups]{list_backups} \tab List backups associated with an Amazon Web Services account\cr
 \link[paws.database:dynamodb_list_contributor_insights]{list_contributor_insights} \tab Returns a list of ContributorInsightsSummary for a table and all its global secondary indexes\cr
 \link[paws.database:dynamodb_list_exports]{list_exports} \tab Lists completed exports within the past 90 days\cr
 \link[paws.database:dynamodb_list_global_tables]{list_global_tables} \tab Lists all global tables that have a replica in the specified Region\cr
+\link[paws.database:dynamodb_list_imports]{list_imports} \tab Lists completed imports within the past 90 days\cr
 \link[paws.database:dynamodb_list_tables]{list_tables} \tab Returns an array of table names associated with the current account and endpoint\cr
 \link[paws.database:dynamodb_list_tags_of_resource]{list_tags_of_resource} \tab List all tags on an Amazon DynamoDB resource\cr
 \link[paws.database:dynamodb_put_item]{put_item} \tab Creates a new item, or replaces an old item with a new item\cr
@@ -116,7 +119,7 @@ Region, providing built-in high availability and data durability.
 \link[paws.database:dynamodb_scan]{scan} \tab The Scan operation returns one or more items and item attributes by accessing every item in a table or a secondary index\cr
 \link[paws.database:dynamodb_tag_resource]{tag_resource} \tab Associate a set of tags with an Amazon DynamoDB resource\cr
 \link[paws.database:dynamodb_transact_get_items]{transact_get_items} \tab TransactGetItems is a synchronous operation that atomically retrieves multiple items from one or more tables (but not from indexes) in a single account and Region\cr
-\link[paws.database:dynamodb_transact_write_items]{transact_write_items} \tab TransactWriteItems is a synchronous write operation that groups up to 25 action requests\cr
+\link[paws.database:dynamodb_transact_write_items]{transact_write_items} \tab TransactWriteItems is a synchronous write operation that groups up to 100 action requests\cr
 \link[paws.database:dynamodb_untag_resource]{untag_resource} \tab Removes the association of tags from an Amazon DynamoDB resource\cr
 \link[paws.database:dynamodb_update_continuous_backups]{update_continuous_backups} \tab UpdateContinuousBackups enables or disables point in time recovery for the specified table\cr
 \link[paws.database:dynamodb_update_contributor_insights]{update_contributor_insights} \tab Updates the status for contributor insights for a specific table or index\cr

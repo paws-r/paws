@@ -2,8 +2,8 @@
 % Please edit documentation in R/kendra_operations.R
 \name{kendra_list_experience_entities}
 \alias{kendra_list_experience_entities}
-\title{Lists users or groups in your Amazon Web Services SSO identity source
-that are granted access to your Amazon Kendra experience}
+\title{Lists users or groups in your IAM Identity Center identity source that
+are granted access to your Amazon Kendra experience}
 \usage{
 kendra_list_experience_entities(Id, IndexId, NextToken = NULL)
 }
@@ -18,7 +18,7 @@ can use this pagination token to retrieve the next set of users or
 groups.}
 }
 \description{
-Lists users or groups in your Amazon Web Services SSO identity source that are granted access to your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see \href{https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html}{Building a search experience with no code}.
+Lists users or groups in your IAM Identity Center identity source that are granted access to your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see \href{https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html}{Building a search experience with no code}.
 
 See \url{https://paws-r.github.io/docs/kendra/list_experience_entities.html} for full documentation.
 }

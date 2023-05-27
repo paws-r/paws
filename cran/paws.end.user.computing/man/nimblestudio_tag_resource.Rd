@@ -9,7 +9,7 @@ nimblestudio_tag_resource(resourceArn, tags = NULL)
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource you want to add tags to.}
 
-\item{tags}{A collection of labels, in the form of key:value pairs, that apply to
+\item{tags}{A collection of labels, in the form of key-value pairs, that apply to
 this resource.}
 }
 \description{

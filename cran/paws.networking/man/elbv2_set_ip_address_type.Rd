@@ -2,8 +2,8 @@
 % Please edit documentation in R/elbv2_operations.R
 \name{elbv2_set_ip_address_type}
 \alias{elbv2_set_ip_address_type}
-\title{Sets the type of IP addresses used by the subnets of the specified
-Application Load Balancer or Network Load Balancer}
+\title{Sets the type of IP addresses used by the subnets of the specified load
+balancer}
 \usage{
 elbv2_set_ip_address_type(LoadBalancerArn, IpAddressType)
 }
@@ -15,7 +15,7 @@ and \code{dualstack} (for IPv4 and IPv6 addresses). You can’t specify
 \code{dualstack} for a load balancer with a UDP or TCP_UDP listener.}
 }
 \description{
-Sets the type of IP addresses used by the subnets of the specified Application Load Balancer or Network Load Balancer.
+Sets the type of IP addresses used by the subnets of the specified load balancer.
 
 See \url{https://paws-r.github.io/docs/elbv2/set_ip_address_type.html} for full documentation.
 }

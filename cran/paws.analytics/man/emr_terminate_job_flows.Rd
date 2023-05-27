@@ -10,7 +10,7 @@ emr_terminate_job_flows(JobFlowIds)
 \item{JobFlowIds}{[required] A list of job flows to be shut down.}
 }
 \description{
-TerminateJobFlows shuts a list of clusters (job flows) down. When a job flow is shut down, any step not yet completed is canceled and the EC2 instances on which the cluster is running are stopped. Any log files not already saved are uploaded to Amazon S3 if a LogUri was specified when the cluster was created.
+TerminateJobFlows shuts a list of clusters (job flows) down. When a job flow is shut down, any step not yet completed is canceled and the Amazon EC2 instances on which the cluster is running are stopped. Any log files not already saved are uploaded to Amazon S3 if a LogUri was specified when the cluster was created.
 
 See \url{https://paws-r.github.io/docs/emr/terminate_job_flows.html} for full documentation.
 }

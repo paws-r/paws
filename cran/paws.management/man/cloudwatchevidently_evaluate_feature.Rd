@@ -21,8 +21,8 @@ the evaluation event sent to Evidently from the user session. Evidently
 can use this value to match user sessions with defined audience
 segments. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html}{Use segments to focus your audience}.
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{ <p>If you include this parameter, the value must be a JSON object. A JSON array is not supported.</p>
-}\if{html}{\out{</div>}}}
+If you include this parameter, the value must be a JSON object. A JSON
+array is not supported.}
 
 \item{feature}{[required] The name of the feature being evaluated.}
 

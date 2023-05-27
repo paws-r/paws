@@ -14,7 +14,7 @@ To get the identifier, you can use
 
 \item{IfMatch}{The version of the response headers policy that you are deleting.
 
-The version is the response headers policy’s \code{ETag} value, which you can
+The version is the response headers policy's \code{ETag} value, which you can
 get using
 \code{\link[=cloudfront_list_response_headers_policies]{list_response_headers_policies}},
 \code{\link[=cloudfront_get_response_headers_policy]{get_response_headers_policy}},

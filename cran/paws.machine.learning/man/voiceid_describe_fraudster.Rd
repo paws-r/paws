@@ -7,7 +7,7 @@
 voiceid_describe_fraudster(DomainId, FraudsterId)
 }
 \arguments{
-\item{DomainId}{[required] The identifier of the domain containing the fraudster.}
+\item{DomainId}{[required] The identifier of the domain that contains the fraudster.}
 
 \item{FraudsterId}{[required] The identifier of the fraudster you are describing.}
 }

@@ -74,6 +74,71 @@ route53domains_accept_domain_transfer_from_another_aws_account <- function(Domai
 }
 .route53domains$operations$accept_domain_transfer_from_another_aws_account <- route53domains_accept_domain_transfer_from_another_aws_account
 
+#' Creates a delegation signer (DS) record in the registry zone for this
+#' domain name
+#'
+#' @description
+#' Creates a delegation signer (DS) record in the registry zone for this
+#' domain name.
+#' 
+#' Note that creating DS record at the registry impacts DNSSEC validation
+#' of your DNS records. This action may render your domain name unavailable
+#' on the internet if the steps are completed in the wrong order, or with
+#' incorrect timing. For more information about DNSSEC signing, see
+#' [Configuring DNSSEC
+#' signing](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring-dnssec.html)
+#' in the *Route 53 developer guide*.
+#'
+#' @usage
+#' route53domains_associate_delegation_signer_to_domain(DomainName,
+#'   SigningAttributes)
+#'
+#' @param DomainName &#91;required&#93; The name of the domain.
+#' @param SigningAttributes &#91;required&#93; The information about a key, including the algorithm, public key-value,
+#' and flags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OperationId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_delegation_signer_to_domain(
+#'   DomainName = "string",
+#'   SigningAttributes = list(
+#'     Algorithm = 123,
+#'     Flags = 123,
+#'     PublicKey = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53domains_associate_delegation_signer_to_domain
+#'
+#' @aliases route53domains_associate_delegation_signer_to_domain
+route53domains_associate_delegation_signer_to_domain <- function(DomainName, SigningAttributes) {
+  op <- new_operation(
+    name = "AssociateDelegationSignerToDomain",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53domains$associate_delegation_signer_to_domain_input(DomainName = DomainName, SigningAttributes = SigningAttributes)
+  output <- .route53domains$associate_delegation_signer_to_domain_output()
+  config <- get_config()
+  svc <- .route53domains$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53domains$operations$associate_delegation_signer_to_domain <- route53domains_associate_delegation_signer_to_domain
+
 #' Cancels the transfer of a domain from the current Amazon Web Services
 #' account to another Amazon Web Services account
 #'
@@ -248,7 +313,7 @@ route53domains_check_domain_availability <- function(DomainName, IdnLangCode = N
 #' ```
 #' list(
 #'   Transferability = list(
-#'     Transferable = "TRANSFERABLE"|"UNTRANSFERABLE"|"DONT_KNOW"
+#'     Transferable = "TRANSFERABLE"|"UNTRANSFERABLE"|"DONT_KNOW"|"DOMAIN_IN_OWN_ACCOUNT"|"DOMAIN_IN_ANOTHER_ACCOUNT"|"PREMIUM_DOMAIN"
 #'   )
 #' )
 #' ```
@@ -495,6 +560,60 @@ route53domains_disable_domain_transfer_lock <- function(DomainName) {
 }
 .route53domains$operations$disable_domain_transfer_lock <- route53domains_disable_domain_transfer_lock
 
+#' Deletes a delegation signer (DS) record in the registry zone for this
+#' domain name
+#'
+#' @description
+#' Deletes a delegation signer (DS) record in the registry zone for this
+#' domain name.
+#'
+#' @usage
+#' route53domains_disassociate_delegation_signer_from_domain(DomainName,
+#'   Id)
+#'
+#' @param DomainName &#91;required&#93; Name of the domain.
+#' @param Id &#91;required&#93; An internal identification number assigned to each DS record after it’s
+#' created. You can retrieve it as part of DNSSEC information returned by
+#' [`get_domain_detail`][route53domains_get_domain_detail].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OperationId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_delegation_signer_from_domain(
+#'   DomainName = "string",
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53domains_disassociate_delegation_signer_from_domain
+#'
+#' @aliases route53domains_disassociate_delegation_signer_from_domain
+route53domains_disassociate_delegation_signer_from_domain <- function(DomainName, Id) {
+  op <- new_operation(
+    name = "DisassociateDelegationSignerFromDomain",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53domains$disassociate_delegation_signer_from_domain_input(DomainName = DomainName, Id = Id)
+  output <- .route53domains$disassociate_delegation_signer_from_domain_output()
+  config <- get_config()
+  svc <- .route53domains$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53domains$operations$disassociate_delegation_signer_from_domain <- route53domains_disassociate_delegation_signer_from_domain
+
 #' This operation configures Amazon Route 53 to automatically renew the
 #' specified domain before the domain registration expires
 #'
@@ -703,7 +822,7 @@ route53domains_get_contact_reachability_status <- function(domainName = NULL) {
 #'     Fax = "string",
 #'     ExtraParams = list(
 #'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP",
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP"|"AU_PRIORITY_TOKEN",
 #'         Value = "string"
 #'       )
 #'     )
@@ -724,7 +843,7 @@ route53domains_get_contact_reachability_status <- function(domainName = NULL) {
 #'     Fax = "string",
 #'     ExtraParams = list(
 #'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP",
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP"|"AU_PRIORITY_TOKEN",
 #'         Value = "string"
 #'       )
 #'     )
@@ -745,7 +864,7 @@ route53domains_get_contact_reachability_status <- function(domainName = NULL) {
 #'     Fax = "string",
 #'     ExtraParams = list(
 #'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP",
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP"|"AU_PRIORITY_TOKEN",
 #'         Value = "string"
 #'       )
 #'     )
@@ -772,6 +891,17 @@ route53domains_get_contact_reachability_status <- function(domainName = NULL) {
 #'   DnsSec = "string",
 #'   StatusList = list(
 #'     "string"
+#'   ),
+#'   DnssecKeys = list(
+#'     list(
+#'       Algorithm = 123,
+#'       Flags = 123,
+#'       PublicKey = "string",
+#'       DigestType = 123,
+#'       Digest = "string",
+#'       KeyTag = 123,
+#'       Id = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -917,7 +1047,11 @@ route53domains_get_domain_suggestions <- function(DomainName, SuggestionCount, O
 #'   Type = "REGISTER_DOMAIN"|"DELETE_DOMAIN"|"TRANSFER_IN_DOMAIN"|"UPDATE_DOMAIN_CONTACT"|"UPDATE_NAMESERVER"|"CHANGE_PRIVACY_PROTECTION"|"DOMAIN_LOCK"|"ENABLE_AUTORENEW"|"DISABLE_AUTORENEW"|"ADD_DNSSEC"|"REMOVE_DNSSEC"|"EXPIRE_DOMAIN"|"TRANSFER_OUT_DOMAIN"|"CHANGE_DOMAIN_OWNER"|"RENEW_DOMAIN"|"PUSH_DOMAIN"|"INTERNAL_TRANSFER_OUT_DOMAIN"|"INTERNAL_TRANSFER_IN_DOMAIN",
 #'   SubmittedDate = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   LastUpdatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   StatusFlag = "PENDING_ACCEPTANCE"|"PENDING_CUSTOMER_ACTION"|"PENDING_AUTHORIZATION"|"PENDING_PAYMENT_VERIFICATION"|"PENDING_SUPPORT_CASE"
 #' )
 #' ```
 #'
@@ -1055,7 +1189,8 @@ route53domains_list_domains <- function(FilterConditions = NULL, SortCondition =
 #' This command runs only in the us-east-1 Region.
 #'
 #' @usage
-#' route53domains_list_operations(SubmittedSince, Marker, MaxItems)
+#' route53domains_list_operations(SubmittedSince, Marker, MaxItems, Status,
+#'   Type, SortBy, SortOrder)
 #'
 #' @param SubmittedSince An optional parameter that lets you get information about all the
 #' operations that you submitted after a specified date and time. Specify
@@ -1070,6 +1205,10 @@ route53domains_list_domains <- function(FilterConditions = NULL, SortCondition =
 #' @param MaxItems Number of domains to be returned.
 #' 
 #' Default: 20
+#' @param Status The status of the operations.
+#' @param Type An arrays of the domains operation types.
+#' @param SortBy The sort type for returned values.
+#' @param SortOrder The sort order ofr returned values, either ascending or descending.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1081,6 +1220,12 @@ route53domains_list_domains <- function(FilterConditions = NULL, SortCondition =
 #'       Status = "SUBMITTED"|"IN_PROGRESS"|"ERROR"|"SUCCESSFUL"|"FAILED",
 #'       Type = "REGISTER_DOMAIN"|"DELETE_DOMAIN"|"TRANSFER_IN_DOMAIN"|"UPDATE_DOMAIN_CONTACT"|"UPDATE_NAMESERVER"|"CHANGE_PRIVACY_PROTECTION"|"DOMAIN_LOCK"|"ENABLE_AUTORENEW"|"DISABLE_AUTORENEW"|"ADD_DNSSEC"|"REMOVE_DNSSEC"|"EXPIRE_DOMAIN"|"TRANSFER_OUT_DOMAIN"|"CHANGE_DOMAIN_OWNER"|"RENEW_DOMAIN"|"PUSH_DOMAIN"|"INTERNAL_TRANSFER_OUT_DOMAIN"|"INTERNAL_TRANSFER_IN_DOMAIN",
 #'       SubmittedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DomainName = "string",
+#'       Message = "string",
+#'       StatusFlag = "PENDING_ACCEPTANCE"|"PENDING_CUSTOMER_ACTION"|"PENDING_AUTHORIZATION"|"PENDING_PAYMENT_VERIFICATION"|"PENDING_SUPPORT_CASE",
+#'       LastUpdatedDate = as.POSIXct(
 #'         "2015-01-01"
 #'       )
 #'     )
@@ -1096,7 +1241,15 @@ route53domains_list_domains <- function(FilterConditions = NULL, SortCondition =
 #'     "2015-01-01"
 #'   ),
 #'   Marker = "string",
-#'   MaxItems = 123
+#'   MaxItems = 123,
+#'   Status = list(
+#'     "SUBMITTED"|"IN_PROGRESS"|"ERROR"|"SUCCESSFUL"|"FAILED"
+#'   ),
+#'   Type = list(
+#'     "REGISTER_DOMAIN"|"DELETE_DOMAIN"|"TRANSFER_IN_DOMAIN"|"UPDATE_DOMAIN_CONTACT"|"UPDATE_NAMESERVER"|"CHANGE_PRIVACY_PROTECTION"|"DOMAIN_LOCK"|"ENABLE_AUTORENEW"|"DISABLE_AUTORENEW"|"ADD_DNSSEC"|"REMOVE_DNSSEC"|"EXPIRE_DOMAIN"|"TRANSFER_OUT_DOMAIN"|"CHANGE_DOMAIN_OWNER"|"RENEW_DOMAIN"|"PUSH_DOMAIN"|"INTERNAL_TRANSFER_OUT_DOMAIN"|"INTERNAL_TRANSFER_IN_DOMAIN"
+#'   ),
+#'   SortBy = "SubmittedDate",
+#'   SortOrder = "ASC"|"DESC"
 #' )
 #' ```
 #'
@@ -1105,14 +1258,14 @@ route53domains_list_domains <- function(FilterConditions = NULL, SortCondition =
 #' @rdname route53domains_list_operations
 #'
 #' @aliases route53domains_list_operations
-route53domains_list_operations <- function(SubmittedSince = NULL, Marker = NULL, MaxItems = NULL) {
+route53domains_list_operations <- function(SubmittedSince = NULL, Marker = NULL, MaxItems = NULL, Status = NULL, Type = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListOperations",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53domains$list_operations_input(SubmittedSince = SubmittedSince, Marker = Marker, MaxItems = MaxItems)
+  input <- .route53domains$list_operations_input(SubmittedSince = SubmittedSince, Marker = Marker, MaxItems = MaxItems, Status = Status, Type = Type, SortBy = SortBy, SortOrder = SortOrder)
   output <- .route53domains$list_operations_output()
   config <- get_config()
   svc <- .route53domains$service(config)
@@ -1281,6 +1434,56 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 }
 .route53domains$operations$list_tags_for_domain <- route53domains_list_tags_for_domain
 
+#' Moves a domain from Amazon Web Services to another registrar
+#'
+#' @description
+#' Moves a domain from Amazon Web Services to another registrar.
+#' 
+#' Supported actions:
+#' 
+#' -   Changes the IPS tags of a .uk domain, and pushes it to transit.
+#'     Transit means that the domain is ready to be transferred to another
+#'     registrar.
+#'
+#' @usage
+#' route53domains_push_domain(DomainName, Target)
+#'
+#' @param DomainName &#91;required&#93; Name of the domain.
+#' @param Target &#91;required&#93; New IPS tag for the domain.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$push_domain(
+#'   DomainName = "string",
+#'   Target = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53domains_push_domain
+#'
+#' @aliases route53domains_push_domain
+route53domains_push_domain <- function(DomainName, Target) {
+  op <- new_operation(
+    name = "PushDomain",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53domains$push_domain_input(DomainName = DomainName, Target = Target)
+  output <- .route53domains$push_domain_output()
+  config <- get_config()
+  svc <- .route53domains$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53domains$operations$push_domain <- route53domains_push_domain
+
 #' This operation registers a domain
 #'
 #' @description
@@ -1296,7 +1499,7 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #'     automatically updates your domain registration with the names of
 #'     these name servers.
 #' 
-#' -   Enables autorenew, so your domain registration will renew
+#' -   Enables auto renew, so your domain registration will renew
 #'     automatically each year. We'll notify you in advance of the renewal
 #'     date so you can choose whether to renew the registration.
 #' 
@@ -1360,7 +1563,7 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #' 
 #' Default: 1
 #' @param AutoRenew Indicates whether the domain will be automatically renewed (`true`) or
-#' not (`false`). Autorenewal only takes effect after the account is
+#' not (`false`). Auto renewal only takes effect after the account is
 #' charged.
 #' 
 #' Default: `true`
@@ -1438,7 +1641,7 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #'     Fax = "string",
 #'     ExtraParams = list(
 #'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP",
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP"|"AU_PRIORITY_TOKEN",
 #'         Value = "string"
 #'       )
 #'     )
@@ -1459,7 +1662,7 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #'     Fax = "string",
 #'     ExtraParams = list(
 #'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP",
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP"|"AU_PRIORITY_TOKEN",
 #'         Value = "string"
 #'       )
 #'     )
@@ -1480,7 +1683,7 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #'     Fax = "string",
 #'     ExtraParams = list(
 #'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP",
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP"|"AU_PRIORITY_TOKEN",
 #'         Value = "string"
 #'       )
 #'     )
@@ -1701,11 +1904,54 @@ route53domains_resend_contact_reachability_email <- function(domainName = NULL) 
 }
 .route53domains$operations$resend_contact_reachability_email <- route53domains_resend_contact_reachability_email
 
-#' This operation returns the AuthCode for the domain
+#' Resend the form of authorization email for this operation
 #'
 #' @description
-#' This operation returns the AuthCode for the domain. To transfer a domain
-#' to another registrar, you provide this value to the new registrar.
+#' Resend the form of authorization email for this operation.
+#'
+#' @usage
+#' route53domains_resend_operation_authorization(OperationId)
+#'
+#' @param OperationId &#91;required&#93; Operation ID.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$resend_operation_authorization(
+#'   OperationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53domains_resend_operation_authorization
+#'
+#' @aliases route53domains_resend_operation_authorization
+route53domains_resend_operation_authorization <- function(OperationId) {
+  op <- new_operation(
+    name = "ResendOperationAuthorization",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53domains$resend_operation_authorization_input(OperationId = OperationId)
+  output <- .route53domains$resend_operation_authorization_output()
+  config <- get_config()
+  svc <- .route53domains$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53domains$operations$resend_operation_authorization <- route53domains_resend_operation_authorization
+
+#' This operation returns the authorization code for the domain
+#'
+#' @description
+#' This operation returns the authorization code for the domain. To
+#' transfer a domain to another registrar, you provide this value to the
+#' new registrar.
 #'
 #' @usage
 #' route53domains_retrieve_domain_auth_code(DomainName)
@@ -1829,7 +2075,7 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' @param AuthCode The authorization code for the domain. You get this value from the
 #' current registrar.
 #' @param AutoRenew Indicates whether the domain will be automatically renewed (true) or not
-#' (false). Autorenewal only takes effect after the account is charged.
+#' (false). Auto renewal only takes effect after the account is charged.
 #' 
 #' Default: true
 #' @param AdminContact &#91;required&#93; Provides detailed contact information.
@@ -1909,7 +2155,7 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #'     Fax = "string",
 #'     ExtraParams = list(
 #'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP",
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP"|"AU_PRIORITY_TOKEN",
 #'         Value = "string"
 #'       )
 #'     )
@@ -1930,7 +2176,7 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #'     Fax = "string",
 #'     ExtraParams = list(
 #'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP",
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP"|"AU_PRIORITY_TOKEN",
 #'         Value = "string"
 #'       )
 #'     )
@@ -1951,7 +2197,7 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #'     Fax = "string",
 #'     ExtraParams = list(
 #'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP",
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP"|"AU_PRIORITY_TOKEN",
 #'         Value = "string"
 #'       )
 #'     )
@@ -2075,18 +2321,19 @@ route53domains_transfer_domain_to_another_aws_account <- function(DomainName, Ac
 #' administrator, or technical.
 #' 
 #' If the update is successful, this method returns an operation ID that
-#' you can use to track the progress and completion of the action. If the
-#' request is not completed successfully, the domain registrant will be
+#' you can use to track the progress and completion of the operation. If
+#' the request is not completed successfully, the domain registrant will be
 #' notified by email.
 #'
 #' @usage
 #' route53domains_update_domain_contact(DomainName, AdminContact,
-#'   RegistrantContact, TechContact)
+#'   RegistrantContact, TechContact, Consent)
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to update contact information for.
 #' @param AdminContact Provides detailed contact information.
 #' @param RegistrantContact Provides detailed contact information.
 #' @param TechContact Provides detailed contact information.
+#' @param Consent Customer's consent for the owner change request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2116,7 +2363,7 @@ route53domains_transfer_domain_to_another_aws_account <- function(DomainName, Ac
 #'     Fax = "string",
 #'     ExtraParams = list(
 #'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP",
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP"|"AU_PRIORITY_TOKEN",
 #'         Value = "string"
 #'       )
 #'     )
@@ -2137,7 +2384,7 @@ route53domains_transfer_domain_to_another_aws_account <- function(DomainName, Ac
 #'     Fax = "string",
 #'     ExtraParams = list(
 #'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP",
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP"|"AU_PRIORITY_TOKEN",
 #'         Value = "string"
 #'       )
 #'     )
@@ -2158,10 +2405,14 @@ route53domains_transfer_domain_to_another_aws_account <- function(DomainName, Ac
 #'     Fax = "string",
 #'     ExtraParams = list(
 #'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP",
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP"|"AU_PRIORITY_TOKEN",
 #'         Value = "string"
 #'       )
 #'     )
+#'   ),
+#'   Consent = list(
+#'     MaxPrice = 123.0,
+#'     Currency = "string"
 #'   )
 #' )
 #' ```
@@ -2171,14 +2422,14 @@ route53domains_transfer_domain_to_another_aws_account <- function(DomainName, Ac
 #' @rdname route53domains_update_domain_contact
 #'
 #' @aliases route53domains_update_domain_contact
-route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL, RegistrantContact = NULL, TechContact = NULL) {
+route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL, RegistrantContact = NULL, TechContact = NULL, Consent = NULL) {
   op <- new_operation(
     name = "UpdateDomainContact",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53domains$update_domain_contact_input(DomainName = DomainName, AdminContact = AdminContact, RegistrantContact = RegistrantContact, TechContact = TechContact)
+  input <- .route53domains$update_domain_contact_input(DomainName = DomainName, AdminContact = AdminContact, RegistrantContact = RegistrantContact, TechContact = TechContact, Consent = Consent)
   output <- .route53domains$update_domain_contact_output()
   config <- get_config()
   svc <- .route53domains$service(config)

@@ -15,7 +15,6 @@ servicecatalog_list_stack_instances_for_provisioned_product(
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -28,7 +27,7 @@ results, use null.}
 \item{PageSize}{The maximum number of items to return with this call.}
 }
 \description{
-Returns summary information about stack instances that are associated with the specified \code{CFN_STACKSET} type provisioned product. You can filter for stack instances that are associated with a specific AWS account name or region.
+Returns summary information about stack instances that are associated with the specified \code{CFN_STACKSET} type provisioned product. You can filter for stack instances that are associated with a specific Amazon Web Services account name or Region.
 
 See \url{https://paws-r.github.io/docs/servicecatalog/list_stack_instances_for_provisioned_product.html} for full documentation.
 }

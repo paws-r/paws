@@ -2,7 +2,8 @@
 % Please edit documentation in R/applicationautoscaling_operations.R
 \name{applicationautoscaling_register_scalable_target}
 \alias{applicationautoscaling_register_scalable_target}
-\title{Registers or updates a scalable target}
+\title{Registers or updates a scalable target, which is the resource that you
+want to scale}
 \usage{
 applicationautoscaling_register_scalable_target(
   ServiceNamespace,
@@ -11,7 +12,8 @@ applicationautoscaling_register_scalable_target(
   MinCapacity = NULL,
   MaxCapacity = NULL,
   RoleARN = NULL,
-  SuspendedState = NULL
+  SuspendedState = NULL,
+  Tags = NULL
 )
 }
 \arguments{
@@ -70,6 +72,9 @@ specified using the cluster ARN. Example:
 group name. Example: \code{replication-group/mycluster}.
 \item Neptune cluster - The resource type is \code{cluster} and the unique
 identifier is the cluster name. Example: \code{cluster:mycluster}.
+\item SageMaker Serverless endpoint - The resource type is \code{variant} and
+the unique identifier is the resource ID. Example:
+\code{endpoint/my-end-point/variant/KMeansClustering}.
 }}
 
 \item{ScalableDimension}{[required] The scalable dimension associated with the scalable target. This string
@@ -95,7 +100,7 @@ for a DynamoDB global secondary index.
 Aurora DB cluster. Available for Aurora MySQL-compatible edition and
 Aurora PostgreSQL-compatible edition.
 \item \code{sagemaker:variant:DesiredInstanceCount} - The number of EC2
-instances for an SageMaker model endpoint variant.
+instances for a SageMaker model endpoint variant.
 \item \code{custom-resource:ResourceType:Property} - The scalable dimension for
 a custom resource provided by your own application or service.
 \item \code{comprehend:document-classifier-endpoint:DesiredInferenceUnits} -
@@ -118,6 +123,8 @@ groups for an Amazon ElastiCache replication group.
 per node group for an Amazon ElastiCache replication group.
 \item \code{neptune:cluster:ReadReplicaCount} - The count of read replicas in
 an Amazon Neptune DB cluster.
+\item \code{sagemaker:variant:DesiredProvisionedConcurrency} - The provisioned
+concurrency for a SageMaker Serverless endpoint.
 }}
 
 \item{MinCapacity}{The minimum value that you plan to scale in to. When a scaling policy is
@@ -125,10 +132,29 @@ in effect, Application Auto Scaling can scale in (contract) as needed to
 the minimum capacity limit in response to changing demand. This property
 is required when registering a new scalable target.
 
-For certain resources, the minimum value allowed is 0. This includes
-Lambda provisioned concurrency, Spot Fleet, ECS services, Aurora DB
-clusters, EMR clusters, and custom resources. For all other resources,
-the minimum value allowed is 1.}
+For the following resources, the minimum value allowed is 0.
+\itemize{
+\item AppStream 2.0 fleets
+\item Aurora DB clusters
+\item ECS services
+\item EMR clusters
+\item Lambda provisioned concurrency
+\item SageMaker endpoint variants
+\item SageMaker Serverless endpoint provisioned concurrency
+\item Spot Fleets
+\item custom resources
+}
+
+It's strongly recommended that you specify a value greater than 0. A
+value greater than 0 means that data points are continuously reported to
+CloudWatch that scaling policies can use to scale on a metric like
+average CPU utilization.
+
+For all other resources, the minimum allowed value depends on the type
+of resource that you are using. If you provide a value that is lower
+than what a resource can accept, an error occurs. In which case, the
+error message will provide the minimum value that the resource can
+accept.}
 
 \item{MaxCapacity}{The maximum value that you plan to scale out to. When a scaling policy
 is in effect, Application Auto Scaling can scale out (expand) as needed
@@ -136,11 +162,11 @@ to the maximum capacity limit in response to changing demand. This
 property is required when registering a new scalable target.
 
 Although you can specify a large maximum capacity, note that service
-quotas may impose lower limits. Each service has its own default quotas
-for the maximum capacity of the resource. If you want to specify a
-higher limit, you can request an increase. For more information, consult
-the documentation for that service. For information about the default
-quotas for each service, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html}{Service Endpoints and Quotas}
+quotas might impose lower limits. Each service has its own default
+quotas for the maximum capacity of the resource. If you want to specify
+a higher limit, you can request an increase. For more information,
+consult the documentation for that service. For information about the
+default quotas for each service, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html}{Service endpoints and quotas}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{RoleARN}{This parameter is required for services that do not support
@@ -172,9 +198,22 @@ all scaling activities that involve scheduled actions are suspended.
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html}{Suspending and resuming scaling}
 in the \emph{Application Auto Scaling User Guide}.}
+
+\item{Tags}{Assigns one or more tags to the scalable target. Use this parameter to
+tag the scalable target when it is created. To tag an existing scalable
+target, use the \code{\link[=applicationautoscaling_tag_resource]{tag_resource}}
+operation.
+
+Each tag consists of a tag key and a tag value. Both the tag key and the
+tag value are required. You cannot have more than one tag on a scalable
+target with the same tag key.
+
+Use tags to control access to a scalable target. For more information,
+see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/resource-tagging-support.html}{Tagging support for Application Auto Scaling}
+in the \emph{Application Auto Scaling User Guide}.}
 }
 \description{
-Registers or updates a scalable target.
+Registers or updates a scalable target, which is the resource that you want to scale.
 
 See \url{https://paws-r.github.io/docs/applicationautoscaling/register_scalable_target.html} for full documentation.
 }

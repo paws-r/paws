@@ -18,11 +18,11 @@ forecastservice_create_forecast_export_job(
 
 \item{ForecastArn}{[required] The Amazon Resource Name (ARN) of the forecast that you want to export.}
 
-\item{Destination}{[required] The location where you want to save the forecast and an AWS Identity and
+\item{Destination}{[required] The location where you want to save the forecast and an Identity and
 Access Management (IAM) role that Amazon Forecast can assume to access
 the location. The forecast must be exported to an Amazon S3 bucket.
 
-If encryption is used, \code{Destination} must include an AWS Key Management
+If encryption is used, \code{Destination} must include an Key Management
 Service (KMS) key. The IAM role must allow Amazon Forecast permission to
 access the key.}
 
@@ -44,12 +44,12 @@ numbers, and spaces representable in UTF-8, and the following
 characters: + - = . _ : / @.
 \item Tag keys and values are case sensitive.
 \item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
-such as a prefix for keys as it is reserved for AWS use. You cannot
-edit or delete tag keys with this prefix. Values can have this
-prefix. If a tag value has \code{aws} as its prefix but the key does not,
-then Forecast considers it to be a user tag and will count against
-the limit of 50 tags. Tags with only the key prefix of \code{aws} do not
-count against your tags per resource limit.
+such as a prefix for keys as it is reserved for Amazon Web Services
+use. You cannot edit or delete tag keys with this prefix. Values can
+have this prefix. If a tag value has \code{aws} as its prefix but the key
+does not, then Forecast considers it to be a user tag and will count
+against the limit of 50 tags. Tags with only the key prefix of \code{aws}
+do not count against your tags per resource limit.
 }}
 
 \item{Format}{The format of the exported data, CSV or PARQUET. The default value is

@@ -2,8 +2,7 @@
 % Please edit documentation in R/identitystore_operations.R
 \name{identitystore_list_groups}
 \alias{identitystore_list_groups}
-\title{Lists the attribute name and value of the group that you specified in
-the search}
+\title{Lists all groups in the identity store}
 \usage{
 identitystore_list_groups(
   IdentityStoreId,
@@ -15,13 +14,13 @@ identitystore_list_groups(
 \arguments{
 \item{IdentityStoreId}{[required] The globally unique identifier for the identity store, such as
 \code{d-1234567890}. In this example, \verb{d-} is a fixed prefix, and
-\code{1234567890} is a randomly generated string that contains number and
+\code{1234567890} is a randomly generated string that contains numbers and
 lower case letters. This value is generated at the time that a new
 identity store is created.}
 
 \item{MaxResults}{The maximum number of results to be returned per request. This parameter
 is used in the \code{\link[=identitystore_list_users]{list_users}} and
-\code{\link[=identitystore_list_groups]{list_groups}} request to specify how many
+\code{\link[=identitystore_list_groups]{list_groups}} requests to specify how many
 results to return in one page. The length limit is 50 characters.}
 
 \item{NextToken}{The pagination token used for the
@@ -34,10 +33,10 @@ the next page.}
 
 \item{Filters}{A list of \code{Filter} objects, which is used in the
 \code{\link[=identitystore_list_users]{list_users}} and
-\code{\link[=identitystore_list_groups]{list_groups}} request.}
+\code{\link[=identitystore_list_groups]{list_groups}} requests.}
 }
 \description{
-Lists the attribute name and value of the group that you specified in the search. We only support \code{DisplayName} as a valid filter attribute path currently, and filter is required. This API returns minimum attributes, including \code{GroupId} and group \code{DisplayName} in the response.
+Lists all groups in the identity store. Returns a paginated list of complete \code{Group} objects. Filtering for a \code{Group} by the \code{DisplayName} attribute is deprecated. Instead, use the \code{\link[=identitystore_get_group_id]{get_group_id}} API action.
 
 See \url{https://paws-r.github.io/docs/identitystore/list_groups.html} for full documentation.
 }

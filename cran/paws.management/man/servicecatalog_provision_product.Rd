@@ -23,7 +23,6 @@ servicecatalog_provision_product(
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -47,8 +46,8 @@ provide the name or ID, but not both.}
 \item{PathName}{The name of the path. You must provide the name or ID, but not both.}
 
 \item{ProvisionedProductName}{[required] A user-friendly name for the provisioned product. This value must be
-unique for the AWS account and cannot be updated after the product is
-provisioned.}
+unique for the Amazon Web Services account and cannot be updated after
+the product is provisioned.}
 
 \item{ProvisioningParameters}{Parameters specified by the administrator that are required for
 provisioning the product.}

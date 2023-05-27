@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_tag_log_group}
 \alias{cloudwatchlogs_tag_log_group}
-\title{Adds or updates the specified tags for the specified log group}
+\title{The TagLogGroup operation is on the path to deprecation}
 \usage{
 cloudwatchlogs_tag_log_group(logGroupName, tags)
 }
@@ -12,7 +12,7 @@ cloudwatchlogs_tag_log_group(logGroupName, tags)
 \item{tags}{[required] The key-value pairs to use for the tags.}
 }
 \description{
-Adds or updates the specified tags for the specified log group.
+The TagLogGroup operation is on the path to deprecation. We recommend that you use \code{\link[=cloudwatchlogs_tag_resource]{tag_resource}} instead.
 
 See \url{https://paws-r.github.io/docs/cloudwatchlogs/tag_log_group.html} for full documentation.
 }

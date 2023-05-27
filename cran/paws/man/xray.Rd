@@ -63,6 +63,7 @@ traces.
 \link[paws.developer.tools:xray_create_group]{create_group} \tab Creates a group resource with a name and a filter expression\cr
 \link[paws.developer.tools:xray_create_sampling_rule]{create_sampling_rule} \tab Creates a rule to control sampling behavior for instrumented applications\cr
 \link[paws.developer.tools:xray_delete_group]{delete_group} \tab Deletes a group resource\cr
+\link[paws.developer.tools:xray_delete_resource_policy]{delete_resource_policy} \tab Deletes a resource policy from the target Amazon Web Services account\cr
 \link[paws.developer.tools:xray_delete_sampling_rule]{delete_sampling_rule} \tab Deletes a sampling rule\cr
 \link[paws.developer.tools:xray_get_encryption_config]{get_encryption_config} \tab Retrieves the current encryption configuration for X-Ray data\cr
 \link[paws.developer.tools:xray_get_group]{get_group} \tab Retrieves group resource details\cr
@@ -78,8 +79,10 @@ traces.
 \link[paws.developer.tools:xray_get_time_series_service_statistics]{get_time_series_service_statistics} \tab Get an aggregation of service statistics defined by a specific time range\cr
 \link[paws.developer.tools:xray_get_trace_graph]{get_trace_graph} \tab Retrieves a service graph for one or more specific trace IDs\cr
 \link[paws.developer.tools:xray_get_trace_summaries]{get_trace_summaries} \tab Retrieves IDs and annotations for traces available for a specified time frame using an optional filter\cr
+\link[paws.developer.tools:xray_list_resource_policies]{list_resource_policies} \tab Returns the list of resource policies in the target Amazon Web Services account\cr
 \link[paws.developer.tools:xray_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags that are applied to the specified Amazon Web Services X-Ray group or sampling rule\cr
 \link[paws.developer.tools:xray_put_encryption_config]{put_encryption_config} \tab Updates the encryption configuration for X-Ray data\cr
+\link[paws.developer.tools:xray_put_resource_policy]{put_resource_policy} \tab Sets the resource policy to grant one or more Amazon Web Services services and accounts permissions to access X-Ray\cr
 \link[paws.developer.tools:xray_put_telemetry_records]{put_telemetry_records} \tab Used by the Amazon Web Services X-Ray daemon to upload telemetry\cr
 \link[paws.developer.tools:xray_put_trace_segments]{put_trace_segments} \tab Uploads segment documents to Amazon Web Services X-Ray\cr
 \link[paws.developer.tools:xray_tag_resource]{tag_resource} \tab Applies tags to an existing Amazon Web Services X-Ray group or sampling rule\cr

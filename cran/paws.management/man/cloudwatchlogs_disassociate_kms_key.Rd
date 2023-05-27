@@ -2,8 +2,7 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_disassociate_kms_key}
 \alias{cloudwatchlogs_disassociate_kms_key}
-\title{Disassociates the associated Key Management Service customer master key
-(CMK) from the specified log group}
+\title{Disassociates the associated KMS key from the specified log group}
 \usage{
 cloudwatchlogs_disassociate_kms_key(logGroupName)
 }
@@ -11,7 +10,7 @@ cloudwatchlogs_disassociate_kms_key(logGroupName)
 \item{logGroupName}{[required] The name of the log group.}
 }
 \description{
-Disassociates the associated Key Management Service customer master key (CMK) from the specified log group.
+Disassociates the associated KMS key from the specified log group.
 
 See \url{https://paws-r.github.io/docs/cloudwatchlogs/disassociate_kms_key.html} for full documentation.
 }

@@ -33,8 +33,8 @@ instances where you would like to place your task. You can specify up to
 information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html}{Tagging Your Amazon ECS Resources}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
-\item{enableExecuteCommand}{Whether or not the execute command functionality is enabled for the
-task. If \code{true}, this enables execute command functionality on all
+\item{enableExecuteCommand}{Whether or not the execute command functionality is turned on for the
+task. If \code{true}, this turns on the execute command functionality on all
 containers in the task.}
 
 \item{group}{The name of the task group to associate with the task. The default value

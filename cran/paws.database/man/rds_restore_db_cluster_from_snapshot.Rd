@@ -31,7 +31,8 @@ rds_restore_db_cluster_from_snapshot(
   StorageType = NULL,
   Iops = NULL,
   PubliclyAccessible = NULL,
-  ServerlessV2ScalingConfiguration = NULL
+  ServerlessV2ScalingConfiguration = NULL,
+  NetworkType = NULL
 )
 }
 \arguments{
@@ -76,15 +77,12 @@ Constraint: Must be compatible with the engine of the source
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
-\item{EngineVersion}{The version of the database engine to use for the new DB cluster.
+\item{EngineVersion}{The version of the database engine to use for the new DB cluster. If you
+don't specify an engine version, the default version for the database
+engine in the Amazon Web Services Region is used.
 
-To list all of the available engine versions for MySQL 5.6-compatible
-Aurora, use the following command:
-
-\verb{aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"}
-
-To list all of the available engine versions for MySQL 5.7-compatible
-and MySQL 8.0-compatible Aurora, use the following command:
+To list all of the available engine versions for Aurora MySQL, use the
+following command:
 
 \verb{aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"}
 
@@ -105,7 +103,7 @@ the following command:
 
 \strong{Aurora MySQL}
 
-See \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html}{MySQL on Amazon RDS Versions}
+See \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html}{Database engine updates for Amazon Aurora MySQL}
 in the \emph{Amazon Aurora User Guide}.
 
 \strong{Aurora PostgreSQL}
@@ -115,7 +113,7 @@ in the \emph{Amazon Aurora User Guide}.
 
 \strong{MySQL}
 
-See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html#MySQL.Concepts.VersionMgmt}{MySQL on Amazon RDS Versions}
+See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html#MySQL.Concepts.VersionMgmt}{Amazon RDS for MySQL}
 in the \emph{Amazon RDS User Guide.}
 
 \strong{PostgreSQL}
@@ -232,8 +230,8 @@ in the \emph{Amazon Aurora User Guide}.
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
-\item{EngineMode}{The DB engine mode of the DB cluster, either \code{provisioned},
-\code{serverless}, \code{parallelquery}, \code{global}, or \code{multimaster}.
+\item{EngineMode}{The DB engine mode of the DB cluster, either \code{provisioned} or
+\code{serverless}.
 
 For more information, see
 \href{https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBCluster.html}{CreateDBCluster}.
@@ -288,7 +286,7 @@ Directory Service.
 Valid for: Aurora DB clusters only}
 
 \item{DBClusterInstanceClass}{The compute and memory capacity of the each DB instance in the Multi-AZ
-DB cluster, for example db.m6g.xlarge. Not all DB instance classes are
+DB cluster, for example db.m6gd.xlarge. Not all DB instance classes are
 available in all Amazon Web Services Regions, or for all database
 engines.
 
@@ -298,21 +296,22 @@ in the \emph{Amazon RDS User Guide.}
 
 Valid for: Multi-AZ DB clusters only}
 
-\item{StorageType}{Specifies the storage type to be associated with the each DB instance in
-the Multi-AZ DB cluster.
+\item{StorageType}{Specifies the storage type to be associated with the DB cluster.
 
-Valid values: \code{io1}
+When specified for a Multi-AZ DB cluster, a value for the \code{Iops}
+parameter is required.
 
-When specified, a value for the \code{Iops} parameter is required.
+Valid values: \code{aurora}, \code{aurora-iopt1} (Aurora DB clusters); \code{io1}
+(Multi-AZ DB clusters)
 
-Default: \code{io1}
+Default: \code{aurora} (Aurora DB clusters); \code{io1} (Multi-AZ DB clusters)
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{Iops}{The amount of Provisioned IOPS (input/output operations per second) to
 be initially allocated for each DB instance in the Multi-AZ DB cluster.
 
-For information about valid Iops values, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS Storage to Improve Performance}
+For information about valid IOPS values, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS storage}
 in the \emph{Amazon RDS User Guide}.
 
 Constraints: Must be a multiple between .5 and 50 of the storage amount
@@ -357,6 +356,23 @@ attached to it, the DB cluster is public.
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{ServerlessV2ScalingConfiguration}{}
+
+\item{NetworkType}{The network type of the DB cluster.
+
+Valid values:
+\itemize{
+\item \code{IPV4}
+\item \code{DUAL}
+}
+
+The network type is determined by the \code{DBSubnetGroup} specified for the
+DB cluster. A \code{DBSubnetGroup} can support only the IPv4 protocol or the
+IPv4 and the IPv6 protocols (\code{DUAL}).
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
+in the \emph{Amazon Aurora User Guide.}
+
+Valid for: Aurora DB clusters only}
 }
 \description{
 Creates a new DB cluster from a DB snapshot or DB cluster snapshot.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_purchase_reserved_instance_offering}
 \alias{opensearchservice_purchase_reserved_instance_offering}
-\title{Allows you to purchase reserved OpenSearch instances}
+\title{Allows you to purchase Amazon OpenSearch Service Reserved Instances}
 \usage{
 opensearchservice_purchase_reserved_instance_offering(
   ReservedInstanceOfferingId,
@@ -11,14 +11,14 @@ opensearchservice_purchase_reserved_instance_offering(
 )
 }
 \arguments{
-\item{ReservedInstanceOfferingId}{[required] The ID of the reserved OpenSearch instance offering to purchase.}
+\item{ReservedInstanceOfferingId}{[required] The ID of the Reserved Instance offering to purchase.}
 
 \item{ReservationName}{[required] A customer-specified identifier to track this reservation.}
 
 \item{InstanceCount}{The number of OpenSearch instances to reserve.}
 }
 \description{
-Allows you to purchase reserved OpenSearch instances.
+Allows you to purchase Amazon OpenSearch Service Reserved Instances.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/purchase_reserved_instance_offering.html} for full documentation.
 }

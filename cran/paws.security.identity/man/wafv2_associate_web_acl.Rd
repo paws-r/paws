@@ -17,17 +17,21 @@ ACL.
 The ARN must be in one of the following formats:
 \itemize{
 \item For an Application Load Balancer:
-\code{arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id }
+\code{arn:partition:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id }
 \item For an Amazon API Gateway REST API:
-\verb{arn:aws:apigateway:region::/restapis/api-id/stages/stage-name }
+\verb{arn:partition:apigateway:region::/restapis/api-id/stages/stage-name }
 \item For an AppSync GraphQL API:
-\code{arn:aws:appsync:region:account-id:apis/GraphQLApiId }
+\code{arn:partition:appsync:region:account-id:apis/GraphQLApiId }
 \item For an Amazon Cognito user pool:
-\code{arn:aws:cognito-idp:region:account-id:userpool/user-pool-id }
+\code{arn:partition:cognito-idp:region:account-id:userpool/user-pool-id }
+\item For an App Runner service:
+\code{arn:partition:apprunner:region:account-id:service/apprunner-service-name/apprunner-service-id }
+\item For an Amazon Web Services Verified Access instance:
+\code{arn:partition:ec2:region:account-id:verified-access-instance/instance-id }
 }}
 }
 \description{
-Associates a web ACL with a regional application resource, to protect the resource. A regional application can be an Application Load Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, or an Amazon Cognito user pool.
+Associates a web ACL with a regional application resource, to protect the resource. A regional application can be an Application Load Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon Cognito user pool, an App Runner service, or an Amazon Web Services Verified Access instance.
 
 See \url{https://paws-r.github.io/docs/wafv2/associate_web_acl.html} for full documentation.
 }

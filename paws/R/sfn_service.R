@@ -5,8 +5,10 @@ NULL
 #' AWS Step Functions
 #'
 #' @description
-#' AWS Step Functions is a service that lets you coordinate the components
-#' of distributed applications and microservices using visual workflows.
+#' Step Functions
+#' 
+#' Step Functions is a service that lets you coordinate the components of
+#' distributed applications and microservices using visual workflows.
 #' 
 #' You can use Step Functions to build applications from individual
 #' components, each of which performs a discrete function, or *task*,
@@ -20,11 +22,12 @@ NULL
 #' 
 #' Step Functions manages operations and underlying infrastructure to
 #' ensure your application is available at any scale. You can run tasks on
-#' AWS, your own servers, or any system that has access to AWS. You can
-#' access and use Step Functions using the console, the AWS SDKs, or an
-#' HTTP API. For more information about Step Functions, see the *<span
-#' href="https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html">AWS
-#' Step Functions Developer Guide</span>* .
+#' Amazon Web Services, your own servers, or any system that has access to
+#' Amazon Web Services. You can access and use Step Functions using the
+#' console, the Amazon Web Services SDKs, or an HTTP API. For more
+#' information about Step Functions, see the *<span
+#' href="https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html">Step
+#' Functions Developer Guide</span>* .
 #'
 #' @param
 #' config
@@ -79,13 +82,15 @@ NULL
 #'  \link[=sfn_delete_activity]{delete_activity} \tab Deletes an activity\cr
 #'  \link[=sfn_delete_state_machine]{delete_state_machine} \tab Deletes a state machine\cr
 #'  \link[=sfn_describe_activity]{describe_activity} \tab Describes an activity\cr
-#'  \link[=sfn_describe_execution]{describe_execution} \tab Describes an execution\cr
-#'  \link[=sfn_describe_state_machine]{describe_state_machine} \tab Describes a state machine\cr
-#'  \link[=sfn_describe_state_machine_for_execution]{describe_state_machine_for_execution} \tab Describes the state machine associated with a specific execution\cr
+#'  \link[=sfn_describe_execution]{describe_execution} \tab Provides all information about a state machine execution, such as the state machine associated with the execution, the execution input and output, and relevant execution metadata\cr
+#'  \link[=sfn_describe_map_run]{describe_map_run} \tab Provides information about a Map Run's configuration, progress, and results\cr
+#'  \link[=sfn_describe_state_machine]{describe_state_machine} \tab Provides information about a state machine's definition, its IAM role Amazon Resource Name (ARN), and configuration\cr
+#'  \link[=sfn_describe_state_machine_for_execution]{describe_state_machine_for_execution} \tab Provides information about a state machine's definition, its execution role ARN, and configuration\cr
 #'  \link[=sfn_get_activity_task]{get_activity_task} \tab Used by workers to retrieve a task (with the specified activity ARN) which has been scheduled for execution by a running state machine\cr
 #'  \link[=sfn_get_execution_history]{get_execution_history} \tab Returns the history of the specified execution as a list of events\cr
 #'  \link[=sfn_list_activities]{list_activities} \tab Lists the existing activities\cr
-#'  \link[=sfn_list_executions]{list_executions} \tab Lists the executions of a state machine that meet the filtering criteria\cr
+#'  \link[=sfn_list_executions]{list_executions} \tab Lists all executions of a state machine or a Map Run\cr
+#'  \link[=sfn_list_map_runs]{list_map_runs} \tab Lists all Map Runs that were started by a given state machine execution\cr
 #'  \link[=sfn_list_state_machines]{list_state_machines} \tab Lists the existing state machines\cr
 #'  \link[=sfn_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a given resource\cr
 #'  \link[=sfn_send_task_failure]{send_task_failure} \tab Used by activity workers and task states using the callback pattern to report that the task identified by the taskToken failed\cr
@@ -96,6 +101,7 @@ NULL
 #'  \link[=sfn_stop_execution]{stop_execution} \tab Stops an execution\cr
 #'  \link[=sfn_tag_resource]{tag_resource} \tab Add a tag to a Step Functions resource\cr
 #'  \link[=sfn_untag_resource]{untag_resource} \tab Remove a tag from a Step Functions resource\cr
+#'  \link[=sfn_update_map_run]{update_map_run} \tab Updates an in-progress Map Run's configuration to include changes to the settings that control maximum concurrency and Map Run failure\cr
 #'  \link[=sfn_update_state_machine]{update_state_machine} \tab Updates an existing state machine by modifying its definition, roleArn, or loggingConfiguration
 #' }
 #'

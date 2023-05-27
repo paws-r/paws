@@ -51,3 +51,7 @@ test_that("list_versions", {
 test_that("list_versions", {
   expect_error(svc$list_versions(MaxResults = 20), NA)
 })
+
+test_that("list_vpc_endpoints", {
+  expect_error(svc$list_vpc_endpoints(), NA)
+})

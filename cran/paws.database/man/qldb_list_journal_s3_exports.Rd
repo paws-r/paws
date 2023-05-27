@@ -2,8 +2,8 @@
 % Please edit documentation in R/qldb_operations.R
 \name{qldb_list_journal_s3_exports}
 \alias{qldb_list_journal_s3_exports}
-\title{Returns an array of journal export job descriptions for all ledgers that
-are associated with the current Amazon Web Services account and Region}
+\title{Returns all journal export jobs for all ledgers that are associated with
+the current Amazon Web Services account and Region}
 \usage{
 qldb_list_journal_s3_exports(MaxResults = NULL, NextToken = NULL)
 }
@@ -18,7 +18,7 @@ a previous \code{\link[=qldb_list_journal_s3_exports]{list_journal_s3_exports}}
 call, then you should use that value as input here.}
 }
 \description{
-Returns an array of journal export job descriptions for all ledgers that are associated with the current Amazon Web Services account and Region.
+Returns all journal export jobs for all ledgers that are associated with the current Amazon Web Services account and Region.
 
 See \url{https://paws-r.github.io/docs/qldb/list_journal_s3_exports.html} for full documentation.
 }

@@ -2,8 +2,8 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_create_mobile_device_access_rule}
 \alias{workmail_create_mobile_device_access_rule}
-\title{Creates a new mobile device access rule for the specified Amazon
-WorkMail organization}
+\title{Creates a new mobile device access rule for the specified WorkMail
+organization}
 \usage{
 workmail_create_mobile_device_access_rule(
   OrganizationId,
@@ -22,7 +22,7 @@ workmail_create_mobile_device_access_rule(
 )
 }
 \arguments{
-\item{OrganizationId}{[required] The Amazon WorkMail organization under which the rule will be created.}
+\item{OrganizationId}{[required] The WorkMail organization under which the rule will be created.}
 
 \item{ClientToken}{The idempotency token for the client request.}
 
@@ -54,7 +54,7 @@ device operating systems will match.}
 user agents will match.}
 }
 \description{
-Creates a new mobile device access rule for the specified Amazon WorkMail organization.
+Creates a new mobile device access rule for the specified WorkMail organization.
 
 See \url{https://paws-r.github.io/docs/workmail/create_mobile_device_access_rule.html} for full documentation.
 }

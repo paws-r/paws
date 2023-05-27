@@ -107,6 +107,16 @@ or failed the system status check. This metric can be either 0
 \code{Statistics}: The most useful statistic is \code{Sum}.
 
 \code{Unit}: The published unit is \code{Count}.
+\item \strong{\code{MetadataNoToken}} - Reports the number of times that the
+instance metadata service was successfully accessed without a token.
+This metric determines if there are any processes accessing instance
+metadata by using Instance Metadata Service Version 1, which doesn't
+use a token. If all requests use token-backed sessions, such as
+Instance Metadata Service Version 2, then the value is 0.
+
+\code{Statistics}: The most useful statistic is \code{Sum}.
+
+\code{Unit}: The published unit is \code{Count}.
 }}
 
 \item{period}{[required] The granularity, in seconds, of the returned data points.

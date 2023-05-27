@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_delete_geofence_collection}
 \alias{locationservice_delete_geofence_collection}
-\title{Deletes a geofence collection from your AWS account}
+\title{Deletes a geofence collection from your Amazon Web Services account}
 \usage{
 locationservice_delete_geofence_collection(CollectionName)
 }
@@ -10,7 +10,7 @@ locationservice_delete_geofence_collection(CollectionName)
 \item{CollectionName}{[required] The name of the geofence collection to be deleted.}
 }
 \description{
-Deletes a geofence collection from your AWS account.
+Deletes a geofence collection from your Amazon Web Services account.
 
 See \url{https://paws-r.github.io/docs/locationservice/delete_geofence_collection.html} for full documentation.
 }

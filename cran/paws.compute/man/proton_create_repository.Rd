@@ -2,9 +2,7 @@
 % Please edit documentation in R/proton_operations.R
 \name{proton_create_repository}
 \alias{proton_create_repository}
-\title{Create and register a link to a repository that can be used with
-self-managed provisioning (infrastructure or pipelines) or for template
-sync configurations}
+\title{Create and register a link to a repository}
 \usage{
 proton_create_repository(
   connectionArn,
@@ -15,9 +13,10 @@ proton_create_repository(
 )
 }
 \arguments{
-\item{connectionArn}{[required] The Amazon Resource Name (ARN) of your Amazon Web Services CodeStar
-connection. For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/setting-up-for-service.html}{Setting up for Proton}
-in the \emph{Proton Administrator Guide}.}
+\item{connectionArn}{[required] The Amazon Resource Name (ARN) of your AWS CodeStar connection that
+connects Proton to your repository provider account. For more
+information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/setting-up-for-service.html}{Setting up for Proton}
+in the \emph{Proton User Guide}.}
 
 \item{encryptionKey}{The ARN of your customer Amazon Web Services Key Management Service
 (Amazon Web Services KMS) key.}
@@ -29,11 +28,11 @@ in the \emph{Proton Administrator Guide}.}
 \item{tags}{An optional list of metadata items that you can associate with the
 Proton repository. A tag is a key-value pair.
 
-For more information, see \emph{Proton resources and tagging} in the \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton Administrator Guide}
-or \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton resources and tagging}
+in the \emph{Proton User Guide}.}
 }
 \description{
-Create and register a link to a repository that can be used with self-managed provisioning (infrastructure or pipelines) or for template sync configurations. When you create a repository link, Proton creates a \href{https://docs.aws.amazon.com/proton/latest/userguide/using-service-linked-roles.html}{service-linked role} for you.
+Create and register a link to a repository. Proton uses the link to repeatedly access the repository, to either push to it (self-managed provisioning) or pull from it (template sync). You can share a linked repository across multiple resources (like environments using self-managed provisioning, or synced templates). When you create a repository link, Proton creates a \href{https://docs.aws.amazon.com/proton/latest/userguide/using-service-linked-roles.html}{service-linked role} for you.
 
 See \url{https://paws-r.github.io/docs/proton/create_repository.html} for full documentation.
 }

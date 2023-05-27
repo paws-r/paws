@@ -9,8 +9,9 @@ quicksight_update_analysis(
   AnalysisId,
   Name,
   Parameters = NULL,
-  SourceEntity,
-  ThemeArn = NULL
+  SourceEntity = NULL,
+  ThemeArn = NULL,
+  Definition = NULL
 )
 }
 \arguments{
@@ -27,13 +28,18 @@ displays for the analysis in the Amazon QuickSight console.}
 analysis can have any parameter type, and some parameters might accept
 multiple values.}
 
-\item{SourceEntity}{[required] A source entity to use for the analysis that you're updating. This
+\item{SourceEntity}{A source entity to use for the analysis that you're updating. This
 metadata structure contains details that describe a source template and
 one or more datasets.}
 
 \item{ThemeArn}{The Amazon Resource Name (ARN) for the theme to apply to the analysis
 that you're creating. To see the theme in the Amazon QuickSight console,
 make sure that you have access to it.}
+
+\item{Definition}{The definition of an analysis.
+
+A definition is the data model of all features in a Dashboard, Template,
+or Analysis.}
 }
 \description{
 Updates an analysis in Amazon QuickSight

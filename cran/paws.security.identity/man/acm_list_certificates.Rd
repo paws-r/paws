@@ -8,7 +8,9 @@ acm_list_certificates(
   CertificateStatuses = NULL,
   Includes = NULL,
   NextToken = NULL,
-  MaxItems = NULL
+  MaxItems = NULL,
+  SortBy = NULL,
+  SortOrder = NULL
 )
 }
 \arguments{
@@ -26,6 +28,12 @@ of items to return in the response. If additional items exist beyond the
 number you specify, the \code{NextToken} element is sent in the response. Use
 this \code{NextToken} value in a subsequent request to retrieve additional
 items.}
+
+\item{SortBy}{Specifies the field to sort results by. If you specify \code{SortBy}, you
+must also specify \code{SortOrder}.}
+
+\item{SortOrder}{Specifies the order of sorted results. If you specify \code{SortOrder}, you
+must also specify \code{SortBy}.}
 }
 \description{
 Retrieves a list of certificate ARNs and domain names. You can request that only certificates that match a specific status be listed. You can also filter by specific attributes of the certificate. Default filtering returns only \code{RSA_2048} certificates. For more information, see Filters.

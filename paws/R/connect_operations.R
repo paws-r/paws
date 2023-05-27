@@ -3,6 +3,66 @@
 #' @include connect_service.R
 NULL
 
+#' Activates an evaluation form in the specified Amazon Connect instance
+#'
+#' @description
+#' Activates an evaluation form in the specified Amazon Connect instance.
+#' After the evaluation form is activated, it is available to start new
+#' evaluations based on the form.
+#'
+#' @usage
+#' connect_activate_evaluation_form(InstanceId, EvaluationFormId,
+#'   EvaluationFormVersion)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param EvaluationFormId &#91;required&#93; The unique identifier for the evaluation form.
+#' @param EvaluationFormVersion &#91;required&#93; The version of the evaluation form to activate. If the version property
+#' is not provided, the latest version of the evaluation form is activated.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EvaluationFormId = "string",
+#'   EvaluationFormArn = "string",
+#'   EvaluationFormVersion = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$activate_evaluation_form(
+#'   InstanceId = "string",
+#'   EvaluationFormId = "string",
+#'   EvaluationFormVersion = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_activate_evaluation_form
+#'
+#' @aliases connect_activate_evaluation_form
+connect_activate_evaluation_form <- function(InstanceId, EvaluationFormId, EvaluationFormVersion) {
+  op <- new_operation(
+    name = "ActivateEvaluationForm",
+    http_method = "POST",
+    http_path = "/evaluation-forms/{InstanceId}/{EvaluationFormId}/activate",
+    paginator = list()
+  )
+  input <- .connect$activate_evaluation_form_input(InstanceId = InstanceId, EvaluationFormId = EvaluationFormId, EvaluationFormVersion = EvaluationFormVersion)
+  output <- .connect$activate_evaluation_form_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$activate_evaluation_form <- connect_activate_evaluation_form
+
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
@@ -15,8 +75,10 @@ NULL
 #' @usage
 #' connect_associate_approved_origin(InstanceId, Origin)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param Origin &#91;required&#93; The domain to add to your allow list.
 #'
 #' @return
@@ -65,8 +127,10 @@ connect_associate_approved_origin <- function(InstanceId, Origin) {
 #' @usage
 #' connect_associate_bot(InstanceId, LexBot, LexV2Bot)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param LexBot 
 #' @param LexV2Bot The Amazon Lex V2 bot to associate with the instance.
 #'
@@ -120,8 +184,10 @@ connect_associate_bot <- function(InstanceId, LexBot = NULL, LexV2Bot = NULL) {
 #' connect_associate_default_vocabulary(InstanceId, LanguageCode,
 #'   VocabularyId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param LanguageCode &#91;required&#93; The language code of the vocabulary entries. For a list of languages and
 #' their corresponding language codes, see [What is Amazon
 #' Transcribe?](https://docs.aws.amazon.com/transcribe/latest/dg/what-is.html)
@@ -135,7 +201,7 @@ connect_associate_bot <- function(InstanceId, LexBot = NULL, LexV2Bot = NULL) {
 #' ```
 #' svc$associate_default_vocabulary(
 #'   InstanceId = "string",
-#'   LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN",
+#'   LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"|"en-NZ"|"en-ZA",
 #'   VocabularyId = "string"
 #' )
 #' ```
@@ -183,8 +249,10 @@ connect_associate_default_vocabulary <- function(InstanceId, LanguageCode, Vocab
 #' connect_associate_instance_storage_config(InstanceId, ResourceType,
 #'   StorageConfig)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param ResourceType &#91;required&#93; A valid resource type.
 #' @param StorageConfig &#91;required&#93; A valid storage type.
 #'
@@ -200,7 +268,7 @@ connect_associate_default_vocabulary <- function(InstanceId, LanguageCode, Vocab
 #' ```
 #' svc$associate_instance_storage_config(
 #'   InstanceId = "string",
-#'   ResourceType = "CHAT_TRANSCRIPTS"|"CALL_RECORDINGS"|"SCHEDULED_REPORTS"|"MEDIA_STREAMS"|"CONTACT_TRACE_RECORDS"|"AGENT_EVENTS"|"REAL_TIME_CONTACT_ANALYSIS_SEGMENTS",
+#'   ResourceType = "CHAT_TRANSCRIPTS"|"CALL_RECORDINGS"|"SCHEDULED_REPORTS"|"MEDIA_STREAMS"|"CONTACT_TRACE_RECORDS"|"AGENT_EVENTS"|"REAL_TIME_CONTACT_ANALYSIS_SEGMENTS"|"ATTACHMENTS"|"CONTACT_EVALUATIONS",
 #'   StorageConfig = list(
 #'     AssociationId = "string",
 #'     StorageType = "S3"|"KINESIS_VIDEO_STREAM"|"KINESIS_STREAM"|"KINESIS_FIREHOSE",
@@ -265,8 +333,10 @@ connect_associate_instance_storage_config <- function(InstanceId, ResourceType, 
 #' @usage
 #' connect_associate_lambda_function(InstanceId, FunctionArn)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param FunctionArn &#91;required&#93; The Amazon Resource Name (ARN) for the Lambda function being associated.
 #' Maximum number of characters allowed is 140.
 #'
@@ -311,13 +381,16 @@ connect_associate_lambda_function <- function(InstanceId, FunctionArn) {
 #' change.
 #' 
 #' Allows the specified Amazon Connect instance to access the specified
-#' Amazon Lex bot.
+#' Amazon Lex V1 bot. This API only supports the association of Amazon Lex
+#' V1 bots.
 #'
 #' @usage
 #' connect_associate_lex_bot(InstanceId, LexBot)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param LexBot &#91;required&#93; The Amazon Lex bot to associate with the instance.
 #'
 #' @return
@@ -356,21 +429,33 @@ connect_associate_lex_bot <- function(InstanceId, LexBot) {
 }
 .connect$operations$associate_lex_bot <- connect_associate_lex_bot
 
-#' Associates a contact flow with a phone number claimed to your Amazon
-#' Connect instance
+#' Associates a flow with a phone number claimed to your Amazon Connect
+#' instance
 #'
 #' @description
-#' Associates a contact flow with a phone number claimed to your Amazon
-#' Connect instance.
+#' Associates a flow with a phone number claimed to your Amazon Connect
+#' instance.
+#' 
+#' If the number is claimed to a traffic distribution group, and you are
+#' calling this API using an instance in the Amazon Web Services Region
+#' where the traffic distribution group was created, you can use either a
+#' full phone number ARN or UUID value for the `PhoneNumberId` URI request
+#' parameter. However, if the number is claimed to a traffic distribution
+#' group and you are calling this API using an instance in the alternate
+#' Amazon Web Services Region associated with the traffic distribution
+#' group, you must provide a full phone number ARN. If a UUID is provided
+#' in this scenario, you will receive a `ResourceNotFoundException`.
 #'
 #' @usage
 #' connect_associate_phone_number_contact_flow(PhoneNumberId, InstanceId,
 #'   ContactFlowId)
 #'
 #' @param PhoneNumberId &#91;required&#93; A unique identifier for the phone number.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
-#' @param ContactFlowId &#91;required&#93; The identifier of the contact flow.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param ContactFlowId &#91;required&#93; The identifier of the flow.
 #'
 #' @return
 #' An empty list.
@@ -419,8 +504,10 @@ connect_associate_phone_number_contact_flow <- function(PhoneNumberId, InstanceI
 #' connect_associate_queue_quick_connects(InstanceId, QueueId,
 #'   QuickConnectIds)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param QueueId &#91;required&#93; The identifier for the queue.
 #' @param QuickConnectIds &#91;required&#93; The quick connects to associate with this queue.
 #'
@@ -469,8 +556,10 @@ connect_associate_queue_quick_connects <- function(InstanceId, QueueId, QuickCon
 #' connect_associate_routing_profile_queues(InstanceId, RoutingProfileId,
 #'   QueueConfigs)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param RoutingProfileId &#91;required&#93; The identifier of the routing profile.
 #' @param QueueConfigs &#91;required&#93; The queues to associate with this routing profile.
 #'
@@ -529,8 +618,10 @@ connect_associate_routing_profile_queues <- function(InstanceId, RoutingProfileI
 #' @usage
 #' connect_associate_security_key(InstanceId, Key)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param Key &#91;required&#93; A valid security key in PEM format.
 #'
 #' @return
@@ -571,23 +662,48 @@ connect_associate_security_key <- function(InstanceId, Key) {
 }
 .connect$operations$associate_security_key <- connect_associate_security_key
 
-#' Claims an available phone number to your Amazon Connect instance
+#' Claims an available phone number to your Amazon Connect instance or
+#' traffic distribution group
 #'
 #' @description
-#' Claims an available phone number to your Amazon Connect instance.
+#' Claims an available phone number to your Amazon Connect instance or
+#' traffic distribution group. You can call this API only in the same
+#' Amazon Web Services Region where the Amazon Connect instance or traffic
+#' distribution group was created.
+#' 
+#' For more information about how to use this operation, see [Claim a phone
+#' number in your
+#' country](https://docs.aws.amazon.com/connect/latest/adminguide/get-connect-number.html)
+#' and [Claim phone numbers to traffic distribution
+#' groups](https://docs.aws.amazon.com/connect/latest/adminguide/claim-phone-numbers-traffic-distribution-groups.html)
+#' in the *Amazon Connect Administrator Guide*.
+#' 
+#' You can call the
+#' [`search_available_phone_numbers`][connect_search_available_phone_numbers]
+#' API for available phone numbers that you can claim. Call the
+#' [`describe_phone_number`][connect_describe_phone_number] API to verify
+#' the status of a previous
+#' [`claim_phone_number`][connect_claim_phone_number] operation.
 #'
 #' @usage
 #' connect_claim_phone_number(TargetArn, PhoneNumber,
 #'   PhoneNumberDescription, Tags, ClientToken)
 #'
-#' @param TargetArn &#91;required&#93; The Amazon Resource Name (ARN) for Amazon Connect instances that phone
-#' numbers are claimed to.
+#' @param TargetArn &#91;required&#93; The Amazon Resource Name (ARN) for Amazon Connect instances or traffic
+#' distribution groups that phone numbers are claimed to.
 #' @param PhoneNumber &#91;required&#93; The phone number you want to claim. Phone numbers are formatted
 #' `[+] [country code] [subscriber number including area code]`.
 #' @param PhoneNumberDescription The description of the phone number.
 #' @param Tags The tags used to organize, track, or control access for this resource.
+#' For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
+#' 
+#' Pattern:
+#' `^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$`
 #'
 #' @return
 #' A list with the following syntax:
@@ -646,13 +762,16 @@ connect_claim_phone_number <- function(TargetArn, PhoneNumber, PhoneNumberDescri
 #' connect_create_agent_status(InstanceId, Name, Description, State,
 #'   DisplayOrder, Tags)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param Name &#91;required&#93; The name of the status.
 #' @param Description The description of the status.
 #' @param State &#91;required&#93; The state of the status.
 #' @param DisplayOrder The display order of the status.
 #' @param Tags The tags used to organize, track, or control access for this resource.
+#' For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.
 #'
 #' @return
 #' A list with the following syntax:
@@ -699,13 +818,12 @@ connect_create_agent_status <- function(InstanceId, Name, Description = NULL, St
 }
 .connect$operations$create_agent_status <- connect_create_agent_status
 
-#' Creates a contact flow for the specified Amazon Connect instance
+#' Creates a flow for the specified Amazon Connect instance
 #'
 #' @description
-#' Creates a contact flow for the specified Amazon Connect instance.
+#' Creates a flow for the specified Amazon Connect instance.
 #' 
-#' You can also create and update contact flows using the [Amazon Connect
-#' Flow
+#' You can also create and update flows using the [Amazon Connect Flow
 #' language](https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html).
 #'
 #' @usage
@@ -713,14 +831,15 @@ connect_create_agent_status <- function(InstanceId, Name, Description = NULL, St
 #'   Content, Tags)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
-#' @param Name &#91;required&#93; The name of the contact flow.
-#' @param Type &#91;required&#93; The type of the contact flow. For descriptions of the available types,
-#' see [Choose a Contact Flow
-#' Type](https://docs.aws.amazon.com/connect/latest/adminguide/create-contact-flow.html#contact-flow-types)
+#' @param Name &#91;required&#93; The name of the flow.
+#' @param Type &#91;required&#93; The type of the flow. For descriptions of the available types, see
+#' [Choose a flow
+#' type](https://docs.aws.amazon.com/connect/latest/adminguide/create-contact-flow.html#contact-flow-types)
 #' in the *Amazon Connect Administrator Guide*.
-#' @param Description The description of the contact flow.
-#' @param Content &#91;required&#93; The content of the contact flow.
-#' @param Tags One or more tags.
+#' @param Description The description of the flow.
+#' @param Content &#91;required&#93; The content of the flow.
+#' @param Tags The tags used to organize, track, or control access for this resource.
+#' For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.
 #'
 #' @return
 #' A list with the following syntax:
@@ -767,23 +886,29 @@ connect_create_contact_flow <- function(InstanceId, Name, Type, Description = NU
 }
 .connect$operations$create_contact_flow <- connect_create_contact_flow
 
-#' Creates a contact flow module for the specified Amazon Connect instance
+#' Creates a flow module for the specified Amazon Connect instance
 #'
 #' @description
-#' Creates a contact flow module for the specified Amazon Connect instance.
+#' Creates a flow module for the specified Amazon Connect instance.
 #'
 #' @usage
 #' connect_create_contact_flow_module(InstanceId, Name, Description,
 #'   Content, Tags, ClientToken)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
-#' @param Name &#91;required&#93; The name of the contact flow module.
-#' @param Description The description of the contact flow module.
-#' @param Content &#91;required&#93; The content of the contact flow module.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param Name &#91;required&#93; The name of the flow module.
+#' @param Description The description of the flow module.
+#' @param Content &#91;required&#93; The content of the flow module.
 #' @param Tags The tags used to organize, track, or control access for this resource.
+#' For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #'
 #' @return
 #' A list with the following syntax:
@@ -830,6 +955,140 @@ connect_create_contact_flow_module <- function(InstanceId, Name, Description = N
 }
 .connect$operations$create_contact_flow_module <- connect_create_contact_flow_module
 
+#' Creates an evaluation form in the specified Amazon Connect instance
+#'
+#' @description
+#' Creates an evaluation form in the specified Amazon Connect instance. The
+#' form can be used to define questions related to agent performance, and
+#' create sections to organize such questions. Question and section
+#' identifiers cannot be duplicated within the same evaluation form.
+#'
+#' @usage
+#' connect_create_evaluation_form(InstanceId, Title, Description, Items,
+#'   ScoringStrategy, ClientToken)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param Title &#91;required&#93; A title of the evaluation form.
+#' @param Description The description of the evaluation form.
+#' @param Items &#91;required&#93; Items that are part of the evaluation form. The total number of sections
+#' and questions must not exceed 100 each. Questions must be contained in a
+#' section.
+#' @param ScoringStrategy A scoring strategy of the evaluation form.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EvaluationFormId = "string",
+#'   EvaluationFormArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_evaluation_form(
+#'   InstanceId = "string",
+#'   Title = "string",
+#'   Description = "string",
+#'   Items = list(
+#'     list(
+#'       Section = list(
+#'         Title = "string",
+#'         RefId = "string",
+#'         Instructions = "string",
+#'         Items = list(),
+#'         Weight = 123.0
+#'       ),
+#'       Question = list(
+#'         Title = "string",
+#'         Instructions = "string",
+#'         RefId = "string",
+#'         NotApplicableEnabled = TRUE|FALSE,
+#'         QuestionType = "TEXT"|"SINGLESELECT"|"NUMERIC",
+#'         QuestionTypeProperties = list(
+#'           Numeric = list(
+#'             MinValue = 123,
+#'             MaxValue = 123,
+#'             Options = list(
+#'               list(
+#'                 MinValue = 123,
+#'                 MaxValue = 123,
+#'                 Score = 123,
+#'                 AutomaticFail = TRUE|FALSE
+#'               )
+#'             ),
+#'             Automation = list(
+#'               PropertyValue = list(
+#'                 Label = "OVERALL_CUSTOMER_SENTIMENT_SCORE"|"OVERALL_AGENT_SENTIMENT_SCORE"|"NON_TALK_TIME"|"NON_TALK_TIME_PERCENTAGE"|"NUMBER_OF_INTERRUPTIONS"|"CONTACT_DURATION"|"AGENT_INTERACTION_DURATION"|"CUSTOMER_HOLD_TIME"
+#'               )
+#'             )
+#'           ),
+#'           SingleSelect = list(
+#'             Options = list(
+#'               list(
+#'                 RefId = "string",
+#'                 Text = "string",
+#'                 Score = 123,
+#'                 AutomaticFail = TRUE|FALSE
+#'               )
+#'             ),
+#'             DisplayAs = "DROPDOWN"|"RADIO",
+#'             Automation = list(
+#'               Options = list(
+#'                 list(
+#'                   RuleCategory = list(
+#'                     Category = "string",
+#'                     Condition = "PRESENT"|"NOT_PRESENT",
+#'                     OptionRefId = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               DefaultOptionRefId = "string"
+#'             )
+#'           )
+#'         ),
+#'         Weight = 123.0
+#'       )
+#'     )
+#'   ),
+#'   ScoringStrategy = list(
+#'     Mode = "QUESTION_ONLY"|"SECTION_ONLY",
+#'     Status = "ENABLED"|"DISABLED"
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_create_evaluation_form
+#'
+#' @aliases connect_create_evaluation_form
+connect_create_evaluation_form <- function(InstanceId, Title, Description = NULL, Items, ScoringStrategy = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateEvaluationForm",
+    http_method = "PUT",
+    http_path = "/evaluation-forms/{InstanceId}",
+    paginator = list()
+  )
+  input <- .connect$create_evaluation_form_input(InstanceId = InstanceId, Title = Title, Description = Description, Items = Items, ScoringStrategy = ScoringStrategy, ClientToken = ClientToken)
+  output <- .connect$create_evaluation_form_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$create_evaluation_form <- connect_create_evaluation_form
+
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
@@ -843,14 +1102,17 @@ connect_create_contact_flow_module <- function(InstanceId, Name, Description = N
 #' connect_create_hours_of_operation(InstanceId, Name, Description,
 #'   TimeZone, Config, Tags)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param Name &#91;required&#93; The name of the hours of operation.
 #' @param Description The description of the hours of operation.
 #' @param TimeZone &#91;required&#93; The time zone of the hours of operation.
 #' @param Config &#91;required&#93; Configuration information for the hours of operation: day, start time,
 #' and end time.
 #' @param Tags The tags used to organize, track, or control access for this resource.
+#' For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.
 #'
 #' @return
 #' A list with the following syntax:
@@ -993,10 +1255,15 @@ connect_create_instance <- function(ClientToken = NULL, IdentityManagementType, 
 #'   IntegrationArn, SourceApplicationUrl, SourceApplicationName, SourceType,
 #'   Tags)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param IntegrationType &#91;required&#93; The type of information to be ingested.
 #' @param IntegrationArn &#91;required&#93; The Amazon Resource Name (ARN) of the integration.
+#' 
+#' When integrating with Amazon Pinpoint, the Amazon Connect and Amazon
+#' Pinpoint instances must be in the same account.
 #' @param SourceApplicationUrl The URL for the external application. This field is only required for
 #' the EVENT integration type.
 #' @param SourceApplicationName The name of the external application. This field is only required for
@@ -1004,6 +1271,7 @@ connect_create_instance <- function(ClientToken = NULL, IdentityManagementType, 
 #' @param SourceType The type of the data source. This field is only required for the EVENT
 #' integration type.
 #' @param Tags The tags used to organize, track, or control access for this resource.
+#' For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1018,7 +1286,7 @@ connect_create_instance <- function(ClientToken = NULL, IdentityManagementType, 
 #' ```
 #' svc$create_integration_association(
 #'   InstanceId = "string",
-#'   IntegrationType = "EVENT"|"VOICE_ID"|"PINPOINT_APP"|"WISDOM_ASSISTANT"|"WISDOM_KNOWLEDGE_BASE",
+#'   IntegrationType = "EVENT"|"VOICE_ID"|"PINPOINT_APP"|"WISDOM_ASSISTANT"|"WISDOM_KNOWLEDGE_BASE"|"CASES_DOMAIN",
 #'   IntegrationArn = "string",
 #'   SourceApplicationUrl = "string",
 #'   SourceApplicationName = "string",
@@ -1051,6 +1319,146 @@ connect_create_integration_association <- function(InstanceId, IntegrationType, 
 }
 .connect$operations$create_integration_association <- connect_create_integration_association
 
+#' Adds a new participant into an on-going chat contact
+#'
+#' @description
+#' Adds a new participant into an on-going chat contact. For more
+#' information, see [Customize chat flow experiences by integrating custom
+#' participants](https://docs.aws.amazon.com/connect/latest/adminguide/chat-customize-flow.html).
+#'
+#' @usage
+#' connect_create_participant(InstanceId, ContactId, ClientToken,
+#'   ParticipantDetails)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param ContactId &#91;required&#93; The identifier of the contact in this instance of Amazon Connect. Only
+#' contacts in the CHAT channel are supported.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
+#' @param ParticipantDetails &#91;required&#93; Information identifying the participant.
+#' 
+#' The only Valid value for `ParticipantRole` is `CUSTOM_BOT`.
+#' 
+#' `DisplayName` is **Required**.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ParticipantCredentials = list(
+#'     ParticipantToken = "string",
+#'     Expiry = "string"
+#'   ),
+#'   ParticipantId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_participant(
+#'   InstanceId = "string",
+#'   ContactId = "string",
+#'   ClientToken = "string",
+#'   ParticipantDetails = list(
+#'     ParticipantRole = "AGENT"|"CUSTOMER"|"SYSTEM"|"CUSTOM_BOT",
+#'     DisplayName = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_create_participant
+#'
+#' @aliases connect_create_participant
+connect_create_participant <- function(InstanceId, ContactId, ClientToken = NULL, ParticipantDetails) {
+  op <- new_operation(
+    name = "CreateParticipant",
+    http_method = "POST",
+    http_path = "/contact/create-participant",
+    paginator = list()
+  )
+  input <- .connect$create_participant_input(InstanceId = InstanceId, ContactId = ContactId, ClientToken = ClientToken, ParticipantDetails = ParticipantDetails)
+  output <- .connect$create_participant_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$create_participant <- connect_create_participant
+
+#' Creates a prompt
+#'
+#' @description
+#' Creates a prompt. For more information about prompts, such as supported
+#' file types and maximum length, see [Create
+#' prompts](https://docs.aws.amazon.com/connect/latest/adminguide/prompts.html)
+#' in the *Amazon Connect Administrator's Guide*.
+#'
+#' @usage
+#' connect_create_prompt(InstanceId, Name, Description, S3Uri, Tags)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param Name &#91;required&#93; The name of the prompt.
+#' @param Description The description of the prompt.
+#' @param S3Uri &#91;required&#93; The URI for the S3 bucket where the prompt is stored.
+#' @param Tags The tags used to organize, track, or control access for this resource.
+#' For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PromptARN = "string",
+#'   PromptId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_prompt(
+#'   InstanceId = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   S3Uri = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_create_prompt
+#'
+#' @aliases connect_create_prompt
+connect_create_prompt <- function(InstanceId, Name, Description = NULL, S3Uri, Tags = NULL) {
+  op <- new_operation(
+    name = "CreatePrompt",
+    http_method = "PUT",
+    http_path = "/prompts/{InstanceId}",
+    paginator = list()
+  )
+  input <- .connect$create_prompt_input(InstanceId = InstanceId, Name = Name, Description = Description, S3Uri = S3Uri, Tags = Tags)
+  output <- .connect$create_prompt_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$create_prompt <- connect_create_prompt
+
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
@@ -1059,14 +1467,29 @@ connect_create_integration_association <- function(InstanceId, IntegrationType, 
 #' change.
 #' 
 #' Creates a new queue for the specified Amazon Connect instance.
+#' 
+#' If the number being used in the input is claimed to a traffic
+#' distribution group, and you are calling this API using an instance in
+#' the Amazon Web Services Region where the traffic distribution group was
+#' created, you can use either a full phone number ARN or UUID value for
+#' the `OutboundCallerIdNumberId` value of the
+#' [OutboundCallerConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_OutboundCallerConfig.html)
+#' request body parameter. However, if the number is claimed to a traffic
+#' distribution group and you are calling this API using an instance in the
+#' alternate Amazon Web Services Region associated with the traffic
+#' distribution group, you must provide a full phone number ARN. If a UUID
+#' is provided in this scenario, you will receive a
+#' `ResourceNotFoundException`.
 #'
 #' @usage
 #' connect_create_queue(InstanceId, Name, Description,
 #'   OutboundCallerConfig, HoursOfOperationId, MaxContacts, QuickConnectIds,
 #'   Tags)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param Name &#91;required&#93; The name of the queue.
 #' @param Description The description of the queue.
 #' @param OutboundCallerConfig The outbound caller ID name, number, and outbound whisper flow.
@@ -1075,6 +1498,7 @@ connect_create_integration_association <- function(InstanceId, IntegrationType, 
 #' considered full.
 #' @param QuickConnectIds The quick connects available to agents who are working the queue.
 #' @param Tags The tags used to organize, track, or control access for this resource.
+#' For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1138,12 +1562,15 @@ connect_create_queue <- function(InstanceId, Name, Description = NULL, OutboundC
 #' connect_create_quick_connect(InstanceId, Name, Description,
 #'   QuickConnectConfig, Tags)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param Name &#91;required&#93; The name of the quick connect.
 #' @param Description The description of the quick connect.
 #' @param QuickConnectConfig &#91;required&#93; Configuration settings for the quick connect.
 #' @param Tags The tags used to organize, track, or control access for this resource.
+#' For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1211,17 +1638,27 @@ connect_create_quick_connect <- function(InstanceId, Name, Description = NULL, Q
 #' connect_create_routing_profile(InstanceId, Name, Description,
 #'   DefaultOutboundQueueId, QueueConfigs, MediaConcurrencies, Tags)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param Name &#91;required&#93; The name of the routing profile. Must not be more than 127 characters.
 #' @param Description &#91;required&#93; Description of the routing profile. Must not be more than 250
 #' characters.
 #' @param DefaultOutboundQueueId &#91;required&#93; The default outbound queue for the routing profile.
 #' @param QueueConfigs The inbound queues associated with the routing profile. If no queue is
 #' added, the agent can make only outbound calls.
+#' 
+#' The limit of 10 array members applies to the maximum number of
+#' `RoutingProfileQueueConfig` objects that can be passed during a
+#' CreateRoutingProfile API request. It is different from the quota of 50
+#' queues per routing profile per instance that is listed in [Amazon
+#' Connect service
+#' quotas](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html).
 #' @param MediaConcurrencies &#91;required&#93; The channels that agents can handle in the Contact Control Panel (CCP)
 #' for this routing profile.
-#' @param Tags One or more tags.
+#' @param Tags The tags used to organize, track, or control access for this resource.
+#' For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1252,7 +1689,10 @@ connect_create_quick_connect <- function(InstanceId, Name, Description = NULL, Q
 #'   MediaConcurrencies = list(
 #'     list(
 #'       Channel = "VOICE"|"CHAT"|"TASK",
-#'       Concurrency = 123
+#'       Concurrency = 123,
+#'       CrossChannelBehavior = list(
+#'         BehaviorType = "ROUTE_CURRENT_CHANNEL_ONLY"|"ROUTE_ANY_CHANNEL"
+#'       )
 #'     )
 #'   ),
 #'   Tags = list(
@@ -1283,6 +1723,114 @@ connect_create_routing_profile <- function(InstanceId, Name, Description, Defaul
 }
 .connect$operations$create_routing_profile <- connect_create_routing_profile
 
+#' Creates a rule for the specified Amazon Connect instance
+#'
+#' @description
+#' Creates a rule for the specified Amazon Connect instance.
+#' 
+#' Use the [Rules Function
+#' language](https://docs.aws.amazon.com/connect/latest/APIReference/connect-rules-language.html)
+#' to code conditions for the rule.
+#'
+#' @usage
+#' connect_create_rule(InstanceId, Name, TriggerEventSource, Function,
+#'   Actions, PublishStatus, ClientToken)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param Name &#91;required&#93; A unique name for the rule.
+#' @param TriggerEventSource &#91;required&#93; The event source to trigger the rule.
+#' @param Function &#91;required&#93; The conditions of the rule.
+#' @param Actions &#91;required&#93; A list of actions to be run when the rule is triggered.
+#' @param PublishStatus &#91;required&#93; The publish status of the rule.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuleArn = "string",
+#'   RuleId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_rule(
+#'   InstanceId = "string",
+#'   Name = "string",
+#'   TriggerEventSource = list(
+#'     EventSourceName = "OnPostCallAnalysisAvailable"|"OnRealTimeCallAnalysisAvailable"|"OnPostChatAnalysisAvailable"|"OnZendeskTicketCreate"|"OnZendeskTicketStatusUpdate"|"OnSalesforceCaseCreate"|"OnContactEvaluationSubmit",
+#'     IntegrationAssociationId = "string"
+#'   ),
+#'   Function = "string",
+#'   Actions = list(
+#'     list(
+#'       ActionType = "CREATE_TASK"|"ASSIGN_CONTACT_CATEGORY"|"GENERATE_EVENTBRIDGE_EVENT"|"SEND_NOTIFICATION",
+#'       TaskAction = list(
+#'         Name = "string",
+#'         Description = "string",
+#'         ContactFlowId = "string",
+#'         References = list(
+#'           list(
+#'             Value = "string",
+#'             Type = "URL"|"ATTACHMENT"|"NUMBER"|"STRING"|"DATE"|"EMAIL"
+#'           )
+#'         )
+#'       ),
+#'       EventBridgeAction = list(
+#'         Name = "string"
+#'       ),
+#'       AssignContactCategoryAction = list(),
+#'       SendNotificationAction = list(
+#'         DeliveryMethod = "EMAIL",
+#'         Subject = "string",
+#'         Content = "string",
+#'         ContentType = "PLAIN_TEXT",
+#'         Recipient = list(
+#'           UserTags = list(
+#'             "string"
+#'           ),
+#'           UserIds = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   PublishStatus = "DRAFT"|"PUBLISHED",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_create_rule
+#'
+#' @aliases connect_create_rule
+connect_create_rule <- function(InstanceId, Name, TriggerEventSource, Function, Actions, PublishStatus, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateRule",
+    http_method = "POST",
+    http_path = "/rules/{InstanceId}",
+    paginator = list()
+  )
+  input <- .connect$create_rule_input(InstanceId = InstanceId, Name = Name, TriggerEventSource = TriggerEventSource, Function = Function, Actions = Actions, PublishStatus = PublishStatus, ClientToken = ClientToken)
+  output <- .connect$create_rule_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$create_rule <- connect_create_rule
+
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
@@ -1294,14 +1842,25 @@ connect_create_routing_profile <- function(InstanceId, Name, Description, Defaul
 #'
 #' @usage
 #' connect_create_security_profile(SecurityProfileName, Description,
-#'   Permissions, InstanceId, Tags)
+#'   Permissions, InstanceId, Tags, AllowedAccessControlTags,
+#'   TagRestrictedResources)
 #'
 #' @param SecurityProfileName &#91;required&#93; The name of the security profile.
 #' @param Description The description of the security profile.
-#' @param Permissions Permissions assigned to the security profile.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param Permissions Permissions assigned to the security profile. For a list of valid
+#' permissions, see [List of security profile
+#' permissions](https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-list.html).
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param Tags The tags used to organize, track, or control access for this resource.
+#' For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.
+#' @param AllowedAccessControlTags The list of tags that a security profile uses to restrict access to
+#' resources in Amazon Connect.
+#' @param TagRestrictedResources The list of resources that a security profile applies tag restrictions
+#' to in Amazon Connect. Following are acceptable ResourceNames: `User` |
+#' `SecurityProfile` | `Queue` | `RoutingProfile`
 #'
 #' @return
 #' A list with the following syntax:
@@ -1323,6 +1882,12 @@ connect_create_routing_profile <- function(InstanceId, Name, Description, Defaul
 #'   InstanceId = "string",
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   AllowedAccessControlTags = list(
+#'     "string"
+#'   ),
+#'   TagRestrictedResources = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -1332,14 +1897,14 @@ connect_create_routing_profile <- function(InstanceId, Name, Description, Defaul
 #' @rdname connect_create_security_profile
 #'
 #' @aliases connect_create_security_profile
-connect_create_security_profile <- function(SecurityProfileName, Description = NULL, Permissions = NULL, InstanceId, Tags = NULL) {
+connect_create_security_profile <- function(SecurityProfileName, Description = NULL, Permissions = NULL, InstanceId, Tags = NULL, AllowedAccessControlTags = NULL, TagRestrictedResources = NULL) {
   op <- new_operation(
     name = "CreateSecurityProfile",
     http_method = "PUT",
     http_path = "/security-profiles/{InstanceId}",
     paginator = list()
   )
-  input <- .connect$create_security_profile_input(SecurityProfileName = SecurityProfileName, Description = Description, Permissions = Permissions, InstanceId = InstanceId, Tags = Tags)
+  input <- .connect$create_security_profile_input(SecurityProfileName = SecurityProfileName, Description = Description, Permissions = Permissions, InstanceId = InstanceId, Tags = Tags, AllowedAccessControlTags = AllowedAccessControlTags, TagRestrictedResources = TagRestrictedResources)
   output <- .connect$create_security_profile_output()
   config <- get_config()
   svc <- .connect$service(config)
@@ -1358,8 +1923,10 @@ connect_create_security_profile <- function(SecurityProfileName, Description = N
 #' connect_create_task_template(InstanceId, Name, Description,
 #'   ContactFlowId, Constraints, Defaults, Status, Fields, ClientToken)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param Name &#91;required&#93; The name of the task template.
 #' @param Description The description of the task template.
 #' @param ContactFlowId The identifier of the flow that runs by default when a task is created
@@ -1373,7 +1940,10 @@ connect_create_security_profile <- function(SecurityProfileName, Description = N
 #' created.
 #' @param Fields &#91;required&#93; Fields that are part of the template.
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1463,6 +2033,78 @@ connect_create_task_template <- function(InstanceId, Name, Description = NULL, C
 }
 .connect$operations$create_task_template <- connect_create_task_template
 
+#' Creates a traffic distribution group given an Amazon Connect instance
+#' that has been replicated
+#'
+#' @description
+#' Creates a traffic distribution group given an Amazon Connect instance
+#' that has been replicated.
+#' 
+#' For more information about creating traffic distribution groups, see
+#' [Set up traffic distribution
+#' groups](https://docs.aws.amazon.com/connect/latest/adminguide/setup-traffic-distribution-groups.html)
+#' in the *Amazon Connect Administrator Guide*.
+#'
+#' @usage
+#' connect_create_traffic_distribution_group(Name, Description, InstanceId,
+#'   ClientToken, Tags)
+#'
+#' @param Name &#91;required&#93; The name for the traffic distribution group.
+#' @param Description A description for the traffic distribution group.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance that has been replicated.
+#' You can find the `instanceId` in the ARN of the instance.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
+#' @param Tags The tags used to organize, track, or control access for this resource.
+#' For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   Arn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_traffic_distribution_group(
+#'   Name = "string",
+#'   Description = "string",
+#'   InstanceId = "string",
+#'   ClientToken = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_create_traffic_distribution_group
+#'
+#' @aliases connect_create_traffic_distribution_group
+connect_create_traffic_distribution_group <- function(Name, Description = NULL, InstanceId, ClientToken = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateTrafficDistributionGroup",
+    http_method = "PUT",
+    http_path = "/traffic-distribution-group",
+    paginator = list()
+  )
+  input <- .connect$create_traffic_distribution_group_input(Name = Name, Description = Description, InstanceId = InstanceId, ClientToken = ClientToken, Tags = Tags)
+  output <- .connect$create_traffic_distribution_group_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$create_traffic_distribution_group <- connect_create_traffic_distribution_group
+
 #' Creates a use case for an integration association
 #'
 #' @description
@@ -1472,12 +2114,15 @@ connect_create_task_template <- function(InstanceId, Name, Description = NULL, C
 #' connect_create_use_case(InstanceId, IntegrationAssociationId,
 #'   UseCaseType, Tags)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param IntegrationAssociationId &#91;required&#93; The identifier for the integration association.
 #' @param UseCaseType &#91;required&#93; The type of use case to associate to the integration association. Each
 #' integration association can have only one of each use case type.
 #' @param Tags The tags used to organize, track, or control access for this resource.
+#' For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1560,9 +2205,12 @@ connect_create_use_case <- function(InstanceId, IntegrationAssociationId, UseCas
 #' @param SecurityProfileIds &#91;required&#93; The identifier of the security profile for the user.
 #' @param RoutingProfileId &#91;required&#93; The identifier of the routing profile for the user.
 #' @param HierarchyGroupId The identifier of the hierarchy group for the user.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
-#' @param Tags One or more tags.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param Tags The tags used to organize, track, or control access for this resource.
+#' For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1581,7 +2229,9 @@ connect_create_use_case <- function(InstanceId, IntegrationAssociationId, UseCas
 #'   IdentityInfo = list(
 #'     FirstName = "string",
 #'     LastName = "string",
-#'     Email = "string"
+#'     Email = "string",
+#'     SecondaryEmail = "string",
+#'     Mobile = "string"
 #'   ),
 #'   PhoneConfig = list(
 #'     PhoneType = "SOFT_PHONE"|"DESK_PHONE",
@@ -1637,9 +2287,12 @@ connect_create_user <- function(Username, Password = NULL, IdentityInfo = NULL, 
 #' characters.
 #' @param ParentGroupId The identifier for the parent hierarchy group. The user hierarchy is
 #' created at level one if the parent group ID is null.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param Tags The tags used to organize, track, or control access for this resource.
+#' For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1698,11 +2351,17 @@ connect_create_user_hierarchy_group <- function(Name, ParentGroupId = NULL, Inst
 #'   LanguageCode, Content, Tags)
 #'
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If a create request is received more than
-#' once with same client token, subsequent requests return the previous
-#' response without creating a vocabulary again.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
+#' If a create request is received more than once with same client token,
+#' subsequent requests return the previous response without creating a
+#' vocabulary again.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param VocabularyName &#91;required&#93; A unique name of the custom vocabulary.
 #' @param LanguageCode &#91;required&#93; The language code of the vocabulary entries. For a list of languages and
 #' their corresponding language codes, see [What is Amazon
@@ -1714,6 +2373,7 @@ connect_create_user_hierarchy_group <- function(Name, ParentGroupId = NULL, Inst
 #' more information, see [Create a custom vocabulary using a
 #' table](https://docs.aws.amazon.com/transcribe/latest/dg/custom-vocabulary.html#create-vocabulary-table).
 #' @param Tags The tags used to organize, track, or control access for this resource.
+#' For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1731,7 +2391,7 @@ connect_create_user_hierarchy_group <- function(Name, ParentGroupId = NULL, Inst
 #'   ClientToken = "string",
 #'   InstanceId = "string",
 #'   VocabularyName = "string",
-#'   LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN",
+#'   LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"|"en-NZ"|"en-ZA",
 #'   Content = "string",
 #'   Tags = list(
 #'     "string"
@@ -1761,17 +2421,126 @@ connect_create_vocabulary <- function(ClientToken = NULL, InstanceId, Vocabulary
 }
 .connect$operations$create_vocabulary <- connect_create_vocabulary
 
-#' Deletes a contact flow for the specified Amazon Connect instance
+#' Deactivates an evaluation form in the specified Amazon Connect instance
 #'
 #' @description
-#' Deletes a contact flow for the specified Amazon Connect instance.
+#' Deactivates an evaluation form in the specified Amazon Connect instance.
+#' After a form is deactivated, it is no longer available for users to
+#' start new evaluations based on the form.
+#'
+#' @usage
+#' connect_deactivate_evaluation_form(InstanceId, EvaluationFormId,
+#'   EvaluationFormVersion)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param EvaluationFormId &#91;required&#93; The unique identifier for the evaluation form.
+#' @param EvaluationFormVersion &#91;required&#93; A version of the evaluation form. If the version property is not
+#' provided, the latest version of the evaluation form is deactivated.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EvaluationFormId = "string",
+#'   EvaluationFormArn = "string",
+#'   EvaluationFormVersion = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$deactivate_evaluation_form(
+#'   InstanceId = "string",
+#'   EvaluationFormId = "string",
+#'   EvaluationFormVersion = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_deactivate_evaluation_form
+#'
+#' @aliases connect_deactivate_evaluation_form
+connect_deactivate_evaluation_form <- function(InstanceId, EvaluationFormId, EvaluationFormVersion) {
+  op <- new_operation(
+    name = "DeactivateEvaluationForm",
+    http_method = "POST",
+    http_path = "/evaluation-forms/{InstanceId}/{EvaluationFormId}/deactivate",
+    paginator = list()
+  )
+  input <- .connect$deactivate_evaluation_form_input(InstanceId = InstanceId, EvaluationFormId = EvaluationFormId, EvaluationFormVersion = EvaluationFormVersion)
+  output <- .connect$deactivate_evaluation_form_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$deactivate_evaluation_form <- connect_deactivate_evaluation_form
+
+#' Deletes a contact evaluation in the specified Amazon Connect instance
+#'
+#' @description
+#' Deletes a contact evaluation in the specified Amazon Connect instance.
+#'
+#' @usage
+#' connect_delete_contact_evaluation(InstanceId, EvaluationId)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param EvaluationId &#91;required&#93; A unique identifier for the contact evaluation.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_contact_evaluation(
+#'   InstanceId = "string",
+#'   EvaluationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_delete_contact_evaluation
+#'
+#' @aliases connect_delete_contact_evaluation
+connect_delete_contact_evaluation <- function(InstanceId, EvaluationId) {
+  op <- new_operation(
+    name = "DeleteContactEvaluation",
+    http_method = "DELETE",
+    http_path = "/contact-evaluations/{InstanceId}/{EvaluationId}",
+    paginator = list()
+  )
+  input <- .connect$delete_contact_evaluation_input(InstanceId = InstanceId, EvaluationId = EvaluationId)
+  output <- .connect$delete_contact_evaluation_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$delete_contact_evaluation <- connect_delete_contact_evaluation
+
+#' Deletes a flow for the specified Amazon Connect instance
+#'
+#' @description
+#' Deletes a flow for the specified Amazon Connect instance.
 #'
 #' @usage
 #' connect_delete_contact_flow(InstanceId, ContactFlowId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
-#' @param ContactFlowId &#91;required&#93; The identifier of the contact flow.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param ContactFlowId &#91;required&#93; The identifier of the flow.
 #'
 #' @return
 #' An empty list.
@@ -1806,17 +2575,19 @@ connect_delete_contact_flow <- function(InstanceId, ContactFlowId) {
 }
 .connect$operations$delete_contact_flow <- connect_delete_contact_flow
 
-#' Deletes the specified contact flow module
+#' Deletes the specified flow module
 #'
 #' @description
-#' Deletes the specified contact flow module.
+#' Deletes the specified flow module.
 #'
 #' @usage
 #' connect_delete_contact_flow_module(InstanceId, ContactFlowModuleId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
-#' @param ContactFlowModuleId &#91;required&#93; The identifier of the contact flow module.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param ContactFlowModuleId &#91;required&#93; The identifier of the flow module.
 #'
 #' @return
 #' An empty list.
@@ -1851,6 +2622,62 @@ connect_delete_contact_flow_module <- function(InstanceId, ContactFlowModuleId) 
 }
 .connect$operations$delete_contact_flow_module <- connect_delete_contact_flow_module
 
+#' Deletes an evaluation form in the specified Amazon Connect instance
+#'
+#' @description
+#' Deletes an evaluation form in the specified Amazon Connect instance.
+#' 
+#' -   If the version property is provided, only the specified version of
+#'     the evaluation form is deleted.
+#' 
+#' -   If no version is provided, then the full form (all versions) is
+#'     deleted.
+#'
+#' @usage
+#' connect_delete_evaluation_form(InstanceId, EvaluationFormId,
+#'   EvaluationFormVersion)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param EvaluationFormId &#91;required&#93; The unique identifier for the evaluation form.
+#' @param EvaluationFormVersion The unique identifier for the evaluation form.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_evaluation_form(
+#'   InstanceId = "string",
+#'   EvaluationFormId = "string",
+#'   EvaluationFormVersion = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_delete_evaluation_form
+#'
+#' @aliases connect_delete_evaluation_form
+connect_delete_evaluation_form <- function(InstanceId, EvaluationFormId, EvaluationFormVersion = NULL) {
+  op <- new_operation(
+    name = "DeleteEvaluationForm",
+    http_method = "DELETE",
+    http_path = "/evaluation-forms/{InstanceId}/{EvaluationFormId}",
+    paginator = list()
+  )
+  input <- .connect$delete_evaluation_form_input(InstanceId = InstanceId, EvaluationFormId = EvaluationFormId, EvaluationFormVersion = EvaluationFormVersion)
+  output <- .connect$delete_evaluation_form_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$delete_evaluation_form <- connect_delete_evaluation_form
+
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
@@ -1863,8 +2690,10 @@ connect_delete_contact_flow_module <- function(InstanceId, ContactFlowModuleId) 
 #' @usage
 #' connect_delete_hours_of_operation(InstanceId, HoursOfOperationId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param HoursOfOperationId &#91;required&#93; The identifier for the hours of operation.
 #'
 #' @return
@@ -1918,8 +2747,10 @@ connect_delete_hours_of_operation <- function(InstanceId, HoursOfOperationId) {
 #' @usage
 #' connect_delete_instance(InstanceId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #'
 #' @return
 #' An empty list.
@@ -1965,8 +2796,10 @@ connect_delete_instance <- function(InstanceId) {
 #' connect_delete_integration_association(InstanceId,
 #'   IntegrationAssociationId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param IntegrationAssociationId &#91;required&#93; The identifier for the integration association.
 #'
 #' @return
@@ -2002,6 +2835,53 @@ connect_delete_integration_association <- function(InstanceId, IntegrationAssoci
 }
 .connect$operations$delete_integration_association <- connect_delete_integration_association
 
+#' Deletes a prompt
+#'
+#' @description
+#' Deletes a prompt.
+#'
+#' @usage
+#' connect_delete_prompt(InstanceId, PromptId)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param PromptId &#91;required&#93; A unique identifier for the prompt.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_prompt(
+#'   InstanceId = "string",
+#'   PromptId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_delete_prompt
+#'
+#' @aliases connect_delete_prompt
+connect_delete_prompt <- function(InstanceId, PromptId) {
+  op <- new_operation(
+    name = "DeletePrompt",
+    http_method = "DELETE",
+    http_path = "/prompts/{InstanceId}/{PromptId}",
+    paginator = list()
+  )
+  input <- .connect$delete_prompt_input(InstanceId = InstanceId, PromptId = PromptId)
+  output <- .connect$delete_prompt_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$delete_prompt <- connect_delete_prompt
+
 #' Deletes a quick connect
 #'
 #' @description
@@ -2010,8 +2890,10 @@ connect_delete_integration_association <- function(InstanceId, IntegrationAssoci
 #' @usage
 #' connect_delete_quick_connect(InstanceId, QuickConnectId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param QuickConnectId &#91;required&#93; The identifier for the quick connect.
 #'
 #' @return
@@ -2047,6 +2929,53 @@ connect_delete_quick_connect <- function(InstanceId, QuickConnectId) {
 }
 .connect$operations$delete_quick_connect <- connect_delete_quick_connect
 
+#' Deletes a rule for the specified Amazon Connect instance
+#'
+#' @description
+#' Deletes a rule for the specified Amazon Connect instance.
+#'
+#' @usage
+#' connect_delete_rule(InstanceId, RuleId)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param RuleId &#91;required&#93; A unique identifier for the rule.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_rule(
+#'   InstanceId = "string",
+#'   RuleId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_delete_rule
+#'
+#' @aliases connect_delete_rule
+connect_delete_rule <- function(InstanceId, RuleId) {
+  op <- new_operation(
+    name = "DeleteRule",
+    http_method = "DELETE",
+    http_path = "/rules/{InstanceId}/{RuleId}",
+    paginator = list()
+  )
+  input <- .connect$delete_rule_input(InstanceId = InstanceId, RuleId = RuleId)
+  output <- .connect$delete_rule_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$delete_rule <- connect_delete_rule
+
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
@@ -2059,8 +2988,10 @@ connect_delete_quick_connect <- function(InstanceId, QuickConnectId) {
 #' @usage
 #' connect_delete_security_profile(InstanceId, SecurityProfileId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param SecurityProfileId &#91;required&#93; The identifier for the security profle.
 #'
 #' @return
@@ -2104,8 +3035,10 @@ connect_delete_security_profile <- function(InstanceId, SecurityProfileId) {
 #' @usage
 #' connect_delete_task_template(InstanceId, TaskTemplateId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param TaskTemplateId &#91;required&#93; A unique identifier for the task template.
 #'
 #' @return
@@ -2141,6 +3074,57 @@ connect_delete_task_template <- function(InstanceId, TaskTemplateId) {
 }
 .connect$operations$delete_task_template <- connect_delete_task_template
 
+#' Deletes a traffic distribution group
+#'
+#' @description
+#' Deletes a traffic distribution group. This API can be called only in the
+#' Region where the traffic distribution group is created.
+#' 
+#' For more information about deleting traffic distribution groups, see
+#' [Delete traffic distribution
+#' groups](https://docs.aws.amazon.com/connect/latest/adminguide/delete-traffic-distribution-groups.html)
+#' in the *Amazon Connect Administrator Guide*.
+#'
+#' @usage
+#' connect_delete_traffic_distribution_group(TrafficDistributionGroupId)
+#'
+#' @param TrafficDistributionGroupId &#91;required&#93; The identifier of the traffic distribution group. This can be the ID or
+#' the ARN if the API is being called in the Region where the traffic
+#' distribution group was created. The ARN must be provided if the call is
+#' from the replicated Region.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_traffic_distribution_group(
+#'   TrafficDistributionGroupId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_delete_traffic_distribution_group
+#'
+#' @aliases connect_delete_traffic_distribution_group
+connect_delete_traffic_distribution_group <- function(TrafficDistributionGroupId) {
+  op <- new_operation(
+    name = "DeleteTrafficDistributionGroup",
+    http_method = "DELETE",
+    http_path = "/traffic-distribution-group/{TrafficDistributionGroupId}",
+    paginator = list()
+  )
+  input <- .connect$delete_traffic_distribution_group_input(TrafficDistributionGroupId = TrafficDistributionGroupId)
+  output <- .connect$delete_traffic_distribution_group_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$delete_traffic_distribution_group <- connect_delete_traffic_distribution_group
+
 #' Deletes a use case from an integration association
 #'
 #' @description
@@ -2149,8 +3133,10 @@ connect_delete_task_template <- function(InstanceId, TaskTemplateId) {
 #' @usage
 #' connect_delete_use_case(InstanceId, IntegrationAssociationId, UseCaseId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param IntegrationAssociationId &#91;required&#93; The identifier for the integration association.
 #' @param UseCaseId &#91;required&#93; The identifier for the use case.
 #'
@@ -2201,8 +3187,10 @@ connect_delete_use_case <- function(InstanceId, IntegrationAssociationId, UseCas
 #' @usage
 #' connect_delete_user(InstanceId, UserId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param UserId &#91;required&#93; The identifier of the user.
 #'
 #' @return
@@ -2248,8 +3236,10 @@ connect_delete_user <- function(InstanceId, UserId) {
 #' connect_delete_user_hierarchy_group(HierarchyGroupId, InstanceId)
 #'
 #' @param HierarchyGroupId &#91;required&#93; The identifier of the hierarchy group.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #'
 #' @return
 #' An empty list.
@@ -2292,8 +3282,10 @@ connect_delete_user_hierarchy_group <- function(HierarchyGroupId, InstanceId) {
 #' @usage
 #' connect_delete_vocabulary(InstanceId, VocabularyId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param VocabularyId &#91;required&#93; The identifier of the custom vocabulary.
 #'
 #' @return
@@ -2348,8 +3340,10 @@ connect_delete_vocabulary <- function(InstanceId, VocabularyId) {
 #' @usage
 #' connect_describe_agent_status(InstanceId, AgentStatusId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param AgentStatusId &#91;required&#93; The identifier for the agent status.
 #'
 #' @return
@@ -2412,12 +3406,16 @@ connect_describe_agent_status <- function(InstanceId, AgentStatusId) {
 #' 
 #' Contact information remains available in Amazon Connect for 24 months,
 #' and then it is deleted.
+#' 
+#' Only data from November 12, 2021, and later is returned by this API.
 #'
 #' @usage
 #' connect_describe_contact(InstanceId, ContactId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param ContactId &#91;required&#93; The identifier of the contact.
 #'
 #' @return
@@ -2429,7 +3427,7 @@ connect_describe_agent_status <- function(InstanceId, AgentStatusId) {
 #'     Id = "string",
 #'     InitialContactId = "string",
 #'     PreviousContactId = "string",
-#'     InitiationMethod = "INBOUND"|"OUTBOUND"|"TRANSFER"|"QUEUE_TRANSFER"|"CALLBACK"|"API",
+#'     InitiationMethod = "INBOUND"|"OUTBOUND"|"TRANSFER"|"QUEUE_TRANSFER"|"CALLBACK"|"API"|"DISCONNECT"|"MONITOR"|"EXTERNAL_OUTBOUND",
 #'     Name = "string",
 #'     Description = "string",
 #'     Channel = "VOICE"|"CHAT"|"TASK",
@@ -2456,6 +3454,10 @@ connect_describe_agent_status <- function(InstanceId, AgentStatusId) {
 #'     ),
 #'     ScheduledTimestamp = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     RelatedContactId = "string",
+#'     WisdomInfo = list(
+#'       SessionArn = "string"
 #'     )
 #'   )
 #' )
@@ -2491,20 +3493,192 @@ connect_describe_contact <- function(InstanceId, ContactId) {
 }
 .connect$operations$describe_contact <- connect_describe_contact
 
-#' Describes the specified contact flow
+#' Describes a contact evaluation in the specified Amazon Connect instance
 #'
 #' @description
-#' Describes the specified contact flow.
+#' Describes a contact evaluation in the specified Amazon Connect instance.
+#'
+#' @usage
+#' connect_describe_contact_evaluation(InstanceId, EvaluationId)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param EvaluationId &#91;required&#93; A unique identifier for the contact evaluation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Evaluation = list(
+#'     EvaluationId = "string",
+#'     EvaluationArn = "string",
+#'     Metadata = list(
+#'       ContactId = "string",
+#'       EvaluatorArn = "string",
+#'       ContactAgentId = "string",
+#'       Score = list(
+#'         Percentage = 123.0,
+#'         NotApplicable = TRUE|FALSE,
+#'         AutomaticFail = TRUE|FALSE
+#'       )
+#'     ),
+#'     Answers = list(
+#'       list(
+#'         Value = list(
+#'           StringValue = "string",
+#'           NumericValue = 123.0,
+#'           NotApplicable = TRUE|FALSE
+#'         ),
+#'         SystemSuggestedValue = list(
+#'           StringValue = "string",
+#'           NumericValue = 123.0,
+#'           NotApplicable = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     Notes = list(
+#'       list(
+#'         Value = "string"
+#'       )
+#'     ),
+#'     Status = "DRAFT"|"SUBMITTED",
+#'     Scores = list(
+#'       list(
+#'         Percentage = 123.0,
+#'         NotApplicable = TRUE|FALSE,
+#'         AutomaticFail = TRUE|FALSE
+#'       )
+#'     ),
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Tags = list(
+#'       "string"
+#'     )
+#'   ),
+#'   EvaluationForm = list(
+#'     EvaluationFormVersion = 123,
+#'     EvaluationFormId = "string",
+#'     EvaluationFormArn = "string",
+#'     Title = "string",
+#'     Description = "string",
+#'     Items = list(
+#'       list(
+#'         Section = list(
+#'           Title = "string",
+#'           RefId = "string",
+#'           Instructions = "string",
+#'           Items = list(),
+#'           Weight = 123.0
+#'         ),
+#'         Question = list(
+#'           Title = "string",
+#'           Instructions = "string",
+#'           RefId = "string",
+#'           NotApplicableEnabled = TRUE|FALSE,
+#'           QuestionType = "TEXT"|"SINGLESELECT"|"NUMERIC",
+#'           QuestionTypeProperties = list(
+#'             Numeric = list(
+#'               MinValue = 123,
+#'               MaxValue = 123,
+#'               Options = list(
+#'                 list(
+#'                   MinValue = 123,
+#'                   MaxValue = 123,
+#'                   Score = 123,
+#'                   AutomaticFail = TRUE|FALSE
+#'                 )
+#'               ),
+#'               Automation = list(
+#'                 PropertyValue = list(
+#'                   Label = "OVERALL_CUSTOMER_SENTIMENT_SCORE"|"OVERALL_AGENT_SENTIMENT_SCORE"|"NON_TALK_TIME"|"NON_TALK_TIME_PERCENTAGE"|"NUMBER_OF_INTERRUPTIONS"|"CONTACT_DURATION"|"AGENT_INTERACTION_DURATION"|"CUSTOMER_HOLD_TIME"
+#'                 )
+#'               )
+#'             ),
+#'             SingleSelect = list(
+#'               Options = list(
+#'                 list(
+#'                   RefId = "string",
+#'                   Text = "string",
+#'                   Score = 123,
+#'                   AutomaticFail = TRUE|FALSE
+#'                 )
+#'               ),
+#'               DisplayAs = "DROPDOWN"|"RADIO",
+#'               Automation = list(
+#'                 Options = list(
+#'                   list(
+#'                     RuleCategory = list(
+#'                       Category = "string",
+#'                       Condition = "PRESENT"|"NOT_PRESENT",
+#'                       OptionRefId = "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 DefaultOptionRefId = "string"
+#'               )
+#'             )
+#'           ),
+#'           Weight = 123.0
+#'         )
+#'       )
+#'     ),
+#'     ScoringStrategy = list(
+#'       Mode = "QUESTION_ONLY"|"SECTION_ONLY",
+#'       Status = "ENABLED"|"DISABLED"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_contact_evaluation(
+#'   InstanceId = "string",
+#'   EvaluationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_describe_contact_evaluation
+#'
+#' @aliases connect_describe_contact_evaluation
+connect_describe_contact_evaluation <- function(InstanceId, EvaluationId) {
+  op <- new_operation(
+    name = "DescribeContactEvaluation",
+    http_method = "GET",
+    http_path = "/contact-evaluations/{InstanceId}/{EvaluationId}",
+    paginator = list()
+  )
+  input <- .connect$describe_contact_evaluation_input(InstanceId = InstanceId, EvaluationId = EvaluationId)
+  output <- .connect$describe_contact_evaluation_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$describe_contact_evaluation <- connect_describe_contact_evaluation
+
+#' Describes the specified flow
+#'
+#' @description
+#' Describes the specified flow.
 #' 
-#' You can also create and update contact flows using the [Amazon Connect
-#' Flow
+#' You can also create and update flows using the [Amazon Connect Flow
 #' language](https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html).
 #'
 #' @usage
 #' connect_describe_contact_flow(InstanceId, ContactFlowId)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
-#' @param ContactFlowId &#91;required&#93; The identifier of the contact flow.
+#' @param ContactFlowId &#91;required&#93; The identifier of the flow.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2555,17 +3729,19 @@ connect_describe_contact_flow <- function(InstanceId, ContactFlowId) {
 }
 .connect$operations$describe_contact_flow <- connect_describe_contact_flow
 
-#' Describes the specified contact flow module
+#' Describes the specified flow module
 #'
 #' @description
-#' Describes the specified contact flow module.
+#' Describes the specified flow module.
 #'
 #' @usage
 #' connect_describe_contact_flow_module(InstanceId, ContactFlowModuleId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
-#' @param ContactFlowModuleId &#91;required&#93; The identifier of the contact flow module.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param ContactFlowModuleId &#91;required&#93; The identifier of the flow module.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2616,6 +3792,147 @@ connect_describe_contact_flow_module <- function(InstanceId, ContactFlowModuleId
 }
 .connect$operations$describe_contact_flow_module <- connect_describe_contact_flow_module
 
+#' Describes an evaluation form in the specified Amazon Connect instance
+#'
+#' @description
+#' Describes an evaluation form in the specified Amazon Connect instance.
+#' If the version property is not provided, the latest version of the
+#' evaluation form is described.
+#'
+#' @usage
+#' connect_describe_evaluation_form(InstanceId, EvaluationFormId,
+#'   EvaluationFormVersion)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param EvaluationFormId &#91;required&#93; A unique identifier for the contact evaluation.
+#' @param EvaluationFormVersion A version of the evaluation form.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EvaluationForm = list(
+#'     EvaluationFormId = "string",
+#'     EvaluationFormVersion = 123,
+#'     Locked = TRUE|FALSE,
+#'     EvaluationFormArn = "string",
+#'     Title = "string",
+#'     Description = "string",
+#'     Status = "DRAFT"|"ACTIVE",
+#'     Items = list(
+#'       list(
+#'         Section = list(
+#'           Title = "string",
+#'           RefId = "string",
+#'           Instructions = "string",
+#'           Items = list(),
+#'           Weight = 123.0
+#'         ),
+#'         Question = list(
+#'           Title = "string",
+#'           Instructions = "string",
+#'           RefId = "string",
+#'           NotApplicableEnabled = TRUE|FALSE,
+#'           QuestionType = "TEXT"|"SINGLESELECT"|"NUMERIC",
+#'           QuestionTypeProperties = list(
+#'             Numeric = list(
+#'               MinValue = 123,
+#'               MaxValue = 123,
+#'               Options = list(
+#'                 list(
+#'                   MinValue = 123,
+#'                   MaxValue = 123,
+#'                   Score = 123,
+#'                   AutomaticFail = TRUE|FALSE
+#'                 )
+#'               ),
+#'               Automation = list(
+#'                 PropertyValue = list(
+#'                   Label = "OVERALL_CUSTOMER_SENTIMENT_SCORE"|"OVERALL_AGENT_SENTIMENT_SCORE"|"NON_TALK_TIME"|"NON_TALK_TIME_PERCENTAGE"|"NUMBER_OF_INTERRUPTIONS"|"CONTACT_DURATION"|"AGENT_INTERACTION_DURATION"|"CUSTOMER_HOLD_TIME"
+#'                 )
+#'               )
+#'             ),
+#'             SingleSelect = list(
+#'               Options = list(
+#'                 list(
+#'                   RefId = "string",
+#'                   Text = "string",
+#'                   Score = 123,
+#'                   AutomaticFail = TRUE|FALSE
+#'                 )
+#'               ),
+#'               DisplayAs = "DROPDOWN"|"RADIO",
+#'               Automation = list(
+#'                 Options = list(
+#'                   list(
+#'                     RuleCategory = list(
+#'                       Category = "string",
+#'                       Condition = "PRESENT"|"NOT_PRESENT",
+#'                       OptionRefId = "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 DefaultOptionRefId = "string"
+#'               )
+#'             )
+#'           ),
+#'           Weight = 123.0
+#'         )
+#'       )
+#'     ),
+#'     ScoringStrategy = list(
+#'       Mode = "QUESTION_ONLY"|"SECTION_ONLY",
+#'       Status = "ENABLED"|"DISABLED"
+#'     ),
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreatedBy = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedBy = "string",
+#'     Tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_evaluation_form(
+#'   InstanceId = "string",
+#'   EvaluationFormId = "string",
+#'   EvaluationFormVersion = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_describe_evaluation_form
+#'
+#' @aliases connect_describe_evaluation_form
+connect_describe_evaluation_form <- function(InstanceId, EvaluationFormId, EvaluationFormVersion = NULL) {
+  op <- new_operation(
+    name = "DescribeEvaluationForm",
+    http_method = "GET",
+    http_path = "/evaluation-forms/{InstanceId}/{EvaluationFormId}",
+    paginator = list()
+  )
+  input <- .connect$describe_evaluation_form_input(InstanceId = InstanceId, EvaluationFormId = EvaluationFormId, EvaluationFormVersion = EvaluationFormVersion)
+  output <- .connect$describe_evaluation_form_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$describe_evaluation_form <- connect_describe_evaluation_form
+
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
@@ -2628,8 +3945,10 @@ connect_describe_contact_flow_module <- function(InstanceId, ContactFlowModuleId
 #' @usage
 #' connect_describe_hours_of_operation(InstanceId, HoursOfOperationId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param HoursOfOperationId &#91;required&#93; The identifier for the hours of operation.
 #'
 #' @return
@@ -2711,8 +4030,10 @@ connect_describe_hours_of_operation <- function(InstanceId, HoursOfOperationId) 
 #' @usage
 #' connect_describe_instance(InstanceId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2778,8 +4099,10 @@ connect_describe_instance <- function(InstanceId) {
 #' @usage
 #' connect_describe_instance_attribute(InstanceId, AttributeType)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param AttributeType &#91;required&#93; The type of attribute.
 #'
 #' @return
@@ -2787,7 +4110,7 @@ connect_describe_instance <- function(InstanceId) {
 #' ```
 #' list(
 #'   Attribute = list(
-#'     AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA"|"MULTI_PARTY_CONFERENCE"|"HIGH_VOLUME_OUTBOUND",
+#'     AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA"|"MULTI_PARTY_CONFERENCE"|"HIGH_VOLUME_OUTBOUND"|"ENHANCED_CONTACT_MONITORING",
 #'     Value = "string"
 #'   )
 #' )
@@ -2797,7 +4120,7 @@ connect_describe_instance <- function(InstanceId) {
 #' ```
 #' svc$describe_instance_attribute(
 #'   InstanceId = "string",
-#'   AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA"|"MULTI_PARTY_CONFERENCE"|"HIGH_VOLUME_OUTBOUND"
+#'   AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA"|"MULTI_PARTY_CONFERENCE"|"HIGH_VOLUME_OUTBOUND"|"ENHANCED_CONTACT_MONITORING"
 #' )
 #' ```
 #'
@@ -2837,8 +4160,10 @@ connect_describe_instance_attribute <- function(InstanceId, AttributeType) {
 #' connect_describe_instance_storage_config(InstanceId, AssociationId,
 #'   ResourceType)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param AssociationId &#91;required&#93; The existing association identifier that uniquely identifies the
 #' resource type and storage config for the given instance ID.
 #' @param ResourceType &#91;required&#93; A valid resource type.
@@ -2881,7 +4206,7 @@ connect_describe_instance_attribute <- function(InstanceId, AttributeType) {
 #' svc$describe_instance_storage_config(
 #'   InstanceId = "string",
 #'   AssociationId = "string",
-#'   ResourceType = "CHAT_TRANSCRIPTS"|"CALL_RECORDINGS"|"SCHEDULED_REPORTS"|"MEDIA_STREAMS"|"CONTACT_TRACE_RECORDS"|"AGENT_EVENTS"|"REAL_TIME_CONTACT_ANALYSIS_SEGMENTS"
+#'   ResourceType = "CHAT_TRANSCRIPTS"|"CALL_RECORDINGS"|"SCHEDULED_REPORTS"|"MEDIA_STREAMS"|"CONTACT_TRACE_RECORDS"|"AGENT_EVENTS"|"REAL_TIME_CONTACT_ANALYSIS_SEGMENTS"|"ATTACHMENTS"|"CONTACT_EVALUATIONS"
 #' )
 #' ```
 #'
@@ -2908,11 +4233,21 @@ connect_describe_instance_storage_config <- function(InstanceId, AssociationId, 
 .connect$operations$describe_instance_storage_config <- connect_describe_instance_storage_config
 
 #' Gets details and status of a phone number that’s claimed to your Amazon
-#' Connect instance
+#' Connect instance or traffic distribution group
 #'
 #' @description
 #' Gets details and status of a phone number that’s claimed to your Amazon
-#' Connect instance
+#' Connect instance or traffic distribution group.
+#' 
+#' If the number is claimed to a traffic distribution group, and you are
+#' calling in the Amazon Web Services Region where the traffic distribution
+#' group was created, you can use either a phone number ARN or UUID value
+#' for the `PhoneNumberId` URI request parameter. However, if the number is
+#' claimed to a traffic distribution group and you are calling this API in
+#' the alternate Amazon Web Services Region associated with the traffic
+#' distribution group, you must provide a full phone number ARN. If a UUID
+#' is provided in this scenario, you will receive a
+#' `ResourceNotFoundException`.
 #'
 #' @usage
 #' connect_describe_phone_number(PhoneNumberId)
@@ -2971,6 +4306,66 @@ connect_describe_phone_number <- function(PhoneNumberId) {
 }
 .connect$operations$describe_phone_number <- connect_describe_phone_number
 
+#' Describes the prompt
+#'
+#' @description
+#' Describes the prompt.
+#'
+#' @usage
+#' connect_describe_prompt(InstanceId, PromptId)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param PromptId &#91;required&#93; A unique identifier for the prompt.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Prompt = list(
+#'     PromptARN = "string",
+#'     PromptId = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     Tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_prompt(
+#'   InstanceId = "string",
+#'   PromptId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_describe_prompt
+#'
+#' @aliases connect_describe_prompt
+connect_describe_prompt <- function(InstanceId, PromptId) {
+  op <- new_operation(
+    name = "DescribePrompt",
+    http_method = "GET",
+    http_path = "/prompts/{InstanceId}/{PromptId}",
+    paginator = list()
+  )
+  input <- .connect$describe_prompt_input(InstanceId = InstanceId, PromptId = PromptId)
+  output <- .connect$describe_prompt_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$describe_prompt <- connect_describe_prompt
+
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
@@ -2983,8 +4378,10 @@ connect_describe_phone_number <- function(PhoneNumberId) {
 #' @usage
 #' connect_describe_queue(InstanceId, QueueId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param QueueId &#91;required&#93; The identifier for the queue.
 #'
 #' @return
@@ -3049,8 +4446,10 @@ connect_describe_queue <- function(InstanceId, QueueId) {
 #' @usage
 #' connect_describe_quick_connect(InstanceId, QuickConnectId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param QuickConnectId &#91;required&#93; The identifier for the quick connect.
 #'
 #' @return
@@ -3121,8 +4520,10 @@ connect_describe_quick_connect <- function(InstanceId, QuickConnectId) {
 #' @usage
 #' connect_describe_routing_profile(InstanceId, RoutingProfileId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param RoutingProfileId &#91;required&#93; The identifier of the routing profile.
 #'
 #' @return
@@ -3138,13 +4539,18 @@ connect_describe_quick_connect <- function(InstanceId, QuickConnectId) {
 #'     MediaConcurrencies = list(
 #'       list(
 #'         Channel = "VOICE"|"CHAT"|"TASK",
-#'         Concurrency = 123
+#'         Concurrency = 123,
+#'         CrossChannelBehavior = list(
+#'           BehaviorType = "ROUTE_CURRENT_CHANNEL_ONLY"|"ROUTE_ANY_CHANNEL"
+#'         )
 #'       )
 #'     ),
 #'     DefaultOutboundQueueId = "string",
 #'     Tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     NumberOfAssociatedQueues = 123,
+#'     NumberOfAssociatedUsers = 123
 #'   )
 #' )
 #' ```
@@ -3179,6 +4585,112 @@ connect_describe_routing_profile <- function(InstanceId, RoutingProfileId) {
 }
 .connect$operations$describe_routing_profile <- connect_describe_routing_profile
 
+#' Describes a rule for the specified Amazon Connect instance
+#'
+#' @description
+#' Describes a rule for the specified Amazon Connect instance.
+#'
+#' @usage
+#' connect_describe_rule(InstanceId, RuleId)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param RuleId &#91;required&#93; A unique identifier for the rule.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Rule = list(
+#'     Name = "string",
+#'     RuleId = "string",
+#'     RuleArn = "string",
+#'     TriggerEventSource = list(
+#'       EventSourceName = "OnPostCallAnalysisAvailable"|"OnRealTimeCallAnalysisAvailable"|"OnPostChatAnalysisAvailable"|"OnZendeskTicketCreate"|"OnZendeskTicketStatusUpdate"|"OnSalesforceCaseCreate"|"OnContactEvaluationSubmit",
+#'       IntegrationAssociationId = "string"
+#'     ),
+#'     Function = "string",
+#'     Actions = list(
+#'       list(
+#'         ActionType = "CREATE_TASK"|"ASSIGN_CONTACT_CATEGORY"|"GENERATE_EVENTBRIDGE_EVENT"|"SEND_NOTIFICATION",
+#'         TaskAction = list(
+#'           Name = "string",
+#'           Description = "string",
+#'           ContactFlowId = "string",
+#'           References = list(
+#'             list(
+#'               Value = "string",
+#'               Type = "URL"|"ATTACHMENT"|"NUMBER"|"STRING"|"DATE"|"EMAIL"
+#'             )
+#'           )
+#'         ),
+#'         EventBridgeAction = list(
+#'           Name = "string"
+#'         ),
+#'         AssignContactCategoryAction = list(),
+#'         SendNotificationAction = list(
+#'           DeliveryMethod = "EMAIL",
+#'           Subject = "string",
+#'           Content = "string",
+#'           ContentType = "PLAIN_TEXT",
+#'           Recipient = list(
+#'             UserTags = list(
+#'               "string"
+#'             ),
+#'             UserIds = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     PublishStatus = "DRAFT"|"PUBLISHED",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedBy = "string",
+#'     Tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_rule(
+#'   InstanceId = "string",
+#'   RuleId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_describe_rule
+#'
+#' @aliases connect_describe_rule
+connect_describe_rule <- function(InstanceId, RuleId) {
+  op <- new_operation(
+    name = "DescribeRule",
+    http_method = "GET",
+    http_path = "/rules/{InstanceId}/{RuleId}",
+    paginator = list()
+  )
+  input <- .connect$describe_rule_input(InstanceId = InstanceId, RuleId = RuleId)
+  output <- .connect$describe_rule_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$describe_rule <- connect_describe_rule
+
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
@@ -3192,8 +4704,10 @@ connect_describe_routing_profile <- function(InstanceId, RoutingProfileId) {
 #' connect_describe_security_profile(SecurityProfileId, InstanceId)
 #'
 #' @param SecurityProfileId &#91;required&#93; The identifier for the security profle.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3206,6 +4720,12 @@ connect_describe_routing_profile <- function(InstanceId, RoutingProfileId) {
 #'     SecurityProfileName = "string",
 #'     Description = "string",
 #'     Tags = list(
+#'       "string"
+#'     ),
+#'     AllowedAccessControlTags = list(
+#'       "string"
+#'     ),
+#'     TagRestrictedResources = list(
 #'       "string"
 #'     )
 #'   )
@@ -3242,20 +4762,83 @@ connect_describe_security_profile <- function(SecurityProfileId, InstanceId) {
 }
 .connect$operations$describe_security_profile <- connect_describe_security_profile
 
+#' Gets details and status of a traffic distribution group
+#'
+#' @description
+#' Gets details and status of a traffic distribution group.
+#'
+#' @usage
+#' connect_describe_traffic_distribution_group(TrafficDistributionGroupId)
+#'
+#' @param TrafficDistributionGroupId &#91;required&#93; The identifier of the traffic distribution group. This can be the ID or
+#' the ARN if the API is being called in the Region where the traffic
+#' distribution group was created. The ARN must be provided if the call is
+#' from the replicated Region.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficDistributionGroup = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     InstanceArn = "string",
+#'     Status = "CREATION_IN_PROGRESS"|"ACTIVE"|"CREATION_FAILED"|"PENDING_DELETION"|"DELETION_FAILED"|"UPDATE_IN_PROGRESS",
+#'     Tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_traffic_distribution_group(
+#'   TrafficDistributionGroupId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_describe_traffic_distribution_group
+#'
+#' @aliases connect_describe_traffic_distribution_group
+connect_describe_traffic_distribution_group <- function(TrafficDistributionGroupId) {
+  op <- new_operation(
+    name = "DescribeTrafficDistributionGroup",
+    http_method = "GET",
+    http_path = "/traffic-distribution-group/{TrafficDistributionGroupId}",
+    paginator = list()
+  )
+  input <- .connect$describe_traffic_distribution_group_input(TrafficDistributionGroupId = TrafficDistributionGroupId)
+  output <- .connect$describe_traffic_distribution_group_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$describe_traffic_distribution_group <- connect_describe_traffic_distribution_group
+
 #' Describes the specified user account
 #'
 #' @description
-#' Describes the specified user account. You can find the instance ID in
-#' the console (it’s the final part of the ARN). The console does not
-#' display the user IDs. Instead, list the users and note the IDs provided
-#' in the output.
+#' Describes the specified user account. You can [find the instance ID in
+#' the Amazon Connect
+#' console](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' (it’s the final part of the ARN). The console does not display the user
+#' IDs. Instead, list the users and note the IDs provided in the output.
 #'
 #' @usage
 #' connect_describe_user(UserId, InstanceId)
 #'
 #' @param UserId &#91;required&#93; The identifier of the user account.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3268,7 +4851,9 @@ connect_describe_security_profile <- function(SecurityProfileId, InstanceId) {
 #'     IdentityInfo = list(
 #'       FirstName = "string",
 #'       LastName = "string",
-#'       Email = "string"
+#'       Email = "string",
+#'       SecondaryEmail = "string",
+#'       Mobile = "string"
 #'     ),
 #'     PhoneConfig = list(
 #'       PhoneType = "SOFT_PHONE"|"DESK_PHONE",
@@ -3328,8 +4913,10 @@ connect_describe_user <- function(UserId, InstanceId) {
 #' connect_describe_user_hierarchy_group(HierarchyGroupId, InstanceId)
 #'
 #' @param HierarchyGroupId &#91;required&#93; The identifier of the hierarchy group.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3414,8 +5001,10 @@ connect_describe_user_hierarchy_group <- function(HierarchyGroupId, InstanceId) 
 #' @usage
 #' connect_describe_user_hierarchy_structure(InstanceId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3488,8 +5077,10 @@ connect_describe_user_hierarchy_structure <- function(InstanceId) {
 #' @usage
 #' connect_describe_vocabulary(InstanceId, VocabularyId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param VocabularyId &#91;required&#93; The identifier of the custom vocabulary.
 #'
 #' @return
@@ -3500,7 +5091,7 @@ connect_describe_user_hierarchy_structure <- function(InstanceId) {
 #'     Name = "string",
 #'     Id = "string",
 #'     Arn = "string",
-#'     LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN",
+#'     LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"|"en-NZ"|"en-ZA",
 #'     State = "CREATION_IN_PROGRESS"|"ACTIVE"|"CREATION_FAILED"|"DELETE_IN_PROGRESS",
 #'     LastModifiedTime = as.POSIXct(
 #'       "2015-01-01"
@@ -3556,8 +5147,10 @@ connect_describe_vocabulary <- function(InstanceId, VocabularyId) {
 #' @usage
 #' connect_disassociate_approved_origin(InstanceId, Origin)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param Origin &#91;required&#93; The domain URL of the integrated application.
 #'
 #' @return
@@ -3606,8 +5199,10 @@ connect_disassociate_approved_origin <- function(InstanceId, Origin) {
 #' @usage
 #' connect_disassociate_bot(InstanceId, LexBot, LexV2Bot)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param LexBot 
 #' @param LexV2Bot The Amazon Lex V2 bot to disassociate from the instance.
 #'
@@ -3664,8 +5259,10 @@ connect_disassociate_bot <- function(InstanceId, LexBot = NULL, LexV2Bot = NULL)
 #' connect_disassociate_instance_storage_config(InstanceId, AssociationId,
 #'   ResourceType)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param AssociationId &#91;required&#93; The existing association identifier that uniquely identifies the
 #' resource type and storage config for the given instance ID.
 #' @param ResourceType &#91;required&#93; A valid resource type.
@@ -3678,7 +5275,7 @@ connect_disassociate_bot <- function(InstanceId, LexBot = NULL, LexV2Bot = NULL)
 #' svc$disassociate_instance_storage_config(
 #'   InstanceId = "string",
 #'   AssociationId = "string",
-#'   ResourceType = "CHAT_TRANSCRIPTS"|"CALL_RECORDINGS"|"SCHEDULED_REPORTS"|"MEDIA_STREAMS"|"CONTACT_TRACE_RECORDS"|"AGENT_EVENTS"|"REAL_TIME_CONTACT_ANALYSIS_SEGMENTS"
+#'   ResourceType = "CHAT_TRANSCRIPTS"|"CALL_RECORDINGS"|"SCHEDULED_REPORTS"|"MEDIA_STREAMS"|"CONTACT_TRACE_RECORDS"|"AGENT_EVENTS"|"REAL_TIME_CONTACT_ANALYSIS_SEGMENTS"|"ATTACHMENTS"|"CONTACT_EVALUATIONS"
 #' )
 #' ```
 #'
@@ -3712,13 +5309,15 @@ connect_disassociate_instance_storage_config <- function(InstanceId, Association
 #' change.
 #' 
 #' Remove the Lambda function from the dropdown options available in the
-#' relevant contact flow blocks.
+#' relevant flow blocks.
 #'
 #' @usage
 #' connect_disassociate_lambda_function(InstanceId, FunctionArn)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance..
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance..
 #' @param FunctionArn &#91;required&#93; The Amazon Resource Name (ARN) of the Lambda function being
 #' disassociated.
 #'
@@ -3768,10 +5367,13 @@ connect_disassociate_lambda_function <- function(InstanceId, FunctionArn) {
 #' @usage
 #' connect_disassociate_lex_bot(InstanceId, BotName, LexRegion)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param BotName &#91;required&#93; The name of the Amazon Lex bot. Maximum character limit of 50.
-#' @param LexRegion &#91;required&#93; The Region in which the Amazon Lex bot has been created.
+#' @param LexRegion &#91;required&#93; The Amazon Web Services Region in which the Amazon Lex bot has been
+#' created.
 #'
 #' @return
 #' An empty list.
@@ -3807,20 +5409,32 @@ connect_disassociate_lex_bot <- function(InstanceId, BotName, LexRegion) {
 }
 .connect$operations$disassociate_lex_bot <- connect_disassociate_lex_bot
 
-#' Removes the contact flow association from a phone number claimed to your
-#' Amazon Connect instance, if a contact flow association exists
+#' Removes the flow association from a phone number claimed to your Amazon
+#' Connect instance
 #'
 #' @description
-#' Removes the contact flow association from a phone number claimed to your
-#' Amazon Connect instance, if a contact flow association exists.
+#' Removes the flow association from a phone number claimed to your Amazon
+#' Connect instance.
+#' 
+#' If the number is claimed to a traffic distribution group, and you are
+#' calling this API using an instance in the Amazon Web Services Region
+#' where the traffic distribution group was created, you can use either a
+#' full phone number ARN or UUID value for the `PhoneNumberId` URI request
+#' parameter. However, if the number is claimed to a traffic distribution
+#' group and you are calling this API using an instance in the alternate
+#' Amazon Web Services Region associated with the traffic distribution
+#' group, you must provide a full phone number ARN. If a UUID is provided
+#' in this scenario, you will receive a `ResourceNotFoundException`.
 #'
 #' @usage
 #' connect_disassociate_phone_number_contact_flow(PhoneNumberId,
 #'   InstanceId)
 #'
 #' @param PhoneNumberId &#91;required&#93; A unique identifier for the phone number.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #'
 #' @return
 #' An empty list.
@@ -3868,8 +5482,10 @@ connect_disassociate_phone_number_contact_flow <- function(PhoneNumberId, Instan
 #' connect_disassociate_queue_quick_connects(InstanceId, QueueId,
 #'   QuickConnectIds)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param QueueId &#91;required&#93; The identifier for the queue.
 #' @param QuickConnectIds &#91;required&#93; The quick connects to disassociate from the queue.
 #'
@@ -3918,8 +5534,10 @@ connect_disassociate_queue_quick_connects <- function(InstanceId, QueueId, Quick
 #' connect_disassociate_routing_profile_queues(InstanceId,
 #'   RoutingProfileId, QueueReferences)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param RoutingProfileId &#91;required&#93; The identifier of the routing profile.
 #' @param QueueReferences &#91;required&#93; The queues to disassociate from this routing profile.
 #'
@@ -3974,8 +5592,10 @@ connect_disassociate_routing_profile_queues <- function(InstanceId, RoutingProfi
 #' @usage
 #' connect_disassociate_security_key(InstanceId, AssociationId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param AssociationId &#91;required&#93; The existing association identifier that uniquely identifies the
 #' resource type and storage config for the given instance ID.
 #'
@@ -4011,6 +5631,58 @@ connect_disassociate_security_key <- function(InstanceId, AssociationId) {
   return(response)
 }
 .connect$operations$disassociate_security_key <- connect_disassociate_security_key
+
+#' Dismisses contacts from an agent’s CCP and returns the agent to an
+#' available state, which allows the agent to receive a new routed contact
+#'
+#' @description
+#' Dismisses contacts from an agent’s CCP and returns the agent to an
+#' available state, which allows the agent to receive a new routed contact.
+#' Contacts can only be dismissed if they are in a `MISSED`, `ERROR`,
+#' `ENDED`, or `REJECTED` state in the [Agent Event
+#' Stream](https://docs.aws.amazon.com/connect/latest/adminguide/about-contact-states.html).
+#'
+#' @usage
+#' connect_dismiss_user_contact(UserId, InstanceId, ContactId)
+#'
+#' @param UserId &#91;required&#93; The identifier of the user account.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
+#' instanceId in the ARN of the instance.
+#' @param ContactId &#91;required&#93; The identifier of the contact.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$dismiss_user_contact(
+#'   UserId = "string",
+#'   InstanceId = "string",
+#'   ContactId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_dismiss_user_contact
+#'
+#' @aliases connect_dismiss_user_contact
+connect_dismiss_user_contact <- function(UserId, InstanceId, ContactId) {
+  op <- new_operation(
+    name = "DismissUserContact",
+    http_method = "POST",
+    http_path = "/users/{InstanceId}/{UserId}/contact",
+    paginator = list()
+  )
+  input <- .connect$dismiss_user_contact_input(UserId = UserId, InstanceId = InstanceId, ContactId = ContactId)
+  output <- .connect$dismiss_user_contact_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$dismiss_user_contact <- connect_dismiss_user_contact
 
 #' Retrieves the contact attributes for the specified contact
 #'
@@ -4076,22 +5748,42 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #'
 #' @usage
 #' connect_get_current_metric_data(InstanceId, Filters, Groupings,
-#'   CurrentMetrics, NextToken, MaxResults)
+#'   CurrentMetrics, NextToken, MaxResults, SortCriteria)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
-#' @param Filters &#91;required&#93; The queues, up to 100, or channels, to use to filter the metrics
-#' returned. Metric data is retrieved only for the resources associated
-#' with the queues or channels included in the filter. You can include both
-#' queue IDs and queue ARNs in the same request. VOICE, CHAT, and TASK
-#' channels are supported.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param Filters &#91;required&#93; The filters to apply to returned metrics. You can filter up to the
+#' following limits:
+#' 
+#' -   Queues: 100
+#' 
+#' -   Routing profiles: 100
+#' 
+#' -   Channels: 3 (VOICE, CHAT, and TASK channels are supported.)
+#' 
+#' Metric data is retrieved only for the resources associated with the
+#' queues or routing profiles, and by any channels included in the filter.
+#' (You cannot filter by both queue AND routing profile.) You can include
+#' both resource IDs and resource ARNs in the same request.
+#' 
+#' Currently tagging is only supported on the resources that are passed in
+#' the filter.
 #' @param Groupings The grouping applied to the metrics returned. For example, when grouped
 #' by `QUEUE`, the metrics returned apply to each queue rather than
-#' aggregated for all queues. If you group by `CHANNEL`, you should include
-#' a Channels filter. VOICE, CHAT, and TASK channels are supported.
+#' aggregated for all queues.
 #' 
-#' If no `Grouping` is included in the request, a summary of metrics is
-#' returned.
+#' -   If you group by `CHANNEL`, you should include a Channels filter.
+#'     VOICE, CHAT, and TASK channels are supported.
+#' 
+#' -   If you group by `ROUTING_PROFILE`, you must include either a queue
+#'     or routing profile filter. In addition, a routing profile filter is
+#'     required for metrics `CONTACTS_SCHEDULED`, `CONTACTS_IN_QUEUE`, and
+#'     ` OLDEST_CONTACT_AGE`.
+#' 
+#' -   If no `Grouping` is included in the request, a summary of metrics is
+#'     returned.
 #' @param CurrentMetrics &#91;required&#93; The metrics to retrieve. Specify the name and unit for each metric. The
 #' following metrics are available. For a description of all the metrics,
 #' see [Real-time Metrics
@@ -4206,6 +5898,14 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #' Subsequent requests that use the token must use the same request
 #' parameters as the request that generated the token.
 #' @param MaxResults The maximum number of results to return per page.
+#' @param SortCriteria The way to sort the resulting response based on metrics. You can enter
+#' one sort criteria. By default resources are sorted based on
+#' `AGENTS_ONLINE`, `DESCENDING`. The metric collection is sorted based on
+#' the input metrics.
+#' 
+#' Note the following:
+#' 
+#' -   Sorting on `SLOTS_ACTIVE` and `SLOTS_AVAILABLE` is not supported.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4219,7 +5919,11 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #'           Id = "string",
 #'           Arn = "string"
 #'         ),
-#'         Channel = "VOICE"|"CHAT"|"TASK"
+#'         Channel = "VOICE"|"CHAT"|"TASK",
+#'         RoutingProfile = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         )
 #'       ),
 #'       Collections = list(
 #'         list(
@@ -4234,7 +5938,8 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #'   ),
 #'   DataSnapshotTime = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   ApproximateTotalCount = 123
 #' )
 #' ```
 #'
@@ -4248,10 +5953,13 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #'     ),
 #'     Channels = list(
 #'       "VOICE"|"CHAT"|"TASK"
+#'     ),
+#'     RoutingProfiles = list(
+#'       "string"
 #'     )
 #'   ),
 #'   Groupings = list(
-#'     "QUEUE"|"CHANNEL"
+#'     "QUEUE"|"CHANNEL"|"ROUTING_PROFILE"
 #'   ),
 #'   CurrentMetrics = list(
 #'     list(
@@ -4260,7 +5968,13 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #'     )
 #'   ),
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   SortCriteria = list(
+#'     list(
+#'       SortByMetric = "AGENTS_ONLINE"|"AGENTS_AVAILABLE"|"AGENTS_ON_CALL"|"AGENTS_NON_PRODUCTIVE"|"AGENTS_AFTER_CONTACT_WORK"|"AGENTS_ERROR"|"AGENTS_STAFFED"|"CONTACTS_IN_QUEUE"|"OLDEST_CONTACT_AGE"|"CONTACTS_SCHEDULED"|"AGENTS_ON_CONTACT"|"SLOTS_ACTIVE"|"SLOTS_AVAILABLE",
+#'       SortOrder = "ASCENDING"|"DESCENDING"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -4269,14 +5983,14 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #' @rdname connect_get_current_metric_data
 #'
 #' @aliases connect_get_current_metric_data
-connect_get_current_metric_data <- function(InstanceId, Filters, Groupings = NULL, CurrentMetrics, NextToken = NULL, MaxResults = NULL) {
+connect_get_current_metric_data <- function(InstanceId, Filters, Groupings = NULL, CurrentMetrics, NextToken = NULL, MaxResults = NULL, SortCriteria = NULL) {
   op <- new_operation(
     name = "GetCurrentMetricData",
     http_method = "POST",
     http_path = "/metrics/current/{InstanceId}",
     paginator = list()
   )
-  input <- .connect$get_current_metric_data_input(InstanceId = InstanceId, Filters = Filters, Groupings = Groupings, CurrentMetrics = CurrentMetrics, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .connect$get_current_metric_data_input(InstanceId = InstanceId, Filters = Filters, Groupings = Groupings, CurrentMetrics = CurrentMetrics, NextToken = NextToken, MaxResults = MaxResults, SortCriteria = SortCriteria)
   output <- .connect$get_current_metric_data_output()
   config <- get_config()
   svc <- .connect$service(config)
@@ -4297,11 +6011,29 @@ connect_get_current_metric_data <- function(InstanceId, Filters, Groupings = NUL
 #' connect_get_current_user_data(InstanceId, Filters, NextToken,
 #'   MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
-#' @param Filters &#91;required&#93; Filters up to 100 `Queues`, or up to 9 `ContactStates`. The user data is
-#' retrieved only for those users who are associated with the queues and
-#' have contacts that are in the specified `ContactState`.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param Filters &#91;required&#93; The filters to apply to returned user data. You can filter up to the
+#' following limits:
+#' 
+#' -   Queues: 100
+#' 
+#' -   Routing profiles: 100
+#' 
+#' -   Agents: 100
+#' 
+#' -   Contact states: 9
+#' 
+#' -   User hierarchy groups: 1
+#' 
+#' The user data is retrieved for only the specified values/resources in
+#' the filter. A maximum of one filter can be passed from queues, routing
+#' profiles, agents, and user hierarchy groups.
+#' 
+#' Currently tagging is only supported on the resources that are passed in
+#' the filter.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
@@ -4348,7 +6080,8 @@ connect_get_current_metric_data <- function(InstanceId, Filters, Groupings = NUL
 #'         StatusStartTimestamp = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
-#'         StatusArn = "string"
+#'         StatusArn = "string",
+#'         StatusName = "string"
 #'       ),
 #'       AvailableSlotsByChannel = list(
 #'         123
@@ -4363,7 +6096,7 @@ connect_get_current_metric_data <- function(InstanceId, Filters, Groupings = NUL
 #'         list(
 #'           ContactId = "string",
 #'           Channel = "VOICE"|"CHAT"|"TASK",
-#'           InitiationMethod = "INBOUND"|"OUTBOUND"|"TRANSFER"|"QUEUE_TRANSFER"|"CALLBACK"|"API",
+#'           InitiationMethod = "INBOUND"|"OUTBOUND"|"TRANSFER"|"QUEUE_TRANSFER"|"CALLBACK"|"API"|"DISCONNECT"|"MONITOR"|"EXTERNAL_OUTBOUND",
 #'           AgentContactState = "INCOMING"|"PENDING"|"CONNECTING"|"CONNECTED"|"CONNECTED_ONHOLD"|"MISSED"|"ERROR"|"ENDED"|"REJECTED",
 #'           StateStartTimestamp = as.POSIXct(
 #'             "2015-01-01"
@@ -4376,9 +6109,11 @@ connect_get_current_metric_data <- function(InstanceId, Filters, Groupings = NUL
 #'             Arn = "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       NextStatus = "string"
 #'     )
-#'   )
+#'   ),
+#'   ApproximateTotalCount = 123
 #' )
 #' ```
 #'
@@ -4394,6 +6129,15 @@ connect_get_current_metric_data <- function(InstanceId, Filters, Groupings = NUL
 #'       ContactStates = list(
 #'         "INCOMING"|"PENDING"|"CONNECTING"|"CONNECTED"|"CONNECTED_ONHOLD"|"MISSED"|"ERROR"|"ENDED"|"REJECTED"
 #'       )
+#'     ),
+#'     RoutingProfiles = list(
+#'       "string"
+#'     ),
+#'     Agents = list(
+#'       "string"
+#'     ),
+#'     UserHierarchyGroups = list(
+#'       "string"
 #'     )
 #'   ),
 #'   NextToken = "string",
@@ -4437,8 +6181,10 @@ connect_get_current_user_data <- function(InstanceId, Filters, NextToken = NULL,
 #' @usage
 #' connect_get_federation_token(InstanceId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4453,7 +6199,10 @@ connect_get_current_user_data <- function(InstanceId, Filters, NextToken = NULL,
 #'     RefreshTokenExpiration = as.POSIXct(
 #'       "2015-01-01"
 #'     )
-#'   )
+#'   ),
+#'   SignInUrl = "string",
+#'   UserArn = "string",
+#'   UserId = "string"
 #' )
 #' ```
 #'
@@ -4499,8 +6248,10 @@ connect_get_federation_token <- function(InstanceId) {
 #' connect_get_metric_data(InstanceId, StartTime, EndTime, Filters,
 #'   Groupings, HistoricalMetrics, NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param StartTime &#91;required&#93; The timestamp, in UNIX Epoch time format, at which to start the
 #' reporting interval for the retrieval of historical metrics data. The
 #' time must be specified using a multiple of 5 minutes, such as 10:05,
@@ -4711,7 +6462,11 @@ connect_get_federation_token <- function(InstanceId) {
 #'           Id = "string",
 #'           Arn = "string"
 #'         ),
-#'         Channel = "VOICE"|"CHAT"|"TASK"
+#'         Channel = "VOICE"|"CHAT"|"TASK",
+#'         RoutingProfile = list(
+#'           Id = "string",
+#'           Arn = "string"
+#'         )
 #'       ),
 #'       Collections = list(
 #'         list(
@@ -4748,10 +6503,13 @@ connect_get_federation_token <- function(InstanceId) {
 #'     ),
 #'     Channels = list(
 #'       "VOICE"|"CHAT"|"TASK"
+#'     ),
+#'     RoutingProfiles = list(
+#'       "string"
 #'     )
 #'   ),
 #'   Groupings = list(
-#'     "QUEUE"|"CHANNEL"
+#'     "QUEUE"|"CHANNEL"|"ROUTING_PROFILE"
 #'   ),
 #'   HistoricalMetrics = list(
 #'     list(
@@ -4791,6 +6549,476 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 }
 .connect$operations$get_metric_data <- connect_get_metric_data
 
+#' Gets metric data from the specified Amazon Connect instance
+#'
+#' @description
+#' Gets metric data from the specified Amazon Connect instance.
+#' 
+#' [`get_metric_data_v2`][connect_get_metric_data_v2] offers more features
+#' than [`get_metric_data`][connect_get_metric_data], the previous version
+#' of this API. It has new metrics, offers filtering at a metric level, and
+#' offers the ability to filter and group data by channels, queues, routing
+#' profiles, agents, and agent hierarchy levels. It can retrieve historical
+#' data for the last 35 days, in 24-hour intervals.
+#' 
+#' For a description of the historical metrics that are supported by
+#' [`get_metric_data_v2`][connect_get_metric_data_v2] and
+#' [`get_metric_data`][connect_get_metric_data], see [Historical metrics
+#' definitions](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html)
+#' in the *Amazon Connect Administrator's Guide*.
+#' 
+#' This API is not available in the Amazon Web Services GovCloud (US)
+#' Regions.
+#'
+#' @usage
+#' connect_get_metric_data_v2(ResourceArn, StartTime, EndTime, Filters,
+#'   Groupings, Metrics, NextToken, MaxResults)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource. This includes the
+#' `instanceId` an Amazon Connect instance.
+#' @param StartTime &#91;required&#93; The timestamp, in UNIX Epoch time format, at which to start the
+#' reporting interval for the retrieval of historical metrics data. The
+#' time must be before the end time timestamp. The time range between the
+#' start and end time must be less than 24 hours. The start time cannot be
+#' earlier than 35 days before the time of the request. Historical metrics
+#' are available for 35 days.
+#' @param EndTime &#91;required&#93; The timestamp, in UNIX Epoch time format, at which to end the reporting
+#' interval for the retrieval of historical metrics data. The time must be
+#' later than the start time timestamp. It cannot be later than the current
+#' timestamp.
+#' 
+#' The time range between the start and end time must be less than 24
+#' hours.
+#' @param Filters &#91;required&#93; The filters to apply to returned metrics. You can filter on the
+#' following resources:
+#' 
+#' -   Queues
+#' 
+#' -   Routing profiles
+#' 
+#' -   Agents
+#' 
+#' -   Channels
+#' 
+#' -   User hierarchy groups
+#' 
+#' At least one filter must be passed from queues, routing profiles,
+#' agents, or user hierarchy groups.
+#' 
+#' To filter by phone number, see [Create a historical metrics
+#' report](https://docs.aws.amazon.com/connect/latest/adminguide/create-historical-metrics-report.html)
+#' in the *Amazon Connect Administrator's Guide*.
+#' 
+#' Note the following limits:
+#' 
+#' -   **Filter keys**: A maximum of 5 filter keys are supported in a
+#'     single request. Valid filter keys: `QUEUE` | `ROUTING_PROFILE` |
+#'     `AGENT` | `CHANNEL` | `AGENT_HIERARCHY_LEVEL_ONE` |
+#'     `AGENT_HIERARCHY_LEVEL_TWO` | `AGENT_HIERARCHY_LEVEL_THREE` |
+#'     `AGENT_HIERARCHY_LEVEL_FOUR` | `AGENT_HIERARCHY_LEVEL_FIVE`
+#' 
+#' -   **Filter values**: A maximum of 100 filter values are supported in a
+#'     single request. For example, a
+#'     [`get_metric_data_v2`][connect_get_metric_data_v2] request can
+#'     filter by 50 queues, 35 agents, and 15 routing profiles for a total
+#'     of 100 filter values. `VOICE`, `CHAT`, and `TASK` are valid
+#'     `filterValue` for the `CHANNEL` filter key.
+#' @param Groupings The grouping applied to the metrics that are returned. For example, when
+#' results are grouped by queue, the metrics returned are grouped by queue.
+#' The values that are returned apply to the metrics for each queue. They
+#' are not aggregated for all queues.
+#' 
+#' If no grouping is specified, a summary of all metrics is returned.
+#' 
+#' Valid grouping keys: `QUEUE` | `ROUTING_PROFILE` | `AGENT` | `CHANNEL` |
+#' `AGENT_HIERARCHY_LEVEL_ONE` | `AGENT_HIERARCHY_LEVEL_TWO` |
+#' `AGENT_HIERARCHY_LEVEL_THREE` | `AGENT_HIERARCHY_LEVEL_FOUR` |
+#' `AGENT_HIERARCHY_LEVEL_FIVE`
+#' @param Metrics &#91;required&#93; The metrics to retrieve. Specify the name, groupings, and filters for
+#' each metric. The following historical metrics are available. For a
+#' description of each metric, see [Historical metrics
+#' definitions](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html)
+#' in the *Amazon Connect Administrator's Guide*.
+#' 
+#' **AGENT_ADHERENT_TIME**
+#' 
+#' This metric is available only in Amazon Web Services Regions where
+#' [Forecasting, capacity planning, and
+#' scheduling](https://docs.aws.amazon.com/connect/latest/adminguide/regions.html#optimization_region)
+#' is available.
+#' 
+#' Unit: Seconds
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+#' Agent Hierarchy
+#' 
+#' **AGENT_NON_RESPONSE**
+#' 
+#' Unit: Count
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+#' Agent Hierarchy
+#' 
+#' **AGENT_OCCUPANCY**
+#' 
+#' Unit: Percentage
+#' 
+#' Valid groupings and filters: Routing Profile, Agent, Agent Hierarchy
+#' 
+#' **AGENT_SCHEDULE_ADHERENCE**
+#' 
+#' This metric is available only in Amazon Web Services Regions where
+#' [Forecasting, capacity planning, and
+#' scheduling](https://docs.aws.amazon.com/connect/latest/adminguide/regions.html#optimization_region)
+#' is available.
+#' 
+#' Unit: Percent
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+#' Agent Hierarchy
+#' 
+#' **AGENT_SCHEDULED_TIME**
+#' 
+#' This metric is available only in Amazon Web Services Regions where
+#' [Forecasting, capacity planning, and
+#' scheduling](https://docs.aws.amazon.com/connect/latest/adminguide/regions.html#optimization_region)
+#' is available.
+#' 
+#' Unit: Seconds
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+#' Agent Hierarchy
+#' 
+#' **AVG_ABANDON_TIME**
+#' 
+#' Unit: Seconds
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+#' Agent Hierarchy
+#' 
+#' **AVG_AFTER_CONTACT_WORK_TIME**
+#' 
+#' Unit: Seconds
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+#' Agent Hierarchy
+#' 
+#' **AVG_AGENT_CONNECTING_TIME**
+#' 
+#' Unit: Seconds
+#' 
+#' Valid metric filter key: `INITIATION_METHOD`. For now, this metric only
+#' supports the following as `INITIATION_METHOD`: `INBOUND` | `OUTBOUND` |
+#' `CALLBACK` | `API`
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+#' Agent Hierarchy
+#' 
+#' **AVG_HANDLE_TIME**
+#' 
+#' Unit: Seconds
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+#' Agent Hierarchy
+#' 
+#' **AVG_HOLD_TIME**
+#' 
+#' Unit: Seconds
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+#' Agent Hierarchy
+#' 
+#' **AVG_INTERACTION_AND_HOLD_TIME**
+#' 
+#' Unit: Seconds
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+#' Agent Hierarchy
+#' 
+#' **AVG_INTERACTION_TIME**
+#' 
+#' Unit: Seconds
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile
+#' 
+#' **AVG_QUEUE_ANSWER_TIME**
+#' 
+#' Unit: Seconds
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile
+#' 
+#' **CONTACTS_ABANDONED**
+#' 
+#' Unit: Count
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+#' Agent Hierarchy
+#' 
+#' **CONTACTS_CREATED**
+#' 
+#' Unit: Count
+#' 
+#' Valid metric filter key: `INITIATION_METHOD`
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile
+#' 
+#' **CONTACTS_HANDLED**
+#' 
+#' Unit: Count
+#' 
+#' Valid metric filter key: `INITIATION_METHOD`, `DISCONNECT_REASON`
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+#' Agent Hierarchy
+#' 
+#' **CONTACTS_HOLD_ABANDONS**
+#' 
+#' Unit: Count
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+#' Agent Hierarchy
+#' 
+#' **CONTACTS_QUEUED**
+#' 
+#' Unit: Count
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+#' Agent Hierarchy
+#' 
+#' **CONTACTS_TRANSFERRED_OUT**
+#' 
+#' Unit: Count
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+#' Agent Hierarchy
+#' 
+#' **CONTACTS_TRANSFERRED_OUT_BY_AGENT**
+#' 
+#' Unit: Count
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+#' Agent Hierarchy
+#' 
+#' **CONTACTS_TRANSFERRED_OUT_FROM_QUEUE**
+#' 
+#' Unit: Count
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+#' Agent Hierarchy
+#' 
+#' **MAX_QUEUED_TIME**
+#' 
+#' Unit: Seconds
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+#' Agent Hierarchy
+#' 
+#' **SERVICE_LEVEL**
+#' 
+#' You can include up to 20 SERVICE_LEVEL metrics in a request.
+#' 
+#' Unit: Percent
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile
+#' 
+#' Threshold: For `ThresholdValue`, enter any whole number from 1 to 604800
+#' (inclusive), in seconds. For `Comparison`, you must enter `LT` (for
+#' "Less than").
+#' 
+#' **SUM_CONTACTS_ANSWERED_IN_X**
+#' 
+#' Unit: Count
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile
+#' 
+#' Threshold: For `ThresholdValue`, enter any whole number from 1 to 604800
+#' (inclusive), in seconds. For `Comparison`, you must enter `LT` (for
+#' "Less than").
+#' 
+#' **SUM_CONTACTS_ABANDONED_IN_X**
+#' 
+#' Unit: Count
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile
+#' 
+#' Threshold: For `ThresholdValue`, enter any whole number from 1 to 604800
+#' (inclusive), in seconds. For `Comparison`, you must enter `LT` (for
+#' "Less than").
+#' 
+#' **SUM_CONTACTS_DISCONNECTED**
+#' 
+#' Valid metric filter key: `DISCONNECT_REASON`
+#' 
+#' Unit: Count
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile
+#' 
+#' **SUM_RETRY_CALLBACK_ATTEMPTS**
+#' 
+#' Unit: Count
+#' 
+#' Valid groupings and filters: Queue, Channel, Routing Profile
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximum number of results to return per page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   MetricResults = list(
+#'     list(
+#'       Dimensions = list(
+#'         "string"
+#'       ),
+#'       Collections = list(
+#'         list(
+#'           Metric = list(
+#'             Name = "string",
+#'             Threshold = list(
+#'               list(
+#'                 Comparison = "string",
+#'                 ThresholdValue = 123.0
+#'               )
+#'             ),
+#'             MetricFilters = list(
+#'               list(
+#'                 MetricFilterKey = "string",
+#'                 MetricFilterValues = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Value = 123.0
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_metric_data_v2(
+#'   ResourceArn = "string",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Filters = list(
+#'     list(
+#'       FilterKey = "string",
+#'       FilterValues = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   Groupings = list(
+#'     "string"
+#'   ),
+#'   Metrics = list(
+#'     list(
+#'       Name = "string",
+#'       Threshold = list(
+#'         list(
+#'           Comparison = "string",
+#'           ThresholdValue = 123.0
+#'         )
+#'       ),
+#'       MetricFilters = list(
+#'         list(
+#'           MetricFilterKey = "string",
+#'           MetricFilterValues = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_get_metric_data_v2
+#'
+#' @aliases connect_get_metric_data_v2
+connect_get_metric_data_v2 <- function(ResourceArn, StartTime, EndTime, Filters, Groupings = NULL, Metrics, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetMetricDataV2",
+    http_method = "POST",
+    http_path = "/metrics/data",
+    paginator = list()
+  )
+  input <- .connect$get_metric_data_v2_input(ResourceArn = ResourceArn, StartTime = StartTime, EndTime = EndTime, Filters = Filters, Groupings = Groupings, Metrics = Metrics, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .connect$get_metric_data_v2_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$get_metric_data_v2 <- connect_get_metric_data_v2
+
+#' Gets the prompt file
+#'
+#' @description
+#' Gets the prompt file.
+#'
+#' @usage
+#' connect_get_prompt_file(InstanceId, PromptId)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param PromptId &#91;required&#93; A unique identifier for the prompt.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PromptPresignedUrl = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_prompt_file(
+#'   InstanceId = "string",
+#'   PromptId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_get_prompt_file
+#'
+#' @aliases connect_get_prompt_file
+connect_get_prompt_file <- function(InstanceId, PromptId) {
+  op <- new_operation(
+    name = "GetPromptFile",
+    http_method = "GET",
+    http_path = "/prompts/{InstanceId}/{PromptId}/file",
+    paginator = list()
+  )
+  input <- .connect$get_prompt_file_input(InstanceId = InstanceId, PromptId = PromptId)
+  output <- .connect$get_prompt_file_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$get_prompt_file <- connect_get_prompt_file
+
 #' Gets details about a specific task template in the specified Amazon
 #' Connect instance
 #'
@@ -4801,8 +7029,10 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' @usage
 #' connect_get_task_template(InstanceId, TaskTemplateId, SnapshotVersion)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param TaskTemplateId &#91;required&#93; A unique identifier for the task template.
 #' @param SnapshotVersion The system generated version of a task template that is associated with
 #' a task, when the task is created.
@@ -4906,6 +7136,64 @@ connect_get_task_template <- function(InstanceId, TaskTemplateId, SnapshotVersio
 }
 .connect$operations$get_task_template <- connect_get_task_template
 
+#' Retrieves the current traffic distribution for a given traffic
+#' distribution group
+#'
+#' @description
+#' Retrieves the current traffic distribution for a given traffic
+#' distribution group.
+#'
+#' @usage
+#' connect_get_traffic_distribution(Id)
+#'
+#' @param Id &#91;required&#93; The identifier of the traffic distribution group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TelephonyConfig = list(
+#'     Distributions = list(
+#'       list(
+#'         Region = "string",
+#'         Percentage = 123
+#'       )
+#'     )
+#'   ),
+#'   Id = "string",
+#'   Arn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_traffic_distribution(
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_get_traffic_distribution
+#'
+#' @aliases connect_get_traffic_distribution
+connect_get_traffic_distribution <- function(Id) {
+  op <- new_operation(
+    name = "GetTrafficDistribution",
+    http_method = "GET",
+    http_path = "/traffic-distribution/{Id}",
+    paginator = list()
+  )
+  input <- .connect$get_traffic_distribution_input(Id = Id)
+  output <- .connect$get_traffic_distribution_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$get_traffic_distribution <- connect_get_traffic_distribution
+
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
@@ -4919,8 +7207,10 @@ connect_get_task_template <- function(InstanceId, TaskTemplateId, SnapshotVersio
 #' connect_list_agent_statuses(InstanceId, NextToken, MaxResults,
 #'   AgentStatusTypes)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
@@ -4990,8 +7280,10 @@ connect_list_agent_statuses <- function(InstanceId, NextToken = NULL, MaxResults
 #' @usage
 #' connect_list_approved_origins(InstanceId, NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
@@ -5047,13 +7339,16 @@ connect_list_approved_origins <- function(InstanceId, NextToken = NULL, MaxResul
 #' change.
 #' 
 #' For the specified version of Amazon Lex, returns a paginated list of all
-#' the Amazon Lex bots currently associated with the instance.
+#' the Amazon Lex bots currently associated with the instance. Use this API
+#' to returns both Amazon Lex V1 and V2 bots.
 #'
 #' @usage
 #' connect_list_bots(InstanceId, NextToken, MaxResults, LexVersion)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
@@ -5111,24 +7406,106 @@ connect_list_bots <- function(InstanceId, NextToken = NULL, MaxResults = NULL, L
 }
 .connect$operations$list_bots <- connect_list_bots
 
-#' Provides information about the contact flow modules for the specified
-#' Amazon Connect instance
+#' Lists contact evaluations in the specified Amazon Connect instance
 #'
 #' @description
-#' Provides information about the contact flow modules for the specified
-#' Amazon Connect instance.
+#' Lists contact evaluations in the specified Amazon Connect instance.
+#'
+#' @usage
+#' connect_list_contact_evaluations(InstanceId, ContactId, NextToken)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param ContactId &#91;required&#93; The identifier of the contact in this instance of Amazon Connect.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' 
+#' This is not expected to be set because the value returned in the
+#' previous response is always null.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EvaluationSummaryList = list(
+#'     list(
+#'       EvaluationId = "string",
+#'       EvaluationArn = "string",
+#'       EvaluationFormTitle = "string",
+#'       EvaluationFormId = "string",
+#'       Status = "DRAFT"|"SUBMITTED",
+#'       EvaluatorArn = "string",
+#'       Score = list(
+#'         Percentage = 123.0,
+#'         NotApplicable = TRUE|FALSE,
+#'         AutomaticFail = TRUE|FALSE
+#'       ),
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_contact_evaluations(
+#'   InstanceId = "string",
+#'   ContactId = "string",
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_list_contact_evaluations
+#'
+#' @aliases connect_list_contact_evaluations
+connect_list_contact_evaluations <- function(InstanceId, ContactId, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListContactEvaluations",
+    http_method = "GET",
+    http_path = "/contact-evaluations/{InstanceId}",
+    paginator = list()
+  )
+  input <- .connect$list_contact_evaluations_input(InstanceId = InstanceId, ContactId = ContactId, NextToken = NextToken)
+  output <- .connect$list_contact_evaluations_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$list_contact_evaluations <- connect_list_contact_evaluations
+
+#' Provides information about the flow modules for the specified Amazon
+#' Connect instance
+#'
+#' @description
+#' Provides information about the flow modules for the specified Amazon
+#' Connect instance.
 #'
 #' @usage
 #' connect_list_contact_flow_modules(InstanceId, NextToken, MaxResults,
 #'   ContactFlowModuleState)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
 #' @param MaxResults The maximum number of results to return per page.
-#' @param ContactFlowModuleState The state of the contact flow module.
+#' @param ContactFlowModuleState The state of the flow module.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5178,32 +7555,34 @@ connect_list_contact_flow_modules <- function(InstanceId, NextToken = NULL, MaxR
 }
 .connect$operations$list_contact_flow_modules <- connect_list_contact_flow_modules
 
-#' Provides information about the contact flows for the specified Amazon
-#' Connect instance
+#' Provides information about the flows for the specified Amazon Connect
+#' instance
 #'
 #' @description
-#' Provides information about the contact flows for the specified Amazon
-#' Connect instance.
+#' Provides information about the flows for the specified Amazon Connect
+#' instance.
 #' 
-#' You can also create and update contact flows using the [Amazon Connect
-#' Flow
+#' You can also create and update flows using the [Amazon Connect Flow
 #' language](https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html).
 #' 
-#' For more information about contact flows, see [Contact
-#' Flows](https://docs.aws.amazon.com/connect/latest/adminguide/concepts-contact-flows.html)
+#' For more information about flows, see
+#' [Flows](https://docs.aws.amazon.com/connect/latest/adminguide/concepts-contact-flows.html)
 #' in the *Amazon Connect Administrator Guide*.
 #'
 #' @usage
 #' connect_list_contact_flows(InstanceId, ContactFlowTypes, NextToken,
 #'   MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
-#' @param ContactFlowTypes The type of contact flow.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param ContactFlowTypes The type of flow.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
-#' @param MaxResults The maximum number of results to return per page.
+#' @param MaxResults The maximum number of results to return per page. The default MaxResult
+#' size is 100.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5270,8 +7649,10 @@ connect_list_contact_flows <- function(InstanceId, ContactFlowTypes = NULL, Next
 #' connect_list_contact_references(InstanceId, ContactId, ReferenceTypes,
 #'   NextToken)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param ContactId &#91;required&#93; The identifier of the initial contact.
 #' @param ReferenceTypes &#91;required&#93; The type of reference.
 #' @param NextToken The token for the next set of results. Use the value returned in the
@@ -5362,8 +7743,10 @@ connect_list_contact_references <- function(InstanceId, ContactId, ReferenceType
 #' connect_list_default_vocabularies(InstanceId, LanguageCode, MaxResults,
 #'   NextToken)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param LanguageCode The language code of the vocabulary entries. For a list of languages and
 #' their corresponding language codes, see [What is Amazon
 #' Transcribe?](https://docs.aws.amazon.com/transcribe/latest/dg/what-is.html)
@@ -5379,7 +7762,7 @@ connect_list_contact_references <- function(InstanceId, ContactId, ReferenceType
 #'   DefaultVocabularyList = list(
 #'     list(
 #'       InstanceId = "string",
-#'       LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN",
+#'       LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"|"en-NZ"|"en-ZA",
 #'       VocabularyId = "string",
 #'       VocabularyName = "string"
 #'     )
@@ -5392,7 +7775,7 @@ connect_list_contact_references <- function(InstanceId, ContactId, ReferenceType
 #' ```
 #' svc$list_default_vocabularies(
 #'   InstanceId = "string",
-#'   LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN",
+#'   LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"|"en-NZ"|"en-ZA",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -5420,6 +7803,161 @@ connect_list_default_vocabularies <- function(InstanceId, LanguageCode = NULL, M
 }
 .connect$operations$list_default_vocabularies <- connect_list_default_vocabularies
 
+#' Lists versions of an evaluation form in the specified Amazon Connect
+#' instance
+#'
+#' @description
+#' Lists versions of an evaluation form in the specified Amazon Connect
+#' instance.
+#'
+#' @usage
+#' connect_list_evaluation_form_versions(InstanceId, EvaluationFormId,
+#'   MaxResults, NextToken)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param EvaluationFormId &#91;required&#93; The unique identifier for the evaluation form.
+#' @param MaxResults The maximum number of results to return per page.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EvaluationFormVersionSummaryList = list(
+#'     list(
+#'       EvaluationFormArn = "string",
+#'       EvaluationFormId = "string",
+#'       EvaluationFormVersion = 123,
+#'       Locked = TRUE|FALSE,
+#'       Status = "DRAFT"|"ACTIVE",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreatedBy = "string",
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedBy = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_evaluation_form_versions(
+#'   InstanceId = "string",
+#'   EvaluationFormId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_list_evaluation_form_versions
+#'
+#' @aliases connect_list_evaluation_form_versions
+connect_list_evaluation_form_versions <- function(InstanceId, EvaluationFormId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListEvaluationFormVersions",
+    http_method = "GET",
+    http_path = "/evaluation-forms/{InstanceId}/{EvaluationFormId}/versions",
+    paginator = list()
+  )
+  input <- .connect$list_evaluation_form_versions_input(InstanceId = InstanceId, EvaluationFormId = EvaluationFormId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .connect$list_evaluation_form_versions_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$list_evaluation_form_versions <- connect_list_evaluation_form_versions
+
+#' Lists evaluation forms in the specified Amazon Connect instance
+#'
+#' @description
+#' Lists evaluation forms in the specified Amazon Connect instance.
+#'
+#' @usage
+#' connect_list_evaluation_forms(InstanceId, MaxResults, NextToken)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param MaxResults The maximum number of results to return per page.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EvaluationFormSummaryList = list(
+#'     list(
+#'       EvaluationFormId = "string",
+#'       EvaluationFormArn = "string",
+#'       Title = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreatedBy = "string",
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedBy = "string",
+#'       LastActivatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastActivatedBy = "string",
+#'       LatestVersion = 123,
+#'       ActiveVersion = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_evaluation_forms(
+#'   InstanceId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_list_evaluation_forms
+#'
+#' @aliases connect_list_evaluation_forms
+connect_list_evaluation_forms <- function(InstanceId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListEvaluationForms",
+    http_method = "GET",
+    http_path = "/evaluation-forms/{InstanceId}",
+    paginator = list()
+  )
+  input <- .connect$list_evaluation_forms_input(InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .connect$list_evaluation_forms_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$list_evaluation_forms <- connect_list_evaluation_forms
+
 #' Provides information about the hours of operation for the specified
 #' Amazon Connect instance
 #'
@@ -5435,12 +7973,15 @@ connect_list_default_vocabularies <- function(InstanceId, LanguageCode = NULL, M
 #' @usage
 #' connect_list_hours_of_operations(InstanceId, NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
-#' @param MaxResults The maximum number of results to return per page.
+#' @param MaxResults The maximum number of results to return per page. The default MaxResult
+#' size is 100.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5500,8 +8041,10 @@ connect_list_hours_of_operations <- function(InstanceId, NextToken = NULL, MaxRe
 #' @usage
 #' connect_list_instance_attributes(InstanceId, NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
@@ -5513,7 +8056,7 @@ connect_list_hours_of_operations <- function(InstanceId, NextToken = NULL, MaxRe
 #' list(
 #'   Attributes = list(
 #'     list(
-#'       AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA"|"MULTI_PARTY_CONFERENCE"|"HIGH_VOLUME_OUTBOUND",
+#'       AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA"|"MULTI_PARTY_CONFERENCE"|"HIGH_VOLUME_OUTBOUND"|"ENHANCED_CONTACT_MONITORING",
 #'       Value = "string"
 #'     )
 #'   ),
@@ -5566,8 +8109,10 @@ connect_list_instance_attributes <- function(InstanceId, NextToken = NULL, MaxRe
 #' connect_list_instance_storage_configs(InstanceId, ResourceType,
 #'   NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param ResourceType &#91;required&#93; A valid resource type.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
@@ -5614,7 +8159,7 @@ connect_list_instance_attributes <- function(InstanceId, NextToken = NULL, MaxRe
 #' ```
 #' svc$list_instance_storage_configs(
 #'   InstanceId = "string",
-#'   ResourceType = "CHAT_TRANSCRIPTS"|"CALL_RECORDINGS"|"SCHEDULED_REPORTS"|"MEDIA_STREAMS"|"CONTACT_TRACE_RECORDS"|"AGENT_EVENTS"|"REAL_TIME_CONTACT_ANALYSIS_SEGMENTS",
+#'   ResourceType = "CHAT_TRANSCRIPTS"|"CALL_RECORDINGS"|"SCHEDULED_REPORTS"|"MEDIA_STREAMS"|"CONTACT_TRACE_RECORDS"|"AGENT_EVENTS"|"REAL_TIME_CONTACT_ANALYSIS_SEGMENTS"|"ATTACHMENTS"|"CONTACT_EVALUATIONS",
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -5726,8 +8271,10 @@ connect_list_instances <- function(NextToken = NULL, MaxResults = NULL) {
 #' connect_list_integration_associations(InstanceId, IntegrationType,
 #'   NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param IntegrationType The integration type.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
@@ -5743,7 +8290,7 @@ connect_list_instances <- function(NextToken = NULL, MaxResults = NULL) {
 #'       IntegrationAssociationId = "string",
 #'       IntegrationAssociationArn = "string",
 #'       InstanceId = "string",
-#'       IntegrationType = "EVENT"|"VOICE_ID"|"PINPOINT_APP"|"WISDOM_ASSISTANT"|"WISDOM_KNOWLEDGE_BASE",
+#'       IntegrationType = "EVENT"|"VOICE_ID"|"PINPOINT_APP"|"WISDOM_ASSISTANT"|"WISDOM_KNOWLEDGE_BASE"|"CASES_DOMAIN",
 #'       IntegrationArn = "string",
 #'       SourceApplicationUrl = "string",
 #'       SourceApplicationName = "string",
@@ -5758,7 +8305,7 @@ connect_list_instances <- function(NextToken = NULL, MaxResults = NULL) {
 #' ```
 #' svc$list_integration_associations(
 #'   InstanceId = "string",
-#'   IntegrationType = "EVENT"|"VOICE_ID"|"PINPOINT_APP"|"WISDOM_ASSISTANT"|"WISDOM_KNOWLEDGE_BASE",
+#'   IntegrationType = "EVENT"|"VOICE_ID"|"PINPOINT_APP"|"WISDOM_ASSISTANT"|"WISDOM_KNOWLEDGE_BASE"|"CASES_DOMAIN",
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -5794,13 +8341,15 @@ connect_list_integration_associations <- function(InstanceId, IntegrationType = 
 #' change.
 #' 
 #' Returns a paginated list of all Lambda functions that display in the
-#' dropdown options in the relevant contact flow blocks.
+#' dropdown options in the relevant flow blocks.
 #'
 #' @usage
 #' connect_list_lambda_functions(InstanceId, NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
@@ -5855,14 +8404,17 @@ connect_list_lambda_functions <- function(InstanceId, NextToken = NULL, MaxResul
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
-#' Returns a paginated list of all the Amazon Lex bots currently associated
-#' with the instance.
+#' Returns a paginated list of all the Amazon Lex V1 bots currently
+#' associated with the instance. To return both Amazon Lex V1 and V2 bots,
+#' use the [`list_bots`][connect_list_bots] API.
 #'
 #' @usage
 #' connect_list_lex_bots(InstanceId, NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
@@ -5923,21 +8475,32 @@ connect_list_lex_bots <- function(InstanceId, NextToken = NULL, MaxResults = NUL
 #' 
 #' For more information about phone numbers, see [Set Up Phone Numbers for
 #' Your Contact
-#' Center](https://docs.aws.amazon.com/connect/latest/adminguide/contact-center-phone-number.html)
+#' Center](https://docs.aws.amazon.com/connect/latest/adminguide/ag-overview-numbers.html)
 #' in the *Amazon Connect Administrator Guide*.
+#' 
+#' The phone number `Arn` value that is returned from each of the items in
+#' the
+#' [PhoneNumberSummaryList](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPhoneNumbers.html#connect-ListPhoneNumbers-response-PhoneNumberSummaryList)
+#' cannot be used to tag phone number resources. It will fail with a
+#' `ResourceNotFoundException`. Instead, use the
+#' [`list_phone_numbers_v2`][connect_list_phone_numbers_v2] API. It returns
+#' the new phone number ARN that can be used to tag phone number resources.
 #'
 #' @usage
 #' connect_list_phone_numbers(InstanceId, PhoneNumberTypes,
 #'   PhoneNumberCountryCodes, NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param PhoneNumberTypes The type of phone number.
 #' @param PhoneNumberCountryCodes The ISO country code.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
-#' @param MaxResults The maximum number of results to return per page.
+#' @param MaxResults The maximum number of results to return per page. The default MaxResult
+#' size is 100.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5993,24 +8556,29 @@ connect_list_phone_numbers <- function(InstanceId, PhoneNumberTypes = NULL, Phon
 }
 .connect$operations$list_phone_numbers <- connect_list_phone_numbers
 
-#' Lists phone numbers claimed to your Amazon Connect instance
+#' Lists phone numbers claimed to your Amazon Connect instance or traffic
+#' distribution group
 #'
 #' @description
-#' Lists phone numbers claimed to your Amazon Connect instance.
+#' Lists phone numbers claimed to your Amazon Connect instance or traffic
+#' distribution group. If the provided `TargetArn` is a traffic
+#' distribution group, you can call this API in both Amazon Web Services
+#' Regions associated with traffic distribution group.
 #' 
 #' For more information about phone numbers, see [Set Up Phone Numbers for
 #' Your Contact
-#' Center](https://docs.aws.amazon.com/connect/latest/adminguide/contact-center-phone-number.html)
+#' Center](https://docs.aws.amazon.com/connect/latest/adminguide/ag-overview-numbers.html)
 #' in the *Amazon Connect Administrator Guide*.
 #'
 #' @usage
 #' connect_list_phone_numbers_v2(TargetArn, MaxResults, NextToken,
 #'   PhoneNumberCountryCodes, PhoneNumberTypes, PhoneNumberPrefix)
 #'
-#' @param TargetArn The Amazon Resource Name (ARN) for Amazon Connect instances that phone
-#' numbers are claimed to. If `TargetArn` input is not provided, this API
-#' lists numbers claimed to all the Amazon Connect instances belonging to
-#' your account.
+#' @param TargetArn The Amazon Resource Name (ARN) for Amazon Connect instances or traffic
+#' distribution groups that phone numbers are claimed to. If `TargetArn`
+#' input is not provided, this API lists numbers claimed to all the Amazon
+#' Connect instances belonging to your account in the same Amazon Web
+#' Services Region as the request.
 #' @param MaxResults The maximum number of results to return per page.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
@@ -6090,7 +8658,8 @@ connect_list_phone_numbers_v2 <- function(TargetArn = NULL, MaxResults = NULL, N
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
-#' @param MaxResults The maximum number of results to return per page.
+#' @param MaxResults The maximum number of results to return per page. The default MaxResult
+#' size is 100.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6151,13 +8720,16 @@ connect_list_prompts <- function(InstanceId, NextToken = NULL, MaxResults = NULL
 #' connect_list_queue_quick_connects(InstanceId, QueueId, NextToken,
 #'   MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param QueueId &#91;required&#93; The identifier for the queue.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
-#' @param MaxResults The maximum number of results to return per page.
+#' @param MaxResults The maximum number of results to return per page. The default MaxResult
+#' size is 100.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6226,13 +8798,16 @@ connect_list_queue_quick_connects <- function(InstanceId, QueueId, NextToken = N
 #' @usage
 #' connect_list_queues(InstanceId, QueueTypes, NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param QueueTypes The type of queue.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
-#' @param MaxResults The maximum number of results to return per page.
+#' @param MaxResults The maximum number of results to return per page. The default MaxResult
+#' size is 100.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6295,12 +8870,15 @@ connect_list_queues <- function(InstanceId, QueueTypes = NULL, NextToken = NULL,
 #' connect_list_quick_connects(InstanceId, NextToken, MaxResults,
 #'   QuickConnectTypes)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
-#' @param MaxResults The maximum number of results to return per page.
+#' @param MaxResults The maximum number of results to return per page. The default MaxResult
+#' size is 100.
 #' @param QuickConnectTypes The type of quick connect. In the Amazon Connect console, when you
 #' create a quick connect, you are prompted to assign one of the following
 #' types: Agent (USER), External (PHONE_NUMBER), or Queue (QUEUE).
@@ -6364,13 +8942,16 @@ connect_list_quick_connects <- function(InstanceId, NextToken = NULL, MaxResults
 #' connect_list_routing_profile_queues(InstanceId, RoutingProfileId,
 #'   NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param RoutingProfileId &#91;required&#93; The identifier of the routing profile.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
-#' @param MaxResults The maximum number of results to return per page.
+#' @param MaxResults The maximum number of results to return per page. The default MaxResult
+#' size is 100.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6438,12 +9019,15 @@ connect_list_routing_profile_queues <- function(InstanceId, RoutingProfileId, Ne
 #' @usage
 #' connect_list_routing_profiles(InstanceId, NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
-#' @param MaxResults The maximum number of results to return per page.
+#' @param MaxResults The maximum number of results to return per page. The default MaxResult
+#' size is 100.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6491,6 +9075,87 @@ connect_list_routing_profiles <- function(InstanceId, NextToken = NULL, MaxResul
 }
 .connect$operations$list_routing_profiles <- connect_list_routing_profiles
 
+#' List all rules for the specified Amazon Connect instance
+#'
+#' @description
+#' List all rules for the specified Amazon Connect instance.
+#'
+#' @usage
+#' connect_list_rules(InstanceId, PublishStatus, EventSourceName,
+#'   MaxResults, NextToken)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param PublishStatus The publish status of the rule.
+#' @param EventSourceName The name of the event source.
+#' @param MaxResults The maximum number of results to return per page.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuleSummaryList = list(
+#'     list(
+#'       Name = "string",
+#'       RuleId = "string",
+#'       RuleArn = "string",
+#'       EventSourceName = "OnPostCallAnalysisAvailable"|"OnRealTimeCallAnalysisAvailable"|"OnPostChatAnalysisAvailable"|"OnZendeskTicketCreate"|"OnZendeskTicketStatusUpdate"|"OnSalesforceCaseCreate"|"OnContactEvaluationSubmit",
+#'       PublishStatus = "DRAFT"|"PUBLISHED",
+#'       ActionSummaries = list(
+#'         list(
+#'           ActionType = "CREATE_TASK"|"ASSIGN_CONTACT_CATEGORY"|"GENERATE_EVENTBRIDGE_EVENT"|"SEND_NOTIFICATION"
+#'         )
+#'       ),
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_rules(
+#'   InstanceId = "string",
+#'   PublishStatus = "DRAFT"|"PUBLISHED",
+#'   EventSourceName = "OnPostCallAnalysisAvailable"|"OnRealTimeCallAnalysisAvailable"|"OnPostChatAnalysisAvailable"|"OnZendeskTicketCreate"|"OnZendeskTicketStatusUpdate"|"OnSalesforceCaseCreate"|"OnContactEvaluationSubmit",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_list_rules
+#'
+#' @aliases connect_list_rules
+connect_list_rules <- function(InstanceId, PublishStatus = NULL, EventSourceName = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListRules",
+    http_method = "GET",
+    http_path = "/rules/{InstanceId}",
+    paginator = list()
+  )
+  input <- .connect$list_rules_input(InstanceId = InstanceId, PublishStatus = PublishStatus, EventSourceName = EventSourceName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .connect$list_rules_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$list_rules <- connect_list_rules
+
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
@@ -6504,8 +9169,10 @@ connect_list_routing_profiles <- function(InstanceId, NextToken = NULL, MaxResul
 #' @usage
 #' connect_list_security_keys(InstanceId, NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
@@ -6573,8 +9240,10 @@ connect_list_security_keys <- function(InstanceId, NextToken = NULL, MaxResults 
 #'   NextToken, MaxResults)
 #'
 #' @param SecurityProfileId &#91;required&#93; The identifier for the security profle.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
@@ -6637,12 +9306,15 @@ connect_list_security_profile_permissions <- function(SecurityProfileId, Instanc
 #' @usage
 #' connect_list_security_profiles(InstanceId, NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
-#' @param MaxResults The maximum number of results to return per page.
+#' @param MaxResults The maximum number of results to return per page. The default MaxResult
+#' size is 100.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6703,7 +9375,11 @@ connect_list_security_profiles <- function(InstanceId, NextToken = NULL, MaxResu
 #' @usage
 #' connect_list_tags_for_resource(resourceArn)
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource. All Amazon Connect
+#' resources (instances, queues, flows, routing profiles, etc) have an ARN.
+#' To locate the ARN for an instance, for example, see [Find your Amazon
+#' Connect instance
+#' ID/ARN](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -6753,8 +9429,10 @@ connect_list_tags_for_resource <- function(resourceArn) {
 #' connect_list_task_templates(InstanceId, NextToken, MaxResults, Status,
 #'   Name)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
@@ -6826,6 +9504,72 @@ connect_list_task_templates <- function(InstanceId, NextToken = NULL, MaxResults
 }
 .connect$operations$list_task_templates <- connect_list_task_templates
 
+#' Lists traffic distribution groups
+#'
+#' @description
+#' Lists traffic distribution groups.
+#'
+#' @usage
+#' connect_list_traffic_distribution_groups(MaxResults, NextToken,
+#'   InstanceId)
+#'
+#' @param MaxResults The maximum number of results to return per page.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param InstanceId The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   TrafficDistributionGroupSummaryList = list(
+#'     list(
+#'       Id = "string",
+#'       Arn = "string",
+#'       Name = "string",
+#'       InstanceArn = "string",
+#'       Status = "CREATION_IN_PROGRESS"|"ACTIVE"|"CREATION_FAILED"|"PENDING_DELETION"|"DELETION_FAILED"|"UPDATE_IN_PROGRESS"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_traffic_distribution_groups(
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   InstanceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_list_traffic_distribution_groups
+#'
+#' @aliases connect_list_traffic_distribution_groups
+connect_list_traffic_distribution_groups <- function(MaxResults = NULL, NextToken = NULL, InstanceId = NULL) {
+  op <- new_operation(
+    name = "ListTrafficDistributionGroups",
+    http_method = "GET",
+    http_path = "/traffic-distribution-groups",
+    paginator = list()
+  )
+  input <- .connect$list_traffic_distribution_groups_input(MaxResults = MaxResults, NextToken = NextToken, InstanceId = InstanceId)
+  output <- .connect$list_traffic_distribution_groups_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$list_traffic_distribution_groups <- connect_list_traffic_distribution_groups
+
 #' Lists the use cases for the integration association
 #'
 #' @description
@@ -6835,8 +9579,10 @@ connect_list_task_templates <- function(InstanceId, NextToken = NULL, MaxResults
 #' connect_list_use_cases(InstanceId, IntegrationAssociationId, NextToken,
 #'   MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param IntegrationAssociationId &#91;required&#93; The identifier for the integration association.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
@@ -6904,12 +9650,15 @@ connect_list_use_cases <- function(InstanceId, IntegrationAssociationId, NextTok
 #' @usage
 #' connect_list_user_hierarchy_groups(InstanceId, NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
-#' @param MaxResults The maximum number of results to return per page.
+#' @param MaxResults The maximum number of results to return per page. The default MaxResult
+#' size is 100.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6967,12 +9716,15 @@ connect_list_user_hierarchy_groups <- function(InstanceId, NextToken = NULL, Max
 #' @usage
 #' connect_list_users(InstanceId, NextToken, MaxResults)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
-#' @param MaxResults The maximum number of results to return per page.
+#' @param MaxResults The maximum number of results to return per page. The default MaxResult
+#' size is 100.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7020,6 +9772,74 @@ connect_list_users <- function(InstanceId, NextToken = NULL, MaxResults = NULL) 
 }
 .connect$operations$list_users <- connect_list_users
 
+#' Initiates silent monitoring of a contact
+#'
+#' @description
+#' Initiates silent monitoring of a contact. The Contact Control Panel
+#' (CCP) of the user specified by *userId* will be set to silent monitoring
+#' mode on the contact.
+#'
+#' @usage
+#' connect_monitor_contact(InstanceId, ContactId, UserId,
+#'   AllowedMonitorCapabilities, ClientToken)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
+#' instanceId in the ARN of the instance.
+#' @param ContactId &#91;required&#93; The identifier of the contact.
+#' @param UserId &#91;required&#93; The identifier of the user account.
+#' @param AllowedMonitorCapabilities Specify which monitoring actions the user is allowed to take. For
+#' example, whether the user is allowed to escalate from silent monitoring
+#' to barge.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContactId = "string",
+#'   ContactArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$monitor_contact(
+#'   InstanceId = "string",
+#'   ContactId = "string",
+#'   UserId = "string",
+#'   AllowedMonitorCapabilities = list(
+#'     "SILENT_MONITOR"|"BARGE"
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_monitor_contact
+#'
+#' @aliases connect_monitor_contact
+connect_monitor_contact <- function(InstanceId, ContactId, UserId, AllowedMonitorCapabilities = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "MonitorContact",
+    http_method = "POST",
+    http_path = "/contact/monitor",
+    paginator = list()
+  )
+  input <- .connect$monitor_contact_input(InstanceId = InstanceId, ContactId = ContactId, UserId = UserId, AllowedMonitorCapabilities = AllowedMonitorCapabilities, ClientToken = ClientToken)
+  output <- .connect$monitor_contact_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$monitor_contact <- connect_monitor_contact
+
 #' Changes the current status of a user or agent in Amazon Connect
 #'
 #' @description
@@ -7037,8 +9857,10 @@ connect_list_users <- function(InstanceId, NextToken = NULL, MaxResults = NULL) 
 #' connect_put_user_status(UserId, InstanceId, AgentStatusId)
 #'
 #' @param UserId &#91;required&#93; The identifier of the user.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param AgentStatusId &#91;required&#93; The identifier of the agent status.
 #'
 #' @return
@@ -7076,17 +9898,31 @@ connect_put_user_status <- function(UserId, InstanceId, AgentStatusId) {
 .connect$operations$put_user_status <- connect_put_user_status
 
 #' Releases a phone number previously claimed to an Amazon Connect instance
+#' or traffic distribution group
 #'
 #' @description
-#' Releases a phone number previously claimed to an Amazon Connect
-#' instance.
+#' Releases a phone number previously claimed to an Amazon Connect instance
+#' or traffic distribution group. You can call this API only in the Amazon
+#' Web Services Region where the number was claimed.
+#' 
+#' To release phone numbers from a traffic distribution group, use the
+#' [`release_phone_number`][connect_release_phone_number] API, not the
+#' Amazon Connect console.
+#' 
+#' After releasing a phone number, the phone number enters into a cooldown
+#' period of 30 days. It cannot be searched for or claimed again until the
+#' period has ended. If you accidentally release a phone number, contact
+#' Amazon Web Services Support.
 #'
 #' @usage
 #' connect_release_phone_number(PhoneNumberId, ClientToken)
 #'
 #' @param PhoneNumberId &#91;required&#93; A unique identifier for the phone number.
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #'
 #' @return
 #' An empty list.
@@ -7121,6 +9957,78 @@ connect_release_phone_number <- function(PhoneNumberId, ClientToken = NULL) {
 }
 .connect$operations$release_phone_number <- connect_release_phone_number
 
+#' Replicates an Amazon Connect instance in the specified Amazon Web
+#' Services Region
+#'
+#' @description
+#' Replicates an Amazon Connect instance in the specified Amazon Web
+#' Services Region.
+#' 
+#' For more information about replicating an Amazon Connect instance, see
+#' [Create a replica of your existing Amazon Connect
+#' instance](https://docs.aws.amazon.com/connect/latest/adminguide/create-replica-connect-instance.html)
+#' in the *Amazon Connect Administrator Guide*.
+#'
+#' @usage
+#' connect_replicate_instance(InstanceId, ReplicaRegion, ClientToken,
+#'   ReplicaAlias)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance. You can provide the
+#' `InstanceId`, or the entire ARN.
+#' @param ReplicaRegion &#91;required&#93; The Amazon Web Services Region where to replicate the Amazon Connect
+#' instance.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
+#' @param ReplicaAlias &#91;required&#93; The alias for the replicated instance. The `ReplicaAlias` must be
+#' unique.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   Arn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$replicate_instance(
+#'   InstanceId = "string",
+#'   ReplicaRegion = "string",
+#'   ClientToken = "string",
+#'   ReplicaAlias = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_replicate_instance
+#'
+#' @aliases connect_replicate_instance
+connect_replicate_instance <- function(InstanceId, ReplicaRegion, ClientToken = NULL, ReplicaAlias) {
+  op <- new_operation(
+    name = "ReplicateInstance",
+    http_method = "POST",
+    http_path = "/instance/{InstanceId}/replicate",
+    paginator = list()
+  )
+  input <- .connect$replicate_instance_input(InstanceId = InstanceId, ReplicaRegion = ReplicaRegion, ClientToken = ClientToken, ReplicaAlias = ReplicaAlias)
+  output <- .connect$replicate_instance_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$replicate_instance <- connect_replicate_instance
+
 #' When a contact is being recorded, and the recording has been suspended
 #' using SuspendContactRecording, this API resumes recording the call
 #'
@@ -7134,8 +10042,10 @@ connect_release_phone_number <- function(PhoneNumberId, ClientToken = NULL) {
 #' connect_resume_contact_recording(InstanceId, ContactId,
 #'   InitialContactId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param ContactId &#91;required&#93; The identifier of the contact.
 #' @param InitialContactId &#91;required&#93; The identifier of the contact. This is the identifier of the contact
 #' associated with the first interaction with the contact center.
@@ -7175,19 +10085,22 @@ connect_resume_contact_recording <- function(InstanceId, ContactId, InitialConta
 .connect$operations$resume_contact_recording <- connect_resume_contact_recording
 
 #' Searches for available phone numbers that you can claim to your Amazon
-#' Connect instance
+#' Connect instance or traffic distribution group
 #'
 #' @description
 #' Searches for available phone numbers that you can claim to your Amazon
-#' Connect instance.
+#' Connect instance or traffic distribution group. If the provided
+#' `TargetArn` is a traffic distribution group, you can call this API in
+#' both Amazon Web Services Regions associated with the traffic
+#' distribution group.
 #'
 #' @usage
 #' connect_search_available_phone_numbers(TargetArn,
 #'   PhoneNumberCountryCode, PhoneNumberType, PhoneNumberPrefix, MaxResults,
 #'   NextToken)
 #'
-#' @param TargetArn &#91;required&#93; The Amazon Resource Name (ARN) for Amazon Connect instances that phone
-#' numbers are claimed to.
+#' @param TargetArn &#91;required&#93; The Amazon Resource Name (ARN) for Amazon Connect instances or traffic
+#' distribution groups that phone numbers are claimed to.
 #' @param PhoneNumberCountryCode &#91;required&#93; The ISO country code.
 #' @param PhoneNumberType &#91;required&#93; The type of phone number.
 #' @param PhoneNumberPrefix The prefix of the phone number. If provided, it must contain `+` as part
@@ -7246,17 +10159,390 @@ connect_search_available_phone_numbers <- function(TargetArn, PhoneNumberCountry
 }
 .connect$operations$search_available_phone_numbers <- connect_search_available_phone_numbers
 
+#' This API is in preview release for Amazon Connect and is subject to
+#' change
+#'
+#' @description
+#' This API is in preview release for Amazon Connect and is subject to
+#' change.
+#' 
+#' Searches queues in an Amazon Connect instance, with optional filtering.
+#'
+#' @usage
+#' connect_search_queues(InstanceId, NextToken, MaxResults, SearchFilter,
+#'   SearchCriteria)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximum number of results to return per page.
+#' @param SearchFilter Filters to be applied to search results.
+#' @param SearchCriteria The search criteria to be used to return queues.
+#' 
+#' The `name` and `description` fields support "contains" queries with a
+#' minimum of 2 characters and a maximum of 25 characters. Any queries with
+#' character lengths outside of this range will throw invalid results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Queues = list(
+#'     list(
+#'       Name = "string",
+#'       QueueArn = "string",
+#'       QueueId = "string",
+#'       Description = "string",
+#'       OutboundCallerConfig = list(
+#'         OutboundCallerIdName = "string",
+#'         OutboundCallerIdNumberId = "string",
+#'         OutboundFlowId = "string"
+#'       ),
+#'       HoursOfOperationId = "string",
+#'       MaxContacts = 123,
+#'       Status = "ENABLED"|"DISABLED",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   ApproximateTotalCount = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_queues(
+#'   InstanceId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   SearchFilter = list(
+#'     TagFilter = list(
+#'       OrConditions = list(
+#'         list(
+#'           list(
+#'             TagKey = "string",
+#'             TagValue = "string"
+#'           )
+#'         )
+#'       ),
+#'       AndConditions = list(
+#'         list(
+#'           TagKey = "string",
+#'           TagValue = "string"
+#'         )
+#'       ),
+#'       TagCondition = list(
+#'         TagKey = "string",
+#'         TagValue = "string"
+#'       )
+#'     )
+#'   ),
+#'   SearchCriteria = list(
+#'     OrConditions = list(
+#'       list()
+#'     ),
+#'     AndConditions = list(
+#'       list()
+#'     ),
+#'     StringCondition = list(
+#'       FieldName = "string",
+#'       Value = "string",
+#'       ComparisonType = "STARTS_WITH"|"CONTAINS"|"EXACT"
+#'     ),
+#'     QueueTypeCondition = "STANDARD"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_search_queues
+#'
+#' @aliases connect_search_queues
+connect_search_queues <- function(InstanceId, NextToken = NULL, MaxResults = NULL, SearchFilter = NULL, SearchCriteria = NULL) {
+  op <- new_operation(
+    name = "SearchQueues",
+    http_method = "POST",
+    http_path = "/search-queues",
+    paginator = list()
+  )
+  input <- .connect$search_queues_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, SearchFilter = SearchFilter, SearchCriteria = SearchCriteria)
+  output <- .connect$search_queues_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$search_queues <- connect_search_queues
+
+#' This API is in preview release for Amazon Connect and is subject to
+#' change
+#'
+#' @description
+#' This API is in preview release for Amazon Connect and is subject to
+#' change.
+#' 
+#' Searches routing profiles in an Amazon Connect instance, with optional
+#' filtering.
+#'
+#' @usage
+#' connect_search_routing_profiles(InstanceId, NextToken, MaxResults,
+#'   SearchFilter, SearchCriteria)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximum number of results to return per page.
+#' @param SearchFilter Filters to be applied to search results.
+#' @param SearchCriteria The search criteria to be used to return routing profiles.
+#' 
+#' The `name` and `description` fields support "contains" queries with a
+#' minimum of 2 characters and a maximum of 25 characters. Any queries with
+#' character lengths outside of this range will throw invalid results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RoutingProfiles = list(
+#'     list(
+#'       InstanceId = "string",
+#'       Name = "string",
+#'       RoutingProfileArn = "string",
+#'       RoutingProfileId = "string",
+#'       Description = "string",
+#'       MediaConcurrencies = list(
+#'         list(
+#'           Channel = "VOICE"|"CHAT"|"TASK",
+#'           Concurrency = 123,
+#'           CrossChannelBehavior = list(
+#'             BehaviorType = "ROUTE_CURRENT_CHANNEL_ONLY"|"ROUTE_ANY_CHANNEL"
+#'           )
+#'         )
+#'       ),
+#'       DefaultOutboundQueueId = "string",
+#'       Tags = list(
+#'         "string"
+#'       ),
+#'       NumberOfAssociatedQueues = 123,
+#'       NumberOfAssociatedUsers = 123
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   ApproximateTotalCount = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_routing_profiles(
+#'   InstanceId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   SearchFilter = list(
+#'     TagFilter = list(
+#'       OrConditions = list(
+#'         list(
+#'           list(
+#'             TagKey = "string",
+#'             TagValue = "string"
+#'           )
+#'         )
+#'       ),
+#'       AndConditions = list(
+#'         list(
+#'           TagKey = "string",
+#'           TagValue = "string"
+#'         )
+#'       ),
+#'       TagCondition = list(
+#'         TagKey = "string",
+#'         TagValue = "string"
+#'       )
+#'     )
+#'   ),
+#'   SearchCriteria = list(
+#'     OrConditions = list(
+#'       list()
+#'     ),
+#'     AndConditions = list(
+#'       list()
+#'     ),
+#'     StringCondition = list(
+#'       FieldName = "string",
+#'       Value = "string",
+#'       ComparisonType = "STARTS_WITH"|"CONTAINS"|"EXACT"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_search_routing_profiles
+#'
+#' @aliases connect_search_routing_profiles
+connect_search_routing_profiles <- function(InstanceId, NextToken = NULL, MaxResults = NULL, SearchFilter = NULL, SearchCriteria = NULL) {
+  op <- new_operation(
+    name = "SearchRoutingProfiles",
+    http_method = "POST",
+    http_path = "/search-routing-profiles",
+    paginator = list()
+  )
+  input <- .connect$search_routing_profiles_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, SearchFilter = SearchFilter, SearchCriteria = SearchCriteria)
+  output <- .connect$search_routing_profiles_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$search_routing_profiles <- connect_search_routing_profiles
+
+#' This API is in preview release for Amazon Connect and is subject to
+#' change
+#'
+#' @description
+#' This API is in preview release for Amazon Connect and is subject to
+#' change.
+#' 
+#' Searches security profiles in an Amazon Connect instance, with optional
+#' filtering.
+#'
+#' @usage
+#' connect_search_security_profiles(InstanceId, NextToken, MaxResults,
+#'   SearchCriteria, SearchFilter)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximum number of results to return per page.
+#' @param SearchCriteria The search criteria to be used to return security profiles.
+#' 
+#' The `name` field support "contains" queries with a minimum of 2
+#' characters and maximum of 25 characters. Any queries with character
+#' lengths outside of this range will throw invalid results.
+#' 
+#' The currently supported value for `FieldName`: `name`
+#' @param SearchFilter Filters to be applied to search results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SecurityProfiles = list(
+#'     list(
+#'       Id = "string",
+#'       OrganizationResourceId = "string",
+#'       Arn = "string",
+#'       SecurityProfileName = "string",
+#'       Description = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   ApproximateTotalCount = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_security_profiles(
+#'   InstanceId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   SearchCriteria = list(
+#'     OrConditions = list(
+#'       list()
+#'     ),
+#'     AndConditions = list(
+#'       list()
+#'     ),
+#'     StringCondition = list(
+#'       FieldName = "string",
+#'       Value = "string",
+#'       ComparisonType = "STARTS_WITH"|"CONTAINS"|"EXACT"
+#'     )
+#'   ),
+#'   SearchFilter = list(
+#'     TagFilter = list(
+#'       OrConditions = list(
+#'         list(
+#'           list(
+#'             TagKey = "string",
+#'             TagValue = "string"
+#'           )
+#'         )
+#'       ),
+#'       AndConditions = list(
+#'         list(
+#'           TagKey = "string",
+#'           TagValue = "string"
+#'         )
+#'       ),
+#'       TagCondition = list(
+#'         TagKey = "string",
+#'         TagValue = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_search_security_profiles
+#'
+#' @aliases connect_search_security_profiles
+connect_search_security_profiles <- function(InstanceId, NextToken = NULL, MaxResults = NULL, SearchCriteria = NULL, SearchFilter = NULL) {
+  op <- new_operation(
+    name = "SearchSecurityProfiles",
+    http_method = "POST",
+    http_path = "/search-security-profiles",
+    paginator = list()
+  )
+  input <- .connect$search_security_profiles_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, SearchCriteria = SearchCriteria, SearchFilter = SearchFilter)
+  output <- .connect$search_security_profiles_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$search_security_profiles <- connect_search_security_profiles
+
 #' Searches users in an Amazon Connect instance, with optional filtering
 #'
 #' @description
 #' Searches users in an Amazon Connect instance, with optional filtering.
+#' 
+#' `AfterContactWorkTimeLimit` is returned in milliseconds.
 #'
 #' @usage
 #' connect_search_users(InstanceId, NextToken, MaxResults, SearchFilter,
 #'   SearchCriteria)
 #'
-#' @param InstanceId The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
@@ -7380,8 +10666,10 @@ connect_search_users <- function(InstanceId = NULL, NextToken = NULL, MaxResults
 #' connect_search_vocabularies(InstanceId, MaxResults, NextToken, State,
 #'   NameStartsWith, LanguageCode)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param MaxResults The maximum number of results to return per page.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
@@ -7401,7 +10689,7 @@ connect_search_users <- function(InstanceId = NULL, NextToken = NULL, MaxResults
 #'       Name = "string",
 #'       Id = "string",
 #'       Arn = "string",
-#'       LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN",
+#'       LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"|"en-NZ"|"en-ZA",
 #'       State = "CREATION_IN_PROGRESS"|"ACTIVE"|"CREATION_FAILED"|"DELETE_IN_PROGRESS",
 #'       LastModifiedTime = as.POSIXct(
 #'         "2015-01-01"
@@ -7421,7 +10709,7 @@ connect_search_users <- function(InstanceId = NULL, NextToken = NULL, MaxResults
 #'   NextToken = "string",
 #'   State = "CREATION_IN_PROGRESS"|"ACTIVE"|"CREATION_FAILED"|"DELETE_IN_PROGRESS",
 #'   NameStartsWith = "string",
-#'   LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"
+#'   LanguageCode = "ar-AE"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fr-CA"|"fr-FR"|"hi-IN"|"it-IT"|"ja-JP"|"ko-KR"|"pt-BR"|"pt-PT"|"zh-CN"|"en-NZ"|"en-ZA"
 #' )
 #' ```
 #'
@@ -7447,11 +10735,11 @@ connect_search_vocabularies <- function(InstanceId, MaxResults = NULL, NextToken
 }
 .connect$operations$search_vocabularies <- connect_search_vocabularies
 
-#' Initiates a contact flow to start a new chat for the customer
+#' Initiates a flow to start a new chat for the customer
 #'
 #' @description
-#' Initiates a contact flow to start a new chat for the customer. Response
-#' of this API provides a token required to obtain credentials from the
+#' Initiates a flow to start a new chat for the customer. Response of this
+#' API provides a token required to obtain credentials from the
 #' [CreateParticipantConnection](https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html)
 #' API in the Amazon Connect Participant Service.
 #' 
@@ -7482,21 +10770,23 @@ connect_search_vocabularies <- function(InstanceId, MaxResults = NULL, NextToken
 #' @usage
 #' connect_start_chat_contact(InstanceId, ContactFlowId, Attributes,
 #'   ParticipantDetails, InitialMessage, ClientToken, ChatDurationInMinutes,
-#'   SupportedMessagingContentTypes)
+#'   SupportedMessagingContentTypes, PersistentChat, RelatedContactId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
-#' @param ContactFlowId &#91;required&#93; The identifier of the contact flow for initiating the chat. To see the
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param ContactFlowId &#91;required&#93; The identifier of the flow for initiating the chat. To see the
 #' ContactFlowId in the Amazon Connect console user interface, on the
-#' navigation menu go to **Routing**, **Contact Flows**. Choose the contact
-#' flow. On the contact flow page, under the name of the contact flow,
-#' choose **Show additional flow information**. The ContactFlowId is the
-#' last part of the ARN, shown here in bold:
+#' navigation menu go to **Routing**, **Contact Flows**. Choose the flow.
+#' On the flow page, under the name of the flow, choose **Show additional
+#' flow information**. The ContactFlowId is the last part of the ARN, shown
+#' here in bold:
 #' 
 #' arn:aws:connect:us-west-2:xxxxxxxxxxxx:instance/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/contact-flow/**846ec553-a005-41c0-8341-xxxxxxxxxxxx**
 #' @param Attributes A custom key-value pair using an attribute map. The attributes are
-#' standard Amazon Connect attributes. They can be accessed in contact
-#' flows just like any other contact attributes.
+#' standard Amazon Connect attributes. They can be accessed in flows just
+#' like any other contact attributes.
 #' 
 #' There can be up to 32,768 UTF-8 bytes across all key-value pairs per
 #' contact. Attribute keys can include only alphanumeric, dash, and
@@ -7504,13 +10794,38 @@ connect_search_vocabularies <- function(InstanceId, MaxResults = NULL, NextToken
 #' @param ParticipantDetails &#91;required&#93; Information identifying the participant.
 #' @param InitialMessage The initial message to be sent to the newly created chat.
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #' @param ChatDurationInMinutes The total duration of the newly started chat session. If not specified,
-#' the chat session duration defaults to 25 hour. The minumum configurable
+#' the chat session duration defaults to 25 hour. The minimum configurable
 #' time is 60 minutes. The maximum configurable time is 10,080 minutes (7
 #' days).
-#' @param SupportedMessagingContentTypes The supported chat message content types. Content types can be
-#' text/plain or both text/plain and text/markdown.
+#' @param SupportedMessagingContentTypes The supported chat message content types. Supported types are
+#' `text/plain`, `text/markdown`, `application/json`,
+#' `application/vnd.amazonaws.connect.message.interactive`, and
+#' `application/vnd.amazonaws.connect.message.interactive.response`.
+#' 
+#' Content types must always contain `text/plain`. You can then put any
+#' other supported type in the list. For example, all the following lists
+#' are valid because they contain `text/plain`:
+#' `[text/plain, text/markdown, application/json]`,
+#' `[text/markdown, text/plain]`,
+#' `[text/plain, application/json, application/vnd.amazonaws.connect.message.interactive.response]`.
+#' 
+#' The type `application/vnd.amazonaws.connect.message.interactive` is
+#' required to use the [Show
+#' view](https://docs.aws.amazon.com/connect/latest/adminguide/show-view-block.html)
+#' flow block.
+#' @param PersistentChat Enable persistent chats. For more information about enabling persistent
+#' chat, and for example use cases and how to configure for them, see
+#' [Enable persistent
+#' chat](https://docs.aws.amazon.com/connect/latest/adminguide/chat-persistence.html).
+#' @param RelatedContactId The unique identifier for an Amazon Connect contact. This identifier is
+#' related to the chat starting.
+#' 
+#' You cannot provide data for both RelatedContactId and PersistentChat.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7518,7 +10833,8 @@ connect_search_vocabularies <- function(InstanceId, MaxResults = NULL, NextToken
 #' list(
 #'   ContactId = "string",
 #'   ParticipantId = "string",
-#'   ParticipantToken = "string"
+#'   ParticipantToken = "string",
+#'   ContinuedFromContactId = "string"
 #' )
 #' ```
 #'
@@ -7541,7 +10857,12 @@ connect_search_vocabularies <- function(InstanceId, MaxResults = NULL, NextToken
 #'   ChatDurationInMinutes = 123,
 #'   SupportedMessagingContentTypes = list(
 #'     "string"
-#'   )
+#'   ),
+#'   PersistentChat = list(
+#'     RehydrationType = "ENTIRE_PAST_SESSION"|"FROM_SEGMENT",
+#'     SourceContactId = "string"
+#'   ),
+#'   RelatedContactId = "string"
 #' )
 #' ```
 #'
@@ -7550,14 +10871,14 @@ connect_search_vocabularies <- function(InstanceId, MaxResults = NULL, NextToken
 #' @rdname connect_start_chat_contact
 #'
 #' @aliases connect_start_chat_contact
-connect_start_chat_contact <- function(InstanceId, ContactFlowId, Attributes = NULL, ParticipantDetails, InitialMessage = NULL, ClientToken = NULL, ChatDurationInMinutes = NULL, SupportedMessagingContentTypes = NULL) {
+connect_start_chat_contact <- function(InstanceId, ContactFlowId, Attributes = NULL, ParticipantDetails, InitialMessage = NULL, ClientToken = NULL, ChatDurationInMinutes = NULL, SupportedMessagingContentTypes = NULL, PersistentChat = NULL, RelatedContactId = NULL) {
   op <- new_operation(
     name = "StartChatContact",
     http_method = "PUT",
     http_path = "/contact/chat",
     paginator = list()
   )
-  input <- .connect$start_chat_contact_input(InstanceId = InstanceId, ContactFlowId = ContactFlowId, Attributes = Attributes, ParticipantDetails = ParticipantDetails, InitialMessage = InitialMessage, ClientToken = ClientToken, ChatDurationInMinutes = ChatDurationInMinutes, SupportedMessagingContentTypes = SupportedMessagingContentTypes)
+  input <- .connect$start_chat_contact_input(InstanceId = InstanceId, ContactFlowId = ContactFlowId, Attributes = Attributes, ParticipantDetails = ParticipantDetails, InitialMessage = InitialMessage, ClientToken = ClientToken, ChatDurationInMinutes = ChatDurationInMinutes, SupportedMessagingContentTypes = SupportedMessagingContentTypes, PersistentChat = PersistentChat, RelatedContactId = RelatedContactId)
   output <- .connect$start_chat_contact_output()
   config <- get_config()
   svc <- .connect$service(config)
@@ -7566,6 +10887,76 @@ connect_start_chat_contact <- function(InstanceId, ContactFlowId, Attributes = N
   return(response)
 }
 .connect$operations$start_chat_contact <- connect_start_chat_contact
+
+#' Starts an empty evaluation in the specified Amazon Connect instance,
+#' using the given evaluation form for the particular contact
+#'
+#' @description
+#' Starts an empty evaluation in the specified Amazon Connect instance,
+#' using the given evaluation form for the particular contact. The
+#' evaluation form version used for the contact evaluation corresponds to
+#' the currently activated version. If no version is activated for the
+#' evaluation form, the contact evaluation cannot be started.
+#' 
+#' Evaluations created through the public API do not contain answer values
+#' suggested from automation.
+#'
+#' @usage
+#' connect_start_contact_evaluation(InstanceId, ContactId,
+#'   EvaluationFormId, ClientToken)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param ContactId &#91;required&#93; The identifier of the contact in this instance of Amazon Connect.
+#' @param EvaluationFormId &#91;required&#93; The unique identifier for the evaluation form.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EvaluationId = "string",
+#'   EvaluationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_contact_evaluation(
+#'   InstanceId = "string",
+#'   ContactId = "string",
+#'   EvaluationFormId = "string",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_start_contact_evaluation
+#'
+#' @aliases connect_start_contact_evaluation
+connect_start_contact_evaluation <- function(InstanceId, ContactId, EvaluationFormId, ClientToken = NULL) {
+  op <- new_operation(
+    name = "StartContactEvaluation",
+    http_method = "PUT",
+    http_path = "/contact-evaluations/{InstanceId}",
+    paginator = list()
+  )
+  input <- .connect$start_contact_evaluation_input(InstanceId = InstanceId, ContactId = ContactId, EvaluationFormId = EvaluationFormId, ClientToken = ClientToken)
+  output <- .connect$start_contact_evaluation_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$start_contact_evaluation <- connect_start_contact_evaluation
 
 #' Starts recording the contact:
 #'
@@ -7596,8 +10987,10 @@ connect_start_chat_contact <- function(InstanceId, ContactFlowId, Attributes = N
 #' connect_start_contact_recording(InstanceId, ContactId, InitialContactId,
 #'   VoiceRecordingConfiguration)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param ContactId &#91;required&#93; The identifier of the contact.
 #' @param InitialContactId &#91;required&#93; The identifier of the contact. This is the identifier of the contact
 #' associated with the first interaction with the contact center.
@@ -7654,13 +11047,18 @@ connect_start_contact_recording <- function(InstanceId, ContactId, InitialContac
 #' connect_start_contact_streaming(InstanceId, ContactId,
 #'   ChatStreamingConfiguration, ClientToken)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param ContactId &#91;required&#93; The identifier of the contact. This is the identifier of the contact
 #' associated with the first interaction with the contact center.
 #' @param ChatStreamingConfiguration &#91;required&#93; The streaming configuration, such as the Amazon SNS streaming endpoint.
 #' @param ClientToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #'
 #' @return
 #' A list with the following syntax:
@@ -7704,18 +11102,16 @@ connect_start_contact_streaming <- function(InstanceId, ContactId, ChatStreaming
 }
 .connect$operations$start_contact_streaming <- connect_start_contact_streaming
 
-#' Places an outbound call to a contact, and then initiates the contact
-#' flow
+#' Places an outbound call to a contact, and then initiates the flow
 #'
 #' @description
-#' Places an outbound call to a contact, and then initiates the contact
-#' flow. It performs the actions in the contact flow that's specified (in
-#' `ContactFlowId`).
+#' Places an outbound call to a contact, and then initiates the flow. It
+#' performs the actions in the flow that's specified (in `ContactFlowId`).
 #' 
 #' Agents do not initiate the outbound API, which means that they do not
-#' dial the contact. If the contact flow places an outbound call to a
-#' contact, and then puts the contact in queue, the call is then routed to
-#' the agent, like any other inbound case.
+#' dial the contact. If the flow places an outbound call to a contact, and
+#' then puts the contact in queue, the call is then routed to the agent,
+#' like any other inbound case.
 #' 
 #' There is a 60-second dialing timeout for this operation. If the call is
 #' not connected after 60 seconds, it fails.
@@ -7728,9 +11124,8 @@ connect_start_contact_streaming <- function(InstanceId, ContactId, ChatStreaming
 #' 
 #' Campaign calls are not allowed by default. Before you can make a call
 #' with `TrafficType` = `CAMPAIGN`, you must submit a service quota
-#' increase request. For more information, see [Amazon Connect Service
-#' Quotas](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html)
-#' in the *Amazon Connect Administrator Guide*.
+#' increase request to the quota [Amazon Connect
+#' campaigns](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#outbound-communications-quotas).
 #'
 #' @usage
 #' connect_start_outbound_voice_contact(DestinationPhoneNumber,
@@ -7738,29 +11133,35 @@ connect_start_contact_streaming <- function(InstanceId, ContactId, ChatStreaming
 #'   Attributes, AnswerMachineDetectionConfig, CampaignId, TrafficType)
 #'
 #' @param DestinationPhoneNumber &#91;required&#93; The phone number of the customer, in E.164 format.
-#' @param ContactFlowId &#91;required&#93; The identifier of the contact flow for the outbound call. To see the
+#' @param ContactFlowId &#91;required&#93; The identifier of the flow for the outbound call. To see the
 #' ContactFlowId in the Amazon Connect console user interface, on the
-#' navigation menu go to **Routing**, **Contact Flows**. Choose the contact
-#' flow. On the contact flow page, under the name of the contact flow,
-#' choose **Show additional flow information**. The ContactFlowId is the
-#' last part of the ARN, shown here in bold:
+#' navigation menu go to **Routing**, **Contact Flows**. Choose the flow.
+#' On the flow page, under the name of the flow, choose **Show additional
+#' flow information**. The ContactFlowId is the last part of the ARN, shown
+#' here in bold:
 #' 
 #' arn:aws:connect:us-west-2:xxxxxxxxxxxx:instance/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/contact-flow/**846ec553-a005-41c0-8341-xxxxxxxxxxxx**
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. The token is valid for 7 days after
-#' creation. If a contact is already started, the contact ID is returned.
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
+#' The token is valid for 7 days after creation. If a contact is already
+#' started, the contact ID is returned.
 #' @param SourcePhoneNumber The phone number associated with the Amazon Connect instance, in E.164
 #' format. If you do not specify a source phone number, you must specify a
 #' queue.
 #' @param QueueId The queue for the call. If you specify a queue, the phone displayed for
 #' caller ID is the phone number specified in the queue. If you do not
-#' specify a queue, the queue defined in the contact flow is used. If you
-#' do not specify a queue, you must specify a source phone number.
+#' specify a queue, the queue defined in the flow is used. If you do not
+#' specify a queue, you must specify a source phone number.
 #' @param Attributes A custom key-value pair using an attribute map. The attributes are
-#' standard Amazon Connect attributes, and can be accessed in contact flows
-#' just like any other contact attributes.
+#' standard Amazon Connect attributes, and can be accessed in flows just
+#' like any other contact attributes.
 #' 
 #' There can be up to 32,768 UTF-8 bytes across all key-value pairs per
 #' contact. Attribute keys can include only alphanumeric, dash, and
@@ -7823,30 +11224,32 @@ connect_start_outbound_voice_contact <- function(DestinationPhoneNumber, Contact
 }
 .connect$operations$start_outbound_voice_contact <- connect_start_outbound_voice_contact
 
-#' Initiates a contact flow to start a new task
+#' Initiates a flow to start a new task
 #'
 #' @description
-#' Initiates a contact flow to start a new task.
+#' Initiates a flow to start a new task.
 #'
 #' @usage
 #' connect_start_task_contact(InstanceId, PreviousContactId, ContactFlowId,
 #'   Attributes, Name, References, Description, ClientToken, ScheduledTime,
-#'   TaskTemplateId, QuickConnectId)
+#'   TaskTemplateId, QuickConnectId, RelatedContactId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param PreviousContactId The identifier of the previous chat, voice, or task contact.
-#' @param ContactFlowId The identifier of the contact flow for initiating the tasks. To see the
+#' @param ContactFlowId The identifier of the flow for initiating the tasks. To see the
 #' ContactFlowId in the Amazon Connect console user interface, on the
-#' navigation menu go to **Routing**, **Contact Flows**. Choose the contact
-#' flow. On the contact flow page, under the name of the contact flow,
-#' choose **Show additional flow information**. The ContactFlowId is the
-#' last part of the ARN, shown here in bold:
+#' navigation menu go to **Routing**, **Contact Flows**. Choose the flow.
+#' On the flow page, under the name of the flow, choose **Show additional
+#' flow information**. The ContactFlowId is the last part of the ARN, shown
+#' here in bold:
 #' 
 #' arn:aws:connect:us-west-2:xxxxxxxxxxxx:instance/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/contact-flow/**846ec553-a005-41c0-8341-xxxxxxxxxxxx**
 #' @param Attributes A custom key-value pair using an attribute map. The attributes are
-#' standard Amazon Connect attributes, and can be accessed in contact flows
-#' just like any other contact attributes.
+#' standard Amazon Connect attributes, and can be accessed in flows just
+#' like any other contact attributes.
 #' 
 #' There can be up to 32,768 UTF-8 bytes across all key-value pairs per
 #' contact. Attribute keys can include only alphanumeric, dash, and
@@ -7858,12 +11261,18 @@ connect_start_outbound_voice_contact <- function(DestinationPhoneNumber, Contact
 #' @param Description A description of the task that is shown to an agent in the Contact
 #' Control Panel (CCP).
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #' @param ScheduledTime The timestamp, in Unix Epoch seconds format, at which to start running
-#' the inbound contact flow. The scheduled time cannot be in the past. It
-#' must be within up to 6 days in future.
+#' the inbound flow. The scheduled time cannot be in the past. It must be
+#' within up to 6 days in future.
 #' @param TaskTemplateId A unique identifier for the task template.
 #' @param QuickConnectId The identifier for the quick connect.
+#' @param RelatedContactId The contactId that is
+#' [related](https://docs.aws.amazon.com/connect/latest/adminguide/tasks.html#linked-tasks)
+#' to this contact.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7895,7 +11304,8 @@ connect_start_outbound_voice_contact <- function(DestinationPhoneNumber, Contact
 #'     "2015-01-01"
 #'   ),
 #'   TaskTemplateId = "string",
-#'   QuickConnectId = "string"
+#'   QuickConnectId = "string",
+#'   RelatedContactId = "string"
 #' )
 #' ```
 #'
@@ -7904,14 +11314,14 @@ connect_start_outbound_voice_contact <- function(DestinationPhoneNumber, Contact
 #' @rdname connect_start_task_contact
 #'
 #' @aliases connect_start_task_contact
-connect_start_task_contact <- function(InstanceId, PreviousContactId = NULL, ContactFlowId = NULL, Attributes = NULL, Name, References = NULL, Description = NULL, ClientToken = NULL, ScheduledTime = NULL, TaskTemplateId = NULL, QuickConnectId = NULL) {
+connect_start_task_contact <- function(InstanceId, PreviousContactId = NULL, ContactFlowId = NULL, Attributes = NULL, Name, References = NULL, Description = NULL, ClientToken = NULL, ScheduledTime = NULL, TaskTemplateId = NULL, QuickConnectId = NULL, RelatedContactId = NULL) {
   op <- new_operation(
     name = "StartTaskContact",
     http_method = "PUT",
     http_path = "/contact/task",
     paginator = list()
   )
-  input <- .connect$start_task_contact_input(InstanceId = InstanceId, PreviousContactId = PreviousContactId, ContactFlowId = ContactFlowId, Attributes = Attributes, Name = Name, References = References, Description = Description, ClientToken = ClientToken, ScheduledTime = ScheduledTime, TaskTemplateId = TaskTemplateId, QuickConnectId = QuickConnectId)
+  input <- .connect$start_task_contact_input(InstanceId = InstanceId, PreviousContactId = PreviousContactId, ContactFlowId = ContactFlowId, Attributes = Attributes, Name = Name, References = References, Description = Description, ClientToken = ClientToken, ScheduledTime = ScheduledTime, TaskTemplateId = TaskTemplateId, QuickConnectId = QuickConnectId, RelatedContactId = RelatedContactId)
   output <- .connect$start_task_contact_output()
   config <- get_config()
   svc <- .connect$service(config)
@@ -7937,8 +11347,10 @@ connect_start_task_contact <- function(InstanceId, PreviousContactId = NULL, Con
 #' connect_stop_contact(ContactId, InstanceId)
 #'
 #' @param ContactId &#91;required&#93; The ID of the contact.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #'
 #' @return
 #' An empty list.
@@ -7989,8 +11401,10 @@ connect_stop_contact <- function(ContactId, InstanceId) {
 #' @usage
 #' connect_stop_contact_recording(InstanceId, ContactId, InitialContactId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param ContactId &#91;required&#93; The identifier of the contact.
 #' @param InitialContactId &#91;required&#93; The identifier of the contact. This is the identifier of the contact
 #' associated with the first interaction with the contact center.
@@ -8039,8 +11453,10 @@ connect_stop_contact_recording <- function(InstanceId, ContactId, InitialContact
 #' @usage
 #' connect_stop_contact_streaming(InstanceId, ContactId, StreamingId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param ContactId &#91;required&#93; The identifier of the contact. This is the identifier of the contact
 #' that is associated with the first interaction with the contact center.
 #' @param StreamingId &#91;required&#93; The identifier of the streaming configuration enabled.
@@ -8079,6 +11495,83 @@ connect_stop_contact_streaming <- function(InstanceId, ContactId, StreamingId) {
 }
 .connect$operations$stop_contact_streaming <- connect_stop_contact_streaming
 
+#' Submits a contact evaluation in the specified Amazon Connect instance
+#'
+#' @description
+#' Submits a contact evaluation in the specified Amazon Connect instance.
+#' Answers included in the request are merged with existing answers for the
+#' given evaluation. If no answers or notes are passed, the evaluation is
+#' submitted with the existing answers and notes. You can delete an answer
+#' or note by passing an empty object (`{}`) to the question identifier.
+#' 
+#' If a contact evaluation is already in submitted state, this operation
+#' will trigger a resubmission.
+#'
+#' @usage
+#' connect_submit_contact_evaluation(InstanceId, EvaluationId, Answers,
+#'   Notes)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param EvaluationId &#91;required&#93; A unique identifier for the contact evaluation.
+#' @param Answers A map of question identifiers to answer value.
+#' @param Notes A map of question identifiers to note value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EvaluationId = "string",
+#'   EvaluationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$submit_contact_evaluation(
+#'   InstanceId = "string",
+#'   EvaluationId = "string",
+#'   Answers = list(
+#'     list(
+#'       Value = list(
+#'         StringValue = "string",
+#'         NumericValue = 123.0,
+#'         NotApplicable = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   Notes = list(
+#'     list(
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_submit_contact_evaluation
+#'
+#' @aliases connect_submit_contact_evaluation
+connect_submit_contact_evaluation <- function(InstanceId, EvaluationId, Answers = NULL, Notes = NULL) {
+  op <- new_operation(
+    name = "SubmitContactEvaluation",
+    http_method = "POST",
+    http_path = "/contact-evaluations/{InstanceId}/{EvaluationId}/submit",
+    paginator = list()
+  )
+  input <- .connect$submit_contact_evaluation_input(InstanceId = InstanceId, EvaluationId = EvaluationId, Answers = Answers, Notes = Notes)
+  output <- .connect$submit_contact_evaluation_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$submit_contact_evaluation <- connect_submit_contact_evaluation
+
 #' When a contact is being recorded, this API suspends recording the call
 #'
 #' @description
@@ -8096,8 +11589,10 @@ connect_stop_contact_streaming <- function(InstanceId, ContactId, StreamingId) {
 #' connect_suspend_contact_recording(InstanceId, ContactId,
 #'   InitialContactId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param ContactId &#91;required&#93; The identifier of the contact.
 #' @param InitialContactId &#91;required&#93; The identifier of the contact. This is the identifier of the contact
 #' associated with the first interaction with the contact center.
@@ -8141,9 +11636,11 @@ connect_suspend_contact_recording <- function(InstanceId, ContactId, InitialCont
 #' @description
 #' Adds the specified tags to the specified resource.
 #' 
-#' The supported resource types are users, routing profiles, queues, quick
-#' connects, contact flows, agent status, hours of operation, phone number,
-#' security profiles, and task templates.
+#' Some of the supported resource types are agents, routing profiles,
+#' queues, quick connects, contact flows, agent statuses, hours of
+#' operation, phone numbers, security profiles, and task templates. For a
+#' complete list, see [Tagging resources in Amazon
+#' Connect](https://docs.aws.amazon.com/connect/latest/adminguide/tagging.html).
 #' 
 #' For sample policies that use tags, see [Amazon Connect Identity-Based
 #' Policy
@@ -8154,8 +11651,8 @@ connect_suspend_contact_recording <- function(InstanceId, ContactId, InitialCont
 #' connect_tag_resource(resourceArn, tags)
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
-#' @param tags &#91;required&#93; One or more tags. For example, \{ "tags": \{"key1":"value1",
-#' "key2":"value2"\} \}.
+#' @param tags &#91;required&#93; The tags used to organize, track, or control access for this resource.
+#' For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.
 #'
 #' @return
 #' An empty list.
@@ -8198,10 +11695,10 @@ connect_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Transfers contacts from one agent or queue to another agent or queue at
 #' any point after a contact is created. You can transfer a contact to
-#' another queue by providing the contact flow which orchestrates the
-#' contact to the destination queue. This gives you more control over
-#' contact handling and helps you adhere to the service level agreement
-#' (SLA) guaranteed to your customers.
+#' another queue by providing the flow which orchestrates the contact to
+#' the destination queue. This gives you more control over contact handling
+#' and helps you adhere to the service level agreement (SLA) guaranteed to
+#' your customers.
 #' 
 #' Note the following requirements:
 #' 
@@ -8209,8 +11706,8 @@ connect_tag_resource <- function(resourceArn, tags) {
 #' 
 #' -   Do not use both `QueueId` and `UserId` in the same call.
 #' 
-#' -   The following contact flow types are supported: Inbound contact
-#'     flow, Transfer to agent flow, and Transfer to queue flow.
+#' -   The following flow types are supported: Inbound flow, Transfer to
+#'     agent flow, and Transfer to queue flow.
 #' 
 #' -   The [`transfer_contact`][connect_transfer_contact] API can be called
 #'     only on active contacts.
@@ -8221,14 +11718,19 @@ connect_tag_resource <- function(resourceArn, tags) {
 #' connect_transfer_contact(InstanceId, ContactId, QueueId, UserId,
 #'   ContactFlowId, ClientToken)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param ContactId &#91;required&#93; The identifier of the contact in this instance of Amazon Connect.
 #' @param QueueId The identifier for the queue.
 #' @param UserId The identifier for the user.
-#' @param ContactFlowId &#91;required&#93; The identifier of the contact flow.
+#' @param ContactFlowId &#91;required&#93; The identifier of the flow.
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #'
 #' @return
 #' A list with the following syntax:
@@ -8332,8 +11834,10 @@ connect_untag_resource <- function(resourceArn, tagKeys) {
 #' connect_update_agent_status(InstanceId, AgentStatusId, Name,
 #'   Description, State, DisplayOrder, ResetOrderNumber)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param AgentStatusId &#91;required&#93; The identifier of the agent status.
 #' @param Name The name of the agent status.
 #' @param Description The description of the agent status.
@@ -8397,8 +11901,10 @@ connect_update_agent_status <- function(InstanceId, AgentStatusId, Name = NULL, 
 #' connect_update_contact(InstanceId, ContactId, Name, Description,
 #'   References)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param ContactId &#91;required&#93; The identifier of the contact. This is the identifier of the contact
 #' associated with the first interaction with your contact center.
 #' @param Name The name of the contact.
@@ -8465,19 +11971,10 @@ connect_update_contact <- function(InstanceId, ContactId, Name = NULL, Descripti
 #' callers.
 #' 
 #' Contact attributes are available in Amazon Connect for 24 months, and
-#' are then deleted. For information about CTR retention and the maximum
-#' size of the CTR attributes section, see [Feature
+#' are then deleted. For information about contact record retention and the
+#' maximum size of the contact record attributes section, see [Feature
 #' specifications](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#feature-limits)
 #' in the *Amazon Connect Administrator Guide*.
-#' 
-#' **Important:** You cannot use the operation to update attributes for
-#' contacts that occurred prior to the release of the API, which was
-#' September 12, 2018. You can update attributes only for contacts that
-#' started after the release of the API. If you attempt to update
-#' attributes for a contact that occurred prior to the release of the API,
-#' a 400 error is returned. This applies also to queued callbacks that were
-#' initiated prior to the release of the API but are still active in your
-#' instance.
 #'
 #' @usage
 #' connect_update_contact_attributes(InitialContactId, InstanceId,
@@ -8485,10 +11982,12 @@ connect_update_contact <- function(InstanceId, ContactId, Name = NULL, Descripti
 #'
 #' @param InitialContactId &#91;required&#93; The identifier of the contact. This is the identifier of the contact
 #' associated with the first interaction with the contact center.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
-#' @param Attributes &#91;required&#93; The Amazon Connect attributes. These attributes can be accessed in
-#' contact flows just like any other contact attributes.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param Attributes &#91;required&#93; The Amazon Connect attributes. These attributes can be accessed in flows
+#' just like any other contact attributes.
 #' 
 #' You can have up to 32,768 UTF-8 bytes across all attributes for a
 #' contact. Attribute keys can include only alphanumeric, dash, and
@@ -8530,24 +12029,97 @@ connect_update_contact_attributes <- function(InitialContactId, InstanceId, Attr
 }
 .connect$operations$update_contact_attributes <- connect_update_contact_attributes
 
-#' Updates the specified contact flow
+#' Updates details about a contact evaluation in the specified Amazon
+#' Connect instance
 #'
 #' @description
-#' Updates the specified contact flow.
+#' Updates details about a contact evaluation in the specified Amazon
+#' Connect instance. A contact evaluation must be in draft state. Answers
+#' included in the request are merged with existing answers for the given
+#' evaluation. An answer or note can be deleted by passing an empty object
+#' (`{}`) to the question identifier.
+#'
+#' @usage
+#' connect_update_contact_evaluation(InstanceId, EvaluationId, Answers,
+#'   Notes)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param EvaluationId &#91;required&#93; A unique identifier for the contact evaluation.
+#' @param Answers A map of question identifiers to answer value.
+#' @param Notes A map of question identifiers to note value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EvaluationId = "string",
+#'   EvaluationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_contact_evaluation(
+#'   InstanceId = "string",
+#'   EvaluationId = "string",
+#'   Answers = list(
+#'     list(
+#'       Value = list(
+#'         StringValue = "string",
+#'         NumericValue = 123.0,
+#'         NotApplicable = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   Notes = list(
+#'     list(
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_update_contact_evaluation
+#'
+#' @aliases connect_update_contact_evaluation
+connect_update_contact_evaluation <- function(InstanceId, EvaluationId, Answers = NULL, Notes = NULL) {
+  op <- new_operation(
+    name = "UpdateContactEvaluation",
+    http_method = "POST",
+    http_path = "/contact-evaluations/{InstanceId}/{EvaluationId}",
+    paginator = list()
+  )
+  input <- .connect$update_contact_evaluation_input(InstanceId = InstanceId, EvaluationId = EvaluationId, Answers = Answers, Notes = Notes)
+  output <- .connect$update_contact_evaluation_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$update_contact_evaluation <- connect_update_contact_evaluation
+
+#' Updates the specified flow
+#'
+#' @description
+#' Updates the specified flow.
 #' 
-#' You can also create and update contact flows using the [Amazon Connect
-#' Flow
+#' You can also create and update flows using the [Amazon Connect Flow
 #' language](https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html).
 #'
 #' @usage
 #' connect_update_contact_flow_content(InstanceId, ContactFlowId, Content)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
-#' @param ContactFlowId &#91;required&#93; The identifier of the contact flow.
-#' @param Content &#91;required&#93; The JSON string that represents contact flow’s content. For an example,
-#' see [Example contact flow in Amazon Connect Flow
-#' language](https://docs.aws.amazon.com/connect/latest/APIReference/flow-language-example.html)
-#' in the *Amazon Connect Administrator Guide*.
+#' @param ContactFlowId &#91;required&#93; The identifier of the flow.
+#' @param Content &#91;required&#93; The JSON string that represents flow's content. For an example, see
+#' [Example contact flow in Amazon Connect Flow
+#' language](https://docs.aws.amazon.com/connect/latest/APIReference/flow-language-example.html).
 #'
 #' @return
 #' An empty list.
@@ -8583,21 +12155,23 @@ connect_update_contact_flow_content <- function(InstanceId, ContactFlowId, Conte
 }
 .connect$operations$update_contact_flow_content <- connect_update_contact_flow_content
 
-#' Updates metadata about specified contact flow
+#' Updates metadata about specified flow
 #'
 #' @description
-#' Updates metadata about specified contact flow.
+#' Updates metadata about specified flow.
 #'
 #' @usage
 #' connect_update_contact_flow_metadata(InstanceId, ContactFlowId, Name,
 #'   Description, ContactFlowState)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
-#' @param ContactFlowId &#91;required&#93; The identifier of the contact flow.
-#' @param Name TThe name of the contact flow.
-#' @param Description The description of the contact flow.
-#' @param ContactFlowState The state of contact flow.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param ContactFlowId &#91;required&#93; The identifier of the flow.
+#' @param Name The name of the flow.
+#' @param Description The description of the flow.
+#' @param ContactFlowState The state of flow.
 #'
 #' @return
 #' An empty list.
@@ -8635,21 +12209,21 @@ connect_update_contact_flow_metadata <- function(InstanceId, ContactFlowId, Name
 }
 .connect$operations$update_contact_flow_metadata <- connect_update_contact_flow_metadata
 
-#' Updates specified contact flow module for the specified Amazon Connect
-#' instance
+#' Updates specified flow module for the specified Amazon Connect instance
 #'
 #' @description
-#' Updates specified contact flow module for the specified Amazon Connect
-#' instance.
+#' Updates specified flow module for the specified Amazon Connect instance.
 #'
 #' @usage
 #' connect_update_contact_flow_module_content(InstanceId,
 #'   ContactFlowModuleId, Content)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
-#' @param ContactFlowModuleId &#91;required&#93; The identifier of the contact flow module.
-#' @param Content &#91;required&#93; The content of the contact flow module.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param ContactFlowModuleId &#91;required&#93; The identifier of the flow module.
+#' @param Content &#91;required&#93; The content of the flow module.
 #'
 #' @return
 #' An empty list.
@@ -8685,21 +12259,23 @@ connect_update_contact_flow_module_content <- function(InstanceId, ContactFlowMo
 }
 .connect$operations$update_contact_flow_module_content <- connect_update_contact_flow_module_content
 
-#' Updates metadata about specified contact flow module
+#' Updates metadata about specified flow module
 #'
 #' @description
-#' Updates metadata about specified contact flow module.
+#' Updates metadata about specified flow module.
 #'
 #' @usage
 #' connect_update_contact_flow_module_metadata(InstanceId,
 #'   ContactFlowModuleId, Name, Description, State)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
-#' @param ContactFlowModuleId &#91;required&#93; The identifier of the contact flow module.
-#' @param Name The name of the contact flow module.
-#' @param Description The description of the contact flow module.
-#' @param State The state of contact flow module.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param ContactFlowModuleId &#91;required&#93; The identifier of the flow module.
+#' @param Name The name of the flow module.
+#' @param Description The description of the flow module.
+#' @param State The state of flow module.
 #'
 #' @return
 #' An empty list.
@@ -8737,13 +12313,12 @@ connect_update_contact_flow_module_metadata <- function(InstanceId, ContactFlowM
 }
 .connect$operations$update_contact_flow_module_metadata <- connect_update_contact_flow_module_metadata
 
-#' The name of the contact flow
+#' The name of the flow
 #'
 #' @description
-#' The name of the contact flow.
+#' The name of the flow.
 #' 
-#' You can also create and update contact flows using the [Amazon Connect
-#' Flow
+#' You can also create and update flows using the [Amazon Connect Flow
 #' language](https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html).
 #'
 #' @usage
@@ -8751,9 +12326,9 @@ connect_update_contact_flow_module_metadata <- function(InstanceId, ContactFlowM
 #'   Description)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
-#' @param ContactFlowId &#91;required&#93; The identifier of the contact flow.
-#' @param Name The name of the contact flow.
-#' @param Description The description of the contact flow.
+#' @param ContactFlowId &#91;required&#93; The identifier of the flow.
+#' @param Name The name of the flow.
+#' @param Description The description of the flow.
 #'
 #' @return
 #' An empty list.
@@ -8798,12 +12373,14 @@ connect_update_contact_flow_name <- function(InstanceId, ContactFlowId, Name = N
 #' @usage
 #' connect_update_contact_schedule(InstanceId, ContactId, ScheduledTime)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param ContactId &#91;required&#93; The identifier of the contact.
 #' @param ScheduledTime &#91;required&#93; The timestamp, in Unix Epoch seconds format, at which to start running
-#' the inbound contact flow. The scheduled time cannot be in the past. It
-#' must be within up to 6 days in future.
+#' the inbound flow. The scheduled time cannot be in the past. It must be
+#' within up to 6 days in future.
 #'
 #' @return
 #' An empty list.
@@ -8841,6 +12418,151 @@ connect_update_contact_schedule <- function(InstanceId, ContactId, ScheduledTime
 }
 .connect$operations$update_contact_schedule <- connect_update_contact_schedule
 
+#' Updates details about a specific evaluation form version in the
+#' specified Amazon Connect instance
+#'
+#' @description
+#' Updates details about a specific evaluation form version in the
+#' specified Amazon Connect instance. Question and section identifiers
+#' cannot be duplicated within the same evaluation form.
+#' 
+#' This operation does not support partial updates. Instead it does a full
+#' update of evaluation form content.
+#'
+#' @usage
+#' connect_update_evaluation_form(InstanceId, EvaluationFormId,
+#'   EvaluationFormVersion, CreateNewVersion, Title, Description, Items,
+#'   ScoringStrategy, ClientToken)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param EvaluationFormId &#91;required&#93; The unique identifier for the evaluation form.
+#' @param EvaluationFormVersion &#91;required&#93; A version of the evaluation form to update.
+#' @param CreateNewVersion A flag indicating whether the operation must create a new version.
+#' @param Title &#91;required&#93; A title of the evaluation form.
+#' @param Description The description of the evaluation form.
+#' @param Items &#91;required&#93; Items that are part of the evaluation form. The total number of sections
+#' and questions must not exceed 100 each. Questions must be contained in a
+#' section.
+#' @param ScoringStrategy A scoring strategy of the evaluation form.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EvaluationFormId = "string",
+#'   EvaluationFormArn = "string",
+#'   EvaluationFormVersion = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_evaluation_form(
+#'   InstanceId = "string",
+#'   EvaluationFormId = "string",
+#'   EvaluationFormVersion = 123,
+#'   CreateNewVersion = TRUE|FALSE,
+#'   Title = "string",
+#'   Description = "string",
+#'   Items = list(
+#'     list(
+#'       Section = list(
+#'         Title = "string",
+#'         RefId = "string",
+#'         Instructions = "string",
+#'         Items = list(),
+#'         Weight = 123.0
+#'       ),
+#'       Question = list(
+#'         Title = "string",
+#'         Instructions = "string",
+#'         RefId = "string",
+#'         NotApplicableEnabled = TRUE|FALSE,
+#'         QuestionType = "TEXT"|"SINGLESELECT"|"NUMERIC",
+#'         QuestionTypeProperties = list(
+#'           Numeric = list(
+#'             MinValue = 123,
+#'             MaxValue = 123,
+#'             Options = list(
+#'               list(
+#'                 MinValue = 123,
+#'                 MaxValue = 123,
+#'                 Score = 123,
+#'                 AutomaticFail = TRUE|FALSE
+#'               )
+#'             ),
+#'             Automation = list(
+#'               PropertyValue = list(
+#'                 Label = "OVERALL_CUSTOMER_SENTIMENT_SCORE"|"OVERALL_AGENT_SENTIMENT_SCORE"|"NON_TALK_TIME"|"NON_TALK_TIME_PERCENTAGE"|"NUMBER_OF_INTERRUPTIONS"|"CONTACT_DURATION"|"AGENT_INTERACTION_DURATION"|"CUSTOMER_HOLD_TIME"
+#'               )
+#'             )
+#'           ),
+#'           SingleSelect = list(
+#'             Options = list(
+#'               list(
+#'                 RefId = "string",
+#'                 Text = "string",
+#'                 Score = 123,
+#'                 AutomaticFail = TRUE|FALSE
+#'               )
+#'             ),
+#'             DisplayAs = "DROPDOWN"|"RADIO",
+#'             Automation = list(
+#'               Options = list(
+#'                 list(
+#'                   RuleCategory = list(
+#'                     Category = "string",
+#'                     Condition = "PRESENT"|"NOT_PRESENT",
+#'                     OptionRefId = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               DefaultOptionRefId = "string"
+#'             )
+#'           )
+#'         ),
+#'         Weight = 123.0
+#'       )
+#'     )
+#'   ),
+#'   ScoringStrategy = list(
+#'     Mode = "QUESTION_ONLY"|"SECTION_ONLY",
+#'     Status = "ENABLED"|"DISABLED"
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_update_evaluation_form
+#'
+#' @aliases connect_update_evaluation_form
+connect_update_evaluation_form <- function(InstanceId, EvaluationFormId, EvaluationFormVersion, CreateNewVersion = NULL, Title, Description = NULL, Items, ScoringStrategy = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "UpdateEvaluationForm",
+    http_method = "PUT",
+    http_path = "/evaluation-forms/{InstanceId}/{EvaluationFormId}",
+    paginator = list()
+  )
+  input <- .connect$update_evaluation_form_input(InstanceId = InstanceId, EvaluationFormId = EvaluationFormId, EvaluationFormVersion = EvaluationFormVersion, CreateNewVersion = CreateNewVersion, Title = Title, Description = Description, Items = Items, ScoringStrategy = ScoringStrategy, ClientToken = ClientToken)
+  output <- .connect$update_evaluation_form_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$update_evaluation_form <- connect_update_evaluation_form
+
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
@@ -8854,8 +12576,10 @@ connect_update_contact_schedule <- function(InstanceId, ContactId, ScheduledTime
 #' connect_update_hours_of_operation(InstanceId, HoursOfOperationId, Name,
 #'   Description, TimeZone, Config)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param HoursOfOperationId &#91;required&#93; The identifier of the hours of operation.
 #' @param Name The name of the hours of operation.
 #' @param Description The description of the hours of operation.
@@ -8923,8 +12647,10 @@ connect_update_hours_of_operation <- function(InstanceId, HoursOfOperationId, Na
 #' @usage
 #' connect_update_instance_attribute(InstanceId, AttributeType, Value)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param AttributeType &#91;required&#93; The type of attribute.
 #' 
 #' Only allowlisted customers can consume USE_CUSTOM_TTS_VOICES. To access
@@ -8938,7 +12664,7 @@ connect_update_hours_of_operation <- function(InstanceId, HoursOfOperationId, Na
 #' ```
 #' svc$update_instance_attribute(
 #'   InstanceId = "string",
-#'   AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA"|"MULTI_PARTY_CONFERENCE"|"HIGH_VOLUME_OUTBOUND",
+#'   AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA"|"MULTI_PARTY_CONFERENCE"|"HIGH_VOLUME_OUTBOUND"|"ENHANCED_CONTACT_MONITORING",
 #'   Value = "string"
 #' )
 #' ```
@@ -8979,8 +12705,10 @@ connect_update_instance_attribute <- function(InstanceId, AttributeType, Value) 
 #' connect_update_instance_storage_config(InstanceId, AssociationId,
 #'   ResourceType, StorageConfig)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param AssociationId &#91;required&#93; The existing association identifier that uniquely identifies the
 #' resource type and storage config for the given instance ID.
 #' @param ResourceType &#91;required&#93; A valid resource type.
@@ -8994,7 +12722,7 @@ connect_update_instance_attribute <- function(InstanceId, AttributeType, Value) 
 #' svc$update_instance_storage_config(
 #'   InstanceId = "string",
 #'   AssociationId = "string",
-#'   ResourceType = "CHAT_TRANSCRIPTS"|"CALL_RECORDINGS"|"SCHEDULED_REPORTS"|"MEDIA_STREAMS"|"CONTACT_TRACE_RECORDS"|"AGENT_EVENTS"|"REAL_TIME_CONTACT_ANALYSIS_SEGMENTS",
+#'   ResourceType = "CHAT_TRANSCRIPTS"|"CALL_RECORDINGS"|"SCHEDULED_REPORTS"|"MEDIA_STREAMS"|"CONTACT_TRACE_RECORDS"|"AGENT_EVENTS"|"REAL_TIME_CONTACT_ANALYSIS_SEGMENTS"|"ATTACHMENTS"|"CONTACT_EVALUATIONS",
 #'   StorageConfig = list(
 #'     AssociationId = "string",
 #'     StorageType = "S3"|"KINESIS_VIDEO_STREAM"|"KINESIS_STREAM"|"KINESIS_FIREHOSE",
@@ -9046,21 +12774,117 @@ connect_update_instance_storage_config <- function(InstanceId, AssociationId, Re
 }
 .connect$operations$update_instance_storage_config <- connect_update_instance_storage_config
 
+#' Updates timeouts for when human chat participants are to be considered
+#' idle, and when agents are automatically disconnected from a chat due to
+#' idleness
+#'
+#' @description
+#' Updates timeouts for when human chat participants are to be considered
+#' idle, and when agents are automatically disconnected from a chat due to
+#' idleness. You can set four timers:
+#' 
+#' -   Customer idle timeout
+#' 
+#' -   Customer auto-disconnect timeout
+#' 
+#' -   Agent idle timeout
+#' 
+#' -   Agent auto-disconnect timeout
+#' 
+#' For more information about how chat timeouts work, see [Set up chat
+#' timeouts for human
+#' participants](https://docs.aws.amazon.com/connect/latest/adminguide/setup-chat-timeouts.html).
+#'
+#' @usage
+#' connect_update_participant_role_config(InstanceId, ContactId,
+#'   ChannelConfiguration)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param ContactId &#91;required&#93; The identifier of the contact in this instance of Amazon Connect.
+#' @param ChannelConfiguration &#91;required&#93; The Amazon Connect channel you want to configure.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_participant_role_config(
+#'   InstanceId = "string",
+#'   ContactId = "string",
+#'   ChannelConfiguration = list(
+#'     Chat = list(
+#'       ParticipantTimerConfigList = list(
+#'         list(
+#'           ParticipantRole = "CUSTOMER"|"AGENT",
+#'           TimerType = "IDLE"|"DISCONNECT_NONCUSTOMER",
+#'           TimerValue = list(
+#'             ParticipantTimerAction = "Unset",
+#'             ParticipantTimerDurationInMinutes = 123
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_update_participant_role_config
+#'
+#' @aliases connect_update_participant_role_config
+connect_update_participant_role_config <- function(InstanceId, ContactId, ChannelConfiguration) {
+  op <- new_operation(
+    name = "UpdateParticipantRoleConfig",
+    http_method = "PUT",
+    http_path = "/contact/participant-role-config/{InstanceId}/{ContactId}",
+    paginator = list()
+  )
+  input <- .connect$update_participant_role_config_input(InstanceId = InstanceId, ContactId = ContactId, ChannelConfiguration = ChannelConfiguration)
+  output <- .connect$update_participant_role_config_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$update_participant_role_config <- connect_update_participant_role_config
+
 #' Updates your claimed phone number from its current Amazon Connect
-#' instance to another Amazon Connect instance in the same Region
+#' instance or traffic distribution group to another Amazon Connect
+#' instance or traffic distribution group in the same Amazon Web Services
+#' Region
 #'
 #' @description
 #' Updates your claimed phone number from its current Amazon Connect
-#' instance to another Amazon Connect instance in the same Region.
+#' instance or traffic distribution group to another Amazon Connect
+#' instance or traffic distribution group in the same Amazon Web Services
+#' Region.
+#' 
+#' After using this API, you must verify that the phone number is attached
+#' to the correct flow in the target instance or traffic distribution
+#' group. You need to do this because the API switches only the phone
+#' number to a new instance or traffic distribution group. It doesn't
+#' migrate the flow configuration of the phone number, too.
+#' 
+#' You can call [`describe_phone_number`][connect_describe_phone_number]
+#' API to verify the status of a previous
+#' [`update_phone_number`][connect_update_phone_number] operation.
 #'
 #' @usage
 #' connect_update_phone_number(PhoneNumberId, TargetArn, ClientToken)
 #'
 #' @param PhoneNumberId &#91;required&#93; A unique identifier for the phone number.
-#' @param TargetArn &#91;required&#93; The Amazon Resource Name (ARN) for Amazon Connect instances that phone
-#' numbers are claimed to.
+#' @param TargetArn &#91;required&#93; The Amazon Resource Name (ARN) for Amazon Connect instances or traffic
+#' distribution groups that phone numbers are claimed to.
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #'
 #' @return
 #' A list with the following syntax:
@@ -9102,6 +12926,65 @@ connect_update_phone_number <- function(PhoneNumberId, TargetArn, ClientToken = 
 }
 .connect$operations$update_phone_number <- connect_update_phone_number
 
+#' Updates a prompt
+#'
+#' @description
+#' Updates a prompt.
+#'
+#' @usage
+#' connect_update_prompt(InstanceId, PromptId, Name, Description, S3Uri)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param PromptId &#91;required&#93; A unique identifier for the prompt.
+#' @param Name The name of the prompt.
+#' @param Description A description of the prompt.
+#' @param S3Uri The URI for the S3 bucket where the prompt is stored.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PromptARN = "string",
+#'   PromptId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_prompt(
+#'   InstanceId = "string",
+#'   PromptId = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   S3Uri = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_update_prompt
+#'
+#' @aliases connect_update_prompt
+connect_update_prompt <- function(InstanceId, PromptId, Name = NULL, Description = NULL, S3Uri = NULL) {
+  op <- new_operation(
+    name = "UpdatePrompt",
+    http_method = "POST",
+    http_path = "/prompts/{InstanceId}/{PromptId}",
+    paginator = list()
+  )
+  input <- .connect$update_prompt_input(InstanceId = InstanceId, PromptId = PromptId, Name = Name, Description = Description, S3Uri = S3Uri)
+  output <- .connect$update_prompt_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$update_prompt <- connect_update_prompt
+
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
@@ -9115,8 +12998,10 @@ connect_update_phone_number <- function(PhoneNumberId, TargetArn, ClientToken = 
 #' connect_update_queue_hours_of_operation(InstanceId, QueueId,
 #'   HoursOfOperationId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param QueueId &#91;required&#93; The identifier for the queue.
 #' @param HoursOfOperationId &#91;required&#93; The identifier for the hours of operation.
 #'
@@ -9167,8 +13052,10 @@ connect_update_queue_hours_of_operation <- function(InstanceId, QueueId, HoursOf
 #' @usage
 #' connect_update_queue_max_contacts(InstanceId, QueueId, MaxContacts)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param QueueId &#91;required&#93; The identifier for the queue.
 #' @param MaxContacts The maximum number of contacts that can be in the queue before it is
 #' considered full.
@@ -9220,8 +13107,10 @@ connect_update_queue_max_contacts <- function(InstanceId, QueueId, MaxContacts =
 #' @usage
 #' connect_update_queue_name(InstanceId, QueueId, Name, Description)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param QueueId &#91;required&#93; The identifier for the queue.
 #' @param Name The name of the queue.
 #' @param Description The description of the queue.
@@ -9270,13 +13159,28 @@ connect_update_queue_name <- function(InstanceId, QueueId, Name = NULL, Descript
 #' 
 #' Updates the outbound caller ID name, number, and outbound whisper flow
 #' for a specified queue.
+#' 
+#' If the number being used in the input is claimed to a traffic
+#' distribution group, and you are calling this API using an instance in
+#' the Amazon Web Services Region where the traffic distribution group was
+#' created, you can use either a full phone number ARN or UUID value for
+#' the `OutboundCallerIdNumberId` value of the
+#' [OutboundCallerConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_OutboundCallerConfig.html)
+#' request body parameter. However, if the number is claimed to a traffic
+#' distribution group and you are calling this API using an instance in the
+#' alternate Amazon Web Services Region associated with the traffic
+#' distribution group, you must provide a full phone number ARN. If a UUID
+#' is provided in this scenario, you will receive a
+#' `ResourceNotFoundException`.
 #'
 #' @usage
 #' connect_update_queue_outbound_caller_config(InstanceId, QueueId,
 #'   OutboundCallerConfig)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param QueueId &#91;required&#93; The identifier for the queue.
 #' @param OutboundCallerConfig &#91;required&#93; The outbound caller ID name, number, and outbound whisper flow.
 #'
@@ -9330,8 +13234,10 @@ connect_update_queue_outbound_caller_config <- function(InstanceId, QueueId, Out
 #' @usage
 #' connect_update_queue_status(InstanceId, QueueId, Status)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param QueueId &#91;required&#93; The identifier for the queue.
 #' @param Status &#91;required&#93; The status of the queue.
 #'
@@ -9378,8 +13284,10 @@ connect_update_queue_status <- function(InstanceId, QueueId, Status) {
 #' connect_update_quick_connect_config(InstanceId, QuickConnectId,
 #'   QuickConnectConfig)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param QuickConnectId &#91;required&#93; The identifier for the quick connect.
 #' @param QuickConnectConfig &#91;required&#93; Information about the configuration settings for the quick connect.
 #'
@@ -9441,8 +13349,10 @@ connect_update_quick_connect_config <- function(InstanceId, QuickConnectId, Quic
 #' connect_update_quick_connect_name(InstanceId, QuickConnectId, Name,
 #'   Description)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param QuickConnectId &#91;required&#93; The identifier for the quick connect.
 #' @param Name The name of the quick connect.
 #' @param Description The description of the quick connect.
@@ -9493,8 +13403,10 @@ connect_update_quick_connect_name <- function(InstanceId, QuickConnectId, Name =
 #' connect_update_routing_profile_concurrency(InstanceId, RoutingProfileId,
 #'   MediaConcurrencies)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param RoutingProfileId &#91;required&#93; The identifier of the routing profile.
 #' @param MediaConcurrencies &#91;required&#93; The channels that agents can handle in the Contact Control Panel (CCP).
 #'
@@ -9509,7 +13421,10 @@ connect_update_quick_connect_name <- function(InstanceId, QuickConnectId, Name =
 #'   MediaConcurrencies = list(
 #'     list(
 #'       Channel = "VOICE"|"CHAT"|"TASK",
-#'       Concurrency = 123
+#'       Concurrency = 123,
+#'       CrossChannelBehavior = list(
+#'         BehaviorType = "ROUTE_CURRENT_CHANNEL_ONLY"|"ROUTE_ANY_CHANNEL"
+#'       )
 #'     )
 #'   )
 #' )
@@ -9546,8 +13461,10 @@ connect_update_routing_profile_concurrency <- function(InstanceId, RoutingProfil
 #' connect_update_routing_profile_default_outbound_queue(InstanceId,
 #'   RoutingProfileId, DefaultOutboundQueueId)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param RoutingProfileId &#91;required&#93; The identifier of the routing profile.
 #' @param DefaultOutboundQueueId &#91;required&#93; The identifier for the default outbound queue.
 #'
@@ -9596,8 +13513,10 @@ connect_update_routing_profile_default_outbound_queue <- function(InstanceId, Ro
 #' connect_update_routing_profile_name(InstanceId, RoutingProfileId, Name,
 #'   Description)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param RoutingProfileId &#91;required&#93; The identifier of the routing profile.
 #' @param Name The name of the routing profile. Must not be more than 127 characters.
 #' @param Description The description of the routing profile. Must not be more than 250
@@ -9649,8 +13568,10 @@ connect_update_routing_profile_name <- function(InstanceId, RoutingProfileId, Na
 #' connect_update_routing_profile_queues(InstanceId, RoutingProfileId,
 #'   QueueConfigs)
 #'
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param RoutingProfileId &#91;required&#93; The identifier of the routing profile.
 #' @param QueueConfigs &#91;required&#93; The queues to be updated for this routing profile. Queues must first be
 #' associated to the routing profile. You can do this using
@@ -9699,6 +13620,102 @@ connect_update_routing_profile_queues <- function(InstanceId, RoutingProfileId, 
 }
 .connect$operations$update_routing_profile_queues <- connect_update_routing_profile_queues
 
+#' Updates a rule for the specified Amazon Connect instance
+#'
+#' @description
+#' Updates a rule for the specified Amazon Connect instance.
+#' 
+#' Use the [Rules Function
+#' language](https://docs.aws.amazon.com/connect/latest/APIReference/connect-rules-language.html)
+#' to code conditions for the rule.
+#'
+#' @usage
+#' connect_update_rule(RuleId, InstanceId, Name, Function, Actions,
+#'   PublishStatus)
+#'
+#' @param RuleId &#91;required&#93; A unique identifier for the rule.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param Name &#91;required&#93; The name of the rule. You can change the name only if
+#' `TriggerEventSource` is one of the following values:
+#' `OnZendeskTicketCreate` | `OnZendeskTicketStatusUpdate` |
+#' `OnSalesforceCaseCreate`
+#' @param Function &#91;required&#93; The conditions of the rule.
+#' @param Actions &#91;required&#93; A list of actions to be run when the rule is triggered.
+#' @param PublishStatus &#91;required&#93; The publish status of the rule.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_rule(
+#'   RuleId = "string",
+#'   InstanceId = "string",
+#'   Name = "string",
+#'   Function = "string",
+#'   Actions = list(
+#'     list(
+#'       ActionType = "CREATE_TASK"|"ASSIGN_CONTACT_CATEGORY"|"GENERATE_EVENTBRIDGE_EVENT"|"SEND_NOTIFICATION",
+#'       TaskAction = list(
+#'         Name = "string",
+#'         Description = "string",
+#'         ContactFlowId = "string",
+#'         References = list(
+#'           list(
+#'             Value = "string",
+#'             Type = "URL"|"ATTACHMENT"|"NUMBER"|"STRING"|"DATE"|"EMAIL"
+#'           )
+#'         )
+#'       ),
+#'       EventBridgeAction = list(
+#'         Name = "string"
+#'       ),
+#'       AssignContactCategoryAction = list(),
+#'       SendNotificationAction = list(
+#'         DeliveryMethod = "EMAIL",
+#'         Subject = "string",
+#'         Content = "string",
+#'         ContentType = "PLAIN_TEXT",
+#'         Recipient = list(
+#'           UserTags = list(
+#'             "string"
+#'           ),
+#'           UserIds = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   PublishStatus = "DRAFT"|"PUBLISHED"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_update_rule
+#'
+#' @aliases connect_update_rule
+connect_update_rule <- function(RuleId, InstanceId, Name, Function, Actions, PublishStatus) {
+  op <- new_operation(
+    name = "UpdateRule",
+    http_method = "PUT",
+    http_path = "/rules/{InstanceId}/{RuleId}",
+    paginator = list()
+  )
+  input <- .connect$update_rule_input(RuleId = RuleId, InstanceId = InstanceId, Name = Name, Function = Function, Actions = Actions, PublishStatus = PublishStatus)
+  output <- .connect$update_rule_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$update_rule <- connect_update_rule
+
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
@@ -9710,13 +13727,22 @@ connect_update_routing_profile_queues <- function(InstanceId, RoutingProfileId, 
 #'
 #' @usage
 #' connect_update_security_profile(Description, Permissions,
-#'   SecurityProfileId, InstanceId)
+#'   SecurityProfileId, InstanceId, AllowedAccessControlTags,
+#'   TagRestrictedResources)
 #'
 #' @param Description The description of the security profile.
-#' @param Permissions The permissions granted to a security profile.
+#' @param Permissions The permissions granted to a security profile. For a list of valid
+#' permissions, see [List of security profile
+#' permissions](https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-list.html).
 #' @param SecurityProfileId &#91;required&#93; The identifier for the security profle.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param AllowedAccessControlTags The list of tags that a security profile uses to restrict access to
+#' resources in Amazon Connect.
+#' @param TagRestrictedResources The list of resources that a security profile applies tag restrictions
+#' to in Amazon Connect.
 #'
 #' @return
 #' An empty list.
@@ -9729,7 +13755,13 @@ connect_update_routing_profile_queues <- function(InstanceId, RoutingProfileId, 
 #'     "string"
 #'   ),
 #'   SecurityProfileId = "string",
-#'   InstanceId = "string"
+#'   InstanceId = "string",
+#'   AllowedAccessControlTags = list(
+#'     "string"
+#'   ),
+#'   TagRestrictedResources = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -9738,14 +13770,14 @@ connect_update_routing_profile_queues <- function(InstanceId, RoutingProfileId, 
 #' @rdname connect_update_security_profile
 #'
 #' @aliases connect_update_security_profile
-connect_update_security_profile <- function(Description = NULL, Permissions = NULL, SecurityProfileId, InstanceId) {
+connect_update_security_profile <- function(Description = NULL, Permissions = NULL, SecurityProfileId, InstanceId, AllowedAccessControlTags = NULL, TagRestrictedResources = NULL) {
   op <- new_operation(
     name = "UpdateSecurityProfile",
     http_method = "POST",
     http_path = "/security-profiles/{InstanceId}/{SecurityProfileId}",
     paginator = list()
   )
-  input <- .connect$update_security_profile_input(Description = Description, Permissions = Permissions, SecurityProfileId = SecurityProfileId, InstanceId = InstanceId)
+  input <- .connect$update_security_profile_input(Description = Description, Permissions = Permissions, SecurityProfileId = SecurityProfileId, InstanceId = InstanceId, AllowedAccessControlTags = AllowedAccessControlTags, TagRestrictedResources = TagRestrictedResources)
   output <- .connect$update_security_profile_output()
   config <- get_config()
   svc <- .connect$service(config)
@@ -9768,8 +13800,10 @@ connect_update_security_profile <- function(Description = NULL, Permissions = NU
 #'   Description, ContactFlowId, Constraints, Defaults, Status, Fields)
 #'
 #' @param TaskTemplateId &#91;required&#93; A unique identifier for the task template.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #' @param Name The name of the task template.
 #' @param Description The description of the task template.
 #' @param ContactFlowId The identifier of the flow that runs by default when a task is created
@@ -9927,6 +13961,65 @@ connect_update_task_template <- function(TaskTemplateId, InstanceId, Name = NULL
 }
 .connect$operations$update_task_template <- connect_update_task_template
 
+#' Updates the traffic distribution for a given traffic distribution group
+#'
+#' @description
+#' Updates the traffic distribution for a given traffic distribution group.
+#' 
+#' For more information about updating a traffic distribution group, see
+#' [Update telephony traffic distribution across Amazon Web Services
+#' Regions](https://docs.aws.amazon.com/connect/latest/adminguide/update-telephony-traffic-distribution.html)
+#' in the *Amazon Connect Administrator Guide*.
+#'
+#' @usage
+#' connect_update_traffic_distribution(Id, TelephonyConfig)
+#'
+#' @param Id &#91;required&#93; The identifier of the traffic distribution group. This can be the ID or
+#' the ARN if the API is being called in the Region where the traffic
+#' distribution group was created. The ARN must be provided if the call is
+#' from the replicated Region.
+#' @param TelephonyConfig The distribution of traffic between the instance and its replica(s).
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_traffic_distribution(
+#'   Id = "string",
+#'   TelephonyConfig = list(
+#'     Distributions = list(
+#'       list(
+#'         Region = "string",
+#'         Percentage = 123
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_update_traffic_distribution
+#'
+#' @aliases connect_update_traffic_distribution
+connect_update_traffic_distribution <- function(Id, TelephonyConfig = NULL) {
+  op <- new_operation(
+    name = "UpdateTrafficDistribution",
+    http_method = "PUT",
+    http_path = "/traffic-distribution/{Id}",
+    paginator = list()
+  )
+  input <- .connect$update_traffic_distribution_input(Id = Id, TelephonyConfig = TelephonyConfig)
+  output <- .connect$update_traffic_distribution_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$update_traffic_distribution <- connect_update_traffic_distribution
+
 #' Assigns the specified hierarchy group to the specified user
 #'
 #' @description
@@ -9937,8 +14030,10 @@ connect_update_task_template <- function(TaskTemplateId, InstanceId, Name = NULL
 #'
 #' @param HierarchyGroupId The identifier of the hierarchy group.
 #' @param UserId &#91;required&#93; The identifier of the user account.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #'
 #' @return
 #' An empty list.
@@ -9985,8 +14080,10 @@ connect_update_user_hierarchy <- function(HierarchyGroupId = NULL, UserId, Insta
 #'
 #' @param Name &#91;required&#93; The name of the hierarchy group. Must not be more than 100 characters.
 #' @param HierarchyGroupId &#91;required&#93; The identifier of the hierarchy group.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #'
 #' @return
 #' An empty list.
@@ -10033,8 +14130,10 @@ connect_update_user_hierarchy_group_name <- function(Name, HierarchyGroupId, Ins
 #' connect_update_user_hierarchy_structure(HierarchyStructure, InstanceId)
 #'
 #' @param HierarchyStructure &#91;required&#93; The hierarchy levels to update.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #'
 #' @return
 #' An empty list.
@@ -10105,8 +14204,10 @@ connect_update_user_hierarchy_structure <- function(HierarchyStructure, Instance
 #'
 #' @param IdentityInfo &#91;required&#93; The identity information for the user.
 #' @param UserId &#91;required&#93; The identifier of the user account.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #'
 #' @return
 #' An empty list.
@@ -10117,7 +14218,9 @@ connect_update_user_hierarchy_structure <- function(HierarchyStructure, Instance
 #'   IdentityInfo = list(
 #'     FirstName = "string",
 #'     LastName = "string",
-#'     Email = "string"
+#'     Email = "string",
+#'     SecondaryEmail = "string",
+#'     Mobile = "string"
 #'   ),
 #'   UserId = "string",
 #'   InstanceId = "string"
@@ -10156,8 +14259,10 @@ connect_update_user_identity_info <- function(IdentityInfo, UserId, InstanceId) 
 #'
 #' @param PhoneConfig &#91;required&#93; Information about phone configuration settings for the user.
 #' @param UserId &#91;required&#93; The identifier of the user account.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #'
 #' @return
 #' An empty list.
@@ -10209,8 +14314,10 @@ connect_update_user_phone_config <- function(PhoneConfig, UserId, InstanceId) {
 #'
 #' @param RoutingProfileId &#91;required&#93; The identifier of the routing profile for the user.
 #' @param UserId &#91;required&#93; The identifier of the user account.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #'
 #' @return
 #' An empty list.
@@ -10257,8 +14364,10 @@ connect_update_user_routing_profile <- function(RoutingProfileId, UserId, Instan
 #'
 #' @param SecurityProfileIds &#91;required&#93; The identifiers of the security profiles for the user.
 #' @param UserId &#91;required&#93; The identifier of the user account.
-#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can find the
-#' instanceId in the ARN of the instance.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
 #'
 #' @return
 #' An empty list.

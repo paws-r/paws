@@ -5,7 +5,7 @@ NULL
 
 .redshiftdataapiservice$batch_execute_statement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterIdentifier = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string")), DbUser = structure(logical(0), tags = list(type = "string")), SecretArn = structure(logical(0), tags = list(type = "string")), Sqls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StatementName = structure(logical(0), tags = list(type = "string")), WithEvent = structure(logical(0), tags = list(type = "boolean", box = TRUE)), WorkgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ClusterIdentifier = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string")), DbUser = structure(logical(0), tags = list(type = "string")), SecretArn = structure(logical(0), tags = list(type = "string")), Sqls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StatementName = structure(logical(0), tags = list(type = "string")), WithEvent = structure(logical(0), tags = list(type = "boolean", box = TRUE)), WorkgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -53,7 +53,7 @@ NULL
 
 .redshiftdataapiservice$execute_statement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClusterIdentifier = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string")), DbUser = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SecretArn = structure(logical(0), tags = list(type = "string")), Sql = structure(logical(0), tags = list(type = "string")), StatementName = structure(logical(0), tags = list(type = "string")), WithEvent = structure(logical(0), tags = list(type = "boolean", box = TRUE)), WorkgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ClusterIdentifier = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string")), DbUser = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SecretArn = structure(logical(0), tags = list(type = "string")), Sql = structure(logical(0), tags = list(type = "string")), StatementName = structure(logical(0), tags = list(type = "string")), WithEvent = structure(logical(0), tags = list(type = "boolean", box = TRUE)), WorkgroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

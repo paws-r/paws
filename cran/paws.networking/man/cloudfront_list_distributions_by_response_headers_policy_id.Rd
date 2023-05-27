@@ -3,7 +3,7 @@
 \name{cloudfront_list_distributions_by_response_headers_policy_id}
 \alias{cloudfront_list_distributions_by_response_headers_policy_id}
 \title{Gets a list of distribution IDs for distributions that have a cache
-behavior that’s associated with the specified response headers policy}
+behavior that's associated with the specified response headers policy}
 \usage{
 cloudfront_list_distributions_by_response_headers_policy_id(
   Marker = NULL,
@@ -15,8 +15,8 @@ cloudfront_list_distributions_by_response_headers_policy_id(
 \item{Marker}{Use this field when paginating results to indicate where to begin in
 your list of distribution IDs. The response includes distribution IDs in
 the list that occur after the marker. To get the next page of the list,
-set this field’s value to the value of \code{NextMarker} from the current
-page’s response.}
+set this field's value to the value of \code{NextMarker} from the current
+page's response.}
 
 \item{MaxItems}{The maximum number of distribution IDs that you want to get in the
 response.}
@@ -25,7 +25,7 @@ response.}
 you want to list.}
 }
 \description{
-Gets a list of distribution IDs for distributions that have a cache behavior that’s associated with the specified response headers policy.
+Gets a list of distribution IDs for distributions that have a cache behavior that's associated with the specified response headers policy.
 
 See \url{https://paws-r.github.io/docs/cloudfront/list_distributions_by_response_headers_policy_id.html} for full documentation.
 }

@@ -58,11 +58,13 @@ common errors.
 
 \strong{Amazon Rekognition Custom Labels}
 \itemize{
+\item \code{\link[=rekognition_copy_project_version]{copy_project_version}}
 \item \code{\link[=rekognition_create_dataset]{create_dataset}}
 \item \code{\link[=rekognition_create_project]{create_project}}
 \item \code{\link[=rekognition_create_project_version]{create_project_version}}
 \item \code{\link[=rekognition_delete_dataset]{delete_dataset}}
 \item \code{\link[=rekognition_delete_project]{delete_project}}
+\item \code{\link[=rekognition_delete_project_policy]{delete_project_policy}}
 \item \code{\link[=rekognition_delete_project_version]{delete_project_version}}
 \item \code{\link[=rekognition_describe_dataset]{describe_dataset}}
 \item \code{\link[=rekognition_describe_projects]{describe_projects}}
@@ -71,6 +73,8 @@ common errors.
 \item \code{\link[=rekognition_distribute_dataset_entries]{distribute_dataset_entries}}
 \item \code{\link[=rekognition_list_dataset_entries]{list_dataset_entries}}
 \item \code{\link[=rekognition_list_dataset_labels]{list_dataset_labels}}
+\item \code{\link[=rekognition_list_project_policies]{list_project_policies}}
+\item \code{\link[=rekognition_put_project_policy]{put_project_policy}}
 \item \code{\link[=rekognition_start_project_version]{start_project_version}}
 \item \code{\link[=rekognition_stop_project_version]{stop_project_version}}
 \item \code{\link[=rekognition_update_dataset_entries]{update_dataset_entries}}
@@ -104,6 +108,7 @@ common errors.
 \item \code{\link[=rekognition_list_stream_processors]{list_stream_processors}}
 \item \code{\link[=rekognition_start_stream_processor]{start_stream_processor}}
 \item \code{\link[=rekognition_stop_stream_processor]{stop_stream_processor}}
+\item \code{\link[=rekognition_update_stream_processor]{update_stream_processor}}
 }
 }
 \section{Service syntax}{
@@ -134,8 +139,10 @@ common errors.
 
 \tabular{ll}{
 \link[=rekognition_compare_faces]{compare_faces} \tab Compares a face in the source input image with each of the 100 largest faces detected in the target input image\cr
+\link[=rekognition_copy_project_version]{copy_project_version} \tab Copies a version of an Amazon Rekognition Custom Labels model from a source project to a destination project\cr
 \link[=rekognition_create_collection]{create_collection} \tab Creates a collection in an AWS Region\cr
 \link[=rekognition_create_dataset]{create_dataset} \tab Creates a new Amazon Rekognition Custom Labels dataset\cr
+\link[=rekognition_create_face_liveness_session]{create_face_liveness_session} \tab This API operation initiates a Face Liveness session\cr
 \link[=rekognition_create_project]{create_project} \tab Creates a new Amazon Rekognition Custom Labels project\cr
 \link[=rekognition_create_project_version]{create_project_version} \tab Creates a new version of a model and begins training\cr
 \link[=rekognition_create_stream_processor]{create_stream_processor} \tab Creates an Amazon Rekognition stream processor that you can use to detect and recognize faces or to detect labels in a streaming video\cr
@@ -143,6 +150,7 @@ common errors.
 \link[=rekognition_delete_dataset]{delete_dataset} \tab Deletes an existing Amazon Rekognition Custom Labels dataset\cr
 \link[=rekognition_delete_faces]{delete_faces} \tab Deletes faces from a collection\cr
 \link[=rekognition_delete_project]{delete_project} \tab Deletes an Amazon Rekognition Custom Labels project\cr
+\link[=rekognition_delete_project_policy]{delete_project_policy} \tab Deletes an existing project policy\cr
 \link[=rekognition_delete_project_version]{delete_project_version} \tab Deletes an Amazon Rekognition Custom Labels model\cr
 \link[=rekognition_delete_stream_processor]{delete_stream_processor} \tab Deletes the stream processor identified by Name\cr
 \link[=rekognition_describe_collection]{describe_collection} \tab Describes the specified collection\cr
@@ -161,6 +169,7 @@ common errors.
 \link[=rekognition_get_celebrity_recognition]{get_celebrity_recognition} \tab Gets the celebrity recognition results for a Amazon Rekognition Video analysis started by StartCelebrityRecognition\cr
 \link[=rekognition_get_content_moderation]{get_content_moderation} \tab Gets the inappropriate, unwanted, or offensive content analysis results for a Amazon Rekognition Video analysis started by StartContentModeration\cr
 \link[=rekognition_get_face_detection]{get_face_detection} \tab Gets face detection results for a Amazon Rekognition Video analysis started by StartFaceDetection\cr
+\link[=rekognition_get_face_liveness_session_results]{get_face_liveness_session_results} \tab Retrieves the results of a specific Face Liveness session\cr
 \link[=rekognition_get_face_search]{get_face_search} \tab Gets the face search results for Amazon Rekognition Video face search started by StartFaceSearch\cr
 \link[=rekognition_get_label_detection]{get_label_detection} \tab Gets the label detection results of a Amazon Rekognition Video analysis started by StartLabelDetection\cr
 \link[=rekognition_get_person_tracking]{get_person_tracking} \tab Gets the path tracking results of a Amazon Rekognition Video analysis started by StartPersonTracking\cr
@@ -171,8 +180,10 @@ common errors.
 \link[=rekognition_list_dataset_entries]{list_dataset_entries} \tab Lists the entries (images) within a dataset\cr
 \link[=rekognition_list_dataset_labels]{list_dataset_labels} \tab Lists the labels in a dataset\cr
 \link[=rekognition_list_faces]{list_faces} \tab Returns metadata for faces in the specified collection\cr
+\link[=rekognition_list_project_policies]{list_project_policies} \tab Gets a list of the project policies attached to a project\cr
 \link[=rekognition_list_stream_processors]{list_stream_processors} \tab Gets a list of stream processors that you have created with CreateStreamProcessor\cr
 \link[=rekognition_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags in an Amazon Rekognition collection, stream processor, or Custom Labels model\cr
+\link[=rekognition_put_project_policy]{put_project_policy} \tab Attaches a project policy to a Amazon Rekognition Custom Labels project in a trusting AWS account\cr
 \link[=rekognition_recognize_celebrities]{recognize_celebrities} \tab Returns an array of celebrities recognized in the input image\cr
 \link[=rekognition_search_faces]{search_faces} \tab For a given input face ID, searches for matching faces in the collection the face belongs to\cr
 \link[=rekognition_search_faces_by_image]{search_faces_by_image} \tab For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces\cr

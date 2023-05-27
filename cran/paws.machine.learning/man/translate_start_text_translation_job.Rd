@@ -27,15 +27,20 @@ translation job.}
 
 \item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of an AWS Identity Access and Management
 (IAM) role that grants Amazon Translate read access to your input data.
-For more information, see identity-and-access-management.}
+For more information, see \href{https://docs.aws.amazon.com/translate/latest/dg/}{Identity and access management} .}
 
-\item{SourceLanguageCode}{[required] The language code of the input language. For a list of language codes,
-see what-is-languages.
+\item{SourceLanguageCode}{[required] The language code of the input language. Specify the language if all
+input documents share the same language. If you don't know the language
+of the source files, or your input documents contains different source
+languages, select \code{auto}. Amazon Translate auto detects the source
+language for each input document. For a list of supported language
+codes, see \href{https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html}{Supported languages}.}
 
-Amazon Translate does not automatically detect a source language during
-batch translation jobs.}
+\item{TargetLanguageCodes}{[required] The target languages of the translation job. Enter up to 10 language
+codes. Each input file is translated into each target language.
 
-\item{TargetLanguageCodes}{[required] The language code of the output language.}
+Each language code is 2 or 5 characters long. For a list of language
+codes, see \href{https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html}{Supported languages}.}
 
 \item{TerminologyNames}{The name of a custom terminology resource to add to the translation job.
 This resource lists examples source terms and the desired translation
@@ -43,15 +48,23 @@ for each term.
 
 This parameter accepts only one custom terminology resource.
 
+If you specify multiple target languages for the job, translate uses the
+designated terminology for each requested target language that has an
+entry for the source term in the terminology file.
+
 For a list of available custom terminology resources, use the
 \code{\link[=translate_list_terminologies]{list_terminologies}} operation.
 
-For more information, see how-custom-terminology.}
+For more information, see \href{https://docs.aws.amazon.com/translate/latest/dg/how-custom-terminology.html}{Custom terminology}.}
 
 \item{ParallelDataNames}{The name of a parallel data resource to add to the translation job. This
 resource consists of examples that show how you want segments of text to
-be translated. When you add parallel data to a translation job, you
-create an \emph{Active Custom Translation} job.
+be translated. If you specify multiple target languages for the job, the
+parallel data file must include translations for all the target
+languages.
+
+When you add parallel data to a translation job, you create an \emph{Active
+Custom Translation} job.
 
 This parameter accepts only one parallel data resource.
 
@@ -61,18 +74,17 @@ jobs that don't use parallel data. For more information, see \href{https://aws.a
 For a list of available parallel data resources, use the
 \code{\link[=translate_list_parallel_data]{list_parallel_data}} operation.
 
-For more information, see customizing-translations-parallel-data.}
+For more information, see \href{https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-parallel-data.html}{Customizing your translations with parallel data}.}
 
 \item{ClientToken}{[required] A unique identifier for the request. This token is generated for you
 when using the Amazon Translate SDK.}
 
 \item{Settings}{Settings to configure your translation output, including the option to
-mask profane words and phrases.
-\code{\link[=translate_start_text_translation_job]{start_text_translation_job}}
-does not support the formality setting.}
+set the formality level of the output text and the option to mask
+profane words and phrases.}
 }
 \description{
-Starts an asynchronous batch translation job. Batch translation jobs can be used to translate large volumes of text across multiple documents at once. For more information, see async.
+Starts an asynchronous batch translation job. Use batch translation jobs to translate large volumes of text across multiple documents at once. For batch translation, you can input documents with different source languages (specify \code{auto} as the source language). You can specify one or more target languages. Batch translation translates each input document into each of the target languages. For more information, see \href{https://docs.aws.amazon.com/translate/latest/dg/async.html}{Asynchronous batch processing}.
 
 See \url{https://paws-r.github.io/docs/translate/start_text_translation_job.html} for full documentation.
 }

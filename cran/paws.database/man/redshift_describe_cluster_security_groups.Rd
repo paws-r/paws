@@ -14,7 +14,7 @@ redshift_describe_cluster_security_groups(
 }
 \arguments{
 \item{ClusterSecurityGroupName}{The name of a cluster security group for which you are requesting
-details. You can specify either the \strong{Marker} parameter or a
+details. You must specify either the \strong{Marker} parameter or a
 \strong{ClusterSecurityGroupName} parameter, but not both.
 
 Example: \code{securitygroup1}}
@@ -37,7 +37,7 @@ returns a value in the \code{Marker} field of the response. You can retrieve
 the next set of response records by providing the returned marker value
 in the \code{Marker} parameter and retrying the request.
 
-Constraints: You can specify either the \strong{ClusterSecurityGroupName}
+Constraints: You must specify either the \strong{ClusterSecurityGroupName}
 parameter or the \strong{Marker} parameter, but not both.}
 
 \item{TagKeys}{A tag key or keys for which you want to return all matching cluster

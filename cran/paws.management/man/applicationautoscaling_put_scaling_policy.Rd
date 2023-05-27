@@ -16,7 +16,11 @@ applicationautoscaling_put_scaling_policy(
 )
 }
 \arguments{
-\item{PolicyName}{[required] The name of the scaling policy.}
+\item{PolicyName}{[required] The name of the scaling policy.
+
+You cannot change the name of a scaling policy, but you can delete the
+original scaling policy and create a new scaling policy with the same
+settings and a different name.}
 
 \item{ServiceNamespace}{[required] The namespace of the Amazon Web Services service that provides the
 resource. For a resource provided by your own application or service,
@@ -73,6 +77,9 @@ specified using the cluster ARN. Example:
 group name. Example: \code{replication-group/mycluster}.
 \item Neptune cluster - The resource type is \code{cluster} and the unique
 identifier is the cluster name. Example: \code{cluster:mycluster}.
+\item SageMaker Serverless endpoint - The resource type is \code{variant} and
+the unique identifier is the resource ID. Example:
+\code{endpoint/my-end-point/variant/KMeansClustering}.
 }}
 
 \item{ScalableDimension}{[required] The scalable dimension. This string consists of the service namespace,
@@ -98,7 +105,7 @@ for a DynamoDB global secondary index.
 Aurora DB cluster. Available for Aurora MySQL-compatible edition and
 Aurora PostgreSQL-compatible edition.
 \item \code{sagemaker:variant:DesiredInstanceCount} - The number of EC2
-instances for an SageMaker model endpoint variant.
+instances for a SageMaker model endpoint variant.
 \item \code{custom-resource:ResourceType:Property} - The scalable dimension for
 a custom resource provided by your own application or service.
 \item \code{comprehend:document-classifier-endpoint:DesiredInferenceUnits} -
@@ -121,10 +128,12 @@ groups for an Amazon ElastiCache replication group.
 per node group for an Amazon ElastiCache replication group.
 \item \code{neptune:cluster:ReadReplicaCount} - The count of read replicas in
 an Amazon Neptune DB cluster.
+\item \code{sagemaker:variant:DesiredProvisionedConcurrency} - The provisioned
+concurrency for a SageMaker Serverless endpoint.
 }}
 
-\item{PolicyType}{The policy type. This parameter is required if you are creating a
-scaling policy.
+\item{PolicyType}{The scaling policy type. This parameter is required if you are creating
+a scaling policy.
 
 The following policy types are supported:
 

@@ -17,8 +17,8 @@ billingconductor_list_custom_line_items(
 
 \item{MaxResults}{The maximum number of billing groups to retrieve.}
 
-\item{NextToken}{The pagination token used on subsequent calls to get custom line items
-(FFLIs).}
+\item{NextToken}{The pagination token that's used on subsequent calls to get custom line
+items (FFLIs).}
 
 \item{Filters}{A \code{ListCustomLineItemsFilter} that specifies the custom line item names
 and/or billing group Amazon Resource Names (ARNs) to retrieve FFLI

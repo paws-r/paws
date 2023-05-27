@@ -7,6 +7,7 @@
 ivs_update_channel(
   arn,
   authorized = NULL,
+  insecureIngest = NULL,
   latencyMode = NULL,
   name = NULL,
   recordingConfigurationArn = NULL,
@@ -17,6 +18,8 @@ ivs_update_channel(
 \item{arn}{[required] ARN of the channel to be updated.}
 
 \item{authorized}{Whether the channel is private (enabled for playback authorization).}
+
+\item{insecureIngest}{Whether the channel allows insecure RTMP ingest. Default: \code{false}.}
 
 \item{latencyMode}{Channel latency mode. Use \code{NORMAL} to broadcast and deliver live video
 up to Full HD. Use \code{LOW} for near-real-time interaction with viewers.
@@ -33,14 +36,18 @@ recording is enabled}
 you exceed the allowable resolution or bitrate, the stream probably will
 disconnect immediately}. Valid values:
 \itemize{
-\item \code{STANDARD}: Multiple qualities are generated from the original
-input, to automatically give viewers the best experience for their
-devices and network conditions. Resolution can be up to 1080p and
-bitrate can be up to 8.5 Mbps. Audio is transcoded only for
-renditions 360p and below; above that, audio is passed through.
-\item \code{BASIC}: Amazon IVS delivers the original input to viewers. The
-viewer’s video-quality choice is limited to the original input.
-Resolution can be up to 480p and bitrate can be up to 1.5 Mbps.
+\item \code{STANDARD}: Video is transcoded: multiple qualities are generated
+from the original input, to automatically give viewers the best
+experience for their devices and network conditions. Transcoding
+allows higher playback quality across a range of download speeds.
+Resolution can be up to 1080p and bitrate can be up to 8.5 Mbps.
+Audio is transcoded only for renditions 360p and below; above that,
+audio is passed through. This is the default.
+\item \code{BASIC}: Video is transmuxed: Amazon IVS delivers the original input
+to viewers. The viewer’s video-quality choice is limited to the
+original input. Resolution can be up to 1080p and bitrate can be up
+to 1.5 Mbps for 480p and up to 3.5 Mbps for resolutions between 480p
+and 1080p.
 }}
 }
 \description{

@@ -247,7 +247,7 @@ iam_add_user_to_group <- function(GroupName, UserName) {
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @return
@@ -328,7 +328,7 @@ iam_attach_group_policy <- function(GroupName, PolicyArn) {
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @return
@@ -405,7 +405,7 @@ iam_attach_role_policy <- function(RoleName, PolicyArn) {
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @return
@@ -1033,6 +1033,8 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #'     application or applications allowed to authenticate using the OIDC
 #'     provider
 #' 
+#' -   A list of tags that are attached to the specified IAM OIDC provider
+#' 
 #' -   A list of thumbprints of one or more server certificates that the
 #'     IdP uses
 #' 
@@ -1042,10 +1044,10 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' Amazon Web Services secures communication with some OIDC identity
 #' providers (IdPs) through our library of trusted certificate authorities
 #' (CAs) instead of using a certificate thumbprint to verify your IdP
-#' server certificate. These OIDC IdPs include Google, and those that use
-#' an Amazon S3 bucket to host a JSON Web Key Set (JWKS) endpoint. In these
-#' cases, your legacy thumbprint remains in your configuration, but is no
-#' longer used for validation.
+#' server certificate. These OIDC IdPs include Google, Auth0, and those
+#' that use an Amazon S3 bucket to host a JSON Web Key Set (JWKS) endpoint.
+#' In these cases, your legacy thumbprint remains in your configuration,
+#' but is no longer used for validation.
 #' 
 #' The trust for the OIDC provider is derived from the IAM provider that
 #' this operation creates. Therefore, it is best to limit access to the
@@ -1100,7 +1102,7 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' For more information about obtaining the OIDC provider thumbprint, see
 #' [Obtaining the thumbprint for an OpenID Connect
 #' provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html)
-#' in the *IAM User Guide*.
+#' in the *IAM user Guide*.
 #' @param Tags A list of tags that you want to attach to the new IAM OpenID Connect
 #' (OIDC) provider. Each tag consists of a key name and an associated
 #' value. For more information about tagging, see [Tagging IAM
@@ -1371,7 +1373,7 @@ iam_create_policy <- function(PolicyName, Path = NULL, PolicyDocument, Descripti
 #' add a new version.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param PolicyDocument &#91;required&#93; The JSON policy document that you want to use as the content for this
 #' new version of the policy.
@@ -1490,6 +1492,11 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' IAM user, group, role, and policy names must be unique within the
 #' account. Names are not distinguished by case. For example, you cannot
 #' create resources named both "MyResource" and "myresource".
+#' 
+#' This parameter allows (through its [regex
+#' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
+#' consisting of upper and lowercase alphanumeric characters with no
+#' spaces. You can also include any of the following characters: _+=,.@@-
 #' @param AssumeRolePolicyDocument &#91;required&#93; The trust relationship policy document that grants an entity permission
 #' to assume the role.
 #' 
@@ -1519,7 +1526,7 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' default value of one hour is applied. This setting can have a value from
 #' 1 hour to 12 hours.
 #' 
-#' Anyone who assumes the role from the or API can use the
+#' Anyone who assumes the role from the CLI or API can use the
 #' `DurationSeconds` API parameter or the `duration-seconds` CLI parameter
 #' to request a longer session. The `MaxSessionDuration` setting determines
 #' the maximum duration that can be requested using the `DurationSeconds`
@@ -1530,8 +1537,20 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' operations to create a console URL. For more information, see [Using IAM
 #' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html)
 #' in the *IAM User Guide*.
-#' @param PermissionsBoundary The ARN of the policy that is used to set the permissions boundary for
-#' the role.
+#' @param PermissionsBoundary The ARN of the managed policy that is used to set the permissions
+#' boundary for the role.
+#' 
+#' A permissions boundary policy defines the maximum permissions that
+#' identity-based policies can grant to an entity, but does not grant
+#' permissions. Permissions boundaries do not define the maximum
+#' permissions that a resource-based policy can grant to an entity. To
+#' learn more, see [Permissions boundaries for IAM
+#' entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
+#' in the *IAM User Guide*.
+#' 
+#' For more information about policy types, see [Policy
+#' types](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policy-types)
+#' in the *IAM User Guide*.
 #' @param Tags A list of tags that you want to attach to the new role. Each tag
 #' consists of a key name and an associated value. For more information
 #' about tagging, see [Tagging IAM
@@ -1651,7 +1670,7 @@ iam_create_role <- function(Path = NULL, RoleName, AssumeRolePolicyDocument, Des
 #' that is used as your organization's IdP.
 #' 
 #' This operation requires [Signature Version
-#' 4](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #' 
 #' For more information, see [Enabling SAML 2.0 federated users to access
 #' the Amazon Web Services Management
@@ -1969,8 +1988,20 @@ iam_create_service_specific_credential <- function(UserName, ServiceName) {
 #' IAM user, group, role, and policy names must be unique within the
 #' account. Names are not distinguished by case. For example, you cannot
 #' create resources named both "MyResource" and "myresource".
-#' @param PermissionsBoundary The ARN of the policy that is used to set the permissions boundary for
-#' the user.
+#' @param PermissionsBoundary The ARN of the managed policy that is used to set the permissions
+#' boundary for the user.
+#' 
+#' A permissions boundary policy defines the maximum permissions that
+#' identity-based policies can grant to an entity, but does not grant
+#' permissions. Permissions boundaries do not define the maximum
+#' permissions that a resource-based policy can grant to an entity. To
+#' learn more, see [Permissions boundaries for IAM
+#' entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
+#' in the *IAM User Guide*.
+#' 
+#' For more information about policy types, see [Policy
+#' types](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policy-types)
+#' in the *IAM User Guide*.
 #' @param Tags A list of tags that you want to attach to the new user. Each tag
 #' consists of a key name and an associated value. For more information
 #' about tagging, see [Tagging IAM
@@ -2097,8 +2128,8 @@ iam_create_user <- function(Path = NULL, UserName, PermissionsBoundary = NULL, T
 #' ASCII character from the ! (``U+0021``) through the DEL character
 #' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
-#' @param VirtualMFADeviceName &#91;required&#93; The name of the virtual MFA device. Use with path to uniquely identify a
-#' virtual MFA device.
+#' @param VirtualMFADeviceName &#91;required&#93; The name of the virtual MFA device, which must be unique. Use with path
+#' to uniquely identify a virtual MFA device.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
@@ -2616,14 +2647,13 @@ iam_delete_instance_profile <- function(InstanceProfileName) {
 }
 .iam$operations$delete_instance_profile <- iam_delete_instance_profile
 
-#' Deletes the password for the specified IAM user, which terminates the
-#' user's ability to access Amazon Web Services services through the Amazon
-#' Web Services Management Console
+#' Deletes the password for the specified IAM user, For more information,
+#' see Managing passwords for IAM users
 #'
 #' @description
-#' Deletes the password for the specified IAM user, which terminates the
-#' user's ability to access Amazon Web Services services through the Amazon
-#' Web Services Management Console.
+#' Deletes the password for the specified IAM user, For more information,
+#' see [Managing passwords for IAM
+#' users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html).
 #' 
 #' You can use the CLI, the Amazon Web Services API, or the **Users** page
 #' in the IAM console to delete a password for any IAM user. You can use
@@ -2781,7 +2811,7 @@ iam_delete_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to delete.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @return
@@ -2839,7 +2869,7 @@ iam_delete_policy <- function(PolicyArn) {
 #' delete a version.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param VersionId &#91;required&#93; The policy version to delete.
 #' 
@@ -2890,9 +2920,24 @@ iam_delete_policy_version <- function(PolicyArn, VersionId) {
 #' Deletes the specified role
 #'
 #' @description
-#' Deletes the specified role. The role must not have any policies
-#' attached. For more information about roles, see [Working with
-#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
+#' Deletes the specified role. Unlike the Amazon Web Services Management
+#' Console, when you delete a role programmatically, you must delete the
+#' items attached to the role manually, or the deletion fails. For more
+#' information, see [Deleting an IAM
+#' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_delete.html#roles-managingrole-deleting-cli).
+#' Before attempting to delete a role, remove the following attached items:
+#' 
+#' -   Inline policies ([`delete_role_policy`][iam_delete_role_policy])
+#' 
+#' -   Attached managed policies
+#'     ([`detach_role_policy`][iam_detach_role_policy])
+#' 
+#' -   Instance profile
+#'     ([`remove_role_from_instance_profile`][iam_remove_role_from_instance_profile])
+#' 
+#' -   Optional – Delete instance profile after detaching from role for
+#'     resource clean up
+#'     ([`delete_instance_profile`][iam_delete_instance_profile])
 #' 
 #' Make sure that you do not have any Amazon EC2 instances running with the
 #' role you are about to delete. Deleting a role or instance profile that
@@ -2953,6 +2998,8 @@ iam_delete_role <- function(RoleName) {
 #'
 #' @description
 #' Deletes the permissions boundary for the specified IAM role.
+#' 
+#' You cannot set the boundary for a service-linked role.
 #' 
 #' Deleting the permissions boundary for a role might increase its
 #' permissions. For example, it might allow anyone who assumes the role to
@@ -3081,7 +3128,7 @@ iam_delete_role_policy <- function(RoleName, PolicyName) {
 #' provider resource ARN fails.
 #' 
 #' This operation requires [Signature Version
-#' 4](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #'
 #' @usage
 #' iam_delete_saml_provider(SAMLProviderArn)
@@ -3736,7 +3783,7 @@ iam_delete_virtual_mfa_device <- function(SerialNumber) {
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to detach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @return
@@ -3796,7 +3843,7 @@ iam_detach_group_policy <- function(GroupName, PolicyArn) {
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to detach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @return
@@ -3856,7 +3903,7 @@ iam_detach_role_policy <- function(RoleName, PolicyArn) {
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to detach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @return
@@ -4422,7 +4469,7 @@ iam_get_access_key_last_used <- function(AccessKeyId) {
 #' your account.
 #' 
 #' Policies returned by this operation are URL-encoded compliant with [RFC
-#' 3986](https://www.rfc-editor.org/rfc/rfc3986). You can use a URL
+#' 3986](https://datatracker.ietf.org/doc/html/rfc3986). You can use a URL
 #' decoding method to convert the policy back to plain JSON text. For
 #' example, if you use Java, you can use the `decode` method of the
 #' `java.net.URLDecoder` utility class in the Java SDK. Other languages and
@@ -4917,7 +4964,7 @@ iam_get_context_keys_for_custom_policy <- function(PolicyInputList) {
 #' encoded to be included as a part of a real HTML request.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param PolicyInputList An optional list of additional policies for which you want the list of
 #' context keys that are referenced.
@@ -5136,7 +5183,7 @@ iam_get_group <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 #' specified IAM group.
 #' 
 #' Policies returned by this operation are URL-encoded compliant with [RFC
-#' 3986](https://www.rfc-editor.org/rfc/rfc3986). You can use a URL
+#' 3986](https://datatracker.ietf.org/doc/html/rfc3986). You can use a URL
 #' decoding method to convert the policy back to plain JSON text. For
 #' example, if you use Java, you can use the `decode` method of the
 #' `java.net.URLDecoder` utility class in the Java SDK. Other languages and
@@ -5415,7 +5462,7 @@ iam_get_login_profile <- function(UserName) {
 #' operation.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @return
@@ -5493,12 +5540,11 @@ iam_get_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 #' data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html)
 #' in the *IAM User Guide*.
 #' 
-#' For each service that principals in an account (root users, IAM users,
-#' or IAM roles) could access using SCPs, the operation returns details
-#' about the most recent access attempt. If there was no attempt, the
-#' service is listed without details about the most recent attempt to
-#' access the service. If the operation fails, it returns the reason that
-#' it failed.
+#' For each service that principals in an account (root user, IAM users, or
+#' IAM roles) could access using SCPs, the operation returns details about
+#' the most recent access attempt. If there was no attempt, the service is
+#' listed without details about the most recent attempt to access the
+#' service. If the operation fails, it returns the reason that it failed.
 #' 
 #' By default, the list is sorted by service namespace.
 #'
@@ -5631,7 +5677,7 @@ iam_get_organizations_access_report <- function(JobId, MaxItems = NULL, Marker =
 #' information about.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @return
@@ -5701,7 +5747,7 @@ iam_get_policy <- function(PolicyArn) {
 #' managed policy, including the policy document.
 #' 
 #' Policies returned by this operation are URL-encoded compliant with [RFC
-#' 3986](https://www.rfc-editor.org/rfc/rfc3986). You can use a URL
+#' 3986](https://datatracker.ietf.org/doc/html/rfc3986). You can use a URL
 #' decoding method to convert the policy back to plain JSON text. For
 #' example, if you use Java, you can use the `decode` method of the
 #' `java.net.URLDecoder` utility class in the Java SDK. Other languages and
@@ -5733,7 +5779,7 @@ iam_get_policy <- function(PolicyArn) {
 #' information about.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param VersionId &#91;required&#93; Identifies the policy version to retrieve.
 #' 
@@ -5799,7 +5845,7 @@ iam_get_policy_version <- function(PolicyArn, VersionId) {
 #' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
 #' 
 #' Policies returned by this operation are URL-encoded compliant with [RFC
-#' 3986](https://www.rfc-editor.org/rfc/rfc3986). You can use a URL
+#' 3986](https://datatracker.ietf.org/doc/html/rfc3986). You can use a URL
 #' decoding method to convert the policy back to plain JSON text. For
 #' example, if you use Java, you can use the `decode` method of the
 #' `java.net.URLDecoder` utility class in the Java SDK. Other languages and
@@ -5895,7 +5941,7 @@ iam_get_role <- function(RoleName) {
 #' specified IAM role.
 #' 
 #' Policies returned by this operation are URL-encoded compliant with [RFC
-#' 3986](https://www.rfc-editor.org/rfc/rfc3986). You can use a URL
+#' 3986](https://datatracker.ietf.org/doc/html/rfc3986). You can use a URL
 #' decoding method to convert the policy back to plain JSON text. For
 #' example, if you use Java, you can use the `decode` method of the
 #' `java.net.URLDecoder` utility class in the Java SDK. Other languages and
@@ -5979,7 +6025,7 @@ iam_get_role_policy <- function(RoleName, PolicyName) {
 #' SAML provider resource object was created or updated.
 #' 
 #' This operation requires [Signature Version
-#' 4](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #'
 #' @usage
 #' iam_get_saml_provider(SAMLProviderArn)
@@ -5988,7 +6034,7 @@ iam_get_role_policy <- function(RoleName, PolicyName) {
 #' IAM to get information about.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @return
@@ -6415,7 +6461,7 @@ iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker
 #' for that service. In the first paragraph, find the service prefix. For
 #' example, `(service prefix: a4b)`. For more information about service
 #' namespaces, see [Amazon Web Services service
-#' namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+#' namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces)
 #' in the *Amazon Web Services General Reference*.
 #' @param MaxItems Use this only when paginating results to indicate the maximum number of
 #' items you want in the response. If additional items exist beyond the
@@ -6671,7 +6717,7 @@ iam_get_user <- function(UserName = NULL) {
 #' specified IAM user.
 #' 
 #' Policies returned by this operation are URL-encoded compliant with [RFC
-#' 3986](https://www.rfc-editor.org/rfc/rfc3986). You can use a URL
+#' 3986](https://datatracker.ietf.org/doc/html/rfc3986). You can use a URL
 #' decoding method to convert the policy back to plain JSON text. For
 #' example, if you use Java, you can use the `decode` method of the
 #' `java.net.URLDecoder` utility class in the Java SDK. Other languages and
@@ -6754,9 +6800,11 @@ iam_get_user_policy <- function(UserName, PolicyName) {
 #' Although each user is limited to a small number of keys, you can still
 #' paginate the results using the `MaxItems` and `Marker` parameters.
 #' 
-#' If the `UserName` field is not specified, the user name is determined
+#' If the `UserName` is not specified, the user name is determined
 #' implicitly based on the Amazon Web Services access key ID used to sign
-#' the request. This operation works for access keys under the Amazon Web
+#' the request. If a temporary access key is used, then `UserName` is
+#' required. If a long-term key is assigned to the user, then `UserName` is
+#' not required. This operation works for access keys under the Amazon Web
 #' Services account. Consequently, you can use this operation to manage
 #' Amazon Web Services account root user credentials even if the Amazon Web
 #' Services account has no associated users.
@@ -7241,7 +7289,7 @@ iam_list_attached_user_policies <- function(UserName, PathPrefix = NULL, Marker 
 #' versions.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param EntityFilter The entity type to use for filtering the results.
 #' 
@@ -8468,7 +8516,7 @@ iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NU
 #' for that service. In the first paragraph, find the service prefix. For
 #' example, `(service prefix: a4b)`. For more information about service
 #' namespaces, see [Amazon Web Services service
-#' namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+#' namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @return
@@ -8640,7 +8688,7 @@ iam_list_policy_tags <- function(PolicyArn, Marker = NULL, MaxItems = NULL) {
 #' versions.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
@@ -9085,7 +9133,7 @@ iam_list_saml_provider_tags <- function(SAMLProviderArn, Marker = NULL, MaxItems
 #' [`get_saml_provider`][iam_get_saml_provider].
 #' 
 #' This operation requires [Signature Version
-#' 4](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #'
 #' @usage
 #' iam_list_saml_providers()
@@ -10137,8 +10185,20 @@ iam_put_group_policy <- function(GroupName, PolicyName, PolicyDocument) {
 #'
 #' @param RoleName &#91;required&#93; The name (friendly name, not ARN) of the IAM role for which you want to
 #' set the permissions boundary.
-#' @param PermissionsBoundary &#91;required&#93; The ARN of the policy that is used to set the permissions boundary for
-#' the role.
+#' @param PermissionsBoundary &#91;required&#93; The ARN of the managed policy that is used to set the permissions
+#' boundary for the role.
+#' 
+#' A permissions boundary policy defines the maximum permissions that
+#' identity-based policies can grant to an entity, but does not grant
+#' permissions. Permissions boundaries do not define the maximum
+#' permissions that a resource-based policy can grant to an entity. To
+#' learn more, see [Permissions boundaries for IAM
+#' entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
+#' in the *IAM User Guide*.
+#' 
+#' For more information about policy types, see [Policy
+#' types](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policy-types)
+#' in the *IAM User Guide*.
 #'
 #' @return
 #' An empty list.
@@ -10311,8 +10371,20 @@ iam_put_role_policy <- function(RoleName, PolicyName, PolicyDocument) {
 #'
 #' @param UserName &#91;required&#93; The name (friendly name, not ARN) of the IAM user for which you want to
 #' set the permissions boundary.
-#' @param PermissionsBoundary &#91;required&#93; The ARN of the policy that is used to set the permissions boundary for
-#' the user.
+#' @param PermissionsBoundary &#91;required&#93; The ARN of the managed policy that is used to set the permissions
+#' boundary for the user.
+#' 
+#' A permissions boundary policy defines the maximum permissions that
+#' identity-based policies can grant to an entity, but does not grant
+#' permissions. Permissions boundaries do not define the maximum
+#' permissions that a resource-based policy can grant to an entity. To
+#' learn more, see [Permissions boundaries for IAM
+#' entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
+#' in the *IAM User Guide*.
+#' 
+#' For more information about policy types, see [Policy
+#' types](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policy-types)
+#' in the *IAM User Guide*.
 #'
 #' @return
 #' An empty list.
@@ -10475,7 +10547,7 @@ iam_put_user_policy <- function(UserName, PolicyName, PolicyDocument) {
 #' operation.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param ClientID &#91;required&#93; The client ID (also known as audience) to remove from the IAM OIDC
 #' provider resource. For more information about client IDs, see
@@ -10819,7 +10891,7 @@ iam_resync_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
 #' you want to set.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param VersionId &#91;required&#93; The version of the policy to set as the default (operative) version.
 #' 
@@ -10977,8 +11049,14 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' If the output is long, you can use `MaxItems` and `Marker` parameters to
 #' paginate the results.
 #' 
-#' For more information about using the policy simulator, see [Testing IAM
-#' policies with the IAM policy
+#' The IAM policy simulator evaluates statements in the identity-based
+#' policy and the inputs that you provide during simulation. The policy
+#' simulator results can differ from your live Amazon Web Services
+#' environment. We recommend that you check your policies against your live
+#' Amazon Web Services environment after testing using the policy simulator
+#' to confirm that you have the desired results. For more information about
+#' using the policy simulator, see [Testing IAM policies with the IAM
+#' policy
 #' simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html)
 #' in the *IAM User Guide*.
 #'
@@ -11067,8 +11145,10 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' error.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
+#' 
+#' Simulation of resource-based policies isn't supported for IAM roles.
 #' @param ResourcePolicy A resource-based policy to include in the simulation provided as a
 #' string. Each resource in the simulation is treated as if it had this
 #' policy attached. You can include only one resource-based policy in a
@@ -11092,6 +11172,8 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' 
 #' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
 #'     carriage return (``U+000D``)
+#' 
+#' Simulation of resource-based policies isn't supported for IAM roles.
 #' @param ResourceOwner An ARN representing the Amazon Web Services account ID that specifies
 #' the owner of any simulated resource that does not identify its owner in
 #' the resource ARN. Examples of resource ARNs include an S3 bucket or
@@ -11128,37 +11210,29 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' resources that you must define to run the simulation.
 #' 
 #' Each of the EC2 scenarios requires that you specify instance, image, and
-#' security-group resources. If your scenario includes an EBS volume, then
+#' security group resources. If your scenario includes an EBS volume, then
 #' you must specify that volume as a resource. If the EC2 scenario includes
-#' VPC, then you must supply the network-interface resource. If it includes
+#' VPC, then you must supply the network interface resource. If it includes
 #' an IP subnet, then you must specify the subnet resource. For more
 #' information on the EC2 scenario options, see [Supported
 #' platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html)
 #' in the *Amazon EC2 User Guide*.
 #' 
-#' -   **EC2-Classic-InstanceStore**
-#' 
-#'     instance, image, security-group
-#' 
-#' -   **EC2-Classic-EBS**
-#' 
-#'     instance, image, security-group, volume
-#' 
 #' -   **EC2-VPC-InstanceStore**
 #' 
-#'     instance, image, security-group, network-interface
+#'     instance, image, security group, network interface
 #' 
 #' -   **EC2-VPC-InstanceStore-Subnet**
 #' 
-#'     instance, image, security-group, network-interface, subnet
+#'     instance, image, security group, network interface, subnet
 #' 
 #' -   **EC2-VPC-EBS**
 #' 
-#'     instance, image, security-group, network-interface, volume
+#'     instance, image, security group, network interface, volume
 #' 
 #' -   **EC2-VPC-EBS-Subnet**
 #' 
-#'     instance, image, security-group, network-interface, subnet, volume
+#'     instance, image, security group, network interface, subnet, volume
 #' @param MaxItems Use this only when paginating results to indicate the maximum number of
 #' items you want in the response. If additional items exist beyond the
 #' maximum you specify, the `IsTruncated` response element is `true`.
@@ -11317,7 +11391,8 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' [`simulate_custom_policy`][iam_simulate_custom_policy] instead.
 #' 
 #' You can also optionally include one resource-based policy to be
-#' evaluated with each of the resources included in the simulation.
+#' evaluated with each of the resources included in the simulation for IAM
+#' users only.
 #' 
 #' The simulation does not perform the API operations; it only checks the
 #' authorization to determine if the simulated policies allow or deny the
@@ -11338,8 +11413,14 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' If the output is long, you can use the `MaxItems` and `Marker`
 #' parameters to paginate the results.
 #' 
-#' For more information about using the policy simulator, see [Testing IAM
-#' policies with the IAM policy
+#' The IAM policy simulator evaluates statements in the identity-based
+#' policy and the inputs that you provide during simulation. The policy
+#' simulator results can differ from your live Amazon Web Services
+#' environment. We recommend that you check your policies against your live
+#' Amazon Web Services environment after testing using the policy simulator
+#' to confirm that you have the desired results. For more information about
+#' using the policy simulator, see [Testing IAM policies with the IAM
+#' policy
 #' simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html)
 #' in the *IAM User Guide*.
 #'
@@ -11362,7 +11443,7 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' quotas](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html#reference_iam-quotas-entity-length).
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param PolicyInputList An optional list of additional policy documents to include in the
 #' simulation. Each document is specified as a string containing the
@@ -11429,8 +11510,10 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' `ResourcePolicy` parameter.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
+#' 
+#' Simulation of resource-based policies isn't supported for IAM roles.
 #' @param ResourcePolicy A resource-based policy to include in the simulation provided as a
 #' string. Each resource in the simulation is treated as if it had this
 #' policy attached. You can include only one resource-based policy in a
@@ -11454,6 +11537,8 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' 
 #' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
 #'     carriage return (``U+000D``)
+#' 
+#' Simulation of resource-based policies isn't supported for IAM roles.
 #' @param ResourceOwner An Amazon Web Services account ID that specifies the owner of any
 #' simulated resource that does not identify its owner in the resource ARN.
 #' Examples of resource ARNs include an S3 bucket or object. If
@@ -11481,7 +11566,7 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' in evaluating the policy.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param ContextEntries A list of context keys and corresponding values for the simulation to
 #' use. Whenever a context key is evaluated in one of the simulated IAM
@@ -11503,14 +11588,6 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' information on the EC2 scenario options, see [Supported
 #' platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html)
 #' in the *Amazon EC2 User Guide*.
-#' 
-#' -   **EC2-Classic-InstanceStore**
-#' 
-#'     instance, image, security group
-#' 
-#' -   **EC2-Classic-EBS**
-#' 
-#'     instance, image, security group, volume
 #' 
 #' -   **EC2-VPC-InstanceStore**
 #' 
@@ -11865,7 +11942,7 @@ iam_tag_mfa_device <- function(SerialNumber, Tags) {
 #'     *MyImportantProject*. Or search for all resources with the key name
 #'     *Cost Center* and the value *41200*.
 #' 
-#' -   **Access control** - Include tags in IAM user-based and
+#' -   **Access control** - Include tags in IAM identity-based and
 #'     resource-based policies. You can use tags to restrict access to only
 #'     an OIDC provider that has a specified tag attached. For examples of
 #'     policies that show how to use tags to control access, see [Control
@@ -12342,7 +12419,7 @@ iam_tag_server_certificate <- function(ServerCertificateName, Tags) {
 #'     *MyImportantProject*. Or search for all resources with the key name
 #'     *Cost Center* and the value *41200*.
 #' 
-#' -   **Access control** - Include tags in IAM user-based and
+#' -   **Access control** - Include tags in IAM identity-based and
 #'     resource-based policies. You can use tags to restrict access to only
 #'     an IAM requesting user that has a specified tag attached. You can
 #'     also restrict access to only those resources that have a certain tag
@@ -12935,7 +13012,9 @@ iam_untag_user <- function(UserName, TagKeys) {
 #' 
 #' If the `UserName` is not specified, the user name is determined
 #' implicitly based on the Amazon Web Services access key ID used to sign
-#' the request. This operation works for access keys under the Amazon Web
+#' the request. If a temporary access key is used, then `UserName` is
+#' required. If a long-term key is assigned to the user, then `UserName` is
+#' not required. This operation works for access keys under the Amazon Web
 #' Services account. Consequently, you can use this operation to manage
 #' Amazon Web Services account root user credentials even if the Amazon Web
 #' Services account has no associated users.
@@ -13433,10 +13512,10 @@ iam_update_login_profile <- function(UserName, Password = NULL, PasswordResetReq
 #' Amazon Web Services secures communication with some OIDC identity
 #' providers (IdPs) through our library of trusted certificate authorities
 #' (CAs) instead of using a certificate thumbprint to verify your IdP
-#' server certificate. These OIDC IdPs include Google, and those that use
-#' an Amazon S3 bucket to host a JSON Web Key Set (JWKS) endpoint. In these
-#' cases, your legacy thumbprint remains in your configuration, but is no
-#' longer used for validation.
+#' server certificate. These OIDC IdPs include Google, Auth0, and those
+#' that use an Amazon S3 bucket to host a JSON Web Key Set (JWKS) endpoint.
+#' In these cases, your legacy thumbprint remains in your configuration,
+#' but is no longer used for validation.
 #' 
 #' Trust for the OIDC provider is derived from the provider certificate and
 #' is validated by the thumbprint. Therefore, it is best to limit access to
@@ -13455,7 +13534,7 @@ iam_update_login_profile <- function(UserName, Password = NULL, PasswordResetReq
 #' operation.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param ThumbprintList &#91;required&#93; A list of certificate thumbprints that are associated with the specified
 #' IAM OpenID Connect provider. For more information, see
@@ -13645,7 +13724,7 @@ iam_update_role_description <- function(RoleName, Description) {
 #' object.
 #' 
 #' This operation requires [Signature Version
-#' 4](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #'
 #' @usage
 #' iam_update_saml_provider(SAMLMetadataDocument, SAMLProviderArn)
@@ -13659,7 +13738,7 @@ iam_update_role_description <- function(RoleName, Description) {
 #' @param SAMLProviderArn &#91;required&#93; The Amazon Resource Name (ARN) of the SAML provider to update.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @return
@@ -14208,7 +14287,7 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' calling [`upload_server_certificate`][iam_upload_server_certificate].
 #' For information about setting up signatures and authorization through
 #' the API, see [Signing Amazon Web Services API
-#' requests](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html)
+#' requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' in the *Amazon Web Services General Reference*. For general information
 #' about using the Query API with IAM, see [Calling the API by making HTTP
 #' query
@@ -14399,7 +14478,7 @@ iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, Ce
 #' [`upload_signing_certificate`][iam_upload_signing_certificate]. For
 #' information about setting up signatures and authorization through the
 #' API, see [Signing Amazon Web Services API
-#' requests](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html)
+#' requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' in the *Amazon Web Services General Reference*. For general information
 #' about using the Query API with IAM, see [Making query
 #' requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html)

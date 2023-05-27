@@ -10,7 +10,7 @@ ivs_list_stream_sessions(channelArn, maxResults = NULL, nextToken = NULL)
 \arguments{
 \item{channelArn}{[required] Channel ARN used to filter the list.}
 
-\item{maxResults}{Maximum number of streams to return. Default: 50.}
+\item{maxResults}{Maximum number of streams to return. Default: 100.}
 
 \item{nextToken}{The first stream to retrieve. This is used for pagination; see the
 \code{nextToken} response field.}

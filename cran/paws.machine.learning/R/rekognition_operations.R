@@ -60,6 +60,64 @@ rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThresh
 }
 .rekognition$operations$compare_faces <- rekognition_compare_faces
 
+#' Copies a version of an Amazon Rekognition Custom Labels model from a
+#' source project to a destination project
+#'
+#' @description
+#' Copies a version of an Amazon Rekognition Custom Labels model from a source project to a destination project. The source and destination projects can be in different AWS accounts but must be in the same AWS Region. You can't copy a model to another AWS service.
+#'
+#' See [https://paws-r.github.io/docs/rekognition/copy_project_version.html](https://paws-r.github.io/docs/rekognition/copy_project_version.html) for full documentation.
+#'
+#' @param SourceProjectArn &#91;required&#93; The ARN of the source project in the trusting AWS account.
+#' @param SourceProjectVersionArn &#91;required&#93; The ARN of the model version in the source project that you want to copy
+#' to a destination project.
+#' @param DestinationProjectArn &#91;required&#93; The ARN of the project in the trusted AWS account that you want to copy
+#' the model version to.
+#' @param VersionName &#91;required&#93; A name for the version of the model that's copied to the destination
+#' project.
+#' @param OutputConfig &#91;required&#93; The S3 bucket and folder location where the training output for the
+#' source model version is placed.
+#' @param Tags The key-value tags to assign to the model version.
+#' @param KmsKeyId The identifier for your AWS Key Management Service key (AWS KMS key).
+#' You can supply the Amazon Resource Name (ARN) of your KMS key, the ID of
+#' your KMS key, an alias for your KMS key, or an alias ARN. The key is
+#' used to encrypt training results and manifest files written to the
+#' output Amazon S3 bucket (`OutputConfig`).
+#' 
+#' If you choose to use your own KMS key, you need the following
+#' permissions on the KMS key.
+#' 
+#' -   kms:CreateGrant
+#' 
+#' -   kms:DescribeKey
+#' 
+#' -   kms:GenerateDataKey
+#' 
+#' -   kms:Decrypt
+#' 
+#' If you don't specify a value for `KmsKeyId`, images copied into the
+#' service are encrypted using a key that AWS owns and manages.
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_copy_project_version
+rekognition_copy_project_version <- function(SourceProjectArn, SourceProjectVersionArn, DestinationProjectArn, VersionName, OutputConfig, Tags = NULL, KmsKeyId = NULL) {
+  op <- new_operation(
+    name = "CopyProjectVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$copy_project_version_input(SourceProjectArn = SourceProjectArn, SourceProjectVersionArn = SourceProjectVersionArn, DestinationProjectArn = DestinationProjectArn, VersionName = VersionName, OutputConfig = OutputConfig, Tags = Tags, KmsKeyId = KmsKeyId)
+  output <- .rekognition$copy_project_version_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$copy_project_version <- rekognition_copy_project_version
+
 #' Creates a collection in an AWS Region
 #'
 #' @description
@@ -128,6 +186,44 @@ rekognition_create_dataset <- function(DatasetSource = NULL, DatasetType, Projec
   return(response)
 }
 .rekognition$operations$create_dataset <- rekognition_create_dataset
+
+#' This API operation initiates a Face Liveness session
+#'
+#' @description
+#' This API operation initiates a Face Liveness session. It returns a `SessionId`, which you can use to start streaming Face Liveness video and get the results for a Face Liveness session. You can use the `OutputConfig` option in the Settings parameter to provide an Amazon S3 bucket location. The Amazon S3 bucket stores reference images and audit images. You can use `AuditImagesLimit` to limit the number of audit images returned. This number is between 0 and 4. By default, it is set to 0. The limit is best effort and based on the duration of the selfie-video.
+#'
+#' See [https://paws-r.github.io/docs/rekognition/create_face_liveness_session.html](https://paws-r.github.io/docs/rekognition/create_face_liveness_session.html) for full documentation.
+#'
+#' @param KmsKeyId The identifier for your AWS Key Management Service key (AWS KMS key).
+#' Used to encrypt audit images and reference images.
+#' @param Settings A session settings object. It contains settings for the operation to be
+#' performed. For Face Liveness, it accepts `OutputConfig` and
+#' `AuditImagesLimit`.
+#' @param ClientRequestToken Idempotent token is used to recognize the Face Liveness request. If the
+#' same token is used with multiple
+#' [`create_face_liveness_session`][rekognition_create_face_liveness_session]
+#' requests, the same session is returned. This token is employed to avoid
+#' unintentionally creating the same session multiple times.
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_create_face_liveness_session
+rekognition_create_face_liveness_session <- function(KmsKeyId = NULL, Settings = NULL, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "CreateFaceLivenessSession",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$create_face_liveness_session_input(KmsKeyId = KmsKeyId, Settings = Settings, ClientRequestToken = ClientRequestToken)
+  output <- .rekognition$create_face_liveness_session_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$create_face_liveness_session <- rekognition_create_face_liveness_session
 
 #' Creates a new Amazon Rekognition Custom Labels project
 #'
@@ -411,6 +507,38 @@ rekognition_delete_project <- function(ProjectArn) {
   return(response)
 }
 .rekognition$operations$delete_project <- rekognition_delete_project
+
+#' Deletes an existing project policy
+#'
+#' @description
+#' Deletes an existing project policy.
+#'
+#' See [https://paws-r.github.io/docs/rekognition/delete_project_policy.html](https://paws-r.github.io/docs/rekognition/delete_project_policy.html) for full documentation.
+#'
+#' @param ProjectArn &#91;required&#93; The Amazon Resource Name (ARN) of the project that the project policy
+#' you want to delete is attached to.
+#' @param PolicyName &#91;required&#93; The name of the policy that you want to delete.
+#' @param PolicyRevisionId The ID of the project policy revision that you want to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_delete_project_policy
+rekognition_delete_project_policy <- function(ProjectArn, PolicyName, PolicyRevisionId = NULL) {
+  op <- new_operation(
+    name = "DeleteProjectPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$delete_project_policy_input(ProjectArn = ProjectArn, PolicyName = PolicyName, PolicyRevisionId = PolicyRevisionId)
+  output <- .rekognition$delete_project_policy_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$delete_project_policy <- rekognition_delete_project_policy
 
 #' Deletes an Amazon Rekognition Custom Labels model
 #'
@@ -698,16 +826,17 @@ rekognition_detect_custom_labels <- function(ProjectVersionArn, Image, MaxResult
 #' If you are using an AWS SDK to call Amazon Rekognition, you might not
 #' need to base64-encode image bytes passed using the `Bytes` field. For
 #' more information, see Images in the Amazon Rekognition developer guide.
-#' @param Attributes An array of facial attributes you want to be returned. This can be the
-#' default list of attributes or all attributes. If you don't specify a
-#' value for `Attributes` or if you specify `["DEFAULT"]`, the API returns
-#' the following subset of facial attributes: `BoundingBox`, `Confidence`,
-#' `Pose`, `Quality`, and `Landmarks`. If you provide `["ALL"]`, all facial
-#' attributes are returned, but the operation takes longer to complete.
+#' @param Attributes An array of facial attributes you want to be returned. A `DEFAULT`
+#' subset of facial attributes - `BoundingBox`, `Confidence`, `Pose`,
+#' `Quality`, and `Landmarks` - will always be returned. You can request
+#' for specific facial attributes (in addition to the default list) - by
+#' using \[`"DEFAULT", "FACE_OCCLUDED"`\] or just \[`"FACE_OCCLUDED"`\].
+#' You can request for all facial attributes by using \[`"ALL"]`.
+#' Requesting more attributes may increase response time.
 #' 
 #' If you provide both, `["ALL", "DEFAULT"]`, the service uses a logical
-#' AND operator to determine which attributes to return (in this case, all
-#' attributes).
+#' "AND" operator to determine which attributes to return (in this case,
+#' all attributes).
 #'
 #' @keywords internal
 #'
@@ -753,18 +882,28 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #' 
 #' If `MinConfidence` is not specified, the operation returns labels with a
 #' confidence values greater than or equal to 55 percent.
+#' @param Features A list of the types of analysis to perform. Specifying GENERAL_LABELS
+#' uses the label detection feature, while specifying IMAGE_PROPERTIES
+#' returns information regarding image color and quality. If no option is
+#' specified GENERAL_LABELS is used by default.
+#' @param Settings A list of the filters to be applied to returned detected labels and
+#' image properties. Specified filters can be inclusive, exclusive, or a
+#' combination of both. Filters can be used for individual labels or label
+#' categories. The exact label names or label categories must be supplied.
+#' For a full list of labels and label categories, see [Detecting
+#' labels](https://docs.aws.amazon.com/rekognition/latest/dg/labels.html).
 #'
 #' @keywords internal
 #'
 #' @rdname rekognition_detect_labels
-rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = NULL) {
+rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = NULL, Features = NULL, Settings = NULL) {
   op <- new_operation(
     name = "DetectLabels",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rekognition$detect_labels_input(Image = Image, MaxLabels = MaxLabels, MinConfidence = MinConfidence)
+  input <- .rekognition$detect_labels_input(Image = Image, MaxLabels = MaxLabels, MinConfidence = MinConfidence, Features = Features, Settings = Settings)
   output <- .rekognition$detect_labels_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -1018,18 +1157,21 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
 #' `NAME` to alphabetically group elements for a label together. Within
 #' each label group, the array element are sorted by detection confidence.
 #' The default sort is by `TIMESTAMP`.
+#' @param AggregateBy Defines how to aggregate results of the StartContentModeration request.
+#' Default aggregation option is TIMESTAMPS. SEGMENTS mode aggregates
+#' moderation labels over time.
 #'
 #' @keywords internal
 #'
 #' @rdname rekognition_get_content_moderation
-rekognition_get_content_moderation <- function(JobId, MaxResults = NULL, NextToken = NULL, SortBy = NULL) {
+rekognition_get_content_moderation <- function(JobId, MaxResults = NULL, NextToken = NULL, SortBy = NULL, AggregateBy = NULL) {
   op <- new_operation(
     name = "GetContentModeration",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rekognition$get_content_moderation_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy)
+  input <- .rekognition$get_content_moderation_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, AggregateBy = AggregateBy)
   output <- .rekognition$get_content_moderation_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -1076,6 +1218,37 @@ rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken =
   return(response)
 }
 .rekognition$operations$get_face_detection <- rekognition_get_face_detection
+
+#' Retrieves the results of a specific Face Liveness session
+#'
+#' @description
+#' Retrieves the results of a specific Face Liveness session. It requires the `sessionId` as input, which was created using [`create_face_liveness_session`][rekognition_create_face_liveness_session]. Returns the corresponding Face Liveness confidence score, a reference image that includes a face bounding box, and audit images that also contain face bounding boxes. The Face Liveness confidence score ranges from 0 to 100. The reference image can optionally be returned.
+#'
+#' See [https://paws-r.github.io/docs/rekognition/get_face_liveness_session_results.html](https://paws-r.github.io/docs/rekognition/get_face_liveness_session_results.html) for full documentation.
+#'
+#' @param SessionId &#91;required&#93; A unique 128-bit UUID. This is used to uniquely identify the session and
+#' also acts as an idempotency token for all operations associated with the
+#' session.
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_get_face_liveness_session_results
+rekognition_get_face_liveness_session_results <- function(SessionId) {
+  op <- new_operation(
+    name = "GetFaceLivenessSessionResults",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$get_face_liveness_session_results_input(SessionId = SessionId)
+  output <- .rekognition$get_face_liveness_session_results_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$get_face_liveness_session_results <- rekognition_get_face_liveness_session_results
 
 #' Gets the face search results for Amazon Rekognition Video face search
 #' started by StartFaceSearch
@@ -1142,18 +1315,20 @@ rekognition_get_face_search <- function(JobId, MaxResults = NULL, NextToken = NU
 #' alphabetically group elements for a label together. Within each label
 #' group, the array element are sorted by detection confidence. The default
 #' sort is by `TIMESTAMP`.
+#' @param AggregateBy Defines how to aggregate the returned results. Results can be aggregated
+#' by timestamps or segments.
 #'
 #' @keywords internal
 #'
 #' @rdname rekognition_get_label_detection
-rekognition_get_label_detection <- function(JobId, MaxResults = NULL, NextToken = NULL, SortBy = NULL) {
+rekognition_get_label_detection <- function(JobId, MaxResults = NULL, NextToken = NULL, SortBy = NULL, AggregateBy = NULL) {
   op <- new_operation(
     name = "GetLabelDetection",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rekognition$get_label_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy)
+  input <- .rekognition$get_label_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, AggregateBy = AggregateBy)
   output <- .rekognition$get_label_detection_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -1300,12 +1475,13 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' need to base64-encode image bytes passed using the `Bytes` field. For
 #' more information, see Images in the Amazon Rekognition developer guide.
 #' @param ExternalImageId The ID you want to assign to all the faces detected in the image.
-#' @param DetectionAttributes An array of facial attributes that you want to be returned. This can be
-#' the default list of attributes or all attributes. If you don't specify a
-#' value for `Attributes` or if you specify `["DEFAULT"]`, the API returns
-#' the following subset of facial attributes: `BoundingBox`, `Confidence`,
-#' `Pose`, `Quality`, and `Landmarks`. If you provide `["ALL"]`, all facial
-#' attributes are returned, but the operation takes longer to complete.
+#' @param DetectionAttributes An array of facial attributes you want to be returned. A `DEFAULT`
+#' subset of facial attributes - `BoundingBox`, `Confidence`, `Pose`,
+#' `Quality`, and `Landmarks` - will always be returned. You can request
+#' for specific facial attributes (in addition to the default list) - by
+#' using `["DEFAULT", "FACE_OCCLUDED"]` or just `["FACE_OCCLUDED"]`. You
+#' can request for all facial attributes by using `["ALL"]`. Requesting
+#' more attributes may increase response time.
 #' 
 #' If you provide both, `["ALL", "DEFAULT"]`, the service uses a logical
 #' AND operator to determine which attributes to return (in this case, all
@@ -1514,6 +1690,42 @@ rekognition_list_faces <- function(CollectionId, NextToken = NULL, MaxResults = 
 }
 .rekognition$operations$list_faces <- rekognition_list_faces
 
+#' Gets a list of the project policies attached to a project
+#'
+#' @description
+#' Gets a list of the project policies attached to a project.
+#'
+#' See [https://paws-r.github.io/docs/rekognition/list_project_policies.html](https://paws-r.github.io/docs/rekognition/list_project_policies.html) for full documentation.
+#'
+#' @param ProjectArn &#91;required&#93; The ARN of the project for which you want to list the project policies.
+#' @param NextToken If the previous response was incomplete (because there is more results
+#' to retrieve), Amazon Rekognition Custom Labels returns a pagination
+#' token in the response. You can use this pagination token to retrieve the
+#' next set of results.
+#' @param MaxResults The maximum number of results to return per paginated call. The largest
+#' value you can specify is 5. If you specify a value greater than 5, a
+#' ValidationException error occurs. The default value is 5.
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_list_project_policies
+rekognition_list_project_policies <- function(ProjectArn, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListProjectPolicies",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$list_project_policies_input(ProjectArn = ProjectArn, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .rekognition$list_project_policies_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$list_project_policies <- rekognition_list_project_policies
+
 #' Gets a list of stream processors that you have created with
 #' CreateStreamProcessor
 #'
@@ -1579,6 +1791,46 @@ rekognition_list_tags_for_resource <- function(ResourceArn) {
   return(response)
 }
 .rekognition$operations$list_tags_for_resource <- rekognition_list_tags_for_resource
+
+#' Attaches a project policy to a Amazon Rekognition Custom Labels project
+#' in a trusting AWS account
+#'
+#' @description
+#' Attaches a project policy to a Amazon Rekognition Custom Labels project in a trusting AWS account. A project policy specifies that a trusted AWS account can copy a model version from a trusting AWS account to a project in the trusted AWS account. To copy a model version you use the [`copy_project_version`][rekognition_copy_project_version] operation.
+#'
+#' See [https://paws-r.github.io/docs/rekognition/put_project_policy.html](https://paws-r.github.io/docs/rekognition/put_project_policy.html) for full documentation.
+#'
+#' @param ProjectArn &#91;required&#93; The Amazon Resource Name (ARN) of the project that the project policy is
+#' attached to.
+#' @param PolicyName &#91;required&#93; A name for the policy.
+#' @param PolicyRevisionId The revision ID for the Project Policy. Each time you modify a policy,
+#' Amazon Rekognition Custom Labels generates and assigns a new
+#' `PolicyRevisionId` and then deletes the previous version of the policy.
+#' @param PolicyDocument &#91;required&#93; A resource policy to add to the model. The policy is a JSON structure
+#' that contains one or more statements that define the policy. The policy
+#' must follow the IAM syntax. For more information about the contents of a
+#' JSON policy document, see [IAM JSON policy
+#' reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html).
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_put_project_policy
+rekognition_put_project_policy <- function(ProjectArn, PolicyName, PolicyRevisionId = NULL, PolicyDocument) {
+  op <- new_operation(
+    name = "PutProjectPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$put_project_policy_input(ProjectArn = ProjectArn, PolicyName = PolicyName, PolicyRevisionId = PolicyRevisionId, PolicyDocument = PolicyDocument)
+  output <- .rekognition$put_project_policy_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$put_project_policy <- rekognition_put_project_policy
 
 #' Returns an array of celebrities recognized in the input image
 #'
@@ -1923,8 +2175,9 @@ rekognition_start_face_search <- function(Video, ClientRequestToken = NULL, Face
 #' Video doesn't return any labels with a confidence level lower than this
 #' specified value.
 #' 
-#' If you don't specify `MinConfidence`, the operation returns labels with
-#' confidence values greater than or equal to 50 percent.
+#' If you don't specify `MinConfidence`, the operation returns labels and
+#' bounding boxes (if detected) with confidence values greater than or
+#' equal to 50 percent.
 #' @param NotificationChannel The Amazon SNS topic ARN you want Amazon Rekognition Video to publish
 #' the completion status of the label detection operation to. The Amazon
 #' SNS topic must have a topic name that begins with *AmazonRekognition* if
@@ -1933,18 +2186,23 @@ rekognition_start_face_search <- function(Video, ClientRequestToken = NULL, Face
 #' that's published to your Amazon Simple Notification Service topic. For
 #' example, you can use `JobTag` to group related jobs and identify them in
 #' the completion notification.
+#' @param Features The features to return after video analysis. You can specify that
+#' GENERAL_LABELS are returned.
+#' @param Settings The settings for a StartLabelDetection request.Contains the specified
+#' parameters for the label detection request of an asynchronous label
+#' analysis operation. Settings can include filters for GENERAL_LABELS.
 #'
 #' @keywords internal
 #'
 #' @rdname rekognition_start_label_detection
-rekognition_start_label_detection <- function(Video, ClientRequestToken = NULL, MinConfidence = NULL, NotificationChannel = NULL, JobTag = NULL) {
+rekognition_start_label_detection <- function(Video, ClientRequestToken = NULL, MinConfidence = NULL, NotificationChannel = NULL, JobTag = NULL, Features = NULL, Settings = NULL) {
   op <- new_operation(
     name = "StartLabelDetection",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rekognition$start_label_detection_input(Video = Video, ClientRequestToken = ClientRequestToken, MinConfidence = MinConfidence, NotificationChannel = NotificationChannel, JobTag = JobTag)
+  input <- .rekognition$start_label_detection_input(Video = Video, ClientRequestToken = ClientRequestToken, MinConfidence = MinConfidence, NotificationChannel = NotificationChannel, JobTag = JobTag, Features = Features, Settings = Settings)
   output <- .rekognition$start_label_detection_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -2094,8 +2352,9 @@ rekognition_start_segment_detection <- function(Video, ClientRequestToken = NULL
 #'
 #' @param Name &#91;required&#93; The name of the stream processor to start processing.
 #' @param StartSelector Specifies the starting point in the Kinesis stream to start processing.
-#' You can use the producer timestamp or the fragment number. For more
-#' information, see
+#' You can use the producer timestamp or the fragment number. If you use
+#' the producer timestamp, you must put the time in milliseconds. For more
+#' information about fragment numbers, see
 #' [Fragment](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_reader_Fragment.html).
 #' 
 #' This is a required parameter for label detection stream processors and
@@ -2234,7 +2493,7 @@ rekognition_stop_stream_processor <- function(Name) {
 #' stream processor, or Custom Labels model
 #'
 #' @description
-#' Adds one or more key-value tags to an Amazon Rekognition collection, stream processor, or Custom Labels model. For more information, see [Tagging AWS Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Adds one or more key-value tags to an Amazon Rekognition collection, stream processor, or Custom Labels model. For more information, see [Tagging AWS Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #'
 #' See [https://paws-r.github.io/docs/rekognition/tag_resource.html](https://paws-r.github.io/docs/rekognition/tag_resource.html) for full documentation.
 #'

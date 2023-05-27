@@ -4,7 +4,11 @@
 \alias{transcribeservice_create_call_analytics_category}
 \title{Creates a new Call Analytics category}
 \usage{
-transcribeservice_create_call_analytics_category(CategoryName, Rules)
+transcribeservice_create_call_analytics_category(
+  CategoryName,
+  Rules,
+  InputType = NULL
+)
 }
 \arguments{
 \item{CategoryName}{[required] A unique name, chosen by you, for your Call Analytics category. It's
@@ -15,12 +19,25 @@ like \code{test-category}.
 
 Category names are case sensitive.}
 
-\item{Rules}{[required] Rules define a Call Analytics category. When creating a new Call
-Analytics category, you must create between 1 and 20 rules for that
-category. For each rule, you specify a filter you want applied to the
-attributes of a call. For example, you can choose a sentiment filter
-that detects if a customer's sentiment was positive during the last 30
-seconds of the call.}
+\item{Rules}{[required] Rules define a Call Analytics category. When creating a new category,
+you must create between 1 and 20 rules for that category. For each rule,
+you specify a filter you want applied to the attributes of a call. For
+example, you can choose a sentiment filter that detects if a customer's
+sentiment was positive during the last 30 seconds of the call.}
+
+\item{InputType}{Choose whether you want to create a real-time or a post-call category
+for your Call Analytics transcription.
+
+Specifying \code{POST_CALL} assigns your category to post-call
+transcriptions; categories with this input type cannot be applied to
+streaming (real-time) transcriptions.
+
+Specifying \code{REAL_TIME} assigns your category to streaming
+transcriptions; categories with this input type cannot be applied to
+post-call transcriptions.
+
+If you do not include \code{InputType}, your category is created as a
+post-call category by default.}
 }
 \description{
 Creates a new Call Analytics category.

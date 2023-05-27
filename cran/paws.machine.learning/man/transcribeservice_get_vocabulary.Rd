@@ -7,8 +7,8 @@
 transcribeservice_get_vocabulary(VocabularyName)
 }
 \arguments{
-\item{VocabularyName}{[required] The name of the custom vocabulary you want information about. Vocabulary
-names are case sensitive.}
+\item{VocabularyName}{[required] The name of the custom vocabulary you want information about. Custom
+vocabulary names are case sensitive.}
 }
 \description{
 Provides information about the specified custom vocabulary.

@@ -16,7 +16,6 @@ ID, and the Provisioning Artifact ID.}
 
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}

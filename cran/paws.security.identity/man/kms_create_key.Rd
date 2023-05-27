@@ -15,55 +15,46 @@ kms_create_key(
   CustomKeyStoreId = NULL,
   BypassPolicyLockoutSafetyCheck = NULL,
   Tags = NULL,
-  MultiRegion = NULL
+  MultiRegion = NULL,
+  XksKeyId = NULL
 )
 }
 \arguments{
-\item{Policy}{The key policy to attach to the KMS key. If you do not specify a key
-policy, KMS attaches a default key policy to the KMS key. For more
-information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default}{Default key policy}
-in the \emph{Key Management Service Developer Guide}.
+\item{Policy}{The key policy to attach to the KMS key.
 
 If you provide a key policy, it must meet the following criteria:
 \itemize{
-\item If you don't set \code{BypassPolicyLockoutSafetyCheck} to \code{True}, the key
-policy must allow the principal that is making the
-\code{\link[=kms_create_key]{create_key}} request to make a subsequent
+\item The key policy must allow the calling principal to make a subsequent
 \code{\link[=kms_put_key_policy]{put_key_policy}} request on the KMS key. This
 reduces the risk that the KMS key becomes unmanageable. For more
-information, refer to the scenario in the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam}{Default Key Policy}
-section of the \emph{Key Management Service Developer Guide} .
+information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key}{Default key policy}
+in the \emph{Key Management Service Developer Guide}. (To omit this
+condition, set \code{BypassPolicyLockoutSafetyCheck} to true.)
 \item Each statement in the key policy must contain one or more
 principals. The principals in the key policy must exist and be
-visible to KMS. When you create a new Amazon Web Services principal
-(for example, an IAM user or role), you might need to enforce a
-delay before including the new principal in a key policy because the
-new principal might not be immediately visible to KMS. For more
-information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible}
+visible to KMS. When you create a new Amazon Web Services principal,
+you might need to enforce a delay before including the new principal
+in a key policy because the new principal might not be immediately
+visible to KMS. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible}
 in the \emph{Amazon Web Services Identity and Access Management User
 Guide}.
 }
 
-A key policy document can include only the following characters:
-\itemize{
-\item Printable ASCII characters from the space character (\code{U+0020})
-through the end of the ASCII character range.
-\item Printable characters in the Basic Latin and Latin-1 Supplement
-character set (through \verb{U+00FF}).
-\item The tab (\code{U+0009}), line feed (\verb{U+000A}), and carriage return
-(\verb{U+000D}) special characters
-}
+If you do not provide a key policy, KMS attaches a default key policy to
+the KMS key. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default}{Default key policy}
+in the \emph{Key Management Service Developer Guide}.
 
-For information about key policies, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html}{Key policies in KMS}
-in the \emph{Key Management Service Developer Guide}. For help writing and
-formatting a JSON policy document, see the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html}{IAM JSON Policy Reference}
+The key policy size quota is 32 kilobytes (32768 bytes).
+
+For help writing and formatting a JSON policy document, see the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html}{IAM JSON Policy Reference}
 in the \emph{Identity and Access Management User Guide} .}
 
-\item{Description}{A description of the KMS key.
+\item{Description}{A description of the KMS key. Use a description that helps you decide
+whether the KMS key is appropriate for a task. The default value is an
+empty string (no description).
 
-Use a description that helps you decide whether the KMS key is
-appropriate for a task. The default value is an empty string (no
-description).
+Do not include confidential or sensitive information in this field. This
+field may be displayed in plaintext in CloudTrail logs and other output.
 
 To set or change the description after the key is created, use
 \code{\link[=kms_update_key_description]{update_key_description}}.}
@@ -91,7 +82,7 @@ specify \code{ENCRYPT_DECRYPT} or \code{SIGN_VERIFY}.
 
 The \code{KeySpec} and \code{CustomerMasterKeySpec} parameters work the same way.
 Only the names differ. We recommend that you use \code{KeySpec} parameter in
-your code. However, to avoid breaking changes, KMS will support both
+your code. However, to avoid breaking changes, KMS supports both
 parameters.}
 
 \item{KeySpec}{Specifies the type of KMS key to create. The default value,
@@ -102,11 +93,11 @@ choosing a key spec for your KMS key, see \href{https://docs.aws.amazon.com/kms/
 in the \emph{Key Management Service Developer Guide} .
 
 The \code{KeySpec} determines whether the KMS key contains a symmetric key or
-an asymmetric key pair. It also determines the cryptographic algorithms
-that the KMS key supports. You can't change the \code{KeySpec} after the KMS
-key is created. To further restrict the algorithms that can be used with
-the KMS key, use a condition key in its key policy or IAM policy. For
-more information, see
+an asymmetric key pair. It also determines the algorithms that the KMS
+key supports. You can't change the \code{KeySpec} after the KMS key is
+created. To further restrict the algorithms that can be used with the
+KMS key, use a condition key in its key policy or IAM policy. For more
+information, see
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-encryption-algorithm}{kms:EncryptionAlgorithm},
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-mac-algorithm}{kms:MacAlgorithm}
 or \href{https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-signing-algorithm}{kms:Signing Algorithm}
@@ -156,62 +147,62 @@ cryptocurrencies.
 origin after you create the KMS key. The default is \code{AWS_KMS}, which
 means that KMS creates the key material.
 
-To create a KMS key with no key material (for imported key material),
-set the value to \code{EXTERNAL}. For more information about importing key
-material into KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material}
-in the \emph{Key Management Service Developer Guide}. This value is valid
-only for symmetric encryption KMS keys.
+To \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-create-cmk.html}{create a KMS key with no key material}
+(for imported key material), set this value to \code{EXTERNAL}. For more
+information about importing key material into KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material}
+in the \emph{Key Management Service Developer Guide}. The \code{EXTERNAL} origin
+value is valid only for symmetric KMS keys.
 
-To create a KMS key in an KMS \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}
+To \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-cmk-keystore.html}{create a KMS key in an CloudHSM key store}
 and create its key material in the associated CloudHSM cluster, set this
 value to \code{AWS_CLOUDHSM}. You must also use the \code{CustomKeyStoreId}
-parameter to identify the custom key store. This value is valid only for
-symmetric encryption KMS keys.}
+parameter to identify the CloudHSM key store. The \code{KeySpec} value must
+be \code{SYMMETRIC_DEFAULT}.
 
-\item{CustomKeyStoreId}{Creates the KMS key in the specified \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}
-and the key material in its associated CloudHSM cluster. To create a KMS
-key in a custom key store, you must also specify the \code{Origin} parameter
-with a value of \code{AWS_CLOUDHSM}. The CloudHSM cluster that is associated
-with the custom key store must have at least two active HSMs, each in a
-different Availability Zone in the Region.
+To \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-xks-keys.html}{create a KMS key in an external key store},
+set this value to \code{EXTERNAL_KEY_STORE}. You must also use the
+\code{CustomKeyStoreId} parameter to identify the external key store and the
+\code{XksKeyId} parameter to identify the associated external key. The
+\code{KeySpec} value must be \code{SYMMETRIC_DEFAULT}.}
+
+\item{CustomKeyStoreId}{Creates the KMS key in the specified \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}.
+The \code{ConnectionState} of the custom key store must be \code{CONNECTED}. To
+find the CustomKeyStoreID and ConnectionState use the
+\code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
+operation.
 
 This parameter is valid only for symmetric encryption KMS keys in a
 single Region. You cannot create any other type of KMS key in a custom
 key store.
 
-To find the ID of a custom key store, use the
-\code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
-operation.
+When you create a KMS key in an CloudHSM key store, KMS generates a
+non-exportable 256-bit symmetric key in its associated CloudHSM cluster
+and associates it with the KMS key. When you create a KMS key in an
+external key store, you must use the \code{XksKeyId} parameter to specify an
+external key that serves as key material for the KMS key.}
 
-The response includes the custom key store ID and the ID of the CloudHSM
-cluster.
-
-This operation is part of the \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store feature}
-feature in KMS, which combines the convenience and extensive integration
-of KMS with the isolation and control of a single-tenant key store.}
-
-\item{BypassPolicyLockoutSafetyCheck}{A flag to indicate whether to bypass the key policy lockout safety
-check.
+\item{BypassPolicyLockoutSafetyCheck}{Skips ("bypasses") the key policy lockout safety check. The default
+value is false.
 
 Setting this value to true increases the risk that the KMS key becomes
 unmanageable. Do not set this value to true indiscriminately.
 
-For more information, refer to the scenario in the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam}{Default Key Policy}
-section in the \emph{Key Management Service Developer Guide} .
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key}{Default key policy}
+in the \emph{Key Management Service Developer Guide}.
 
-Use this parameter only when you include a policy in the request and you
-intend to prevent the principal that is making the request from making a
-subsequent \code{\link[=kms_put_key_policy]{put_key_policy}} request on the KMS
-key.
-
-The default value is false.}
+Use this parameter only when you intend to prevent the principal that is
+making the request from making a subsequent
+\code{\link[=kms_put_key_policy]{put_key_policy}} request on the KMS key.}
 
 \item{Tags}{Assigns one or more tags to the KMS key. Use this parameter to tag the
 KMS key when it is created. To tag an existing KMS key, use the
 \code{\link[=kms_tag_resource]{tag_resource}} operation.
 
+Do not include confidential or sensitive information in this field. This
+field may be displayed in plaintext in CloudTrail logs and other output.
+
 Tagging or untagging a KMS key can allow or deny permission to the KMS
-key. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/abac.html}{ABAC in KMS} in
+key. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/abac.html}{ABAC for KMS} in
 the \emph{Key Management Service Developer Guide}.
 
 To use this parameter, you must have
@@ -250,13 +241,40 @@ in the \emph{Key Management Service Developer Guide}.
 This value creates a \emph{primary key}, not a replica. To create a \emph{replica
 key}, use the \code{\link[=kms_replicate_key]{replicate_key}} operation.
 
-You can create a multi-Region version of a symmetric encryption KMS key,
-an HMAC KMS key, an asymmetric KMS key, or a KMS key with imported key
-material. However, you cannot create a multi-Region key in a custom key
-store.}
+You can create a symmetric or asymmetric multi-Region key, and you can
+create a multi-Region key with imported key material. However, you
+cannot create a multi-Region key in a custom key store.}
+
+\item{XksKeyId}{Identifies the \href{https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html#concept-external-key}{external key}
+that serves as key material for the KMS key in an \href{https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html}{external key store}.
+Specify the ID that the \href{https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html#concept-xks-proxy}{external key store proxy}
+uses to refer to the external key. For help, see the documentation for
+your external key store proxy.
+
+This parameter is required for a KMS key with an \code{Origin} value of
+\code{EXTERNAL_KEY_STORE}. It is not valid for KMS keys with any other
+\code{Origin} value.
+
+The external key must be an existing 256-bit AES symmetric encryption
+key hosted outside of Amazon Web Services in an external key manager
+associated with the external key store specified by the
+\code{CustomKeyStoreId} parameter. This key must be enabled and configured to
+perform encryption and decryption. Each KMS key in an external key store
+must use a different external key. For details, see Requirements for a
+KMS key in an external key store in the \emph{Key Management Service
+Developer Guide}.
+
+Each KMS key in an external key store is associated two backing keys.
+One is key material that KMS generates. The other is the external key
+specified by this parameter. When you use the KMS key in an external key
+store to encrypt data, the encryption operation is performed first by
+KMS using the KMS key material, and then by the external key manager
+using the specified external key, a process known as \emph{double
+encryption}. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html#concept-double-encryption}{Double encryption}
+in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
-Creates a unique customer managed \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#kms-keys}{KMS key} in your Amazon Web Services account and Region.
+Creates a unique customer managed \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#kms-keys}{KMS key} in your Amazon Web Services account and Region. You can use a KMS key in cryptographic operations, such as encryption and signing. Some Amazon Web Services services let you use KMS keys that you create and manage to protect your service resources.
 
 See \url{https://paws-r.github.io/docs/kms/create_key.html} for full documentation.
 }

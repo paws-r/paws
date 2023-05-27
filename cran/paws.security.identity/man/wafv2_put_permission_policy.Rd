@@ -14,8 +14,7 @@ attach the policy.}
 
 The policy specifications must conform to the following:
 \itemize{
-\item The policy must be composed using IAM Policy version 2012-10-17 or
-version 2015-01-01.
+\item The policy must be composed using IAM Policy version 2012-10-17.
 \item The policy must include specifications for \code{Effect}, \code{Action}, and
 \code{Principal}.
 \item \code{Effect} must specify \code{Allow}.

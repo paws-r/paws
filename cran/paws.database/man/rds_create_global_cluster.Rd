@@ -16,7 +16,8 @@ rds_create_global_cluster(
 )
 }
 \arguments{
-\item{GlobalClusterIdentifier}{The cluster identifier of the new global database cluster.}
+\item{GlobalClusterIdentifier}{The cluster identifier of the new global database cluster. This
+parameter is stored as a lowercase string.}
 
 \item{SourceDBClusterIdentifier}{The Amazon Resource Name (ARN) to use as the primary cluster of the
 global database. This parameter is optional.}

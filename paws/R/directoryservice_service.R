@@ -106,6 +106,7 @@ NULL
 #'  \link[=directoryservice_describe_shared_directories]{describe_shared_directories} \tab Returns the shared directories in your account\cr
 #'  \link[=directoryservice_describe_snapshots]{describe_snapshots} \tab Obtains information about the directory snapshots that belong to this account\cr
 #'  \link[=directoryservice_describe_trusts]{describe_trusts} \tab Obtains information about the trust relationships for this account\cr
+#'  \link[=directoryservice_describe_update_directory]{describe_update_directory} \tab Describes the updates of a directory for a particular update type\cr
 #'  \link[=directoryservice_disable_client_authentication]{disable_client_authentication} \tab Disables alternative client authentication methods for the specified directory\cr
 #'  \link[=directoryservice_disable_ldaps]{disable_ldaps} \tab Deactivates LDAP secure calls for the specified directory\cr
 #'  \link[=directoryservice_disable_radius]{disable_radius} \tab Disables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD directory\cr
@@ -133,6 +134,7 @@ NULL
 #'  \link[=directoryservice_start_schema_extension]{start_schema_extension} \tab Applies a schema extension to a Microsoft AD directory\cr
 #'  \link[=directoryservice_unshare_directory]{unshare_directory} \tab Stops the directory sharing between the directory owner and consumer accounts\cr
 #'  \link[=directoryservice_update_conditional_forwarder]{update_conditional_forwarder} \tab Updates a conditional forwarder that has been set up for your Amazon Web Services directory\cr
+#'  \link[=directoryservice_update_directory_setup]{update_directory_setup} \tab Updates the directory for a particular update type\cr
 #'  \link[=directoryservice_update_number_of_domain_controllers]{update_number_of_domain_controllers} \tab Adds or removes domain controllers to or from the directory\cr
 #'  \link[=directoryservice_update_radius]{update_radius} \tab Updates the Remote Authentication Dial In User Service (RADIUS) server information for an AD Connector or Microsoft AD directory\cr
 #'  \link[=directoryservice_update_settings]{update_settings} \tab Updates the configurable settings for the specified directory\cr

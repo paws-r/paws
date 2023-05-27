@@ -2,17 +2,28 @@
 % Please edit documentation in R/route53resolver_operations.R
 \name{route53resolver_update_resolver_endpoint}
 \alias{route53resolver_update_resolver_endpoint}
-\title{Updates the name of an inbound or an outbound Resolver endpoint}
+\title{Updates the name, or enpoint type for an inbound or an outbound Resolver
+endpoint}
 \usage{
-route53resolver_update_resolver_endpoint(ResolverEndpointId, Name = NULL)
+route53resolver_update_resolver_endpoint(
+  ResolverEndpointId,
+  Name = NULL,
+  ResolverEndpointType = NULL,
+  UpdateIpAddresses = NULL
+)
 }
 \arguments{
 \item{ResolverEndpointId}{[required] The ID of the Resolver endpoint that you want to update.}
 
 \item{Name}{The name of the Resolver endpoint that you want to update.}
+
+\item{ResolverEndpointType}{Specifies the endpoint type for what type of IP address the endpoint
+uses to forward DNS queries.}
+
+\item{UpdateIpAddresses}{Updates the Resolver endpoint type to IpV4, Ipv6, or dual-stack.}
 }
 \description{
-Updates the name of an inbound or an outbound Resolver endpoint.
+Updates the name, or enpoint type for an inbound or an outbound Resolver endpoint. You can only update between IPV4 and DUALSTACK, IPV6 endpoint type can't be updated to other type.
 
 See \url{https://paws-r.github.io/docs/route53resolver/update_resolver_endpoint.html} for full documentation.
 }

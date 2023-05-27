@@ -15,7 +15,7 @@ sesv2_update_contact(
 \arguments{
 \item{ContactListName}{[required] The name of the contact list.}
 
-\item{EmailAddress}{[required] The contact's email addres.}
+\item{EmailAddress}{[required] The contact's email address.}
 
 \item{TopicPreferences}{The contact's preference for being opted-in to or opted-out of a topic.}
 

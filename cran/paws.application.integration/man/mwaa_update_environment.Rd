@@ -22,29 +22,31 @@ mwaa_update_environment(
   RequirementsS3Path = NULL,
   Schedulers = NULL,
   SourceBucketArn = NULL,
+  StartupScriptS3ObjectVersion = NULL,
+  StartupScriptS3Path = NULL,
   WebserverAccessMode = NULL,
   WeeklyMaintenanceWindowStart = NULL
 )
 }
 \arguments{
 \item{AirflowConfigurationOptions}{A list of key-value pairs containing the Apache Airflow configuration
-options you want to attach to your environment. To learn more, see
-\href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html}{Apache Airflow configuration options}.}
+options you want to attach to your environment. For more information,
+see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html}{Apache Airflow configuration options}.}
 
 \item{AirflowVersion}{The Apache Airflow version for your environment. If no value is
 specified, defaults to the latest version. Valid values: \verb{1.10.12},
-\verb{2.0.2}, and \verb{2.2.2}.}
+\verb{2.0.2}, \verb{2.2.2}, and \verb{2.4.3}.}
 
 \item{DagS3Path}{The relative path to the DAGs folder on your Amazon S3 bucket. For
-example, \code{dags}. To learn more, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-folder.html}{Adding or updating DAGs}.}
+example, \code{dags}. For more information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-folder.html}{Adding or updating DAGs}.}
 
 \item{EnvironmentClass}{The environment class type. Valid values: \code{mw1.small}, \code{mw1.medium},
-\code{mw1.large}. To learn more, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/environment-class.html}{Amazon MWAA environment class}.}
+\code{mw1.large}. For more information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/environment-class.html}{Amazon MWAA environment class}.}
 
 \item{ExecutionRoleArn}{The Amazon Resource Name (ARN) of the execution role in IAM that allows
 MWAA to access Amazon Web Services resources in your environment. For
-example, \verb{arn:aws:iam::123456789:role/my-execution-role}. To learn more,
-see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-create-role.html}{Amazon MWAA Execution role}.}
+example, \verb{arn:aws:iam::123456789:role/my-execution-role}. For more
+information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-create-role.html}{Amazon MWAA Execution role}.}
 
 \item{LoggingConfiguration}{The Apache Airflow log types to send to CloudWatch Logs.}
 
@@ -65,33 +67,54 @@ worker count you specify in the \code{MinWorkers} field. For example, \code{2}.}
 \code{MyMWAAEnvironment}.}
 
 \item{NetworkConfiguration}{The VPC networking components used to secure and enable network traffic
-between the Amazon Web Services resources for your environment. To learn
-more, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/networking-about.html}{About networking on Amazon MWAA}.}
+between the Amazon Web Services resources for your environment. For more
+information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/networking-about.html}{About networking on Amazon MWAA}.}
 
-\item{PluginsS3ObjectVersion}{The version of the plugins.zip file on your Amazon S3 bucket. A version
-must be specified each time a plugins.zip file is updated. To learn
-more, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html}{How S3 Versioning works}.}
+\item{PluginsS3ObjectVersion}{The version of the plugins.zip file on your Amazon S3 bucket. You must
+specify a version each time a \code{plugins.zip} file is updated. For more
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html}{How S3 Versioning works}.}
 
 \item{PluginsS3Path}{The relative path to the \code{plugins.zip} file on your Amazon S3 bucket.
 For example, \code{plugins.zip}. If specified, then the plugins.zip version
-is required. To learn more, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import-plugins.html}{Installing custom plugins}.}
+is required. For more information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import-plugins.html}{Installing custom plugins}.}
 
-\item{RequirementsS3ObjectVersion}{The version of the requirements.txt file on your Amazon S3 bucket. A
-version must be specified each time a requirements.txt file is updated.
-To learn more, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html}{How S3 Versioning works}.}
+\item{RequirementsS3ObjectVersion}{The version of the requirements.txt file on your Amazon S3 bucket. You
+must specify a version each time a \code{requirements.txt} file is updated.
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html}{How S3 Versioning works}.}
 
 \item{RequirementsS3Path}{The relative path to the \code{requirements.txt} file on your Amazon S3
 bucket. For example, \code{requirements.txt}. If specified, then a file
-version is required. To learn more, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/working-dags-dependencies.html}{Installing Python dependencies}.}
+version is required. For more information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/working-dags-dependencies.html}{Installing Python dependencies}.}
 
 \item{Schedulers}{The number of Apache Airflow schedulers to run in your Amazon MWAA
 environment.}
 
 \item{SourceBucketArn}{The Amazon Resource Name (ARN) of the Amazon S3 bucket where your DAG
 code and supporting files are stored. For example,
-\code{arn:aws:s3:::my-airflow-bucket-unique-name}. To learn more, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-s3-bucket.html}{Create an Amazon S3 bucket for Amazon MWAA}.}
+\code{arn:aws:s3:::my-airflow-bucket-unique-name}. For more information, see
+\href{https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-s3-bucket.html}{Create an Amazon S3 bucket for Amazon MWAA}.}
 
-\item{WebserverAccessMode}{The Apache Airflow \emph{Web server} access mode. To learn more, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-networking.html}{Apache Airflow access modes}.}
+\item{StartupScriptS3ObjectVersion}{The version of the startup shell script in your Amazon S3 bucket. You
+must specify the \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html}{version ID}
+that Amazon S3 assigns to the file every time you update the script.
+
+Version IDs are Unicode, UTF-8 encoded, URL-ready, opaque strings that
+are no more than 1,024 bytes long. The following is an example:
+
+\verb{3sL4kqtJlcpXroDTDmJ+rmSpXd3dIbrHY+MTRCxf3vjVBH40Nr8X8gdRQBpUMLUo}
+
+For more information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/using-startup-script.html}{Using a startup script}.}
+
+\item{StartupScriptS3Path}{The relative path to the startup shell script in your Amazon S3 bucket.
+For example, \verb{s3://mwaa-environment/startup.sh}.
+
+Amazon MWAA runs the script as your environment starts, and before
+running the Apache Airflow process. You can use this script to install
+dependencies, modify Apache Airflow configuration options, and set
+environment variables. For more information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/using-startup-script.html}{Using a startup script}.}
+
+\item{WebserverAccessMode}{The Apache Airflow \emph{Web server} access mode. For more information, see
+\href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-networking.html}{Apache Airflow access modes}.}
 
 \item{WeeklyMaintenanceWindowStart}{The day and time of the week in Coordinated Universal Time (UTC) 24-hour
 standard time to start weekly maintenance updates of your environment in

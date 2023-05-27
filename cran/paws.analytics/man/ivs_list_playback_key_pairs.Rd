@@ -7,10 +7,11 @@
 ivs_list_playback_key_pairs(maxResults = NULL, nextToken = NULL)
 }
 \arguments{
-\item{maxResults}{The first key pair to retrieve. This is used for pagination; see the
-\code{nextToken} response field. Default: 50.}
+\item{maxResults}{Maximum number of key pairs to return. Default: your service quota or
+100, whichever is smaller.}
 
-\item{nextToken}{Maximum number of key pairs to return.}
+\item{nextToken}{The first key pair to retrieve. This is used for pagination; see the
+\code{nextToken} response field.}
 }
 \description{
 Gets summary information about playback key pairs. For more information, see \href{https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html}{Setting Up Private Channels} in the \emph{Amazon IVS User Guide}.

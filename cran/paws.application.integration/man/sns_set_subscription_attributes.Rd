@@ -24,6 +24,13 @@ failed deliveries to HTTP/S endpoints.
 \item \code{FilterPolicy} – The simple JSON object that lets your subscriber
 receive only a subset of messages, rather than receiving every
 message published to the topic.
+\item \code{FilterPolicyScope} – This attribute lets you choose the filtering
+scope by using one of the following string value types:
+\itemize{
+\item \code{MessageAttributes} (default) – The filter is applied on the
+message attributes.
+\item \code{MessageBody} – The filter is applied on the message body.
+}
 \item \code{RawMessageDelivery} – When set to \code{true}, enables raw message
 delivery to Amazon SQS or HTTP/S endpoints. This eliminates the need
 for the endpoints to process JSON formatting, which is otherwise

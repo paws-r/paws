@@ -10,7 +10,8 @@ translate_import_terminology(
   MergeStrategy,
   Description = NULL,
   TerminologyData,
-  EncryptionKey = NULL
+  EncryptionKey = NULL,
+  Tags = NULL
 )
 }
 \arguments{
@@ -26,6 +27,10 @@ name.}
 \item{TerminologyData}{[required] The terminology data for the custom terminology being imported.}
 
 \item{EncryptionKey}{The encryption key for the custom terminology being imported.}
+
+\item{Tags}{Tags to be associated with this resource. A tag is a key-value pair that
+adds metadata to a resource. Each tag key for the resource must be
+unique. For more information, see \href{https://docs.aws.amazon.com/translate/latest/dg/tagging.html}{Tagging your resources}.}
 }
 \description{
 Creates or updates a custom terminology, depending on whether one already exists for the given terminology name. Importing a terminology with the same name as an existing one will merge the terminologies based on the chosen merge strategy. The only supported merge strategy is OVERWRITE, where the imported terminology overwrites the existing terminology of the same name.

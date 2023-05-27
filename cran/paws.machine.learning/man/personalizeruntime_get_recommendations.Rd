@@ -12,7 +12,8 @@ personalizeruntime_get_recommendations(
   context = NULL,
   filterArn = NULL,
   filterValues = NULL,
-  recommenderArn = NULL
+  recommenderArn = NULL,
+  promotions = NULL
 )
 }
 \arguments{
@@ -51,11 +52,15 @@ to exclude items, you can omit the \code{filter-values}.In this case, Amazon
 Personalize doesn't use that portion of the expression to filter
 recommendations.
 
-For more information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/filter.html}{Filtering Recommendations}.}
+For more information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/filter.html}{Filtering recommendations and user segments}.}
 
 \item{recommenderArn}{The Amazon Resource Name (ARN) of the recommender to use to get
 recommendations. Provide a recommender ARN if you created a Domain
 dataset group with a recommender for a domain use case.}
+
+\item{promotions}{The promotions to apply to the recommendation request. A promotion
+defines additional business rules that apply to a configurable subset of
+recommended items.}
 }
 \description{
 Returns a list of recommended items. For campaigns, the campaign's Amazon Resource Name (ARN) is required and the required user and item input depends on the recipe type used to create the solution backing the campaign as follows:

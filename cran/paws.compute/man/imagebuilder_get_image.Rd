@@ -7,7 +7,7 @@
 imagebuilder_get_image(imageBuildVersionArn)
 }
 \arguments{
-\item{imageBuildVersionArn}{[required] The Amazon Resource Name (ARN) of the image that you want to retrieve.}
+\item{imageBuildVersionArn}{[required] The Amazon Resource Name (ARN) of the image that you want to get.}
 }
 \description{
 Gets an image.

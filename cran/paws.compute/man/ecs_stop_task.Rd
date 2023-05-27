@@ -11,7 +11,7 @@ ecs_stop_task(cluster = NULL, task, reason = NULL)
 hosts the task to stop. If you do not specify a cluster, the default
 cluster is assumed.}
 
-\item{task}{[required] The task ID or full Amazon Resource Name (ARN) of the task to stop.}
+\item{task}{[required] The task ID of the task to stop.}
 
 \item{reason}{An optional message specified when a task is stopped. For example, if
 you're using a custom scheduler, you can use this parameter to specify

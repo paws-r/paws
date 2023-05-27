@@ -227,7 +227,7 @@ route53recoverycontrolconfig_create_routing_control <- function(ClientToken = NU
 #' Assertion rule: An assertion rule enforces that, when you change a
 #' routing control state, that a certain criteria is met. For example, the
 #' criteria might be that at least one routing control state is On after
-#' the transation so that traffic continues to flow to at least one cell
+#' the transaction so that traffic continues to flow to at least one cell
 #' for the application. This ensures that you avoid a fail-open scenario.
 #' 
 #' Gating rule: A gating rule lets you configure a gating routing control

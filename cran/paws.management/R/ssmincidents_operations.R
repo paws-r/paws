@@ -11,22 +11,23 @@ NULL
 #'
 #' See [https://paws-r.github.io/docs/ssmincidents/create_replication_set.html](https://paws-r.github.io/docs/ssmincidents/create_replication_set.html) for full documentation.
 #'
-#' @param clientToken A token ensuring that the operation is called only once with the
+#' @param clientToken A token that ensures that the operation is called only once with the
 #' specified details.
 #' @param regions &#91;required&#93; The Regions that Incident Manager replicates your data to. You can have
 #' up to three Regions in your replication set.
+#' @param tags A list of tags to add to the replication set.
 #'
 #' @keywords internal
 #'
 #' @rdname ssmincidents_create_replication_set
-ssmincidents_create_replication_set <- function(clientToken = NULL, regions) {
+ssmincidents_create_replication_set <- function(clientToken = NULL, regions, tags = NULL) {
   op <- new_operation(
     name = "CreateReplicationSet",
     http_method = "POST",
     http_path = "/createReplicationSet",
     paginator = list()
   )
-  input <- .ssmincidents$create_replication_set_input(clientToken = clientToken, regions = regions)
+  input <- .ssmincidents$create_replication_set_input(clientToken = clientToken, regions = regions, tags = tags)
   output <- .ssmincidents$create_replication_set_output()
   config <- get_config()
   svc <- .ssmincidents$service(config)
@@ -50,23 +51,25 @@ ssmincidents_create_replication_set <- function(clientToken = NULL, regions) {
 #' specified details.
 #' @param displayName The long format of the response plan name. This field can contain
 #' spaces.
-#' @param engagements The contacts and escalation plans that the response plan engages during
-#' an incident.
+#' @param engagements The Amazon Resource Name (ARN) for the contacts and escalation plans
+#' that the response plan engages during an incident.
 #' @param incidentTemplate &#91;required&#93; Details used to create an incident when using this response plan.
+#' @param integrations Information about third-party services integrated into the response
+#' plan.
 #' @param name &#91;required&#93; The short format name of the response plan. Can't include spaces.
 #' @param tags A list of tags that you are adding to the response plan.
 #'
 #' @keywords internal
 #'
 #' @rdname ssmincidents_create_response_plan
-ssmincidents_create_response_plan <- function(actions = NULL, chatChannel = NULL, clientToken = NULL, displayName = NULL, engagements = NULL, incidentTemplate, name, tags = NULL) {
+ssmincidents_create_response_plan <- function(actions = NULL, chatChannel = NULL, clientToken = NULL, displayName = NULL, engagements = NULL, incidentTemplate, integrations = NULL, name, tags = NULL) {
   op <- new_operation(
     name = "CreateResponsePlan",
     http_method = "POST",
     http_path = "/createResponsePlan",
     paginator = list()
   )
-  input <- .ssmincidents$create_response_plan_input(actions = actions, chatChannel = chatChannel, clientToken = clientToken, displayName = displayName, engagements = engagements, incidentTemplate = incidentTemplate, name = name, tags = tags)
+  input <- .ssmincidents$create_response_plan_input(actions = actions, chatChannel = chatChannel, clientToken = clientToken, displayName = displayName, engagements = engagements, incidentTemplate = incidentTemplate, integrations = integrations, name = name, tags = tags)
   output <- .ssmincidents$create_response_plan_output()
   config <- get_config()
   svc <- .ssmincidents$service(config)
@@ -80,30 +83,37 @@ ssmincidents_create_response_plan <- function(actions = NULL, chatChannel = NULL
 #' incident record
 #'
 #' @description
-#' Creates a custom timeline event on the incident details page of an incident record. Timeline events are automatically created by Incident Manager, marking key moment during an incident. You can create custom timeline events to mark important events that are automatically detected by Incident Manager.
+#' Creates a custom timeline event on the incident details page of an incident record. Incident Manager automatically creates timeline events that mark key moments during an incident. You can create custom timeline events to mark important events that Incident Manager can detect automatically.
 #'
 #' See [https://paws-r.github.io/docs/ssmincidents/create_timeline_event.html](https://paws-r.github.io/docs/ssmincidents/create_timeline_event.html) for full documentation.
 #'
-#' @param clientToken A token ensuring that the action is called only once with the specified
-#' details.
+#' @param clientToken A token that ensures that a client calls the action only once with the
+#' specified details.
 #' @param eventData &#91;required&#93; A short description of the event.
+#' @param eventReferences Adds one or more references to the `TimelineEvent`. A reference is an
+#' Amazon Web Services resource involved or associated with the incident.
+#' To specify a reference, enter its Amazon Resource Name (ARN). You can
+#' also specify a related item associated with a resource. For example, to
+#' specify an Amazon DynamoDB (DynamoDB) table as a resource, use the
+#' table's ARN. You can also specify an Amazon CloudWatch metric associated
+#' with the DynamoDB table as a related item.
 #' @param eventTime &#91;required&#93; The time that the event occurred.
-#' @param eventType &#91;required&#93; The type of the event. You can create timeline events of type
+#' @param eventType &#91;required&#93; The type of event. You can create timeline events of type
 #' `Custom Event`.
-#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident record to which the event
-#' will be added.
+#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident record that the action
+#' adds the incident to.
 #'
 #' @keywords internal
 #'
 #' @rdname ssmincidents_create_timeline_event
-ssmincidents_create_timeline_event <- function(clientToken = NULL, eventData, eventTime, eventType, incidentRecordArn) {
+ssmincidents_create_timeline_event <- function(clientToken = NULL, eventData, eventReferences = NULL, eventTime, eventType, incidentRecordArn) {
   op <- new_operation(
     name = "CreateTimelineEvent",
     http_method = "POST",
     http_path = "/createTimelineEvent",
     paginator = list()
   )
-  input <- .ssmincidents$create_timeline_event_input(clientToken = clientToken, eventData = eventData, eventTime = eventTime, eventType = eventType, incidentRecordArn = incidentRecordArn)
+  input <- .ssmincidents$create_timeline_event_input(clientToken = clientToken, eventData = eventData, eventReferences = eventReferences, eventTime = eventTime, eventType = eventType, incidentRecordArn = incidentRecordArn)
   output <- .ssmincidents$create_timeline_event_output()
   config <- get_config()
   svc <- .ssmincidents$service(config)
@@ -239,8 +249,9 @@ ssmincidents_delete_response_plan <- function(arn) {
 #'
 #' See [https://paws-r.github.io/docs/ssmincidents/delete_timeline_event.html](https://paws-r.github.io/docs/ssmincidents/delete_timeline_event.html) for full documentation.
 #'
-#' @param eventId &#91;required&#93; The ID of the event you are updating. You can find this by using
-#' [`list_timeline_events`][ssmincidents_list_timeline_events].
+#' @param eventId &#91;required&#93; The ID of the event to update. You can use
+#' [`list_timeline_events`][ssmincidents_list_timeline_events] to find an
+#' event's ID.
 #' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident that includes the
 #' timeline event.
 #'
@@ -330,7 +341,8 @@ ssmincidents_get_replication_set <- function(arn) {
 #'
 #' See [https://paws-r.github.io/docs/ssmincidents/get_resource_policies.html](https://paws-r.github.io/docs/ssmincidents/get_resource_policies.html) for full documentation.
 #'
-#' @param maxResults The maximum number of resource policies to display per page of results.
+#' @param maxResults The maximum number of resource policies to display for each page of
+#' results.
 #' @param nextToken The pagination token to continue to the next page of results.
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan with the attached
 #' resource policy.
@@ -423,8 +435,8 @@ ssmincidents_get_timeline_event <- function(eventId, incidentRecordArn) {
 #'
 #' See [https://paws-r.github.io/docs/ssmincidents/list_incident_records.html](https://paws-r.github.io/docs/ssmincidents/list_incident_records.html) for full documentation.
 #'
-#' @param filters Filters the list of incident records through which you are searching.
-#' You can filter on the following keys:
+#' @param filters Filters the list of incident records you want to search through. You can
+#' filter on the following keys:
 #' 
 #' -   `creationTime`
 #' 
@@ -434,7 +446,7 @@ ssmincidents_get_timeline_event <- function(eventId, incidentRecordArn) {
 #' 
 #' -   `createdBy`
 #' 
-#' Note the following when deciding how to use Filters:
+#' Note the following when when you use Filters:
 #' 
 #' -   If you don't specify a Filter, the response includes all incident
 #'     records.
@@ -596,7 +608,7 @@ ssmincidents_list_tags_for_resource <- function(resourceArn) {
 #' See [https://paws-r.github.io/docs/ssmincidents/list_timeline_events.html](https://paws-r.github.io/docs/ssmincidents/list_timeline_events.html) for full documentation.
 #'
 #' @param filters Filters the timeline events based on the provided conditional values.
-#' You can filter timeline events using the following keys:
+#' You can filter timeline events with the following keys:
 #' 
 #' -   `eventTime`
 #' 
@@ -616,7 +628,7 @@ ssmincidents_list_tags_for_resource <- function(resourceArn) {
 #' timeline event.
 #' @param maxResults The maximum number of results per page.
 #' @param nextToken The pagination token to continue to the next page of results.
-#' @param sortBy Sort by the specified key value pair.
+#' @param sortBy Sort timeline events by the specified key value pair.
 #' @param sortOrder Sorts the order of timeline events by the value specified in the
 #' `sortBy` field.
 #'
@@ -643,13 +655,13 @@ ssmincidents_list_timeline_events <- function(filters = NULL, incidentRecordArn,
 #' Adds a resource policy to the specified response plan
 #'
 #' @description
-#' Adds a resource policy to the specified response plan. The resource policy is used to share the response plan using Resource Access Manager (RAM). For more information about cross-account sharing, see [Setting up cross-account functionality](https://docs.aws.amazon.com/incident-manager/latest/userguide/).
+#' Adds a resource policy to the specified response plan. The resource policy is used to share the response plan using Resource Access Manager (RAM). For more information about cross-account sharing, see [Cross-Region and cross-account incident management](https://docs.aws.amazon.com/incident-manager/latest/userguide/incident-manager-cross-account-cross-region.html).
 #'
 #' See [https://paws-r.github.io/docs/ssmincidents/put_resource_policy.html](https://paws-r.github.io/docs/ssmincidents/put_resource_policy.html) for full documentation.
 #'
 #' @param policy &#91;required&#93; Details of the resource policy.
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan you're adding the
-#' resource policy to.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan to add the resource
+#' policy to.
 #'
 #' @keywords internal
 #'
@@ -700,8 +712,8 @@ ssmincidents_put_resource_policy <- function(policy, resourceArn) {
 #' -   `5` - No impact, customers aren't currently impacted but urgent
 #'     action is needed to avoid impact.
 #' @param relatedItems Add related items to the incident for other responders to use. Related
-#' items are AWS resources, external links, or files uploaded to an Amazon
-#' S3 bucket.
+#' items are Amazon Web Services resources, external links, or files
+#' uploaded to an Amazon S3 bucket.
 #' @param responsePlanArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan that pre-defines
 #' summary, chat channels, Amazon SNS topics, runbooks, title, and impact
 #' of the incident.
@@ -738,7 +750,7 @@ ssmincidents_start_incident <- function(clientToken = NULL, impact = NULL, relat
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan you're adding the
 #' tags to.
-#' @param tags &#91;required&#93; A list of tags that you are adding to the response plan.
+#' @param tags &#91;required&#93; A list of tags to add to the response plan.
 #'
 #' @keywords internal
 #'
@@ -769,7 +781,7 @@ ssmincidents_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan you're removing a
 #' tag from.
-#' @param tagKeys &#91;required&#93; The name of the tag you're removing from the response plan.
+#' @param tagKeys &#91;required&#93; The name of the tag to remove from the response plan.
 #'
 #' @keywords internal
 #'
@@ -799,10 +811,10 @@ ssmincidents_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' See [https://paws-r.github.io/docs/ssmincidents/update_deletion_protection.html](https://paws-r.github.io/docs/ssmincidents/update_deletion_protection.html) for full documentation.
 #'
-#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the replication set you're updating.
-#' @param clientToken A token ensuring that the operation is called only once with the
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the replication set to update.
+#' @param clientToken A token that ensures that the operation is called only once with the
 #' specified details.
-#' @param deletionProtected &#91;required&#93; Details if deletion protection is enabled or disabled in your account.
+#' @param deletionProtected &#91;required&#93; Specifies if deletion protection is turned on or off in your account.
 #'
 #' @keywords internal
 #'
@@ -833,10 +845,11 @@ ssmincidents_update_deletion_protection <- function(arn, clientToken = NULL, del
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the incident record you are updating.
 #' @param chatChannel The Chatbot chat channel where responders can collaborate.
-#' @param clientToken A token that ensures that the operation is called only once with the
-#' specified details.
-#' @param impact Defines the impact of the incident to customers and applications.
-#' Providing an impact overwrites the impact provided by the response plan.
+#' @param clientToken A token that ensures that a client calls the operation only once with
+#' the specified details.
+#' @param impact Defines the impact of the incident to customers and applications. If you
+#' provide an impact for an incident, it overwrites the impact provided by
+#' the response plan.
 #' 
 #' **Possible impacts:**
 #' 
@@ -853,12 +866,12 @@ ssmincidents_update_deletion_protection <- function(arn, clientToken = NULL, del
 #' 
 #' -   `5` - No impact, customers aren't currently impacted but urgent
 #'     action is needed to avoid impact.
-#' @param notificationTargets The Amazon SNS targets that are notified when updates are made to an
-#' incident.
+#' @param notificationTargets The Amazon SNS targets that Incident Manager notifies when a client
+#' updates an incident.
 #' 
 #' Using multiple SNS topics creates redundancy in the event that a Region
 #' is down during the incident.
-#' @param status The status of the incident. An incident can be `Open` or `Resolved`.
+#' @param status The status of the incident. Possible statuses are `Open` or `Resolved`.
 #' @param summary A longer description of what occurred during the incident.
 #' @param title A brief description of the incident.
 #'
@@ -890,11 +903,11 @@ ssmincidents_update_incident_record <- function(arn, chatChannel = NULL, clientT
 #'
 #' See [https://paws-r.github.io/docs/ssmincidents/update_related_items.html](https://paws-r.github.io/docs/ssmincidents/update_related_items.html) for full documentation.
 #'
-#' @param clientToken A token ensuring that the operation is called only once with the
-#' specified details.
-#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident record containing the
-#' related items you are updating.
-#' @param relatedItemsUpdate &#91;required&#93; Details about the item you are adding or deleting.
+#' @param clientToken A token that ensures that a client calls the operation only once with
+#' the specified details.
+#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident record that contains the
+#' related items that you update.
+#' @param relatedItemsUpdate &#91;required&#93; Details about the item that you are add to, or delete from, an incident.
 #'
 #' @keywords internal
 #'
@@ -925,7 +938,7 @@ ssmincidents_update_related_items <- function(clientToken = NULL, incidentRecord
 #'
 #' @param actions &#91;required&#93; An action to add or delete a Region.
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the replication set you're updating.
-#' @param clientToken A token ensuring that the operation is called only once with the
+#' @param clientToken A token that ensures that the operation is called only once with the
 #' specified details.
 #'
 #' @keywords internal
@@ -966,8 +979,8 @@ ssmincidents_update_replication_set <- function(actions, arn, clientToken = NULL
 #' specified details.
 #' @param displayName The long format name of the response plan. The display name can't
 #' contain spaces.
-#' @param engagements The contacts and escalation plans that Incident Manager engages at the
-#' start of the incident.
+#' @param engagements The Amazon Resource Name (ARN) for the contacts and escalation plans
+#' that the response plan engages during an incident.
 #' @param incidentTemplateDedupeString The string Incident Manager uses to prevent duplicate incidents from
 #' being created by the same incident in the same account.
 #' @param incidentTemplateImpact Defines the impact to the customers. Providing an impact overwrites the
@@ -988,24 +1001,27 @@ ssmincidents_update_replication_set <- function(actions, arn, clientToken = NULL
 #' incident.
 #' @param incidentTemplateSummary A brief summary of the incident. This typically contains what has
 #' happened, what's currently happening, and next steps.
-#' @param incidentTemplateTags Tags to apply to an incident when calling the
-#' [`start_incident`][ssmincidents_start_incident] API action. To call this
-#' action, you must also have permission to call the
+#' @param incidentTemplateTags Tags to assign to the template. When the
+#' [`start_incident`][ssmincidents_start_incident] API action is called,
+#' Incident Manager assigns the tags specified in the template to the
+#' incident. To call this action, you must also have permission to call the
 #' [`tag_resource`][ssmincidents_tag_resource] API action for the incident
 #' record resource.
 #' @param incidentTemplateTitle The short format name of the incident. The title can't contain spaces.
+#' @param integrations Information about third-party services integrated into the response
+#' plan.
 #'
 #' @keywords internal
 #'
 #' @rdname ssmincidents_update_response_plan
-ssmincidents_update_response_plan <- function(actions = NULL, arn, chatChannel = NULL, clientToken = NULL, displayName = NULL, engagements = NULL, incidentTemplateDedupeString = NULL, incidentTemplateImpact = NULL, incidentTemplateNotificationTargets = NULL, incidentTemplateSummary = NULL, incidentTemplateTags = NULL, incidentTemplateTitle = NULL) {
+ssmincidents_update_response_plan <- function(actions = NULL, arn, chatChannel = NULL, clientToken = NULL, displayName = NULL, engagements = NULL, incidentTemplateDedupeString = NULL, incidentTemplateImpact = NULL, incidentTemplateNotificationTargets = NULL, incidentTemplateSummary = NULL, incidentTemplateTags = NULL, incidentTemplateTitle = NULL, integrations = NULL) {
   op <- new_operation(
     name = "UpdateResponsePlan",
     http_method = "POST",
     http_path = "/updateResponsePlan",
     paginator = list()
   )
-  input <- .ssmincidents$update_response_plan_input(actions = actions, arn = arn, chatChannel = chatChannel, clientToken = clientToken, displayName = displayName, engagements = engagements, incidentTemplateDedupeString = incidentTemplateDedupeString, incidentTemplateImpact = incidentTemplateImpact, incidentTemplateNotificationTargets = incidentTemplateNotificationTargets, incidentTemplateSummary = incidentTemplateSummary, incidentTemplateTags = incidentTemplateTags, incidentTemplateTitle = incidentTemplateTitle)
+  input <- .ssmincidents$update_response_plan_input(actions = actions, arn = arn, chatChannel = chatChannel, clientToken = clientToken, displayName = displayName, engagements = engagements, incidentTemplateDedupeString = incidentTemplateDedupeString, incidentTemplateImpact = incidentTemplateImpact, incidentTemplateNotificationTargets = incidentTemplateNotificationTargets, incidentTemplateSummary = incidentTemplateSummary, incidentTemplateTags = incidentTemplateTags, incidentTemplateTitle = incidentTemplateTitle, integrations = integrations)
   output <- .ssmincidents$update_response_plan_output()
   config <- get_config()
   svc <- .ssmincidents$service(config)
@@ -1022,27 +1038,40 @@ ssmincidents_update_response_plan <- function(actions = NULL, arn, chatChannel =
 #'
 #' See [https://paws-r.github.io/docs/ssmincidents/update_timeline_event.html](https://paws-r.github.io/docs/ssmincidents/update_timeline_event.html) for full documentation.
 #'
-#' @param clientToken A token ensuring that the operation is called only once with the
-#' specified details.
+#' @param clientToken A token that ensures that a client calls the operation only once with
+#' the specified details.
 #' @param eventData A short description of the event.
-#' @param eventId &#91;required&#93; The ID of the event you are updating. You can find this by using
-#' [`list_timeline_events`][ssmincidents_list_timeline_events].
+#' @param eventId &#91;required&#93; The ID of the event to update. You can use
+#' [`list_timeline_events`][ssmincidents_list_timeline_events] to find an
+#' event's ID.
+#' @param eventReferences Updates all existing references in a `TimelineEvent`. A reference is an
+#' Amazon Web Services resource involved or associated with the incident.
+#' To specify a reference, enter its Amazon Resource Name (ARN). You can
+#' also specify a related item associated with that resource. For example,
+#' to specify an Amazon DynamoDB (DynamoDB) table as a resource, use its
+#' ARN. You can also specify an Amazon CloudWatch metric associated with
+#' the DynamoDB table as a related item.
+#' 
+#' This update action overrides all existing references. If you want to
+#' keep existing references, you must specify them in the call. If you
+#' don't, this action removes any existing references and enters only new
+#' references.
 #' @param eventTime The time that the event occurred.
-#' @param eventType The type of the event. You can update events of type `Custom Event`.
+#' @param eventType The type of event. You can update events of type `Custom Event`.
 #' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident that includes the
 #' timeline event.
 #'
 #' @keywords internal
 #'
 #' @rdname ssmincidents_update_timeline_event
-ssmincidents_update_timeline_event <- function(clientToken = NULL, eventData = NULL, eventId, eventTime = NULL, eventType = NULL, incidentRecordArn) {
+ssmincidents_update_timeline_event <- function(clientToken = NULL, eventData = NULL, eventId, eventReferences = NULL, eventTime = NULL, eventType = NULL, incidentRecordArn) {
   op <- new_operation(
     name = "UpdateTimelineEvent",
     http_method = "POST",
     http_path = "/updateTimelineEvent",
     paginator = list()
   )
-  input <- .ssmincidents$update_timeline_event_input(clientToken = clientToken, eventData = eventData, eventId = eventId, eventTime = eventTime, eventType = eventType, incidentRecordArn = incidentRecordArn)
+  input <- .ssmincidents$update_timeline_event_input(clientToken = clientToken, eventData = eventData, eventId = eventId, eventReferences = eventReferences, eventTime = eventTime, eventType = eventType, incidentRecordArn = incidentRecordArn)
   output <- .ssmincidents$update_timeline_event_output()
   config <- get_config()
   svc <- .ssmincidents$service(config)

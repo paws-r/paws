@@ -55,8 +55,8 @@ Example: \code{16:00-16:30}
 database.
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region, occurring on a random day of the
-week.
+block of time for each Amazon Web Services Region, occurring on a random
+day of the week.
 
 Constraints:
 \itemize{

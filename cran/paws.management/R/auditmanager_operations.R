@@ -3,11 +3,11 @@
 #' @include auditmanager_service.R
 NULL
 
-#' Associates an evidence folder to an assessment report in a Audit Manager
-#' assessment
+#' Associates an evidence folder to an assessment report in an Audit
+#' Manager assessment
 #'
 #' @description
-#' Associates an evidence folder to an assessment report in a Audit Manager assessment.
+#' Associates an evidence folder to an assessment report in an Audit Manager assessment.
 #'
 #' See [https://paws-r.github.io/docs/auditmanager/associate_assessment_report_evidence_folder.html](https://paws-r.github.io/docs/auditmanager/associate_assessment_report_evidence_folder.html) for full documentation.
 #'
@@ -162,7 +162,7 @@ auditmanager_batch_disassociate_assessment_report_evidence <- function(assessmen
 #' assessment
 #'
 #' @description
-#' Uploads one or more pieces of evidence to a control in an Audit Manager assessment.
+#' Uploads one or more pieces of evidence to a control in an Audit Manager assessment. You can upload manual evidence from any Amazon Simple Storage Service (Amazon S3) bucket by specifying the S3 URI of the evidence.
 #'
 #' See [https://paws-r.github.io/docs/auditmanager/batch_import_evidence_to_assessment_control.html](https://paws-r.github.io/docs/auditmanager/batch_import_evidence_to_assessment_control.html) for full documentation.
 #'
@@ -272,18 +272,37 @@ auditmanager_create_assessment_framework <- function(name, description = NULL, c
 #' @param name &#91;required&#93; The name of the new assessment report.
 #' @param description The description of the assessment report.
 #' @param assessmentId &#91;required&#93; The identifier for the assessment.
+#' @param queryStatement A SQL statement that represents an evidence finder query.
+#' 
+#' Provide this parameter when you want to generate an assessment report
+#' from the results of an evidence finder search query. When you use this
+#' parameter, Audit Manager generates a one-time report using only the
+#' evidence from the query output. This report does not include any
+#' assessment evidence that was manually [added to a report using the
+#' console](https://docs.aws.amazon.com/audit-manager/latest/userguide/generate-assessment-report.html#generate-assessment-report-include-evidence),
+#' or [associated with a report using the
+#' API](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_BatchAssociateAssessmentReportEvidence.html).
+#' 
+#' To use this parameter, the
+#' [enablementStatus](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_EvidenceFinderEnablement.html#auditmanager-Type-EvidenceFinderEnablement-enablementStatus)
+#' of evidence finder must be `ENABLED`.
+#' 
+#' For examples and help resolving `queryStatement` validation exceptions,
+#' see [Troubleshooting evidence finder
+#' issues](https://docs.aws.amazon.com/audit-manager/latest/userguide/evidence-finder-issues.html#querystatement-exceptions)
+#' in the *Audit Manager User Guide.*
 #'
 #' @keywords internal
 #'
 #' @rdname auditmanager_create_assessment_report
-auditmanager_create_assessment_report <- function(name, description = NULL, assessmentId) {
+auditmanager_create_assessment_report <- function(name, description = NULL, assessmentId, queryStatement = NULL) {
   op <- new_operation(
     name = "CreateAssessmentReport",
     http_method = "POST",
     http_path = "/assessments/{assessmentId}/reports",
     paginator = list()
   )
-  input <- .auditmanager$create_assessment_report_input(name = name, description = description, assessmentId = assessmentId)
+  input <- .auditmanager$create_assessment_report_input(name = name, description = description, assessmentId = assessmentId, queryStatement = queryStatement)
   output <- .auditmanager$create_assessment_report_output()
   config <- get_config()
   svc <- .auditmanager$service(config)
@@ -905,10 +924,10 @@ auditmanager_get_evidence_folders_by_assessment <- function(assessmentId, nextTo
 .auditmanager$operations$get_evidence_folders_by_assessment <- auditmanager_get_evidence_folders_by_assessment
 
 #' Returns a list of evidence folders that are associated with a specified
-#' control of an assessment in Audit Manager
+#' control in an Audit Manager assessment
 #'
 #' @description
-#' Returns a list of evidence folders that are associated with a specified control of an assessment in Audit Manager.
+#' Returns a list of evidence folders that are associated with a specified control in an Audit Manager assessment.
 #'
 #' See [https://paws-r.github.io/docs/auditmanager/get_evidence_folders_by_assessment_control.html](https://paws-r.github.io/docs/auditmanager/get_evidence_folders_by_assessment_control.html) for full documentation.
 #'
@@ -1023,11 +1042,11 @@ auditmanager_get_organization_admin_account <- function() {
 }
 .auditmanager$operations$get_organization_admin_account <- auditmanager_get_organization_admin_account
 
-#' Returns a list of the in-scope Amazon Web Services for the specified
-#' assessment
+#' Returns a list of all of the Amazon Web Services that you can choose to
+#' include in your assessment
 #'
 #' @description
-#' Returns a list of the in-scope Amazon Web Services for the specified assessment.
+#' Returns a list of all of the Amazon Web Services that you can choose to include in your assessment. When you [create an assessment](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_CreateAssessment.html), specify which of these services you want to include to narrow the assessment's [scope](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Scope.html).
 #'
 #' See [https://paws-r.github.io/docs/auditmanager/get_services_in_scope.html](https://paws-r.github.io/docs/auditmanager/get_services_in_scope.html) for full documentation.
 #'
@@ -1058,7 +1077,7 @@ auditmanager_get_services_in_scope <- function() {
 #'
 #' See [https://paws-r.github.io/docs/auditmanager/get_settings.html](https://paws-r.github.io/docs/auditmanager/get_settings.html) for full documentation.
 #'
-#' @param attribute &#91;required&#93; The list of `SettingAttribute` enum values.
+#' @param attribute &#91;required&#93; The list of setting attribute enum values.
 #'
 #' @keywords internal
 #'
@@ -1851,10 +1870,10 @@ auditmanager_update_control <- function(controlId, name, description = NULL, tes
 }
 .auditmanager$operations$update_control <- auditmanager_update_control
 
-#' Updates Audit Manager settings for the current user account
+#' Updates Audit Manager settings for the current account
 #'
 #' @description
-#' Updates Audit Manager settings for the current user account.
+#' Updates Audit Manager settings for the current account.
 #'
 #' See [https://paws-r.github.io/docs/auditmanager/update_settings.html](https://paws-r.github.io/docs/auditmanager/update_settings.html) for full documentation.
 #'
@@ -1863,18 +1882,32 @@ auditmanager_update_control <- function(controlId, name, description = NULL, tes
 #' @param defaultAssessmentReportsDestination The default storage destination for assessment reports.
 #' @param defaultProcessOwners A list of the default audit owners.
 #' @param kmsKey The KMS key details.
+#' @param evidenceFinderEnabled Specifies whether the evidence finder feature is enabled. Change this
+#' attribute to enable or disable evidence finder.
+#' 
+#' When you use this attribute to disable evidence finder, Audit Manager
+#' deletes the event data store that’s used to query your evidence data. As
+#' a result, you can’t re-enable evidence finder and use the feature again.
+#' Your only alternative is to
+#' [deregister](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeregisterAccount.html)
+#' and then
+#' [re-register](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_RegisterAccount.html)
+#' Audit Manager.
+#' @param deregistrationPolicy The deregistration policy for your Audit Manager data. You can use this
+#' attribute to determine how your data is handled when you deregister
+#' Audit Manager.
 #'
 #' @keywords internal
 #'
 #' @rdname auditmanager_update_settings
-auditmanager_update_settings <- function(snsTopic = NULL, defaultAssessmentReportsDestination = NULL, defaultProcessOwners = NULL, kmsKey = NULL) {
+auditmanager_update_settings <- function(snsTopic = NULL, defaultAssessmentReportsDestination = NULL, defaultProcessOwners = NULL, kmsKey = NULL, evidenceFinderEnabled = NULL, deregistrationPolicy = NULL) {
   op <- new_operation(
     name = "UpdateSettings",
     http_method = "PUT",
     http_path = "/settings",
     paginator = list()
   )
-  input <- .auditmanager$update_settings_input(snsTopic = snsTopic, defaultAssessmentReportsDestination = defaultAssessmentReportsDestination, defaultProcessOwners = defaultProcessOwners, kmsKey = kmsKey)
+  input <- .auditmanager$update_settings_input(snsTopic = snsTopic, defaultAssessmentReportsDestination = defaultAssessmentReportsDestination, defaultProcessOwners = defaultProcessOwners, kmsKey = kmsKey, evidenceFinderEnabled = evidenceFinderEnabled, deregistrationPolicy = deregistrationPolicy)
   output <- .auditmanager$update_settings_output()
   config <- get_config()
   svc <- .auditmanager$service(config)

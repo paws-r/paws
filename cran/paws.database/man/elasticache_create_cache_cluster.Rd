@@ -32,7 +32,9 @@ elasticache_create_cache_cluster(
   PreferredOutpostArn = NULL,
   PreferredOutpostArns = NULL,
   LogDeliveryConfigurations = NULL,
-  TransitEncryptionEnabled = NULL
+  TransitEncryptionEnabled = NULL,
+  NetworkType = NULL,
+  IpDiscovery = NULL
 )
 }
 \arguments{
@@ -316,13 +318,16 @@ outpost or across multiple outposts.}
 
 \item{LogDeliveryConfigurations}{Specifies the destination, format and type of the logs.}
 
-\item{TransitEncryptionEnabled}{A flag that enables in-transit encryption when set to true. You cannot
-modify the value of \code{TransitEncryptionEnabled} after the cluster is
-created. To enable in-transit encryption on a cluster you must set
-\code{TransitEncryptionEnabled} to true when you create a cluster.
+\item{TransitEncryptionEnabled}{A flag that enables in-transit encryption when set to true.}
 
-\strong{Required:} Only available when creating a cache cluster in an Amazon
-VPC using Memcached version \verb{1.6.12} or later.}
+\item{NetworkType}{Must be either \code{ipv4} | \code{ipv6} | \code{dual_stack}. IPv6 is supported for
+workloads using Redis engine version 6.2 onward or Memcached engine
+version 1.6.6 on all instances built on the \href{https://aws.amazon.com/ec2/nitro/}{Nitro system}.}
+
+\item{IpDiscovery}{The network type you choose when modifying a cluster, either \code{ipv4} |
+\code{ipv6}. IPv6 is supported for workloads using Redis engine version 6.2
+onward or Memcached engine version 1.6.6 on all instances built on the
+\href{https://aws.amazon.com/ec2/nitro/}{Nitro system}.}
 }
 \description{
 Creates a cluster. All nodes in the cluster run the same protocol-compliant cache engine software, either Memcached or Redis.

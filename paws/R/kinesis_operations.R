@@ -9,6 +9,9 @@ NULL
 #' Adds or updates tags for the specified Kinesis data stream. You can
 #' assign up to 50 tags to a data stream.
 #' 
+#' When invoking this API, it is recommended you use the `StreamARN` input
+#' parameter rather than the `StreamName` input parameter.
+#' 
 #' If tags have already been assigned to the stream,
 #' [`add_tags_to_stream`][kinesis_add_tags_to_stream] overwrites any
 #' existing tags that correspond to the specified tag keys.
@@ -17,10 +20,11 @@ NULL
 #' transactions per second per account.
 #'
 #' @usage
-#' kinesis_add_tags_to_stream(StreamName, Tags)
+#' kinesis_add_tags_to_stream(StreamName, Tags, StreamARN)
 #'
-#' @param StreamName &#91;required&#93; The name of the stream.
+#' @param StreamName The name of the stream.
 #' @param Tags &#91;required&#93; A set of up to 10 key-value pairs to use to create the tags.
+#' @param StreamARN The ARN of the stream.
 #'
 #' @return
 #' An empty list.
@@ -31,7 +35,8 @@ NULL
 #'   StreamName = "string",
 #'   Tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -40,14 +45,14 @@ NULL
 #' @rdname kinesis_add_tags_to_stream
 #'
 #' @aliases kinesis_add_tags_to_stream
-kinesis_add_tags_to_stream <- function(StreamName, Tags) {
+kinesis_add_tags_to_stream <- function(StreamName = NULL, Tags, StreamARN = NULL) {
   op <- new_operation(
     name = "AddTagsToStream",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesis$add_tags_to_stream_input(StreamName = StreamName, Tags = Tags)
+  input <- .kinesis$add_tags_to_stream_input(StreamName = StreamName, Tags = Tags, StreamARN = StreamARN)
   output <- .kinesis$add_tags_to_stream_output()
   config <- get_config()
   svc <- .kinesis$service(config)
@@ -66,12 +71,18 @@ kinesis_add_tags_to_stream <- function(StreamName, Tags) {
 #' of shards, which are uniquely identified groups of data records in a
 #' stream.
 #' 
-#' You specify and control the number of shards that a stream is composed
-#' of. Each shard can support reads up to five transactions per second, up
-#' to a maximum data read total of 2 MiB per second. Each shard can support
-#' writes up to 1,000 records per second, up to a maximum data write total
-#' of 1 MiB per second. If the amount of data input increases or decreases,
-#' you can add or remove shards.
+#' You can create your data stream using either on-demand or provisioned
+#' capacity mode. Data streams with an on-demand mode require no capacity
+#' planning and automatically scale to handle gigabytes of write and read
+#' throughput per minute. With the on-demand mode, Kinesis Data Streams
+#' automatically manages the shards in order to provide the necessary
+#' throughput. For the data streams with a provisioned mode, you must
+#' specify the number of shards for the data stream. Each shard can support
+#' reads up to five transactions per second, up to a maximum data read
+#' total of 2 MiB per second. Each shard can support writes up to 1,000
+#' records per second, up to a maximum data write total of 1 MiB per
+#' second. If the amount of data input increases or decreases, you can add
+#' or remove shards.
 #' 
 #' The stream name identifies the stream. The name is scoped to the Amazon
 #' Web Services account used by the application. It is also scoped by
@@ -169,17 +180,21 @@ kinesis_create_stream <- function(StreamName, ShardCount = NULL, StreamModeDetai
 #' length of time data records are accessible after they are added to the
 #' stream. The minimum value of a stream's retention period is 24 hours.
 #' 
+#' When invoking this API, it is recommended you use the `StreamARN` input
+#' parameter rather than the `StreamName` input parameter.
+#' 
 #' This operation may result in lost data. For example, if the stream's
 #' retention period is 48 hours and is decreased to 24 hours, any data
 #' already in the stream that is older than 24 hours is inaccessible.
 #'
 #' @usage
 #' kinesis_decrease_stream_retention_period(StreamName,
-#'   RetentionPeriodHours)
+#'   RetentionPeriodHours, StreamARN)
 #'
-#' @param StreamName &#91;required&#93; The name of the stream to modify.
+#' @param StreamName The name of the stream to modify.
 #' @param RetentionPeriodHours &#91;required&#93; The new retention period of the stream, in hours. Must be less than the
 #' current retention period.
+#' @param StreamARN The ARN of the stream.
 #'
 #' @return
 #' An empty list.
@@ -188,7 +203,8 @@ kinesis_create_stream <- function(StreamName, ShardCount = NULL, StreamModeDetai
 #' ```
 #' svc$decrease_stream_retention_period(
 #'   StreamName = "string",
-#'   RetentionPeriodHours = 123
+#'   RetentionPeriodHours = 123,
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -197,14 +213,14 @@ kinesis_create_stream <- function(StreamName, ShardCount = NULL, StreamModeDetai
 #' @rdname kinesis_decrease_stream_retention_period
 #'
 #' @aliases kinesis_decrease_stream_retention_period
-kinesis_decrease_stream_retention_period <- function(StreamName, RetentionPeriodHours) {
+kinesis_decrease_stream_retention_period <- function(StreamName = NULL, RetentionPeriodHours, StreamARN = NULL) {
   op <- new_operation(
     name = "DecreaseStreamRetentionPeriod",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesis$decrease_stream_retention_period_input(StreamName = StreamName, RetentionPeriodHours = RetentionPeriodHours)
+  input <- .kinesis$decrease_stream_retention_period_input(StreamName = StreamName, RetentionPeriodHours = RetentionPeriodHours, StreamARN = StreamARN)
   output <- .kinesis$decrease_stream_retention_period_output()
   config <- get_config()
   svc <- .kinesis$service(config)
@@ -221,6 +237,9 @@ kinesis_decrease_stream_retention_period <- function(StreamName, RetentionPeriod
 #' down any applications that are operating on the stream before you delete
 #' the stream. If an application attempts to operate on a deleted stream,
 #' it receives the exception `ResourceNotFoundException`.
+#' 
+#' When invoking this API, it is recommended you use the `StreamARN` input
+#' parameter rather than the `StreamName` input parameter.
 #' 
 #' If the stream is in the `ACTIVE` state, you can delete it. After a
 #' [`delete_stream`][kinesis_delete_stream] request, the specified stream
@@ -244,13 +263,14 @@ kinesis_decrease_stream_retention_period <- function(StreamName, RetentionPeriod
 #' transactions per second per account.
 #'
 #' @usage
-#' kinesis_delete_stream(StreamName, EnforceConsumerDeletion)
+#' kinesis_delete_stream(StreamName, EnforceConsumerDeletion, StreamARN)
 #'
-#' @param StreamName &#91;required&#93; The name of the stream to delete.
+#' @param StreamName The name of the stream to delete.
 #' @param EnforceConsumerDeletion If this parameter is unset (`null`) or if you set it to `false`, and the
 #' stream has registered consumers, the call to
 #' [`delete_stream`][kinesis_delete_stream] fails with a
 #' `ResourceInUseException`.
+#' @param StreamARN The ARN of the stream.
 #'
 #' @return
 #' An empty list.
@@ -259,7 +279,8 @@ kinesis_decrease_stream_retention_period <- function(StreamName, RetentionPeriod
 #' ```
 #' svc$delete_stream(
 #'   StreamName = "string",
-#'   EnforceConsumerDeletion = TRUE|FALSE
+#'   EnforceConsumerDeletion = TRUE|FALSE,
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -268,14 +289,14 @@ kinesis_decrease_stream_retention_period <- function(StreamName, RetentionPeriod
 #' @rdname kinesis_delete_stream
 #'
 #' @aliases kinesis_delete_stream
-kinesis_delete_stream <- function(StreamName, EnforceConsumerDeletion = NULL) {
+kinesis_delete_stream <- function(StreamName = NULL, EnforceConsumerDeletion = NULL, StreamARN = NULL) {
   op <- new_operation(
     name = "DeleteStream",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesis$delete_stream_input(StreamName = StreamName, EnforceConsumerDeletion = EnforceConsumerDeletion)
+  input <- .kinesis$delete_stream_input(StreamName = StreamName, EnforceConsumerDeletion = EnforceConsumerDeletion, StreamARN = StreamARN)
   output <- .kinesis$delete_stream_output()
   config <- get_config()
   svc <- .kinesis$service(config)
@@ -306,7 +327,7 @@ kinesis_delete_stream <- function(StreamName, EnforceConsumerDeletion = NULL) {
 #' @param StreamARN The ARN of the Kinesis data stream that the consumer is registered with.
 #' For more information, see [Amazon Resource Names (ARNs) and Amazon Web
 #' Services Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams).
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kinesis-streams).
 #' @param ConsumerName The name that you gave to the consumer.
 #' @param ConsumerARN The ARN returned by Kinesis Data Streams when you registered the
 #' consumer. If you don't know the ARN of the consumer that you want to
@@ -411,6 +432,9 @@ kinesis_describe_limits <- function() {
 #' [`list_shards`][kinesis_list_shards] API to list the shards in a
 #' specified data stream and obtain information about each shard.
 #' 
+#' When invoking this API, it is recommended you use the `StreamARN` input
+#' parameter rather than the `StreamName` input parameter.
+#' 
 #' The information returned includes the stream name, Amazon Resource Name
 #' (ARN), creation time, enhanced metric configuration, and shard map. The
 #' shard map is an array of shard objects. For each shard object, there is
@@ -431,9 +455,10 @@ kinesis_describe_limits <- function() {
 #' This operation has a limit of 10 transactions per second per account.
 #'
 #' @usage
-#' kinesis_describe_stream(StreamName, Limit, ExclusiveStartShardId)
+#' kinesis_describe_stream(StreamName, Limit, ExclusiveStartShardId,
+#'   StreamARN)
 #'
-#' @param StreamName &#91;required&#93; The name of the stream to describe.
+#' @param StreamName The name of the stream to describe.
 #' @param Limit The maximum number of shards to return in a single call. The default
 #' value is 100. If you specify a value greater than 100, at most 100
 #' results are returned.
@@ -446,6 +471,7 @@ kinesis_describe_limits <- function() {
 #' If you don't specify this parameter, the default behavior for
 #' [`describe_stream`][kinesis_describe_stream] is to describe the stream
 #' starting with the first shard in the stream.
+#' @param StreamARN The ARN of the stream.
 #'
 #' @return
 #' A list with the following syntax:
@@ -496,7 +522,8 @@ kinesis_describe_limits <- function() {
 #' svc$describe_stream(
 #'   StreamName = "string",
 #'   Limit = 123,
-#'   ExclusiveStartShardId = "string"
+#'   ExclusiveStartShardId = "string",
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -505,14 +532,14 @@ kinesis_describe_limits <- function() {
 #' @rdname kinesis_describe_stream
 #'
 #' @aliases kinesis_describe_stream
-kinesis_describe_stream <- function(StreamName, Limit = NULL, ExclusiveStartShardId = NULL) {
+kinesis_describe_stream <- function(StreamName = NULL, Limit = NULL, ExclusiveStartShardId = NULL, StreamARN = NULL) {
   op <- new_operation(
     name = "DescribeStream",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesis$describe_stream_input(StreamName = StreamName, Limit = Limit, ExclusiveStartShardId = ExclusiveStartShardId)
+  input <- .kinesis$describe_stream_input(StreamName = StreamName, Limit = Limit, ExclusiveStartShardId = ExclusiveStartShardId, StreamARN = StreamARN)
   output <- .kinesis$describe_stream_output()
   config <- get_config()
   svc <- .kinesis$service(config)
@@ -544,7 +571,7 @@ kinesis_describe_stream <- function(StreamName, Limit = NULL, ExclusiveStartShar
 #' @param StreamARN The ARN of the Kinesis data stream that the consumer is registered with.
 #' For more information, see [Amazon Resource Names (ARNs) and Amazon Web
 #' Services Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams).
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kinesis-streams).
 #' @param ConsumerName The name that you gave to the consumer.
 #' @param ConsumerARN The ARN returned by Kinesis Data Streams when you registered the
 #' consumer.
@@ -603,6 +630,9 @@ kinesis_describe_stream_consumer <- function(StreamARN = NULL, ConsumerName = NU
 #' Provides a summarized description of the specified Kinesis data stream
 #' without the shard list.
 #' 
+#' When invoking this API, it is recommended you use the `StreamARN` input
+#' parameter rather than the `StreamName` input parameter.
+#' 
 #' The information returned includes the stream name, Amazon Resource Name
 #' (ARN), status, record retention period, approximate creation time,
 #' monitoring, encryption details, and open shard count.
@@ -611,9 +641,10 @@ kinesis_describe_stream_consumer <- function(StreamARN = NULL, ConsumerName = NU
 #' of 20 transactions per second per account.
 #'
 #' @usage
-#' kinesis_describe_stream_summary(StreamName)
+#' kinesis_describe_stream_summary(StreamName, StreamARN)
 #'
-#' @param StreamName &#91;required&#93; The name of the stream to describe.
+#' @param StreamName The name of the stream to describe.
+#' @param StreamARN The ARN of the stream.
 #'
 #' @return
 #' A list with the following syntax:
@@ -648,7 +679,8 @@ kinesis_describe_stream_consumer <- function(StreamARN = NULL, ConsumerName = NU
 #' @section Request syntax:
 #' ```
 #' svc$describe_stream_summary(
-#'   StreamName = "string"
+#'   StreamName = "string",
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -657,14 +689,14 @@ kinesis_describe_stream_consumer <- function(StreamARN = NULL, ConsumerName = NU
 #' @rdname kinesis_describe_stream_summary
 #'
 #' @aliases kinesis_describe_stream_summary
-kinesis_describe_stream_summary <- function(StreamName) {
+kinesis_describe_stream_summary <- function(StreamName = NULL, StreamARN = NULL) {
   op <- new_operation(
     name = "DescribeStreamSummary",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesis$describe_stream_summary_input(StreamName = StreamName)
+  input <- .kinesis$describe_stream_summary_input(StreamName = StreamName, StreamARN = StreamARN)
   output <- .kinesis$describe_stream_summary_output()
   config <- get_config()
   svc <- .kinesis$service(config)
@@ -678,11 +710,15 @@ kinesis_describe_stream_summary <- function(StreamName) {
 #'
 #' @description
 #' Disables enhanced monitoring.
+#' 
+#' When invoking this API, it is recommended you use the `StreamARN` input
+#' parameter rather than the `StreamName` input parameter.
 #'
 #' @usage
-#' kinesis_disable_enhanced_monitoring(StreamName, ShardLevelMetrics)
+#' kinesis_disable_enhanced_monitoring(StreamName, ShardLevelMetrics,
+#'   StreamARN)
 #'
-#' @param StreamName &#91;required&#93; The name of the Kinesis data stream for which to disable enhanced
+#' @param StreamName The name of the Kinesis data stream for which to disable enhanced
 #' monitoring.
 #' @param ShardLevelMetrics &#91;required&#93; List of shard-level metrics to disable.
 #' 
@@ -709,6 +745,7 @@ kinesis_describe_stream_summary <- function(StreamName) {
 #' Service with Amazon
 #' CloudWatch](https://docs.aws.amazon.com/streams/latest/dev/monitoring-with-cloudwatch.html)
 #' in the *Amazon Kinesis Data Streams Developer Guide*.
+#' @param StreamARN The ARN of the stream.
 #'
 #' @return
 #' A list with the following syntax:
@@ -720,7 +757,8 @@ kinesis_describe_stream_summary <- function(StreamName) {
 #'   ),
 #'   DesiredShardLevelMetrics = list(
 #'     "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
-#'   )
+#'   ),
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -730,7 +768,8 @@ kinesis_describe_stream_summary <- function(StreamName) {
 #'   StreamName = "string",
 #'   ShardLevelMetrics = list(
 #'     "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
-#'   )
+#'   ),
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -739,14 +778,14 @@ kinesis_describe_stream_summary <- function(StreamName) {
 #' @rdname kinesis_disable_enhanced_monitoring
 #'
 #' @aliases kinesis_disable_enhanced_monitoring
-kinesis_disable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
+kinesis_disable_enhanced_monitoring <- function(StreamName = NULL, ShardLevelMetrics, StreamARN = NULL) {
   op <- new_operation(
     name = "DisableEnhancedMonitoring",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesis$disable_enhanced_monitoring_input(StreamName = StreamName, ShardLevelMetrics = ShardLevelMetrics)
+  input <- .kinesis$disable_enhanced_monitoring_input(StreamName = StreamName, ShardLevelMetrics = ShardLevelMetrics, StreamARN = StreamARN)
   output <- .kinesis$disable_enhanced_monitoring_output()
   config <- get_config()
   svc <- .kinesis$service(config)
@@ -760,11 +799,15 @@ kinesis_disable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
 #'
 #' @description
 #' Enables enhanced Kinesis data stream monitoring for shard-level metrics.
+#' 
+#' When invoking this API, it is recommended you use the `StreamARN` input
+#' parameter rather than the `StreamName` input parameter.
 #'
 #' @usage
-#' kinesis_enable_enhanced_monitoring(StreamName, ShardLevelMetrics)
+#' kinesis_enable_enhanced_monitoring(StreamName, ShardLevelMetrics,
+#'   StreamARN)
 #'
-#' @param StreamName &#91;required&#93; The name of the stream for which to enable enhanced monitoring.
+#' @param StreamName The name of the stream for which to enable enhanced monitoring.
 #' @param ShardLevelMetrics &#91;required&#93; List of shard-level metrics to enable.
 #' 
 #' The following are the valid shard-level metrics. The value "`ALL`"
@@ -790,6 +833,7 @@ kinesis_disable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
 #' Service with Amazon
 #' CloudWatch](https://docs.aws.amazon.com/streams/latest/dev/monitoring-with-cloudwatch.html)
 #' in the *Amazon Kinesis Data Streams Developer Guide*.
+#' @param StreamARN The ARN of the stream.
 #'
 #' @return
 #' A list with the following syntax:
@@ -801,7 +845,8 @@ kinesis_disable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
 #'   ),
 #'   DesiredShardLevelMetrics = list(
 #'     "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
-#'   )
+#'   ),
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -811,7 +856,8 @@ kinesis_disable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
 #'   StreamName = "string",
 #'   ShardLevelMetrics = list(
 #'     "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
-#'   )
+#'   ),
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -820,14 +866,14 @@ kinesis_disable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
 #' @rdname kinesis_enable_enhanced_monitoring
 #'
 #' @aliases kinesis_enable_enhanced_monitoring
-kinesis_enable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
+kinesis_enable_enhanced_monitoring <- function(StreamName = NULL, ShardLevelMetrics, StreamARN = NULL) {
   op <- new_operation(
     name = "EnableEnhancedMonitoring",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesis$enable_enhanced_monitoring_input(StreamName = StreamName, ShardLevelMetrics = ShardLevelMetrics)
+  input <- .kinesis$enable_enhanced_monitoring_input(StreamName = StreamName, ShardLevelMetrics = ShardLevelMetrics, StreamARN = StreamARN)
   output <- .kinesis$enable_enhanced_monitoring_output()
   config <- get_config()
   svc <- .kinesis$service(config)
@@ -841,6 +887,9 @@ kinesis_enable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
 #'
 #' @description
 #' Gets data records from a Kinesis data stream's shard.
+#' 
+#' When invoking this API, it is recommended you use the `StreamARN` input
+#' parameter in addition to the `ShardIterator` parameter.
 #' 
 #' Specify a shard iterator using the `ShardIterator` parameter. The shard
 #' iterator specifies the position in the shard from which you want to
@@ -915,7 +964,7 @@ kinesis_enable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
 #' This operation has a limit of five transactions per second per shard.
 #'
 #' @usage
-#' kinesis_get_records(ShardIterator, Limit)
+#' kinesis_get_records(ShardIterator, Limit, StreamARN)
 #'
 #' @param ShardIterator &#91;required&#93; The position in the shard from which you want to start sequentially
 #' reading data records. A shard iterator specifies this position using the
@@ -924,6 +973,7 @@ kinesis_enable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
 #' 10,000. If you specify a value that is greater than 10,000,
 #' [`get_records`][kinesis_get_records] throws `InvalidArgumentException`.
 #' The default value is 10,000.
+#' @param StreamARN The ARN of the stream.
 #'
 #' @return
 #' A list with the following syntax:
@@ -961,7 +1011,8 @@ kinesis_enable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
 #' ```
 #' svc$get_records(
 #'   ShardIterator = "string",
-#'   Limit = 123
+#'   Limit = 123,
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -970,14 +1021,14 @@ kinesis_enable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
 #' @rdname kinesis_get_records
 #'
 #' @aliases kinesis_get_records
-kinesis_get_records <- function(ShardIterator, Limit = NULL) {
+kinesis_get_records <- function(ShardIterator, Limit = NULL, StreamARN = NULL) {
   op <- new_operation(
     name = "GetRecords",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesis$get_records_input(ShardIterator = ShardIterator, Limit = Limit)
+  input <- .kinesis$get_records_input(ShardIterator = ShardIterator, Limit = Limit, StreamARN = StreamARN)
   output <- .kinesis$get_records_output()
   config <- get_config()
   svc <- .kinesis$service(config)
@@ -992,6 +1043,9 @@ kinesis_get_records <- function(ShardIterator, Limit = NULL) {
 #' @description
 #' Gets an Amazon Kinesis shard iterator. A shard iterator expires 5
 #' minutes after it is returned to the requester.
+#' 
+#' When invoking this API, it is recommended you use the `StreamARN` input
+#' parameter rather than the `StreamName` input parameter.
 #' 
 #' A shard iterator specifies the shard position from which to start
 #' reading data records sequentially. The position is specified using the
@@ -1045,9 +1099,9 @@ kinesis_get_records <- function(ShardIterator, Limit = NULL) {
 #'
 #' @usage
 #' kinesis_get_shard_iterator(StreamName, ShardId, ShardIteratorType,
-#'   StartingSequenceNumber, Timestamp)
+#'   StartingSequenceNumber, Timestamp, StreamARN)
 #'
-#' @param StreamName &#91;required&#93; The name of the Amazon Kinesis data stream.
+#' @param StreamName The name of the Amazon Kinesis data stream.
 #' @param ShardId &#91;required&#93; The shard ID of the Kinesis Data Streams shard to get the iterator for.
 #' @param ShardIteratorType &#91;required&#93; Determines how the shard iterator is used to start reading data records
 #' from the shard.
@@ -1081,6 +1135,7 @@ kinesis_get_records <- function(ShardIterator, Limit = NULL) {
 #' next (later) record. If the time stamp is older than the current trim
 #' horizon, the iterator returned is for the oldest untrimmed data record
 #' (TRIM_HORIZON).
+#' @param StreamARN The ARN of the stream.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1099,7 +1154,8 @@ kinesis_get_records <- function(ShardIterator, Limit = NULL) {
 #'   StartingSequenceNumber = "string",
 #'   Timestamp = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -1108,14 +1164,14 @@ kinesis_get_records <- function(ShardIterator, Limit = NULL) {
 #' @rdname kinesis_get_shard_iterator
 #'
 #' @aliases kinesis_get_shard_iterator
-kinesis_get_shard_iterator <- function(StreamName, ShardId, ShardIteratorType, StartingSequenceNumber = NULL, Timestamp = NULL) {
+kinesis_get_shard_iterator <- function(StreamName = NULL, ShardId, ShardIteratorType, StartingSequenceNumber = NULL, Timestamp = NULL, StreamARN = NULL) {
   op <- new_operation(
     name = "GetShardIterator",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesis$get_shard_iterator_input(StreamName = StreamName, ShardId = ShardId, ShardIteratorType = ShardIteratorType, StartingSequenceNumber = StartingSequenceNumber, Timestamp = Timestamp)
+  input <- .kinesis$get_shard_iterator_input(StreamName = StreamName, ShardId = ShardId, ShardIteratorType = ShardIteratorType, StartingSequenceNumber = StartingSequenceNumber, Timestamp = Timestamp, StreamARN = StreamARN)
   output <- .kinesis$get_shard_iterator_output()
   config <- get_config()
   svc <- .kinesis$service(config)
@@ -1135,6 +1191,9 @@ kinesis_get_shard_iterator <- function(StreamName, ShardId, ShardIteratorType, S
 #' stream. The maximum value of a stream's retention period is 8760 hours
 #' (365 days).
 #' 
+#' When invoking this API, it is recommended you use the `StreamARN` input
+#' parameter rather than the `StreamName` input parameter.
+#' 
 #' If you choose a longer stream retention period, this operation increases
 #' the time period during which records that have not yet expired are
 #' accessible. However, it does not make previous, expired data (older than
@@ -1145,11 +1204,12 @@ kinesis_get_shard_iterator <- function(StreamName, ShardId, ShardIteratorType, S
 #'
 #' @usage
 #' kinesis_increase_stream_retention_period(StreamName,
-#'   RetentionPeriodHours)
+#'   RetentionPeriodHours, StreamARN)
 #'
-#' @param StreamName &#91;required&#93; The name of the stream to modify.
+#' @param StreamName The name of the stream to modify.
 #' @param RetentionPeriodHours &#91;required&#93; The new retention period of the stream, in hours. Must be more than the
 #' current retention period.
+#' @param StreamARN The ARN of the stream.
 #'
 #' @return
 #' An empty list.
@@ -1158,7 +1218,8 @@ kinesis_get_shard_iterator <- function(StreamName, ShardId, ShardIteratorType, S
 #' ```
 #' svc$increase_stream_retention_period(
 #'   StreamName = "string",
-#'   RetentionPeriodHours = 123
+#'   RetentionPeriodHours = 123,
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -1167,14 +1228,14 @@ kinesis_get_shard_iterator <- function(StreamName, ShardId, ShardIteratorType, S
 #' @rdname kinesis_increase_stream_retention_period
 #'
 #' @aliases kinesis_increase_stream_retention_period
-kinesis_increase_stream_retention_period <- function(StreamName, RetentionPeriodHours) {
+kinesis_increase_stream_retention_period <- function(StreamName = NULL, RetentionPeriodHours, StreamARN = NULL) {
   op <- new_operation(
     name = "IncreaseStreamRetentionPeriod",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesis$increase_stream_retention_period_input(StreamName = StreamName, RetentionPeriodHours = RetentionPeriodHours)
+  input <- .kinesis$increase_stream_retention_period_input(StreamName = StreamName, RetentionPeriodHours = RetentionPeriodHours, StreamARN = StreamARN)
   output <- .kinesis$increase_stream_retention_period_output()
   config <- get_config()
   svc <- .kinesis$service(config)
@@ -1191,6 +1252,9 @@ kinesis_increase_stream_retention_period <- function(StreamName, RetentionPeriod
 #' This operation has a limit of 1000 transactions per second per data
 #' stream.
 #' 
+#' When invoking this API, it is recommended you use the `StreamARN` input
+#' parameter rather than the `StreamName` input parameter.
+#' 
 #' This action does not list expired shards. For information about expired
 #' shards, see [Data Routing, Data Persistence, and Shard State after a
 #' Reshard](https://docs.aws.amazon.com/streams/latest/dev/kinesis-using-sdk-java-after-resharding.html#kinesis-using-sdk-java-resharding-data-routing).
@@ -1204,7 +1268,7 @@ kinesis_increase_stream_retention_period <- function(StreamName, RetentionPeriod
 #'
 #' @usage
 #' kinesis_list_shards(StreamName, NextToken, ExclusiveStartShardId,
-#'   MaxResults, StreamCreationTimestamp, ShardFilter)
+#'   MaxResults, StreamCreationTimestamp, ShardFilter, StreamARN)
 #'
 #' @param StreamName The name of the data stream whose shards you want to list.
 #' 
@@ -1281,6 +1345,7 @@ kinesis_increase_stream_retention_period <- function(StreamName, RetentionPeriod
 #' provided timestamp are returned. If you specify the FROM_TIMESTAMP type,
 #' then all shards starting from the provided timestamp to TIP are
 #' returned.
+#' @param StreamARN The ARN of the stream.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1321,7 +1386,8 @@ kinesis_increase_stream_retention_period <- function(StreamName, RetentionPeriod
 #'     Timestamp = as.POSIXct(
 #'       "2015-01-01"
 #'     )
-#'   )
+#'   ),
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -1330,14 +1396,14 @@ kinesis_increase_stream_retention_period <- function(StreamName, RetentionPeriod
 #' @rdname kinesis_list_shards
 #'
 #' @aliases kinesis_list_shards
-kinesis_list_shards <- function(StreamName = NULL, NextToken = NULL, ExclusiveStartShardId = NULL, MaxResults = NULL, StreamCreationTimestamp = NULL, ShardFilter = NULL) {
+kinesis_list_shards <- function(StreamName = NULL, NextToken = NULL, ExclusiveStartShardId = NULL, MaxResults = NULL, StreamCreationTimestamp = NULL, ShardFilter = NULL, StreamARN = NULL) {
   op <- new_operation(
     name = "ListShards",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesis$list_shards_input(StreamName = StreamName, NextToken = NextToken, ExclusiveStartShardId = ExclusiveStartShardId, MaxResults = MaxResults, StreamCreationTimestamp = StreamCreationTimestamp, ShardFilter = ShardFilter)
+  input <- .kinesis$list_shards_input(StreamName = StreamName, NextToken = NextToken, ExclusiveStartShardId = ExclusiveStartShardId, MaxResults = MaxResults, StreamCreationTimestamp = StreamCreationTimestamp, ShardFilter = ShardFilter, StreamARN = StreamARN)
   output <- .kinesis$list_shards_output()
   config <- get_config()
   svc <- .kinesis$service(config)
@@ -1363,7 +1429,7 @@ kinesis_list_shards <- function(StreamName = NULL, NextToken = NULL, ExclusiveSt
 #' @param StreamARN &#91;required&#93; The ARN of the Kinesis data stream for which you want to list the
 #' registered consumers. For more information, see [Amazon Resource Names
 #' (ARNs) and Amazon Web Services Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams).
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kinesis-streams).
 #' @param NextToken When the number of consumers that are registered with the data stream is
 #' greater than the default value for the `MaxResults` parameter, or if you
 #' explicitly specify a value for `MaxResults` that is less than the number
@@ -1479,11 +1545,12 @@ kinesis_list_stream_consumers <- function(StreamARN, NextToken = NULL, MaxResult
 #' per second per account.
 #'
 #' @usage
-#' kinesis_list_streams(Limit, ExclusiveStartStreamName)
+#' kinesis_list_streams(Limit, ExclusiveStartStreamName, NextToken)
 #'
 #' @param Limit The maximum number of streams to list. The default value is 100. If you
 #' specify a value greater than 100, at most 100 results are returned.
 #' @param ExclusiveStartStreamName The name of the stream to start the list with.
+#' @param NextToken 
 #'
 #' @return
 #' A list with the following syntax:
@@ -1492,7 +1559,21 @@ kinesis_list_stream_consumers <- function(StreamARN, NextToken = NULL, MaxResult
 #'   StreamNames = list(
 #'     "string"
 #'   ),
-#'   HasMoreStreams = TRUE|FALSE
+#'   HasMoreStreams = TRUE|FALSE,
+#'   NextToken = "string",
+#'   StreamSummaries = list(
+#'     list(
+#'       StreamName = "string",
+#'       StreamARN = "string",
+#'       StreamStatus = "CREATING"|"DELETING"|"ACTIVE"|"UPDATING",
+#'       StreamModeDetails = list(
+#'         StreamMode = "PROVISIONED"|"ON_DEMAND"
+#'       ),
+#'       StreamCreationTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1500,7 +1581,8 @@ kinesis_list_stream_consumers <- function(StreamARN, NextToken = NULL, MaxResult
 #' ```
 #' svc$list_streams(
 #'   Limit = 123,
-#'   ExclusiveStartStreamName = "string"
+#'   ExclusiveStartStreamName = "string",
+#'   NextToken = "string"
 #' )
 #' ```
 #'
@@ -1509,14 +1591,14 @@ kinesis_list_stream_consumers <- function(StreamARN, NextToken = NULL, MaxResult
 #' @rdname kinesis_list_streams
 #'
 #' @aliases kinesis_list_streams
-kinesis_list_streams <- function(Limit = NULL, ExclusiveStartStreamName = NULL) {
+kinesis_list_streams <- function(Limit = NULL, ExclusiveStartStreamName = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListStreams",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesis$list_streams_input(Limit = Limit, ExclusiveStartStreamName = ExclusiveStartStreamName)
+  input <- .kinesis$list_streams_input(Limit = Limit, ExclusiveStartStreamName = ExclusiveStartStreamName, NextToken = NextToken)
   output <- .kinesis$list_streams_output()
   config <- get_config()
   svc <- .kinesis$service(config)
@@ -1531,11 +1613,15 @@ kinesis_list_streams <- function(Limit = NULL, ExclusiveStartStreamName = NULL) 
 #' @description
 #' Lists the tags for the specified Kinesis data stream. This operation has
 #' a limit of five transactions per second per account.
+#' 
+#' When invoking this API, it is recommended you use the `StreamARN` input
+#' parameter rather than the `StreamName` input parameter.
 #'
 #' @usage
-#' kinesis_list_tags_for_stream(StreamName, ExclusiveStartTagKey, Limit)
+#' kinesis_list_tags_for_stream(StreamName, ExclusiveStartTagKey, Limit,
+#'   StreamARN)
 #'
-#' @param StreamName &#91;required&#93; The name of the stream.
+#' @param StreamName The name of the stream.
 #' @param ExclusiveStartTagKey The key to use as the starting point for the list of tags. If this
 #' parameter is set, [`list_tags_for_stream`][kinesis_list_tags_for_stream]
 #' gets all tags that occur after `ExclusiveStartTagKey`.
@@ -1543,6 +1629,7 @@ kinesis_list_streams <- function(Limit = NULL, ExclusiveStartStreamName = NULL) 
 #' number of tags associated with the stream, `HasMoreTags` is set to
 #' `true`. To list additional tags, set `ExclusiveStartTagKey` to the last
 #' key in the response.
+#' @param StreamARN The ARN of the stream.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1563,7 +1650,8 @@ kinesis_list_streams <- function(Limit = NULL, ExclusiveStartStreamName = NULL) 
 #' svc$list_tags_for_stream(
 #'   StreamName = "string",
 #'   ExclusiveStartTagKey = "string",
-#'   Limit = 123
+#'   Limit = 123,
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -1572,14 +1660,14 @@ kinesis_list_streams <- function(Limit = NULL, ExclusiveStartStreamName = NULL) 
 #' @rdname kinesis_list_tags_for_stream
 #'
 #' @aliases kinesis_list_tags_for_stream
-kinesis_list_tags_for_stream <- function(StreamName, ExclusiveStartTagKey = NULL, Limit = NULL) {
+kinesis_list_tags_for_stream <- function(StreamName = NULL, ExclusiveStartTagKey = NULL, Limit = NULL, StreamARN = NULL) {
   op <- new_operation(
     name = "ListTagsForStream",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesis$list_tags_for_stream_input(StreamName = StreamName, ExclusiveStartTagKey = ExclusiveStartTagKey, Limit = Limit)
+  input <- .kinesis$list_tags_for_stream_input(StreamName = StreamName, ExclusiveStartTagKey = ExclusiveStartTagKey, Limit = Limit, StreamARN = StreamARN)
   output <- .kinesis$list_tags_for_stream_output()
   config <- get_config()
   svc <- .kinesis$service(config)
@@ -1596,13 +1684,18 @@ kinesis_list_tags_for_stream <- function(StreamName, ExclusiveStartTagKey = NULL
 #' @description
 #' Merges two adjacent shards in a Kinesis data stream and combines them
 #' into a single shard to reduce the stream's capacity to ingest and
-#' transport data. Two shards are considered adjacent if the union of the
-#' hash key ranges for the two shards form a contiguous set with no gaps.
-#' For example, if you have two shards, one with a hash key range of
-#' 276...381 and the other with a hash key range of 382...454, then you
-#' could merge these two shards into a single shard that would have a hash
-#' key range of 276...454. After the merge, the single child shard receives
-#' data for all hash key values covered by the two parent shards.
+#' transport data. This API is only supported for the data streams with the
+#' provisioned capacity mode. Two shards are considered adjacent if the
+#' union of the hash key ranges for the two shards form a contiguous set
+#' with no gaps. For example, if you have two shards, one with a hash key
+#' range of 276...381 and the other with a hash key range of 382...454,
+#' then you could merge these two shards into a single shard that would
+#' have a hash key range of 276...454. After the merge, the single child
+#' shard receives data for all hash key values covered by the two parent
+#' shards.
+#' 
+#' When invoking this API, it is recommended you use the `StreamARN` input
+#' parameter rather than the `StreamName` input parameter.
 #' 
 #' [`merge_shards`][kinesis_merge_shards] is called when there is a need to
 #' reduce the overall capacity of a stream because of excess capacity that
@@ -1646,12 +1739,14 @@ kinesis_list_tags_for_stream <- function(StreamName, ExclusiveStartTagKey = NULL
 #' per second per account.
 #'
 #' @usage
-#' kinesis_merge_shards(StreamName, ShardToMerge, AdjacentShardToMerge)
+#' kinesis_merge_shards(StreamName, ShardToMerge, AdjacentShardToMerge,
+#'   StreamARN)
 #'
-#' @param StreamName &#91;required&#93; The name of the stream for the merge.
+#' @param StreamName The name of the stream for the merge.
 #' @param ShardToMerge &#91;required&#93; The shard ID of the shard to combine with the adjacent shard for the
 #' merge.
 #' @param AdjacentShardToMerge &#91;required&#93; The shard ID of the adjacent shard for the merge.
+#' @param StreamARN The ARN of the stream.
 #'
 #' @return
 #' An empty list.
@@ -1661,7 +1756,8 @@ kinesis_list_tags_for_stream <- function(StreamName, ExclusiveStartTagKey = NULL
 #' svc$merge_shards(
 #'   StreamName = "string",
 #'   ShardToMerge = "string",
-#'   AdjacentShardToMerge = "string"
+#'   AdjacentShardToMerge = "string",
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -1670,14 +1766,14 @@ kinesis_list_tags_for_stream <- function(StreamName, ExclusiveStartTagKey = NULL
 #' @rdname kinesis_merge_shards
 #'
 #' @aliases kinesis_merge_shards
-kinesis_merge_shards <- function(StreamName, ShardToMerge, AdjacentShardToMerge) {
+kinesis_merge_shards <- function(StreamName = NULL, ShardToMerge, AdjacentShardToMerge, StreamARN = NULL) {
   op <- new_operation(
     name = "MergeShards",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesis$merge_shards_input(StreamName = StreamName, ShardToMerge = ShardToMerge, AdjacentShardToMerge = AdjacentShardToMerge)
+  input <- .kinesis$merge_shards_input(StreamName = StreamName, ShardToMerge = ShardToMerge, AdjacentShardToMerge = AdjacentShardToMerge, StreamARN = StreamARN)
   output <- .kinesis$merge_shards_output()
   config <- get_config()
   svc <- .kinesis$service(config)
@@ -1695,6 +1791,9 @@ kinesis_merge_shards <- function(StreamName, ShardToMerge, AdjacentShardToMerge)
 #' real-time ingestion and subsequent processing, one record at a time.
 #' Each shard can support writes up to 1,000 records per second, up to a
 #' maximum data write total of 1 MiB per second.
+#' 
+#' When invoking this API, it is recommended you use the `StreamARN` input
+#' parameter rather than the `StreamName` input parameter.
 #' 
 #' You must specify the name of the stream that captures, stores, and
 #' transports the data; a partition key; and the data blob itself.
@@ -1747,9 +1846,9 @@ kinesis_merge_shards <- function(StreamName, ShardToMerge, AdjacentShardToMerge)
 #'
 #' @usage
 #' kinesis_put_record(StreamName, Data, PartitionKey, ExplicitHashKey,
-#'   SequenceNumberForOrdering)
+#'   SequenceNumberForOrdering, StreamARN)
 #'
-#' @param StreamName &#91;required&#93; The name of the stream to put the data record into.
+#' @param StreamName The name of the stream to put the data record into.
 #' @param Data &#91;required&#93; The data blob to put into the record, which is base64-encoded when the
 #' blob is serialized. When the data blob (the payload before
 #' base64-encoding) is added to the partition key size, the total size must
@@ -1771,6 +1870,7 @@ kinesis_merge_shards <- function(StreamName, ShardToMerge, AdjacentShardToMerge)
 #' record *n-1* (as returned in the result when putting record *n-1*). If
 #' this parameter is not set, records are coarsely ordered based on arrival
 #' time.
+#' @param StreamARN The ARN of the stream.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1789,7 +1889,8 @@ kinesis_merge_shards <- function(StreamName, ShardToMerge, AdjacentShardToMerge)
 #'   Data = raw,
 #'   PartitionKey = "string",
 #'   ExplicitHashKey = "string",
-#'   SequenceNumberForOrdering = "string"
+#'   SequenceNumberForOrdering = "string",
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -1798,14 +1899,14 @@ kinesis_merge_shards <- function(StreamName, ShardToMerge, AdjacentShardToMerge)
 #' @rdname kinesis_put_record
 #'
 #' @aliases kinesis_put_record
-kinesis_put_record <- function(StreamName, Data, PartitionKey, ExplicitHashKey = NULL, SequenceNumberForOrdering = NULL) {
+kinesis_put_record <- function(StreamName = NULL, Data, PartitionKey, ExplicitHashKey = NULL, SequenceNumberForOrdering = NULL, StreamARN = NULL) {
   op <- new_operation(
     name = "PutRecord",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesis$put_record_input(StreamName = StreamName, Data = Data, PartitionKey = PartitionKey, ExplicitHashKey = ExplicitHashKey, SequenceNumberForOrdering = SequenceNumberForOrdering)
+  input <- .kinesis$put_record_input(StreamName = StreamName, Data = Data, PartitionKey = PartitionKey, ExplicitHashKey = ExplicitHashKey, SequenceNumberForOrdering = SequenceNumberForOrdering, StreamARN = StreamARN)
   output <- .kinesis$put_record_output()
   config <- get_config()
   svc <- .kinesis$service(config)
@@ -1823,6 +1924,9 @@ kinesis_put_record <- function(StreamName, Data, PartitionKey, ExplicitHashKey =
 #' (also referred to as a [`put_records`][kinesis_put_records] request).
 #' Use this operation to send data into the stream for data ingestion and
 #' processing.
+#' 
+#' When invoking this API, it is recommended you use the `StreamARN` input
+#' parameter rather than the `StreamName` input parameter.
 #' 
 #' Each [`put_records`][kinesis_put_records] request can support up to 500
 #' records. Each record in the request can be as large as 1 MiB, up to a
@@ -1900,10 +2004,11 @@ kinesis_put_record <- function(StreamName, Data, PartitionKey, ExplicitHashKey =
 #' to modify this retention period.
 #'
 #' @usage
-#' kinesis_put_records(Records, StreamName)
+#' kinesis_put_records(Records, StreamName, StreamARN)
 #'
 #' @param Records &#91;required&#93; The records associated with the request.
-#' @param StreamName &#91;required&#93; The stream name associated with the request.
+#' @param StreamName The stream name associated with the request.
+#' @param StreamARN The ARN of the stream.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1932,7 +2037,8 @@ kinesis_put_record <- function(StreamName, Data, PartitionKey, ExplicitHashKey =
 #'       PartitionKey = "string"
 #'     )
 #'   ),
-#'   StreamName = "string"
+#'   StreamName = "string",
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -1941,14 +2047,14 @@ kinesis_put_record <- function(StreamName, Data, PartitionKey, ExplicitHashKey =
 #' @rdname kinesis_put_records
 #'
 #' @aliases kinesis_put_records
-kinesis_put_records <- function(Records, StreamName) {
+kinesis_put_records <- function(Records, StreamName = NULL, StreamARN = NULL) {
   op <- new_operation(
     name = "PutRecords",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesis$put_records_input(Records = Records, StreamName = StreamName)
+  input <- .kinesis$put_records_input(Records = Records, StreamName = StreamName, StreamARN = StreamARN)
   output <- .kinesis$put_records_output()
   config <- get_config()
   svc <- .kinesis$service(config)
@@ -1986,7 +2092,7 @@ kinesis_put_records <- function(Records, StreamName) {
 #' @param StreamARN &#91;required&#93; The ARN of the Kinesis data stream that you want to register the
 #' consumer with. For more info, see [Amazon Resource Names (ARNs) and
 #' Amazon Web Services Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams).
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kinesis-streams).
 #' @param ConsumerName &#91;required&#93; For a given Kinesis data stream, each consumer must have a unique name.
 #' However, consumer names don't have to be unique across data streams.
 #'
@@ -2042,16 +2148,20 @@ kinesis_register_stream_consumer <- function(StreamARN, ConsumerName) {
 #' deleted and cannot be recovered after this operation successfully
 #' completes.
 #' 
+#' When invoking this API, it is recommended you use the `StreamARN` input
+#' parameter rather than the `StreamName` input parameter.
+#' 
 #' If you specify a tag that does not exist, it is ignored.
 #' 
 #' [`remove_tags_from_stream`][kinesis_remove_tags_from_stream] has a limit
 #' of five transactions per second per account.
 #'
 #' @usage
-#' kinesis_remove_tags_from_stream(StreamName, TagKeys)
+#' kinesis_remove_tags_from_stream(StreamName, TagKeys, StreamARN)
 #'
-#' @param StreamName &#91;required&#93; The name of the stream.
+#' @param StreamName The name of the stream.
 #' @param TagKeys &#91;required&#93; A list of tag keys. Each corresponding tag is removed from the stream.
+#' @param StreamARN The ARN of the stream.
 #'
 #' @return
 #' An empty list.
@@ -2062,7 +2172,8 @@ kinesis_register_stream_consumer <- function(StreamARN, ConsumerName) {
 #'   StreamName = "string",
 #'   TagKeys = list(
 #'     "string"
-#'   )
+#'   ),
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -2071,14 +2182,14 @@ kinesis_register_stream_consumer <- function(StreamARN, ConsumerName) {
 #' @rdname kinesis_remove_tags_from_stream
 #'
 #' @aliases kinesis_remove_tags_from_stream
-kinesis_remove_tags_from_stream <- function(StreamName, TagKeys) {
+kinesis_remove_tags_from_stream <- function(StreamName = NULL, TagKeys, StreamARN = NULL) {
   op <- new_operation(
     name = "RemoveTagsFromStream",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesis$remove_tags_from_stream_input(StreamName = StreamName, TagKeys = TagKeys)
+  input <- .kinesis$remove_tags_from_stream_input(StreamName = StreamName, TagKeys = TagKeys, StreamARN = StreamARN)
   output <- .kinesis$remove_tags_from_stream_output()
   config <- get_config()
   svc <- .kinesis$service(config)
@@ -2096,7 +2207,11 @@ kinesis_remove_tags_from_stream <- function(StreamName, TagKeys) {
 #' increase the stream's capacity to ingest and transport data.
 #' [`split_shard`][kinesis_split_shard] is called when there is a need to
 #' increase the overall capacity of a stream because of an expected
-#' increase in the volume of data records being ingested.
+#' increase in the volume of data records being ingested. This API is only
+#' supported for the data streams with the provisioned capacity mode.
+#' 
+#' When invoking this API, it is recommended you use the `StreamARN` input
+#' parameter rather than the `StreamName` input parameter.
 #' 
 #' You can also use [`split_shard`][kinesis_split_shard] when a shard
 #' appears to be approaching its maximum utilization; for example, the
@@ -2155,9 +2270,10 @@ kinesis_remove_tags_from_stream <- function(StreamName, TagKeys) {
 #' per second per account.
 #'
 #' @usage
-#' kinesis_split_shard(StreamName, ShardToSplit, NewStartingHashKey)
+#' kinesis_split_shard(StreamName, ShardToSplit, NewStartingHashKey,
+#'   StreamARN)
 #'
-#' @param StreamName &#91;required&#93; The name of the stream for the shard split.
+#' @param StreamName The name of the stream for the shard split.
 #' @param ShardToSplit &#91;required&#93; The shard ID of the shard to split.
 #' @param NewStartingHashKey &#91;required&#93; A hash key value for the starting hash key of one of the child shards
 #' created by the split. The hash key range for a given shard constitutes a
@@ -2167,6 +2283,7 @@ kinesis_remove_tags_from_stream <- function(StreamName, TagKeys) {
 #' key values in hash key range are distributed to one of the child shards.
 #' All the lower hash key values in the range are distributed to the other
 #' child shard.
+#' @param StreamARN The ARN of the stream.
 #'
 #' @return
 #' An empty list.
@@ -2176,7 +2293,8 @@ kinesis_remove_tags_from_stream <- function(StreamName, TagKeys) {
 #' svc$split_shard(
 #'   StreamName = "string",
 #'   ShardToSplit = "string",
-#'   NewStartingHashKey = "string"
+#'   NewStartingHashKey = "string",
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -2185,14 +2303,14 @@ kinesis_remove_tags_from_stream <- function(StreamName, TagKeys) {
 #' @rdname kinesis_split_shard
 #'
 #' @aliases kinesis_split_shard
-kinesis_split_shard <- function(StreamName, ShardToSplit, NewStartingHashKey) {
+kinesis_split_shard <- function(StreamName = NULL, ShardToSplit, NewStartingHashKey, StreamARN = NULL) {
   op <- new_operation(
     name = "SplitShard",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesis$split_shard_input(StreamName = StreamName, ShardToSplit = ShardToSplit, NewStartingHashKey = NewStartingHashKey)
+  input <- .kinesis$split_shard_input(StreamName = StreamName, ShardToSplit = ShardToSplit, NewStartingHashKey = NewStartingHashKey, StreamARN = StreamARN)
   output <- .kinesis$split_shard_output()
   config <- get_config()
   svc <- .kinesis$service(config)
@@ -2226,11 +2344,15 @@ kinesis_split_shard <- function(StreamName, ShardToSplit, NewStartingHashKey) {
 #' enable encryption, you can verify that encryption is applied by
 #' inspecting the API response from [`put_record`][kinesis_put_record] or
 #' [`put_records`][kinesis_put_records].
+#' 
+#' When invoking this API, it is recommended you use the `StreamARN` input
+#' parameter rather than the `StreamName` input parameter.
 #'
 #' @usage
-#' kinesis_start_stream_encryption(StreamName, EncryptionType, KeyId)
+#' kinesis_start_stream_encryption(StreamName, EncryptionType, KeyId,
+#'   StreamARN)
 #'
-#' @param StreamName &#91;required&#93; The name of the stream for which to start encrypting records.
+#' @param StreamName The name of the stream for which to start encrypting records.
 #' @param EncryptionType &#91;required&#93; The encryption type to use. The only valid value is `KMS`.
 #' @param KeyId &#91;required&#93; The GUID for the customer-managed Amazon Web Services KMS key to use for
 #' encryption. This value can be a globally unique identifier, a fully
@@ -2250,6 +2372,7 @@ kinesis_split_shard <- function(StreamName, ShardToSplit, NewStartingHashKey) {
 #' -   Alias name example: `alias/MyAliasName`
 #' 
 #' -   Master key owned by Kinesis Data Streams: `alias/aws/kinesis`
+#' @param StreamARN The ARN of the stream.
 #'
 #' @return
 #' An empty list.
@@ -2259,7 +2382,8 @@ kinesis_split_shard <- function(StreamName, ShardToSplit, NewStartingHashKey) {
 #' svc$start_stream_encryption(
 #'   StreamName = "string",
 #'   EncryptionType = "NONE"|"KMS",
-#'   KeyId = "string"
+#'   KeyId = "string",
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -2268,14 +2392,14 @@ kinesis_split_shard <- function(StreamName, ShardToSplit, NewStartingHashKey) {
 #' @rdname kinesis_start_stream_encryption
 #'
 #' @aliases kinesis_start_stream_encryption
-kinesis_start_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
+kinesis_start_stream_encryption <- function(StreamName = NULL, EncryptionType, KeyId, StreamARN = NULL) {
   op <- new_operation(
     name = "StartStreamEncryption",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesis$start_stream_encryption_input(StreamName = StreamName, EncryptionType = EncryptionType, KeyId = KeyId)
+  input <- .kinesis$start_stream_encryption_input(StreamName = StreamName, EncryptionType = EncryptionType, KeyId = KeyId, StreamARN = StreamARN)
   output <- .kinesis$start_stream_encryption_output()
   config <- get_config()
   svc <- .kinesis$service(config)
@@ -2289,6 +2413,9 @@ kinesis_start_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
 #'
 #' @description
 #' Disables server-side encryption for a specified stream.
+#' 
+#' When invoking this API, it is recommended you use the `StreamARN` input
+#' parameter rather than the `StreamName` input parameter.
 #' 
 #' Stopping encryption is an asynchronous operation. Upon receiving the
 #' request, Kinesis Data Streams returns immediately and sets the status of
@@ -2311,9 +2438,10 @@ kinesis_start_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
 #' [`put_records`][kinesis_put_records].
 #'
 #' @usage
-#' kinesis_stop_stream_encryption(StreamName, EncryptionType, KeyId)
+#' kinesis_stop_stream_encryption(StreamName, EncryptionType, KeyId,
+#'   StreamARN)
 #'
-#' @param StreamName &#91;required&#93; The name of the stream on which to stop encrypting records.
+#' @param StreamName The name of the stream on which to stop encrypting records.
 #' @param EncryptionType &#91;required&#93; The encryption type. The only valid value is `KMS`.
 #' @param KeyId &#91;required&#93; The GUID for the customer-managed Amazon Web Services KMS key to use for
 #' encryption. This value can be a globally unique identifier, a fully
@@ -2333,6 +2461,7 @@ kinesis_start_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
 #' -   Alias name example: `alias/MyAliasName`
 #' 
 #' -   Master key owned by Kinesis Data Streams: `alias/aws/kinesis`
+#' @param StreamARN The ARN of the stream.
 #'
 #' @return
 #' An empty list.
@@ -2342,7 +2471,8 @@ kinesis_start_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
 #' svc$stop_stream_encryption(
 #'   StreamName = "string",
 #'   EncryptionType = "NONE"|"KMS",
-#'   KeyId = "string"
+#'   KeyId = "string",
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -2351,14 +2481,14 @@ kinesis_start_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
 #' @rdname kinesis_stop_stream_encryption
 #'
 #' @aliases kinesis_stop_stream_encryption
-kinesis_stop_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
+kinesis_stop_stream_encryption <- function(StreamName = NULL, EncryptionType, KeyId, StreamARN = NULL) {
   op <- new_operation(
     name = "StopStreamEncryption",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesis$stop_stream_encryption_input(StreamName = StreamName, EncryptionType = EncryptionType, KeyId = KeyId)
+  input <- .kinesis$stop_stream_encryption_input(StreamName = StreamName, EncryptionType = EncryptionType, KeyId = KeyId, StreamARN = StreamARN)
   output <- .kinesis$stop_stream_encryption_output()
   config <- get_config()
   svc <- .kinesis$service(config)
@@ -2373,7 +2503,11 @@ kinesis_stop_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
 #'
 #' @description
 #' Updates the shard count of the specified stream to the specified number
-#' of shards.
+#' of shards. This API is only supported for the data streams with the
+#' provisioned capacity mode.
+#' 
+#' When invoking this API, it is recommended you use the `StreamARN` input
+#' parameter rather than the `StreamName` input parameter.
 #' 
 #' Updating the shard count is an asynchronous operation. Upon receiving
 #' the request, Kinesis Data Streams returns immediately and sets the
@@ -2417,9 +2551,10 @@ kinesis_stop_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
 #' overall shard limit, use the limits form.
 #'
 #' @usage
-#' kinesis_update_shard_count(StreamName, TargetShardCount, ScalingType)
+#' kinesis_update_shard_count(StreamName, TargetShardCount, ScalingType,
+#'   StreamARN)
 #'
-#' @param StreamName &#91;required&#93; The name of the stream.
+#' @param StreamName The name of the stream.
 #' @param TargetShardCount &#91;required&#93; The new number of shards. This value has the following default limits.
 #' By default, you cannot do the following:
 #' 
@@ -2435,6 +2570,7 @@ kinesis_stop_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
 #' -   Scale a stream with more than 10000 shards down unless you set this
 #'     value to less than 10000 shards.
 #' @param ScalingType &#91;required&#93; The scaling type. Uniform scaling creates shards of equal size.
+#' @param StreamARN The ARN of the stream.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2442,7 +2578,8 @@ kinesis_stop_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
 #' list(
 #'   StreamName = "string",
 #'   CurrentShardCount = 123,
-#'   TargetShardCount = 123
+#'   TargetShardCount = 123,
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -2451,7 +2588,8 @@ kinesis_stop_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
 #' svc$update_shard_count(
 #'   StreamName = "string",
 #'   TargetShardCount = 123,
-#'   ScalingType = "UNIFORM_SCALING"
+#'   ScalingType = "UNIFORM_SCALING",
+#'   StreamARN = "string"
 #' )
 #' ```
 #'
@@ -2460,14 +2598,14 @@ kinesis_stop_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
 #' @rdname kinesis_update_shard_count
 #'
 #' @aliases kinesis_update_shard_count
-kinesis_update_shard_count <- function(StreamName, TargetShardCount, ScalingType) {
+kinesis_update_shard_count <- function(StreamName = NULL, TargetShardCount, ScalingType, StreamARN = NULL) {
   op <- new_operation(
     name = "UpdateShardCount",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesis$update_shard_count_input(StreamName = StreamName, TargetShardCount = TargetShardCount, ScalingType = ScalingType)
+  input <- .kinesis$update_shard_count_input(StreamName = StreamName, TargetShardCount = TargetShardCount, ScalingType = ScalingType, StreamARN = StreamARN)
   output <- .kinesis$update_shard_count_output()
   config <- get_config()
   svc <- .kinesis$service(config)

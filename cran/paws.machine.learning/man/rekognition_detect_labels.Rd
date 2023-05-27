@@ -5,7 +5,13 @@
 \title{Detects instances of real-world entities within an image (JPEG or PNG)
 provided as input}
 \usage{
-rekognition_detect_labels(Image, MaxLabels = NULL, MinConfidence = NULL)
+rekognition_detect_labels(
+  Image,
+  MaxLabels = NULL,
+  MinConfidence = NULL,
+  Features = NULL,
+  Settings = NULL
+)
 }
 \arguments{
 \item{Image}{[required] The input image as base64-encoded bytes or an S3 object. If you use the
@@ -26,6 +32,17 @@ specified value.
 
 If \code{MinConfidence} is not specified, the operation returns labels with a
 confidence values greater than or equal to 55 percent.}
+
+\item{Features}{A list of the types of analysis to perform. Specifying GENERAL_LABELS
+uses the label detection feature, while specifying IMAGE_PROPERTIES
+returns information regarding image color and quality. If no option is
+specified GENERAL_LABELS is used by default.}
+
+\item{Settings}{A list of the filters to be applied to returned detected labels and
+image properties. Specified filters can be inclusive, exclusive, or a
+combination of both. Filters can be used for individual labels or label
+categories. The exact label names or label categories must be supplied.
+For a full list of labels and label categories, see \href{https://docs.aws.amazon.com/rekognition/latest/dg/labels.html}{Detecting labels}.}
 }
 \description{
 Detects instances of real-world entities within an image (JPEG or PNG) provided as input. This includes objects like flower, tree, and table; events like wedding, graduation, and birthday party; and concepts like landscape, evening, and nature.

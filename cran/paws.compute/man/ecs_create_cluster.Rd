@@ -10,7 +10,8 @@ ecs_create_cluster(
   settings = NULL,
   configuration = NULL,
   capacityProviders = NULL,
-  defaultCapacityProviderStrategy = NULL
+  defaultCapacityProviderStrategy = NULL,
+  serviceConnectDefaults = NULL
 )
 }
 \arguments{
@@ -70,21 +71,38 @@ available to all accounts and only need to be associated with a cluster
 to be used.
 
 The
-\code{\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers}}
+\href{https://docs.aws.amazon.com/AmazonECS/latest/APIReference/}{PutCapacityProvider}
 API operation is used to update the list of available capacity providers
 for a cluster after the cluster is created.}
 
 \item{defaultCapacityProviderStrategy}{The capacity provider strategy to set as the default for the cluster.
 After a default capacity provider strategy is set for a cluster, when
-you call the \code{\link[=ecs_run_task]{run_task}} or
-\code{\link[=ecs_create_service]{create_service}} APIs with no capacity provider
-strategy or launch type specified, the default capacity provider
-strategy for the cluster is used.
+you call the \code{\link[=ecs_create_service]{create_service}} or
+\code{\link[=ecs_run_task]{run_task}} APIs with no capacity provider strategy or
+launch type specified, the default capacity provider strategy for the
+cluster is used.
 
 If a default capacity provider strategy isn't defined for a cluster when
 it was created, it can be defined later with the
 \code{\link[=ecs_put_cluster_capacity_providers]{put_cluster_capacity_providers}}
 API operation.}
+
+\item{serviceConnectDefaults}{Use this parameter to set a default Service Connect namespace. After you
+set a default Service Connect namespace, any new services with Service
+Connect turned on that are created in the cluster are added as client
+services in the namespace. This setting only applies to new services
+that set the \code{enabled} parameter to \code{true} in the
+\code{ServiceConnectConfiguration}. You can set the namespace of each service
+individually in the \code{ServiceConnectConfiguration} to override this
+default parameter.
+
+Tasks that run in a namespace can use short names to connect to services
+in the namespace. Tasks can connect to services across all of the
+clusters in the namespace. Tasks connect through a managed proxy
+container that collects logs and metrics for increased visibility. Only
+the tasks that Amazon ECS services create are supported with Service
+Connect. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html}{Service Connect}
+in the \emph{Amazon Elastic Container Service Developer Guide}.}
 }
 \description{
 Creates a new Amazon ECS cluster. By default, your account receives a \code{default} cluster when you launch your first container instance. However, you can create your own cluster with a unique name with the \code{\link[=ecs_create_cluster]{create_cluster}} action.

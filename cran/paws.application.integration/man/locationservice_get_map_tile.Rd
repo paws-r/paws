@@ -4,9 +4,12 @@
 \alias{locationservice_get_map_tile}
 \title{Retrieves a vector data tile from the map resource}
 \usage{
-locationservice_get_map_tile(MapName, X, Y, Z)
+locationservice_get_map_tile(Key = NULL, MapName, X, Y, Z)
 }
 \arguments{
+\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
+to authorize the request.}
+
 \item{MapName}{[required] The map resource to retrieve the map tiles from.}
 
 \item{X}{[required] The X axis value for the map tile.}

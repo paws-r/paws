@@ -34,6 +34,7 @@ namespace is required when deleting Maven package versions.
 \item Python and NuGet package versions do not contain a corresponding
 component, package versions of those formats do not have a
 namespace.
+\item The namespace of a generic package is its \code{namespace}.
 }}
 
 \item{package}{[required] The name of the package with the versions to delete.}
@@ -43,7 +44,7 @@ namespace.
 \item{expectedStatus}{The expected status of the package version to delete.}
 }
 \description{
-Deletes one or more versions of a package. A deleted package version cannot be restored in your repository. If you want to remove a package version from your repository and be able to restore it later, set its status to \code{Archived}. Archived packages cannot be downloaded from a repository and don't show up with list package APIs (for example, \href{https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html}{ListackageVersions}), but you can restore them using \code{\link[=codeartifact_update_package_versions_status]{update_package_versions_status}}.
+Deletes one or more versions of a package. A deleted package version cannot be restored in your repository. If you want to remove a package version from your repository and be able to restore it later, set its status to \code{Archived}. Archived packages cannot be downloaded from a repository and don't show up with list package APIs (for example, \code{\link[=codeartifact_list_package_versions]{list_package_versions}}), but you can restore them using \code{\link[=codeartifact_update_package_versions_status]{update_package_versions_status}}.
 
 See \url{https://paws-r.github.io/docs/codeartifact/delete_package_versions.html} for full documentation.
 }

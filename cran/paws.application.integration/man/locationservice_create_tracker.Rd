@@ -2,8 +2,8 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_create_tracker}
 \alias{locationservice_create_tracker}
-\title{Creates a tracker resource in your AWS account, which lets you retrieve
-current and historical location of devices}
+\title{Creates a tracker resource in your Amazon Web Services account, which
+lets you retrieve current and historical location of devices}
 \usage{
 locationservice_create_tracker(
   Description = NULL,
@@ -18,7 +18,7 @@ locationservice_create_tracker(
 \arguments{
 \item{Description}{An optional description for the tracker resource.}
 
-\item{KmsKeyId}{A key identifier for an \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html}{AWS KMS customer managed key}.
+\item{KmsKeyId}{A key identifier for an \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html}{Amazon Web Services KMS customer managed key}.
 Enter a key ID, key ARN, alias name, or alias ARN.}
 
 \item{PositionFiltering}{Specifies the position filtering for the tracker resource.
@@ -83,7 +83,7 @@ periods (.), and underscores (_).
 }}
 }
 \description{
-Creates a tracker resource in your AWS account, which lets you retrieve current and historical location of devices.
+Creates a tracker resource in your Amazon Web Services account, which lets you retrieve current and historical location of devices.
 
 See \url{https://paws-r.github.io/docs/locationservice/create_tracker.html} for full documentation.
 }

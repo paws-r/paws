@@ -28,14 +28,18 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon Connect is a cloud-based contact center solution that makes it
-easy to set up and manage a customer contact center and provide reliable
-customer engagement at any scale.
+Amazon Connect is an easy-to-use omnichannel cloud contact center
+service that enables companies of any size to deliver superior customer
+service at a lower cost. Amazon Connect communications capabilities make
+it easy for companies to deliver personalized interactions across
+communication channels, including chat.
 
-Amazon Connect enables customer contacts through voice or chat.
-
-The APIs described here are used by chat participants, such as agents
-and customers.
+Use the Amazon Connect Participant Service to manage participants (for
+example, agents, customers, and managers listening in), and to send
+messages and events within a chat contact. The APIs in the service
+enable the following: sending chat messages, attachment sharing,
+managing a participant's connection state and message events, and
+retrieving chat transcripts.
 }
 \section{Service syntax}{
 

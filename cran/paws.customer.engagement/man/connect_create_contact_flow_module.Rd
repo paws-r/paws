@@ -2,7 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_create_contact_flow_module}
 \alias{connect_create_contact_flow_module}
-\title{Creates a contact flow module for the specified Amazon Connect instance}
+\title{Creates a flow module for the specified Amazon Connect instance}
 \usage{
 connect_create_contact_flow_module(
   InstanceId,
@@ -14,22 +14,25 @@ connect_create_contact_flow_module(
 )
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 
-\item{Name}{[required] The name of the contact flow module.}
+\item{Name}{[required] The name of the flow module.}
 
-\item{Description}{The description of the contact flow module.}
+\item{Description}{The description of the flow module.}
 
-\item{Content}{[required] The content of the contact flow module.}
+\item{Content}{[required] The content of the flow module.}
 
-\item{Tags}{The tags used to organize, track, or control access for this resource.}
+\item{Tags}{The tags used to organize, track, or control access for this resource.
+For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
+idempotency of the request. If not provided, the Amazon Web Services SDK
+populates this field. For more information about idempotency, see
+\href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.}
 }
 \description{
-Creates a contact flow module for the specified Amazon Connect instance.
+Creates a flow module for the specified Amazon Connect instance.
 
 See \url{https://paws-r.github.io/docs/connect/create_contact_flow_module.html} for full documentation.
 }

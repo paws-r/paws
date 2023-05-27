@@ -40,19 +40,12 @@ Marketplace offerings. When this filter is not used, which is the
 default behavior, all offerings from both Amazon Web Services and
 the Reserved Instance Marketplace are listed.
 \item \code{product-description} - The Reserved Instance product platform
-description. Instances that include \verb{(Amazon VPC)} in the product
-platform description will only be displayed to EC2-Classic account
-holders and are for use with Amazon VPC. (\code{Linux/UNIX} |
-\verb{Linux/UNIX (Amazon VPC)} | \verb{SUSE Linux} | \verb{SUSE Linux (Amazon VPC)}
-| \verb{Red Hat Enterprise Linux} |
-\verb{Red Hat Enterprise Linux (Amazon VPC)} |
-\verb{Red Hat Enterprise Linux with HA (Amazon VPC)} | \code{Windows} |
-\verb{Windows (Amazon VPC)} | \verb{Windows with SQL Server Standard} |
-\verb{Windows with SQL Server Standard (Amazon VPC)} |
-\verb{Windows with SQL Server Web} |
-\verb{ Windows with SQL Server Web (Amazon VPC)} |
-\verb{Windows with SQL Server Enterprise} |
-\verb{Windows with SQL Server Enterprise (Amazon VPC)})
+description (\code{Linux/UNIX} | \verb{Linux with SQL Server Standard} |
+\verb{Linux with SQL Server Web} | \verb{Linux with SQL Server Enterprise} |
+\verb{SUSE Linux} | \verb{Red Hat Enterprise Linux} |
+\verb{Red Hat Enterprise Linux with HA} | \code{Windows} |
+\verb{Windows with SQL Server Standard} | \verb{Windows with SQL Server Web} |
+\verb{Windows with SQL Server Enterprise}).
 \item \code{reserved-instances-offering-id} - The Reserved Instances offering
 ID.
 \item \code{scope} - The scope of the Reserved Instance (\verb{Availability Zone} or

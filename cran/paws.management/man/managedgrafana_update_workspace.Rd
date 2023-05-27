@@ -6,9 +6,13 @@
 \usage{
 managedgrafana_update_workspace(
   accountAccessType = NULL,
+  networkAccessControl = NULL,
   organizationRoleName = NULL,
   permissionType = NULL,
+  removeNetworkAccessConfiguration = NULL,
+  removeVpcConfiguration = NULL,
   stackSetName = NULL,
+  vpcConfiguration = NULL,
   workspaceDataSources = NULL,
   workspaceDescription = NULL,
   workspaceId,
@@ -26,34 +30,64 @@ organization. If you specify \code{ORGANIZATION}, you must specify which
 organizational units the workspace can access in the
 \code{workspaceOrganizationalUnits} parameter.}
 
+\item{networkAccessControl}{The configuration settings for network access to your workspace.
+
+When this is configured, only listed IP addresses and VPC endpoints will
+be able to access your workspace. Standard Grafana authentication and
+authorization will still be required.
+
+If this is not configured, or is removed, then all IP addresses and VPC
+endpoints will be allowed. Standard Grafana authentication and
+authorization will still be required.}
+
 \item{organizationRoleName}{The name of an IAM role that already exists to use to access resources
-through Organizations.}
+through Organizations. This can only be used with a workspace that has
+the \code{permissionType} set to \code{CUSTOMER_MANAGED}.}
 
-\item{permissionType}{If you specify \verb{Service Managed}, Amazon Managed Grafana automatically
-creates the IAM roles and provisions the permissions that the workspace
-needs to use Amazon Web Services data sources and notification channels.
-
-If you specify \code{CUSTOMER_MANAGED}, you will manage those roles and
-permissions yourself. If you are creating this workspace in a member
-account of an organization and that account is not a delegated
+\item{permissionType}{Use this parameter if you want to change a workspace from
+\code{SERVICE_MANAGED} to \code{CUSTOMER_MANAGED}. This allows you to manage the
+permissions that the workspace uses to access datasources and
+notification channels. If the workspace is in a member Amazon Web
+Services account of an organization, and that account is not a delegated
 administrator account, and you want the workspace to access data sources
 in other Amazon Web Services accounts in the organization, you must
 choose \code{CUSTOMER_MANAGED}.
 
-For more information, see \href{https://docs.aws.amazon.com/grafana/latest/userguide/AMG-manage-permissions.html}{Amazon Managed Grafana permissions and policies for Amazon Web Services data sources and notification channels}}
+If you specify this as \code{CUSTOMER_MANAGED}, you must also specify a
+\code{workspaceRoleArn} that the workspace will use for accessing Amazon Web
+Services resources.
+
+For more information on the role and permissions needed, see \href{https://docs.aws.amazon.com/grafana/latest/userguide/AMG-manage-permissions.html}{Amazon Managed Grafana permissions and policies for Amazon Web Services data sources and notification channels}
+
+Do not use this to convert a \code{CUSTOMER_MANAGED} workspace to
+\code{SERVICE_MANAGED}. Do not include this parameter if you want to leave
+the workspace as \code{SERVICE_MANAGED}.
+
+You can convert a \code{CUSTOMER_MANAGED} workspace to \code{SERVICE_MANAGED}
+using the Amazon Managed Grafana console. For more information, see
+\href{https://docs.aws.amazon.com/grafana/latest/userguide/AMG-datasource-and-notification.html}{Managing permissions for data sources and notification channels}.}
+
+\item{removeNetworkAccessConfiguration}{Whether to remove the network access configuration from the workspace.
+
+Setting this to \code{true} and providing a \code{networkAccessControl} to set
+will return an error.
+
+If you remove this configuration by setting this to \code{true}, then all IP
+addresses and VPC endpoints will be allowed. Standard Grafana
+authentication and authorization will still be required.}
+
+\item{removeVpcConfiguration}{Whether to remove the VPC configuration from the workspace.
+
+Setting this to \code{true} and providing a \code{vpcConfiguration} to set will
+return an error.}
 
 \item{stackSetName}{The name of the CloudFormation stack set to use to generate IAM roles to
 be used for this workspace.}
 
-\item{workspaceDataSources}{Specify the Amazon Web Services data sources that you want to be queried
-in this workspace. Specifying these data sources here enables Amazon
-Managed Grafana to create IAM roles and permissions that allow Amazon
-Managed Grafana to read data from these sources. You must still add them
-as data sources in the Grafana console in the workspace.
+\item{vpcConfiguration}{The configuration settings for an Amazon VPC that contains data sources
+for your Grafana workspace to connect to.}
 
-If you don't specify a data source here, you can still add it as a data
-source later in the workspace console. However, you will then have to
-manually configure permissions for it.}
+\item{workspaceDataSources}{This parameter is for internal use only, and should not be used.}
 
 \item{workspaceDescription}{A description for the workspace. This is used only to help you identify
 this workspace.}
@@ -71,12 +105,10 @@ Managed Grafana to use these channels.}
 data sources from, if this workspace is in an account that is part of an
 organization.}
 
-\item{workspaceRoleArn}{The workspace needs an IAM role that grants permissions to the Amazon
-Web Services resources that the workspace will view data from. If you
-already have a role that you want to use, specify it here. If you omit
-this field and you specify some Amazon Web Services resources in
-\code{workspaceDataSources} or \code{workspaceNotificationDestinations}, a new IAM
-role with the necessary permissions is automatically created.}
+\item{workspaceRoleArn}{Specifies an IAM role that grants permissions to Amazon Web Services
+resources that the workspace accesses, such as data sources and
+notification channels. If this workspace has \code{permissionType}
+\code{CUSTOMER_MANAGED}, then this role is required.}
 }
 \description{
 Modifies an existing Amazon Managed Grafana workspace. If you use this operation and omit any optional parameters, the existing values of those parameters are not changed.

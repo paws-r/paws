@@ -117,10 +117,11 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #' that creates the case when you specify your Amazon Web Services
 #' credentials in an HTTP POST method or use the [Amazon Web Services
 #' SDKs](https://aws.amazon.com/developer/tools/).
-#' @param language The language in which Amazon Web Services Support handles the case. You
-#' must specify the ISO 639-1 code for the `language` parameter if you want
-#' support in that language. Currently, English ("en") and Japanese ("ja")
-#' are supported.
+#' @param language The language in which Amazon Web Services Support handles the case.
+#' Amazon Web Services Support currently supports Chinese (“zh”), English
+#' ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO
+#' 639-1 code for the `language` parameter if you want support in that
+#' language.
 #' @param issueType The type of issue for the case. You can specify `customer-service` or
 #' `technical`. If you don't specify a value, the default is `technical`.
 #' @param attachmentSetId The ID of a set of one or more attachments for the case. Create the set
@@ -198,10 +199,11 @@ support_describe_attachment <- function(attachmentId) {
 #' resolved cases aren't included.
 #' @param nextToken A resumption point for pagination.
 #' @param maxResults The maximum number of results to return before paginating.
-#' @param language The ISO 639-1 code for the language in which Amazon Web Services
-#' provides support. Amazon Web Services Support currently supports English
-#' ("en") and Japanese ("ja"). Language parameters must be passed
-#' explicitly for operations that take them.
+#' @param language The language in which Amazon Web Services Support handles the case.
+#' Amazon Web Services Support currently supports Chinese (“zh”), English
+#' ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO
+#' 639-1 code for the `language` parameter if you want support in that
+#' language.
 #' @param includeCommunications Specifies whether to include communications in the
 #' [`describe_cases`][support_describe_cases] response. By default,
 #' communications are included.
@@ -264,6 +266,49 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
 }
 .support$operations$describe_communications <- support_describe_communications
 
+#' Returns a list of CreateCaseOption types along with the corresponding
+#' supported hours and language availability
+#'
+#' @description
+#' Returns a list of CreateCaseOption types along with the corresponding supported hours and language availability. You can specify the `language` `categoryCode`, `issueType` and `serviceCode` used to retrieve the CreateCaseOptions.
+#'
+#' See [https://paws-r.github.io/docs/support/describe_create_case_options.html](https://paws-r.github.io/docs/support/describe_create_case_options.html) for full documentation.
+#'
+#' @param issueType &#91;required&#93; The type of issue for the case. You can specify `customer-service` or
+#' `technical`. If you don't specify a value, the default is `technical`.
+#' @param serviceCode &#91;required&#93; The code for the Amazon Web Services service. You can use the
+#' [`describe_services`][support_describe_services] operation to get the
+#' possible `serviceCode` values.
+#' @param language &#91;required&#93; The language in which Amazon Web Services Support handles the case.
+#' Amazon Web Services Support currently supports Chinese (“zh”), English
+#' ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO
+#' 639-1 code for the `language` parameter if you want support in that
+#' language.
+#' @param categoryCode &#91;required&#93; The category of problem for the support case. You also use the
+#' [`describe_services`][support_describe_services] operation to get the
+#' category code for a service. Each Amazon Web Services service defines
+#' its own set of category codes.
+#'
+#' @keywords internal
+#'
+#' @rdname support_describe_create_case_options
+support_describe_create_case_options <- function(issueType, serviceCode, language, categoryCode) {
+  op <- new_operation(
+    name = "DescribeCreateCaseOptions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .support$describe_create_case_options_input(issueType = issueType, serviceCode = serviceCode, language = language, categoryCode = categoryCode)
+  output <- .support$describe_create_case_options_output()
+  config <- get_config()
+  svc <- .support$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.support$operations$describe_create_case_options <- support_describe_create_case_options
+
 #' Returns the current list of Amazon Web Services services and a list of
 #' service categories for each service
 #'
@@ -274,10 +319,11 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
 #'
 #' @param serviceCodeList A JSON-formatted list of service codes available for Amazon Web Services
 #' services.
-#' @param language The ISO 639-1 code for the language in which Amazon Web Services
-#' provides support. Amazon Web Services Support currently supports English
-#' ("en") and Japanese ("ja"). Language parameters must be passed
-#' explicitly for operations that take them.
+#' @param language The language in which Amazon Web Services Support handles the case.
+#' Amazon Web Services Support currently supports Chinese (“zh”), English
+#' ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO
+#' 639-1 code for the `language` parameter if you want support in that
+#' language.
 #'
 #' @keywords internal
 #'
@@ -307,10 +353,11 @@ support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
 #'
 #' See [https://paws-r.github.io/docs/support/describe_severity_levels.html](https://paws-r.github.io/docs/support/describe_severity_levels.html) for full documentation.
 #'
-#' @param language The ISO 639-1 code for the language in which Amazon Web Services
-#' provides support. Amazon Web Services Support currently supports English
-#' ("en") and Japanese ("ja"). Language parameters must be passed
-#' explicitly for operations that take them.
+#' @param language The language in which Amazon Web Services Support handles the case.
+#' Amazon Web Services Support currently supports Chinese (“zh”), English
+#' ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO
+#' 639-1 code for the `language` parameter if you want support in that
+#' language.
 #'
 #' @keywords internal
 #'
@@ -331,6 +378,44 @@ support_describe_severity_levels <- function(language = NULL) {
   return(response)
 }
 .support$operations$describe_severity_levels <- support_describe_severity_levels
+
+#' Returns a list of supported languages for a specified categoryCode,
+#' issueType and serviceCode
+#'
+#' @description
+#' Returns a list of supported languages for a specified `categoryCode`, `issueType` and `serviceCode`. The returned supported languages will include a ISO 639-1 code for the `language`, and the language display name.
+#'
+#' See [https://paws-r.github.io/docs/support/describe_supported_languages.html](https://paws-r.github.io/docs/support/describe_supported_languages.html) for full documentation.
+#'
+#' @param issueType &#91;required&#93; The type of issue for the case. You can specify `customer-service` or
+#' `technical`.
+#' @param serviceCode &#91;required&#93; The code for the Amazon Web Services service. You can use the
+#' [`describe_services`][support_describe_services] operation to get the
+#' possible `serviceCode` values.
+#' @param categoryCode &#91;required&#93; The category of problem for the support case. You also use the
+#' [`describe_services`][support_describe_services] operation to get the
+#' category code for a service. Each Amazon Web Services service defines
+#' its own set of category codes.
+#'
+#' @keywords internal
+#'
+#' @rdname support_describe_supported_languages
+support_describe_supported_languages <- function(issueType, serviceCode, categoryCode) {
+  op <- new_operation(
+    name = "DescribeSupportedLanguages",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .support$describe_supported_languages_input(issueType = issueType, serviceCode = serviceCode, categoryCode = categoryCode)
+  output <- .support$describe_supported_languages_output()
+  config <- get_config()
+  svc <- .support$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.support$operations$describe_supported_languages <- support_describe_supported_languages
 
 #' Returns the refresh status of the Trusted Advisor checks that have the
 #' specified check IDs
@@ -374,10 +459,33 @@ support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
 #' See [https://paws-r.github.io/docs/support/describe_trusted_advisor_check_result.html](https://paws-r.github.io/docs/support/describe_trusted_advisor_check_result.html) for full documentation.
 #'
 #' @param checkId &#91;required&#93; The unique identifier for the Trusted Advisor check.
-#' @param language The ISO 639-1 code for the language in which Amazon Web Services
-#' provides support. Amazon Web Services Support currently supports English
-#' ("en") and Japanese ("ja"). Language parameters must be passed
-#' explicitly for operations that take them.
+#' @param language The ISO 639-1 code for the language that you want your check results to
+#' appear in.
+#' 
+#' The Amazon Web Services Support API currently supports the following
+#' languages for Trusted Advisor:
+#' 
+#' -   Chinese, Simplified - `zh`
+#' 
+#' -   Chinese, Traditional - `zh_TW`
+#' 
+#' -   English - `en`
+#' 
+#' -   French - `fr`
+#' 
+#' -   German - `de`
+#' 
+#' -   Indonesian - `id`
+#' 
+#' -   Italian - `it`
+#' 
+#' -   Japanese - `ja`
+#' 
+#' -   Korean - `ko`
+#' 
+#' -   Portuguese, Brazilian - `pt_BR`
+#' 
+#' -   Spanish - `es`
 #'
 #' @keywords internal
 #'
@@ -433,14 +541,37 @@ support_describe_trusted_advisor_check_summaries <- function(checkIds) {
 #' including the name, ID, category, description, and metadata
 #'
 #' @description
-#' Returns information about all available Trusted Advisor checks, including the name, ID, category, description, and metadata. You must specify a language code. The Amazon Web Services Support API currently supports English ("en") and Japanese ("ja"). The response contains a TrustedAdvisorCheckDescription object for each check. You must set the Amazon Web Services Region to us-east-1.
+#' Returns information about all available Trusted Advisor checks, including the name, ID, category, description, and metadata. You must specify a language code.
 #'
 #' See [https://paws-r.github.io/docs/support/describe_trusted_advisor_checks.html](https://paws-r.github.io/docs/support/describe_trusted_advisor_checks.html) for full documentation.
 #'
-#' @param language &#91;required&#93; The ISO 639-1 code for the language in which Amazon Web Services
-#' provides support. Amazon Web Services Support currently supports English
-#' ("en") and Japanese ("ja"). Language parameters must be passed
-#' explicitly for operations that take them.
+#' @param language &#91;required&#93; The ISO 639-1 code for the language that you want your checks to appear
+#' in.
+#' 
+#' The Amazon Web Services Support API currently supports the following
+#' languages for Trusted Advisor:
+#' 
+#' -   Chinese, Simplified - `zh`
+#' 
+#' -   Chinese, Traditional - `zh_TW`
+#' 
+#' -   English - `en`
+#' 
+#' -   French - `fr`
+#' 
+#' -   German - `de`
+#' 
+#' -   Indonesian - `id`
+#' 
+#' -   Italian - `it`
+#' 
+#' -   Japanese - `ja`
+#' 
+#' -   Korean - `ko`
+#' 
+#' -   Portuguese, Brazilian - `pt_BR`
+#' 
+#' -   Spanish - `es`
 #'
 #' @keywords internal
 #'

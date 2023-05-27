@@ -39,6 +39,38 @@ route53domains_accept_domain_transfer_from_another_aws_account <- function(Domai
 }
 .route53domains$operations$accept_domain_transfer_from_another_aws_account <- route53domains_accept_domain_transfer_from_another_aws_account
 
+#' Creates a delegation signer (DS) record in the registry zone for this
+#' domain name
+#'
+#' @description
+#' Creates a delegation signer (DS) record in the registry zone for this domain name.
+#'
+#' See [https://paws-r.github.io/docs/route53domains/associate_delegation_signer_to_domain.html](https://paws-r.github.io/docs/route53domains/associate_delegation_signer_to_domain.html) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The name of the domain.
+#' @param SigningAttributes &#91;required&#93; The information about a key, including the algorithm, public key-value,
+#' and flags.
+#'
+#' @keywords internal
+#'
+#' @rdname route53domains_associate_delegation_signer_to_domain
+route53domains_associate_delegation_signer_to_domain <- function(DomainName, SigningAttributes) {
+  op <- new_operation(
+    name = "AssociateDelegationSignerToDomain",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53domains$associate_delegation_signer_to_domain_input(DomainName = DomainName, SigningAttributes = SigningAttributes)
+  output <- .route53domains$associate_delegation_signer_to_domain_output()
+  config <- get_config()
+  svc <- .route53domains$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53domains$operations$associate_delegation_signer_to_domain <- route53domains_associate_delegation_signer_to_domain
+
 #' Cancels the transfer of a domain from the current Amazon Web Services
 #' account to another Amazon Web Services account
 #'
@@ -292,6 +324,39 @@ route53domains_disable_domain_transfer_lock <- function(DomainName) {
   return(response)
 }
 .route53domains$operations$disable_domain_transfer_lock <- route53domains_disable_domain_transfer_lock
+
+#' Deletes a delegation signer (DS) record in the registry zone for this
+#' domain name
+#'
+#' @description
+#' Deletes a delegation signer (DS) record in the registry zone for this domain name.
+#'
+#' See [https://paws-r.github.io/docs/route53domains/disassociate_delegation_signer_from_domain.html](https://paws-r.github.io/docs/route53domains/disassociate_delegation_signer_from_domain.html) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; Name of the domain.
+#' @param Id &#91;required&#93; An internal identification number assigned to each DS record after it’s
+#' created. You can retrieve it as part of DNSSEC information returned by
+#' [`get_domain_detail`][route53domains_get_domain_detail].
+#'
+#' @keywords internal
+#'
+#' @rdname route53domains_disassociate_delegation_signer_from_domain
+route53domains_disassociate_delegation_signer_from_domain <- function(DomainName, Id) {
+  op <- new_operation(
+    name = "DisassociateDelegationSignerFromDomain",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53domains$disassociate_delegation_signer_from_domain_input(DomainName = DomainName, Id = Id)
+  output <- .route53domains$disassociate_delegation_signer_from_domain_output()
+  config <- get_config()
+  svc <- .route53domains$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53domains$operations$disassociate_delegation_signer_from_domain <- route53domains_disassociate_delegation_signer_from_domain
 
 #' This operation configures Amazon Route 53 to automatically renew the
 #' specified domain before the domain registration expires
@@ -578,18 +643,22 @@ route53domains_list_domains <- function(FilterConditions = NULL, SortCondition =
 #' @param MaxItems Number of domains to be returned.
 #' 
 #' Default: 20
+#' @param Status The status of the operations.
+#' @param Type An arrays of the domains operation types.
+#' @param SortBy The sort type for returned values.
+#' @param SortOrder The sort order ofr returned values, either ascending or descending.
 #'
 #' @keywords internal
 #'
 #' @rdname route53domains_list_operations
-route53domains_list_operations <- function(SubmittedSince = NULL, Marker = NULL, MaxItems = NULL) {
+route53domains_list_operations <- function(SubmittedSince = NULL, Marker = NULL, MaxItems = NULL, Status = NULL, Type = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListOperations",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53domains$list_operations_input(SubmittedSince = SubmittedSince, Marker = Marker, MaxItems = MaxItems)
+  input <- .route53domains$list_operations_input(SubmittedSince = SubmittedSince, Marker = Marker, MaxItems = MaxItems, Status = Status, Type = Type, SortBy = SortBy, SortOrder = SortOrder)
   output <- .route53domains$list_operations_output()
   config <- get_config()
   svc <- .route53domains$service(config)
@@ -675,6 +744,36 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 }
 .route53domains$operations$list_tags_for_domain <- route53domains_list_tags_for_domain
 
+#' Moves a domain from Amazon Web Services to another registrar
+#'
+#' @description
+#' Moves a domain from Amazon Web Services to another registrar.
+#'
+#' See [https://paws-r.github.io/docs/route53domains/push_domain.html](https://paws-r.github.io/docs/route53domains/push_domain.html) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; Name of the domain.
+#' @param Target &#91;required&#93; New IPS tag for the domain.
+#'
+#' @keywords internal
+#'
+#' @rdname route53domains_push_domain
+route53domains_push_domain <- function(DomainName, Target) {
+  op <- new_operation(
+    name = "PushDomain",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53domains$push_domain_input(DomainName = DomainName, Target = Target)
+  output <- .route53domains$push_domain_output()
+  config <- get_config()
+  svc <- .route53domains$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53domains$operations$push_domain <- route53domains_push_domain
+
 #' This operation registers a domain
 #'
 #' @description
@@ -717,7 +816,7 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #' 
 #' Default: 1
 #' @param AutoRenew Indicates whether the domain will be automatically renewed (`true`) or
-#' not (`false`). Autorenewal only takes effect after the account is
+#' not (`false`). Auto renewal only takes effect after the account is
 #' charged.
 #' 
 #' Default: `true`
@@ -889,10 +988,39 @@ route53domains_resend_contact_reachability_email <- function(domainName = NULL) 
 }
 .route53domains$operations$resend_contact_reachability_email <- route53domains_resend_contact_reachability_email
 
-#' This operation returns the AuthCode for the domain
+#' Resend the form of authorization email for this operation
 #'
 #' @description
-#' This operation returns the AuthCode for the domain. To transfer a domain to another registrar, you provide this value to the new registrar.
+#' Resend the form of authorization email for this operation.
+#'
+#' See [https://paws-r.github.io/docs/route53domains/resend_operation_authorization.html](https://paws-r.github.io/docs/route53domains/resend_operation_authorization.html) for full documentation.
+#'
+#' @param OperationId &#91;required&#93; Operation ID.
+#'
+#' @keywords internal
+#'
+#' @rdname route53domains_resend_operation_authorization
+route53domains_resend_operation_authorization <- function(OperationId) {
+  op <- new_operation(
+    name = "ResendOperationAuthorization",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53domains$resend_operation_authorization_input(OperationId = OperationId)
+  output <- .route53domains$resend_operation_authorization_output()
+  config <- get_config()
+  svc <- .route53domains$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53domains$operations$resend_operation_authorization <- route53domains_resend_operation_authorization
+
+#' This operation returns the authorization code for the domain
+#'
+#' @description
+#' This operation returns the authorization code for the domain. To transfer a domain to another registrar, you provide this value to the new registrar.
 #'
 #' See [https://paws-r.github.io/docs/route53domains/retrieve_domain_auth_code.html](https://paws-r.github.io/docs/route53domains/retrieve_domain_auth_code.html) for full documentation.
 #'
@@ -953,7 +1081,7 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' @param AuthCode The authorization code for the domain. You get this value from the
 #' current registrar.
 #' @param AutoRenew Indicates whether the domain will be automatically renewed (true) or not
-#' (false). Autorenewal only takes effect after the account is charged.
+#' (false). Auto renewal only takes effect after the account is charged.
 #' 
 #' Default: true
 #' @param AdminContact &#91;required&#93; Provides detailed contact information.
@@ -1057,18 +1185,19 @@ route53domains_transfer_domain_to_another_aws_account <- function(DomainName, Ac
 #' @param AdminContact Provides detailed contact information.
 #' @param RegistrantContact Provides detailed contact information.
 #' @param TechContact Provides detailed contact information.
+#' @param Consent Customer's consent for the owner change request.
 #'
 #' @keywords internal
 #'
 #' @rdname route53domains_update_domain_contact
-route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL, RegistrantContact = NULL, TechContact = NULL) {
+route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL, RegistrantContact = NULL, TechContact = NULL, Consent = NULL) {
   op <- new_operation(
     name = "UpdateDomainContact",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53domains$update_domain_contact_input(DomainName = DomainName, AdminContact = AdminContact, RegistrantContact = RegistrantContact, TechContact = TechContact)
+  input <- .route53domains$update_domain_contact_input(DomainName = DomainName, AdminContact = AdminContact, RegistrantContact = RegistrantContact, TechContact = TechContact, Consent = Consent)
   output <- .route53domains$update_domain_contact_output()
   config <- get_config()
   svc <- .route53domains$service(config)

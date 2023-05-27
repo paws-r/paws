@@ -18,8 +18,8 @@ workdocs_describe_activities(
 )
 }
 \arguments{
-\item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
-administrator credentials to access the API.}
+\item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using Amazon Web
+Services administrator credentials to access the API.}
 
 \item{StartTime}{The timestamp that determines the starting time of the activities. The
 response includes the activities performed after the specified

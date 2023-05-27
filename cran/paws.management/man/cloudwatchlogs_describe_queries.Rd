@@ -3,7 +3,7 @@
 \name{cloudwatchlogs_describe_queries}
 \alias{cloudwatchlogs_describe_queries}
 \title{Returns a list of CloudWatch Logs Insights queries that are scheduled,
-executing, or have been executed recently in this account}
+running, or have been run recently in this account}
 \usage{
 cloudwatchlogs_describe_queries(
   logGroupName = NULL,
@@ -24,7 +24,7 @@ and \code{Scheduled}.}
 \item{nextToken}{}
 }
 \description{
-Returns a list of CloudWatch Logs Insights queries that are scheduled, executing, or have been executed recently in this account. You can request all queries or limit it to queries of a specific log group or queries with a certain status.
+Returns a list of CloudWatch Logs Insights queries that are scheduled, running, or have been run recently in this account. You can request all queries or limit it to queries of a specific log group or queries with a certain status.
 
 See \url{https://paws-r.github.io/docs/cloudwatchlogs/describe_queries.html} for full documentation.
 }

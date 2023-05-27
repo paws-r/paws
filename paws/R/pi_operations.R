@@ -367,7 +367,8 @@ pi_get_resource_metadata <- function(ServiceType, Identifier) {
 #'
 #' @usage
 #' pi_get_resource_metrics(ServiceType, Identifier, MetricQueries,
-#'   StartTime, EndTime, PeriodInSeconds, MaxResults, NextToken)
+#'   StartTime, EndTime, PeriodInSeconds, MaxResults, NextToken,
+#'   PeriodAlignment)
 #'
 #' @param ServiceType &#91;required&#93; The Amazon Web Services service for which Performance Insights returns
 #' metrics. Valid values are as follows:
@@ -422,6 +423,8 @@ pi_get_resource_metadata <- function(ServiceType, Identifier) {
 #' @param NextToken An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' token, up to the value specified by `MaxRecords`.
+#' @param PeriodAlignment The returned timestamp which is the start or end time of the time
+#' periods. The default value is `END_TIME`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -484,7 +487,8 @@ pi_get_resource_metadata <- function(ServiceType, Identifier) {
 #'   ),
 #'   PeriodInSeconds = 123,
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   PeriodAlignment = "END_TIME"|"START_TIME"
 #' )
 #' ```
 #'
@@ -493,14 +497,14 @@ pi_get_resource_metadata <- function(ServiceType, Identifier) {
 #' @rdname pi_get_resource_metrics
 #'
 #' @aliases pi_get_resource_metrics
-pi_get_resource_metrics <- function(ServiceType, Identifier, MetricQueries, StartTime, EndTime, PeriodInSeconds = NULL, MaxResults = NULL, NextToken = NULL) {
+pi_get_resource_metrics <- function(ServiceType, Identifier, MetricQueries, StartTime, EndTime, PeriodInSeconds = NULL, MaxResults = NULL, NextToken = NULL, PeriodAlignment = NULL) {
   op <- new_operation(
     name = "GetResourceMetrics",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .pi$get_resource_metrics_input(ServiceType = ServiceType, Identifier = Identifier, MetricQueries = MetricQueries, StartTime = StartTime, EndTime = EndTime, PeriodInSeconds = PeriodInSeconds, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .pi$get_resource_metrics_input(ServiceType = ServiceType, Identifier = Identifier, MetricQueries = MetricQueries, StartTime = StartTime, EndTime = EndTime, PeriodInSeconds = PeriodInSeconds, MaxResults = MaxResults, NextToken = NextToken, PeriodAlignment = PeriodAlignment)
   output <- .pi$get_resource_metrics_output()
   config <- get_config()
   svc <- .pi$service(config)

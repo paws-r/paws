@@ -16,13 +16,12 @@ athena_update_work_group(
 
 \item{Description}{The workgroup description.}
 
-\item{ConfigurationUpdates}{The workgroup configuration that will be updated for the given
-workgroup.}
+\item{ConfigurationUpdates}{Contains configuration updates for an Athena SQL workgroup.}
 
 \item{State}{The workgroup state that will be updated for the given workgroup.}
 }
 \description{
-Updates the workgroup with the specified name. The workgroup's name cannot be changed.
+Updates the workgroup with the specified name. The workgroup's name cannot be changed. Only \code{ConfigurationUpdates} can be specified.
 
 See \url{https://paws-r.github.io/docs/athena/update_work_group.html} for full documentation.
 }

@@ -54,6 +54,13 @@ NULL
 #'       )
 #'     ),
 #'     Status = "CREATING"|"CREATE_FAILED"|"ACTIVE"|"DELETING"|"DELETE_FAILED"|"PENDING_CERTIFICATE_DNS_VALIDATION"|"BINDING_CERTIFICATE"
+#'   ),
+#'   VpcDNSTargets = list(
+#'     list(
+#'       VpcIngressConnectionArn = "string",
+#'       VpcId = "string",
+#'       DomainName = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -468,11 +475,14 @@ apprunner_create_observability_configuration <- function(ObservabilityConfigurat
 #'         CodeConfiguration = list(
 #'           ConfigurationSource = "REPOSITORY"|"API",
 #'           CodeConfigurationValues = list(
-#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11",
+#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31",
 #'             BuildCommand = "string",
 #'             StartCommand = "string",
 #'             Port = "string",
 #'             RuntimeEnvironmentVariables = list(
+#'               "string"
+#'             ),
+#'             RuntimeEnvironmentSecrets = list(
 #'               "string"
 #'             )
 #'           )
@@ -485,7 +495,10 @@ apprunner_create_observability_configuration <- function(ObservabilityConfigurat
 #'             "string"
 #'           ),
 #'           StartCommand = "string",
-#'           Port = "string"
+#'           Port = "string",
+#'           RuntimeEnvironmentSecrets = list(
+#'             "string"
+#'           )
 #'         ),
 #'         ImageRepositoryType = "ECR"|"ECR_PUBLIC"
 #'       ),
@@ -520,6 +533,9 @@ apprunner_create_observability_configuration <- function(ObservabilityConfigurat
 #'       EgressConfiguration = list(
 #'         EgressType = "DEFAULT"|"VPC",
 #'         VpcConnectorArn = "string"
+#'       ),
+#'       IngressConfiguration = list(
+#'         IsPubliclyAccessible = TRUE|FALSE
 #'       )
 #'     ),
 #'     ObservabilityConfiguration = list(
@@ -545,11 +561,14 @@ apprunner_create_observability_configuration <- function(ObservabilityConfigurat
 #'       CodeConfiguration = list(
 #'         ConfigurationSource = "REPOSITORY"|"API",
 #'         CodeConfigurationValues = list(
-#'           Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11",
+#'           Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31",
 #'           BuildCommand = "string",
 #'           StartCommand = "string",
 #'           Port = "string",
 #'           RuntimeEnvironmentVariables = list(
+#'             "string"
+#'           ),
+#'           RuntimeEnvironmentSecrets = list(
 #'             "string"
 #'           )
 #'         )
@@ -562,7 +581,10 @@ apprunner_create_observability_configuration <- function(ObservabilityConfigurat
 #'           "string"
 #'         ),
 #'         StartCommand = "string",
-#'         Port = "string"
+#'         Port = "string",
+#'         RuntimeEnvironmentSecrets = list(
+#'           "string"
+#'         )
 #'       ),
 #'       ImageRepositoryType = "ECR"|"ECR_PUBLIC"
 #'     ),
@@ -599,6 +621,9 @@ apprunner_create_observability_configuration <- function(ObservabilityConfigurat
 #'     EgressConfiguration = list(
 #'       EgressType = "DEFAULT"|"VPC",
 #'       VpcConnectorArn = "string"
+#'     ),
+#'     IngressConfiguration = list(
+#'       IsPubliclyAccessible = TRUE|FALSE
 #'     )
 #'   ),
 #'   ObservabilityConfiguration = list(
@@ -720,6 +745,93 @@ apprunner_create_vpc_connector <- function(VpcConnectorName, Subnets, SecurityGr
   return(response)
 }
 .apprunner$operations$create_vpc_connector <- apprunner_create_vpc_connector
+
+#' Create an App Runner VPC Ingress Connection resource
+#'
+#' @description
+#' Create an App Runner VPC Ingress Connection resource. App Runner
+#' requires this resource when you want to associate your App Runner
+#' service with an Amazon VPC endpoint.
+#'
+#' @usage
+#' apprunner_create_vpc_ingress_connection(ServiceArn,
+#'   VpcIngressConnectionName, IngressVpcConfiguration, Tags)
+#'
+#' @param ServiceArn &#91;required&#93; The Amazon Resource Name (ARN) for this App Runner service that is used
+#' to create the VPC Ingress Connection resource.
+#' @param VpcIngressConnectionName &#91;required&#93; A name for the VPC Ingress Connection resource. It must be unique across
+#' all the active VPC Ingress Connections in your Amazon Web Services
+#' account in the Amazon Web Services Region.
+#' @param IngressVpcConfiguration &#91;required&#93; Specifications for the customer’s Amazon VPC and the related Amazon Web
+#' Services PrivateLink VPC endpoint that are used to create the VPC
+#' Ingress Connection resource.
+#' @param Tags An optional list of metadata items that you can associate with the VPC
+#' Ingress Connection resource. A tag is a key-value pair.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcIngressConnection = list(
+#'     VpcIngressConnectionArn = "string",
+#'     VpcIngressConnectionName = "string",
+#'     ServiceArn = "string",
+#'     Status = "AVAILABLE"|"PENDING_CREATION"|"PENDING_UPDATE"|"PENDING_DELETION"|"FAILED_CREATION"|"FAILED_UPDATE"|"FAILED_DELETION"|"DELETED",
+#'     AccountId = "string",
+#'     DomainName = "string",
+#'     IngressVpcConfiguration = list(
+#'       VpcId = "string",
+#'       VpcEndpointId = "string"
+#'     ),
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeletedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_vpc_ingress_connection(
+#'   ServiceArn = "string",
+#'   VpcIngressConnectionName = "string",
+#'   IngressVpcConfiguration = list(
+#'     VpcId = "string",
+#'     VpcEndpointId = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apprunner_create_vpc_ingress_connection
+#'
+#' @aliases apprunner_create_vpc_ingress_connection
+apprunner_create_vpc_ingress_connection <- function(ServiceArn, VpcIngressConnectionName, IngressVpcConfiguration, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateVpcIngressConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .apprunner$create_vpc_ingress_connection_input(ServiceArn = ServiceArn, VpcIngressConnectionName = VpcIngressConnectionName, IngressVpcConfiguration = IngressVpcConfiguration, Tags = Tags)
+  output <- .apprunner$create_vpc_ingress_connection_output()
+  config <- get_config()
+  svc <- .apprunner$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apprunner$operations$create_vpc_ingress_connection <- apprunner_create_vpc_ingress_connection
 
 #' Delete an App Runner automatic scaling configuration resource
 #'
@@ -927,6 +1039,9 @@ apprunner_delete_observability_configuration <- function(ObservabilityConfigurat
 #' returned `OperationId` and the
 #' [`list_operations`][apprunner_list_operations] call to track the
 #' operation's progress.
+#' 
+#' Make sure that you don't have any active VPCIngressConnections
+#' associated with the service you want to delete.
 #'
 #' @usage
 #' apprunner_delete_service(ServiceArn)
@@ -963,11 +1078,14 @@ apprunner_delete_observability_configuration <- function(ObservabilityConfigurat
 #'         CodeConfiguration = list(
 #'           ConfigurationSource = "REPOSITORY"|"API",
 #'           CodeConfigurationValues = list(
-#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11",
+#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31",
 #'             BuildCommand = "string",
 #'             StartCommand = "string",
 #'             Port = "string",
 #'             RuntimeEnvironmentVariables = list(
+#'               "string"
+#'             ),
+#'             RuntimeEnvironmentSecrets = list(
 #'               "string"
 #'             )
 #'           )
@@ -980,7 +1098,10 @@ apprunner_delete_observability_configuration <- function(ObservabilityConfigurat
 #'             "string"
 #'           ),
 #'           StartCommand = "string",
-#'           Port = "string"
+#'           Port = "string",
+#'           RuntimeEnvironmentSecrets = list(
+#'             "string"
+#'           )
 #'         ),
 #'         ImageRepositoryType = "ECR"|"ECR_PUBLIC"
 #'       ),
@@ -1015,6 +1136,9 @@ apprunner_delete_observability_configuration <- function(ObservabilityConfigurat
 #'       EgressConfiguration = list(
 #'         EgressType = "DEFAULT"|"VPC",
 #'         VpcConnectorArn = "string"
+#'       ),
+#'       IngressConfiguration = list(
+#'         IsPubliclyAccessible = TRUE|FALSE
 #'       )
 #'     ),
 #'     ObservabilityConfiguration = list(
@@ -1122,6 +1246,82 @@ apprunner_delete_vpc_connector <- function(VpcConnectorArn) {
   return(response)
 }
 .apprunner$operations$delete_vpc_connector <- apprunner_delete_vpc_connector
+
+#' Delete an App Runner VPC Ingress Connection resource that's associated
+#' with an App Runner service
+#'
+#' @description
+#' Delete an App Runner VPC Ingress Connection resource that's associated
+#' with an App Runner service. The VPC Ingress Connection must be in one of
+#' the following states to be deleted:
+#' 
+#' -   `AVAILABLE`
+#' 
+#' -   `FAILED_CREATION`
+#' 
+#' -   `FAILED_UPDATE`
+#' 
+#' -   `FAILED_DELETION`
+#'
+#' @usage
+#' apprunner_delete_vpc_ingress_connection(VpcIngressConnectionArn)
+#'
+#' @param VpcIngressConnectionArn &#91;required&#93; The Amazon Resource Name (ARN) of the App Runner VPC Ingress Connection
+#' that you want to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcIngressConnection = list(
+#'     VpcIngressConnectionArn = "string",
+#'     VpcIngressConnectionName = "string",
+#'     ServiceArn = "string",
+#'     Status = "AVAILABLE"|"PENDING_CREATION"|"PENDING_UPDATE"|"PENDING_DELETION"|"FAILED_CREATION"|"FAILED_UPDATE"|"FAILED_DELETION"|"DELETED",
+#'     AccountId = "string",
+#'     DomainName = "string",
+#'     IngressVpcConfiguration = list(
+#'       VpcId = "string",
+#'       VpcEndpointId = "string"
+#'     ),
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeletedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_vpc_ingress_connection(
+#'   VpcIngressConnectionArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apprunner_delete_vpc_ingress_connection
+#'
+#' @aliases apprunner_delete_vpc_ingress_connection
+apprunner_delete_vpc_ingress_connection <- function(VpcIngressConnectionArn) {
+  op <- new_operation(
+    name = "DeleteVpcIngressConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .apprunner$delete_vpc_ingress_connection_input(VpcIngressConnectionArn = VpcIngressConnectionArn)
+  output <- .apprunner$delete_vpc_ingress_connection_output()
+  config <- get_config()
+  svc <- .apprunner$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apprunner$operations$delete_vpc_ingress_connection <- apprunner_delete_vpc_ingress_connection
 
 #' Return a full description of an App Runner automatic scaling
 #' configuration resource
@@ -1236,6 +1436,13 @@ apprunner_describe_auto_scaling_configuration <- function(AutoScalingConfigurati
 #'         )
 #'       ),
 #'       Status = "CREATING"|"CREATE_FAILED"|"ACTIVE"|"DELETING"|"DELETE_FAILED"|"PENDING_CERTIFICATE_DNS_VALIDATION"|"BINDING_CERTIFICATE"
+#'     )
+#'   ),
+#'   VpcDNSTargets = list(
+#'     list(
+#'       VpcIngressConnectionArn = "string",
+#'       VpcId = "string",
+#'       DomainName = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1383,11 +1590,14 @@ apprunner_describe_observability_configuration <- function(ObservabilityConfigur
 #'         CodeConfiguration = list(
 #'           ConfigurationSource = "REPOSITORY"|"API",
 #'           CodeConfigurationValues = list(
-#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11",
+#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31",
 #'             BuildCommand = "string",
 #'             StartCommand = "string",
 #'             Port = "string",
 #'             RuntimeEnvironmentVariables = list(
+#'               "string"
+#'             ),
+#'             RuntimeEnvironmentSecrets = list(
 #'               "string"
 #'             )
 #'           )
@@ -1400,7 +1610,10 @@ apprunner_describe_observability_configuration <- function(ObservabilityConfigur
 #'             "string"
 #'           ),
 #'           StartCommand = "string",
-#'           Port = "string"
+#'           Port = "string",
+#'           RuntimeEnvironmentSecrets = list(
+#'             "string"
+#'           )
 #'         ),
 #'         ImageRepositoryType = "ECR"|"ECR_PUBLIC"
 #'       ),
@@ -1435,6 +1648,9 @@ apprunner_describe_observability_configuration <- function(ObservabilityConfigur
 #'       EgressConfiguration = list(
 #'         EgressType = "DEFAULT"|"VPC",
 #'         VpcConnectorArn = "string"
+#'       ),
+#'       IngressConfiguration = list(
+#'         IsPubliclyAccessible = TRUE|FALSE
 #'       )
 #'     ),
 #'     ObservabilityConfiguration = list(
@@ -1541,6 +1757,73 @@ apprunner_describe_vpc_connector <- function(VpcConnectorArn) {
 }
 .apprunner$operations$describe_vpc_connector <- apprunner_describe_vpc_connector
 
+#' Return a full description of an App Runner VPC Ingress Connection
+#' resource
+#'
+#' @description
+#' Return a full description of an App Runner VPC Ingress Connection
+#' resource.
+#'
+#' @usage
+#' apprunner_describe_vpc_ingress_connection(VpcIngressConnectionArn)
+#'
+#' @param VpcIngressConnectionArn &#91;required&#93; The Amazon Resource Name (ARN) of the App Runner VPC Ingress Connection
+#' that you want a description for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcIngressConnection = list(
+#'     VpcIngressConnectionArn = "string",
+#'     VpcIngressConnectionName = "string",
+#'     ServiceArn = "string",
+#'     Status = "AVAILABLE"|"PENDING_CREATION"|"PENDING_UPDATE"|"PENDING_DELETION"|"FAILED_CREATION"|"FAILED_UPDATE"|"FAILED_DELETION"|"DELETED",
+#'     AccountId = "string",
+#'     DomainName = "string",
+#'     IngressVpcConfiguration = list(
+#'       VpcId = "string",
+#'       VpcEndpointId = "string"
+#'     ),
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeletedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_vpc_ingress_connection(
+#'   VpcIngressConnectionArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apprunner_describe_vpc_ingress_connection
+#'
+#' @aliases apprunner_describe_vpc_ingress_connection
+apprunner_describe_vpc_ingress_connection <- function(VpcIngressConnectionArn) {
+  op <- new_operation(
+    name = "DescribeVpcIngressConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .apprunner$describe_vpc_ingress_connection_input(VpcIngressConnectionArn = VpcIngressConnectionArn)
+  output <- .apprunner$describe_vpc_ingress_connection_output()
+  config <- get_config()
+  svc <- .apprunner$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apprunner$operations$describe_vpc_ingress_connection <- apprunner_describe_vpc_ingress_connection
+
 #' Disassociate a custom domain name from an App Runner service
 #'
 #' @description
@@ -1579,6 +1862,13 @@ apprunner_describe_vpc_connector <- function(VpcConnectorArn) {
 #'       )
 #'     ),
 #'     Status = "CREATING"|"CREATE_FAILED"|"ACTIVE"|"DELETING"|"DELETE_FAILED"|"PENDING_CERTIFICATE_DNS_VALIDATION"|"BINDING_CERTIFICATE"
+#'   ),
+#'   VpcDNSTargets = list(
+#'     list(
+#'       VpcIngressConnectionArn = "string",
+#'       VpcId = "string",
+#'       DomainName = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1896,7 +2186,7 @@ apprunner_list_observability_configurations <- function(ObservabilityConfigurati
 #'   OperationSummaryList = list(
 #'     list(
 #'       Id = "string",
-#'       Type = "START_DEPLOYMENT"|"CREATE_SERVICE"|"PAUSE_SERVICE"|"RESUME_SERVICE"|"DELETE_SERVICE",
+#'       Type = "START_DEPLOYMENT"|"CREATE_SERVICE"|"PAUSE_SERVICE"|"RESUME_SERVICE"|"DELETE_SERVICE"|"UPDATE_SERVICE",
 #'       Status = "PENDING"|"IN_PROGRESS"|"FAILED"|"SUCCEEDED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_FAILED"|"ROLLBACK_SUCCEEDED",
 #'       TargetArn = "string",
 #'       StartedAt = as.POSIXct(
@@ -2156,6 +2446,78 @@ apprunner_list_vpc_connectors <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .apprunner$operations$list_vpc_connectors <- apprunner_list_vpc_connectors
 
+#' Return a list of App Runner VPC Ingress Connections in your Amazon Web
+#' Services account
+#'
+#' @description
+#' Return a list of App Runner VPC Ingress Connections in your Amazon Web
+#' Services account.
+#'
+#' @usage
+#' apprunner_list_vpc_ingress_connections(Filter, MaxResults, NextToken)
+#'
+#' @param Filter The VPC Ingress Connections to be listed based on either the Service Arn
+#' or Vpc Endpoint Id, or both.
+#' @param MaxResults The maximum number of results to include in each response (result page).
+#' It's used for a paginated request.
+#' 
+#' If you don't specify `MaxResults`, the request retrieves all available
+#' results in a single response.
+#' @param NextToken A token from a previous result page. It's used for a paginated request.
+#' The request retrieves the next result page. All other parameter values
+#' must be identical to the ones that are specified in the initial request.
+#' 
+#' If you don't specify `NextToken`, the request retrieves the first result
+#' page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcIngressConnectionSummaryList = list(
+#'     list(
+#'       VpcIngressConnectionArn = "string",
+#'       ServiceArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_vpc_ingress_connections(
+#'   Filter = list(
+#'     ServiceArn = "string",
+#'     VpcEndpointId = "string"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apprunner_list_vpc_ingress_connections
+#'
+#' @aliases apprunner_list_vpc_ingress_connections
+apprunner_list_vpc_ingress_connections <- function(Filter = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListVpcIngressConnections",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .apprunner$list_vpc_ingress_connections_input(Filter = Filter, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .apprunner$list_vpc_ingress_connections_output()
+  config <- get_config()
+  svc <- .apprunner$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apprunner$operations$list_vpc_ingress_connections <- apprunner_list_vpc_ingress_connections
+
 #' Pause an active App Runner service
 #'
 #' @description
@@ -2203,11 +2565,14 @@ apprunner_list_vpc_connectors <- function(MaxResults = NULL, NextToken = NULL) {
 #'         CodeConfiguration = list(
 #'           ConfigurationSource = "REPOSITORY"|"API",
 #'           CodeConfigurationValues = list(
-#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11",
+#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31",
 #'             BuildCommand = "string",
 #'             StartCommand = "string",
 #'             Port = "string",
 #'             RuntimeEnvironmentVariables = list(
+#'               "string"
+#'             ),
+#'             RuntimeEnvironmentSecrets = list(
 #'               "string"
 #'             )
 #'           )
@@ -2220,7 +2585,10 @@ apprunner_list_vpc_connectors <- function(MaxResults = NULL, NextToken = NULL) {
 #'             "string"
 #'           ),
 #'           StartCommand = "string",
-#'           Port = "string"
+#'           Port = "string",
+#'           RuntimeEnvironmentSecrets = list(
+#'             "string"
+#'           )
 #'         ),
 #'         ImageRepositoryType = "ECR"|"ECR_PUBLIC"
 #'       ),
@@ -2255,6 +2623,9 @@ apprunner_list_vpc_connectors <- function(MaxResults = NULL, NextToken = NULL) {
 #'       EgressConfiguration = list(
 #'         EgressType = "DEFAULT"|"VPC",
 #'         VpcConnectorArn = "string"
+#'       ),
+#'       IngressConfiguration = list(
+#'         IsPubliclyAccessible = TRUE|FALSE
 #'       )
 #'     ),
 #'     ObservabilityConfiguration = list(
@@ -2341,11 +2712,14 @@ apprunner_pause_service <- function(ServiceArn) {
 #'         CodeConfiguration = list(
 #'           ConfigurationSource = "REPOSITORY"|"API",
 #'           CodeConfigurationValues = list(
-#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11",
+#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31",
 #'             BuildCommand = "string",
 #'             StartCommand = "string",
 #'             Port = "string",
 #'             RuntimeEnvironmentVariables = list(
+#'               "string"
+#'             ),
+#'             RuntimeEnvironmentSecrets = list(
 #'               "string"
 #'             )
 #'           )
@@ -2358,7 +2732,10 @@ apprunner_pause_service <- function(ServiceArn) {
 #'             "string"
 #'           ),
 #'           StartCommand = "string",
-#'           Port = "string"
+#'           Port = "string",
+#'           RuntimeEnvironmentSecrets = list(
+#'             "string"
+#'           )
 #'         ),
 #'         ImageRepositoryType = "ECR"|"ECR_PUBLIC"
 #'       ),
@@ -2393,6 +2770,9 @@ apprunner_pause_service <- function(ServiceArn) {
 #'       EgressConfiguration = list(
 #'         EgressType = "DEFAULT"|"VPC",
 #'         VpcConnectorArn = "string"
+#'       ),
+#'       IngressConfiguration = list(
+#'         IsPubliclyAccessible = TRUE|FALSE
 #'       )
 #'     ),
 #'     ObservabilityConfiguration = list(
@@ -2676,11 +3056,14 @@ apprunner_untag_resource <- function(ResourceArn, TagKeys) {
 #'         CodeConfiguration = list(
 #'           ConfigurationSource = "REPOSITORY"|"API",
 #'           CodeConfigurationValues = list(
-#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11",
+#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31",
 #'             BuildCommand = "string",
 #'             StartCommand = "string",
 #'             Port = "string",
 #'             RuntimeEnvironmentVariables = list(
+#'               "string"
+#'             ),
+#'             RuntimeEnvironmentSecrets = list(
 #'               "string"
 #'             )
 #'           )
@@ -2693,7 +3076,10 @@ apprunner_untag_resource <- function(ResourceArn, TagKeys) {
 #'             "string"
 #'           ),
 #'           StartCommand = "string",
-#'           Port = "string"
+#'           Port = "string",
+#'           RuntimeEnvironmentSecrets = list(
+#'             "string"
+#'           )
 #'         ),
 #'         ImageRepositoryType = "ECR"|"ECR_PUBLIC"
 #'       ),
@@ -2728,6 +3114,9 @@ apprunner_untag_resource <- function(ResourceArn, TagKeys) {
 #'       EgressConfiguration = list(
 #'         EgressType = "DEFAULT"|"VPC",
 #'         VpcConnectorArn = "string"
+#'       ),
+#'       IngressConfiguration = list(
+#'         IsPubliclyAccessible = TRUE|FALSE
 #'       )
 #'     ),
 #'     ObservabilityConfiguration = list(
@@ -2753,11 +3142,14 @@ apprunner_untag_resource <- function(ResourceArn, TagKeys) {
 #'       CodeConfiguration = list(
 #'         ConfigurationSource = "REPOSITORY"|"API",
 #'         CodeConfigurationValues = list(
-#'           Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11",
+#'           Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31",
 #'           BuildCommand = "string",
 #'           StartCommand = "string",
 #'           Port = "string",
 #'           RuntimeEnvironmentVariables = list(
+#'             "string"
+#'           ),
+#'           RuntimeEnvironmentSecrets = list(
 #'             "string"
 #'           )
 #'         )
@@ -2770,7 +3162,10 @@ apprunner_untag_resource <- function(ResourceArn, TagKeys) {
 #'           "string"
 #'         ),
 #'         StartCommand = "string",
-#'         Port = "string"
+#'         Port = "string",
+#'         RuntimeEnvironmentSecrets = list(
+#'           "string"
+#'         )
 #'       ),
 #'       ImageRepositoryType = "ECR"|"ECR_PUBLIC"
 #'     ),
@@ -2798,6 +3193,9 @@ apprunner_untag_resource <- function(ResourceArn, TagKeys) {
 #'     EgressConfiguration = list(
 #'       EgressType = "DEFAULT"|"VPC",
 #'       VpcConnectorArn = "string"
+#'     ),
+#'     IngressConfiguration = list(
+#'       IsPubliclyAccessible = TRUE|FALSE
 #'     )
 #'   ),
 #'   ObservabilityConfiguration = list(
@@ -2828,3 +3226,83 @@ apprunner_update_service <- function(ServiceArn, SourceConfiguration = NULL, Ins
   return(response)
 }
 .apprunner$operations$update_service <- apprunner_update_service
+
+#' Update an existing App Runner VPC Ingress Connection resource
+#'
+#' @description
+#' Update an existing App Runner VPC Ingress Connection resource. The VPC
+#' Ingress Connection must be in one of the following states to be updated:
+#' 
+#' -   AVAILABLE
+#' 
+#' -   FAILED_CREATION
+#' 
+#' -   FAILED_UPDATE
+#'
+#' @usage
+#' apprunner_update_vpc_ingress_connection(VpcIngressConnectionArn,
+#'   IngressVpcConfiguration)
+#'
+#' @param VpcIngressConnectionArn &#91;required&#93; The Amazon Resource Name (Arn) for the App Runner VPC Ingress Connection
+#' resource that you want to update.
+#' @param IngressVpcConfiguration &#91;required&#93; Specifications for the customer’s Amazon VPC and the related Amazon Web
+#' Services PrivateLink VPC endpoint that are used to update the VPC
+#' Ingress Connection resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcIngressConnection = list(
+#'     VpcIngressConnectionArn = "string",
+#'     VpcIngressConnectionName = "string",
+#'     ServiceArn = "string",
+#'     Status = "AVAILABLE"|"PENDING_CREATION"|"PENDING_UPDATE"|"PENDING_DELETION"|"FAILED_CREATION"|"FAILED_UPDATE"|"FAILED_DELETION"|"DELETED",
+#'     AccountId = "string",
+#'     DomainName = "string",
+#'     IngressVpcConfiguration = list(
+#'       VpcId = "string",
+#'       VpcEndpointId = "string"
+#'     ),
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeletedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_vpc_ingress_connection(
+#'   VpcIngressConnectionArn = "string",
+#'   IngressVpcConfiguration = list(
+#'     VpcId = "string",
+#'     VpcEndpointId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apprunner_update_vpc_ingress_connection
+#'
+#' @aliases apprunner_update_vpc_ingress_connection
+apprunner_update_vpc_ingress_connection <- function(VpcIngressConnectionArn, IngressVpcConfiguration) {
+  op <- new_operation(
+    name = "UpdateVpcIngressConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .apprunner$update_vpc_ingress_connection_input(VpcIngressConnectionArn = VpcIngressConnectionArn, IngressVpcConfiguration = IngressVpcConfiguration)
+  output <- .apprunner$update_vpc_ingress_connection_output()
+  config <- get_config()
+  svc <- .apprunner$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apprunner$operations$update_vpc_ingress_connection <- apprunner_update_vpc_ingress_connection

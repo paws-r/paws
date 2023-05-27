@@ -22,37 +22,38 @@ comprehend_create_entity_recognizer(
 \item{RecognizerName}{[required] The name given to the newly created recognizer. Recognizer names can be
 a maximum of 256 characters. Alphanumeric characters, hyphens (-) and
 underscores (_) are allowed. The name must be unique in the
-account/region.}
+account/Region.}
 
 \item{VersionName}{The version name given to the newly created recognizer. Version names
 can be a maximum of 256 characters. Alphanumeric characters, hyphens (-)
 and underscores (_) are allowed. The version name must be unique among
-all models with the same recognizer name in the account/ AWS Region.}
+all models with the same recognizer name in the account/Region.}
 
-\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM)
-role that grants Amazon Comprehend read access to your input data.}
+\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that grants Amazon
+Comprehend read access to your input data.}
 
-\item{Tags}{Tags to be associated with the entity recognizer being created. A tag is
-a key-value pair that adds as a metadata to a resource used by Amazon
-Comprehend. For example, a tag with "Sales" as the key might be added to
-a resource to indicate its use by the sales department.}
+\item{Tags}{Tags to associate with the entity recognizer. A tag is a key-value pair
+that adds as a metadata to a resource used by Amazon Comprehend. For
+example, a tag with "Sales" as the key might be added to a resource to
+indicate its use by the sales department.}
 
 \item{InputDataConfig}{[required] Specifies the format and location of the input data. The S3 bucket
-containing the input data must be located in the same region as the
+containing the input data must be located in the same Region as the
 entity recognizer being created.}
 
 \item{ClientRequestToken}{A unique identifier for the request. If you don't set the client request
 token, Amazon Comprehend generates one.}
 
-\item{LanguageCode}{[required] You can specify any of the following languages supported by Amazon
-Comprehend: English ("en"), Spanish ("es"), French ("fr"), Italian
-("it"), German ("de"), or Portuguese ("pt"). All documents must be in
-the same language.}
+\item{LanguageCode}{[required] You can specify any of the following languages: English ("en"), Spanish
+("es"), French ("fr"), Italian ("it"), German ("de"), or Portuguese
+("pt"). If you plan to use this entity recognizer with PDF, Word, or
+image input files, you must specify English as the language. All
+training documents must be in the same language.}
 
-\item{VolumeKmsKeyId}{ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
-uses to encrypt data on the storage volume attached to the ML compute
-instance(s) that process the analysis job. The VolumeKmsKeyId can be
-either of the following formats:
+\item{VolumeKmsKeyId}{ID for the Amazon Web Services Key Management Service (KMS) key that
+Amazon Comprehend uses to encrypt data on the storage volume attached to
+the ML compute instance(s) that process the analysis job. The
+VolumeKmsKeyId can be either of the following formats:
 \itemize{
 \item KMS Key ID: \code{"1234abcd-12ab-34cd-56ef-1234567890ab"}
 \item Amazon Resource Name (ARN) of a KMS Key:
@@ -63,9 +64,8 @@ either of the following formats:
 (VPC) containing the resources you are using for your custom entity
 recognizer. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html}{Amazon VPC}.}
 
-\item{ModelKmsKeyId}{ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
-uses to encrypt trained custom models. The ModelKmsKeyId can be either
-of the following formats
+\item{ModelKmsKeyId}{ID for the KMS key that Amazon Comprehend uses to encrypt trained custom
+models. The ModelKmsKeyId can be either of the following formats:
 \itemize{
 \item KMS Key ID: \code{"1234abcd-12ab-34cd-56ef-1234567890ab"}
 \item Amazon Resource Name (ARN) of a KMS Key:
@@ -73,8 +73,8 @@ of the following formats
 }}
 
 \item{ModelPolicy}{The JSON resource-based policy to attach to your custom entity
-recognizer model. You can use this policy to allow another AWS account
-to import your custom model.
+recognizer model. You can use this policy to allow another Amazon Web
+Services account to import your custom model.
 
 Provide your JSON as a UTF-8 encoded string without line breaks. To
 provide valid JSON for your policy, enclose the attribute names and
@@ -90,7 +90,7 @@ policy and double quotes to enclose the JSON names and values:
 \code{'{"attribute": "value", "attribute": ["value"]}'}}
 }
 \description{
-Creates an entity recognizer using submitted files. After your \code{\link[=comprehend_create_entity_recognizer]{create_entity_recognizer}} request is submitted, you can check job status using the API.
+Creates an entity recognizer using submitted files. After your \code{\link[=comprehend_create_entity_recognizer]{create_entity_recognizer}} request is submitted, you can check job status using the \code{\link[=comprehend_describe_entity_recognizer]{describe_entity_recognizer}} API.
 
 See \url{https://paws-r.github.io/docs/comprehend/create_entity_recognizer.html} for full documentation.
 }

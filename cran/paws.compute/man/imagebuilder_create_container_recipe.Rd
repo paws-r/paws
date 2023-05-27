@@ -47,7 +47,9 @@ assignment requirements for the nodes that you can assign. For example,
 you might choose a software version pattern, such as 1.0.0, or a date,
 such as 2021.01.01.}
 
-\item{components}{[required] Components for build and test that are included in the container recipe.}
+\item{components}{[required] Components for build and test that are included in the container recipe.
+Recipes require a minimum of one build component, and can have a maximum
+of 20 build and test components in any combination.}
 
 \item{instanceConfiguration}{A group of options that can be used to configure an instance for
 building and testing container images.}

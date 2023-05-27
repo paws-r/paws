@@ -15,7 +15,7 @@ fsx_delete_file_system(
 \arguments{
 \item{FileSystemId}{[required] The ID of the file system that you want to delete.}
 
-\item{ClientRequestToken}{A string of up to 64 ASCII characters that Amazon FSx uses to ensure
+\item{ClientRequestToken}{A string of up to 63 ASCII characters that Amazon FSx uses to ensure
 idempotent deletion. This token is automatically filled on your behalf
 when using the Command Line Interface (CLI) or an Amazon Web Services
 SDK.}

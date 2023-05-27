@@ -2,8 +2,8 @@
 % Please edit documentation in R/kendra_operations.R
 \name{kendra_create_faq}
 \alias{kendra_create_faq}
-\title{Creates an new set of frequently asked question (FAQ) questions and
-answers}
+\title{Creates a set of frequently ask questions (FAQs) using a specified FAQ
+file stored in an Amazon S3 bucket}
 \usage{
 kendra_create_faq(
   IndexId,
@@ -26,8 +26,8 @@ kendra_create_faq(
 
 \item{S3Path}{[required] The path to the FAQ file in S3.}
 
-\item{RoleArn}{[required] The Amazon Resource Name (ARN) of a role with permission to access the
-S3 bucket that contains the FAQs. For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM Roles for Amazon Kendra}.}
+\item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role with permission to access
+the S3 bucket that contains the FAQs. For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM access roles for Amazon Kendra}.}
 
 \item{Tags}{A list of key-value pairs that identify the FAQ. You can use the tags to
 identify and organize your resources and to control access to resources.}
@@ -50,7 +50,7 @@ FAQ document. English is supported by default. For more information on
 supported languages, including their codes, see \href{https://docs.aws.amazon.com/kendra/latest/dg/in-adding-languages.html}{Adding documents in languages other than English}.}
 }
 \description{
-Creates an new set of frequently asked question (FAQ) questions and answers.
+Creates a set of frequently ask questions (FAQs) using a specified FAQ file stored in an Amazon S3 bucket.
 
 See \url{https://paws-r.github.io/docs/kendra/create_faq.html} for full documentation.
 }

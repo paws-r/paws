@@ -16,8 +16,9 @@ configservice_get_compliance_details_by_config_rule(
 
 \item{ComplianceTypes}{Filters the results by compliance.
 
-The allowed values are \code{COMPLIANT}, \code{NON_COMPLIANT}, and
-\code{NOT_APPLICABLE}.}
+\code{INSUFFICIENT_DATA} is a valid \code{ComplianceType} that is returned when an
+Config rule cannot be evaluated. However, \code{INSUFFICIENT_DATA} cannot be
+used as a \code{ComplianceType} for filtering results.}
 
 \item{Limit}{The maximum number of evaluation results returned on each page. The
 default is 10. You cannot specify a number greater than 100. If you

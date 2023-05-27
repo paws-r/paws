@@ -21,14 +21,14 @@ NULL
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Key of the object for which the multipart upload was initiated.
@@ -76,14 +76,14 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the multipart upload was initiated.
@@ -175,14 +175,14 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CacheControl Specifies caching behavior along the request/reply chain.
@@ -262,7 +262,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' @param TaggingDirective Specifies whether the object tag-set are copied from the source object
 #' or replaced with tag-set provided in the request.
 #' @param ServerSideEncryption The server-side encryption algorithm used when storing this object in
-#' Amazon S3 (for example, AES256, aws:kms).
+#' Amazon S3 (for example, AES256, `aws:kms`).
 #' @param StorageClass By default, Amazon S3 uses the STANDARD Storage Class to store newly
 #' created objects. The STANDARD storage class provides high durability and
 #' high availability. Depending on performance needs, you can specify a
@@ -272,7 +272,10 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' in the *Amazon S3 User Guide*.
 #' @param WebsiteRedirectLocation If the bucket is configured as a website, redirects requests for this
 #' object to another object in the same bucket or to an external URL.
-#' Amazon S3 stores the value of this header in the object metadata.
+#' Amazon S3 stores the value of this header in the object metadata. This
+#' value is unique to each object and is not copied when using the
+#' `x-amz-metadata-directive` header. Instead, you may opt to provide this
+#' header in combination with the directive.
 #' @param SSECustomerAlgorithm Specifies the algorithm to use to when encrypting the object (for
 #' example, AES256).
 #' @param SSECustomerKey Specifies the customer-provided encryption key for Amazon S3 to use in
@@ -408,14 +411,14 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CacheControl Specifies caching behavior along the request/reply chain.
@@ -442,7 +445,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' @param Key &#91;required&#93; Object key for which the multipart upload is to be initiated.
 #' @param Metadata A map of metadata to store with the object in S3.
 #' @param ServerSideEncryption The server-side encryption algorithm used when storing this object in
-#' Amazon S3 (for example, AES256, aws:kms).
+#' Amazon S3 (for example, AES256, `aws:kms`).
 #' @param StorageClass By default, Amazon S3 uses the STANDARD Storage Class to store newly
 #' created objects. The STANDARD storage class provides high durability and
 #' high availability. Depending on performance needs, you can specify a
@@ -463,10 +466,10 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
-#' @param SSEKMSKeyId Specifies the ID of the symmetric customer managed key to use for object
-#' encryption. All GET and PUT requests for an object protected by Amazon
-#' Web Services KMS will fail if not made via SSL or using SigV4. For
-#' information about configuring using any of the officially supported
+#' @param SSEKMSKeyId Specifies the ID of the symmetric encryption customer managed key to use
+#' for object encryption. All GET and PUT requests for an object protected
+#' by Amazon Web Services KMS will fail if not made via SSL or using SigV4.
+#' For information about configuring using any of the officially supported
 #' Amazon Web Services SDKs and Amazon Web Services CLI, see [Specifying
 #' the Signature Version in Request
 #' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version)
@@ -614,11 +617,12 @@ s3_delete_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$delete_bucket_cors <- s3_delete_bucket_cors
 
-#' This implementation of the DELETE action removes default encryption from
-#' the bucket
+#' This implementation of the DELETE action resets the default encryption
+#' for the bucket as server-side encryption with Amazon S3 managed keys
+#' (SSE-S3)
 #'
 #' @description
-#' This implementation of the DELETE action removes default encryption from the bucket. For information about the Amazon S3 default encryption feature, see [Amazon S3 Default Bucket Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html) in the *Amazon S3 User Guide*.
+#' This implementation of the DELETE action resets the default encryption for the bucket as server-side encryption with Amazon S3 managed keys (SSE-S3). For information about the bucket default encryption feature, see [Amazon S3 Bucket Default Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html) in the *Amazon S3 User Guide*.
 #'
 #' See [https://paws-r.github.io/docs/s3/delete_bucket_encryption.html](https://paws-r.github.io/docs/s3/delete_bucket_encryption.html) for full documentation.
 #'
@@ -755,7 +759,9 @@ s3_delete_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' See [https://paws-r.github.io/docs/s3/delete_bucket_metrics_configuration.html](https://paws-r.github.io/docs/s3/delete_bucket_metrics_configuration.html) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the metrics configuration to delete.
-#' @param Id &#91;required&#93; The ID used to identify the metrics configuration.
+#' @param Id &#91;required&#93; The ID used to identify the metrics configuration. The ID has a 64
+#' character limit and can only contain letters, numbers, periods, dashes,
+#' and underscores.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
@@ -960,14 +966,14 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Key name of the object to delete.
@@ -1022,14 +1028,14 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; The key that identifies the object in the bucket from which to remove
@@ -1078,14 +1084,14 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delete &#91;required&#93; Container for the request.
@@ -1213,6 +1219,16 @@ s3_get_bucket_accelerate_configuration <- function(Bucket, ExpectedBucketOwner =
 #' See [https://paws-r.github.io/docs/s3/get_bucket_acl.html](https://paws-r.github.io/docs/s3/get_bucket_acl.html) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; Specifies the S3 bucket whose ACL is being requested.
+#' 
+#' To use this API operation against an access point, provide the alias of
+#' the access point in place of the bucket name.
+#' 
+#' To use this API operation against an Object Lambda access point, provide
+#' the alias of the Object Lambda access point in place of the bucket name.
+#' If the Object Lambda access point alias in a request is not valid, the
+#' error code `InvalidAccessPointAliasError` is returned. For more
+#' information about `InvalidAccessPointAliasError`, see [List of Error
+#' Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
@@ -1281,6 +1297,16 @@ s3_get_bucket_analytics_configuration <- function(Bucket, Id, ExpectedBucketOwne
 #' See [https://paws-r.github.io/docs/s3/get_bucket_cors.html](https://paws-r.github.io/docs/s3/get_bucket_cors.html) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name for which to get the cors configuration.
+#' 
+#' To use this API operation against an access point, provide the alias of
+#' the access point in place of the bucket name.
+#' 
+#' To use this API operation against an Object Lambda access point, provide
+#' the alias of the Object Lambda access point in place of the bucket name.
+#' If the Object Lambda access point alias in a request is not valid, the
+#' error code `InvalidAccessPointAliasError` is returned. For more
+#' information about `InvalidAccessPointAliasError`, see [List of Error
+#' Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
@@ -1308,7 +1334,7 @@ s3_get_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Returns the default encryption configuration for an Amazon S3 bucket
 #'
 #' @description
-#' Returns the default encryption configuration for an Amazon S3 bucket. If the bucket does not have a default encryption configuration, GetBucketEncryption returns `ServerSideEncryptionConfigurationNotFoundError`.
+#' Returns the default encryption configuration for an Amazon S3 bucket. By default, all buckets have a default encryption configuration that uses server-side encryption with Amazon S3 managed keys (SSE-S3). For information about the bucket default encryption feature, see [Amazon S3 Bucket Default Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html) in the *Amazon S3 User Guide*.
 #'
 #' See [https://paws-r.github.io/docs/s3/get_bucket_encryption.html](https://paws-r.github.io/docs/s3/get_bucket_encryption.html) for full documentation.
 #'
@@ -1478,6 +1504,16 @@ s3_get_bucket_lifecycle_configuration <- function(Bucket, ExpectedBucketOwner = 
 #' See [https://paws-r.github.io/docs/s3/get_bucket_location.html](https://paws-r.github.io/docs/s3/get_bucket_location.html) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to get the location.
+#' 
+#' To use this API operation against an access point, provide the alias of
+#' the access point in place of the bucket name.
+#' 
+#' To use this API operation against an Object Lambda access point, provide
+#' the alias of the Object Lambda access point in place of the bucket name.
+#' If the Object Lambda access point alias in a request is not valid, the
+#' error code `InvalidAccessPointAliasError` is returned. For more
+#' information about `InvalidAccessPointAliasError`, see [List of Error
+#' Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
@@ -1506,7 +1542,7 @@ s3_get_bucket_location <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' view and modify that status
 #'
 #' @description
-#' Returns the logging status of a bucket and the permissions users have to view and modify that status. To use GET, you must be the bucket owner.
+#' Returns the logging status of a bucket and the permissions users have to view and modify that status.
 #'
 #' See [https://paws-r.github.io/docs/s3/get_bucket_logging.html](https://paws-r.github.io/docs/s3/get_bucket_logging.html) for full documentation.
 #'
@@ -1544,7 +1580,9 @@ s3_get_bucket_logging <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' See [https://paws-r.github.io/docs/s3/get_bucket_metrics_configuration.html](https://paws-r.github.io/docs/s3/get_bucket_metrics_configuration.html) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the metrics configuration to retrieve.
-#' @param Id &#91;required&#93; The ID used to identify the metrics configuration.
+#' @param Id &#91;required&#93; The ID used to identify the metrics configuration. The ID has a 64
+#' character limit and can only contain letters, numbers, periods, dashes,
+#' and underscores.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
@@ -1577,6 +1615,16 @@ s3_get_bucket_metrics_configuration <- function(Bucket, Id, ExpectedBucketOwner 
 #' See [https://paws-r.github.io/docs/s3/get_bucket_notification.html](https://paws-r.github.io/docs/s3/get_bucket_notification.html) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to get the notification configuration.
+#' 
+#' To use this API operation against an access point, provide the alias of
+#' the access point in place of the bucket name.
+#' 
+#' To use this API operation against an Object Lambda access point, provide
+#' the alias of the Object Lambda access point in place of the bucket name.
+#' If the Object Lambda access point alias in a request is not valid, the
+#' error code `InvalidAccessPointAliasError` is returned. For more
+#' information about `InvalidAccessPointAliasError`, see [List of Error
+#' Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
@@ -1609,6 +1657,16 @@ s3_get_bucket_notification <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' See [https://paws-r.github.io/docs/s3/get_bucket_notification_configuration.html](https://paws-r.github.io/docs/s3/get_bucket_notification_configuration.html) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to get the notification configuration.
+#' 
+#' To use this API operation against an access point, provide the alias of
+#' the access point in place of the bucket name.
+#' 
+#' To use this API operation against an Object Lambda access point, provide
+#' the alias of the Object Lambda access point in place of the bucket name.
+#' If the Object Lambda access point alias in a request is not valid, the
+#' error code `InvalidAccessPointAliasError` is returned. For more
+#' information about `InvalidAccessPointAliasError`, see [List of Error
+#' Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
@@ -1674,6 +1732,16 @@ s3_get_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NULL)
 #' See [https://paws-r.github.io/docs/s3/get_bucket_policy.html](https://paws-r.github.io/docs/s3/get_bucket_policy.html) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name for which to get the bucket policy.
+#' 
+#' To use this API operation against an access point, provide the alias of
+#' the access point in place of the bucket name.
+#' 
+#' To use this API operation against an Object Lambda access point, provide
+#' the alias of the Object Lambda access point in place of the bucket name.
+#' If the Object Lambda access point alias in a request is not valid, the
+#' error code `InvalidAccessPointAliasError` is returned. For more
+#' information about `InvalidAccessPointAliasError`, see [List of Error
+#' Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
@@ -1914,14 +1982,14 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' When using an Object Lambda access point the hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-object-lambda.*Region*.amazonaws.com.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param IfMatch Return the object only if its entity tag (ETag) is the same as the one
@@ -1935,7 +2003,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @param Key &#91;required&#93; Key of the object to get.
 #' @param Range Downloads the specified range bytes of an object. For more information
 #' about the HTTP Range header, see
-#' <https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35>.
+#' <https://www.rfc-editor.org/rfc/rfc9110.html#name-range>.
 #' 
 #' Amazon S3 doesn't support retrieving multiple ranges of data per `GET`
 #' request.
@@ -2049,14 +2117,14 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; The object key.
@@ -2256,14 +2324,14 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which to get the tagging information.
@@ -2296,7 +2364,7 @@ s3_get_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBucketO
 #' Returns torrent files from a bucket
 #'
 #' @description
-#' Returns torrent files from a bucket. BitTorrent can save you bandwidth when you're distributing large files. For more information about BitTorrent, see [Using BitTorrent with Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/uploading-downloading-objects.html).
+#' Returns torrent files from a bucket. BitTorrent can save you bandwidth when you're distributing large files.
 #'
 #' See [https://paws-r.github.io/docs/s3/get_object_torrent.html](https://paws-r.github.io/docs/s3/get_object_torrent.html) for full documentation.
 #'
@@ -2380,14 +2448,21 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with an Object Lambda access point, provide the
+#' alias of the Object Lambda access point in place of the bucket name. If
+#' the Object Lambda access point alias in a request is not valid, the
+#' error code `InvalidAccessPointAliasError` is returned. For more
+#' information about `InvalidAccessPointAliasError`, see [List of Error
+#' Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
+#' 
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -2433,14 +2508,14 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param IfMatch Return the object only if its entity tag (ETag) is the same as the one
@@ -2452,8 +2527,10 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @param IfUnmodifiedSince Return the object only if it has not been modified since the specified
 #' time; otherwise, return a 412 (precondition failed) error.
 #' @param Key &#91;required&#93; The object key.
-#' @param Range Because [`head_object`][s3_head_object] returns only the metadata for an
-#' object, this parameter has no effect.
+#' @param Range HeadObject returns only the metadata for an object. If the Range is
+#' satisfiable, only the `ContentLength` is affected in the response. If
+#' the Range is not satisfiable, S3 returns a
+#' `416 - Requested Range Not Satisfiable` error.
 #' @param VersionId VersionId used to reference a specific version of the object.
 #' @param SSECustomerAlgorithm Specifies the algorithm to use to when encrypting the object (for
 #' example, AES256).
@@ -2689,14 +2766,14 @@ s3_list_buckets <- function() {
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delimiter Character you use to group keys.
@@ -2740,7 +2817,7 @@ s3_list_buckets <- function() {
 #' @rdname s3_list_multipart_uploads
 s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = NULL, KeyMarker = NULL, MaxUploads = NULL, Prefix = NULL, UploadIdMarker = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
-    name = "ListMultipartUploads",
+    name = "ListMultipartUploadsRequest",
     http_method = "GET",
     http_path = "/{Bucket}?uploads",
     paginator = list()
@@ -2826,14 +2903,14 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delimiter A delimiter is a character you use to group keys.
@@ -2891,14 +2968,14 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delimiter A delimiter is a character you use to group keys.
@@ -2961,14 +3038,14 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the multipart upload was initiated.
@@ -3002,7 +3079,7 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' @rdname s3_list_parts
 s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL, UploadId, RequestPayer = NULL, ExpectedBucketOwner = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL) {
   op <- new_operation(
-    name = "ListParts",
+    name = "ListPartsRequest",
     http_method = "GET",
     http_path = "/{Bucket}/{Key+}",
     paginator = list()
@@ -3216,17 +3293,21 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 .s3$operations$put_bucket_cors <- s3_put_bucket_cors
 
 #' This action uses the encryption subresource to configure default
-#' encryption and Amazon S3 Bucket Key for an existing bucket
+#' encryption and Amazon S3 Bucket Keys for an existing bucket
 #'
 #' @description
-#' This action uses the `encryption` subresource to configure default encryption and Amazon S3 Bucket Key for an existing bucket.
+#' This action uses the `encryption` subresource to configure default encryption and Amazon S3 Bucket Keys for an existing bucket.
 #'
 #' See [https://paws-r.github.io/docs/s3/put_bucket_encryption.html](https://paws-r.github.io/docs/s3/put_bucket_encryption.html) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; Specifies default encryption for a bucket using server-side encryption
-#' with Amazon S3-managed keys (SSE-S3) or customer managed keys (SSE-KMS).
-#' For information about the Amazon S3 default encryption feature, see
-#' [Amazon S3 Default Bucket
+#' with different key options. By default, all buckets have a default
+#' encryption configuration that uses server-side encryption with Amazon S3
+#' managed keys (SSE-S3). You can optionally configure default encryption
+#' for a bucket by using server-side encryption with an Amazon Web Services
+#' KMS key (SSE-KMS) or a customer-provided key (SSE-C). For information
+#' about the bucket default encryption feature, see [Amazon S3 Bucket
+#' Default
 #' Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the server-side encryption
@@ -3490,7 +3571,9 @@ s3_put_bucket_logging <- function(Bucket, BucketLoggingStatus, ContentMD5 = NULL
 #' See [https://paws-r.github.io/docs/s3/put_bucket_metrics_configuration.html](https://paws-r.github.io/docs/s3/put_bucket_metrics_configuration.html) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which the metrics configuration is set.
-#' @param Id &#91;required&#93; The ID used to identify the metrics configuration.
+#' @param Id &#91;required&#93; The ID used to identify the metrics configuration. The ID has a 64
+#' character limit and can only contain letters, numbers, periods, dashes,
+#' and underscores.
 #' @param MetricsConfiguration &#91;required&#93; Specifies the metrics configuration.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
@@ -3569,7 +3652,7 @@ s3_put_bucket_notification <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' Enables notifications of specified events for a bucket
 #'
 #' @description
-#' Enables notifications of specified events for a bucket. For more information about event notifications, see [Configuring Event Notifications](https://docs.aws.amazon.com/AmazonS3/latest/userguide/NotificationHowTo.html).
+#' Enables notifications of specified events for a bucket. For more information about event notifications, see [Configuring Event Notifications](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html).
 #'
 #' See [https://paws-r.github.io/docs/s3/put_bucket_notification_configuration.html](https://paws-r.github.io/docs/s3/put_bucket_notification_configuration.html) for full documentation.
 #'
@@ -3979,30 +4062,29 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CacheControl Can be used to specify caching behavior along the request/reply chain.
 #' For more information, see
 #' [http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9).
 #' @param ContentDisposition Specifies presentational information for the object. For more
-#' information, see
-#' [http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1](https://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1).
+#' information, see <https://www.rfc-editor.org/rfc/rfc6266#section-4>.
 #' @param ContentEncoding Specifies what content encodings have been applied to the object and
 #' thus what decoding mechanisms must be applied to obtain the media-type
 #' referenced by the Content-Type header field. For more information, see
-#' [http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11).
+#' <https://www.rfc-editor.org/rfc/rfc9110.html#field.content-encoding>.
 #' @param ContentLanguage The language the content is in.
 #' @param ContentLength Size of the body in bytes. This parameter is useful when the size of the
 #' body cannot be determined automatically. For more information, see
-#' [http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.13](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.13).
+#' <https://www.rfc-editor.org/rfc/rfc9110.html#name-content-length>.
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the message (without the
 #' headers) according to RFC 1864. This header can be used as a message
 #' integrity check to verify that the data is the same data that was
@@ -4012,7 +4094,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RESTAuthentication.html).
 #' @param ContentType A standard MIME type describing the format of the contents. For more
 #' information, see
-#' [http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17).
+#' <https://www.rfc-editor.org/rfc/rfc9110.html#name-content-type>.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
 #' using the SDK. This header will not provide any additional functionality
 #' if not using the SDK. When sending this header, there must be a
@@ -4049,8 +4131,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Expires The date and time at which the object is no longer cacheable. For more
-#' information, see
-#' [http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21).
+#' information, see <https://www.rfc-editor.org/rfc/rfc7234#section-5.3>.
 #' @param GrantFullControl Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the
 #' object.
 #' 
@@ -4067,7 +4148,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @param Key &#91;required&#93; Object key for which the PUT action was initiated.
 #' @param Metadata A map of metadata to store with the object in S3.
 #' @param ServerSideEncryption The server-side encryption algorithm used when storing this object in
-#' Amazon S3 (for example, AES256, aws:kms).
+#' Amazon S3 (for example, AES256, `aws:kms`).
 #' @param StorageClass By default, Amazon S3 uses the STANDARD Storage Class to store newly
 #' created objects. The STANDARD storage class provides high durability and
 #' high availability. Depending on performance needs, you can specify a
@@ -4106,10 +4187,10 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
-#' @param SSEKMSKeyId If `x-amz-server-side-encryption` is present and has the value of
-#' `aws:kms`, this header specifies the ID of the Amazon Web Services Key
-#' Management Service (Amazon Web Services KMS) symmetrical customer
-#' managed key that was used for the object. If you specify
+#' @param SSEKMSKeyId If `x-amz-server-side-encryption` has a valid value of `aws:kms`, this
+#' header specifies the ID of the Amazon Web Services Key Management
+#' Service (Amazon Web Services KMS) symmetric encryption customer managed
+#' key that was used for the object. If you specify
 #' `x-amz-server-side-encryption:aws:kms`, but do not
 #' provide` x-amz-server-side-encryption-aws-kms-key-id`, Amazon S3 uses
 #' the Amazon Web Services managed key to protect the data. If the KMS key
@@ -4117,7 +4198,10 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' full ARN and not just the ID.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context to use for
 #' object encryption. The value of this header is a base64-encoded UTF-8
-#' string holding JSON with the encryption context key-value pairs.
+#' string holding JSON with the encryption context key-value pairs. This
+#' value is stored as object metadata and automatically gets passed on to
+#' Amazon Web Services KMS for future [`get_object`][s3_get_object] or
+#' [`copy_object`][s3_copy_object] operations on this object.
 #' @param BucketKeyEnabled Specifies whether Amazon S3 should use an S3 Bucket Key for object
 #' encryption with server-side encryption using AWS KMS (SSE-KMS). Setting
 #' this header to `true` causes Amazon S3 to use an S3 Bucket Key for
@@ -4228,14 +4312,14 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param RequestPayer 
@@ -4464,14 +4548,14 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Name of the object key.
@@ -4593,14 +4677,14 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the action was initiated.
@@ -4734,14 +4818,14 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ContentLength Size of the body in bytes. This parameter is useful when the size of the
@@ -4847,14 +4931,14 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with Amazon S3 on Outposts, you must direct
+#' When you use this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
 #' takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When using this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [Using
-#' Amazon S3 on
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CopySource &#91;required&#93; Specifies the source object for the copy operation. You specify the
@@ -4973,9 +5057,8 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' user [`get_object`][s3_get_object] request.
 #' @param Body The object data.
 #' @param StatusCode The integer status code for an HTTP response of a corresponding
-#' [`get_object`][s3_get_object] request.
-#' 
-#' **Status Codes**
+#' [`get_object`][s3_get_object] request. The following is a list of status
+#' codes.
 #' 
 #' -   `200 - OK`
 #' 
@@ -5107,13 +5190,13 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' @param Restore Provides information about object restoration operation and expiration
 #' time of the restored object copy.
 #' @param ServerSideEncryption The server-side encryption algorithm used when storing requested object
-#' in Amazon S3 (for example, AES256, aws:kms).
+#' in Amazon S3 (for example, AES256, `aws:kms`).
 #' @param SSECustomerAlgorithm Encryption algorithm used if server-side encryption with a
 #' customer-provided encryption key was specified for object stored in
 #' Amazon S3.
 #' @param SSEKMSKeyId If present, specifies the ID of the Amazon Web Services Key Management
-#' Service (Amazon Web Services KMS) symmetric customer managed key that
-#' was used for stored in Amazon S3 object.
+#' Service (Amazon Web Services KMS) symmetric encryption customer managed
+#' key that was used for stored in Amazon S3 object.
 #' @param SSECustomerKeyMD5 128-bit MD5 digest of customer-provided encryption key used in Amazon S3
 #' to encrypt data stored in S3. For more information, see [Protecting data
 #' using server-side encryption with customer-provided encryption keys

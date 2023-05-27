@@ -41,7 +41,9 @@ rds_restore_db_instance_to_point_in_time(
   EnableCustomerOwnedIp = NULL,
   CustomIamInstanceProfile = NULL,
   BackupTarget = NULL,
-  NetworkType = NULL
+  NetworkType = NULL,
+  StorageThroughput = NULL,
+  AllocatedStorage = NULL
 )
 }
 \arguments{
@@ -203,10 +205,10 @@ copied.}
 
 \item{StorageType}{Specifies the storage type to be associated with the DB instance.
 
-Valid values: \code{standard | gp2 | io1}
+Valid values: \code{gp2 | gp3 | io1 | standard}
 
-If you specify \code{io1}, you must also include a value for the \code{Iops}
-parameter.
+If you specify \code{io1} or \code{gp3}, you must also include a value for the
+\code{Iops} parameter.
 
 Default: \code{io1} if the \code{Iops} parameter is specified, otherwise \code{gp2}}
 
@@ -316,7 +318,7 @@ This setting doesn't apply to RDS Custom.
 For more information about RDS on Outposts, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on Amazon Web Services Outposts}
 in the \emph{Amazon RDS User Guide}.
 
-For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/#ip-addressing}{Customer-owned IP addresses}
+For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/routing.html#ip-addressing}{Customer-owned IP addresses}
 in the \emph{Amazon Web Services Outposts User Guide}.}
 
 \item{CustomIamInstanceProfile}{The instance profile associated with the underlying Amazon EC2 instance
@@ -358,6 +360,18 @@ IPv4 and the IPv6 protocols (\code{DUAL}).
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
 in the \emph{Amazon RDS User Guide.}}
+
+\item{StorageThroughput}{Specifies the storage throughput value for the DB instance.
+
+This setting doesn't apply to RDS Custom or Amazon Aurora.}
+
+\item{AllocatedStorage}{The amount of storage (in gibibytes) to allocate initially for the DB
+instance. Follow the allocation rules specified in
+\code{\link[=rds_create_db_instance]{create_db_instance}}.
+
+Be sure to allocate enough storage for your new DB instance so that the
+restore operation can succeed. You can also allocate additional storage
+for future growth.}
 }
 \description{
 Restores a DB instance to an arbitrary point in time. You can restore to any point in time before the time identified by the LatestRestorableTime property. You can restore to a point up to the number of days specified by the BackupRetentionPeriod property.

@@ -58,13 +58,13 @@ CreateFileSystemRequest$Encrypted parameter to true.
 EFS accepts only symmetric KMS keys. You cannot use asymmetric KMS keys
 with Amazon EFS file systems.}
 
-\item{ThroughputMode}{Specifies the throughput mode for the file system, either \code{bursting} or
-\code{provisioned}. If you set \code{ThroughputMode} to \code{provisioned}, you must
-also set a value for \code{ProvisionedThroughputInMibps}. After you create
-the file system, you can decrease your file system's throughput in
-Provisioned Throughput mode or change between the throughput modes, as
-long as it’s been more than 24 hours since the last decrease or
-throughput mode change. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput}{Specifying throughput with provisioned mode}
+\item{ThroughputMode}{Specifies the throughput mode for the file system. The mode can be
+\code{bursting}, \code{provisioned}, or \code{elastic}. If you set \code{ThroughputMode} to
+\code{provisioned}, you must also set a value for
+\code{ProvisionedThroughputInMibps}. After you create the file system, you
+can decrease your file system's throughput in Provisioned Throughput
+mode or change between the throughput modes, with certain time
+restrictions. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput}{Specifying throughput with provisioned mode}
 in the \emph{Amazon EFS User Guide}.
 
 Default is \code{bursting}.}
@@ -101,7 +101,7 @@ EFS is available.}
 \item{Tags}{Use to create one or more tags associated with the file system. Each tag
 is a user-defined key-value pair. Name your file system on creation by
 including a \verb{"Key":"Name","Value":"\{value\}"} key-value pair. Each key
-must be unique. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services resources}
+must be unique. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}
 in the \emph{Amazon Web Services General Reference Guide}.}
 }
 \description{

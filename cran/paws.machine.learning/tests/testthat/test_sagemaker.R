@@ -168,6 +168,14 @@ test_that("list_flow_definitions", {
   expect_error(svc$list_flow_definitions(MaxResults = 20), NA)
 })
 
+test_that("list_hubs", {
+  expect_error(svc$list_hubs(), NA)
+})
+
+test_that("list_hubs", {
+  expect_error(svc$list_hubs(MaxResults = 20), NA)
+})
+
 test_that("list_human_task_uis", {
   expect_error(svc$list_human_task_uis(), NA)
 })
@@ -190,6 +198,14 @@ test_that("list_images", {
 
 test_that("list_images", {
   expect_error(svc$list_images(MaxResults = 20), NA)
+})
+
+test_that("list_inference_experiments", {
+  expect_error(svc$list_inference_experiments(), NA)
+})
+
+test_that("list_inference_experiments", {
+  expect_error(svc$list_inference_experiments(MaxResults = 20), NA)
 })
 
 test_that("list_inference_recommendations_jobs", {
@@ -222,6 +238,14 @@ test_that("list_model_bias_job_definitions", {
 
 test_that("list_model_bias_job_definitions", {
   expect_error(svc$list_model_bias_job_definitions(MaxResults = 20), NA)
+})
+
+test_that("list_model_cards", {
+  expect_error(svc$list_model_cards(), NA)
+})
+
+test_that("list_model_cards", {
+  expect_error(svc$list_model_cards(MaxResults = 20), NA)
 })
 
 test_that("list_model_explainability_job_definitions", {
@@ -270,6 +294,14 @@ test_that("list_models", {
 
 test_that("list_models", {
   expect_error(svc$list_models(MaxResults = 20), NA)
+})
+
+test_that("list_monitoring_alert_history", {
+  expect_error(svc$list_monitoring_alert_history(), NA)
+})
+
+test_that("list_monitoring_alert_history", {
+  expect_error(svc$list_monitoring_alert_history(MaxResults = 20), NA)
 })
 
 test_that("list_monitoring_executions", {
@@ -334,6 +366,14 @@ test_that("list_projects", {
 
 test_that("list_projects", {
   expect_error(svc$list_projects(MaxResults = 20), NA)
+})
+
+test_that("list_spaces", {
+  expect_error(svc$list_spaces(), NA)
+})
+
+test_that("list_spaces", {
+  expect_error(svc$list_spaces(MaxResults = 20), NA)
 })
 
 test_that("list_studio_lifecycle_configs", {

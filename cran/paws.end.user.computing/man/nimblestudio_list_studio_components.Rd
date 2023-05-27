@@ -15,7 +15,8 @@ nimblestudio_list_studio_components(
 \arguments{
 \item{maxResults}{The max number of results to return in the response.}
 
-\item{nextToken}{The token to request the next page of results.}
+\item{nextToken}{The token for the next set of results, or null if there are no more
+results.}
 
 \item{states}{Filters the request to studio components that are in one of the given
 states.}
@@ -26,7 +27,7 @@ states.}
 types.}
 }
 \description{
-Lists the StudioComponents in a studio.
+Lists the \code{StudioComponents} in a studio.
 
 See \url{https://paws-r.github.io/docs/nimblestudio/list_studio_components.html} for full documentation.
 }

@@ -9,8 +9,8 @@ iamrolesanywhere_list_subjects(nextToken = NULL, pageSize = NULL)
 }
 \arguments{
 \item{nextToken}{A token that indicates where the output should continue from, if a
-previous operation did not show all results. To get the next results,
-call the operation again with this value.}
+previous request did not show all results. To get the next results, make
+the request again with this value.}
 
 \item{pageSize}{The number of resources in the paginated list.}
 }

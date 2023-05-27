@@ -7,14 +7,14 @@
 connect_update_contact_schedule(InstanceId, ContactId, ScheduledTime)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 
 \item{ContactId}{[required] The identifier of the contact.}
 
 \item{ScheduledTime}{[required] The timestamp, in Unix Epoch seconds format, at which to start running
-the inbound contact flow. The scheduled time cannot be in the past. It
-must be within up to 6 days in future.}
+the inbound flow. The scheduled time cannot be in the past. It must be
+within up to 6 days in future.}
 }
 \description{
 Updates the scheduled time of a task contact that is already scheduled.

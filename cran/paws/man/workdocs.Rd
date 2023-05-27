@@ -28,7 +28,7 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-The WorkDocs API is designed for the following use cases:
+The Amazon WorkDocs API is designed for the following use cases:
 \itemize{
 \item File Migration: File migration applications are supported for users
 who want to migrate their files from an on-premises or off-premises
@@ -37,7 +37,7 @@ structure, as well as allow for basic metadata changes, such as
 modifications to the permissions of files.
 \item Security: Support security applications are supported for users who
 have additional security needs, such as antivirus or data loss
-prevention. The API actions, along with AWS CloudTrail, allow these
+prevention. The API actions, along with CloudTrail, allow these
 applications to detect when changes occur in Amazon WorkDocs. Then,
 the application can take the necessary actions and replace the
 target file. If the target file violates the policy, the application
@@ -45,21 +45,32 @@ can also choose to email the user.
 \item eDiscovery/Analytics: General administrative applications are
 supported, such as eDiscovery and analytics. These applications can
 choose to mimic or record the actions in an Amazon WorkDocs site,
-along with AWS CloudTrail, to replicate data for eDiscovery, backup,
-or analytical applications.
+along with CloudTrail, to replicate data for eDiscovery, backup, or
+analytical applications.
 }
 
 All Amazon WorkDocs API actions are Amazon authenticated and
-certificate-signed. They not only require the use of the AWS SDK, but
-also allow for the exclusive use of IAM users and roles to help
-facilitate access, trust, and permission policies. By creating a role
-and allowing an IAM user to access the Amazon WorkDocs site, the IAM
-user gains full administrative visibility into the entire Amazon
-WorkDocs site (or as set in the IAM policy). This includes, but is not
-limited to, the ability to modify file permissions and upload any file
-to any user. This allows developers to perform the three use cases
+certificate-signed. They not only require the use of the Amazon Web
+Services SDK, but also allow for the exclusive use of IAM users and
+roles to help facilitate access, trust, and permission policies. By
+creating a role and allowing an IAM user to access the Amazon WorkDocs
+site, the IAM user gains full administrative visibility into the entire
+Amazon WorkDocs site (or as set in the IAM policy). This includes, but
+is not limited to, the ability to modify file permissions and upload any
+file to any user. This allows developers to perform the three use cases
 above, as well as give users the ability to grant access on a selective
 basis using the IAM model.
+
+The pricing for Amazon WorkDocs APIs varies depending on the API call
+type for these actions:
+\itemize{
+\item \verb{READ (Get*)}
+\item \verb{WRITE (Activate*, Add*, Create*, Deactivate*, Initiate*, Update*)}
+\item \verb{LIST (Describe*)}
+\item \verb{DELETE*, CANCEL}
+}
+
+For information about Amazon WorkDocs API pricing, see \href{https://aws.amazon.com/workdocs/pricing/}{Amazon WorkDocs Pricing}.
 }
 \section{Service syntax}{
 
@@ -101,6 +112,7 @@ basis using the IAM model.
 \link[paws.end.user.computing:workdocs_delete_comment]{delete_comment} \tab Deletes the specified comment from the document version\cr
 \link[paws.end.user.computing:workdocs_delete_custom_metadata]{delete_custom_metadata} \tab Deletes custom metadata from the specified resource\cr
 \link[paws.end.user.computing:workdocs_delete_document]{delete_document} \tab Permanently deletes the specified document and its associated metadata\cr
+\link[paws.end.user.computing:workdocs_delete_document_version]{delete_document_version} \tab Deletes a specific version of a document\cr
 \link[paws.end.user.computing:workdocs_delete_folder]{delete_folder} \tab Permanently deletes the specified folder and its contents\cr
 \link[paws.end.user.computing:workdocs_delete_folder_contents]{delete_folder_contents} \tab Deletes the contents of the specified folder\cr
 \link[paws.end.user.computing:workdocs_delete_labels]{delete_labels} \tab Deletes the specified list of labels from a resource\cr
@@ -125,6 +137,8 @@ basis using the IAM model.
 \link[paws.end.user.computing:workdocs_initiate_document_version_upload]{initiate_document_version_upload} \tab Creates a new document object and version object\cr
 \link[paws.end.user.computing:workdocs_remove_all_resource_permissions]{remove_all_resource_permissions} \tab Removes all the permissions from the specified resource\cr
 \link[paws.end.user.computing:workdocs_remove_resource_permission]{remove_resource_permission} \tab Removes the permission for the specified principal from the specified resource\cr
+\link[paws.end.user.computing:workdocs_restore_document_versions]{restore_document_versions} \tab Recovers a deleted version of an Amazon WorkDocs document\cr
+\link[paws.end.user.computing:workdocs_search_resources]{search_resources} \tab Searches metadata and the content of folders, documents, document versions, and comments\cr
 \link[paws.end.user.computing:workdocs_update_document]{update_document} \tab Updates the specified attributes of a document\cr
 \link[paws.end.user.computing:workdocs_update_document_version]{update_document_version} \tab Changes the status of the document version to ACTIVE\cr
 \link[paws.end.user.computing:workdocs_update_folder]{update_folder} \tab Updates the specified attributes of the specified folder\cr

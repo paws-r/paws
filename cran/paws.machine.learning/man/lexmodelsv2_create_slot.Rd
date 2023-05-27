@@ -14,7 +14,8 @@ lexmodelsv2_create_slot(
   botVersion,
   localeId,
   intentId,
-  multipleValuesSetting = NULL
+  multipleValuesSetting = NULL,
+  subSlotSetting = NULL
 )
 }
 \arguments{
@@ -53,6 +54,9 @@ this value to \code{true} in any other locale, Amazon Lex throws a
 \code{ValidationException}.
 
 If the \code{multipleValuesSetting} is not set, the default value is \code{false}.}
+
+\item{subSlotSetting}{Specifications for the constituent sub slots and the expression for the
+composite slot.}
 }
 \description{
 Creates a slot in an intent. A slot is a variable needed to fulfill an intent. For example, an \code{OrderPizza} intent might need slots for size, crust, and number of pizzas. For each slot, you define one or more utterances that Amazon Lex uses to elicit a response from the user.

@@ -13,7 +13,7 @@ proton_cancel_service_instance_deployment(serviceInstanceName, serviceName)
 \item{serviceName}{[required] The name of the service with the service instance deployment to cancel.}
 }
 \description{
-Attempts to cancel a service instance deployment on an \code{\link[=proton_update_service_instance]{update_service_instance}} action, if the deployment is \code{IN_PROGRESS}. For more information, see \emph{Update a service instance} in the \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-instance-update.html}{Proton Administrator guide} or the \href{https://docs.aws.amazon.com/proton/latest/userguide/}{Proton User guide}.
+Attempts to cancel a service instance deployment on an \code{\link[=proton_update_service_instance]{update_service_instance}} action, if the deployment is \code{IN_PROGRESS}. For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-instance-update.html}{Update a service instance} in the \emph{Proton User guide}.
 
 See \url{https://paws-r.github.io/docs/proton/cancel_service_instance_deployment.html} for full documentation.
 }

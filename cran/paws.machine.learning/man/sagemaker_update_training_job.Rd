@@ -3,26 +3,29 @@
 \name{sagemaker_update_training_job}
 \alias{sagemaker_update_training_job}
 \title{Update a model training job to request a new Debugger profiling
-configuration}
+configuration or to change warm pool retention length}
 \usage{
 sagemaker_update_training_job(
   TrainingJobName,
   ProfilerConfig = NULL,
-  ProfilerRuleConfigurations = NULL
+  ProfilerRuleConfigurations = NULL,
+  ResourceConfig = NULL
 )
 }
 \arguments{
 \item{TrainingJobName}{[required] The name of a training job to update the Debugger profiling
 configuration.}
 
-\item{ProfilerConfig}{Configuration information for Debugger system monitoring, framework
-profiling, and storage paths.}
+\item{ProfilerConfig}{Configuration information for Amazon SageMaker Debugger system
+monitoring, framework profiling, and storage paths.}
 
-\item{ProfilerRuleConfigurations}{Configuration information for Debugger rules for profiling system and
-framework metrics.}
+\item{ProfilerRuleConfigurations}{Configuration information for Amazon SageMaker Debugger rules for
+profiling system and framework metrics.}
+
+\item{ResourceConfig}{The training job \code{ResourceConfig} to update warm pool retention length.}
 }
 \description{
-Update a model training job to request a new Debugger profiling configuration.
+Update a model training job to request a new Debugger profiling configuration or to change warm pool retention length.
 
 See \url{https://paws-r.github.io/docs/sagemaker/update_training_job.html} for full documentation.
 }

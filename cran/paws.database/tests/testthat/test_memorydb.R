@@ -40,6 +40,22 @@ test_that("describe_parameter_groups", {
   expect_error(svc$describe_parameter_groups(MaxResults = 20), NA)
 })
 
+test_that("describe_reserved_nodes", {
+  expect_error(svc$describe_reserved_nodes(), NA)
+})
+
+test_that("describe_reserved_nodes", {
+  expect_error(svc$describe_reserved_nodes(MaxResults = 20), NA)
+})
+
+test_that("describe_reserved_nodes_offerings", {
+  expect_error(svc$describe_reserved_nodes_offerings(), NA)
+})
+
+test_that("describe_reserved_nodes_offerings", {
+  expect_error(svc$describe_reserved_nodes_offerings(MaxResults = 20), NA)
+})
+
 test_that("describe_service_updates", {
   expect_error(svc$describe_service_updates(), NA)
 })

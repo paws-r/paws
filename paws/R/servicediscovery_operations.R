@@ -12,7 +12,7 @@ NULL
 #' can't be discovered using DNS.
 #' 
 #' For the current quota on the number of namespaces that you can create
-#' using the same account, see [Cloud Map
+#' using the same Amazon Web Services account, see [Cloud Map
 #' quotas](https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html)
 #' in the *Cloud Map Developer Guide*.
 #'
@@ -98,7 +98,7 @@ servicediscovery_create_http_namespace <- function(Name, CreatorRequestId = NULL
 #' private DNS namespace can be discovered using either a
 #' [`discover_instances`][servicediscovery_discover_instances] request or
 #' using DNS. For the current quota on the number of namespaces that you
-#' can create using the same account, see [Cloud Map
+#' can create using the same Amazon Web Services account, see [Cloud Map
 #' quotas](https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html)
 #' in the *Cloud Map Developer Guide*.
 #'
@@ -107,8 +107,8 @@ servicediscovery_create_http_namespace <- function(Name, CreatorRequestId = NULL
 #'   Description, Vpc, Tags, Properties)
 #'
 #' @param Name &#91;required&#93; The name that you want to assign to this namespace. When you create a
-#' private DNS namespace, Cloud Map automatically creates an Amazon Route
-#' 53 private hosted zone that has the same name as the namespace.
+#' private DNS namespace, Cloud Map automatically creates an Amazon
+#' Route 53 private hosted zone that has the same name as the namespace.
 #' @param CreatorRequestId A unique string that identifies the request and that allows failed
 #' [`create_private_dns_namespace`][servicediscovery_create_private_dns_namespace]
 #' requests to be retried without the risk of running the operation twice.
@@ -196,15 +196,23 @@ servicediscovery_create_private_dns_namespace <- function(Name, CreatorRequestId
 #' with a public DNS namespace by using either a
 #' [`discover_instances`][servicediscovery_discover_instances] request or
 #' using DNS. For the current quota on the number of namespaces that you
-#' can create using the same account, see [Cloud Map
+#' can create using the same Amazon Web Services account, see [Cloud Map
 #' quotas](https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html)
 #' in the *Cloud Map Developer Guide*.
+#' 
+#' The
+#' [`create_public_dns_namespace`][servicediscovery_create_public_dns_namespace]
+#' API operation is not supported in the Amazon Web Services GovCloud (US)
+#' Regions.
 #'
 #' @usage
 #' servicediscovery_create_public_dns_namespace(Name, CreatorRequestId,
 #'   Description, Tags, Properties)
 #'
 #' @param Name &#91;required&#93; The name that you want to assign to this namespace.
+#' 
+#' Do not include sensitive information in the name. The name is publicly
+#' available using DNS queries.
 #' @param CreatorRequestId A unique string that identifies the request and that allows failed
 #' [`create_public_dns_namespace`][servicediscovery_create_public_dns_namespace]
 #' requests to be retried without the risk of running the operation twice.
@@ -285,7 +293,7 @@ servicediscovery_create_public_dns_namespace <- function(Name, CreatorRequestId 
 #' following entities:
 #' 
 #' -   For public and private DNS namespaces, one of the following
-#'     combinations of DNS records in Amazon Route 53:
+#'     combinations of DNS records in Amazon Route 53:
 #' 
 #'     -   `A`
 #' 
@@ -315,6 +323,9 @@ servicediscovery_create_public_dns_namespace <- function(Name, CreatorRequestId 
 #'   Tags, Type)
 #'
 #' @param Name &#91;required&#93; The name that you want to assign to the service.
+#' 
+#' Do not include sensitive information in the name if the namespace is
+#' discoverable by public DNS queries.
 #' 
 #' If you want Cloud Map to create an `SRV` record when you register an
 #' instance and you're using a system that requires a specific `SRV`
@@ -346,12 +357,12 @@ servicediscovery_create_public_dns_namespace <- function(Name, CreatorRequestId 
 #' `CreatorRequestId` can be any unique string (for example, a
 #' date/timestamp).
 #' @param Description A description for the service.
-#' @param DnsConfig A complex type that contains information about the Amazon Route 53
+#' @param DnsConfig A complex type that contains information about the Amazon Route 53
 #' records that you want Cloud Map to create when you register an instance.
 #' @param HealthCheckConfig *Public DNS and HTTP namespaces only.* A complex type that contains
-#' settings for an optional Route 53 health check. If you specify settings
+#' settings for an optional Route 53 health check. If you specify settings
 #' for a health check, Cloud Map associates the health check with all the
-#' Route 53 DNS records that you specify in `DnsConfig`.
+#' Route 53 DNS records that you specify in `DnsConfig`.
 #' 
 #' If you specify a health check configuration, you can specify either
 #' `HealthCheckCustomConfig` or `HealthCheckConfig` but not both.
@@ -596,11 +607,11 @@ servicediscovery_delete_service <- function(Id) {
 }
 .servicediscovery$operations$delete_service <- servicediscovery_delete_service
 
-#' Deletes the Amazon Route 53 DNS records and health check, if any, that
+#' Deletes the Amazon Route 53 DNS records and health check, if any, that
 #' Cloud Map created for the specified instance
 #'
 #' @description
-#' Deletes the Amazon Route 53 DNS records and health check, if any, that
+#' Deletes the Amazon Route 53 DNS records and health check, if any, that
 #' Cloud Map created for the specified instance.
 #'
 #' @usage
@@ -1249,11 +1260,11 @@ servicediscovery_list_instances <- function(ServiceId, NextToken = NULL, MaxResu
 .servicediscovery$operations$list_instances <- servicediscovery_list_instances
 
 #' Lists summary information about the namespaces that were created by the
-#' current account
+#' current Amazon Web Services account
 #'
 #' @description
 #' Lists summary information about the namespaces that were created by the
-#' current account.
+#' current Amazon Web Services account.
 #'
 #' @usage
 #' servicediscovery_list_namespaces(NextToken, MaxResults, Filters)
@@ -1320,11 +1331,11 @@ servicediscovery_list_instances <- function(ServiceId, NextToken = NULL, MaxResu
 #'   MaxResults = 123,
 #'   Filters = list(
 #'     list(
-#'       Name = "TYPE",
+#'       Name = "TYPE"|"NAME"|"HTTP_NAME",
 #'       Values = list(
 #'         "string"
 #'       ),
-#'       Condition = "EQ"|"IN"|"BETWEEN"
+#'       Condition = "EQ"|"IN"|"BETWEEN"|"BEGINS_WITH"
 #'     )
 #'   )
 #' )
@@ -1415,7 +1426,7 @@ servicediscovery_list_namespaces <- function(NextToken = NULL, MaxResults = NULL
 #'       Values = list(
 #'         "string"
 #'       ),
-#'       Condition = "EQ"|"IN"|"BETWEEN"
+#'       Condition = "EQ"|"IN"|"BETWEEN"|"BEGINS_WITH"
 #'     )
 #'   )
 #' )
@@ -1544,7 +1555,7 @@ servicediscovery_list_operations <- function(NextToken = NULL, MaxResults = NULL
 #'       Values = list(
 #'         "string"
 #'       ),
-#'       Condition = "EQ"|"IN"|"BETWEEN"
+#'       Condition = "EQ"|"IN"|"BETWEEN"|"BEGINS_WITH"
 #'     )
 #'   )
 #' )
@@ -1708,6 +1719,11 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' 
 #'     The health check isn't deleted immediately, so it will still appear
 #'     for a while if you submit a `ListHealthChecks` request, for example.
+#' 
+#' Do not include sensitive information in `InstanceId` if the namespace is
+#' discoverable by public DNS queries and any `Type` member of `DnsRecord`
+#' for the service contains `SRV` because the `InstanceId` is discoverable
+#' by public DNS queries.
 #' @param CreatorRequestId A unique string that identifies the request and that allows failed
 #' [`register_instance`][servicediscovery_register_instance] requests to be
 #' retried without the risk of executing the operation twice. You must use
@@ -1724,16 +1740,19 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' 
 #' -   For each attribute, the applicable value.
 #' 
+#' Do not include sensitive information in the attributes if the namespace
+#' is discoverable by public DNS queries.
+#' 
 #' Supported attribute keys include the following:
 #' 
 #' **AWS_ALIAS_DNS_NAME**
 #' 
-#' If you want Cloud Map to create an Amazon Route 53 alias record that
+#' If you want Cloud Map to create an Amazon Route 53 alias record that
 #' routes traffic to an Elastic Load Balancing load balancer, specify the
 #' DNS name that's associated with the load balancer. For information about
 #' how to get the DNS name, see "DNSName" in the topic
 #' [AliasTarget](https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html)
-#' in the *Route 53 API Reference*.
+#' in the *Route 53 API Reference*.
 #' 
 #' Note the following:
 #' 
@@ -1744,7 +1763,7 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #'     `RoutingPolicy` must be `WEIGHTED`.
 #' 
 #' -   If the service that's specified by `ServiceId` includes
-#'     `HealthCheckConfig` settings, Cloud Map will create the Route 53
+#'     `HealthCheckConfig` settings, Cloud Map will create the Route 53
 #'     health check, but it doesn't associate the health check with the
 #'     alias record.
 #' 
@@ -1774,7 +1793,7 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' **AWS_INSTANCE_CNAME**
 #' 
 #' If the service configuration includes a `CNAME` record, the domain name
-#' that you want Route 53 to return in response to DNS queries (for
+#' that you want Route 53 to return in response to DNS queries (for
 #' example, `example.com`).
 #' 
 #' This value is required if the service specified by `ServiceId` includes
@@ -1783,7 +1802,7 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' **AWS_INSTANCE_IPV4**
 #' 
 #' If the service configuration includes an `A` record, the IPv4 address
-#' that you want Route 53 to return in response to DNS queries (for
+#' that you want Route 53 to return in response to DNS queries (for
 #' example, `192.0.2.44`).
 #' 
 #' This value is required if the service specified by `ServiceId` includes
@@ -1794,7 +1813,7 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' **AWS_INSTANCE_IPV6**
 #' 
 #' If the service configuration includes an `AAAA` record, the IPv6 address
-#' that you want Route 53 to return in response to DNS queries (for
+#' that you want Route 53 to return in response to DNS queries (for
 #' example, `2001:0db8:85a3:0000:0000:abcd:0001:2345`).
 #' 
 #' This value is required if the service specified by `ServiceId` includes
@@ -1804,14 +1823,14 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' 
 #' **AWS_INSTANCE_PORT**
 #' 
-#' If the service includes an `SRV` record, the value that you want Route
-#' 53 to return for the port.
+#' If the service includes an `SRV` record, the value that you want
+#' Route 53 to return for the port.
 #' 
 #' If the service includes `HealthCheckConfig`, the port on the endpoint
-#' that you want Route 53 to send requests to.
+#' that you want Route 53 to send requests to.
 #' 
 #' This value is required if you specified settings for an `SRV` record or
-#' a Route 53 health check when you created the service.
+#' a Route 53 health check when you created the service.
 #' 
 #' **Custom attributes**
 #' 
@@ -2075,7 +2094,7 @@ servicediscovery_update_http_namespace <- function(Id, UpdaterRequestId = NULL, 
 #' [`update_instance_custom_health_status`][servicediscovery_update_instance_custom_health_status]
 #' to change the status only for custom health checks, which you define
 #' using `HealthCheckCustomConfig` when you create a service. You can't use
-#' it to change the status for Route 53 health checks, which you define
+#' it to change the status for Route 53 health checks, which you define
 #' using `HealthCheckConfig`.
 #' 
 #' For more information, see

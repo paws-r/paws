@@ -9,7 +9,7 @@ single account and Region}
 dynamodb_transact_get_items(TransactItems, ReturnConsumedCapacity = NULL)
 }
 \arguments{
-\item{TransactItems}{[required] An ordered array of up to 25 \code{TransactGetItem} objects, each of which
+\item{TransactItems}{[required] An ordered array of up to 100 \code{TransactGetItem} objects, each of which
 contains a \code{Get} structure.}
 
 \item{ReturnConsumedCapacity}{A value of \code{TOTAL} causes consumed capacity information to be returned,
@@ -17,7 +17,7 @@ and a value of \code{NONE} prevents that information from being returned. No
 other value is valid.}
 }
 \description{
-\code{\link[=dynamodb_transact_get_items]{transact_get_items}} is a synchronous operation that atomically retrieves multiple items from one or more tables (but not from indexes) in a single account and Region. A \code{\link[=dynamodb_transact_get_items]{transact_get_items}} call can contain up to 25 \code{TransactGetItem} objects, each of which contains a \code{Get} structure that specifies an item to retrieve from a table in the account and Region. A call to \code{\link[=dynamodb_transact_get_items]{transact_get_items}} cannot retrieve items from tables in more than one Amazon Web Services account or Region. The aggregate size of the items in the transaction cannot exceed 4 MB.
+\code{\link[=dynamodb_transact_get_items]{transact_get_items}} is a synchronous operation that atomically retrieves multiple items from one or more tables (but not from indexes) in a single account and Region. A \code{\link[=dynamodb_transact_get_items]{transact_get_items}} call can contain up to 100 \code{TransactGetItem} objects, each of which contains a \code{Get} structure that specifies an item to retrieve from a table in the account and Region. A call to \code{\link[=dynamodb_transact_get_items]{transact_get_items}} cannot retrieve items from tables in more than one Amazon Web Services account or Region. The aggregate size of the items in the transaction cannot exceed 4 MB.
 
 See \url{https://paws-r.github.io/docs/dynamodb/transact_get_items.html} for full documentation.
 }

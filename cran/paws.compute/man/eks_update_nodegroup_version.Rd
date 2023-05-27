@@ -33,11 +33,17 @@ in the \emph{Amazon EKS User Guide}.}
 
 \item{releaseVersion}{The AMI version of the Amazon EKS optimized AMI to use for the update.
 By default, the latest available AMI version for the node group's
-Kubernetes version is used. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html}{Amazon EKS optimized Amazon Linux 2 AMI versions}
-in the \emph{Amazon EKS User Guide}. If you specify \code{launchTemplate}, and
-your launch template uses a custom AMI, then don't specify
-\code{releaseVersion}, or the node group update will fail. For more
-information about using launch templates with Amazon EKS, see \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}
+Kubernetes version is used. For information about Linux versions, see
+\href{https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html}{Amazon EKS optimized Amazon Linux AMI versions}
+in the \emph{Amazon EKS User Guide}. Amazon EKS managed node groups support
+the November 2022 and later releases of the Windows AMIs. For
+information about Windows versions, see \href{https://docs.aws.amazon.com/eks/latest/userguide/eks-ami-versions-windows.html}{Amazon EKS optimized Windows AMI versions}
+in the \emph{Amazon EKS User Guide}.
+
+If you specify \code{launchTemplate}, and your launch template uses a custom
+AMI, then don't specify \code{releaseVersion}, or the node group update will
+fail. For more information about using launch templates with Amazon EKS,
+see \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}
 in the \emph{Amazon EKS User Guide}.}
 
 \item{launchTemplate}{An object representing a node group's launch template specification. You

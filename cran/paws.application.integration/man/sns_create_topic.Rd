@@ -4,7 +4,12 @@
 \alias{sns_create_topic}
 \title{Creates a topic to which notifications can be published}
 \usage{
-sns_create_topic(Name, Attributes = NULL, Tags = NULL)
+sns_create_topic(
+  Name,
+  Attributes = NULL,
+  Tags = NULL,
+  DataProtectionPolicy = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the topic you want to create.
@@ -29,6 +34,17 @@ subscriptions.
 \item \code{FifoTopic} – Set to true to create a FIFO topic.
 \item \code{Policy} – The policy that defines who can access your topic. By
 default, only the topic owner can publish or subscribe to the topic.
+\item \code{SignatureVersion} – The signature version corresponds to the
+hashing algorithm used while creating the signature of the
+notifications, subscription confirmations, or unsubscribe
+confirmation messages sent by Amazon SNS. By default,
+\code{SignatureVersion} is set to \code{1}.
+\item \code{TracingConfig} – Tracing mode of an Amazon SNS topic. By default
+\code{TracingConfig} is set to \code{PassThrough}, and the topic passes
+through the tracing header it receives from an Amazon SNS publisher
+to its subscriptions. If set to \code{Active}, Amazon SNS will vend X-Ray
+segment data to topic owner account if the sampled flag in the
+tracing header is true. This is only supported on standard topics.
 }
 
 The following attribute applies only to \href{https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html}{server-side encryption}:
@@ -66,6 +82,14 @@ value for the \code{MessageDeduplicationId} parameter for the
 
 To be able to tag a topic on creation, you must have the
 \code{sns:CreateTopic} and \code{sns:TagResource} permissions.}
+
+\item{DataProtectionPolicy}{The body of the policy document you want to use for this topic.
+
+You can only add one policy per topic.
+
+The policy must be in JSON string format.
+
+Length Constraints: Maximum length of 30,720.}
 }
 \description{
 Creates a topic to which notifications can be published. Users can create at most 100,000 standard topics (at most 1,000 FIFO topics). For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html}{Creating an Amazon SNS topic} in the \emph{Amazon SNS Developer Guide}. This action is idempotent, so if the requester already owns a topic with the specified name, that topic's ARN is returned without creating a new topic.

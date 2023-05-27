@@ -11,7 +11,7 @@ athena_get_query_runtime_statistics(QueryExecutionId)
 \item{QueryExecutionId}{[required] The unique ID of the query execution.}
 }
 \description{
-Returns query execution runtime statistics related to a single execution of a query if you have access to the workgroup in which the query ran. The query execution runtime statistics is returned only when QueryExecutionStatus$State is in a SUCCEEDED or FAILED state.
+Returns query execution runtime statistics related to a single execution of a query if you have access to the workgroup in which the query ran. Query execution runtime statistics are returned only when QueryExecutionStatus$State is in a SUCCEEDED or FAILED state. Stage-level input and output row count and data size statistics are not shown when a query has row-level filters defined in Lake Formation.
 
 See \url{https://paws-r.github.io/docs/athena/get_query_runtime_statistics.html} for full documentation.
 }

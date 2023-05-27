@@ -39,7 +39,8 @@ Valid values for \code{MatchOptions} for \code{CostCategories} and \code{Tags} a
 and \code{CASE_SENSITIVE}.}
 
 \item{Metrics}{[required] Which metrics are returned in the query. For more information about
-blended and unblended rates, see \href{https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/}{Why does the "blended" annotation appear on some line items in my bill?}.
+blended and unblended rates, see Why does the "blended" annotation
+appear on some line items in my bill?.
 
 Valid values are \code{AmortizedCost}, \code{BlendedCost}, \code{NetAmortizedCost},
 \code{NetUnblendedCost}, \code{NormalizedUsageAmount}, \code{UnblendedCost}, and

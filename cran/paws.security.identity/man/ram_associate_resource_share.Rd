@@ -13,10 +13,10 @@ ram_associate_resource_share(
 )
 }
 \arguments{
-\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
 of the resource share that you want to add principals or resources to.}
 
-\item{resourceArns}{Specifies a list of \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+\item{resourceArns}{Specifies a list of \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 of the resources that you want to share. This can be \code{null} if you want
 to add only principals.}
 
@@ -30,7 +30,7 @@ by the RAM permissions that you associate with the resource share. See
 You can include the following values:
 \itemize{
 \item An Amazon Web Services account ID, for example: \code{123456789012}
-\item An \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+\item An \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
 of an organization in Organizations, for example:
 \verb{organizations::123456789012:organization/o-exampleorgid}
 \item An ARN of an organizational unit (OU) in Organizations, for example:
@@ -52,7 +52,11 @@ also pass the same value for all other parameters. We recommend that you
 use a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID type of value.}.
 
 If you don't provide this value, then Amazon Web Services generates a
-random one for you.}
+random one for you.
+
+If you retry the operation with the same \code{ClientToken}, but with
+different parameters, the retry fails with an
+\code{IdempotentParameterMismatch} error.}
 }
 \description{
 Adds the specified list of principals and list of resources to a resource share. Principals that already have access to this resource share immediately receive access to the added resources. Newly added principals immediately receive access to the resources shared in this resource share.

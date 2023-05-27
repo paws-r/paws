@@ -9,9 +9,9 @@ codepipeline_acknowledge_third_party_job(jobId, nonce, clientToken)
 \arguments{
 \item{jobId}{[required] The unique system-generated ID of the job.}
 
-\item{nonce}{[required] A system-generated random number that AWS CodePipeline uses to ensure
-that the job is being worked on by only one job worker. Get this number
-from the response to a
+\item{nonce}{[required] A system-generated random number that CodePipeline uses to ensure that
+the job is being worked on by only one job worker. Get this number from
+the response to a
 \code{\link[=codepipeline_get_third_party_job_details]{get_third_party_job_details}}
 request.}
 

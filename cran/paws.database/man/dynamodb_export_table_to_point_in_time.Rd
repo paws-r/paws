@@ -35,7 +35,7 @@ idempotent.
 
 If you submit a request with the same client token but a change in other
 parameters within the 8-hour idempotency window, DynamoDB returns an
-\code{IdempotentParameterMismatch} exception.}
+\code{ImportConflictException}.}
 
 \item{S3Bucket}{[required] The name of the Amazon S3 bucket to export the snapshot to.}
 

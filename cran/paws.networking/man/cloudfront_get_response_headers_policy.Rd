@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudfront_operations.R
 \name{cloudfront_get_response_headers_policy}
 \alias{cloudfront_get_response_headers_policy}
-\title{Gets a response headers policy, including metadata (the policy’s
+\title{Gets a response headers policy, including metadata (the policy's
 identifier and the date and time when the policy was last modified)}
 \usage{
 cloudfront_get_response_headers_policy(Id)
@@ -10,8 +10,8 @@ cloudfront_get_response_headers_policy(Id)
 \arguments{
 \item{Id}{[required] The identifier for the response headers policy.
 
-If the response headers policy is attached to a distribution’s cache
-behavior, you can get the policy’s identifier using
+If the response headers policy is attached to a distribution's cache
+behavior, you can get the policy's identifier using
 \code{\link[=cloudfront_list_distributions]{list_distributions}} or
 \code{\link[=cloudfront_get_distribution]{get_distribution}}. If the response
 headers policy is not attached to a cache behavior, you can get the
@@ -19,7 +19,7 @@ identifier using
 \code{\link[=cloudfront_list_response_headers_policies]{list_response_headers_policies}}.}
 }
 \description{
-Gets a response headers policy, including metadata (the policy’s identifier and the date and time when the policy was last modified).
+Gets a response headers policy, including metadata (the policy's identifier and the date and time when the policy was last modified).
 
 See \url{https://paws-r.github.io/docs/cloudfront/get_response_headers_policy.html} for full documentation.
 }

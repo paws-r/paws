@@ -96,7 +96,7 @@ NULL
 #'  \link[=iam_delete_group]{delete_group} \tab Deletes the specified IAM group\cr
 #'  \link[=iam_delete_group_policy]{delete_group_policy} \tab Deletes the specified inline policy that is embedded in the specified IAM group\cr
 #'  \link[=iam_delete_instance_profile]{delete_instance_profile} \tab Deletes the specified instance profile\cr
-#'  \link[=iam_delete_login_profile]{delete_login_profile} \tab Deletes the password for the specified IAM user, which terminates the user's ability to access Amazon Web Services services through the Amazon Web Services Management Console\cr
+#'  \link[=iam_delete_login_profile]{delete_login_profile} \tab Deletes the password for the specified IAM user, For more information, see Managing passwords for IAM users\cr
 #'  \link[=iam_delete_open_id_connect_provider]{delete_open_id_connect_provider} \tab Deletes an OpenID Connect identity provider (IdP) resource object in IAM\cr
 #'  \link[=iam_delete_policy]{delete_policy} \tab Deletes the specified managed policy\cr
 #'  \link[=iam_delete_policy_version]{delete_policy_version} \tab Deletes the specified version from the specified managed policy\cr
@@ -249,7 +249,7 @@ iam <- function(config = list()) {
 
 .iam$metadata <- list(
   service_name = "iam",
-  endpoints = list("*" = list(endpoint = "https://iam.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "iam.cn-north-1.amazonaws.com.cn", global = TRUE), "us-gov-*" = list(endpoint = "iam.us-gov.amazonaws.com", global = TRUE), "us-iso-*" = list(endpoint = "iam.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "iam.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "https://iam.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "iam.cn-north-1.amazonaws.com.cn", global = TRUE), "us-iso-*" = list(endpoint = "iam.us-iso-east-1.c2s.ic.gov", global = TRUE), "us-gov-*" = list(endpoint = "iam.us-gov.amazonaws.com", global = TRUE), "us-isob-*" = list(endpoint = "iam.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "IAM",
   api_version = "2010-05-08",
   signing_name = "iam",

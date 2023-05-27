@@ -13,7 +13,8 @@ acm_request_certificate(
   DomainValidationOptions = NULL,
   Options = NULL,
   CertificateAuthorityArn = NULL,
-  Tags = NULL
+  Tags = NULL,
+  KeyAlgorithm = NULL
 )
 }
 \arguments{
@@ -23,9 +24,11 @@ wildcard certificate that protects several sites in the same domain. For
 example, *.example.com protects www.example.com, site.example.com, and
 images.example.com.
 
-The first domain name you enter cannot exceed 64 octets, including
-periods. Each subsequent Subject Alternative Name (SAN), however, can be
-up to 253 octets in length.}
+In compliance with \href{https://datatracker.ietf.org/doc/html/rfc5280}{RFC 5280}, the length of the
+domain name (technically, the Common Name) that you provide cannot
+exceed 64 octets (characters), including periods. To add a longer domain
+name, specify it in the Subject Alternative Name field, which supports
+names up to 253 octets in length.}
 
 \item{ValidationMethod}{The method you want to use if you are requesting a public certificate to
 validate that you own or control domain. You can \href{https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html}{validate with DNS}
@@ -80,12 +83,25 @@ see \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.htm
 that will be used to issue the certificate. If you do not provide an ARN
 and you are trying to request a private certificate, ACM will attempt to
 issue a public certificate. For more information about private CAs, see
-the \href{https://docs.aws.amazon.com/privateca/latest/userguide/PcaWelcome.html}{Amazon Web Services Certificate Manager Private Certificate Authority (PCA)}
+the \href{https://docs.aws.amazon.com/privateca/latest/userguide/PcaWelcome.html}{Amazon Web Services Private Certificate Authority}
 user guide. The ARN must have the following form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012}}
 
 \item{Tags}{One or more resource tags to associate with the certificate.}
+
+\item{KeyAlgorithm}{Specifies the algorithm of the public and private key pair that your
+certificate uses to encrypt data. RSA is the default key algorithm for
+ACM certificates. Elliptic Curve Digital Signature Algorithm (ECDSA)
+keys are smaller, offering security comparable to RSA keys but with
+greater computing efficiency. However, ECDSA is not supported by all
+network clients. Some AWS services may require RSA keys, or only support
+ECDSA keys of a particular size, while others allow the use of either
+RSA and ECDSA keys to ensure that compatibility is not broken. Check the
+requirements for the AWS service where you plan to deploy your
+certificate.
+
+Default: RSA_2048}
 }
 \description{
 Requests an ACM certificate for use with other Amazon Web Services services. To request an ACM certificate, you must specify a fully qualified domain name (FQDN) in the \code{DomainName} parameter. You can also specify additional FQDNs in the \code{SubjectAlternativeNames} parameter.

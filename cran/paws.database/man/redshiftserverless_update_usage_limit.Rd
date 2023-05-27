@@ -11,7 +11,10 @@ redshiftserverless_update_usage_limit(
 )
 }
 \arguments{
-\item{amount}{The new limit amount. For more information about this parameter.}
+\item{amount}{The new limit amount. If time-based, this amount is in Redshift
+Processing Units (RPU) consumed per hour. If data-based, this amount is
+in terabytes (TB) of data transferred between Regions in cross-account
+sharing. The value must be a positive number.}
 
 \item{breachAction}{The new action that Amazon Redshift Serverless takes when the limit is
 reached.}

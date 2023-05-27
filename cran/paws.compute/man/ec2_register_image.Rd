@@ -20,7 +20,8 @@ ec2_register_image(
   VirtualizationType = NULL,
   BootMode = NULL,
   TpmSupport = NULL,
-  UefiData = NULL
+  UefiData = NULL,
+  ImdsSupport = NULL
 )
 }
 \arguments{
@@ -44,7 +45,7 @@ If you create an AMI on an Outpost, then all backing snapshots must be
 on the same Outpost or in the Region of that Outpost. AMIs on an Outpost
 that include local snapshots can be used to launch instances on the same
 Outpost only. For more information, \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#ami}{Amazon EBS local snapshots on Outposts}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+in the \emph{Amazon EC2 User Guide}.}
 
 \item{Description}{A description for your AMI.}
 
@@ -68,8 +69,14 @@ brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-),
 single quotes ('), at-signs (@), or underscores(_)}
 
 \item{BillingProducts}{The billing product codes. Your account must be authorized to specify
-billing product codes. Otherwise, you can use the Amazon Web Services
-Marketplace to bill for the use of an AMI.}
+billing product codes.
+
+If your account is not authorized to specify billing product codes, you
+can publish AMIs that include billable software and list them on the
+Amazon Web Services Marketplace. You must first register as a seller on
+the Amazon Web Services Marketplace. For more information, see \href{https://docs.aws.amazon.com/marketplace/latest/userguide/user-guide-for-sellers.html}{Getting started as a seller}
+and \href{https://docs.aws.amazon.com/marketplace/latest/userguide/ami-products.html}{AMI-based products}
+in the \emph{Amazon Web Services Marketplace Seller Guide}.}
 
 \item{RamdiskId}{The ID of the RAM disk.}
 
@@ -88,23 +95,40 @@ a PV AMI can make instances launched from the AMI unreachable.}
 
 Default: \code{paravirtual}}
 
-\item{BootMode}{The boot mode of the AMI. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html}{Boot modes}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+\item{BootMode}{The boot mode of the AMI. A value of \code{uefi-preferred} indicates that the
+AMI supports both UEFI and Legacy BIOS.
+
+The operating system contained in the AMI must be configured to support
+the specified boot mode.
+
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html}{Boot modes}
+in the \emph{Amazon EC2 User Guide}.}
 
 \item{TpmSupport}{Set to \code{v2.0} to enable Trusted Platform Module (TPM) support. For more
 information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html}{NitroTPM}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+in the \emph{Amazon EC2 User Guide}.}
 
 \item{UefiData}{Base64 representation of the non-volatile UEFI variable store. To
 retrieve the UEFI data, use the
 \code{\link[=ec2_get_instance_uefi_data]{get_instance_uefi_data}} command. You can
 inspect and modify the UEFI data by using the \href{https://github.com/awslabs/python-uefivars}{python-uefivars tool} on GitHub. For more
 information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/uefi-secure-boot.html}{UEFI Secure Boot}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+in the \emph{Amazon EC2 User Guide}.}
+
+\item{ImdsSupport}{Set to \code{v2.0} to indicate that IMDSv2 is specified in the AMI. Instances
+launched from this AMI will have \code{HttpTokens} automatically set to
+\code{required} so that, by default, the instance requires that IMDSv2 is
+used when requesting instance metadata. In addition,
+\code{HttpPutResponseHopLimit} is set to \code{2}. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-IMDS-new-instances.html#configure-IMDS-new-instances-ami-configuration}{Configure the AMI}
+in the \emph{Amazon EC2 User Guide}.
+
+If you set the value to \code{v2.0}, make sure that your AMI software can
+support IMDSv2.}
 }
 \description{
-Registers an AMI. When you're creating an AMI, this is the final step you must complete before you can launch an instance from the AMI. For more information about creating AMIs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html#creating-an-ami}{Creating your own AMIs} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Registers an AMI. When you're creating an AMI, this is the final step you must complete before you can launch an instance from the AMI. For more information about creating AMIs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html#creating-an-ami}{Create your own AMI} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 See \url{https://paws-r.github.io/docs/ec2/register_image.html} for full documentation.
 }

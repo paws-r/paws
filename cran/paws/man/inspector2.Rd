@@ -62,6 +62,8 @@ and Amazon ECR environments.
 \link[paws.security.identity:inspector2_associate_member]{associate_member} \tab Associates an Amazon Web Services account with an Amazon Inspector delegated administrator\cr
 \link[paws.security.identity:inspector2_batch_get_account_status]{batch_get_account_status} \tab Retrieves the Amazon Inspector status of multiple Amazon Web Services accounts within your environment\cr
 \link[paws.security.identity:inspector2_batch_get_free_trial_info]{batch_get_free_trial_info} \tab Gets free trial status for multiple Amazon Web Services accounts\cr
+\link[paws.security.identity:inspector2_batch_get_member_ec_2_deep_inspection_status]{batch_get_member_ec_2_deep_inspection_status} \tab Retrieves Amazon Inspector deep inspection activation status of multiple member accounts within your organization\cr
+\link[paws.security.identity:inspector2_batch_update_member_ec_2_deep_inspection_status]{batch_update_member_ec_2_deep_inspection_status} \tab Activates or deactivates Amazon Inspector deep inspection for the provided member accounts in your organization\cr
 \link[paws.security.identity:inspector2_cancel_findings_report]{cancel_findings_report} \tab Cancels the given findings report\cr
 \link[paws.security.identity:inspector2_create_filter]{create_filter} \tab Creates a filter resource using specified filter criteria\cr
 \link[paws.security.identity:inspector2_create_findings_report]{create_findings_report} \tab Creates a finding report\cr
@@ -74,6 +76,7 @@ and Amazon ECR environments.
 \link[paws.security.identity:inspector2_enable_delegated_admin_account]{enable_delegated_admin_account} \tab Enables the Amazon Inspector delegated administrator for your Organizations organization\cr
 \link[paws.security.identity:inspector2_get_configuration]{get_configuration} \tab Retrieves setting configurations for Inspector scans\cr
 \link[paws.security.identity:inspector2_get_delegated_admin_account]{get_delegated_admin_account} \tab Retrieves information about the Amazon Inspector delegated administrator for your organization\cr
+\link[paws.security.identity:inspector2_get_ec_2_deep_inspection_configuration]{get_ec_2_deep_inspection_configuration} \tab Retrieves the activation status of Amazon Inspector deep inspection and custom paths associated with your account\cr
 \link[paws.security.identity:inspector2_get_findings_report_status]{get_findings_report_status} \tab Gets the status of a findings report\cr
 \link[paws.security.identity:inspector2_get_member]{get_member} \tab Gets member information for your organization\cr
 \link[paws.security.identity:inspector2_list_account_permissions]{list_account_permissions} \tab Lists the permissions an account has to configure Amazon Inspector\cr
@@ -86,11 +89,14 @@ and Amazon ECR environments.
 \link[paws.security.identity:inspector2_list_members]{list_members} \tab List members associated with the Amazon Inspector delegated administrator for your organization\cr
 \link[paws.security.identity:inspector2_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags attached to a given resource\cr
 \link[paws.security.identity:inspector2_list_usage_totals]{list_usage_totals} \tab Lists the Amazon Inspector usage totals over the last 30 days\cr
+\link[paws.security.identity:inspector2_search_vulnerabilities]{search_vulnerabilities} \tab Lists Amazon Inspector coverage details for a specific vulnerability\cr
 \link[paws.security.identity:inspector2_tag_resource]{tag_resource} \tab Adds tags to a resource\cr
 \link[paws.security.identity:inspector2_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
 \link[paws.security.identity:inspector2_update_configuration]{update_configuration} \tab Updates setting configurations for your Amazon Inspector account\cr
+\link[paws.security.identity:inspector2_update_ec_2_deep_inspection_configuration]{update_ec_2_deep_inspection_configuration} \tab Activates, deactivates Amazon Inspector deep inspection, or updates custom paths for your account\cr
 \link[paws.security.identity:inspector2_update_filter]{update_filter} \tab Specifies the action that is to be applied to the findings that match the filter\cr
-\link[paws.security.identity:inspector2_update_organization_configuration]{update_organization_configuration} \tab Updates the configurations for your Amazon Inspector organization
+\link[paws.security.identity:inspector2_update_organization_configuration]{update_organization_configuration} \tab Updates the configurations for your Amazon Inspector organization\cr
+\link[paws.security.identity:inspector2_update_org_ec_2_deep_inspection_configuration]{update_org_ec_2_deep_inspection_configuration} \tab Updates the Amazon Inspector deep inspection custom paths for your organization
 }
 }
 

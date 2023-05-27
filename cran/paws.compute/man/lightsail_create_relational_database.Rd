@@ -137,8 +137,7 @@ new database if automated backups are enabled.
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. For more information about the
 preferred backup window time blocks for each region, see the \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow}{Working With Backups}
-guide in the Amazon Relational Database Service (Amazon RDS)
-documentation.
+guide in the Amazon Relational Database Service documentation.
 
 Constraints:
 \itemize{

@@ -37,7 +37,7 @@ and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.htm
 in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
-Generates a hash-based message authentication code (HMAC) for a message using an HMAC KMS key and a MAC algorithm that the key supports. The MAC algorithm computes the HMAC for the message and the key as described in \href{https://datatracker.ietf.org/doc/html/rfc2104}{RFC 2104}.
+Generates a hash-based message authentication code (HMAC) for a message using an HMAC KMS key and a MAC algorithm that the key supports. HMAC KMS keys and the HMAC algorithms that KMS uses conform to industry standards defined in \href{https://datatracker.ietf.org/doc/html/rfc2104}{RFC 2104}.
 
 See \url{https://paws-r.github.io/docs/kms/generate_mac.html} for full documentation.
 }

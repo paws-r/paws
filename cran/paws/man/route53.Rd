@@ -28,8 +28,21 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon Route 53 is a highly available and scalable Domain Name System
+Amazon Route 53 is a highly available and scalable Domain Name System
 (DNS) web service.
+
+You can use Route 53 to:
+\itemize{
+\item Register domain names.
+
+For more information, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-domain-registration.html}{How domain registration works}.
+\item Route internet traffic to the resources for your domain
+
+For more information, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html}{How internet traffic is routed to your website or web application}.
+\item Check the health of your resources.
+
+For more information, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-health-checks.html}{How Route 53 checks the health of your resources}.
+}
 }
 \section{Service syntax}{
 

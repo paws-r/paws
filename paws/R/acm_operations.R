@@ -38,7 +38,7 @@ NULL
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' @param Tags &#91;required&#93; The key-value pair that defines the tag. The tag value is optional.
 #'
 #' @return
@@ -103,7 +103,7 @@ acm_add_tags_to_certificate <- function(CertificateArn, Tags) {
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @return
 #' An empty list.
@@ -141,6 +141,10 @@ acm_delete_certificate <- function(CertificateArn) {
 #'
 #' @description
 #' Returns detailed metadata about the specified ACM certificate.
+#' 
+#' If you have just created a certificate using the
+#' [`request_certificate`][acm_request_certificate] action, there is a
+#' delay of several seconds before you can retrieve information about it.
 #'
 #' @usage
 #' acm_describe_certificate(CertificateArn)
@@ -151,7 +155,7 @@ acm_delete_certificate <- function(CertificateArn) {
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -302,9 +306,15 @@ acm_describe_certificate <- function(CertificateArn) {
 #' the form:
 #' 
 #' `arn:aws:acm:region:account:certificate/12345678-1234-1234-1234-123456789012`
-#' @param Passphrase &#91;required&#93; Passphrase to associate with the encrypted exported private key. If you
-#' want to later decrypt the private key, you must have the passphrase. You
-#' can use the following OpenSSL command to decrypt a private key:
+#' @param Passphrase &#91;required&#93; Passphrase to associate with the encrypted exported private key.
+#' 
+#' When creating your passphrase, you can use any ASCII character except
+#' #, $, or %.
+#' 
+#' If you want to later decrypt the private key, you must have the
+#' passphrase. You can use the following OpenSSL command to decrypt a
+#' private key. After entering the command, you are prompted for the
+#' passphrase.
 #' 
 #' `openssl rsa -in encrypted_key.pem -out decrypted_key.pem`
 #'
@@ -412,7 +422,7 @@ acm_get_account_configuration <- function() {
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -452,12 +462,12 @@ acm_get_certificate <- function(CertificateArn) {
 }
 .acm$operations$get_certificate <- acm_get_certificate
 
-#' Imports a certificate into Amazon Web Services Certificate Manager (ACM)
-#' to use with services that are integrated with ACM
+#' Imports a certificate into Certificate Manager (ACM) to use with
+#' services that are integrated with ACM
 #'
 #' @description
-#' Imports a certificate into Amazon Web Services Certificate Manager (ACM)
-#' to use with services that are integrated with ACM. Note that [integrated
+#' Imports a certificate into Certificate Manager (ACM) to use with
+#' services that are integrated with ACM. Note that [integrated
 #' services](https://docs.aws.amazon.com/acm/latest/userguide/acm-services.html)
 #' allow only certificate types and keys they support to be associated with
 #' their resources. Further, their support differs depending on whether the
@@ -465,7 +475,7 @@ acm_get_certificate <- function(CertificateArn) {
 #' the documentation for each service. For more information about importing
 #' certificates into ACM, see [Importing
 #' Certificates](https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html)
-#' in the *Amazon Web Services Certificate Manager User Guide*.
+#' in the *Certificate Manager User Guide*.
 #' 
 #' ACM does not provide [managed
 #' renewal](https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html)
@@ -517,7 +527,7 @@ acm_get_certificate <- function(CertificateArn) {
 #'     type is RSA, then the certificate key type must also be RSA.
 #' 
 #' This operation returns the [Amazon Resource Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the imported certificate.
 #'
 #' @usage
@@ -525,7 +535,7 @@ acm_get_certificate <- function(CertificateArn) {
 #'   CertificateChain, Tags)
 #'
 #' @param CertificateArn The [Amazon Resource Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of an imported certificate to replace. To import a new certificate, omit
 #' this field.
 #' @param Certificate &#91;required&#93; The certificate to import.
@@ -591,7 +601,7 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
 #'
 #' @usage
 #' acm_list_certificates(CertificateStatuses, Includes, NextToken,
-#'   MaxItems)
+#'   MaxItems, SortBy, SortOrder)
 #'
 #' @param CertificateStatuses Filter the certificate list by status value.
 #' @param Includes Filter the certificate list. For more information, see the Filters
@@ -604,6 +614,10 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
 #' number you specify, the `NextToken` element is sent in the response. Use
 #' this `NextToken` value in a subsequent request to retrieve additional
 #' items.
+#' @param SortBy Specifies the field to sort results by. If you specify `SortBy`, you
+#' must also specify `SortOrder`.
+#' @param SortOrder Specifies the order of sorted results. If you specify `SortOrder`, you
+#' must also specify `SortBy`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -613,7 +627,41 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
 #'   CertificateSummaryList = list(
 #'     list(
 #'       CertificateArn = "string",
-#'       DomainName = "string"
+#'       DomainName = "string",
+#'       SubjectAlternativeNameSummaries = list(
+#'         "string"
+#'       ),
+#'       HasAdditionalSubjectAlternativeNames = TRUE|FALSE,
+#'       Status = "PENDING_VALIDATION"|"ISSUED"|"INACTIVE"|"EXPIRED"|"VALIDATION_TIMED_OUT"|"REVOKED"|"FAILED",
+#'       Type = "IMPORTED"|"AMAZON_ISSUED"|"PRIVATE",
+#'       KeyAlgorithm = "RSA_1024"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1",
+#'       KeyUsages = list(
+#'         "DIGITAL_SIGNATURE"|"NON_REPUDIATION"|"KEY_ENCIPHERMENT"|"DATA_ENCIPHERMENT"|"KEY_AGREEMENT"|"CERTIFICATE_SIGNING"|"CRL_SIGNING"|"ENCIPHER_ONLY"|"DECIPHER_ONLY"|"ANY"|"CUSTOM"
+#'       ),
+#'       ExtendedKeyUsages = list(
+#'         "TLS_WEB_SERVER_AUTHENTICATION"|"TLS_WEB_CLIENT_AUTHENTICATION"|"CODE_SIGNING"|"EMAIL_PROTECTION"|"TIME_STAMPING"|"OCSP_SIGNING"|"IPSEC_END_SYSTEM"|"IPSEC_TUNNEL"|"IPSEC_USER"|"ANY"|"NONE"|"CUSTOM"
+#'       ),
+#'       InUse = TRUE|FALSE,
+#'       Exported = TRUE|FALSE,
+#'       RenewalEligibility = "ELIGIBLE"|"INELIGIBLE",
+#'       NotBefore = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       NotAfter = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       IssuedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ImportedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RevokedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   )
 #' )
@@ -637,7 +685,9 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
 #'     )
 #'   ),
 #'   NextToken = "string",
-#'   MaxItems = 123
+#'   MaxItems = 123,
+#'   SortBy = "CREATED_AT",
+#'   SortOrder = "ASCENDING"|"DESCENDING"
 #' )
 #' ```
 #'
@@ -646,14 +696,14 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
 #' @rdname acm_list_certificates
 #'
 #' @aliases acm_list_certificates
-acm_list_certificates <- function(CertificateStatuses = NULL, Includes = NULL, NextToken = NULL, MaxItems = NULL) {
+acm_list_certificates <- function(CertificateStatuses = NULL, Includes = NULL, NextToken = NULL, MaxItems = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListCertificates",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .acm$list_certificates_input(CertificateStatuses = CertificateStatuses, Includes = Includes, NextToken = NextToken, MaxItems = MaxItems)
+  input <- .acm$list_certificates_input(CertificateStatuses = CertificateStatuses, Includes = Includes, NextToken = NextToken, MaxItems = MaxItems, SortBy = SortBy, SortOrder = SortOrder)
   output <- .acm$list_certificates_output()
   config <- get_config()
   svc <- .acm$service(config)
@@ -683,7 +733,7 @@ acm_list_certificates <- function(CertificateStatuses = NULL, Includes = NULL, N
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -809,7 +859,7 @@ acm_put_account_configuration <- function(ExpiryEvents = NULL, IdempotencyToken)
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' @param Tags &#91;required&#93; The key-value pair that defines the tag to remove.
 #'
 #' @return
@@ -855,8 +905,8 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #' @description
 #' Renews an eligible ACM certificate. At this time, only exported private
 #' certificates can be renewed with this operation. In order to renew your
-#' ACM PCA certificates with ACM, you must first [grant the ACM service
-#' principal permission to do
+#' Amazon Web Services Private CA certificates with ACM, you must first
+#' [grant the ACM service principal permission to do
 #' so](https://docs.aws.amazon.com/privateca/latest/userguide/). For more
 #' information, see [Testing Managed
 #' Renewal](https://docs.aws.amazon.com/acm/latest/userguide/) in the ACM
@@ -871,7 +921,7 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @return
 #' An empty list.
@@ -924,16 +974,21 @@ acm_renew_certificate <- function(CertificateArn) {
 #' We recommend that you use DNS validation. ACM issues public certificates
 #' after receiving approval from the domain owner.
 #' 
-#' ACM behavior differs from the
-#' [https://tools.ietf.org/html/rfc6125#appendix-B.2](https://www.rfc-editor.org/rfc/rfc6125#appendix-B.2)RFC
-#' 6125 specification of the certificate validation process. first checks
-#' for a subject alternative name, and, if it finds one, ignores the common
-#' name (CN)
+#' ACM behavior differs from the [RFC
+#' 6125](https://datatracker.ietf.org/doc/html/rfc6125#appendix-B.2)
+#' specification of the certificate validation process. ACM first checks
+#' for a Subject Alternative Name, and, if it finds one, ignores the common
+#' name (CN).
+#' 
+#' After successful completion of the
+#' [`request_certificate`][acm_request_certificate] action, there is a
+#' delay of several seconds before you can retrieve information about the
+#' new certificate.
 #'
 #' @usage
 #' acm_request_certificate(DomainName, ValidationMethod,
 #'   SubjectAlternativeNames, IdempotencyToken, DomainValidationOptions,
-#'   Options, CertificateAuthorityArn, Tags)
+#'   Options, CertificateAuthorityArn, Tags, KeyAlgorithm)
 #'
 #' @param DomainName &#91;required&#93; Fully qualified domain name (FQDN), such as www.example.com, that you
 #' want to secure with an ACM certificate. Use an asterisk (*) to create a
@@ -941,9 +996,12 @@ acm_renew_certificate <- function(CertificateArn) {
 #' example, *.example.com protects www.example.com, site.example.com, and
 #' images.example.com.
 #' 
-#' The first domain name you enter cannot exceed 64 octets, including
-#' periods. Each subsequent Subject Alternative Name (SAN), however, can be
-#' up to 253 octets in length.
+#' In compliance with [RFC
+#' 5280](https://datatracker.ietf.org/doc/html/rfc5280), the length of the
+#' domain name (technically, the Common Name) that you provide cannot
+#' exceed 64 octets (characters), including periods. To add a longer domain
+#' name, specify it in the Subject Alternative Name field, which supports
+#' names up to 253 octets in length.
 #' @param ValidationMethod The method you want to use if you are requesting a public certificate to
 #' validate that you own or control domain. You can [validate with
 #' DNS](https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html)
@@ -996,13 +1054,24 @@ acm_renew_certificate <- function(CertificateArn) {
 #' that will be used to issue the certificate. If you do not provide an ARN
 #' and you are trying to request a private certificate, ACM will attempt to
 #' issue a public certificate. For more information about private CAs, see
-#' the [Amazon Web Services Certificate Manager Private Certificate
-#' Authority
-#' (PCA)](https://docs.aws.amazon.com/privateca/latest/userguide/PcaWelcome.html)
+#' the [Amazon Web Services Private Certificate
+#' Authority](https://docs.aws.amazon.com/privateca/latest/userguide/PcaWelcome.html)
 #' user guide. The ARN must have the following form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012`
 #' @param Tags One or more resource tags to associate with the certificate.
+#' @param KeyAlgorithm Specifies the algorithm of the public and private key pair that your
+#' certificate uses to encrypt data. RSA is the default key algorithm for
+#' ACM certificates. Elliptic Curve Digital Signature Algorithm (ECDSA)
+#' keys are smaller, offering security comparable to RSA keys but with
+#' greater computing efficiency. However, ECDSA is not supported by all
+#' network clients. Some AWS services may require RSA keys, or only support
+#' ECDSA keys of a particular size, while others allow the use of either
+#' RSA and ECDSA keys to ensure that compatibility is not broken. Check the
+#' requirements for the AWS service where you plan to deploy your
+#' certificate.
+#' 
+#' Default: RSA_2048
 #'
 #' @return
 #' A list with the following syntax:
@@ -1036,7 +1105,8 @@ acm_renew_certificate <- function(CertificateArn) {
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   KeyAlgorithm = "RSA_1024"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1"
 #' )
 #' ```
 #'
@@ -1045,14 +1115,14 @@ acm_renew_certificate <- function(CertificateArn) {
 #' @rdname acm_request_certificate
 #'
 #' @aliases acm_request_certificate
-acm_request_certificate <- function(DomainName, ValidationMethod = NULL, SubjectAlternativeNames = NULL, IdempotencyToken = NULL, DomainValidationOptions = NULL, Options = NULL, CertificateAuthorityArn = NULL, Tags = NULL) {
+acm_request_certificate <- function(DomainName, ValidationMethod = NULL, SubjectAlternativeNames = NULL, IdempotencyToken = NULL, DomainValidationOptions = NULL, Options = NULL, CertificateAuthorityArn = NULL, Tags = NULL, KeyAlgorithm = NULL) {
   op <- new_operation(
     name = "RequestCertificate",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .acm$request_certificate_input(DomainName = DomainName, ValidationMethod = ValidationMethod, SubjectAlternativeNames = SubjectAlternativeNames, IdempotencyToken = IdempotencyToken, DomainValidationOptions = DomainValidationOptions, Options = Options, CertificateAuthorityArn = CertificateAuthorityArn, Tags = Tags)
+  input <- .acm$request_certificate_input(DomainName = DomainName, ValidationMethod = ValidationMethod, SubjectAlternativeNames = SubjectAlternativeNames, IdempotencyToken = IdempotencyToken, DomainValidationOptions = DomainValidationOptions, Options = Options, CertificateAuthorityArn = CertificateAuthorityArn, Tags = Tags, KeyAlgorithm = KeyAlgorithm)
   output <- .acm$request_certificate_output()
   config <- get_config()
   svc <- .acm$service(config)

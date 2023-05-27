@@ -13,7 +13,7 @@ Operations job.}
 \item{JobId}{[required] The ID for the S3 Batch Operations job whose tags you want to retrieve.}
 }
 \description{
-Returns the tags on an S3 Batch Operations job. To use this operation, you must have permission to perform the \code{s3:GetJobTagging} action. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-managing-jobs.html#batch-ops-job-tags}{Controlling access and labeling jobs using tags} in the \emph{Amazon S3 User Guide}.
+Returns the tags on an S3 Batch Operations job. To use the \code{\link[=s3control_get_job_tagging]{get_job_tagging}} operation, you must have permission to perform the \code{s3:GetJobTagging} action. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-managing-jobs.html#batch-ops-job-tags}{Controlling access and labeling jobs using tags} in the \emph{Amazon S3 User Guide}.
 
 See \url{https://paws-r.github.io/docs/s3control/get_job_tagging.html} for full documentation.
 }

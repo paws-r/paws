@@ -13,14 +13,15 @@ nimblestudio_get_launch_profile_initialization(
 )
 }
 \arguments{
-\item{launchProfileId}{[required] The Launch Profile ID.}
+\item{launchProfileId}{[required] The ID of the launch profile used to control access from the streaming
+session.}
 
 \item{launchProfileProtocolVersions}{[required] The launch profile protocol versions supported by the client.}
 
 \item{launchPurpose}{[required] The launch purpose.}
 
-\item{platform}{[required] The platform where this Launch Profile will be used, either WINDOWS or
-LINUX.}
+\item{platform}{[required] The platform where this Launch Profile will be used, either Windows or
+Linux.}
 
 \item{studioId}{[required] The studio ID.}
 }

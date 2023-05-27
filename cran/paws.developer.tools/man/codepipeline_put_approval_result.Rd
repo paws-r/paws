@@ -2,7 +2,7 @@
 % Please edit documentation in R/codepipeline_operations.R
 \name{codepipeline_put_approval_result}
 \alias{codepipeline_put_approval_result}
-\title{Provides the response to a manual approval request to AWS CodePipeline}
+\title{Provides the response to a manual approval request to CodePipeline}
 \usage{
 codepipeline_put_approval_result(
   pipelineName,
@@ -28,7 +28,7 @@ used to validate that the approval request corresponding to this token
 is still valid.}
 }
 \description{
-Provides the response to a manual approval request to AWS CodePipeline. Valid responses include Approved and Rejected.
+Provides the response to a manual approval request to CodePipeline. Valid responses include Approved and Rejected.
 
 See \url{https://paws-r.github.io/docs/codepipeline/put_approval_result.html} for full documentation.
 }

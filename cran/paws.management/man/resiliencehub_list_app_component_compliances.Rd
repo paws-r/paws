@@ -2,7 +2,7 @@
 % Please edit documentation in R/resiliencehub_operations.R
 \name{resiliencehub_list_app_component_compliances}
 \alias{resiliencehub_list_app_component_compliances}
-\title{Lists the compliances for an AWS Resilience Hub component}
+\title{Lists the compliances for an Resilience Hub Application Component}
 \usage{
 resiliencehub_list_app_component_compliances(
   assessmentArn,
@@ -14,8 +14,8 @@ resiliencehub_list_app_component_compliances(
 \item{assessmentArn}{[required] The Amazon Resource Name (ARN) of the assessment. The format for this
 ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app-assessment/\code{app-id}.
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
+in the \emph{AWS General Reference} guide.}
 
 \item{maxResults}{The maximum number of results to include in the response. If more
 results exist than the specified \code{MaxResults} value, a token is included
@@ -24,7 +24,7 @@ in the response so that the remaining results can be retrieved.}
 \item{nextToken}{Null, or the token from a previous call to get the next set of results.}
 }
 \description{
-Lists the compliances for an AWS Resilience Hub component.
+Lists the compliances for an Resilience Hub Application Component.
 
 See \url{https://paws-r.github.io/docs/resiliencehub/list_app_component_compliances.html} for full documentation.
 }

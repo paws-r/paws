@@ -7,7 +7,7 @@
 ivs_batch_get_stream_key(arns)
 }
 \arguments{
-\item{arns}{[required] Array of ARNs, one per channel.}
+\item{arns}{[required] Array of ARNs, one per stream key.}
 }
 \description{
 Performs \code{\link[=ivs_get_stream_key]{get_stream_key}} on multiple ARNs simultaneously.

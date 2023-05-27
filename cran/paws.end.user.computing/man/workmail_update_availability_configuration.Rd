@@ -13,8 +13,8 @@ workmail_update_availability_configuration(
 )
 }
 \arguments{
-\item{OrganizationId}{[required] The Amazon WorkMail organization for which the
-\code{AvailabilityConfiguration} will be updated.}
+\item{OrganizationId}{[required] The WorkMail organization for which the \code{AvailabilityConfiguration} will
+be updated.}
 
 \item{DomainName}{[required] The domain to which the provider applies the availability configuration.}
 

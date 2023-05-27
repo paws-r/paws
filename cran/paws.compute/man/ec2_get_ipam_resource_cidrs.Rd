@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_get_ipam_resource_cidrs}
 \alias{ec2_get_ipam_resource_cidrs}
-\title{Get information about the resources in a scope}
+\title{Returns resource CIDRs managed by IPAM in a given scope}
 \usage{
 ec2_get_ipam_resource_cidrs(
   DryRun = NULL,
@@ -38,12 +38,12 @@ filtering, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-
 
 \item{ResourceType}{The resource type.}
 
-\item{ResourceTag}{}
+\item{ResourceTag}{The resource tag.}
 
 \item{ResourceOwner}{The ID of the Amazon Web Services account that owns the resource.}
 }
 \description{
-Get information about the resources in a scope.
+Returns resource CIDRs managed by IPAM in a given scope. If an IPAM is associated with more than one resource discovery, the resource CIDRs across all of the resource discoveries is returned. A resource discovery is an IPAM component that enables IPAM to manage and monitor resources that belong to the owning account.
 
 See \url{https://paws-r.github.io/docs/ec2/get_ipam_resource_cidrs.html} for full documentation.
 }

@@ -15,14 +15,14 @@ servicecatalog_create_product(
   SupportUrl = NULL,
   ProductType,
   Tags = NULL,
-  ProvisioningArtifactParameters,
-  IdempotencyToken
+  ProvisioningArtifactParameters = NULL,
+  IdempotencyToken,
+  SourceConnection = NULL
 )
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -47,11 +47,20 @@ servicecatalog_create_product(
 
 \item{Tags}{One or more tags.}
 
-\item{ProvisioningArtifactParameters}{[required] The configuration of the provisioning artifact.}
+\item{ProvisioningArtifactParameters}{The configuration of the provisioning artifact.}
 
 \item{IdempotencyToken}{[required] A unique identifier that you provide to ensure idempotency. If multiple
 requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
+
+\item{SourceConnection}{Specifies connection details for the created product and syncs the
+product to the connection source artifact. This automatically manages
+the product's artifacts based on changes to the source. The
+\code{SourceConnection} parameter consists of the following sub-fields.
+\itemize{
+\item \code{Type}
+\item \code{ConnectionParamters}
+}}
 }
 \description{
 Creates a product.

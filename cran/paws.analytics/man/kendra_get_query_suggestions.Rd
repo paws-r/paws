@@ -4,7 +4,13 @@
 \alias{kendra_get_query_suggestions}
 \title{Fetches the queries that are suggested to your users}
 \usage{
-kendra_get_query_suggestions(IndexId, QueryText, MaxSuggestionsCount = NULL)
+kendra_get_query_suggestions(
+  IndexId,
+  QueryText,
+  MaxSuggestionsCount = NULL,
+  SuggestionTypes = NULL,
+  AttributeSuggestionsConfig = NULL
+)
 }
 \arguments{
 \item{IndexId}{[required] The identifier of the index you want to get query suggestions from.}
@@ -20,6 +26,21 @@ least one search result and contain at least one word of more than four
 characters.}
 
 \item{MaxSuggestionsCount}{The maximum number of query suggestions you want to show to your users.}
+
+\item{SuggestionTypes}{The suggestions type to base query suggestions on. The suggestion types
+are query history or document fields/attributes. You can set one type or
+the other.
+
+If you set query history as your suggestions type, Amazon Kendra
+suggests queries relevant to your users based on popular queries in the
+query history.
+
+If you set document fields/attributes as your suggestions type, Amazon
+Kendra suggests queries relevant to your users based on the contents of
+document fields.}
+
+\item{AttributeSuggestionsConfig}{Configuration information for the document fields/attributes that you
+want to base query suggestions on.}
 }
 \description{
 Fetches the queries that are suggested to your users.

@@ -62,20 +62,20 @@ in the \emph{Amazon EC2 User Guide}.
 
 Default: \code{m1.small}}
 
-\item{Ipv6AddressCount}{[EC2-VPC] The number of IPv6 addresses to associate with the primary
-network interface. Amazon EC2 chooses the IPv6 addresses from the range
-of your subnet. You cannot specify this option and the option to assign
-specific IPv6 addresses in the same request. You can specify this option
-if you've specified a minimum number of instances to launch.
+\item{Ipv6AddressCount}{The number of IPv6 addresses to associate with the primary network
+interface. Amazon EC2 chooses the IPv6 addresses from the range of your
+subnet. You cannot specify this option and the option to assign specific
+IPv6 addresses in the same request. You can specify this option if
+you've specified a minimum number of instances to launch.
 
 You cannot specify this option and the network interfaces option in the
 same request.}
 
-\item{Ipv6Addresses}{[EC2-VPC] The IPv6 addresses from the range of the subnet to associate
-with the primary network interface. You cannot specify this option and
-the option to assign a number of IPv6 addresses in the same request. You
-cannot specify this option if you've specified a minimum number of
-instances to launch.
+\item{Ipv6Addresses}{The IPv6 addresses from the range of the subnet to associate with the
+primary network interface. You cannot specify this option and the option
+to assign a number of IPv6 addresses in the same request. You cannot
+specify this option if you've specified a minimum number of instances to
+launch.
 
 You cannot specify this option and the network interfaces option in the
 same request.}
@@ -133,15 +133,14 @@ in the \emph{Amazon EC2 User Guide}.}
 If you specify a network interface, you must specify any security groups
 as part of the network interface.}
 
-\item{SecurityGroups}{[EC2-Classic, default VPC] The names of the security groups. For a
-nondefault VPC, you must use security group IDs instead.
+\item{SecurityGroups}{[Default VPC] The names of the security groups.
 
 If you specify a network interface, you must specify any security groups
 as part of the network interface.
 
 Default: Amazon EC2 uses the default security group.}
 
-\item{SubnetId}{[EC2-VPC] The ID of the subnet to launch the instance into.
+\item{SubnetId}{The ID of the subnet to launch the instance into.
 
 If you specify a network interface, you must specify any subnets as part
 of the network interface.}
@@ -198,8 +197,8 @@ Default: \code{stop}}
 network interface, you must specify any security groups and subnets as
 part of the network interface.}
 
-\item{PrivateIpAddress}{[EC2-VPC] The primary IPv4 address. You must specify a value from the
-IPv4 address range of the subnet.
+\item{PrivateIpAddress}{The primary IPv4 address. You must specify a value from the IPv4 address
+range of the subnet.
 
 Only one private IP address can be designated as primary. You can't
 specify this option if you've specified the option to designate a
@@ -221,7 +220,16 @@ inference accelerators are a resource you can attach to your Amazon EC2
 instances to accelerate your Deep Learning (DL) inference workloads.
 
 You cannot specify accelerators from different generations in the same
-request.}
+request.
+
+Starting April 15, 2023, Amazon Web Services will not onboard new
+customers to Amazon Elastic Inference (EI), and will help current
+customers migrate their workloads to options that offer better price and
+performance. After April 15, 2023, new customers will not be able to
+launch instances with Amazon EI accelerators in Amazon SageMaker, Amazon
+ECS, or Amazon EC2. However, customers who have used Amazon EI at least
+once during the past 30-day period are considered current customers and
+will be able to continue using the service.}
 
 \item{TagSpecifications}{The tags to apply to the resources that are created during instance
 launch.

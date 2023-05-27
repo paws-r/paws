@@ -105,19 +105,20 @@ the user guide.
 \link[paws.database:rds_authorize_db_security_group_ingress]{authorize_db_security_group_ingress} \tab Enables ingress to a DBSecurityGroup using one of two forms of authorization\cr
 \link[paws.database:rds_backtrack_db_cluster]{backtrack_db_cluster} \tab Backtracks a DB cluster to a specific time, without creating a new DB cluster\cr
 \link[paws.database:rds_build_auth_token]{build_auth_token} \tab Return an authentication token for a database connection\cr
-\link[paws.database:rds_cancel_export_task]{cancel_export_task} \tab Cancels an export task in progress that is exporting a snapshot to Amazon S3\cr
+\link[paws.database:rds_cancel_export_task]{cancel_export_task} \tab Cancels an export task in progress that is exporting a snapshot or cluster to Amazon S3\cr
 \link[paws.database:rds_copy_db_cluster_parameter_group]{copy_db_cluster_parameter_group} \tab Copies the specified DB cluster parameter group\cr
 \link[paws.database:rds_copy_db_cluster_snapshot]{copy_db_cluster_snapshot} \tab Copies a snapshot of a DB cluster\cr
 \link[paws.database:rds_copy_db_parameter_group]{copy_db_parameter_group} \tab Copies the specified DB parameter group\cr
 \link[paws.database:rds_copy_db_snapshot]{copy_db_snapshot} \tab Copies the specified DB snapshot\cr
 \link[paws.database:rds_copy_option_group]{copy_option_group} \tab Copies the specified option group\cr
+\link[paws.database:rds_create_blue_green_deployment]{create_blue_green_deployment} \tab Creates a blue/green deployment\cr
 \link[paws.database:rds_create_custom_db_engine_version]{create_custom_db_engine_version} \tab Creates a custom DB engine version (CEV)\cr
 \link[paws.database:rds_create_db_cluster]{create_db_cluster} \tab Creates a new Amazon Aurora DB cluster or Multi-AZ DB cluster\cr
 \link[paws.database:rds_create_db_cluster_endpoint]{create_db_cluster_endpoint} \tab Creates a new custom endpoint and associates it with an Amazon Aurora DB cluster\cr
 \link[paws.database:rds_create_db_cluster_parameter_group]{create_db_cluster_parameter_group} \tab Creates a new DB cluster parameter group\cr
 \link[paws.database:rds_create_db_cluster_snapshot]{create_db_cluster_snapshot} \tab Creates a snapshot of a DB cluster\cr
 \link[paws.database:rds_create_db_instance]{create_db_instance} \tab Creates a new DB instance\cr
-\link[paws.database:rds_create_db_instance_read_replica]{create_db_instance_read_replica} \tab Creates a new DB instance that acts as a read replica for an existing source DB instance\cr
+\link[paws.database:rds_create_db_instance_read_replica]{create_db_instance_read_replica} \tab Creates a new DB instance that acts as a read replica for an existing source DB instance or Multi-AZ DB cluster\cr
 \link[paws.database:rds_create_db_parameter_group]{create_db_parameter_group} \tab Creates a new DB parameter group\cr
 \link[paws.database:rds_create_db_proxy]{create_db_proxy} \tab Creates a new DB proxy\cr
 \link[paws.database:rds_create_db_proxy_endpoint]{create_db_proxy_endpoint} \tab Creates a DBProxyEndpoint\cr
@@ -127,6 +128,7 @@ the user guide.
 \link[paws.database:rds_create_event_subscription]{create_event_subscription} \tab Creates an RDS event notification subscription\cr
 \link[paws.database:rds_create_global_cluster]{create_global_cluster} \tab Creates an Aurora global database spread across multiple Amazon Web Services Regions\cr
 \link[paws.database:rds_create_option_group]{create_option_group} \tab Creates a new option group\cr
+\link[paws.database:rds_delete_blue_green_deployment]{delete_blue_green_deployment} \tab Deletes a blue/green deployment\cr
 \link[paws.database:rds_delete_custom_db_engine_version]{delete_custom_db_engine_version} \tab Deletes a custom engine version\cr
 \link[paws.database:rds_delete_db_cluster]{delete_db_cluster} \tab The DeleteDBCluster action deletes a previously provisioned DB cluster\cr
 \link[paws.database:rds_delete_db_cluster_endpoint]{delete_db_cluster_endpoint} \tab Deletes a custom endpoint and removes it from an Amazon Aurora DB cluster\cr
@@ -145,6 +147,7 @@ the user guide.
 \link[paws.database:rds_delete_option_group]{delete_option_group} \tab Deletes an existing option group\cr
 \link[paws.database:rds_deregister_db_proxy_targets]{deregister_db_proxy_targets} \tab Remove the association between one or more DBProxyTarget data structures and a DBProxyTargetGroup\cr
 \link[paws.database:rds_describe_account_attributes]{describe_account_attributes} \tab Lists all of the attributes for a customer account\cr
+\link[paws.database:rds_describe_blue_green_deployments]{describe_blue_green_deployments} \tab Returns information about blue/green deployments\cr
 \link[paws.database:rds_describe_certificates]{describe_certificates} \tab Lists the set of CA certificates provided by Amazon RDS for this Amazon Web Services account\cr
 \link[paws.database:rds_describe_db_cluster_backtracks]{describe_db_cluster_backtracks} \tab Returns information about backtracks for a DB cluster\cr
 \link[paws.database:rds_describe_db_cluster_endpoints]{describe_db_cluster_endpoints} \tab Returns information about endpoints for an Amazon Aurora DB cluster\cr
@@ -172,7 +175,7 @@ the user guide.
 \link[paws.database:rds_describe_event_categories]{describe_event_categories} \tab Displays a list of categories for all event source types, or, if specified, for a specified source type\cr
 \link[paws.database:rds_describe_events]{describe_events} \tab Returns events related to DB instances, DB clusters, DB parameter groups, DB security groups, DB snapshots, DB cluster snapshots, and RDS Proxies for the past 14 days\cr
 \link[paws.database:rds_describe_event_subscriptions]{describe_event_subscriptions} \tab Lists all the subscription descriptions for a customer account\cr
-\link[paws.database:rds_describe_export_tasks]{describe_export_tasks} \tab Returns information about a snapshot export to Amazon S3\cr
+\link[paws.database:rds_describe_export_tasks]{describe_export_tasks} \tab Returns information about a snapshot or cluster export to Amazon S3\cr
 \link[paws.database:rds_describe_global_clusters]{describe_global_clusters} \tab Returns information about Aurora global database clusters\cr
 \link[paws.database:rds_describe_option_group_options]{describe_option_group_options} \tab Describes all available options\cr
 \link[paws.database:rds_describe_option_groups]{describe_option_groups} \tab Describes the available option groups\cr
@@ -229,11 +232,13 @@ the user guide.
 \link[paws.database:rds_start_db_cluster]{start_db_cluster} \tab Starts an Amazon Aurora DB cluster that was stopped using the Amazon Web Services console, the stop-db-cluster CLI command, or the StopDBCluster action\cr
 \link[paws.database:rds_start_db_instance]{start_db_instance} \tab Starts an Amazon RDS DB instance that was stopped using the Amazon Web Services console, the stop-db-instance CLI command, or the StopDBInstance action\cr
 \link[paws.database:rds_start_db_instance_automated_backups_replication]{start_db_instance_automated_backups_replication} \tab Enables replication of automated backups to a different Amazon Web Services Region\cr
-\link[paws.database:rds_start_export_task]{start_export_task} \tab Starts an export of a snapshot to Amazon S3\cr
+\link[paws.database:rds_start_export_task]{start_export_task} \tab Starts an export of DB snapshot or DB cluster data to Amazon S3\cr
 \link[paws.database:rds_stop_activity_stream]{stop_activity_stream} \tab Stops a database activity stream that was started using the Amazon Web Services console, the start-activity-stream CLI command, or the StartActivityStream action\cr
 \link[paws.database:rds_stop_db_cluster]{stop_db_cluster} \tab Stops an Amazon Aurora DB cluster\cr
 \link[paws.database:rds_stop_db_instance]{stop_db_instance} \tab Stops an Amazon RDS DB instance\cr
-\link[paws.database:rds_stop_db_instance_automated_backups_replication]{stop_db_instance_automated_backups_replication} \tab Stops automated backup replication for a DB instance
+\link[paws.database:rds_stop_db_instance_automated_backups_replication]{stop_db_instance_automated_backups_replication} \tab Stops automated backup replication for a DB instance\cr
+\link[paws.database:rds_switchover_blue_green_deployment]{switchover_blue_green_deployment} \tab Switches over a blue/green deployment\cr
+\link[paws.database:rds_switchover_read_replica]{switchover_read_replica} \tab Switches over an Oracle standby database in an Oracle Data Guard environment, making it the new primary database
 }
 }
 

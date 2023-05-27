@@ -9,7 +9,9 @@ cloudwatch_list_metrics(
   MetricName = NULL,
   Dimensions = NULL,
   NextToken = NULL,
-  RecentlyActive = NULL
+  RecentlyActive = NULL,
+  IncludeLinkedAccounts = NULL,
+  OwningAccount = NULL
 )
 }
 \arguments{
@@ -33,9 +35,19 @@ The results that are returned are an approximation of the value you
 specify. There is a low probability that the returned results include
 metrics with last published data as much as 40 minutes more than the
 specified time interval.}
+
+\item{IncludeLinkedAccounts}{If you are using this operation in a monitoring account, specify \code{true}
+to include metrics from source accounts in the returned data.
+
+The default is \code{false}.}
+
+\item{OwningAccount}{When you use this operation in a monitoring account, use this field to
+return metrics only from one source account. To do so, specify that
+source account ID in this field, and also specify \code{true} for
+\code{IncludeLinkedAccounts}.}
 }
 \description{
-List the specified metrics. You can use the returned metrics with \code{\link[=cloudwatch_get_metric_data]{get_metric_data}} or \code{\link[=cloudwatch_get_metric_statistics]{get_metric_statistics}} to obtain statistical data.
+List the specified metrics. You can use the returned metrics with \code{\link[=cloudwatch_get_metric_data]{get_metric_data}} or \code{\link[=cloudwatch_get_metric_statistics]{get_metric_statistics}} to get statistical data.
 
 See \url{https://paws-r.github.io/docs/cloudwatch/list_metrics.html} for full documentation.
 }

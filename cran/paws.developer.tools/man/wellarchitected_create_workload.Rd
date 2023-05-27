@@ -19,7 +19,9 @@ wellarchitected_create_workload(
   Lenses,
   Notes = NULL,
   ClientRequestToken,
-  Tags = NULL
+  Tags = NULL,
+  DiscoveryConfig = NULL,
+  Applications = NULL
 )
 }
 \arguments{
@@ -52,6 +54,11 @@ wellarchitected_create_workload(
 \item{ClientRequestToken}{[required]}
 
 \item{Tags}{The tags to be associated with the workload.}
+
+\item{DiscoveryConfig}{Well-Architected discovery configuration settings associated to the
+workload.}
+
+\item{Applications}{List of AppRegistry application ARNs associated to the workload.}
 }
 \description{
 Create a new workload.

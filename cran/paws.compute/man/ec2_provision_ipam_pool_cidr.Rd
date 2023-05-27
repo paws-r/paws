@@ -8,7 +8,9 @@ ec2_provision_ipam_pool_cidr(
   DryRun = NULL,
   IpamPoolId,
   Cidr = NULL,
-  CidrAuthorizationContext = NULL
+  CidrAuthorizationContext = NULL,
+  NetmaskLength = NULL,
+  ClientToken = NULL
 )
 }
 \arguments{
@@ -19,11 +21,22 @@ you have the required permissions, the error response is
 
 \item{IpamPoolId}{[required] The ID of the IPAM pool to which you want to assign a CIDR.}
 
-\item{Cidr}{The CIDR you want to assign to the IPAM pool.}
+\item{Cidr}{The CIDR you want to assign to the IPAM pool. Either "NetmaskLength" or
+"Cidr" is required. This value will be null if you specify
+"NetmaskLength" and will be filled in during the provisioning process.}
 
 \item{CidrAuthorizationContext}{A signed document that proves that you are authorized to bring a
 specified IP address range to Amazon using BYOIP. This option applies to
 public pools only.}
+
+\item{NetmaskLength}{The netmask length of the CIDR you'd like to provision to a pool. Can be
+used for provisioning Amazon-provided IPv6 CIDRs to top-level pools and
+for provisioning CIDRs to pools with source pools. Cannot be used to
+provision BYOIP CIDRs to top-level pools. Either "NetmaskLength" or
+"Cidr" is required.}
+
+\item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
 }
 \description{
 Provision a CIDR to an IPAM pool. You can use this action to provision new CIDRs to a top-level pool or to transfer a CIDR from a top-level pool to a pool within it.

@@ -8,10 +8,9 @@ codegurureviewer_tag_resource(resourceArn, Tags)
 }
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the
-\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html}{\code{RepositoryAssociation}}
+\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html}{RepositoryAssociation}
 object. You can retrieve this ARN by calling
-\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html}{\code{list_repository_associations}}
-.}
+\code{\link[=codegurureviewer_list_repository_associations]{list_repository_associations}}.}
 
 \item{Tags}{[required] An array of key-value pairs used to tag an associated repository. A tag
 is a custom attribute label with two parts:

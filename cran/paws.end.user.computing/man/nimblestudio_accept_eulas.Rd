@@ -8,13 +8,13 @@ nimblestudio_accept_eulas(clientToken = NULL, eulaIds = NULL, studioId)
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. If you don’t specify a client token, the AWS
-SDK automatically generates a client token and uses it for the request
-to ensure idempotency.}
+idempotency of the request. If you don’t specify a client token, the
+Amazon Web Services SDK automatically generates a client token and uses
+it for the request to ensure idempotency.}
 
 \item{eulaIds}{The EULA ID.}
 
-\item{studioId}{[required] A collection of EULA IDs.}
+\item{studioId}{[required] The studio ID.}
 }
 \description{
 Accept EULAs.

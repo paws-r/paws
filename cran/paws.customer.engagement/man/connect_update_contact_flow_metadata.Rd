@@ -2,7 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_update_contact_flow_metadata}
 \alias{connect_update_contact_flow_metadata}
-\title{Updates metadata about specified contact flow}
+\title{Updates metadata about specified flow}
 \usage{
 connect_update_contact_flow_metadata(
   InstanceId,
@@ -13,19 +13,19 @@ connect_update_contact_flow_metadata(
 )
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 
-\item{ContactFlowId}{[required] The identifier of the contact flow.}
+\item{ContactFlowId}{[required] The identifier of the flow.}
 
-\item{Name}{TThe name of the contact flow.}
+\item{Name}{The name of the flow.}
 
-\item{Description}{The description of the contact flow.}
+\item{Description}{The description of the flow.}
 
-\item{ContactFlowState}{The state of contact flow.}
+\item{ContactFlowState}{The state of flow.}
 }
 \description{
-Updates metadata about specified contact flow.
+Updates metadata about specified flow.
 
 See \url{https://paws-r.github.io/docs/connect/update_contact_flow_metadata.html} for full documentation.
 }

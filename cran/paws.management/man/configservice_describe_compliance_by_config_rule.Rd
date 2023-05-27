@@ -13,9 +13,7 @@ configservice_describe_compliance_by_config_rule(
 \arguments{
 \item{ConfigRuleNames}{Specify one or more Config rule names to filter the results by rule.}
 
-\item{ComplianceTypes}{Filters the results by compliance.
-
-The allowed values are \code{COMPLIANT} and \code{NON_COMPLIANT}.}
+\item{ComplianceTypes}{Filters the results by compliance.}
 
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}

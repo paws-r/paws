@@ -6,7 +6,7 @@
 multicast domain}
 \usage{
 ec2_get_transit_gateway_multicast_domain_associations(
-  TransitGatewayMulticastDomainId = NULL,
+  TransitGatewayMulticastDomainId,
   Filters = NULL,
   MaxResults = NULL,
   NextToken = NULL,
@@ -14,7 +14,7 @@ ec2_get_transit_gateway_multicast_domain_associations(
 )
 }
 \arguments{
-\item{TransitGatewayMulticastDomainId}{The ID of the transit gateway multicast domain.}
+\item{TransitGatewayMulticastDomainId}{[required] The ID of the transit gateway multicast domain.}
 
 \item{Filters}{One or more filters. The possible values are:
 \itemize{

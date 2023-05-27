@@ -18,11 +18,11 @@ lambda_invoke(
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} - \verb{my-function} (name-only), \verb{my-function:v1}
+\item \strong{Function name} – \verb{my-function} (name-only), \verb{my-function:v1}
 (with alias).
-\item \strong{Function ARN} -
+\item \strong{Function ARN} –
 \verb{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
-\item \strong{Partial ARN} - \verb{123456789012:function:my-function}.
+\item \strong{Partial ARN} – \verb{123456789012:function:my-function}.
 }
 
 You can append a version number or alias to any of the formats. The
@@ -31,21 +31,21 @@ function name, it is limited to 64 characters in length.}
 
 \item{InvocationType}{Choose from the following options.
 \itemize{
-\item \code{RequestResponse} (default) - Invoke the function synchronously.
+\item \code{RequestResponse} (default) – Invoke the function synchronously.
 Keep the connection open until the function returns a response or
 times out. The API response includes the function response and
 additional data.
-\item \code{Event} - Invoke the function asynchronously. Send events that fail
-multiple times to the function's dead-letter queue (if it's
+\item \code{Event} – Invoke the function asynchronously. Send events that fail
+multiple times to the function's dead-letter queue (if one is
 configured). The API response only includes a status code.
-\item \code{DryRun} - Validate parameter values and verify that the user or
+\item \code{DryRun} – Validate parameter values and verify that the user or
 role has permission to invoke the function.
 }}
 
 \item{LogType}{Set to \code{Tail} to include the execution log in the response. Applies to
 synchronously invoked functions only.}
 
-\item{ClientContext}{Up to 3583 bytes of base64-encoded data about the invoking client to
+\item{ClientContext}{Up to 3,583 bytes of base64-encoded data about the invoking client to
 pass to the function in the context object.}
 
 \item{Payload}{The JSON that you want to provide to your Lambda function as input.

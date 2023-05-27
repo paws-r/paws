@@ -8,7 +8,7 @@ configure your domain with recommended security}
 workmail_get_mail_domain(OrganizationId, DomainName)
 }
 \arguments{
-\item{OrganizationId}{[required] The Amazon WorkMail organization for which the domain is retrieved.}
+\item{OrganizationId}{[required] The WorkMail organization for which the domain is retrieved.}
 
 \item{DomainName}{[required] The domain from which you want to retrieve details.}
 }

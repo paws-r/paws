@@ -222,7 +222,7 @@ redshift_authorize_endpoint_access <- function(ClusterIdentifier = NULL, Account
 #' @param SnapshotIdentifier The identifier of the snapshot the account is authorized to restore.
 #' @param SnapshotArn The Amazon Resource Name (ARN) of the snapshot to authorize access to.
 #' @param SnapshotClusterIdentifier The identifier of the cluster the snapshot was created from. This
-#' parameter is required if your IAM user has a policy containing a
+#' parameter is required if your IAM user or role has a policy containing a
 #' snapshot resource element that specifies anything other than * for the
 #' cluster name.
 #' @param AccountWithRestoreAccess &#91;required&#93; The identifier of the Amazon Web Services account authorized to restore
@@ -365,7 +365,7 @@ redshift_cancel_resize <- function(ClusterIdentifier) {
 #' -   Must be the identifier for a valid automated snapshot whose state is
 #'     `available`.
 #' @param SourceSnapshotClusterIdentifier The identifier of the cluster the source snapshot was created from. This
-#' parameter is required if your IAM user has a policy containing a
+#' parameter is required if your IAM user or role has a policy containing a
 #' snapshot resource element that specifies anything other than * for the
 #' cluster name.
 #' 
@@ -507,22 +507,27 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #' Valid Values: `ds2.xlarge` | `ds2.8xlarge` | `dc1.large` | `dc1.8xlarge`
 #' | `dc2.large` | `dc2.8xlarge` | `ra3.xlplus` | `ra3.4xlarge` |
 #' `ra3.16xlarge`
-#' @param MasterUsername &#91;required&#93; The user name associated with the admin user account for the cluster
-#' that is being created.
+#' @param MasterUsername &#91;required&#93; The user name associated with the admin user for the cluster that is
+#' being created.
 #' 
 #' Constraints:
 #' 
-#' -   Must be 1 - 128 alphanumeric characters. The user name can't be
-#'     `PUBLIC`.
+#' -   Must be 1 - 128 alphanumeric characters or hyphens. The user name
+#'     can't be `PUBLIC`.
 #' 
-#' -   First character must be a letter.
+#' -   Must contain only lowercase letters, numbers, underscore, plus sign,
+#'     period (dot), at symbol (@@), or hyphen.
+#' 
+#' -   The first character must be a letter.
+#' 
+#' -   Must not contain a colon (:) or a slash (/).
 #' 
 #' -   Cannot be a reserved word. A list of reserved words can be found in
 #'     [Reserved
 #'     Words](https://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html)
 #'     in the Amazon Redshift Database Developer Guide.
-#' @param MasterUserPassword &#91;required&#93; The password associated with the admin user account for the cluster that
-#' is being created.
+#' @param MasterUserPassword &#91;required&#93; The password associated with the admin user for the cluster that is
+#' being created.
 #' 
 #' Constraints:
 #' 
@@ -653,14 +658,13 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #' @param HsmConfigurationIdentifier Specifies the name of the HSM configuration that contains the
 #' information the Amazon Redshift cluster can use to retrieve and store
 #' keys in an HSM.
-#' @param ElasticIp The Elastic IP (EIP) address for the cluster. You don't have to specify
-#' the EIP for a publicly accessible cluster with
-#' AvailabilityZoneRelocation turned on.
+#' @param ElasticIp The Elastic IP (EIP) address for the cluster.
 #' 
 #' Constraints: The cluster must be provisioned in EC2-VPC and
-#' publicly-accessible through an Internet gateway. For more information
-#' about provisioning clusters in EC2-VPC, go to [Supported Platforms to
-#' Launch Your
+#' publicly-accessible through an Internet gateway. Don't specify the
+#' Elastic IP address for a publicly accessible cluster with availability
+#' zone relocation turned on. For more information about provisioning
+#' clusters in EC2-VPC, go to [Supported Platforms to Launch Your
 #' Cluster](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms)
 #' in the Amazon Redshift Cluster Management Guide.
 #' @param Tags A list of tag instances.
@@ -690,16 +694,9 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #' @param SnapshotScheduleIdentifier A unique identifier for the snapshot schedule.
 #' @param AvailabilityZoneRelocation The option to enable relocation for an Amazon Redshift cluster between
 #' Availability Zones after the cluster is created.
-#' @param AquaConfigurationStatus The value represents how the cluster is configured to use AQUA (Advanced
-#' Query Accelerator) when it is created. Possible values include the
-#' following.
-#' 
-#' -   enabled - Use AQUA if it is available for the current Amazon Web
-#'     Services Region and Amazon Redshift node type.
-#' 
-#' -   disabled - Don't use AQUA.
-#' 
-#' -   auto - Amazon Redshift determines whether to use AQUA.
+#' @param AquaConfigurationStatus This parameter is retired. It does not set the AQUA configuration
+#' status. Amazon Redshift automatically determines whether to use AQUA
+#' (Advanced Query Accelerator).
 #' @param DefaultIamRoleArn The Amazon Resource Name (ARN) for the IAM role that was set as default
 #' for the cluster when the cluster was created.
 #' @param LoadSampleData A flag that specifies whether to load sample data once the cluster is
@@ -1522,7 +1519,7 @@ redshift_delete_cluster_security_group <- function(ClusterSecurityGroupName) {
 #' Constraints: Must be the name of an existing snapshot that is in the
 #' `available`, `failed`, or `cancelled` state.
 #' @param SnapshotClusterIdentifier The unique identifier of the cluster the snapshot was created from. This
-#' parameter is required if your IAM user has a policy containing a
+#' parameter is required if your IAM user or role has a policy containing a
 #' snapshot resource element that specifies anything other than * for the
 #' cluster name.
 #' 
@@ -2106,7 +2103,7 @@ redshift_describe_cluster_parameters <- function(ParameterGroupName, Source = NU
 #' See [https://paws-r.github.io/docs/redshift/describe_cluster_security_groups.html](https://paws-r.github.io/docs/redshift/describe_cluster_security_groups.html) for full documentation.
 #'
 #' @param ClusterSecurityGroupName The name of a cluster security group for which you are requesting
-#' details. You can specify either the **Marker** parameter or a
+#' details. You must specify either the **Marker** parameter or a
 #' **ClusterSecurityGroupName** parameter, but not both.
 #' 
 #' Example: `securitygroup1`
@@ -2127,7 +2124,7 @@ redshift_describe_cluster_parameters <- function(ParameterGroupName, Source = NU
 #' the next set of response records by providing the returned marker value
 #' in the `Marker` parameter and retrying the request.
 #' 
-#' Constraints: You can specify either the **ClusterSecurityGroupName**
+#' Constraints: You must specify either the **ClusterSecurityGroupName**
 #' parameter or the **Marker** parameter, but not both.
 #' @param TagKeys A tag key or keys for which you want to return all matching cluster
 #' security groups that are associated with the specified key or keys. For
@@ -2200,7 +2197,7 @@ redshift_describe_cluster_security_groups <- function(ClusterSecurityGroupName =
 #' 
 #' Default: `100`
 #' 
-#' Constraints: minimum 20, maximum 100.
+#' Constraints: minimum 20, maximum 500.
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
 #' [`describe_cluster_snapshots`][redshift_describe_cluster_snapshots]
@@ -2711,9 +2708,9 @@ redshift_describe_endpoint_access <- function(ClusterIdentifier = NULL, Resource
 #' See [https://paws-r.github.io/docs/redshift/describe_endpoint_authorization.html](https://paws-r.github.io/docs/redshift/describe_endpoint_authorization.html) for full documentation.
 #'
 #' @param ClusterIdentifier The cluster identifier of the cluster to access.
-#' @param Account The AAmazon Web Services account ID of either the cluster owner
-#' (grantor) or grantee. If `Grantee` parameter is true, then the `Account`
-#' value is of the grantor.
+#' @param Account The Amazon Web Services account ID of either the cluster owner (grantor)
+#' or grantee. If `Grantee` parameter is true, then the `Account` value is
+#' of the grantor.
 #' @param Grantee Indicates whether to check authorization from a grantor or grantee point
 #' of view. If true, Amazon Redshift returns endpoint authorizations that
 #' you've been granted. If false (default), checks authorization from a
@@ -3928,8 +3925,8 @@ redshift_disassociate_data_share_consumer <- function(DataShareArn, Disassociate
 #'     -   x7f or larger
 #' @param LogDestinationType The log destination type. An enum with possible values of `s3` and
 #' `cloudwatch`.
-#' @param LogExports The collection of exported log types. Log types include the connection
-#' log, user log and user activity log.
+#' @param LogExports The collection of exported log types. Possible values are
+#' `connectionlog`, `useractivitylog`, and `userlog`.
 #'
 #' @keywords internal
 #'
@@ -4031,8 +4028,8 @@ redshift_enable_snapshot_copy <- function(ClusterIdentifier, DestinationRegion, 
 #' -   Must be 1 to 64 alphanumeric characters or hyphens. The user name
 #'     can't be `PUBLIC`.
 #' 
-#' -   Must contain only lowercase letters, numbers, underscore, plus sign,
-#'     period (dot), at symbol (@@), or hyphen.
+#' -   Must contain uppercase or lowercase letters, numbers, underscore,
+#'     plus sign, period (dot), at symbol (@@), or hyphen.
 #' 
 #' -   First character must be a letter.
 #' 
@@ -4049,8 +4046,8 @@ redshift_enable_snapshot_copy <- function(ClusterIdentifier, DestinationRegion, 
 #' 
 #' -   Must be 1 to 64 alphanumeric characters or hyphens
 #' 
-#' -   Must contain only lowercase letters, numbers, underscore, plus sign,
-#'     period (dot), at symbol (@@), or hyphen.
+#' -   Must contain uppercase or lowercase letters, numbers, underscore,
+#'     plus sign, period (dot), at symbol (@@), or hyphen.
 #' 
 #' -   First character must be a letter.
 #' 
@@ -4229,23 +4226,16 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 }
 .redshift$operations$get_reserved_node_exchange_offerings <- redshift_get_reserved_node_exchange_offerings
 
-#' Modifies whether a cluster can use AQUA (Advanced Query Accelerator)
+#' This operation is retired
 #'
 #' @description
-#' Modifies whether a cluster can use AQUA (Advanced Query Accelerator).
+#' This operation is retired. Calling this operation does not change AQUA configuration. Amazon Redshift automatically determines whether to use AQUA (Advanced Query Accelerator).
 #'
 #' See [https://paws-r.github.io/docs/redshift/modify_aqua_configuration.html](https://paws-r.github.io/docs/redshift/modify_aqua_configuration.html) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster to be modified.
-#' @param AquaConfigurationStatus The new value of AQUA configuration status. Possible values include the
-#' following.
-#' 
-#' -   enabled - Use AQUA if it is available for the current Amazon Web
-#'     Services Region and Amazon Redshift node type.
-#' 
-#' -   disabled - Don't use AQUA.
-#' 
-#' -   auto - Amazon Redshift determines whether to use AQUA.
+#' @param AquaConfigurationStatus This parameter is retired. Amazon Redshift automatically determines
+#' whether to use AQUA (Advanced Query Accelerator).
 #'
 #' @keywords internal
 #'
@@ -4362,8 +4352,8 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #' response.
 #' 
 #' Operations never return the password, so this operation provides a way
-#' to regain access to the admin user account for a cluster if the password
-#' is lost.
+#' to regain access to the admin user for a cluster if the password is
+#' lost.
 #' 
 #' Default: Uses existing setting.
 #' 
@@ -5256,13 +5246,15 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' -   Must be unique for all clusters within an Amazon Web Services
 #'     account.
 #' @param SnapshotIdentifier The name of the snapshot from which to create the new cluster. This
-#' parameter isn't case sensitive.
+#' parameter isn't case sensitive. You must specify this parameter or
+#' `snapshotArn`, but not both.
 #' 
 #' Example: `my-snapshot-id`
 #' @param SnapshotArn The Amazon Resource Name (ARN) of the snapshot associated with the
-#' message to restore from a cluster.
+#' message to restore from a cluster. You must specify this parameter or
+#' `snapshotIdentifier`, but not both.
 #' @param SnapshotClusterIdentifier The name of the cluster the source snapshot was created from. This
-#' parameter is required if your IAM user has a policy containing a
+#' parameter is required if your IAM user or role has a policy containing a
 #' snapshot resource element that specifies anything other than * for the
 #' cluster name.
 #' @param Port The port number on which the cluster accepts connections.
@@ -5292,9 +5284,9 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' @param HsmConfigurationIdentifier Specifies the name of the HSM configuration that contains the
 #' information the Amazon Redshift cluster can use to retrieve and store
 #' keys in an HSM.
-#' @param ElasticIp The elastic IP (EIP) address for the cluster. You don't have to specify
-#' the EIP for a publicly accessible cluster with
-#' AvailabilityZoneRelocation turned on.
+#' @param ElasticIp The Elastic IP (EIP) address for the cluster. Don't specify the Elastic
+#' IP address for a publicly accessible cluster with availability zone
+#' relocation turned on.
 #' @param ClusterParameterGroupName The name of the parameter group to be associated with this cluster.
 #' 
 #' Default: The default Amazon Redshift cluster parameter group. For
@@ -5401,16 +5393,9 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' @param NumberOfNodes The number of nodes specified when provisioning the restored cluster.
 #' @param AvailabilityZoneRelocation The option to enable relocation for an Amazon Redshift cluster between
 #' Availability Zones after the cluster is restored.
-#' @param AquaConfigurationStatus The value represents how the cluster is configured to use AQUA (Advanced
-#' Query Accelerator) after the cluster is restored. Possible values
-#' include the following.
-#' 
-#' -   enabled - Use AQUA if it is available for the current Amazon Web
-#'     Services Region and Amazon Redshift node type.
-#' 
-#' -   disabled - Don't use AQUA.
-#' 
-#' -   auto - Amazon Redshift determines whether to use AQUA.
+#' @param AquaConfigurationStatus This parameter is retired. It does not set the AQUA configuration
+#' status. Amazon Redshift automatically determines whether to use AQUA
+#' (Advanced Query Accelerator).
 #' @param DefaultIamRoleArn The Amazon Resource Name (ARN) for the IAM role that was set as default
 #' for the cluster when the cluster was last modified while it was restored
 #' from a snapshot.
@@ -5602,7 +5587,7 @@ redshift_revoke_endpoint_access <- function(ClusterIdentifier = NULL, Account = 
 #' @param SnapshotArn The Amazon Resource Name (ARN) of the snapshot associated with the
 #' message to revoke access.
 #' @param SnapshotClusterIdentifier The identifier of the cluster the snapshot was created from. This
-#' parameter is required if your IAM user has a policy containing a
+#' parameter is required if your IAM user or role has a policy containing a
 #' snapshot resource element that specifies anything other than * for the
 #' cluster name.
 #' @param AccountWithRestoreAccess &#91;required&#93; The identifier of the Amazon Web Services account that can no longer

@@ -86,6 +86,153 @@ account_delete_alternate_contact <- function(AccountId = NULL, AlternateContactT
 }
 .account$operations$delete_alternate_contact <- account_delete_alternate_contact
 
+#' Disables (opts-out) a particular Region for an account
+#'
+#' @description
+#' Disables (opts-out) a particular Region for an account.
+#'
+#' @usage
+#' account_disable_region(AccountId, RegionName)
+#'
+#' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services
+#' account that you want to access or modify with this operation. If you
+#' don't specify this parameter, it defaults to the Amazon Web Services
+#' account of the identity used to call the operation. To use this
+#' parameter, the caller must be an identity in the [organization's
+#' management
+#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
+#' or a delegated administrator account. The specified account ID must also
+#' be a member account in the same organization. The organization must have
+#' [all features
+#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
+#' and the organization must have [trusted
+#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' enabled for the Account Management service, and optionally a [delegated
+#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' account assigned.
+#' 
+#' The management account can't specify its own `AccountId`. It must call
+#' the operation in standalone context by not including the `AccountId`
+#' parameter.
+#' 
+#' To call this operation on an account that is not a member of an
+#' organization, don't specify this parameter. Instead, call the operation
+#' using an identity belonging to the account whose contacts you wish to
+#' retrieve or modify.
+#' @param RegionName &#91;required&#93; Specifies the Region-code for a given Region name (for example,
+#' `af-south-1`). When you disable a Region, Amazon Web Services performs
+#' actions to deactivate that Region in your account, such as destroying
+#' IAM resources in the Region. This process takes a few minutes for most
+#' accounts, but this can take several hours. You cannot enable the Region
+#' until the disabling process is fully completed.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disable_region(
+#'   AccountId = "string",
+#'   RegionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname account_disable_region
+#'
+#' @aliases account_disable_region
+account_disable_region <- function(AccountId = NULL, RegionName) {
+  op <- new_operation(
+    name = "DisableRegion",
+    http_method = "POST",
+    http_path = "/disableRegion",
+    paginator = list()
+  )
+  input <- .account$disable_region_input(AccountId = AccountId, RegionName = RegionName)
+  output <- .account$disable_region_output()
+  config <- get_config()
+  svc <- .account$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.account$operations$disable_region <- account_disable_region
+
+#' Enables (opts-in) a particular Region for an account
+#'
+#' @description
+#' Enables (opts-in) a particular Region for an account.
+#'
+#' @usage
+#' account_enable_region(AccountId, RegionName)
+#'
+#' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services
+#' account that you want to access or modify with this operation. If you
+#' don't specify this parameter, it defaults to the Amazon Web Services
+#' account of the identity used to call the operation. To use this
+#' parameter, the caller must be an identity in the [organization's
+#' management
+#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
+#' or a delegated administrator account. The specified account ID must also
+#' be a member account in the same organization. The organization must have
+#' [all features
+#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
+#' and the organization must have [trusted
+#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' enabled for the Account Management service, and optionally a [delegated
+#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' account assigned.
+#' 
+#' The management account can't specify its own `AccountId`. It must call
+#' the operation in standalone context by not including the `AccountId`
+#' parameter.
+#' 
+#' To call this operation on an account that is not a member of an
+#' organization, don't specify this parameter. Instead, call the operation
+#' using an identity belonging to the account whose contacts you wish to
+#' retrieve or modify.
+#' @param RegionName &#91;required&#93; Specifies the Region-code for a given Region name (for example,
+#' `af-south-1`). When you enable a Region, Amazon Web Services performs
+#' actions to prepare your account in that Region, such as distributing
+#' your IAM resources to the Region. This process takes a few minutes for
+#' most accounts, but it can take several hours. You cannot use the Region
+#' until this process is complete. Furthermore, you cannot disable the
+#' Region until the enabling process is fully completed.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$enable_region(
+#'   AccountId = "string",
+#'   RegionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname account_enable_region
+#'
+#' @aliases account_enable_region
+account_enable_region <- function(AccountId = NULL, RegionName) {
+  op <- new_operation(
+    name = "EnableRegion",
+    http_method = "POST",
+    http_path = "/enableRegion",
+    paginator = list()
+  )
+  input <- .account$enable_region_input(AccountId = AccountId, RegionName = RegionName)
+  output <- .account$enable_region_output()
+  config <- get_config()
+  svc <- .account$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.account$operations$enable_region <- account_enable_region
+
 #' Retrieves the specified alternate contact attached to an Amazon Web
 #' Services account
 #'
@@ -269,6 +416,185 @@ account_get_contact_information <- function(AccountId = NULL) {
   return(response)
 }
 .account$operations$get_contact_information <- account_get_contact_information
+
+#' Retrieves the opt-in status of a particular Region
+#'
+#' @description
+#' Retrieves the opt-in status of a particular Region.
+#'
+#' @usage
+#' account_get_region_opt_status(AccountId, RegionName)
+#'
+#' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services
+#' account that you want to access or modify with this operation. If you
+#' don't specify this parameter, it defaults to the Amazon Web Services
+#' account of the identity used to call the operation. To use this
+#' parameter, the caller must be an identity in the [organization's
+#' management
+#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
+#' or a delegated administrator account. The specified account ID must also
+#' be a member account in the same organization. The organization must have
+#' [all features
+#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
+#' and the organization must have [trusted
+#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' enabled for the Account Management service, and optionally a [delegated
+#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' account assigned.
+#' 
+#' The management account can't specify its own `AccountId`. It must call
+#' the operation in standalone context by not including the `AccountId`
+#' parameter.
+#' 
+#' To call this operation on an account that is not a member of an
+#' organization, don't specify this parameter. Instead, call the operation
+#' using an identity belonging to the account whose contacts you wish to
+#' retrieve or modify.
+#' @param RegionName &#91;required&#93; Specifies the Region-code for a given Region name (for example,
+#' `af-south-1`). This function will return the status of whatever Region
+#' you pass into this parameter.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegionName = "string",
+#'   RegionOptStatus = "ENABLED"|"ENABLING"|"DISABLING"|"DISABLED"|"ENABLED_BY_DEFAULT"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_region_opt_status(
+#'   AccountId = "string",
+#'   RegionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname account_get_region_opt_status
+#'
+#' @aliases account_get_region_opt_status
+account_get_region_opt_status <- function(AccountId = NULL, RegionName) {
+  op <- new_operation(
+    name = "GetRegionOptStatus",
+    http_method = "POST",
+    http_path = "/getRegionOptStatus",
+    paginator = list()
+  )
+  input <- .account$get_region_opt_status_input(AccountId = AccountId, RegionName = RegionName)
+  output <- .account$get_region_opt_status_output()
+  config <- get_config()
+  svc <- .account$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.account$operations$get_region_opt_status <- account_get_region_opt_status
+
+#' Lists all the Regions for a given account and their respective opt-in
+#' statuses
+#'
+#' @description
+#' Lists all the Regions for a given account and their respective opt-in
+#' statuses. Optionally, this list can be filtered by the
+#' `region-opt-status-contains` parameter.
+#'
+#' @usage
+#' account_list_regions(AccountId, MaxResults, NextToken,
+#'   RegionOptStatusContains)
+#'
+#' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services
+#' account that you want to access or modify with this operation. If you
+#' don't specify this parameter, it defaults to the Amazon Web Services
+#' account of the identity used to call the operation. To use this
+#' parameter, the caller must be an identity in the [organization's
+#' management
+#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
+#' or a delegated administrator account. The specified account ID must also
+#' be a member account in the same organization. The organization must have
+#' [all features
+#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
+#' and the organization must have [trusted
+#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' enabled for the Account Management service, and optionally a [delegated
+#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' account assigned.
+#' 
+#' The management account can't specify its own `AccountId`. It must call
+#' the operation in standalone context by not including the `AccountId`
+#' parameter.
+#' 
+#' To call this operation on an account that is not a member of an
+#' organization, don't specify this parameter. Instead, call the operation
+#' using an identity belonging to the account whose contacts you wish to
+#' retrieve or modify.
+#' @param MaxResults The total number of items to return in the command’s output. If the
+#' total number of items available is more than the value specified, a
+#' `NextToken` is provided in the command’s output. To resume pagination,
+#' provide the `NextToken` value in the `starting-token` argument of a
+#' subsequent command. Do not use the `NextToken` response element directly
+#' outside of the Amazon Web Services CLI. For usage examples, see
+#' [Pagination](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html)
+#' in the *Amazon Web Services Command Line Interface User Guide*.
+#' @param NextToken A token used to specify where to start paginating. This is the
+#' `NextToken` from a previously truncated response. For usage examples,
+#' see
+#' [Pagination](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html)
+#' in the *Amazon Web Services Command Line Interface User Guide*.
+#' @param RegionOptStatusContains A list of Region statuses (Enabling, Enabled, Disabling, Disabled,
+#' Enabled_by_default) to use to filter the list of Regions for a given
+#' account. For example, passing in a value of ENABLING will only return a
+#' list of Regions with a Region status of ENABLING.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Regions = list(
+#'     list(
+#'       RegionName = "string",
+#'       RegionOptStatus = "ENABLED"|"ENABLING"|"DISABLING"|"DISABLED"|"ENABLED_BY_DEFAULT"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_regions(
+#'   AccountId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   RegionOptStatusContains = list(
+#'     "ENABLED"|"ENABLING"|"DISABLING"|"DISABLED"|"ENABLED_BY_DEFAULT"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname account_list_regions
+#'
+#' @aliases account_list_regions
+account_list_regions <- function(AccountId = NULL, MaxResults = NULL, NextToken = NULL, RegionOptStatusContains = NULL) {
+  op <- new_operation(
+    name = "ListRegions",
+    http_method = "POST",
+    http_path = "/listRegions",
+    paginator = list()
+  )
+  input <- .account$list_regions_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken, RegionOptStatusContains = RegionOptStatusContains)
+  output <- .account$list_regions_output()
+  config <- get_config()
+  svc <- .account$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.account$operations$list_regions <- account_list_regions
 
 #' Modifies the specified alternate contact attached to an Amazon Web
 #' Services account

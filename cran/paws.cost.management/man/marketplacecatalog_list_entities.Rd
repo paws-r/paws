@@ -10,7 +10,8 @@ marketplacecatalog_list_entities(
   FilterList = NULL,
   Sort = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  OwnershipType = NULL
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ results.}
 
 \item{MaxResults}{Specifies the upper limit of the elements on a single page. If a value
 isn't provided, the default value is 20.}
+
+\item{OwnershipType}{}
 }
 \description{
 Provides the list of entities of a given type.

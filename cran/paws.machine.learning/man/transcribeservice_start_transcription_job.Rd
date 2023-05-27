@@ -28,10 +28,10 @@ transcribeservice_start_transcription_job(
 )
 }
 \arguments{
-\item{TranscriptionJobName}{[required] A unique name, chosen by you, for your transcription job. The name you
-specify is also used as the default name of your transcription output
-file. If you want to specify a different name for your transcription
-output, use the \code{OutputKey} parameter.
+\item{TranscriptionJobName}{[required] A unique name, chosen by you, for your transcription job. The name that
+you specify is also used as the default name of your transcription
+output file. If you want to specify a different name for your
+transcription output, use the \code{OutputKey} parameter.
 
 This name is case sensitive, cannot contain spaces, and must be unique
 within an Amazon Web Services account. If you try to create a new job
@@ -56,14 +56,14 @@ table.
 To transcribe speech in Modern Standard Arabic (\code{ar-SA}), your media
 file must be encoded at a sample rate of 16,000 Hz or higher.}
 
-\item{MediaSampleRateHertz}{The sample rate, in Hertz, of the audio track in your input media file.
+\item{MediaSampleRateHertz}{The sample rate, in hertz, of the audio track in your input media file.
 
 If you don't specify the media sample rate, Amazon Transcribe determines
 it for you. If you specify the sample rate, it must match the rate
-detected by Amazon Transcribe; if there's a mismatch between the value
-you specify and the value detected, your job fails. Therefore, in most
-cases, it's advised to omit \code{MediaSampleRateHertz} and let Amazon
-Transcribe determine the sample rate.}
+detected by Amazon Transcribe. If there's a mismatch between the value
+that you specify and the value detected, your job fails. In most cases,
+you can omit \code{MediaSampleRateHertz} and let Amazon Transcribe determine
+the sample rate.}
 
 \item{MediaFormat}{Specify the format of your input media file.}
 
@@ -152,7 +152,7 @@ the default Amazon S3 key (SSE-S3).
 If you specify a KMS key to encrypt your output, you must also specify
 an output location using the \code{OutputLocation} parameter.
 
-Note that the user making the request must have permission to use the
+Note that the role making the request must have permission to use the
 specified KMS key.}
 
 \item{KMSEncryptionContext}{A map of plain text, non-secret key:value pairs, known as encryption
@@ -161,8 +161,8 @@ For more information, see \href{https://docs.aws.amazon.com/transcribe/latest/dg
 and \href{https://docs.aws.amazon.com/transcribe/latest/dg/}{Asymmetric keys in KMS}.}
 
 \item{Settings}{Specify additional optional settings in your request, including channel
-identification, alternative transcriptions, speaker labeling; allows you
-to apply custom vocabularies and vocabulary filters.
+identification, alternative transcriptions, speaker partitioning. You
+can use that to apply custom vocabularies and vocabulary filters.
 
 If you want to include a custom vocabulary or a custom vocabulary filter
 (or both) with your request but \strong{do not} want to use automatic
@@ -181,7 +181,7 @@ must include the \code{LanguageModelName} sub-parameter.
 
 For more information, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/custom-language-models.html}{Custom language models}.}
 
-\item{JobExecutionSettings}{Allows you to control how your transcription job is processed.
+\item{JobExecutionSettings}{Makes it possible to control how your transcription job is processed.
 Currently, the only \code{JobExecutionSettings} modification you can choose
 is enabling job queueing using the \code{AllowDeferredExecution}
 sub-parameter.
@@ -190,23 +190,27 @@ If you include \code{JobExecutionSettings} in your request, you must also
 include the sub-parameters: \code{AllowDeferredExecution} and
 \code{DataAccessRoleArn}.}
 
-\item{ContentRedaction}{Allows you to redact or flag specified personally identifiable
+\item{ContentRedaction}{Makes it possible to redact or flag specified personally identifiable
 information (PII) in your transcript. If you use \code{ContentRedaction}, you
 must also include the sub-parameters: \code{PiiEntityTypes},
 \code{RedactionOutput}, and \code{RedactionType}.}
 
 \item{IdentifyLanguage}{Enables automatic language identification in your transcription job
-request.
+request. Use this parameter if your media file contains only one
+language. If your media contains multiple languages, use
+\code{IdentifyMultipleLanguages} instead.
 
 If you include \code{IdentifyLanguage}, you can optionally include a list of
 language codes, using \code{LanguageOptions}, that you think may be present
-in your media file. Including language options can improve transcription
-accuracy.
+in your media file. Including \code{LanguageOptions} restricts
+\code{IdentifyLanguage} to only the language options that you specify, which
+can improve transcription accuracy.
 
 If you want to apply a custom language model, a custom vocabulary, or a
 custom vocabulary filter to your automatic language identification
 request, include \code{LanguageIdSettings} with the relevant sub-parameters
-(\code{VocabularyName}, \code{LanguageModelName}, and \code{VocabularyFilterName}).
+(\code{VocabularyName}, \code{LanguageModelName}, and \code{VocabularyFilterName}). If
+you include \code{LanguageIdSettings}, also include \code{LanguageOptions}.
 
 Note that you must include one of \code{LanguageCode}, \code{IdentifyLanguage}, or
 \code{IdentifyMultipleLanguages} in your request. If you include more than
@@ -214,24 +218,27 @@ one of these parameters, your transcription job fails.}
 
 \item{IdentifyMultipleLanguages}{Enables automatic multi-language identification in your transcription
 job request. Use this parameter if your media file contains more than
-one language.
+one language. If your media contains only one language, use
+\code{IdentifyLanguage} instead.
 
 If you include \code{IdentifyMultipleLanguages}, you can optionally include a
 list of language codes, using \code{LanguageOptions}, that you think may be
-present in your media file. Including language options can improve
-transcription accuracy.
+present in your media file. Including \code{LanguageOptions} restricts
+\code{IdentifyLanguage} to only the language options that you specify, which
+can improve transcription accuracy.
 
 If you want to apply a custom vocabulary or a custom vocabulary filter
 to your automatic language identification request, include
 \code{LanguageIdSettings} with the relevant sub-parameters (\code{VocabularyName}
-and \code{VocabularyFilterName}).
+and \code{VocabularyFilterName}). If you include \code{LanguageIdSettings}, also
+include \code{LanguageOptions}.
 
 Note that you must include one of \code{LanguageCode}, \code{IdentifyLanguage}, or
 \code{IdentifyMultipleLanguages} in your request. If you include more than
 one of these parameters, your transcription job fails.}
 
 \item{LanguageOptions}{You can specify two or more language codes that represent the languages
-you think may be present in your media; including more than five is not
+you think may be present in your media. Including more than five is not
 recommended. If you're unsure what languages are present, do not include
 this parameter.
 
@@ -251,34 +258,32 @@ new transcription job at the time you start this new job.
 
 To learn more about using tags with Amazon Transcribe, refer to \href{https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html}{Tagging resources}.}
 
-\item{LanguageIdSettings}{If using automatic language identification (\code{IdentifyLanguage}) in your
-request and you want to apply a custom language model, a custom
-vocabulary, or a custom vocabulary filter, include \code{LanguageIdSettings}
-with the relevant sub-parameters (\code{VocabularyName}, \code{LanguageModelName},
-and \code{VocabularyFilterName}).
+\item{LanguageIdSettings}{If using automatic language identification in your request and you want
+to apply a custom language model, a custom vocabulary, or a custom
+vocabulary filter, include \code{LanguageIdSettings} with the relevant
+sub-parameters (\code{VocabularyName}, \code{LanguageModelName}, and
+\code{VocabularyFilterName}). Note that multi-language identification
+(\code{IdentifyMultipleLanguages}) doesn't support custom language models.
 
-You can specify two or more language codes that represent the languages
-you think may be present in your media; including more than five is not
-recommended. Each language code you include can have an associated
-custom language model, custom vocabulary, and custom vocabulary filter.
-The languages you specify must match the languages of the specified
-custom language models, custom vocabularies, and custom vocabulary
-filters.
+\code{LanguageIdSettings} supports two to five language codes. Each language
+code you include can have an associated custom language model, custom
+vocabulary, and custom vocabulary filter. The language codes that you
+specify must match the languages of the associated custom language
+models, custom vocabularies, and custom vocabulary filters.
 
-To include language options using \code{IdentifyLanguage} \strong{without}
-including a custom language model, a custom vocabulary, or a custom
-vocabulary filter, use \code{LanguageOptions} instead of
-\code{LanguageIdSettings}. Including language options can improve the
-accuracy of automatic language identification.
+It's recommended that you include \code{LanguageOptions} when using
+\code{LanguageIdSettings} to ensure that the correct language dialect is
+identified. For example, if you specify a custom vocabulary that is in
+\code{en-US} but Amazon Transcribe determines that the language spoken in
+your media is \code{en-AU}, your custom vocabulary \emph{is not} applied to your
+transcription. If you include \code{LanguageOptions} and include \code{en-US} as
+the only English language dialect, your custom vocabulary \emph{is} applied
+to your transcription.
 
 If you want to include a custom language model with your request but
 \strong{do not} want to use automatic language identification, use instead
-the `` parameter with the \code{LanguageModelName} sub-parameter.
-
-If you want to include a custom vocabulary or a custom vocabulary filter
-(or both) with your request but \strong{do not} want to use automatic
-language identification, use instead the `` parameter with the
-\code{VocabularyName} or `VocabularyFilterName` (or both) sub-parameter.}
+the \verb{parameter with the `LanguageModelName` sub-parameter. If you want to include a custom vocabulary or a custom vocabulary filter (or both) with your request but **do not** want to use automatic language identification, use instead the} parameter with the \code{VocabularyName}
+or \code{VocabularyFilterName} (or both) sub-parameter.}
 }
 \description{
 Transcribes the audio from a media file and applies any additional Request Parameters you choose to include in your request.

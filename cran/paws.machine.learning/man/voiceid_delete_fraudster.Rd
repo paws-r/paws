@@ -7,12 +7,12 @@
 voiceid_delete_fraudster(DomainId, FraudsterId)
 }
 \arguments{
-\item{DomainId}{[required] The identifier of the domain containing the fraudster.}
+\item{DomainId}{[required] The identifier of the domain that contains the fraudster.}
 
 \item{FraudsterId}{[required] The identifier of the fraudster you want to delete.}
 }
 \description{
-Deletes the specified fraudster from Voice ID.
+Deletes the specified fraudster from Voice ID. This action disassociates the fraudster from any watchlists it is a part of.
 
 See \url{https://paws-r.github.io/docs/voiceid/delete_fraudster.html} for full documentation.
 }

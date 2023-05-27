@@ -2,7 +2,7 @@
 % Please edit documentation in R/nimblestudio_operations.R
 \name{nimblestudio_create_studio}
 \alias{nimblestudio_create_studio}
-\title{Create a new Studio}
+\title{Create a new studio}
 \usage{
 nimblestudio_create_studio(
   adminRoleArn,
@@ -15,13 +15,13 @@ nimblestudio_create_studio(
 )
 }
 \arguments{
-\item{adminRoleArn}{[required] The IAM role that Studio Admins will assume when logging in to the
+\item{adminRoleArn}{[required] The IAM role that studio admins will assume when logging in to the
 Nimble Studio portal.}
 
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. If you don’t specify a client token, the AWS
-SDK automatically generates a client token and uses it for the request
-to ensure idempotency.}
+idempotency of the request. If you don’t specify a client token, the
+Amazon Web Services SDK automatically generates a client token and uses
+it for the request to ensure idempotency.}
 
 \item{displayName}{[required] A friendly name for the studio.}
 
@@ -30,14 +30,14 @@ to ensure idempotency.}
 \item{studioName}{[required] The studio name that is used in the URL of the Nimble Studio portal when
 accessed by Nimble Studio users.}
 
-\item{tags}{A collection of labels, in the form of key:value pairs, that apply to
+\item{tags}{A collection of labels, in the form of key-value pairs, that apply to
 this resource.}
 
-\item{userRoleArn}{[required] The IAM role that Studio Users will assume when logging in to the Nimble
+\item{userRoleArn}{[required] The IAM role that studio users will assume when logging in to the Nimble
 Studio portal.}
 }
 \description{
-Create a new Studio.
+Create a new studio.
 
 See \url{https://paws-r.github.io/docs/nimblestudio/create_studio.html} for full documentation.
 }

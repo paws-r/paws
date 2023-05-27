@@ -7,7 +7,7 @@
 workmail_update_default_mail_domain(OrganizationId, DomainName)
 }
 \arguments{
-\item{OrganizationId}{[required] The Amazon WorkMail organization for which to list domains.}
+\item{OrganizationId}{[required] The WorkMail organization for which to list domains.}
 
 \item{DomainName}{[required] The domain name that will become the default domain.}
 }

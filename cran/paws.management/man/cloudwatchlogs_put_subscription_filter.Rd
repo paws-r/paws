@@ -32,11 +32,12 @@ subscription filter, for same-account delivery.
 \item A logical destination (specified using an ARN) belonging to a
 different account, for cross-account delivery.
 
-If you are setting up a cross-account subscription, the destination
-must have an IAM policy associated with it that allows the sender to
-send logs to the destination. For more information, see
+If you're setting up a cross-account subscription, the destination
+must have an IAM policy associated with it. The IAM policy must
+allow the sender to send logs to the destination. For more
+information, see
 \code{\link[=cloudwatchlogs_put_destination_policy]{put_destination_policy}}.
-\item An Amazon Kinesis Firehose delivery stream belonging to the same
+\item A Kinesis Data Firehose delivery stream belonging to the same
 account as the subscription filter, for same-account delivery.
 \item A Lambda function belonging to the same account as the subscription
 filter, for same-account delivery.
@@ -50,10 +51,10 @@ cross-account delivery.}
 \item{distribution}{The method used to distribute log data to the destination. By default,
 log data is grouped by log stream, but the grouping can be set to random
 for a more even distribution. This property is only applicable when the
-destination is an Amazon Kinesis stream.}
+destination is an Amazon Kinesis data stream.}
 }
 \description{
-Creates or updates a subscription filter and associates it with the specified log group. Subscription filters allow you to subscribe to a real-time stream of log events ingested through \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} and have them delivered to a specific destination. When log events are sent to the receiving service, they are Base64 encoded and compressed with the gzip format.
+Creates or updates a subscription filter and associates it with the specified log group. With subscription filters, you can subscribe to a real-time stream of log events ingested through \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} and have them delivered to a specific destination. When log events are sent to the receiving service, they are Base64 encoded and compressed with the GZIP format.
 
 See \url{https://paws-r.github.io/docs/cloudwatchlogs/put_subscription_filter.html} for full documentation.
 }

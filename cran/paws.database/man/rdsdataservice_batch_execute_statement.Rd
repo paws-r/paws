@@ -5,17 +5,31 @@
 \title{Runs a batch SQL statement over an array of data}
 \usage{
 rdsdataservice_batch_execute_statement(
-  database = NULL,
-  parameterSets = NULL,
   resourceArn,
-  schema = NULL,
   secretArn,
   sql,
+  database = NULL,
+  schema = NULL,
+  parameterSets = NULL,
   transactionId = NULL
 )
 }
 \arguments{
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.}
+
+\item{secretArn}{[required] The ARN of the secret that enables access to the DB cluster. Enter the
+database user name and password for the credentials in the secret.
+
+For information about creating the secret, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_database_secret.html}{Create a database secret}.}
+
+\item{sql}{[required] The SQL statement to run. Don't include a semicolon (;) at the end of
+the SQL statement.}
+
 \item{database}{The name of the database.}
+
+\item{schema}{The name of the database schema.
+
+Currently, the \code{schema} parameter isn't supported.}
 
 \item{parameterSets}{The parameter set for the batch operation.
 
@@ -31,18 +45,6 @@ operation.
 }
 
 Array parameters are not supported.}
-
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.}
-
-\item{schema}{The name of the database schema.}
-
-\item{secretArn}{[required] The ARN of the secret that enables access to the DB cluster. Enter the
-database user name and password for the credentials in the secret.
-
-For information about creating the secret, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_database_secret.html}{Create a database secret}.}
-
-\item{sql}{[required] The SQL statement to run. Don't include a semicolon (;) at the end of
-the SQL statement.}
 
 \item{transactionId}{The identifier of a transaction that was started by using the
 \code{\link[=rdsdataservice_begin_transaction]{begin_transaction}} operation.

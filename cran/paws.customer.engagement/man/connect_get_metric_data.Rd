@@ -16,8 +16,8 @@ connect_get_metric_data(
 )
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 
 \item{StartTime}{[required] The timestamp, in UNIX Epoch time format, at which to start the
 reporting interval for the retrieval of historical metrics data. The

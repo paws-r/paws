@@ -4,20 +4,27 @@
 \alias{nimblestudio_start_streaming_session}
 \title{Transitions sessions from the STOPPED state into the READY state}
 \usage{
-nimblestudio_start_streaming_session(clientToken = NULL, sessionId, studioId)
+nimblestudio_start_streaming_session(
+  backupId = NULL,
+  clientToken = NULL,
+  sessionId,
+  studioId
+)
 }
 \arguments{
-\item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. If you don’t specify a client token, the AWS
-SDK automatically generates a client token and uses it for the request
-to ensure idempotency.}
+\item{backupId}{The ID of the backup.}
 
-\item{sessionId}{[required] The streaming session ID for the StartStreamingSessionRequest.}
+\item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. If you don’t specify a client token, the
+Amazon Web Services SDK automatically generates a client token and uses
+it for the request to ensure idempotency.}
+
+\item{sessionId}{[required] The streaming session ID for the \code{StartStreamingSessionRequest}.}
 
 \item{studioId}{[required] The studio ID for the StartStreamingSessionRequest.}
 }
 \description{
-Transitions sessions from the STOPPED state into the READY state. The START_IN_PROGRESS state is the intermediate state between the STOPPED and READY states.
+Transitions sessions from the \code{STOPPED} state into the \code{READY} state. The \code{START_IN_PROGRESS} state is the intermediate state between the \code{STOPPED} and \code{READY} states.
 
 See \url{https://paws-r.github.io/docs/nimblestudio/start_streaming_session.html} for full documentation.
 }

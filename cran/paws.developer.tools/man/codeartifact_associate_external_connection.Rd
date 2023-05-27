@@ -23,11 +23,13 @@ the domain. It does not include dashes or spaces.}
 following values are supported:
 \itemize{
 \item \code{public:npmjs} - for the npm public repository.
+\item \code{public:nuget-org} - for the NuGet Gallery.
 \item \code{public:pypi} - for the Python Package Index.
 \item \code{public:maven-central} - for Maven Central.
 \item \code{public:maven-googleandroid} - for the Google Android repository.
 \item \code{public:maven-gradleplugins} - for the Gradle plugins repository.
 \item \code{public:maven-commonsware} - for the CommonsWare Android repository.
+\item \code{public:maven-clojars} - for the Clojars repository.
 }}
 }
 \description{

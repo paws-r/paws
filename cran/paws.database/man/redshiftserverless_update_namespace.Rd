@@ -16,15 +16,17 @@ redshiftserverless_update_namespace(
 }
 \arguments{
 \item{adminUserPassword}{The password of the administrator for the first database created in the
-namespace.}
+namespace. This parameter must be updated together with \code{adminUsername}.}
 
 \item{adminUsername}{The username of the administrator for the first database created in the
-namespace.}
+namespace. This parameter must be updated together with
+\code{adminUserPassword}.}
 
 \item{defaultIamRoleArn}{The Amazon Resource Name (ARN) of the IAM role to set as a default in
-the namespace.}
+the namespace. This parameter must be updated together with \code{iamRoles}.}
 
-\item{iamRoles}{A list of IAM roles to associate with the namespace.}
+\item{iamRoles}{A list of IAM roles to associate with the namespace. This parameter must
+be updated together with \code{defaultIamRoleArn}.}
 
 \item{kmsKeyId}{The ID of the Amazon Web Services Key Management Service key used to
 encrypt your data.}
@@ -32,10 +34,11 @@ encrypt your data.}
 \item{logExports}{The types of logs the namespace can export. The export types are
 \code{userlog}, \code{connectionlog}, and \code{useractivitylog}.}
 
-\item{namespaceName}{[required] The name of the namespace.}
+\item{namespaceName}{[required] The name of the namespace to update. You can't update the name of a
+namespace once it is created.}
 }
 \description{
-Updates a namespace with the specified settings.
+Updates a namespace with the specified settings. Unless required, you can't update multiple parameters in one request. For example, you must specify both \code{adminUsername} and \code{adminUserPassword} to update either field, but you can't update both \code{kmsKeyId} and \code{logExports} in a single request.
 
 See \url{https://paws-r.github.io/docs/redshiftserverless/update_namespace.html} for full documentation.
 }

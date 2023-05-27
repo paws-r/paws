@@ -59,6 +59,63 @@ prometheusservice_create_alert_manager_definition <- function(clientToken = NULL
 }
 .prometheusservice$operations$create_alert_manager_definition <- prometheusservice_create_alert_manager_definition
 
+#' Create logging configuration
+#'
+#' @description
+#' Create logging configuration.
+#'
+#' @usage
+#' prometheusservice_create_logging_configuration(clientToken, logGroupArn,
+#'   workspaceId)
+#'
+#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
+#' idempotency of the request.
+#' @param logGroupArn &#91;required&#93; The ARN of the CW log group to which the vended log data will be
+#' published.
+#' @param workspaceId &#91;required&#93; The ID of the workspace to vend logs to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = list(
+#'     statusCode = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATION_FAILED"|"UPDATE_FAILED",
+#'     statusReason = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_logging_configuration(
+#'   clientToken = "string",
+#'   logGroupArn = "string",
+#'   workspaceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_create_logging_configuration
+#'
+#' @aliases prometheusservice_create_logging_configuration
+prometheusservice_create_logging_configuration <- function(clientToken = NULL, logGroupArn, workspaceId) {
+  op <- new_operation(
+    name = "CreateLoggingConfiguration",
+    http_method = "POST",
+    http_path = "/workspaces/{workspaceId}/logging",
+    paginator = list()
+  )
+  input <- .prometheusservice$create_logging_configuration_input(clientToken = clientToken, logGroupArn = logGroupArn, workspaceId = workspaceId)
+  output <- .prometheusservice$create_logging_configuration_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$create_logging_configuration <- prometheusservice_create_logging_configuration
+
 #' Create a rule group namespace
 #'
 #' @description
@@ -234,6 +291,51 @@ prometheusservice_delete_alert_manager_definition <- function(clientToken = NULL
 }
 .prometheusservice$operations$delete_alert_manager_definition <- prometheusservice_delete_alert_manager_definition
 
+#' Delete logging configuration
+#'
+#' @description
+#' Delete logging configuration.
+#'
+#' @usage
+#' prometheusservice_delete_logging_configuration(clientToken, workspaceId)
+#'
+#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
+#' idempotency of the request.
+#' @param workspaceId &#91;required&#93; The ID of the workspace to vend logs to.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_logging_configuration(
+#'   clientToken = "string",
+#'   workspaceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_delete_logging_configuration
+#'
+#' @aliases prometheusservice_delete_logging_configuration
+prometheusservice_delete_logging_configuration <- function(clientToken = NULL, workspaceId) {
+  op <- new_operation(
+    name = "DeleteLoggingConfiguration",
+    http_method = "DELETE",
+    http_path = "/workspaces/{workspaceId}/logging",
+    paginator = list()
+  )
+  input <- .prometheusservice$delete_logging_configuration_input(clientToken = clientToken, workspaceId = workspaceId)
+  output <- .prometheusservice$delete_logging_configuration_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$delete_logging_configuration <- prometheusservice_delete_logging_configuration
+
 #' Delete a rule groups namespace
 #'
 #' @description
@@ -385,6 +487,66 @@ prometheusservice_describe_alert_manager_definition <- function(workspaceId) {
   return(response)
 }
 .prometheusservice$operations$describe_alert_manager_definition <- prometheusservice_describe_alert_manager_definition
+
+#' Describes logging configuration
+#'
+#' @description
+#' Describes logging configuration.
+#'
+#' @usage
+#' prometheusservice_describe_logging_configuration(workspaceId)
+#'
+#' @param workspaceId &#91;required&#93; The ID of the workspace to vend logs to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   loggingConfiguration = list(
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     logGroupArn = "string",
+#'     modifiedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = list(
+#'       statusCode = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATION_FAILED"|"UPDATE_FAILED",
+#'       statusReason = "string"
+#'     ),
+#'     workspace = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_logging_configuration(
+#'   workspaceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_describe_logging_configuration
+#'
+#' @aliases prometheusservice_describe_logging_configuration
+prometheusservice_describe_logging_configuration <- function(workspaceId) {
+  op <- new_operation(
+    name = "DescribeLoggingConfiguration",
+    http_method = "GET",
+    http_path = "/workspaces/{workspaceId}/logging",
+    paginator = list()
+  )
+  input <- .prometheusservice$describe_logging_configuration_input(workspaceId = workspaceId)
+  output <- .prometheusservice$describe_logging_configuration_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$describe_logging_configuration <- prometheusservice_describe_logging_configuration
 
 #' Describe a rule groups namespace
 #'
@@ -918,6 +1080,63 @@ prometheusservice_untag_resource <- function(resourceArn, tagKeys) {
   return(response)
 }
 .prometheusservice$operations$untag_resource <- prometheusservice_untag_resource
+
+#' Update logging configuration
+#'
+#' @description
+#' Update logging configuration.
+#'
+#' @usage
+#' prometheusservice_update_logging_configuration(clientToken, logGroupArn,
+#'   workspaceId)
+#'
+#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
+#' idempotency of the request.
+#' @param logGroupArn &#91;required&#93; The ARN of the CW log group to which the vended log data will be
+#' published.
+#' @param workspaceId &#91;required&#93; The ID of the workspace to vend logs to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = list(
+#'     statusCode = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATION_FAILED"|"UPDATE_FAILED",
+#'     statusReason = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_logging_configuration(
+#'   clientToken = "string",
+#'   logGroupArn = "string",
+#'   workspaceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_update_logging_configuration
+#'
+#' @aliases prometheusservice_update_logging_configuration
+prometheusservice_update_logging_configuration <- function(clientToken = NULL, logGroupArn, workspaceId) {
+  op <- new_operation(
+    name = "UpdateLoggingConfiguration",
+    http_method = "PUT",
+    http_path = "/workspaces/{workspaceId}/logging",
+    paginator = list()
+  )
+  input <- .prometheusservice$update_logging_configuration_input(clientToken = clientToken, logGroupArn = logGroupArn, workspaceId = workspaceId)
+  output <- .prometheusservice$update_logging_configuration_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$update_logging_configuration <- prometheusservice_update_logging_configuration
 
 #' Updates an AMP workspace alias
 #'

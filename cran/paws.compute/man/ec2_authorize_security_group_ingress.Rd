@@ -26,9 +26,10 @@ range, use a set of IP permissions.
 Alternatively, use a set of IP permissions to specify multiple rules and
 a description for the rule.}
 
-\item{FromPort}{The start of port range for the TCP and UDP protocols, or an ICMP type
-number. For the ICMP type number, use \code{-1} to specify all types. If you
-specify all ICMP types, you must specify all codes.
+\item{FromPort}{If the protocol is TCP or UDP, this is the start of the port range. If
+the protocol is ICMP, this is the type number. A value of -1 indicates
+all ICMP types. If you specify all ICMP types, you must specify all ICMP
+codes.
 
 Alternatively, use a set of IP permissions to specify multiple rules and
 a description for the rule.}
@@ -39,7 +40,8 @@ nondefault VPC, you must specify the security group ID.}
 
 \item{GroupName}{[EC2-Classic, default VPC] The name of the security group. You must
 specify either the security group ID or the security group name in the
-request.}
+request. For security groups in a nondefault VPC, you must specify the
+security group ID.}
 
 \item{IpPermissions}{The sets of IP permissions.}
 
@@ -69,9 +71,9 @@ port range, and the end of the port range. Creates rules that grant full
 ICMP, UDP, and TCP access. To create a rule with a specific IP protocol
 and port range, use a set of IP permissions instead.}
 
-\item{ToPort}{The end of port range for the TCP and UDP protocols, or an ICMP code
-number. For the ICMP code number, use \code{-1} to specify all codes. If you
-specify all ICMP types, you must specify all codes.
+\item{ToPort}{If the protocol is TCP or UDP, this is the end of the port range. If the
+protocol is ICMP, this is the code. A value of -1 indicates all ICMP
+codes. If you specify all ICMP types, you must specify all ICMP codes.
 
 Alternatively, use a set of IP permissions to specify multiple rules and
 a description for the rule.}

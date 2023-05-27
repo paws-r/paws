@@ -2,7 +2,7 @@
 % Please edit documentation in R/codepipeline_operations.R
 \name{codepipeline_poll_for_jobs}
 \alias{codepipeline_poll_for_jobs}
-\title{Returns information about any jobs for AWS CodePipeline to act on}
+\title{Returns information about any jobs for CodePipeline to act on}
 \usage{
 codepipeline_poll_for_jobs(
   actionTypeId,
@@ -22,7 +22,7 @@ map. Only jobs whose action configuration matches the mapped value are
 returned.}
 }
 \description{
-Returns information about any jobs for AWS CodePipeline to act on. \code{\link[=codepipeline_poll_for_jobs]{poll_for_jobs}} is valid only for action types with "Custom" in the owner field. If the action type contains "AWS" or "ThirdParty" in the owner field, the \code{\link[=codepipeline_poll_for_jobs]{poll_for_jobs}} action returns an error.
+Returns information about any jobs for CodePipeline to act on. \code{\link[=codepipeline_poll_for_jobs]{poll_for_jobs}} is valid only for action types with "Custom" in the owner field. If the action type contains \code{AWS} or \code{ThirdParty} in the owner field, the \code{\link[=codepipeline_poll_for_jobs]{poll_for_jobs}} action returns an error.
 
 See \url{https://paws-r.github.io/docs/codepipeline/poll_for_jobs.html} for full documentation.
 }

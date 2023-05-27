@@ -9,8 +9,8 @@ connect_delete_user_hierarchy_group(HierarchyGroupId, InstanceId)
 \arguments{
 \item{HierarchyGroupId}{[required] The identifier of the hierarchy group.}
 
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 }
 \description{
 Deletes an existing user hierarchy group. It must not be associated with any agents or have any active child groups.

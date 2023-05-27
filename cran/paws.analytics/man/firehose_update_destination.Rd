@@ -14,7 +14,8 @@ firehose_update_destination(
   ElasticsearchDestinationUpdate = NULL,
   AmazonopensearchserviceDestinationUpdate = NULL,
   SplunkDestinationUpdate = NULL,
-  HttpEndpointDestinationUpdate = NULL
+  HttpEndpointDestinationUpdate = NULL,
+  AmazonOpenSearchServerlessDestinationUpdate = NULL
 )
 }
 \arguments{
@@ -38,11 +39,14 @@ configuration.}
 
 \item{ElasticsearchDestinationUpdate}{Describes an update for a destination in Amazon ES.}
 
-\item{AmazonopensearchserviceDestinationUpdate}{}
+\item{AmazonopensearchserviceDestinationUpdate}{Describes an update for a destination in Amazon OpenSearch Service.}
 
 \item{SplunkDestinationUpdate}{Describes an update for a destination in Splunk.}
 
 \item{HttpEndpointDestinationUpdate}{Describes an update to the specified HTTP endpoint destination.}
+
+\item{AmazonOpenSearchServerlessDestinationUpdate}{Describes an update for a destination in the Serverless offering for
+Amazon OpenSearch Service.}
 }
 \description{
 Updates the specified destination of the specified delivery stream.

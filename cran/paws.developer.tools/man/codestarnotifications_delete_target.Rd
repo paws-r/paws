@@ -7,12 +7,13 @@
 codestarnotifications_delete_target(TargetAddress, ForceUnsubscribeAll = NULL)
 }
 \arguments{
-\item{TargetAddress}{[required] The Amazon Resource Name (ARN) of the SNS topic to delete.}
+\item{TargetAddress}{[required] The Amazon Resource Name (ARN) of the Chatbot topic or Chatbot client to
+delete.}
 
 \item{ForceUnsubscribeAll}{A Boolean value that can be used to delete all associations with this
-SNS topic. The default value is FALSE. If set to TRUE, all associations
-between that target and every notification rule in your AWS account are
-deleted.}
+Chatbot topic. The default value is FALSE. If set to TRUE, all
+associations between that target and every notification rule in your
+Amazon Web Services account are deleted.}
 }
 \description{
 Deletes a specified target for notifications.

@@ -2,29 +2,36 @@
 % Please edit documentation in R/resiliencehub_operations.R
 \name{resiliencehub_import_resources_to_draft_app_version}
 \alias{resiliencehub_import_resources_to_draft_app_version}
-\title{Imports resources from sources such as a CloudFormation stack,
-resource-groups, or application registry app to a draft application
-version}
+\title{Imports resources to Resilience Hub application draft version from
+different input sources}
 \usage{
 resiliencehub_import_resources_to_draft_app_version(
   appArn,
+  eksSources = NULL,
+  importStrategy = NULL,
   sourceArns = NULL,
   terraformSources = NULL
 )
 }
 \arguments{
-\item{appArn}{[required] The Amazon Resource Name (ARN) of the application. The format for this
-ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}.
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference}.}
+\item{appArn}{[required] The Amazon Resource Name (ARN) of the Resilience Hub application. The
+format for this ARN is:
+arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
+information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
+in the \emph{AWS General Reference} guide.}
 
-\item{sourceArns}{The Amazon Resource Names (ARNs) for the resources that you want to
-import.}
+\item{eksSources}{The input sources of the Amazon Elastic Kubernetes Service resources you
+need to import.}
+
+\item{importStrategy}{The import strategy you would like to set to import resources into
+Resilience Hub application.}
+
+\item{sourceArns}{The Amazon Resource Names (ARNs) for the resources.}
 
 \item{terraformSources}{A list of terraform file s3 URLs you need to import.}
 }
 \description{
-Imports resources from sources such as a CloudFormation stack, resource-groups, or application registry app to a draft application version.
+Imports resources to Resilience Hub application draft version from different input sources. For more information about the input sources supported by Resilience Hub, see \href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/discover-structure.html}{Discover the structure and describe your Resilience Hub application}.
 
 See \url{https://paws-r.github.io/docs/resiliencehub/import_resources_to_draft_app_version.html} for full documentation.
 }

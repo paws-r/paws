@@ -78,16 +78,13 @@ Specifying a parameter type isn't required when updating a parameter.
 You must specify a parameter type when creating a parameter.}
 
 \item{KeyId}{The Key Management Service (KMS) ID that you want to use to encrypt a
-parameter. Either the default KMS key automatically assigned to your
-Amazon Web Services account or a custom key. Required for parameters
+parameter. Use a custom key for better security. Required for parameters
 that use the \code{SecureString} data type.
 
 If you don't specify a key ID, the system uses the default key
-associated with your Amazon Web Services account.
+associated with your Amazon Web Services account which is not as secure
+as using a custom key.
 \itemize{
-\item To use your default KMS key, choose the \code{SecureString} data type,
-and do \emph{not} specify the \verb{Key ID} when you create the parameter. The
-system automatically populates \verb{Key ID} with your default KMS key.
 \item To use a custom KMS key, choose the \code{SecureString} data type with
 the \verb{Key ID} parameter.
 }}
@@ -219,9 +216,21 @@ plain text and Amazon Machine Image (AMI) IDs.
 When you create a \code{String} parameter and specify \code{aws:ec2:image}, Amazon
 Web Services Systems Manager validates the parameter value is in the
 required format, such as \verb{ami-12345abcdeEXAMPLE}, and that the specified
-AMI is available in your Amazon Web Services account. For more
-information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html}{Native parameter support for Amazon Machine Image (AMI) IDs}
-in the \emph{Amazon Web Services Systems Manager User Guide}.}
+AMI is available in your Amazon Web Services account.
+
+If the action is successful, the service sends back an HTTP 200 response
+which indicates a successful \code{\link[=ssm_put_parameter]{put_parameter}} call
+for all cases except for data type \code{aws:ec2:image}. If you call
+\code{\link[=ssm_put_parameter]{put_parameter}} with \code{aws:ec2:image} data type, a
+successful HTTP 200 response does not guarantee that your parameter was
+successfully created or updated. The \code{aws:ec2:image} value is validated
+asynchronously, and the \code{\link[=ssm_put_parameter]{put_parameter}} call
+returns before the validation is complete. If you submit an invalid AMI
+value, the PutParameter operation will return success, but the
+asynchronous validation will fail and the parameter will not be created
+or updated. To monitor whether your \code{aws:ec2:image} parameters are
+created successfully, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-cwe.html}{Setting up notifications or trigger actions based on Parameter Store events}.
+For more information about AMI format validation , see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html}{Native parameter support for Amazon Machine Image (AMI) IDs}.}
 }
 \description{
 Add a parameter to the system.

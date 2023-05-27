@@ -37,7 +37,12 @@ create a secret version twice. We recommend that you generate a
 \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID-type}
 value to ensure uniqueness within the specified secret.}
 
-\item{RotationLambdaARN}{The ARN of the Lambda rotation function that can rotate the secret.}
+\item{RotationLambdaARN}{For secrets that use a Lambda rotation function to rotate, the ARN of
+the Lambda rotation function.
+
+For secrets that use \emph{managed rotation}, omit this field. For more
+information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_managed.html}{Managed rotation}
+in the \emph{Secrets Manager User Guide}.}
 
 \item{RotationRules}{A structure that defines the rotation configuration for this secret.}
 
@@ -45,16 +50,16 @@ value to ensure uniqueness within the specified secret.}
 next scheduled rotation window. The rotation schedule is defined in
 RotateSecretRequest$RotationRules.
 
-If you don't immediately rotate the secret, Secrets Manager tests the
-rotation configuration by running the \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html#rotate-secrets_how}{\code{testSecret} step}
+For secrets that use a Lambda rotation function to rotate, if you don't
+immediately rotate the secret, Secrets Manager tests the rotation
+configuration by running the \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html#rotate-secrets_how}{\code{testSecret} step}
 of the Lambda rotation function. The test creates an \code{AWSPENDING}
 version of the secret and then removes it.
 
-If you don't specify this value, then by default, Secrets Manager
-rotates the secret immediately.}
+By default, Secrets Manager rotates the secret immediately.}
 }
 \description{
-Configures and starts the asynchronous process of rotating the secret. For more information about rotation, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html}{Rotate secrets}.
+Configures and starts the asynchronous process of rotating the secret. For information about rotation, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html}{Rotate secrets} in the \emph{Secrets Manager User Guide}. If you include the configuration parameters, the operation sets the values for the secret and then immediately starts a rotation. If you don't include the configuration parameters, the operation starts a rotation with the values already stored in the secret.
 
 See \url{https://paws-r.github.io/docs/secretsmanager/rotate_secret.html} for full documentation.
 }

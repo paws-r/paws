@@ -2,7 +2,7 @@
 % Please edit documentation in R/resiliencehub_operations.R
 \name{resiliencehub_describe_resiliency_policy}
 \alias{resiliencehub_describe_resiliency_policy}
-\title{Describes a specified resiliency policy for an AWS Resilience Hub
+\title{Describes a specified resiliency policy for an Resilience Hub
 application}
 \usage{
 resiliencehub_describe_resiliency_policy(policyArn)
@@ -11,11 +11,11 @@ resiliencehub_describe_resiliency_policy(policyArn)
 \item{policyArn}{[required] The Amazon Resource Name (ARN) of the resiliency policy. The format for
 this ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:resiliency-policy/\code{policy-id}.
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
+in the \emph{AWS General Reference} guide.}
 }
 \description{
-Describes a specified resiliency policy for an AWS Resilience Hub application. The returned policy object includes creation time, data location constraints, the Amazon Resource Name (ARN) for the policy, tags, tier, and more.
+Describes a specified resiliency policy for an Resilience Hub application. The returned policy object includes creation time, data location constraints, the Amazon Resource Name (ARN) for the policy, tags, tier, and more.
 
 See \url{https://paws-r.github.io/docs/resiliencehub/describe_resiliency_policy.html} for full documentation.
 }

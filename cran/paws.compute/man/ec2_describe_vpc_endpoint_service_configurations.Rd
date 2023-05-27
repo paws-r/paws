@@ -19,9 +19,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{ServiceIds}{The IDs of one or more services.}
+\item{ServiceIds}{The IDs of the endpoint services.}
 
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{service-name} - The name of the service.
 \item \code{service-id} - The ID of the service.

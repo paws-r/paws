@@ -31,7 +31,8 @@ again with this value.}
 
 \item{IncludeDeprecated}{Specifies whether to include versions of secrets that don't have any
 staging labels attached to them. Versions without staging labels are
-considered deprecated and are subject to deletion by Secrets Manager.}
+considered deprecated and are subject to deletion by Secrets Manager. By
+default, versions without staging labels aren't included.}
 }
 \description{
 Lists the versions of a secret. Secrets Manager uses staging labels to indicate the different versions of a secret. For more information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version}{Secrets Manager concepts: Versions}.
