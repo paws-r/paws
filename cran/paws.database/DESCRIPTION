@@ -1,6 +1,6 @@
 Package: paws.database
 Title: 'Amazon Web Services' Database Services
-Version: 0.2.0
+Version: 0.3.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
