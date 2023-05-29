@@ -8,6 +8,8 @@ paws_update_version(dir = "../cran", version)
 }
 \arguments{
 \item{dir}{Directory containing paws sdk packages.}
+
+\item{version}{Version to set paws sdk.}
 }
 \description{
 Update paws version

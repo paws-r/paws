@@ -436,6 +436,7 @@ paws_unescape_latex_post_build <- function(
 
 #' @title Update paws version
 #' @param dir Directory containing paws sdk packages.
+#' @param version Version to set paws sdk.
 #' @export
 paws_update_version <- function(dir= "../cran", version) {
   packages <- fs::dir_ls(dir)
