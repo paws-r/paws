@@ -466,3 +466,17 @@ test_that("check paws_build_cran_comments from cache", {
     )
   )
 })
+
+test_that("check if version is updated correctly", {
+  mock_writelines <- mock2()
+  mockery::stub(
+    paws_update_version, 'writeLines', mock_writelines
+  )
+  paws_update_version(dir = "dummy", version = "0.8.0")
+
+  expected <- lapply(file.path(fs::dir_ls("dummy"), "expected_DESCRIPTION"), readLines)
+  actual <- mockery::mock_args(mock_writelines)
+  for (i in seq_along(actual)) {
+    expect_equal(actual[[i]][[1]], expected[[i]])
+  }
+})
