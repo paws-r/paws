@@ -434,6 +434,28 @@ paws_unescape_latex_post_build <- function(
   }
 }
 
+#' @title Update paws version
+#' @param dir Directory containing paws sdk packages.
+#' @export
+paws_update_version <- function(dir= "../cran", version) {
+  packages <- fs::dir_ls(dir)
+  descriptions <- fs::path(packages, "DESCRIPTION")
+
+  for (desc in descriptions) {
+    lines <- readLines(desc)
+    found <- grepl("Version: [0-9\\.]+", lines, perl = T)
+    lines[found] <- gsub("[0-9\\.]+", version, lines[found])
+
+    found <- grepl("paws\\..*[0-9]+\\.[0-9]+\\.[0-9]+", lines, perl = T)
+
+    # remove paws.common
+    found[found] <- !grepl(
+      "paws\\.common.*[0-9]+\\.[0-9]+\\.[0-9]+", lines[found], perl = T
+    )
+    lines[found] <- gsub("[0-9]+\\.[0-9]+\\.[0-9]+", version, lines[found])
+    writeLines(lines, desc)
+  }
+}
 
 ##### helper functions #####
 check_pkgs <- function(pkgs, keep_notes = FALSE){
