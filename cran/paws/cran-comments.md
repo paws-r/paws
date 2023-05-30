@@ -6,15 +6,9 @@
 
 ## R CMD check results
 
-There were no ERRORs or WARNINGs
+There were no ERRORs, WARNINGs, or Notes.
 
-Notes:
-  New maintainer:
-    Dyfan Jones <dyfan.r.jones@gmail.com>
-  Old maintainer(s):
-    David Kretch <david.kretch@gmail.com>
-
-Maintainer Notes: tarball package size: 634.3K
+Maintainer Notes: tarball package size: 671.2K
 
 ## Downstream dependencies
 

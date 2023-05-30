@@ -13,14 +13,8 @@ checking installed package size ... NOTE
   sub-directories of 1Mb or more:
     R      3.0Mb
     help   3.8Mb
-    
 
-New maintainer:
-  Dyfan Jones <dyfan.r.jones@gmail.com>
-Old maintainer(s):
-  David Kretch <david.kretch@gmail.com>
-
-Maintainer Notes: tarball package size: 757.5K
+Maintainer Notes: tarball package size: 834.6K
 
 ## Downstream dependencies
 

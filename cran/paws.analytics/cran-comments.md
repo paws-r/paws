@@ -6,15 +6,15 @@
 
 ## R CMD check results
 
-There were no ERRORs or WARNINGs.
-
+There were no ERRORs, or WARNINGs.
 Notes:
-  New maintainer:
-    Dyfan Jones <dyfan.r.jones@gmail.com>
-  Old maintainer(s):
-    David Kretch <david.kretch@gmail.com>
+checking installed package size ... NOTE
+  installed size is  8.9Mb
+  sub-directories of 1Mb or more:
+    R      6.0Mb
+    help   2.7Mb
 
-Maintainer Notes: tarball package size: 534.5K
+Maintainer Notes: tarball package size: 936.8K
 
 ## Downstream dependencies
 

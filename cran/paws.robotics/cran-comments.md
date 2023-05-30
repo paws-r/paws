@@ -2,19 +2,14 @@
 
 * local macOS install, R 4.2.1
 * R-hub (devel and release)
-* win-devel
+* win-builder
 
 ## R CMD check results
 
-There were no ERRORs or WARNINGs.
+There were no ERRORs, WARNINGs, or Notes.
 
-There was one NOTE:
-
-> checking CRAN incoming feasibility ... NOTE
-  Maintainer: ‘David Kretch <david.kretch@gmail.com>’
-  
-  New submission
+Maintainer Notes: tarball package size:  33.2K
 
 ## Downstream dependencies
 
-There are no downstream dependencies.
+All downstream dependencies ('paws') pass R CMD check.
