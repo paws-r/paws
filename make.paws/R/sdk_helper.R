@@ -309,6 +309,7 @@ paws_build_cran_comments <- function(in_dir = "../cran",
   dir_info <- paws_check_pkg_size(in_dir, pkg_list = all_cats)
   if(is.null(cache_path)){
     results_local <- paws_check_local(
+      in_dir = in_dir,
       pkg_list = all_cats,
       keep_notes = T
     )
