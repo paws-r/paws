@@ -14,12 +14,7 @@ checking installed package size ... NOTE
     R      2.0Mb
     help   2.9Mb
 
-New maintainer:
-  Dyfan Jones <dyfan.r.jones@gmail.com>
-Old maintainer(s):
-  David Kretch <david.kretch@gmail.com>
-
-Maintainer Notes: tarball package size: 662.2K
+Maintainer Notes: tarball package size: 695.1K
 
 ## Downstream dependencies
 
