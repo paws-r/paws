@@ -14,9 +14,15 @@ decode_xml <- function(xml, interface = NULL) {
   out <- list()
   
   for (i in seq_along(interface)) {
-    key <- paste0("d1:", names(interface)[[i]])
     interface_i <- interface[[i]]
-    type <- attr(interface_i, "tags")$type
+    tags_i <- attr(interface_i, "tags")
+    type <- tags_i$type
+    if (!is.null(tags_i$locationName)) {
+      key <- tags_i$locationName
+    } else {
+      key <- names(interface)[[i]]
+    }
+    key <- paste0("d1:", key)
 
     elts <- xml2::xml_find_all(xml, key, flatten = FALSE)
     if (inherits(xml, "xml_nodeset")) {
