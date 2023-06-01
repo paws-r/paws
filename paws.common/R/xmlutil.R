@@ -1,7 +1,131 @@
 # Decode raw bytes XML into an R list object.
-decode_xml <- function(raw) {
-  obj <- xml_to_list(raw_to_utf8(raw))
-  return(obj)
+decode_xml <- function(xml, interface = NULL) {
+  if (is.null(interface)) {
+    obj <- xml_to_list(raw_to_utf8(raw))
+    return(obj)
+  }
+  
+  if (!is.list(interface)) {
+    out <- parse_xml_elt(xml, interface)
+    return(out)
+  }
+  
+  nms <- names(interface)
+  out <- list()
+  
+  for (i in seq_along(interface)) {
+    key <- paste0("d1:", names(interface)[[i]])
+    interface_i <- interface[[i]]
+    type <- attr(interface_i, "tags")$type
+
+    elts <- xml2::xml_find_all(xml, key, flatten = FALSE)
+    if (inherits(xml, "xml_nodeset")) {
+      empty <- lengths(elts) == 0
+      parsed_elts <- parse_xml_elt(elts, interface_i, empty)
+    } else {
+      parsed_elts <- parse_xml_elt(elts, interface_i)
+    }
+    
+    parsed_elts <- setNames(list(parsed_elts), nms[[i]])
+    out <- c(out, parsed_elts)
+  }
+  
+  out
+}
+
+transpose <- function(x) {
+  if (!is.list(x)) {
+    return(x)
+  }
+  
+  x <- unclass(x)
+  n_col <- length(x)
+  if (n_col == 0) {
+    return(list())
+  }
+  
+  
+  n_row <- length(x[[1]])
+  if (n_row == 0) {
+    return(list())
+  }
+  
+  out <- vector("list", length = n_row)
+  col_seq <- rev(seq(1, n_col))
+  
+  for (row in seq(1, n_row)) {
+    vals <- vector("list", length = n_col)
+    vals <- setNames(vals, names(x))
+    
+    for (col in col_seq) {
+      vals[[col]] <- x[[col]][[row]]
+    }
+    out[[row]] <- vals
+  }
+  
+  out
+}
+
+parse_xml_elt <- function(xml, interface, empty = NULL) {
+  n <- length(xml)
+  
+  if (!is.null(empty) && n > 0) {
+    xml <- structure(unlist(recursive = FALSE, xml), class = "xml_nodeset")
+  }
+  
+  tags <- attr(interface, "tags")
+  type <- tags$type
+  flattened <- tags$flattened
+  
+  if (type == "structure") {
+    val <- decode_xml(xml, interface)
+    default <- xml2::as_xml_document(list())
+    default <- decode_xml(default, interface)
+  } else if (type == "list") {
+    val <- decode_xml(xml, interface[[1]])
+    # default <- xml2::as_xml_document(list())
+    # default <- decode_xml(default, interface[[1]])
+    default <- list()
+  } else if (type == "boolean") {
+    val <- xml2::xml_text(xml) == "true"
+    default <- logical()
+  } else if (type == "string") {
+    val <- xml2::xml_text(xml)
+    default <- character()
+  } else if (type == "timestamp") {
+    val <- xml2::xml_text(xml)
+    # TODO I think `tz` should be left out
+    val <- strptime(val, format = "%Y-%m-%dT%H:%M:%S", tz = "GMT")
+    val <- as.POSIXct(val)
+    default <- as.POSIXct(NULL)
+  } else if (type == "integer") {
+    val <- xml2::xml_integer(xml) |> as.numeric()
+    default <- numeric()
+  } else {
+    browser()
+  }
+  
+  # this can happen e.g. 
+  # x <- xml2::as_xml_document(list())
+  # xml2::xml_text(x)
+  if (n == 0 && length(val) > 0) {
+    val <- val[0]
+  }
+  
+  if (!is.null(empty)) {
+    out <- vector("list", n)
+    out[!empty] <- as.list(val)
+    out[empty] <- list(default)
+  } else {
+    out <- val
+  }
+  
+  # the `is.list()` check is necessary because e.g. `CheckSumAlgorithm` has
+  # a list interface though it isn't a list?!
+  if (isTRUE(flattened) && is.list(val)) {
+    out <- transpose(out)
+  }
+  out
 }
 
 # Convert an XML string to an R list.
