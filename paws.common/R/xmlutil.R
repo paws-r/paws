@@ -89,7 +89,7 @@ parse_xml_elt <- function(xml, interface, empty = NULL) {
   } else if (type == "boolean") {
     val <- xml2::xml_text(xml) == "true"
     default <- logical()
-  } else if (type == "string") {
+  } else if (type == "string" || type == "character") {
     val <- xml2::xml_text(xml)
     default <- character()
   } else if (type == "timestamp") {
@@ -98,9 +98,15 @@ parse_xml_elt <- function(xml, interface, empty = NULL) {
     val <- strptime(val, format = "%Y-%m-%dT%H:%M:%S", tz = "GMT")
     val <- as.POSIXct(val)
     default <- as.POSIXct(NULL)
-  } else if (type == "integer") {
+  } else if (type == "integer" || type == "long") {
     val <- xml2::xml_integer(xml) |> as.numeric()
     default <- numeric()
+  } else if (type == "double" || type == "float") {
+    val <- xml2::xml_double(xml)
+    default <- numeric()
+  } else if (type == "blob") {
+    val <- base64_to_raw(xml2::xml_text(xml))
+    default <- character()
   } else {
     browser()
   }
