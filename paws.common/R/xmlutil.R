@@ -22,7 +22,7 @@ decode_xml <- function(xml, interface = NULL) {
     } else {
       key <- names(interface)[[i]]
     }
-    key <- paste0("d1:", key)
+    # key <- paste0("d1:", key)
 
     elts <- xml2::xml_find_all(xml, key, flatten = FALSE)
     if (inherits(xml, "xml_nodeset")) {
