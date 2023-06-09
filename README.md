@@ -14,7 +14,7 @@
 Paws is a **P**ackage for **A**mazon **W**eb **S**ervices in R. Paws provides
 access to the full suite of AWS services from within R.
 
-Visit [our home page](https://paws-r.github.io) to see online documentation.
+Visit [our home page](https://paws-r-sdk.com) to see online documentation.
 
 Disclaimer: Paws is not a product of or supported by Amazon Web Services.
 
