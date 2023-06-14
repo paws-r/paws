@@ -79,7 +79,7 @@ make_doc_desc_short <- function(operation, api) {
 make_doc_link_to_web_docs <- function(operation, api) {
   service <- package_name(api)
   operation <- get_operation_name(operation)
-  url <- sprintf("https://paws-r-sdk.com/docs/%s/", operation)
+  url <- sprintf("https://www.paws-r-sdk.com/docs/%s_%s/", service, operation)
   result <- sprintf("See [%s](%s) for full documentation.", url, url)
   result <- comment(result, "#'")
   return(result)
