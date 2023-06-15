@@ -392,6 +392,7 @@ test_that("check paws_build_cran_comments", {
   expect_equal(
     mock_arg(mock_paws_check_local),
     list(
+      in_dir = "made_up",
       pkg_list = c("paws.cat1", "paws.cat2"),
       keep_notes = TRUE
     )
