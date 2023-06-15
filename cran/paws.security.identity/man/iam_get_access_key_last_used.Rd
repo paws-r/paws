@@ -15,6 +15,6 @@ that can consist of any upper or lowercased letter or digit.}
 \description{
 Retrieves information about when the specified access key was last used. The information includes the date and time of last use, along with the Amazon Web Services service and Region that were specified in the last request made with that key.
 
-See \url{https://paws-r.github.io/docs/iam/get_access_key_last_used.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_get_access_key_last_used/} for full documentation.
 }
 \keyword{internal}

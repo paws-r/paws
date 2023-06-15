@@ -17,6 +17,6 @@ or more checks to be validated on a DataBrew dataset.}
 \description{
 Updates specified ruleset.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/update_ruleset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_update_ruleset/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ operation to retrieve the next set of results.}
 \description{
 An SaaS partner can use this operation to display the Amazon Web Services account ID that a particular partner event source name is associated with. This operation is not used by Amazon Web Services customers.
 
-See \url{https://paws-r.github.io/docs/eventbridge/list_partner_event_source_accounts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_list_partner_event_source_accounts/} for full documentation.
 }
 \keyword{internal}

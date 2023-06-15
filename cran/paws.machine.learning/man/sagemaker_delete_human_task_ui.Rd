@@ -14,6 +14,6 @@ to delete.}
 \description{
 Use this operation to delete a human task user interface (worker task template).
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_human_task_ui.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_human_task_ui/} for full documentation.
 }
 \keyword{internal}

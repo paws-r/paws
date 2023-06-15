@@ -24,6 +24,6 @@ response to
 \description{
 Updates a response headers policy.
 
-See \url{https://paws-r.github.io/docs/cloudfront/update_response_headers_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_update_response_headers_policy/} for full documentation.
 }
 \keyword{internal}

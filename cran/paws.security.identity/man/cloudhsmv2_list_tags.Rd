@@ -21,6 +21,6 @@ more tags than the number you specify, the response contains a
 \description{
 Gets a list of tags for the specified AWS CloudHSM cluster.
 
-See \url{https://paws-r.github.io/docs/cloudhsmv2/list_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_list_tags/} for full documentation.
 }
 \keyword{internal}

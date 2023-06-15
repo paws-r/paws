@@ -15,6 +15,6 @@ sagemaker_describe_feature_group(FeatureGroupName, NextToken = NULL)
 \description{
 Use this operation to describe a \code{FeatureGroup}. The response includes information on the creation time, \code{FeatureGroup} name, the unique identifier for each \code{FeatureGroup}, and more.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_feature_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_feature_group/} for full documentation.
 }
 \keyword{internal}

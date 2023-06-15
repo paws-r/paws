@@ -26,6 +26,6 @@ apigateway_update_method_response(
 \description{
 Updates an existing MethodResponse resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/update_method_response.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_update_method_response/} for full documentation.
 }
 \keyword{internal}

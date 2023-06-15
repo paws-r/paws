@@ -15,6 +15,6 @@ example,
 \description{
 Lists the key-value tag pairs associated to the Amazon Managed Workflows for Apache Airflow (MWAA) environment. For example, \code{"Environment": "Staging"}.
 
-See \url{https://paws-r.github.io/docs/mwaa/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mwaa_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

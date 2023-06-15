@@ -32,6 +32,6 @@ created.}
 \description{
 Enables Shield Advanced for a specific Amazon Web Services resource. The resource can be an Amazon CloudFront distribution, Amazon Route 53 hosted zone, Global Accelerator standard accelerator, Elastic IP Address, Application Load Balancer, or a Classic Load Balancer. You can protect Amazon EC2 instances and Network Load Balancers by association with protected Amazon EC2 Elastic IP addresses.
 
-See \url{https://paws-r.github.io/docs/shield/create_protection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_create_protection/} for full documentation.
 }
 \keyword{internal}

@@ -140,6 +140,76 @@ securityhub_accept_invitation <- function(MasterId, InvitationId) {
 }
 .securityhub$operations$accept_invitation <- securityhub_accept_invitation
 
+#' Deletes one or more automation rules
+#'
+#' @description
+#' Deletes one or more automation rules.
+#'
+#' @usage
+#' securityhub_batch_delete_automation_rules(AutomationRulesArns)
+#'
+#' @param AutomationRulesArns &#91;required&#93; A list of Amazon Resource Names (ARNs) for the rules that are to be
+#' deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProcessedAutomationRules = list(
+#'     "string"
+#'   ),
+#'   UnprocessedAutomationRules = list(
+#'     list(
+#'       RuleArn = "string",
+#'       ErrorCode = 123,
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_delete_automation_rules(
+#'   AutomationRulesArns = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example deletes the specified automation rules.
+#' svc$batch_delete_automation_rules(
+#'   AutomationRulesArns = list(
+#'     "arn:aws:securityhub:us-east-1:123456789012:automation-rule/a1b2c3d4-56...",
+#'     "arn:aws:securityhub:us-east-1:123456789012:automation-rule/a1b2c3d4-56..."
+#'   )
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_batch_delete_automation_rules
+#'
+#' @aliases securityhub_batch_delete_automation_rules
+securityhub_batch_delete_automation_rules <- function(AutomationRulesArns) {
+  op <- new_operation(
+    name = "BatchDeleteAutomationRules",
+    http_method = "POST",
+    http_path = "/automationrules/delete",
+    paginator = list()
+  )
+  input <- .securityhub$batch_delete_automation_rules_input(AutomationRulesArns = AutomationRulesArns)
+  output <- .securityhub$batch_delete_automation_rules_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$batch_delete_automation_rules <- securityhub_batch_delete_automation_rules
+
 #' Disables the standards specified by the provided
 #' StandardsSubscriptionArns
 #'
@@ -269,8 +339,9 @@ securityhub_batch_disable_standards <- function(StandardsSubscriptionArns) {
 #'
 #' @examples
 #' \dontrun{
-#' # The following example imports findings from a third party provider to
-#' # Security Hub.
+#' # The following example enables the security standard specified by the
+#' # StandardArn. You can use this operation to enable one or more Security
+#' # Hub standards.
 #' svc$batch_enable_standards(
 #'   StandardsSubscriptionRequests = list(
 #'     list(
@@ -301,6 +372,362 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
   return(response)
 }
 .securityhub$operations$batch_enable_standards <- securityhub_batch_enable_standards
+
+#' Retrieves a list of details for automation rules based on rule Amazon
+#' Resource Names (ARNs)
+#'
+#' @description
+#' Retrieves a list of details for automation rules based on rule Amazon
+#' Resource Names (ARNs).
+#'
+#' @usage
+#' securityhub_batch_get_automation_rules(AutomationRulesArns)
+#'
+#' @param AutomationRulesArns &#91;required&#93; A list of rule ARNs to get details for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Rules = list(
+#'     list(
+#'       RuleArn = "string",
+#'       RuleStatus = "ENABLED"|"DISABLED",
+#'       RuleOrder = 123,
+#'       RuleName = "string",
+#'       Description = "string",
+#'       IsTerminal = TRUE|FALSE,
+#'       Criteria = list(
+#'         ProductArn = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         AwsAccountId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         Id = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         GeneratorId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         Type = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         FirstObservedAt = list(
+#'           list(
+#'             Start = "string",
+#'             End = "string",
+#'             DateRange = list(
+#'               Value = 123,
+#'               Unit = "DAYS"
+#'             )
+#'           )
+#'         ),
+#'         LastObservedAt = list(
+#'           list(
+#'             Start = "string",
+#'             End = "string",
+#'             DateRange = list(
+#'               Value = 123,
+#'               Unit = "DAYS"
+#'             )
+#'           )
+#'         ),
+#'         CreatedAt = list(
+#'           list(
+#'             Start = "string",
+#'             End = "string",
+#'             DateRange = list(
+#'               Value = 123,
+#'               Unit = "DAYS"
+#'             )
+#'           )
+#'         ),
+#'         UpdatedAt = list(
+#'           list(
+#'             Start = "string",
+#'             End = "string",
+#'             DateRange = list(
+#'               Value = 123,
+#'               Unit = "DAYS"
+#'             )
+#'           )
+#'         ),
+#'         Confidence = list(
+#'           list(
+#'             Gte = 123.0,
+#'             Lte = 123.0,
+#'             Eq = 123.0
+#'           )
+#'         ),
+#'         Criticality = list(
+#'           list(
+#'             Gte = 123.0,
+#'             Lte = 123.0,
+#'             Eq = 123.0
+#'           )
+#'         ),
+#'         Title = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         Description = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         SourceUrl = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         ProductName = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         CompanyName = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         SeverityLabel = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         ResourceType = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         ResourceId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         ResourcePartition = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         ResourceRegion = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         ResourceTags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"NOT_EQUALS"
+#'           )
+#'         ),
+#'         ResourceDetailsOther = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"NOT_EQUALS"
+#'           )
+#'         ),
+#'         ComplianceStatus = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         ComplianceSecurityControlId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         ComplianceAssociatedStandardsId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         VerificationState = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         WorkflowStatus = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         RecordState = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         RelatedFindingsProductArn = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         RelatedFindingsId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         NoteText = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         NoteUpdatedAt = list(
+#'           list(
+#'             Start = "string",
+#'             End = "string",
+#'             DateRange = list(
+#'               Value = 123,
+#'               Unit = "DAYS"
+#'             )
+#'           )
+#'         ),
+#'         NoteUpdatedBy = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         UserDefinedFields = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"NOT_EQUALS"
+#'           )
+#'         )
+#'       ),
+#'       Actions = list(
+#'         list(
+#'           Type = "FINDING_FIELDS_UPDATE",
+#'           FindingFieldsUpdate = list(
+#'             Note = list(
+#'               Text = "string",
+#'               UpdatedBy = "string"
+#'             ),
+#'             Severity = list(
+#'               Normalized = 123,
+#'               Product = 123.0,
+#'               Label = "INFORMATIONAL"|"LOW"|"MEDIUM"|"HIGH"|"CRITICAL"
+#'             ),
+#'             VerificationState = "UNKNOWN"|"TRUE_POSITIVE"|"FALSE_POSITIVE"|"BENIGN_POSITIVE",
+#'             Confidence = 123,
+#'             Criticality = 123,
+#'             Types = list(
+#'               "string"
+#'             ),
+#'             UserDefinedFields = list(
+#'               "string"
+#'             ),
+#'             Workflow = list(
+#'               Status = "NEW"|"NOTIFIED"|"RESOLVED"|"SUPPRESSED"
+#'             ),
+#'             RelatedFindings = list(
+#'               list(
+#'                 ProductArn = "string",
+#'                 Id = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreatedBy = "string"
+#'     )
+#'   ),
+#'   UnprocessedAutomationRules = list(
+#'     list(
+#'       RuleArn = "string",
+#'       ErrorCode = 123,
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_get_automation_rules(
+#'   AutomationRulesArns = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example updates the specified automation rules.
+#' svc$batch_get_automation_rules(
+#'   AutomationRulesArns = list(
+#'     "arn:aws:securityhub:us-east-1:123456789012:automation-rule/a1b2c3d4-56...",
+#'     "arn:aws:securityhub:us-east-1:123456789012:automation-rule/a1b2c3d4-56..."
+#'   )
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_batch_get_automation_rules
+#'
+#' @aliases securityhub_batch_get_automation_rules
+securityhub_batch_get_automation_rules <- function(AutomationRulesArns) {
+  op <- new_operation(
+    name = "BatchGetAutomationRules",
+    http_method = "POST",
+    http_path = "/automationrules/get",
+    paginator = list()
+  )
+  input <- .securityhub$batch_get_automation_rules_input(AutomationRulesArns = AutomationRulesArns)
+  output <- .securityhub$batch_get_automation_rules_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$batch_get_automation_rules <- securityhub_batch_get_automation_rules
 
 #' Provides details about a batch of security controls for the current
 #' Amazon Web Services account and Amazon Web Services Region
@@ -349,6 +776,18 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example gets details for the specified controls in the
+#' # current AWS account and AWS Region.
+#' svc$batch_get_security_controls(
+#'   SecurityControlIds = list(
+#'     "ACM.1",
+#'     "APIGateway.1"
+#'   )
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -437,6 +876,24 @@ securityhub_batch_get_security_controls <- function(SecurityControlIds) {
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example retrieves the enablement status of the specified
+#' # controls in the specified standards.
+#' svc$batch_get_standards_control_associations(
+#'   StandardsControlAssociationIds = list(
+#'     list(
+#'       SecurityControlId = "CloudTrail.1",
+#'       StandardsArn = "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"
+#'     ),
+#'     list(
+#'       SecurityControlId = "CloudWatch.12",
+#'       StandardsArn = "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"
+#'     )
+#'   )
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4354,6 +4811,183 @@ securityhub_batch_get_standards_control_associations <- function(StandardsContro
 #'                 )
 #'               ),
 #'               VpcId = "string"
+#'             ),
+#'             AwsAmazonMqBroker = list(
+#'               AuthenticationStrategy = "string",
+#'               AutoMinorVersionUpgrade = TRUE|FALSE,
+#'               BrokerArn = "string",
+#'               BrokerName = "string",
+#'               DeploymentMode = "string",
+#'               EncryptionOptions = list(
+#'                 KmsKeyId = "string",
+#'                 UseAwsOwnedKey = TRUE|FALSE
+#'               ),
+#'               EngineType = "string",
+#'               EngineVersion = "string",
+#'               HostInstanceType = "string",
+#'               BrokerId = "string",
+#'               LdapServerMetadata = list(
+#'                 Hosts = list(
+#'                   "string"
+#'                 ),
+#'                 RoleBase = "string",
+#'                 RoleName = "string",
+#'                 RoleSearchMatching = "string",
+#'                 RoleSearchSubtree = TRUE|FALSE,
+#'                 ServiceAccountUsername = "string",
+#'                 UserBase = "string",
+#'                 UserRoleName = "string",
+#'                 UserSearchMatching = "string",
+#'                 UserSearchSubtree = TRUE|FALSE
+#'               ),
+#'               Logs = list(
+#'                 Audit = TRUE|FALSE,
+#'                 General = TRUE|FALSE,
+#'                 AuditLogGroup = "string",
+#'                 GeneralLogGroup = "string",
+#'                 Pending = list(
+#'                   Audit = TRUE|FALSE,
+#'                   General = TRUE|FALSE
+#'                 )
+#'               ),
+#'               MaintenanceWindowStartTime = list(
+#'                 DayOfWeek = "string",
+#'                 TimeOfDay = "string",
+#'                 TimeZone = "string"
+#'               ),
+#'               PubliclyAccessible = TRUE|FALSE,
+#'               SecurityGroups = list(
+#'                 "string"
+#'               ),
+#'               StorageType = "string",
+#'               SubnetIds = list(
+#'                 "string"
+#'               ),
+#'               Users = list(
+#'                 list(
+#'                   PendingChange = "string",
+#'                   Username = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsAppSyncGraphQlApi = list(
+#'               ApiId = "string",
+#'               Id = "string",
+#'               OpenIdConnectConfig = list(
+#'                 AuthTtL = 123,
+#'                 ClientId = "string",
+#'                 IatTtL = 123,
+#'                 Issuer = "string"
+#'               ),
+#'               Name = "string",
+#'               LambdaAuthorizerConfig = list(
+#'                 AuthorizerResultTtlInSeconds = 123,
+#'                 AuthorizerUri = "string",
+#'                 IdentityValidationExpression = "string"
+#'               ),
+#'               XrayEnabled = TRUE|FALSE,
+#'               Arn = "string",
+#'               UserPoolConfig = list(
+#'                 AppIdClientRegex = "string",
+#'                 AwsRegion = "string",
+#'                 DefaultAction = "string",
+#'                 UserPoolId = "string"
+#'               ),
+#'               AuthenticationType = "string",
+#'               LogConfig = list(
+#'                 CloudWatchLogsRoleArn = "string",
+#'                 ExcludeVerboseContent = TRUE|FALSE,
+#'                 FieldLogLevel = "string"
+#'               ),
+#'               AdditionalAuthenticationProviders = list(
+#'                 list(
+#'                   AuthenticationType = "string",
+#'                   LambdaAuthorizerConfig = list(
+#'                     AuthorizerResultTtlInSeconds = 123,
+#'                     AuthorizerUri = "string",
+#'                     IdentityValidationExpression = "string"
+#'                   ),
+#'                   OpenIdConnectConfig = list(
+#'                     AuthTtL = 123,
+#'                     ClientId = "string",
+#'                     IatTtL = 123,
+#'                     Issuer = "string"
+#'                   ),
+#'                   UserPoolConfig = list(
+#'                     AppIdClientRegex = "string",
+#'                     AwsRegion = "string",
+#'                     DefaultAction = "string",
+#'                     UserPoolId = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               WafWebAclArn = "string"
+#'             ),
+#'             AwsEventSchemasRegistry = list(
+#'               Description = "string",
+#'               RegistryArn = "string",
+#'               RegistryName = "string"
+#'             ),
+#'             AwsGuardDutyDetector = list(
+#'               DataSources = list(
+#'                 CloudTrail = list(
+#'                   Status = "string"
+#'                 ),
+#'                 DnsLogs = list(
+#'                   Status = "string"
+#'                 ),
+#'                 FlowLogs = list(
+#'                   Status = "string"
+#'                 ),
+#'                 Kubernetes = list(
+#'                   AuditLogs = list(
+#'                     Status = "string"
+#'                   )
+#'                 ),
+#'                 MalwareProtection = list(
+#'                   ScanEc2InstanceWithFindings = list(
+#'                     EbsVolumes = list(
+#'                       Reason = "string",
+#'                       Status = "string"
+#'                     )
+#'                   ),
+#'                   ServiceRole = "string"
+#'                 ),
+#'                 S3Logs = list(
+#'                   Status = "string"
+#'                 )
+#'               ),
+#'               Features = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Status = "string"
+#'                 )
+#'               ),
+#'               FindingPublishingFrequency = "string",
+#'               ServiceRole = "string",
+#'               Status = "string"
+#'             ),
+#'             AwsStepFunctionStateMachine = list(
+#'               Label = "string",
+#'               LoggingConfiguration = list(
+#'                 Destinations = list(
+#'                   list(
+#'                     CloudWatchLogsLogGroup = list(
+#'                       LogGroupArn = "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 IncludeExecutionData = TRUE|FALSE,
+#'                 Level = "string"
+#'               ),
+#'               Name = "string",
+#'               RoleArn = "string",
+#'               StateMachineArn = "string",
+#'               Status = "string",
+#'               TracingConfiguration = list(
+#'                 Enabled = TRUE|FALSE
+#'               ),
+#'               Type = "string"
 #'             )
 #'           )
 #'         )
@@ -4645,6 +5279,364 @@ securityhub_batch_import_findings <- function(Findings) {
 }
 .securityhub$operations$batch_import_findings <- securityhub_batch_import_findings
 
+#' Updates one or more automation rules based on rule Amazon Resource Names
+#' (ARNs) and input parameters
+#'
+#' @description
+#' Updates one or more automation rules based on rule Amazon Resource Names
+#' (ARNs) and input parameters.
+#'
+#' @usage
+#' securityhub_batch_update_automation_rules(
+#'   UpdateAutomationRulesRequestItems)
+#'
+#' @param UpdateAutomationRulesRequestItems &#91;required&#93; An array of ARNs for the rules that are to be updated. Optionally, you
+#' can also include `RuleStatus` and `RuleOrder`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProcessedAutomationRules = list(
+#'     "string"
+#'   ),
+#'   UnprocessedAutomationRules = list(
+#'     list(
+#'       RuleArn = "string",
+#'       ErrorCode = 123,
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_update_automation_rules(
+#'   UpdateAutomationRulesRequestItems = list(
+#'     list(
+#'       RuleArn = "string",
+#'       RuleStatus = "ENABLED"|"DISABLED",
+#'       RuleOrder = 123,
+#'       Description = "string",
+#'       RuleName = "string",
+#'       IsTerminal = TRUE|FALSE,
+#'       Criteria = list(
+#'         ProductArn = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         AwsAccountId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         Id = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         GeneratorId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         Type = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         FirstObservedAt = list(
+#'           list(
+#'             Start = "string",
+#'             End = "string",
+#'             DateRange = list(
+#'               Value = 123,
+#'               Unit = "DAYS"
+#'             )
+#'           )
+#'         ),
+#'         LastObservedAt = list(
+#'           list(
+#'             Start = "string",
+#'             End = "string",
+#'             DateRange = list(
+#'               Value = 123,
+#'               Unit = "DAYS"
+#'             )
+#'           )
+#'         ),
+#'         CreatedAt = list(
+#'           list(
+#'             Start = "string",
+#'             End = "string",
+#'             DateRange = list(
+#'               Value = 123,
+#'               Unit = "DAYS"
+#'             )
+#'           )
+#'         ),
+#'         UpdatedAt = list(
+#'           list(
+#'             Start = "string",
+#'             End = "string",
+#'             DateRange = list(
+#'               Value = 123,
+#'               Unit = "DAYS"
+#'             )
+#'           )
+#'         ),
+#'         Confidence = list(
+#'           list(
+#'             Gte = 123.0,
+#'             Lte = 123.0,
+#'             Eq = 123.0
+#'           )
+#'         ),
+#'         Criticality = list(
+#'           list(
+#'             Gte = 123.0,
+#'             Lte = 123.0,
+#'             Eq = 123.0
+#'           )
+#'         ),
+#'         Title = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         Description = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         SourceUrl = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         ProductName = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         CompanyName = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         SeverityLabel = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         ResourceType = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         ResourceId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         ResourcePartition = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         ResourceRegion = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         ResourceTags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"NOT_EQUALS"
+#'           )
+#'         ),
+#'         ResourceDetailsOther = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"NOT_EQUALS"
+#'           )
+#'         ),
+#'         ComplianceStatus = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         ComplianceSecurityControlId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         ComplianceAssociatedStandardsId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         VerificationState = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         WorkflowStatus = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         RecordState = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         RelatedFindingsProductArn = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         RelatedFindingsId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         NoteText = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         NoteUpdatedAt = list(
+#'           list(
+#'             Start = "string",
+#'             End = "string",
+#'             DateRange = list(
+#'               Value = 123,
+#'               Unit = "DAYS"
+#'             )
+#'           )
+#'         ),
+#'         NoteUpdatedBy = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         UserDefinedFields = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"NOT_EQUALS"
+#'           )
+#'         )
+#'       ),
+#'       Actions = list(
+#'         list(
+#'           Type = "FINDING_FIELDS_UPDATE",
+#'           FindingFieldsUpdate = list(
+#'             Note = list(
+#'               Text = "string",
+#'               UpdatedBy = "string"
+#'             ),
+#'             Severity = list(
+#'               Normalized = 123,
+#'               Product = 123.0,
+#'               Label = "INFORMATIONAL"|"LOW"|"MEDIUM"|"HIGH"|"CRITICAL"
+#'             ),
+#'             VerificationState = "UNKNOWN"|"TRUE_POSITIVE"|"FALSE_POSITIVE"|"BENIGN_POSITIVE",
+#'             Confidence = 123,
+#'             Criticality = 123,
+#'             Types = list(
+#'               "string"
+#'             ),
+#'             UserDefinedFields = list(
+#'               "string"
+#'             ),
+#'             Workflow = list(
+#'               Status = "NEW"|"NOTIFIED"|"RESOLVED"|"SUPPRESSED"
+#'             ),
+#'             RelatedFindings = list(
+#'               list(
+#'                 ProductArn = "string",
+#'                 Id = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example updates the specified automation rules.
+#' svc$batch_update_automation_rules(
+#'   UpdateAutomationRulesRequestItems = list(
+#'     list(
+#'       RuleArn = "arn:aws:securityhub:us-east-1:123456789012:automation-rule...",
+#'       RuleOrder = 15L,
+#'       RuleStatus = "ENABLED"
+#'     ),
+#'     list(
+#'       RuleArn = "arn:aws:securityhub:us-east-1:123456789012:automation-rule...",
+#'       RuleStatus = "DISABLED"
+#'     )
+#'   )
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_batch_update_automation_rules
+#'
+#' @aliases securityhub_batch_update_automation_rules
+securityhub_batch_update_automation_rules <- function(UpdateAutomationRulesRequestItems) {
+  op <- new_operation(
+    name = "BatchUpdateAutomationRules",
+    http_method = "PATCH",
+    http_path = "/automationrules/update",
+    paginator = list()
+  )
+  input <- .securityhub$batch_update_automation_rules_input(UpdateAutomationRulesRequestItems = UpdateAutomationRulesRequestItems)
+  output <- .securityhub$batch_update_automation_rules_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$batch_update_automation_rules <- securityhub_batch_update_automation_rules
+
 #' Used by Security Hub customers to update information about their
 #' investigation into a finding
 #'
@@ -4922,6 +5914,29 @@ securityhub_batch_update_findings <- function(FindingIdentifiers, Note = NULL, S
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example disables CloudWatch.12 in CIS AWS Foundations
+#' # Benchmark v1.2.0. The example returns an error for CloudTrail.1 because
+#' # an invalid standard ARN is provided.
+#' svc$batch_update_standards_control_associations(
+#'   StandardsControlAssociationUpdates = list(
+#'     list(
+#'       AssociationStatus = "DISABLED",
+#'       SecurityControlId = "CloudTrail.1",
+#'       StandardsArn = "arn:aws:securityhub:::ruleset/sample-standard/v/1.1.0",
+#'       UpdatedReason = "Not relevant to environment"
+#'     ),
+#'     list(
+#'       AssociationStatus = "DISABLED",
+#'       SecurityControlId = "CloudWatch.12",
+#'       StandardsArn = "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0",
+#'       UpdatedReason = "Not relevant to environment"
+#'     )
+#'   )
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_batch_update_standards_control_associations
@@ -5010,6 +6025,416 @@ securityhub_create_action_target <- function(Name, Description, Id) {
   return(response)
 }
 .securityhub$operations$create_action_target <- securityhub_create_action_target
+
+#' Creates an automation rule based on input parameters
+#'
+#' @description
+#' Creates an automation rule based on input parameters.
+#'
+#' @usage
+#' securityhub_create_automation_rule(Tags, RuleStatus, RuleOrder,
+#'   RuleName, Description, IsTerminal, Criteria, Actions)
+#'
+#' @param Tags User-defined tags that help you label the purpose of a rule.
+#' @param RuleStatus Whether the rule is active after it is created. If this parameter is
+#' equal to `Enabled`, Security Hub will apply the rule to findings and
+#' finding updates after the rule is created. To change the value of this
+#' parameter after creating a rule, use
+#' [`batch_update_automation_rules`][securityhub_batch_update_automation_rules].
+#' @param RuleOrder &#91;required&#93; An integer ranging from 1 to 1000 that represents the order in which the
+#' rule action is applied to findings. Security Hub applies rules with
+#' lower values for this parameter first.
+#' @param RuleName &#91;required&#93; The name of the rule.
+#' @param Description &#91;required&#93; A description of the rule.
+#' @param IsTerminal Specifies whether a rule is the last to be applied with respect to a
+#' finding that matches the rule criteria. This is useful when a finding
+#' matches the criteria for multiple rules, and each rule has different
+#' actions. If the value of this field is set to `true` for a rule,
+#' Security Hub applies the rule action to a finding that matches the rule
+#' criteria and won't evaluate other rules for the finding. The default
+#' value of this field is `false`.
+#' @param Criteria &#91;required&#93; A set of ASFF finding field attributes and corresponding expected values
+#' that Security Hub uses to filter findings. If a finding matches the
+#' conditions specified in this parameter, Security Hub applies the rule
+#' action to the finding.
+#' @param Actions &#91;required&#93; One or more actions to update finding fields if a finding matches the
+#' conditions specified in `Criteria`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuleArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_automation_rule(
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   RuleStatus = "ENABLED"|"DISABLED",
+#'   RuleOrder = 123,
+#'   RuleName = "string",
+#'   Description = "string",
+#'   IsTerminal = TRUE|FALSE,
+#'   Criteria = list(
+#'     ProductArn = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     AwsAccountId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     Id = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     GeneratorId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     Type = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     FirstObservedAt = list(
+#'       list(
+#'         Start = "string",
+#'         End = "string",
+#'         DateRange = list(
+#'           Value = 123,
+#'           Unit = "DAYS"
+#'         )
+#'       )
+#'     ),
+#'     LastObservedAt = list(
+#'       list(
+#'         Start = "string",
+#'         End = "string",
+#'         DateRange = list(
+#'           Value = 123,
+#'           Unit = "DAYS"
+#'         )
+#'       )
+#'     ),
+#'     CreatedAt = list(
+#'       list(
+#'         Start = "string",
+#'         End = "string",
+#'         DateRange = list(
+#'           Value = 123,
+#'           Unit = "DAYS"
+#'         )
+#'       )
+#'     ),
+#'     UpdatedAt = list(
+#'       list(
+#'         Start = "string",
+#'         End = "string",
+#'         DateRange = list(
+#'           Value = 123,
+#'           Unit = "DAYS"
+#'         )
+#'       )
+#'     ),
+#'     Confidence = list(
+#'       list(
+#'         Gte = 123.0,
+#'         Lte = 123.0,
+#'         Eq = 123.0
+#'       )
+#'     ),
+#'     Criticality = list(
+#'       list(
+#'         Gte = 123.0,
+#'         Lte = 123.0,
+#'         Eq = 123.0
+#'       )
+#'     ),
+#'     Title = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     Description = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     SourceUrl = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     ProductName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     CompanyName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     SeverityLabel = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     ResourceType = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     ResourceId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     ResourcePartition = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     ResourceRegion = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     ResourceTags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"NOT_EQUALS"
+#'       )
+#'     ),
+#'     ResourceDetailsOther = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"NOT_EQUALS"
+#'       )
+#'     ),
+#'     ComplianceStatus = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     ComplianceSecurityControlId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     ComplianceAssociatedStandardsId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     VerificationState = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     WorkflowStatus = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     RecordState = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     RelatedFindingsProductArn = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     RelatedFindingsId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     NoteText = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     NoteUpdatedAt = list(
+#'       list(
+#'         Start = "string",
+#'         End = "string",
+#'         DateRange = list(
+#'           Value = 123,
+#'           Unit = "DAYS"
+#'         )
+#'       )
+#'     ),
+#'     NoteUpdatedBy = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     UserDefinedFields = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"NOT_EQUALS"
+#'       )
+#'     )
+#'   ),
+#'   Actions = list(
+#'     list(
+#'       Type = "FINDING_FIELDS_UPDATE",
+#'       FindingFieldsUpdate = list(
+#'         Note = list(
+#'           Text = "string",
+#'           UpdatedBy = "string"
+#'         ),
+#'         Severity = list(
+#'           Normalized = 123,
+#'           Product = 123.0,
+#'           Label = "INFORMATIONAL"|"LOW"|"MEDIUM"|"HIGH"|"CRITICAL"
+#'         ),
+#'         VerificationState = "UNKNOWN"|"TRUE_POSITIVE"|"FALSE_POSITIVE"|"BENIGN_POSITIVE",
+#'         Confidence = 123,
+#'         Criticality = 123,
+#'         Types = list(
+#'           "string"
+#'         ),
+#'         UserDefinedFields = list(
+#'           "string"
+#'         ),
+#'         Workflow = list(
+#'           Status = "NEW"|"NOTIFIED"|"RESOLVED"|"SUPPRESSED"
+#'         ),
+#'         RelatedFindings = list(
+#'           list(
+#'             ProductArn = "string",
+#'             Id = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example creates an automation rule.
+#' svc$create_automation_rule(
+#'   Actions = list(
+#'     list(
+#'       FindingFieldsUpdate = list(
+#'         Note = list(
+#'           Text = "This is a critical S3 bucket, please look into this ASAP",
+#'           UpdatedBy = "test-user"
+#'         ),
+#'         Severity = list(
+#'           Label = "CRITICAL"
+#'         )
+#'       ),
+#'       Type = "FINDING_FIELDS_UPDATE"
+#'     )
+#'   ),
+#'   Criteria = list(
+#'     ComplianceStatus = list(
+#'       list(
+#'         Comparison = "EQUALS",
+#'         Value = "FAILED"
+#'       )
+#'     ),
+#'     ProductName = list(
+#'       list(
+#'         Comparison = "EQUALS",
+#'         Value = "Security Hub"
+#'       )
+#'     ),
+#'     RecordState = list(
+#'       list(
+#'         Comparison = "EQUALS",
+#'         Value = "ACTIVE"
+#'       )
+#'     ),
+#'     ResourceId = list(
+#'       list(
+#'         Comparison = "EQUALS",
+#'         Value = "arn:aws:s3:::examplebucket/developers/design_info.doc"
+#'       )
+#'     ),
+#'     WorkflowStatus = list(
+#'       list(
+#'         Comparison = "EQUALS",
+#'         Value = "NEW"
+#'       )
+#'     )
+#'   ),
+#'   Description = "Elevate finding severity to Critical for important resources",
+#'   IsTerminal = FALSE,
+#'   RuleName = "Elevate severity for important resources",
+#'   RuleOrder = 1L,
+#'   RuleStatus = "ENABLED",
+#'   Tags = list(
+#'     `important-resources-rule` = "s3-bucket"
+#'   )
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_create_automation_rule
+#'
+#' @aliases securityhub_create_automation_rule
+securityhub_create_automation_rule <- function(Tags = NULL, RuleStatus = NULL, RuleOrder, RuleName, Description, IsTerminal = NULL, Criteria, Actions) {
+  op <- new_operation(
+    name = "CreateAutomationRule",
+    http_method = "POST",
+    http_path = "/automationrules/create",
+    paginator = list()
+  )
+  input <- .securityhub$create_automation_rule_input(Tags = Tags, RuleStatus = RuleStatus, RuleOrder = RuleOrder, RuleName = RuleName, Description = Description, IsTerminal = IsTerminal, Criteria = Criteria, Actions = Actions)
+  output <- .securityhub$create_automation_rule_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$create_automation_rule <- securityhub_create_automation_rule
 
 #' Used to enable finding aggregation
 #'
@@ -11583,6 +13008,183 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'                 )
 #'               ),
 #'               VpcId = "string"
+#'             ),
+#'             AwsAmazonMqBroker = list(
+#'               AuthenticationStrategy = "string",
+#'               AutoMinorVersionUpgrade = TRUE|FALSE,
+#'               BrokerArn = "string",
+#'               BrokerName = "string",
+#'               DeploymentMode = "string",
+#'               EncryptionOptions = list(
+#'                 KmsKeyId = "string",
+#'                 UseAwsOwnedKey = TRUE|FALSE
+#'               ),
+#'               EngineType = "string",
+#'               EngineVersion = "string",
+#'               HostInstanceType = "string",
+#'               BrokerId = "string",
+#'               LdapServerMetadata = list(
+#'                 Hosts = list(
+#'                   "string"
+#'                 ),
+#'                 RoleBase = "string",
+#'                 RoleName = "string",
+#'                 RoleSearchMatching = "string",
+#'                 RoleSearchSubtree = TRUE|FALSE,
+#'                 ServiceAccountUsername = "string",
+#'                 UserBase = "string",
+#'                 UserRoleName = "string",
+#'                 UserSearchMatching = "string",
+#'                 UserSearchSubtree = TRUE|FALSE
+#'               ),
+#'               Logs = list(
+#'                 Audit = TRUE|FALSE,
+#'                 General = TRUE|FALSE,
+#'                 AuditLogGroup = "string",
+#'                 GeneralLogGroup = "string",
+#'                 Pending = list(
+#'                   Audit = TRUE|FALSE,
+#'                   General = TRUE|FALSE
+#'                 )
+#'               ),
+#'               MaintenanceWindowStartTime = list(
+#'                 DayOfWeek = "string",
+#'                 TimeOfDay = "string",
+#'                 TimeZone = "string"
+#'               ),
+#'               PubliclyAccessible = TRUE|FALSE,
+#'               SecurityGroups = list(
+#'                 "string"
+#'               ),
+#'               StorageType = "string",
+#'               SubnetIds = list(
+#'                 "string"
+#'               ),
+#'               Users = list(
+#'                 list(
+#'                   PendingChange = "string",
+#'                   Username = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsAppSyncGraphQlApi = list(
+#'               ApiId = "string",
+#'               Id = "string",
+#'               OpenIdConnectConfig = list(
+#'                 AuthTtL = 123,
+#'                 ClientId = "string",
+#'                 IatTtL = 123,
+#'                 Issuer = "string"
+#'               ),
+#'               Name = "string",
+#'               LambdaAuthorizerConfig = list(
+#'                 AuthorizerResultTtlInSeconds = 123,
+#'                 AuthorizerUri = "string",
+#'                 IdentityValidationExpression = "string"
+#'               ),
+#'               XrayEnabled = TRUE|FALSE,
+#'               Arn = "string",
+#'               UserPoolConfig = list(
+#'                 AppIdClientRegex = "string",
+#'                 AwsRegion = "string",
+#'                 DefaultAction = "string",
+#'                 UserPoolId = "string"
+#'               ),
+#'               AuthenticationType = "string",
+#'               LogConfig = list(
+#'                 CloudWatchLogsRoleArn = "string",
+#'                 ExcludeVerboseContent = TRUE|FALSE,
+#'                 FieldLogLevel = "string"
+#'               ),
+#'               AdditionalAuthenticationProviders = list(
+#'                 list(
+#'                   AuthenticationType = "string",
+#'                   LambdaAuthorizerConfig = list(
+#'                     AuthorizerResultTtlInSeconds = 123,
+#'                     AuthorizerUri = "string",
+#'                     IdentityValidationExpression = "string"
+#'                   ),
+#'                   OpenIdConnectConfig = list(
+#'                     AuthTtL = 123,
+#'                     ClientId = "string",
+#'                     IatTtL = 123,
+#'                     Issuer = "string"
+#'                   ),
+#'                   UserPoolConfig = list(
+#'                     AppIdClientRegex = "string",
+#'                     AwsRegion = "string",
+#'                     DefaultAction = "string",
+#'                     UserPoolId = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               WafWebAclArn = "string"
+#'             ),
+#'             AwsEventSchemasRegistry = list(
+#'               Description = "string",
+#'               RegistryArn = "string",
+#'               RegistryName = "string"
+#'             ),
+#'             AwsGuardDutyDetector = list(
+#'               DataSources = list(
+#'                 CloudTrail = list(
+#'                   Status = "string"
+#'                 ),
+#'                 DnsLogs = list(
+#'                   Status = "string"
+#'                 ),
+#'                 FlowLogs = list(
+#'                   Status = "string"
+#'                 ),
+#'                 Kubernetes = list(
+#'                   AuditLogs = list(
+#'                     Status = "string"
+#'                   )
+#'                 ),
+#'                 MalwareProtection = list(
+#'                   ScanEc2InstanceWithFindings = list(
+#'                     EbsVolumes = list(
+#'                       Reason = "string",
+#'                       Status = "string"
+#'                     )
+#'                   ),
+#'                   ServiceRole = "string"
+#'                 ),
+#'                 S3Logs = list(
+#'                   Status = "string"
+#'                 )
+#'               ),
+#'               Features = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Status = "string"
+#'                 )
+#'               ),
+#'               FindingPublishingFrequency = "string",
+#'               ServiceRole = "string",
+#'               Status = "string"
+#'             ),
+#'             AwsStepFunctionStateMachine = list(
+#'               Label = "string",
+#'               LoggingConfiguration = list(
+#'                 Destinations = list(
+#'                   list(
+#'                     CloudWatchLogsLogGroup = list(
+#'                       LogGroupArn = "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 IncludeExecutionData = TRUE|FALSE,
+#'                 Level = "string"
+#'               ),
+#'               Name = "string",
+#'               RoleArn = "string",
+#'               StateMachineArn = "string",
+#'               Status = "string",
+#'               TracingConfiguration = list(
+#'                 Enabled = TRUE|FALSE
+#'               ),
+#'               Type = "string"
 #'             )
 #'           )
 #'         )
@@ -13583,6 +15185,86 @@ securityhub_invite_members <- function(AccountIds) {
   return(response)
 }
 .securityhub$operations$invite_members <- securityhub_invite_members
+
+#' A list of automation rules and their metadata for the calling account
+#'
+#' @description
+#' A list of automation rules and their metadata for the calling account.
+#'
+#' @usage
+#' securityhub_list_automation_rules(NextToken, MaxResults)
+#'
+#' @param NextToken A token to specify where to start paginating the response. This is the
+#' `NextToken` from a previously truncated response. On your first call to
+#' the [`list_automation_rules`][securityhub_list_automation_rules] API,
+#' set the value of this parameter to `NULL`.
+#' @param MaxResults The maximum number of rules to return in the response. This currently
+#' ranges from 1 to 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AutomationRulesMetadata = list(
+#'     list(
+#'       RuleArn = "string",
+#'       RuleStatus = "ENABLED"|"DISABLED",
+#'       RuleOrder = 123,
+#'       RuleName = "string",
+#'       Description = "string",
+#'       IsTerminal = TRUE|FALSE,
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreatedBy = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_automation_rules(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example lists automation rules and rule metadata in the
+#' # calling account.
+#' svc$list_automation_rules(
+#'   MaxResults = 2L,
+#'   NextToken = "example-token"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_list_automation_rules
+#'
+#' @aliases securityhub_list_automation_rules
+securityhub_list_automation_rules <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAutomationRules",
+    http_method = "GET",
+    http_path = "/automationrules/list",
+    paginator = list()
+  )
+  input <- .securityhub$list_automation_rules_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$list_automation_rules_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$list_automation_rules <- securityhub_list_automation_rules
 
 #' Lists all findings-generating solutions (products) that you are
 #' subscribed to receive findings from in Security Hub

@@ -23,6 +23,6 @@ in a single page. This is for future use and is not supported currently.}
 \description{
 Returns tags for a resource. Tagging is currently supported only for directories with a limit of 50 tags per directory. All 50 tags are returned for a given directory with this API call.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

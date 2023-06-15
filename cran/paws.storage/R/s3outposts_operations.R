@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates an endpoint and associates it with the specified Outpost.
 #'
-#' See [https://paws-r.github.io/docs/s3outposts/create_endpoint.html](https://paws-r.github.io/docs/s3outposts/create_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3outposts_create_endpoint/](https://www.paws-r-sdk.com/docs/s3outposts_create_endpoint/) for full documentation.
 #'
 #' @param OutpostId &#91;required&#93; The ID of the Outposts.
 #' @param SubnetId &#91;required&#93; The ID of the subnet in the selected VPC. The endpoint subnet must
@@ -49,7 +49,7 @@ s3outposts_create_endpoint <- function(OutpostId, SubnetId, SecurityGroupId, Acc
 #' @description
 #' Deletes an endpoint.
 #'
-#' See [https://paws-r.github.io/docs/s3outposts/delete_endpoint.html](https://paws-r.github.io/docs/s3outposts/delete_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3outposts_delete_endpoint/](https://www.paws-r-sdk.com/docs/s3outposts_delete_endpoint/) for full documentation.
 #'
 #' @param EndpointId &#91;required&#93; The ID of the endpoint.
 #' @param OutpostId &#91;required&#93; The ID of the Outposts.
@@ -79,7 +79,7 @@ s3outposts_delete_endpoint <- function(EndpointId, OutpostId) {
 #' @description
 #' Lists endpoints associated with the specified Outpost.
 #'
-#' See [https://paws-r.github.io/docs/s3outposts/list_endpoints.html](https://paws-r.github.io/docs/s3outposts/list_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3outposts_list_endpoints/](https://www.paws-r-sdk.com/docs/s3outposts_list_endpoints/) for full documentation.
 #'
 #' @param NextToken If a previous response from this operation included a `NextToken` value,
 #' provide that value here to retrieve the next page of results.
@@ -111,7 +111,7 @@ s3outposts_list_endpoints <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Lists the Outposts with S3 on Outposts capacity for your Amazon Web Services account. Includes S3 on Outposts that you have access to as the Outposts owner, or as a shared user from Resource Access Manager (RAM).
 #'
-#' See [https://paws-r.github.io/docs/s3outposts/list_outposts_with_s3.html](https://paws-r.github.io/docs/s3outposts/list_outposts_with_s3.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3outposts_list_outposts_with_s3/](https://www.paws-r-sdk.com/docs/s3outposts_list_outposts_with_s3/) for full documentation.
 #'
 #' @param NextToken When you can get additional results from the
 #' [`list_outposts_with_s3`][s3outposts_list_outposts_with_s3] call, a
@@ -146,7 +146,7 @@ s3outposts_list_outposts_with_s3 <- function(NextToken = NULL, MaxResults = NULL
 #' @description
 #' Lists all endpoints associated with an Outpost that has been shared by Amazon Web Services Resource Access Manager (RAM).
 #'
-#' See [https://paws-r.github.io/docs/s3outposts/list_shared_endpoints.html](https://paws-r.github.io/docs/s3outposts/list_shared_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3outposts_list_shared_endpoints/](https://www.paws-r-sdk.com/docs/s3outposts_list_shared_endpoints/) for full documentation.
 #'
 #' @param NextToken If a previous response from this operation included a `NextToken` value,
 #' you can provide that value here to retrieve the next page of results.

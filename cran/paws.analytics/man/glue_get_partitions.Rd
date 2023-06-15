@@ -126,6 +126,6 @@ with \code{TransactionId}.}
 \description{
 Retrieves information about the partitions in a table.
 
-See \url{https://paws-r.github.io/docs/glue/get_partitions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_partitions/} for full documentation.
 }
 \keyword{internal}

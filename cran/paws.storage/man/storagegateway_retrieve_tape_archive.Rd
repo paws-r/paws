@@ -22,6 +22,6 @@ must be a tape gateway.}
 \description{
 Retrieves an archived virtual tape from the virtual tape shelf (VTS) to a tape gateway. Virtual tapes archived in the VTS are not associated with any gateway. However after a tape is retrieved, it is associated with a gateway, even though it is also listed in the VTS, that is, archive. This operation is only supported in the tape gateway type.
 
-See \url{https://paws-r.github.io/docs/storagegateway/retrieve_tape_archive.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_retrieve_tape_archive/} for full documentation.
 }
 \keyword{internal}

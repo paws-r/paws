@@ -9,6 +9,6 @@ shield_delete_subscription()
 \description{
 Removes Shield Advanced from an account. Shield Advanced requires a 1-year subscription commitment. You cannot delete a subscription prior to the completion of that commitment.
 
-See \url{https://paws-r.github.io/docs/shield/delete_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_delete_subscription/} for full documentation.
 }
 \keyword{internal}

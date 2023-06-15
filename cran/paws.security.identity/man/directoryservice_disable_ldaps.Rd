@@ -15,6 +15,6 @@ is supported.}
 \description{
 Deactivates LDAP secure calls for the specified directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/disable_ldaps.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_disable_ldaps/} for full documentation.
 }
 \keyword{internal}

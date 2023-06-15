@@ -26,6 +26,6 @@ configuration. The configuration must contain exactly one element.}
 \description{
 Creates an access preview that allows you to preview IAM Access Analyzer findings for your resource before deploying resource permissions.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/create_access_preview.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_create_access_preview/} for full documentation.
 }
 \keyword{internal}

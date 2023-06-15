@@ -15,6 +15,6 @@ that you want to put them.}
 \description{
 Reorders the receipt rules within a receipt rule set.
 
-See \url{https://paws-r.github.io/docs/ses/reorder_receipt_rule_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_reorder_receipt_rule_set/} for full documentation.
 }
 \keyword{internal}

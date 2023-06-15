@@ -23,6 +23,6 @@ auditmanager_update_assessment_control_set_status(
 \description{
 Updates the status of a control set in an Audit Manager assessment.
 
-See \url{https://paws-r.github.io/docs/auditmanager/update_assessment_control_set_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_update_assessment_control_set_status/} for full documentation.
 }
 \keyword{internal}

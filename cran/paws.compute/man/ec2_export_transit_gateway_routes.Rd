@@ -47,6 +47,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Exports routes from the specified transit gateway route table to the specified S3 bucket. By default, all routes are exported. Alternatively, you can filter by CIDR range.
 
-See \url{https://paws-r.github.io/docs/ec2/export_transit_gateway_routes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_export_transit_gateway_routes/} for full documentation.
 }
 \keyword{internal}

@@ -68,6 +68,6 @@ contexts for the session are cleared.}
 \description{
 Sends user input to Amazon Lex. Client applications can use this API to send requests to Amazon Lex at runtime. Amazon Lex then interprets the user input using the machine learning model it built for the bot.
 
-See \url{https://paws-r.github.io/docs/lexruntimeservice/post_text.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexruntimeservice_post_text/} for full documentation.
 }
 \keyword{internal}

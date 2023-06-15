@@ -31,6 +31,6 @@ continues from the end of the items returned by the previous request.}
 \description{
 [VPC only] Describes the stale security group rules for security groups in a specified VPC. Rules are stale when they reference a deleted security group in the same VPC or in a peer VPC, or if they reference a security group in a peer VPC for which the VPC peering connection has been deleted.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_stale_security_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_stale_security_groups/} for full documentation.
 }
 \keyword{internal}

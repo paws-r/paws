@@ -34,6 +34,6 @@ parameter.}
 \description{
 Lists the status of one or more table restore requests made using the \code{\link[=redshift_restore_table_from_cluster_snapshot]{restore_table_from_cluster_snapshot}} API action. If you don't specify a value for the \code{TableRestoreRequestId} parameter, then \code{\link[=redshift_describe_table_restore_status]{describe_table_restore_status}} returns the status of all table restore requests ordered by the date and time of the request in ascending order. Otherwise \code{\link[=redshift_describe_table_restore_status]{describe_table_restore_status}} returns the status of the table specified by \code{TableRestoreRequestId}.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_table_restore_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_table_restore_status/} for full documentation.
 }
 \keyword{internal}

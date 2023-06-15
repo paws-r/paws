@@ -13,6 +13,6 @@ administrator account.}
 \description{
 Disables a Security Hub administrator account. Can only be called by the organization management account.
 
-See \url{https://paws-r.github.io/docs/securityhub/disable_organization_admin_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_disable_organization_admin_account/} for full documentation.
 }
 \keyword{internal}

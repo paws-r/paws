@@ -12,6 +12,6 @@ recyclebin_delete_rule(Identifier)
 \description{
 Deletes a Recycle Bin retention rule. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-delete-rule}{Delete Recycle Bin retention rules} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-See \url{https://paws-r.github.io/docs/recyclebin/delete_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/recyclebin_delete_rule/} for full documentation.
 }
 \keyword{internal}

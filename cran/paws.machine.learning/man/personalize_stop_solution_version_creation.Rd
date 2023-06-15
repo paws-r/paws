@@ -14,6 +14,6 @@ creating.}
 \description{
 Stops creating a solution version that is in a state of CREATE_PENDING or CREATE IN_PROGRESS.
 
-See \url{https://paws-r.github.io/docs/personalize/stop_solution_version_creation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_stop_solution_version_creation/} for full documentation.
 }
 \keyword{internal}

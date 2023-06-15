@@ -18,6 +18,6 @@ that you want to delete.}
 \description{
 Delete an event destination.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/delete_configuration_set_event_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_delete_configuration_set_event_destination/} for full documentation.
 }
 \keyword{internal}

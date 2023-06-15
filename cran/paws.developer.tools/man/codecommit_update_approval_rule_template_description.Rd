@@ -17,6 +17,6 @@ codecommit_update_approval_rule_template_description(
 \description{
 Updates the description for a specified approval rule template.
 
-See \url{https://paws-r.github.io/docs/codecommit/update_approval_rule_template_description.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_update_approval_rule_template_description/} for full documentation.
 }
 \keyword{internal}

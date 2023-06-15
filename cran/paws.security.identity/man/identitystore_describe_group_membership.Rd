@@ -15,6 +15,6 @@ identitystore_describe_group_membership(IdentityStoreId, MembershipId)
 \description{
 Retrieves membership metadata and attributes from \code{MembershipId} in an identity store.
 
-See \url{https://paws-r.github.io/docs/identitystore/describe_group_membership.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/identitystore_describe_group_membership/} for full documentation.
 }
 \keyword{internal}

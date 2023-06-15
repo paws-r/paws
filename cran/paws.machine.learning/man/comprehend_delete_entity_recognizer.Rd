@@ -12,6 +12,6 @@ comprehend_delete_entity_recognizer(EntityRecognizerArn)
 \description{
 Deletes an entity recognizer.
 
-See \url{https://paws-r.github.io/docs/comprehend/delete_entity_recognizer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_delete_entity_recognizer/} for full documentation.
 }
 \keyword{internal}

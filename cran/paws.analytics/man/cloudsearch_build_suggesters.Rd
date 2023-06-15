@@ -12,6 +12,6 @@ cloudsearch_build_suggesters(DomainName)
 \description{
 Indexes the search suggestions. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html#configuring-suggesters}{Configuring Suggesters} in the \emph{Amazon CloudSearch Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/cloudsearch/build_suggesters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudsearch_build_suggesters/} for full documentation.
 }
 \keyword{internal}

@@ -24,7 +24,11 @@ selected recipe. The default is \code{false}.
 When performing AutoML, this parameter is always \code{true} and you should
 not set it to \code{false}.}
 
-\item{performAutoML}{Whether to perform automated machine learning (AutoML). The default is
+\item{performAutoML}{We don't recommend enabling automated machine learning. Instead, match
+your use case to the available Amazon Personalize recipes. For more
+information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/working-with-predefined-recipes.html#use-cases}{Determining your use case.}
+
+Whether to perform automated machine learning (AutoML). The default is
 \code{false}. For this case, you must specify \code{recipeArn}.
 
 When set to \code{true}, Amazon Personalize analyzes your training data and
@@ -54,11 +58,13 @@ the solution configuration.
 Amazon Personalize doesn't support configuring the \code{hpoObjective} at
 this time.}
 
-\item{tags}{A list of tags to apply to the solution.}
+\item{tags}{A list of
+\href{https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html}{tags}
+to apply to the solution.}
 }
 \description{
-Creates the configuration for training a model. A trained model is known as a solution. After the configuration is created, you train the model (create a solution) by calling the \code{\link[=personalize_create_solution_version]{create_solution_version}} operation. Every time you call \code{\link[=personalize_create_solution_version]{create_solution_version}}, a new version of the solution is created.
+Creates the configuration for training a model. A trained model is known as a solution version. After the configuration is created, you train the model (create a solution version) by calling the \code{\link[=personalize_create_solution_version]{create_solution_version}} operation. Every time you call \code{\link[=personalize_create_solution_version]{create_solution_version}}, a new version of the solution is created.
 
-See \url{https://paws-r.github.io/docs/personalize/create_solution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_create_solution/} for full documentation.
 }
 \keyword{internal}

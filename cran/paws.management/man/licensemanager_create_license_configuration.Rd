@@ -57,6 +57,6 @@ for \code{honorVcpuOptimization} are \code{True} and \code{False}.}
 \description{
 Creates a license configuration.
 
-See \url{https://paws-r.github.io/docs/licensemanager/create_license_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_create_license_configuration/} for full documentation.
 }
 \keyword{internal}

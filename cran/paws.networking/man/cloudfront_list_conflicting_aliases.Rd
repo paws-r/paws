@@ -31,6 +31,6 @@ current page's response.}
 \description{
 Gets a list of aliases (also called CNAMEs or alternate domain names) that conflict or overlap with the provided alias, and the associated CloudFront distributions and Amazon Web Services accounts for each conflicting alias. In the returned list, the distribution and account IDs are partially hidden, which allows you to identify the distributions and accounts that you own, but helps to protect the information of ones that you don't own.
 
-See \url{https://paws-r.github.io/docs/cloudfront/list_conflicting_aliases.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_conflicting_aliases/} for full documentation.
 }
 \keyword{internal}

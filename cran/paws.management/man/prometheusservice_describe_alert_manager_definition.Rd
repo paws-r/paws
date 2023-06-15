@@ -12,6 +12,6 @@ prometheusservice_describe_alert_manager_definition(workspaceId)
 \description{
 Describes an alert manager definition.
 
-See \url{https://paws-r.github.io/docs/prometheusservice/describe_alert_manager_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/prometheusservice_describe_alert_manager_definition/} for full documentation.
 }
 \keyword{internal}

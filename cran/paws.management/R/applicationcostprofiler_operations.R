@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Deletes the specified report definition in AWS Application Cost Profiler. This stops the report from being generated.
 #'
-#' See [https://paws-r.github.io/docs/applicationcostprofiler/delete_report_definition.html](https://paws-r.github.io/docs/applicationcostprofiler/delete_report_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationcostprofiler_delete_report_definition/](https://www.paws-r-sdk.com/docs/applicationcostprofiler_delete_report_definition/) for full documentation.
 #'
 #' @param reportId &#91;required&#93; Required. ID of the report to delete.
 #'
@@ -38,7 +38,7 @@ applicationcostprofiler_delete_report_definition <- function(reportId) {
 #' @description
 #' Retrieves the definition of a report already configured in AWS Application Cost Profiler.
 #'
-#' See [https://paws-r.github.io/docs/applicationcostprofiler/get_report_definition.html](https://paws-r.github.io/docs/applicationcostprofiler/get_report_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationcostprofiler_get_report_definition/](https://www.paws-r-sdk.com/docs/applicationcostprofiler_get_report_definition/) for full documentation.
 #'
 #' @param reportId &#91;required&#93; ID of the report to retrieve.
 #'
@@ -68,7 +68,7 @@ applicationcostprofiler_get_report_definition <- function(reportId) {
 #' @description
 #' Ingests application usage data from Amazon Simple Storage Service (Amazon S3).
 #'
-#' See [https://paws-r.github.io/docs/applicationcostprofiler/import_application_usage.html](https://paws-r.github.io/docs/applicationcostprofiler/import_application_usage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationcostprofiler_import_application_usage/](https://www.paws-r-sdk.com/docs/applicationcostprofiler_import_application_usage/) for full documentation.
 #'
 #' @param sourceS3Location &#91;required&#93; Amazon S3 location to import application usage data from.
 #'
@@ -98,7 +98,7 @@ applicationcostprofiler_import_application_usage <- function(sourceS3Location) {
 #' @description
 #' Retrieves a list of all reports and their configurations for your AWS account.
 #'
-#' See [https://paws-r.github.io/docs/applicationcostprofiler/list_report_definitions.html](https://paws-r.github.io/docs/applicationcostprofiler/list_report_definitions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationcostprofiler_list_report_definitions/](https://www.paws-r-sdk.com/docs/applicationcostprofiler_list_report_definitions/) for full documentation.
 #'
 #' @param nextToken The token value from a previous call to access the next page of results.
 #' @param maxResults The maximum number of results to return.
@@ -128,7 +128,7 @@ applicationcostprofiler_list_report_definitions <- function(nextToken = NULL, ma
 #' @description
 #' Creates the report definition for a report in Application Cost Profiler.
 #'
-#' See [https://paws-r.github.io/docs/applicationcostprofiler/put_report_definition.html](https://paws-r.github.io/docs/applicationcostprofiler/put_report_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationcostprofiler_put_report_definition/](https://www.paws-r-sdk.com/docs/applicationcostprofiler_put_report_definition/) for full documentation.
 #'
 #' @param reportId &#91;required&#93; Required. ID of the report. You can choose any valid string matching the
 #' pattern for the ID.
@@ -163,7 +163,7 @@ applicationcostprofiler_put_report_definition <- function(reportId, reportDescri
 #' @description
 #' Updates existing report in AWS Application Cost Profiler.
 #'
-#' See [https://paws-r.github.io/docs/applicationcostprofiler/update_report_definition.html](https://paws-r.github.io/docs/applicationcostprofiler/update_report_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationcostprofiler_update_report_definition/](https://www.paws-r-sdk.com/docs/applicationcostprofiler_update_report_definition/) for full documentation.
 #'
 #' @param reportId &#91;required&#93; Required. ID of the report to update.
 #' @param reportDescription &#91;required&#93; Required. Description of the report.

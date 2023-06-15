@@ -20,6 +20,6 @@ account ID, do not include any hyphens ('-') in the ID.}
 \description{
 This operation aborts a multipart upload identified by the upload ID.
 
-See \url{https://paws-r.github.io/docs/glacier/abort_multipart_upload.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_abort_multipart_upload/} for full documentation.
 }
 \keyword{internal}

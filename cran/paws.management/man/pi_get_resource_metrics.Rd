@@ -82,6 +82,6 @@ periods. The default value is \code{END_TIME}.}
 \description{
 Retrieve Performance Insights metrics for a set of data sources over a time period. You can provide specific dimension groups and dimensions, and provide aggregation and filtering criteria for each group.
 
-See \url{https://paws-r.github.io/docs/pi/get_resource_metrics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pi_get_resource_metrics/} for full documentation.
 }
 \keyword{internal}

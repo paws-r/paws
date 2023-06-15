@@ -17,6 +17,6 @@ route53recoveryreadiness_list_resource_sets(
 \description{
 Lists the resource sets in an account.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/list_resource_sets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_list_resource_sets/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ elasticsearchservice_authorize_vpc_endpoint_access(DomainName, Account)
 \description{
 Provides access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/authorize_vpc_endpoint_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_authorize_vpc_endpoint_access/} for full documentation.
 }
 \keyword{internal}

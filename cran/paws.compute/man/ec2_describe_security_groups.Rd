@@ -102,6 +102,6 @@ specified, then all items are returned. For more information, see
 \description{
 Describes the specified security groups or all of your security groups.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_security_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_security_groups/} for full documentation.
 }
 \keyword{internal}

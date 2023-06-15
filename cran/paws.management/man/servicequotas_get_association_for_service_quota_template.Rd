@@ -9,6 +9,6 @@ servicequotas_get_association_for_service_quota_template()
 \description{
 Retrieves the status of the association for the quota request template.
 
-See \url{https://paws-r.github.io/docs/servicequotas/get_association_for_service_quota_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicequotas_get_association_for_service_quota_template/} for full documentation.
 }
 \keyword{internal}

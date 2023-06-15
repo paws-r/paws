@@ -16,6 +16,6 @@ drs_describe_job_log_items(jobID, maxResults = NULL, nextToken = NULL)
 \description{
 Retrieves a detailed Job log with pagination.
 
-See \url{https://paws-r.github.io/docs/drs/describe_job_log_items.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_describe_job_log_items/} for full documentation.
 }
 \keyword{internal}

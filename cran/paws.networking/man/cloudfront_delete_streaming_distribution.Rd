@@ -15,6 +15,6 @@ streaming distribution. For example: \code{E2QWRUHAPOMQZL}.}
 \description{
 Delete a streaming distribution. To delete an RTMP distribution using the CloudFront API, perform the following steps.
 
-See \url{https://paws-r.github.io/docs/cloudfront/delete_streaming_distribution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_delete_streaming_distribution/} for full documentation.
 }
 \keyword{internal}

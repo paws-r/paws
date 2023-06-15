@@ -16,6 +16,6 @@ Amazon Resource Name (ARN). For information about creating an ARN, see
 \description{
 Lists all tags on an Amazon Neptune resource.
 
-See \url{https://paws-r.github.io/docs/neptune/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

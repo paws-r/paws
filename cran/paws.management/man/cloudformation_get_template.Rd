@@ -37,6 +37,6 @@ return the same template. By default, CloudFormation specifies
 \description{
 Returns the template body for a specified stack. You can get the template for running or deleted stacks.
 
-See \url{https://paws-r.github.io/docs/cloudformation/get_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_get_template/} for full documentation.
 }
 \keyword{internal}

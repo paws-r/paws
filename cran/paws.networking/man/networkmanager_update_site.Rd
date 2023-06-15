@@ -30,6 +30,6 @@ Constraints: Maximum length of 256 characters.}
 \description{
 Updates the information for an existing site. To remove information for any of the parameters, specify an empty string.
 
-See \url{https://paws-r.github.io/docs/networkmanager/update_site.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_update_site/} for full documentation.
 }
 \keyword{internal}

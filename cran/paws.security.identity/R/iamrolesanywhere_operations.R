@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Creates a *profile*, a list of the roles that Roles Anywhere service is trusted to assume. You use profiles to intersect permissions with IAM managed policies.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/create_profile.html](https://paws-r.github.io/docs/iamrolesanywhere/create_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_create_profile/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_create_profile/) for full documentation.
 #'
 #' @param durationSeconds The number of seconds the vended session credentials are valid for.
 #' @param enabled Specifies whether the profile is enabled.
@@ -50,7 +50,7 @@ iamrolesanywhere_create_profile <- function(durationSeconds = NULL, enabled = NU
 #' @description
 #' Creates a trust anchor to establish trust between IAM Roles Anywhere and your certificate authority (CA). You can define a trust anchor as a reference to an Private Certificate Authority (Private CA) or by uploading a CA certificate. Your Amazon Web Services workloads can authenticate with the trust anchor using certificates issued by the CA in exchange for temporary Amazon Web Services credentials.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/create_trust_anchor.html](https://paws-r.github.io/docs/iamrolesanywhere/create_trust_anchor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_create_trust_anchor/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_create_trust_anchor/) for full documentation.
 #'
 #' @param enabled Specifies whether the trust anchor is enabled.
 #' @param name &#91;required&#93; The name of the trust anchor.
@@ -83,7 +83,7 @@ iamrolesanywhere_create_trust_anchor <- function(enabled = NULL, name, notificat
 #' @description
 #' Deletes a certificate revocation list (CRL).
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/delete_crl.html](https://paws-r.github.io/docs/iamrolesanywhere/delete_crl.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_delete_crl/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_delete_crl/) for full documentation.
 #'
 #' @param crlId &#91;required&#93; The unique identifier of the certificate revocation list (CRL).
 #'
@@ -112,7 +112,7 @@ iamrolesanywhere_delete_crl <- function(crlId) {
 #' @description
 #' Deletes a profile.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/delete_profile.html](https://paws-r.github.io/docs/iamrolesanywhere/delete_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_delete_profile/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_delete_profile/) for full documentation.
 #'
 #' @param profileId &#91;required&#93; The unique identifier of the profile.
 #'
@@ -141,7 +141,7 @@ iamrolesanywhere_delete_profile <- function(profileId) {
 #' @description
 #' Deletes a trust anchor.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/delete_trust_anchor.html](https://paws-r.github.io/docs/iamrolesanywhere/delete_trust_anchor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_delete_trust_anchor/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_delete_trust_anchor/) for full documentation.
 #'
 #' @param trustAnchorId &#91;required&#93; The unique identifier of the trust anchor.
 #'
@@ -170,7 +170,7 @@ iamrolesanywhere_delete_trust_anchor <- function(trustAnchorId) {
 #' @description
 #' Disables a certificate revocation list (CRL).
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/disable_crl.html](https://paws-r.github.io/docs/iamrolesanywhere/disable_crl.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_disable_crl/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_disable_crl/) for full documentation.
 #'
 #' @param crlId &#91;required&#93; The unique identifier of the certificate revocation list (CRL).
 #'
@@ -199,7 +199,7 @@ iamrolesanywhere_disable_crl <- function(crlId) {
 #' @description
 #' Disables a profile. When disabled, temporary credential requests with this profile fail.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/disable_profile.html](https://paws-r.github.io/docs/iamrolesanywhere/disable_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_disable_profile/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_disable_profile/) for full documentation.
 #'
 #' @param profileId &#91;required&#93; The unique identifier of the profile.
 #'
@@ -228,7 +228,7 @@ iamrolesanywhere_disable_profile <- function(profileId) {
 #' @description
 #' Disables a trust anchor. When disabled, temporary credential requests specifying this trust anchor are unauthorized.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/disable_trust_anchor.html](https://paws-r.github.io/docs/iamrolesanywhere/disable_trust_anchor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_disable_trust_anchor/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_disable_trust_anchor/) for full documentation.
 #'
 #' @param trustAnchorId &#91;required&#93; The unique identifier of the trust anchor.
 #'
@@ -257,7 +257,7 @@ iamrolesanywhere_disable_trust_anchor <- function(trustAnchorId) {
 #' @description
 #' Enables a certificate revocation list (CRL). When enabled, certificates stored in the CRL are unauthorized to receive session credentials.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/enable_crl.html](https://paws-r.github.io/docs/iamrolesanywhere/enable_crl.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_enable_crl/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_enable_crl/) for full documentation.
 #'
 #' @param crlId &#91;required&#93; The unique identifier of the certificate revocation list (CRL).
 #'
@@ -286,7 +286,7 @@ iamrolesanywhere_enable_crl <- function(crlId) {
 #' @description
 #' Enables temporary credential requests for a profile.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/enable_profile.html](https://paws-r.github.io/docs/iamrolesanywhere/enable_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_enable_profile/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_enable_profile/) for full documentation.
 #'
 #' @param profileId &#91;required&#93; The unique identifier of the profile.
 #'
@@ -315,7 +315,7 @@ iamrolesanywhere_enable_profile <- function(profileId) {
 #' @description
 #' Enables a trust anchor. When enabled, certificates in the trust anchor chain are authorized for trust validation.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/enable_trust_anchor.html](https://paws-r.github.io/docs/iamrolesanywhere/enable_trust_anchor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_enable_trust_anchor/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_enable_trust_anchor/) for full documentation.
 #'
 #' @param trustAnchorId &#91;required&#93; The unique identifier of the trust anchor.
 #'
@@ -344,7 +344,7 @@ iamrolesanywhere_enable_trust_anchor <- function(trustAnchorId) {
 #' @description
 #' Gets a certificate revocation list (CRL).
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/get_crl.html](https://paws-r.github.io/docs/iamrolesanywhere/get_crl.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_get_crl/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_get_crl/) for full documentation.
 #'
 #' @param crlId &#91;required&#93; The unique identifier of the certificate revocation list (CRL).
 #'
@@ -373,7 +373,7 @@ iamrolesanywhere_get_crl <- function(crlId) {
 #' @description
 #' Gets a profile.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/get_profile.html](https://paws-r.github.io/docs/iamrolesanywhere/get_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_get_profile/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_get_profile/) for full documentation.
 #'
 #' @param profileId &#91;required&#93; The unique identifier of the profile.
 #'
@@ -403,7 +403,7 @@ iamrolesanywhere_get_profile <- function(profileId) {
 #' @description
 #' Gets a *subject*, which associates a certificate identity with authentication attempts. The subject stores auditing information such as the status of the last authentication attempt, the certificate data used in the attempt, and the last time the associated identity attempted authentication.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/get_subject.html](https://paws-r.github.io/docs/iamrolesanywhere/get_subject.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_get_subject/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_get_subject/) for full documentation.
 #'
 #' @param subjectId &#91;required&#93; The unique identifier of the subject.
 #'
@@ -432,7 +432,7 @@ iamrolesanywhere_get_subject <- function(subjectId) {
 #' @description
 #' Gets a trust anchor.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/get_trust_anchor.html](https://paws-r.github.io/docs/iamrolesanywhere/get_trust_anchor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_get_trust_anchor/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_get_trust_anchor/) for full documentation.
 #'
 #' @param trustAnchorId &#91;required&#93; The unique identifier of the trust anchor.
 #'
@@ -461,7 +461,7 @@ iamrolesanywhere_get_trust_anchor <- function(trustAnchorId) {
 #' @description
 #' Imports the certificate revocation list (CRL). A CRL is a list of certificates that have been revoked by the issuing certificate Authority (CA). IAM Roles Anywhere validates against the CRL before issuing credentials.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/import_crl.html](https://paws-r.github.io/docs/iamrolesanywhere/import_crl.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_import_crl/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_import_crl/) for full documentation.
 #'
 #' @param crlData &#91;required&#93; The x509 v3 specified certificate revocation list (CRL).
 #' @param enabled Specifies whether the certificate revocation list (CRL) is enabled.
@@ -496,7 +496,7 @@ iamrolesanywhere_import_crl <- function(crlData, enabled = NULL, name, tags = NU
 #' @description
 #' Lists all certificate revocation lists (CRL) in the authenticated account and Amazon Web Services Region.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/list_crls.html](https://paws-r.github.io/docs/iamrolesanywhere/list_crls.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_list_crls/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_list_crls/) for full documentation.
 #'
 #' @param nextToken A token that indicates where the output should continue from, if a
 #' previous request did not show all results. To get the next results, make
@@ -529,7 +529,7 @@ iamrolesanywhere_list_crls <- function(nextToken = NULL, pageSize = NULL) {
 #' @description
 #' Lists all profiles in the authenticated account and Amazon Web Services Region.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/list_profiles.html](https://paws-r.github.io/docs/iamrolesanywhere/list_profiles.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_list_profiles/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_list_profiles/) for full documentation.
 #'
 #' @param nextToken A token that indicates where the output should continue from, if a
 #' previous request did not show all results. To get the next results, make
@@ -562,7 +562,7 @@ iamrolesanywhere_list_profiles <- function(nextToken = NULL, pageSize = NULL) {
 #' @description
 #' Lists the subjects in the authenticated account and Amazon Web Services Region.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/list_subjects.html](https://paws-r.github.io/docs/iamrolesanywhere/list_subjects.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_list_subjects/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_list_subjects/) for full documentation.
 #'
 #' @param nextToken A token that indicates where the output should continue from, if a
 #' previous request did not show all results. To get the next results, make
@@ -594,7 +594,7 @@ iamrolesanywhere_list_subjects <- function(nextToken = NULL, pageSize = NULL) {
 #' @description
 #' Lists the tags attached to the resource.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/list_tags_for_resource.html](https://paws-r.github.io/docs/iamrolesanywhere/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource.
 #'
@@ -624,7 +624,7 @@ iamrolesanywhere_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Lists the trust anchors in the authenticated account and Amazon Web Services Region.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/list_trust_anchors.html](https://paws-r.github.io/docs/iamrolesanywhere/list_trust_anchors.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_list_trust_anchors/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_list_trust_anchors/) for full documentation.
 #'
 #' @param nextToken A token that indicates where the output should continue from, if a
 #' previous request did not show all results. To get the next results, make
@@ -656,7 +656,7 @@ iamrolesanywhere_list_trust_anchors <- function(nextToken = NULL, pageSize = NUL
 #' @description
 #' Attaches a list of *notification settings* to a trust anchor.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/put_notification_settings.html](https://paws-r.github.io/docs/iamrolesanywhere/put_notification_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_put_notification_settings/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_put_notification_settings/) for full documentation.
 #'
 #' @param notificationSettings &#91;required&#93; A list of notification settings to be associated to the trust anchor.
 #' @param trustAnchorId &#91;required&#93; The unique identifier of the trust anchor.
@@ -687,7 +687,7 @@ iamrolesanywhere_put_notification_settings <- function(notificationSettings, tru
 #' @description
 #' Resets the *custom notification setting* to IAM Roles Anywhere default setting.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/reset_notification_settings.html](https://paws-r.github.io/docs/iamrolesanywhere/reset_notification_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_reset_notification_settings/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_reset_notification_settings/) for full documentation.
 #'
 #' @param notificationSettingKeys &#91;required&#93; A list of notification setting keys to reset. A notification setting key
 #' includes the event and the channel.
@@ -718,7 +718,7 @@ iamrolesanywhere_reset_notification_settings <- function(notificationSettingKeys
 #' @description
 #' Attaches tags to a resource.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/tag_resource.html](https://paws-r.github.io/docs/iamrolesanywhere/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_tag_resource/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource.
 #' @param tags &#91;required&#93; The tags to attach to the resource.
@@ -748,7 +748,7 @@ iamrolesanywhere_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes tags from the resource.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/untag_resource.html](https://paws-r.github.io/docs/iamrolesanywhere/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_untag_resource/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource.
 #' @param tagKeys &#91;required&#93; A list of keys. Tag keys are the unique identifiers of tags.
@@ -778,7 +778,7 @@ iamrolesanywhere_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates the certificate revocation list (CRL). A CRL is a list of certificates that have been revoked by the issuing certificate authority (CA). IAM Roles Anywhere validates against the CRL before issuing credentials.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/update_crl.html](https://paws-r.github.io/docs/iamrolesanywhere/update_crl.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_update_crl/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_update_crl/) for full documentation.
 #'
 #' @param crlData The x509 v3 specified certificate revocation list (CRL).
 #' @param crlId &#91;required&#93; The unique identifier of the certificate revocation list (CRL).
@@ -810,7 +810,7 @@ iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
 #' @description
 #' Updates a *profile*, a list of the roles that IAM Roles Anywhere service is trusted to assume. You use profiles to intersect permissions with IAM managed policies.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/update_profile.html](https://paws-r.github.io/docs/iamrolesanywhere/update_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_update_profile/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_update_profile/) for full documentation.
 #'
 #' @param durationSeconds The number of seconds the vended session credentials are valid for.
 #' @param managedPolicyArns A list of managed policy ARNs that apply to the vended session
@@ -847,7 +847,7 @@ iamrolesanywhere_update_profile <- function(durationSeconds = NULL, managedPolic
 #' @description
 #' Updates a trust anchor. You establish trust between IAM Roles Anywhere and your certificate authority (CA) by configuring a trust anchor. You can define a trust anchor as a reference to an Private Certificate Authority (Private CA) or by uploading a CA certificate. Your Amazon Web Services workloads can authenticate with the trust anchor using certificates issued by the CA in exchange for temporary Amazon Web Services credentials.
 #'
-#' See [https://paws-r.github.io/docs/iamrolesanywhere/update_trust_anchor.html](https://paws-r.github.io/docs/iamrolesanywhere/update_trust_anchor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_update_trust_anchor/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_update_trust_anchor/) for full documentation.
 #'
 #' @param name The name of the trust anchor.
 #' @param source The trust anchor type and its related certificate data.

@@ -14,6 +14,6 @@ lakeformation_start_query_planning(QueryPlanningContext, QueryString)
 \description{
 Submits a request to process a query statement.
 
-See \url{https://paws-r.github.io/docs/lakeformation/start_query_planning.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_start_query_planning/} for full documentation.
 }
 \keyword{internal}

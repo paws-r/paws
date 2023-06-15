@@ -14,6 +14,6 @@ appstream_disassociate_application_fleet(FleetName, ApplicationArn)
 \description{
 Disassociates the specified application from the fleet.
 
-See \url{https://paws-r.github.io/docs/appstream/disassociate_application_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_disassociate_application_fleet/} for full documentation.
 }
 \keyword{internal}

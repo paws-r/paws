@@ -31,6 +31,6 @@ should not be used to start a face search stream processor.}
 \description{
 Starts processing a stream processor. You create a stream processor by calling \code{\link[=rekognition_create_stream_processor]{create_stream_processor}}. To tell \code{\link[=rekognition_start_stream_processor]{start_stream_processor}} which stream processor to start, use the value of the \code{Name} field specified in the call to \code{\link[=rekognition_create_stream_processor]{create_stream_processor}}.
 
-See \url{https://paws-r.github.io/docs/rekognition/start_stream_processor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_start_stream_processor/} for full documentation.
 }
 \keyword{internal}

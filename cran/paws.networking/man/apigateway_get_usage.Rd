@@ -30,6 +30,6 @@ and the maximum value is 500.}
 \description{
 Gets the usage data of a usage plan in a specified time interval.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_usage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_usage/} for full documentation.
 }
 \keyword{internal}

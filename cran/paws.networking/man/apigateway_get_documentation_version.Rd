@@ -14,6 +14,6 @@ apigateway_get_documentation_version(restApiId, documentationVersion)
 \description{
 Gets a documentation version.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_documentation_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_documentation_version/} for full documentation.
 }
 \keyword{internal}

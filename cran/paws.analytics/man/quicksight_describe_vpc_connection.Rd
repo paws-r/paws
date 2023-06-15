@@ -17,6 +17,6 @@ account.}
 \description{
 Describes a VPC connection.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_vpc_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_vpc_connection/} for full documentation.
 }
 \keyword{internal}

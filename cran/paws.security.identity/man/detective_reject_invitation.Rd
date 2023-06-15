@@ -15,6 +15,6 @@ The member account's current member status in the behavior graph must be
 \description{
 Rejects an invitation to contribute the account data to a behavior graph. This operation must be called by an invited member account that has the \code{INVITED} status.
 
-See \url{https://paws-r.github.io/docs/detective/reject_invitation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/detective_reject_invitation/} for full documentation.
 }
 \keyword{internal}

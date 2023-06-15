@@ -21,6 +21,6 @@ group by the number of instances moved to \code{Standby} mode.}
 \description{
 Moves the specified instances into the standby state.
 
-See \url{https://paws-r.github.io/docs/autoscaling/enter_standby.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_enter_standby/} for full documentation.
 }
 \keyword{internal}

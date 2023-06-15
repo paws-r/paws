@@ -26,6 +26,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a multicast domain using the specified transit gateway.
 
-See \url{https://paws-r.github.io/docs/ec2/create_transit_gateway_multicast_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_transit_gateway_multicast_domain/} for full documentation.
 }
 \keyword{internal}

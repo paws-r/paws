@@ -10,6 +10,6 @@ lightsail_get_container_api_metadata()
 \description{
 Returns information about Amazon Lightsail containers, such as the current version of the Lightsail Control (lightsailctl) plugin.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_container_api_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_container_api_metadata/} for full documentation.
 }
 \keyword{internal}

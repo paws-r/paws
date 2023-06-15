@@ -35,6 +35,6 @@ insensitive.}
 \description{
 Creates or updates a mobile device access override for the given WorkMail organization, user, and device.
 
-See \url{https://paws-r.github.io/docs/workmail/put_mobile_device_access_override.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_put_mobile_device_access_override/} for full documentation.
 }
 \keyword{internal}

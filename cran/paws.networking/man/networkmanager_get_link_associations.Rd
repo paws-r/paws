@@ -26,6 +26,6 @@ networkmanager_get_link_associations(
 \description{
 Gets the link associations for a device or a link. Either the device ID or the link ID must be specified.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_link_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_link_associations/} for full documentation.
 }
 \keyword{internal}

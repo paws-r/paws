@@ -18,6 +18,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Disassociates a subnet or gateway from a route table.
 
-See \url{https://paws-r.github.io/docs/ec2/disassociate_route_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_disassociate_route_table/} for full documentation.
 }
 \keyword{internal}

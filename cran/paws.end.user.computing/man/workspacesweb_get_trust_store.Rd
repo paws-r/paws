@@ -12,6 +12,6 @@ workspacesweb_get_trust_store(trustStoreArn)
 \description{
 Gets the trust store.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/get_trust_store.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_get_trust_store/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ storagegateway_list_local_disks(GatewayARN)
 \description{
 Returns a list of the gateway's local disks. To specify which gateway to describe, you use the Amazon Resource Name (ARN) of the gateway in the body of the request.
 
-See \url{https://paws-r.github.io/docs/storagegateway/list_local_disks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_list_local_disks/} for full documentation.
 }
 \keyword{internal}

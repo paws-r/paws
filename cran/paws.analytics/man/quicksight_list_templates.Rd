@@ -18,6 +18,6 @@ results.}
 \description{
 Lists all the templates in the current Amazon QuickSight account.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_templates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_templates/} for full documentation.
 }
 \keyword{internal}

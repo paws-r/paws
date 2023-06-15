@@ -35,6 +35,6 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Returns information about \code{DBProxyTarget} objects. This API supports pagination.
 
-See \url{https://paws-r.github.io/docs/rds/describe_db_proxy_targets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_describe_db_proxy_targets/} for full documentation.
 }
 \keyword{internal}

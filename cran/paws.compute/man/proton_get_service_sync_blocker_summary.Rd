@@ -20,6 +20,6 @@ summary for. If given only the service name, all instances are blocked.}
 \description{
 Get detailed data for the service sync blocker summary.
 
-See \url{https://paws-r.github.io/docs/proton/get_service_sync_blocker_summary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_get_service_sync_blocker_summary/} for full documentation.
 }
 \keyword{internal}

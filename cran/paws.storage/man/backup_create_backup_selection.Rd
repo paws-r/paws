@@ -28,6 +28,6 @@ characters.}
 \description{
 Creates a JSON document that specifies a set of resources to assign to a backup plan. For examples, see \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/assigning-resources.html#assigning-resources-json}{Assigning resources programmatically}.
 
-See \url{https://paws-r.github.io/docs/backup/create_backup_selection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_create_backup_selection/} for full documentation.
 }
 \keyword{internal}

@@ -64,6 +64,6 @@ provide sensitive information.
 \description{
 Calling this API causes a message to be sent to the end user with a confirmation code that is required to change the user's password. For the \code{Username} parameter, you can use the username or user alias. The method used to send the confirmation code is sent according to the specified AccountRecoverySetting. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-recover-a-user-account.html}{Recovering User Accounts} in the \emph{Amazon Cognito Developer Guide}. If neither a verified phone number nor a verified email exists, an \code{InvalidParameterException} is thrown. To use the confirmation code for resetting the password, call \code{\link[=cognitoidentityprovider_confirm_forgot_password]{confirm_forgot_password}}.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/forgot_password.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_forgot_password/} for full documentation.
 }
 \keyword{internal}

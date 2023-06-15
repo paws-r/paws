@@ -23,6 +23,6 @@ Region.}
 \description{
 Updates fleet metadata, such as DisplayName.
 
-See \url{https://paws-r.github.io/docs/worklink/update_fleet_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_update_fleet_metadata/} for full documentation.
 }
 \keyword{internal}

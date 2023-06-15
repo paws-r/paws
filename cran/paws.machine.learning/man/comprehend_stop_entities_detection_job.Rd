@@ -12,6 +12,6 @@ comprehend_stop_entities_detection_job(JobId)
 \description{
 Stops an entities detection job in progress.
 
-See \url{https://paws-r.github.io/docs/comprehend/stop_entities_detection_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_stop_entities_detection_job/} for full documentation.
 }
 \keyword{internal}

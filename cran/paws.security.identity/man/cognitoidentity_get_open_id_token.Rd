@@ -18,6 +18,6 @@ OpenID Connect provider, always include the \code{id_token}.}
 \description{
 Gets an OpenID token, using a known Cognito ID. This known Cognito ID is returned by \code{\link[=cognitoidentity_get_id]{get_id}}. You can optionally add additional logins for the identity. Supplying multiple logins creates an implicit link.
 
-See \url{https://paws-r.github.io/docs/cognitoidentity/get_open_id_token.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_get_open_id_token/} for full documentation.
 }
 \keyword{internal}

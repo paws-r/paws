@@ -25,6 +25,6 @@ contains your Amazon QuickSight account.}
 \description{
 Adds an Amazon QuickSight user to an Amazon QuickSight group.
 
-See \url{https://paws-r.github.io/docs/quicksight/create_group_membership.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_create_group_membership/} for full documentation.
 }
 \keyword{internal}

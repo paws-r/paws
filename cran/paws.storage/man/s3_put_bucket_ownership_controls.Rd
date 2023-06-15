@@ -31,6 +31,6 @@ ObjectWriter) that you want to apply to this Amazon S3 bucket.}
 \description{
 Creates or modifies \code{OwnershipControls} for an Amazon S3 bucket. To use this operation, you must have the \code{s3:PutBucketOwnershipControls} permission. For more information about Amazon S3 permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide//using-with-s3-actions.html}{Specifying permissions in a policy}.
 
-See \url{https://paws-r.github.io/docs/s3/put_bucket_ownership_controls.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_ownership_controls/} for full documentation.
 }
 \keyword{internal}

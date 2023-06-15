@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes the specified Client VPN endpoint. You must disassociate all target networks before you can delete a Client VPN endpoint.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_client_vpn_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_client_vpn_endpoint/} for full documentation.
 }
 \keyword{internal}

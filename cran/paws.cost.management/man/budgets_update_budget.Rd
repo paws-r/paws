@@ -15,6 +15,6 @@ update.}
 \description{
 Updates a budget. You can change every part of a budget except for the \code{budgetName} and the \code{calculatedSpend}. When you modify a budget, the \code{calculatedSpend} drops to zero until Amazon Web Services has new usage data to use for forecasting.
 
-See \url{https://paws-r.github.io/docs/budgets/update_budget.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/budgets_update_budget/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ to zero tasks. It's only necessary to use this if the service uses the
 \description{
 Deletes a specified service within a cluster. You can delete a service if you have no running tasks in it and the desired task count is zero. If the service is actively maintaining tasks, you can't delete it, and you must update the service to a desired task count of zero. For more information, see \code{\link[=ecs_update_service]{update_service}}.
 
-See \url{https://paws-r.github.io/docs/ecs/delete_service.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_delete_service/} for full documentation.
 }
 \keyword{internal}

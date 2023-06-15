@@ -15,6 +15,6 @@ manually invoke.}
 \description{
 Manually triggers a pipeline to create an image.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/start_image_pipeline_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_start_image_pipeline_execution/} for full documentation.
 }
 \keyword{internal}

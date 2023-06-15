@@ -32,6 +32,6 @@ the next page. Keep all other arguments unchanged.}
 \description{
 Returns details of the service updates
 
-See \url{https://paws-r.github.io/docs/memorydb/describe_service_updates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_describe_service_updates/} for full documentation.
 }
 \keyword{internal}

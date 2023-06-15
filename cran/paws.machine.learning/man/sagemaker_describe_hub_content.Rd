@@ -23,6 +23,6 @@ sagemaker_describe_hub_content(
 \description{
 Describe the content of a hub.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_hub_content.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_hub_content/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ paginated response.}
 \description{
 Retrieves information about the status, configuration, and other settings for all the campaigns that are associated with an application.
 
-See \url{https://paws-r.github.io/docs/pinpoint/get_campaigns.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_get_campaigns/} for full documentation.
 }
 \keyword{internal}

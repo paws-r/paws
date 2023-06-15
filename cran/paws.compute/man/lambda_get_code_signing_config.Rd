@@ -12,6 +12,6 @@ lambda_get_code_signing_config(CodeSigningConfigArn)
 \description{
 Returns information about the specified code signing configuration.
 
-See \url{https://paws-r.github.io/docs/lambda/get_code_signing_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_get_code_signing_config/} for full documentation.
 }
 \keyword{internal}

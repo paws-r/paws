@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Create a new cluster. A cluster is a set of redundant Regional endpoints against which you can run API calls to update or get the state of one or more routing controls. Each cluster has a name, status, Amazon Resource Name (ARN), and an array of the five cluster endpoints (one for each supported Amazon Web Services Region) that you can use with API calls to the cluster data plane.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/create_cluster.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/create_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_create_cluster/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_create_cluster/) for full documentation.
 #'
 #' @param ClientToken A unique, case-sensitive string of up to 64 ASCII characters. To make an
 #' idempotent API request with an action, specify a client token in the
@@ -41,7 +41,7 @@ route53recoverycontrolconfig_create_cluster <- function(ClientToken = NULL, Clus
 #' @description
 #' Creates a new control panel. A control panel represents a group of routing controls that can be changed together in a single transaction. You can use a control panel to centrally view the operational status of applications across your organization, and trigger multi-app failovers in a single transaction, for example, to fail over an Availability Zone or Amazon Web Services Region.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/create_control_panel.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/create_control_panel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_create_control_panel/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_create_control_panel/) for full documentation.
 #'
 #' @param ClientToken A unique, case-sensitive string of up to 64 ASCII characters. To make an
 #' idempotent API request with an action, specify a client token in the
@@ -75,7 +75,7 @@ route53recoverycontrolconfig_create_control_panel <- function(ClientToken = NULL
 #' @description
 #' Creates a new routing control.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/create_routing_control.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/create_routing_control.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_create_routing_control/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_create_routing_control/) for full documentation.
 #'
 #' @param ClientToken A unique, case-sensitive string of up to 64 ASCII characters. To make an
 #' idempotent API request with an action, specify a client token in the
@@ -111,7 +111,7 @@ route53recoverycontrolconfig_create_routing_control <- function(ClientToken = NU
 #' @description
 #' Creates a safety rule in a control panel. Safety rules let you add safeguards around changing routing control states, and for enabling and disabling routing controls, to help prevent unexpected outcomes.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/create_safety_rule.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/create_safety_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_create_safety_rule/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_create_safety_rule/) for full documentation.
 #'
 #' @param AssertionRule The assertion rule requested.
 #' @param ClientToken A unique, case-sensitive string of up to 64 ASCII characters. To make an
@@ -145,7 +145,7 @@ route53recoverycontrolconfig_create_safety_rule <- function(AssertionRule = NULL
 #' @description
 #' Delete a cluster.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/delete_cluster.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/delete_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_delete_cluster/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_delete_cluster/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the cluster that you're deleting.
 #'
@@ -174,7 +174,7 @@ route53recoverycontrolconfig_delete_cluster <- function(ClusterArn) {
 #' @description
 #' Deletes a control panel.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/delete_control_panel.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/delete_control_panel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_delete_control_panel/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_delete_control_panel/) for full documentation.
 #'
 #' @param ControlPanelArn &#91;required&#93; The Amazon Resource Name (ARN) of the control panel.
 #'
@@ -203,7 +203,7 @@ route53recoverycontrolconfig_delete_control_panel <- function(ControlPanelArn) {
 #' @description
 #' Deletes a routing control.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/delete_routing_control.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/delete_routing_control.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_delete_routing_control/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_delete_routing_control/) for full documentation.
 #'
 #' @param RoutingControlArn &#91;required&#93; The Amazon Resource Name (ARN) of the routing control that you're
 #' deleting.
@@ -233,7 +233,7 @@ route53recoverycontrolconfig_delete_routing_control <- function(RoutingControlAr
 #' @description
 #' Deletes a safety rule.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/delete_safety_rule.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/delete_safety_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_delete_safety_rule/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_delete_safety_rule/) for full documentation.
 #'
 #' @param SafetyRuleArn &#91;required&#93; The ARN of the safety rule.
 #'
@@ -262,7 +262,7 @@ route53recoverycontrolconfig_delete_safety_rule <- function(SafetyRuleArn) {
 #' @description
 #' Display the details about a cluster. The response includes the cluster name, endpoints, status, and Amazon Resource Name (ARN).
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/describe_cluster.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/describe_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_describe_cluster/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_describe_cluster/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the cluster.
 #'
@@ -291,7 +291,7 @@ route53recoverycontrolconfig_describe_cluster <- function(ClusterArn) {
 #' @description
 #' Displays details about a control panel.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/describe_control_panel.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/describe_control_panel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_describe_control_panel/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_describe_control_panel/) for full documentation.
 #'
 #' @param ControlPanelArn &#91;required&#93; The Amazon Resource Name (ARN) of the control panel.
 #'
@@ -320,7 +320,7 @@ route53recoverycontrolconfig_describe_control_panel <- function(ControlPanelArn)
 #' @description
 #' Displays details about a routing control. A routing control has one of two states: ON and OFF. You can map the routing control state to the state of an Amazon Route 53 health check, which can be used to control routing.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/describe_routing_control.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/describe_routing_control.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_describe_routing_control/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_describe_routing_control/) for full documentation.
 #'
 #' @param RoutingControlArn &#91;required&#93; The Amazon Resource Name (ARN) of the routing control.
 #'
@@ -349,7 +349,7 @@ route53recoverycontrolconfig_describe_routing_control <- function(RoutingControl
 #' @description
 #' Returns information about a safety rule.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/describe_safety_rule.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/describe_safety_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_describe_safety_rule/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_describe_safety_rule/) for full documentation.
 #'
 #' @param SafetyRuleArn &#91;required&#93; The ARN of the safety rule.
 #'
@@ -379,7 +379,7 @@ route53recoverycontrolconfig_describe_safety_rule <- function(SafetyRuleArn) {
 #' @description
 #' Returns an array of all Amazon Route 53 health checks associated with a specific routing control.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/list_associated_route_53_health_checks.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/list_associated_route_53_health_checks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_list_associated_route_53_health_checks/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_list_associated_route_53_health_checks/) for full documentation.
 #'
 #' @param MaxResults The number of objects that you want to return with this call.
 #' @param NextToken The token that identifies which batch of results you want to see.
@@ -410,7 +410,7 @@ route53recoverycontrolconfig_list_associated_route_53_health_checks <- function(
 #' @description
 #' Returns an array of all the clusters in an account.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/list_clusters.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/list_clusters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_list_clusters/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_list_clusters/) for full documentation.
 #'
 #' @param MaxResults The number of objects that you want to return with this call.
 #' @param NextToken The token that identifies which batch of results you want to see.
@@ -440,7 +440,7 @@ route53recoverycontrolconfig_list_clusters <- function(MaxResults = NULL, NextTo
 #' @description
 #' Returns an array of control panels in an account or in a cluster.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/list_control_panels.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/list_control_panels.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_list_control_panels/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_list_control_panels/) for full documentation.
 #'
 #' @param ClusterArn The Amazon Resource Name (ARN) of a cluster.
 #' @param MaxResults The number of objects that you want to return with this call.
@@ -471,7 +471,7 @@ route53recoverycontrolconfig_list_control_panels <- function(ClusterArn = NULL, 
 #' @description
 #' Returns an array of routing controls for a control panel. A routing control is an Amazon Route 53 Application Recovery Controller construct that has one of two states: ON and OFF. You can map the routing control state to the state of an Amazon Route 53 health check, which can be used to control routing.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/list_routing_controls.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/list_routing_controls.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_list_routing_controls/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_list_routing_controls/) for full documentation.
 #'
 #' @param ControlPanelArn &#91;required&#93; The Amazon Resource Name (ARN) of the control panel.
 #' @param MaxResults The number of objects that you want to return with this call.
@@ -503,7 +503,7 @@ route53recoverycontrolconfig_list_routing_controls <- function(ControlPanelArn, 
 #' @description
 #' List the safety rules (the assertion rules and gating rules) that you've defined for the routing controls in a control panel.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/list_safety_rules.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/list_safety_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_list_safety_rules/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_list_safety_rules/) for full documentation.
 #'
 #' @param ControlPanelArn &#91;required&#93; The Amazon Resource Name (ARN) of the control panel.
 #' @param MaxResults The number of objects that you want to return with this call.
@@ -534,7 +534,7 @@ route53recoverycontrolconfig_list_safety_rules <- function(ControlPanelArn, MaxR
 #' @description
 #' Lists the tags for a resource.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/list_tags_for_resource.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource that's tagged.
 #'
@@ -563,7 +563,7 @@ route53recoverycontrolconfig_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Adds a tag to a resource.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/tag_resource.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_tag_resource/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource that's tagged.
 #' @param Tags &#91;required&#93; The tags associated with the resource.
@@ -593,7 +593,7 @@ route53recoverycontrolconfig_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes a tag from a resource.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/untag_resource.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_untag_resource/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource that's tagged.
 #' @param TagKeys &#91;required&#93; Keys for the tags to be removed.
@@ -623,7 +623,7 @@ route53recoverycontrolconfig_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates a control panel. The only update you can make to a control panel is to change the name of the control panel.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/update_control_panel.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/update_control_panel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_update_control_panel/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_update_control_panel/) for full documentation.
 #'
 #' @param ControlPanelArn &#91;required&#93; The Amazon Resource Name (ARN) of the control panel.
 #' @param ControlPanelName &#91;required&#93; The name of the control panel.
@@ -653,7 +653,7 @@ route53recoverycontrolconfig_update_control_panel <- function(ControlPanelArn, C
 #' @description
 #' Updates a routing control. You can only update the name of the routing control. To get or update the routing control state, see the Recovery Cluster (data plane) API actions for Amazon Route 53 Application Recovery Controller.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/update_routing_control.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/update_routing_control.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_update_routing_control/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_update_routing_control/) for full documentation.
 #'
 #' @param RoutingControlArn &#91;required&#93; The Amazon Resource Name (ARN) of the routing control.
 #' @param RoutingControlName &#91;required&#93; The name of the routing control.
@@ -683,7 +683,7 @@ route53recoverycontrolconfig_update_routing_control <- function(RoutingControlAr
 #' @description
 #' Update a safety rule (an assertion rule or gating rule). You can only update the name and the waiting period for a safety rule. To make other updates, delete the safety rule and create a new one.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycontrolconfig/update_safety_rule.html](https://paws-r.github.io/docs/route53recoverycontrolconfig/update_safety_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_update_safety_rule/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_update_safety_rule/) for full documentation.
 #'
 #' @param AssertionRuleUpdate The assertion rule to update.
 #' @param GatingRuleUpdate The gating rule to update.

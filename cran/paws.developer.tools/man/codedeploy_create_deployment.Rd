@@ -107,6 +107,6 @@ permission when calling
 \description{
 Deploys an application revision through the specified deployment group.
 
-See \url{https://paws-r.github.io/docs/codedeploy/create_deployment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_create_deployment/} for full documentation.
 }
 \keyword{internal}

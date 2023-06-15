@@ -13,6 +13,6 @@ inspector_describe_resource_groups(resourceGroupArns)
 \description{
 Describes the resource groups that are specified by the ARNs of the resource groups.
 
-See \url{https://paws-r.github.io/docs/inspector/describe_resource_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_describe_resource_groups/} for full documentation.
 }
 \keyword{internal}

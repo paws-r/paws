@@ -27,6 +27,6 @@ results.}
 \description{
 Searches for dashboards that belong to a user.
 
-See \url{https://paws-r.github.io/docs/quicksight/search_dashboards.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_search_dashboards/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ personalize_delete_solution(solutionArn)
 \description{
 Deletes all versions of a solution and the \code{Solution} object itself. Before deleting a solution, you must delete all campaigns based on the solution. To determine what campaigns are using the solution, call \code{\link[=personalize_list_campaigns]{list_campaigns}} and supply the Amazon Resource Name (ARN) of the solution. You can't delete a solution if an associated \code{SolutionVersion} is in the CREATE PENDING or IN PROGRESS state. For more information on solutions, see \code{\link[=personalize_create_solution]{create_solution}}.
 
-See \url{https://paws-r.github.io/docs/personalize/delete_solution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_delete_solution/} for full documentation.
 }
 \keyword{internal}

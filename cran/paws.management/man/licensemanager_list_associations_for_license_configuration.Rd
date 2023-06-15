@@ -20,6 +20,6 @@ licensemanager_list_associations_for_license_configuration(
 \description{
 Lists the resource associations for the specified license configuration.
 
-See \url{https://paws-r.github.io/docs/licensemanager/list_associations_for_license_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_list_associations_for_license_configuration/} for full documentation.
 }
 \keyword{internal}

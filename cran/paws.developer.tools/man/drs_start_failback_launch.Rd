@@ -16,6 +16,6 @@ request.}
 \description{
 Initiates a Job for launching the machine that is being failed back to from the specified Recovery Instance. This will run conversion on the failback client and will reboot your machine, thus completing the failback process.
 
-See \url{https://paws-r.github.io/docs/drs/start_failback_launch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_start_failback_launch/} for full documentation.
 }
 \keyword{internal}

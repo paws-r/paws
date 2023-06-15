@@ -22,6 +22,6 @@ for Multi-AZ.}
 \description{
 You might need to reboot your instance, usually for maintenance reasons. For example, if you make certain changes, or if you change the cluster parameter group that is associated with the instance, you must reboot the instance for the changes to take effect.
 
-See \url{https://paws-r.github.io/docs/docdb/reboot_db_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_reboot_db_instance/} for full documentation.
 }
 \keyword{internal}

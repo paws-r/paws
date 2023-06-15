@@ -25,6 +25,6 @@ a \strong{provisioned} capacity mode for your data streams.}
 \description{
 Creates a Kinesis data stream. A stream captures and transports data records that are continuously emitted from different data sources or \emph{producers}. Scale-out within a stream is explicitly supported by means of shards, which are uniquely identified groups of data records in a stream.
 
-See \url{https://paws-r.github.io/docs/kinesis/create_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesis_create_stream/} for full documentation.
 }
 \keyword{internal}

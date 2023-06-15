@@ -15,6 +15,6 @@ applicationinsights_describe_component(ResourceGroupName, ComponentName)
 \description{
 Describes a component and lists the resources that are grouped together in a component.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/describe_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_describe_component/} for full documentation.
 }
 \keyword{internal}

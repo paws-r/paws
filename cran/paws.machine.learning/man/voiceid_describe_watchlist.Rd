@@ -14,6 +14,6 @@ voiceid_describe_watchlist(DomainId, WatchlistId)
 \description{
 Describes the specified watchlist.
 
-See \url{https://paws-r.github.io/docs/voiceid/describe_watchlist.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/voiceid_describe_watchlist/} for full documentation.
 }
 \keyword{internal}

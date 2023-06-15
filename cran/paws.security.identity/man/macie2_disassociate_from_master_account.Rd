@@ -10,6 +10,6 @@ macie2_disassociate_from_master_account()
 \description{
 (Deprecated) Disassociates a member account from its Amazon Macie administrator account. This operation has been replaced by the DisassociateFromAdministratorAccount operation.
 
-See \url{https://paws-r.github.io/docs/macie2/disassociate_from_master_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_disassociate_from_master_account/} for full documentation.
 }
 \keyword{internal}

@@ -61,6 +61,6 @@ in the \emph{Global Accelerator Developer Guide}.}
 \description{
 Create a custom routing accelerator. A custom routing accelerator directs traffic to one of possibly thousands of Amazon EC2 instance destinations running in a single or multiple virtual private clouds (VPC) subnet endpoints.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/create_custom_routing_accelerator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_create_custom_routing_accelerator/} for full documentation.
 }
 \keyword{internal}

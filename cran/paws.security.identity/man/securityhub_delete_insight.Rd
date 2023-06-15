@@ -12,6 +12,6 @@ securityhub_delete_insight(InsightArn)
 \description{
 Deletes the insight specified by the \code{InsightArn}.
 
-See \url{https://paws-r.github.io/docs/securityhub/delete_insight.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_delete_insight/} for full documentation.
 }
 \keyword{internal}

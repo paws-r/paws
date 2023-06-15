@@ -30,6 +30,6 @@ jobs, use the token in the next request.}
 \description{
 Gets a list of private work teams that you have defined in a region. The list may be empty if no work team satisfies the filter specified in the \code{NameContains} parameter.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_workteams.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_workteams/} for full documentation.
 }
 \keyword{internal}

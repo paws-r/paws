@@ -18,6 +18,6 @@ user is a member of the group.}
 \description{
 Creates a relationship between a member and a group. The following identifiers must be specified: \code{GroupId}, \code{IdentityStoreId}, and \code{MemberId}.
 
-See \url{https://paws-r.github.io/docs/identitystore/create_group_membership.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/identitystore_create_group_membership/} for full documentation.
 }
 \keyword{internal}

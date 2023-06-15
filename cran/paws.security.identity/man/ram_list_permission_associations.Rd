@@ -62,6 +62,6 @@ receive all of the results.}
 \description{
 Lists information about the managed permission and its associations to any resource shares that use this managed permission. This lets you see which resource shares use which versions of the specified managed permission.
 
-See \url{https://paws-r.github.io/docs/ram/list_permission_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_list_permission_associations/} for full documentation.
 }
 \keyword{internal}

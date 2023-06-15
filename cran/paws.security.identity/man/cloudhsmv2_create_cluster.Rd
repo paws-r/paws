@@ -36,6 +36,6 @@ they must meet the following criteria:
 \description{
 Creates a new AWS CloudHSM cluster.
 
-See \url{https://paws-r.github.io/docs/cloudhsmv2/create_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_create_cluster/} for full documentation.
 }
 \keyword{internal}

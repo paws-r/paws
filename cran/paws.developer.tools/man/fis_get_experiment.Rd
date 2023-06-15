@@ -12,6 +12,6 @@ fis_get_experiment(id)
 \description{
 Gets information about the specified experiment.
 
-See \url{https://paws-r.github.io/docs/fis/get_experiment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fis_get_experiment/} for full documentation.
 }
 \keyword{internal}

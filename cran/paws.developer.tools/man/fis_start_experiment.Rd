@@ -17,6 +17,6 @@ idempotency of the request.}
 \description{
 Starts running an experiment from the specified experiment template.
 
-See \url{https://paws-r.github.io/docs/fis/start_experiment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fis_start_experiment/} for full documentation.
 }
 \keyword{internal}

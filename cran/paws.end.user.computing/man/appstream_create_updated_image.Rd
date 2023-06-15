@@ -48,6 +48,6 @@ displaying whether image updates are available.}
 \description{
 Creates a new image with the latest Windows operating system updates, driver updates, and AppStream 2.0 agent software.
 
-See \url{https://paws-r.github.io/docs/appstream/create_updated_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_create_updated_image/} for full documentation.
 }
 \keyword{internal}

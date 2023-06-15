@@ -50,6 +50,6 @@ For more information, see \href{https://docs.aws.amazon.com/personalize/latest/d
 \description{
 Re-ranks a list of recommended items for the given user. The first item in the list is deemed the most likely item to be of interest to the user.
 
-See \url{https://paws-r.github.io/docs/personalizeruntime/get_personalized_ranking.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalizeruntime_get_personalized_ranking/} for full documentation.
 }
 \keyword{internal}

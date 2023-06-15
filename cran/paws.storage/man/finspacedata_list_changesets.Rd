@@ -17,6 +17,6 @@ belongs.}
 \description{
 Lists the FinSpace Changesets for a Dataset.
 
-See \url{https://paws-r.github.io/docs/finspacedata/list_changesets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_list_changesets/} for full documentation.
 }
 \keyword{internal}

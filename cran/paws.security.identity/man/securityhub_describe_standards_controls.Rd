@@ -29,6 +29,6 @@ response.}
 \description{
 Returns a list of security standards controls.
 
-See \url{https://paws-r.github.io/docs/securityhub/describe_standards_controls.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_describe_standards_controls/} for full documentation.
 }
 \keyword{internal}

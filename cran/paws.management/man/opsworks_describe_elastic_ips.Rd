@@ -25,6 +25,6 @@ it returns a description of every Elastic IP address.}
 \description{
 Describes \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP addresses}.
 
-See \url{https://paws-r.github.io/docs/opsworks/describe_elastic_ips.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_describe_elastic_ips/} for full documentation.
 }
 \keyword{internal}

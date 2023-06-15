@@ -22,6 +22,6 @@ that have names that start with the prefix you specify.}
 \description{
 This operation returns a paginated list of your saved CloudWatch Logs Insights query definitions.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/describe_query_definitions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_query_definitions/} for full documentation.
 }
 \keyword{internal}

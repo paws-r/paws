@@ -15,6 +15,6 @@ elasticsearchservice_accept_inbound_cross_cluster_search_connection(
 \description{
 Allows the destination domain owner to accept an inbound cross-cluster search connection request.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/accept_inbound_cross_cluster_search_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_accept_inbound_cross_cluster_search_connection/} for full documentation.
 }
 \keyword{internal}

@@ -25,6 +25,6 @@ results.}
 \description{
 Retrieves a list of connections from the account.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevents/list_connections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevents_list_connections/} for full documentation.
 }
 \keyword{internal}

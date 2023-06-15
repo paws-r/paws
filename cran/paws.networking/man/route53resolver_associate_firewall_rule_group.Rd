@@ -52,6 +52,6 @@ rule group association.}
 \description{
 Associates a FirewallRuleGroup with a VPC, to provide DNS filtering for the VPC.
 
-See \url{https://paws-r.github.io/docs/route53resolver/associate_firewall_rule_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_associate_firewall_rule_group/} for full documentation.
 }
 \keyword{internal}

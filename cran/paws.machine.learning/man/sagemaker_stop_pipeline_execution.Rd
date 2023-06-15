@@ -16,6 +16,6 @@ than once.}
 \description{
 Stops a pipeline execution.
 
-See \url{https://paws-r.github.io/docs/sagemaker/stop_pipeline_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_stop_pipeline_execution/} for full documentation.
 }
 \keyword{internal}

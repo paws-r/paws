@@ -18,6 +18,6 @@ sesv2_put_configuration_set_vdm_options(
 \description{
 Specify VDM preferences for email that you send using the configuration set.
 
-See \url{https://paws-r.github.io/docs/sesv2/put_configuration_set_vdm_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_put_configuration_set_vdm_options/} for full documentation.
 }
 \keyword{internal}

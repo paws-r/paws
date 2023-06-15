@@ -9,6 +9,6 @@ proton_get_resources_summary()
 \description{
 Get counts of Proton resources.
 
-See \url{https://paws-r.github.io/docs/proton/get_resources_summary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_get_resources_summary/} for full documentation.
 }
 \keyword{internal}

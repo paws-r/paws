@@ -12,6 +12,6 @@ redshift_delete_authentication_profile(AuthenticationProfileName)
 \description{
 Deletes an authentication profile.
 
-See \url{https://paws-r.github.io/docs/redshift/delete_authentication_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_delete_authentication_profile/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ storagegateway_describe_availability_monitor_test(GatewayARN)
 \description{
 Returns information about the most recent high availability monitoring test that was performed on the host in a cluster. If a test isn't performed, the status and start time in the response would be null.
 
-See \url{https://paws-r.github.io/docs/storagegateway/describe_availability_monitor_test.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_describe_availability_monitor_test/} for full documentation.
 }
 \keyword{internal}

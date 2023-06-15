@@ -21,6 +21,6 @@ for a calculated health check.}
 \description{
 Gets the reason that a specified health check failed most recently.
 
-See \url{https://paws-r.github.io/docs/route53/get_health_check_last_failure_reason.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_get_health_check_last_failure_reason/} for full documentation.
 }
 \keyword{internal}

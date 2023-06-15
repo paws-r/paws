@@ -89,6 +89,6 @@ information, such as the user's email address, as the \code{VisitorId}.}
 \description{
 Searches an active index. Use this API to search your documents using query. The \code{\link[=kendra_query]{query}} API enables to do faceted search and to filter results based on document attributes.
 
-See \url{https://paws-r.github.io/docs/kendra/query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_query/} for full documentation.
 }
 \keyword{internal}

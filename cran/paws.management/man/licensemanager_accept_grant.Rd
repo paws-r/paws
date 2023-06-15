@@ -12,6 +12,6 @@ licensemanager_accept_grant(GrantArn)
 \description{
 Accepts the specified grant.
 
-See \url{https://paws-r.github.io/docs/licensemanager/accept_grant.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_accept_grant/} for full documentation.
 }
 \keyword{internal}

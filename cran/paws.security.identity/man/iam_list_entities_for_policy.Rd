@@ -67,6 +67,6 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists all IAM users, groups, and roles that the specified managed policy is attached to.
 
-See \url{https://paws-r.github.io/docs/iam/list_entities_for_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_entities_for_policy/} for full documentation.
 }
 \keyword{internal}

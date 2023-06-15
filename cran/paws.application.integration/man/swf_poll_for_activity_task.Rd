@@ -25,6 +25,6 @@ user defined.}
 \description{
 Used by workers to get an ActivityTask from the specified activity \code{taskList}. This initiates a long poll, where the service holds the HTTP connection open and responds as soon as a task becomes available. The maximum time the service holds on to the request before responding is 60 seconds. If no task is available within 60 seconds, the poll returns an empty result. An empty result, in this context, means that an ActivityTask is returned, but that the value of taskToken is an empty string. If a task is returned, the worker should use its type to identify and process it correctly.
 
-See \url{https://paws-r.github.io/docs/swf/poll_for_activity_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_poll_for_activity_task/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ sns_check_if_phone_number_is_opted_out(phoneNumber)
 \description{
 Accepts a phone number and indicates whether the phone holder has opted out of receiving SMS messages from your Amazon Web Services account. You cannot send SMS messages to a number that is opted out.
 
-See \url{https://paws-r.github.io/docs/sns/check_if_phone_number_is_opted_out.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_check_if_phone_number_is_opted_out/} for full documentation.
 }
 \keyword{internal}

@@ -22,6 +22,6 @@ previous call.}
 \description{
 List the endpoint groups that are associated with a listener.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/list_endpoint_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_list_endpoint_groups/} for full documentation.
 }
 \keyword{internal}

@@ -22,6 +22,6 @@ to 400). The default is 400.}
 \description{
 Describes the specified the load balancers. If no load balancers are specified, the call describes all of your load balancers.
 
-See \url{https://paws-r.github.io/docs/elb/describe_load_balancers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_describe_load_balancers/} for full documentation.
 }
 \keyword{internal}

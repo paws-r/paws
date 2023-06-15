@@ -13,6 +13,6 @@ bundles in the response of your request.}
 \description{
 Returns the bundles that you can apply to a Amazon Lightsail bucket.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_bucket_bundles.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_bucket_bundles/} for full documentation.
 }
 \keyword{internal}

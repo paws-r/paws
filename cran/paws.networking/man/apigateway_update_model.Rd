@@ -16,6 +16,6 @@ apigateway_update_model(restApiId, modelName, patchOperations = NULL)
 \description{
 Changes information about a model.
 
-See \url{https://paws-r.github.io/docs/apigateway/update_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_update_model/} for full documentation.
 }
 \keyword{internal}

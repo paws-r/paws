@@ -90,6 +90,6 @@ This can only be applied to backups created through Backup.}
 \description{
 Recovers the saved resource identified by an Amazon Resource Name (ARN).
 
-See \url{https://paws-r.github.io/docs/backup/start_restore_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_start_restore_job/} for full documentation.
 }
 \keyword{internal}

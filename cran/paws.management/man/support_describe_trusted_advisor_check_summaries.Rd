@@ -13,6 +13,6 @@ support_describe_trusted_advisor_check_summaries(checkIds)
 \description{
 Returns the results for the Trusted Advisor check summaries for the check IDs that you specified. You can get the check IDs by calling the \code{\link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks}} operation.
 
-See \url{https://paws-r.github.io/docs/support/describe_trusted_advisor_check_summaries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/support_describe_trusted_advisor_check_summaries/} for full documentation.
 }
 \keyword{internal}

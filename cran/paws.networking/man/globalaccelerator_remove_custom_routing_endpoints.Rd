@@ -19,6 +19,6 @@ from.}
 \description{
 Remove endpoints from a custom routing accelerator.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/remove_custom_routing_endpoints.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_remove_custom_routing_endpoints/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ A tag key must be accompanied by a tag value, although null is accepted.}
 \description{
 Creates an Access Control List. For more information, see \href{https://docs.aws.amazon.com/memorydb/latest/devguide/clusters.acls.html}{Authenticating users with Access Contol Lists (ACLs)}.
 
-See \url{https://paws-r.github.io/docs/memorydb/create_acl.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_create_acl/} for full documentation.
 }
 \keyword{internal}

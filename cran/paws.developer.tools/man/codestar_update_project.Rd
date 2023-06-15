@@ -16,6 +16,6 @@ codestar_update_project(id, name = NULL, description = NULL)
 \description{
 Updates a project in AWS CodeStar.
 
-See \url{https://paws-r.github.io/docs/codestar/update_project.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestar_update_project/} for full documentation.
 }
 \keyword{internal}

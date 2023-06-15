@@ -30,6 +30,6 @@ blocks.}
 \description{
 Gets the results for an Amazon Textract asynchronous operation that detects text in a document. Amazon Textract can detect lines of text and the words that make up a line of text.
 
-See \url{https://paws-r.github.io/docs/textract/get_document_text_detection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/textract_get_document_text_detection/} for full documentation.
 }
 \keyword{internal}

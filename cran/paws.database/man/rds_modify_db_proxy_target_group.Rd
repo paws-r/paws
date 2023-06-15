@@ -26,6 +26,6 @@ it can't end with a hyphen or contain two consecutive hyphens.}
 \description{
 Modifies the properties of a \code{DBProxyTargetGroup}.
 
-See \url{https://paws-r.github.io/docs/rds/modify_db_proxy_target_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_modify_db_proxy_target_group/} for full documentation.
 }
 \keyword{internal}

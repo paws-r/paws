@@ -13,6 +13,6 @@ cloudhsmv2_delete_backup(BackupId)
 \description{
 Deletes a specified AWS CloudHSM backup. A backup can be restored up to 7 days after the DeleteBackup request is made. For more information on restoring a backup, see \code{\link[=cloudhsmv2_restore_backup]{restore_backup}}.
 
-See \url{https://paws-r.github.io/docs/cloudhsmv2/delete_backup.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_backup/} for full documentation.
 }
 \keyword{internal}

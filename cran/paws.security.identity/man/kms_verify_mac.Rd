@@ -42,6 +42,6 @@ in the \emph{Key Management Service Developer Guide}.}
 \description{
 Verifies the hash-based message authentication code (HMAC) for a specified message, HMAC KMS key, and MAC algorithm. To verify the HMAC, \code{\link[=kms_verify_mac]{verify_mac}} computes an HMAC using the message, HMAC KMS key, and MAC algorithm that you specify, and compares the computed HMAC to the HMAC that you specify. If the HMACs are identical, the verification succeeds; otherwise, it fails. Verification indicates that the message hasn't changed since the HMAC was calculated, and the specified key was used to generate and verify the HMAC.
 
-See \url{https://paws-r.github.io/docs/kms/verify_mac.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_verify_mac/} for full documentation.
 }
 \keyword{internal}

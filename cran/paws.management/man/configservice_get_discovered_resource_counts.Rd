@@ -35,6 +35,6 @@ the next page of results in a paginated response.}
 \description{
 Returns the resource types, the number of each resource type, and the total number of resources that Config is recording in this region for your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/configservice/get_discovered_resource_counts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_get_discovered_resource_counts/} for full documentation.
 }
 \keyword{internal}

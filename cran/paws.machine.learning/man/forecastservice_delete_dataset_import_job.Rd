@@ -13,6 +13,6 @@ forecastservice_delete_dataset_import_job(DatasetImportJobArn)
 \description{
 Deletes a dataset import job created using the \code{\link[=forecastservice_create_dataset_import_job]{create_dataset_import_job}} operation. You can delete only dataset import jobs that have a status of \code{ACTIVE} or \code{CREATE_FAILED}. To get the status, use the \code{\link[=forecastservice_describe_dataset_import_job]{describe_dataset_import_job}} operation.
 
-See \url{https://paws-r.github.io/docs/forecastservice/delete_dataset_import_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_delete_dataset_import_job/} for full documentation.
 }
 \keyword{internal}

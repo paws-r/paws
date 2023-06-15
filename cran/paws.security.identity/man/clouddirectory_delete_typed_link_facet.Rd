@@ -15,6 +15,6 @@ more information, see arns.}
 \description{
 Deletes a TypedLinkFacet. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/delete_typed_link_facet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_delete_typed_link_facet/} for full documentation.
 }
 \keyword{internal}

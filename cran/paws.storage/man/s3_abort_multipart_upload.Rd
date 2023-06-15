@@ -45,6 +45,6 @@ different account, the request fails with the HTTP status code
 \description{
 This action aborts a multipart upload. After a multipart upload is aborted, no additional parts can be uploaded using that upload ID. The storage consumed by any previously uploaded parts will be freed. However, if any part uploads are currently in progress, those part uploads might or might not succeed. As a result, it might be necessary to abort a given multipart upload multiple times in order to completely free all storage consumed by all parts.
 
-See \url{https://paws-r.github.io/docs/s3/abort_multipart_upload.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_abort_multipart_upload/} for full documentation.
 }
 \keyword{internal}

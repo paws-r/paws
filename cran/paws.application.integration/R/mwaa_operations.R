@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a CLI token for the Airflow CLI. To learn more, see [Creating an Apache Airflow CLI token](https://docs.aws.amazon.com/mwaa/latest/userguide/call-mwaa-apis-cli.html).
 #'
-#' See [https://paws-r.github.io/docs/mwaa/create_cli_token.html](https://paws-r.github.io/docs/mwaa/create_cli_token.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mwaa_create_cli_token/](https://www.paws-r-sdk.com/docs/mwaa_create_cli_token/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the Amazon MWAA environment. For example,
 #' `MyMWAAEnvironment`.
@@ -39,7 +39,7 @@ mwaa_create_cli_token <- function(Name) {
 #' @description
 #' Creates an Amazon Managed Workflows for Apache Airflow (MWAA) environment.
 #'
-#' See [https://paws-r.github.io/docs/mwaa/create_environment.html](https://paws-r.github.io/docs/mwaa/create_environment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mwaa_create_environment/](https://www.paws-r-sdk.com/docs/mwaa_create_environment/) for full documentation.
 #'
 #' @param AirflowConfigurationOptions A list of key-value pairs containing the Apache Airflow configuration
 #' options you want to attach to your environment. For more information,
@@ -47,8 +47,8 @@ mwaa_create_cli_token <- function(Name) {
 #' options](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html).
 #' @param AirflowVersion The Apache Airflow version for your environment. If no value is
 #' specified, it defaults to the latest version. Valid values: `1.10.12`,
-#' `2.0.2`, `2.2.2`, and `2.4.3`. For more information, see [Apache Airflow
-#' versions on Amazon Managed Workflows for Apache Airflow
+#' `2.0.2`, `2.2.2`, `2.4.3`, and `2.5.1`. For more information, see
+#' [Apache Airflow versions on Amazon Managed Workflows for Apache Airflow
 #' (MWAA)](https://docs.aws.amazon.com/mwaa/latest/userguide/airflow-versions.html).
 #' @param DagS3Path &#91;required&#93; The relative path to the DAGs folder on your Amazon S3 bucket. For
 #' example, `dags`. For more information, see [Adding or updating
@@ -170,7 +170,7 @@ mwaa_create_environment <- function(AirflowConfigurationOptions = NULL, AirflowV
 #' @description
 #' Creates a web login token for the Airflow Web UI. To learn more, see [Creating an Apache Airflow web login token](https://docs.aws.amazon.com/mwaa/latest/userguide/call-mwaa-apis-web.html).
 #'
-#' See [https://paws-r.github.io/docs/mwaa/create_web_login_token.html](https://paws-r.github.io/docs/mwaa/create_web_login_token.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mwaa_create_web_login_token/](https://www.paws-r-sdk.com/docs/mwaa_create_web_login_token/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the Amazon MWAA environment. For example,
 #' `MyMWAAEnvironment`.
@@ -201,7 +201,7 @@ mwaa_create_web_login_token <- function(Name) {
 #' @description
 #' Deletes an Amazon Managed Workflows for Apache Airflow (MWAA) environment.
 #'
-#' See [https://paws-r.github.io/docs/mwaa/delete_environment.html](https://paws-r.github.io/docs/mwaa/delete_environment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mwaa_delete_environment/](https://www.paws-r-sdk.com/docs/mwaa_delete_environment/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the Amazon MWAA environment. For example,
 #' `MyMWAAEnvironment`.
@@ -232,7 +232,7 @@ mwaa_delete_environment <- function(Name) {
 #' @description
 #' Describes an Amazon Managed Workflows for Apache Airflow (MWAA) environment.
 #'
-#' See [https://paws-r.github.io/docs/mwaa/get_environment.html](https://paws-r.github.io/docs/mwaa/get_environment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mwaa_get_environment/](https://www.paws-r-sdk.com/docs/mwaa_get_environment/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the Amazon MWAA environment. For example,
 #' `MyMWAAEnvironment`.
@@ -263,7 +263,7 @@ mwaa_get_environment <- function(Name) {
 #' @description
 #' Lists the Amazon Managed Workflows for Apache Airflow (MWAA) environments.
 #'
-#' See [https://paws-r.github.io/docs/mwaa/list_environments.html](https://paws-r.github.io/docs/mwaa/list_environments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mwaa_list_environments/](https://www.paws-r-sdk.com/docs/mwaa_list_environments/) for full documentation.
 #'
 #' @param MaxResults The maximum number of results to retrieve per page. For example, `5`
 #' environments per page.
@@ -295,7 +295,7 @@ mwaa_list_environments <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Lists the key-value tag pairs associated to the Amazon Managed Workflows for Apache Airflow (MWAA) environment. For example, `"Environment": "Staging"`.
 #'
-#' See [https://paws-r.github.io/docs/mwaa/list_tags_for_resource.html](https://paws-r.github.io/docs/mwaa/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mwaa_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/mwaa_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon MWAA environment. For
 #' example,
@@ -326,7 +326,7 @@ mwaa_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' **Internal only**. Publishes environment health metrics to Amazon CloudWatch.
 #'
-#' See [https://paws-r.github.io/docs/mwaa/publish_metrics.html](https://paws-r.github.io/docs/mwaa/publish_metrics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mwaa_publish_metrics/](https://www.paws-r-sdk.com/docs/mwaa_publish_metrics/) for full documentation.
 #'
 #' @param EnvironmentName &#91;required&#93; **Internal only**. The name of the environment.
 #' @param MetricData &#91;required&#93; **Internal only**. Publishes metrics to Amazon CloudWatch. To learn more
@@ -360,7 +360,7 @@ mwaa_publish_metrics <- function(EnvironmentName, MetricData) {
 #' @description
 #' Associates key-value tag pairs to your Amazon Managed Workflows for Apache Airflow (MWAA) environment.
 #'
-#' See [https://paws-r.github.io/docs/mwaa/tag_resource.html](https://paws-r.github.io/docs/mwaa/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mwaa_tag_resource/](https://www.paws-r-sdk.com/docs/mwaa_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon MWAA environment. For
 #' example,
@@ -396,7 +396,7 @@ mwaa_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes key-value tag pairs associated to your Amazon Managed Workflows for Apache Airflow (MWAA) environment. For example, `"Environment": "Staging"`.
 #'
-#' See [https://paws-r.github.io/docs/mwaa/untag_resource.html](https://paws-r.github.io/docs/mwaa/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mwaa_untag_resource/](https://www.paws-r-sdk.com/docs/mwaa_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon MWAA environment. For
 #' example,
@@ -430,15 +430,23 @@ mwaa_untag_resource <- function(ResourceArn, tagKeys) {
 #' @description
 #' Updates an Amazon Managed Workflows for Apache Airflow (MWAA) environment.
 #'
-#' See [https://paws-r.github.io/docs/mwaa/update_environment.html](https://paws-r.github.io/docs/mwaa/update_environment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mwaa_update_environment/](https://www.paws-r-sdk.com/docs/mwaa_update_environment/) for full documentation.
 #'
 #' @param AirflowConfigurationOptions A list of key-value pairs containing the Apache Airflow configuration
 #' options you want to attach to your environment. For more information,
 #' see [Apache Airflow configuration
 #' options](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html).
-#' @param AirflowVersion The Apache Airflow version for your environment. If no value is
-#' specified, defaults to the latest version. Valid values: `1.10.12`,
-#' `2.0.2`, `2.2.2`, and `2.4.3`.
+#' @param AirflowVersion The Apache Airflow version for your environment. To upgrade your
+#' environment, specify a newer version of Apache Airflow supported by
+#' Amazon MWAA.
+#' 
+#' Before you upgrade an environment, make sure your requirements, DAGs,
+#' plugins, and other resources used in your workflows are compatible with
+#' the new Apache Airflow version. For more information about updating your
+#' resources, see [Upgrading an Amazon MWAA
+#' environment](https://docs.aws.amazon.com/mwaa/latest/userguide/upgrading-environment.html).
+#' 
+#' Valid values: `1.10.12`, `2.0.2`, `2.2.2`, `2.4.3`, and `2.5.1`.
 #' @param DagS3Path The relative path to the DAGs folder on your Amazon S3 bucket. For
 #' example, `dags`. For more information, see [Adding or updating
 #' DAGs](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-folder.html).

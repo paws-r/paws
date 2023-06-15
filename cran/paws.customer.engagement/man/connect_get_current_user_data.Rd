@@ -42,6 +42,6 @@ results.}
 \description{
 Gets the real-time active user data from the specified Amazon Connect instance.
 
-See \url{https://paws-r.github.io/docs/connect/get_current_user_data.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_get_current_user_data/} for full documentation.
 }
 \keyword{internal}

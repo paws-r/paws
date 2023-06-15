@@ -13,6 +13,6 @@ athena_batch_get_named_query(NamedQueryIds)
 \description{
 Returns the details of a single named query or a list of up to 50 queries, which you provide as an array of query ID strings. Requires you to have access to the workgroup in which the queries were saved. Use ListNamedQueriesInput to get the list of named query IDs in the specified workgroup. If information could not be retrieved for a submitted query ID, information about the query ID submitted is listed under UnprocessedNamedQueryId. Named queries differ from executed queries. Use BatchGetQueryExecutionInput to get details about each unique query execution, and ListQueryExecutionsInput to get a list of query execution IDs.
 
-See \url{https://paws-r.github.io/docs/athena/batch_get_named_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_batch_get_named_query/} for full documentation.
 }
 \keyword{internal}

@@ -78,6 +78,6 @@ oidc_issuer key}
 \description{
 Updates the identity provider.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/update_identity_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_update_identity_provider/} for full documentation.
 }
 \keyword{internal}

@@ -45,6 +45,6 @@ Services use.
 \description{
 Creates a group resource with a name and a filter expression.
 
-See \url{https://paws-r.github.io/docs/xray/create_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_create_group/} for full documentation.
 }
 \keyword{internal}

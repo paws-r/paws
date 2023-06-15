@@ -46,6 +46,6 @@ workgroup once it is created.}
 \description{
 Updates a workgroup with the specified configuration settings. You can't update multiple parameters in one request. For example, you can update \code{baseCapacity} or \code{port} in a single request, but you can't update both in the same request.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/update_workgroup.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_update_workgroup/} for full documentation.
 }
 \keyword{internal}

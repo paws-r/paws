@@ -28,6 +28,6 @@ key in the response.}
 \description{
 Lists the tags for the specified Kinesis data stream. This operation has a limit of five transactions per second per account.
 
-See \url{https://paws-r.github.io/docs/kinesis/list_tags_for_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesis_list_tags_for_stream/} for full documentation.
 }
 \keyword{internal}

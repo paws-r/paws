@@ -18,6 +18,6 @@ this token from a previous
 \description{
 Returns a list of audience segments that you have created in your account in this Region.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/list_segments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_list_segments/} for full documentation.
 }
 \keyword{internal}

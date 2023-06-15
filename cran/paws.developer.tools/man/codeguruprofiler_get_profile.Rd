@@ -54,6 +54,6 @@ For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June
 \description{
 Gets the aggregated profile of a profiling group for a specified time range. Amazon CodeGuru Profiler collects posted agent profiles for a profiling group into aggregated profiles.
 
-See \url{https://paws-r.github.io/docs/codeguruprofiler/get_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeguruprofiler_get_profile/} for full documentation.
 }
 \keyword{internal}

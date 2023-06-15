@@ -21,6 +21,6 @@ parameter to the value returned from the previous response.}
 \description{
 Lists the Security Hub administrator accounts. Can only be called by the organization management account.
 
-See \url{https://paws-r.github.io/docs/securityhub/list_organization_admin_accounts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_list_organization_admin_accounts/} for full documentation.
 }
 \keyword{internal}

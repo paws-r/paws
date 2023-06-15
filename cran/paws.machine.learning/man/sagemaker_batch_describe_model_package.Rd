@@ -12,6 +12,6 @@ sagemaker_batch_describe_model_package(ModelPackageArnList)
 \description{
 This action batch describes a list of versioned model packages
 
-See \url{https://paws-r.github.io/docs/sagemaker/batch_describe_model_package.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_batch_describe_model_package/} for full documentation.
 }
 \keyword{internal}

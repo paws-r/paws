@@ -16,6 +16,6 @@ results.}
 \description{
 Lists information about assistants.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/list_assistants.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_list_assistants/} for full documentation.
 }
 \keyword{internal}

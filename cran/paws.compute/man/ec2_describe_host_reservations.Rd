@@ -42,6 +42,6 @@ the returned \code{nextToken} value. This value can be between 5 and 500. If
 \description{
 Describes reservations that are associated with Dedicated Hosts in your account.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_host_reservations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_host_reservations/} for full documentation.
 }
 \keyword{internal}

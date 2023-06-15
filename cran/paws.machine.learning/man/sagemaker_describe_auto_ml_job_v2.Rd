@@ -12,6 +12,6 @@ sagemaker_describe_auto_ml_job_v2(AutoMLJobName)
 \description{
 Returns information about an Amazon SageMaker AutoML V2 job.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_auto_ml_job_v2.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_auto_ml_job_v2/} for full documentation.
 }
 \keyword{internal}

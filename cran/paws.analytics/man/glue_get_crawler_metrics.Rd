@@ -20,6 +20,6 @@ glue_get_crawler_metrics(
 \description{
 Retrieves metrics about specified crawlers.
 
-See \url{https://paws-r.github.io/docs/glue/get_crawler_metrics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_crawler_metrics/} for full documentation.
 }
 \keyword{internal}

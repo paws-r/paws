@@ -14,6 +14,6 @@ finspacedata_enable_user(userId, clientToken = NULL)
 \description{
 Allows the specified user to access the FinSpace web application and API.
 
-See \url{https://paws-r.github.io/docs/finspacedata/enable_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_enable_user/} for full documentation.
 }
 \keyword{internal}

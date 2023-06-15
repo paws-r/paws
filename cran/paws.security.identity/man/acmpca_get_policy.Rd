@@ -14,6 +14,6 @@ ListCertificateAuthorities action.}
 \description{
 Retrieves the resource-based policy attached to a private CA. If either the private CA resource or the policy cannot be found, this action returns a \code{ResourceNotFoundException}.
 
-See \url{https://paws-r.github.io/docs/acmpca/get_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acmpca_get_policy/} for full documentation.
 }
 \keyword{internal}

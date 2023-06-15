@@ -15,6 +15,6 @@ mturk_list_worker_blocks(NextToken = NULL, MaxResults = NULL)
 \description{
 The \code{ListWorkersBlocks} operation retrieves a list of Workers who are blocked from working on your HITs.
 
-See \url{https://paws-r.github.io/docs/mturk/list_worker_blocks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_list_worker_blocks/} for full documentation.
 }
 \keyword{internal}

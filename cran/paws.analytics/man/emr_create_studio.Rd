@@ -77,6 +77,6 @@ of 256 characters.}
 \description{
 Creates a new Amazon EMR Studio.
 
-See \url{https://paws-r.github.io/docs/emr/create_studio.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_create_studio/} for full documentation.
 }
 \keyword{internal}

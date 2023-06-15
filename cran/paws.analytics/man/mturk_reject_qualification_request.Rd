@@ -18,6 +18,6 @@ the Worker who made the request.}
 \description{
 The \code{\link[=mturk_reject_qualification_request]{reject_qualification_request}} operation rejects a user's request for a Qualification.
 
-See \url{https://paws-r.github.io/docs/mturk/reject_qualification_request.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_reject_qualification_request/} for full documentation.
 }
 \keyword{internal}

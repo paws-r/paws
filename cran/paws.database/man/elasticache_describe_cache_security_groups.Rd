@@ -29,6 +29,6 @@ the value specified by \code{MaxRecords}.}
 \description{
 Returns a list of cache security group descriptions. If a cache security group name is specified, the list contains only the description of that group. This applicable only when you have ElastiCache in Classic setup
 
-See \url{https://paws-r.github.io/docs/elasticache/describe_cache_security_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_describe_cache_security_groups/} for full documentation.
 }
 \keyword{internal}

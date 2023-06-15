@@ -44,6 +44,6 @@ returns up to 100 results and a \code{nextToken} value, if applicable.}
 \description{
 Returns the scan findings for the specified image.
 
-See \url{https://paws-r.github.io/docs/ecr/describe_image_scan_findings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_describe_image_scan_findings/} for full documentation.
 }
 \keyword{internal}

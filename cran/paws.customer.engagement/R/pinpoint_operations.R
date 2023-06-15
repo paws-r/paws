@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/create_app.html](https://paws-r.github.io/docs/pinpoint/create_app.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_create_app/](https://www.paws-r-sdk.com/docs/pinpoint_create_app/) for full documentation.
 #'
 #' @param CreateApplicationRequest &#91;required&#93; 
 #'
@@ -38,7 +38,7 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #' @description
 #' Creates a new campaign for an application or updates the settings of an existing campaign for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/create_campaign.html](https://paws-r.github.io/docs/pinpoint/create_campaign.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_create_campaign/](https://www.paws-r-sdk.com/docs/pinpoint_create_campaign/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -70,7 +70,7 @@ pinpoint_create_campaign <- function(ApplicationId, WriteCampaignRequest) {
 #' @description
 #' Creates a message template for messages that are sent through the email channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/create_email_template.html](https://paws-r.github.io/docs/pinpoint/create_email_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_create_email_template/](https://www.paws-r-sdk.com/docs/pinpoint_create_email_template/) for full documentation.
 #'
 #' @param EmailTemplateRequest &#91;required&#93; 
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
@@ -103,7 +103,7 @@ pinpoint_create_email_template <- function(EmailTemplateRequest, TemplateName) {
 #' @description
 #' Creates an export job for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/create_export_job.html](https://paws-r.github.io/docs/pinpoint/create_export_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_create_export_job/](https://www.paws-r-sdk.com/docs/pinpoint_create_export_job/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -134,7 +134,7 @@ pinpoint_create_export_job <- function(ApplicationId, ExportJobRequest) {
 #' @description
 #' Creates an import job for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/create_import_job.html](https://paws-r.github.io/docs/pinpoint/create_import_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_create_import_job/](https://www.paws-r-sdk.com/docs/pinpoint_create_import_job/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -166,7 +166,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #' @description
 #' Creates a new message template for messages using the in-app message channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/create_in_app_template.html](https://paws-r.github.io/docs/pinpoint/create_in_app_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_create_in_app_template/](https://www.paws-r-sdk.com/docs/pinpoint_create_in_app_template/) for full documentation.
 #'
 #' @param InAppTemplateRequest &#91;required&#93; 
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
@@ -199,7 +199,7 @@ pinpoint_create_in_app_template <- function(InAppTemplateRequest, TemplateName) 
 #' @description
 #' Creates a journey for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/create_journey.html](https://paws-r.github.io/docs/pinpoint/create_journey.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_create_journey/](https://www.paws-r-sdk.com/docs/pinpoint_create_journey/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -231,7 +231,7 @@ pinpoint_create_journey <- function(ApplicationId, WriteJourneyRequest) {
 #' @description
 #' Creates a message template for messages that are sent through a push notification channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/create_push_template.html](https://paws-r.github.io/docs/pinpoint/create_push_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_create_push_template/](https://www.paws-r-sdk.com/docs/pinpoint_create_push_template/) for full documentation.
 #'
 #' @param PushNotificationTemplateRequest &#91;required&#93; 
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
@@ -264,7 +264,7 @@ pinpoint_create_push_template <- function(PushNotificationTemplateRequest, Templ
 #' @description
 #' Creates an Amazon Pinpoint configuration for a recommender model.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/create_recommender_configuration.html](https://paws-r.github.io/docs/pinpoint/create_recommender_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_create_recommender_configuration/](https://www.paws-r-sdk.com/docs/pinpoint_create_recommender_configuration/) for full documentation.
 #'
 #' @param CreateRecommenderConfiguration &#91;required&#93; 
 #'
@@ -295,7 +295,7 @@ pinpoint_create_recommender_configuration <- function(CreateRecommenderConfigura
 #' @description
 #' Creates a new segment for an application or updates the configuration, dimension, and other settings for an existing segment that's associated with an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/create_segment.html](https://paws-r.github.io/docs/pinpoint/create_segment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_create_segment/](https://www.paws-r-sdk.com/docs/pinpoint_create_segment/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -327,7 +327,7 @@ pinpoint_create_segment <- function(ApplicationId, WriteSegmentRequest) {
 #' @description
 #' Creates a message template for messages that are sent through the SMS channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/create_sms_template.html](https://paws-r.github.io/docs/pinpoint/create_sms_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_create_sms_template/](https://www.paws-r-sdk.com/docs/pinpoint_create_sms_template/) for full documentation.
 #'
 #' @param SMSTemplateRequest &#91;required&#93; 
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
@@ -361,7 +361,7 @@ pinpoint_create_sms_template <- function(SMSTemplateRequest, TemplateName) {
 #' @description
 #' Creates a message template for messages that are sent through the voice channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/create_voice_template.html](https://paws-r.github.io/docs/pinpoint/create_voice_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_create_voice_template/](https://www.paws-r-sdk.com/docs/pinpoint_create_voice_template/) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -395,7 +395,7 @@ pinpoint_create_voice_template <- function(TemplateName, VoiceTemplateRequest) {
 #' @description
 #' Disables the ADM channel for an application and deletes any existing settings for the channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_adm_channel.html](https://paws-r.github.io/docs/pinpoint/delete_adm_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_adm_channel/](https://www.paws-r-sdk.com/docs/pinpoint_delete_adm_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -426,7 +426,7 @@ pinpoint_delete_adm_channel <- function(ApplicationId) {
 #' @description
 #' Disables the APNs channel for an application and deletes any existing settings for the channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_apns_channel.html](https://paws-r.github.io/docs/pinpoint/delete_apns_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_apns_channel/](https://www.paws-r-sdk.com/docs/pinpoint_delete_apns_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -457,7 +457,7 @@ pinpoint_delete_apns_channel <- function(ApplicationId) {
 #' @description
 #' Disables the APNs sandbox channel for an application and deletes any existing settings for the channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_apns_sandbox_channel.html](https://paws-r.github.io/docs/pinpoint/delete_apns_sandbox_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_apns_sandbox_channel/](https://www.paws-r-sdk.com/docs/pinpoint_delete_apns_sandbox_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -488,7 +488,7 @@ pinpoint_delete_apns_sandbox_channel <- function(ApplicationId) {
 #' @description
 #' Disables the APNs VoIP channel for an application and deletes any existing settings for the channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_apns_voip_channel.html](https://paws-r.github.io/docs/pinpoint/delete_apns_voip_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_apns_voip_channel/](https://www.paws-r-sdk.com/docs/pinpoint_delete_apns_voip_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -519,7 +519,7 @@ pinpoint_delete_apns_voip_channel <- function(ApplicationId) {
 #' @description
 #' Disables the APNs VoIP sandbox channel for an application and deletes any existing settings for the channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_apns_voip_sandbox_channel.html](https://paws-r.github.io/docs/pinpoint/delete_apns_voip_sandbox_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_apns_voip_sandbox_channel/](https://www.paws-r-sdk.com/docs/pinpoint_delete_apns_voip_sandbox_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -549,7 +549,7 @@ pinpoint_delete_apns_voip_sandbox_channel <- function(ApplicationId) {
 #' @description
 #' Deletes an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_app.html](https://paws-r.github.io/docs/pinpoint/delete_app.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_app/](https://www.paws-r-sdk.com/docs/pinpoint_delete_app/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -580,7 +580,7 @@ pinpoint_delete_app <- function(ApplicationId) {
 #' @description
 #' Disables the Baidu channel for an application and deletes any existing settings for the channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_baidu_channel.html](https://paws-r.github.io/docs/pinpoint/delete_baidu_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_baidu_channel/](https://www.paws-r-sdk.com/docs/pinpoint_delete_baidu_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -610,7 +610,7 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #' @description
 #' Deletes a campaign from an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_campaign.html](https://paws-r.github.io/docs/pinpoint/delete_campaign.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_campaign/](https://www.paws-r-sdk.com/docs/pinpoint_delete_campaign/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -642,7 +642,7 @@ pinpoint_delete_campaign <- function(ApplicationId, CampaignId) {
 #' @description
 #' Disables the email channel for an application and deletes any existing settings for the channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_email_channel.html](https://paws-r.github.io/docs/pinpoint/delete_email_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_email_channel/](https://www.paws-r-sdk.com/docs/pinpoint_delete_email_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -673,7 +673,7 @@ pinpoint_delete_email_channel <- function(ApplicationId) {
 #' @description
 #' Deletes a message template for messages that were sent through the email channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_email_template.html](https://paws-r.github.io/docs/pinpoint/delete_email_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_email_template/](https://www.paws-r-sdk.com/docs/pinpoint_delete_email_template/) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -727,7 +727,7 @@ pinpoint_delete_email_template <- function(TemplateName, Version = NULL) {
 #' @description
 #' Deletes an endpoint from an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_endpoint.html](https://paws-r.github.io/docs/pinpoint/delete_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_endpoint/](https://www.paws-r-sdk.com/docs/pinpoint_delete_endpoint/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -758,7 +758,7 @@ pinpoint_delete_endpoint <- function(ApplicationId, EndpointId) {
 #' @description
 #' Deletes the event stream for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_event_stream.html](https://paws-r.github.io/docs/pinpoint/delete_event_stream.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_event_stream/](https://www.paws-r-sdk.com/docs/pinpoint_delete_event_stream/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -789,7 +789,7 @@ pinpoint_delete_event_stream <- function(ApplicationId) {
 #' @description
 #' Disables the GCM channel for an application and deletes any existing settings for the channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_gcm_channel.html](https://paws-r.github.io/docs/pinpoint/delete_gcm_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_gcm_channel/](https://www.paws-r-sdk.com/docs/pinpoint_delete_gcm_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -820,7 +820,7 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #' @description
 #' Deletes a message template for messages sent using the in-app message channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_in_app_template.html](https://paws-r.github.io/docs/pinpoint/delete_in_app_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_in_app_template/](https://www.paws-r-sdk.com/docs/pinpoint_delete_in_app_template/) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -874,7 +874,7 @@ pinpoint_delete_in_app_template <- function(TemplateName, Version = NULL) {
 #' @description
 #' Deletes a journey from an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_journey.html](https://paws-r.github.io/docs/pinpoint/delete_journey.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_journey/](https://www.paws-r-sdk.com/docs/pinpoint_delete_journey/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -906,7 +906,7 @@ pinpoint_delete_journey <- function(ApplicationId, JourneyId) {
 #' @description
 #' Deletes a message template for messages that were sent through a push notification channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_push_template.html](https://paws-r.github.io/docs/pinpoint/delete_push_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_push_template/](https://www.paws-r-sdk.com/docs/pinpoint_delete_push_template/) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -960,7 +960,7 @@ pinpoint_delete_push_template <- function(TemplateName, Version = NULL) {
 #' @description
 #' Deletes an Amazon Pinpoint configuration for a recommender model.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_recommender_configuration.html](https://paws-r.github.io/docs/pinpoint/delete_recommender_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_recommender_configuration/](https://www.paws-r-sdk.com/docs/pinpoint_delete_recommender_configuration/) for full documentation.
 #'
 #' @param RecommenderId &#91;required&#93; The unique identifier for the recommender model configuration. This
 #' identifier is displayed as the **Recommender ID** on the Amazon Pinpoint
@@ -991,7 +991,7 @@ pinpoint_delete_recommender_configuration <- function(RecommenderId) {
 #' @description
 #' Deletes a segment from an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_segment.html](https://paws-r.github.io/docs/pinpoint/delete_segment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_segment/](https://www.paws-r-sdk.com/docs/pinpoint_delete_segment/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1023,7 +1023,7 @@ pinpoint_delete_segment <- function(ApplicationId, SegmentId) {
 #' @description
 #' Disables the SMS channel for an application and deletes any existing settings for the channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_sms_channel.html](https://paws-r.github.io/docs/pinpoint/delete_sms_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_sms_channel/](https://www.paws-r-sdk.com/docs/pinpoint_delete_sms_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1054,7 +1054,7 @@ pinpoint_delete_sms_channel <- function(ApplicationId) {
 #' @description
 #' Deletes a message template for messages that were sent through the SMS channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_sms_template.html](https://paws-r.github.io/docs/pinpoint/delete_sms_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_sms_template/](https://www.paws-r-sdk.com/docs/pinpoint_delete_sms_template/) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -1108,7 +1108,7 @@ pinpoint_delete_sms_template <- function(TemplateName, Version = NULL) {
 #' @description
 #' Deletes all the endpoints that are associated with a specific user ID.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_user_endpoints.html](https://paws-r.github.io/docs/pinpoint/delete_user_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_user_endpoints/](https://www.paws-r-sdk.com/docs/pinpoint_delete_user_endpoints/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1140,7 +1140,7 @@ pinpoint_delete_user_endpoints <- function(ApplicationId, UserId) {
 #' @description
 #' Disables the voice channel for an application and deletes any existing settings for the channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_voice_channel.html](https://paws-r.github.io/docs/pinpoint/delete_voice_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_voice_channel/](https://www.paws-r-sdk.com/docs/pinpoint_delete_voice_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1171,7 +1171,7 @@ pinpoint_delete_voice_channel <- function(ApplicationId) {
 #' @description
 #' Deletes a message template for messages that were sent through the voice channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/delete_voice_template.html](https://paws-r.github.io/docs/pinpoint/delete_voice_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_delete_voice_template/](https://www.paws-r-sdk.com/docs/pinpoint_delete_voice_template/) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -1226,7 +1226,7 @@ pinpoint_delete_voice_template <- function(TemplateName, Version = NULL) {
 #' @description
 #' Retrieves information about the status and settings of the ADM channel for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_adm_channel.html](https://paws-r.github.io/docs/pinpoint/get_adm_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_adm_channel/](https://www.paws-r-sdk.com/docs/pinpoint_get_adm_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1257,7 +1257,7 @@ pinpoint_get_adm_channel <- function(ApplicationId) {
 #' @description
 #' Retrieves information about the status and settings of the APNs channel for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_apns_channel.html](https://paws-r.github.io/docs/pinpoint/get_apns_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_apns_channel/](https://www.paws-r-sdk.com/docs/pinpoint_get_apns_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1288,7 +1288,7 @@ pinpoint_get_apns_channel <- function(ApplicationId) {
 #' @description
 #' Retrieves information about the status and settings of the APNs sandbox channel for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_apns_sandbox_channel.html](https://paws-r.github.io/docs/pinpoint/get_apns_sandbox_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_apns_sandbox_channel/](https://www.paws-r-sdk.com/docs/pinpoint_get_apns_sandbox_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1319,7 +1319,7 @@ pinpoint_get_apns_sandbox_channel <- function(ApplicationId) {
 #' @description
 #' Retrieves information about the status and settings of the APNs VoIP channel for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_apns_voip_channel.html](https://paws-r.github.io/docs/pinpoint/get_apns_voip_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_apns_voip_channel/](https://www.paws-r-sdk.com/docs/pinpoint_get_apns_voip_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1350,7 +1350,7 @@ pinpoint_get_apns_voip_channel <- function(ApplicationId) {
 #' @description
 #' Retrieves information about the status and settings of the APNs VoIP sandbox channel for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_apns_voip_sandbox_channel.html](https://paws-r.github.io/docs/pinpoint/get_apns_voip_sandbox_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_apns_voip_sandbox_channel/](https://www.paws-r-sdk.com/docs/pinpoint_get_apns_voip_sandbox_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1380,7 +1380,7 @@ pinpoint_get_apns_voip_sandbox_channel <- function(ApplicationId) {
 #' @description
 #' Retrieves information about an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_app.html](https://paws-r.github.io/docs/pinpoint/get_app.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_app/](https://www.paws-r-sdk.com/docs/pinpoint_get_app/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1411,7 +1411,7 @@ pinpoint_get_app <- function(ApplicationId) {
 #' @description
 #' Retrieves (queries) pre-aggregated data for a standard metric that applies to an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_application_date_range_kpi.html](https://paws-r.github.io/docs/pinpoint/get_application_date_range_kpi.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_application_date_range_kpi/](https://www.paws-r-sdk.com/docs/pinpoint_get_application_date_range_kpi/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1463,7 +1463,7 @@ pinpoint_get_application_date_range_kpi <- function(ApplicationId, EndTime = NUL
 #' @description
 #' Retrieves information about the settings for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_application_settings.html](https://paws-r.github.io/docs/pinpoint/get_application_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_application_settings/](https://www.paws-r-sdk.com/docs/pinpoint_get_application_settings/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1494,7 +1494,7 @@ pinpoint_get_application_settings <- function(ApplicationId) {
 #' @description
 #' Retrieves information about all the applications that are associated with your Amazon Pinpoint account.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_apps.html](https://paws-r.github.io/docs/pinpoint/get_apps.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_apps/](https://www.paws-r-sdk.com/docs/pinpoint_get_apps/) for full documentation.
 #'
 #' @param PageSize The maximum number of items to include in each page of a paginated
 #' response. This parameter is not supported for application, campaign, and
@@ -1528,7 +1528,7 @@ pinpoint_get_apps <- function(PageSize = NULL, Token = NULL) {
 #' @description
 #' Retrieves information about the status and settings of the Baidu channel for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_baidu_channel.html](https://paws-r.github.io/docs/pinpoint/get_baidu_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_baidu_channel/](https://www.paws-r-sdk.com/docs/pinpoint_get_baidu_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1559,7 +1559,7 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #' @description
 #' Retrieves information about the status, configuration, and other settings for a campaign.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_campaign.html](https://paws-r.github.io/docs/pinpoint/get_campaign.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_campaign/](https://www.paws-r-sdk.com/docs/pinpoint_get_campaign/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1590,7 +1590,7 @@ pinpoint_get_campaign <- function(ApplicationId, CampaignId) {
 #' @description
 #' Retrieves information about all the activities for a campaign.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_campaign_activities.html](https://paws-r.github.io/docs/pinpoint/get_campaign_activities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_campaign_activities/](https://www.paws-r-sdk.com/docs/pinpoint_get_campaign_activities/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1627,7 +1627,7 @@ pinpoint_get_campaign_activities <- function(ApplicationId, CampaignId, PageSize
 #' @description
 #' Retrieves (queries) pre-aggregated data for a standard metric that applies to a campaign.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_campaign_date_range_kpi.html](https://paws-r.github.io/docs/pinpoint/get_campaign_date_range_kpi.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_campaign_date_range_kpi/](https://www.paws-r-sdk.com/docs/pinpoint_get_campaign_date_range_kpi/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1681,7 +1681,7 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
 #' @description
 #' Retrieves information about the status, configuration, and other settings for a specific version of a campaign.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_campaign_version.html](https://paws-r.github.io/docs/pinpoint/get_campaign_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_campaign_version/](https://www.paws-r-sdk.com/docs/pinpoint_get_campaign_version/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1714,7 +1714,7 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #' @description
 #' Retrieves information about the status, configuration, and other settings for all versions of a campaign.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_campaign_versions.html](https://paws-r.github.io/docs/pinpoint/get_campaign_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_campaign_versions/](https://www.paws-r-sdk.com/docs/pinpoint_get_campaign_versions/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1751,7 +1751,7 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #' @description
 #' Retrieves information about the status, configuration, and other settings for all the campaigns that are associated with an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_campaigns.html](https://paws-r.github.io/docs/pinpoint/get_campaigns.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_campaigns/](https://www.paws-r-sdk.com/docs/pinpoint_get_campaigns/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1787,7 +1787,7 @@ pinpoint_get_campaigns <- function(ApplicationId, PageSize = NULL, Token = NULL)
 #' @description
 #' Retrieves information about the history and status of each channel for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_channels.html](https://paws-r.github.io/docs/pinpoint/get_channels.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_channels/](https://www.paws-r-sdk.com/docs/pinpoint_get_channels/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1818,7 +1818,7 @@ pinpoint_get_channels <- function(ApplicationId) {
 #' @description
 #' Retrieves information about the status and settings of the email channel for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_email_channel.html](https://paws-r.github.io/docs/pinpoint/get_email_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_email_channel/](https://www.paws-r-sdk.com/docs/pinpoint_get_email_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1849,7 +1849,7 @@ pinpoint_get_email_channel <- function(ApplicationId) {
 #' @description
 #' Retrieves the content and settings of a message template for messages that are sent through the email channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_email_template.html](https://paws-r.github.io/docs/pinpoint/get_email_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_email_template/](https://www.paws-r-sdk.com/docs/pinpoint_get_email_template/) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -1904,7 +1904,7 @@ pinpoint_get_email_template <- function(TemplateName, Version = NULL) {
 #' @description
 #' Retrieves information about the settings and attributes of a specific endpoint for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_endpoint.html](https://paws-r.github.io/docs/pinpoint/get_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_endpoint/](https://www.paws-r-sdk.com/docs/pinpoint_get_endpoint/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1935,7 +1935,7 @@ pinpoint_get_endpoint <- function(ApplicationId, EndpointId) {
 #' @description
 #' Retrieves information about the event stream settings for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_event_stream.html](https://paws-r.github.io/docs/pinpoint/get_event_stream.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_event_stream/](https://www.paws-r-sdk.com/docs/pinpoint_get_event_stream/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1966,7 +1966,7 @@ pinpoint_get_event_stream <- function(ApplicationId) {
 #' @description
 #' Retrieves information about the status and settings of a specific export job for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_export_job.html](https://paws-r.github.io/docs/pinpoint/get_export_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_export_job/](https://www.paws-r-sdk.com/docs/pinpoint_get_export_job/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -1998,7 +1998,7 @@ pinpoint_get_export_job <- function(ApplicationId, JobId) {
 #' @description
 #' Retrieves information about the status and settings of all the export jobs for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_export_jobs.html](https://paws-r.github.io/docs/pinpoint/get_export_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_export_jobs/](https://www.paws-r-sdk.com/docs/pinpoint_get_export_jobs/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -2034,7 +2034,7 @@ pinpoint_get_export_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #' @description
 #' Retrieves information about the status and settings of the GCM channel for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_gcm_channel.html](https://paws-r.github.io/docs/pinpoint/get_gcm_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_gcm_channel/](https://www.paws-r-sdk.com/docs/pinpoint_get_gcm_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -2065,7 +2065,7 @@ pinpoint_get_gcm_channel <- function(ApplicationId) {
 #' @description
 #' Retrieves information about the status and settings of a specific import job for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_import_job.html](https://paws-r.github.io/docs/pinpoint/get_import_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_import_job/](https://www.paws-r-sdk.com/docs/pinpoint_get_import_job/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -2097,7 +2097,7 @@ pinpoint_get_import_job <- function(ApplicationId, JobId) {
 #' @description
 #' Retrieves information about the status and settings of all the import jobs for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_import_jobs.html](https://paws-r.github.io/docs/pinpoint/get_import_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_import_jobs/](https://www.paws-r-sdk.com/docs/pinpoint_get_import_jobs/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -2132,7 +2132,7 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #' @description
 #' Retrieves the in-app messages targeted for the provided endpoint ID.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_in_app_messages.html](https://paws-r.github.io/docs/pinpoint/get_in_app_messages.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_in_app_messages/](https://www.paws-r-sdk.com/docs/pinpoint_get_in_app_messages/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -2164,7 +2164,7 @@ pinpoint_get_in_app_messages <- function(ApplicationId, EndpointId) {
 #' @description
 #' Retrieves the content and settings of a message template for messages sent through the in-app channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_in_app_template.html](https://paws-r.github.io/docs/pinpoint/get_in_app_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_in_app_template/](https://www.paws-r-sdk.com/docs/pinpoint_get_in_app_template/) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -2219,7 +2219,7 @@ pinpoint_get_in_app_template <- function(TemplateName, Version = NULL) {
 #' @description
 #' Retrieves information about the status, configuration, and other settings for a journey.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_journey.html](https://paws-r.github.io/docs/pinpoint/get_journey.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_journey/](https://www.paws-r-sdk.com/docs/pinpoint_get_journey/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -2251,7 +2251,7 @@ pinpoint_get_journey <- function(ApplicationId, JourneyId) {
 #' @description
 #' Retrieves (queries) pre-aggregated data for a standard engagement metric that applies to a journey.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_journey_date_range_kpi.html](https://paws-r.github.io/docs/pinpoint/get_journey_date_range_kpi.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_journey_date_range_kpi/](https://www.paws-r-sdk.com/docs/pinpoint_get_journey_date_range_kpi/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -2305,7 +2305,7 @@ pinpoint_get_journey_date_range_kpi <- function(ApplicationId, EndTime = NULL, J
 #' @description
 #' Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey activity.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_journey_execution_activity_metrics.html](https://paws-r.github.io/docs/pinpoint/get_journey_execution_activity_metrics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_journey_execution_activity_metrics/](https://www.paws-r-sdk.com/docs/pinpoint_get_journey_execution_activity_metrics/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -2344,7 +2344,7 @@ pinpoint_get_journey_execution_activity_metrics <- function(ApplicationId, Journ
 #' @description
 #' Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_journey_execution_metrics.html](https://paws-r.github.io/docs/pinpoint/get_journey_execution_metrics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_journey_execution_metrics/](https://www.paws-r-sdk.com/docs/pinpoint_get_journey_execution_metrics/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -2382,7 +2382,7 @@ pinpoint_get_journey_execution_metrics <- function(ApplicationId, JourneyId, Nex
 #' @description
 #' Retrieves (queries) pre-aggregated data for a standard run execution metric that applies to a journey activity.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_journey_run_execution_activity_metrics.html](https://paws-r.github.io/docs/pinpoint/get_journey_run_execution_activity_metrics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_journey_run_execution_activity_metrics/](https://www.paws-r-sdk.com/docs/pinpoint_get_journey_run_execution_activity_metrics/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -2422,7 +2422,7 @@ pinpoint_get_journey_run_execution_activity_metrics <- function(ApplicationId, J
 #' @description
 #' Retrieves (queries) pre-aggregated data for a standard run execution metric that applies to a journey.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_journey_run_execution_metrics.html](https://paws-r.github.io/docs/pinpoint/get_journey_run_execution_metrics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_journey_run_execution_metrics/](https://www.paws-r-sdk.com/docs/pinpoint_get_journey_run_execution_metrics/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -2460,7 +2460,7 @@ pinpoint_get_journey_run_execution_metrics <- function(ApplicationId, JourneyId,
 #' @description
 #' Provides information about the runs of a journey.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_journey_runs.html](https://paws-r.github.io/docs/pinpoint/get_journey_runs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_journey_runs/](https://www.paws-r-sdk.com/docs/pinpoint_get_journey_runs/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -2497,7 +2497,7 @@ pinpoint_get_journey_runs <- function(ApplicationId, JourneyId, PageSize = NULL,
 #' @description
 #' Retrieves the content and settings of a message template for messages that are sent through a push notification channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_push_template.html](https://paws-r.github.io/docs/pinpoint/get_push_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_push_template/](https://www.paws-r-sdk.com/docs/pinpoint_get_push_template/) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -2552,7 +2552,7 @@ pinpoint_get_push_template <- function(TemplateName, Version = NULL) {
 #' @description
 #' Retrieves information about an Amazon Pinpoint configuration for a recommender model.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_recommender_configuration.html](https://paws-r.github.io/docs/pinpoint/get_recommender_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_recommender_configuration/](https://www.paws-r-sdk.com/docs/pinpoint_get_recommender_configuration/) for full documentation.
 #'
 #' @param RecommenderId &#91;required&#93; The unique identifier for the recommender model configuration. This
 #' identifier is displayed as the **Recommender ID** on the Amazon Pinpoint
@@ -2584,7 +2584,7 @@ pinpoint_get_recommender_configuration <- function(RecommenderId) {
 #' @description
 #' Retrieves information about all the recommender model configurations that are associated with your Amazon Pinpoint account.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_recommender_configurations.html](https://paws-r.github.io/docs/pinpoint/get_recommender_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_recommender_configurations/](https://www.paws-r-sdk.com/docs/pinpoint_get_recommender_configurations/) for full documentation.
 #'
 #' @param PageSize The maximum number of items to include in each page of a paginated
 #' response. This parameter is not supported for application, campaign, and
@@ -2618,7 +2618,7 @@ pinpoint_get_recommender_configurations <- function(PageSize = NULL, Token = NUL
 #' @description
 #' Retrieves information about the configuration, dimension, and other settings for a specific segment that's associated with an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_segment.html](https://paws-r.github.io/docs/pinpoint/get_segment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_segment/](https://www.paws-r-sdk.com/docs/pinpoint_get_segment/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -2650,7 +2650,7 @@ pinpoint_get_segment <- function(ApplicationId, SegmentId) {
 #' @description
 #' Retrieves information about the status and settings of the export jobs for a segment.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_segment_export_jobs.html](https://paws-r.github.io/docs/pinpoint/get_segment_export_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_segment_export_jobs/](https://www.paws-r-sdk.com/docs/pinpoint_get_segment_export_jobs/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -2687,7 +2687,7 @@ pinpoint_get_segment_export_jobs <- function(ApplicationId, PageSize = NULL, Seg
 #' @description
 #' Retrieves information about the status and settings of the import jobs for a segment.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_segment_import_jobs.html](https://paws-r.github.io/docs/pinpoint/get_segment_import_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_segment_import_jobs/](https://www.paws-r-sdk.com/docs/pinpoint_get_segment_import_jobs/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -2725,7 +2725,7 @@ pinpoint_get_segment_import_jobs <- function(ApplicationId, PageSize = NULL, Seg
 #' @description
 #' Retrieves information about the configuration, dimension, and other settings for a specific version of a segment that's associated with an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_segment_version.html](https://paws-r.github.io/docs/pinpoint/get_segment_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_segment_version/](https://www.paws-r-sdk.com/docs/pinpoint_get_segment_version/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -2759,7 +2759,7 @@ pinpoint_get_segment_version <- function(ApplicationId, SegmentId, Version) {
 #' @description
 #' Retrieves information about the configuration, dimension, and other settings for all the versions of a specific segment that's associated with an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_segment_versions.html](https://paws-r.github.io/docs/pinpoint/get_segment_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_segment_versions/](https://www.paws-r-sdk.com/docs/pinpoint_get_segment_versions/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -2796,7 +2796,7 @@ pinpoint_get_segment_versions <- function(ApplicationId, PageSize = NULL, Segmen
 #' @description
 #' Retrieves information about the configuration, dimension, and other settings for all the segments that are associated with an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_segments.html](https://paws-r.github.io/docs/pinpoint/get_segments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_segments/](https://www.paws-r-sdk.com/docs/pinpoint_get_segments/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -2832,7 +2832,7 @@ pinpoint_get_segments <- function(ApplicationId, PageSize = NULL, Token = NULL) 
 #' @description
 #' Retrieves information about the status and settings of the SMS channel for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_sms_channel.html](https://paws-r.github.io/docs/pinpoint/get_sms_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_sms_channel/](https://www.paws-r-sdk.com/docs/pinpoint_get_sms_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -2863,7 +2863,7 @@ pinpoint_get_sms_channel <- function(ApplicationId) {
 #' @description
 #' Retrieves the content and settings of a message template for messages that are sent through the SMS channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_sms_template.html](https://paws-r.github.io/docs/pinpoint/get_sms_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_sms_template/](https://www.paws-r-sdk.com/docs/pinpoint_get_sms_template/) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -2918,7 +2918,7 @@ pinpoint_get_sms_template <- function(TemplateName, Version = NULL) {
 #' @description
 #' Retrieves information about all the endpoints that are associated with a specific user ID.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_user_endpoints.html](https://paws-r.github.io/docs/pinpoint/get_user_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_user_endpoints/](https://www.paws-r-sdk.com/docs/pinpoint_get_user_endpoints/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -2950,7 +2950,7 @@ pinpoint_get_user_endpoints <- function(ApplicationId, UserId) {
 #' @description
 #' Retrieves information about the status and settings of the voice channel for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_voice_channel.html](https://paws-r.github.io/docs/pinpoint/get_voice_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_voice_channel/](https://www.paws-r-sdk.com/docs/pinpoint_get_voice_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -2981,7 +2981,7 @@ pinpoint_get_voice_channel <- function(ApplicationId) {
 #' @description
 #' Retrieves the content and settings of a message template for messages that are sent through the voice channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/get_voice_template.html](https://paws-r.github.io/docs/pinpoint/get_voice_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_get_voice_template/](https://www.paws-r-sdk.com/docs/pinpoint_get_voice_template/) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -3036,7 +3036,7 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #' @description
 #' Retrieves information about the status, configuration, and other settings for all the journeys that are associated with an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/list_journeys.html](https://paws-r.github.io/docs/pinpoint/list_journeys.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_list_journeys/](https://www.paws-r-sdk.com/docs/pinpoint_list_journeys/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -3072,7 +3072,7 @@ pinpoint_list_journeys <- function(ApplicationId, PageSize = NULL, Token = NULL)
 #' @description
 #' Retrieves all the tags (keys and values) that are associated with an application, campaign, message template, or segment.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/list_tags_for_resource.html](https://paws-r.github.io/docs/pinpoint/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/pinpoint_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #'
@@ -3102,7 +3102,7 @@ pinpoint_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Retrieves information about all the versions of a specific message template.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/list_template_versions.html](https://paws-r.github.io/docs/pinpoint/list_template_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_list_template_versions/](https://www.paws-r-sdk.com/docs/pinpoint_list_template_versions/) for full documentation.
 #'
 #' @param NextToken The string that specifies which page of results to return in a paginated
 #' response. This parameter is not supported for application, campaign, and
@@ -3143,7 +3143,7 @@ pinpoint_list_template_versions <- function(NextToken = NULL, PageSize = NULL, T
 #' @description
 #' Retrieves information about all the message templates that are associated with your Amazon Pinpoint account.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/list_templates.html](https://paws-r.github.io/docs/pinpoint/list_templates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_list_templates/](https://www.paws-r-sdk.com/docs/pinpoint_list_templates/) for full documentation.
 #'
 #' @param NextToken The string that specifies which page of results to return in a paginated
 #' response. This parameter is not supported for application, campaign, and
@@ -3183,7 +3183,7 @@ pinpoint_list_templates <- function(NextToken = NULL, PageSize = NULL, Prefix = 
 #' @description
 #' Retrieves information about a phone number.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/phone_number_validate.html](https://paws-r.github.io/docs/pinpoint/phone_number_validate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_phone_number_validate/](https://www.paws-r-sdk.com/docs/pinpoint_phone_number_validate/) for full documentation.
 #'
 #' @param NumberValidateRequest &#91;required&#93; 
 #'
@@ -3213,7 +3213,7 @@ pinpoint_phone_number_validate <- function(NumberValidateRequest) {
 #' @description
 #' Creates a new event stream for an application or updates the settings of an existing event stream for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/put_event_stream.html](https://paws-r.github.io/docs/pinpoint/put_event_stream.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_put_event_stream/](https://www.paws-r-sdk.com/docs/pinpoint_put_event_stream/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -3245,7 +3245,7 @@ pinpoint_put_event_stream <- function(ApplicationId, WriteEventStream) {
 #' @description
 #' Creates a new event to record for endpoints, or creates or updates endpoint data that existing events are associated with.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/put_events.html](https://paws-r.github.io/docs/pinpoint/put_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_put_events/](https://www.paws-r-sdk.com/docs/pinpoint_put_events/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -3277,7 +3277,7 @@ pinpoint_put_events <- function(ApplicationId, EventsRequest) {
 #' @description
 #' Removes one or more attributes, of the same attribute type, from all the endpoints that are associated with an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/remove_attributes.html](https://paws-r.github.io/docs/pinpoint/remove_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_remove_attributes/](https://www.paws-r-sdk.com/docs/pinpoint_remove_attributes/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -3321,7 +3321,7 @@ pinpoint_remove_attributes <- function(ApplicationId, AttributeType, UpdateAttri
 #' @description
 #' Creates and sends a direct message.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/send_messages.html](https://paws-r.github.io/docs/pinpoint/send_messages.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_send_messages/](https://www.paws-r-sdk.com/docs/pinpoint_send_messages/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -3352,7 +3352,7 @@ pinpoint_send_messages <- function(ApplicationId, MessageRequest) {
 #' @description
 #' Send an OTP message
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/send_otp_message.html](https://paws-r.github.io/docs/pinpoint/send_otp_message.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_send_otp_message/](https://www.paws-r-sdk.com/docs/pinpoint_send_otp_message/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
 #' @param SendOTPMessageRequestParameters &#91;required&#93; 
@@ -3382,7 +3382,7 @@ pinpoint_send_otp_message <- function(ApplicationId, SendOTPMessageRequestParame
 #' @description
 #' Creates and sends a message to a list of users.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/send_users_messages.html](https://paws-r.github.io/docs/pinpoint/send_users_messages.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_send_users_messages/](https://www.paws-r-sdk.com/docs/pinpoint_send_users_messages/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -3414,7 +3414,7 @@ pinpoint_send_users_messages <- function(ApplicationId, SendUsersMessageRequest)
 #' @description
 #' Adds one or more tags (keys and values) to an application, campaign, message template, or segment.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/tag_resource.html](https://paws-r.github.io/docs/pinpoint/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_tag_resource/](https://www.paws-r-sdk.com/docs/pinpoint_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param TagsModel &#91;required&#93; 
@@ -3445,7 +3445,7 @@ pinpoint_tag_resource <- function(ResourceArn, TagsModel) {
 #' @description
 #' Removes one or more tags (keys and values) from an application, campaign, message template, or segment.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/untag_resource.html](https://paws-r.github.io/docs/pinpoint/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_untag_resource/](https://www.paws-r-sdk.com/docs/pinpoint_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param TagKeys &#91;required&#93; The key of the tag to remove from the resource. To remove multiple tags,
@@ -3478,7 +3478,7 @@ pinpoint_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Enables the ADM channel for an application or updates the status and settings of the ADM channel for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_adm_channel.html](https://paws-r.github.io/docs/pinpoint/update_adm_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_adm_channel/](https://www.paws-r-sdk.com/docs/pinpoint_update_adm_channel/) for full documentation.
 #'
 #' @param ADMChannelRequest &#91;required&#93; 
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
@@ -3510,7 +3510,7 @@ pinpoint_update_adm_channel <- function(ADMChannelRequest, ApplicationId) {
 #' @description
 #' Enables the APNs channel for an application or updates the status and settings of the APNs channel for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_apns_channel.html](https://paws-r.github.io/docs/pinpoint/update_apns_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_apns_channel/](https://www.paws-r-sdk.com/docs/pinpoint_update_apns_channel/) for full documentation.
 #'
 #' @param APNSChannelRequest &#91;required&#93; 
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
@@ -3542,7 +3542,7 @@ pinpoint_update_apns_channel <- function(APNSChannelRequest, ApplicationId) {
 #' @description
 #' Enables the APNs sandbox channel for an application or updates the status and settings of the APNs sandbox channel for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_apns_sandbox_channel.html](https://paws-r.github.io/docs/pinpoint/update_apns_sandbox_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_apns_sandbox_channel/](https://www.paws-r-sdk.com/docs/pinpoint_update_apns_sandbox_channel/) for full documentation.
 #'
 #' @param APNSSandboxChannelRequest &#91;required&#93; 
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
@@ -3574,7 +3574,7 @@ pinpoint_update_apns_sandbox_channel <- function(APNSSandboxChannelRequest, Appl
 #' @description
 #' Enables the APNs VoIP channel for an application or updates the status and settings of the APNs VoIP channel for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_apns_voip_channel.html](https://paws-r.github.io/docs/pinpoint/update_apns_voip_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_apns_voip_channel/](https://www.paws-r-sdk.com/docs/pinpoint_update_apns_voip_channel/) for full documentation.
 #'
 #' @param APNSVoipChannelRequest &#91;required&#93; 
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
@@ -3606,7 +3606,7 @@ pinpoint_update_apns_voip_channel <- function(APNSVoipChannelRequest, Applicatio
 #' @description
 #' Enables the APNs VoIP sandbox channel for an application or updates the status and settings of the APNs VoIP sandbox channel for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_apns_voip_sandbox_channel.html](https://paws-r.github.io/docs/pinpoint/update_apns_voip_sandbox_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_apns_voip_sandbox_channel/](https://www.paws-r-sdk.com/docs/pinpoint_update_apns_voip_sandbox_channel/) for full documentation.
 #'
 #' @param APNSVoipSandboxChannelRequest &#91;required&#93; 
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
@@ -3637,7 +3637,7 @@ pinpoint_update_apns_voip_sandbox_channel <- function(APNSVoipSandboxChannelRequ
 #' @description
 #' Updates the settings for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_application_settings.html](https://paws-r.github.io/docs/pinpoint/update_application_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_application_settings/](https://www.paws-r-sdk.com/docs/pinpoint_update_application_settings/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -3669,7 +3669,7 @@ pinpoint_update_application_settings <- function(ApplicationId, WriteApplication
 #' @description
 #' Enables the Baidu channel for an application or updates the status and settings of the Baidu channel for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_baidu_channel.html](https://paws-r.github.io/docs/pinpoint/update_baidu_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_baidu_channel/](https://www.paws-r-sdk.com/docs/pinpoint_update_baidu_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -3700,7 +3700,7 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #' @description
 #' Updates the configuration and other settings for a campaign.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_campaign.html](https://paws-r.github.io/docs/pinpoint/update_campaign.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_campaign/](https://www.paws-r-sdk.com/docs/pinpoint_update_campaign/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -3733,7 +3733,7 @@ pinpoint_update_campaign <- function(ApplicationId, CampaignId, WriteCampaignReq
 #' @description
 #' Enables the email channel for an application or updates the status and settings of the email channel for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_email_channel.html](https://paws-r.github.io/docs/pinpoint/update_email_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_email_channel/](https://www.paws-r-sdk.com/docs/pinpoint_update_email_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -3765,7 +3765,7 @@ pinpoint_update_email_channel <- function(ApplicationId, EmailChannelRequest) {
 #' @description
 #' Updates an existing message template for messages that are sent through the email channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_email_template.html](https://paws-r.github.io/docs/pinpoint/update_email_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_email_template/](https://www.paws-r-sdk.com/docs/pinpoint_update_email_template/) for full documentation.
 #'
 #' @param CreateNewVersion Specifies whether to save the updates as a new version of the message
 #' template. Valid values are: true, save the updates as a new version;
@@ -3830,7 +3830,7 @@ pinpoint_update_email_template <- function(CreateNewVersion = NULL, EmailTemplat
 #' @description
 #' Creates a new endpoint for an application or updates the settings and attributes of an existing endpoint for an application. You can also use this operation to define custom attributes for an endpoint. If an update includes one or more values for a custom attribute, Amazon Pinpoint replaces (overwrites) any existing values with the new values.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_endpoint.html](https://paws-r.github.io/docs/pinpoint/update_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_endpoint/](https://www.paws-r-sdk.com/docs/pinpoint_update_endpoint/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -3864,7 +3864,7 @@ pinpoint_update_endpoint <- function(ApplicationId, EndpointId, EndpointRequest)
 #' @description
 #' Creates a new batch of endpoints for an application or updates the settings and attributes of a batch of existing endpoints for an application. You can also use this operation to define custom attributes for a batch of endpoints. If an update includes one or more values for a custom attribute, Amazon Pinpoint replaces (overwrites) any existing values with the new values.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_endpoints_batch.html](https://paws-r.github.io/docs/pinpoint/update_endpoints_batch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_endpoints_batch/](https://www.paws-r-sdk.com/docs/pinpoint_update_endpoints_batch/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -3896,7 +3896,7 @@ pinpoint_update_endpoints_batch <- function(ApplicationId, EndpointBatchRequest)
 #' @description
 #' Enables the GCM channel for an application or updates the status and settings of the GCM channel for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_gcm_channel.html](https://paws-r.github.io/docs/pinpoint/update_gcm_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_gcm_channel/](https://www.paws-r-sdk.com/docs/pinpoint_update_gcm_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -3928,7 +3928,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #' @description
 #' Updates an existing message template for messages sent through the in-app message channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_in_app_template.html](https://paws-r.github.io/docs/pinpoint/update_in_app_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_in_app_template/](https://www.paws-r-sdk.com/docs/pinpoint_update_in_app_template/) for full documentation.
 #'
 #' @param CreateNewVersion Specifies whether to save the updates as a new version of the message
 #' template. Valid values are: true, save the updates as a new version;
@@ -3992,7 +3992,7 @@ pinpoint_update_in_app_template <- function(CreateNewVersion = NULL, InAppTempla
 #' @description
 #' Updates the configuration and other settings for a journey.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_journey.html](https://paws-r.github.io/docs/pinpoint/update_journey.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_journey/](https://www.paws-r-sdk.com/docs/pinpoint_update_journey/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -4024,7 +4024,7 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #' @description
 #' Cancels (stops) an active journey.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_journey_state.html](https://paws-r.github.io/docs/pinpoint/update_journey_state.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_journey_state/](https://www.paws-r-sdk.com/docs/pinpoint_update_journey_state/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -4057,7 +4057,7 @@ pinpoint_update_journey_state <- function(ApplicationId, JourneyId, JourneyState
 #' @description
 #' Updates an existing message template for messages that are sent through a push notification channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_push_template.html](https://paws-r.github.io/docs/pinpoint/update_push_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_push_template/](https://www.paws-r-sdk.com/docs/pinpoint_update_push_template/) for full documentation.
 #'
 #' @param CreateNewVersion Specifies whether to save the updates as a new version of the message
 #' template. Valid values are: true, save the updates as a new version;
@@ -4121,7 +4121,7 @@ pinpoint_update_push_template <- function(CreateNewVersion = NULL, PushNotificat
 #' @description
 #' Updates an Amazon Pinpoint configuration for a recommender model.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_recommender_configuration.html](https://paws-r.github.io/docs/pinpoint/update_recommender_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_recommender_configuration/](https://www.paws-r-sdk.com/docs/pinpoint_update_recommender_configuration/) for full documentation.
 #'
 #' @param RecommenderId &#91;required&#93; The unique identifier for the recommender model configuration. This
 #' identifier is displayed as the **Recommender ID** on the Amazon Pinpoint
@@ -4155,7 +4155,7 @@ pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecom
 #' @description
 #' Creates a new segment for an application or updates the configuration, dimension, and other settings for an existing segment that's associated with an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_segment.html](https://paws-r.github.io/docs/pinpoint/update_segment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_segment/](https://www.paws-r-sdk.com/docs/pinpoint_update_segment/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -4188,7 +4188,7 @@ pinpoint_update_segment <- function(ApplicationId, SegmentId, WriteSegmentReques
 #' @description
 #' Enables the SMS channel for an application or updates the status and settings of the SMS channel for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_sms_channel.html](https://paws-r.github.io/docs/pinpoint/update_sms_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_sms_channel/](https://www.paws-r-sdk.com/docs/pinpoint_update_sms_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -4220,7 +4220,7 @@ pinpoint_update_sms_channel <- function(ApplicationId, SMSChannelRequest) {
 #' @description
 #' Updates an existing message template for messages that are sent through the SMS channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_sms_template.html](https://paws-r.github.io/docs/pinpoint/update_sms_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_sms_template/](https://www.paws-r-sdk.com/docs/pinpoint_update_sms_template/) for full documentation.
 #'
 #' @param CreateNewVersion Specifies whether to save the updates as a new version of the message
 #' template. Valid values are: true, save the updates as a new version;
@@ -4284,7 +4284,7 @@ pinpoint_update_sms_template <- function(CreateNewVersion = NULL, SMSTemplateReq
 #' @description
 #' Changes the status of a specific version of a message template to *active*.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_template_active_version.html](https://paws-r.github.io/docs/pinpoint/update_template_active_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_template_active_version/](https://www.paws-r-sdk.com/docs/pinpoint_update_template_active_version/) for full documentation.
 #'
 #' @param TemplateActiveVersionRequest &#91;required&#93; 
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
@@ -4320,7 +4320,7 @@ pinpoint_update_template_active_version <- function(TemplateActiveVersionRequest
 #' @description
 #' Enables the voice channel for an application or updates the status and settings of the voice channel for an application.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_voice_channel.html](https://paws-r.github.io/docs/pinpoint/update_voice_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_voice_channel/](https://www.paws-r-sdk.com/docs/pinpoint_update_voice_channel/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
@@ -4352,7 +4352,7 @@ pinpoint_update_voice_channel <- function(ApplicationId, VoiceChannelRequest) {
 #' @description
 #' Updates an existing message template for messages that are sent through the voice channel.
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/update_voice_template.html](https://paws-r.github.io/docs/pinpoint/update_voice_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_update_voice_template/](https://www.paws-r-sdk.com/docs/pinpoint_update_voice_template/) for full documentation.
 #'
 #' @param CreateNewVersion Specifies whether to save the updates as a new version of the message
 #' template. Valid values are: true, save the updates as a new version;
@@ -4416,7 +4416,7 @@ pinpoint_update_voice_template <- function(CreateNewVersion = NULL, TemplateName
 #' @description
 #' Verify an OTP
 #'
-#' See [https://paws-r.github.io/docs/pinpoint/verify_otp_message.html](https://paws-r.github.io/docs/pinpoint/verify_otp_message.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpoint_verify_otp_message/](https://www.paws-r-sdk.com/docs/pinpoint_verify_otp_message/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
 #' @param VerifyOTPMessageRequestParameters &#91;required&#93; 

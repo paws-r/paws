@@ -33,6 +33,6 @@ Resilience Hub application.}
 \description{
 Imports resources to Resilience Hub application draft version from different input sources. For more information about the input sources supported by Resilience Hub, see \href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/discover-structure.html}{Discover the structure and describe your Resilience Hub application}.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/import_resources_to_draft_app_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_import_resources_to_draft_app_version/} for full documentation.
 }
 \keyword{internal}

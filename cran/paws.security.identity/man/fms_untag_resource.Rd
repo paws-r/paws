@@ -16,6 +16,6 @@ applications lists, and protocols lists.}
 \description{
 Removes one or more tags from an Amazon Web Services resource.
 
-See \url{https://paws-r.github.io/docs/fms/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_untag_resource/} for full documentation.
 }
 \keyword{internal}

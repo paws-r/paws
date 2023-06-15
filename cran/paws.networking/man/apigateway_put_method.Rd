@@ -68,6 +68,6 @@ an access token instead of an identity token for authorization purposes.}
 \description{
 Add a method to an existing Resource resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/put_method.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_put_method/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Disables ClassicLink for a VPC. You cannot disable ClassicLink for a VPC that has EC2-Classic instances linked to it.
 
-See \url{https://paws-r.github.io/docs/ec2/disable_vpc_classic_link.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_disable_vpc_classic_link/} for full documentation.
 }
 \keyword{internal}

@@ -24,8 +24,8 @@ returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
 \description{
-Lists the account alias associated with the Amazon Web Services account (Note: you can have only one). For information about using an Amazon Web Services account alias, see Using an alias for your Amazon Web Services account ID in the \emph{IAM User Guide}.
+Lists the account alias associated with the Amazon Web Services account (Note: you can have only one). For information about using an Amazon Web Services account alias, see \href{https://docs.aws.amazon.com/signin/latest/userguide/}{Creating, deleting, and listing an Amazon Web Services account alias} in the \emph{Amazon Web Services Sign-In User Guide}.
 
-See \url{https://paws-r.github.io/docs/iam/list_account_aliases.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_account_aliases/} for full documentation.
 }
 \keyword{internal}

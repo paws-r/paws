@@ -15,6 +15,6 @@ consist of lowercase letters, numbers, and hyphens.}
 \description{
 Deletes the policy document that manages permissions on a backup vault.
 
-See \url{https://paws-r.github.io/docs/backup/delete_backup_vault_access_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_delete_backup_vault_access_policy/} for full documentation.
 }
 \keyword{internal}

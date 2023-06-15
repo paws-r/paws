@@ -81,6 +81,6 @@ records beyond the marker, up to the value specified by \code{MaxRecords}.}
 \description{
 Returns events related to DB instances, DB clusters, DB parameter groups, DB security groups, DB snapshots, DB cluster snapshots, and RDS Proxies for the past 14 days. Events specific to a particular DB instance, DB cluster, DB parameter group, DB security group, DB snapshot, DB cluster snapshot group, or RDS Proxy can be obtained by providing the name as a parameter.
 
-See \url{https://paws-r.github.io/docs/rds/describe_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_describe_events/} for full documentation.
 }
 \keyword{internal}

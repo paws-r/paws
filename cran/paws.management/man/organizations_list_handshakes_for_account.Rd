@@ -40,6 +40,6 @@ results.}
 \description{
 Lists the current handshakes that are associated with the account of the requesting user.
 
-See \url{https://paws-r.github.io/docs/organizations/list_handshakes_for_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_list_handshakes_for_account/} for full documentation.
 }
 \keyword{internal}

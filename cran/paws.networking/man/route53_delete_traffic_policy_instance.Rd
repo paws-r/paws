@@ -17,6 +17,6 @@ traffic policy instance.}
 \description{
 Deletes a traffic policy instance and all of the resource record sets that Amazon Route 53 created when you created the instance.
 
-See \url{https://paws-r.github.io/docs/route53/delete_traffic_policy_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_delete_traffic_policy_instance/} for full documentation.
 }
 \keyword{internal}

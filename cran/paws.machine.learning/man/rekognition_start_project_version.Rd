@@ -31,6 +31,6 @@ auto-scale the model.}
 \description{
 Starts the running of the version of a model. Starting a model takes a while to complete. To check the current state of the model, use \code{\link[=rekognition_describe_project_versions]{describe_project_versions}}.
 
-See \url{https://paws-r.github.io/docs/rekognition/start_project_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_start_project_version/} for full documentation.
 }
 \keyword{internal}

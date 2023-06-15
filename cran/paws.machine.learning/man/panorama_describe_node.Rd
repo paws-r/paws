@@ -14,6 +14,6 @@ panorama_describe_node(NodeId, OwnerAccount = NULL)
 \description{
 Returns information about a node.
 
-See \url{https://paws-r.github.io/docs/panorama/describe_node.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_describe_node/} for full documentation.
 }
 \keyword{internal}

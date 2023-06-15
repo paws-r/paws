@@ -20,6 +20,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes a transit gateway peering attachment.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_transit_gateway_peering_attachment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_transit_gateway_peering_attachment/} for full documentation.
 }
 \keyword{internal}

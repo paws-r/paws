@@ -10,6 +10,6 @@ devopsguru_describe_service_integration()
 \description{
 Returns the integration status of services that are integrated with DevOps Guru. The one service that can be integrated with DevOps Guru is Amazon Web Services Systems Manager, which can be used to create an OpsItem for each generated insight.
 
-See \url{https://paws-r.github.io/docs/devopsguru/describe_service_integration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_describe_service_integration/} for full documentation.
 }
 \keyword{internal}

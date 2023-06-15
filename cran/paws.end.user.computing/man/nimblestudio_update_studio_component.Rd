@@ -57,6 +57,6 @@ Services resources when the system initialization script runs.}
 \description{
 Updates a studio component resource.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/update_studio_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_update_studio_component/} for full documentation.
 }
 \keyword{internal}

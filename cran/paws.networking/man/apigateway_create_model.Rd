@@ -27,6 +27,6 @@ JSON schema draft 4 model.}
 \description{
 Adds a new Model resource to an existing RestApi resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/create_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_create_model/} for full documentation.
 }
 \keyword{internal}

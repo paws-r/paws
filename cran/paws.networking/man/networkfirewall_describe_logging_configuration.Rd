@@ -22,6 +22,6 @@ You must specify the ARN or the name, and you can specify both.}
 \description{
 Returns the logging configuration for the specified firewall.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/describe_logging_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_describe_logging_configuration/} for full documentation.
 }
 \keyword{internal}

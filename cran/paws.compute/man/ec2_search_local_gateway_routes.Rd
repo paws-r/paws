@@ -47,6 +47,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Searches for routes in the specified local gateway route table.
 
-See \url{https://paws-r.github.io/docs/ec2/search_local_gateway_routes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_search_local_gateway_routes/} for full documentation.
 }
 \keyword{internal}

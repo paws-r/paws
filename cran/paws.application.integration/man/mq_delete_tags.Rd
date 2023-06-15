@@ -14,6 +14,6 @@ mq_delete_tags(ResourceArn, TagKeys)
 \description{
 Removes a tag from a resource.
 
-See \url{https://paws-r.github.io/docs/mq/delete_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mq_delete_tags/} for full documentation.
 }
 \keyword{internal}

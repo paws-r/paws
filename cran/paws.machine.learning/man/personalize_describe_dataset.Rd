@@ -12,6 +12,6 @@ personalize_describe_dataset(datasetArn)
 \description{
 Describes the given dataset. For more information on datasets, see \code{\link[=personalize_create_dataset]{create_dataset}}.
 
-See \url{https://paws-r.github.io/docs/personalize/describe_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_describe_dataset/} for full documentation.
 }
 \keyword{internal}

@@ -18,6 +18,6 @@ is documented there.}
 \description{
 Adds or updates tags for the AWS resource with the specified ARN.
 
-See \url{https://paws-r.github.io/docs/ivschat/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivschat_tag_resource/} for full documentation.
 }
 \keyword{internal}

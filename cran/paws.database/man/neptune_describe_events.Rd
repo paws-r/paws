@@ -73,6 +73,6 @@ records beyond the marker, up to the value specified by \code{MaxRecords}.}
 \description{
 Returns events related to DB instances, DB security groups, DB snapshots, and DB parameter groups for the past 14 days. Events specific to a particular DB instance, DB security group, database snapshot, or DB parameter group can be obtained by providing the name as a parameter. By default, the past hour of events are returned.
 
-See \url{https://paws-r.github.io/docs/neptune/describe_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_describe_events/} for full documentation.
 }
 \keyword{internal}

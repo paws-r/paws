@@ -27,6 +27,6 @@ need to supply a value for this field in the initial request.}
 \description{
 Describes the specified origination phone number, or all the phone numbers in your account.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_phone_numbers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_phone_numbers/} for full documentation.
 }
 \keyword{internal}

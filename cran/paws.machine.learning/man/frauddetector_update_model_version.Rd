@@ -31,6 +31,6 @@ Required if your \code{trainingDataSource} is \code{INGESTED_EVENTS}.}
 \description{
 Updates a model version. Updating a model version retrains an existing model version using updated training data and produces a new minor version of the model. You can update the training data set location and data access role attributes using this action. This action creates and trains a new minor version of the model, for example version 1.01, 1.02, 1.03.
 
-See \url{https://paws-r.github.io/docs/frauddetector/update_model_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_update_model_version/} for full documentation.
 }
 \keyword{internal}

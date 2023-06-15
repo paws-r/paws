@@ -22,6 +22,6 @@ in the \emph{IAM User Guide}.}
 \description{
 Sets the specified version of the specified policy as the policy's default (operative) version.
 
-See \url{https://paws-r.github.io/docs/iam/set_default_policy_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_set_default_policy_version/} for full documentation.
 }
 \keyword{internal}

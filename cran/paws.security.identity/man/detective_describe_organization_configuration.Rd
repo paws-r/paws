@@ -13,6 +13,6 @@ detective_describe_organization_configuration(GraphArn)
 \description{
 Returns information about the configuration for the organization behavior graph. Currently indicates whether to automatically enable new organization accounts as member accounts.
 
-See \url{https://paws-r.github.io/docs/detective/describe_organization_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/detective_describe_organization_configuration/} for full documentation.
 }
 \keyword{internal}

@@ -32,6 +32,6 @@ FlowDefinition the image will be sent to.}
 \description{
 Detects unsafe content in a specified JPEG or PNG format image. Use \code{\link[=rekognition_detect_moderation_labels]{detect_moderation_labels}} to moderate images depending on your requirements. For example, you might want to filter images that contain nudity, but not images containing suggestive content.
 
-See \url{https://paws-r.github.io/docs/rekognition/detect_moderation_labels.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_detect_moderation_labels/} for full documentation.
 }
 \keyword{internal}

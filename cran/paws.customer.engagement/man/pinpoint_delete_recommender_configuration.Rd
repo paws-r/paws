@@ -14,6 +14,6 @@ console.}
 \description{
 Deletes an Amazon Pinpoint configuration for a recommender model.
 
-See \url{https://paws-r.github.io/docs/pinpoint/delete_recommender_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_delete_recommender_configuration/} for full documentation.
 }
 \keyword{internal}

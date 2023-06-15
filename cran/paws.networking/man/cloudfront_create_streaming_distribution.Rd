@@ -12,6 +12,6 @@ cloudfront_create_streaming_distribution(StreamingDistributionConfig)
 \description{
 This API is deprecated. Amazon CloudFront is deprecating real-time messaging protocol (RTMP) distributions on December 31, 2020. For more information, read the announcement on the Amazon CloudFront discussion forum.
 
-See \url{https://paws-r.github.io/docs/cloudfront/create_streaming_distribution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_create_streaming_distribution/} for full documentation.
 }
 \keyword{internal}

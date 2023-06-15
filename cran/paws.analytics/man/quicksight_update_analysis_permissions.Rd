@@ -28,6 +28,6 @@ to remove them from.}
 \description{
 Updates the read and write permissions for an analysis.
 
-See \url{https://paws-r.github.io/docs/quicksight/update_analysis_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_update_analysis_permissions/} for full documentation.
 }
 \keyword{internal}

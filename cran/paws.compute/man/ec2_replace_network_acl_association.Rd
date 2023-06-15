@@ -20,6 +20,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Changes which network ACL a subnet is associated with. By default when you create a subnet, it's automatically associated with the default network ACL. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Network ACLs} in the \emph{Amazon Virtual Private Cloud User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/replace_network_acl_association.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_replace_network_acl_association/} for full documentation.
 }
 \keyword{internal}

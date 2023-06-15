@@ -27,6 +27,6 @@ in the \emph{Organizations User Guide.}
 \description{
 Creates an Amazon Web Services organization. The account whose user is calling the \code{\link[=organizations_create_organization]{create_organization}} operation automatically becomes the \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account}{management account} of the new organization.
 
-See \url{https://paws-r.github.io/docs/organizations/create_organization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_create_organization/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ call.}
 \description{
 Lists virtual tapes in your virtual tape library (VTL) and your virtual tape shelf (VTS). You specify the tapes to list by specifying one or more tape Amazon Resource Names (ARNs). If you don't specify a tape ARN, the operation lists all virtual tapes in both your VTL and VTS.
 
-See \url{https://paws-r.github.io/docs/storagegateway/list_tapes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_list_tapes/} for full documentation.
 }
 \keyword{internal}

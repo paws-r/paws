@@ -14,6 +14,6 @@ appregistry_untag_resource(resourceArn, tagKeys)
 \description{
 Removes tags from a resource.
 
-See \url{https://paws-r.github.io/docs/appregistry/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_untag_resource/} for full documentation.
 }
 \keyword{internal}

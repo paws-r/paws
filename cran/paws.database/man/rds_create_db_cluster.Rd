@@ -522,7 +522,12 @@ Valid values: \code{aurora}, \code{aurora-iopt1} (Aurora DB clusters); \code{io1
 
 Default: \code{aurora} (Aurora DB clusters); \code{io1} (Multi-AZ DB clusters)
 
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+Valid for: Aurora DB clusters and Multi-AZ DB clusters
+
+For more information on storage types for Aurora DB clusters, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.StorageReliability.html#aurora-storage-type}{Storage configurations for Amazon Aurora DB clusters}.
+For more information on storage types for Multi-AZ DB clusters, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/create-multi-az-db-cluster.html#create-multi-az-db-cluster-settings}{Settings for creating Multi-AZ DB clusters}.}
 
 \item{Iops}{The amount of Provisioned IOPS (input/output operations per second) to
 be initially allocated for each DB instance in the Multi-AZ DB cluster.
@@ -707,6 +712,6 @@ Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 \description{
 Creates a new Amazon Aurora DB cluster or Multi-AZ DB cluster.
 
-See \url{https://paws-r.github.io/docs/rds/create_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_create_db_cluster/} for full documentation.
 }
 \keyword{internal}

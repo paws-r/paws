@@ -53,6 +53,6 @@ The default value is -1.}
 \description{
 Copies the specified automated cluster snapshot to a new manual cluster snapshot. The source must be an automated snapshot and it must be in the available state.
 
-See \url{https://paws-r.github.io/docs/redshift/copy_cluster_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_copy_cluster_snapshot/} for full documentation.
 }
 \keyword{internal}

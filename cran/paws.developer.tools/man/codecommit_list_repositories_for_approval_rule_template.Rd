@@ -24,6 +24,6 @@ results.}
 \description{
 Lists all repositories associated with the specified approval rule template.
 
-See \url{https://paws-r.github.io/docs/codecommit/list_repositories_for_approval_rule_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_list_repositories_for_approval_rule_template/} for full documentation.
 }
 \keyword{internal}

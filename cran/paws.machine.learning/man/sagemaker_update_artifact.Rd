@@ -23,6 +23,6 @@ sagemaker_update_artifact(
 \description{
 Updates an artifact.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_artifact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_artifact/} for full documentation.
 }
 \keyword{internal}

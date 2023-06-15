@@ -15,6 +15,6 @@ topic.}
 \description{
 Creates a delivery channel object to deliver configuration information to an Amazon S3 bucket and Amazon SNS topic.
 
-See \url{https://paws-r.github.io/docs/configservice/put_delivery_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_put_delivery_channel/} for full documentation.
 }
 \keyword{internal}

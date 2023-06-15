@@ -32,6 +32,6 @@ same time as \code{snapshotArn}.}
 \description{
 Restores a namespace from a snapshot.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/restore_from_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_restore_from_snapshot/} for full documentation.
 }
 \keyword{internal}

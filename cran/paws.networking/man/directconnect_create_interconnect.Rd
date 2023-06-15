@@ -30,6 +30,6 @@ directconnect_create_interconnect(
 \description{
 Creates an interconnect between an Direct Connect Partner's network and a specific Direct Connect location.
 
-See \url{https://paws-r.github.io/docs/directconnect/create_interconnect.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_create_interconnect/} for full documentation.
 }
 \keyword{internal}

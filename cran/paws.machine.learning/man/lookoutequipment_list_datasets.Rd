@@ -22,6 +22,6 @@ datasets.}
 \description{
 Lists all datasets currently available in your account, filtering on the dataset name.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/list_datasets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_list_datasets/} for full documentation.
 }
 \keyword{internal}

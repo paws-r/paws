@@ -114,6 +114,6 @@ Default: 600}
 \description{
 Creates one or more flow logs to capture information about IP traffic for a specific network interface, subnet, or VPC.
 
-See \url{https://paws-r.github.io/docs/ec2/create_flow_logs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_flow_logs/} for full documentation.
 }
 \keyword{internal}

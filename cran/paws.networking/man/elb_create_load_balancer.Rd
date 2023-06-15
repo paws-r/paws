@@ -60,6 +60,6 @@ in the \emph{Classic Load Balancers Guide}.}
 \description{
 Creates a Classic Load Balancer.
 
-See \url{https://paws-r.github.io/docs/elb/create_load_balancer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_create_load_balancer/} for full documentation.
 }
 \keyword{internal}

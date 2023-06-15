@@ -12,6 +12,6 @@ frauddetector_get_delete_events_by_event_type_status(eventTypeName)
 \description{
 Retrieves the status of a \code{\link[=frauddetector_delete_events_by_event_type]{delete_events_by_event_type}} action.
 
-See \url{https://paws-r.github.io/docs/frauddetector/get_delete_events_by_event_type_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_get_delete_events_by_event_type_status/} for full documentation.
 }
 \keyword{internal}

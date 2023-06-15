@@ -17,6 +17,6 @@ operation.}
 \description{
 Retrieves a list that describes one or more app blocks.
 
-See \url{https://paws-r.github.io/docs/appstream/describe_app_blocks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_describe_app_blocks/} for full documentation.
 }
 \keyword{internal}

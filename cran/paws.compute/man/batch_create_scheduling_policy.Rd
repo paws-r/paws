@@ -25,6 +25,6 @@ These tags can be updated or removed using the
 \description{
 Creates an Batch scheduling policy.
 
-See \url{https://paws-r.github.io/docs/batch/create_scheduling_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/batch_create_scheduling_policy/} for full documentation.
 }
 \keyword{internal}

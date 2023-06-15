@@ -28,6 +28,6 @@ the value specified by \code{MaxRecords}.}
 \description{
 Returns information about a particular global replication group. If no identifier is specified, returns information about all Global datastores.
 
-See \url{https://paws-r.github.io/docs/elasticache/describe_global_replication_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_describe_global_replication_groups/} for full documentation.
 }
 \keyword{internal}

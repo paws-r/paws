@@ -14,6 +14,6 @@ ec2_associate_iam_instance_profile(IamInstanceProfile, InstanceId)
 \description{
 Associates an IAM instance profile with a running or stopped instance. You cannot associate more than one IAM instance profile with an instance.
 
-See \url{https://paws-r.github.io/docs/ec2/associate_iam_instance_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_associate_iam_instance_profile/} for full documentation.
 }
 \keyword{internal}

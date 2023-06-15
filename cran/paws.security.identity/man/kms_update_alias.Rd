@@ -42,6 +42,6 @@ To verify that the alias is mapped to the correct KMS key, use
 \description{
 Associates an existing KMS alias with a different KMS key. Each alias is associated with only one KMS key at a time, although a KMS key can have multiple aliases. The alias and the KMS key must be in the same Amazon Web Services account and Region.
 
-See \url{https://paws-r.github.io/docs/kms/update_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_update_alias/} for full documentation.
 }
 \keyword{internal}

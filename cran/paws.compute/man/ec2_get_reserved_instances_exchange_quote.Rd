@@ -26,6 +26,6 @@ exchange for your current Convertible Reserved Instances.}
 \description{
 Returns a quote and exchange information for exchanging one or more specified Convertible Reserved Instances for a new Convertible Reserved Instance. If the exchange cannot be performed, the reason is returned in the response. Use \code{\link[=ec2_accept_reserved_instances_exchange_quote]{accept_reserved_instances_exchange_quote}} to perform the exchange.
 
-See \url{https://paws-r.github.io/docs/ec2/get_reserved_instances_exchange_quote.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_reserved_instances_exchange_quote/} for full documentation.
 }
 \keyword{internal}

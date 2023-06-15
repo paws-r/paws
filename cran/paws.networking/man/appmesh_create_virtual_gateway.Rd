@@ -38,6 +38,6 @@ length of 256 characters.}
 \description{
 Creates a virtual gateway.
 
-See \url{https://paws-r.github.io/docs/appmesh/create_virtual_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appmesh_create_virtual_gateway/} for full documentation.
 }
 \keyword{internal}

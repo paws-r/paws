@@ -35,6 +35,6 @@ disabled for your account.}
 \description{
 Describes the Regions that are enabled for your account, or all Regions.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_regions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_regions/} for full documentation.
 }
 \keyword{internal}

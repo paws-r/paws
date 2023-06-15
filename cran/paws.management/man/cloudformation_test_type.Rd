@@ -32,7 +32,7 @@ You can specify the version id with either \code{Arn}, or with \code{TypeName} a
 \code{Type}.
 
 If you don't specify a version, CloudFormation uses the default version
-of the extension in this account and region for testing.}
+of the extension in this account and Region for testing.}
 
 \item{LogDeliveryBucket}{The S3 bucket to which CloudFormation delivers the contract test
 execution logs.
@@ -55,6 +55,6 @@ in the \emph{Amazon Web Services Identity and Access Management User Guide}.}
 \description{
 Tests a registered extension to make sure it meets all necessary requirements for being published in the CloudFormation registry.
 
-See \url{https://paws-r.github.io/docs/cloudformation/test_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_test_type/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ retrieve the next page of results.}
 \description{
 Returns a list of anomaly groups.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/list_anomaly_group_summaries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_list_anomaly_group_summaries/} for full documentation.
 }
 \keyword{internal}

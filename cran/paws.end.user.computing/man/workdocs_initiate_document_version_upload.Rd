@@ -36,6 +36,6 @@ Services administrator credentials to access the API.}
 \description{
 Creates a new document object and version object.
 
-See \url{https://paws-r.github.io/docs/workdocs/initiate_document_version_upload.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_initiate_document_version_upload/} for full documentation.
 }
 \keyword{internal}

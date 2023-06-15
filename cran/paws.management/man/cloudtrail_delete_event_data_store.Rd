@@ -13,6 +13,6 @@ cloudtrail_delete_event_data_store(EventDataStore)
 \description{
 Disables the event data store specified by \code{EventDataStore}, which accepts an event data store ARN. After you run \code{\link[=cloudtrail_delete_event_data_store]{delete_event_data_store}}, the event data store enters a \code{PENDING_DELETION} state, and is automatically deleted after a wait period of seven days. \code{TerminationProtectionEnabled} must be set to \code{False} on the event data store; this operation cannot work if \code{TerminationProtectionEnabled} is \code{True}.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/delete_event_data_store.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_delete_event_data_store/} for full documentation.
 }
 \keyword{internal}

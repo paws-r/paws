@@ -70,7 +70,7 @@ consistent fashion in the cloud.
 \link[paws.analytics:healthlake_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of all existing tags associated with a Data Store\cr
 \link[paws.analytics:healthlake_start_fhir_export_job]{start_fhir_export_job} \tab Begins a FHIR export job\cr
 \link[paws.analytics:healthlake_start_fhir_import_job]{start_fhir_import_job} \tab Begins a FHIR Import job\cr
-\link[paws.analytics:healthlake_tag_resource]{tag_resource} \tab Adds a user specifed key and value tag to a Data Store\cr
+\link[paws.analytics:healthlake_tag_resource]{tag_resource} \tab Adds a user specified key and value tag to a Data Store\cr
 \link[paws.analytics:healthlake_untag_resource]{untag_resource} \tab Removes tags from a Data Store
 }
 }

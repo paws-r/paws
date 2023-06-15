@@ -22,6 +22,6 @@ and use the new token returned by that operation.}
 \description{
 Deletes all rule groups that are managed by Firewall Manager for the specified web ACL.
 
-See \url{https://paws-r.github.io/docs/wafv2/delete_firewall_manager_rule_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_delete_firewall_manager_rule_groups/} for full documentation.
 }
 \keyword{internal}

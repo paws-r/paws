@@ -51,6 +51,6 @@ Valid Values (for Apply method): \code{pending-reboot}}
 \description{
 Modifies the parameters of a DB parameter group to the engine/system default value. To reset specific parameters, provide a list of the following: \code{ParameterName} and \code{ApplyMethod}. To reset the entire DB parameter group, specify the \code{DBParameterGroup} name and \code{ResetAllParameters} parameters. When resetting the entire group, dynamic parameters are updated immediately and static parameters are set to \code{pending-reboot} to take effect on the next DB instance restart or \code{\link[=rds_reboot_db_instance]{reboot_db_instance}} request.
 
-See \url{https://paws-r.github.io/docs/rds/reset_db_parameter_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_reset_db_parameter_group/} for full documentation.
 }
 \keyword{internal}

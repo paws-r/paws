@@ -12,6 +12,6 @@ efs_describe_file_system_policy(FileSystemId)
 \description{
 Returns the \code{FileSystemPolicy} for the specified EFS file system.
 
-See \url{https://paws-r.github.io/docs/efs/describe_file_system_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_describe_file_system_policy/} for full documentation.
 }
 \keyword{internal}

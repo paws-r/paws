@@ -15,6 +15,6 @@ codecommit_get_blob(repositoryName, blobId)
 \description{
 Returns the base-64 encoded content of an individual blob in a repository.
 
-See \url{https://paws-r.github.io/docs/codecommit/get_blob.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_get_blob/} for full documentation.
 }
 \keyword{internal}

@@ -5482,7 +5482,7 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL,
 #' for up to 30 seconds. To check whether your connection supports jumbo
 #' frames, call
 #' [`describe_connections`][directconnect_describe_connections]. To check
-#' whether your virtual q interface supports jumbo frames, call
+#' whether your virtual interface supports jumbo frames, call
 #' [`describe_virtual_interfaces`][directconnect_describe_virtual_interfaces].
 #'
 #' @usage

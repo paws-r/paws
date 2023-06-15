@@ -18,6 +18,6 @@ protection.}
 \description{
 Updates termination protection for the specified stack. If a user attempts to delete a stack with termination protection enabled, the operation fails and the stack remains unchanged. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html}{Protecting a Stack From Being Deleted} in the \emph{CloudFormation User Guide}.
 
-See \url{https://paws-r.github.io/docs/cloudformation/update_termination_protection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_update_termination_protection/} for full documentation.
 }
 \keyword{internal}

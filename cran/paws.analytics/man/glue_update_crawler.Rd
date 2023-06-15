@@ -64,6 +64,6 @@ crawler.}
 \description{
 Updates a crawler. If a crawler is running, you must stop it using \code{\link[=glue_stop_crawler]{stop_crawler}} before updating it.
 
-See \url{https://paws-r.github.io/docs/glue/update_crawler.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_update_crawler/} for full documentation.
 }
 \keyword{internal}

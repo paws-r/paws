@@ -25,6 +25,6 @@ A tag key must be accompanied by a tag value, although null is accepted.}
 \description{
 Creates a new MemoryDB parameter group. A parameter group is a collection of parameters and their values that are applied to all of the nodes in any cluster. For more information, see \href{https://docs.aws.amazon.com/memorydb/latest/devguide/parametergroups.html}{Configuring engine parameters using parameter groups}.
 
-See \url{https://paws-r.github.io/docs/memorydb/create_parameter_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_create_parameter_group/} for full documentation.
 }
 \keyword{internal}

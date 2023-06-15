@@ -16,6 +16,6 @@ emr_modify_instance_fleet(ClusterId, InstanceFleet)
 \description{
 Modifies the target On-Demand and target Spot capacities for the instance fleet with the specified InstanceFleetID within the cluster specified using ClusterID. The call either succeeds or fails atomically.
 
-See \url{https://paws-r.github.io/docs/emr/modify_instance_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_modify_instance_fleet/} for full documentation.
 }
 \keyword{internal}

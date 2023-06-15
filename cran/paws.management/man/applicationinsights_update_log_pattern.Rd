@@ -37,6 +37,6 @@ AWS-provided patterns.}
 \description{
 Adds a log pattern to a \code{LogPatternSet}.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/update_log_pattern.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_update_log_pattern/} for full documentation.
 }
 \keyword{internal}

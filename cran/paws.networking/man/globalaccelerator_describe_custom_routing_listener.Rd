@@ -12,6 +12,6 @@ globalaccelerator_describe_custom_routing_listener(ListenerArn)
 \description{
 The description of a listener for a custom routing accelerator.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/describe_custom_routing_listener.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_describe_custom_routing_listener/} for full documentation.
 }
 \keyword{internal}

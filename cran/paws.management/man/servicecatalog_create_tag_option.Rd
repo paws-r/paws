@@ -14,6 +14,6 @@ servicecatalog_create_tag_option(Key, Value)
 \description{
 Creates a TagOption.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/create_tag_option.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_create_tag_option/} for full documentation.
 }
 \keyword{internal}

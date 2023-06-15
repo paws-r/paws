@@ -21,6 +21,6 @@ resumes from the last completed execution.}
 \description{
 Validates the specified pipeline and starts processing pipeline tasks. If the pipeline does not pass validation, activation fails.
 
-See \url{https://paws-r.github.io/docs/datapipeline/activate_pipeline.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/datapipeline_activate_pipeline/} for full documentation.
 }
 \keyword{internal}

@@ -102,6 +102,6 @@ Default: \code{false}}
 \description{
 Describes one or more versions of a specified launch template. You can describe all versions, individual versions, or a range of versions. You can also describe all the latest versions or all the default versions of all the launch templates in your account.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_launch_template_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_launch_template_versions/} for full documentation.
 }
 \keyword{internal}

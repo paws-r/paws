@@ -47,6 +47,6 @@ if the placement group strategy is set to \code{partition}.}
 \description{
 Modifies the placement attributes for a specified instance. You can do the following:
 
-See \url{https://paws-r.github.io/docs/ec2/modify_instance_placement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_instance_placement/} for full documentation.
 }
 \keyword{internal}

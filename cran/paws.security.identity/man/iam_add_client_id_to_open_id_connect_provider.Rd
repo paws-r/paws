@@ -24,6 +24,6 @@ provider resource.}
 \description{
 Adds a new client ID (also known as audience) to the list of client IDs already registered for the specified IAM OpenID Connect (OIDC) provider resource.
 
-See \url{https://paws-r.github.io/docs/iam/add_client_id_to_open_id_connect_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_add_client_id_to_open_id_connect_provider/} for full documentation.
 }
 \keyword{internal}

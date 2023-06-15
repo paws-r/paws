@@ -59,6 +59,6 @@ with the provided \code{originType} will be returned.}
 \description{
 Returns a list of \href{https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionSummary.html}{PackageVersionSummary} objects for package versions in a repository that match the request parameters. Package versions of all statuses will be returned by default when calling \code{list-package-versions} with no \code{--status} parameter.
 
-See \url{https://paws-r.github.io/docs/codeartifact/list_package_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_list_package_versions/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ glue_get_mapping(Source, Sinks = NULL, Location = NULL)
 \description{
 Creates mappings.
 
-See \url{https://paws-r.github.io/docs/glue/get_mapping.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_mapping/} for full documentation.
 }
 \keyword{internal}

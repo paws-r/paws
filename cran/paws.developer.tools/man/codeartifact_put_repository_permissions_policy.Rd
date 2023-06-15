@@ -33,6 +33,6 @@ control resource policy on the provided repository.}
 \description{
 Sets the resource policy on a repository that specifies permissions to access it.
 
-See \url{https://paws-r.github.io/docs/codeartifact/put_repository_permissions_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_put_repository_permissions_policy/} for full documentation.
 }
 \keyword{internal}

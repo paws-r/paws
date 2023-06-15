@@ -16,6 +16,6 @@ workmail_associate_member_to_group(OrganizationId, GroupId, MemberId)
 \description{
 Adds a member (user or group) to the group's set.
 
-See \url{https://paws-r.github.io/docs/workmail/associate_member_to_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_associate_member_to_group/} for full documentation.
 }
 \keyword{internal}

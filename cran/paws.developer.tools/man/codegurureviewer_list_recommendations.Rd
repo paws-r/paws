@@ -23,6 +23,6 @@ object.}
 \description{
 Returns the list of all recommendations for a completed code review.
 
-See \url{https://paws-r.github.io/docs/codegurureviewer/list_recommendations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codegurureviewer_list_recommendations/} for full documentation.
 }
 \keyword{internal}

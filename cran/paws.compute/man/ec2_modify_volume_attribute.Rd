@@ -19,6 +19,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Modifies a volume attribute.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_volume_attribute.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_volume_attribute/} for full documentation.
 }
 \keyword{internal}

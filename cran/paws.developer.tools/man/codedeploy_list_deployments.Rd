@@ -51,6 +51,6 @@ be used to return the next set of deployments in the list.}
 \description{
 Lists the deployments in a deployment group for an application registered with the IAM user or Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/codedeploy/list_deployments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_list_deployments/} for full documentation.
 }
 \keyword{internal}

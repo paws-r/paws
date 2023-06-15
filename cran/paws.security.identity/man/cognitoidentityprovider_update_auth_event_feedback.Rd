@@ -27,6 +27,6 @@ cognitoidentityprovider_update_auth_event_feedback(
 \description{
 Provides the feedback for an authentication event, whether it was from a valid user or not. This feedback is used for improving the risk evaluation decision for the user pool as part of Amazon Cognito advanced security.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/update_auth_event_feedback.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_auth_event_feedback/} for full documentation.
 }
 \keyword{internal}

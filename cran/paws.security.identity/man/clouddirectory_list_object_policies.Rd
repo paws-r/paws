@@ -30,6 +30,6 @@ object.}
 \description{
 Returns policies attached to an object in pagination fashion.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/list_object_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_list_object_policies/} for full documentation.
 }
 \keyword{internal}

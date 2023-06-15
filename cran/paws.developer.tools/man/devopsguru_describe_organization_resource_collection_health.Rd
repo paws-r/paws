@@ -36,6 +36,6 @@ value.}
 \description{
 Provides an overview of your system's health. If additional member accounts are part of your organization, you can filter those accounts using the \code{AccountIds} field.
 
-See \url{https://paws-r.github.io/docs/devopsguru/describe_organization_resource_collection_health.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_describe_organization_resource_collection_health/} for full documentation.
 }
 \keyword{internal}

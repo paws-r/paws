@@ -32,6 +32,6 @@ journey metrics.}
 \description{
 Retrieves (queries) pre-aggregated data for a standard run execution metric that applies to a journey.
 
-See \url{https://paws-r.github.io/docs/pinpoint/get_journey_run_execution_metrics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_get_journey_run_execution_metrics/} for full documentation.
 }
 \keyword{internal}

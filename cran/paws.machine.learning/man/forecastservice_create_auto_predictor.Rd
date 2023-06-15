@@ -130,6 +130,6 @@ If you don't provide a time boundary, Forecast uses a set of \href{https://docs.
 \description{
 Creates an Amazon Forecast predictor.
 
-See \url{https://paws-r.github.io/docs/forecastservice/create_auto_predictor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_create_auto_predictor/} for full documentation.
 }
 \keyword{internal}

@@ -22,6 +22,6 @@ name-value pairs in the wlm_json_configuration parameter.}
 \description{
 Modifies the parameters of a parameter group. For the parameters parameter, it can't contain ASCII characters.
 
-See \url{https://paws-r.github.io/docs/redshift/modify_cluster_parameter_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_modify_cluster_parameter_group/} for full documentation.
 }
 \keyword{internal}

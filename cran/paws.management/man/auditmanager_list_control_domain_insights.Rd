@@ -16,6 +16,6 @@ call.}
 \description{
 Lists the latest analytics data for control domains across all of your active assessments.
 
-See \url{https://paws-r.github.io/docs/auditmanager/list_control_domain_insights.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_list_control_domain_insights/} for full documentation.
 }
 \keyword{internal}

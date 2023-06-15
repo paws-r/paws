@@ -43,6 +43,6 @@ table.}
 \description{
 Imports table data from an S3 bucket.
 
-See \url{https://paws-r.github.io/docs/dynamodb/import_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_import_table/} for full documentation.
 }
 \keyword{internal}

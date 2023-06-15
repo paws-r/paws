@@ -12,6 +12,6 @@ keyspaces_delete_keyspace(keyspaceName)
 \description{
 The \code{\link[=keyspaces_delete_keyspace]{delete_keyspace}} operation deletes a keyspace and all of its tables.
 
-See \url{https://paws-r.github.io/docs/keyspaces/delete_keyspace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/keyspaces_delete_keyspace/} for full documentation.
 }
 \keyword{internal}

@@ -22,6 +22,6 @@ of solutions (if they exist).}
 \description{
 Returns a list of solutions that use the given dataset group. When a dataset group is not specified, all the solutions associated with the account are listed. The response provides the properties for each solution, including the Amazon Resource Name (ARN). For more information on solutions, see \code{\link[=personalize_create_solution]{create_solution}}.
 
-See \url{https://paws-r.github.io/docs/personalize/list_solutions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_list_solutions/} for full documentation.
 }
 \keyword{internal}

@@ -41,6 +41,6 @@ documents, see
 \description{
 Updates a set of featured results. Features results are placed above all other results for certain queries. You map specific queries to specific documents for featuring in the results. If a query contains an exact match of a query, then one or more specific documents are featured in the search results.
 
-See \url{https://paws-r.github.io/docs/kendra/update_featured_results_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_update_featured_results_set/} for full documentation.
 }
 \keyword{internal}

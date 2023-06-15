@@ -47,6 +47,6 @@ Default: There is no default value.}
 \description{
 Returns Amazon Web Services resource descriptions for running and deleted stacks. If \code{StackName} is specified, all the associated resources that are part of the stack are returned. If \code{PhysicalResourceId} is specified, the associated resources of the stack that the resource belongs to are returned.
 
-See \url{https://paws-r.github.io/docs/cloudformation/describe_stack_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_resources/} for full documentation.
 }
 \keyword{internal}

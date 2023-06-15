@@ -12,6 +12,6 @@ memorydb_delete_subnet_group(SubnetGroupName)
 \description{
 Deletes a subnet group. You cannot delete a default subnet group or one that is associated with any clusters.
 
-See \url{https://paws-r.github.io/docs/memorydb/delete_subnet_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_delete_subnet_group/} for full documentation.
 }
 \keyword{internal}

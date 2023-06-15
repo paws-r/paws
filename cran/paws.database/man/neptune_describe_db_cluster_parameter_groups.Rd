@@ -39,6 +39,6 @@ records beyond the marker, up to the value specified by \code{MaxRecords}.}
 \description{
 Returns a list of \code{DBClusterParameterGroup} descriptions. If a \code{DBClusterParameterGroupName} parameter is specified, the list will contain only the description of the specified DB cluster parameter group.
 
-See \url{https://paws-r.github.io/docs/neptune/describe_db_cluster_parameter_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_describe_db_cluster_parameter_groups/} for full documentation.
 }
 \keyword{internal}

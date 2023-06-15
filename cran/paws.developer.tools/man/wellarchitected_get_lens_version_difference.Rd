@@ -20,6 +20,6 @@ wellarchitected_get_lens_version_difference(
 \description{
 Get lens version differences.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/get_lens_version_difference.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_get_lens_version_difference/} for full documentation.
 }
 \keyword{internal}

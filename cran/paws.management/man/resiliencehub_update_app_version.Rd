@@ -27,6 +27,6 @@ in the \emph{AWS General Reference} guide.}
 \description{
 Updates the Resilience Hub application version.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/update_app_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_update_app_version/} for full documentation.
 }
 \keyword{internal}

@@ -64,6 +64,6 @@ area.}
 \description{
 Creates a new ReplicationConfigurationTemplate.
 
-See \url{https://paws-r.github.io/docs/drs/create_replication_configuration_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_create_replication_configuration_template/} for full documentation.
 }
 \keyword{internal}

@@ -58,6 +58,6 @@ Auto Scaling only issues forecasts for periods of two days in advance.}
 \description{
 Retrieves the forecast data for a scalable resource.
 
-See \url{https://paws-r.github.io/docs/autoscalingplans/get_scaling_plan_resource_forecast_data.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscalingplans_get_scaling_plan_resource_forecast_data/} for full documentation.
 }
 \keyword{internal}

@@ -35,6 +35,6 @@ description, and recommendation.}
 \description{
 Retrieves the exclusions preview (a list of ExclusionPreview objects) specified by the preview token. You can obtain the preview token by running the CreateExclusionsPreview API.
 
-See \url{https://paws-r.github.io/docs/inspector/get_exclusions_preview.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_get_exclusions_preview/} for full documentation.
 }
 \keyword{internal}

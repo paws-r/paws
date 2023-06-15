@@ -32,6 +32,6 @@ subsequent call that tells the service where to continue from.}
 \description{
 Returns information about the access key IDs associated with the specified IAM user. If there is none, the operation returns an empty list.
 
-See \url{https://paws-r.github.io/docs/iam/list_access_keys.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_access_keys/} for full documentation.
 }
 \keyword{internal}

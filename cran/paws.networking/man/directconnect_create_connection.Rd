@@ -39,6 +39,6 @@ in the \emph{Direct Connect User Guide}.}
 \description{
 Creates a connection between a customer network and a specific Direct Connect location.
 
-See \url{https://paws-r.github.io/docs/directconnect/create_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_create_connection/} for full documentation.
 }
 \keyword{internal}

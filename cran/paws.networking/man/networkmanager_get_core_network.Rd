@@ -12,6 +12,6 @@ networkmanager_get_core_network(CoreNetworkId)
 \description{
 Returns information about the LIVE policy for a core network.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_core_network.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_core_network/} for full documentation.
 }
 \keyword{internal}

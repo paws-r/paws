@@ -17,6 +17,6 @@ quicksight_list_analyses(AwsAccountId, NextToken = NULL, MaxResults = NULL)
 \description{
 Lists Amazon QuickSight analyses that exist in the specified Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_analyses.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_analyses/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ balancer.}
 \description{
 Adds the specified Availability Zones to the set of Availability Zones for the specified load balancer in EC2-Classic or a default VPC.
 
-See \url{https://paws-r.github.io/docs/elb/enable_availability_zones_for_load_balancer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_enable_availability_zones_for_load_balancer/} for full documentation.
 }
 \keyword{internal}

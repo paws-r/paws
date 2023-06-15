@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Describes the locations in which a given accelerator type or set of types is present in a given region.
 #'
-#' See [https://paws-r.github.io/docs/elasticinference/describe_accelerator_offerings.html](https://paws-r.github.io/docs/elasticinference/describe_accelerator_offerings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticinference_describe_accelerator_offerings/](https://www.paws-r-sdk.com/docs/elasticinference_describe_accelerator_offerings/) for full documentation.
 #'
 #' @param locationType &#91;required&#93; The location type that you want to describe accelerator type offerings
 #' for. It can assume the following values: region: will return the
@@ -45,7 +45,7 @@ elasticinference_describe_accelerator_offerings <- function(locationType, accele
 #' @description
 #' Describes the accelerator types available in a given region, as well as their characteristics, such as memory and throughput.
 #'
-#' See [https://paws-r.github.io/docs/elasticinference/describe_accelerator_types.html](https://paws-r.github.io/docs/elasticinference/describe_accelerator_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticinference_describe_accelerator_types/](https://www.paws-r-sdk.com/docs/elasticinference_describe_accelerator_types/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -73,7 +73,7 @@ elasticinference_describe_accelerator_types <- function() {
 #' @description
 #' Describes information over a provided set of accelerators belonging to an account.
 #'
-#' See [https://paws-r.github.io/docs/elasticinference/describe_accelerators.html](https://paws-r.github.io/docs/elasticinference/describe_accelerators.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticinference_describe_accelerators/](https://www.paws-r-sdk.com/docs/elasticinference_describe_accelerators/) for full documentation.
 #'
 #' @param acceleratorIds The IDs of the accelerators to describe.
 #' @param filters One or more filters. Filter names and values are case-sensitive. Valid
@@ -114,7 +114,7 @@ elasticinference_describe_accelerators <- function(acceleratorIds = NULL, filter
 #' @description
 #' Returns all tags of an Elastic Inference Accelerator.
 #'
-#' See [https://paws-r.github.io/docs/elasticinference/list_tags_for_resource.html](https://paws-r.github.io/docs/elasticinference/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticinference_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/elasticinference_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the Elastic Inference Accelerator to list the tags for.
 #'
@@ -143,7 +143,7 @@ elasticinference_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Adds the specified tags to an Elastic Inference Accelerator.
 #'
-#' See [https://paws-r.github.io/docs/elasticinference/tag_resource.html](https://paws-r.github.io/docs/elasticinference/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticinference_tag_resource/](https://www.paws-r-sdk.com/docs/elasticinference_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the Elastic Inference Accelerator to tag.
 #' @param tags &#91;required&#93; The tags to add to the Elastic Inference Accelerator.
@@ -173,7 +173,7 @@ elasticinference_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes the specified tags from an Elastic Inference Accelerator.
 #'
-#' See [https://paws-r.github.io/docs/elasticinference/untag_resource.html](https://paws-r.github.io/docs/elasticinference/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticinference_untag_resource/](https://www.paws-r-sdk.com/docs/elasticinference_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the Elastic Inference Accelerator to untag.
 #' @param tagKeys &#91;required&#93; The list of tags to remove from the Elastic Inference Accelerator.

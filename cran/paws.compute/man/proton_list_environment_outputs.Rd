@@ -16,6 +16,6 @@ that was previously requested.}
 \description{
 List the infrastructure as code outputs for your environment.
 
-See \url{https://paws-r.github.io/docs/proton/list_environment_outputs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_list_environment_outputs/} for full documentation.
 }
 \keyword{internal}

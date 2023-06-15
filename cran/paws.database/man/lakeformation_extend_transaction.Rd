@@ -13,6 +13,6 @@ lakeformation_extend_transaction(TransactionId = NULL)
 \description{
 Indicates to the service that the specified transaction is still active and should not be treated as idle and aborted.
 
-See \url{https://paws-r.github.io/docs/lakeformation/extend_transaction.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_extend_transaction/} for full documentation.
 }
 \keyword{internal}

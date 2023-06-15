@@ -14,6 +14,6 @@ apigateway_get_documentation_part(restApiId, documentationPartId)
 \description{
 Gets a documentation part.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_documentation_part.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_documentation_part/} for full documentation.
 }
 \keyword{internal}

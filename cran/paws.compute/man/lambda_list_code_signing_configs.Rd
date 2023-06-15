@@ -15,6 +15,6 @@ retrieve the next page of results.}
 \description{
 Returns a list of \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html}{code signing configurations}. A request returns up to 10,000 configurations per call. You can use the \code{MaxItems} parameter to return fewer configurations per call.
 
-See \url{https://paws-r.github.io/docs/lambda/list_code_signing_configs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_list_code_signing_configs/} for full documentation.
 }
 \keyword{internal}

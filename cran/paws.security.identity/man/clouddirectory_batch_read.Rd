@@ -19,6 +19,6 @@ object.}
 \description{
 Performs all the read operations in a batch.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/batch_read.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_batch_read/} for full documentation.
 }
 \keyword{internal}

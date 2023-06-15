@@ -23,6 +23,6 @@ list.}
 \description{
 Gets a summary of all CodePipeline action types associated with your account.
 
-See \url{https://paws-r.github.io/docs/codepipeline/list_action_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_list_action_types/} for full documentation.
 }
 \keyword{internal}

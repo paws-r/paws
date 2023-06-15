@@ -18,6 +18,6 @@ autoscaling_batch_put_scheduled_update_group_action(
 \description{
 Creates or updates one or more scheduled scaling actions for an Auto Scaling group.
 
-See \url{https://paws-r.github.io/docs/autoscaling/batch_put_scheduled_update_group_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_batch_put_scheduled_update_group_action/} for full documentation.
 }
 \keyword{internal}

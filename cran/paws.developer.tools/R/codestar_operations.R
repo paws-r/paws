@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Adds an IAM user to the team for an AWS CodeStar project.
 #'
-#' See [https://paws-r.github.io/docs/codestar/associate_team_member.html](https://paws-r.github.io/docs/codestar/associate_team_member.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestar_associate_team_member/](https://www.paws-r-sdk.com/docs/codestar_associate_team_member/) for full documentation.
 #'
 #' @param projectId &#91;required&#93; The ID of the project to which you will add the IAM user.
 #' @param clientRequestToken A user- or system-generated token that identifies the entity that
@@ -46,7 +46,7 @@ codestar_associate_team_member <- function(projectId, clientRequestToken = NULL,
 #' @description
 #' Creates a project, including project resources. This action creates a project based on a submitted project request. A set of source code files and a toolchain template file can be included with the project request. If these are not provided, an empty project is created.
 #'
-#' See [https://paws-r.github.io/docs/codestar/create_project.html](https://paws-r.github.io/docs/codestar/create_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestar_create_project/](https://www.paws-r-sdk.com/docs/codestar_create_project/) for full documentation.
 #'
 #' @param name &#91;required&#93; The display name for the project to be created in AWS CodeStar.
 #' @param id &#91;required&#93; The ID of the project to be created in AWS CodeStar.
@@ -89,7 +89,7 @@ codestar_create_project <- function(name, id, description = NULL, clientRequestT
 #' @description
 #' Creates a profile for a user that includes user preferences, such as the display name and email address assocciated with the user, in AWS CodeStar. The user profile is not project-specific. Information in the user profile is displayed wherever the user's information appears to other users in AWS CodeStar.
 #'
-#' See [https://paws-r.github.io/docs/codestar/create_user_profile.html](https://paws-r.github.io/docs/codestar/create_user_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestar_create_user_profile/](https://www.paws-r-sdk.com/docs/codestar_create_user_profile/) for full documentation.
 #'
 #' @param userArn &#91;required&#93; The Amazon Resource Name (ARN) of the user in IAM.
 #' @param displayName &#91;required&#93; The name that will be displayed as the friendly name for the user in AWS
@@ -126,7 +126,7 @@ codestar_create_user_profile <- function(userArn, displayName, emailAddress, ssh
 #' @description
 #' Deletes a project, including project resources. Does not delete users associated with the project, but does delete the IAM roles that allowed access to the project.
 #'
-#' See [https://paws-r.github.io/docs/codestar/delete_project.html](https://paws-r.github.io/docs/codestar/delete_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestar_delete_project/](https://www.paws-r-sdk.com/docs/codestar_delete_project/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the project to be deleted in AWS CodeStar.
 #' @param clientRequestToken A user- or system-generated token that identifies the entity that
@@ -165,7 +165,7 @@ codestar_delete_project <- function(id, clientRequestToken = NULL, deleteStack =
 #' @description
 #' Deletes a user profile in AWS CodeStar, including all personal preference data associated with that profile, such as display name and email address. It does not delete the history of that user, for example the history of commits made by that user.
 #'
-#' See [https://paws-r.github.io/docs/codestar/delete_user_profile.html](https://paws-r.github.io/docs/codestar/delete_user_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestar_delete_user_profile/](https://www.paws-r-sdk.com/docs/codestar_delete_user_profile/) for full documentation.
 #'
 #' @param userArn &#91;required&#93; The Amazon Resource Name (ARN) of the user to delete from AWS CodeStar.
 #'
@@ -194,7 +194,7 @@ codestar_delete_user_profile <- function(userArn) {
 #' @description
 #' Describes a project and its resources.
 #'
-#' See [https://paws-r.github.io/docs/codestar/describe_project.html](https://paws-r.github.io/docs/codestar/describe_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestar_describe_project/](https://www.paws-r-sdk.com/docs/codestar_describe_project/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the project.
 #'
@@ -224,7 +224,7 @@ codestar_describe_project <- function(id) {
 #' @description
 #' Describes a user in AWS CodeStar and the user attributes across all projects.
 #'
-#' See [https://paws-r.github.io/docs/codestar/describe_user_profile.html](https://paws-r.github.io/docs/codestar/describe_user_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestar_describe_user_profile/](https://www.paws-r-sdk.com/docs/codestar_describe_user_profile/) for full documentation.
 #'
 #' @param userArn &#91;required&#93; The Amazon Resource Name (ARN) of the user.
 #'
@@ -253,7 +253,7 @@ codestar_describe_user_profile <- function(userArn) {
 #' @description
 #' Removes a user from a project. Removing a user from a project also removes the IAM policies from that user that allowed access to the project and its resources. Disassociating a team member does not remove that user's profile from AWS CodeStar. It does not remove the user from IAM.
 #'
-#' See [https://paws-r.github.io/docs/codestar/disassociate_team_member.html](https://paws-r.github.io/docs/codestar/disassociate_team_member.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestar_disassociate_team_member/](https://www.paws-r-sdk.com/docs/codestar_disassociate_team_member/) for full documentation.
 #'
 #' @param projectId &#91;required&#93; The ID of the AWS CodeStar project from which you want to remove a team
 #' member.
@@ -285,7 +285,7 @@ codestar_disassociate_team_member <- function(projectId, userArn) {
 #' @description
 #' Lists all projects in AWS CodeStar associated with your AWS account.
 #'
-#' See [https://paws-r.github.io/docs/codestar/list_projects.html](https://paws-r.github.io/docs/codestar/list_projects.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestar_list_projects/](https://www.paws-r-sdk.com/docs/codestar_list_projects/) for full documentation.
 #'
 #' @param nextToken The continuation token to be used to return the next set of results, if
 #' the results cannot be returned in one response.
@@ -317,7 +317,7 @@ codestar_list_projects <- function(nextToken = NULL, maxResults = NULL) {
 #' @description
 #' Lists resources associated with a project in AWS CodeStar.
 #'
-#' See [https://paws-r.github.io/docs/codestar/list_resources.html](https://paws-r.github.io/docs/codestar/list_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestar_list_resources/](https://www.paws-r-sdk.com/docs/codestar_list_resources/) for full documentation.
 #'
 #' @param projectId &#91;required&#93; The ID of the project.
 #' @param nextToken The continuation token for the next set of results, if the results
@@ -350,7 +350,7 @@ codestar_list_resources <- function(projectId, nextToken = NULL, maxResults = NU
 #' @description
 #' Gets the tags for a project.
 #'
-#' See [https://paws-r.github.io/docs/codestar/list_tags_for_project.html](https://paws-r.github.io/docs/codestar/list_tags_for_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestar_list_tags_for_project/](https://www.paws-r-sdk.com/docs/codestar_list_tags_for_project/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the project to get tags for.
 #' @param nextToken Reserved for future use.
@@ -381,7 +381,7 @@ codestar_list_tags_for_project <- function(id, nextToken = NULL, maxResults = NU
 #' @description
 #' Lists all team members associated with a project.
 #'
-#' See [https://paws-r.github.io/docs/codestar/list_team_members.html](https://paws-r.github.io/docs/codestar/list_team_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestar_list_team_members/](https://www.paws-r-sdk.com/docs/codestar_list_team_members/) for full documentation.
 #'
 #' @param projectId &#91;required&#93; The ID of the project for which you want to list team members.
 #' @param nextToken The continuation token for the next set of results, if the results
@@ -414,7 +414,7 @@ codestar_list_team_members <- function(projectId, nextToken = NULL, maxResults =
 #' @description
 #' Lists all the user profiles configured for your AWS account in AWS CodeStar.
 #'
-#' See [https://paws-r.github.io/docs/codestar/list_user_profiles.html](https://paws-r.github.io/docs/codestar/list_user_profiles.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestar_list_user_profiles/](https://www.paws-r-sdk.com/docs/codestar_list_user_profiles/) for full documentation.
 #'
 #' @param nextToken The continuation token for the next set of results, if the results
 #' cannot be returned in one response.
@@ -445,7 +445,7 @@ codestar_list_user_profiles <- function(nextToken = NULL, maxResults = NULL) {
 #' @description
 #' Adds tags to a project.
 #'
-#' See [https://paws-r.github.io/docs/codestar/tag_project.html](https://paws-r.github.io/docs/codestar/tag_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestar_tag_project/](https://www.paws-r-sdk.com/docs/codestar_tag_project/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the project you want to add a tag to.
 #' @param tags &#91;required&#93; The tags you want to add to the project.
@@ -475,7 +475,7 @@ codestar_tag_project <- function(id, tags) {
 #' @description
 #' Removes tags from a project.
 #'
-#' See [https://paws-r.github.io/docs/codestar/untag_project.html](https://paws-r.github.io/docs/codestar/untag_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestar_untag_project/](https://www.paws-r-sdk.com/docs/codestar_untag_project/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the project to remove tags from.
 #' @param tags &#91;required&#93; The tags to remove from the project.
@@ -505,7 +505,7 @@ codestar_untag_project <- function(id, tags) {
 #' @description
 #' Updates a project in AWS CodeStar.
 #'
-#' See [https://paws-r.github.io/docs/codestar/update_project.html](https://paws-r.github.io/docs/codestar/update_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestar_update_project/](https://www.paws-r-sdk.com/docs/codestar_update_project/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the project you want to update.
 #' @param name The name of the project you want to update.
@@ -536,7 +536,7 @@ codestar_update_project <- function(id, name = NULL, description = NULL) {
 #' @description
 #' Updates a team member's attributes in an AWS CodeStar project. For example, you can change a team member's role in the project, or change whether they have remote access to project resources.
 #'
-#' See [https://paws-r.github.io/docs/codestar/update_team_member.html](https://paws-r.github.io/docs/codestar/update_team_member.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestar_update_team_member/](https://www.paws-r-sdk.com/docs/codestar_update_team_member/) for full documentation.
 #'
 #' @param projectId &#91;required&#93; The ID of the project.
 #' @param userArn &#91;required&#93; The Amazon Resource Name (ARN) of the user for whom you want to change
@@ -575,7 +575,7 @@ codestar_update_team_member <- function(projectId, userArn, projectRole = NULL, 
 #' @description
 #' Updates a user's profile in AWS CodeStar. The user profile is not project-specific. Information in the user profile is displayed wherever the user's information appears to other users in AWS CodeStar.
 #'
-#' See [https://paws-r.github.io/docs/codestar/update_user_profile.html](https://paws-r.github.io/docs/codestar/update_user_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestar_update_user_profile/](https://www.paws-r-sdk.com/docs/codestar_update_user_profile/) for full documentation.
 #'
 #' @param userArn &#91;required&#93; The name that will be displayed as the friendly name for the user in AWS
 #' CodeStar.

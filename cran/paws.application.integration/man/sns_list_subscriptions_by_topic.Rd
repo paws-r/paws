@@ -16,6 +16,6 @@ request.}
 \description{
 Returns a list of the subscriptions to a specific topic. Each call returns a limited list of subscriptions, up to 100. If there are more subscriptions, a \code{NextToken} is also returned. Use the \code{NextToken} parameter in a new \code{\link[=sns_list_subscriptions_by_topic]{list_subscriptions_by_topic}} call to get further results.
 
-See \url{https://paws-r.github.io/docs/sns/list_subscriptions_by_topic.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_list_subscriptions_by_topic/} for full documentation.
 }
 \keyword{internal}

@@ -68,6 +68,6 @@ The \code{TimeSeriesIdentifiers} object needs the following information:
 \description{
 Creates a forecast for each item in the \code{TARGET_TIME_SERIES} dataset that was used to train the predictor. This is known as inference. To retrieve the forecast for a single item at low latency, use the operation. To export the complete forecast into your Amazon Simple Storage Service (Amazon S3) bucket, use the \code{\link[=forecastservice_create_forecast_export_job]{create_forecast_export_job}} operation.
 
-See \url{https://paws-r.github.io/docs/forecastservice/create_forecast.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_create_forecast/} for full documentation.
 }
 \keyword{internal}

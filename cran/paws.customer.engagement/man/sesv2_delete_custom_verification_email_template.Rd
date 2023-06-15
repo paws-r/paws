@@ -13,6 +13,6 @@ delete.}
 \description{
 Deletes an existing custom verification email template.
 
-See \url{https://paws-r.github.io/docs/sesv2/delete_custom_verification_email_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_delete_custom_verification_email_template/} for full documentation.
 }
 \keyword{internal}

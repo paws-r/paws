@@ -26,6 +26,6 @@ both "xyzabc" and "abcxyz."}
 \description{
 Returns slot type information as follows:
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_slot_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_slot_types/} for full documentation.
 }
 \keyword{internal}

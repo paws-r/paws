@@ -15,6 +15,6 @@ administrator account that is monitoring member accounts.}
 \description{
 Stops GuardDuty monitoring for the specified member accounts. Use the \code{\link[=guardduty_start_monitoring_members]{start_monitoring_members}} operation to restart monitoring for those accounts.
 
-See \url{https://paws-r.github.io/docs/guardduty/stop_monitoring_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_stop_monitoring_members/} for full documentation.
 }
 \keyword{internal}

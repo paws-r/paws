@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates an Amazon Forecast predictor.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/create_auto_predictor.html](https://paws-r.github.io/docs/forecastservice/create_auto_predictor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_create_auto_predictor/](https://www.paws-r-sdk.com/docs/forecastservice_create_auto_predictor/) for full documentation.
 #'
 #' @param PredictorName &#91;required&#93; A unique name for the predictor
 #' @param ForecastHorizon The number of time-steps that the model predicts. The forecast horizon
@@ -141,7 +141,7 @@ forecastservice_create_auto_predictor <- function(PredictorName, ForecastHorizon
 #' @description
 #' Creates an Amazon Forecast dataset. The information about the dataset that you provide helps Forecast understand how to consume the data for model training. This includes the following:
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/create_dataset.html](https://paws-r.github.io/docs/forecastservice/create_dataset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_create_dataset/](https://www.paws-r-sdk.com/docs/forecastservice_create_dataset/) for full documentation.
 #'
 #' @param DatasetName &#91;required&#93; A name for the dataset.
 #' @param Domain &#91;required&#93; The domain associated with the dataset. When you add a dataset to a
@@ -247,7 +247,7 @@ forecastservice_create_dataset <- function(DatasetName, Domain, DatasetType, Dat
 #' @description
 #' Creates a dataset group, which holds a collection of related datasets. You can add datasets to the dataset group when you create the dataset group, or later by using the [`update_dataset_group`][forecastservice_update_dataset_group] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/create_dataset_group.html](https://paws-r.github.io/docs/forecastservice/create_dataset_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_create_dataset_group/](https://www.paws-r-sdk.com/docs/forecastservice_create_dataset_group/) for full documentation.
 #'
 #' @param DatasetGroupName &#91;required&#93; A name for the dataset group.
 #' @param Domain &#91;required&#93; The domain associated with the dataset group. When you add a dataset to
@@ -320,7 +320,7 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' @description
 #' Imports your training data to an Amazon Forecast dataset. You provide the location of your training data in an Amazon Simple Storage Service (Amazon S3) bucket and the Amazon Resource Name (ARN) of the dataset that you want to import the data to.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/create_dataset_import_job.html](https://paws-r.github.io/docs/forecastservice/create_dataset_import_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_create_dataset_import_job/](https://www.paws-r-sdk.com/docs/forecastservice_create_dataset_import_job/) for full documentation.
 #'
 #' @param DatasetImportJobName &#91;required&#93; The name for the dataset import job. We recommend including the current
 #' timestamp in the name, for example, `20190721DatasetImport`. This can
@@ -432,7 +432,7 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
 #' @description
 #' Explainability is only available for Forecasts and Predictors generated from an AutoPredictor ([`create_auto_predictor`][forecastservice_create_auto_predictor])
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/create_explainability.html](https://paws-r.github.io/docs/forecastservice/create_explainability.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_create_explainability/](https://www.paws-r-sdk.com/docs/forecastservice_create_explainability/) for full documentation.
 #'
 #' @param ExplainabilityName &#91;required&#93; A unique name for the Explainability.
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Predictor or Forecast used to
@@ -506,7 +506,7 @@ forecastservice_create_explainability <- function(ExplainabilityName, ResourceAr
 #' @description
 #' Exports an Explainability resource created by the [`create_explainability`][forecastservice_create_explainability] operation. Exported files are exported to an Amazon Simple Storage Service (Amazon S3) bucket.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/create_explainability_export.html](https://paws-r.github.io/docs/forecastservice/create_explainability_export.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_create_explainability_export/](https://www.paws-r-sdk.com/docs/forecastservice_create_explainability_export/) for full documentation.
 #'
 #' @param ExplainabilityExportName &#91;required&#93; A unique name for the Explainability export.
 #' @param ExplainabilityArn &#91;required&#93; The Amazon Resource Name (ARN) of the Explainability to export.
@@ -565,7 +565,7 @@ forecastservice_create_explainability_export <- function(ExplainabilityExportNam
 #' @description
 #' Creates a forecast for each item in the `TARGET_TIME_SERIES` dataset that was used to train the predictor. This is known as inference. To retrieve the forecast for a single item at low latency, use the operation. To export the complete forecast into your Amazon Simple Storage Service (Amazon S3) bucket, use the [`create_forecast_export_job`][forecastservice_create_forecast_export_job] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/create_forecast.html](https://paws-r.github.io/docs/forecastservice/create_forecast.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_create_forecast/](https://www.paws-r-sdk.com/docs/forecastservice_create_forecast/) for full documentation.
 #'
 #' @param ForecastName &#91;required&#93; A name for the forecast.
 #' @param PredictorArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor to use to generate the
@@ -646,7 +646,7 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #' @description
 #' Exports a forecast created by the [`create_forecast`][forecastservice_create_forecast] operation to your Amazon Simple Storage Service (Amazon S3) bucket. The forecast file name will match the following conventions:
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/create_forecast_export_job.html](https://paws-r.github.io/docs/forecastservice/create_forecast_export_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_create_forecast_export_job/](https://www.paws-r-sdk.com/docs/forecastservice_create_forecast_export_job/) for full documentation.
 #'
 #' @param ForecastExportJobName &#91;required&#93; The name for the forecast export job.
 #' @param ForecastArn &#91;required&#93; The Amazon Resource Name (ARN) of the forecast that you want to export.
@@ -715,7 +715,7 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #' @description
 #' Creates a predictor monitor resource for an existing auto predictor. Predictor monitoring allows you to see how your predictor's performance changes over time. For more information, see [Predictor Monitoring](https://docs.aws.amazon.com/forecast/latest/dg/predictor-monitoring.html).
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/create_monitor.html](https://paws-r.github.io/docs/forecastservice/create_monitor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_create_monitor/](https://www.paws-r-sdk.com/docs/forecastservice_create_monitor/) for full documentation.
 #'
 #' @param MonitorName &#91;required&#93; The name of the monitor resource.
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor to monitor.
@@ -749,7 +749,7 @@ forecastservice_create_monitor <- function(MonitorName, ResourceArn, Tags = NULL
 #' @description
 #' This operation creates a legacy predictor that does not include all the predictor functionalities provided by Amazon Forecast. To create a predictor that is compatible with all aspects of Forecast, use [`create_auto_predictor`][forecastservice_create_auto_predictor].
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/create_predictor.html](https://paws-r.github.io/docs/forecastservice/create_predictor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_create_predictor/](https://www.paws-r-sdk.com/docs/forecastservice_create_predictor/) for full documentation.
 #'
 #' @param PredictorName &#91;required&#93; A name for the predictor.
 #' @param AlgorithmArn The Amazon Resource Name (ARN) of the algorithm to use for model
@@ -900,7 +900,7 @@ forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL,
 #' @description
 #' Exports backtest forecasts and accuracy metrics generated by the [`create_auto_predictor`][forecastservice_create_auto_predictor] or [`create_predictor`][forecastservice_create_predictor] operations. Two folders containing CSV or Parquet files are exported to your specified S3 bucket.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/create_predictor_backtest_export_job.html](https://paws-r.github.io/docs/forecastservice/create_predictor_backtest_export_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_create_predictor_backtest_export_job/](https://www.paws-r-sdk.com/docs/forecastservice_create_predictor_backtest_export_job/) for full documentation.
 #'
 #' @param PredictorBacktestExportJobName &#91;required&#93; The name for the backtest export job.
 #' @param PredictorArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor that you want to export.
@@ -961,7 +961,7 @@ forecastservice_create_predictor_backtest_export_job <- function(PredictorBackte
 #' @description
 #' What-if analysis is a scenario modeling technique where you make a hypothetical change to a time series and compare the forecasts generated by these changes against the baseline, unchanged time series. It is important to remember that the purpose of a what-if analysis is to understand how a forecast can change given different modifications to the baseline time series.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/create_what_if_analysis.html](https://paws-r.github.io/docs/forecastservice/create_what_if_analysis.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_create_what_if_analysis/](https://www.paws-r-sdk.com/docs/forecastservice_create_what_if_analysis/) for full documentation.
 #'
 #' @param WhatIfAnalysisName &#91;required&#93; The name of the what-if analysis. Each name must be unique.
 #' @param ForecastArn &#91;required&#93; The Amazon Resource Name (ARN) of the baseline forecast.
@@ -1006,7 +1006,7 @@ forecastservice_create_what_if_analysis <- function(WhatIfAnalysisName, Forecast
 #' @description
 #' A what-if forecast is a forecast that is created from a modified version of the baseline forecast. Each what-if forecast incorporates either a replacement dataset or a set of transformations to the original dataset.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/create_what_if_forecast.html](https://paws-r.github.io/docs/forecastservice/create_what_if_forecast.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_create_what_if_forecast/](https://www.paws-r-sdk.com/docs/forecastservice_create_what_if_forecast/) for full documentation.
 #'
 #' @param WhatIfForecastName &#91;required&#93; The name of the what-if forecast. Names must be unique within each
 #' what-if analysis.
@@ -1061,7 +1061,7 @@ forecastservice_create_what_if_forecast <- function(WhatIfForecastName, WhatIfAn
 #' @description
 #' Exports a forecast created by the [`create_what_if_forecast`][forecastservice_create_what_if_forecast] operation to your Amazon Simple Storage Service (Amazon S3) bucket. The forecast file name will match the following conventions:
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/create_what_if_forecast_export.html](https://paws-r.github.io/docs/forecastservice/create_what_if_forecast_export.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_create_what_if_forecast_export/](https://www.paws-r-sdk.com/docs/forecastservice_create_what_if_forecast_export/) for full documentation.
 #'
 #' @param WhatIfForecastExportName &#91;required&#93; The name of the what-if forecast to export.
 #' @param WhatIfForecastArns &#91;required&#93; The list of what-if forecast Amazon Resource Names (ARNs) to export.
@@ -1103,7 +1103,7 @@ forecastservice_create_what_if_forecast_export <- function(WhatIfForecastExportN
 #' @description
 #' Deletes an Amazon Forecast dataset that was created using the [`create_dataset`][forecastservice_create_dataset] operation. You can only delete datasets that have a status of `ACTIVE` or `CREATE_FAILED`. To get the status use the [`describe_dataset`][forecastservice_describe_dataset] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/delete_dataset.html](https://paws-r.github.io/docs/forecastservice/delete_dataset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_delete_dataset/](https://www.paws-r-sdk.com/docs/forecastservice_delete_dataset/) for full documentation.
 #'
 #' @param DatasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset to delete.
 #'
@@ -1132,7 +1132,7 @@ forecastservice_delete_dataset <- function(DatasetArn) {
 #' @description
 #' Deletes a dataset group created using the [`create_dataset_group`][forecastservice_create_dataset_group] operation. You can only delete dataset groups that have a status of `ACTIVE`, `CREATE_FAILED`, or `UPDATE_FAILED`. To get the status, use the [`describe_dataset_group`][forecastservice_describe_dataset_group] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/delete_dataset_group.html](https://paws-r.github.io/docs/forecastservice/delete_dataset_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_delete_dataset_group/](https://www.paws-r-sdk.com/docs/forecastservice_delete_dataset_group/) for full documentation.
 #'
 #' @param DatasetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset group to delete.
 #'
@@ -1162,7 +1162,7 @@ forecastservice_delete_dataset_group <- function(DatasetGroupArn) {
 #' @description
 #' Deletes a dataset import job created using the [`create_dataset_import_job`][forecastservice_create_dataset_import_job] operation. You can delete only dataset import jobs that have a status of `ACTIVE` or `CREATE_FAILED`. To get the status, use the [`describe_dataset_import_job`][forecastservice_describe_dataset_import_job] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/delete_dataset_import_job.html](https://paws-r.github.io/docs/forecastservice/delete_dataset_import_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_delete_dataset_import_job/](https://www.paws-r-sdk.com/docs/forecastservice_delete_dataset_import_job/) for full documentation.
 #'
 #' @param DatasetImportJobArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset import job to delete.
 #'
@@ -1191,7 +1191,7 @@ forecastservice_delete_dataset_import_job <- function(DatasetImportJobArn) {
 #' @description
 #' Deletes an Explainability resource.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/delete_explainability.html](https://paws-r.github.io/docs/forecastservice/delete_explainability.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_delete_explainability/](https://www.paws-r-sdk.com/docs/forecastservice_delete_explainability/) for full documentation.
 #'
 #' @param ExplainabilityArn &#91;required&#93; The Amazon Resource Name (ARN) of the Explainability resource to delete.
 #'
@@ -1220,7 +1220,7 @@ forecastservice_delete_explainability <- function(ExplainabilityArn) {
 #' @description
 #' Deletes an Explainability export.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/delete_explainability_export.html](https://paws-r.github.io/docs/forecastservice/delete_explainability_export.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_delete_explainability_export/](https://www.paws-r-sdk.com/docs/forecastservice_delete_explainability_export/) for full documentation.
 #'
 #' @param ExplainabilityExportArn &#91;required&#93; The Amazon Resource Name (ARN) of the Explainability export to delete.
 #'
@@ -1249,7 +1249,7 @@ forecastservice_delete_explainability_export <- function(ExplainabilityExportArn
 #' @description
 #' Deletes a forecast created using the [`create_forecast`][forecastservice_create_forecast] operation. You can delete only forecasts that have a status of `ACTIVE` or `CREATE_FAILED`. To get the status, use the [`describe_forecast`][forecastservice_describe_forecast] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/delete_forecast.html](https://paws-r.github.io/docs/forecastservice/delete_forecast.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_delete_forecast/](https://www.paws-r-sdk.com/docs/forecastservice_delete_forecast/) for full documentation.
 #'
 #' @param ForecastArn &#91;required&#93; The Amazon Resource Name (ARN) of the forecast to delete.
 #'
@@ -1279,7 +1279,7 @@ forecastservice_delete_forecast <- function(ForecastArn) {
 #' @description
 #' Deletes a forecast export job created using the [`create_forecast_export_job`][forecastservice_create_forecast_export_job] operation. You can delete only export jobs that have a status of `ACTIVE` or `CREATE_FAILED`. To get the status, use the [`describe_forecast_export_job`][forecastservice_describe_forecast_export_job] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/delete_forecast_export_job.html](https://paws-r.github.io/docs/forecastservice/delete_forecast_export_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_delete_forecast_export_job/](https://www.paws-r-sdk.com/docs/forecastservice_delete_forecast_export_job/) for full documentation.
 #'
 #' @param ForecastExportJobArn &#91;required&#93; The Amazon Resource Name (ARN) of the forecast export job to delete.
 #'
@@ -1308,7 +1308,7 @@ forecastservice_delete_forecast_export_job <- function(ForecastExportJobArn) {
 #' @description
 #' Deletes a monitor resource. You can only delete a monitor resource with a status of `ACTIVE`, `ACTIVE_STOPPED`, `CREATE_FAILED`, or `CREATE_STOPPED`.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/delete_monitor.html](https://paws-r.github.io/docs/forecastservice/delete_monitor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_delete_monitor/](https://www.paws-r-sdk.com/docs/forecastservice_delete_monitor/) for full documentation.
 #'
 #' @param MonitorArn &#91;required&#93; The Amazon Resource Name (ARN) of the monitor resource to delete.
 #'
@@ -1338,7 +1338,7 @@ forecastservice_delete_monitor <- function(MonitorArn) {
 #' @description
 #' Deletes a predictor created using the [`describe_predictor`][forecastservice_describe_predictor] or [`create_predictor`][forecastservice_create_predictor] operations. You can delete only predictor that have a status of `ACTIVE` or `CREATE_FAILED`. To get the status, use the [`describe_predictor`][forecastservice_describe_predictor] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/delete_predictor.html](https://paws-r.github.io/docs/forecastservice/delete_predictor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_delete_predictor/](https://www.paws-r-sdk.com/docs/forecastservice_delete_predictor/) for full documentation.
 #'
 #' @param PredictorArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor to delete.
 #'
@@ -1367,7 +1367,7 @@ forecastservice_delete_predictor <- function(PredictorArn) {
 #' @description
 #' Deletes a predictor backtest export job.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/delete_predictor_backtest_export_job.html](https://paws-r.github.io/docs/forecastservice/delete_predictor_backtest_export_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_delete_predictor_backtest_export_job/](https://www.paws-r-sdk.com/docs/forecastservice_delete_predictor_backtest_export_job/) for full documentation.
 #'
 #' @param PredictorBacktestExportJobArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor backtest export job to
 #' delete.
@@ -1397,7 +1397,7 @@ forecastservice_delete_predictor_backtest_export_job <- function(PredictorBackte
 #' @description
 #' Deletes an entire resource tree. This operation will delete the parent resource and its child resources.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/delete_resource_tree.html](https://paws-r.github.io/docs/forecastservice/delete_resource_tree.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_delete_resource_tree/](https://www.paws-r-sdk.com/docs/forecastservice_delete_resource_tree/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the parent resource to delete. All
 #' child resources of the parent resource will also be deleted.
@@ -1428,7 +1428,7 @@ forecastservice_delete_resource_tree <- function(ResourceArn) {
 #' @description
 #' Deletes a what-if analysis created using the [`create_what_if_analysis`][forecastservice_create_what_if_analysis] operation. You can delete only what-if analyses that have a status of `ACTIVE` or `CREATE_FAILED`. To get the status, use the [`describe_what_if_analysis`][forecastservice_describe_what_if_analysis] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/delete_what_if_analysis.html](https://paws-r.github.io/docs/forecastservice/delete_what_if_analysis.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_delete_what_if_analysis/](https://www.paws-r-sdk.com/docs/forecastservice_delete_what_if_analysis/) for full documentation.
 #'
 #' @param WhatIfAnalysisArn &#91;required&#93; The Amazon Resource Name (ARN) of the what-if analysis that you want to
 #' delete.
@@ -1459,7 +1459,7 @@ forecastservice_delete_what_if_analysis <- function(WhatIfAnalysisArn) {
 #' @description
 #' Deletes a what-if forecast created using the [`create_what_if_forecast`][forecastservice_create_what_if_forecast] operation. You can delete only what-if forecasts that have a status of `ACTIVE` or `CREATE_FAILED`. To get the status, use the [`describe_what_if_forecast`][forecastservice_describe_what_if_forecast] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/delete_what_if_forecast.html](https://paws-r.github.io/docs/forecastservice/delete_what_if_forecast.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_delete_what_if_forecast/](https://www.paws-r-sdk.com/docs/forecastservice_delete_what_if_forecast/) for full documentation.
 #'
 #' @param WhatIfForecastArn &#91;required&#93; The Amazon Resource Name (ARN) of the what-if forecast that you want to
 #' delete.
@@ -1490,7 +1490,7 @@ forecastservice_delete_what_if_forecast <- function(WhatIfForecastArn) {
 #' @description
 #' Deletes a what-if forecast export created using the [`create_what_if_forecast_export`][forecastservice_create_what_if_forecast_export] operation. You can delete only what-if forecast exports that have a status of `ACTIVE` or `CREATE_FAILED`. To get the status, use the [`describe_what_if_forecast_export`][forecastservice_describe_what_if_forecast_export] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/delete_what_if_forecast_export.html](https://paws-r.github.io/docs/forecastservice/delete_what_if_forecast_export.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_delete_what_if_forecast_export/](https://www.paws-r-sdk.com/docs/forecastservice_delete_what_if_forecast_export/) for full documentation.
 #'
 #' @param WhatIfForecastExportArn &#91;required&#93; The Amazon Resource Name (ARN) of the what-if forecast export that you
 #' want to delete.
@@ -1520,7 +1520,7 @@ forecastservice_delete_what_if_forecast_export <- function(WhatIfForecastExportA
 #' @description
 #' Describes a predictor created using the CreateAutoPredictor operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/describe_auto_predictor.html](https://paws-r.github.io/docs/forecastservice/describe_auto_predictor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_describe_auto_predictor/](https://www.paws-r-sdk.com/docs/forecastservice_describe_auto_predictor/) for full documentation.
 #'
 #' @param PredictorArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor.
 #'
@@ -1550,7 +1550,7 @@ forecastservice_describe_auto_predictor <- function(PredictorArn) {
 #' @description
 #' Describes an Amazon Forecast dataset created using the [`create_dataset`][forecastservice_create_dataset] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/describe_dataset.html](https://paws-r.github.io/docs/forecastservice/describe_dataset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_describe_dataset/](https://www.paws-r-sdk.com/docs/forecastservice_describe_dataset/) for full documentation.
 #'
 #' @param DatasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset.
 #'
@@ -1579,7 +1579,7 @@ forecastservice_describe_dataset <- function(DatasetArn) {
 #' @description
 #' Describes a dataset group created using the [`create_dataset_group`][forecastservice_create_dataset_group] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/describe_dataset_group.html](https://paws-r.github.io/docs/forecastservice/describe_dataset_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_describe_dataset_group/](https://www.paws-r-sdk.com/docs/forecastservice_describe_dataset_group/) for full documentation.
 #'
 #' @param DatasetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset group.
 #'
@@ -1609,7 +1609,7 @@ forecastservice_describe_dataset_group <- function(DatasetGroupArn) {
 #' @description
 #' Describes a dataset import job created using the [`create_dataset_import_job`][forecastservice_create_dataset_import_job] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/describe_dataset_import_job.html](https://paws-r.github.io/docs/forecastservice/describe_dataset_import_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_describe_dataset_import_job/](https://www.paws-r-sdk.com/docs/forecastservice_describe_dataset_import_job/) for full documentation.
 #'
 #' @param DatasetImportJobArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset import job.
 #'
@@ -1639,7 +1639,7 @@ forecastservice_describe_dataset_import_job <- function(DatasetImportJobArn) {
 #' @description
 #' Describes an Explainability resource created using the [`create_explainability`][forecastservice_create_explainability] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/describe_explainability.html](https://paws-r.github.io/docs/forecastservice/describe_explainability.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_describe_explainability/](https://www.paws-r-sdk.com/docs/forecastservice_describe_explainability/) for full documentation.
 #'
 #' @param ExplainabilityArn &#91;required&#93; The Amazon Resource Name (ARN) of the Explaianability to describe.
 #'
@@ -1669,7 +1669,7 @@ forecastservice_describe_explainability <- function(ExplainabilityArn) {
 #' @description
 #' Describes an Explainability export created using the [`create_explainability_export`][forecastservice_create_explainability_export] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/describe_explainability_export.html](https://paws-r.github.io/docs/forecastservice/describe_explainability_export.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_describe_explainability_export/](https://www.paws-r-sdk.com/docs/forecastservice_describe_explainability_export/) for full documentation.
 #'
 #' @param ExplainabilityExportArn &#91;required&#93; The Amazon Resource Name (ARN) of the Explainability export.
 #'
@@ -1698,7 +1698,7 @@ forecastservice_describe_explainability_export <- function(ExplainabilityExportA
 #' @description
 #' Describes a forecast created using the [`create_forecast`][forecastservice_create_forecast] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/describe_forecast.html](https://paws-r.github.io/docs/forecastservice/describe_forecast.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_describe_forecast/](https://www.paws-r-sdk.com/docs/forecastservice_describe_forecast/) for full documentation.
 #'
 #' @param ForecastArn &#91;required&#93; The Amazon Resource Name (ARN) of the forecast.
 #'
@@ -1728,7 +1728,7 @@ forecastservice_describe_forecast <- function(ForecastArn) {
 #' @description
 #' Describes a forecast export job created using the [`create_forecast_export_job`][forecastservice_create_forecast_export_job] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/describe_forecast_export_job.html](https://paws-r.github.io/docs/forecastservice/describe_forecast_export_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_describe_forecast_export_job/](https://www.paws-r-sdk.com/docs/forecastservice_describe_forecast_export_job/) for full documentation.
 #'
 #' @param ForecastExportJobArn &#91;required&#93; The Amazon Resource Name (ARN) of the forecast export job.
 #'
@@ -1757,7 +1757,7 @@ forecastservice_describe_forecast_export_job <- function(ForecastExportJobArn) {
 #' @description
 #' Describes a monitor resource. In addition to listing the properties provided in the [`create_monitor`][forecastservice_create_monitor] request, this operation lists the following properties:
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/describe_monitor.html](https://paws-r.github.io/docs/forecastservice/describe_monitor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_describe_monitor/](https://www.paws-r-sdk.com/docs/forecastservice_describe_monitor/) for full documentation.
 #'
 #' @param MonitorArn &#91;required&#93; The Amazon Resource Name (ARN) of the monitor resource to describe.
 #'
@@ -1787,7 +1787,7 @@ forecastservice_describe_monitor <- function(MonitorArn) {
 #' @description
 #' This operation is only valid for legacy predictors created with CreatePredictor. If you are not using a legacy predictor, use [`describe_auto_predictor`][forecastservice_describe_auto_predictor].
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/describe_predictor.html](https://paws-r.github.io/docs/forecastservice/describe_predictor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_describe_predictor/](https://www.paws-r-sdk.com/docs/forecastservice_describe_predictor/) for full documentation.
 #'
 #' @param PredictorArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor that you want
 #' information about.
@@ -1818,7 +1818,7 @@ forecastservice_describe_predictor <- function(PredictorArn) {
 #' @description
 #' Describes a predictor backtest export job created using the [`create_predictor_backtest_export_job`][forecastservice_create_predictor_backtest_export_job] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/describe_predictor_backtest_export_job.html](https://paws-r.github.io/docs/forecastservice/describe_predictor_backtest_export_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_describe_predictor_backtest_export_job/](https://www.paws-r-sdk.com/docs/forecastservice_describe_predictor_backtest_export_job/) for full documentation.
 #'
 #' @param PredictorBacktestExportJobArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor backtest export job.
 #'
@@ -1848,7 +1848,7 @@ forecastservice_describe_predictor_backtest_export_job <- function(PredictorBack
 #' @description
 #' Describes the what-if analysis created using the [`create_what_if_analysis`][forecastservice_create_what_if_analysis] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/describe_what_if_analysis.html](https://paws-r.github.io/docs/forecastservice/describe_what_if_analysis.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_describe_what_if_analysis/](https://www.paws-r-sdk.com/docs/forecastservice_describe_what_if_analysis/) for full documentation.
 #'
 #' @param WhatIfAnalysisArn &#91;required&#93; The Amazon Resource Name (ARN) of the what-if analysis that you are
 #' interested in.
@@ -1879,7 +1879,7 @@ forecastservice_describe_what_if_analysis <- function(WhatIfAnalysisArn) {
 #' @description
 #' Describes the what-if forecast created using the [`create_what_if_forecast`][forecastservice_create_what_if_forecast] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/describe_what_if_forecast.html](https://paws-r.github.io/docs/forecastservice/describe_what_if_forecast.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_describe_what_if_forecast/](https://www.paws-r-sdk.com/docs/forecastservice_describe_what_if_forecast/) for full documentation.
 #'
 #' @param WhatIfForecastArn &#91;required&#93; The Amazon Resource Name (ARN) of the what-if forecast that you are
 #' interested in.
@@ -1910,7 +1910,7 @@ forecastservice_describe_what_if_forecast <- function(WhatIfForecastArn) {
 #' @description
 #' Describes the what-if forecast export created using the [`create_what_if_forecast_export`][forecastservice_create_what_if_forecast_export] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/describe_what_if_forecast_export.html](https://paws-r.github.io/docs/forecastservice/describe_what_if_forecast_export.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_describe_what_if_forecast_export/](https://www.paws-r-sdk.com/docs/forecastservice_describe_what_if_forecast_export/) for full documentation.
 #'
 #' @param WhatIfForecastExportArn &#91;required&#93; The Amazon Resource Name (ARN) of the what-if forecast export that you
 #' are interested in.
@@ -1941,7 +1941,7 @@ forecastservice_describe_what_if_forecast_export <- function(WhatIfForecastExpor
 #' @description
 #' Provides metrics on the accuracy of the models that were trained by the [`create_predictor`][forecastservice_create_predictor] operation. Use metrics to see how well the model performed and to decide whether to use the predictor to generate a forecast. For more information, see [Predictor Metrics](https://docs.aws.amazon.com/forecast/latest/dg/metrics.html).
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/get_accuracy_metrics.html](https://paws-r.github.io/docs/forecastservice/get_accuracy_metrics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_get_accuracy_metrics/](https://www.paws-r-sdk.com/docs/forecastservice_get_accuracy_metrics/) for full documentation.
 #'
 #' @param PredictorArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor to get metrics for.
 #'
@@ -1971,7 +1971,7 @@ forecastservice_get_accuracy_metrics <- function(PredictorArn) {
 #' @description
 #' Returns a list of dataset groups created using the [`create_dataset_group`][forecastservice_create_dataset_group] operation. For each dataset group, this operation returns a summary of its properties, including its Amazon Resource Name (ARN). You can retrieve the complete set of properties by using the dataset group ARN with the [`describe_dataset_group`][forecastservice_describe_dataset_group] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/list_dataset_groups.html](https://paws-r.github.io/docs/forecastservice/list_dataset_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_list_dataset_groups/](https://www.paws-r-sdk.com/docs/forecastservice_list_dataset_groups/) for full documentation.
 #'
 #' @param NextToken If the result of the previous request was truncated, the response
 #' includes a `NextToken`. To retrieve the next set of results, use the
@@ -2004,7 +2004,7 @@ forecastservice_list_dataset_groups <- function(NextToken = NULL, MaxResults = N
 #' @description
 #' Returns a list of dataset import jobs created using the [`create_dataset_import_job`][forecastservice_create_dataset_import_job] operation. For each import job, this operation returns a summary of its properties, including its Amazon Resource Name (ARN). You can retrieve the complete set of properties by using the ARN with the [`describe_dataset_import_job`][forecastservice_describe_dataset_import_job] operation. You can filter the list by providing an array of [Filter](https://docs.aws.amazon.com/forecast/latest/dg/API_Filter.html) objects.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/list_dataset_import_jobs.html](https://paws-r.github.io/docs/forecastservice/list_dataset_import_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_list_dataset_import_jobs/](https://www.paws-r-sdk.com/docs/forecastservice_list_dataset_import_jobs/) for full documentation.
 #'
 #' @param NextToken If the result of the previous request was truncated, the response
 #' includes a `NextToken`. To retrieve the next set of results, use the
@@ -2057,7 +2057,7 @@ forecastservice_list_dataset_import_jobs <- function(NextToken = NULL, MaxResult
 #' @description
 #' Returns a list of datasets created using the [`create_dataset`][forecastservice_create_dataset] operation. For each dataset, a summary of its properties, including its Amazon Resource Name (ARN), is returned. To retrieve the complete set of properties, use the ARN with the [`describe_dataset`][forecastservice_describe_dataset] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/list_datasets.html](https://paws-r.github.io/docs/forecastservice/list_datasets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_list_datasets/](https://www.paws-r-sdk.com/docs/forecastservice_list_datasets/) for full documentation.
 #'
 #' @param NextToken If the result of the previous request was truncated, the response
 #' includes a `NextToken`. To retrieve the next set of results, use the
@@ -2090,7 +2090,7 @@ forecastservice_list_datasets <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Returns a list of Explainability resources created using the [`create_explainability`][forecastservice_create_explainability] operation. This operation returns a summary for each Explainability. You can filter the list using an array of Filter objects.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/list_explainabilities.html](https://paws-r.github.io/docs/forecastservice/list_explainabilities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_list_explainabilities/](https://www.paws-r-sdk.com/docs/forecastservice_list_explainabilities/) for full documentation.
 #'
 #' @param NextToken If the result of the previous request was truncated, the response
 #' includes a NextToken. To retrieve the next set of results, use the token
@@ -2137,7 +2137,7 @@ forecastservice_list_explainabilities <- function(NextToken = NULL, MaxResults =
 #' @description
 #' Returns a list of Explainability exports created using the [`create_explainability_export`][forecastservice_create_explainability_export] operation. This operation returns a summary for each Explainability export. You can filter the list using an array of Filter objects.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/list_explainability_exports.html](https://paws-r.github.io/docs/forecastservice/list_explainability_exports.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_list_explainability_exports/](https://www.paws-r-sdk.com/docs/forecastservice_list_explainability_exports/) for full documentation.
 #'
 #' @param NextToken If the result of the previous request was truncated, the response
 #' includes a NextToken. To retrieve the next set of results, use the token
@@ -2184,7 +2184,7 @@ forecastservice_list_explainability_exports <- function(NextToken = NULL, MaxRes
 #' @description
 #' Returns a list of forecast export jobs created using the [`create_forecast_export_job`][forecastservice_create_forecast_export_job] operation. For each forecast export job, this operation returns a summary of its properties, including its Amazon Resource Name (ARN). To retrieve the complete set of properties, use the ARN with the [`describe_forecast_export_job`][forecastservice_describe_forecast_export_job] operation. You can filter the list using an array of Filter objects.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/list_forecast_export_jobs.html](https://paws-r.github.io/docs/forecastservice/list_forecast_export_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_list_forecast_export_jobs/](https://www.paws-r-sdk.com/docs/forecastservice_list_forecast_export_jobs/) for full documentation.
 #'
 #' @param NextToken If the result of the previous request was truncated, the response
 #' includes a `NextToken`. To retrieve the next set of results, use the
@@ -2238,7 +2238,7 @@ forecastservice_list_forecast_export_jobs <- function(NextToken = NULL, MaxResul
 #' @description
 #' Returns a list of forecasts created using the [`create_forecast`][forecastservice_create_forecast] operation. For each forecast, this operation returns a summary of its properties, including its Amazon Resource Name (ARN). To retrieve the complete set of properties, specify the ARN with the [`describe_forecast`][forecastservice_describe_forecast] operation. You can filter the list using an array of Filter objects.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/list_forecasts.html](https://paws-r.github.io/docs/forecastservice/list_forecasts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_list_forecasts/](https://www.paws-r-sdk.com/docs/forecastservice_list_forecasts/) for full documentation.
 #'
 #' @param NextToken If the result of the previous request was truncated, the response
 #' includes a `NextToken`. To retrieve the next set of results, use the
@@ -2292,7 +2292,7 @@ forecastservice_list_forecasts <- function(NextToken = NULL, MaxResults = NULL, 
 #' @description
 #' Returns a list of the monitoring evaluation results and predictor events collected by the monitor resource during different windows of time.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/list_monitor_evaluations.html](https://paws-r.github.io/docs/forecastservice/list_monitor_evaluations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_list_monitor_evaluations/](https://www.paws-r-sdk.com/docs/forecastservice_list_monitor_evaluations/) for full documentation.
 #'
 #' @param NextToken If the result of the previous request was truncated, the response
 #' includes a `NextToken`. To retrieve the next set of results, use the
@@ -2347,7 +2347,7 @@ forecastservice_list_monitor_evaluations <- function(NextToken = NULL, MaxResult
 #' @description
 #' Returns a list of monitors created with the [`create_monitor`][forecastservice_create_monitor] operation and [`create_auto_predictor`][forecastservice_create_auto_predictor] operation. For each monitor resource, this operation returns of a summary of its properties, including its Amazon Resource Name (ARN). You can retrieve a complete set of properties of a monitor resource by specify the monitor's ARN in the [`describe_monitor`][forecastservice_describe_monitor] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/list_monitors.html](https://paws-r.github.io/docs/forecastservice/list_monitors.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_list_monitors/](https://www.paws-r-sdk.com/docs/forecastservice_list_monitors/) for full documentation.
 #'
 #' @param NextToken If the result of the previous request was truncated, the response
 #' includes a `NextToken`. To retrieve the next set of results, use the
@@ -2399,7 +2399,7 @@ forecastservice_list_monitors <- function(NextToken = NULL, MaxResults = NULL, F
 #' @description
 #' Returns a list of predictor backtest export jobs created using the [`create_predictor_backtest_export_job`][forecastservice_create_predictor_backtest_export_job] operation. This operation returns a summary for each backtest export job. You can filter the list using an array of Filter objects.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/list_predictor_backtest_export_jobs.html](https://paws-r.github.io/docs/forecastservice/list_predictor_backtest_export_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_list_predictor_backtest_export_jobs/](https://www.paws-r-sdk.com/docs/forecastservice_list_predictor_backtest_export_jobs/) for full documentation.
 #'
 #' @param NextToken If the result of the previous request was truncated, the response
 #' includes a NextToken. To retrieve the next set of results, use the token
@@ -2449,7 +2449,7 @@ forecastservice_list_predictor_backtest_export_jobs <- function(NextToken = NULL
 #' @description
 #' Returns a list of predictors created using the [`create_auto_predictor`][forecastservice_create_auto_predictor] or [`create_predictor`][forecastservice_create_predictor] operations. For each predictor, this operation returns a summary of its properties, including its Amazon Resource Name (ARN).
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/list_predictors.html](https://paws-r.github.io/docs/forecastservice/list_predictors.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_list_predictors/](https://www.paws-r-sdk.com/docs/forecastservice_list_predictors/) for full documentation.
 #'
 #' @param NextToken If the result of the previous request was truncated, the response
 #' includes a `NextToken`. To retrieve the next set of results, use the
@@ -2502,7 +2502,7 @@ forecastservice_list_predictors <- function(NextToken = NULL, MaxResults = NULL,
 #' @description
 #' Lists the tags for an Amazon Forecast resource.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/list_tags_for_resource.html](https://paws-r.github.io/docs/forecastservice/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/forecastservice_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
 #' list the tags.
@@ -2533,7 +2533,7 @@ forecastservice_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Returns a list of what-if analyses created using the [`create_what_if_analysis`][forecastservice_create_what_if_analysis] operation. For each what-if analysis, this operation returns a summary of its properties, including its Amazon Resource Name (ARN). You can retrieve the complete set of properties by using the what-if analysis ARN with the [`describe_what_if_analysis`][forecastservice_describe_what_if_analysis] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/list_what_if_analyses.html](https://paws-r.github.io/docs/forecastservice/list_what_if_analyses.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_list_what_if_analyses/](https://www.paws-r-sdk.com/docs/forecastservice_list_what_if_analyses/) for full documentation.
 #'
 #' @param NextToken If the result of the previous request was truncated, the response
 #' includes a `NextToken`. To retrieve the next set of results, use the
@@ -2588,7 +2588,7 @@ forecastservice_list_what_if_analyses <- function(NextToken = NULL, MaxResults =
 #' @description
 #' Returns a list of what-if forecast exports created using the [`create_what_if_forecast_export`][forecastservice_create_what_if_forecast_export] operation. For each what-if forecast export, this operation returns a summary of its properties, including its Amazon Resource Name (ARN). You can retrieve the complete set of properties by using the what-if forecast export ARN with the [`describe_what_if_forecast_export`][forecastservice_describe_what_if_forecast_export] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/list_what_if_forecast_exports.html](https://paws-r.github.io/docs/forecastservice/list_what_if_forecast_exports.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_list_what_if_forecast_exports/](https://www.paws-r-sdk.com/docs/forecastservice_list_what_if_forecast_exports/) for full documentation.
 #'
 #' @param NextToken If the result of the previous request was truncated, the response
 #' includes a `NextToken`. To retrieve the next set of results, use the
@@ -2643,7 +2643,7 @@ forecastservice_list_what_if_forecast_exports <- function(NextToken = NULL, MaxR
 #' @description
 #' Returns a list of what-if forecasts created using the [`create_what_if_forecast`][forecastservice_create_what_if_forecast] operation. For each what-if forecast, this operation returns a summary of its properties, including its Amazon Resource Name (ARN). You can retrieve the complete set of properties by using the what-if forecast ARN with the [`describe_what_if_forecast`][forecastservice_describe_what_if_forecast] operation.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/list_what_if_forecasts.html](https://paws-r.github.io/docs/forecastservice/list_what_if_forecasts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_list_what_if_forecasts/](https://www.paws-r-sdk.com/docs/forecastservice_list_what_if_forecasts/) for full documentation.
 #'
 #' @param NextToken If the result of the previous request was truncated, the response
 #' includes a `NextToken`. To retrieve the next set of results, use the
@@ -2697,7 +2697,7 @@ forecastservice_list_what_if_forecasts <- function(NextToken = NULL, MaxResults 
 #' @description
 #' Resumes a stopped monitor resource.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/resume_resource.html](https://paws-r.github.io/docs/forecastservice/resume_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_resume_resource/](https://www.paws-r-sdk.com/docs/forecastservice_resume_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the monitor resource to resume.
 #'
@@ -2726,7 +2726,7 @@ forecastservice_resume_resource <- function(ResourceArn) {
 #' @description
 #' Stops a resource.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/stop_resource.html](https://paws-r.github.io/docs/forecastservice/stop_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_stop_resource/](https://www.paws-r-sdk.com/docs/forecastservice_stop_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource to stop. The
 #' supported ARNs are `DatasetImportJobArn`, `PredictorArn`,
@@ -2759,7 +2759,7 @@ forecastservice_stop_resource <- function(ResourceArn) {
 #' @description
 #' Associates the specified tags to a resource with the specified `resourceArn`. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are also deleted.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/tag_resource.html](https://paws-r.github.io/docs/forecastservice/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_tag_resource/](https://www.paws-r-sdk.com/docs/forecastservice_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
 #' list the tags.
@@ -2817,7 +2817,7 @@ forecastservice_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Deletes the specified tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/untag_resource.html](https://paws-r.github.io/docs/forecastservice/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_untag_resource/](https://www.paws-r-sdk.com/docs/forecastservice_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
 #' list the tags.
@@ -2848,7 +2848,7 @@ forecastservice_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Replaces the datasets in a dataset group with the specified datasets.
 #'
-#' See [https://paws-r.github.io/docs/forecastservice/update_dataset_group.html](https://paws-r.github.io/docs/forecastservice/update_dataset_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastservice_update_dataset_group/](https://www.paws-r-sdk.com/docs/forecastservice_update_dataset_group/) for full documentation.
 #'
 #' @param DatasetGroupArn &#91;required&#93; The ARN of the dataset group.
 #' @param DatasetArns &#91;required&#93; An array of the Amazon Resource Names (ARNs) of the datasets to add to

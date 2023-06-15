@@ -116,6 +116,6 @@ more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/with-sq
 \description{
 Updates an event source mapping. You can change the function that Lambda invokes, or pause invocation and resume later from the same location.
 
-See \url{https://paws-r.github.io/docs/lambda/update_event_source_mapping.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_update_event_source_mapping/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ returned by \code{BatchExecuteStatment},
 \description{
 Describes the details about a specific instance when a query was run by the Amazon Redshift Data API. The information includes when the query started, when it finished, the query status, the number of rows returned, and the SQL statement.
 
-See \url{https://paws-r.github.io/docs/redshiftdataapiservice/describe_statement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftdataapiservice_describe_statement/} for full documentation.
 }
 \keyword{internal}

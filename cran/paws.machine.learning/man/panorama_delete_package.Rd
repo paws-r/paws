@@ -15,6 +15,6 @@ Deletes the package's artifacts from Amazon S3.}
 \description{
 Deletes a package.
 
-See \url{https://paws-r.github.io/docs/panorama/delete_package.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_delete_package/} for full documentation.
 }
 \keyword{internal}

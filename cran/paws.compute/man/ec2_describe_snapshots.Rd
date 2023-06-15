@@ -77,6 +77,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the specified EBS snapshots available to you or all of the EBS snapshots available to you.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_snapshots.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_snapshots/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ ListRuleGroupsNamespaces request.}
 \description{
 Lists rule groups namespaces.
 
-See \url{https://paws-r.github.io/docs/prometheusservice/list_rule_groups_namespaces.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/prometheusservice_list_rule_groups_namespaces/} for full documentation.
 }
 \keyword{internal}

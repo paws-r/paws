@@ -18,6 +18,6 @@ The account must be an invited member account with a status of
 \description{
 Sends a request to enable data ingest for a member account that has a status of \code{ACCEPTED_BUT_DISABLED}.
 
-See \url{https://paws-r.github.io/docs/detective/start_monitoring_member.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/detective_start_monitoring_member/} for full documentation.
 }
 \keyword{internal}

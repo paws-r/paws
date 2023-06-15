@@ -74,6 +74,6 @@ you can specify as the page token in a subsequent request.}
 \description{
 Returns the log events of a container of your Amazon Lightsail container service.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_container_log.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_container_log/} for full documentation.
 }
 \keyword{internal}

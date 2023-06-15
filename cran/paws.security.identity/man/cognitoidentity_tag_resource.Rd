@@ -14,6 +14,6 @@ cognitoidentity_tag_resource(ResourceArn, Tags)
 \description{
 Assigns a set of tags to the specified Amazon Cognito identity pool. A tag is a label that you can use to categorize and manage identity pools in different ways, such as by purpose, owner, environment, or other criteria.
 
-See \url{https://paws-r.github.io/docs/cognitoidentity/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_tag_resource/} for full documentation.
 }
 \keyword{internal}

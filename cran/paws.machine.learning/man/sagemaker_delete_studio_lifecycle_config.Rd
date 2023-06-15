@@ -12,6 +12,6 @@ sagemaker_delete_studio_lifecycle_config(StudioLifecycleConfigName)
 \description{
 Deletes the Studio Lifecycle Configuration. In order to delete the Lifecycle Configuration, there must be no running apps using the Lifecycle Configuration. You must also remove the Lifecycle Configuration from UserSettings in all Domains and UserProfiles.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_studio_lifecycle_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_studio_lifecycle_config/} for full documentation.
 }
 \keyword{internal}

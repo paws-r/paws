@@ -12,6 +12,6 @@ comprehend_describe_dataset(DatasetArn)
 \description{
 Returns information about the dataset that you specify. For more information about datasets, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html}{Flywheel overview} in the \emph{Amazon Comprehend Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/comprehend/describe_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_describe_dataset/} for full documentation.
 }
 \keyword{internal}

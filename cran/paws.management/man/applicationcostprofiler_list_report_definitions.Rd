@@ -18,6 +18,6 @@ applicationcostprofiler_list_report_definitions(
 \description{
 Retrieves a list of all reports and their configurations for your AWS account.
 
-See \url{https://paws-r.github.io/docs/applicationcostprofiler/list_report_definitions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationcostprofiler_list_report_definitions/} for full documentation.
 }
 \keyword{internal}

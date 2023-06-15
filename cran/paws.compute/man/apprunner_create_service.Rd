@@ -56,6 +56,6 @@ that the App Runner service runs.}
 \description{
 Create an App Runner service. After the service is created, the action also automatically starts a deployment.
 
-See \url{https://paws-r.github.io/docs/apprunner/create_service.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_create_service/} for full documentation.
 }
 \keyword{internal}

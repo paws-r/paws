@@ -17,6 +17,6 @@ spaces. You can also include any of the following characters: =,.@:/-}
 \description{
 Deletes a virtual MFA device.
 
-See \url{https://paws-r.github.io/docs/iam/delete_virtual_mfa_device.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_delete_virtual_mfa_device/} for full documentation.
 }
 \keyword{internal}

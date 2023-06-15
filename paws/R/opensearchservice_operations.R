@@ -702,12 +702,13 @@ opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, Cl
 #'
 #' @usage
 #' opensearchservice_create_outbound_connection(LocalDomainInfo,
-#'   RemoteDomainInfo, ConnectionAlias, ConnectionMode)
+#'   RemoteDomainInfo, ConnectionAlias, ConnectionMode, ConnectionProperties)
 #'
 #' @param LocalDomainInfo &#91;required&#93; Name and Region of the source (local) domain.
 #' @param RemoteDomainInfo &#91;required&#93; Name and Region of the destination (remote) domain.
 #' @param ConnectionAlias &#91;required&#93; Name of the connection.
 #' @param ConnectionMode The connection mode.
+#' @param ConnectionProperties The `ConnectionProperties` for the outbound connection.
 #'
 #' @return
 #' A list with the following syntax:
@@ -735,7 +736,10 @@ opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, Cl
 #'   ConnectionId = "string",
 #'   ConnectionMode = "DIRECT"|"VPC_ENDPOINT",
 #'   ConnectionProperties = list(
-#'     Endpoint = "string"
+#'     Endpoint = "string",
+#'     CrossClusterSearch = list(
+#'       SkipUnavailable = "ENABLED"|"DISABLED"
+#'     )
 #'   )
 #' )
 #' ```
@@ -758,7 +762,13 @@ opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, Cl
 #'     )
 #'   ),
 #'   ConnectionAlias = "string",
-#'   ConnectionMode = "DIRECT"|"VPC_ENDPOINT"
+#'   ConnectionMode = "DIRECT"|"VPC_ENDPOINT",
+#'   ConnectionProperties = list(
+#'     Endpoint = "string",
+#'     CrossClusterSearch = list(
+#'       SkipUnavailable = "ENABLED"|"DISABLED"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -767,14 +777,14 @@ opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, Cl
 #' @rdname opensearchservice_create_outbound_connection
 #'
 #' @aliases opensearchservice_create_outbound_connection
-opensearchservice_create_outbound_connection <- function(LocalDomainInfo, RemoteDomainInfo, ConnectionAlias, ConnectionMode = NULL) {
+opensearchservice_create_outbound_connection <- function(LocalDomainInfo, RemoteDomainInfo, ConnectionAlias, ConnectionMode = NULL, ConnectionProperties = NULL) {
   op <- new_operation(
     name = "CreateOutboundConnection",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/cc/outboundConnection",
     paginator = list()
   )
-  input <- .opensearchservice$create_outbound_connection_input(LocalDomainInfo = LocalDomainInfo, RemoteDomainInfo = RemoteDomainInfo, ConnectionAlias = ConnectionAlias, ConnectionMode = ConnectionMode)
+  input <- .opensearchservice$create_outbound_connection_input(LocalDomainInfo = LocalDomainInfo, RemoteDomainInfo = RemoteDomainInfo, ConnectionAlias = ConnectionAlias, ConnectionMode = ConnectionMode, ConnectionProperties = ConnectionProperties)
   output <- .opensearchservice$create_outbound_connection_output()
   config <- get_config()
   svc <- .opensearchservice$service(config)
@@ -1232,7 +1242,10 @@ opensearchservice_delete_inbound_connection <- function(ConnectionId) {
 #'     ),
 #'     ConnectionMode = "DIRECT"|"VPC_ENDPOINT",
 #'     ConnectionProperties = list(
-#'       Endpoint = "string"
+#'       Endpoint = "string",
+#'       CrossClusterSearch = list(
+#'         SkipUnavailable = "ENABLED"|"DISABLED"
+#'       )
 #'     )
 #'   )
 #' )
@@ -2875,7 +2888,10 @@ opensearchservice_describe_instance_type_limits <- function(DomainName = NULL, I
 #'       ),
 #'       ConnectionMode = "DIRECT"|"VPC_ENDPOINT",
 #'       ConnectionProperties = list(
-#'         Endpoint = "string"
+#'         Endpoint = "string",
+#'         CrossClusterSearch = list(
+#'           SkipUnavailable = "ENABLED"|"DISABLED"
+#'         )
 #'       )
 #'     )
 #'   ),

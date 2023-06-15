@@ -24,6 +24,6 @@ backup plans when set to \code{TRUE}.}
 \description{
 Returns a list of all active backup plans for an authenticated account. The list contains information such as Amazon Resource Names (ARNs), plan IDs, creation and deletion dates, version IDs, plan names, and creator request IDs.
 
-See \url{https://paws-r.github.io/docs/backup/list_backup_plans.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_list_backup_plans/} for full documentation.
 }
 \keyword{internal}

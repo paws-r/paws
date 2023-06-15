@@ -12,6 +12,6 @@ cloudfront_create_distribution_with_tags(DistributionConfigWithTags)
 \description{
 Create a new distribution with tags.
 
-See \url{https://paws-r.github.io/docs/cloudfront/create_distribution_with_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_create_distribution_with_tags/} for full documentation.
 }
 \keyword{internal}

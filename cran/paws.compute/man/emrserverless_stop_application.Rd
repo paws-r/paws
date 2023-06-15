@@ -13,6 +13,6 @@ emrserverless_stop_application(applicationId)
 \description{
 Stops a specified application and releases initial capacity if configured. All scheduled and running jobs must be completed or cancelled before stopping an application.
 
-See \url{https://paws-r.github.io/docs/emrserverless/stop_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emrserverless_stop_application/} for full documentation.
 }
 \keyword{internal}

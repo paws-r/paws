@@ -27,6 +27,6 @@ requirements (REVOKE). REVOKE status is not stored.}
 \description{
 Sets aside (overrides) all approval rule requirements for a specified pull request.
 
-See \url{https://paws-r.github.io/docs/codecommit/override_pull_request_approval_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_override_pull_request_approval_rules/} for full documentation.
 }
 \keyword{internal}

@@ -44,6 +44,6 @@ Default: 20}
 \description{
 Returns information about all of the operations that return an operation ID and that have ever been performed on domains that were registered by the current account.
 
-See \url{https://paws-r.github.io/docs/route53domains/list_operations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_list_operations/} for full documentation.
 }
 \keyword{internal}

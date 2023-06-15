@@ -19,6 +19,6 @@ in the \emph{Amazon CloudFront Developer Guide}.}
 \description{
 Creates a CloudFront function.
 
-See \url{https://paws-r.github.io/docs/cloudfront/create_function.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_create_function/} for full documentation.
 }
 \keyword{internal}

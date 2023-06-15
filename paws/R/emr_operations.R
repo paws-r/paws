@@ -73,7 +73,7 @@ NULL
 #'         TimeoutDurationMinutes = 123,
 #'         TimeoutAction = "SWITCH_TO_ON_DEMAND"|"TERMINATE_CLUSTER",
 #'         BlockDurationMinutes = 123,
-#'         AllocationStrategy = "capacity-optimized"
+#'         AllocationStrategy = "capacity-optimized"|"price-capacity-optimized"|"lowest-price"|"diversified"
 #'       ),
 #'       OnDemandSpecification = list(
 #'         AllocationStrategy = "lowest-price",
@@ -2163,7 +2163,7 @@ emr_list_clusters <- function(CreatedAfter = NULL, CreatedBefore = NULL, Cluster
 #'           TimeoutDurationMinutes = 123,
 #'           TimeoutAction = "SWITCH_TO_ON_DEMAND"|"TERMINATE_CLUSTER",
 #'           BlockDurationMinutes = 123,
-#'           AllocationStrategy = "capacity-optimized"
+#'           AllocationStrategy = "capacity-optimized"|"price-capacity-optimized"|"lowest-price"|"diversified"
 #'         ),
 #'         OnDemandSpecification = list(
 #'           AllocationStrategy = "lowest-price",
@@ -4026,7 +4026,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'             TimeoutDurationMinutes = 123,
 #'             TimeoutAction = "SWITCH_TO_ON_DEMAND"|"TERMINATE_CLUSTER",
 #'             BlockDurationMinutes = 123,
-#'             AllocationStrategy = "capacity-optimized"
+#'             AllocationStrategy = "capacity-optimized"|"price-capacity-optimized"|"lowest-price"|"diversified"
 #'           ),
 #'           OnDemandSpecification = list(
 #'             AllocationStrategy = "lowest-price",

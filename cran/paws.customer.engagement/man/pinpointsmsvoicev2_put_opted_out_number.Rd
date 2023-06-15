@@ -14,6 +14,6 @@ pinpointsmsvoicev2_put_opted_out_number(OptOutListName, OptedOutNumber)
 \description{
 Creates an opted out destination phone number in the opt-out list.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/put_opted_out_number.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_put_opted_out_number/} for full documentation.
 }
 \keyword{internal}

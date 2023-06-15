@@ -25,6 +25,6 @@ you do not specify either, AWS Elastic Beanstalk returns
 \description{
 Returns AWS resources for this environment.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/describe_environment_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_environment_resources/} for full documentation.
 }
 \keyword{internal}

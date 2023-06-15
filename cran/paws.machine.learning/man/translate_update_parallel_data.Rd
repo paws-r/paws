@@ -25,6 +25,6 @@ generated when you use Amazon Translate through an AWS SDK.}
 \description{
 Updates a previously created parallel data resource by importing a new input file from Amazon S3.
 
-See \url{https://paws-r.github.io/docs/translate/update_parallel_data.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/translate_update_parallel_data/} for full documentation.
 }
 \keyword{internal}

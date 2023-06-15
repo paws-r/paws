@@ -13,6 +13,6 @@ cloudfront_create_key_group(KeyGroupConfig)
 \description{
 Creates a key group that you can use with \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html}{CloudFront signed URLs and signed cookies}.
 
-See \url{https://paws-r.github.io/docs/cloudfront/create_key_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_create_key_group/} for full documentation.
 }
 \keyword{internal}

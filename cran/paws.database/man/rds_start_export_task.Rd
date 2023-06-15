@@ -85,6 +85,6 @@ and Aurora PostgreSQL.
 \description{
 Starts an export of DB snapshot or DB cluster data to Amazon S3. The provided IAM role must have access to the S3 bucket.
 
-See \url{https://paws-r.github.io/docs/rds/start_export_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_start_export_task/} for full documentation.
 }
 \keyword{internal}

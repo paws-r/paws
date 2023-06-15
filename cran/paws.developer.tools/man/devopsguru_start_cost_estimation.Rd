@@ -16,6 +16,6 @@ DevOps Guru cost estimate.}
 \description{
 Starts the creation of an estimate of the monthly cost to analyze your Amazon Web Services resources.
 
-See \url{https://paws-r.github.io/docs/devopsguru/start_cost_estimation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_start_cost_estimation/} for full documentation.
 }
 \keyword{internal}

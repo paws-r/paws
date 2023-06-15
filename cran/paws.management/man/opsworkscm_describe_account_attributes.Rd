@@ -9,6 +9,6 @@ opsworkscm_describe_account_attributes()
 \description{
 Describes your OpsWorks-CM account attributes.
 
-See \url{https://paws-r.github.io/docs/opsworkscm/describe_account_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworkscm_describe_account_attributes/} for full documentation.
 }
 \keyword{internal}

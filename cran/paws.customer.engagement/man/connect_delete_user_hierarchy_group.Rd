@@ -15,6 +15,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Deletes an existing user hierarchy group. It must not be associated with any agents or have any active child groups.
 
-See \url{https://paws-r.github.io/docs/connect/delete_user_hierarchy_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_delete_user_hierarchy_group/} for full documentation.
 }
 \keyword{internal}

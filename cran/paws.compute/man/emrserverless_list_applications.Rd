@@ -22,6 +22,6 @@ state.}
 \description{
 Lists applications based on a set of parameters.
 
-See \url{https://paws-r.github.io/docs/emrserverless/list_applications.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emrserverless_list_applications/} for full documentation.
 }
 \keyword{internal}

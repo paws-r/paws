@@ -17,6 +17,6 @@ list the tags. Currently, the supported resources are \code{ConfigRule},
 \description{
 Associates the specified tags to a resource with the specified resourceArn. If existing tags on a resource are not specified in the request parameters, they are not changed. If existing tags are specified, however, then their values will be updated. When a resource is deleted, the tags associated with that resource are deleted as well.
 
-See \url{https://paws-r.github.io/docs/configservice/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_tag_resource/} for full documentation.
 }
 \keyword{internal}

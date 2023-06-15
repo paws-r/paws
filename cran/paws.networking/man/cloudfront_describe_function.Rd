@@ -15,6 +15,6 @@ cloudfront_describe_function(Name, Stage = NULL)
 \description{
 Gets configuration information and metadata about a CloudFront function, but not the function's code. To get a function's code, use \code{\link[=cloudfront_get_function]{get_function}}.
 
-See \url{https://paws-r.github.io/docs/cloudfront/describe_function.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_describe_function/} for full documentation.
 }
 \keyword{internal}

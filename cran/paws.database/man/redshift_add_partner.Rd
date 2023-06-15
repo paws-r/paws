@@ -19,6 +19,6 @@ partner.}
 \description{
 Adds a partner integration to a cluster. This operation authorizes a partner to push status updates for the specified database. To complete the integration, you also set up the integration on the partner website.
 
-See \url{https://paws-r.github.io/docs/redshift/add_partner.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_add_partner/} for full documentation.
 }
 \keyword{internal}

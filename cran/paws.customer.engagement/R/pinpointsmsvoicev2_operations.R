@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Associates the specified origination identity with a pool.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/associate_origination_identity.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/associate_origination_identity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_associate_origination_identity/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_associate_origination_identity/) for full documentation.
 #'
 #' @param PoolId &#91;required&#93; The pool to update with the new Identity. This value can be either the
 #' PoolId or PoolArn, and you can find these values using
@@ -50,7 +50,7 @@ pinpointsmsvoicev2_associate_origination_identity <- function(PoolId, Originatio
 #' @description
 #' Creates a new configuration set. After you create the configuration set, you can add one or more event destinations to it.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/create_configuration_set.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/create_configuration_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_create_configuration_set/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_create_configuration_set/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name to use for the new configuration set.
 #' @param Tags An array of key and value pair tags that's associated with the new
@@ -84,7 +84,7 @@ pinpointsmsvoicev2_create_configuration_set <- function(ConfigurationSetName, Ta
 #' @description
 #' Creates a new event destination in a configuration set.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/create_event_destination.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/create_event_destination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_create_event_destination/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_create_event_destination/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; Either the name of the configuration set or the configuration set ARN to
 #' apply event logging to. The ConfigurateSetName and ConfigurationSetArn
@@ -129,7 +129,7 @@ pinpointsmsvoicev2_create_event_destination <- function(ConfigurationSetName, Ev
 #' @description
 #' Creates a new opt-out list.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/create_opt_out_list.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/create_opt_out_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_create_opt_out_list/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_create_opt_out_list/) for full documentation.
 #'
 #' @param OptOutListName &#91;required&#93; The name of the new OptOutList.
 #' @param Tags An array of tags (key and value pairs) to associate with the new
@@ -164,7 +164,7 @@ pinpointsmsvoicev2_create_opt_out_list <- function(OptOutListName, Tags = NULL, 
 #' @description
 #' Creates a new pool and associates the specified origination identity to the pool. A pool can include one or more phone numbers and SenderIds that are associated with your Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/create_pool.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/create_pool.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_create_pool/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_create_pool/) for full documentation.
 #'
 #' @param OriginationIdentity &#91;required&#93; The origination identity to use such as a PhoneNumberId, PhoneNumberArn,
 #' SenderId or SenderIdArn. You can use
@@ -210,7 +210,7 @@ pinpointsmsvoicev2_create_pool <- function(OriginationIdentity, IsoCountryCode, 
 #' @description
 #' Deletes an existing configuration set.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_configuration_set.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_configuration_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_configuration_set/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_configuration_set/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set or the configuration set ARN that you
 #' want to delete. The ConfigurationSetName and ConfigurationSetArn can be
@@ -243,7 +243,7 @@ pinpointsmsvoicev2_delete_configuration_set <- function(ConfigurationSetName) {
 #' @description
 #' Deletes an existing default message type on a configuration set.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_default_message_type.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_default_message_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_default_message_type/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_default_message_type/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set or the configuration set Amazon
 #' Resource Name (ARN) to delete the default message type from. The
@@ -276,7 +276,7 @@ pinpointsmsvoicev2_delete_default_message_type <- function(ConfigurationSetName)
 #' @description
 #' Deletes an existing default sender ID on a configuration set.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_default_sender_id.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_default_sender_id.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_default_sender_id/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_default_sender_id/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set or the configuration set Amazon
 #' Resource Name (ARN) to delete the default sender ID from. The
@@ -309,7 +309,7 @@ pinpointsmsvoicev2_delete_default_sender_id <- function(ConfigurationSetName) {
 #' @description
 #' Deletes an existing event destination.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_event_destination.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_event_destination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_event_destination/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_event_destination/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set or the configuration set's Amazon
 #' Resource Name (ARN) to remove the event destination from. The
@@ -343,7 +343,7 @@ pinpointsmsvoicev2_delete_event_destination <- function(ConfigurationSetName, Ev
 #' @description
 #' Deletes an existing keyword from an origination phone number or pool.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_keyword.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_keyword.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_keyword/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_keyword/) for full documentation.
 #'
 #' @param OriginationIdentity &#91;required&#93; The origination identity to use such as a PhoneNumberId, PhoneNumberArn,
 #' PoolId or PoolArn. You can use
@@ -378,7 +378,7 @@ pinpointsmsvoicev2_delete_keyword <- function(OriginationIdentity, Keyword) {
 #' @description
 #' Deletes an existing opt-out list. All opted out phone numbers in the opt-out list are deleted.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_opt_out_list.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_opt_out_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_opt_out_list/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_opt_out_list/) for full documentation.
 #'
 #' @param OptOutListName &#91;required&#93; The OptOutListName or OptOutListArn of the OptOutList to delete. You can
 #' use
@@ -411,7 +411,7 @@ pinpointsmsvoicev2_delete_opt_out_list <- function(OptOutListName) {
 #' @description
 #' Deletes an existing opted out destination phone number from the specified opt-out list.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_opted_out_number.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_opted_out_number.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_opted_out_number/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_opted_out_number/) for full documentation.
 #'
 #' @param OptOutListName &#91;required&#93; The OptOutListName or OptOutListArn to remove the phone number from.
 #' @param OptedOutNumber &#91;required&#93; The phone number, in E.164 format, to remove from the OptOutList.
@@ -441,7 +441,7 @@ pinpointsmsvoicev2_delete_opted_out_number <- function(OptOutListName, OptedOutN
 #' @description
 #' Deletes an existing pool. Deleting a pool disassociates all origination identities from that pool.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_pool.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_pool.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_pool/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_pool/) for full documentation.
 #'
 #' @param PoolId &#91;required&#93; The PoolId or PoolArn of the pool to delete. You can use
 #' [`describe_pools`][pinpointsmsvoicev2_describe_pools] to find the values
@@ -473,7 +473,7 @@ pinpointsmsvoicev2_delete_pool <- function(PoolId) {
 #' @description
 #' Deletes an account-level monthly spending limit override for sending text messages. Deleting a spend limit override will set the `EnforcedLimit` to equal the `MaxLimit`, which is controlled by Amazon Web Services. For more information on spend limits (quotas) see [Amazon Pinpoint quotas](https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html) in the *Amazon Pinpoint Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_text_message_spend_limit_override.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_text_message_spend_limit_override.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_text_message_spend_limit_override/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_text_message_spend_limit_override/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -501,7 +501,7 @@ pinpointsmsvoicev2_delete_text_message_spend_limit_override <- function() {
 #' @description
 #' Deletes an account level monthly spend limit override for sending voice messages. Deleting a spend limit override sets the `EnforcedLimit` equal to the `MaxLimit`, which is controlled by Amazon Web Services. For more information on spending limits (quotas) see [Amazon Pinpoint quotas](https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html) in the *Amazon Pinpoint Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_voice_message_spend_limit_override.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_voice_message_spend_limit_override.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_voice_message_spend_limit_override/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_voice_message_spend_limit_override/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -528,7 +528,7 @@ pinpointsmsvoicev2_delete_voice_message_spend_limit_override <- function() {
 #' @description
 #' Describes attributes of your Amazon Web Services account. The supported account attributes include account tier, which indicates whether your account is in the sandbox or production environment. When you're ready to move your account out of the sandbox, create an Amazon Web Services Support case for a service limit increase request.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_account_attributes.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_account_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_account_attributes/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_account_attributes/) for full documentation.
 #'
 #' @param NextToken The token to be used for the next set of paginated results. You don't
 #' need to supply a value for this field in the initial request.
@@ -560,7 +560,7 @@ pinpointsmsvoicev2_describe_account_attributes <- function(NextToken = NULL, Max
 #' @description
 #' Describes the current Amazon Pinpoint SMS Voice V2 resource quotas for your account. The description for a quota includes the quota name, current usage toward that quota, and the quota's maximum value.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_account_limits.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_account_limits.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_account_limits/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_account_limits/) for full documentation.
 #'
 #' @param NextToken The token to be used for the next set of paginated results. You don't
 #' need to supply a value for this field in the initial request.
@@ -591,7 +591,7 @@ pinpointsmsvoicev2_describe_account_limits <- function(NextToken = NULL, MaxResu
 #' @description
 #' Describes the specified configuration sets or all in your account.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_configuration_sets.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_configuration_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_configuration_sets/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_configuration_sets/) for full documentation.
 #'
 #' @param ConfigurationSetNames An array of strings. Each element can be either a ConfigurationSetName
 #' or ConfigurationSetArn.
@@ -626,7 +626,7 @@ pinpointsmsvoicev2_describe_configuration_sets <- function(ConfigurationSetNames
 #' @description
 #' Describes the specified keywords or all keywords on your origination phone number or pool.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_keywords.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_keywords.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_keywords/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_keywords/) for full documentation.
 #'
 #' @param OriginationIdentity &#91;required&#93; The origination identity to use such as a PhoneNumberId, PhoneNumberArn,
 #' SenderId or SenderIdArn. You can use
@@ -666,7 +666,7 @@ pinpointsmsvoicev2_describe_keywords <- function(OriginationIdentity, Keywords =
 #' @description
 #' Describes the specified opt-out list or all opt-out lists in your account.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_opt_out_lists.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_opt_out_lists.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_opt_out_lists/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_opt_out_lists/) for full documentation.
 #'
 #' @param OptOutListNames The OptOutLists to show the details of. This is an array of strings that
 #' can be either the OptOutListName or OptOutListArn.
@@ -700,7 +700,7 @@ pinpointsmsvoicev2_describe_opt_out_lists <- function(OptOutListNames = NULL, Ne
 #' @description
 #' Describes the specified opted out destination numbers or all opted out destination numbers in an opt-out list.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_opted_out_numbers.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_opted_out_numbers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_opted_out_numbers/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_opted_out_numbers/) for full documentation.
 #'
 #' @param OptOutListName &#91;required&#93; The OptOutListName or OptOutListArn of the OptOutList. You can use
 #' [`describe_opt_out_lists`][pinpointsmsvoicev2_describe_opt_out_lists] to
@@ -737,7 +737,7 @@ pinpointsmsvoicev2_describe_opted_out_numbers <- function(OptOutListName, OptedO
 #' @description
 #' Describes the specified origination phone number, or all the phone numbers in your account.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_phone_numbers.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_phone_numbers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_phone_numbers/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_phone_numbers/) for full documentation.
 #'
 #' @param PhoneNumberIds The unique identifier of phone numbers to find information about. This
 #' is an array of strings that can be either the PhoneNumberId or
@@ -773,7 +773,7 @@ pinpointsmsvoicev2_describe_phone_numbers <- function(PhoneNumberIds = NULL, Fil
 #' @description
 #' Retrieves the specified pools or all pools associated with your Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_pools.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_pools.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_pools/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_pools/) for full documentation.
 #'
 #' @param PoolIds The unique identifier of pools to find. This is an array of strings that
 #' can be either the PoolId or PoolArn.
@@ -808,7 +808,7 @@ pinpointsmsvoicev2_describe_pools <- function(PoolIds = NULL, Filters = NULL, Ne
 #' @description
 #' Describes the specified SenderIds or all SenderIds associated with your Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_sender_ids.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_sender_ids.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_sender_ids/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_sender_ids/) for full documentation.
 #'
 #' @param SenderIds An array of SenderIdAndCountry objects to search for.
 #' @param Filters An array of SenderIdFilter objects to filter the results.
@@ -842,7 +842,7 @@ pinpointsmsvoicev2_describe_sender_ids <- function(SenderIds = NULL, Filters = N
 #' @description
 #' Describes the current Amazon Pinpoint monthly spend limits for sending voice and text messages.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_spend_limits.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_spend_limits.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_spend_limits/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_spend_limits/) for full documentation.
 #'
 #' @param NextToken The token to be used for the next set of paginated results. You don't
 #' need to supply a value for this field in the initial request.
@@ -873,7 +873,7 @@ pinpointsmsvoicev2_describe_spend_limits <- function(NextToken = NULL, MaxResult
 #' @description
 #' Removes the specified origination identity from an existing pool.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/disassociate_origination_identity.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/disassociate_origination_identity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_disassociate_origination_identity/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_disassociate_origination_identity/) for full documentation.
 #'
 #' @param PoolId &#91;required&#93; The unique identifier for the pool to disassociate with the origination
 #' identity. This value can be either the PoolId or PoolArn.
@@ -914,7 +914,7 @@ pinpointsmsvoicev2_disassociate_origination_identity <- function(PoolId, Origina
 #' @description
 #' Lists all associated origination identities in your pool.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/list_pool_origination_identities.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/list_pool_origination_identities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_list_pool_origination_identities/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_list_pool_origination_identities/) for full documentation.
 #'
 #' @param PoolId &#91;required&#93; The unique identifier for the pool. This value can be either the PoolId
 #' or PoolArn.
@@ -949,7 +949,7 @@ pinpointsmsvoicev2_list_pool_origination_identities <- function(PoolId, Filters 
 #' @description
 #' List all tags associated with a resource.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/list_tags_for_resource.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to query for.
 #'
@@ -979,7 +979,7 @@ pinpointsmsvoicev2_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Creates or updates a keyword configuration on an origination phone number or pool.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/put_keyword.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/put_keyword.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_put_keyword/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_put_keyword/) for full documentation.
 #'
 #' @param OriginationIdentity &#91;required&#93; The origination identity to use such as a PhoneNumberId, PhoneNumberArn,
 #' SenderId or SenderIdArn. You can use
@@ -1022,7 +1022,7 @@ pinpointsmsvoicev2_put_keyword <- function(OriginationIdentity, Keyword, Keyword
 #' @description
 #' Creates an opted out destination phone number in the opt-out list.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/put_opted_out_number.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/put_opted_out_number.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_put_opted_out_number/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_put_opted_out_number/) for full documentation.
 #'
 #' @param OptOutListName &#91;required&#93; The OptOutListName or OptOutListArn to add the phone number to.
 #' @param OptedOutNumber &#91;required&#93; The phone number to add to the OptOutList in E.164 format.
@@ -1052,7 +1052,7 @@ pinpointsmsvoicev2_put_opted_out_number <- function(OptOutListName, OptedOutNumb
 #' @description
 #' Releases an existing origination phone number in your account. Once released, a phone number is no longer available for sending messages.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/release_phone_number.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/release_phone_number.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_release_phone_number/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_release_phone_number/) for full documentation.
 #'
 #' @param PhoneNumberId &#91;required&#93; The PhoneNumberId or PhoneNumberArn of the phone number to release. You
 #' can use
@@ -1084,7 +1084,7 @@ pinpointsmsvoicev2_release_phone_number <- function(PhoneNumberId) {
 #' @description
 #' Request an origination phone number for use in your account. For more information on phone number request see [Requesting a number](https://docs.aws.amazon.com/pinpoint/latest/userguide/settings-sms-request-number.html) in the *Amazon Pinpoint User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/request_phone_number.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/request_phone_number.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_request_phone_number/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_request_phone_number/) for full documentation.
 #'
 #' @param IsoCountryCode &#91;required&#93; The two-character code, in ISO 3166-1 alpha-2 format, for the country or
 #' region.
@@ -1133,7 +1133,7 @@ pinpointsmsvoicev2_request_phone_number <- function(IsoCountryCode, MessageType,
 #' @description
 #' Creates a new text message and sends it to a recipient's phone number.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/send_text_message.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/send_text_message.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_send_text_message/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_send_text_message/) for full documentation.
 #'
 #' @param DestinationPhoneNumber &#91;required&#93; The destination phone number in E.164 format.
 #' @param OriginationIdentity The origination identity of the message. This can be either the
@@ -1186,7 +1186,7 @@ pinpointsmsvoicev2_send_text_message <- function(DestinationPhoneNumber, Origina
 #' @description
 #' Allows you to send a request that sends a text message through Amazon Pinpoint. This operation uses [Amazon Polly](https://aws.amazon.com/polly/) to convert a text script into a voice message.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/send_voice_message.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/send_voice_message.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_send_voice_message/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_send_voice_message/) for full documentation.
 #'
 #' @param DestinationPhoneNumber &#91;required&#93; The destination phone number in E.164 format.
 #' @param OriginationIdentity &#91;required&#93; The origination identity to use for the voice call. This can be the
@@ -1238,7 +1238,7 @@ pinpointsmsvoicev2_send_voice_message <- function(DestinationPhoneNumber, Origin
 #' @description
 #' Sets the default message type on a configuration set.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/set_default_message_type.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/set_default_message_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_set_default_message_type/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_set_default_message_type/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The configuration set to update with a new default message type. This
 #' field can be the ConsigurationSetName or ConfigurationSetArn.
@@ -1271,7 +1271,7 @@ pinpointsmsvoicev2_set_default_message_type <- function(ConfigurationSetName, Me
 #' @description
 #' Sets default sender ID on a configuration set.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/set_default_sender_id.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/set_default_sender_id.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_set_default_sender_id/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_set_default_sender_id/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The configuration set to updated with a new default SenderId. This field
 #' can be the ConsigurationSetName or ConfigurationSetArn.
@@ -1309,7 +1309,7 @@ pinpointsmsvoicev2_set_default_sender_id <- function(ConfigurationSetName, Sende
 #' @description
 #' Sets an account level monthly spend limit override for sending text messages. The requested spend limit must be less than or equal to the `MaxLimit`, which is set by Amazon Web Services.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/set_text_message_spend_limit_override.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/set_text_message_spend_limit_override.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_set_text_message_spend_limit_override/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_set_text_message_spend_limit_override/) for full documentation.
 #'
 #' @param MonthlyLimit &#91;required&#93; The new monthly limit to enforce on text messages.
 #'
@@ -1339,7 +1339,7 @@ pinpointsmsvoicev2_set_text_message_spend_limit_override <- function(MonthlyLimi
 #' @description
 #' Sets an account level monthly spend limit override for sending voice messages. The requested spend limit must be less than or equal to the `MaxLimit`, which is set by Amazon Web Services.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/set_voice_message_spend_limit_override.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/set_voice_message_spend_limit_override.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_set_voice_message_spend_limit_override/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_set_voice_message_spend_limit_override/) for full documentation.
 #'
 #' @param MonthlyLimit &#91;required&#93; The new monthly limit to enforce on voice messages.
 #'
@@ -1369,7 +1369,7 @@ pinpointsmsvoicev2_set_voice_message_spend_limit_override <- function(MonthlyLim
 #' @description
 #' Adds or overwrites only the specified tags for the specified Amazon Pinpoint SMS Voice, version 2 resource. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and an optional value. Tag keys must be unique per resource. For more information about tags, see [Tagging Amazon Pinpoint resources](https://docs.aws.amazon.com/pinpoint/latest/developerguide/tagging-resources.html) in the *Amazon Pinpoint Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/tag_resource.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_tag_resource/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param Tags &#91;required&#93; An array of key and value pair tags that are associated with the
@@ -1401,7 +1401,7 @@ pinpointsmsvoicev2_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes the association of the specified tags from an Amazon Pinpoint SMS Voice V2 resource. For more information on tags see [Tagging Amazon Pinpoint resources](https://docs.aws.amazon.com/pinpoint/latest/developerguide/tagging-resources.html) in the *Amazon Pinpoint Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/untag_resource.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_untag_resource/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param TagKeys &#91;required&#93; An array of tag key values to unassociate with the resource.
@@ -1431,7 +1431,7 @@ pinpointsmsvoicev2_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates an existing event destination in a configuration set. You can update the IAM role ARN for CloudWatch Logs and Kinesis Data Firehose. You can also enable or disable the event destination.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/update_event_destination.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/update_event_destination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_update_event_destination/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_update_event_destination/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The configuration set to update with the new event destination. Valid
 #' values for this can be the ConfigurationSetName or ConfigurationSetArn.
@@ -1470,7 +1470,7 @@ pinpointsmsvoicev2_update_event_destination <- function(ConfigurationSetName, Ev
 #' @description
 #' Updates the configuration of an existing origination phone number. You can update the opt-out list, enable or disable two-way messaging, change the TwoWayChannelArn, enable or disable self-managed opt-outs, and enable or disable deletion protection.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/update_phone_number.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/update_phone_number.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_update_phone_number/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_update_phone_number/) for full documentation.
 #'
 #' @param PhoneNumberId &#91;required&#93; The unique identifier of the phone number. Valid values for this field
 #' can be either the PhoneNumberId or PhoneNumberArn.
@@ -1513,7 +1513,7 @@ pinpointsmsvoicev2_update_phone_number <- function(PhoneNumberId, TwoWayEnabled 
 #' @description
 #' Updates the configuration of an existing pool. You can update the opt-out list, enable or disable two-way messaging, change the `TwoWayChannelArn`, enable or disable self-managed opt-outs, enable or disable deletion protection, and enable or disable shared routes.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoicev2/update_pool.html](https://paws-r.github.io/docs/pinpointsmsvoicev2/update_pool.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_update_pool/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_update_pool/) for full documentation.
 #'
 #' @param PoolId &#91;required&#93; The unique identifier of the pool to update. Valid values are either the
 #' PoolId or PoolArn.

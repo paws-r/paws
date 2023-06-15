@@ -13,6 +13,6 @@ ARN, or the group ID as the \code{GroupIdentifier}.}
 \description{
 Deletes a group. The group doesn't need to be empty to be deleted. If there are canaries in the group, they are not deleted when you delete the group.
 
-See \url{https://paws-r.github.io/docs/synthetics/delete_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/synthetics_delete_group/} for full documentation.
 }
 \keyword{internal}

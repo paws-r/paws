@@ -28,6 +28,6 @@ tasks on your behalf.}
 \description{
 Updates the properties of a SageMaker image. To change the image's tags, use the \code{\link[=sagemaker_add_tags]{add_tags}} and \code{\link[=sagemaker_delete_tags]{delete_tags}} APIs.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_image/} for full documentation.
 }
 \keyword{internal}

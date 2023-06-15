@@ -23,6 +23,6 @@ from a previous call.)}
 \description{
 Provides details about all active and terminated Automation executions.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_automation_executions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_automation_executions/} for full documentation.
 }
 \keyword{internal}

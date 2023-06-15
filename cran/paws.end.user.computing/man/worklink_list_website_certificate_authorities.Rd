@@ -22,6 +22,6 @@ operation. If this value is null, it retrieves the first page.}
 \description{
 Retrieves a list of certificate authorities added for the current account and Region.
 
-See \url{https://paws-r.github.io/docs/worklink/list_website_certificate_authorities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_list_website_certificate_authorities/} for full documentation.
 }
 \keyword{internal}

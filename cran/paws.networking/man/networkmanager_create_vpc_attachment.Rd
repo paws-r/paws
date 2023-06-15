@@ -29,6 +29,6 @@ networkmanager_create_vpc_attachment(
 \description{
 Creates a VPC attachment on an edge location of a core network.
 
-See \url{https://paws-r.github.io/docs/networkmanager/create_vpc_attachment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_create_vpc_attachment/} for full documentation.
 }
 \keyword{internal}

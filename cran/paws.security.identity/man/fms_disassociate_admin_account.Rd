@@ -9,6 +9,6 @@ fms_disassociate_admin_account()
 \description{
 Disassociates an Firewall Manager administrator account. To set a different account as an Firewall Manager administrator, submit a \code{\link[=fms_put_admin_account]{put_admin_account}} request. To set an account as a default administrator account, you must submit an \code{\link[=fms_associate_admin_account]{associate_admin_account}} request.
 
-See \url{https://paws-r.github.io/docs/fms/disassociate_admin_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_disassociate_admin_account/} for full documentation.
 }
 \keyword{internal}

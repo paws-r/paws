@@ -15,6 +15,6 @@ Constraints: Must be the name of an existing DB snapshot in the
 \description{
 Deletes a DB snapshot. If the snapshot is being copied, the copy operation is terminated.
 
-See \url{https://paws-r.github.io/docs/rds/delete_db_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_delete_db_snapshot/} for full documentation.
 }
 \keyword{internal}

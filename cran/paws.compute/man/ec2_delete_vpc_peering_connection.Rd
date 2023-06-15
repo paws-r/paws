@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes a VPC peering connection. Either the owner of the requester VPC or the owner of the accepter VPC can delete the VPC peering connection if it's in the \code{active} state. The owner of the requester VPC can delete a VPC peering connection in the \code{pending-acceptance} state. You cannot delete a VPC peering connection that's in the \code{failed} state.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_vpc_peering_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_vpc_peering_connection/} for full documentation.
 }
 \keyword{internal}

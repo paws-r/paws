@@ -23,6 +23,6 @@ directory (/) of a repository.}
 \description{
 Returns the contents of a specified folder in a repository.
 
-See \url{https://paws-r.github.io/docs/codecommit/get_folder.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_get_folder/} for full documentation.
 }
 \keyword{internal}

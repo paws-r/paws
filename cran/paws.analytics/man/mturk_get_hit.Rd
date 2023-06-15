@@ -12,6 +12,6 @@ mturk_get_hit(HITId)
 \description{
 The \code{\link[=mturk_get_hit]{get_hit}} operation retrieves the details of the specified HIT.
 
-See \url{https://paws-r.github.io/docs/mturk/get_hit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_get_hit/} for full documentation.
 }
 \keyword{internal}

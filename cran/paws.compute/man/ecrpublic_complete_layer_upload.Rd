@@ -29,6 +29,6 @@ associate with the image layer.}
 \description{
 Informs Amazon ECR that the image layer upload is complete for a specified public registry, repository name, and upload ID. You can optionally provide a \code{sha256} digest of the image layer for data validation purposes.
 
-See \url{https://paws-r.github.io/docs/ecrpublic/complete_layer_upload.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecrpublic_complete_layer_upload/} for full documentation.
 }
 \keyword{internal}

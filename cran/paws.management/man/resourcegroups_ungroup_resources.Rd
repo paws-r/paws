@@ -15,6 +15,6 @@ resources.}
 \description{
 Removes the specified resources from the specified group. This operation works only with static groups that you populated using the \code{\link[=resourcegroups_group_resources]{group_resources}} operation. It doesn't work with any resource groups that are automatically populated by tag-based or CloudFormation stack-based queries.
 
-See \url{https://paws-r.github.io/docs/resourcegroups/ungroup_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroups_ungroup_resources/} for full documentation.
 }
 \keyword{internal}

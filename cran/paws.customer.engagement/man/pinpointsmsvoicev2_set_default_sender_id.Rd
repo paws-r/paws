@@ -21,6 +21,6 @@ available in your account, instead of a generic sender ID, such as
 \description{
 Sets default sender ID on a configuration set.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/set_default_sender_id.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_set_default_sender_id/} for full documentation.
 }
 \keyword{internal}

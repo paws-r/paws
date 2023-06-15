@@ -39,6 +39,6 @@ Manager returns the \code{AWSCURRENT} version.}
 \description{
 Retrieves the contents of the encrypted fields \code{SecretString} or \code{SecretBinary} from the specified version of a secret, whichever contains content.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/get_secret_value.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_get_secret_value/} for full documentation.
 }
 \keyword{internal}

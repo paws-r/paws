@@ -32,6 +32,6 @@ indicate where the next call should start.}
 \description{
 Retrieves a service last accessed report that was created using the \code{\link[=iam_generate_service_last_accessed_details]{generate_service_last_accessed_details}} operation. You can use the \code{JobId} parameter in \code{\link[=iam_get_service_last_accessed_details]{get_service_last_accessed_details}} to retrieve the status of your report job. When the report is complete, you can retrieve the generated report. The report includes a list of Amazon Web Services services that the resource (user, group, role, or managed policy) can access.
 
-See \url{https://paws-r.github.io/docs/iam/get_service_last_accessed_details.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_get_service_last_accessed_details/} for full documentation.
 }
 \keyword{internal}

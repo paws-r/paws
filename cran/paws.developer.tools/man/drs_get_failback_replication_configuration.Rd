@@ -14,6 +14,6 @@ should be returned.}
 \description{
 Lists all Failback ReplicationConfigurations, filtered by Recovery Instance ID.
 
-See \url{https://paws-r.github.io/docs/drs/get_failback_replication_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_get_failback_replication_configuration/} for full documentation.
 }
 \keyword{internal}

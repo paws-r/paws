@@ -29,6 +29,6 @@ idempotency—that is, the uniqueness—of the request.}
 \description{
 Create an endpoint group for the specified listener for a custom routing accelerator. An endpoint group is a collection of endpoints in one Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/create_custom_routing_endpoint_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_create_custom_routing_endpoint_group/} for full documentation.
 }
 \keyword{internal}

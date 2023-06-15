@@ -17,6 +17,6 @@ findings you want to retrieve.}
 \description{
 Describes Amazon GuardDuty findings specified by finding IDs.
 
-See \url{https://paws-r.github.io/docs/guardduty/get_findings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_get_findings/} for full documentation.
 }
 \keyword{internal}

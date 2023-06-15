@@ -11,11 +11,11 @@ sqs_delete_message_batch(QueueUrl, Entries)
 
 Queue URLs and names are case-sensitive.}
 
-\item{Entries}{[required] A list of receipt handles for the messages to be deleted.}
+\item{Entries}{[required] Lists the receipt handles for the messages to be deleted.}
 }
 \description{
 Deletes up to ten messages from the specified queue. This is a batch version of \code{ DeleteMessage.} The result of the action on each message is reported individually in the response.
 
-See \url{https://paws-r.github.io/docs/sqs/delete_message_batch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sqs_delete_message_batch/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ pagination if a previous request was truncated.}
 \description{
 Lists the capacity reservations for the current account.
 
-See \url{https://paws-r.github.io/docs/athena/list_capacity_reservations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_list_capacity_reservations/} for full documentation.
 }
 \keyword{internal}

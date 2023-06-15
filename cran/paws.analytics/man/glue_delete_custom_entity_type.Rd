@@ -12,6 +12,6 @@ glue_delete_custom_entity_type(Name)
 \description{
 Deletes a custom pattern by specifying its name.
 
-See \url{https://paws-r.github.io/docs/glue/delete_custom_entity_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_delete_custom_entity_type/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ most recent revision ID for a pull request, use
 \description{
 Evaluates whether a pull request has met all the conditions specified in its associated approval rules.
 
-See \url{https://paws-r.github.io/docs/codecommit/evaluate_pull_request_approval_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_evaluate_pull_request_approval_rules/} for full documentation.
 }
 \keyword{internal}

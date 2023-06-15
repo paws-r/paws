@@ -12,6 +12,6 @@ networkmanager_list_tags_for_resource(ResourceArn)
 \description{
 Lists the tags for a specified resource.
 
-See \url{https://paws-r.github.io/docs/networkmanager/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

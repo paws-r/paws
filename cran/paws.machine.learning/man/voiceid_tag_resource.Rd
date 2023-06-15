@@ -14,6 +14,6 @@ voiceid_tag_resource(ResourceArn, Tags)
 \description{
 Tags a Voice ID resource with the provided list of tags.
 
-See \url{https://paws-r.github.io/docs/voiceid/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/voiceid_tag_resource/} for full documentation.
 }
 \keyword{internal}

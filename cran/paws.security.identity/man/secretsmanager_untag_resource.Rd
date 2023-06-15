@@ -25,6 +25,6 @@ in the Amazon Web Services CLI User Guide.}
 \description{
 Removes specific tags from a secret.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_untag_resource/} for full documentation.
 }
 \keyword{internal}

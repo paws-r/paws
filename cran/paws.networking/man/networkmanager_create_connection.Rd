@@ -34,6 +34,6 @@ Length Constraints: Maximum length of 256 characters.}
 \description{
 Creates a connection between two devices. The devices can be a physical or virtual appliance that connects to a third-party appliance in a VPC, or a physical appliance that connects to another physical appliance in an on-premises network.
 
-See \url{https://paws-r.github.io/docs/networkmanager/create_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_create_connection/} for full documentation.
 }
 \keyword{internal}

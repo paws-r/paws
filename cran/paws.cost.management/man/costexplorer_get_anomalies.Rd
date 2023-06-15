@@ -37,6 +37,6 @@ results than the maximum page size.}
 \description{
 Retrieves all of the cost anomalies detected on your account during the time period that's specified by the \code{DateInterval} object. Anomalies are available for up to 90 days.
 
-See \url{https://paws-r.github.io/docs/costexplorer/get_anomalies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_get_anomalies/} for full documentation.
 }
 \keyword{internal}

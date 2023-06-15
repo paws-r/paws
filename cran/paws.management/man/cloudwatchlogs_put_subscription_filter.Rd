@@ -56,6 +56,6 @@ destination is an Amazon Kinesis data stream.}
 \description{
 Creates or updates a subscription filter and associates it with the specified log group. With subscription filters, you can subscribe to a real-time stream of log events ingested through \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} and have them delivered to a specific destination. When log events are sent to the receiving service, they are Base64 encoded and compressed with the GZIP format.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/put_subscription_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_subscription_filter/} for full documentation.
 }
 \keyword{internal}

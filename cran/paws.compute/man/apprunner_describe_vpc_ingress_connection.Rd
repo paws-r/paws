@@ -14,6 +14,6 @@ that you want a description for.}
 \description{
 Return a full description of an App Runner VPC Ingress Connection resource.
 
-See \url{https://paws-r.github.io/docs/apprunner/describe_vpc_ingress_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_describe_vpc_ingress_connection/} for full documentation.
 }
 \keyword{internal}

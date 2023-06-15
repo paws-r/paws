@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_describe_stack_set}
 \alias{cloudformation_describe_stack_set}
-\title{Returns the description of the specified stack set}
+\title{Returns the description of the specified StackSet}
 \usage{
 cloudformation_describe_stack_set(StackSetName, CallAs = NULL)
 }
@@ -27,8 +27,8 @@ in the \emph{CloudFormation User Guide}.
 }}
 }
 \description{
-Returns the description of the specified stack set.
+Returns the description of the specified StackSet.
 
-See \url{https://paws-r.github.io/docs/cloudformation/describe_stack_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_set/} for full documentation.
 }
 \keyword{internal}

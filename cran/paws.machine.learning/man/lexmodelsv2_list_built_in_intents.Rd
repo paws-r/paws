@@ -34,6 +34,6 @@ parameter to return the next page of results.}
 \description{
 Gets a list of built-in intents provided by Amazon Lex that you can use in your bot.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/list_built_in_intents.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_list_built_in_intents/} for full documentation.
 }
 \keyword{internal}

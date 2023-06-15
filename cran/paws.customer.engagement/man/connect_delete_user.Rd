@@ -15,6 +15,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Deletes a user account from the specified Amazon Connect instance.
 
-See \url{https://paws-r.github.io/docs/connect/delete_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_delete_user/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ specify a registry, the default registry is assumed.}
 \description{
 Retrieves an authorization token. An authorization token represents your IAM authentication credentials and can be used to access any Amazon ECR registry that your IAM principal has access to. The authorization token is valid for 12 hours.
 
-See \url{https://paws-r.github.io/docs/ecr/get_authorization_token.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_get_authorization_token/} for full documentation.
 }
 \keyword{internal}

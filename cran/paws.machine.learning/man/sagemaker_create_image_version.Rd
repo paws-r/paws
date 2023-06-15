@@ -72,6 +72,6 @@ notebook kernels.
 \description{
 Creates a version of the SageMaker image specified by \code{ImageName}. The version represents the Amazon Elastic Container Registry (ECR) container image specified by \code{BaseImage}.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_image_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_image_version/} for full documentation.
 }
 \keyword{internal}

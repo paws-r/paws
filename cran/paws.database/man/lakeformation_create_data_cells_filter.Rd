@@ -14,6 +14,6 @@ cells filter.}
 \description{
 Creates a data cell filter to allow one to grant access to certain columns on certain rows.
 
-See \url{https://paws-r.github.io/docs/lakeformation/create_data_cells_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_create_data_cells_filter/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ or update tags.}
 \description{
 Adds to or modifies the tags of the given resource. Tags are metadata that can be used to manage a resource.
 
-See \url{https://paws-r.github.io/docs/codestarconnections/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestarconnections_tag_resource/} for full documentation.
 }
 \keyword{internal}

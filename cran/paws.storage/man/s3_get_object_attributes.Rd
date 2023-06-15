@@ -74,6 +74,6 @@ returned.}
 \description{
 Retrieves all the metadata from an object without returning the object itself. This action is useful if you're interested only in an object's metadata. To use \code{\link[=s3_get_object_attributes]{get_object_attributes}}, you must have READ access to the object.
 
-See \url{https://paws-r.github.io/docs/s3/get_object_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_object_attributes/} for full documentation.
 }
 \keyword{internal}

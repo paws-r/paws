@@ -15,6 +15,6 @@ information about.}
 \description{
 Gets information about a specified Resolver query logging configuration, such as the number of VPCs that the configuration is logging queries for and the location that logs are sent to.
 
-See \url{https://paws-r.github.io/docs/route53resolver/get_resolver_query_log_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_query_log_config/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ schemas_put_resource_policy(Policy, RegistryName = NULL, RevisionId = NULL)
 \description{
 The name of the policy.
 
-See \url{https://paws-r.github.io/docs/schemas/put_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/schemas_put_resource_policy/} for full documentation.
 }
 \keyword{internal}

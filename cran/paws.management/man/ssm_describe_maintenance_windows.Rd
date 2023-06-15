@@ -25,6 +25,6 @@ from a previous call.)}
 \description{
 Retrieves the maintenance windows in an Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_maintenance_windows.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_windows/} for full documentation.
 }
 \keyword{internal}

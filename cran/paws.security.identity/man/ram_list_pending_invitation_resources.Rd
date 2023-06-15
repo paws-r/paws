@@ -51,6 +51,6 @@ The default value is \code{ALL}.}
 \description{
 Lists the resources in a resource share that is shared with you but for which the invitation is still \code{PENDING}. That means that you haven't accepted or rejected the invitation and the invitation hasn't expired.
 
-See \url{https://paws-r.github.io/docs/ram/list_pending_invitation_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_list_pending_invitation_resources/} for full documentation.
 }
 \keyword{internal}

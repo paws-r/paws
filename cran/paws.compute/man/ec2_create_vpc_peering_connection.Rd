@@ -40,6 +40,6 @@ Default: The Region in which you make the request.}
 \description{
 Requests a VPC peering connection between two VPCs: a requester VPC that you own and an accepter VPC with which to create the connection. The accepter VPC can belong to another Amazon Web Services account and can be in a different Region to the requester VPC. The requester VPC and accepter VPC cannot have overlapping CIDR blocks.
 
-See \url{https://paws-r.github.io/docs/ec2/create_vpc_peering_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_vpc_peering_connection/} for full documentation.
 }
 \keyword{internal}

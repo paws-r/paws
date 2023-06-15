@@ -77,6 +77,6 @@ which will be used when a contact chooses to unsubscribe.}
 \description{
 Sends an email message. You can use the Amazon SES API v2 to send the following types of messages:
 
-See \url{https://paws-r.github.io/docs/sesv2/send_email.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_send_email/} for full documentation.
 }
 \keyword{internal}

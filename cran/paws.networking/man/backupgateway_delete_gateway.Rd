@@ -12,6 +12,6 @@ backupgateway_delete_gateway(GatewayArn)
 \description{
 Deletes a backup gateway.
 
-See \url{https://paws-r.github.io/docs/backupgateway/delete_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupgateway_delete_gateway/} for full documentation.
 }
 \keyword{internal}

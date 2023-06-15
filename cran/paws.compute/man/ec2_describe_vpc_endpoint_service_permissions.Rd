@@ -39,6 +39,6 @@ can be between 5 and 1,000; if \code{MaxResults} is given a value larger than
 \description{
 Describes the principals (service consumers) that are permitted to discover your VPC endpoint service.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_vpc_endpoint_service_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_vpc_endpoint_service_permissions/} for full documentation.
 }
 \keyword{internal}

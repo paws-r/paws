@@ -13,6 +13,6 @@ machinelearning_get_batch_prediction(BatchPredictionId)
 \description{
 Returns a \code{BatchPrediction} that includes detailed metadata, status, and data file information for a \verb{Batch Prediction} request.
 
-See \url{https://paws-r.github.io/docs/machinelearning/get_batch_prediction.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_get_batch_prediction/} for full documentation.
 }
 \keyword{internal}

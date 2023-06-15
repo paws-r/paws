@@ -39,6 +39,6 @@ You can specify at most one of these in a request.}
 \description{
 Returns the number of open workflow executions within the given domain that meet the specified filtering criteria.
 
-See \url{https://paws-r.github.io/docs/swf/count_open_workflow_executions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_count_open_workflow_executions/} for full documentation.
 }
 \keyword{internal}

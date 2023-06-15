@@ -25,6 +25,6 @@ revision.}
 \description{
 Provides information to CodePipeline about new revisions to a source.
 
-See \url{https://paws-r.github.io/docs/codepipeline/put_action_revision.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_put_action_revision/} for full documentation.
 }
 \keyword{internal}

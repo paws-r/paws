@@ -12,6 +12,6 @@ cloudwatch_disable_alarm_actions(AlarmNames)
 \description{
 Disables the actions for the specified alarms. When an alarm's actions are disabled, the alarm actions do not execute when the alarm state changes.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/disable_alarm_actions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_disable_alarm_actions/} for full documentation.
 }
 \keyword{internal}

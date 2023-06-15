@@ -235,6 +235,6 @@ For more information about AMI format validation , see \href{https://docs.aws.am
 \description{
 Add a parameter to the system.
 
-See \url{https://paws-r.github.io/docs/ssm/put_parameter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_put_parameter/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ customerprofiles_tag_resource(resourceArn, tags)
 \description{
 Assigns one or more tags (key-value pairs) to the specified Amazon Connect Customer Profiles resource. Tags can help you organize and categorize your resources. You can also use them to scope user permissions by granting a user permission to access or change only resources with certain tag values. In Connect Customer Profiles, domains, profile object types, and integrations can be tagged.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_tag_resource/} for full documentation.
 }
 \keyword{internal}

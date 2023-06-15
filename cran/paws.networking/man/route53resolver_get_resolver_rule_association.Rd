@@ -14,6 +14,6 @@ about.}
 \description{
 Gets information about an association between a specified Resolver rule and a VPC. You associate a Resolver rule and a VPC using \code{\link[=route53resolver_associate_resolver_rule]{associate_resolver_rule}}.
 
-See \url{https://paws-r.github.io/docs/route53resolver/get_resolver_rule_association.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_rule_association/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ managedgrafana_delete_workspace_api_key(keyName, workspaceId)
 \description{
 Deletes a Grafana API key for the workspace.
 
-See \url{https://paws-r.github.io/docs/managedgrafana/delete_workspace_api_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/managedgrafana_delete_workspace_api_key/} for full documentation.
 }
 \keyword{internal}

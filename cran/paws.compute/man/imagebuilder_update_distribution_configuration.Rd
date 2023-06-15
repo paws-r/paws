@@ -24,6 +24,6 @@ you want to update.}
 \description{
 Updates a new distribution configuration. Distribution configurations define and configure the outputs of your pipeline.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/update_distribution_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_update_distribution_configuration/} for full documentation.
 }
 \keyword{internal}

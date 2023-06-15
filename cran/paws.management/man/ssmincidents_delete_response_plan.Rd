@@ -12,6 +12,6 @@ ssmincidents_delete_response_plan(arn)
 \description{
 Deletes the specified response plan. Deleting a response plan stops all linked CloudWatch alarms and EventBridge events from creating an incident with this response plan.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/delete_response_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_delete_response_plan/} for full documentation.
 }
 \keyword{internal}

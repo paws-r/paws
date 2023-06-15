@@ -60,6 +60,6 @@ code. Users authorize the service to send the request to this location.}
 \description{
 Creates and returns an access token for the authorized client. The access token issued will be used to fetch short-term credentials for the assigned roles in the AWS account.
 
-See \url{https://paws-r.github.io/docs/ssooidc/create_token.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssooidc_create_token/} for full documentation.
 }
 \keyword{internal}

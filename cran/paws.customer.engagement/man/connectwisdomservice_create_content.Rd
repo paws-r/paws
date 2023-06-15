@@ -48,6 +48,6 @@ content.}
 \description{
 Creates Wisdom content. Before to calling this API, use \code{\link[=connectwisdomservice_start_content_upload]{start_content_upload}} to upload an asset.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/create_content.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_create_content/} for full documentation.
 }
 \keyword{internal}

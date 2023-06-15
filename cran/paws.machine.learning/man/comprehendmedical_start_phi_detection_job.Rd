@@ -37,6 +37,6 @@ language.}
 \description{
 Starts an asynchronous job to detect protected health information (PHI). Use the \code{\link[=comprehendmedical_describe_phi_detection_job]{describe_phi_detection_job}} operation to track the status of a job.
 
-See \url{https://paws-r.github.io/docs/comprehendmedical/start_phi_detection_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehendmedical_start_phi_detection_job/} for full documentation.
 }
 \keyword{internal}

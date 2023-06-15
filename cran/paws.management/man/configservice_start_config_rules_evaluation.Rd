@@ -13,6 +13,6 @@ configservice_start_config_rules_evaluation(ConfigRuleNames = NULL)
 \description{
 Runs an on-demand evaluation for the specified Config rules against the last known configuration state of the resources. Use \code{\link[=configservice_start_config_rules_evaluation]{start_config_rules_evaluation}} when you want to test that a rule you updated is working as expected. \code{\link[=configservice_start_config_rules_evaluation]{start_config_rules_evaluation}} does not re-record the latest configuration state for your resources. It re-runs an evaluation against the last known state of your resources.
 
-See \url{https://paws-r.github.io/docs/configservice/start_config_rules_evaluation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_start_config_rules_evaluation/} for full documentation.
 }
 \keyword{internal}

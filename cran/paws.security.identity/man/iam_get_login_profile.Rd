@@ -16,6 +16,6 @@ spaces. You can also include any of the following characters: _+=,.@-}
 \description{
 Retrieves the user name for the specified IAM user. A login profile is created when you create a password for the user to access the Amazon Web Services Management Console. If the user does not exist or does not have a password, the operation returns a 404 (\code{NoSuchEntity}) error.
 
-See \url{https://paws-r.github.io/docs/iam/get_login_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_get_login_profile/} for full documentation.
 }
 \keyword{internal}

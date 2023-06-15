@@ -14,6 +14,6 @@ transform was created.}
 \description{
 Gets an Glue machine learning transform artifact and all its corresponding metadata. Machine learning transforms are a special type of transform that use machine learning to learn the details of the transformation to be performed by learning from examples provided by humans. These transformations are then saved by Glue. You can retrieve their metadata by calling \code{\link[=glue_get_ml_transform]{get_ml_transform}}.
 
-See \url{https://paws-r.github.io/docs/glue/get_ml_transform.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_ml_transform/} for full documentation.
 }
 \keyword{internal}

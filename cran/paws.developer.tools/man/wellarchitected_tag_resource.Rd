@@ -14,6 +14,6 @@ wellarchitected_tag_resource(WorkloadArn, Tags)
 \description{
 Adds one or more tags to the specified resource.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_tag_resource/} for full documentation.
 }
 \keyword{internal}

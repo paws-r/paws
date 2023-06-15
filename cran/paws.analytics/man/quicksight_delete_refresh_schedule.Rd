@@ -16,6 +16,6 @@ quicksight_delete_refresh_schedule(DataSetId, AwsAccountId, ScheduleId)
 \description{
 Deletes a refresh schedule from a dataset.
 
-See \url{https://paws-r.github.io/docs/quicksight/delete_refresh_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_refresh_schedule/} for full documentation.
 }
 \keyword{internal}

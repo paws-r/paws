@@ -33,6 +33,6 @@ aggregation based on the \code{PlatformName}, \code{PlatformType}, and
 \description{
 Return a list of inventory type names for the account, or return a list of attribute names for a specific Inventory item type.
 
-See \url{https://paws-r.github.io/docs/ssm/get_inventory_schema.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_inventory_schema/} for full documentation.
 }
 \keyword{internal}

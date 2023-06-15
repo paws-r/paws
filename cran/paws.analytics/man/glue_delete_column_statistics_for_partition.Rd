@@ -27,6 +27,6 @@ none is supplied, the Amazon Web Services account ID is used by default.}
 \description{
 Delete the partition column statistics of a column.
 
-See \url{https://paws-r.github.io/docs/glue/delete_column_statistics_for_partition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_delete_column_statistics_for_partition/} for full documentation.
 }
 \keyword{internal}

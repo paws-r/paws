@@ -13,6 +13,6 @@ lambda_get_layer_version_by_arn(Arn)
 \description{
 Returns information about a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{Lambda layer}, with a link to download the layer archive that's valid for 10 minutes.
 
-See \url{https://paws-r.github.io/docs/lambda/get_layer_version_by_arn.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_get_layer_version_by_arn/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ opsworks_deregister_ecs_cluster(EcsClusterArn)
 \description{
 Deregisters a specified Amazon ECS cluster from a stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html#workinglayers-ecscluster-delete}{Resource Management}.
 
-See \url{https://paws-r.github.io/docs/opsworks/deregister_ecs_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_deregister_ecs_cluster/} for full documentation.
 }
 \keyword{internal}

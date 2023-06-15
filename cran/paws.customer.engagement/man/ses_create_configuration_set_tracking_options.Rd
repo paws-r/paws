@@ -19,6 +19,6 @@ associated with.}
 \description{
 Creates an association between a configuration set and a custom domain for open and click event tracking.
 
-See \url{https://paws-r.github.io/docs/ses/create_configuration_set_tracking_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_create_configuration_set_tracking_options/} for full documentation.
 }
 \keyword{internal}

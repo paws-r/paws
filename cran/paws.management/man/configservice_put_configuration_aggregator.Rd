@@ -24,6 +24,6 @@ configservice_put_configuration_aggregator(
 \description{
 Creates and updates the configuration aggregator with the selected source accounts and regions. The source account can be individual account(s) or an organization.
 
-See \url{https://paws-r.github.io/docs/configservice/put_configuration_aggregator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_put_configuration_aggregator/} for full documentation.
 }
 \keyword{internal}

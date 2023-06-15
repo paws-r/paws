@@ -15,6 +15,6 @@ resource-based policy. The following is the format of a resource ARN:
 \description{
 Retrieves the JSON text of the resource-based policy document attached to the CloudTrail channel.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/get_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_get_resource_policy/} for full documentation.
 }
 \keyword{internal}

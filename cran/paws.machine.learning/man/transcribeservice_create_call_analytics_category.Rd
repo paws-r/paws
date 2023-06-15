@@ -42,6 +42,6 @@ post-call category by default.}
 \description{
 Creates a new Call Analytics category.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/create_call_analytics_category.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_create_call_analytics_category/} for full documentation.
 }
 \keyword{internal}

@@ -40,6 +40,6 @@ under \verb{https://sapp.amazon.com}.}
 \description{
 Generates an embed URL that you can use to embed an Amazon QuickSight experience in your website. This action can be used for any type of user registered in an Amazon QuickSight account. Before you use this action, make sure that you have configured the relevant Amazon QuickSight resource and permissions.
 
-See \url{https://paws-r.github.io/docs/quicksight/generate_embed_url_for_registered_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_generate_embed_url_for_registered_user/} for full documentation.
 }
 \keyword{internal}

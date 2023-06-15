@@ -13,6 +13,6 @@ comprehend_describe_entity_recognizer(EntityRecognizerArn)
 \description{
 Provides details about an entity recognizer including status, S3 buckets containing training data, recognizer metadata, metrics, and so on.
 
-See \url{https://paws-r.github.io/docs/comprehend/describe_entity_recognizer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_describe_entity_recognizer/} for full documentation.
 }
 \keyword{internal}

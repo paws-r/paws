@@ -33,6 +33,6 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists information about the versions of the specified managed policy, including the version that is currently set as the policy's default version.
 
-See \url{https://paws-r.github.io/docs/iam/list_policy_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_policy_versions/} for full documentation.
 }
 \keyword{internal}

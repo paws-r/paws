@@ -33,6 +33,6 @@ _ ~). This value must be 2-100 characters long.}
 \description{
 Updates the information for an ActiveMQ user.
 
-See \url{https://paws-r.github.io/docs/mq/update_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mq_update_user/} for full documentation.
 }
 \keyword{internal}

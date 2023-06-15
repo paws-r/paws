@@ -66,6 +66,6 @@ empty in your initial request.}
 \description{
 Returns a table that shows counts of resources that are noncompliant with their tag policies.
 
-See \url{https://paws-r.github.io/docs/resourcegroupstaggingapi/get_compliance_summary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_get_compliance_summary/} for full documentation.
 }
 \keyword{internal}

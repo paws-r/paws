@@ -23,6 +23,6 @@ update.}
 \description{
 Updates information about the publishing destination specified by the \code{destinationId}.
 
-See \url{https://paws-r.github.io/docs/guardduty/update_publishing_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_update_publishing_destination/} for full documentation.
 }
 \keyword{internal}

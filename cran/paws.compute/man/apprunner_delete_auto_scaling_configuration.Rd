@@ -17,6 +17,6 @@ isn't specified, the latest active revision is deleted.}
 \description{
 Delete an App Runner automatic scaling configuration resource. You can delete a specific revision or the latest active revision. You can't delete a configuration that's used by one or more App Runner services.
 
-See \url{https://paws-r.github.io/docs/apprunner/delete_auto_scaling_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_delete_auto_scaling_configuration/} for full documentation.
 }
 \keyword{internal}

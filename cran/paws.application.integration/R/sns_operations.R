@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Adds a statement to a topic's access control policy, granting access for the specified Amazon Web Services accounts to the specified actions.
 #'
-#' See [https://paws-r.github.io/docs/sns/add_permission.html](https://paws-r.github.io/docs/sns/add_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_add_permission/](https://www.paws-r-sdk.com/docs/sns_add_permission/) for full documentation.
 #'
 #' @param TopicArn &#91;required&#93; The ARN of the topic whose access control policy you wish to modify.
 #' @param Label &#91;required&#93; A unique identifier for the new policy statement.
@@ -47,7 +47,7 @@ sns_add_permission <- function(TopicArn, Label, AWSAccountId, ActionName) {
 #' @description
 #' Accepts a phone number and indicates whether the phone holder has opted out of receiving SMS messages from your Amazon Web Services account. You cannot send SMS messages to a number that is opted out.
 #'
-#' See [https://paws-r.github.io/docs/sns/check_if_phone_number_is_opted_out.html](https://paws-r.github.io/docs/sns/check_if_phone_number_is_opted_out.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_check_if_phone_number_is_opted_out/](https://www.paws-r-sdk.com/docs/sns_check_if_phone_number_is_opted_out/) for full documentation.
 #'
 #' @param phoneNumber &#91;required&#93; The phone number for which you want to check the opt out status.
 #'
@@ -77,7 +77,7 @@ sns_check_if_phone_number_is_opted_out <- function(phoneNumber) {
 #' @description
 #' Verifies an endpoint owner's intent to receive messages by validating the token sent to the endpoint by an earlier [`subscribe`][sns_subscribe] action. If the token is valid, the action creates a new subscription and returns its Amazon Resource Name (ARN). This call requires an AWS signature only when the `AuthenticateOnUnsubscribe` flag is set to "true".
 #'
-#' See [https://paws-r.github.io/docs/sns/confirm_subscription.html](https://paws-r.github.io/docs/sns/confirm_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_confirm_subscription/](https://www.paws-r-sdk.com/docs/sns_confirm_subscription/) for full documentation.
 #'
 #' @param TopicArn &#91;required&#93; The ARN of the topic for which you wish to confirm a subscription.
 #' @param Token &#91;required&#93; Short-lived token sent to an endpoint during the
@@ -115,7 +115,7 @@ sns_confirm_subscription <- function(TopicArn, Token, AuthenticateOnUnsubscribe 
 #' @description
 #' Creates a platform application object for one of the supported push notification services, such as APNS and GCM (Firebase Cloud Messaging), to which devices and mobile apps may register. You must specify `PlatformPrincipal` and `PlatformCredential` attributes when using the [`create_platform_application`][sns_create_platform_application] action.
 #'
-#' See [https://paws-r.github.io/docs/sns/create_platform_application.html](https://paws-r.github.io/docs/sns/create_platform_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_create_platform_application/](https://www.paws-r-sdk.com/docs/sns_create_platform_application/) for full documentation.
 #'
 #' @param Name &#91;required&#93; Application names must be made up of only uppercase and lowercase ASCII
 #' letters, numbers, underscores, hyphens, and periods, and must be between
@@ -153,7 +153,7 @@ sns_create_platform_application <- function(Name, Platform, Attributes) {
 #' @description
 #' Creates an endpoint for a device and mobile app on one of the supported push notification services, such as GCM (Firebase Cloud Messaging) and APNS. [`create_platform_endpoint`][sns_create_platform_endpoint] requires the `PlatformApplicationArn` that is returned from [`create_platform_application`][sns_create_platform_application]. You can use the returned `EndpointArn` to send a message to a mobile app or by the [`subscribe`][sns_subscribe] action for subscription to a topic. The [`create_platform_endpoint`][sns_create_platform_endpoint] action is idempotent, so if the requester already owns an endpoint with the same device token and attributes, that endpoint's ARN is returned without creating a new endpoint. For more information, see [Using Amazon SNS Mobile Push Notifications](https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html).
 #'
-#' See [https://paws-r.github.io/docs/sns/create_platform_endpoint.html](https://paws-r.github.io/docs/sns/create_platform_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_create_platform_endpoint/](https://www.paws-r-sdk.com/docs/sns_create_platform_endpoint/) for full documentation.
 #'
 #' @param PlatformApplicationArn &#91;required&#93; PlatformApplicationArn returned from CreatePlatformApplication is used
 #' to create a an endpoint.
@@ -194,7 +194,7 @@ sns_create_platform_endpoint <- function(PlatformApplicationArn, Token, CustomUs
 #' @description
 #' Adds a destination phone number to an Amazon Web Services account in the SMS sandbox and sends a one-time password (OTP) to that phone number.
 #'
-#' See [https://paws-r.github.io/docs/sns/create_sms_sandbox_phone_number.html](https://paws-r.github.io/docs/sns/create_sms_sandbox_phone_number.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_create_sms_sandbox_phone_number/](https://www.paws-r-sdk.com/docs/sns_create_sms_sandbox_phone_number/) for full documentation.
 #'
 #' @param PhoneNumber &#91;required&#93; The destination phone number to verify. On verification, Amazon SNS adds
 #' this phone number to the list of verified phone numbers that you can
@@ -226,7 +226,7 @@ sns_create_sms_sandbox_phone_number <- function(PhoneNumber, LanguageCode = NULL
 #' @description
 #' Creates a topic to which notifications can be published. Users can create at most 100,000 standard topics (at most 1,000 FIFO topics). For more information, see [Creating an Amazon SNS topic](https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html) in the *Amazon SNS Developer Guide*. This action is idempotent, so if the requester already owns a topic with the specified name, that topic's ARN is returned without creating a new topic.
 #'
-#' See [https://paws-r.github.io/docs/sns/create_topic.html](https://paws-r.github.io/docs/sns/create_topic.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_create_topic/](https://www.paws-r-sdk.com/docs/sns_create_topic/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the topic you want to create.
 #' 
@@ -335,7 +335,7 @@ sns_create_topic <- function(Name, Attributes = NULL, Tags = NULL, DataProtectio
 #' @description
 #' Deletes the endpoint for a device and mobile app from Amazon SNS. This action is idempotent. For more information, see [Using Amazon SNS Mobile Push Notifications](https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html).
 #'
-#' See [https://paws-r.github.io/docs/sns/delete_endpoint.html](https://paws-r.github.io/docs/sns/delete_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_delete_endpoint/](https://www.paws-r-sdk.com/docs/sns_delete_endpoint/) for full documentation.
 #'
 #' @param EndpointArn &#91;required&#93; EndpointArn of endpoint to delete.
 #'
@@ -365,7 +365,7 @@ sns_delete_endpoint <- function(EndpointArn) {
 #' @description
 #' Deletes a platform application object for one of the supported push notification services, such as APNS and GCM (Firebase Cloud Messaging). For more information, see [Using Amazon SNS Mobile Push Notifications](https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html).
 #'
-#' See [https://paws-r.github.io/docs/sns/delete_platform_application.html](https://paws-r.github.io/docs/sns/delete_platform_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_delete_platform_application/](https://www.paws-r-sdk.com/docs/sns_delete_platform_application/) for full documentation.
 #'
 #' @param PlatformApplicationArn &#91;required&#93; PlatformApplicationArn of platform application object to delete.
 #'
@@ -395,7 +395,7 @@ sns_delete_platform_application <- function(PlatformApplicationArn) {
 #' @description
 #' Deletes an Amazon Web Services account's verified or pending phone number from the SMS sandbox.
 #'
-#' See [https://paws-r.github.io/docs/sns/delete_sms_sandbox_phone_number.html](https://paws-r.github.io/docs/sns/delete_sms_sandbox_phone_number.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_delete_sms_sandbox_phone_number/](https://www.paws-r-sdk.com/docs/sns_delete_sms_sandbox_phone_number/) for full documentation.
 #'
 #' @param PhoneNumber &#91;required&#93; The destination phone number to delete.
 #'
@@ -424,7 +424,7 @@ sns_delete_sms_sandbox_phone_number <- function(PhoneNumber) {
 #' @description
 #' Deletes a topic and all its subscriptions. Deleting a topic might prevent some messages previously sent to the topic from being delivered to subscribers. This action is idempotent, so deleting a topic that does not exist does not result in an error.
 #'
-#' See [https://paws-r.github.io/docs/sns/delete_topic.html](https://paws-r.github.io/docs/sns/delete_topic.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_delete_topic/](https://www.paws-r-sdk.com/docs/sns_delete_topic/) for full documentation.
 #'
 #' @param TopicArn &#91;required&#93; The ARN of the topic you want to delete.
 #'
@@ -454,7 +454,7 @@ sns_delete_topic <- function(TopicArn) {
 #' @description
 #' Retrieves the specified inline `DataProtectionPolicy` document that is stored in the specified Amazon SNS topic.
 #'
-#' See [https://paws-r.github.io/docs/sns/get_data_protection_policy.html](https://paws-r.github.io/docs/sns/get_data_protection_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_get_data_protection_policy/](https://www.paws-r-sdk.com/docs/sns_get_data_protection_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the topic whose `DataProtectionPolicy` you want to get.
 #' 
@@ -489,7 +489,7 @@ sns_get_data_protection_policy <- function(ResourceArn) {
 #' @description
 #' Retrieves the endpoint attributes for a device on one of the supported push notification services, such as GCM (Firebase Cloud Messaging) and APNS. For more information, see [Using Amazon SNS Mobile Push Notifications](https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html).
 #'
-#' See [https://paws-r.github.io/docs/sns/get_endpoint_attributes.html](https://paws-r.github.io/docs/sns/get_endpoint_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_get_endpoint_attributes/](https://www.paws-r-sdk.com/docs/sns_get_endpoint_attributes/) for full documentation.
 #'
 #' @param EndpointArn &#91;required&#93; EndpointArn for GetEndpointAttributes input.
 #'
@@ -520,7 +520,7 @@ sns_get_endpoint_attributes <- function(EndpointArn) {
 #' @description
 #' Retrieves the attributes of the platform application object for the supported push notification services, such as APNS and GCM (Firebase Cloud Messaging). For more information, see [Using Amazon SNS Mobile Push Notifications](https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html).
 #'
-#' See [https://paws-r.github.io/docs/sns/get_platform_application_attributes.html](https://paws-r.github.io/docs/sns/get_platform_application_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_get_platform_application_attributes/](https://www.paws-r-sdk.com/docs/sns_get_platform_application_attributes/) for full documentation.
 #'
 #' @param PlatformApplicationArn &#91;required&#93; PlatformApplicationArn for GetPlatformApplicationAttributesInput.
 #'
@@ -550,7 +550,7 @@ sns_get_platform_application_attributes <- function(PlatformApplicationArn) {
 #' @description
 #' Returns the settings for sending SMS messages from your Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/sns/get_sms_attributes.html](https://paws-r.github.io/docs/sns/get_sms_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_get_sms_attributes/](https://www.paws-r-sdk.com/docs/sns_get_sms_attributes/) for full documentation.
 #'
 #' @param attributes A list of the individual attribute names, such as `MonthlySpendLimit`,
 #' for which you want values.
@@ -586,7 +586,7 @@ sns_get_sms_attributes <- function(attributes = NULL) {
 #' @description
 #' Retrieves the SMS sandbox status for the calling Amazon Web Services account in the target Amazon Web Services Region.
 #'
-#' See [https://paws-r.github.io/docs/sns/get_sms_sandbox_account_status.html](https://paws-r.github.io/docs/sns/get_sms_sandbox_account_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_get_sms_sandbox_account_status/](https://www.paws-r-sdk.com/docs/sns_get_sms_sandbox_account_status/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -613,7 +613,7 @@ sns_get_sms_sandbox_account_status <- function() {
 #' @description
 #' Returns all of the properties of a subscription.
 #'
-#' See [https://paws-r.github.io/docs/sns/get_subscription_attributes.html](https://paws-r.github.io/docs/sns/get_subscription_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_get_subscription_attributes/](https://www.paws-r-sdk.com/docs/sns_get_subscription_attributes/) for full documentation.
 #'
 #' @param SubscriptionArn &#91;required&#93; The ARN of the subscription whose properties you want to get.
 #'
@@ -642,7 +642,7 @@ sns_get_subscription_attributes <- function(SubscriptionArn) {
 #' @description
 #' Returns all of the properties of a topic. Topic properties returned might differ based on the authorization of the user.
 #'
-#' See [https://paws-r.github.io/docs/sns/get_topic_attributes.html](https://paws-r.github.io/docs/sns/get_topic_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_get_topic_attributes/](https://www.paws-r-sdk.com/docs/sns_get_topic_attributes/) for full documentation.
 #'
 #' @param TopicArn &#91;required&#93; The ARN of the topic whose properties you want to get.
 #'
@@ -673,7 +673,7 @@ sns_get_topic_attributes <- function(TopicArn) {
 #' @description
 #' Lists the endpoints and endpoint attributes for devices in a supported push notification service, such as GCM (Firebase Cloud Messaging) and APNS. The results for [`list_endpoints_by_platform_application`][sns_list_endpoints_by_platform_application] are paginated and return a limited list of endpoints, up to 100. If additional records are available after the first page results, then a NextToken string will be returned. To receive the next page, you call [`list_endpoints_by_platform_application`][sns_list_endpoints_by_platform_application] again using the NextToken string received from the previous call. When there are no more records to return, NextToken will be null. For more information, see [Using Amazon SNS Mobile Push Notifications](https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html).
 #'
-#' See [https://paws-r.github.io/docs/sns/list_endpoints_by_platform_application.html](https://paws-r.github.io/docs/sns/list_endpoints_by_platform_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_list_endpoints_by_platform_application/](https://www.paws-r-sdk.com/docs/sns_list_endpoints_by_platform_application/) for full documentation.
 #'
 #' @param PlatformApplicationArn &#91;required&#93; PlatformApplicationArn for ListEndpointsByPlatformApplicationInput
 #' action.
@@ -707,7 +707,7 @@ sns_list_endpoints_by_platform_application <- function(PlatformApplicationArn, N
 #' @description
 #' Lists the calling Amazon Web Services account's dedicated origination numbers and their metadata. For more information about origination numbers, see [Origination numbers](https://docs.aws.amazon.com/sns/latest/dg/channels-sms-originating-identities-origination-numbers.html) in the *Amazon SNS Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/sns/list_origination_numbers.html](https://paws-r.github.io/docs/sns/list_origination_numbers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_list_origination_numbers/](https://www.paws-r-sdk.com/docs/sns_list_origination_numbers/) for full documentation.
 #'
 #' @param NextToken Token that the previous
 #' [`list_origination_numbers`][sns_list_origination_numbers] request
@@ -740,7 +740,7 @@ sns_list_origination_numbers <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Returns a list of phone numbers that are opted out, meaning you cannot send SMS messages to them.
 #'
-#' See [https://paws-r.github.io/docs/sns/list_phone_numbers_opted_out.html](https://paws-r.github.io/docs/sns/list_phone_numbers_opted_out.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_list_phone_numbers_opted_out/](https://www.paws-r-sdk.com/docs/sns_list_phone_numbers_opted_out/) for full documentation.
 #'
 #' @param nextToken A `NextToken` string is used when you call the
 #' [`list_phone_numbers_opted_out`][sns_list_phone_numbers_opted_out]
@@ -773,7 +773,7 @@ sns_list_phone_numbers_opted_out <- function(nextToken = NULL) {
 #' @description
 #' Lists the platform application objects for the supported push notification services, such as APNS and GCM (Firebase Cloud Messaging). The results for [`list_platform_applications`][sns_list_platform_applications] are paginated and return a limited list of applications, up to 100. If additional records are available after the first page results, then a NextToken string will be returned. To receive the next page, you call [`list_platform_applications`][sns_list_platform_applications] using the NextToken string received from the previous call. When there are no more records to return, `NextToken` will be null. For more information, see [Using Amazon SNS Mobile Push Notifications](https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html).
 #'
-#' See [https://paws-r.github.io/docs/sns/list_platform_applications.html](https://paws-r.github.io/docs/sns/list_platform_applications.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_list_platform_applications/](https://www.paws-r-sdk.com/docs/sns_list_platform_applications/) for full documentation.
 #'
 #' @param NextToken NextToken string is used when calling ListPlatformApplications action to
 #' retrieve additional records that are available after the first page
@@ -805,7 +805,7 @@ sns_list_platform_applications <- function(NextToken = NULL) {
 #' @description
 #' Lists the calling Amazon Web Services account's current verified and pending destination phone numbers in the SMS sandbox.
 #'
-#' See [https://paws-r.github.io/docs/sns/list_sms_sandbox_phone_numbers.html](https://paws-r.github.io/docs/sns/list_sms_sandbox_phone_numbers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_list_sms_sandbox_phone_numbers/](https://www.paws-r-sdk.com/docs/sns_list_sms_sandbox_phone_numbers/) for full documentation.
 #'
 #' @param NextToken Token that the previous `ListSMSSandboxPhoneNumbersInput` request
 #' returns.
@@ -836,7 +836,7 @@ sns_list_sms_sandbox_phone_numbers <- function(NextToken = NULL, MaxResults = NU
 #' @description
 #' Returns a list of the requester's subscriptions. Each call returns a limited list of subscriptions, up to 100. If there are more subscriptions, a `NextToken` is also returned. Use the `NextToken` parameter in a new [`list_subscriptions`][sns_list_subscriptions] call to get further results.
 #'
-#' See [https://paws-r.github.io/docs/sns/list_subscriptions.html](https://paws-r.github.io/docs/sns/list_subscriptions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_list_subscriptions/](https://www.paws-r-sdk.com/docs/sns_list_subscriptions/) for full documentation.
 #'
 #' @param NextToken Token returned by the previous
 #' [`list_subscriptions`][sns_list_subscriptions] request.
@@ -866,7 +866,7 @@ sns_list_subscriptions <- function(NextToken = NULL) {
 #' @description
 #' Returns a list of the subscriptions to a specific topic. Each call returns a limited list of subscriptions, up to 100. If there are more subscriptions, a `NextToken` is also returned. Use the `NextToken` parameter in a new [`list_subscriptions_by_topic`][sns_list_subscriptions_by_topic] call to get further results.
 #'
-#' See [https://paws-r.github.io/docs/sns/list_subscriptions_by_topic.html](https://paws-r.github.io/docs/sns/list_subscriptions_by_topic.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_list_subscriptions_by_topic/](https://www.paws-r-sdk.com/docs/sns_list_subscriptions_by_topic/) for full documentation.
 #'
 #' @param TopicArn &#91;required&#93; The ARN of the topic for which you wish to find subscriptions.
 #' @param NextToken Token returned by the previous
@@ -898,7 +898,7 @@ sns_list_subscriptions_by_topic <- function(TopicArn, NextToken = NULL) {
 #' @description
 #' List all tags added to the specified Amazon SNS topic. For an overview, see [Amazon SNS Tags](https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html) in the *Amazon Simple Notification Service Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/sns/list_tags_for_resource.html](https://paws-r.github.io/docs/sns/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/sns_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the topic for which to list tags.
 #'
@@ -927,7 +927,7 @@ sns_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Returns a list of the requester's topics. Each call returns a limited list of topics, up to 100. If there are more topics, a `NextToken` is also returned. Use the `NextToken` parameter in a new [`list_topics`][sns_list_topics] call to get further results.
 #'
-#' See [https://paws-r.github.io/docs/sns/list_topics.html](https://paws-r.github.io/docs/sns/list_topics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_list_topics/](https://www.paws-r-sdk.com/docs/sns_list_topics/) for full documentation.
 #'
 #' @param NextToken Token returned by the previous [`list_topics`][sns_list_topics] request.
 #'
@@ -957,7 +957,7 @@ sns_list_topics <- function(NextToken = NULL) {
 #' @description
 #' Use this request to opt in a phone number that is opted out, which enables you to resume sending SMS messages to the number.
 #'
-#' See [https://paws-r.github.io/docs/sns/opt_in_phone_number.html](https://paws-r.github.io/docs/sns/opt_in_phone_number.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_opt_in_phone_number/](https://www.paws-r-sdk.com/docs/sns_opt_in_phone_number/) for full documentation.
 #'
 #' @param phoneNumber &#91;required&#93; The phone number to opt in. Use E.164 format.
 #'
@@ -988,7 +988,7 @@ sns_opt_in_phone_number <- function(phoneNumber) {
 #' @description
 #' Sends a message to an Amazon SNS topic, a text message (SMS message) directly to a phone number, or a message to a mobile platform endpoint (when you specify the `TargetArn`).
 #'
-#' See [https://paws-r.github.io/docs/sns/publish.html](https://paws-r.github.io/docs/sns/publish.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_publish/](https://www.paws-r-sdk.com/docs/sns_publish/) for full documentation.
 #'
 #' @param TopicArn The topic you want to publish to.
 #' 
@@ -1127,7 +1127,7 @@ sns_publish <- function(TopicArn = NULL, TargetArn = NULL, PhoneNumber = NULL, M
 #' @description
 #' Publishes up to ten messages to the specified topic. This is a batch version of [`publish`][sns_publish]. For FIFO topics, multiple messages within a single batch are published in the order they are sent, and messages are deduplicated within the batch and across batches for 5 minutes.
 #'
-#' See [https://paws-r.github.io/docs/sns/publish_batch.html](https://paws-r.github.io/docs/sns/publish_batch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_publish_batch/](https://www.paws-r-sdk.com/docs/sns_publish_batch/) for full documentation.
 #'
 #' @param TopicArn &#91;required&#93; The Amazon resource name (ARN) of the topic you want to batch publish
 #' to.
@@ -1160,7 +1160,7 @@ sns_publish_batch <- function(TopicArn, PublishBatchRequestEntries) {
 #' @description
 #' Adds or updates an inline policy document that is stored in the specified Amazon SNS topic.
 #'
-#' See [https://paws-r.github.io/docs/sns/put_data_protection_policy.html](https://paws-r.github.io/docs/sns/put_data_protection_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_put_data_protection_policy/](https://www.paws-r-sdk.com/docs/sns_put_data_protection_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the topic whose `DataProtectionPolicy` you want to add or
 #' update.
@@ -1199,7 +1199,7 @@ sns_put_data_protection_policy <- function(ResourceArn, DataProtectionPolicy) {
 #' @description
 #' Removes a statement from a topic's access control policy.
 #'
-#' See [https://paws-r.github.io/docs/sns/remove_permission.html](https://paws-r.github.io/docs/sns/remove_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_remove_permission/](https://www.paws-r-sdk.com/docs/sns_remove_permission/) for full documentation.
 #'
 #' @param TopicArn &#91;required&#93; The ARN of the topic whose access control policy you wish to modify.
 #' @param Label &#91;required&#93; The unique label of the statement you want to remove.
@@ -1231,7 +1231,7 @@ sns_remove_permission <- function(TopicArn, Label) {
 #' @description
 #' Sets the attributes for an endpoint for a device on one of the supported push notification services, such as GCM (Firebase Cloud Messaging) and APNS. For more information, see [Using Amazon SNS Mobile Push Notifications](https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html).
 #'
-#' See [https://paws-r.github.io/docs/sns/set_endpoint_attributes.html](https://paws-r.github.io/docs/sns/set_endpoint_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_set_endpoint_attributes/](https://www.paws-r-sdk.com/docs/sns_set_endpoint_attributes/) for full documentation.
 #'
 #' @param EndpointArn &#91;required&#93; EndpointArn used for SetEndpointAttributes action.
 #' @param Attributes &#91;required&#93; A map of the endpoint attributes. Attributes in this map include the
@@ -1278,7 +1278,7 @@ sns_set_endpoint_attributes <- function(EndpointArn, Attributes) {
 #' @description
 #' Sets the attributes of the platform application object for the supported push notification services, such as APNS and GCM (Firebase Cloud Messaging). For more information, see [Using Amazon SNS Mobile Push Notifications](https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html). For information on configuring attributes for message delivery status, see [Using Amazon SNS Application Attributes for Message Delivery Status](https://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html).
 #'
-#' See [https://paws-r.github.io/docs/sns/set_platform_application_attributes.html](https://paws-r.github.io/docs/sns/set_platform_application_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_set_platform_application_attributes/](https://www.paws-r-sdk.com/docs/sns_set_platform_application_attributes/) for full documentation.
 #'
 #' @param PlatformApplicationArn &#91;required&#93; PlatformApplicationArn for SetPlatformApplicationAttributes action.
 #' @param Attributes &#91;required&#93; A map of the platform application attributes. Attributes in this map
@@ -1371,7 +1371,7 @@ sns_set_platform_application_attributes <- function(PlatformApplicationArn, Attr
 #' @description
 #' Use this request to set the default settings for sending SMS messages and receiving daily SMS usage reports.
 #'
-#' See [https://paws-r.github.io/docs/sns/set_sms_attributes.html](https://paws-r.github.io/docs/sns/set_sms_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_set_sms_attributes/](https://www.paws-r-sdk.com/docs/sns_set_sms_attributes/) for full documentation.
 #'
 #' @param attributes &#91;required&#93; The default settings for sending SMS messages from your Amazon Web
 #' Services account. You can set values for the following attribute names:
@@ -1477,7 +1477,7 @@ sns_set_sms_attributes <- function(attributes) {
 #' @description
 #' Allows a subscription owner to set an attribute of the subscription to a new value.
 #'
-#' See [https://paws-r.github.io/docs/sns/set_subscription_attributes.html](https://paws-r.github.io/docs/sns/set_subscription_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_set_subscription_attributes/](https://www.paws-r-sdk.com/docs/sns_set_subscription_attributes/) for full documentation.
 #'
 #' @param SubscriptionArn &#91;required&#93; The ARN of the subscription to modify.
 #' @param AttributeName &#91;required&#93; A map of attributes with their corresponding values.
@@ -1554,7 +1554,7 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
 #' @description
 #' Allows a topic owner to set an attribute of the topic to a new value.
 #'
-#' See [https://paws-r.github.io/docs/sns/set_topic_attributes.html](https://paws-r.github.io/docs/sns/set_topic_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_set_topic_attributes/](https://www.paws-r-sdk.com/docs/sns_set_topic_attributes/) for full documentation.
 #'
 #' @param TopicArn &#91;required&#93; The ARN of the topic to modify.
 #' @param AttributeName &#91;required&#93; A map of attributes with their corresponding values.
@@ -1734,7 +1734,7 @@ sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = N
 #' @description
 #' Subscribes an endpoint to an Amazon SNS topic. If the endpoint type is HTTP/S or email, or if the endpoint and the topic are not in the same Amazon Web Services account, the endpoint owner must run the [`confirm_subscription`][sns_confirm_subscription] action to confirm the subscription.
 #'
-#' See [https://paws-r.github.io/docs/sns/subscribe.html](https://paws-r.github.io/docs/sns/subscribe.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_subscribe/](https://www.paws-r-sdk.com/docs/sns_subscribe/) for full documentation.
 #'
 #' @param TopicArn &#91;required&#93; The ARN of the topic you want to subscribe to.
 #' @param Protocol &#91;required&#93; The protocol that you want to use. Supported protocols include:
@@ -1871,7 +1871,7 @@ sns_subscribe <- function(TopicArn, Protocol, Endpoint = NULL, Attributes = NULL
 #' @description
 #' Add tags to the specified Amazon SNS topic. For an overview, see [Amazon SNS Tags](https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html) in the *Amazon SNS Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/sns/tag_resource.html](https://paws-r.github.io/docs/sns/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_tag_resource/](https://www.paws-r-sdk.com/docs/sns_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the topic to which to add tags.
 #' @param Tags &#91;required&#93; The tags to be added to the specified topic. A tag consists of a
@@ -1902,7 +1902,7 @@ sns_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Deletes a subscription. If the subscription requires authentication for deletion, only the owner of the subscription or the topic's owner can unsubscribe, and an Amazon Web Services signature is required. If the [`unsubscribe`][sns_unsubscribe] call does not require authentication and the requester is not the subscription owner, a final cancellation message is delivered to the endpoint, so that the endpoint owner can easily resubscribe to the topic if the [`unsubscribe`][sns_unsubscribe] request was unintended.
 #'
-#' See [https://paws-r.github.io/docs/sns/unsubscribe.html](https://paws-r.github.io/docs/sns/unsubscribe.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_unsubscribe/](https://www.paws-r-sdk.com/docs/sns_unsubscribe/) for full documentation.
 #'
 #' @param SubscriptionArn &#91;required&#93; The ARN of the subscription to be deleted.
 #'
@@ -1931,7 +1931,7 @@ sns_unsubscribe <- function(SubscriptionArn) {
 #' @description
 #' Remove tags from the specified Amazon SNS topic. For an overview, see [Amazon SNS Tags](https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html) in the *Amazon SNS Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/sns/untag_resource.html](https://paws-r.github.io/docs/sns/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_untag_resource/](https://www.paws-r-sdk.com/docs/sns_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the topic from which to remove tags.
 #' @param TagKeys &#91;required&#93; The list of tag keys to remove from the specified topic.
@@ -1962,7 +1962,7 @@ sns_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Verifies a destination phone number with a one-time password (OTP) for the calling Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/sns/verify_sms_sandbox_phone_number.html](https://paws-r.github.io/docs/sns/verify_sms_sandbox_phone_number.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sns_verify_sms_sandbox_phone_number/](https://www.paws-r-sdk.com/docs/sns_verify_sms_sandbox_phone_number/) for full documentation.
 #'
 #' @param PhoneNumber &#91;required&#93; The destination phone number to verify.
 #' @param OneTimePassword &#91;required&#93; The OTP sent to the destination number from the

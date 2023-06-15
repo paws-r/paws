@@ -42,6 +42,6 @@ in your next request to receive the next set of results.}
 \description{
 Request a list of jobs.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_auto_ml_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_auto_ml_jobs/} for full documentation.
 }
 \keyword{internal}

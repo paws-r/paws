@@ -32,6 +32,6 @@ To get the key ID and key ARN for a KMS key, use
 \description{
 Enables \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html}{automatic rotation of the key material} of the specified symmetric encryption KMS key.
 
-See \url{https://paws-r.github.io/docs/kms/enable_key_rotation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_enable_key_rotation/} for full documentation.
 }
 \keyword{internal}

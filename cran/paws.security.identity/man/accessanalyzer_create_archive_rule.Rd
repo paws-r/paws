@@ -23,6 +23,6 @@ accessanalyzer_create_archive_rule(
 \description{
 Creates an archive rule for the specified analyzer. Archive rules automatically archive new findings that meet the criteria you define when you create the rule.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/create_archive_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_create_archive_rule/} for full documentation.
 }
 \keyword{internal}

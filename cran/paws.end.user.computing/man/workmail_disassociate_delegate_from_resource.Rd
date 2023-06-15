@@ -22,6 +22,6 @@ resource's delegates.}
 \description{
 Removes a member from the resource's set of delegates.
 
-See \url{https://paws-r.github.io/docs/workmail/disassociate_delegate_from_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_disassociate_delegate_from_resource/} for full documentation.
 }
 \keyword{internal}

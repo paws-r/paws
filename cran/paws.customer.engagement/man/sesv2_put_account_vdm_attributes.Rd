@@ -12,6 +12,6 @@ sesv2_put_account_vdm_attributes(VdmAttributes)
 \description{
 Update your Amazon SES account VDM attributes.
 
-See \url{https://paws-r.github.io/docs/sesv2/put_account_vdm_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_put_account_vdm_attributes/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ workspacesweb_get_portal(portalArn)
 \description{
 Gets the web portal.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/get_portal.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_get_portal/} for full documentation.
 }
 \keyword{internal}

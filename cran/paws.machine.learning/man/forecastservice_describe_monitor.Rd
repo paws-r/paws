@@ -12,6 +12,6 @@ forecastservice_describe_monitor(MonitorArn)
 \description{
 Describes a monitor resource. In addition to listing the properties provided in the \code{\link[=forecastservice_create_monitor]{create_monitor}} request, this operation lists the following properties:
 
-See \url{https://paws-r.github.io/docs/forecastservice/describe_monitor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_describe_monitor/} for full documentation.
 }
 \keyword{internal}

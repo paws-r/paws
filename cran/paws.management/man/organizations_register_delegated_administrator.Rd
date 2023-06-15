@@ -17,6 +17,6 @@ want to make the member account a delegated administrator.}
 \description{
 Enables the specified member account to administer the Organizations features of the specified Amazon Web Services service. It grants read-only access to Organizations service data. The account still requires IAM permissions to access and administer the Amazon Web Services service.
 
-See \url{https://paws-r.github.io/docs/organizations/register_delegated_administrator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_register_delegated_administrator/} for full documentation.
 }
 \keyword{internal}

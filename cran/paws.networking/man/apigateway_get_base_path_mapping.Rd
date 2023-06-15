@@ -17,6 +17,6 @@ callers to specify any base path name after the domain name.}
 \description{
 Describe a BasePathMapping resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_base_path_mapping.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_base_path_mapping/} for full documentation.
 }
 \keyword{internal}

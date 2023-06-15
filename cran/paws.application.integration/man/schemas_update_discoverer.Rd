@@ -21,6 +21,6 @@ account. (default: true)}
 \description{
 Updates the discoverer
 
-See \url{https://paws-r.github.io/docs/schemas/update_discoverer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/schemas_update_discoverer/} for full documentation.
 }
 \keyword{internal}

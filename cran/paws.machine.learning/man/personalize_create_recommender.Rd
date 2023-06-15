@@ -26,11 +26,13 @@ For information about use cases see \href{https://docs.aws.amazon.com/personaliz
 
 \item{recommenderConfig}{The configuration details of the recommender.}
 
-\item{tags}{A list of tags to apply to the recommender.}
+\item{tags}{A list of
+\href{https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html}{tags}
+to apply to the recommender.}
 }
 \description{
 Creates a recommender with the recipe (a Domain dataset group use case) you specify. You create recommenders for a Domain dataset group and specify the recommender's Amazon Resource Name (ARN) when you make a \href{https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html}{GetRecommendations} request.
 
-See \url{https://paws-r.github.io/docs/personalize/create_recommender.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_create_recommender/} for full documentation.
 }
 \keyword{internal}

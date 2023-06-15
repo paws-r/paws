@@ -210,6 +210,6 @@ the backup represented by BackupId.}
 \description{
 Creates and immedately starts a new server. The server is ready to use when it is in the \code{HEALTHY} state. By default, you can create a maximum of 10 servers.
 
-See \url{https://paws-r.github.io/docs/opsworkscm/create_server.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworkscm_create_server/} for full documentation.
 }
 \keyword{internal}

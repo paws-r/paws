@@ -10,6 +10,6 @@ sts_get_caller_identity()
 \description{
 Returns details about the IAM user or role whose credentials are used to call the operation.
 
-See \url{https://paws-r.github.io/docs/sts/get_caller_identity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sts_get_caller_identity/} for full documentation.
 }
 \keyword{internal}

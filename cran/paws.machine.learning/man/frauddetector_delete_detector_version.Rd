@@ -14,6 +14,6 @@ frauddetector_delete_detector_version(detectorId, detectorVersionId)
 \description{
 Deletes the detector version. You cannot delete detector versions that are in \code{ACTIVE} status.
 
-See \url{https://paws-r.github.io/docs/frauddetector/delete_detector_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_delete_detector_version/} for full documentation.
 }
 \keyword{internal}

@@ -38,6 +38,6 @@ Resilience Hub application.}
 \description{
 Deletes the input source and all of its imported resources from the Resilience Hub application.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/delete_app_input_source.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_delete_app_input_source/} for full documentation.
 }
 \keyword{internal}

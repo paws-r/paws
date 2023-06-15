@@ -56,7 +56,8 @@ rds_modify_db_instance(
   StorageThroughput = NULL,
   ManageMasterUserPassword = NULL,
   RotateMasterUserPassword = NULL,
-  MasterUserSecretKmsKeyId = NULL
+  MasterUserSecretKmsKeyId = NULL,
+  Engine = NULL
 )
 }
 \arguments{
@@ -833,10 +834,35 @@ Amazon Web Services account, specify the key ARN or alias ARN.
 There is a default KMS key for your Amazon Web Services account. Your
 Amazon Web Services account has a different default KMS key for each
 Amazon Web Services Region.}
+
+\item{Engine}{The target Oracle DB engine when you convert a non-CDB to a CDB. This
+intermediate step is necessary to upgrade an Oracle Database 19c non-CDB
+to an Oracle Database 21c CDB.
+
+Note the following requirements:
+\itemize{
+\item Make sure that you specify \code{oracle-ee-cdb} or \code{oracle-se2-cdb}.
+\item Make sure that your DB engine runs Oracle Database 19c with an April
+2021 or later RU.
+}
+
+Note the following limitations:
+\itemize{
+\item You can't convert a CDB to a non-CDB.
+\item You can't convert a replica database.
+\item You can't convert a non-CDB to a CDB and upgrade the engine version
+in the same command.
+\item You can't convert the existing custom parameter or option group when
+it has options or parameters that are permanent or persistent. In
+this situation, the DB instance reverts to the default option and
+parameter group. To avoid reverting to the default, specify a new
+parameter group with \code{--db-parameter-group-name} and a new option
+group with \code{--option-group-name}.
+}}
 }
 \description{
 Modifies settings for a DB instance. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. To learn what modifications you can make to your DB instance, call \code{\link[=rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications}} before you call \code{\link[=rds_modify_db_instance]{modify_db_instance}}.
 
-See \url{https://paws-r.github.io/docs/rds/modify_db_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_modify_db_instance/} for full documentation.
 }
 \keyword{internal}

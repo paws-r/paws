@@ -31,6 +31,6 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists the MFA devices for an IAM user. If the request includes a IAM user name, then this operation lists all the MFA devices associated with the specified user. If you do not specify a user name, IAM determines the user name implicitly based on the Amazon Web Services access key ID signing the request for this operation.
 
-See \url{https://paws-r.github.io/docs/iam/list_mfa_devices.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_mfa_devices/} for full documentation.
 }
 \keyword{internal}

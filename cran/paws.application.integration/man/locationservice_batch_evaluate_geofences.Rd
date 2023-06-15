@@ -17,6 +17,6 @@ given geofence collection.}
 \description{
 Evaluates device positions against the geofence geometries from a given geofence collection.
 
-See \url{https://paws-r.github.io/docs/locationservice/batch_evaluate_geofences.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_batch_evaluate_geofences/} for full documentation.
 }
 \keyword{internal}

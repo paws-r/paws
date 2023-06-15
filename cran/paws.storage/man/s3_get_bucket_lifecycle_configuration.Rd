@@ -18,6 +18,6 @@ different account, the request fails with the HTTP status code
 \description{
 Bucket lifecycle configuration now supports specifying a lifecycle rule using an object key name prefix, one or more object tags, or a combination of both. Accordingly, this section describes the latest API. The response describes the new filter element that you can use to specify a filter to select a subset of objects to which the rule applies. If you are using a previous version of the lifecycle configuration, it still works. For the earlier action, see \code{\link[=s3_get_bucket_lifecycle]{get_bucket_lifecycle}}.
 
-See \url{https://paws-r.github.io/docs/s3/get_bucket_lifecycle_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_lifecycle_configuration/} for full documentation.
 }
 \keyword{internal}

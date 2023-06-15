@@ -58,6 +58,6 @@ results and a \code{nextToken} value if applicable.}
 \description{
 Returns a list of task definitions that are registered to your account. You can filter the results by family name with the \code{familyPrefix} parameter or by status with the \code{status} parameter.
 
-See \url{https://paws-r.github.io/docs/ecs/list_task_definitions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_list_task_definitions/} for full documentation.
 }
 \keyword{internal}

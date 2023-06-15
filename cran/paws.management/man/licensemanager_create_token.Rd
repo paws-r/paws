@@ -30,6 +30,6 @@ is mapped to the amr claim of the JWT token.}
 \description{
 Creates a long-lived token.
 
-See \url{https://paws-r.github.io/docs/licensemanager/create_token.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_create_token/} for full documentation.
 }
 \keyword{internal}

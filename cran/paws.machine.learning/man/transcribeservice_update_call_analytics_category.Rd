@@ -27,6 +27,6 @@ updating this category.}
 \description{
 Updates the specified Call Analytics category with new rules. Note that the \code{\link[=transcribeservice_update_call_analytics_category]{update_call_analytics_category}} operation overwrites all existing rules contained in the specified category. You cannot append additional rules onto an existing category.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/update_call_analytics_category.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_update_call_analytics_category/} for full documentation.
 }
 \keyword{internal}

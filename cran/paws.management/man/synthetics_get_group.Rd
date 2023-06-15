@@ -13,6 +13,6 @@ name, the ARN, or the group ID as the \code{GroupIdentifier}.}
 \description{
 Returns information about one group. Groups are a global resource, so you can use this operation from any Region.
 
-See \url{https://paws-r.github.io/docs/synthetics/get_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/synthetics_get_group/} for full documentation.
 }
 \keyword{internal}

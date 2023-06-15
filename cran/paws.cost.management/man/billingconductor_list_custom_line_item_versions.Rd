@@ -25,6 +25,6 @@ range in which the custom line item versions are applied.}
 \description{
 A paginated call to get a list of all custom line item versions.
 
-See \url{https://paws-r.github.io/docs/billingconductor/list_custom_line_item_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_list_custom_line_item_versions/} for full documentation.
 }
 \keyword{internal}

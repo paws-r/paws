@@ -27,6 +27,6 @@ paginated response.}
 \description{
 Provides information about the runs of a journey.
 
-See \url{https://paws-r.github.io/docs/pinpoint/get_journey_runs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_get_journey_runs/} for full documentation.
 }
 \keyword{internal}

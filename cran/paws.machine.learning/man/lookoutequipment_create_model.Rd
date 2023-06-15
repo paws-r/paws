@@ -72,6 +72,6 @@ data from this asset for training, evaluation, or inference.}
 \description{
 Creates an ML model for data inference.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/create_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_create_model/} for full documentation.
 }
 \keyword{internal}

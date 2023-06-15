@@ -77,6 +77,6 @@ setting is ignored on individual streams.}
 \description{
 Creates an Amazon Rekognition stream processor that you can use to detect and recognize faces or to detect labels in a streaming video.
 
-See \url{https://paws-r.github.io/docs/rekognition/create_stream_processor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_create_stream_processor/} for full documentation.
 }
 \keyword{internal}

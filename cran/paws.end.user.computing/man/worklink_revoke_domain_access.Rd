@@ -14,6 +14,6 @@ worklink_revoke_domain_access(FleetArn, DomainName)
 \description{
 Moves a domain to INACTIVE status if it was in the ACTIVE status.
 
-See \url{https://paws-r.github.io/docs/worklink/revoke_domain_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_revoke_domain_access/} for full documentation.
 }
 \keyword{internal}

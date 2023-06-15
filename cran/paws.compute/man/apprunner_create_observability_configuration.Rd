@@ -34,6 +34,6 @@ configuration resource. A tag is a key-value pair.}
 \description{
 Create an App Runner observability configuration resource. App Runner requires this resource when you create or update App Runner services and you want to enable non-default observability features. You can share an observability configuration across multiple services.
 
-See \url{https://paws-r.github.io/docs/apprunner/create_observability_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_create_observability_configuration/} for full documentation.
 }
 \keyword{internal}

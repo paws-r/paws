@@ -25,6 +25,6 @@ identities in the response.}
 \description{
 Lists the identities in an identity pool.
 
-See \url{https://paws-r.github.io/docs/cognitoidentity/list_identities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_list_identities/} for full documentation.
 }
 \keyword{internal}

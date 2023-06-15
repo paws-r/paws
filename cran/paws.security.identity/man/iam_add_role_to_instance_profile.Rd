@@ -22,6 +22,6 @@ spaces. You can also include any of the following characters: _+=,.@-}
 \description{
 Adds the specified IAM role to the specified instance profile. An instance profile can contain only one role, and this quota cannot be increased. You can remove the existing role and then add a different role to an instance profile. You must then wait for the change to appear across all of Amazon Web Services because of \href{https://en.wikipedia.org/wiki/Eventual_consistency}{eventual consistency}. To force the change, you must \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateIamInstanceProfile.html}{disassociate the instance profile} and then \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateIamInstanceProfile.html}{associate the instance profile}, or you can stop your instance and then restart it.
 
-See \url{https://paws-r.github.io/docs/iam/add_role_to_instance_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_add_role_to_instance_profile/} for full documentation.
 }
 \keyword{internal}

@@ -25,6 +25,6 @@ retrieve the next page of results.}
 \description{
 Returns information about the status of the specified anomaly detection jobs.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/describe_anomaly_detection_executions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_describe_anomaly_detection_executions/} for full documentation.
 }
 \keyword{internal}

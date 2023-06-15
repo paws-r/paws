@@ -27,6 +27,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deregisters the specified sources (network interfaces) from the transit gateway multicast group.
 
-See \url{https://paws-r.github.io/docs/ec2/deregister_transit_gateway_multicast_group_sources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_deregister_transit_gateway_multicast_group_sources/} for full documentation.
 }
 \keyword{internal}

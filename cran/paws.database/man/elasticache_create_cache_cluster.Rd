@@ -332,6 +332,6 @@ onward or Memcached engine version 1.6.6 on all instances built on the
 \description{
 Creates a cluster. All nodes in the cluster run the same protocol-compliant cache engine software, either Memcached or Redis.
 
-See \url{https://paws-r.github.io/docs/elasticache/create_cache_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_create_cache_cluster/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ Multi-Region Access Point.}
 \description{
 Associates an access control policy with the specified Multi-Region Access Point. Each Multi-Region Access Point can have only one policy, so a request made to this action replaces any existing policy that is associated with the specified Multi-Region Access Point.
 
-See \url{https://paws-r.github.io/docs/s3control/put_multi_region_access_point_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_put_multi_region_access_point_policy/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ instance identifier for an instance, or the name of a security group.}
 \description{
 Removes a source identifier from an existing Amazon DocumentDB event notification subscription.
 
-See \url{https://paws-r.github.io/docs/docdb/remove_source_identifier_from_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_remove_source_identifier_from_subscription/} for full documentation.
 }
 \keyword{internal}

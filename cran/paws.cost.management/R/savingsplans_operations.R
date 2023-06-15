@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a Savings Plan.
 #'
-#' See [https://paws-r.github.io/docs/savingsplans/create_savings_plan.html](https://paws-r.github.io/docs/savingsplans/create_savings_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/savingsplans_create_savings_plan/](https://www.paws-r-sdk.com/docs/savingsplans_create_savings_plan/) for full documentation.
 #'
 #' @param savingsPlanOfferingId &#91;required&#93; The ID of the offering.
 #' @param commitment &#91;required&#93; The hourly commitment, in USD. This is a value between 0.001 and 1
@@ -48,7 +48,7 @@ savingsplans_create_savings_plan <- function(savingsPlanOfferingId, commitment, 
 #' @description
 #' Deletes the queued purchase for the specified Savings Plan.
 #'
-#' See [https://paws-r.github.io/docs/savingsplans/delete_queued_savings_plan.html](https://paws-r.github.io/docs/savingsplans/delete_queued_savings_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/savingsplans_delete_queued_savings_plan/](https://www.paws-r-sdk.com/docs/savingsplans_delete_queued_savings_plan/) for full documentation.
 #'
 #' @param savingsPlanId &#91;required&#93; The ID of the Savings Plan.
 #'
@@ -77,7 +77,7 @@ savingsplans_delete_queued_savings_plan <- function(savingsPlanId) {
 #' @description
 #' Describes the specified Savings Plans rates.
 #'
-#' See [https://paws-r.github.io/docs/savingsplans/describe_savings_plan_rates.html](https://paws-r.github.io/docs/savingsplans/describe_savings_plan_rates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/savingsplans_describe_savings_plan_rates/](https://www.paws-r-sdk.com/docs/savingsplans_describe_savings_plan_rates/) for full documentation.
 #'
 #' @param savingsPlanId &#91;required&#93; The ID of the Savings Plan.
 #' @param filters The filters.
@@ -110,7 +110,7 @@ savingsplans_describe_savings_plan_rates <- function(savingsPlanId, filters = NU
 #' @description
 #' Describes the specified Savings Plans.
 #'
-#' See [https://paws-r.github.io/docs/savingsplans/describe_savings_plans.html](https://paws-r.github.io/docs/savingsplans/describe_savings_plans.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/savingsplans_describe_savings_plans/](https://www.paws-r-sdk.com/docs/savingsplans_describe_savings_plans/) for full documentation.
 #'
 #' @param savingsPlanArns The Amazon Resource Names (ARN) of the Savings Plans.
 #' @param savingsPlanIds The IDs of the Savings Plans.
@@ -145,7 +145,7 @@ savingsplans_describe_savings_plans <- function(savingsPlanArns = NULL, savingsP
 #' @description
 #' Describes the specified Savings Plans offering rates.
 #'
-#' See [https://paws-r.github.io/docs/savingsplans/describe_savings_plans_offering_rates.html](https://paws-r.github.io/docs/savingsplans/describe_savings_plans_offering_rates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/savingsplans_describe_savings_plans_offering_rates/](https://www.paws-r-sdk.com/docs/savingsplans_describe_savings_plans_offering_rates/) for full documentation.
 #'
 #' @param savingsPlanOfferingIds The IDs of the offerings.
 #' @param savingsPlanPaymentOptions The payment options.
@@ -184,7 +184,7 @@ savingsplans_describe_savings_plans_offering_rates <- function(savingsPlanOfferi
 #' @description
 #' Describes the specified Savings Plans offerings.
 #'
-#' See [https://paws-r.github.io/docs/savingsplans/describe_savings_plans_offerings.html](https://paws-r.github.io/docs/savingsplans/describe_savings_plans_offerings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/savingsplans_describe_savings_plans_offerings/](https://www.paws-r-sdk.com/docs/savingsplans_describe_savings_plans_offerings/) for full documentation.
 #'
 #' @param offeringIds The IDs of the offerings.
 #' @param paymentOptions The payment options.
@@ -226,7 +226,7 @@ savingsplans_describe_savings_plans_offerings <- function(offeringIds = NULL, pa
 #' @description
 #' Lists the tags for the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/savingsplans/list_tags_for_resource.html](https://paws-r.github.io/docs/savingsplans/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/savingsplans_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/savingsplans_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #'
@@ -255,7 +255,7 @@ savingsplans_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Adds the specified tags to the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/savingsplans/tag_resource.html](https://paws-r.github.io/docs/savingsplans/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/savingsplans_tag_resource/](https://www.paws-r-sdk.com/docs/savingsplans_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param tags &#91;required&#93; One or more tags. For example, \{ "tags": \{"key1":"value1",
@@ -286,7 +286,7 @@ savingsplans_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes the specified tags from the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/savingsplans/untag_resource.html](https://paws-r.github.io/docs/savingsplans/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/savingsplans_untag_resource/](https://www.paws-r-sdk.com/docs/savingsplans_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param tagKeys &#91;required&#93; The tag keys.

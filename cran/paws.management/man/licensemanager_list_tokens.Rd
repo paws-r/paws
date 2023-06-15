@@ -26,6 +26,6 @@ licensemanager_list_tokens(
 \description{
 Lists your tokens.
 
-See \url{https://paws-r.github.io/docs/licensemanager/list_tokens.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_list_tokens/} for full documentation.
 }
 \keyword{internal}

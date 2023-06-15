@@ -12,6 +12,6 @@ servicequotas_get_requested_service_quota_change(RequestId)
 \description{
 Retrieves information about the specified quota increase request.
 
-See \url{https://paws-r.github.io/docs/servicequotas/get_requested_service_quota_change.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicequotas_get_requested_service_quota_change/} for full documentation.
 }
 \keyword{internal}

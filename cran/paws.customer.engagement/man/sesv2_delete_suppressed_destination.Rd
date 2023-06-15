@@ -13,6 +13,6 @@ list.}
 \description{
 Removes an email address from the suppression list for your account.
 
-See \url{https://paws-r.github.io/docs/sesv2/delete_suppressed_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_delete_suppressed_destination/} for full documentation.
 }
 \keyword{internal}

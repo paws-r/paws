@@ -18,6 +18,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Enables I/O operations for a volume that had I/O operations disabled because the data on the volume was potentially inconsistent.
 
-See \url{https://paws-r.github.io/docs/ec2/enable_volume_io.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_enable_volume_io/} for full documentation.
 }
 \keyword{internal}

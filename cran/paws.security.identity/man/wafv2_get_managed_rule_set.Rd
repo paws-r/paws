@@ -34,6 +34,6 @@ responses to commands like \code{list}. You provide it to operations like
 \description{
 Retrieves the specified managed rule set.
 
-See \url{https://paws-r.github.io/docs/wafv2/get_managed_rule_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_get_managed_rule_set/} for full documentation.
 }
 \keyword{internal}

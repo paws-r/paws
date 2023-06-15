@@ -12,6 +12,6 @@ backup_delete_backup_plan(BackupPlanId)
 \description{
 Deletes a backup plan. A backup plan can only be deleted after all associated selections of resources have been deleted. Deleting a backup plan deletes the current version of a backup plan. Previous versions, if any, will still exist.
 
-See \url{https://paws-r.github.io/docs/backup/delete_backup_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_delete_backup_plan/} for full documentation.
 }
 \keyword{internal}

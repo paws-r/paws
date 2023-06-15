@@ -12,6 +12,6 @@ redshiftserverless_delete_usage_limit(usageLimitId)
 \description{
 Deletes a usage limit from Amazon Redshift Serverless.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/delete_usage_limit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_delete_usage_limit/} for full documentation.
 }
 \keyword{internal}

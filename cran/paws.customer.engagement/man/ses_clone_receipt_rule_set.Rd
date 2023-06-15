@@ -20,6 +20,6 @@ underscores (_), or dashes (-).
 \description{
 Creates a receipt rule set by cloning an existing one. All receipt rules and configurations are copied to the new receipt rule set and are completely independent of the source rule set.
 
-See \url{https://paws-r.github.io/docs/ses/clone_receipt_rule_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_clone_receipt_rule_set/} for full documentation.
 }
 \keyword{internal}

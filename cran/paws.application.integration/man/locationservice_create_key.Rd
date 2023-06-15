@@ -57,6 +57,6 @@ characters: + - = . _ : / @.
 \description{
 Creates an API key resource in your Amazon Web Services account, which lets you grant \verb{geo:GetMap*} actions for Amazon Location Map resources to the API key bearer.
 
-See \url{https://paws-r.github.io/docs/locationservice/create_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_create_key/} for full documentation.
 }
 \keyword{internal}

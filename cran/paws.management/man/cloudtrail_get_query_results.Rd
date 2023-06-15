@@ -22,8 +22,8 @@ the query was run.}
 \item{MaxQueryResults}{The maximum number of query results to display on a single page.}
 }
 \description{
-Gets event data results of a query. You must specify the \code{QueryID} value returned by the \code{\link[=cloudtrail_start_query]{start_query}} operation, and an ARN for \code{EventDataStore}.
+Gets event data results of a query. You must specify the \code{QueryID} value returned by the \code{\link[=cloudtrail_start_query]{start_query}} operation.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/get_query_results.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_get_query_results/} for full documentation.
 }
 \keyword{internal}

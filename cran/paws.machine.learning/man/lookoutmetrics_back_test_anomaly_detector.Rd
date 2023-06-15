@@ -12,6 +12,6 @@ lookoutmetrics_back_test_anomaly_detector(AnomalyDetectorArn)
 \description{
 Runs a backtest for anomaly detection for the specified resource.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/back_test_anomaly_detector.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_back_test_anomaly_detector/} for full documentation.
 }
 \keyword{internal}

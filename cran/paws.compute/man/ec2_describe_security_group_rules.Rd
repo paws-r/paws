@@ -43,6 +43,6 @@ specified, then all items are returned. For more information, see
 \description{
 Describes one or more of your security group rules.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_security_group_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_security_group_rules/} for full documentation.
 }
 \keyword{internal}

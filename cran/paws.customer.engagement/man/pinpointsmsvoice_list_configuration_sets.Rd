@@ -17,6 +17,6 @@ response.}
 \description{
 List all of the configuration sets associated with your Amazon Pinpoint account in the current region.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoice/list_configuration_sets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoice_list_configuration_sets/} for full documentation.
 }
 \keyword{internal}

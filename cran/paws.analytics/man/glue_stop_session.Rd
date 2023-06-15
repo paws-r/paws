@@ -14,6 +14,6 @@ glue_stop_session(Id, RequestOrigin = NULL)
 \description{
 Stops the session.
 
-See \url{https://paws-r.github.io/docs/glue/stop_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_stop_session/} for full documentation.
 }
 \keyword{internal}

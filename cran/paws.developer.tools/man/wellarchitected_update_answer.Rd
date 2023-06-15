@@ -36,6 +36,6 @@ key corresponds to the choice ID to be updated.}
 \description{
 Update the answer to a specific question in a workload review.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/update_answer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_update_answer/} for full documentation.
 }
 \keyword{internal}

@@ -35,6 +35,6 @@ the marker, up to the value specified by \code{MaxRecords}.}
 \description{
 Returns information about Amazon DocumentDB global clusters. This API supports pagination.
 
-See \url{https://paws-r.github.io/docs/docdb/describe_global_clusters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_describe_global_clusters/} for full documentation.
 }
 \keyword{internal}

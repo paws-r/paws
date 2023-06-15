@@ -14,6 +14,6 @@ proton_get_repository(name, provider)
 \description{
 Get detail data for a linked repository.
 
-See \url{https://paws-r.github.io/docs/proton/get_repository.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_get_repository/} for full documentation.
 }
 \keyword{internal}

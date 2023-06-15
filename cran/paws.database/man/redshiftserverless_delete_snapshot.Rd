@@ -12,6 +12,6 @@ redshiftserverless_delete_snapshot(snapshotName)
 \description{
 Deletes a snapshot from Amazon Redshift Serverless.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/delete_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_delete_snapshot/} for full documentation.
 }
 \keyword{internal}

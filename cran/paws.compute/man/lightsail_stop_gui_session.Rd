@@ -13,6 +13,6 @@ lightsail_stop_gui_session(resourceName)
 \description{
 Terminates a web-based NICE DCV session that’s used to access a virtual computer’s operating system or application. The session will close and any unsaved data will be lost.
 
-See \url{https://paws-r.github.io/docs/lightsail/stop_gui_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_stop_gui_session/} for full documentation.
 }
 \keyword{internal}

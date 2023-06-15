@@ -26,6 +26,6 @@ results.}
 \description{
 Searches for content in a specified knowledge base. Can be used to get a specific content resource by its name.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/search_content.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_search_content/} for full documentation.
 }
 \keyword{internal}

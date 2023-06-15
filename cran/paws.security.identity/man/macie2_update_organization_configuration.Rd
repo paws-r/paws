@@ -14,6 +14,6 @@ when the account is added to the organization in Organizations.}
 \description{
 Updates the Amazon Macie configuration settings for an organization in Organizations.
 
-See \url{https://paws-r.github.io/docs/macie2/update_organization_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_update_organization_configuration/} for full documentation.
 }
 \keyword{internal}

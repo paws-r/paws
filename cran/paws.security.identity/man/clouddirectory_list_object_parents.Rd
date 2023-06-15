@@ -36,6 +36,6 @@ There could be multiple links between a parent-child pair.}
 \description{
 Lists parent objects that are associated with a given object in pagination fashion.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/list_object_parents.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_list_object_parents/} for full documentation.
 }
 \keyword{internal}

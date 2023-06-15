@@ -23,6 +23,6 @@ provide a valid Amazon account number for this parameter.}
 \description{
 Allows network ingress to a cache security group. Applications using ElastiCache must be running on Amazon EC2, and Amazon EC2 security groups are used as the authorization mechanism.
 
-See \url{https://paws-r.github.io/docs/elasticache/authorize_cache_security_group_ingress.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_authorize_cache_security_group_ingress/} for full documentation.
 }
 \keyword{internal}

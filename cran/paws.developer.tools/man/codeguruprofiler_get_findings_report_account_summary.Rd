@@ -40,6 +40,6 @@ purposes.}
 \description{
 Returns a list of \href{https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_FindingsReportSummary.html}{\code{FindingsReportSummary}} objects that contain analysis results for all profiling groups in your AWS account.
 
-See \url{https://paws-r.github.io/docs/codeguruprofiler/get_findings_report_account_summary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeguruprofiler_get_findings_report_account_summary/} for full documentation.
 }
 \keyword{internal}

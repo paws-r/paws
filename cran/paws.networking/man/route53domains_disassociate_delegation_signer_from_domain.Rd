@@ -17,6 +17,6 @@ created. You can retrieve it as part of DNSSEC information returned by
 \description{
 Deletes a delegation signer (DS) record in the registry zone for this domain name.
 
-See \url{https://paws-r.github.io/docs/route53domains/disassociate_delegation_signer_from_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_disassociate_delegation_signer_from_domain/} for full documentation.
 }
 \keyword{internal}

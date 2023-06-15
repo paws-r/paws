@@ -27,6 +27,6 @@ operations, which returns results in the next page.}
 \description{
 Retrieves a list of configuration changes that are scheduled for a domain. These changes can be \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html}{service software updates} or \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/auto-tune.html#auto-tune-types}{blue/green Auto-Tune enhancements}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/list_scheduled_actions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_list_scheduled_actions/} for full documentation.
 }
 \keyword{internal}

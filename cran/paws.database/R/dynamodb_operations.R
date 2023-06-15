@@ -9,7 +9,7 @@ NULL
 #' @description
 #' This operation allows you to perform batch reads or writes on data stored in DynamoDB, using PartiQL. Each read statement in a [`batch_execute_statement`][dynamodb_batch_execute_statement] must specify an equality condition on all key attributes. This enforces that each `SELECT` statement in a batch returns at most a single item.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/batch_execute_statement.html](https://paws-r.github.io/docs/dynamodb/batch_execute_statement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_batch_execute_statement/](https://www.paws-r-sdk.com/docs/dynamodb_batch_execute_statement/) for full documentation.
 #'
 #' @param Statements &#91;required&#93; The list of PartiQL statements representing the batch to run.
 #' @param ReturnConsumedCapacity 
@@ -40,7 +40,7 @@ dynamodb_batch_execute_statement <- function(Statements, ReturnConsumedCapacity 
 #' @description
 #' The [`batch_get_item`][dynamodb_batch_get_item] operation returns the attributes of one or more items from one or more tables. You identify requested items by primary key.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/batch_get_item.html](https://paws-r.github.io/docs/dynamodb/batch_get_item.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_batch_get_item/](https://www.paws-r-sdk.com/docs/dynamodb_batch_get_item/) for full documentation.
 #'
 #' @param RequestItems &#91;required&#93; A map of one or more table names and, for each table, a map that
 #' describes one or more items to retrieve from that table. Each table name
@@ -144,7 +144,7 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #' @description
 #' The [`batch_write_item`][dynamodb_batch_write_item] operation puts or deletes multiple items in one or more tables. A single call to [`batch_write_item`][dynamodb_batch_write_item] can transmit up to 16MB of data over the network, consisting of up to 25 item put or delete operations. While individual items can be up to 400 KB once stored, it's important to note that an item's representation might be greater than 400KB while being sent in DynamoDB's JSON format for the API call. For more details on this distinction, see [Naming Rules and Data Types](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html).
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/batch_write_item.html](https://paws-r.github.io/docs/dynamodb/batch_write_item.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_batch_write_item/](https://www.paws-r-sdk.com/docs/dynamodb_batch_write_item/) for full documentation.
 #'
 #' @param RequestItems &#91;required&#93; A map of one or more table names and, for each table, a list of
 #' operations to be performed (`DeleteRequest` or `PutRequest`). Each
@@ -207,7 +207,7 @@ dynamodb_batch_write_item <- function(RequestItems, ReturnConsumedCapacity = NUL
 #' @description
 #' Creates a backup for an existing table.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/create_backup.html](https://paws-r.github.io/docs/dynamodb/create_backup.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_create_backup/](https://www.paws-r-sdk.com/docs/dynamodb_create_backup/) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table.
 #' @param BackupName &#91;required&#93; Specified name for the backup.
@@ -237,7 +237,7 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #' @description
 #' Creates a global table from an existing table. A global table creates a replication relationship between two or more DynamoDB tables with the same table name in the provided Regions.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/create_global_table.html](https://paws-r.github.io/docs/dynamodb/create_global_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_create_global_table/](https://www.paws-r-sdk.com/docs/dynamodb_create_global_table/) for full documentation.
 #'
 #' @param GlobalTableName &#91;required&#93; The global table name.
 #' @param ReplicationGroup &#91;required&#93; The Regions where the global table needs to be created.
@@ -267,7 +267,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' @description
 #' The [`create_table`][dynamodb_create_table] operation adds a new table to your account. In an Amazon Web Services account, table names must be unique within each Region. That is, you can have two tables with same name if you create the tables in different Regions.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/create_table.html](https://paws-r.github.io/docs/dynamodb/create_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_create_table/](https://www.paws-r-sdk.com/docs/dynamodb_create_table/) for full documentation.
 #'
 #' @param AttributeDefinitions &#91;required&#93; An array of attributes that describe the key schema for the table and
 #' indexes.
@@ -461,7 +461,7 @@ dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, Lo
 #' @description
 #' Deletes an existing backup of a table.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/delete_backup.html](https://paws-r.github.io/docs/dynamodb/delete_backup.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_delete_backup/](https://www.paws-r-sdk.com/docs/dynamodb_delete_backup/) for full documentation.
 #'
 #' @param BackupArn &#91;required&#93; The ARN associated with the backup.
 #'
@@ -490,7 +490,7 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' @description
 #' Deletes a single item in a table by primary key. You can perform a conditional delete operation that deletes the item if it exists, or if it has an expected attribute value.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/delete_item.html](https://paws-r.github.io/docs/dynamodb/delete_item.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_delete_item/](https://www.paws-r-sdk.com/docs/dynamodb_delete_item/) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table from which to delete the item.
 #' @param Key &#91;required&#93; A map of attribute names to `AttributeValue` objects, representing the
@@ -629,7 +629,7 @@ dynamodb_delete_item <- function(TableName, Key, Expected = NULL, ConditionalOpe
 #' @description
 #' The [`delete_table`][dynamodb_delete_table] operation deletes a table and all of its items. After a [`delete_table`][dynamodb_delete_table] request, the specified table is in the `DELETING` state until DynamoDB completes the deletion. If the table is in the `ACTIVE` state, you can delete it. If a table is in `CREATING` or `UPDATING` states, then DynamoDB returns a `ResourceInUseException`. If the specified table does not exist, DynamoDB returns a `ResourceNotFoundException`. If table is already in the `DELETING` state, no error is returned.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/delete_table.html](https://paws-r.github.io/docs/dynamodb/delete_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_delete_table/](https://www.paws-r-sdk.com/docs/dynamodb_delete_table/) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table to delete.
 #'
@@ -658,7 +658,7 @@ dynamodb_delete_table <- function(TableName) {
 #' @description
 #' Describes an existing backup of a table.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/describe_backup.html](https://paws-r.github.io/docs/dynamodb/describe_backup.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_describe_backup/](https://www.paws-r-sdk.com/docs/dynamodb_describe_backup/) for full documentation.
 #'
 #' @param BackupArn &#91;required&#93; The Amazon Resource Name (ARN) associated with the backup.
 #'
@@ -688,7 +688,7 @@ dynamodb_describe_backup <- function(BackupArn) {
 #' @description
 #' Checks the status of continuous backups and point in time recovery on the specified table. Continuous backups are `ENABLED` on all tables at table creation. If point in time recovery is enabled, `PointInTimeRecoveryStatus` will be set to ENABLED.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/describe_continuous_backups.html](https://paws-r.github.io/docs/dynamodb/describe_continuous_backups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_describe_continuous_backups/](https://www.paws-r-sdk.com/docs/dynamodb_describe_continuous_backups/) for full documentation.
 #'
 #' @param TableName &#91;required&#93; Name of the table for which the customer wants to check the continuous
 #' backups and point in time recovery settings.
@@ -719,7 +719,7 @@ dynamodb_describe_continuous_backups <- function(TableName) {
 #' @description
 #' Returns information about contributor insights for a given table or global secondary index.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/describe_contributor_insights.html](https://paws-r.github.io/docs/dynamodb/describe_contributor_insights.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_describe_contributor_insights/](https://www.paws-r-sdk.com/docs/dynamodb_describe_contributor_insights/) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table to describe.
 #' @param IndexName The name of the global secondary index to describe, if applicable.
@@ -749,7 +749,7 @@ dynamodb_describe_contributor_insights <- function(TableName, IndexName = NULL) 
 #' @description
 #' Returns the regional endpoint information. This action must be included in your VPC endpoint policies, or access to the DescribeEndpoints API will be denied. For more information on policy permissions, please see [Internetwork traffic privacy](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/inter-network-traffic-privacy.html#inter-network-traffic-DescribeEndpoints).
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/describe_endpoints.html](https://paws-r.github.io/docs/dynamodb/describe_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_describe_endpoints/](https://www.paws-r-sdk.com/docs/dynamodb_describe_endpoints/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -776,7 +776,7 @@ dynamodb_describe_endpoints <- function() {
 #' @description
 #' Describes an existing table export.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/describe_export.html](https://paws-r.github.io/docs/dynamodb/describe_export.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_describe_export/](https://www.paws-r-sdk.com/docs/dynamodb_describe_export/) for full documentation.
 #'
 #' @param ExportArn &#91;required&#93; The Amazon Resource Name (ARN) associated with the export.
 #'
@@ -805,7 +805,7 @@ dynamodb_describe_export <- function(ExportArn) {
 #' @description
 #' Returns information about the specified global table.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/describe_global_table.html](https://paws-r.github.io/docs/dynamodb/describe_global_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_describe_global_table/](https://www.paws-r-sdk.com/docs/dynamodb_describe_global_table/) for full documentation.
 #'
 #' @param GlobalTableName &#91;required&#93; The name of the global table.
 #'
@@ -834,7 +834,7 @@ dynamodb_describe_global_table <- function(GlobalTableName) {
 #' @description
 #' Describes Region-specific settings for a global table.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/describe_global_table_settings.html](https://paws-r.github.io/docs/dynamodb/describe_global_table_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_describe_global_table_settings/](https://www.paws-r-sdk.com/docs/dynamodb_describe_global_table_settings/) for full documentation.
 #'
 #' @param GlobalTableName &#91;required&#93; The name of the global table to describe.
 #'
@@ -863,7 +863,7 @@ dynamodb_describe_global_table_settings <- function(GlobalTableName) {
 #' @description
 #' Represents the properties of the import.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/describe_import.html](https://paws-r.github.io/docs/dynamodb/describe_import.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_describe_import/](https://www.paws-r-sdk.com/docs/dynamodb_describe_import/) for full documentation.
 #'
 #' @param ImportArn &#91;required&#93; The Amazon Resource Name (ARN) associated with the table you're
 #' importing to.
@@ -893,7 +893,7 @@ dynamodb_describe_import <- function(ImportArn) {
 #' @description
 #' Returns information about the status of Kinesis streaming.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/describe_kinesis_streaming_destination.html](https://paws-r.github.io/docs/dynamodb/describe_kinesis_streaming_destination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_describe_kinesis_streaming_destination/](https://www.paws-r-sdk.com/docs/dynamodb_describe_kinesis_streaming_destination/) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table being described.
 #'
@@ -924,7 +924,7 @@ dynamodb_describe_kinesis_streaming_destination <- function(TableName) {
 #' @description
 #' Returns the current provisioned-capacity quotas for your Amazon Web Services account in a Region, both for the Region as a whole and for any one DynamoDB table that you create there.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/describe_limits.html](https://paws-r.github.io/docs/dynamodb/describe_limits.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_describe_limits/](https://www.paws-r-sdk.com/docs/dynamodb_describe_limits/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -953,7 +953,7 @@ dynamodb_describe_limits <- function() {
 #' @description
 #' Returns information about the table, including the current status of the table, when it was created, the primary key schema, and any indexes on the table.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/describe_table.html](https://paws-r.github.io/docs/dynamodb/describe_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_describe_table/](https://www.paws-r-sdk.com/docs/dynamodb_describe_table/) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table to describe.
 #'
@@ -983,7 +983,7 @@ dynamodb_describe_table <- function(TableName) {
 #' @description
 #' Describes auto scaling settings across replicas of the global table at once.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/describe_table_replica_auto_scaling.html](https://paws-r.github.io/docs/dynamodb/describe_table_replica_auto_scaling.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_describe_table_replica_auto_scaling/](https://www.paws-r-sdk.com/docs/dynamodb_describe_table_replica_auto_scaling/) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table.
 #'
@@ -1013,7 +1013,7 @@ dynamodb_describe_table_replica_auto_scaling <- function(TableName) {
 #' @description
 #' Gives a description of the Time to Live (TTL) status on the specified table.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/describe_time_to_live.html](https://paws-r.github.io/docs/dynamodb/describe_time_to_live.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_describe_time_to_live/](https://www.paws-r-sdk.com/docs/dynamodb_describe_time_to_live/) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table to be described.
 #'
@@ -1042,7 +1042,7 @@ dynamodb_describe_time_to_live <- function(TableName) {
 #' @description
 #' Stops replication from the DynamoDB table to the Kinesis data stream. This is done without deleting either of the resources.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/disable_kinesis_streaming_destination.html](https://paws-r.github.io/docs/dynamodb/disable_kinesis_streaming_destination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_disable_kinesis_streaming_destination/](https://www.paws-r-sdk.com/docs/dynamodb_disable_kinesis_streaming_destination/) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the DynamoDB table.
 #' @param StreamArn &#91;required&#93; The ARN for a Kinesis data stream.
@@ -1073,7 +1073,7 @@ dynamodb_disable_kinesis_streaming_destination <- function(TableName, StreamArn)
 #' @description
 #' Starts table data replication to the specified Kinesis data stream at a timestamp chosen during the enable workflow. If this operation doesn't return results immediately, use DescribeKinesisStreamingDestination to check if streaming to the Kinesis data stream is ACTIVE.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/enable_kinesis_streaming_destination.html](https://paws-r.github.io/docs/dynamodb/enable_kinesis_streaming_destination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_enable_kinesis_streaming_destination/](https://www.paws-r-sdk.com/docs/dynamodb_enable_kinesis_streaming_destination/) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the DynamoDB table.
 #' @param StreamArn &#91;required&#93; The ARN for a Kinesis data stream.
@@ -1104,7 +1104,7 @@ dynamodb_enable_kinesis_streaming_destination <- function(TableName, StreamArn) 
 #' @description
 #' This operation allows you to perform reads and singleton writes on data stored in DynamoDB, using PartiQL.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/execute_statement.html](https://paws-r.github.io/docs/dynamodb/execute_statement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_execute_statement/](https://www.paws-r-sdk.com/docs/dynamodb_execute_statement/) for full documentation.
 #'
 #' @param Statement &#91;required&#93; The PartiQL statement representing the operation to run.
 #' @param Parameters The parameters for the PartiQL statement, if any.
@@ -1150,7 +1150,7 @@ dynamodb_execute_statement <- function(Statement, Parameters = NULL, ConsistentR
 #' @description
 #' This operation allows you to perform transactional reads or writes on data stored in DynamoDB, using PartiQL.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/execute_transaction.html](https://paws-r.github.io/docs/dynamodb/execute_transaction.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_execute_transaction/](https://www.paws-r-sdk.com/docs/dynamodb_execute_transaction/) for full documentation.
 #'
 #' @param TransactStatements &#91;required&#93; The list of PartiQL statements representing the transaction to run.
 #' @param ClientRequestToken Set this value to get remaining results, if `NextToken` was returned in
@@ -1185,7 +1185,7 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
 #' @description
 #' Exports table data to an S3 bucket. The table must have point in time recovery enabled, and you can export data from any time within the point in time recovery window.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/export_table_to_point_in_time.html](https://paws-r.github.io/docs/dynamodb/export_table_to_point_in_time.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_export_table_to_point_in_time/](https://www.paws-r-sdk.com/docs/dynamodb_export_table_to_point_in_time/) for full documentation.
 #'
 #' @param TableArn &#91;required&#93; The Amazon Resource Name (ARN) associated with the table to export.
 #' @param ExportTime Time in the past from which to export table data, counted in seconds
@@ -1246,7 +1246,7 @@ dynamodb_export_table_to_point_in_time <- function(TableArn, ExportTime = NULL, 
 #' @description
 #' The [`get_item`][dynamodb_get_item] operation returns a set of attributes for the item with the given primary key. If there is no matching item, [`get_item`][dynamodb_get_item] does not return any data and there will be no `Item` element in the response.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/get_item.html](https://paws-r.github.io/docs/dynamodb/get_item.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_get_item/](https://www.paws-r-sdk.com/docs/dynamodb_get_item/) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table containing the requested item.
 #' @param Key &#91;required&#93; A map of attribute names to `AttributeValue` objects, representing the
@@ -1338,7 +1338,7 @@ dynamodb_get_item <- function(TableName, Key, AttributesToGet = NULL, Consistent
 #' @description
 #' Imports table data from an S3 bucket.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/import_table.html](https://paws-r.github.io/docs/dynamodb/import_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_import_table/](https://www.paws-r-sdk.com/docs/dynamodb_import_table/) for full documentation.
 #'
 #' @param ClientToken Providing a `ClientToken` makes the call to `ImportTableInput`
 #' idempotent, meaning that multiple identical calls have the same effect
@@ -1386,7 +1386,7 @@ dynamodb_import_table <- function(ClientToken = NULL, S3BucketSource, InputForma
 #' @description
 #' List backups associated with an Amazon Web Services account. To list backups for a given table, specify `TableName`. [`list_backups`][dynamodb_list_backups] returns a paginated list of results with at most 1 MB worth of items in a page. You can also specify a maximum number of entries to be returned in a page.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/list_backups.html](https://paws-r.github.io/docs/dynamodb/list_backups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_list_backups/](https://www.paws-r-sdk.com/docs/dynamodb_list_backups/) for full documentation.
 #'
 #' @param TableName The backups from the table specified by `TableName` are listed.
 #' @param Limit Maximum number of backups to return at once.
@@ -1437,7 +1437,7 @@ dynamodb_list_backups <- function(TableName = NULL, Limit = NULL, TimeRangeLower
 #' @description
 #' Returns a list of ContributorInsightsSummary for a table and all its global secondary indexes.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/list_contributor_insights.html](https://paws-r.github.io/docs/dynamodb/list_contributor_insights.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_list_contributor_insights/](https://www.paws-r-sdk.com/docs/dynamodb_list_contributor_insights/) for full documentation.
 #'
 #' @param TableName The name of the table.
 #' @param NextToken A token to for the desired page, if there is one.
@@ -1468,7 +1468,7 @@ dynamodb_list_contributor_insights <- function(TableName = NULL, NextToken = NUL
 #' @description
 #' Lists completed exports within the past 90 days.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/list_exports.html](https://paws-r.github.io/docs/dynamodb/list_exports.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_list_exports/](https://www.paws-r-sdk.com/docs/dynamodb_list_exports/) for full documentation.
 #'
 #' @param TableArn The Amazon Resource Name (ARN) associated with the exported table.
 #' @param MaxResults Maximum number of results to return per page.
@@ -1501,7 +1501,7 @@ dynamodb_list_exports <- function(TableArn = NULL, MaxResults = NULL, NextToken 
 #' @description
 #' Lists all global tables that have a replica in the specified Region.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/list_global_tables.html](https://paws-r.github.io/docs/dynamodb/list_global_tables.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_list_global_tables/](https://www.paws-r-sdk.com/docs/dynamodb_list_global_tables/) for full documentation.
 #'
 #' @param ExclusiveStartGlobalTableName The first global table name that this operation will evaluate.
 #' @param Limit The maximum number of table names to return, if the parameter is not
@@ -1539,7 +1539,7 @@ dynamodb_list_global_tables <- function(ExclusiveStartGlobalTableName = NULL, Li
 #' @description
 #' Lists completed imports within the past 90 days.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/list_imports.html](https://paws-r.github.io/docs/dynamodb/list_imports.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_list_imports/](https://www.paws-r-sdk.com/docs/dynamodb_list_imports/) for full documentation.
 #'
 #' @param TableArn The Amazon Resource Name (ARN) associated with the table that was
 #' imported to.
@@ -1574,7 +1574,7 @@ dynamodb_list_imports <- function(TableArn = NULL, PageSize = NULL, NextToken = 
 #' @description
 #' Returns an array of table names associated with the current account and endpoint. The output from [`list_tables`][dynamodb_list_tables] is paginated, with each page returning a maximum of 100 table names.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/list_tables.html](https://paws-r.github.io/docs/dynamodb/list_tables.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_list_tables/](https://www.paws-r-sdk.com/docs/dynamodb_list_tables/) for full documentation.
 #'
 #' @param ExclusiveStartTableName The first table name that this operation will evaluate. Use the value
 #' that was returned for `LastEvaluatedTableName` in a previous operation,
@@ -1607,7 +1607,7 @@ dynamodb_list_tables <- function(ExclusiveStartTableName = NULL, Limit = NULL) {
 #' @description
 #' List all tags on an Amazon DynamoDB resource. You can call ListTagsOfResource up to 10 times per second, per account.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/list_tags_of_resource.html](https://paws-r.github.io/docs/dynamodb/list_tags_of_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_list_tags_of_resource/](https://www.paws-r-sdk.com/docs/dynamodb_list_tags_of_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon DynamoDB resource with tags to be listed. This value is an
 #' Amazon Resource Name (ARN).
@@ -1640,7 +1640,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' @description
 #' Creates a new item, or replaces an old item with a new item. If an item that has the same primary key as the new item already exists in the specified table, the new item completely replaces the existing item. You can perform a conditional put operation (add a new item if one with the specified primary key doesn't exist), or replace an existing item if it has certain attribute values. You can return the item's attribute values in the same operation, using the `ReturnValues` parameter.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/put_item.html](https://paws-r.github.io/docs/dynamodb/put_item.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_put_item/](https://www.paws-r-sdk.com/docs/dynamodb_put_item/) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table to contain the item.
 #' @param Item &#91;required&#93; A map of attribute name/value pairs, one for each attribute. Only the
@@ -1800,7 +1800,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' @description
 #' You must provide the name of the partition key attribute and a single value for that attribute. [`query`][dynamodb_query] returns all items with that partition key value. Optionally, you can provide a sort key attribute and use a comparison operator to refine the search results.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/query.html](https://paws-r.github.io/docs/dynamodb/query.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_query/](https://www.paws-r-sdk.com/docs/dynamodb_query/) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table containing the requested items.
 #' @param IndexName The name of an index to query. This index can be any local secondary
@@ -2096,7 +2096,7 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #' @description
 #' Creates a new table from an existing backup. Any number of users can execute up to 50 concurrent restores (any type of restore) in a given account.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/restore_table_from_backup.html](https://paws-r.github.io/docs/dynamodb/restore_table_from_backup.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_restore_table_from_backup/](https://www.paws-r-sdk.com/docs/dynamodb_restore_table_from_backup/) for full documentation.
 #'
 #' @param TargetTableName &#91;required&#93; The name of the new table to which the backup must be restored.
 #' @param BackupArn &#91;required&#93; The Amazon Resource Name (ARN) associated with the backup.
@@ -2136,7 +2136,7 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #' @description
 #' Restores the specified table to the specified point in time within `EarliestRestorableDateTime` and `LatestRestorableDateTime`. You can restore your table to any point in time during the last 35 days. Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/restore_table_to_point_in_time.html](https://paws-r.github.io/docs/dynamodb/restore_table_to_point_in_time.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_restore_table_to_point_in_time/](https://www.paws-r-sdk.com/docs/dynamodb_restore_table_to_point_in_time/) for full documentation.
 #'
 #' @param SourceTableArn The DynamoDB table that will be restored. This value is an Amazon
 #' Resource Name (ARN).
@@ -2182,7 +2182,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #' @description
 #' The [`scan`][dynamodb_scan] operation returns one or more items and item attributes by accessing every item in a table or a secondary index. To have DynamoDB return fewer items, you can provide a `FilterExpression` operation.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/scan.html](https://paws-r.github.io/docs/dynamodb/scan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_scan/](https://www.paws-r-sdk.com/docs/dynamodb_scan/) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table containing the requested items; or, if you provide
 #' `IndexName`, the name of the table to which that index belongs.
@@ -2429,7 +2429,7 @@ dynamodb_scan <- function(TableName, IndexName = NULL, AttributesToGet = NULL, L
 #' @description
 #' Associate a set of tags with an Amazon DynamoDB resource. You can then activate these user-defined tags so that they appear on the Billing and Cost Management console for cost allocation tracking. You can call TagResource up to five times per second, per account.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/tag_resource.html](https://paws-r.github.io/docs/dynamodb/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_tag_resource/](https://www.paws-r-sdk.com/docs/dynamodb_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Identifies the Amazon DynamoDB resource to which tags should be added.
 #' This value is an Amazon Resource Name (ARN).
@@ -2462,7 +2462,7 @@ dynamodb_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' [`transact_get_items`][dynamodb_transact_get_items] is a synchronous operation that atomically retrieves multiple items from one or more tables (but not from indexes) in a single account and Region. A [`transact_get_items`][dynamodb_transact_get_items] call can contain up to 100 `TransactGetItem` objects, each of which contains a `Get` structure that specifies an item to retrieve from a table in the account and Region. A call to [`transact_get_items`][dynamodb_transact_get_items] cannot retrieve items from tables in more than one Amazon Web Services account or Region. The aggregate size of the items in the transaction cannot exceed 4 MB.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/transact_get_items.html](https://paws-r.github.io/docs/dynamodb/transact_get_items.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_transact_get_items/](https://www.paws-r-sdk.com/docs/dynamodb_transact_get_items/) for full documentation.
 #'
 #' @param TransactItems &#91;required&#93; An ordered array of up to 100 `TransactGetItem` objects, each of which
 #' contains a `Get` structure.
@@ -2496,7 +2496,7 @@ dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = 
 #' @description
 #' [`transact_write_items`][dynamodb_transact_write_items] is a synchronous write operation that groups up to 100 action requests. These actions can target items in different tables, but not in different Amazon Web Services accounts or Regions, and no two actions can target the same item. For example, you cannot both `ConditionCheck` and `Update` the same item. The aggregate size of the items in the transaction cannot exceed 4 MB.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/transact_write_items.html](https://paws-r.github.io/docs/dynamodb/transact_write_items.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_transact_write_items/](https://www.paws-r-sdk.com/docs/dynamodb_transact_write_items/) for full documentation.
 #'
 #' @param TransactItems &#91;required&#93; An ordered array of up to 100 `TransactWriteItem` objects, each of which
 #' contains a `ConditionCheck`, `Put`, `Update`, or `Delete` object. These
@@ -2558,7 +2558,7 @@ dynamodb_transact_write_items <- function(TransactItems, ReturnConsumedCapacity 
 #' @description
 #' Removes the association of tags from an Amazon DynamoDB resource. You can call [`untag_resource`][dynamodb_untag_resource] up to five times per second, per account.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/untag_resource.html](https://paws-r.github.io/docs/dynamodb/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_untag_resource/](https://www.paws-r-sdk.com/docs/dynamodb_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The DynamoDB resource that the tags will be removed from. This value is
 #' an Amazon Resource Name (ARN).
@@ -2591,7 +2591,7 @@ dynamodb_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' [`update_continuous_backups`][dynamodb_update_continuous_backups] enables or disables point in time recovery for the specified table. A successful [`update_continuous_backups`][dynamodb_update_continuous_backups] call returns the current `ContinuousBackupsDescription`. Continuous backups are `ENABLED` on all tables at table creation. If point in time recovery is enabled, `PointInTimeRecoveryStatus` will be set to ENABLED.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/update_continuous_backups.html](https://paws-r.github.io/docs/dynamodb/update_continuous_backups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_update_continuous_backups/](https://www.paws-r-sdk.com/docs/dynamodb_update_continuous_backups/) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table.
 #' @param PointInTimeRecoverySpecification &#91;required&#93; Represents the settings used to enable point in time recovery.
@@ -2622,7 +2622,7 @@ dynamodb_update_continuous_backups <- function(TableName, PointInTimeRecoverySpe
 #' @description
 #' Updates the status for contributor insights for a specific table or index. CloudWatch Contributor Insights for DynamoDB graphs display the partition key and (if applicable) sort key of frequently accessed items and frequently throttled items in plaintext. If you require the use of Amazon Web Services Key Management Service (KMS) to encrypt this table’s partition key and sort key data with an Amazon Web Services managed key or customer managed key, you should not enable CloudWatch Contributor Insights for DynamoDB for this table.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/update_contributor_insights.html](https://paws-r.github.io/docs/dynamodb/update_contributor_insights.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_update_contributor_insights/](https://www.paws-r-sdk.com/docs/dynamodb_update_contributor_insights/) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table.
 #' @param IndexName The global secondary index name, if applicable.
@@ -2653,7 +2653,7 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
 #' @description
 #' Adds or removes replicas in the specified global table. The global table must already exist to be able to use this operation. Any replica to be added must be empty, have the same name as the global table, have the same key schema, have DynamoDB Streams enabled, and have the same provisioned and maximum write capacity units.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/update_global_table.html](https://paws-r.github.io/docs/dynamodb/update_global_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_update_global_table/](https://www.paws-r-sdk.com/docs/dynamodb_update_global_table/) for full documentation.
 #'
 #' @param GlobalTableName &#91;required&#93; The global table name.
 #' @param ReplicaUpdates &#91;required&#93; A list of Regions that should be added or removed from the global table.
@@ -2683,7 +2683,7 @@ dynamodb_update_global_table <- function(GlobalTableName, ReplicaUpdates) {
 #' @description
 #' Updates settings for a global table.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/update_global_table_settings.html](https://paws-r.github.io/docs/dynamodb/update_global_table_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_update_global_table_settings/](https://www.paws-r-sdk.com/docs/dynamodb_update_global_table_settings/) for full documentation.
 #'
 #' @param GlobalTableName &#91;required&#93; The name of the global table
 #' @param GlobalTableBillingMode The billing mode of the global table. If `GlobalTableBillingMode` is not
@@ -2733,7 +2733,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' @description
 #' Edits an existing item's attributes, or adds a new item to the table if it does not already exist. You can put, delete, or add attribute values. You can also perform a conditional update on an existing item (insert a new attribute name-value pair if it doesn't exist, or replace an existing name-value pair if it has certain expected attribute values).
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/update_item.html](https://paws-r.github.io/docs/dynamodb/update_item.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_update_item/](https://www.paws-r-sdk.com/docs/dynamodb_update_item/) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table containing the item to update.
 #' @param Key &#91;required&#93; The primary key of the item to be updated. Each element consists of an
@@ -2969,7 +2969,7 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' @description
 #' Modifies the provisioned throughput settings, global secondary indexes, or DynamoDB Streams settings for a given table.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/update_table.html](https://paws-r.github.io/docs/dynamodb/update_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_update_table/](https://www.paws-r-sdk.com/docs/dynamodb_update_table/) for full documentation.
 #'
 #' @param AttributeDefinitions An array of attributes that describe the key schema for the table and
 #' indexes. If you are adding a new global secondary index to the table,
@@ -3050,7 +3050,7 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
 #' @description
 #' Updates auto scaling settings on your global tables at once.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/update_table_replica_auto_scaling.html](https://paws-r.github.io/docs/dynamodb/update_table_replica_auto_scaling.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_update_table_replica_auto_scaling/](https://www.paws-r-sdk.com/docs/dynamodb_update_table_replica_auto_scaling/) for full documentation.
 #'
 #' @param GlobalSecondaryIndexUpdates Represents the auto scaling settings of the global secondary indexes of
 #' the replica to be updated.
@@ -3085,7 +3085,7 @@ dynamodb_update_table_replica_auto_scaling <- function(GlobalSecondaryIndexUpdat
 #' @description
 #' The [`update_time_to_live`][dynamodb_update_time_to_live] method enables or disables Time to Live (TTL) for the specified table. A successful [`update_time_to_live`][dynamodb_update_time_to_live] call returns the current `TimeToLiveSpecification`. It can take up to one hour for the change to fully process. Any additional [`update_time_to_live`][dynamodb_update_time_to_live] calls for the same table during this one hour duration result in a `ValidationException`.
 #'
-#' See [https://paws-r.github.io/docs/dynamodb/update_time_to_live.html](https://paws-r.github.io/docs/dynamodb/update_time_to_live.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodb_update_time_to_live/](https://www.paws-r-sdk.com/docs/dynamodb_update_time_to_live/) for full documentation.
 #'
 #' @param TableName &#91;required&#93; The name of the table to be configured.
 #' @param TimeToLiveSpecification &#91;required&#93; Represents the settings used to enable or disable Time to Live for the

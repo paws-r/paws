@@ -10,6 +10,6 @@ sesv2_get_deliverability_dashboard_options()
 \description{
 Retrieve information about the status of the Deliverability dashboard for your account. When the Deliverability dashboard is enabled, you gain access to reputation, deliverability, and other metrics for the domains that you use to send email. You also gain the ability to perform predictive inbox placement tests.
 
-See \url{https://paws-r.github.io/docs/sesv2/get_deliverability_dashboard_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_get_deliverability_dashboard_options/} for full documentation.
 }
 \keyword{internal}

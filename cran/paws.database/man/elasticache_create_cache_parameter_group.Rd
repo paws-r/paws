@@ -29,6 +29,6 @@ A tag key must be accompanied by a tag value, although null is accepted.}
 \description{
 Creates a new Amazon ElastiCache cache parameter group. An ElastiCache cache parameter group is a collection of parameters and their values that are applied to all of the nodes in any cluster or replication group using the CacheParameterGroup.
 
-See \url{https://paws-r.github.io/docs/elasticache/create_cache_parameter_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_create_cache_parameter_group/} for full documentation.
 }
 \keyword{internal}

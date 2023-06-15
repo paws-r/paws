@@ -13,6 +13,6 @@ lightsail_send_contact_method_verification(protocol)
 \description{
 Sends a verification request to an email contact method to ensure it's owned by the requester. SMS contact methods don't need to be verified.
 
-See \url{https://paws-r.github.io/docs/lightsail/send_contact_method_verification.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_send_contact_method_verification/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ Global datastore}
 \description{
 Remove a secondary cluster from the Global datastore using the Global datastore name. The secondary cluster will no longer receive updates from the primary cluster, but will remain as a standalone cluster in that Amazon region.
 
-See \url{https://paws-r.github.io/docs/elasticache/disassociate_global_replication_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_disassociate_global_replication_group/} for full documentation.
 }
 \keyword{internal}

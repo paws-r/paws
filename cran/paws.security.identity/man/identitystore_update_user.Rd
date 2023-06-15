@@ -18,6 +18,6 @@ These operations might add, replace, or remove an attribute.}
 \description{
 For the specified user in the specified identity store, updates the user metadata and attributes.
 
-See \url{https://paws-r.github.io/docs/identitystore/update_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/identitystore_update_user/} for full documentation.
 }
 \keyword{internal}

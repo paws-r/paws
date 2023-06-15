@@ -80,6 +80,6 @@ The SM2PKE algorithm is only available in China Regions.}
 \description{
 Encrypts plaintext of up to 4,096 bytes using a KMS key. You can use a symmetric or asymmetric KMS key with a \code{KeyUsage} of \code{ENCRYPT_DECRYPT}.
 
-See \url{https://paws-r.github.io/docs/kms/encrypt.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_encrypt/} for full documentation.
 }
 \keyword{internal}

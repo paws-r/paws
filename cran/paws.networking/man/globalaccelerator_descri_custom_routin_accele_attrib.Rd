@@ -15,6 +15,6 @@ describe the attributes for.}
 \description{
 Describe the attributes of a custom routing accelerator.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/describe_custom_routing_accelerator_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_describe_custom_routing_accelerator_attributes/} for full documentation.
 }
 \keyword{internal}

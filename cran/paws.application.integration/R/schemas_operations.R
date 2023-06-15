@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a discoverer.
 #'
-#' See [https://paws-r.github.io/docs/schemas/create_discoverer.html](https://paws-r.github.io/docs/schemas/create_discoverer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_create_discoverer/](https://www.paws-r-sdk.com/docs/schemas_create_discoverer/) for full documentation.
 #'
 #' @param Description A description for the discoverer.
 #' @param SourceArn &#91;required&#93; The ARN of the event bus.
@@ -41,7 +41,7 @@ schemas_create_discoverer <- function(Description = NULL, SourceArn, CrossAccoun
 #' @description
 #' Creates a registry.
 #'
-#' See [https://paws-r.github.io/docs/schemas/create_registry.html](https://paws-r.github.io/docs/schemas/create_registry.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_create_registry/](https://www.paws-r-sdk.com/docs/schemas_create_registry/) for full documentation.
 #'
 #' @param Description A description of the registry to be created.
 #' @param RegistryName &#91;required&#93; The name of the registry.
@@ -72,7 +72,7 @@ schemas_create_registry <- function(Description = NULL, RegistryName, Tags = NUL
 #' @description
 #' Creates a schema definition.
 #'
-#' See [https://paws-r.github.io/docs/schemas/create_schema.html](https://paws-r.github.io/docs/schemas/create_schema.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_create_schema/](https://www.paws-r-sdk.com/docs/schemas_create_schema/) for full documentation.
 #'
 #' @param Content &#91;required&#93; The source of the schema definition.
 #' @param Description A description of the schema.
@@ -106,7 +106,7 @@ schemas_create_schema <- function(Content, Description = NULL, RegistryName, Sch
 #' @description
 #' Deletes a discoverer.
 #'
-#' See [https://paws-r.github.io/docs/schemas/delete_discoverer.html](https://paws-r.github.io/docs/schemas/delete_discoverer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_delete_discoverer/](https://www.paws-r-sdk.com/docs/schemas_delete_discoverer/) for full documentation.
 #'
 #' @param DiscovererId &#91;required&#93; The ID of the discoverer.
 #'
@@ -135,7 +135,7 @@ schemas_delete_discoverer <- function(DiscovererId) {
 #' @description
 #' Deletes a Registry.
 #'
-#' See [https://paws-r.github.io/docs/schemas/delete_registry.html](https://paws-r.github.io/docs/schemas/delete_registry.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_delete_registry/](https://www.paws-r-sdk.com/docs/schemas_delete_registry/) for full documentation.
 #'
 #' @param RegistryName &#91;required&#93; The name of the registry.
 #'
@@ -164,7 +164,7 @@ schemas_delete_registry <- function(RegistryName) {
 #' @description
 #' Delete the resource-based policy attached to the specified registry.
 #'
-#' See [https://paws-r.github.io/docs/schemas/delete_resource_policy.html](https://paws-r.github.io/docs/schemas/delete_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_delete_resource_policy/](https://www.paws-r-sdk.com/docs/schemas_delete_resource_policy/) for full documentation.
 #'
 #' @param RegistryName The name of the registry.
 #'
@@ -193,7 +193,7 @@ schemas_delete_resource_policy <- function(RegistryName = NULL) {
 #' @description
 #' Delete a schema definition.
 #'
-#' See [https://paws-r.github.io/docs/schemas/delete_schema.html](https://paws-r.github.io/docs/schemas/delete_schema.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_delete_schema/](https://www.paws-r-sdk.com/docs/schemas_delete_schema/) for full documentation.
 #'
 #' @param RegistryName &#91;required&#93; The name of the registry.
 #' @param SchemaName &#91;required&#93; The name of the schema.
@@ -223,7 +223,7 @@ schemas_delete_schema <- function(RegistryName, SchemaName) {
 #' @description
 #' Delete the schema version definition
 #'
-#' See [https://paws-r.github.io/docs/schemas/delete_schema_version.html](https://paws-r.github.io/docs/schemas/delete_schema_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_delete_schema_version/](https://www.paws-r-sdk.com/docs/schemas_delete_schema_version/) for full documentation.
 #'
 #' @param RegistryName &#91;required&#93; The name of the registry.
 #' @param SchemaName &#91;required&#93; The name of the schema.
@@ -254,7 +254,7 @@ schemas_delete_schema_version <- function(RegistryName, SchemaName, SchemaVersio
 #' @description
 #' Describe the code binding URI.
 #'
-#' See [https://paws-r.github.io/docs/schemas/describe_code_binding.html](https://paws-r.github.io/docs/schemas/describe_code_binding.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_describe_code_binding/](https://www.paws-r-sdk.com/docs/schemas_describe_code_binding/) for full documentation.
 #'
 #' @param Language &#91;required&#93; The language of the code binding.
 #' @param RegistryName &#91;required&#93; The name of the registry.
@@ -286,7 +286,7 @@ schemas_describe_code_binding <- function(Language, RegistryName, SchemaName, Sc
 #' @description
 #' Describes the discoverer.
 #'
-#' See [https://paws-r.github.io/docs/schemas/describe_discoverer.html](https://paws-r.github.io/docs/schemas/describe_discoverer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_describe_discoverer/](https://www.paws-r-sdk.com/docs/schemas_describe_discoverer/) for full documentation.
 #'
 #' @param DiscovererId &#91;required&#93; The ID of the discoverer.
 #'
@@ -315,7 +315,7 @@ schemas_describe_discoverer <- function(DiscovererId) {
 #' @description
 #' Describes the registry.
 #'
-#' See [https://paws-r.github.io/docs/schemas/describe_registry.html](https://paws-r.github.io/docs/schemas/describe_registry.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_describe_registry/](https://www.paws-r-sdk.com/docs/schemas_describe_registry/) for full documentation.
 #'
 #' @param RegistryName &#91;required&#93; The name of the registry.
 #'
@@ -344,7 +344,7 @@ schemas_describe_registry <- function(RegistryName) {
 #' @description
 #' Retrieve the schema definition.
 #'
-#' See [https://paws-r.github.io/docs/schemas/describe_schema.html](https://paws-r.github.io/docs/schemas/describe_schema.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_describe_schema/](https://www.paws-r-sdk.com/docs/schemas_describe_schema/) for full documentation.
 #'
 #' @param RegistryName &#91;required&#93; The name of the registry.
 #' @param SchemaName &#91;required&#93; The name of the schema.
@@ -375,7 +375,7 @@ schemas_describe_schema <- function(RegistryName, SchemaName, SchemaVersion = NU
 #' @description
 #' Export schema
 #'
-#' See [https://paws-r.github.io/docs/schemas/export_schema.html](https://paws-r.github.io/docs/schemas/export_schema.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_export_schema/](https://www.paws-r-sdk.com/docs/schemas_export_schema/) for full documentation.
 #'
 #' @param RegistryName &#91;required&#93; The name of the registry.
 #' @param SchemaName &#91;required&#93; The name of the schema.
@@ -407,7 +407,7 @@ schemas_export_schema <- function(RegistryName, SchemaName, SchemaVersion = NULL
 #' @description
 #' Get the code binding source URI.
 #'
-#' See [https://paws-r.github.io/docs/schemas/get_code_binding_source.html](https://paws-r.github.io/docs/schemas/get_code_binding_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_get_code_binding_source/](https://www.paws-r-sdk.com/docs/schemas_get_code_binding_source/) for full documentation.
 #'
 #' @param Language &#91;required&#93; The language of the code binding.
 #' @param RegistryName &#91;required&#93; The name of the registry.
@@ -439,7 +439,7 @@ schemas_get_code_binding_source <- function(Language, RegistryName, SchemaName, 
 #' @description
 #' Get the discovered schema that was generated based on sampled events.
 #'
-#' See [https://paws-r.github.io/docs/schemas/get_discovered_schema.html](https://paws-r.github.io/docs/schemas/get_discovered_schema.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_get_discovered_schema/](https://www.paws-r-sdk.com/docs/schemas_get_discovered_schema/) for full documentation.
 #'
 #' @param Events &#91;required&#93; An array of strings where each string is a JSON event. These are the
 #' events that were used to generate the schema. The array includes a
@@ -471,7 +471,7 @@ schemas_get_discovered_schema <- function(Events, Type) {
 #' @description
 #' Retrieves the resource-based policy attached to a given registry.
 #'
-#' See [https://paws-r.github.io/docs/schemas/get_resource_policy.html](https://paws-r.github.io/docs/schemas/get_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_get_resource_policy/](https://www.paws-r-sdk.com/docs/schemas_get_resource_policy/) for full documentation.
 #'
 #' @param RegistryName The name of the registry.
 #'
@@ -500,7 +500,7 @@ schemas_get_resource_policy <- function(RegistryName = NULL) {
 #' @description
 #' List the discoverers.
 #'
-#' See [https://paws-r.github.io/docs/schemas/list_discoverers.html](https://paws-r.github.io/docs/schemas/list_discoverers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_list_discoverers/](https://www.paws-r-sdk.com/docs/schemas_list_discoverers/) for full documentation.
 #'
 #' @param DiscovererIdPrefix Specifying this limits the results to only those discoverer IDs that
 #' start with the specified prefix.
@@ -536,7 +536,7 @@ schemas_list_discoverers <- function(DiscovererIdPrefix = NULL, Limit = NULL, Ne
 #' @description
 #' List the registries.
 #'
-#' See [https://paws-r.github.io/docs/schemas/list_registries.html](https://paws-r.github.io/docs/schemas/list_registries.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_list_registries/](https://www.paws-r-sdk.com/docs/schemas_list_registries/) for full documentation.
 #'
 #' @param Limit 
 #' @param NextToken The token that specifies the next page of results to return. To request
@@ -572,7 +572,7 @@ schemas_list_registries <- function(Limit = NULL, NextToken = NULL, RegistryName
 #' @description
 #' Provides a list of the schema versions and related information.
 #'
-#' See [https://paws-r.github.io/docs/schemas/list_schema_versions.html](https://paws-r.github.io/docs/schemas/list_schema_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_list_schema_versions/](https://www.paws-r-sdk.com/docs/schemas_list_schema_versions/) for full documentation.
 #'
 #' @param Limit 
 #' @param NextToken The token that specifies the next page of results to return. To request
@@ -606,7 +606,7 @@ schemas_list_schema_versions <- function(Limit = NULL, NextToken = NULL, Registr
 #' @description
 #' List the schemas.
 #'
-#' See [https://paws-r.github.io/docs/schemas/list_schemas.html](https://paws-r.github.io/docs/schemas/list_schemas.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_list_schemas/](https://www.paws-r-sdk.com/docs/schemas_list_schemas/) for full documentation.
 #'
 #' @param Limit 
 #' @param NextToken The token that specifies the next page of results to return. To request
@@ -641,7 +641,7 @@ schemas_list_schemas <- function(Limit = NULL, NextToken = NULL, RegistryName, S
 #' @description
 #' Get tags for resource.
 #'
-#' See [https://paws-r.github.io/docs/schemas/list_tags_for_resource.html](https://paws-r.github.io/docs/schemas/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/schemas_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the resource.
 #'
@@ -670,7 +670,7 @@ schemas_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Put code binding URI
 #'
-#' See [https://paws-r.github.io/docs/schemas/put_code_binding.html](https://paws-r.github.io/docs/schemas/put_code_binding.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_put_code_binding/](https://www.paws-r-sdk.com/docs/schemas_put_code_binding/) for full documentation.
 #'
 #' @param Language &#91;required&#93; The language of the code binding.
 #' @param RegistryName &#91;required&#93; The name of the registry.
@@ -702,7 +702,7 @@ schemas_put_code_binding <- function(Language, RegistryName, SchemaName, SchemaV
 #' @description
 #' The name of the policy.
 #'
-#' See [https://paws-r.github.io/docs/schemas/put_resource_policy.html](https://paws-r.github.io/docs/schemas/put_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_put_resource_policy/](https://www.paws-r-sdk.com/docs/schemas_put_resource_policy/) for full documentation.
 #'
 #' @param Policy &#91;required&#93; The resource-based policy.
 #' @param RegistryName The name of the registry.
@@ -733,7 +733,7 @@ schemas_put_resource_policy <- function(Policy, RegistryName = NULL, RevisionId 
 #' @description
 #' Search the schemas
 #'
-#' See [https://paws-r.github.io/docs/schemas/search_schemas.html](https://paws-r.github.io/docs/schemas/search_schemas.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_search_schemas/](https://www.paws-r-sdk.com/docs/schemas_search_schemas/) for full documentation.
 #'
 #' @param Keywords &#91;required&#93; Specifying this limits the results to only schemas that include the
 #' provided keywords.
@@ -768,7 +768,7 @@ schemas_search_schemas <- function(Keywords, Limit = NULL, NextToken = NULL, Reg
 #' @description
 #' Starts the discoverer
 #'
-#' See [https://paws-r.github.io/docs/schemas/start_discoverer.html](https://paws-r.github.io/docs/schemas/start_discoverer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_start_discoverer/](https://www.paws-r-sdk.com/docs/schemas_start_discoverer/) for full documentation.
 #'
 #' @param DiscovererId &#91;required&#93; The ID of the discoverer.
 #'
@@ -797,7 +797,7 @@ schemas_start_discoverer <- function(DiscovererId) {
 #' @description
 #' Stops the discoverer
 #'
-#' See [https://paws-r.github.io/docs/schemas/stop_discoverer.html](https://paws-r.github.io/docs/schemas/stop_discoverer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_stop_discoverer/](https://www.paws-r-sdk.com/docs/schemas_stop_discoverer/) for full documentation.
 #'
 #' @param DiscovererId &#91;required&#93; The ID of the discoverer.
 #'
@@ -826,7 +826,7 @@ schemas_stop_discoverer <- function(DiscovererId) {
 #' @description
 #' Add tags to a resource.
 #'
-#' See [https://paws-r.github.io/docs/schemas/tag_resource.html](https://paws-r.github.io/docs/schemas/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_tag_resource/](https://www.paws-r-sdk.com/docs/schemas_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the resource.
 #' @param Tags &#91;required&#93; Tags associated with the resource.
@@ -856,7 +856,7 @@ schemas_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/schemas/untag_resource.html](https://paws-r.github.io/docs/schemas/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_untag_resource/](https://www.paws-r-sdk.com/docs/schemas_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the resource.
 #' @param TagKeys &#91;required&#93; Keys of key-value pairs.
@@ -886,7 +886,7 @@ schemas_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates the discoverer
 #'
-#' See [https://paws-r.github.io/docs/schemas/update_discoverer.html](https://paws-r.github.io/docs/schemas/update_discoverer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_update_discoverer/](https://www.paws-r-sdk.com/docs/schemas_update_discoverer/) for full documentation.
 #'
 #' @param Description The description of the discoverer to update.
 #' @param DiscovererId &#91;required&#93; The ID of the discoverer.
@@ -918,7 +918,7 @@ schemas_update_discoverer <- function(Description = NULL, DiscovererId, CrossAcc
 #' @description
 #' Updates a registry.
 #'
-#' See [https://paws-r.github.io/docs/schemas/update_registry.html](https://paws-r.github.io/docs/schemas/update_registry.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_update_registry/](https://www.paws-r-sdk.com/docs/schemas_update_registry/) for full documentation.
 #'
 #' @param Description The description of the registry to update.
 #' @param RegistryName &#91;required&#93; The name of the registry.
@@ -948,7 +948,7 @@ schemas_update_registry <- function(Description = NULL, RegistryName) {
 #' @description
 #' Updates the schema definition
 #'
-#' See [https://paws-r.github.io/docs/schemas/update_schema.html](https://paws-r.github.io/docs/schemas/update_schema.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/schemas_update_schema/](https://www.paws-r-sdk.com/docs/schemas_update_schema/) for full documentation.
 #'
 #' @param ClientTokenId The ID of the client token.
 #' @param Content The source of the schema definition.

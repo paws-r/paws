@@ -14,6 +14,6 @@ lightsail_attach_static_ip(staticIpName, instanceName)
 \description{
 Attaches a static IP address to a specific Amazon Lightsail instance.
 
-See \url{https://paws-r.github.io/docs/lightsail/attach_static_ip.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_attach_static_ip/} for full documentation.
 }
 \keyword{internal}

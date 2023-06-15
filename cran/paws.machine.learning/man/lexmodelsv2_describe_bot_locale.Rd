@@ -9,7 +9,7 @@ lexmodelsv2_describe_bot_locale(botId, botVersion, localeId)
 \arguments{
 \item{botId}{[required] The identifier of the bot associated with the locale.}
 
-\item{botVersion}{[required] The identifier of the version of the bot associated with the locale.}
+\item{botVersion}{[required] The version of the bot associated with the locale.}
 
 \item{localeId}{[required] The unique identifier of the locale to describe. The string must match
 one of the supported locales. For more information, see \href{https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html}{Supported languages}.}
@@ -17,6 +17,6 @@ one of the supported locales. For more information, see \href{https://docs.aws.a
 \description{
 Describes the settings that a bot has for a specific locale.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/describe_bot_locale.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_describe_bot_locale/} for full documentation.
 }
 \keyword{internal}

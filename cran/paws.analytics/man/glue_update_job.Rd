@@ -15,6 +15,6 @@ Unspecified configuration is removed or reset to default values.}
 \description{
 Updates an existing job definition. The previous job definition is completely overwritten by this information.
 
-See \url{https://paws-r.github.io/docs/glue/update_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_update_job/} for full documentation.
 }
 \keyword{internal}

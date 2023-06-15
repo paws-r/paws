@@ -17,6 +17,6 @@ specify as the page token in a subsequent request.}
 \description{
 Returns information about all static IPs in the user's account.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_static_ips.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_static_ips/} for full documentation.
 }
 \keyword{internal}

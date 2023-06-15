@@ -13,6 +13,6 @@ configuration for.}
 \description{
 Get detailed information for the service sync configuration.
 
-See \url{https://paws-r.github.io/docs/proton/get_service_sync_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_get_service_sync_config/} for full documentation.
 }
 \keyword{internal}

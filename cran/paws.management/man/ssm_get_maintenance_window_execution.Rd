@@ -12,6 +12,6 @@ ssm_get_maintenance_window_execution(WindowExecutionId)
 \description{
 Retrieves details about a specific a maintenance window execution.
 
-See \url{https://paws-r.github.io/docs/ssm/get_maintenance_window_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_maintenance_window_execution/} for full documentation.
 }
 \keyword{internal}

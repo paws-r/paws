@@ -38,6 +38,6 @@ results, use null.}
 \description{
 Lists the organization nodes that have access to the specified portfolio. This API can only be called by the management account in the organization or by a delegated admin.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/list_organization_portfolio_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_list_organization_portfolio_access/} for full documentation.
 }
 \keyword{internal}

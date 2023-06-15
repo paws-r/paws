@@ -14,6 +14,6 @@ kendra_delete_faq(Id, IndexId)
 \description{
 Removes an FAQ from an index.
 
-See \url{https://paws-r.github.io/docs/kendra/delete_faq.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_delete_faq/} for full documentation.
 }
 \keyword{internal}

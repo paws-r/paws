@@ -13,6 +13,6 @@ backupgateway_get_virtual_machine(ResourceArn)
 \description{
 By providing the ARN (Amazon Resource Name), this API returns the virtual machine.
 
-See \url{https://paws-r.github.io/docs/backupgateway/get_virtual_machine.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupgateway_get_virtual_machine/} for full documentation.
 }
 \keyword{internal}

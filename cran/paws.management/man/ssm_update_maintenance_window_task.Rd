@@ -154,6 +154,6 @@ The status for tasks that are not completed is \code{TIMED_OUT}.
 \description{
 Modifies a task assigned to a maintenance window. You can't change the task type, but you can change the following values:
 
-See \url{https://paws-r.github.io/docs/ssm/update_maintenance_window_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_update_maintenance_window_task/} for full documentation.
 }
 \keyword{internal}

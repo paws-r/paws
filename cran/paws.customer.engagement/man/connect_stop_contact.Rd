@@ -15,6 +15,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Ends the specified contact. This call does not work for the following initiation methods:
 
-See \url{https://paws-r.github.io/docs/connect/stop_contact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_stop_contact/} for full documentation.
 }
 \keyword{internal}

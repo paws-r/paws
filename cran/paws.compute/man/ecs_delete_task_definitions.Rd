@@ -16,6 +16,6 @@ You can specify up to 10 task definitions as a comma separated list.}
 \description{
 Deletes one or more task definitions.
 
-See \url{https://paws-r.github.io/docs/ecs/delete_task_definitions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_delete_task_definitions/} for full documentation.
 }
 \keyword{internal}

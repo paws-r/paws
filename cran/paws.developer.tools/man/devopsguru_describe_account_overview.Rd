@@ -22,6 +22,6 @@ is used.}
 \description{
 For the time range passed in, returns the number of open reactive insight that were created, the number of open proactive insights that were created, and the Mean Time to Recover (MTTR) for all closed reactive insights.
 
-See \url{https://paws-r.github.io/docs/devopsguru/describe_account_overview.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_describe_account_overview/} for full documentation.
 }
 \keyword{internal}

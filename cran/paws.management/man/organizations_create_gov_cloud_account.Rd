@@ -101,6 +101,6 @@ account is not created.}
 \description{
 This action is available if all of the following are true:
 
-See \url{https://paws-r.github.io/docs/organizations/create_gov_cloud_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_create_gov_cloud_account/} for full documentation.
 }
 \keyword{internal}

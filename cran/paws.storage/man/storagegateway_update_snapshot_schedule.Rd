@@ -37,6 +37,6 @@ the maximum length for a tag's value is 256.}
 \description{
 Updates a snapshot schedule configured for a gateway volume. This operation is only supported in the cached volume and stored volume gateway types.
 
-See \url{https://paws-r.github.io/docs/storagegateway/update_snapshot_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_update_snapshot_schedule/} for full documentation.
 }
 \keyword{internal}

@@ -35,6 +35,6 @@ account.}
 \description{
 Updates a VPC connection.
 
-See \url{https://paws-r.github.io/docs/quicksight/update_vpc_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_update_vpc_connection/} for full documentation.
 }
 \keyword{internal}

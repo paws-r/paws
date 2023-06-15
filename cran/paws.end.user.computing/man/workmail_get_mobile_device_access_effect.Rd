@@ -27,6 +27,6 @@ workmail_get_mobile_device_access_effect(
 \description{
 Simulates the effect of the mobile device access rules for the given attributes of a sample access event. Use this method to test the effects of the current set of mobile device access rules for the WorkMail organization for a particular user's attributes.
 
-See \url{https://paws-r.github.io/docs/workmail/get_mobile_device_access_effect.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_get_mobile_device_access_effect/} for full documentation.
 }
 \keyword{internal}

@@ -56,6 +56,6 @@ Default: \code{false}}
 \description{
 Creates a new version of a launch template. You can specify an existing version of launch template from which to base the new version.
 
-See \url{https://paws-r.github.io/docs/ec2/create_launch_template_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_launch_template_version/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ wellarchitected_get_milestone(WorkloadId, MilestoneNumber)
 \description{
 Get a milestone for an existing workload.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/get_milestone.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_get_milestone/} for full documentation.
 }
 \keyword{internal}

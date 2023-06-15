@@ -12,6 +12,6 @@ sagemaker_delete_action(ActionName)
 \description{
 Deletes an action.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_action/} for full documentation.
 }
 \keyword{internal}

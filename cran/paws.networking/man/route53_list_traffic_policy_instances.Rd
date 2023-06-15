@@ -61,6 +61,6 @@ instance in the next group of \code{MaxItems} traffic policy instances.}
 \description{
 Gets information about the traffic policy instances that you created by using the current Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/route53/list_traffic_policy_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_list_traffic_policy_instances/} for full documentation.
 }
 \keyword{internal}

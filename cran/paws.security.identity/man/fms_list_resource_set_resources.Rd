@@ -29,6 +29,6 @@ returned from the prior request in your next request.}
 \description{
 Returns an array of resources that are currently associated to a resource set.
 
-See \url{https://paws-r.github.io/docs/fms/list_resource_set_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_list_resource_set_resources/} for full documentation.
 }
 \keyword{internal}

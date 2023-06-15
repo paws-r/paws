@@ -34,6 +34,6 @@ in the \emph{Compute Optimizer User Guide}.}
 \description{
 Deletes a recommendation preference, such as enhanced infrastructure metrics.
 
-See \url{https://paws-r.github.io/docs/computeoptimizer/delete_recommendation_preferences.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/computeoptimizer_delete_recommendation_preferences/} for full documentation.
 }
 \keyword{internal}

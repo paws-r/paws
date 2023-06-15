@@ -17,6 +17,6 @@ auditmanager_batch_create_delegation_by_assessment(
 \description{
 Creates a batch of delegations for an assessment in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/batch_create_delegation_by_assessment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_batch_create_delegation_by_assessment/} for full documentation.
 }
 \keyword{internal}

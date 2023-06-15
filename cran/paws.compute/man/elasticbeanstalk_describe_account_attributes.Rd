@@ -10,6 +10,6 @@ elasticbeanstalk_describe_account_attributes()
 \description{
 Returns attributes related to AWS Elastic Beanstalk that are associated with the calling AWS account.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/describe_account_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_account_attributes/} for full documentation.
 }
 \keyword{internal}

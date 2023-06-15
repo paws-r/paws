@@ -18,6 +18,6 @@ wellarchitected_update_global_settings(
 \description{
 Updates whether the Amazon Web Services account is opted into organization sharing and discovery integration features.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/update_global_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_update_global_settings/} for full documentation.
 }
 \keyword{internal}

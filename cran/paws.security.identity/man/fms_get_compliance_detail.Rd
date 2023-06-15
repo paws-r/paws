@@ -18,6 +18,6 @@ get the details for.}
 \description{
 Returns detailed compliance information about the specified member account. Details include resources that are in and out of compliance with the specified policy.
 
-See \url{https://paws-r.github.io/docs/fms/get_compliance_detail.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_get_compliance_detail/} for full documentation.
 }
 \keyword{internal}

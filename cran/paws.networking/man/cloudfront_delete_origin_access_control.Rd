@@ -16,6 +16,6 @@ are deleting.}
 \description{
 Deletes a CloudFront origin access control.
 
-See \url{https://paws-r.github.io/docs/cloudfront/delete_origin_access_control.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_delete_origin_access_control/} for full documentation.
 }
 \keyword{internal}

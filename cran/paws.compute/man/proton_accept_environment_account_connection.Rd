@@ -13,6 +13,6 @@ proton_accept_environment_account_connection(id)
 \description{
 In a management account, an environment account connection request is accepted. When the environment account connection request is accepted, Proton can use the associated IAM role to provision environment infrastructure resources in the associated environment account.
 
-See \url{https://paws-r.github.io/docs/proton/accept_environment_account_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_accept_environment_account_connection/} for full documentation.
 }
 \keyword{internal}

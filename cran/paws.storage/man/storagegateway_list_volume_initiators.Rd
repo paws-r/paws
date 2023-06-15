@@ -14,6 +14,6 @@ of gateway volumes for the gateway.}
 \description{
 Lists iSCSI initiators that are connected to a volume. You can use this operation to determine whether a volume is being used or not. This operation is only supported in the cached volume and stored volume gateway types.
 
-See \url{https://paws-r.github.io/docs/storagegateway/list_volume_initiators.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_list_volume_initiators/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ Amazon Web Services Region for each Amazon Web Services account.}
 \description{
 Describes the permissions on a dataset.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_data_set_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_data_set_permissions/} for full documentation.
 }
 \keyword{internal}

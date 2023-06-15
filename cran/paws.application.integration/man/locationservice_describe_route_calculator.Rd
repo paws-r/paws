@@ -12,6 +12,6 @@ locationservice_describe_route_calculator(CalculatorName)
 \description{
 Retrieves the route calculator resource details.
 
-See \url{https://paws-r.github.io/docs/locationservice/describe_route_calculator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_describe_route_calculator/} for full documentation.
 }
 \keyword{internal}

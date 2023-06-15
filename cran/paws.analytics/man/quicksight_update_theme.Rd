@@ -35,6 +35,6 @@ of the version in \code{VersionDescription}.}
 \description{
 Updates a theme.
 
-See \url{https://paws-r.github.io/docs/quicksight/update_theme.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_update_theme/} for full documentation.
 }
 \keyword{internal}

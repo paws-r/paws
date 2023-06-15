@@ -24,6 +24,6 @@ retrieve this information by using
 \description{
 Updates the content of an approval rule template. You can change the number of required approvals, the membership of the approval rule, and whether an approval pool is defined.
 
-See \url{https://paws-r.github.io/docs/codecommit/update_approval_rule_template_content.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_update_approval_rule_template_content/} for full documentation.
 }
 \keyword{internal}

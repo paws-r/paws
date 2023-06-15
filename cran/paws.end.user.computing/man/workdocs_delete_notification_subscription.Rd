@@ -14,6 +14,6 @@ workdocs_delete_notification_subscription(SubscriptionId, OrganizationId)
 \description{
 Deletes the specified subscription from the specified organization.
 
-See \url{https://paws-r.github.io/docs/workdocs/delete_notification_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_delete_notification_subscription/} for full documentation.
 }
 \keyword{internal}

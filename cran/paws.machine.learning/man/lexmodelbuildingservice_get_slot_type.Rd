@@ -14,6 +14,6 @@ lexmodelbuildingservice_get_slot_type(name, version)
 \description{
 Returns information about a specific version of a slot type. In addition to specifying the slot type name, you must specify the slot type version.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_slot_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_slot_type/} for full documentation.
 }
 \keyword{internal}

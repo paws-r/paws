@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Creates an encrypted token that is used by a chat participant to establish an individual WebSocket chat connection to a room. When the token is used to connect to chat, the connection is valid for the session duration specified in the request. The token becomes invalid at the token-expiration timestamp included in the response.
 #'
-#' See [https://paws-r.github.io/docs/ivschat/create_chat_token.html](https://paws-r.github.io/docs/ivschat/create_chat_token.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivschat_create_chat_token/](https://www.paws-r-sdk.com/docs/ivschat_create_chat_token/) for full documentation.
 #'
 #' @param attributes Application-provided attributes to encode into the token and attach to a
 #' chat session. Map keys and values can contain UTF-8 encoded text. The
@@ -50,7 +50,7 @@ ivschat_create_chat_token <- function(attributes = NULL, capabilities = NULL, ro
 #' @description
 #' Creates a logging configuration that allows clients to store and record sent messages.
 #'
-#' See [https://paws-r.github.io/docs/ivschat/create_logging_configuration.html](https://paws-r.github.io/docs/ivschat/create_logging_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivschat_create_logging_configuration/](https://www.paws-r-sdk.com/docs/ivschat_create_logging_configuration/) for full documentation.
 #'
 #' @param destinationConfiguration &#91;required&#93; A complex type that contains a destination configuration for where chat
 #' content will be logged. There can be only one type of destination
@@ -88,7 +88,7 @@ ivschat_create_logging_configuration <- function(destinationConfiguration, name 
 #' @description
 #' Creates a room that allows clients to connect and pass messages.
 #'
-#' See [https://paws-r.github.io/docs/ivschat/create_room.html](https://paws-r.github.io/docs/ivschat/create_room.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivschat_create_room/](https://www.paws-r-sdk.com/docs/ivschat_create_room/) for full documentation.
 #'
 #' @param loggingConfigurationIdentifiers Array of logging-configuration identifiers attached to the room.
 #' @param maximumMessageLength Maximum number of characters in a single message. Messages are expected
@@ -130,7 +130,7 @@ ivschat_create_room <- function(loggingConfigurationIdentifiers = NULL, maximumM
 #' @description
 #' Deletes the specified logging configuration.
 #'
-#' See [https://paws-r.github.io/docs/ivschat/delete_logging_configuration.html](https://paws-r.github.io/docs/ivschat/delete_logging_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivschat_delete_logging_configuration/](https://www.paws-r-sdk.com/docs/ivschat_delete_logging_configuration/) for full documentation.
 #'
 #' @param identifier &#91;required&#93; Identifier of the logging configuration to be deleted.
 #'
@@ -161,7 +161,7 @@ ivschat_delete_logging_configuration <- function(identifier) {
 #' @description
 #' Sends an event to a specific room which directs clients to delete a specific message; that is, unrender it from view and delete it from the client’s chat history. This event’s `EventName` is `aws:DELETE_MESSAGE`. This replicates the [DeleteMessage](https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-deletemessage-publish.html) WebSocket operation in the Amazon IVS Chat Messaging API.
 #'
-#' See [https://paws-r.github.io/docs/ivschat/delete_message.html](https://paws-r.github.io/docs/ivschat/delete_message.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivschat_delete_message/](https://www.paws-r-sdk.com/docs/ivschat_delete_message/) for full documentation.
 #'
 #' @param id &#91;required&#93; ID of the message to be deleted. This is the `Id` field in the received
 #' message (see [Message
@@ -196,7 +196,7 @@ ivschat_delete_message <- function(id, reason = NULL, roomIdentifier) {
 #' @description
 #' Deletes the specified room.
 #'
-#' See [https://paws-r.github.io/docs/ivschat/delete_room.html](https://paws-r.github.io/docs/ivschat/delete_room.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivschat_delete_room/](https://www.paws-r-sdk.com/docs/ivschat_delete_room/) for full documentation.
 #'
 #' @param identifier &#91;required&#93; Identifier of the room to be deleted. Currently this must be an ARN.
 #'
@@ -225,7 +225,7 @@ ivschat_delete_room <- function(identifier) {
 #' @description
 #' Disconnects all connections using a specified user ID from a room. This replicates the [DisconnectUser](https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-disconnectuser-publish.html) WebSocket operation in the Amazon IVS Chat Messaging API.
 #'
-#' See [https://paws-r.github.io/docs/ivschat/disconnect_user.html](https://paws-r.github.io/docs/ivschat/disconnect_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivschat_disconnect_user/](https://www.paws-r-sdk.com/docs/ivschat_disconnect_user/) for full documentation.
 #'
 #' @param reason Reason for disconnecting the user.
 #' @param roomIdentifier &#91;required&#93; Identifier of the room from which the user's clients should be
@@ -257,7 +257,7 @@ ivschat_disconnect_user <- function(reason = NULL, roomIdentifier, userId) {
 #' @description
 #' Gets the specified logging configuration.
 #'
-#' See [https://paws-r.github.io/docs/ivschat/get_logging_configuration.html](https://paws-r.github.io/docs/ivschat/get_logging_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivschat_get_logging_configuration/](https://www.paws-r-sdk.com/docs/ivschat_get_logging_configuration/) for full documentation.
 #'
 #' @param identifier &#91;required&#93; Identifier of the logging configuration to be retrieved.
 #'
@@ -286,7 +286,7 @@ ivschat_get_logging_configuration <- function(identifier) {
 #' @description
 #' Gets the specified room.
 #'
-#' See [https://paws-r.github.io/docs/ivschat/get_room.html](https://paws-r.github.io/docs/ivschat/get_room.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivschat_get_room/](https://www.paws-r-sdk.com/docs/ivschat_get_room/) for full documentation.
 #'
 #' @param identifier &#91;required&#93; Identifier of the room for which the configuration is to be retrieved.
 #' Currently this must be an ARN.
@@ -317,7 +317,7 @@ ivschat_get_room <- function(identifier) {
 #' @description
 #' Gets summary information about all your logging configurations in the AWS region where the API request is processed.
 #'
-#' See [https://paws-r.github.io/docs/ivschat/list_logging_configurations.html](https://paws-r.github.io/docs/ivschat/list_logging_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivschat_list_logging_configurations/](https://www.paws-r-sdk.com/docs/ivschat_list_logging_configurations/) for full documentation.
 #'
 #' @param maxResults Maximum number of logging configurations to return. Default: 50.
 #' @param nextToken The first logging configurations to retrieve. This is used for
@@ -349,7 +349,7 @@ ivschat_list_logging_configurations <- function(maxResults = NULL, nextToken = N
 #' @description
 #' Gets summary information about all your rooms in the AWS region where the API request is processed. Results are sorted in descending order of `updateTime`.
 #'
-#' See [https://paws-r.github.io/docs/ivschat/list_rooms.html](https://paws-r.github.io/docs/ivschat/list_rooms.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivschat_list_rooms/](https://www.paws-r-sdk.com/docs/ivschat_list_rooms/) for full documentation.
 #'
 #' @param loggingConfigurationIdentifier Logging-configuration identifier.
 #' @param maxResults Maximum number of rooms to return. Default: 50.
@@ -383,7 +383,7 @@ ivschat_list_rooms <- function(loggingConfigurationIdentifier = NULL, maxResults
 #' @description
 #' Gets information about AWS tags for the specified ARN.
 #'
-#' See [https://paws-r.github.io/docs/ivschat/list_tags_for_resource.html](https://paws-r.github.io/docs/ivschat/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivschat_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/ivschat_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource to be retrieved. The ARN must be URL-encoded.
 #'
@@ -412,7 +412,7 @@ ivschat_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Sends an event to a room. Use this within your application’s business logic to send events to clients of a room; e.g., to notify clients to change the way the chat UI is rendered.
 #'
-#' See [https://paws-r.github.io/docs/ivschat/send_event.html](https://paws-r.github.io/docs/ivschat/send_event.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivschat_send_event/](https://www.paws-r-sdk.com/docs/ivschat_send_event/) for full documentation.
 #'
 #' @param attributes Application-defined metadata to attach to the event sent to clients. The
 #' maximum length of the metadata is 1 KB total.
@@ -445,7 +445,7 @@ ivschat_send_event <- function(attributes = NULL, eventName, roomIdentifier) {
 #' @description
 #' Adds or updates tags for the AWS resource with the specified ARN.
 #'
-#' See [https://paws-r.github.io/docs/ivschat/tag_resource.html](https://paws-r.github.io/docs/ivschat/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivschat_tag_resource/](https://www.paws-r-sdk.com/docs/ivschat_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource to be tagged. The ARN must be URL-encoded.
 #' @param tags &#91;required&#93; Array of tags to be added or updated. Array of maps, each of the form
@@ -480,7 +480,7 @@ ivschat_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes tags from the resource with the specified ARN.
 #'
-#' See [https://paws-r.github.io/docs/ivschat/untag_resource.html](https://paws-r.github.io/docs/ivschat/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivschat_untag_resource/](https://www.paws-r-sdk.com/docs/ivschat_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource to be untagged. The ARN must be URL-encoded.
 #' @param tagKeys &#91;required&#93; Array of tags to be removed. Array of maps, each of the form
@@ -515,7 +515,7 @@ ivschat_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates a specified logging configuration.
 #'
-#' See [https://paws-r.github.io/docs/ivschat/update_logging_configuration.html](https://paws-r.github.io/docs/ivschat/update_logging_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivschat_update_logging_configuration/](https://www.paws-r-sdk.com/docs/ivschat_update_logging_configuration/) for full documentation.
 #'
 #' @param destinationConfiguration A complex type that contains a destination configuration for where chat
 #' content will be logged. There can be only one type of destination
@@ -548,7 +548,7 @@ ivschat_update_logging_configuration <- function(destinationConfiguration = NULL
 #' @description
 #' Updates a room’s configuration.
 #'
-#' See [https://paws-r.github.io/docs/ivschat/update_room.html](https://paws-r.github.io/docs/ivschat/update_room.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivschat_update_room/](https://www.paws-r-sdk.com/docs/ivschat_update_room/) for full documentation.
 #'
 #' @param identifier &#91;required&#93; Identifier of the room to be updated. Currently this must be an ARN.
 #' @param loggingConfigurationIdentifiers Array of logging-configuration identifiers attached to the room.

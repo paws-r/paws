@@ -66,6 +66,6 @@ unspecified. The value can vary based on your specific use case.}
 \description{
 Creates a user within the specified identity store.
 
-See \url{https://paws-r.github.io/docs/identitystore/create_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/identitystore_create_user/} for full documentation.
 }
 \keyword{internal}

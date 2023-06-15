@@ -30,6 +30,6 @@ retrieve the next page of results.}
 \description{
 Returns a list of measures that are potential causes or effects of an anomaly group.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/list_anomaly_group_related_metrics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_list_anomaly_group_related_metrics/} for full documentation.
 }
 \keyword{internal}

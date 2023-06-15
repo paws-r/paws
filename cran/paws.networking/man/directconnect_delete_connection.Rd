@@ -12,6 +12,6 @@ directconnect_delete_connection(connectionId)
 \description{
 Deletes the specified connection.
 
-See \url{https://paws-r.github.io/docs/directconnect/delete_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_delete_connection/} for full documentation.
 }
 \keyword{internal}

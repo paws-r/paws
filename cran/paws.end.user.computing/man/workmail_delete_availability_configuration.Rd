@@ -16,6 +16,6 @@ be deleted.}
 \description{
 Deletes the \code{AvailabilityConfiguration} for the given WorkMail organization and domain.
 
-See \url{https://paws-r.github.io/docs/workmail/delete_availability_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_delete_availability_configuration/} for full documentation.
 }
 \keyword{internal}

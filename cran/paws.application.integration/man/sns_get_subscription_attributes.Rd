@@ -12,6 +12,6 @@ sns_get_subscription_attributes(SubscriptionArn)
 \description{
 Returns all of the properties of a subscription.
 
-See \url{https://paws-r.github.io/docs/sns/get_subscription_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_get_subscription_attributes/} for full documentation.
 }
 \keyword{internal}

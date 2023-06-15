@@ -30,6 +30,6 @@ all attributes).}
 \description{
 Detects faces within an image that is provided as input.
 
-See \url{https://paws-r.github.io/docs/rekognition/detect_faces.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_detect_faces/} for full documentation.
 }
 \keyword{internal}

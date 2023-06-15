@@ -12,6 +12,6 @@ auditmanager_get_control(controlId)
 \description{
 Returns a control from Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_control.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_control/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes the specified subnet. You must terminate all running instances in the subnet before you can delete the subnet.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_subnet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_subnet/} for full documentation.
 }
 \keyword{internal}

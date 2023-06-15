@@ -17,6 +17,6 @@ that identifies the next page of change sets that you want to retrieve.}
 \description{
 Returns the ID and status of each active change set for a stack. For example, CloudFormation lists change sets that are in the \code{CREATE_IN_PROGRESS} or \code{CREATE_PENDING} state.
 
-See \url{https://paws-r.github.io/docs/cloudformation/list_change_sets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_list_change_sets/} for full documentation.
 }
 \keyword{internal}

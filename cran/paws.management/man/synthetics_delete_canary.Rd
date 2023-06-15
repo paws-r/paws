@@ -18,6 +18,6 @@ Type: Boolean}
 \description{
 Permanently deletes the specified canary.
 
-See \url{https://paws-r.github.io/docs/synthetics/delete_canary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/synthetics_delete_canary/} for full documentation.
 }
 \keyword{internal}

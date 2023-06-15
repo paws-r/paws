@@ -19,6 +19,6 @@ keys are removed from the specified role.}
 \description{
 Removes the specified tags from the role. For more information about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources} in the \emph{IAM User Guide}.
 
-See \url{https://paws-r.github.io/docs/iam/untag_role.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_untag_role/} for full documentation.
 }
 \keyword{internal}

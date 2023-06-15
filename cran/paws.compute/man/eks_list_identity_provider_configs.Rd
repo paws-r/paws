@@ -35,6 +35,6 @@ the end of the previous results that returned the \code{nextToken} value.}
 \description{
 A list of identity provider configurations.
 
-See \url{https://paws-r.github.io/docs/eks/list_identity_provider_configs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_list_identity_provider_configs/} for full documentation.
 }
 \keyword{internal}

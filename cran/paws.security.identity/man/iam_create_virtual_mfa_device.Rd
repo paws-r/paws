@@ -40,6 +40,6 @@ created.}
 \description{
 Creates a new virtual MFA device for the Amazon Web Services account. After creating the virtual MFA, use \code{\link[=iam_enable_mfa_device]{enable_mfa_device}} to attach the MFA device to an IAM user. For more information about creating and working with virtual MFA devices, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html}{Using a virtual MFA device} in the \emph{IAM User Guide}.
 
-See \url{https://paws-r.github.io/docs/iam/create_virtual_mfa_device.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_create_virtual_mfa_device/} for full documentation.
 }
 \keyword{internal}

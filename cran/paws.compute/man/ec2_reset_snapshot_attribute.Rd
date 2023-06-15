@@ -20,6 +20,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Resets permission settings for the specified snapshot.
 
-See \url{https://paws-r.github.io/docs/ec2/reset_snapshot_attribute.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_reset_snapshot_attribute/} for full documentation.
 }
 \keyword{internal}

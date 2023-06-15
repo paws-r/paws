@@ -16,6 +16,6 @@ Amazon Web Services Region for each Amazon Web Services account.}
 \description{
 Lists all of the refresh schedules for a topic.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_topic_refresh_schedules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_topic_refresh_schedules/} for full documentation.
 }
 \keyword{internal}

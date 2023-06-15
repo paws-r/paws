@@ -20,6 +20,6 @@ operation. If you omit this parameter, the default of 100 is used.}
 \description{
 Returns a list of Synthetics canary runtime versions. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html}{Canary Runtime Versions}.
 
-See \url{https://paws-r.github.io/docs/synthetics/describe_runtime_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/synthetics_describe_runtime_versions/} for full documentation.
 }
 \keyword{internal}

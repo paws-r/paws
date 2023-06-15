@@ -14,6 +14,6 @@ apigatewayv2_get_authorizer(ApiId, AuthorizerId)
 \description{
 Gets an Authorizer.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/get_authorizer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_get_authorizer/} for full documentation.
 }
 \keyword{internal}

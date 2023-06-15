@@ -12,6 +12,6 @@ cloudwatchevents_delete_archive(ArchiveName)
 \description{
 Deletes the specified archive.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevents/delete_archive.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevents_delete_archive/} for full documentation.
 }
 \keyword{internal}

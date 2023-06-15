@@ -26,6 +26,6 @@ the queries in the primary workgroup is returned.}
 \description{
 Provides a list of available query execution IDs for the queries in the specified workgroup. If a workgroup is not specified, returns a list of query execution IDs for the primary workgroup. Requires you to have access to the workgroup in which the queries ran.
 
-See \url{https://paws-r.github.io/docs/athena/list_query_executions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_list_query_executions/} for full documentation.
 }
 \keyword{internal}

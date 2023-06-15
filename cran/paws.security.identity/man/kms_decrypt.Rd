@@ -106,6 +106,6 @@ in the \emph{Key Management Service Developer Guide}.}
 \description{
 Decrypts ciphertext that was encrypted by a KMS key using any of the following operations:
 
-See \url{https://paws-r.github.io/docs/kms/decrypt.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_decrypt/} for full documentation.
 }
 \keyword{internal}

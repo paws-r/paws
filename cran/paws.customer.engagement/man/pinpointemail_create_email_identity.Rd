@@ -15,6 +15,6 @@ to associate with the email identity.}
 \description{
 Verifies an email identity for use with Amazon Pinpoint. In Amazon Pinpoint, an identity is an email address or domain that you use when you send email. Before you can use an identity to send email with Amazon Pinpoint, you first have to verify it. By verifying an address, you demonstrate that you're the owner of the address, and that you've given Amazon Pinpoint permission to send email from the address.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/create_email_identity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_create_email_identity/} for full documentation.
 }
 \keyword{internal}

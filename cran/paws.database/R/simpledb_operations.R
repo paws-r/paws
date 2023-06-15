@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Performs multiple DeleteAttributes operations in a single call, which reduces round trips and latencies. This enables Amazon SimpleDB to optimize requests, which generally yields better throughput.
 #'
-#' See [https://paws-r.github.io/docs/simpledb/batch_delete_attributes.html](https://paws-r.github.io/docs/simpledb/batch_delete_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/simpledb_batch_delete_attributes/](https://www.paws-r-sdk.com/docs/simpledb_batch_delete_attributes/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain in which the attributes are being deleted.
 #' @param Items &#91;required&#93; A list of items on which to perform the operation.
@@ -40,7 +40,7 @@ simpledb_batch_delete_attributes <- function(DomainName, Items) {
 #' @description
 #' The [`batch_put_attributes`][simpledb_batch_put_attributes] operation creates or replaces attributes within one or more items. By using this operation, the client can perform multiple PutAttribute operation with a single call. This helps yield savings in round trips and latencies, enabling Amazon SimpleDB to optimize requests and generally produce better throughput.
 #'
-#' See [https://paws-r.github.io/docs/simpledb/batch_put_attributes.html](https://paws-r.github.io/docs/simpledb/batch_put_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/simpledb_batch_put_attributes/](https://www.paws-r-sdk.com/docs/simpledb_batch_put_attributes/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain in which the attributes are being stored.
 #' @param Items &#91;required&#93; A list of items on which to perform the operation.
@@ -70,7 +70,7 @@ simpledb_batch_put_attributes <- function(DomainName, Items) {
 #' @description
 #' The [`create_domain`][simpledb_create_domain] operation creates a new domain. The domain name should be unique among the domains associated with the Access Key ID provided in the request. The [`create_domain`][simpledb_create_domain] operation may take 10 or more seconds to complete.
 #'
-#' See [https://paws-r.github.io/docs/simpledb/create_domain.html](https://paws-r.github.io/docs/simpledb/create_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/simpledb_create_domain/](https://www.paws-r-sdk.com/docs/simpledb_create_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain to create. The name can range between 3 and 255
 #' characters and can contain the following characters: a-z, A-Z, 0-9,
@@ -101,7 +101,7 @@ simpledb_create_domain <- function(DomainName) {
 #' @description
 #' Deletes one or more attributes associated with an item. If all attributes of the item are deleted, the item is deleted.
 #'
-#' See [https://paws-r.github.io/docs/simpledb/delete_attributes.html](https://paws-r.github.io/docs/simpledb/delete_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/simpledb_delete_attributes/](https://www.paws-r-sdk.com/docs/simpledb_delete_attributes/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain in which to perform the operation.
 #' @param ItemName &#91;required&#93; The name of the item. Similar to rows on a spreadsheet, items represent
@@ -138,7 +138,7 @@ simpledb_delete_attributes <- function(DomainName, ItemName, Attributes = NULL, 
 #' @description
 #' The [`delete_domain`][simpledb_delete_domain] operation deletes a domain. Any items (and their attributes) in the domain are deleted as well. The [`delete_domain`][simpledb_delete_domain] operation might take 10 or more seconds to complete.
 #'
-#' See [https://paws-r.github.io/docs/simpledb/delete_domain.html](https://paws-r.github.io/docs/simpledb/delete_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/simpledb_delete_domain/](https://www.paws-r-sdk.com/docs/simpledb_delete_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain to delete.
 #'
@@ -169,7 +169,7 @@ simpledb_delete_domain <- function(DomainName) {
 #' @description
 #' Returns information about the domain, including when the domain was created, the number of items and attributes in the domain, and the size of the attribute names and values.
 #'
-#' See [https://paws-r.github.io/docs/simpledb/domain_metadata.html](https://paws-r.github.io/docs/simpledb/domain_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/simpledb_domain_metadata/](https://www.paws-r-sdk.com/docs/simpledb_domain_metadata/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain for which to display the metadata of.
 #'
@@ -198,7 +198,7 @@ simpledb_domain_metadata <- function(DomainName) {
 #' @description
 #' Returns all of the attributes associated with the specified item. Optionally, the attributes returned can be limited to one or more attributes by specifying an attribute name parameter.
 #'
-#' See [https://paws-r.github.io/docs/simpledb/get_attributes.html](https://paws-r.github.io/docs/simpledb/get_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/simpledb_get_attributes/](https://www.paws-r-sdk.com/docs/simpledb_get_attributes/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain in which to perform the operation.
 #' @param ItemName &#91;required&#93; The name of the item.
@@ -235,7 +235,7 @@ simpledb_get_attributes <- function(DomainName, ItemName, AttributeNames = NULL,
 #' @description
 #' The [`list_domains`][simpledb_list_domains] operation lists all domains associated with the Access Key ID. It returns domain names up to the limit set by MaxNumberOfDomains. A NextToken is returned if there are more than `MaxNumberOfDomains` domains. Calling [`list_domains`][simpledb_list_domains] successive times with the `NextToken` provided by the operation returns up to `MaxNumberOfDomains` more domain names with each successive operation call.
 #'
-#' See [https://paws-r.github.io/docs/simpledb/list_domains.html](https://paws-r.github.io/docs/simpledb/list_domains.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/simpledb_list_domains/](https://www.paws-r-sdk.com/docs/simpledb_list_domains/) for full documentation.
 #'
 #' @param MaxNumberOfDomains The maximum number of domain names you want returned. The range is 1 to
 #' 100. The default setting is 100.
@@ -267,7 +267,7 @@ simpledb_list_domains <- function(MaxNumberOfDomains = NULL, NextToken = NULL) {
 #' @description
 #' The PutAttributes operation creates or replaces attributes in an item. The client may specify new attributes using a combination of the `Attribute.X.Name` and `Attribute.X.Value` parameters. The client specifies the first attribute by the parameters `Attribute.0.Name` and `Attribute.0.Value`, the second attribute by the parameters `Attribute.1.Name` and `Attribute.1.Value`, and so on.
 #'
-#' See [https://paws-r.github.io/docs/simpledb/put_attributes.html](https://paws-r.github.io/docs/simpledb/put_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/simpledb_put_attributes/](https://www.paws-r-sdk.com/docs/simpledb_put_attributes/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain in which to perform the operation.
 #' @param ItemName &#91;required&#93; The name of the item.
@@ -303,7 +303,7 @@ simpledb_put_attributes <- function(DomainName, ItemName, Attributes, Expected =
 #' @description
 #' The [`select`][simpledb_select] operation returns a set of attributes for `ItemNames` that match the select expression. [`select`][simpledb_select] is similar to the standard SQL SELECT statement.
 #'
-#' See [https://paws-r.github.io/docs/simpledb/select.html](https://paws-r.github.io/docs/simpledb/select.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/simpledb_select/](https://www.paws-r-sdk.com/docs/simpledb_select/) for full documentation.
 #'
 #' @param SelectExpression &#91;required&#93; The expression used to query the domain.
 #' @param NextToken A string informing Amazon SimpleDB where to start the next list of

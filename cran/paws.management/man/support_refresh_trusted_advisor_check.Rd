@@ -15,6 +15,6 @@ causes an \code{InvalidParameterValue} error.}
 \description{
 Refreshes the Trusted Advisor check that you specify using the check ID. You can get the check IDs by calling the \code{\link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks}} operation.
 
-See \url{https://paws-r.github.io/docs/support/refresh_trusted_advisor_check.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/support_refresh_trusted_advisor_check/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ auditmanager_get_evidence_folder(assessmentId, controlSetId, evidenceFolderId)
 \description{
 Returns an evidence folder from the specified assessment in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_evidence_folder.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_evidence_folder/} for full documentation.
 }
 \keyword{internal}

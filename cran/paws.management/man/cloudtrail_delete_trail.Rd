@@ -12,8 +12,8 @@ following is the format of a trail ARN.
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 }
 \description{
-Deletes a trail. This operation must be called from the region in which the trail was created. \code{\link[=cloudtrail_delete_trail]{delete_trail}} cannot be called on the shadow trails (replicated trails in other regions) of a trail that is enabled in all regions.
+Deletes a trail. This operation must be called from the Region in which the trail was created. \code{\link[=cloudtrail_delete_trail]{delete_trail}} cannot be called on the shadow trails (replicated trails in other Regions) of a trail that is enabled in all Regions.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/delete_trail.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_delete_trail/} for full documentation.
 }
 \keyword{internal}

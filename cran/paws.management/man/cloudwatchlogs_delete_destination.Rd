@@ -13,6 +13,6 @@ cloudwatchlogs_delete_destination(destinationName)
 \description{
 Deletes the specified destination, and eventually disables all the subscription filters that publish to it. This operation does not delete the physical resource encapsulated by the destination.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/delete_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_destination/} for full documentation.
 }
 \keyword{internal}

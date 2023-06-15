@@ -23,6 +23,6 @@ cognitoidentityprovider_update_resource_server(
 \description{
 Updates the name and scopes of resource server. All other fields are read-only.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/update_resource_server.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_resource_server/} for full documentation.
 }
 \keyword{internal}

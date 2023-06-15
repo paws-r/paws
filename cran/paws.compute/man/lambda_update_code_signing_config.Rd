@@ -23,6 +23,6 @@ lambda_update_code_signing_config(
 \description{
 Update the code signing configuration. Changes to the code signing configuration take effect the next time a user tries to deploy a code package to the function.
 
-See \url{https://paws-r.github.io/docs/lambda/update_code_signing_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_update_code_signing_config/} for full documentation.
 }
 \keyword{internal}

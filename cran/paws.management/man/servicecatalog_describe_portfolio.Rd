@@ -18,6 +18,6 @@ servicecatalog_describe_portfolio(AcceptLanguage = NULL, Id)
 \description{
 Gets information about the specified portfolio.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/describe_portfolio.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_describe_portfolio/} for full documentation.
 }
 \keyword{internal}

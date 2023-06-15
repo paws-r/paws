@@ -15,6 +15,6 @@ This value is an Amazon Resource Name (ARN).}
 \description{
 Associate a set of tags with an Amazon DynamoDB resource. You can then activate these user-defined tags so that they appear on the Billing and Cost Management console for cost allocation tracking. You can call TagResource up to five times per second, per account.
 
-See \url{https://paws-r.github.io/docs/dynamodb/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_tag_resource/} for full documentation.
 }
 \keyword{internal}

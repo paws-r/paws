@@ -20,6 +20,6 @@ LF-tag.}
 \description{
 Removes an LF-tag from the resource. Only database, table, or tableWithColumns resource are allowed. To tag columns, use the column inclusion list in \code{tableWithColumns} to specify column input.
 
-See \url{https://paws-r.github.io/docs/lakeformation/remove_lf_tags_from_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_remove_lf_tags_from_resource/} for full documentation.
 }
 \keyword{internal}

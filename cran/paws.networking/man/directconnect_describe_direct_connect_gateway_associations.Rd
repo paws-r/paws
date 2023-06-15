@@ -35,6 +35,6 @@ returned.}
 \description{
 Lists the associations between your Direct Connect gateways and virtual private gateways and transit gateways. You must specify one of the following:
 
-See \url{https://paws-r.github.io/docs/directconnect/describe_direct_connect_gateway_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_describe_direct_connect_gateway_associations/} for full documentation.
 }
 \keyword{internal}

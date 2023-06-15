@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Re-ranks a list of recommended items for the given user. The first item in the list is deemed the most likely item to be of interest to the user.
 #'
-#' See [https://paws-r.github.io/docs/personalizeruntime/get_personalized_ranking.html](https://paws-r.github.io/docs/personalizeruntime/get_personalized_ranking.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/personalizeruntime_get_personalized_ranking/](https://www.paws-r-sdk.com/docs/personalizeruntime_get_personalized_ranking/) for full documentation.
 #'
 #' @param campaignArn &#91;required&#93; The Amazon Resource Name (ARN) of the campaign to use for generating the
 #' personalized ranking.
@@ -65,7 +65,7 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #' @description
 #' Returns a list of recommended items. For campaigns, the campaign's Amazon Resource Name (ARN) is required and the required user and item input depends on the recipe type used to create the solution backing the campaign as follows:
 #'
-#' See [https://paws-r.github.io/docs/personalizeruntime/get_recommendations.html](https://paws-r.github.io/docs/personalizeruntime/get_recommendations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/personalizeruntime_get_recommendations/](https://www.paws-r-sdk.com/docs/personalizeruntime_get_recommendations/) for full documentation.
 #'
 #' @param campaignArn The Amazon Resource Name (ARN) of the campaign to use for getting
 #' recommendations.

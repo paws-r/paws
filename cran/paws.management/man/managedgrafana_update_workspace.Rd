@@ -113,6 +113,6 @@ notification channels. If this workspace has \code{permissionType}
 \description{
 Modifies an existing Amazon Managed Grafana workspace. If you use this operation and omit any optional parameters, the existing values of those parameters are not changed.
 
-See \url{https://paws-r.github.io/docs/managedgrafana/update_workspace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/managedgrafana_update_workspace/} for full documentation.
 }
 \keyword{internal}

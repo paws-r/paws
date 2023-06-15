@@ -68,6 +68,6 @@ Environments that use the application version don't inherit the tags.}
 \description{
 Creates an application version for the specified application. You can create an application version from a source bundle in Amazon S3, a commit in AWS CodeCommit, or the output of an AWS CodeBuild build as follows:
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/create_application_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_create_application_version/} for full documentation.
 }
 \keyword{internal}

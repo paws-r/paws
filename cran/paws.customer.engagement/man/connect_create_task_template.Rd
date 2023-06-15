@@ -47,6 +47,6 @@ populates this field. For more information about idempotency, see
 \description{
 Creates a new task template in the specified Amazon Connect instance.
 
-See \url{https://paws-r.github.io/docs/connect/create_task_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_create_task_template/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ EC2 Auto Scaling when scaling in.}
 \description{
 Updates the instance protection settings of the specified instances. This operation cannot be called on instances in a warm pool.
 
-See \url{https://paws-r.github.io/docs/autoscaling/set_instance_protection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_set_instance_protection/} for full documentation.
 }
 \keyword{internal}

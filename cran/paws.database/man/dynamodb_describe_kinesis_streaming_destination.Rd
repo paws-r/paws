@@ -12,6 +12,6 @@ dynamodb_describe_kinesis_streaming_destination(TableName)
 \description{
 Returns information about the status of Kinesis streaming.
 
-See \url{https://paws-r.github.io/docs/dynamodb/describe_kinesis_streaming_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_describe_kinesis_streaming_destination/} for full documentation.
 }
 \keyword{internal}

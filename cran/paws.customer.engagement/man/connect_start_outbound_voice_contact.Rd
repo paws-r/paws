@@ -68,6 +68,6 @@ all other cases, use \code{GENERAL}.}
 \description{
 Places an outbound call to a contact, and then initiates the flow. It performs the actions in the flow that's specified (in \code{ContactFlowId}).
 
-See \url{https://paws-r.github.io/docs/connect/start_outbound_voice_contact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_start_outbound_voice_contact/} for full documentation.
 }
 \keyword{internal}

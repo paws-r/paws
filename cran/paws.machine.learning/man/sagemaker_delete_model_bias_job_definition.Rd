@@ -12,6 +12,6 @@ sagemaker_delete_model_bias_job_definition(JobDefinitionName)
 \description{
 Deletes an Amazon SageMaker model bias job definition.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_model_bias_job_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_model_bias_job_definition/} for full documentation.
 }
 \keyword{internal}

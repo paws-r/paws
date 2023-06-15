@@ -14,6 +14,6 @@ ssmincidents_list_replication_sets(maxResults = NULL, nextToken = NULL)
 \description{
 Lists details about the replication set configured in your account.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/list_replication_sets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_list_replication_sets/} for full documentation.
 }
 \keyword{internal}

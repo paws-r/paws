@@ -12,6 +12,6 @@ comprehendmedical_stop_snomedct_inference_job(JobId)
 \description{
 Stops an InferSNOMEDCT inference job in progress.
 
-See \url{https://paws-r.github.io/docs/comprehendmedical/stop_snomedct_inference_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehendmedical_stop_snomedct_inference_job/} for full documentation.
 }
 \keyword{internal}

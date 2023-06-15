@@ -33,6 +33,6 @@ valid destination. For more information, see
 \description{
 Specifies the extended metrics and custom metrics that you want a CloudWatch RUM app monitor to send to a destination. Valid destinations include CloudWatch and Evidently.
 
-See \url{https://paws-r.github.io/docs/cloudwatchrum/batch_create_rum_metric_definitions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchrum_batch_create_rum_metric_definitions/} for full documentation.
 }
 \keyword{internal}

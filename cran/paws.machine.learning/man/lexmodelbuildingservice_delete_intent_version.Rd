@@ -16,6 +16,6 @@ version of the intent. To delete the \verb{$LATEST} version, use the
 \description{
 Deletes a specific version of an intent. To delete all versions of a intent, use the \code{\link[=lexmodelbuildingservice_delete_intent]{delete_intent}} operation.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/delete_intent_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_intent_version/} for full documentation.
 }
 \keyword{internal}

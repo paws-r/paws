@@ -24,6 +24,6 @@ Amazon Web Services Region.}
 \description{
 Updates Amazon QuickSight customizations for the current Amazon Web Services Region. Currently, the only customization that you can use is a theme.
 
-See \url{https://paws-r.github.io/docs/quicksight/update_account_customization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_update_account_customization/} for full documentation.
 }
 \keyword{internal}

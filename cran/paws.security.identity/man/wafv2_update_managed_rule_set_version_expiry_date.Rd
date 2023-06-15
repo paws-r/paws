@@ -58,6 +58,6 @@ includes the special designator, Z. For example, "2016-09-27T14:50Z".}
 \description{
 Updates the expiration information for your managed rule set. Use this to initiate the expiration of a managed rule group version. After you initiate expiration for a version, WAF excludes it from the response to \code{\link[=wafv2_list_available_managed_rule_group_versions]{list_available_managed_rule_group_versions}} for the managed rule group.
 
-See \url{https://paws-r.github.io/docs/wafv2/update_managed_rule_set_version_expiry_date.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_update_managed_rule_set_version_expiry_date/} for full documentation.
 }
 \keyword{internal}

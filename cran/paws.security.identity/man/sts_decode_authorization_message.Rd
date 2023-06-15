@@ -14,6 +14,6 @@ sts_decode_authorization_message(EncodedMessage)
 \description{
 Decodes additional information about the authorization status of a request from an encoded message returned in response to an Amazon Web Services request.
 
-See \url{https://paws-r.github.io/docs/sts/decode_authorization_message.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sts_decode_authorization_message/} for full documentation.
 }
 \keyword{internal}

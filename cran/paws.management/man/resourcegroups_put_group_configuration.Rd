@@ -25,6 +25,6 @@ A resource group can contain either a \code{Configuration} or a
 \description{
 Attaches a service configuration to the specified group. This occurs asynchronously, and can take time to complete. You can use \code{\link[=resourcegroups_get_group_configuration]{get_group_configuration}} to check the status of the update.
 
-See \url{https://paws-r.github.io/docs/resourcegroups/put_group_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroups_put_group_configuration/} for full documentation.
 }
 \keyword{internal}

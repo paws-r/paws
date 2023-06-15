@@ -19,6 +19,6 @@ Currently, only the \code{csv} format is supported.}
 \description{
 Import API keys from an external source, such as a CSV-formatted file.
 
-See \url{https://paws-r.github.io/docs/apigateway/import_api_keys.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_import_api_keys/} for full documentation.
 }
 \keyword{internal}

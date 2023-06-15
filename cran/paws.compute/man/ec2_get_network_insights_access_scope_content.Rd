@@ -20,6 +20,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Gets the content for the specified Network Access Scope.
 
-See \url{https://paws-r.github.io/docs/ec2/get_network_insights_access_scope_content.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_network_insights_access_scope_content/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ elasticsearchservice_purchase_reserved_elasticsearch_instance_offering(
 \description{
 Allows you to purchase reserved Elasticsearch instances.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/purchase_reserved_elasticsearch_instance_offering.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_purchase_reserved_elasticsearch_instance_offering/} for full documentation.
 }
 \keyword{internal}

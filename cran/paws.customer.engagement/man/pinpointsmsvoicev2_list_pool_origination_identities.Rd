@@ -26,6 +26,6 @@ need to supply a value for this field in the initial request.}
 \description{
 Lists all associated origination identities in your pool.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/list_pool_origination_identities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_list_pool_origination_identities/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ of the statement.}
 \description{
 Deletes a policy statement from a resource policy. If you delete the last statement from a policy, the policy is deleted. If you specify a statement ID that doesn't exist in the policy, or if the bot or bot alias doesn't have a policy attached, Amazon Lex returns an exception.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/delete_resource_policy_statement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_delete_resource_policy_statement/} for full documentation.
 }
 \keyword{internal}

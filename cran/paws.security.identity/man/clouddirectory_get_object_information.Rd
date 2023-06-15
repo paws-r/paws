@@ -20,6 +20,6 @@ clouddirectory_get_object_information(
 \description{
 Retrieves metadata about an object.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/get_object_information.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_get_object_information/} for full documentation.
 }
 \keyword{internal}

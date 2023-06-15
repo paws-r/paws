@@ -28,6 +28,6 @@ this operation. If this value is null, it retrieves the first page.}
 \description{
 Retrieves a list that describes one or more specified images, if the image names or image ARNs are provided. Otherwise, all images in the account are described.
 
-See \url{https://paws-r.github.io/docs/appstream/describe_images.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_describe_images/} for full documentation.
 }
 \keyword{internal}

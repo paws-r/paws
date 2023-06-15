@@ -14,6 +14,6 @@ resourcegroups_group_resources(Group, ResourceArns)
 \description{
 Adds the specified resources to the specified group.
 
-See \url{https://paws-r.github.io/docs/resourcegroups/group_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroups_group_resources/} for full documentation.
 }
 \keyword{internal}

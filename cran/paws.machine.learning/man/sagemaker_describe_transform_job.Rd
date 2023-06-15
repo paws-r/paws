@@ -12,6 +12,6 @@ sagemaker_describe_transform_job(TransformJobName)
 \description{
 Returns information about a transform job.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_transform_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_transform_job/} for full documentation.
 }
 \keyword{internal}

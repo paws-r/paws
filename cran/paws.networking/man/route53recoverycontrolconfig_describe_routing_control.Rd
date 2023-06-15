@@ -12,6 +12,6 @@ route53recoverycontrolconfig_describe_routing_control(RoutingControlArn)
 \description{
 Displays details about a routing control. A routing control has one of two states: ON and OFF. You can map the routing control state to the state of an Amazon Route 53 health check, which can be used to control routing.
 
-See \url{https://paws-r.github.io/docs/route53recoverycontrolconfig/describe_routing_control.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_describe_routing_control/} for full documentation.
 }
 \keyword{internal}

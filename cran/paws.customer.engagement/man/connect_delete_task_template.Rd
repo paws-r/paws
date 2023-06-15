@@ -15,6 +15,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Deletes the task template.
 
-See \url{https://paws-r.github.io/docs/connect/delete_task_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_delete_task_template/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ that match one or more sets of key-value pairs that you specify.}
 \description{
 Lists the EC2 instances providing user-based subscriptions.
 
-See \url{https://paws-r.github.io/docs/licensemanagerusersubscriptions/list_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_instances/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ tag key does not exist on the resource, it is ignored.}
 \description{
 Removes a tag from an index, FAQ, or a data source.
 
-See \url{https://paws-r.github.io/docs/kendra/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_untag_resource/} for full documentation.
 }
 \keyword{internal}

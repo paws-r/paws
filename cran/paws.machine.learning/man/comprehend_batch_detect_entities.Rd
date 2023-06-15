@@ -19,6 +19,6 @@ same language.}
 \description{
 Inspects the text of a batch of documents for named entities and returns information about them. For more information about named entities, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/how-entities.html}{Entities} in the Comprehend Developer Guide.
 
-See \url{https://paws-r.github.io/docs/comprehend/batch_detect_entities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_batch_detect_entities/} for full documentation.
 }
 \keyword{internal}

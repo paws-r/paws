@@ -15,6 +15,6 @@ wafv2_generate_mobile_sdk_release_url(Platform, ReleaseVersion)
 \description{
 Generates a presigned download URL for the specified release of the mobile SDK.
 
-See \url{https://paws-r.github.io/docs/wafv2/generate_mobile_sdk_release_url.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_generate_mobile_sdk_release_url/} for full documentation.
 }
 \keyword{internal}

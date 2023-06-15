@@ -61,6 +61,6 @@ For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/us
 \description{
 Creates a Amazon CloudWatch RUM app monitor, which collects telemetry data from your application and sends that data to RUM. The data includes performance and reliability information such as page load time, client-side errors, and user behavior.
 
-See \url{https://paws-r.github.io/docs/cloudwatchrum/create_app_monitor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchrum_create_app_monitor/} for full documentation.
 }
 \keyword{internal}

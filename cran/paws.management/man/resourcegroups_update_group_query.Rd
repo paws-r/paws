@@ -24,6 +24,6 @@ A resource group can contain either a \code{Configuration} or a
 \description{
 Updates the resource query of a group. For more information about resource queries, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag}{Create a tag-based group in Resource Groups}.
 
-See \url{https://paws-r.github.io/docs/resourcegroups/update_group_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroups_update_group_query/} for full documentation.
 }
 \keyword{internal}

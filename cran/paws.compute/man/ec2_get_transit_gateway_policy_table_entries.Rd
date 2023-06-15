@@ -31,6 +31,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Returns a list of transit gateway policy table entries.
 
-See \url{https://paws-r.github.io/docs/ec2/get_transit_gateway_policy_table_entries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_transit_gateway_policy_table_entries/} for full documentation.
 }
 \keyword{internal}

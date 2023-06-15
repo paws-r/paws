@@ -30,6 +30,6 @@ search.}
 \description{
 Use the \code{\link[=quicksight_search_groups]{search_groups}} operation to search groups in a specified Amazon QuickSight namespace using the supplied filters.
 
-See \url{https://paws-r.github.io/docs/quicksight/search_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_search_groups/} for full documentation.
 }
 \keyword{internal}

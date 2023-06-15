@@ -50,14 +50,14 @@ log file delivery. The maximum length is 256 characters.}
 \item{IncludeGlobalServiceEvents}{Specifies whether the trail is publishing events from global services
 such as IAM to the log files.}
 
-\item{IsMultiRegionTrail}{Specifies whether the trail applies only to the current region or to all
-regions. The default is false. If the trail exists only in the current
-region and this value is set to true, shadow trails (replications of the
-trail) will be created in the other regions. If the trail exists in all
-regions and this value is set to false, the trail will remain in the
-region where it was created, and its shadow trails in other regions will
+\item{IsMultiRegionTrail}{Specifies whether the trail applies only to the current Region or to all
+Regions. The default is false. If the trail exists only in the current
+Region and this value is set to true, shadow trails (replications of the
+trail) will be created in the other Regions. If the trail exists in all
+Regions and this value is set to false, the trail will remain in the
+Region where it was created, and its shadow trails in other Regions will
 be deleted. As a best practice, consider using trails that log events in
-all regions.}
+all Regions.}
 
 \item{EnableLogFileValidation}{Specifies whether log file validation is enabled. The default is false.
 
@@ -110,8 +110,8 @@ the current Amazon Web Services account but be deleted from all member
 accounts in the organization.}
 }
 \description{
-Updates trail settings that control what events you are logging, and how to handle log files. Changes to a trail do not require stopping the CloudTrail service. Use this action to designate an existing bucket for log delivery. If the existing bucket has previously been a target for CloudTrail log files, an IAM policy exists for the bucket. \code{\link[=cloudtrail_update_trail]{update_trail}} must be called from the region in which the trail was created; otherwise, an \code{InvalidHomeRegionException} is thrown.
+Updates trail settings that control what events you are logging, and how to handle log files. Changes to a trail do not require stopping the CloudTrail service. Use this action to designate an existing bucket for log delivery. If the existing bucket has previously been a target for CloudTrail log files, an IAM policy exists for the bucket. \code{\link[=cloudtrail_update_trail]{update_trail}} must be called from the Region in which the trail was created; otherwise, an \code{InvalidHomeRegionException} is thrown.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/update_trail.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_update_trail/} for full documentation.
 }
 \keyword{internal}

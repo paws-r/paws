@@ -12,6 +12,6 @@ eks_describe_cluster(name)
 \description{
 Returns descriptive information about an Amazon EKS cluster.
 
-See \url{https://paws-r.github.io/docs/eks/describe_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_describe_cluster/} for full documentation.
 }
 \keyword{internal}

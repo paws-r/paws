@@ -13,6 +13,6 @@ cognitoidentity_describe_identity_pool(IdentityPoolId)
 \description{
 Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users.
 
-See \url{https://paws-r.github.io/docs/cognitoidentity/describe_identity_pool.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_describe_identity_pool/} for full documentation.
 }
 \keyword{internal}

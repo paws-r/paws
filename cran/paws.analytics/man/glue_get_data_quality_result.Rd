@@ -12,6 +12,6 @@ glue_get_data_quality_result(ResultId)
 \description{
 Retrieves the result of a data quality rule evaluation.
 
-See \url{https://paws-r.github.io/docs/glue/get_data_quality_result.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_data_quality_result/} for full documentation.
 }
 \keyword{internal}

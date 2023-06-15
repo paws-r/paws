@@ -14,6 +14,6 @@ applications and job runs.}
 \description{
 Lists the tags assigned to the resources.
 
-See \url{https://paws-r.github.io/docs/emrserverless/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emrserverless_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

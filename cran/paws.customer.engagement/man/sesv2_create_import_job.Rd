@@ -14,6 +14,6 @@ sesv2_create_import_job(ImportDestination, ImportDataSource)
 \description{
 Creates an import job for a data destination.
 
-See \url{https://paws-r.github.io/docs/sesv2/create_import_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_create_import_job/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ codestar_untag_project(id, tags)
 \description{
 Removes tags from a project.
 
-See \url{https://paws-r.github.io/docs/codestar/untag_project.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestar_untag_project/} for full documentation.
 }
 \keyword{internal}

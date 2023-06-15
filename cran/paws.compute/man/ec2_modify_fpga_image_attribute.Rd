@@ -49,6 +49,6 @@ attribute.}
 \description{
 Modifies the specified attribute of the specified Amazon FPGA Image (AFI).
 
-See \url{https://paws-r.github.io/docs/ec2/modify_fpga_image_attribute.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_fpga_image_attribute/} for full documentation.
 }
 \keyword{internal}

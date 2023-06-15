@@ -24,6 +24,6 @@ be a base64-encoded string.}
 \description{
 Updates a notebook instance lifecycle configuration created with the \code{\link[=sagemaker_create_notebook_instance_lifecycle_config]{create_notebook_instance_lifecycle_config}} API.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_notebook_instance_lifecycle_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_notebook_instance_lifecycle_config/} for full documentation.
 }
 \keyword{internal}

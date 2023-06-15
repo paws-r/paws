@@ -12,6 +12,6 @@ dynamodb_delete_table(TableName)
 \description{
 The \code{\link[=dynamodb_delete_table]{delete_table}} operation deletes a table and all of its items. After a \code{\link[=dynamodb_delete_table]{delete_table}} request, the specified table is in the \code{DELETING} state until DynamoDB completes the deletion. If the table is in the \code{ACTIVE} state, you can delete it. If a table is in \code{CREATING} or \code{UPDATING} states, then DynamoDB returns a \code{ResourceInUseException}. If the specified table does not exist, DynamoDB returns a \code{ResourceNotFoundException}. If table is already in the \code{DELETING} state, no error is returned.
 
-See \url{https://paws-r.github.io/docs/dynamodb/delete_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_delete_table/} for full documentation.
 }
 \keyword{internal}

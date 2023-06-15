@@ -12,6 +12,6 @@ braket_cancel_job(jobArn)
 \description{
 Cancels an Amazon Braket job.
 
-See \url{https://paws-r.github.io/docs/braket/cancel_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/braket_cancel_job/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ If false, \code{Recipe} is not returned.}
 \description{
 Returns an \code{MLModel} that includes detailed metadata, data source information, and the current status of the \code{MLModel}.
 
-See \url{https://paws-r.github.io/docs/machinelearning/get_ml_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_get_ml_model/} for full documentation.
 }
 \keyword{internal}

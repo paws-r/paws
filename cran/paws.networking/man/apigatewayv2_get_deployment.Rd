@@ -14,6 +14,6 @@ apigatewayv2_get_deployment(ApiId, DeploymentId)
 \description{
 Gets a Deployment.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/get_deployment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_get_deployment/} for full documentation.
 }
 \keyword{internal}

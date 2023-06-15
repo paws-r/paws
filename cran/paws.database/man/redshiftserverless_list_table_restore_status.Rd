@@ -33,6 +33,6 @@ operations.}
 \description{
 Returns information about an array of \code{TableRestoreStatus} objects.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/list_table_restore_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_list_table_restore_status/} for full documentation.
 }
 \keyword{internal}

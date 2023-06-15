@@ -59,6 +59,6 @@ use when resolving conflicts during a merge.}
 \description{
 Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the three-way merge strategy. If the merge is successful, it closes the pull request.
 
-See \url{https://paws-r.github.io/docs/codecommit/merge_pull_request_by_three_way.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_merge_pull_request_by_three_way/} for full documentation.
 }
 \keyword{internal}

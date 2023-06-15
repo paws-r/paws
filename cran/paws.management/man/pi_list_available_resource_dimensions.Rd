@@ -37,6 +37,6 @@ token, up to the value specified by \code{MaxRecords}.}
 \description{
 Retrieve the dimensions that can be queried for each specified metric type on a specified DB instance.
 
-See \url{https://paws-r.github.io/docs/pi/list_available_resource_dimensions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pi_list_available_resource_dimensions/} for full documentation.
 }
 \keyword{internal}

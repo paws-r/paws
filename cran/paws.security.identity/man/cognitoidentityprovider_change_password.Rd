@@ -21,6 +21,6 @@ password you want to change.}
 \description{
 Changes the password for a specified user in a user pool.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/change_password.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_change_password/} for full documentation.
 }
 \keyword{internal}

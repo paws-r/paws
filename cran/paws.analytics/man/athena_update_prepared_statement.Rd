@@ -23,6 +23,6 @@ athena_update_prepared_statement(
 \description{
 Updates a prepared statement.
 
-See \url{https://paws-r.github.io/docs/athena/update_prepared_statement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_update_prepared_statement/} for full documentation.
 }
 \keyword{internal}

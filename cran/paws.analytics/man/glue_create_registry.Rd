@@ -20,6 +20,6 @@ searched by console, command line, or API.}
 \description{
 Creates a new registry which may be used to hold a collection of schemas.
 
-See \url{https://paws-r.github.io/docs/glue/create_registry.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_create_registry/} for full documentation.
 }
 \keyword{internal}

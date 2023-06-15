@@ -820,7 +820,7 @@ memorydb_create_subnet_group <- function(SubnetGroupName, Description = NULL, Su
 #'     ),
 #'     MinimumEngineVersion = "string",
 #'     Authentication = list(
-#'       Type = "password"|"no-password",
+#'       Type = "password"|"no-password"|"iam",
 #'       PasswordCount = 123
 #'     ),
 #'     ARN = "string"
@@ -833,7 +833,7 @@ memorydb_create_subnet_group <- function(SubnetGroupName, Description = NULL, Su
 #' svc$create_user(
 #'   UserName = "string",
 #'   AuthenticationMode = list(
-#'     Type = "password",
+#'     Type = "password"|"iam",
 #'     Passwords = list(
 #'       "string"
 #'     )
@@ -1285,7 +1285,7 @@ memorydb_delete_subnet_group <- function(SubnetGroupName) {
 #'     ),
 #'     MinimumEngineVersion = "string",
 #'     Authentication = list(
-#'       Type = "password"|"no-password",
+#'       Type = "password"|"no-password"|"iam",
 #'       PasswordCount = 123
 #'     ),
 #'     ARN = "string"
@@ -2316,7 +2316,7 @@ memorydb_describe_subnet_groups <- function(SubnetGroupName = NULL, MaxResults =
 #'       ),
 #'       MinimumEngineVersion = "string",
 #'       Authentication = list(
-#'         Type = "password"|"no-password",
+#'         Type = "password"|"no-password"|"iam",
 #'         PasswordCount = 123
 #'       ),
 #'       ARN = "string"
@@ -3298,7 +3298,7 @@ memorydb_update_subnet_group <- function(SubnetGroupName, Description = NULL, Su
 #'     ),
 #'     MinimumEngineVersion = "string",
 #'     Authentication = list(
-#'       Type = "password"|"no-password",
+#'       Type = "password"|"no-password"|"iam",
 #'       PasswordCount = 123
 #'     ),
 #'     ARN = "string"
@@ -3311,7 +3311,7 @@ memorydb_update_subnet_group <- function(SubnetGroupName, Description = NULL, Su
 #' svc$update_user(
 #'   UserName = "string",
 #'   AuthenticationMode = list(
-#'     Type = "password",
+#'     Type = "password"|"iam",
 #'     Passwords = list(
 #'       "string"
 #'     )

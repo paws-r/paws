@@ -46,6 +46,6 @@ parameter to return the next page of results.}
 \description{
 Search for associated transcripts that meet the specified criteria.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/search_associated_transcripts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_search_associated_transcripts/} for full documentation.
 }
 \keyword{internal}

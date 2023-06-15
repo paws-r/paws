@@ -23,6 +23,6 @@ you from that subnet.}
 \description{
 Creates a new hardware security module (HSM) in the specified AWS CloudHSM cluster.
 
-See \url{https://paws-r.github.io/docs/cloudhsmv2/create_hsm.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_create_hsm/} for full documentation.
 }
 \keyword{internal}

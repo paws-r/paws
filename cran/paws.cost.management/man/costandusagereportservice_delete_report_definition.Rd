@@ -13,6 +13,6 @@ is case sensitive, and can't include spaces.}
 \description{
 Deletes the specified report.
 
-See \url{https://paws-r.github.io/docs/costandusagereportservice/delete_report_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costandusagereportservice_delete_report_definition/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ request token, Amazon Lookout for Equipment generates one.}
 \description{
 Starts a data ingestion job. Amazon Lookout for Equipment returns the job status.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/start_data_ingestion_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_start_data_ingestion_job/} for full documentation.
 }
 \keyword{internal}

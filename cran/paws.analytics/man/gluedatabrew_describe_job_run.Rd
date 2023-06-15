@@ -14,6 +14,6 @@ gluedatabrew_describe_job_run(Name, RunId)
 \description{
 Represents one run of a DataBrew job.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/describe_job_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_describe_job_run/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ your Lake Formation environment.}
 \description{
 Attaches one or more LF-tags to an existing resource.
 
-See \url{https://paws-r.github.io/docs/lakeformation/add_lf_tags_to_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_add_lf_tags_to_resource/} for full documentation.
 }
 \keyword{internal}

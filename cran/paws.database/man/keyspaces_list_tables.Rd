@@ -20,6 +20,6 @@ value as an argument of a subsequent API invocation.}
 \description{
 Returns a list of tables for a specified keyspace.
 
-See \url{https://paws-r.github.io/docs/keyspaces/list_tables.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/keyspaces_list_tables/} for full documentation.
 }
 \keyword{internal}

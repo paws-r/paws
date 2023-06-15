@@ -16,6 +16,6 @@ gateway.}
 \description{
 Returns the description of the gateway volumes specified in the request. The list of gateway volumes in the request must be from one gateway. In the response, Storage Gateway returns volume information sorted by volume ARNs. This operation is only supported in stored volume gateway type.
 
-See \url{https://paws-r.github.io/docs/storagegateway/describe_storedi_scsi_volumes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_describe_storedi_scsi_volumes/} for full documentation.
 }
 \keyword{internal}

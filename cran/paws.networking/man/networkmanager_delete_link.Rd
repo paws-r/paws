@@ -14,6 +14,6 @@ networkmanager_delete_link(GlobalNetworkId, LinkId)
 \description{
 Deletes an existing link. You must first disassociate the link from any devices and customer gateways.
 
-See \url{https://paws-r.github.io/docs/networkmanager/delete_link.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_delete_link/} for full documentation.
 }
 \keyword{internal}

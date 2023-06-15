@@ -27,6 +27,6 @@ either retain the EBS volumes or delete the EBS volumes.}
 \description{
 Transitions sessions from the \code{READY} state into the \code{STOPPED} state. The \code{STOP_IN_PROGRESS} state is the intermediate state between the \code{READY} and \code{STOPPED} states.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/stop_streaming_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_stop_streaming_session/} for full documentation.
 }
 \keyword{internal}

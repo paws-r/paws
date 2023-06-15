@@ -15,6 +15,6 @@ which recognizes celebrities in an image.}
 \description{
 Gets the name and additional information about a celebrity based on their Amazon Rekognition ID. The additional information is returned as an array of URLs. If there is no additional information about the celebrity, this list is empty.
 
-See \url{https://paws-r.github.io/docs/rekognition/get_celebrity_info.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_get_celebrity_info/} for full documentation.
 }
 \keyword{internal}

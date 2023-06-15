@@ -29,6 +29,6 @@ value.}
 \description{
 Gets information about the resources that are associated with the specified managed prefix list.
 
-See \url{https://paws-r.github.io/docs/ec2/get_managed_prefix_list_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_managed_prefix_list_associations/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ sfn_describe_state_machine(stateMachineArn)
 \description{
 Provides information about a state machine's definition, its IAM role Amazon Resource Name (ARN), and configuration. If the state machine ARN is a qualified state machine ARN, the response returned includes the \code{Map} state's label.
 
-See \url{https://paws-r.github.io/docs/sfn/describe_state_machine.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sfn_describe_state_machine/} for full documentation.
 }
 \keyword{internal}

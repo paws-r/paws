@@ -43,6 +43,6 @@ application. To create a Kinesis Data Analytics Studio notebook, use the
 \description{
 Creates a Kinesis Data Analytics application. For information about creating a Kinesis Data Analytics application, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/java/getting-started.html}{Creating an Application}.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/create_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_create_application/} for full documentation.
 }
 \keyword{internal}

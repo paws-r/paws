@@ -28,6 +28,6 @@ a maximum of 50 principals.
 \description{
 Attaches a resource-based permission policy to a CloudTrail channel that is used for an integration with an event source outside of Amazon Web Services. For more information about resource-based policies, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/security_iam_resource-based-policy-examples.html}{CloudTrail resource-based policy examples} in the \emph{CloudTrail User Guide}.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/put_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_put_resource_policy/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/usergui
 \description{
 Cancels the scheduled deletion of a secret by removing the \code{DeletedDate} time stamp. You can access a secret again after it has been restored.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/restore_secret.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_restore_secret/} for full documentation.
 }
 \keyword{internal}

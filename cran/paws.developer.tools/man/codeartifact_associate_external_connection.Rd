@@ -35,6 +35,6 @@ following values are supported:
 \description{
 Adds an existing external connection to a repository. One external connection is allowed per repository.
 
-See \url{https://paws-r.github.io/docs/codeartifact/associate_external_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_associate_external_connection/} for full documentation.
 }
 \keyword{internal}

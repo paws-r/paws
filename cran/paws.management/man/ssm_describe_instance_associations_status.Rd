@@ -23,6 +23,6 @@ from a previous call.)}
 \description{
 The status of the associations for the managed node(s).
 
-See \url{https://paws-r.github.io/docs/ssm/describe_instance_associations_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_instance_associations_status/} for full documentation.
 }
 \keyword{internal}

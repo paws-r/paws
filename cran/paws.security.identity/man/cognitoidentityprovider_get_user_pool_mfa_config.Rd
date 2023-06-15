@@ -12,6 +12,6 @@ cognitoidentityprovider_get_user_pool_mfa_config(UserPoolId)
 \description{
 Gets the user pool multi-factor authentication (MFA) configuration.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/get_user_pool_mfa_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_user_pool_mfa_config/} for full documentation.
 }
 \keyword{internal}

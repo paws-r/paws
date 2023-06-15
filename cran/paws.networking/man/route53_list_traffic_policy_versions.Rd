@@ -37,6 +37,6 @@ Route 53 will return if you submit another request.}
 \description{
 Gets information about all of the versions for a specified traffic policy.
 
-See \url{https://paws-r.github.io/docs/route53/list_traffic_policy_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_list_traffic_policy_versions/} for full documentation.
 }
 \keyword{internal}

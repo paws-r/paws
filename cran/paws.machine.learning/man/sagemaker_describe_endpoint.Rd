@@ -12,6 +12,6 @@ sagemaker_describe_endpoint(EndpointName)
 \description{
 Returns the description of an endpoint.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_endpoint/} for full documentation.
 }
 \keyword{internal}

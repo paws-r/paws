@@ -9,7 +9,7 @@ NULL
 #' @description
 #' A replication set replicates and encrypts your data to the provided Regions with the provided KMS key.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/create_replication_set.html](https://paws-r.github.io/docs/ssmincidents/create_replication_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_create_replication_set/](https://www.paws-r-sdk.com/docs/ssmincidents_create_replication_set/) for full documentation.
 #'
 #' @param clientToken A token that ensures that the operation is called only once with the
 #' specified details.
@@ -42,7 +42,7 @@ ssmincidents_create_replication_set <- function(clientToken = NULL, regions, tag
 #' @description
 #' Creates a response plan that automates the initial response to incidents. A response plan engages contacts, starts chat channel collaboration, and initiates runbooks at the beginning of an incident.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/create_response_plan.html](https://paws-r.github.io/docs/ssmincidents/create_response_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_create_response_plan/](https://www.paws-r-sdk.com/docs/ssmincidents_create_response_plan/) for full documentation.
 #'
 #' @param actions The actions that the response plan starts at the beginning of an
 #' incident.
@@ -85,7 +85,7 @@ ssmincidents_create_response_plan <- function(actions = NULL, chatChannel = NULL
 #' @description
 #' Creates a custom timeline event on the incident details page of an incident record. Incident Manager automatically creates timeline events that mark key moments during an incident. You can create custom timeline events to mark important events that Incident Manager can detect automatically.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/create_timeline_event.html](https://paws-r.github.io/docs/ssmincidents/create_timeline_event.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_create_timeline_event/](https://www.paws-r-sdk.com/docs/ssmincidents_create_timeline_event/) for full documentation.
 #'
 #' @param clientToken A token that ensures that a client calls the action only once with the
 #' specified details.
@@ -128,7 +128,7 @@ ssmincidents_create_timeline_event <- function(clientToken = NULL, eventData, ev
 #' @description
 #' Delete an incident record from Incident Manager.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/delete_incident_record.html](https://paws-r.github.io/docs/ssmincidents/delete_incident_record.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_delete_incident_record/](https://www.paws-r-sdk.com/docs/ssmincidents_delete_incident_record/) for full documentation.
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the incident record you are deleting.
 #'
@@ -157,7 +157,7 @@ ssmincidents_delete_incident_record <- function(arn) {
 #' @description
 #' Deletes all Regions in your replication set. Deleting the replication set deletes all Incident Manager data.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/delete_replication_set.html](https://paws-r.github.io/docs/ssmincidents/delete_replication_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_delete_replication_set/](https://www.paws-r-sdk.com/docs/ssmincidents_delete_replication_set/) for full documentation.
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the replication set you're deleting.
 #'
@@ -187,7 +187,7 @@ ssmincidents_delete_replication_set <- function(arn) {
 #' @description
 #' Deletes the resource policy that Resource Access Manager uses to share your Incident Manager resource.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/delete_resource_policy.html](https://paws-r.github.io/docs/ssmincidents/delete_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_delete_resource_policy/](https://www.paws-r-sdk.com/docs/ssmincidents_delete_resource_policy/) for full documentation.
 #'
 #' @param policyId &#91;required&#93; The ID of the resource policy you're deleting.
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource you're deleting the
@@ -218,7 +218,7 @@ ssmincidents_delete_resource_policy <- function(policyId, resourceArn) {
 #' @description
 #' Deletes the specified response plan. Deleting a response plan stops all linked CloudWatch alarms and EventBridge events from creating an incident with this response plan.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/delete_response_plan.html](https://paws-r.github.io/docs/ssmincidents/delete_response_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_delete_response_plan/](https://www.paws-r-sdk.com/docs/ssmincidents_delete_response_plan/) for full documentation.
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan.
 #'
@@ -247,7 +247,7 @@ ssmincidents_delete_response_plan <- function(arn) {
 #' @description
 #' Deletes a timeline event from an incident.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/delete_timeline_event.html](https://paws-r.github.io/docs/ssmincidents/delete_timeline_event.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_delete_timeline_event/](https://www.paws-r-sdk.com/docs/ssmincidents_delete_timeline_event/) for full documentation.
 #'
 #' @param eventId &#91;required&#93; The ID of the event to update. You can use
 #' [`list_timeline_events`][ssmincidents_list_timeline_events] to find an
@@ -280,7 +280,7 @@ ssmincidents_delete_timeline_event <- function(eventId, incidentRecordArn) {
 #' @description
 #' Returns the details for the specified incident record.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/get_incident_record.html](https://paws-r.github.io/docs/ssmincidents/get_incident_record.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_get_incident_record/](https://www.paws-r-sdk.com/docs/ssmincidents_get_incident_record/) for full documentation.
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the incident record.
 #'
@@ -309,7 +309,7 @@ ssmincidents_get_incident_record <- function(arn) {
 #' @description
 #' Retrieve your Incident Manager replication set.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/get_replication_set.html](https://paws-r.github.io/docs/ssmincidents/get_replication_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_get_replication_set/](https://www.paws-r-sdk.com/docs/ssmincidents_get_replication_set/) for full documentation.
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the replication set you want to
 #' retrieve.
@@ -339,7 +339,7 @@ ssmincidents_get_replication_set <- function(arn) {
 #' @description
 #' Retrieves the resource policies attached to the specified response plan.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/get_resource_policies.html](https://paws-r.github.io/docs/ssmincidents/get_resource_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_get_resource_policies/](https://www.paws-r-sdk.com/docs/ssmincidents_get_resource_policies/) for full documentation.
 #'
 #' @param maxResults The maximum number of resource policies to display for each page of
 #' results.
@@ -372,7 +372,7 @@ ssmincidents_get_resource_policies <- function(maxResults = NULL, nextToken = NU
 #' @description
 #' Retrieves the details of the specified response plan.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/get_response_plan.html](https://paws-r.github.io/docs/ssmincidents/get_response_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_get_response_plan/](https://www.paws-r-sdk.com/docs/ssmincidents_get_response_plan/) for full documentation.
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan.
 #'
@@ -401,7 +401,7 @@ ssmincidents_get_response_plan <- function(arn) {
 #' @description
 #' Retrieves a timeline event based on its ID and incident record.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/get_timeline_event.html](https://paws-r.github.io/docs/ssmincidents/get_timeline_event.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_get_timeline_event/](https://www.paws-r-sdk.com/docs/ssmincidents_get_timeline_event/) for full documentation.
 #'
 #' @param eventId &#91;required&#93; The ID of the event. You can get an event's ID when you create it, or by
 #' using [`list_timeline_events`][ssmincidents_list_timeline_events].
@@ -433,7 +433,7 @@ ssmincidents_get_timeline_event <- function(eventId, incidentRecordArn) {
 #' @description
 #' Lists all incident records in your account. Use this command to retrieve the Amazon Resource Name (ARN) of the incident record you want to update.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/list_incident_records.html](https://paws-r.github.io/docs/ssmincidents/list_incident_records.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_list_incident_records/](https://www.paws-r-sdk.com/docs/ssmincidents_list_incident_records/) for full documentation.
 #'
 #' @param filters Filters the list of incident records you want to search through. You can
 #' filter on the following keys:
@@ -484,7 +484,7 @@ ssmincidents_list_incident_records <- function(filters = NULL, maxResults = NULL
 #' @description
 #' List all related items for an incident record.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/list_related_items.html](https://paws-r.github.io/docs/ssmincidents/list_related_items.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_list_related_items/](https://www.paws-r-sdk.com/docs/ssmincidents_list_related_items/) for full documentation.
 #'
 #' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident record containing the
 #' listed related items.
@@ -516,7 +516,7 @@ ssmincidents_list_related_items <- function(incidentRecordArn, maxResults = NULL
 #' @description
 #' Lists details about the replication set configured in your account.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/list_replication_sets.html](https://paws-r.github.io/docs/ssmincidents/list_replication_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_list_replication_sets/](https://www.paws-r-sdk.com/docs/ssmincidents_list_replication_sets/) for full documentation.
 #'
 #' @param maxResults The maximum number of results per page.
 #' @param nextToken The pagination token to continue to the next page of results.
@@ -546,7 +546,7 @@ ssmincidents_list_replication_sets <- function(maxResults = NULL, nextToken = NU
 #' @description
 #' Lists all response plans in your account.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/list_response_plans.html](https://paws-r.github.io/docs/ssmincidents/list_response_plans.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_list_response_plans/](https://www.paws-r-sdk.com/docs/ssmincidents_list_response_plans/) for full documentation.
 #'
 #' @param maxResults The maximum number of response plans per page.
 #' @param nextToken The pagination token to continue to the next page of results.
@@ -576,7 +576,7 @@ ssmincidents_list_response_plans <- function(maxResults = NULL, nextToken = NULL
 #' @description
 #' Lists the tags that are attached to the specified response plan.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/list_tags_for_resource.html](https://paws-r.github.io/docs/ssmincidents/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/ssmincidents_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan.
 #'
@@ -605,7 +605,7 @@ ssmincidents_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Lists timeline events for the specified incident record.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/list_timeline_events.html](https://paws-r.github.io/docs/ssmincidents/list_timeline_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_list_timeline_events/](https://www.paws-r-sdk.com/docs/ssmincidents_list_timeline_events/) for full documentation.
 #'
 #' @param filters Filters the timeline events based on the provided conditional values.
 #' You can filter timeline events with the following keys:
@@ -657,7 +657,7 @@ ssmincidents_list_timeline_events <- function(filters = NULL, incidentRecordArn,
 #' @description
 #' Adds a resource policy to the specified response plan. The resource policy is used to share the response plan using Resource Access Manager (RAM). For more information about cross-account sharing, see [Cross-Region and cross-account incident management](https://docs.aws.amazon.com/incident-manager/latest/userguide/incident-manager-cross-account-cross-region.html).
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/put_resource_policy.html](https://paws-r.github.io/docs/ssmincidents/put_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_put_resource_policy/](https://www.paws-r-sdk.com/docs/ssmincidents_put_resource_policy/) for full documentation.
 #'
 #' @param policy &#91;required&#93; Details of the resource policy.
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan to add the resource
@@ -689,7 +689,7 @@ ssmincidents_put_resource_policy <- function(policy, resourceArn) {
 #' @description
 #' Used to start an incident from CloudWatch alarms, EventBridge events, or manually.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/start_incident.html](https://paws-r.github.io/docs/ssmincidents/start_incident.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_start_incident/](https://www.paws-r-sdk.com/docs/ssmincidents_start_incident/) for full documentation.
 #'
 #' @param clientToken A token ensuring that the operation is called only once with the
 #' specified details.
@@ -746,7 +746,7 @@ ssmincidents_start_incident <- function(clientToken = NULL, impact = NULL, relat
 #' @description
 #' Adds a tag to a response plan.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/tag_resource.html](https://paws-r.github.io/docs/ssmincidents/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_tag_resource/](https://www.paws-r-sdk.com/docs/ssmincidents_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan you're adding the
 #' tags to.
@@ -777,7 +777,7 @@ ssmincidents_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes a tag from a resource.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/untag_resource.html](https://paws-r.github.io/docs/ssmincidents/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_untag_resource/](https://www.paws-r-sdk.com/docs/ssmincidents_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan you're removing a
 #' tag from.
@@ -809,7 +809,7 @@ ssmincidents_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Update deletion protection to either allow or deny deletion of the final Region in a replication set.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/update_deletion_protection.html](https://paws-r.github.io/docs/ssmincidents/update_deletion_protection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_update_deletion_protection/](https://www.paws-r-sdk.com/docs/ssmincidents_update_deletion_protection/) for full documentation.
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the replication set to update.
 #' @param clientToken A token that ensures that the operation is called only once with the
@@ -841,7 +841,7 @@ ssmincidents_update_deletion_protection <- function(arn, clientToken = NULL, del
 #' @description
 #' Update the details of an incident record. You can use this operation to update an incident record from the defined chat channel. For more information about using actions in chat channels, see [Interacting through chat](https://docs.aws.amazon.com/incident-manager/latest/userguide/chat.html#chat-interact).
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/update_incident_record.html](https://paws-r.github.io/docs/ssmincidents/update_incident_record.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_update_incident_record/](https://www.paws-r-sdk.com/docs/ssmincidents_update_incident_record/) for full documentation.
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the incident record you are updating.
 #' @param chatChannel The Chatbot chat channel where responders can collaborate.
@@ -901,7 +901,7 @@ ssmincidents_update_incident_record <- function(arn, chatChannel = NULL, clientT
 #' @description
 #' Add or remove related items from the related items tab of an incident record.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/update_related_items.html](https://paws-r.github.io/docs/ssmincidents/update_related_items.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_update_related_items/](https://www.paws-r-sdk.com/docs/ssmincidents_update_related_items/) for full documentation.
 #'
 #' @param clientToken A token that ensures that a client calls the operation only once with
 #' the specified details.
@@ -934,7 +934,7 @@ ssmincidents_update_related_items <- function(clientToken = NULL, incidentRecord
 #' @description
 #' Add or delete Regions from your replication set.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/update_replication_set.html](https://paws-r.github.io/docs/ssmincidents/update_replication_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_update_replication_set/](https://www.paws-r-sdk.com/docs/ssmincidents_update_replication_set/) for full documentation.
 #'
 #' @param actions &#91;required&#93; An action to add or delete a Region.
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the replication set you're updating.
@@ -966,7 +966,7 @@ ssmincidents_update_replication_set <- function(actions, arn, clientToken = NULL
 #' @description
 #' Updates the specified response plan.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/update_response_plan.html](https://paws-r.github.io/docs/ssmincidents/update_response_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_update_response_plan/](https://www.paws-r-sdk.com/docs/ssmincidents_update_response_plan/) for full documentation.
 #'
 #' @param actions The actions that this response plan takes at the beginning of an
 #' incident.
@@ -1036,7 +1036,7 @@ ssmincidents_update_response_plan <- function(actions = NULL, arn, chatChannel =
 #' @description
 #' Updates a timeline event. You can update events of type `Custom Event`.
 #'
-#' See [https://paws-r.github.io/docs/ssmincidents/update_timeline_event.html](https://paws-r.github.io/docs/ssmincidents/update_timeline_event.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_update_timeline_event/](https://www.paws-r-sdk.com/docs/ssmincidents_update_timeline_event/) for full documentation.
 #'
 #' @param clientToken A token that ensures that a client calls the operation only once with
 #' the specified details.

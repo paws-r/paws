@@ -29,6 +29,6 @@ in the \emph{Amazon Web Services Identity and Access Management User Guide}.}
 \description{
 Describes the customer feedback for a CodeGuru Reviewer recommendation.
 
-See \url{https://paws-r.github.io/docs/codegurureviewer/describe_recommendation_feedback.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codegurureviewer_describe_recommendation_feedback/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ this parameter, the default number is used. The default number is \code{100}.}
 \description{
 Returns a list that contains the number of managed Contributor Insights rules in your account.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/list_managed_insight_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_list_managed_insight_rules/} for full documentation.
 }
 \keyword{internal}

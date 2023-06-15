@@ -231,6 +231,6 @@ for server-side encryption with Amazon Web Services KMS (SSE-KMS).}
 \description{
 Passes transformed objects to a \code{\link[=s3_get_object]{get_object}} operation when using Object Lambda access points. For information about Object Lambda access points, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/transforming-objects.html}{Transforming objects with Object Lambda access points} in the \emph{Amazon S3 User Guide}.
 
-See \url{https://paws-r.github.io/docs/s3/write_get_object_response.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_write_get_object_response/} for full documentation.
 }
 \keyword{internal}

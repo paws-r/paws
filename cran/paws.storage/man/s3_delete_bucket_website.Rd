@@ -16,6 +16,6 @@ different account, the request fails with the HTTP status code
 \description{
 This action removes the website configuration for a bucket. Amazon S3 returns a \verb{200 OK} response upon successfully deleting a website configuration on the specified bucket. You will get a \verb{200 OK} response if the website configuration you are trying to delete does not exist on the bucket. Amazon S3 returns a \code{404} response if the bucket specified in the request does not exist.
 
-See \url{https://paws-r.github.io/docs/s3/delete_bucket_website.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_delete_bucket_website/} for full documentation.
 }
 \keyword{internal}

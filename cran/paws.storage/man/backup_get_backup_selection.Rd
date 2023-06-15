@@ -16,6 +16,6 @@ to a backup plan.}
 \description{
 Returns selection metadata and a document in JSON format that specifies a list of resources that are associated with a backup plan.
 
-See \url{https://paws-r.github.io/docs/backup/get_backup_selection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_get_backup_selection/} for full documentation.
 }
 \keyword{internal}

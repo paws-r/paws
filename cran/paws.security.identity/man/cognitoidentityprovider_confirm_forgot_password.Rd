@@ -71,6 +71,6 @@ provide sensitive information.
 \description{
 Allows a user to enter a confirmation code to reset a forgotten password.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/confirm_forgot_password.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_confirm_forgot_password/} for full documentation.
 }
 \keyword{internal}

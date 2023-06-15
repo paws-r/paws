@@ -14,6 +14,6 @@ pinpoint_verify_otp_message(ApplicationId, VerifyOTPMessageRequestParameters)
 \description{
 Verify an OTP
 
-See \url{https://paws-r.github.io/docs/pinpoint/verify_otp_message.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_verify_otp_message/} for full documentation.
 }
 \keyword{internal}

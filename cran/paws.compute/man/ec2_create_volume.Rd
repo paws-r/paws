@@ -132,6 +132,6 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \description{
 Creates an EBS volume that can be attached to an instance in the same Availability Zone.
 
-See \url{https://paws-r.github.io/docs/ec2/create_volume.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_volume/} for full documentation.
 }
 \keyword{internal}

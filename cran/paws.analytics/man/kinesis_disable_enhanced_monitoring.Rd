@@ -37,6 +37,6 @@ in the \emph{Amazon Kinesis Data Streams Developer Guide}.}
 \description{
 Disables enhanced monitoring.
 
-See \url{https://paws-r.github.io/docs/kinesis/disable_enhanced_monitoring.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesis_disable_enhanced_monitoring/} for full documentation.
 }
 \keyword{internal}

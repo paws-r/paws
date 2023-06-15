@@ -38,6 +38,6 @@ pair.}
 \description{
 Creates a network settings resource that can be associated with a web portal. Once associated with a web portal, network settings define how streaming instances will connect with your specified VPC.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/create_network_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_create_network_settings/} for full documentation.
 }
 \keyword{internal}

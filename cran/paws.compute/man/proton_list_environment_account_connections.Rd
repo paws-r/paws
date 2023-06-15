@@ -31,6 +31,6 @@ request.}
 \description{
 View a list of environment account connections.
 
-See \url{https://paws-r.github.io/docs/proton/list_environment_account_connections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_list_environment_account_connections/} for full documentation.
 }
 \keyword{internal}

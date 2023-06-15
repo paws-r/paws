@@ -33,6 +33,6 @@ the tags.}
 \description{
 Create a new version of your custom platform.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/create_platform_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_create_platform_version/} for full documentation.
 }
 \keyword{internal}

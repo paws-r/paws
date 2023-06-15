@@ -29,6 +29,6 @@ Example: \code{mySubnetgroup}}
 \description{
 Creates a new subnet group. subnet groups must contain at least one subnet in at least two Availability Zones in the Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/docdb/create_db_subnet_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_create_db_subnet_group/} for full documentation.
 }
 \keyword{internal}

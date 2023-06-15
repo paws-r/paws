@@ -59,6 +59,6 @@ the user storage quota and utilization information.}
 \description{
 Describes the specified users. You can describe all users or filter the results (for example, by status or organization).
 
-See \url{https://paws-r.github.io/docs/workdocs/describe_users.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_describe_users/} for full documentation.
 }
 \keyword{internal}

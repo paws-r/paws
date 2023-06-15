@@ -27,6 +27,6 @@ example, Config adds 3 exceptions for 3 resource keys.}
 \description{
 A remediation exception is when a specified resource is no longer considered for auto-remediation. This API adds a new exception or updates an existing exception for a specified resource with a specified Config rule.
 
-See \url{https://paws-r.github.io/docs/configservice/put_remediation_exceptions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_put_remediation_exceptions/} for full documentation.
 }
 \keyword{internal}

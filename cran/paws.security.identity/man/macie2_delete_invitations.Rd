@@ -14,6 +14,6 @@ account that sent an invitation to delete.}
 \description{
 Deletes Amazon Macie membership invitations that were received from specific accounts.
 
-See \url{https://paws-r.github.io/docs/macie2/delete_invitations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_delete_invitations/} for full documentation.
 }
 \keyword{internal}

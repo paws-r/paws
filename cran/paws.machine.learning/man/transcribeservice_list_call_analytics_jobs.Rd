@@ -35,6 +35,6 @@ default of 5 is used.}
 \description{
 Provides a list of Call Analytics jobs that match the specified criteria. If no criteria are specified, all Call Analytics jobs are returned.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/list_call_analytics_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_list_call_analytics_jobs/} for full documentation.
 }
 \keyword{internal}

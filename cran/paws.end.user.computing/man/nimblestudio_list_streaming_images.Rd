@@ -17,6 +17,6 @@ results.}
 \description{
 List the streaming image resources available to this studio.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/list_streaming_images.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_list_streaming_images/} for full documentation.
 }
 \keyword{internal}

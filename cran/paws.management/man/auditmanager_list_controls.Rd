@@ -17,6 +17,6 @@ call.}
 \description{
 Returns a list of controls from Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/list_controls.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_list_controls/} for full documentation.
 }
 \keyword{internal}

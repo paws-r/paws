@@ -26,6 +26,6 @@ drs_describe_recovery_snapshots(
 \description{
 Lists all Recovery Snapshots for a single Source Server.
 
-See \url{https://paws-r.github.io/docs/drs/describe_recovery_snapshots.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_describe_recovery_snapshots/} for full documentation.
 }
 \keyword{internal}

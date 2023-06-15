@@ -18,6 +18,6 @@ delete.}
 \description{
 Delete an event destination.
 
-See \url{https://paws-r.github.io/docs/sesv2/delete_configuration_set_event_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_delete_configuration_set_event_destination/} for full documentation.
 }
 \keyword{internal}

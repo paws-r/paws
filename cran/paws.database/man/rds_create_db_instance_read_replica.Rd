@@ -515,6 +515,6 @@ as the read replica. Cross-Region replication isn't supported.
 \description{
 Creates a new DB instance that acts as a read replica for an existing source DB instance or Multi-AZ DB cluster. You can create a read replica for a DB instance running MySQL, MariaDB, Oracle, PostgreSQL, or SQL Server. You can create a read replica for a Multi-AZ DB cluster running MySQL or PostgreSQL. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html}{Working with read replicas} and \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html#multi-az-db-clusters-migrating-to-instance-with-read-replica}{Migrating from a Multi-AZ DB cluster to a DB instance using a read replica} in the \emph{Amazon RDS User Guide}.
 
-See \url{https://paws-r.github.io/docs/rds/create_db_instance_read_replica.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_create_db_instance_read_replica/} for full documentation.
 }
 \keyword{internal}

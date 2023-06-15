@@ -33,6 +33,6 @@ retrieve the next page of results.}
 \description{
 Retrieves a list of configurations for asynchronous invocation for a function.
 
-See \url{https://paws-r.github.io/docs/lambda/list_function_event_invoke_configs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_list_function_event_invoke_configs/} for full documentation.
 }
 \keyword{internal}

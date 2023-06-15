@@ -21,6 +21,6 @@ Logs and Amazon S3 artifacts for the project's builds.}
 \description{
 Changes the public visibility for a project. The project's build results, logs, and artifacts are available to the general public. For more information, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/public-builds.html}{Public build projects} in the \emph{CodeBuild User Guide}.
 
-See \url{https://paws-r.github.io/docs/codebuild/update_project_visibility.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_update_project_visibility/} for full documentation.
 }
 \keyword{internal}

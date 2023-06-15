@@ -54,6 +54,6 @@ characters: + - = . _ : / @.
 \description{
 Creates a map resource in your Amazon Web Services account, which provides map tiles of different styles sourced from global location data providers.
 
-See \url{https://paws-r.github.io/docs/locationservice/create_map.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_create_map/} for full documentation.
 }
 \keyword{internal}

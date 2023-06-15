@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Retrieves the configuration data of the specified instance. You can use this data to create a launch template.
 
-See \url{https://paws-r.github.io/docs/ec2/get_launch_template_data.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_launch_template_data/} for full documentation.
 }
 \keyword{internal}

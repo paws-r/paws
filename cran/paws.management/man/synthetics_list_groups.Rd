@@ -19,6 +19,6 @@ omit this parameter, the default of 20 is used.}
 \description{
 Returns a list of all groups in the account, displaying their names, unique IDs, and ARNs. The groups from all Regions are returned.
 
-See \url{https://paws-r.github.io/docs/synthetics/list_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/synthetics_list_groups/} for full documentation.
 }
 \keyword{internal}

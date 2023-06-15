@@ -14,6 +14,6 @@ imagebuilder_tag_resource(resourceArn, tags)
 \description{
 Adds a tag to a resource.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_tag_resource/} for full documentation.
 }
 \keyword{internal}

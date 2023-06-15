@@ -28,6 +28,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes an Elastic IP address transfer. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#transfer-EIPs-intro}{Transfer Elastic IP addresses} in the \emph{Amazon Virtual Private Cloud User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_address_transfers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_address_transfers/} for full documentation.
 }
 \keyword{internal}

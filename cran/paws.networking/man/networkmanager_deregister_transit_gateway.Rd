@@ -14,6 +14,6 @@ networkmanager_deregister_transit_gateway(GlobalNetworkId, TransitGatewayArn)
 \description{
 Deregisters a transit gateway from your global network. This action does not delete your transit gateway, or modify any of its attachments. This action removes any customer gateway associations.
 
-See \url{https://paws-r.github.io/docs/networkmanager/deregister_transit_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_deregister_transit_gateway/} for full documentation.
 }
 \keyword{internal}

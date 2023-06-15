@@ -20,6 +20,6 @@ batch, provide this token in your next request.}
 \description{
 Returns a list of all the operations that have been performed on the specified MSK cluster.
 
-See \url{https://paws-r.github.io/docs/kafka/list_cluster_operations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_list_cluster_operations/} for full documentation.
 }
 \keyword{internal}

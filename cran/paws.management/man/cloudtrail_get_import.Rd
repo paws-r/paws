@@ -12,6 +12,6 @@ cloudtrail_get_import(ImportId)
 \description{
 Returns information about a specific import.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/get_import.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_get_import/} for full documentation.
 }
 \keyword{internal}

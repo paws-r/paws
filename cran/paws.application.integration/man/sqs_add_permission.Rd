@@ -39,6 +39,6 @@ versions of those actions:
 \description{
 Adds a permission to a queue for a specific \href{https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P}{principal}. This allows sharing access to the queue.
 
-See \url{https://paws-r.github.io/docs/sqs/add_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sqs_add_permission/} for full documentation.
 }
 \keyword{internal}

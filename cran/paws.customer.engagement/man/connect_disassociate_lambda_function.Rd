@@ -17,6 +17,6 @@ disassociated.}
 \description{
 This API is in preview release for Amazon Connect and is subject to change.
 
-See \url{https://paws-r.github.io/docs/connect/disassociate_lambda_function.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_disassociate_lambda_function/} for full documentation.
 }
 \keyword{internal}

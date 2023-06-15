@@ -18,6 +18,6 @@ provided in this manner, the API fetches the next page of results.}
 \description{
 Lists completed exports within the past 90 days.
 
-See \url{https://paws-r.github.io/docs/dynamodb/list_exports.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_list_exports/} for full documentation.
 }
 \keyword{internal}

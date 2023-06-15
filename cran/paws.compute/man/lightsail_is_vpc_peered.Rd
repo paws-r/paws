@@ -9,6 +9,6 @@ lightsail_is_vpc_peered()
 \description{
 Returns a Boolean value indicating whether your Lightsail VPC is peered.
 
-See \url{https://paws-r.github.io/docs/lightsail/is_vpc_peered.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_is_vpc_peered/} for full documentation.
 }
 \keyword{internal}

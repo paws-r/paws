@@ -58,6 +58,6 @@ authenticating using either Secrets Manager or temporary credentials.}
 \description{
 Lists the schemas in a database. A token is returned to page through the schema list. Depending on the authorization method, use one of the following combinations of request parameters:
 
-See \url{https://paws-r.github.io/docs/redshiftdataapiservice/list_schemas.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftdataapiservice_list_schemas/} for full documentation.
 }
 \keyword{internal}

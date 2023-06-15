@@ -12,6 +12,6 @@ frauddetector_delete_batch_prediction_job(jobId)
 \description{
 Deletes a batch prediction job.
 
-See \url{https://paws-r.github.io/docs/frauddetector/delete_batch_prediction_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_delete_batch_prediction_job/} for full documentation.
 }
 \keyword{internal}

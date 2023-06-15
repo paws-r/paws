@@ -26,6 +26,6 @@ and "abcxyz."}
 \description{
 Returns bot information as follows:
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_bots.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_bots/} for full documentation.
 }
 \keyword{internal}

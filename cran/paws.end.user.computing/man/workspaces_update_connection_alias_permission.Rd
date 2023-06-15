@@ -21,6 +21,6 @@ specified Amazon Web Services account.}
 \description{
 Shares or unshares a connection alias with one account by specifying whether that account has permission to associate the connection alias with a directory. If the association permission is granted, the connection alias is shared with that account. If the association permission is revoked, the connection alias is unshared with the account. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.
 
-See \url{https://paws-r.github.io/docs/workspaces/update_connection_alias_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_update_connection_alias_permission/} for full documentation.
 }
 \keyword{internal}

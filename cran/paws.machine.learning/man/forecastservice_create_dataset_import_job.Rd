@@ -108,6 +108,6 @@ data to the existing data.}
 \description{
 Imports your training data to an Amazon Forecast dataset. You provide the location of your training data in an Amazon Simple Storage Service (Amazon S3) bucket and the Amazon Resource Name (ARN) of the dataset that you want to import the data to.
 
-See \url{https://paws-r.github.io/docs/forecastservice/create_dataset_import_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_create_dataset_import_job/} for full documentation.
 }
 \keyword{internal}

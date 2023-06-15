@@ -18,6 +18,6 @@ servicecatalog_describe_constraint(AcceptLanguage = NULL, Id)
 \description{
 Gets information about the specified constraint.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/describe_constraint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_describe_constraint/} for full documentation.
 }
 \keyword{internal}

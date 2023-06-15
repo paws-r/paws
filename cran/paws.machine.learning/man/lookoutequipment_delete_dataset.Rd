@@ -12,6 +12,6 @@ lookoutequipment_delete_dataset(DatasetName)
 \description{
 Deletes a dataset and associated artifacts. The operation will check to see if any inference scheduler or data ingestion job is currently using the dataset, and if there isn't, the dataset, its metadata, and any associated data stored in S3 will be deleted. This does not affect any models that used this dataset for training and evaluation, but does prevent it from being used in the future.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/delete_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_delete_dataset/} for full documentation.
 }
 \keyword{internal}

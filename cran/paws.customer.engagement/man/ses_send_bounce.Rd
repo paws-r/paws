@@ -40,6 +40,6 @@ For more information about sending authorization, see the \href{https://docs.aws
 \description{
 Generates and sends a bounce message to the sender of an email you received through Amazon SES. You can only use this API on an email up to 24 hours after you receive it.
 
-See \url{https://paws-r.github.io/docs/ses/send_bounce.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_send_bounce/} for full documentation.
 }
 \keyword{internal}

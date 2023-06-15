@@ -20,6 +20,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Resets an attribute of an AMI to its default value.
 
-See \url{https://paws-r.github.io/docs/ec2/reset_image_attribute.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_reset_image_attribute/} for full documentation.
 }
 \keyword{internal}

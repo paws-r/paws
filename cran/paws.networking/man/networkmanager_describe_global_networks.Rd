@@ -20,6 +20,6 @@ networkmanager_describe_global_networks(
 \description{
 Describes one or more global networks. By default, all global networks are described. To describe the objects in your global network, you must use the appropriate \verb{Get*} action. For example, to list the transit gateways in your global network, use \code{\link[=networkmanager_get_transit_gateway_registrations]{get_transit_gateway_registrations}}.
 
-See \url{https://paws-r.github.io/docs/networkmanager/describe_global_networks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_describe_global_networks/} for full documentation.
 }
 \keyword{internal}

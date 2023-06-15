@@ -41,6 +41,6 @@ truncated response you just received.}
 \description{
 Gets a list of aliases in the caller's Amazon Web Services account and region. For more information about aliases, see \code{\link[=kms_create_alias]{create_alias}}.
 
-See \url{https://paws-r.github.io/docs/kms/list_aliases.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_list_aliases/} for full documentation.
 }
 \keyword{internal}

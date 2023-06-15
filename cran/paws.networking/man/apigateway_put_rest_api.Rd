@@ -35,6 +35,6 @@ of the API definition file is 6MB.}
 \description{
 A feature of the API Gateway control service for updating an existing API with an input of external API definitions. The update can take the form of merging the supplied definition into the existing API or overwriting the existing API.
 
-See \url{https://paws-r.github.io/docs/apigateway/put_rest_api.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_put_rest_api/} for full documentation.
 }
 \keyword{internal}

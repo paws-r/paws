@@ -15,6 +15,6 @@ results.}
 \description{
 Lists all of the DataBrew datasets.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/list_datasets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_list_datasets/} for full documentation.
 }
 \keyword{internal}

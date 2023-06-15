@@ -31,6 +31,6 @@ the output of previous API calls to make subsequent calls.}
 \description{
 Lists all the AWS accounts where the specified permission set is provisioned.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/list_accounts_for_provisioned_permission_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_list_accounts_for_provisioned_permission_set/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ macie2_list_tags_for_resource(resourceArn)
 \description{
 Retrieves the tags (keys and values) that are associated with an Amazon Macie resource.
 
-See \url{https://paws-r.github.io/docs/macie2/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

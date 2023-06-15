@@ -14,6 +14,6 @@ made to the resources.}
 \description{
 Starts recording configurations of the Amazon Web Services resources you have selected to record in your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/configservice/start_configuration_recorder.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_start_configuration_recorder/} for full documentation.
 }
 \keyword{internal}

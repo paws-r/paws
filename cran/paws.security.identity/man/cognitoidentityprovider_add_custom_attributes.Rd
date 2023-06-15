@@ -15,6 +15,6 @@ attributes.}
 \description{
 Adds additional user attributes to the user pool schema.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/add_custom_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_add_custom_attributes/} for full documentation.
 }
 \keyword{internal}

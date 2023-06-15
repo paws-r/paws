@@ -35,6 +35,6 @@ characters: + - = . _ : / @
 \description{
 Assigns one or more tags (key-value pairs) to the specified Amazon Location Service resource.
 
-See \url{https://paws-r.github.io/docs/locationservice/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_tag_resource/} for full documentation.
 }
 \keyword{internal}

@@ -30,6 +30,6 @@ there are no remaining results, the previous response object's
 \description{
 Returns existing resource operation requests. This includes requests of all status types. For more information, see \href{https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-manage-requests.html#resource-operations-manage-requests-list}{Listing active resource operation requests} in the \emph{Amazon Web Services Cloud Control API User Guide}.
 
-See \url{https://paws-r.github.io/docs/cloudcontrolapi/list_resource_requests.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudcontrolapi_list_resource_requests/} for full documentation.
 }
 \keyword{internal}

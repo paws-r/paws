@@ -9,6 +9,6 @@ dynamodb_describe_endpoints()
 \description{
 Returns the regional endpoint information. This action must be included in your VPC endpoint policies, or access to the DescribeEndpoints API will be denied. For more information on policy permissions, please see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/inter-network-traffic-privacy.html#inter-network-traffic-DescribeEndpoints}{Internetwork traffic privacy}.
 
-See \url{https://paws-r.github.io/docs/dynamodb/describe_endpoints.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_describe_endpoints/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ You must specify the ARN or the name, and you can specify both.}
 \description{
 Deletes the specified Firewall and its FirewallStatus. This operation requires the firewall's \code{DeleteProtection} flag to be \code{FALSE}. You can't revert this operation.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/delete_firewall.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_delete_firewall/} for full documentation.
 }
 \keyword{internal}

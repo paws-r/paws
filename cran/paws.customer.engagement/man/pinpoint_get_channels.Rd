@@ -14,6 +14,6 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Retrieves information about the history and status of each channel for an application.
 
-See \url{https://paws-r.github.io/docs/pinpoint/get_channels.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_get_channels/} for full documentation.
 }
 \keyword{internal}

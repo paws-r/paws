@@ -14,6 +14,6 @@ information about.}
 \description{
 This operation is only valid for legacy predictors created with CreatePredictor. If you are not using a legacy predictor, use \code{\link[=forecastservice_describe_auto_predictor]{describe_auto_predictor}}.
 
-See \url{https://paws-r.github.io/docs/forecastservice/describe_predictor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_describe_predictor/} for full documentation.
 }
 \keyword{internal}

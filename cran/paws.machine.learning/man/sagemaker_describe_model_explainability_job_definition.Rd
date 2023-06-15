@@ -14,6 +14,6 @@ account.}
 \description{
 Returns a description of a model explainability job definition.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_model_explainability_job_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_model_explainability_job_definition/} for full documentation.
 }
 \keyword{internal}

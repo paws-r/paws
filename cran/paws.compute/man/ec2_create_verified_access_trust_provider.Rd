@@ -50,6 +50,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 A trust provider is a third-party entity that creates, maintains, and manages identity information for users and devices. When an application request is made, the identity information sent by the trust provider is evaluated by Verified Access before allowing or denying the application request.
 
-See \url{https://paws-r.github.io/docs/ec2/create_verified_access_trust_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_verified_access_trust_provider/} for full documentation.
 }
 \keyword{internal}

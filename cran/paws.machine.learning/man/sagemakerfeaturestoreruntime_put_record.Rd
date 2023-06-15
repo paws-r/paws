@@ -31,6 +31,6 @@ Store adds the record to all of the stores that you're using for the
 \description{
 Used for data ingestion into the \code{FeatureStore}. The \code{\link[=sagemakerfeaturestoreruntime_put_record]{put_record}} API writes to both the \code{OnlineStore} and \code{OfflineStore}. If the record is the latest record for the \code{recordIdentifier}, the record is written to both the \code{OnlineStore} and \code{OfflineStore}. If the record is a historic record, it is written only to the \code{OfflineStore}.
 
-See \url{https://paws-r.github.io/docs/sagemakerfeaturestoreruntime/put_record.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemakerfeaturestoreruntime_put_record/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ group ARNs are currently supported.}
 \description{
 Returns the recommendation preferences that are in effect for a given resource, such as enhanced infrastructure metrics. Considers all applicable preferences that you might have set at the resource, account, and organization level.
 
-See \url{https://paws-r.github.io/docs/computeoptimizer/get_effective_recommendation_preferences.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/computeoptimizer_get_effective_recommendation_preferences/} for full documentation.
 }
 \keyword{internal}

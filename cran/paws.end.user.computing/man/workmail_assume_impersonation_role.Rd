@@ -15,6 +15,6 @@ assumed.}
 \description{
 Assumes an impersonation role for the given WorkMail organization. This method returns an authentication token you can use to make impersonated calls.
 
-See \url{https://paws-r.github.io/docs/workmail/assume_impersonation_role.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_assume_impersonation_role/} for full documentation.
 }
 \keyword{internal}

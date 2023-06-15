@@ -9,6 +9,6 @@ sagemaker_get_sagemaker_servicecatalog_portfolio_status()
 \description{
 Gets the status of Service Catalog in SageMaker. Service Catalog is used to create SageMaker projects.
 
-See \url{https://paws-r.github.io/docs/sagemaker/get_sagemaker_servicecatalog_portfolio_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_get_sagemaker_servicecatalog_portfolio_status/} for full documentation.
 }
 \keyword{internal}

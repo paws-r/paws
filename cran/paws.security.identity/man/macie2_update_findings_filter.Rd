@@ -52,6 +52,6 @@ to the findings.}
 \description{
 Updates the criteria and other settings for a findings filter.
 
-See \url{https://paws-r.github.io/docs/macie2/update_findings_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_update_findings_filter/} for full documentation.
 }
 \keyword{internal}

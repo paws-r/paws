@@ -23,6 +23,6 @@ athena_update_work_group(
 \description{
 Updates the workgroup with the specified name. The workgroup's name cannot be changed. Only \code{ConfigurationUpdates} can be specified.
 
-See \url{https://paws-r.github.io/docs/athena/update_work_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_update_work_group/} for full documentation.
 }
 \keyword{internal}

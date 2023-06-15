@@ -12,6 +12,6 @@ personalize_describe_solution_version(solutionVersionArn)
 \description{
 Describes a specific version of a solution. For more information on solutions, see \code{\link[=personalize_create_solution]{create_solution}}
 
-See \url{https://paws-r.github.io/docs/personalize/describe_solution_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_describe_solution_version/} for full documentation.
 }
 \keyword{internal}

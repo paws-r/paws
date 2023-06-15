@@ -52,6 +52,6 @@ into Amazon Kendra, see \href{https://docs.aws.amazon.com/kendra/latest/dg/custo
 \description{
 Updates an existing Amazon Kendra data source connector.
 
-See \url{https://paws-r.github.io/docs/kendra/update_data_source.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_update_data_source/} for full documentation.
 }
 \keyword{internal}

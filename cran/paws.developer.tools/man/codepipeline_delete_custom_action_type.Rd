@@ -18,6 +18,6 @@ CodeDeploy.}
 \description{
 Marks a custom action as deleted. \code{\link[=codepipeline_poll_for_jobs]{poll_for_jobs}} for the custom action fails after the action is marked for deletion. Used for custom actions only.
 
-See \url{https://paws-r.github.io/docs/codepipeline/delete_custom_action_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_delete_custom_action_type/} for full documentation.
 }
 \keyword{internal}

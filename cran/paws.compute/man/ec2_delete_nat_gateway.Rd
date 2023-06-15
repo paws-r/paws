@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes the specified NAT gateway. Deleting a public NAT gateway disassociates its Elastic IP address, but does not release the address from your account. Deleting a NAT gateway does not delete any NAT gateway routes in your route tables.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_nat_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_nat_gateway/} for full documentation.
 }
 \keyword{internal}

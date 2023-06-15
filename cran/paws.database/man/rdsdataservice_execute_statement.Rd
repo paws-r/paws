@@ -71,6 +71,6 @@ in the \emph{Amazon Aurora User Guide}.}
 \description{
 Runs a SQL statement against a database.
 
-See \url{https://paws-r.github.io/docs/rdsdataservice/execute_statement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rdsdataservice_execute_statement/} for full documentation.
 }
 \keyword{internal}

@@ -37,6 +37,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the specified customer-owned address pools or all of your customer-owned address pools.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_coip_pools.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_coip_pools/} for full documentation.
 }
 \keyword{internal}

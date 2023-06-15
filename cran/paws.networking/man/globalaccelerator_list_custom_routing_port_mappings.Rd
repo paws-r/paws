@@ -29,6 +29,6 @@ previous call.}
 \description{
 Provides a complete mapping from the public accelerator IP address and port to destination EC2 instance IP addresses and ports in the virtual public cloud (VPC) subnet endpoint for a custom routing accelerator. For each subnet endpoint that you add, Global Accelerator creates a new static port mapping for the accelerator. The port mappings don't change after Global Accelerator generates them, so you can retrieve and cache the full mapping on your servers.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_port_mappings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_list_custom_routing_port_mappings/} for full documentation.
 }
 \keyword{internal}

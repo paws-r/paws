@@ -46,6 +46,6 @@ there are no remaining results, the previous response object's
 \description{
 Returns information about the specified resources. For more information, see \href{https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-list.html}{Discovering resources} in the \emph{Amazon Web Services Cloud Control API User Guide}.
 
-See \url{https://paws-r.github.io/docs/cloudcontrolapi/list_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudcontrolapi_list_resources/} for full documentation.
 }
 \keyword{internal}

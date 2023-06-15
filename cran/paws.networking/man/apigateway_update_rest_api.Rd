@@ -14,6 +14,6 @@ apigateway_update_rest_api(restApiId, patchOperations = NULL)
 \description{
 Changes information about the specified API.
 
-See \url{https://paws-r.github.io/docs/apigateway/update_rest_api.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_update_rest_api/} for full documentation.
 }
 \keyword{internal}

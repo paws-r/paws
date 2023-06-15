@@ -38,6 +38,6 @@ specify the percentage of requests that Amazon SageMaker replicates.}
 \description{
 Updates an inference experiment that you created. The status of the inference experiment has to be either \code{Created}, \code{Running}. For more information on the status of an inference experiment, see \code{\link[=sagemaker_describe_inference_experiment]{describe_inference_experiment}}.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_inference_experiment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_inference_experiment/} for full documentation.
 }
 \keyword{internal}

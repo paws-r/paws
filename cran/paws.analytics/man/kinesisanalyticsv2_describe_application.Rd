@@ -18,6 +18,6 @@ including the application's job plan.}
 \description{
 Returns information about a specific Kinesis Data Analytics application.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/describe_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_describe_application/} for full documentation.
 }
 \keyword{internal}

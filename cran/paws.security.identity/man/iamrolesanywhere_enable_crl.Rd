@@ -12,6 +12,6 @@ iamrolesanywhere_enable_crl(crlId)
 \description{
 Enables a certificate revocation list (CRL). When enabled, certificates stored in the CRL are unauthorized to receive session credentials.
 
-See \url{https://paws-r.github.io/docs/iamrolesanywhere/enable_crl.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iamrolesanywhere_enable_crl/} for full documentation.
 }
 \keyword{internal}

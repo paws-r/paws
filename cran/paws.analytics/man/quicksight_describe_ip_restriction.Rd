@@ -12,6 +12,6 @@ quicksight_describe_ip_restriction(AwsAccountId)
 \description{
 Provides a summary and status of IP rules.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_ip_restriction.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_ip_restriction/} for full documentation.
 }
 \keyword{internal}

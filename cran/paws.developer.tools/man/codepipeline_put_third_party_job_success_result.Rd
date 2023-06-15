@@ -37,6 +37,6 @@ it passes through stages in the pipeline.}
 \description{
 Represents the success of a third party job as returned to the pipeline by a job worker. Used for partner actions only.
 
-See \url{https://paws-r.github.io/docs/codepipeline/put_third_party_job_success_result.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_put_third_party_job_success_result/} for full documentation.
 }
 \keyword{internal}

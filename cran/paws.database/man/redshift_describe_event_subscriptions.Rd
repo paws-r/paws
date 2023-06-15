@@ -53,6 +53,6 @@ associated with them.}
 \description{
 Lists descriptions of all the Amazon Redshift event notification subscriptions for a customer account. If you specify a subscription name, lists the description for that subscription.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_event_subscriptions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_event_subscriptions/} for full documentation.
 }
 \keyword{internal}

@@ -22,6 +22,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs. You can create one data feed per Amazon Web Services account. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html}{Spot Instance data feed} in the \emph{Amazon EC2 User Guide for Linux Instances}.
 
-See \url{https://paws-r.github.io/docs/ec2/create_spot_datafeed_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_spot_datafeed_subscription/} for full documentation.
 }
 \keyword{internal}

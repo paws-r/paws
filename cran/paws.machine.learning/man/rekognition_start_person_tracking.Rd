@@ -34,6 +34,6 @@ the completion notification.}
 \description{
 Starts the asynchronous tracking of a person's path in a stored video.
 
-See \url{https://paws-r.github.io/docs/rekognition/start_person_tracking.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_start_person_tracking/} for full documentation.
 }
 \keyword{internal}

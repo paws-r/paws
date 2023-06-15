@@ -12,6 +12,6 @@ ses_verify_domain_dkim(Domain)
 \description{
 Returns a set of DKIM tokens for a domain identity.
 
-See \url{https://paws-r.github.io/docs/ses/verify_domain_dkim.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_verify_domain_dkim/} for full documentation.
 }
 \keyword{internal}

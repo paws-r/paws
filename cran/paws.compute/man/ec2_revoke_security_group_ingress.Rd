@@ -69,6 +69,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Removes the specified inbound (ingress) rules from a security group.
 
-See \url{https://paws-r.github.io/docs/ec2/revoke_security_group_ingress.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_revoke_security_group_ingress/} for full documentation.
 }
 \keyword{internal}

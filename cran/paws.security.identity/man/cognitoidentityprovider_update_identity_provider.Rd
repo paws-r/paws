@@ -26,6 +26,6 @@ cognitoidentityprovider_update_identity_provider(
 \description{
 Updates IdP information for a user pool.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/update_identity_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_identity_provider/} for full documentation.
 }
 \keyword{internal}

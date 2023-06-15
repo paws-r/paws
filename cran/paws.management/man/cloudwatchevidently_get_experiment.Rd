@@ -14,6 +14,6 @@ cloudwatchevidently_get_experiment(experiment, project)
 \description{
 Returns the details about one experiment. You must already know the experiment name. To retrieve a list of experiments in your account, use \code{\link[=cloudwatchevidently_list_experiments]{list_experiments}}.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/get_experiment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_get_experiment/} for full documentation.
 }
 \keyword{internal}

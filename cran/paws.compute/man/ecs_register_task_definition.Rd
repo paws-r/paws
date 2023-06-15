@@ -282,6 +282,6 @@ the \code{runtimePlatform} value of the service.}
 \description{
 Registers a new task definition from the supplied \code{family} and \code{containerDefinitions}. Optionally, you can add data volumes to your containers with the \code{volumes} parameter. For more information about task definition parameters and defaults, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html}{Amazon ECS Task Definitions} in the \emph{Amazon Elastic Container Service Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/ecs/register_task_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_register_task_definition/} for full documentation.
 }
 \keyword{internal}

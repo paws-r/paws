@@ -15,6 +15,6 @@ trigger.}
 \description{
 Replaces all triggers for a repository. Used to create or delete triggers.
 
-See \url{https://paws-r.github.io/docs/codecommit/put_repository_triggers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_put_repository_triggers/} for full documentation.
 }
 \keyword{internal}

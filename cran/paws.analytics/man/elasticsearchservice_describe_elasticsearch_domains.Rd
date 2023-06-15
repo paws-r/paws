@@ -14,6 +14,6 @@ elasticsearchservice_describe_elasticsearch_domains(DomainNames)
 \description{
 Returns domain configuration information about the specified Elasticsearch domains, including the domain ID, domain endpoint, and domain ARN.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/describe_elasticsearch_domains.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_elasticsearch_domains/} for full documentation.
 }
 \keyword{internal}

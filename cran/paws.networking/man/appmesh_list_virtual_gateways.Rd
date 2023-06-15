@@ -40,6 +40,6 @@ the \code{nextToken} value.}
 \description{
 Returns a list of existing virtual gateways in a service mesh.
 
-See \url{https://paws-r.github.io/docs/appmesh/list_virtual_gateways.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appmesh_list_virtual_gateways/} for full documentation.
 }
 \keyword{internal}

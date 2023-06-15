@@ -31,6 +31,6 @@ Used only for all TLDs. If you specify a TLD, don't specify a
 \description{
 Lists the following prices for either all the TLDs supported by Route 53, or the specified TLD:
 
-See \url{https://paws-r.github.io/docs/route53domains/list_prices.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_list_prices/} for full documentation.
 }
 \keyword{internal}

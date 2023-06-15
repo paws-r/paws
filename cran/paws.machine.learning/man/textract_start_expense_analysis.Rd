@@ -45,6 +45,6 @@ server side,using SSE-S3.}
 \description{
 Starts the asynchronous analysis of invoices or receipts for data like contact information, items purchased, and vendor names.
 
-See \url{https://paws-r.github.io/docs/textract/start_expense_analysis.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/textract_start_expense_analysis/} for full documentation.
 }
 \keyword{internal}

@@ -39,6 +39,6 @@ returned by default. For more information, see
 \description{
 Describes the permissions for your network interfaces.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_network_interface_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_network_interface_permissions/} for full documentation.
 }
 \keyword{internal}

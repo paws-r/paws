@@ -20,6 +20,6 @@ wellarchitected_list_notifications(
 \description{
 List lens notifications.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/list_notifications.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_list_notifications/} for full documentation.
 }
 \keyword{internal}

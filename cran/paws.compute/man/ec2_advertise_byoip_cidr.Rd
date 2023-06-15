@@ -21,6 +21,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Advertises an IPv4 or IPv6 address range that is provisioned for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP).
 
-See \url{https://paws-r.github.io/docs/ec2/advertise_byoip_cidr.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_advertise_byoip_cidr/} for full documentation.
 }
 \keyword{internal}

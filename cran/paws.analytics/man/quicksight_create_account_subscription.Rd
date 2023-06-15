@@ -101,6 +101,6 @@ account.}
 \description{
 Creates an Amazon QuickSight account, or subscribes to Amazon QuickSight Q.
 
-See \url{https://paws-r.github.io/docs/quicksight/create_account_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_create_account_subscription/} for full documentation.
 }
 \keyword{internal}

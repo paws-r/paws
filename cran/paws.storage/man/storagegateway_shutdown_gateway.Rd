@@ -12,6 +12,6 @@ storagegateway_shutdown_gateway(GatewayARN)
 \description{
 Shuts down a gateway. To specify which gateway to shut down, use the Amazon Resource Name (ARN) of the gateway in the body of your request.
 
-See \url{https://paws-r.github.io/docs/storagegateway/shutdown_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_shutdown_gateway/} for full documentation.
 }
 \keyword{internal}

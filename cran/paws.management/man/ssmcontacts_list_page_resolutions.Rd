@@ -15,6 +15,6 @@ results.}
 \description{
 Returns the resolution path of an engagement. For example, the escalation plan engaged in an incident might target an on-call schedule that includes several contacts in a rotation, but just one contact on-call when the incident starts. The resolution path indicates the hierarchy of \emph{escalation plan \> on-call schedule \> contact}.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/list_page_resolutions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_list_page_resolutions/} for full documentation.
 }
 \keyword{internal}

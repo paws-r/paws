@@ -22,6 +22,6 @@ call.}
 \description{
 Lists analytics data for control domains within a specified active assessment.
 
-See \url{https://paws-r.github.io/docs/auditmanager/list_control_domain_insights_by_assessment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_list_control_domain_insights_by_assessment/} for full documentation.
 }
 \keyword{internal}

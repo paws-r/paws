@@ -29,6 +29,6 @@ You must use this parameter to view Lightsail for Research blueprints.}
 \description{
 Returns the list of available instance images, or \emph{blueprints}. You can use a blueprint to create a new instance already running a specific operating system, as well as a preinstalled app or development stack. The software each instance is running depends on the blueprint image you choose.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_blueprints.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_blueprints/} for full documentation.
 }
 \keyword{internal}

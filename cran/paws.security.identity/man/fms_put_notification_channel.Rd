@@ -17,6 +17,6 @@ record Firewall Manager activity.}
 \description{
 Designates the IAM role and Amazon Simple Notification Service (SNS) topic that Firewall Manager uses to record SNS logs.
 
-See \url{https://paws-r.github.io/docs/fms/put_notification_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_put_notification_channel/} for full documentation.
 }
 \keyword{internal}

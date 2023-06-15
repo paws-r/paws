@@ -14,6 +14,6 @@ glue_get_ml_task_run(TransformId, TaskRunId)
 \description{
 Gets details for a specific task run on a machine learning transform. Machine learning task runs are asynchronous tasks that Glue runs on your behalf as part of various machine learning workflows. You can check the stats of any task run by calling \code{\link[=glue_get_ml_task_run]{get_ml_task_run}} with the \code{TaskRunID} and its parent transform's \code{TransformID}.
 
-See \url{https://paws-r.github.io/docs/glue/get_ml_task_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_ml_task_run/} for full documentation.
 }
 \keyword{internal}

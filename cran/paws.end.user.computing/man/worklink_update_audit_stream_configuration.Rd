@@ -15,6 +15,6 @@ events.}
 \description{
 Updates the audit stream configuration for the fleet.
 
-See \url{https://paws-r.github.io/docs/worklink/update_audit_stream_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_update_audit_stream_configuration/} for full documentation.
 }
 \keyword{internal}

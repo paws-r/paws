@@ -2,8 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_moving_addresses}
 \alias{ec2_describe_moving_addresses}
-\title{Describes your Elastic IP addresses that are being moved to the EC2-VPC
-platform, or that are being restored to the EC2-Classic platform}
+\title{This action is deprecated}
 \usage{
 ec2_describe_moving_addresses(
   Filters = NULL,
@@ -38,8 +37,8 @@ Default: If no value is provided, the default is 1000.}
 \item{PublicIps}{One or more Elastic IP addresses.}
 }
 \description{
-Describes your Elastic IP addresses that are being moved to the EC2-VPC platform, or that are being restored to the EC2-Classic platform. This request does not return information about any other Elastic IP addresses in your account.
+This action is deprecated.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_moving_addresses.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_moving_addresses/} for full documentation.
 }
 \keyword{internal}

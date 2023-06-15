@@ -22,6 +22,6 @@ previous response is always null.}
 \description{
 Lists contact evaluations in the specified Amazon Connect instance.
 
-See \url{https://paws-r.github.io/docs/connect/list_contact_evaluations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_list_contact_evaluations/} for full documentation.
 }
 \keyword{internal}

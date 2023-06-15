@@ -38,6 +38,6 @@ to set \code{inferSchema} to true, pass the following key value pair:
 \description{
 Gets code to perform a specified mapping.
 
-See \url{https://paws-r.github.io/docs/glue/get_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_plan/} for full documentation.
 }
 \keyword{internal}

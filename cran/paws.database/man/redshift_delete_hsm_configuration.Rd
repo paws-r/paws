@@ -12,6 +12,6 @@ redshift_delete_hsm_configuration(HsmConfigurationIdentifier)
 \description{
 Deletes the specified Amazon Redshift HSM configuration.
 
-See \url{https://paws-r.github.io/docs/redshift/delete_hsm_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_delete_hsm_configuration/} for full documentation.
 }
 \keyword{internal}

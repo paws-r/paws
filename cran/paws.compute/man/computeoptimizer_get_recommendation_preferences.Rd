@@ -42,6 +42,6 @@ returned \code{nextToken} value.}
 \description{
 Returns existing recommendation preferences, such as enhanced infrastructure metrics.
 
-See \url{https://paws-r.github.io/docs/computeoptimizer/get_recommendation_preferences.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/computeoptimizer_get_recommendation_preferences/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ results. The default is the same as the allowed maximum, 1,000.}
 \description{
 Returns information about reactions to a specified comment ID. Reactions from users who have been deleted will not be included in the count.
 
-See \url{https://paws-r.github.io/docs/codecommit/get_comment_reactions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_get_comment_reactions/} for full documentation.
 }
 \keyword{internal}

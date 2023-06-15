@@ -11,11 +11,11 @@ frauddetector_put_label(name, description = NULL, tags = NULL)
 
 \item{description}{The label description.}
 
-\item{tags}{}
+\item{tags}{A collection of key and value pairs.}
 }
 \description{
 Creates or updates label. A label classifies an event as fraudulent or legitimate. Labels are associated with event types and used to train supervised machine learning models in Amazon Fraud Detector.
 
-See \url{https://paws-r.github.io/docs/frauddetector/put_label.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_put_label/} for full documentation.
 }
 \keyword{internal}

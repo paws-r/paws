@@ -18,6 +18,6 @@ contains your Amazon QuickSight account.}
 \description{
 Deletes a user identified by its principal ID.
 
-See \url{https://paws-r.github.io/docs/quicksight/delete_user_by_principal_id.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_user_by_principal_id/} for full documentation.
 }
 \keyword{internal}

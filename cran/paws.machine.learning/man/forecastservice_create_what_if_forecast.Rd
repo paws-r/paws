@@ -48,6 +48,6 @@ to apply to the what if forecast.}
 \description{
 A what-if forecast is a forecast that is created from a modified version of the baseline forecast. Each what-if forecast incorporates either a replacement dataset or a set of transformations to the original dataset.
 
-See \url{https://paws-r.github.io/docs/forecastservice/create_what_if_forecast.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_create_what_if_forecast/} for full documentation.
 }
 \keyword{internal}

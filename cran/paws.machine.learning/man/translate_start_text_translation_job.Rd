@@ -86,6 +86,6 @@ profane words and phrases.}
 \description{
 Starts an asynchronous batch translation job. Use batch translation jobs to translate large volumes of text across multiple documents at once. For batch translation, you can input documents with different source languages (specify \code{auto} as the source language). You can specify one or more target languages. Batch translation translates each input document into each of the target languages. For more information, see \href{https://docs.aws.amazon.com/translate/latest/dg/async.html}{Asynchronous batch processing}.
 
-See \url{https://paws-r.github.io/docs/translate/start_text_translation_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/translate_start_text_translation_job/} for full documentation.
 }
 \keyword{internal}

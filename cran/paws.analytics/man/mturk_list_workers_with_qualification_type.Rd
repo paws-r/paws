@@ -24,6 +24,6 @@ mturk_list_workers_with_qualification_type(
 \description{
 The \code{\link[=mturk_list_workers_with_qualification_type]{list_workers_with_qualification_type}} operation returns all of the Workers that have been associated with a given Qualification type.
 
-See \url{https://paws-r.github.io/docs/mturk/list_workers_with_qualification_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_list_workers_with_qualification_type/} for full documentation.
 }
 \keyword{internal}

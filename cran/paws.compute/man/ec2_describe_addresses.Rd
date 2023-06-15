@@ -15,21 +15,19 @@ ec2_describe_addresses(
 \arguments{
 \item{Filters}{One or more filters. Filter names and values are case-sensitive.
 \itemize{
-\item \code{allocation-id} - [EC2-VPC] The allocation ID for the address.
-\item \code{association-id} - [EC2-VPC] The association ID for the address.
-\item \code{domain} - Indicates whether the address is for use in EC2-Classic
-(\code{standard}) or in a VPC (\code{vpc}).
+\item \code{allocation-id} - The allocation ID for the address.
+\item \code{association-id} - The association ID for the address.
 \item \code{instance-id} - The ID of the instance the address is associated
 with, if any.
 \item \code{network-border-group} - A unique set of Availability Zones, Local
 Zones, or Wavelength Zones from where Amazon Web Services advertises
 IP addresses.
-\item \code{network-interface-id} - [EC2-VPC] The ID of the network interface
-that the address is associated with, if any.
+\item \code{network-interface-id} - The ID of the network interface that the
+address is associated with, if any.
 \item \code{network-interface-owner-id} - The Amazon Web Services account ID of
 the owner.
-\item \code{private-ip-address} - [EC2-VPC] The private IP address associated
-with the Elastic IP address.
+\item \code{private-ip-address} - The private IP address associated with the
+Elastic IP address.
 \item \code{public-ip} - The Elastic IP address, or the carrier IP address.
 \item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
 resource. Use the tag key in the filter name and the tag value as
@@ -45,7 +43,7 @@ regardless of the tag value.
 
 Default: Describes all your Elastic IP addresses.}
 
-\item{AllocationIds}{[EC2-VPC] Information about the allocation IDs.}
+\item{AllocationIds}{Information about the allocation IDs.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -55,6 +53,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the specified Elastic IP addresses or all of your Elastic IP addresses.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_addresses.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_addresses/} for full documentation.
 }
 \keyword{internal}

@@ -18,6 +18,6 @@ paginated response.}
 \description{
 Retrieves information about all the recommender model configurations that are associated with your Amazon Pinpoint account.
 
-See \url{https://paws-r.github.io/docs/pinpoint/get_recommender_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_get_recommender_configurations/} for full documentation.
 }
 \keyword{internal}

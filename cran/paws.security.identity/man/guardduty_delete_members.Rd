@@ -17,6 +17,6 @@ delete.}
 \description{
 Deletes GuardDuty member accounts (to the current GuardDuty administrator account) specified by the account IDs.
 
-See \url{https://paws-r.github.io/docs/guardduty/delete_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_delete_members/} for full documentation.
 }
 \keyword{internal}

@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Sends a command to an Amazon QLDB ledger.
 #'
-#' See [https://paws-r.github.io/docs/qldbsession/send_command.html](https://paws-r.github.io/docs/qldbsession/send_command.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/qldbsession_send_command/](https://www.paws-r-sdk.com/docs/qldbsession_send_command/) for full documentation.
 #'
 #' @param SessionToken Specifies the session token for the current command. A session token is
 #' constant throughout the life of the session.

@@ -24,6 +24,6 @@ networkmanager_get_core_network_change_set(
 \description{
 Returns a change set between the LIVE core network policy and a submitted policy.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_core_network_change_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_core_network_change_set/} for full documentation.
 }
 \keyword{internal}

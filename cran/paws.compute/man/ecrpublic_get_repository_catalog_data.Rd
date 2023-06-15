@@ -16,6 +16,6 @@ registry, the default public registry is assumed.}
 \description{
 Retrieve catalog metadata for a repository in a public registry. This metadata is displayed publicly in the Amazon ECR Public Gallery.
 
-See \url{https://paws-r.github.io/docs/ecrpublic/get_repository_catalog_data.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecrpublic_get_repository_catalog_data/} for full documentation.
 }
 \keyword{internal}

@@ -85,6 +85,6 @@ moves the staging label \code{AWSCURRENT} to this version.}
 \description{
 Creates a new version with a new encrypted secret value and attaches it to the secret. The version can contain a new \code{SecretString} value or a new \code{SecretBinary} value.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/put_secret_value.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_put_secret_value/} for full documentation.
 }
 \keyword{internal}

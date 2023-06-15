@@ -26,6 +26,6 @@ the function name, it is limited to 64 characters in length.}
 \description{
 Retrieves the provisioned concurrency configuration for a function's alias or version.
 
-See \url{https://paws-r.github.io/docs/lambda/get_provisioned_concurrency_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_get_provisioned_concurrency_config/} for full documentation.
 }
 \keyword{internal}

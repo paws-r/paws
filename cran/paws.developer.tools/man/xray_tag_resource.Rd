@@ -30,6 +30,6 @@ Services use. You cannot edit or delete system tags.
 \description{
 Applies tags to an existing Amazon Web Services X-Ray group or sampling rule.
 
-See \url{https://paws-r.github.io/docs/xray/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_tag_resource/} for full documentation.
 }
 \keyword{internal}

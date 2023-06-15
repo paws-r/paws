@@ -23,6 +23,6 @@ runtime details when it ran the workflow.}
 \description{
 Shows runtime data for each step in a runtime instance of the workflow that you specify in the request.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/list_workflow_step_executions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_list_workflow_step_executions/} for full documentation.
 }
 \keyword{internal}

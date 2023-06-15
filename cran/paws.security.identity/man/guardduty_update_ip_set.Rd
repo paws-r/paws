@@ -28,6 +28,6 @@ not.}
 \description{
 Updates the IPSet specified by the IPSet ID.
 
-See \url{https://paws-r.github.io/docs/guardduty/update_ip_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_update_ip_set/} for full documentation.
 }
 \keyword{internal}

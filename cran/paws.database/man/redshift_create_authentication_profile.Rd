@@ -18,6 +18,6 @@ length of the JSON string is determined by a quota for your account.}
 \description{
 Creates an authentication profile with the specified parameters.
 
-See \url{https://paws-r.github.io/docs/redshift/create_authentication_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_create_authentication_profile/} for full documentation.
 }
 \keyword{internal}

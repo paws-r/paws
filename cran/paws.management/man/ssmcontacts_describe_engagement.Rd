@@ -14,6 +14,6 @@ of.}
 \description{
 Incident Manager uses engagements to engage contacts and escalation plans during an incident. Use this command to describe the engagement that occurred during an incident.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/describe_engagement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_describe_engagement/} for full documentation.
 }
 \keyword{internal}

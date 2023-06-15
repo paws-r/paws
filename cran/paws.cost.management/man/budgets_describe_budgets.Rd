@@ -19,6 +19,6 @@ next set of results that you want to retrieve.}
 \description{
 Lists the budgets that are associated with an account.
 
-See \url{https://paws-r.github.io/docs/budgets/describe_budgets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/budgets_describe_budgets/} for full documentation.
 }
 \keyword{internal}

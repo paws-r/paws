@@ -12,6 +12,6 @@ lookoutequipment_stop_inference_scheduler(InferenceSchedulerName)
 \description{
 Stops an inference scheduler.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/stop_inference_scheduler.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_stop_inference_scheduler/} for full documentation.
 }
 \keyword{internal}

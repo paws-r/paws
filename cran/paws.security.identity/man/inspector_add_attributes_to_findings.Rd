@@ -16,6 +16,6 @@ to.}
 \description{
 Assigns attributes (key and value pairs) to the findings that are specified by the ARNs of the findings.
 
-See \url{https://paws-r.github.io/docs/inspector/add_attributes_to_findings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_add_attributes_to_findings/} for full documentation.
 }
 \keyword{internal}

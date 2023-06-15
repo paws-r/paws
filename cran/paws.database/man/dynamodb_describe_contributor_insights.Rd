@@ -15,6 +15,6 @@ dynamodb_describe_contributor_insights(TableName, IndexName = NULL)
 \description{
 Returns information about contributor insights for a given table or global secondary index.
 
-See \url{https://paws-r.github.io/docs/dynamodb/describe_contributor_insights.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_describe_contributor_insights/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ region.}
 \description{
 Deletes the specified pronunciation lexicon stored in an Amazon Web Services Region. A lexicon which has been deleted is not available for speech synthesis, nor is it possible to retrieve it using either the \code{\link[=polly_get_lexicon]{get_lexicon}} or \code{ListLexicon} APIs.
 
-See \url{https://paws-r.github.io/docs/polly/delete_lexicon.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/polly_delete_lexicon/} for full documentation.
 }
 \keyword{internal}

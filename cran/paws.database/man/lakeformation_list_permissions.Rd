@@ -41,6 +41,6 @@ list.}
 \description{
 Returns a list of the principal permissions on the resource, filtered by the permissions of the caller. For example, if you are granted an ALTER permission, you are able to see only the principal permissions for ALTER.
 
-See \url{https://paws-r.github.io/docs/lakeformation/list_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_list_permissions/} for full documentation.
 }
 \keyword{internal}

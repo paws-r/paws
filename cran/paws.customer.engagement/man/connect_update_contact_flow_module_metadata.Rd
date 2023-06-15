@@ -27,6 +27,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Updates metadata about specified flow module.
 
-See \url{https://paws-r.github.io/docs/connect/update_contact_flow_module_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_update_contact_flow_module_metadata/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ proton_get_environment(name)
 \description{
 Get detailed data for an environment.
 
-See \url{https://paws-r.github.io/docs/proton/get_environment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_get_environment/} for full documentation.
 }
 \keyword{internal}

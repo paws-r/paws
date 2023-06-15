@@ -16,6 +16,6 @@ schemas_create_registry(Description = NULL, RegistryName, Tags = NULL)
 \description{
 Creates a registry.
 
-See \url{https://paws-r.github.io/docs/schemas/create_registry.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/schemas_create_registry/} for full documentation.
 }
 \keyword{internal}

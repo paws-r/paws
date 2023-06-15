@@ -15,6 +15,6 @@ will be executed.}
 \description{
 Disables the attributes-based access control (ABAC) feature for the specified IAM Identity Center instance and deletes all of the attribute mappings that have been configured. Once deleted, any attributes that are received from an identity source and any custom attributes you have previously configured will not be passed. For more information about ABAC, see Attribute-Based Access Control in the \emph{IAM Identity Center User Guide}.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/delete_instance_access_control_attribute_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_delete_instance_access_control_attribute_configuration/} for full documentation.
 }
 \keyword{internal}

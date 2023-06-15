@@ -15,6 +15,6 @@ request.}
 \description{
 Deletes a share request for a custom framework in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/delete_assessment_framework_share.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_delete_assessment_framework_share/} for full documentation.
 }
 \keyword{internal}

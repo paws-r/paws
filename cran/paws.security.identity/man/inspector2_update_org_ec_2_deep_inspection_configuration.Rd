@@ -14,6 +14,6 @@ your organization.}
 \description{
 Updates the Amazon Inspector deep inspection custom paths for your organization. You must be an Amazon Inspector delegated administrator to use this API.
 
-See \url{https://paws-r.github.io/docs/inspector2/update_org_ec_2_deep_inspection_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_update_org_ec_2_deep_inspection_configuration/} for full documentation.
 }
 \keyword{internal}

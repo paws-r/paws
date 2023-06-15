@@ -15,6 +15,6 @@ directconnect_associate_hosted_connection(connectionId, parentConnectionId)
 \description{
 Associates a hosted connection and its virtual interfaces with a link aggregation group (LAG) or interconnect. If the target interconnect or LAG has an existing hosted connection with a conflicting VLAN number or IP address, the operation fails. This action temporarily interrupts the hosted connection's connectivity to Amazon Web Services as it is being migrated.
 
-See \url{https://paws-r.github.io/docs/directconnect/associate_hosted_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_associate_hosted_connection/} for full documentation.
 }
 \keyword{internal}

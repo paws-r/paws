@@ -22,6 +22,6 @@ results.}
 \description{
 Describes details about the activation, such as the date and time the activation was created, its expiration date, the Identity and Access Management (IAM) role assigned to the managed nodes in the activation, and the number of nodes registered by using this activation.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_activations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_activations/} for full documentation.
 }
 \keyword{internal}

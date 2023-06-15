@@ -22,6 +22,6 @@ than 50, the operation will return up to 50 results.}
 \description{
 Lists the existing custom verification email templates for your account in the current AWS Region.
 
-See \url{https://paws-r.github.io/docs/ses/list_custom_verification_email_templates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_list_custom_verification_email_templates/} for full documentation.
 }
 \keyword{internal}

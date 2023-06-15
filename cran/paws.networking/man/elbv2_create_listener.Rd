@@ -61,6 +61,6 @@ in the \emph{Network Load Balancers Guide}.}
 \description{
 Creates a listener for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer.
 
-See \url{https://paws-r.github.io/docs/elbv2/create_listener.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_create_listener/} for full documentation.
 }
 \keyword{internal}

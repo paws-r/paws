@@ -10,7 +10,7 @@ NULL
 #' @description
 #' After you deploy a model into production using Amazon SageMaker hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint.
 #'
-#' See [https://paws-r.github.io/docs/sagemakerruntime/invoke_endpoint.html](https://paws-r.github.io/docs/sagemakerruntime/invoke_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemakerruntime_invoke_endpoint/](https://www.paws-r-sdk.com/docs/sagemakerruntime_invoke_endpoint/) for full documentation.
 #'
 #' @param EndpointName &#91;required&#93; The name of the endpoint that you specified when you created the
 #' endpoint using the
@@ -91,7 +91,7 @@ sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = N
 #' @description
 #' After you deploy a model into production using Amazon SageMaker hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint in an asynchronous manner.
 #'
-#' See [https://paws-r.github.io/docs/sagemakerruntime/invoke_endpoint_async.html](https://paws-r.github.io/docs/sagemakerruntime/invoke_endpoint_async.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemakerruntime_invoke_endpoint_async/](https://www.paws-r-sdk.com/docs/sagemakerruntime_invoke_endpoint_async/) for full documentation.
 #'
 #' @param EndpointName &#91;required&#93; The name of the endpoint that you specified when you created the
 #' endpoint using the

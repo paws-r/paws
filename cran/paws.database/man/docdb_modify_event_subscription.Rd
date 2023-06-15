@@ -34,6 +34,6 @@ to.}
 \description{
 Modifies an existing Amazon DocumentDB event notification subscription.
 
-See \url{https://paws-r.github.io/docs/docdb/modify_event_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_modify_event_subscription/} for full documentation.
 }
 \keyword{internal}

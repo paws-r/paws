@@ -38,6 +38,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes one or more local gateways. By default, all local gateways are described. Alternatively, you can filter the results.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_local_gateways.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_local_gateways/} for full documentation.
 }
 \keyword{internal}

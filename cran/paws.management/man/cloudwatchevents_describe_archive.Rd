@@ -12,6 +12,6 @@ cloudwatchevents_describe_archive(ArchiveName)
 \description{
 Retrieves details about an archive.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevents/describe_archive.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevents_describe_archive/} for full documentation.
 }
 \keyword{internal}

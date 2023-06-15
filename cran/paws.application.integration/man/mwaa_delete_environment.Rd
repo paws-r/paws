@@ -14,6 +14,6 @@ mwaa_delete_environment(Name)
 \description{
 Deletes an Amazon Managed Workflows for Apache Airflow (MWAA) environment.
 
-See \url{https://paws-r.github.io/docs/mwaa/delete_environment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mwaa_delete_environment/} for full documentation.
 }
 \keyword{internal}

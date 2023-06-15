@@ -18,6 +18,6 @@ parameter to a \code{ListTagsRequest} call.}
 \description{
 Returns a list of tags that are applied to the specified stack or layer.
 
-See \url{https://paws-r.github.io/docs/opsworks/list_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_list_tags/} for full documentation.
 }
 \keyword{internal}

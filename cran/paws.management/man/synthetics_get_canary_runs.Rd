@@ -21,6 +21,6 @@ you omit this parameter, the default of 100 is used.}
 \description{
 Retrieves a list of runs for a specified canary.
 
-See \url{https://paws-r.github.io/docs/synthetics/get_canary_runs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/synthetics_get_canary_runs/} for full documentation.
 }
 \keyword{internal}

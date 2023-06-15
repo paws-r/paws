@@ -17,6 +17,6 @@ sagemaker_update_app_image_config(
 \description{
 Updates the properties of an AppImageConfig.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_app_image_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_app_image_config/} for full documentation.
 }
 \keyword{internal}

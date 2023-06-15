@@ -49,6 +49,6 @@ For more information about cron expressions, see
 \description{
 Creates an event window in which scheduled events for the associated Amazon EC2 instances can run.
 
-See \url{https://paws-r.github.io/docs/ec2/create_instance_event_window.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_instance_event_window/} for full documentation.
 }
 \keyword{internal}

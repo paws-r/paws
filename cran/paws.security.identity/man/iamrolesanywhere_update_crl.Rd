@@ -16,6 +16,6 @@ iamrolesanywhere_update_crl(crlData = NULL, crlId, name = NULL)
 \description{
 Updates the certificate revocation list (CRL). A CRL is a list of certificates that have been revoked by the issuing certificate authority (CA). IAM Roles Anywhere validates against the CRL before issuing credentials.
 
-See \url{https://paws-r.github.io/docs/iamrolesanywhere/update_crl.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iamrolesanywhere_update_crl/} for full documentation.
 }
 \keyword{internal}

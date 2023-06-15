@@ -35,6 +35,6 @@ that you specified in \code{Arn}.}
 \description{
 Specifies an Amazon Web Services account that you want to share a query logging configuration with, the query logging configuration that you want to share, and the operations that you want the account to be able to perform on the configuration.
 
-See \url{https://paws-r.github.io/docs/route53resolver/put_resolver_query_log_config_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_put_resolver_query_log_config_policy/} for full documentation.
 }
 \keyword{internal}

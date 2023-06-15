@@ -29,6 +29,6 @@ request.}
 \description{
 Retrieves a list of all active sessions (both connected and disconnected) or terminated sessions from the past 30 days.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_sessions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_sessions/} for full documentation.
 }
 \keyword{internal}

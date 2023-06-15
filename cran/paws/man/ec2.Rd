@@ -147,6 +147,7 @@ To learn more, see the following resources:
 \link[paws.compute:ec2_create_flow_logs]{create_flow_logs} \tab Creates one or more flow logs to capture information about IP traffic for a specific network interface, subnet, or VPC\cr
 \link[paws.compute:ec2_create_fpga_image]{create_fpga_image} \tab Creates an Amazon FPGA Image (AFI) from the specified design checkpoint (DCP)\cr
 \link[paws.compute:ec2_create_image]{create_image} \tab Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped\cr
+\link[paws.compute:ec2_create_instance_connect_endpoint]{create_instance_connect_endpoint} \tab Creates an EC2 Instance Connect Endpoint\cr
 \link[paws.compute:ec2_create_instance_event_window]{create_instance_event_window} \tab Creates an event window in which scheduled events for the associated Amazon EC2 instances can run\cr
 \link[paws.compute:ec2_create_instance_export_task]{create_instance_export_task} \tab Exports a running or stopped instance to an Amazon S3 bucket\cr
 \link[paws.compute:ec2_create_internet_gateway]{create_internet_gateway} \tab Creates an internet gateway for use with a VPC\cr
@@ -223,6 +224,7 @@ To learn more, see the following resources:
 \link[paws.compute:ec2_delete_fleets]{delete_fleets} \tab Deletes the specified EC2 Fleets\cr
 \link[paws.compute:ec2_delete_flow_logs]{delete_flow_logs} \tab Deletes one or more flow logs\cr
 \link[paws.compute:ec2_delete_fpga_image]{delete_fpga_image} \tab Deletes the specified Amazon FPGA Image (AFI)\cr
+\link[paws.compute:ec2_delete_instance_connect_endpoint]{delete_instance_connect_endpoint} \tab Deletes the specified EC2 Instance Connect Endpoint\cr
 \link[paws.compute:ec2_delete_instance_event_window]{delete_instance_event_window} \tab Deletes the specified event window\cr
 \link[paws.compute:ec2_delete_internet_gateway]{delete_internet_gateway} \tab Deletes the specified internet gateway\cr
 \link[paws.compute:ec2_delete_ipam]{delete_ipam} \tab Delete an IPAM\cr
@@ -337,6 +339,7 @@ To learn more, see the following resources:
 \link[paws.compute:ec2_describe_import_image_tasks]{describe_import_image_tasks} \tab Displays details about an import virtual machine or import snapshot tasks that are already created\cr
 \link[paws.compute:ec2_describe_import_snapshot_tasks]{describe_import_snapshot_tasks} \tab Describes your import snapshot tasks\cr
 \link[paws.compute:ec2_describe_instance_attribute]{describe_instance_attribute} \tab Describes the specified attribute of the specified instance\cr
+\link[paws.compute:ec2_describe_instance_connect_endpoints]{describe_instance_connect_endpoints} \tab Describes the specified EC2 Instance Connect Endpoints or all EC2 Instance Connect Endpoints\cr
 \link[paws.compute:ec2_describe_instance_credit_specifications]{describe_instance_credit_specifications} \tab Describes the credit option for CPU usage of the specified burstable performance instances\cr
 \link[paws.compute:ec2_describe_instance_event_notification_attributes]{describe_instance_event_notification_attributes} \tab Describes the tag keys that are registered to appear in scheduled event notifications for resources in the current Region\cr
 \link[paws.compute:ec2_describe_instance_event_windows]{describe_instance_event_windows} \tab Describes the specified event windows or all event windows\cr
@@ -361,7 +364,7 @@ To learn more, see the following resources:
 \link[paws.compute:ec2_describe_local_gateway_virtual_interface_groups]{describe_local_gateway_virtual_interface_groups} \tab Describes the specified local gateway virtual interface groups\cr
 \link[paws.compute:ec2_describe_local_gateway_virtual_interfaces]{describe_local_gateway_virtual_interfaces} \tab Describes the specified local gateway virtual interfaces\cr
 \link[paws.compute:ec2_describe_managed_prefix_lists]{describe_managed_prefix_lists} \tab Describes your managed prefix lists and any Amazon Web Services-managed prefix lists\cr
-\link[paws.compute:ec2_describe_moving_addresses]{describe_moving_addresses} \tab Describes your Elastic IP addresses that are being moved to the EC2-VPC platform, or that are being restored to the EC2-Classic platform\cr
+\link[paws.compute:ec2_describe_moving_addresses]{describe_moving_addresses} \tab This action is deprecated\cr
 \link[paws.compute:ec2_describe_nat_gateways]{describe_nat_gateways} \tab Describes one or more of your NAT gateways\cr
 \link[paws.compute:ec2_describe_network_acls]{describe_network_acls} \tab Describes one or more of your network ACLs\cr
 \link[paws.compute:ec2_describe_network_insights_access_scope_analyses]{describe_network_insights_access_scope_analyses} \tab Describes the specified Network Access Scope analyses\cr
@@ -602,7 +605,7 @@ To learn more, see the following resources:
 \link[paws.compute:ec2_modify_vpn_tunnel_certificate]{modify_vpn_tunnel_certificate} \tab Modifies the VPN tunnel endpoint certificate\cr
 \link[paws.compute:ec2_modify_vpn_tunnel_options]{modify_vpn_tunnel_options} \tab Modifies the options for a VPN tunnel in an Amazon Web Services Site-to-Site VPN connection\cr
 \link[paws.compute:ec2_monitor_instances]{monitor_instances} \tab Enables detailed monitoring for a running instance\cr
-\link[paws.compute:ec2_move_address_to_vpc]{move_address_to_vpc} \tab Moves an Elastic IP address from the EC2-Classic platform to the EC2-VPC platform\cr
+\link[paws.compute:ec2_move_address_to_vpc]{move_address_to_vpc} \tab This action is deprecated\cr
 \link[paws.compute:ec2_move_byoip_cidr_to_ipam]{move_byoip_cidr_to_ipam} \tab Move a BYOIPv4 CIDR to IPAM from a public IPv4 pool\cr
 \link[paws.compute:ec2_provision_byoip_cidr]{provision_byoip_cidr} \tab Provisions an IPv4 or IPv6 address range for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool\cr
 \link[paws.compute:ec2_provision_ipam_pool_cidr]{provision_ipam_pool_cidr} \tab Provision a CIDR to an IPAM pool\cr
@@ -640,7 +643,7 @@ To learn more, see the following resources:
 \link[paws.compute:ec2_reset_instance_attribute]{reset_instance_attribute} \tab Resets an attribute of an instance to its default value\cr
 \link[paws.compute:ec2_reset_network_interface_attribute]{reset_network_interface_attribute} \tab Resets a network interface attribute\cr
 \link[paws.compute:ec2_reset_snapshot_attribute]{reset_snapshot_attribute} \tab Resets permission settings for the specified snapshot\cr
-\link[paws.compute:ec2_restore_address_to_classic]{restore_address_to_classic} \tab Restores an Elastic IP address that was previously moved to the EC2-VPC platform back to the EC2-Classic platform\cr
+\link[paws.compute:ec2_restore_address_to_classic]{restore_address_to_classic} \tab This action is deprecated\cr
 \link[paws.compute:ec2_restore_image_from_recycle_bin]{restore_image_from_recycle_bin} \tab Restores an AMI from the Recycle Bin\cr
 \link[paws.compute:ec2_restore_managed_prefix_list_version]{restore_managed_prefix_list_version} \tab Restores the entries from a previous version of a managed prefix list to a new version of the prefix list\cr
 \link[paws.compute:ec2_restore_snapshot_from_recycle_bin]{restore_snapshot_from_recycle_bin} \tab Restores a snapshot from the Recycle Bin\cr

@@ -46,6 +46,6 @@ batch of the results.}
 \description{
 Returns information about merge conflicts between the before and after commit IDs for a pull request in a repository.
 
-See \url{https://paws-r.github.io/docs/codecommit/get_merge_conflicts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_get_merge_conflicts/} for full documentation.
 }
 \keyword{internal}

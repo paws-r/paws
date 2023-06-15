@@ -23,6 +23,6 @@ default maximum value of 50 items is used.}
 \description{
 Lists all your destinations. The results are ASCII-sorted by destination name.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/describe_destinations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_destinations/} for full documentation.
 }
 \keyword{internal}

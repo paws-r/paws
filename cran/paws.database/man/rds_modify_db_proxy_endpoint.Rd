@@ -25,6 +25,6 @@ a different set of security group IDs than for the original proxy.}
 \description{
 Changes the settings for an existing DB proxy endpoint.
 
-See \url{https://paws-r.github.io/docs/rds/modify_db_proxy_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_modify_db_proxy_endpoint/} for full documentation.
 }
 \keyword{internal}

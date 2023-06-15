@@ -21,6 +21,6 @@ findings' statistics you want to retrieve.}
 \description{
 Lists Amazon GuardDuty findings statistics for the specified detector ID.
 
-See \url{https://paws-r.github.io/docs/guardduty/get_findings_statistics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_get_findings_statistics/} for full documentation.
 }
 \keyword{internal}

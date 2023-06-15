@@ -10,6 +10,6 @@ timestreamquery_describe_endpoints()
 \description{
 DescribeEndpoints returns a list of available endpoints to make Timestream API calls against. This API is available through both Write and Query.
 
-See \url{https://paws-r.github.io/docs/timestreamquery/describe_endpoints.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamquery_describe_endpoints/} for full documentation.
 }
 \keyword{internal}

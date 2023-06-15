@@ -33,6 +33,6 @@ be 45 days or less.}
 \description{
 Modifies the maintenance settings of a cluster.
 
-See \url{https://paws-r.github.io/docs/redshift/modify_cluster_maintenance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_modify_cluster_maintenance/} for full documentation.
 }
 \keyword{internal}

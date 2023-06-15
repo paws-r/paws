@@ -13,6 +13,6 @@ information on.}
 \description{
 Gets member information for your organization.
 
-See \url{https://paws-r.github.io/docs/inspector2/get_member.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_get_member/} for full documentation.
 }
 \keyword{internal}

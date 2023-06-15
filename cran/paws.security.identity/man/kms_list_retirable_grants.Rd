@@ -31,6 +31,6 @@ in the \emph{Identity and Access Management User Guide} .}
 \description{
 Returns information about all grants in the Amazon Web Services account and Region that have the specified retiring principal.
 
-See \url{https://paws-r.github.io/docs/kms/list_retirable_grants.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_list_retirable_grants/} for full documentation.
 }
 \keyword{internal}

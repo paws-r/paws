@@ -25,6 +25,6 @@ description of every array.}
 \description{
 Describe an instance's RAID arrays.
 
-See \url{https://paws-r.github.io/docs/opsworks/describe_raid_arrays.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_describe_raid_arrays/} for full documentation.
 }
 \keyword{internal}

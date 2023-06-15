@@ -13,6 +13,6 @@ athena_get_query_execution(QueryExecutionId)
 \description{
 Returns information about a single execution of a query if you have access to the workgroup in which the query ran. Each time a query executes, information about the query execution is saved with a unique ID.
 
-See \url{https://paws-r.github.io/docs/athena/get_query_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_get_query_execution/} for full documentation.
 }
 \keyword{internal}

@@ -57,6 +57,6 @@ service.}
 \description{
 Create an Proton service. An Proton service is an instantiation of a service template and often includes several service instances and pipeline. For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-services.html}{Services} in the \emph{Proton User Guide}.
 
-See \url{https://paws-r.github.io/docs/proton/create_service.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_create_service/} for full documentation.
 }
 \keyword{internal}

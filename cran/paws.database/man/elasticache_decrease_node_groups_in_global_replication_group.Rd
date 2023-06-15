@@ -36,6 +36,6 @@ present, the only permitted value for this parameter is true.}
 \description{
 Decreases the number of node groups in a Global datastore
 
-See \url{https://paws-r.github.io/docs/elasticache/decrease_node_groups_in_global_replication_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_decrease_node_groups_in_global_replication_group/} for full documentation.
 }
 \keyword{internal}

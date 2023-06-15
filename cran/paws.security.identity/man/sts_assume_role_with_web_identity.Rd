@@ -123,6 +123,6 @@ in the \emph{IAM User Guide}.}
 \description{
 Returns a set of temporary security credentials for users who have been authenticated in a mobile or web application with a web identity provider. Example providers include the OAuth 2.0 providers Login with Amazon and Facebook, or any OpenID Connect-compatible identity provider such as Google or \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html}{Amazon Cognito federated identities}.
 
-See \url{https://paws-r.github.io/docs/sts/assume_role_with_web_identity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sts_assume_role_with_web_identity/} for full documentation.
 }
 \keyword{internal}

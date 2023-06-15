@@ -78,6 +78,6 @@ engine version.}
 \description{
 Modifies the settings for a cluster. You can use this operation to change one or more cluster configuration settings by specifying the settings and the new values.
 
-See \url{https://paws-r.github.io/docs/memorydb/update_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_update_cluster/} for full documentation.
 }
 \keyword{internal}

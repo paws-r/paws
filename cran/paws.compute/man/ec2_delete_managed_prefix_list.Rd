@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes the specified managed prefix list. You must first remove all references to the prefix list in your resources.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_managed_prefix_list.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_managed_prefix_list/} for full documentation.
 }
 \keyword{internal}

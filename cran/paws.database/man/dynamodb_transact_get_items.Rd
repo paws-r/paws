@@ -19,6 +19,6 @@ other value is valid.}
 \description{
 \code{\link[=dynamodb_transact_get_items]{transact_get_items}} is a synchronous operation that atomically retrieves multiple items from one or more tables (but not from indexes) in a single account and Region. A \code{\link[=dynamodb_transact_get_items]{transact_get_items}} call can contain up to 100 \code{TransactGetItem} objects, each of which contains a \code{Get} structure that specifies an item to retrieve from a table in the account and Region. A call to \code{\link[=dynamodb_transact_get_items]{transact_get_items}} cannot retrieve items from tables in more than one Amazon Web Services account or Region. The aggregate size of the items in the transaction cannot exceed 4 MB.
 
-See \url{https://paws-r.github.io/docs/dynamodb/transact_get_items.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_transact_get_items/} for full documentation.
 }
 \keyword{internal}

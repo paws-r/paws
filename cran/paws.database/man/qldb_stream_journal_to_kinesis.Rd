@@ -62,6 +62,6 @@ in the \emph{Amazon QLDB Developer Guide}.}
 \description{
 Creates a journal stream for a given Amazon QLDB ledger. The stream captures every document revision that is committed to the ledger's journal and delivers the data to a specified Amazon Kinesis Data Streams resource.
 
-See \url{https://paws-r.github.io/docs/qldb/stream_journal_to_kinesis.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/qldb_stream_journal_to_kinesis/} for full documentation.
 }
 \keyword{internal}

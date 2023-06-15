@@ -37,6 +37,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes one or more Connect peers.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_transit_gateway_connect_peers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_transit_gateway_connect_peers/} for full documentation.
 }
 \keyword{internal}

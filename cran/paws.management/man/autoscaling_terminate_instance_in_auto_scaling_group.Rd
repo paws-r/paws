@@ -19,6 +19,6 @@ the Auto Scaling group.}
 \description{
 Terminates the specified instance and optionally adjusts the desired group size. This operation cannot be called on instances in a warm pool.
 
-See \url{https://paws-r.github.io/docs/autoscaling/terminate_instance_in_auto_scaling_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_terminate_instance_in_auto_scaling_group/} for full documentation.
 }
 \keyword{internal}

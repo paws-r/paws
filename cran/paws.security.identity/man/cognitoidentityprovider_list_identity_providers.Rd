@@ -20,6 +20,6 @@ cognitoidentityprovider_list_identity_providers(
 \description{
 Lists information about all IdPs for a user pool.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/list_identity_providers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_identity_providers/} for full documentation.
 }
 \keyword{internal}

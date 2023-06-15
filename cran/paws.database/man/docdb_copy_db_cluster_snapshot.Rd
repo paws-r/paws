@@ -104,6 +104,6 @@ target cluster snapshot, and otherwise \code{false}. The default is \code{false}
 \description{
 Copies a snapshot of a cluster.
 
-See \url{https://paws-r.github.io/docs/docdb/copy_db_cluster_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_copy_db_cluster_snapshot/} for full documentation.
 }
 \keyword{internal}

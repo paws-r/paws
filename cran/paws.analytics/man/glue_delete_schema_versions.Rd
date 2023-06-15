@@ -19,6 +19,6 @@ Resource Name (ARN).}
 \description{
 Remove versions from the specified schema. A version number or range may be supplied. If the compatibility mode forbids deleting of a version that is necessary, such as BACKWARDS_FULL, an error is returned. Calling the \code{GetSchemaVersions} API after this call will list the status of the deleted versions.
 
-See \url{https://paws-r.github.io/docs/glue/delete_schema_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_delete_schema_versions/} for full documentation.
 }
 \keyword{internal}

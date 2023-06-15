@@ -40,6 +40,6 @@ following characters: | \\ ^}
 \description{
 Creates a new link for a specified site.
 
-See \url{https://paws-r.github.io/docs/networkmanager/create_link.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_create_link/} for full documentation.
 }
 \keyword{internal}

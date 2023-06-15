@@ -14,6 +14,6 @@ of your rules, use
 \description{
 Permanently deletes the specified Contributor Insights rules.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/delete_insight_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_delete_insight_rules/} for full documentation.
 }
 \keyword{internal}

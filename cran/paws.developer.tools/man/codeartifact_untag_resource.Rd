@@ -15,6 +15,6 @@ tags from.}
 \description{
 Removes tags from a resource in CodeArtifact.
 
-See \url{https://paws-r.github.io/docs/codeartifact/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_untag_resource/} for full documentation.
 }
 \keyword{internal}

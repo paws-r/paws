@@ -23,6 +23,6 @@ For example: \verb{\{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:49\}}.}
 \description{
 Returns a block object at a specified address in a journal. Also returns a proof of the specified block for verification if \code{DigestTipAddress} is provided.
 
-See \url{https://paws-r.github.io/docs/qldb/get_block.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/qldb_get_block/} for full documentation.
 }
 \keyword{internal}

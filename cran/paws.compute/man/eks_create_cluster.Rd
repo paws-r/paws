@@ -67,6 +67,6 @@ Amazon EKS clusters on the Amazon Web Services cloud.}
 \description{
 Creates an Amazon EKS control plane.
 
-See \url{https://paws-r.github.io/docs/eks/create_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_create_cluster/} for full documentation.
 }
 \keyword{internal}

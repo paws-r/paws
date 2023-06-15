@@ -23,6 +23,6 @@ your account.}
 \description{
 Activates, deactivates Amazon Inspector deep inspection, or updates custom paths for your account.
 
-See \url{https://paws-r.github.io/docs/inspector2/update_ec_2_deep_inspection_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_update_ec_2_deep_inspection_configuration/} for full documentation.
 }
 \keyword{internal}

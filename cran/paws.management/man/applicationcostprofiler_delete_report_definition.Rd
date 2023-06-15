@@ -12,6 +12,6 @@ applicationcostprofiler_delete_report_definition(reportId)
 \description{
 Deletes the specified report definition in AWS Application Cost Profiler. This stops the report from being generated.
 
-See \url{https://paws-r.github.io/docs/applicationcostprofiler/delete_report_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationcostprofiler_delete_report_definition/} for full documentation.
 }
 \keyword{internal}

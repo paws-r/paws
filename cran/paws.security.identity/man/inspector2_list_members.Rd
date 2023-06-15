@@ -25,6 +25,6 @@ to list all members within the organization if \code{False}.}
 \description{
 List members associated with the Amazon Inspector delegated administrator for your organization.
 
-See \url{https://paws-r.github.io/docs/inspector2/list_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_list_members/} for full documentation.
 }
 \keyword{internal}

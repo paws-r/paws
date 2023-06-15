@@ -15,6 +15,6 @@ glue_get_dev_endpoints(MaxResults = NULL, NextToken = NULL)
 \description{
 Retrieves all the development endpoints in this Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/glue/get_dev_endpoints.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_dev_endpoints/} for full documentation.
 }
 \keyword{internal}

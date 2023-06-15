@@ -98,6 +98,6 @@ Elastic Load Balancer connection draining.}
 \description{
 Creates a layer. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html}{How to Create a Layer}.
 
-See \url{https://paws-r.github.io/docs/opsworks/create_layer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_create_layer/} for full documentation.
 }
 \keyword{internal}

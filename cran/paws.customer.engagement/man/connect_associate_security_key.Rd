@@ -16,6 +16,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 This API is in preview release for Amazon Connect and is subject to change.
 
-See \url{https://paws-r.github.io/docs/connect/associate_security_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_associate_security_key/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ lookoutequipment_describe_label(LabelGroupName, LabelId)
 \description{
 Returns the name of the label.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/describe_label.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_describe_label/} for full documentation.
 }
 \keyword{internal}

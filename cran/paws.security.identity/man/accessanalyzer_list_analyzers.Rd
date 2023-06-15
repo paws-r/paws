@@ -16,6 +16,6 @@ accessanalyzer_list_analyzers(nextToken = NULL, maxResults = NULL, type = NULL)
 \description{
 Retrieves a list of analyzers.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/list_analyzers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_list_analyzers/} for full documentation.
 }
 \keyword{internal}

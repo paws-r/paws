@@ -20,6 +20,6 @@ information about the most recent configuration change.}
 \description{
 Returns information about the current blue/green deployment happening on a domain, including a change ID, status, and progress stages.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/describe_domain_change_progress.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_domain_change_progress/} for full documentation.
 }
 \keyword{internal}

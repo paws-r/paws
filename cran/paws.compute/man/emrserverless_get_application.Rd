@@ -12,6 +12,6 @@ emrserverless_get_application(applicationId)
 \description{
 Displays detailed information about a specified application.
 
-See \url{https://paws-r.github.io/docs/emrserverless/get_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emrserverless_get_application/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ account ID, do not include any hyphens ('-') in the ID.}
 \description{
 This operation removes one or more tags from the set of tags attached to a vault. For more information about tags, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html}{Tagging Amazon S3 Glacier Resources}. This operation is idempotent. The operation will be successful, even if there are no tags attached to the vault.
 
-See \url{https://paws-r.github.io/docs/glacier/remove_tags_from_vault.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_remove_tags_from_vault/} for full documentation.
 }
 \keyword{internal}

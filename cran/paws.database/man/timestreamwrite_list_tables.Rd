@@ -25,6 +25,6 @@ value as argument of a subsequent API invocation.}
 \description{
 Provides a list of tables, along with the name, status, and retention properties of each table. See \href{https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.list-table.html}{code sample} for details.
 
-See \url{https://paws-r.github.io/docs/timestreamwrite/list_tables.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamwrite_list_tables/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ associated with the group.}
 \description{
 Deletes the specified Auto Scaling group.
 
-See \url{https://paws-r.github.io/docs/autoscaling/delete_auto_scaling_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_delete_auto_scaling_group/} for full documentation.
 }
 \keyword{internal}

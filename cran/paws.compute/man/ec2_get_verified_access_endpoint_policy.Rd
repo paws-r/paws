@@ -20,6 +20,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Get the Verified Access policy associated with the endpoint.
 
-See \url{https://paws-r.github.io/docs/ec2/get_verified_access_endpoint_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_verified_access_endpoint_policy/} for full documentation.
 }
 \keyword{internal}

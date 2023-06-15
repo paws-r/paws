@@ -16,6 +16,6 @@ workmail_disassociate_member_from_group(OrganizationId, GroupId, MemberId)
 \description{
 Removes a member from a group.
 
-See \url{https://paws-r.github.io/docs/workmail/disassociate_member_from_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_disassociate_member_from_group/} for full documentation.
 }
 \keyword{internal}

@@ -40,6 +40,6 @@ collaborators after the comment is created.}
 \description{
 Adds a new comment to the specified document version.
 
-See \url{https://paws-r.github.io/docs/workdocs/create_comment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_create_comment/} for full documentation.
 }
 \keyword{internal}

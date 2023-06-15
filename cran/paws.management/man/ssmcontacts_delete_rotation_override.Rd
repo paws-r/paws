@@ -15,6 +15,6 @@ delete.}
 \description{
 Deletes an existing override for an on-call rotation.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/delete_rotation_override.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_delete_rotation_override/} for full documentation.
 }
 \keyword{internal}

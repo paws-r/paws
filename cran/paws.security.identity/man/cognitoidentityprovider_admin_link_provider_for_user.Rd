@@ -59,6 +59,6 @@ unique identifier found in the subject from the SAML token.}
 \description{
 Links an existing user account in a user pool (\code{DestinationUser}) to an identity from an external IdP (\code{SourceUser}) based on a specified attribute name and value from the external IdP. This allows you to create a link from the existing user account to an external federated user identity that has not yet been used to sign in. You can then use the federated user identity to sign in as the existing user account.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_link_provider_for_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_link_provider_for_user/} for full documentation.
 }
 \keyword{internal}

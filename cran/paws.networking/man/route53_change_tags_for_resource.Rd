@@ -34,6 +34,6 @@ keys.}
 \description{
 Adds, edits, or deletes tags for a health check or a hosted zone.
 
-See \url{https://paws-r.github.io/docs/route53/change_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_change_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

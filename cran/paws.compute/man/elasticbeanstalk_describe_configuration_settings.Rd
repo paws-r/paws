@@ -33,6 +33,6 @@ Elastic Beanstalk returns \code{MissingRequiredParameter} error.}
 \description{
 Returns a description of the settings for the specified configuration set, that is, either a configuration template or the configuration set associated with a running environment.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/describe_configuration_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_configuration_settings/} for full documentation.
 }
 \keyword{internal}

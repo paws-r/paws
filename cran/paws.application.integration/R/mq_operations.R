@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a broker. Note: This API is asynchronous.
 #'
-#' See [https://paws-r.github.io/docs/mq/create_broker.html](https://paws-r.github.io/docs/mq/create_broker.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_create_broker/](https://www.paws-r-sdk.com/docs/mq_create_broker/) for full documentation.
 #'
 #' @param AuthenticationStrategy Optional. The authentication strategy used to secure the broker. The
 #' default is SIMPLE.
@@ -97,7 +97,7 @@ mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
 #' @description
 #' Creates a new configuration for the specified configuration name. Amazon MQ uses the default configuration (the engine type and version).
 #'
-#' See [https://paws-r.github.io/docs/mq/create_configuration.html](https://paws-r.github.io/docs/mq/create_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_create_configuration/](https://www.paws-r-sdk.com/docs/mq_create_configuration/) for full documentation.
 #'
 #' @param AuthenticationStrategy Optional. The authentication strategy associated with the configuration.
 #' The default is SIMPLE.
@@ -136,7 +136,7 @@ mq_create_configuration <- function(AuthenticationStrategy = NULL, EngineType, E
 #' @description
 #' Add a tag to a resource.
 #'
-#' See [https://paws-r.github.io/docs/mq/create_tags.html](https://paws-r.github.io/docs/mq/create_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_create_tags/](https://www.paws-r-sdk.com/docs/mq_create_tags/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource tag.
 #' @param Tags The key-value pair for the resource tag.
@@ -166,7 +166,7 @@ mq_create_tags <- function(ResourceArn, Tags = NULL) {
 #' @description
 #' Creates an ActiveMQ user.
 #'
-#' See [https://paws-r.github.io/docs/mq/create_user.html](https://paws-r.github.io/docs/mq/create_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_create_user/](https://www.paws-r-sdk.com/docs/mq_create_user/) for full documentation.
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #' @param ConsoleAccess Enables access to the ActiveMQ Web Console for the ActiveMQ user.
@@ -206,7 +206,7 @@ mq_create_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Passwo
 #' @description
 #' Deletes a broker. Note: This API is asynchronous.
 #'
-#' See [https://paws-r.github.io/docs/mq/delete_broker.html](https://paws-r.github.io/docs/mq/delete_broker.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_delete_broker/](https://www.paws-r-sdk.com/docs/mq_delete_broker/) for full documentation.
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #'
@@ -235,7 +235,7 @@ mq_delete_broker <- function(BrokerId) {
 #' @description
 #' Removes a tag from a resource.
 #'
-#' See [https://paws-r.github.io/docs/mq/delete_tags.html](https://paws-r.github.io/docs/mq/delete_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_delete_tags/](https://www.paws-r-sdk.com/docs/mq_delete_tags/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource tag.
 #' @param TagKeys &#91;required&#93; An array of tag keys to delete
@@ -265,7 +265,7 @@ mq_delete_tags <- function(ResourceArn, TagKeys) {
 #' @description
 #' Deletes an ActiveMQ user.
 #'
-#' See [https://paws-r.github.io/docs/mq/delete_user.html](https://paws-r.github.io/docs/mq/delete_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_delete_user/](https://www.paws-r-sdk.com/docs/mq_delete_user/) for full documentation.
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #' @param Username &#91;required&#93; The username of the ActiveMQ user. This value can contain only
@@ -297,7 +297,7 @@ mq_delete_user <- function(BrokerId, Username) {
 #' @description
 #' Returns information about the specified broker.
 #'
-#' See [https://paws-r.github.io/docs/mq/describe_broker.html](https://paws-r.github.io/docs/mq/describe_broker.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_describe_broker/](https://www.paws-r-sdk.com/docs/mq_describe_broker/) for full documentation.
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #'
@@ -326,7 +326,7 @@ mq_describe_broker <- function(BrokerId) {
 #' @description
 #' Describe available engine types and versions.
 #'
-#' See [https://paws-r.github.io/docs/mq/describe_broker_engine_types.html](https://paws-r.github.io/docs/mq/describe_broker_engine_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_describe_broker_engine_types/](https://www.paws-r-sdk.com/docs/mq_describe_broker_engine_types/) for full documentation.
 #'
 #' @param EngineType Filter response by engine type.
 #' @param MaxResults The maximum number of brokers that Amazon MQ can return per page (20 by
@@ -359,7 +359,7 @@ mq_describe_broker_engine_types <- function(EngineType = NULL, MaxResults = NULL
 #' @description
 #' Describe available broker instance options.
 #'
-#' See [https://paws-r.github.io/docs/mq/describe_broker_instance_options.html](https://paws-r.github.io/docs/mq/describe_broker_instance_options.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_describe_broker_instance_options/](https://www.paws-r-sdk.com/docs/mq_describe_broker_instance_options/) for full documentation.
 #'
 #' @param EngineType Filter response by engine type.
 #' @param HostInstanceType Filter response by host instance type.
@@ -394,7 +394,7 @@ mq_describe_broker_instance_options <- function(EngineType = NULL, HostInstanceT
 #' @description
 #' Returns information about the specified configuration.
 #'
-#' See [https://paws-r.github.io/docs/mq/describe_configuration.html](https://paws-r.github.io/docs/mq/describe_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_describe_configuration/](https://www.paws-r-sdk.com/docs/mq_describe_configuration/) for full documentation.
 #'
 #' @param ConfigurationId &#91;required&#93; The unique ID that Amazon MQ generates for the configuration.
 #'
@@ -424,7 +424,7 @@ mq_describe_configuration <- function(ConfigurationId) {
 #' @description
 #' Returns the specified configuration revision for the specified configuration.
 #'
-#' See [https://paws-r.github.io/docs/mq/describe_configuration_revision.html](https://paws-r.github.io/docs/mq/describe_configuration_revision.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_describe_configuration_revision/](https://www.paws-r-sdk.com/docs/mq_describe_configuration_revision/) for full documentation.
 #'
 #' @param ConfigurationId &#91;required&#93; The unique ID that Amazon MQ generates for the configuration.
 #' @param ConfigurationRevision &#91;required&#93; The revision of the configuration.
@@ -454,7 +454,7 @@ mq_describe_configuration_revision <- function(ConfigurationId, ConfigurationRev
 #' @description
 #' Returns information about an ActiveMQ user.
 #'
-#' See [https://paws-r.github.io/docs/mq/describe_user.html](https://paws-r.github.io/docs/mq/describe_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_describe_user/](https://www.paws-r-sdk.com/docs/mq_describe_user/) for full documentation.
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #' @param Username &#91;required&#93; The username of the ActiveMQ user. This value can contain only
@@ -486,7 +486,7 @@ mq_describe_user <- function(BrokerId, Username) {
 #' @description
 #' Returns a list of all brokers.
 #'
-#' See [https://paws-r.github.io/docs/mq/list_brokers.html](https://paws-r.github.io/docs/mq/list_brokers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_list_brokers/](https://www.paws-r-sdk.com/docs/mq_list_brokers/) for full documentation.
 #'
 #' @param MaxResults The maximum number of brokers that Amazon MQ can return per page (20 by
 #' default). This value must be an integer from 5 to 100.
@@ -518,7 +518,7 @@ mq_list_brokers <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Returns a list of all revisions for the specified configuration.
 #'
-#' See [https://paws-r.github.io/docs/mq/list_configuration_revisions.html](https://paws-r.github.io/docs/mq/list_configuration_revisions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_list_configuration_revisions/](https://www.paws-r-sdk.com/docs/mq_list_configuration_revisions/) for full documentation.
 #'
 #' @param ConfigurationId &#91;required&#93; The unique ID that Amazon MQ generates for the configuration.
 #' @param MaxResults The maximum number of brokers that Amazon MQ can return per page (20 by
@@ -551,7 +551,7 @@ mq_list_configuration_revisions <- function(ConfigurationId, MaxResults = NULL, 
 #' @description
 #' Returns a list of all configurations.
 #'
-#' See [https://paws-r.github.io/docs/mq/list_configurations.html](https://paws-r.github.io/docs/mq/list_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_list_configurations/](https://www.paws-r-sdk.com/docs/mq_list_configurations/) for full documentation.
 #'
 #' @param MaxResults The maximum number of brokers that Amazon MQ can return per page (20 by
 #' default). This value must be an integer from 5 to 100.
@@ -583,7 +583,7 @@ mq_list_configurations <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Lists tags for a resource.
 #'
-#' See [https://paws-r.github.io/docs/mq/list_tags.html](https://paws-r.github.io/docs/mq/list_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_list_tags/](https://www.paws-r-sdk.com/docs/mq_list_tags/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource tag.
 #'
@@ -612,7 +612,7 @@ mq_list_tags <- function(ResourceArn) {
 #' @description
 #' Returns a list of all ActiveMQ users.
 #'
-#' See [https://paws-r.github.io/docs/mq/list_users.html](https://paws-r.github.io/docs/mq/list_users.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_list_users/](https://www.paws-r-sdk.com/docs/mq_list_users/) for full documentation.
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #' @param MaxResults The maximum number of brokers that Amazon MQ can return per page (20 by
@@ -645,7 +645,7 @@ mq_list_users <- function(BrokerId, MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Reboots a broker. Note: This API is asynchronous.
 #'
-#' See [https://paws-r.github.io/docs/mq/reboot_broker.html](https://paws-r.github.io/docs/mq/reboot_broker.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_reboot_broker/](https://www.paws-r-sdk.com/docs/mq_reboot_broker/) for full documentation.
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #'
@@ -674,7 +674,7 @@ mq_reboot_broker <- function(BrokerId) {
 #' @description
 #' Adds a pending configuration change to a broker.
 #'
-#' See [https://paws-r.github.io/docs/mq/update_broker.html](https://paws-r.github.io/docs/mq/update_broker.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_update_broker/](https://www.paws-r-sdk.com/docs/mq_update_broker/) for full documentation.
 #'
 #' @param AuthenticationStrategy Optional. The authentication strategy used to secure the broker. The
 #' default is SIMPLE.
@@ -722,7 +722,7 @@ mq_update_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
 #' @description
 #' Updates the specified configuration.
 #'
-#' See [https://paws-r.github.io/docs/mq/update_configuration.html](https://paws-r.github.io/docs/mq/update_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_update_configuration/](https://www.paws-r-sdk.com/docs/mq_update_configuration/) for full documentation.
 #'
 #' @param ConfigurationId &#91;required&#93; The unique ID that Amazon MQ generates for the configuration.
 #' @param Data &#91;required&#93; Required. The base64-encoded XML configuration.
@@ -753,7 +753,7 @@ mq_update_configuration <- function(ConfigurationId, Data, Description = NULL) {
 #' @description
 #' Updates the information for an ActiveMQ user.
 #'
-#' See [https://paws-r.github.io/docs/mq/update_user.html](https://paws-r.github.io/docs/mq/update_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_update_user/](https://www.paws-r-sdk.com/docs/mq_update_user/) for full documentation.
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #' @param ConsoleAccess Enables access to the the ActiveMQ Web Console for the ActiveMQ user.

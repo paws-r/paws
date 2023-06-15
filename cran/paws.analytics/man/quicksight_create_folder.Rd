@@ -39,6 +39,6 @@ To specify no permissions, omit \code{Permissions}.}
 \description{
 Creates an empty shared folder.
 
-See \url{https://paws-r.github.io/docs/quicksight/create_folder.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_create_folder/} for full documentation.
 }
 \keyword{internal}

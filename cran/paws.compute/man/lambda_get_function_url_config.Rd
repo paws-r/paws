@@ -25,6 +25,6 @@ the function name, it is limited to 64 characters in length.}
 \description{
 Returns details about a Lambda function URL.
 
-See \url{https://paws-r.github.io/docs/lambda/get_function_url_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_get_function_url_config/} for full documentation.
 }
 \keyword{internal}

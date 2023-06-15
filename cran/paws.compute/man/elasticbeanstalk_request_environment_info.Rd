@@ -37,6 +37,6 @@ you do not specify either, AWS Elastic Beanstalk returns
 \description{
 Initiates a request to compile the specified type of information of the deployed environment.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/request_environment_info.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_request_environment_info/} for full documentation.
 }
 \keyword{internal}

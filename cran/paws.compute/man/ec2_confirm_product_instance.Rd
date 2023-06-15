@@ -19,6 +19,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Determines whether a product code is associated with an instance. This action can only be used by the owner of the product code. It is useful when a product code owner must verify whether another user's instance is eligible for support.
 
-See \url{https://paws-r.github.io/docs/ec2/confirm_product_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_confirm_product_instance/} for full documentation.
 }
 \keyword{internal}

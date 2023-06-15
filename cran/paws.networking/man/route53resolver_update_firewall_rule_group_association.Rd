@@ -34,6 +34,6 @@ protections.}
 \description{
 Changes the association of a FirewallRuleGroup with a VPC. The association enables DNS filtering for the VPC.
 
-See \url{https://paws-r.github.io/docs/route53resolver/update_firewall_rule_group_association.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_update_firewall_rule_group_association/} for full documentation.
 }
 \keyword{internal}

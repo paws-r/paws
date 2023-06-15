@@ -21,6 +21,6 @@ you want to delete is attached to.}
 \description{
 Deletes an existing project policy.
 
-See \url{https://paws-r.github.io/docs/rekognition/delete_project_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_delete_project_policy/} for full documentation.
 }
 \keyword{internal}

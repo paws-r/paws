@@ -23,6 +23,6 @@ getting the next set of dataset import jobs (if they exist).}
 \description{
 Returns the list of datasets contained in the given dataset group. The response provides the properties for each dataset, including the Amazon Resource Name (ARN). For more information on datasets, see \code{\link[=personalize_create_dataset]{create_dataset}}.
 
-See \url{https://paws-r.github.io/docs/personalize/list_datasets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_list_datasets/} for full documentation.
 }
 \keyword{internal}

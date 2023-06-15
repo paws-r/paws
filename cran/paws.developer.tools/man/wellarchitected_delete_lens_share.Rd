@@ -16,6 +16,6 @@ wellarchitected_delete_lens_share(ShareId, LensAlias, ClientRequestToken)
 \description{
 Delete a lens share.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/delete_lens_share.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_delete_lens_share/} for full documentation.
 }
 \keyword{internal}

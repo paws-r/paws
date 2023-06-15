@@ -14,6 +14,6 @@ cognitoidentityprovider_admin_delete_user(UserPoolId, Username)
 \description{
 Deletes a user as an administrator. Works on any user.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_delete_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_delete_user/} for full documentation.
 }
 \keyword{internal}

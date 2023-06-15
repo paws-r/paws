@@ -21,6 +21,6 @@ that you're updating.}
 \description{
 Updates the published version of a dashboard.
 
-See \url{https://paws-r.github.io/docs/quicksight/update_dashboard_published_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_update_dashboard_published_version/} for full documentation.
 }
 \keyword{internal}

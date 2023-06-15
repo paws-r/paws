@@ -16,6 +16,6 @@ kinesis_remove_tags_from_stream(StreamName = NULL, TagKeys, StreamARN = NULL)
 \description{
 Removes tags from the specified Kinesis data stream. Removed tags are deleted and cannot be recovered after this operation successfully completes.
 
-See \url{https://paws-r.github.io/docs/kinesis/remove_tags_from_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesis_remove_tags_from_stream/} for full documentation.
 }
 \keyword{internal}

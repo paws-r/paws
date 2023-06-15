@@ -17,6 +17,6 @@ the labeling set.}
 \description{
 Starts the active learning workflow for your machine learning transform to improve the transform's quality by generating label sets and adding labels.
 
-See \url{https://paws-r.github.io/docs/glue/start_ml_labeling_set_generation_task_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_start_ml_labeling_set_generation_task_run/} for full documentation.
 }
 \keyword{internal}

@@ -80,6 +80,6 @@ For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide
 \description{
 Creates a new custom vocabulary filter.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/create_vocabulary_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_create_vocabulary_filter/} for full documentation.
 }
 \keyword{internal}

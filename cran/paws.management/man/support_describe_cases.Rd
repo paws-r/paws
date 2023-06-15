@@ -51,6 +51,6 @@ communications are included.}
 \description{
 Returns a list of cases that you specify by passing one or more case IDs. You can use the \code{afterTime} and \code{beforeTime} parameters to filter the cases by date. You can set values for the \code{includeResolvedCases} and \code{includeCommunications} parameters to specify how much information to return.
 
-See \url{https://paws-r.github.io/docs/support/describe_cases.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/support_describe_cases/} for full documentation.
 }
 \keyword{internal}

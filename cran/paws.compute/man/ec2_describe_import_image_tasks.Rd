@@ -31,6 +31,6 @@ values: \code{active}, \code{completed}, \code{deleting}, or \code{deleted}.}
 \description{
 Displays details about an import virtual machine or import snapshot tasks that are already created.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_import_image_tasks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_import_image_tasks/} for full documentation.
 }
 \keyword{internal}

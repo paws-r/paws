@@ -16,6 +16,6 @@ apigateway_update_stage(restApiId, stageName, patchOperations = NULL)
 \description{
 Changes information about a Stage resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/update_stage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_update_stage/} for full documentation.
 }
 \keyword{internal}

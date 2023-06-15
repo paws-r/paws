@@ -32,6 +32,6 @@ wellarchitected_list_check_details(
 \description{
 List of Trusted Advisor check details by account related to the workload.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/list_check_details.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_list_check_details/} for full documentation.
 }
 \keyword{internal}

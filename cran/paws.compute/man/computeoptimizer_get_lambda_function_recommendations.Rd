@@ -47,6 +47,6 @@ returned \code{nextToken} value.}
 \description{
 Returns Lambda function recommendations.
 
-See \url{https://paws-r.github.io/docs/computeoptimizer/get_lambda_function_recommendations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/computeoptimizer_get_lambda_function_recommendations/} for full documentation.
 }
 \keyword{internal}

@@ -18,6 +18,6 @@ contains your Amazon QuickSight account.}
 \description{
 Removes a user group from Amazon QuickSight.
 
-See \url{https://paws-r.github.io/docs/quicksight/delete_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_group/} for full documentation.
 }
 \keyword{internal}

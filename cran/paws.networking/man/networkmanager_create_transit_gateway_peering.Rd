@@ -23,6 +23,6 @@ networkmanager_create_transit_gateway_peering(
 \description{
 Creates a transit gateway peering connection.
 
-See \url{https://paws-r.github.io/docs/networkmanager/create_transit_gateway_peering.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_create_transit_gateway_peering/} for full documentation.
 }
 \keyword{internal}

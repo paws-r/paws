@@ -31,6 +31,6 @@ formation to use when writing to the destination.}
 \description{
 This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 
-See \url{https://paws-r.github.io/docs/kinesisanalytics/add_application_output.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalytics_add_application_output/} for full documentation.
 }
 \keyword{internal}

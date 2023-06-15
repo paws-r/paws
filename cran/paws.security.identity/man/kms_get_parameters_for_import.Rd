@@ -2,14 +2,17 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_get_parameters_for_import}
 \alias{kms_get_parameters_for_import}
-\title{Returns the items you need to import key material into a symmetric
-encryption KMS key}
+\title{Returns the public key and an import token you need to import or
+reimport key material for a KMS key}
 \usage{
 kms_get_parameters_for_import(KeyId, WrappingAlgorithm, WrappingKeySpec)
 }
 \arguments{
-\item{KeyId}{[required] The identifier of the symmetric encryption KMS key into which you will
-import key material. The \code{Origin} of the KMS key must be \code{EXTERNAL}.
+\item{KeyId}{[required] The identifier of the KMS key that will be associated with the imported
+key material. The \code{Origin} of the KMS key must be \code{EXTERNAL}.
+
+All KMS key types are supported, including multi-Region keys. However,
+you cannot import key material into a KMS key in a custom key store.
 
 Specify the key ID or key ARN of the KMS key.
 
@@ -23,23 +26,51 @@ For example:
 To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
-\item{WrappingAlgorithm}{[required] The algorithm you will use to encrypt the key material before using the
-\code{\link[=kms_import_key_material]{import_key_material}} operation to import it.
-For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html}{Encrypt the key material}
+\item{WrappingAlgorithm}{[required] The algorithm you will use with the RSA public key (\code{PublicKey}) in the
+response to protect your key material during import. For more
+information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-get-public-key-and-token.html#select-wrapping-algorithm}{Select a wrapping algorithm}
 in the \emph{Key Management Service Developer Guide}.
 
-The \code{RSAES_PKCS1_V1_5} wrapping algorithm is deprecated. We recommend
-that you begin using a different wrapping algorithm immediately. KMS
-will end support for \code{RSAES_PKCS1_V1_5} by October 1, 2023 pursuant to
-cryptographic key management guidance from the National Institute of
-Standards and Technology (NIST).}
+For RSA_AES wrapping algorithms, you encrypt your key material with an
+AES key that you generate, then encrypt your AES key with the RSA public
+key from KMS. For RSAES wrapping algorithms, you encrypt your key
+material directly with the RSA public key from KMS.
 
-\item{WrappingKeySpec}{[required] The type of wrapping key (public key) to return in the response. Only
-2048-bit RSA public keys are supported.}
+The wrapping algorithms that you can use depend on the type of key
+material that you are importing. To import an RSA private key, you must
+use an RSA_AES wrapping algorithm.
+\itemize{
+\item \strong{RSA_AES_KEY_WRAP_SHA_256} — Supported for wrapping RSA and ECC
+key material.
+\item \strong{RSA_AES_KEY_WRAP_SHA_1} — Supported for wrapping RSA and ECC key
+material.
+\item \strong{RSAES_OAEP_SHA_256} — Supported for all types of key material,
+except RSA key material (private key).
+
+You cannot use the RSAES_OAEP_SHA_256 wrapping algorithm with the
+RSA_2048 wrapping key spec to wrap ECC_NIST_P521 key material.
+\item \strong{RSAES_OAEP_SHA_1} — Supported for all types of key material,
+except RSA key material (private key).
+
+You cannot use the RSAES_OAEP_SHA_1 wrapping algorithm with the
+RSA_2048 wrapping key spec to wrap ECC_NIST_P521 key material.
+\item \strong{RSAES_PKCS1_V1_5} (Deprecated) — Supported only for symmetric
+encryption key material (and only in legacy mode).
+}}
+
+\item{WrappingKeySpec}{[required] The type of RSA public key to return in the response. You will use this
+wrapping key with the specified wrapping algorithm to protect your key
+material during import.
+
+Use the longest RSA wrapping key that is practical.
+
+You cannot use an RSA_2048 public key to directly wrap an ECC_NIST_P521
+private key. Instead, use an RSA_AES wrapping algorithm or choose a
+longer RSA public key.}
 }
 \description{
-Returns the items you need to import key material into a symmetric encryption KMS key. For more information about importing key material into KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing key material} in the \emph{Key Management Service Developer Guide}.
+Returns the public key and an import token you need to import or reimport key material for a KMS key.
 
-See \url{https://paws-r.github.io/docs/kms/get_parameters_for_import.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_get_parameters_for_import/} for full documentation.
 }
 \keyword{internal}

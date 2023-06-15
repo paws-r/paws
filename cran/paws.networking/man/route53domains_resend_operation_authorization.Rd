@@ -12,6 +12,6 @@ route53domains_resend_operation_authorization(OperationId)
 \description{
 Resend the form of authorization email for this operation.
 
-See \url{https://paws-r.github.io/docs/route53domains/resend_operation_authorization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_resend_operation_authorization/} for full documentation.
 }
 \keyword{internal}

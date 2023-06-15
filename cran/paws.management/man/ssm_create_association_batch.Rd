@@ -13,6 +13,6 @@ ssm_create_association_batch(Entries)
 \description{
 Associates the specified Amazon Web Services Systems Manager document (SSM document) with the specified managed nodes or targets.
 
-See \url{https://paws-r.github.io/docs/ssm/create_association_batch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_create_association_batch/} for full documentation.
 }
 \keyword{internal}

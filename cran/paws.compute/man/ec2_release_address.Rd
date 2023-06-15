@@ -12,9 +12,9 @@ ec2_release_address(
 )
 }
 \arguments{
-\item{AllocationId}{[EC2-VPC] The allocation ID. Required for EC2-VPC.}
+\item{AllocationId}{The allocation ID. This parameter is required.}
 
-\item{PublicIp}{[EC2-Classic] The Elastic IP address. Required for EC2-Classic.}
+\item{PublicIp}{Deprecated.}
 
 \item{NetworkBorderGroup}{The set of Availability Zones, Local Zones, or Wavelength Zones from
 which Amazon Web Services advertises IP addresses.
@@ -34,6 +34,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Releases the specified Elastic IP address.
 
-See \url{https://paws-r.github.io/docs/ec2/release_address.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_release_address/} for full documentation.
 }
 \keyword{internal}

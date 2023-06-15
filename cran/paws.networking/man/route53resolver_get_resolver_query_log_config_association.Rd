@@ -16,6 +16,6 @@ want to get information about.}
 \description{
 Gets information about a specified association between a Resolver query logging configuration and an Amazon VPC. When you associate a VPC with a query logging configuration, Resolver logs DNS queries that originate in that VPC.
 
-See \url{https://paws-r.github.io/docs/route53resolver/get_resolver_query_log_config_association.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_query_log_config_association/} for full documentation.
 }
 \keyword{internal}

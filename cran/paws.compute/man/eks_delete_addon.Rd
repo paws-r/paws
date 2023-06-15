@@ -20,6 +20,6 @@ is associated with the add-on, it isn't removed.}
 \description{
 Delete an Amazon EKS add-on.
 
-See \url{https://paws-r.github.io/docs/eks/delete_addon.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_delete_addon/} for full documentation.
 }
 \keyword{internal}

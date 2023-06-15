@@ -36,6 +36,6 @@ populates this field. For more information about idempotency, see
 \description{
 Creates a rule for the specified Amazon Connect instance.
 
-See \url{https://paws-r.github.io/docs/connect/create_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_create_rule/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ delete.}
 \description{
 Deletes an Batch compute environment.
 
-See \url{https://paws-r.github.io/docs/batch/delete_compute_environment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/batch_delete_compute_environment/} for full documentation.
 }
 \keyword{internal}

@@ -29,6 +29,6 @@ parameter, see \code{\link[=cognitoidentityprovider_create_group]{create_group}}
 \description{
 Updates the specified group with the specified attributes.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/update_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_group/} for full documentation.
 }
 \keyword{internal}

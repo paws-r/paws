@@ -26,6 +26,6 @@ deleted.}
 \description{
 Deletes an existing replication group. By default, this operation deletes the entire replication group, including the primary/primaries and all of the read replicas. If the replication group has only one primary, you can optionally delete only the read replicas, while retaining the primary by setting \code{RetainPrimaryCluster=true}.
 
-See \url{https://paws-r.github.io/docs/elasticache/delete_replication_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_delete_replication_group/} for full documentation.
 }
 \keyword{internal}

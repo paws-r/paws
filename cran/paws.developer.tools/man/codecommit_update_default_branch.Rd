@@ -14,6 +14,6 @@ codecommit_update_default_branch(repositoryName, defaultBranchName)
 \description{
 Sets or changes the default branch name for the specified repository.
 
-See \url{https://paws-r.github.io/docs/codecommit/update_default_branch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_update_default_branch/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ workspaces_describe_workspace_snapshots(WorkspaceId)
 \description{
 Describes the snapshots for the specified WorkSpace.
 
-See \url{https://paws-r.github.io/docs/workspaces/describe_workspace_snapshots.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_describe_workspace_snapshots/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ see the \emph{UserName} parameter.}
 \description{
 Disables single-sign on for a directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/disable_sso.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_disable_sso/} for full documentation.
 }
 \keyword{internal}

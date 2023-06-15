@@ -25,6 +25,6 @@ between 1 and 50. The default value is 50.}
 \description{
 Describes the scalable resources in the specified scaling plan.
 
-See \url{https://paws-r.github.io/docs/autoscalingplans/describe_scaling_plan_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscalingplans_describe_scaling_plan_resources/} for full documentation.
 }
 \keyword{internal}

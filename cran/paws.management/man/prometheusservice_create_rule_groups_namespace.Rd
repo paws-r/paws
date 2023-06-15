@@ -27,6 +27,6 @@ idempotency of the request.}
 \description{
 Create a rule group namespace.
 
-See \url{https://paws-r.github.io/docs/prometheusservice/create_rule_groups_namespace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/prometheusservice_create_rule_groups_namespace/} for full documentation.
 }
 \keyword{internal}

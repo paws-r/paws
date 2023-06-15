@@ -165,10 +165,11 @@ dynamodb_batch_execute_statement <- function(Statements, ReturnConsumedCapacity 
 #' A single operation can retrieve up to 16 MB of data, which can contain
 #' as many as 100 items. [`batch_get_item`][dynamodb_batch_get_item]
 #' returns a partial result if the response size limit is exceeded, the
-#' table's provisioned throughput is exceeded, or an internal processing
-#' failure occurs. If a partial result is returned, the operation returns a
-#' value for `UnprocessedKeys`. You can use this value to retry the
-#' operation starting with the next item to get.
+#' table's provisioned throughput is exceeded, more than 1MB per partition
+#' is requested, or an internal processing failure occurs. If a partial
+#' result is returned, the operation returns a value for `UnprocessedKeys`.
+#' You can use this value to retry the operation starting with the next
+#' item to get.
 #' 
 #' If you request more than 100 items,
 #' [`batch_get_item`][dynamodb_batch_get_item] returns a

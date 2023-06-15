@@ -13,6 +13,6 @@ configuration.}
 \description{
 Deletes an MSK Configuration.
 
-See \url{https://paws-r.github.io/docs/kafka/delete_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_delete_configuration/} for full documentation.
 }
 \keyword{internal}

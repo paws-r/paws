@@ -25,6 +25,6 @@ child (nested) recovery point; for example,
 \description{
 This action to a specific child (nested) recovery point removes the relationship between the specified recovery point and its parent (composite) recovery point.
 
-See \url{https://paws-r.github.io/docs/backup/disassociate_recovery_point_from_parent.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_disassociate_recovery_point_from_parent/} for full documentation.
 }
 \keyword{internal}

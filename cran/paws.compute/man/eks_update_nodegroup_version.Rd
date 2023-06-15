@@ -61,6 +61,6 @@ idempotency of the request.}
 \description{
 Updates the Kubernetes version or AMI version of an Amazon EKS managed node group.
 
-See \url{https://paws-r.github.io/docs/eks/update_nodegroup_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_update_nodegroup_version/} for full documentation.
 }
 \keyword{internal}

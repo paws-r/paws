@@ -12,6 +12,6 @@ apigateway_get_usage_plan(usagePlanId)
 \description{
 Gets a usage plan of a given plan identifier.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_usage_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_usage_plan/} for full documentation.
 }
 \keyword{internal}

@@ -134,6 +134,6 @@ the IP address type defaults to \code{ipv4}.}
 \description{
 Creates a target group.
 
-See \url{https://paws-r.github.io/docs/elbv2/create_target_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_create_target_group/} for full documentation.
 }
 \keyword{internal}

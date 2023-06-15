@@ -14,6 +14,6 @@ nimblestudio_get_streaming_session(sessionId, studioId)
 \description{
 Gets StreamingSession resource.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/get_streaming_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_get_streaming_session/} for full documentation.
 }
 \keyword{internal}

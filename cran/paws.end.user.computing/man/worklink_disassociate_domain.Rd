@@ -14,6 +14,6 @@ worklink_disassociate_domain(FleetArn, DomainName)
 \description{
 Disassociates a domain from Amazon WorkLink. End users lose the ability to access the domain with Amazon WorkLink.
 
-See \url{https://paws-r.github.io/docs/worklink/disassociate_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_disassociate_domain/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ remove the version even if it is being used by another resource.}
 \description{
 Deletes a specific version of a bot. To delete all versions of a bot, use the \code{\link[=lexmodelsv2_delete_bot]{delete_bot}} operation.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/delete_bot_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_delete_bot_version/} for full documentation.
 }
 \keyword{internal}

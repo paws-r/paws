@@ -22,6 +22,6 @@ operation completes successfully.}
 \description{
 Updates the number of broker nodes in the cluster.
 
-See \url{https://paws-r.github.io/docs/kafka/update_broker_count.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_update_broker_count/} for full documentation.
 }
 \keyword{internal}

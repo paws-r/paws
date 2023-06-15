@@ -28,6 +28,6 @@ permissions revoked. At this time, the only valid service principal is
 \description{
 Revokes permissions on a private CA granted to the Certificate Manager (ACM) service principal (acm.amazonaws.com).
 
-See \url{https://paws-r.github.io/docs/acmpca/delete_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acmpca_delete_permission/} for full documentation.
 }
 \keyword{internal}

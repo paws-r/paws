@@ -12,6 +12,6 @@ workspaces_disassociate_connection_alias(AliasId)
 \description{
 Disassociates a connection alias from a directory. Disassociating a connection alias disables cross-Region redirection between two directories in different Regions. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.
 
-See \url{https://paws-r.github.io/docs/workspaces/disassociate_connection_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_disassociate_connection_alias/} for full documentation.
 }
 \keyword{internal}

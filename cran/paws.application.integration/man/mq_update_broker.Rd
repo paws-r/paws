@@ -49,6 +49,6 @@ connections to brokers.}
 \description{
 Adds a pending configuration change to a broker.
 
-See \url{https://paws-r.github.io/docs/mq/update_broker.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mq_update_broker/} for full documentation.
 }
 \keyword{internal}

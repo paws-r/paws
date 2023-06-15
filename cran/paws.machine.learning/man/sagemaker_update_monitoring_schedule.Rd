@@ -19,6 +19,6 @@ defines the monitoring job.}
 \description{
 Updates a previously created schedule.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_monitoring_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_monitoring_schedule/} for full documentation.
 }
 \keyword{internal}

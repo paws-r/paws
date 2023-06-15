@@ -24,6 +24,6 @@ engagements for.}
 \description{
 Lists all engagements that have happened in an incident.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/list_engagements.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_list_engagements/} for full documentation.
 }
 \keyword{internal}

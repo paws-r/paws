@@ -33,6 +33,6 @@ parameter is required if the \code{SyncType} value is SyncFromSource.}
 \description{
 A resource data sync helps you view data from multiple sources in a single location. Amazon Web Services Systems Manager offers two types of resource data sync: \code{SyncToDestination} and \code{SyncFromSource}.
 
-See \url{https://paws-r.github.io/docs/ssm/create_resource_data_sync.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_create_resource_data_sync/} for full documentation.
 }
 \keyword{internal}

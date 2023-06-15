@@ -22,6 +22,6 @@ characters that can be upper- or lower-cased letters or digits.}
 \description{
 Deletes a signing certificate associated with the specified IAM user.
 
-See \url{https://paws-r.github.io/docs/iam/delete_signing_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_delete_signing_certificate/} for full documentation.
 }
 \keyword{internal}

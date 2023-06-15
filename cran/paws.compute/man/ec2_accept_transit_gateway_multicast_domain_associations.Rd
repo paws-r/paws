@@ -28,6 +28,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Accepts a request to associate subnets with a transit gateway multicast domain.
 
-See \url{https://paws-r.github.io/docs/ec2/accept_transit_gateway_multicast_domain_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_accept_transit_gateway_multicast_domain_associations/} for full documentation.
 }
 \keyword{internal}

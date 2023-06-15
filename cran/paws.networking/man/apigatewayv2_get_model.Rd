@@ -14,6 +14,6 @@ apigatewayv2_get_model(ApiId, ModelId)
 \description{
 Gets a Model.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/get_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_get_model/} for full documentation.
 }
 \keyword{internal}

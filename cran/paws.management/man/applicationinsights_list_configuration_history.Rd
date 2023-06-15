@@ -47,6 +47,6 @@ there are no more results to return.}
 \description{
 Lists the INFO, WARN, and ERROR events for periodic configuration updates performed by Application Insights. Examples of events represented are:
 
-See \url{https://paws-r.github.io/docs/applicationinsights/list_configuration_history.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_list_configuration_history/} for full documentation.
 }
 \keyword{internal}

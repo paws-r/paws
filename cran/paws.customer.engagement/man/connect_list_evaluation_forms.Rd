@@ -19,6 +19,6 @@ results.}
 \description{
 Lists evaluation forms in the specified Amazon Connect instance.
 
-See \url{https://paws-r.github.io/docs/connect/list_evaluation_forms.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_list_evaluation_forms/} for full documentation.
 }
 \keyword{internal}

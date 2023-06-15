@@ -34,6 +34,6 @@ from.}
 \description{
 Creates an assessment in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/create_assessment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_create_assessment/} for full documentation.
 }
 \keyword{internal}

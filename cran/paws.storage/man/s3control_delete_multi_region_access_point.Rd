@@ -19,6 +19,6 @@ Point.}
 \description{
 Deletes a Multi-Region Access Point. This action does not delete the buckets associated with the Multi-Region Access Point, only the Multi-Region Access Point itself.
 
-See \url{https://paws-r.github.io/docs/s3control/delete_multi_region_access_point.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_delete_multi_region_access_point/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ changes are rolled back, and no changes are made to the environments.}
 \description{
 Switches over a blue/green deployment.
 
-See \url{https://paws-r.github.io/docs/rds/switchover_blue_green_deployment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_switchover_blue_green_deployment/} for full documentation.
 }
 \keyword{internal}

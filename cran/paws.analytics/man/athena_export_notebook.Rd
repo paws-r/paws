@@ -12,6 +12,6 @@ athena_export_notebook(NotebookId)
 \description{
 Exports the specified notebook and its metadata.
 
-See \url{https://paws-r.github.io/docs/athena/export_notebook.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_export_notebook/} for full documentation.
 }
 \keyword{internal}

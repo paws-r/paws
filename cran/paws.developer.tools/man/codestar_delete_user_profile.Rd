@@ -14,6 +14,6 @@ codestar_delete_user_profile(userArn)
 \description{
 Deletes a user profile in AWS CodeStar, including all personal preference data associated with that profile, such as display name and email address. It does not delete the history of that user, for example the history of commits made by that user.
 
-See \url{https://paws-r.github.io/docs/codestar/delete_user_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestar_delete_user_profile/} for full documentation.
 }
 \keyword{internal}

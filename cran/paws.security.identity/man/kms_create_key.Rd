@@ -276,6 +276,6 @@ in the \emph{Key Management Service Developer Guide}.}
 \description{
 Creates a unique customer managed \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#kms-keys}{KMS key} in your Amazon Web Services account and Region. You can use a KMS key in cryptographic operations, such as encryption and signing. Some Amazon Web Services services let you use KMS keys that you create and manage to protect your service resources.
 
-See \url{https://paws-r.github.io/docs/kms/create_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_create_key/} for full documentation.
 }
 \keyword{internal}

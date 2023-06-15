@@ -12,6 +12,6 @@ storagegateway_list_automatic_tape_creation_policies(GatewayARN = NULL)
 \description{
 Lists the automatic tape creation policies for a gateway. If there are no automatic tape creation policies for the gateway, it returns an empty list.
 
-See \url{https://paws-r.github.io/docs/storagegateway/list_automatic_tape_creation_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_list_automatic_tape_creation_policies/} for full documentation.
 }
 \keyword{internal}

@@ -28,6 +28,6 @@ response.}
 \description{
 Gets a list of \code{PipeLineExecutionStep} objects.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_pipeline_execution_steps.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_pipeline_execution_steps/} for full documentation.
 }
 \keyword{internal}

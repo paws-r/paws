@@ -38,6 +38,6 @@ the same client token for other API requests.}
 \description{
 Deletes a resource from the Resilience Hub application.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/delete_app_version_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_delete_app_version_resource/} for full documentation.
 }
 \keyword{internal}

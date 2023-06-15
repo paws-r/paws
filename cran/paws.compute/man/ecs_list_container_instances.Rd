@@ -56,6 +56,6 @@ instances set to all states other than \code{INACTIVE}.}
 \description{
 Returns a list of container instances in a specified cluster. You can filter the results of a \code{\link[=ecs_list_container_instances]{list_container_instances}} operation with cluster query language statements inside the \code{filter} parameter. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html}{Cluster Query Language} in the \emph{Amazon Elastic Container Service Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/ecs/list_container_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_list_container_instances/} for full documentation.
 }
 \keyword{internal}

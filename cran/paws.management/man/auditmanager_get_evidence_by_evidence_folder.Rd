@@ -27,6 +27,6 @@ call.}
 \description{
 Returns all evidence from a specified evidence folder in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_evidence_by_evidence_folder.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_evidence_by_evidence_folder/} for full documentation.
 }
 \keyword{internal}

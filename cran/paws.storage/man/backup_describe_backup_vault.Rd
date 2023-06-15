@@ -15,6 +15,6 @@ consist of lowercase letters, numbers, and hyphens.}
 \description{
 Returns metadata about a backup vault specified by its name.
 
-See \url{https://paws-r.github.io/docs/backup/describe_backup_vault.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_describe_backup_vault/} for full documentation.
 }
 \keyword{internal}

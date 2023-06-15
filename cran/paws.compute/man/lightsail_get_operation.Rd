@@ -12,6 +12,6 @@ lightsail_get_operation(operationId)
 \description{
 Returns information about a specific operation. Operations include events such as when you create an instance, allocate a static IP, attach a static IP, and so on.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_operation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_operation/} for full documentation.
 }
 \keyword{internal}

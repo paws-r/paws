@@ -12,6 +12,6 @@ cloudfront_get_streaming_distribution_config(Id)
 \description{
 Get the configuration information about a streaming distribution.
 
-See \url{https://paws-r.github.io/docs/cloudfront/get_streaming_distribution_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_get_streaming_distribution_config/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ sns_delete_sms_sandbox_phone_number(PhoneNumber)
 \description{
 Deletes an Amazon Web Services account's verified or pending phone number from the SMS sandbox.
 
-See \url{https://paws-r.github.io/docs/sns/delete_sms_sandbox_phone_number.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_delete_sms_sandbox_phone_number/} for full documentation.
 }
 \keyword{internal}

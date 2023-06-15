@@ -111,6 +111,6 @@ has a different default KMS key for each Amazon Web Services region.}
 \description{
 Modifies settings for an instance. You can change one or more database configuration parameters by specifying these parameters and the new values in the request.
 
-See \url{https://paws-r.github.io/docs/docdb/modify_db_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_modify_db_instance/} for full documentation.
 }
 \keyword{internal}

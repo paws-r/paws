@@ -12,6 +12,6 @@ cloud9_delete_environment(environmentId)
 \description{
 Deletes an Cloud9 development environment. If an Amazon EC2 instance is connected to the environment, also terminates the instance.
 
-See \url{https://paws-r.github.io/docs/cloud9/delete_environment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloud9_delete_environment/} for full documentation.
 }
 \keyword{internal}

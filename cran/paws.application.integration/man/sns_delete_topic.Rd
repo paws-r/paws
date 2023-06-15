@@ -12,6 +12,6 @@ sns_delete_topic(TopicArn)
 \description{
 Deletes a topic and all its subscriptions. Deleting a topic might prevent some messages previously sent to the topic from being delivered to subscribers. This action is idempotent, so deleting a topic that does not exist does not result in an error.
 
-See \url{https://paws-r.github.io/docs/sns/delete_topic.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_delete_topic/} for full documentation.
 }
 \keyword{internal}

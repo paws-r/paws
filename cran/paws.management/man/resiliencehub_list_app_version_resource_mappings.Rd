@@ -30,6 +30,6 @@ in the response so that the remaining results can be retrieved.}
 \description{
 Lists how the resources in an application version are mapped/sourced from. Mappings can be physical resource identifiers, CloudFormation stacks, resource-groups, or an application registry app.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/list_app_version_resource_mappings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_list_app_version_resource_mappings/} for full documentation.
 }
 \keyword{internal}

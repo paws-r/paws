@@ -58,6 +58,6 @@ the product's artifacts based on changes to the source. The
 \description{
 Updates the specified product.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/update_product.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_update_product/} for full documentation.
 }
 \keyword{internal}

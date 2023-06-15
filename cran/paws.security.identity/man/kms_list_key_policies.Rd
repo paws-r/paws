@@ -37,6 +37,6 @@ truncated response you just received.}
 \description{
 Gets the names of the key policies that are attached to a KMS key. This operation is designed to get policy names that you can use in a \code{\link[=kms_get_key_policy]{get_key_policy}} operation. However, the only valid policy name is \code{default}.
 
-See \url{https://paws-r.github.io/docs/kms/list_key_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_list_key_policies/} for full documentation.
 }
 \keyword{internal}

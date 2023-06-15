@@ -12,6 +12,6 @@ personalize_stop_recommender(recommenderArn)
 \description{
 Stops a recommender that is ACTIVE. Stopping a recommender halts billing and automatic retraining for the recommender.
 
-See \url{https://paws-r.github.io/docs/personalize/stop_recommender.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_stop_recommender/} for full documentation.
 }
 \keyword{internal}

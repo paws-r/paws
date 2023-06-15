@@ -36,6 +36,6 @@ an Amazon Web Services resource. Each tag consists of a key/value pair.}
 \description{
 Creates an Resilience Hub application. An Resilience Hub application is a collection of Amazon Web Services resources structured to prevent and recover Amazon Web Services application disruptions. To describe an Resilience Hub application, you provide an application name, resources from one or more CloudFormation stacks, Resource Groups, Terraform state files, AppRegistry applications, and an appropriate resiliency policy. For more information about the number of resources supported per application, see \href{https://docs.aws.amazon.com/general/latest/gr/resiliencehub.html#limits_resiliencehub}{Service Quotas}.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/create_app.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_create_app/} for full documentation.
 }
 \keyword{internal}

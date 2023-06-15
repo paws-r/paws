@@ -26,6 +26,6 @@ parameter is set to \code{true}.}
 \description{
 Modifies the parameters of a cluster parameter group to the default value. To reset specific parameters, submit a list of the following: \code{ParameterName} and \code{ApplyMethod}. To reset the entire cluster parameter group, specify the \code{DBClusterParameterGroupName} and \code{ResetAllParameters} parameters.
 
-See \url{https://paws-r.github.io/docs/docdb/reset_db_cluster_parameter_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_reset_db_cluster_parameter_group/} for full documentation.
 }
 \keyword{internal}

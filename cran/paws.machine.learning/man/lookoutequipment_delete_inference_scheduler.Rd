@@ -12,6 +12,6 @@ lookoutequipment_delete_inference_scheduler(InferenceSchedulerName)
 \description{
 Deletes an inference scheduler that has been set up. Already processed output results are not affected.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/delete_inference_scheduler.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_delete_inference_scheduler/} for full documentation.
 }
 \keyword{internal}

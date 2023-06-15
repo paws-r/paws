@@ -15,6 +15,6 @@ Region for each Amazon Web Services account.}
 \description{
 Deletes the data source permanently. This operation breaks all the datasets that reference the deleted data source.
 
-See \url{https://paws-r.github.io/docs/quicksight/delete_data_source.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_data_source/} for full documentation.
 }
 \keyword{internal}

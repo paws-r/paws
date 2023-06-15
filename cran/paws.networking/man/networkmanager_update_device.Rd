@@ -50,6 +50,6 @@ Constraints: Maximum length of 128 characters.}
 \description{
 Updates the details for an existing device. To remove information for any of the parameters, specify an empty string.
 
-See \url{https://paws-r.github.io/docs/networkmanager/update_device.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_update_device/} for full documentation.
 }
 \keyword{internal}

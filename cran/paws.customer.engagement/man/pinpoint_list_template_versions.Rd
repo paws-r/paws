@@ -32,6 +32,6 @@ values are: EMAIL, PUSH, SMS, and VOICE.}
 \description{
 Retrieves information about all the versions of a specific message template.
 
-See \url{https://paws-r.github.io/docs/pinpoint/list_template_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_list_template_versions/} for full documentation.
 }
 \keyword{internal}

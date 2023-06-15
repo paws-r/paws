@@ -23,6 +23,6 @@ is 100.}
 \description{
 Gets a list of the batch translation jobs that you have submitted.
 
-See \url{https://paws-r.github.io/docs/translate/list_text_translation_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/translate_list_text_translation_jobs/} for full documentation.
 }
 \keyword{internal}

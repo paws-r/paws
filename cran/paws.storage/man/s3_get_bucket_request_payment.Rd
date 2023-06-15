@@ -17,6 +17,6 @@ different account, the request fails with the HTTP status code
 \description{
 Returns the request payment configuration of a bucket. To use this version of the operation, you must be the bucket owner. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html}{Requester Pays Buckets}.
 
-See \url{https://paws-r.github.io/docs/s3/get_bucket_request_payment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_request_payment/} for full documentation.
 }
 \keyword{internal}

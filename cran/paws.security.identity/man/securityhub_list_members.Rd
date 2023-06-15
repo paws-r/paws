@@ -36,6 +36,6 @@ response.}
 \description{
 Lists details about all member accounts for the current Security Hub administrator account.
 
-See \url{https://paws-r.github.io/docs/securityhub/list_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_list_members/} for full documentation.
 }
 \keyword{internal}

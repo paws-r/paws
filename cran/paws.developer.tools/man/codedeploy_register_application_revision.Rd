@@ -22,6 +22,6 @@ and location.}
 \description{
 Registers with CodeDeploy a revision for the specified application.
 
-See \url{https://paws-r.github.io/docs/codedeploy/register_application_revision.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_register_application_revision/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ appstream_delete_stack(Name)
 \description{
 Deletes the specified stack. After the stack is deleted, the application streaming environment provided by the stack is no longer available to users. Also, any reservations made for application streaming sessions for the stack are released.
 
-See \url{https://paws-r.github.io/docs/appstream/delete_stack.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_delete_stack/} for full documentation.
 }
 \keyword{internal}

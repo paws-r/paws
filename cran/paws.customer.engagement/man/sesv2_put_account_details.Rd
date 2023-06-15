@@ -43,6 +43,6 @@ on your specific use case.}
 \description{
 Update your Amazon SES account details.
 
-See \url{https://paws-r.github.io/docs/sesv2/put_account_details.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_put_account_details/} for full documentation.
 }
 \keyword{internal}

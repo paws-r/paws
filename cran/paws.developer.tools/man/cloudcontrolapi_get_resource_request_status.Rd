@@ -16,6 +16,6 @@ resource operation request.}
 \description{
 Returns the current status of a resource operation request. For more information, see \href{https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-manage-requests.html#resource-operations-manage-requests-track}{Tracking the progress of resource operation requests} in the \emph{Amazon Web Services Cloud Control API User Guide}.
 
-See \url{https://paws-r.github.io/docs/cloudcontrolapi/get_resource_request_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudcontrolapi_get_resource_request_status/} for full documentation.
 }
 \keyword{internal}

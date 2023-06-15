@@ -14,6 +14,6 @@ codedeploy_get_deployment_target(deploymentId = NULL, targetId = NULL)
 \description{
 Returns information about a deployment target.
 
-See \url{https://paws-r.github.io/docs/codedeploy/get_deployment_target.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_get_deployment_target/} for full documentation.
 }
 \keyword{internal}

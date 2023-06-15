@@ -21,6 +21,6 @@ user.}
 \description{
 Returns information about a specific snapshot.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/get_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_get_snapshot/} for full documentation.
 }
 \keyword{internal}

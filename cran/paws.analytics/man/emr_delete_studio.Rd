@@ -12,6 +12,6 @@ emr_delete_studio(StudioId)
 \description{
 Removes an Amazon EMR Studio from the Studio metadata store.
 
-See \url{https://paws-r.github.io/docs/emr/delete_studio.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_delete_studio/} for full documentation.
 }
 \keyword{internal}

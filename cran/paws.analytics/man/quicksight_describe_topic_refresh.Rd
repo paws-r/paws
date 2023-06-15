@@ -19,6 +19,6 @@ updated.}
 \description{
 Describes the status of a topic refresh.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_topic_refresh.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_topic_refresh/} for full documentation.
 }
 \keyword{internal}

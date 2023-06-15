@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Associates the fraudsters with the watchlist specified in the same domain.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/associate_fraudster.html](https://paws-r.github.io/docs/voiceid/associate_fraudster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_associate_fraudster/](https://www.paws-r-sdk.com/docs/voiceid_associate_fraudster/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The identifier of the domain that contains the fraudster.
 #' @param FraudsterId &#91;required&#93; The identifier of the fraudster to be associated with the watchlist.
@@ -42,7 +42,7 @@ voiceid_associate_fraudster <- function(DomainId, FraudsterId, WatchlistId) {
 #' @description
 #' Creates a domain that contains all Amazon Connect Voice ID data, such as speakers, fraudsters, customer audio, and voiceprints. Every domain is created with a default watchlist that fraudsters can be a part of.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/create_domain.html](https://paws-r.github.io/docs/voiceid/create_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_create_domain/](https://www.paws-r-sdk.com/docs/voiceid_create_domain/) for full documentation.
 #'
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If not provided, the Amazon Web Services SDK
@@ -83,7 +83,7 @@ voiceid_create_domain <- function(ClientToken = NULL, Description = NULL, Name, 
 #' @description
 #' Creates a watchlist that fraudsters can be a part of.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/create_watchlist.html](https://paws-r.github.io/docs/voiceid/create_watchlist.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_create_watchlist/](https://www.paws-r-sdk.com/docs/voiceid_create_watchlist/) for full documentation.
 #'
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If not provided, the Amazon Web Services SDK
@@ -119,7 +119,7 @@ voiceid_create_watchlist <- function(ClientToken = NULL, Description = NULL, Dom
 #' @description
 #' Deletes the specified domain from Voice ID.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/delete_domain.html](https://paws-r.github.io/docs/voiceid/delete_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_delete_domain/](https://www.paws-r-sdk.com/docs/voiceid_delete_domain/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The identifier of the domain you want to delete.
 #'
@@ -148,7 +148,7 @@ voiceid_delete_domain <- function(DomainId) {
 #' @description
 #' Deletes the specified fraudster from Voice ID. This action disassociates the fraudster from any watchlists it is a part of.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/delete_fraudster.html](https://paws-r.github.io/docs/voiceid/delete_fraudster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_delete_fraudster/](https://www.paws-r-sdk.com/docs/voiceid_delete_fraudster/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The identifier of the domain that contains the fraudster.
 #' @param FraudsterId &#91;required&#93; The identifier of the fraudster you want to delete.
@@ -178,7 +178,7 @@ voiceid_delete_fraudster <- function(DomainId, FraudsterId) {
 #' @description
 #' Deletes the specified speaker from Voice ID.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/delete_speaker.html](https://paws-r.github.io/docs/voiceid/delete_speaker.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_delete_speaker/](https://www.paws-r-sdk.com/docs/voiceid_delete_speaker/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The identifier of the domain that contains the speaker.
 #' @param SpeakerId &#91;required&#93; The identifier of the speaker you want to delete.
@@ -208,7 +208,7 @@ voiceid_delete_speaker <- function(DomainId, SpeakerId) {
 #' @description
 #' Deletes the specified watchlist from Voice ID. This API throws an exception when there are fraudsters in the watchlist that you are trying to delete. You must delete the fraudsters, and then delete the watchlist. Every domain has a default watchlist which cannot be deleted.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/delete_watchlist.html](https://paws-r.github.io/docs/voiceid/delete_watchlist.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_delete_watchlist/](https://www.paws-r-sdk.com/docs/voiceid_delete_watchlist/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The identifier of the domain that contains the watchlist.
 #' @param WatchlistId &#91;required&#93; The identifier of the watchlist to be deleted.
@@ -238,7 +238,7 @@ voiceid_delete_watchlist <- function(DomainId, WatchlistId) {
 #' @description
 #' Describes the specified domain.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/describe_domain.html](https://paws-r.github.io/docs/voiceid/describe_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_describe_domain/](https://www.paws-r-sdk.com/docs/voiceid_describe_domain/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The identifier of the domain that you are describing.
 #'
@@ -267,7 +267,7 @@ voiceid_describe_domain <- function(DomainId) {
 #' @description
 #' Describes the specified fraudster.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/describe_fraudster.html](https://paws-r.github.io/docs/voiceid/describe_fraudster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_describe_fraudster/](https://www.paws-r-sdk.com/docs/voiceid_describe_fraudster/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The identifier of the domain that contains the fraudster.
 #' @param FraudsterId &#91;required&#93; The identifier of the fraudster you are describing.
@@ -297,7 +297,7 @@ voiceid_describe_fraudster <- function(DomainId, FraudsterId) {
 #' @description
 #' Describes the specified fraudster registration job.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/describe_fraudster_registration_job.html](https://paws-r.github.io/docs/voiceid/describe_fraudster_registration_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_describe_fraudster_registration_job/](https://www.paws-r-sdk.com/docs/voiceid_describe_fraudster_registration_job/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The identifier of the domain that contains the fraudster registration
 #' job.
@@ -328,7 +328,7 @@ voiceid_describe_fraudster_registration_job <- function(DomainId, JobId) {
 #' @description
 #' Describes the specified speaker.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/describe_speaker.html](https://paws-r.github.io/docs/voiceid/describe_speaker.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_describe_speaker/](https://www.paws-r-sdk.com/docs/voiceid_describe_speaker/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The identifier of the domain that contains the speaker.
 #' @param SpeakerId &#91;required&#93; The identifier of the speaker you are describing.
@@ -358,7 +358,7 @@ voiceid_describe_speaker <- function(DomainId, SpeakerId) {
 #' @description
 #' Describes the specified speaker enrollment job.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/describe_speaker_enrollment_job.html](https://paws-r.github.io/docs/voiceid/describe_speaker_enrollment_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_describe_speaker_enrollment_job/](https://www.paws-r-sdk.com/docs/voiceid_describe_speaker_enrollment_job/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The identifier of the domain that contains the speaker enrollment job.
 #' @param JobId &#91;required&#93; The identifier of the speaker enrollment job you are describing.
@@ -388,7 +388,7 @@ voiceid_describe_speaker_enrollment_job <- function(DomainId, JobId) {
 #' @description
 #' Describes the specified watchlist.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/describe_watchlist.html](https://paws-r.github.io/docs/voiceid/describe_watchlist.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_describe_watchlist/](https://www.paws-r-sdk.com/docs/voiceid_describe_watchlist/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The identifier of the domain that contains the watchlist.
 #' @param WatchlistId &#91;required&#93; The identifier of the watchlist that you are describing.
@@ -418,7 +418,7 @@ voiceid_describe_watchlist <- function(DomainId, WatchlistId) {
 #' @description
 #' Disassociates the fraudsters from the watchlist specified. Voice ID always expects a fraudster to be a part of at least one watchlist. If you try to disassociate a fraudster from its only watchlist, a `ValidationException` is thrown.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/disassociate_fraudster.html](https://paws-r.github.io/docs/voiceid/disassociate_fraudster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_disassociate_fraudster/](https://www.paws-r-sdk.com/docs/voiceid_disassociate_fraudster/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The identifier of the domain that contains the fraudster.
 #' @param FraudsterId &#91;required&#93; The identifier of the fraudster to be disassociated from the watchlist.
@@ -451,7 +451,7 @@ voiceid_disassociate_fraudster <- function(DomainId, FraudsterId, WatchlistId) {
 #' @description
 #' Evaluates a specified session based on audio data accumulated during a streaming Amazon Connect Voice ID call.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/evaluate_session.html](https://paws-r.github.io/docs/voiceid/evaluate_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_evaluate_session/](https://www.paws-r-sdk.com/docs/voiceid_evaluate_session/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The identifier of the domain where the session started.
 #' @param SessionNameOrId &#91;required&#93; The session identifier, or name of the session, that you want to
@@ -482,7 +482,7 @@ voiceid_evaluate_session <- function(DomainId, SessionNameOrId) {
 #' @description
 #' Lists all the domains in the Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/list_domains.html](https://paws-r.github.io/docs/voiceid/list_domains.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_list_domains/](https://www.paws-r-sdk.com/docs/voiceid_list_domains/) for full documentation.
 #'
 #' @param MaxResults The maximum number of results that are returned per call. You can use
 #' `NextToken` to obtain more pages of results. The default is 100; the
@@ -518,7 +518,7 @@ voiceid_list_domains <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Lists all the fraudster registration jobs in the domain with the given `JobStatus`. If `JobStatus` is not provided, this lists all fraudster registration jobs in the given domain.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/list_fraudster_registration_jobs.html](https://paws-r.github.io/docs/voiceid/list_fraudster_registration_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_list_fraudster_registration_jobs/](https://www.paws-r-sdk.com/docs/voiceid_list_fraudster_registration_jobs/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The identifier of the domain that contains the fraudster registration
 #' Jobs.
@@ -556,7 +556,7 @@ voiceid_list_fraudster_registration_jobs <- function(DomainId, JobStatus = NULL,
 #' @description
 #' Lists all fraudsters in a specified watchlist or domain.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/list_fraudsters.html](https://paws-r.github.io/docs/voiceid/list_fraudsters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_list_fraudsters/](https://www.paws-r-sdk.com/docs/voiceid_list_fraudsters/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The identifier of the domain.
 #' @param MaxResults The maximum number of results that are returned per call. You can use
@@ -596,7 +596,7 @@ voiceid_list_fraudsters <- function(DomainId, MaxResults = NULL, NextToken = NUL
 #' @description
 #' Lists all the speaker enrollment jobs in the domain with the specified `JobStatus`. If `JobStatus` is not provided, this lists all jobs with all possible speaker enrollment job statuses.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/list_speaker_enrollment_jobs.html](https://paws-r.github.io/docs/voiceid/list_speaker_enrollment_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_list_speaker_enrollment_jobs/](https://www.paws-r-sdk.com/docs/voiceid_list_speaker_enrollment_jobs/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The identifier of the domain that contains the speaker enrollment jobs.
 #' @param JobStatus Provides the status of your speaker enrollment Job.
@@ -633,7 +633,7 @@ voiceid_list_speaker_enrollment_jobs <- function(DomainId, JobStatus = NULL, Max
 #' @description
 #' Lists all speakers in a specified domain.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/list_speakers.html](https://paws-r.github.io/docs/voiceid/list_speakers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_list_speakers/](https://www.paws-r-sdk.com/docs/voiceid_list_speakers/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The identifier of the domain.
 #' @param MaxResults The maximum number of results that are returned per call. You can use
@@ -669,7 +669,7 @@ voiceid_list_speakers <- function(DomainId, MaxResults = NULL, NextToken = NULL)
 #' @description
 #' Lists all tags associated with a specified Voice ID resource.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/list_tags_for_resource.html](https://paws-r.github.io/docs/voiceid/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/voiceid_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Voice ID resource for which you
 #' want to list the tags.
@@ -699,7 +699,7 @@ voiceid_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Lists all watchlists in a specified domain.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/list_watchlists.html](https://paws-r.github.io/docs/voiceid/list_watchlists.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_list_watchlists/](https://www.paws-r-sdk.com/docs/voiceid_list_watchlists/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The identifier of the domain.
 #' @param MaxResults The maximum number of results that are returned per call. You can use
@@ -735,7 +735,7 @@ voiceid_list_watchlists <- function(DomainId, MaxResults = NULL, NextToken = NUL
 #' @description
 #' Opts out a speaker from Voice ID. A speaker can be opted out regardless of whether or not they already exist in Voice ID. If they don't yet exist, a new speaker is created in an opted out state. If they already exist, their existing status is overridden and they are opted out. Enrollment and evaluation authentication requests are rejected for opted out speakers, and opted out speakers have no voice embeddings stored in Voice ID.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/opt_out_speaker.html](https://paws-r.github.io/docs/voiceid/opt_out_speaker.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_opt_out_speaker/](https://www.paws-r-sdk.com/docs/voiceid_opt_out_speaker/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The identifier of the domain that contains the speaker.
 #' @param SpeakerId &#91;required&#93; The identifier of the speaker you want opted-out.
@@ -765,7 +765,7 @@ voiceid_opt_out_speaker <- function(DomainId, SpeakerId) {
 #' @description
 #' Starts a new batch fraudster registration job using provided details.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/start_fraudster_registration_job.html](https://paws-r.github.io/docs/voiceid/start_fraudster_registration_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_start_fraudster_registration_job/](https://www.paws-r-sdk.com/docs/voiceid_start_fraudster_registration_job/) for full documentation.
 #'
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If not provided, the Amazon Web Services SDK
@@ -814,7 +814,7 @@ voiceid_start_fraudster_registration_job <- function(ClientToken = NULL, DataAcc
 #' @description
 #' Starts a new batch speaker enrollment job using specified details.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/start_speaker_enrollment_job.html](https://paws-r.github.io/docs/voiceid/start_speaker_enrollment_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_start_speaker_enrollment_job/](https://www.paws-r-sdk.com/docs/voiceid_start_speaker_enrollment_job/) for full documentation.
 #'
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If not provided, the Amazon Web Services SDK
@@ -864,7 +864,7 @@ voiceid_start_speaker_enrollment_job <- function(ClientToken = NULL, DataAccessR
 #' @description
 #' Tags a Voice ID resource with the provided list of tags.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/tag_resource.html](https://paws-r.github.io/docs/voiceid/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_tag_resource/](https://www.paws-r-sdk.com/docs/voiceid_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Voice ID resource you want to tag.
 #' @param Tags &#91;required&#93; The list of tags to assign to the specified resource.
@@ -894,7 +894,7 @@ voiceid_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes specified tags from a specified Amazon Connect Voice ID resource.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/untag_resource.html](https://paws-r.github.io/docs/voiceid/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_untag_resource/](https://www.paws-r-sdk.com/docs/voiceid_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Voice ID resource you want to
 #' remove tags from.
@@ -925,7 +925,7 @@ voiceid_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates the specified domain. This API has clobber behavior, and clears and replaces all attributes. If an optional field, such as 'Description' is not provided, it is removed from the domain.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/update_domain.html](https://paws-r.github.io/docs/voiceid/update_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_update_domain/](https://www.paws-r-sdk.com/docs/voiceid_update_domain/) for full documentation.
 #'
 #' @param Description A brief description about this domain.
 #' @param DomainId &#91;required&#93; The identifier of the domain to be updated.
@@ -963,7 +963,7 @@ voiceid_update_domain <- function(Description = NULL, DomainId, Name, ServerSide
 #' @description
 #' Updates the specified watchlist. Every domain has a default watchlist which cannot be updated.
 #'
-#' See [https://paws-r.github.io/docs/voiceid/update_watchlist.html](https://paws-r.github.io/docs/voiceid/update_watchlist.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/voiceid_update_watchlist/](https://www.paws-r-sdk.com/docs/voiceid_update_watchlist/) for full documentation.
 #'
 #' @param Description A brief description about this watchlist.
 #' @param DomainId &#91;required&#93; The identifier of the domain that contains the watchlist.

@@ -19,6 +19,6 @@ batch, provide this token in your next request.}
 \description{
 Returns a list of the broker nodes in the cluster.
 
-See \url{https://paws-r.github.io/docs/kafka/list_nodes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_list_nodes/} for full documentation.
 }
 \keyword{internal}

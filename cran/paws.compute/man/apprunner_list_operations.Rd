@@ -26,6 +26,6 @@ results in a single response.}
 \description{
 Return a list of operations that occurred on an App Runner service.
 
-See \url{https://paws-r.github.io/docs/apprunner/list_operations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_list_operations/} for full documentation.
 }
 \keyword{internal}

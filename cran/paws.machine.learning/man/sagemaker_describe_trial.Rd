@@ -12,6 +12,6 @@ sagemaker_describe_trial(TrialName)
 \description{
 Provides a list of a trial's properties.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_trial.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_trial/} for full documentation.
 }
 \keyword{internal}

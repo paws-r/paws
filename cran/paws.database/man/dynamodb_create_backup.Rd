@@ -14,6 +14,6 @@ dynamodb_create_backup(TableName, BackupName)
 \description{
 Creates a backup for an existing table.
 
-See \url{https://paws-r.github.io/docs/dynamodb/create_backup.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_create_backup/} for full documentation.
 }
 \keyword{internal}

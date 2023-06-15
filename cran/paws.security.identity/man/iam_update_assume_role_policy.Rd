@@ -35,6 +35,6 @@ carriage return (\verb{U+000D})
 \description{
 Updates the policy that grants an IAM entity permission to assume a role. This is typically referred to as the "role trust policy". For more information about roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Using roles to delegate permissions and federate identities}.
 
-See \url{https://paws-r.github.io/docs/iam/update_assume_role_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_update_assume_role_policy/} for full documentation.
 }
 \keyword{internal}

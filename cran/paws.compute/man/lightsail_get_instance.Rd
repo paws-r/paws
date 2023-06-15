@@ -13,6 +13,6 @@ lightsail_get_instance(instanceName)
 \description{
 Returns information about a specific Amazon Lightsail instance, which is a virtual private server.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_instance/} for full documentation.
 }
 \keyword{internal}

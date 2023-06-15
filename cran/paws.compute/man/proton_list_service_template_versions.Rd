@@ -30,6 +30,6 @@ list of major or minor versions that was previously requested.}
 \description{
 List major or minor versions of a service template with detail data.
 
-See \url{https://paws-r.github.io/docs/proton/list_service_template_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_list_service_template_versions/} for full documentation.
 }
 \keyword{internal}

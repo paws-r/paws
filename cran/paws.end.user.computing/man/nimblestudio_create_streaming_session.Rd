@@ -39,6 +39,6 @@ this resource.}
 \description{
 Creates a streaming session in a studio.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/create_streaming_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_create_streaming_session/} for full documentation.
 }
 \keyword{internal}

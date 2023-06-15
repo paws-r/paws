@@ -20,6 +20,6 @@ date/timestamp).}
 \description{
 Updates an HTTP namespace.
 
-See \url{https://paws-r.github.io/docs/servicediscovery/update_http_namespace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicediscovery_update_http_namespace/} for full documentation.
 }
 \keyword{internal}

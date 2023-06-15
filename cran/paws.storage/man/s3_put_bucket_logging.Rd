@@ -43,6 +43,6 @@ different account, the request fails with the HTTP status code
 \description{
 Set the logging parameters for a bucket and to specify permissions for who can view and modify the logging parameters. All logs are saved to buckets in the same Amazon Web Services Region as the source bucket. To set the logging status of a bucket, you must be the bucket owner.
 
-See \url{https://paws-r.github.io/docs/s3/put_bucket_logging.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_logging/} for full documentation.
 }
 \keyword{internal}

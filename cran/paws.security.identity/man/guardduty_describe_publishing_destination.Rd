@@ -16,6 +16,6 @@ to retrieve.}
 \description{
 Returns information about the publishing destination specified by the provided \code{destinationId}.
 
-See \url{https://paws-r.github.io/docs/guardduty/describe_publishing_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_describe_publishing_destination/} for full documentation.
 }
 \keyword{internal}

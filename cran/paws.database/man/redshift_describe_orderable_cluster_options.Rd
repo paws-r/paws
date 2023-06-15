@@ -44,6 +44,6 @@ in the \code{Marker} parameter and retrying the request.}
 \description{
 Returns a list of orderable cluster options. Before you create a new cluster you can use this operation to find what options are available, such as the EC2 Availability Zones (AZ) in the specific Amazon Web Services Region that you can specify, and the node types you can request. The node types differ by available storage, memory, CPU and price. With the cost involved you might want to obtain a list of cluster options in the specific region and specify values when creating a cluster. For more information about managing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters} in the \emph{Amazon Redshift Cluster Management Guide}.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_orderable_cluster_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_orderable_cluster_options/} for full documentation.
 }
 \keyword{internal}

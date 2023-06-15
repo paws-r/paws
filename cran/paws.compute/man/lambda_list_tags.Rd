@@ -13,6 +13,6 @@ adding tags to aliases or versions.}
 \description{
 Returns a function's \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags}. You can also view tags with \code{\link[=lambda_get_function]{get_function}}.
 
-See \url{https://paws-r.github.io/docs/lambda/list_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_list_tags/} for full documentation.
 }
 \keyword{internal}

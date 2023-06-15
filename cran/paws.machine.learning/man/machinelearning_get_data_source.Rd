@@ -21,6 +21,6 @@ If false, \code{DataSourceSchema} is not returned.}
 \description{
 Returns a \code{DataSource} that includes metadata and data file information, as well as the current status of the \code{DataSource}.
 
-See \url{https://paws-r.github.io/docs/machinelearning/get_data_source.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_get_data_source/} for full documentation.
 }
 \keyword{internal}

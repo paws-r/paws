@@ -12,6 +12,6 @@ lightsail_get_load_balancer(loadBalancerName)
 \description{
 Returns information about the specified Lightsail load balancer.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_load_balancer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_load_balancer/} for full documentation.
 }
 \keyword{internal}

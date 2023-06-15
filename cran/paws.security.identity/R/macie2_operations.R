@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Accepts an Amazon Macie membership invitation that was received from a specific account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/accept_invitation.html](https://paws-r.github.io/docs/macie2/accept_invitation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_accept_invitation/](https://www.paws-r-sdk.com/docs/macie2_accept_invitation/) for full documentation.
 #'
 #' @param administratorAccountId The Amazon Web Services account ID for the account that sent the
 #' invitation.
@@ -44,7 +44,7 @@ macie2_accept_invitation <- function(administratorAccountId = NULL, invitationId
 #' @description
 #' Retrieves information about one or more custom data identifiers.
 #'
-#' See [https://paws-r.github.io/docs/macie2/batch_get_custom_data_identifiers.html](https://paws-r.github.io/docs/macie2/batch_get_custom_data_identifiers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_batch_get_custom_data_identifiers/](https://www.paws-r-sdk.com/docs/macie2_batch_get_custom_data_identifiers/) for full documentation.
 #'
 #' @param ids An array of custom data identifier IDs, one for each custom data
 #' identifier to retrieve information about.
@@ -74,7 +74,7 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
 #' @description
 #' Creates and defines the settings for an allow list.
 #'
-#' See [https://paws-r.github.io/docs/macie2/create_allow_list.html](https://paws-r.github.io/docs/macie2/create_allow_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_create_allow_list/](https://www.paws-r-sdk.com/docs/macie2_create_allow_list/) for full documentation.
 #'
 #' @param clientToken &#91;required&#93; A unique, case-sensitive token that you provide to ensure the
 #' idempotency of the request.
@@ -118,7 +118,7 @@ macie2_create_allow_list <- function(clientToken, criteria, description = NULL, 
 #' @description
 #' Creates and defines the settings for a classification job.
 #'
-#' See [https://paws-r.github.io/docs/macie2/create_classification_job.html](https://paws-r.github.io/docs/macie2/create_classification_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_create_classification_job/](https://www.paws-r-sdk.com/docs/macie2_create_classification_job/) for full documentation.
 #'
 #' @param allowListIds An array of unique identifiers, one for each allow list for the job to
 #' use when it analyzes data.
@@ -220,7 +220,7 @@ macie2_create_classification_job <- function(allowListIds = NULL, clientToken, c
 #' @description
 #' Creates and defines the criteria and other settings for a custom data identifier.
 #'
-#' See [https://paws-r.github.io/docs/macie2/create_custom_data_identifier.html](https://paws-r.github.io/docs/macie2/create_custom_data_identifier.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_create_custom_data_identifier/](https://www.paws-r-sdk.com/docs/macie2_create_custom_data_identifier/) for full documentation.
 #'
 #' @param clientToken A unique, case-sensitive token that you provide to ensure the
 #' idempotency of the request.
@@ -304,7 +304,7 @@ macie2_create_custom_data_identifier <- function(clientToken = NULL, description
 #' @description
 #' Creates and defines the criteria and other settings for a findings filter.
 #'
-#' See [https://paws-r.github.io/docs/macie2/create_findings_filter.html](https://paws-r.github.io/docs/macie2/create_findings_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_create_findings_filter/](https://www.paws-r-sdk.com/docs/macie2_create_findings_filter/) for full documentation.
 #'
 #' @param action &#91;required&#93; The action to perform on findings that match the filter criteria
 #' (findingCriteria). Valid values are: ARCHIVE, suppress (automatically
@@ -363,7 +363,7 @@ macie2_create_findings_filter <- function(action, clientToken = NULL, descriptio
 #' @description
 #' Sends an Amazon Macie membership invitation to one or more accounts.
 #'
-#' See [https://paws-r.github.io/docs/macie2/create_invitations.html](https://paws-r.github.io/docs/macie2/create_invitations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_create_invitations/](https://www.paws-r-sdk.com/docs/macie2_create_invitations/) for full documentation.
 #'
 #' @param accountIds &#91;required&#93; An array that lists Amazon Web Services account IDs, one for each
 #' account to send the invitation to.
@@ -400,7 +400,7 @@ macie2_create_invitations <- function(accountIds, disableEmailNotification = NUL
 #' @description
 #' Associates an account with an Amazon Macie administrator account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/create_member.html](https://paws-r.github.io/docs/macie2/create_member.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_create_member/](https://www.paws-r-sdk.com/docs/macie2_create_member/) for full documentation.
 #'
 #' @param account &#91;required&#93; The details of the account to associate with the administrator account.
 #' @param tags A map of key-value pairs that specifies the tags to associate with the
@@ -435,7 +435,7 @@ macie2_create_member <- function(account, tags = NULL) {
 #' @description
 #' Creates sample findings.
 #'
-#' See [https://paws-r.github.io/docs/macie2/create_sample_findings.html](https://paws-r.github.io/docs/macie2/create_sample_findings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_create_sample_findings/](https://www.paws-r-sdk.com/docs/macie2_create_sample_findings/) for full documentation.
 #'
 #' @param findingTypes An array of finding types, one for each type of sample finding to
 #' create. To create a sample of every type of finding that Amazon Macie
@@ -467,7 +467,7 @@ macie2_create_sample_findings <- function(findingTypes = NULL) {
 #' @description
 #' Declines Amazon Macie membership invitations that were received from specific accounts.
 #'
-#' See [https://paws-r.github.io/docs/macie2/decline_invitations.html](https://paws-r.github.io/docs/macie2/decline_invitations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_decline_invitations/](https://www.paws-r-sdk.com/docs/macie2_decline_invitations/) for full documentation.
 #'
 #' @param accountIds &#91;required&#93; An array that lists Amazon Web Services account IDs, one for each
 #' account that sent an invitation to decline.
@@ -497,7 +497,7 @@ macie2_decline_invitations <- function(accountIds) {
 #' @description
 #' Deletes an allow list.
 #'
-#' See [https://paws-r.github.io/docs/macie2/delete_allow_list.html](https://paws-r.github.io/docs/macie2/delete_allow_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_delete_allow_list/](https://www.paws-r-sdk.com/docs/macie2_delete_allow_list/) for full documentation.
 #'
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
 #' applies to.
@@ -536,7 +536,7 @@ macie2_delete_allow_list <- function(id, ignoreJobChecks = NULL) {
 #' @description
 #' Soft deletes a custom data identifier.
 #'
-#' See [https://paws-r.github.io/docs/macie2/delete_custom_data_identifier.html](https://paws-r.github.io/docs/macie2/delete_custom_data_identifier.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_delete_custom_data_identifier/](https://www.paws-r-sdk.com/docs/macie2_delete_custom_data_identifier/) for full documentation.
 #'
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
 #' applies to.
@@ -566,7 +566,7 @@ macie2_delete_custom_data_identifier <- function(id) {
 #' @description
 #' Deletes a findings filter.
 #'
-#' See [https://paws-r.github.io/docs/macie2/delete_findings_filter.html](https://paws-r.github.io/docs/macie2/delete_findings_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_delete_findings_filter/](https://www.paws-r-sdk.com/docs/macie2_delete_findings_filter/) for full documentation.
 #'
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
 #' applies to.
@@ -597,7 +597,7 @@ macie2_delete_findings_filter <- function(id) {
 #' @description
 #' Deletes Amazon Macie membership invitations that were received from specific accounts.
 #'
-#' See [https://paws-r.github.io/docs/macie2/delete_invitations.html](https://paws-r.github.io/docs/macie2/delete_invitations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_delete_invitations/](https://www.paws-r-sdk.com/docs/macie2_delete_invitations/) for full documentation.
 #'
 #' @param accountIds &#91;required&#93; An array that lists Amazon Web Services account IDs, one for each
 #' account that sent an invitation to delete.
@@ -628,7 +628,7 @@ macie2_delete_invitations <- function(accountIds) {
 #' @description
 #' Deletes the association between an Amazon Macie administrator account and an account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/delete_member.html](https://paws-r.github.io/docs/macie2/delete_member.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_delete_member/](https://www.paws-r-sdk.com/docs/macie2_delete_member/) for full documentation.
 #'
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
 #' applies to.
@@ -659,7 +659,7 @@ macie2_delete_member <- function(id) {
 #' @description
 #' Retrieves (queries) statistical data and other information about one or more S3 buckets that Amazon Macie monitors and analyzes for an account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/describe_buckets.html](https://paws-r.github.io/docs/macie2/describe_buckets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_describe_buckets/](https://www.paws-r-sdk.com/docs/macie2_describe_buckets/) for full documentation.
 #'
 #' @param criteria The criteria to use to filter the query results.
 #' @param maxResults The maximum number of items to include in each page of the response. The
@@ -693,7 +693,7 @@ macie2_describe_buckets <- function(criteria = NULL, maxResults = NULL, nextToke
 #' @description
 #' Retrieves the status and settings for a classification job.
 #'
-#' See [https://paws-r.github.io/docs/macie2/describe_classification_job.html](https://paws-r.github.io/docs/macie2/describe_classification_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_describe_classification_job/](https://www.paws-r-sdk.com/docs/macie2_describe_classification_job/) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The unique identifier for the classification job.
 #'
@@ -723,7 +723,7 @@ macie2_describe_classification_job <- function(jobId) {
 #' @description
 #' Retrieves the Amazon Macie configuration settings for an organization in Organizations.
 #'
-#' See [https://paws-r.github.io/docs/macie2/describe_organization_configuration.html](https://paws-r.github.io/docs/macie2/describe_organization_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_describe_organization_configuration/](https://www.paws-r-sdk.com/docs/macie2_describe_organization_configuration/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -751,7 +751,7 @@ macie2_describe_organization_configuration <- function() {
 #' @description
 #' Disables Amazon Macie and deletes all settings and resources for a Macie account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/disable_macie.html](https://paws-r.github.io/docs/macie2/disable_macie.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_disable_macie/](https://www.paws-r-sdk.com/docs/macie2_disable_macie/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -779,7 +779,7 @@ macie2_disable_macie <- function() {
 #' @description
 #' Disables an account as the delegated Amazon Macie administrator account for an organization in Organizations.
 #'
-#' See [https://paws-r.github.io/docs/macie2/disable_organization_admin_account.html](https://paws-r.github.io/docs/macie2/disable_organization_admin_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_disable_organization_admin_account/](https://www.paws-r-sdk.com/docs/macie2_disable_organization_admin_account/) for full documentation.
 #'
 #' @param adminAccountId &#91;required&#93; The Amazon Web Services account ID of the delegated Amazon Macie
 #' administrator account.
@@ -810,7 +810,7 @@ macie2_disable_organization_admin_account <- function(adminAccountId) {
 #' @description
 #' Disassociates a member account from its Amazon Macie administrator account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/disassociate_from_administrator_account.html](https://paws-r.github.io/docs/macie2/disassociate_from_administrator_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_disassociate_from_administrator_account/](https://www.paws-r-sdk.com/docs/macie2_disassociate_from_administrator_account/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -838,7 +838,7 @@ macie2_disassociate_from_administrator_account <- function() {
 #' @description
 #' (Deprecated) Disassociates a member account from its Amazon Macie administrator account. This operation has been replaced by the DisassociateFromAdministratorAccount operation.
 #'
-#' See [https://paws-r.github.io/docs/macie2/disassociate_from_master_account.html](https://paws-r.github.io/docs/macie2/disassociate_from_master_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_disassociate_from_master_account/](https://www.paws-r-sdk.com/docs/macie2_disassociate_from_master_account/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -866,7 +866,7 @@ macie2_disassociate_from_master_account <- function() {
 #' @description
 #' Disassociates an Amazon Macie administrator account from a member account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/disassociate_member.html](https://paws-r.github.io/docs/macie2/disassociate_member.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_disassociate_member/](https://www.paws-r-sdk.com/docs/macie2_disassociate_member/) for full documentation.
 #'
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
 #' applies to.
@@ -897,7 +897,7 @@ macie2_disassociate_member <- function(id) {
 #' @description
 #' Enables Amazon Macie and specifies the configuration settings for a Macie account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/enable_macie.html](https://paws-r.github.io/docs/macie2/enable_macie.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_enable_macie/](https://www.paws-r-sdk.com/docs/macie2_enable_macie/) for full documentation.
 #'
 #' @param clientToken A unique, case-sensitive token that you provide to ensure the
 #' idempotency of the request.
@@ -933,7 +933,7 @@ macie2_enable_macie <- function(clientToken = NULL, findingPublishingFrequency =
 #' @description
 #' Designates an account as the delegated Amazon Macie administrator account for an organization in Organizations.
 #'
-#' See [https://paws-r.github.io/docs/macie2/enable_organization_admin_account.html](https://paws-r.github.io/docs/macie2/enable_organization_admin_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_enable_organization_admin_account/](https://www.paws-r-sdk.com/docs/macie2_enable_organization_admin_account/) for full documentation.
 #'
 #' @param adminAccountId &#91;required&#93; The Amazon Web Services account ID for the account to designate as the
 #' delegated Amazon Macie administrator account for the organization.
@@ -966,7 +966,7 @@ macie2_enable_organization_admin_account <- function(adminAccountId, clientToken
 #' @description
 #' Retrieves information about the Amazon Macie administrator account for an account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_administrator_account.html](https://paws-r.github.io/docs/macie2/get_administrator_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_administrator_account/](https://www.paws-r-sdk.com/docs/macie2_get_administrator_account/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -993,7 +993,7 @@ macie2_get_administrator_account <- function() {
 #' @description
 #' Retrieves the settings and status of an allow list.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_allow_list.html](https://paws-r.github.io/docs/macie2/get_allow_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_allow_list/](https://www.paws-r-sdk.com/docs/macie2_get_allow_list/) for full documentation.
 #'
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
 #' applies to.
@@ -1024,7 +1024,7 @@ macie2_get_allow_list <- function(id) {
 #' @description
 #' Retrieves the configuration settings and status of automated sensitive data discovery for an account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_automated_discovery_configuration.html](https://paws-r.github.io/docs/macie2/get_automated_discovery_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_automated_discovery_configuration/](https://www.paws-r-sdk.com/docs/macie2_get_automated_discovery_configuration/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1052,7 +1052,7 @@ macie2_get_automated_discovery_configuration <- function() {
 #' @description
 #' Retrieves (queries) aggregated statistical data about all the S3 buckets that Amazon Macie monitors and analyzes for an account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_bucket_statistics.html](https://paws-r.github.io/docs/macie2/get_bucket_statistics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_bucket_statistics/](https://www.paws-r-sdk.com/docs/macie2_get_bucket_statistics/) for full documentation.
 #'
 #' @param accountId The unique identifier for the Amazon Web Services account.
 #'
@@ -1082,7 +1082,7 @@ macie2_get_bucket_statistics <- function(accountId = NULL) {
 #' @description
 #' Retrieves the configuration settings for storing data classification results.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_classification_export_configuration.html](https://paws-r.github.io/docs/macie2/get_classification_export_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_classification_export_configuration/](https://www.paws-r-sdk.com/docs/macie2_get_classification_export_configuration/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1109,7 +1109,7 @@ macie2_get_classification_export_configuration <- function() {
 #' @description
 #' Retrieves the classification scope settings for an account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_classification_scope.html](https://paws-r.github.io/docs/macie2/get_classification_scope.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_classification_scope/](https://www.paws-r-sdk.com/docs/macie2_get_classification_scope/) for full documentation.
 #'
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
 #' applies to.
@@ -1139,7 +1139,7 @@ macie2_get_classification_scope <- function(id) {
 #' @description
 #' Retrieves the criteria and other settings for a custom data identifier.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_custom_data_identifier.html](https://paws-r.github.io/docs/macie2/get_custom_data_identifier.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_custom_data_identifier/](https://www.paws-r-sdk.com/docs/macie2_get_custom_data_identifier/) for full documentation.
 #'
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
 #' applies to.
@@ -1169,7 +1169,7 @@ macie2_get_custom_data_identifier <- function(id) {
 #' @description
 #' Retrieves (queries) aggregated statistical data about findings.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_finding_statistics.html](https://paws-r.github.io/docs/macie2/get_finding_statistics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_finding_statistics/](https://www.paws-r-sdk.com/docs/macie2_get_finding_statistics/) for full documentation.
 #'
 #' @param findingCriteria The criteria to use to filter the query results.
 #' @param groupBy &#91;required&#93; The finding property to use to group the query results. Valid values
@@ -1214,7 +1214,7 @@ macie2_get_finding_statistics <- function(findingCriteria = NULL, groupBy, size 
 #' @description
 #' Retrieves the details of one or more findings.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_findings.html](https://paws-r.github.io/docs/macie2/get_findings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_findings/](https://www.paws-r-sdk.com/docs/macie2_get_findings/) for full documentation.
 #'
 #' @param findingIds &#91;required&#93; An array of strings that lists the unique identifiers for the findings
 #' to retrieve. You can specify as many as 50 unique identifiers in this
@@ -1246,7 +1246,7 @@ macie2_get_findings <- function(findingIds, sortCriteria = NULL) {
 #' @description
 #' Retrieves the criteria and other settings for a findings filter.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_findings_filter.html](https://paws-r.github.io/docs/macie2/get_findings_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_findings_filter/](https://www.paws-r-sdk.com/docs/macie2_get_findings_filter/) for full documentation.
 #'
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
 #' applies to.
@@ -1277,7 +1277,7 @@ macie2_get_findings_filter <- function(id) {
 #' @description
 #' Retrieves the configuration settings for publishing findings to Security Hub.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_findings_publication_configuration.html](https://paws-r.github.io/docs/macie2/get_findings_publication_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_findings_publication_configuration/](https://www.paws-r-sdk.com/docs/macie2_get_findings_publication_configuration/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1305,7 +1305,7 @@ macie2_get_findings_publication_configuration <- function() {
 #' @description
 #' Retrieves the count of Amazon Macie membership invitations that were received by an account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_invitations_count.html](https://paws-r.github.io/docs/macie2/get_invitations_count.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_invitations_count/](https://www.paws-r-sdk.com/docs/macie2_get_invitations_count/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1333,7 +1333,7 @@ macie2_get_invitations_count <- function() {
 #' @description
 #' Retrieves the status and configuration settings for an Amazon Macie account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_macie_session.html](https://paws-r.github.io/docs/macie2/get_macie_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_macie_session/](https://www.paws-r-sdk.com/docs/macie2_get_macie_session/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1361,7 +1361,7 @@ macie2_get_macie_session <- function() {
 #' @description
 #' (Deprecated) Retrieves information about the Amazon Macie administrator account for an account. This operation has been replaced by the GetAdministratorAccount operation.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_master_account.html](https://paws-r.github.io/docs/macie2/get_master_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_master_account/](https://www.paws-r-sdk.com/docs/macie2_get_master_account/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1389,7 +1389,7 @@ macie2_get_master_account <- function() {
 #' @description
 #' Retrieves information about an account that's associated with an Amazon Macie administrator account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_member.html](https://paws-r.github.io/docs/macie2/get_member.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_member/](https://www.paws-r-sdk.com/docs/macie2_get_member/) for full documentation.
 #'
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
 #' applies to.
@@ -1420,7 +1420,7 @@ macie2_get_member <- function(id) {
 #' @description
 #' Retrieves (queries) sensitive data discovery statistics and the sensitivity score for an S3 bucket.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_resource_profile.html](https://paws-r.github.io/docs/macie2/get_resource_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_resource_profile/](https://www.paws-r-sdk.com/docs/macie2_get_resource_profile/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 bucket that the request applies
 #' to.
@@ -1451,7 +1451,7 @@ macie2_get_resource_profile <- function(resourceArn) {
 #' @description
 #' Retrieves the status and configuration settings for retrieving occurrences of sensitive data reported by findings.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_reveal_configuration.html](https://paws-r.github.io/docs/macie2/get_reveal_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_reveal_configuration/](https://www.paws-r-sdk.com/docs/macie2_get_reveal_configuration/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1478,7 +1478,7 @@ macie2_get_reveal_configuration <- function() {
 #' @description
 #' Retrieves occurrences of sensitive data reported by a finding.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_sensitive_data_occurrences.html](https://paws-r.github.io/docs/macie2/get_sensitive_data_occurrences.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_sensitive_data_occurrences/](https://www.paws-r-sdk.com/docs/macie2_get_sensitive_data_occurrences/) for full documentation.
 #'
 #' @param findingId &#91;required&#93; The unique identifier for the finding.
 #'
@@ -1508,7 +1508,7 @@ macie2_get_sensitive_data_occurrences <- function(findingId) {
 #' @description
 #' Checks whether occurrences of sensitive data can be retrieved for a finding.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_sensitive_data_occurrences_availability.html](https://paws-r.github.io/docs/macie2/get_sensitive_data_occurrences_availability.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_sensitive_data_occurrences_availability/](https://www.paws-r-sdk.com/docs/macie2_get_sensitive_data_occurrences_availability/) for full documentation.
 #'
 #' @param findingId &#91;required&#93; The unique identifier for the finding.
 #'
@@ -1538,7 +1538,7 @@ macie2_get_sensitive_data_occurrences_availability <- function(findingId) {
 #' @description
 #' Retrieves the settings for the sensitivity inspection template for an account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_sensitivity_inspection_template.html](https://paws-r.github.io/docs/macie2/get_sensitivity_inspection_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_sensitivity_inspection_template/](https://www.paws-r-sdk.com/docs/macie2_get_sensitivity_inspection_template/) for full documentation.
 #'
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
 #' applies to.
@@ -1569,7 +1569,7 @@ macie2_get_sensitivity_inspection_template <- function(id) {
 #' @description
 #' Retrieves (queries) quotas and aggregated usage data for one or more accounts.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_usage_statistics.html](https://paws-r.github.io/docs/macie2/get_usage_statistics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_usage_statistics/](https://www.paws-r-sdk.com/docs/macie2_get_usage_statistics/) for full documentation.
 #'
 #' @param filterBy An array of objects, one for each condition to use to filter the query
 #' results. If you specify more than one condition, Amazon Macie uses an
@@ -1608,7 +1608,7 @@ macie2_get_usage_statistics <- function(filterBy = NULL, maxResults = NULL, next
 #' @description
 #' Retrieves (queries) aggregated usage data for an account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/get_usage_totals.html](https://paws-r.github.io/docs/macie2/get_usage_totals.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_get_usage_totals/](https://www.paws-r-sdk.com/docs/macie2_get_usage_totals/) for full documentation.
 #'
 #' @param timeRange The inclusive time period to retrieve the data for. Valid values are:
 #' MONTH_TO_DATE, for the current calendar month to date; and,
@@ -1642,7 +1642,7 @@ macie2_get_usage_totals <- function(timeRange = NULL) {
 #' @description
 #' Retrieves a subset of information about all the allow lists for an account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/list_allow_lists.html](https://paws-r.github.io/docs/macie2/list_allow_lists.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_list_allow_lists/](https://www.paws-r-sdk.com/docs/macie2_list_allow_lists/) for full documentation.
 #'
 #' @param maxResults The maximum number of items to include in each page of a paginated
 #' response.
@@ -1674,7 +1674,7 @@ macie2_list_allow_lists <- function(maxResults = NULL, nextToken = NULL) {
 #' @description
 #' Retrieves a subset of information about one or more classification jobs.
 #'
-#' See [https://paws-r.github.io/docs/macie2/list_classification_jobs.html](https://paws-r.github.io/docs/macie2/list_classification_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_list_classification_jobs/](https://www.paws-r-sdk.com/docs/macie2_list_classification_jobs/) for full documentation.
 #'
 #' @param filterCriteria The criteria to use to filter the results.
 #' @param maxResults The maximum number of items to include in each page of the response.
@@ -1708,7 +1708,7 @@ macie2_list_classification_jobs <- function(filterCriteria = NULL, maxResults = 
 #' @description
 #' Retrieves a subset of information about the classification scope for an account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/list_classification_scopes.html](https://paws-r.github.io/docs/macie2/list_classification_scopes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_list_classification_scopes/](https://www.paws-r-sdk.com/docs/macie2_list_classification_scopes/) for full documentation.
 #'
 #' @param name The name of the classification scope to retrieve the unique identifier
 #' for.
@@ -1741,7 +1741,7 @@ macie2_list_classification_scopes <- function(name = NULL, nextToken = NULL) {
 #' @description
 #' Retrieves a subset of information about all the custom data identifiers for an account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/list_custom_data_identifiers.html](https://paws-r.github.io/docs/macie2/list_custom_data_identifiers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_list_custom_data_identifiers/](https://www.paws-r-sdk.com/docs/macie2_list_custom_data_identifiers/) for full documentation.
 #'
 #' @param maxResults The maximum number of items to include in each page of the response.
 #' @param nextToken The nextToken string that specifies which page of results to return in a
@@ -1772,7 +1772,7 @@ macie2_list_custom_data_identifiers <- function(maxResults = NULL, nextToken = N
 #' @description
 #' Retrieves a subset of information about one or more findings.
 #'
-#' See [https://paws-r.github.io/docs/macie2/list_findings.html](https://paws-r.github.io/docs/macie2/list_findings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_list_findings/](https://www.paws-r-sdk.com/docs/macie2_list_findings/) for full documentation.
 #'
 #' @param findingCriteria The criteria to use to filter the results.
 #' @param maxResults The maximum number of items to include in each page of the response.
@@ -1806,7 +1806,7 @@ macie2_list_findings <- function(findingCriteria = NULL, maxResults = NULL, next
 #' @description
 #' Retrieves a subset of information about all the findings filters for an account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/list_findings_filters.html](https://paws-r.github.io/docs/macie2/list_findings_filters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_list_findings_filters/](https://www.paws-r-sdk.com/docs/macie2_list_findings_filters/) for full documentation.
 #'
 #' @param maxResults The maximum number of items to include in each page of a paginated
 #' response.
@@ -1839,7 +1839,7 @@ macie2_list_findings_filters <- function(maxResults = NULL, nextToken = NULL) {
 #' @description
 #' Retrieves information about the Amazon Macie membership invitations that were received by an account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/list_invitations.html](https://paws-r.github.io/docs/macie2/list_invitations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_list_invitations/](https://www.paws-r-sdk.com/docs/macie2_list_invitations/) for full documentation.
 #'
 #' @param maxResults The maximum number of items to include in each page of a paginated
 #' response.
@@ -1872,7 +1872,7 @@ macie2_list_invitations <- function(maxResults = NULL, nextToken = NULL) {
 #' @description
 #' Retrieves information about all the managed data identifiers that Amazon Macie currently provides.
 #'
-#' See [https://paws-r.github.io/docs/macie2/list_managed_data_identifiers.html](https://paws-r.github.io/docs/macie2/list_managed_data_identifiers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_list_managed_data_identifiers/](https://www.paws-r-sdk.com/docs/macie2_list_managed_data_identifiers/) for full documentation.
 #'
 #' @param nextToken The nextToken string that specifies which page of results to return in a
 #' paginated response.
@@ -1903,7 +1903,7 @@ macie2_list_managed_data_identifiers <- function(nextToken = NULL) {
 #' @description
 #' Retrieves information about the accounts that are associated with an Amazon Macie administrator account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/list_members.html](https://paws-r.github.io/docs/macie2/list_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_list_members/](https://www.paws-r-sdk.com/docs/macie2_list_members/) for full documentation.
 #'
 #' @param maxResults The maximum number of items to include in each page of a paginated
 #' response.
@@ -1940,7 +1940,7 @@ macie2_list_members <- function(maxResults = NULL, nextToken = NULL, onlyAssocia
 #' @description
 #' Retrieves information about the delegated Amazon Macie administrator account for an organization in Organizations.
 #'
-#' See [https://paws-r.github.io/docs/macie2/list_organization_admin_accounts.html](https://paws-r.github.io/docs/macie2/list_organization_admin_accounts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_list_organization_admin_accounts/](https://www.paws-r-sdk.com/docs/macie2_list_organization_admin_accounts/) for full documentation.
 #'
 #' @param maxResults The maximum number of items to include in each page of a paginated
 #' response.
@@ -1973,7 +1973,7 @@ macie2_list_organization_admin_accounts <- function(maxResults = NULL, nextToken
 #' @description
 #' Retrieves information about objects that were selected from an S3 bucket for automated sensitive data discovery.
 #'
-#' See [https://paws-r.github.io/docs/macie2/list_resource_profile_artifacts.html](https://paws-r.github.io/docs/macie2/list_resource_profile_artifacts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_list_resource_profile_artifacts/](https://www.paws-r-sdk.com/docs/macie2_list_resource_profile_artifacts/) for full documentation.
 #'
 #' @param nextToken The nextToken string that specifies which page of results to return in a
 #' paginated response.
@@ -2006,7 +2006,7 @@ macie2_list_resource_profile_artifacts <- function(nextToken = NULL, resourceArn
 #' @description
 #' Retrieves information about the types and amount of sensitive data that Amazon Macie found in an S3 bucket.
 #'
-#' See [https://paws-r.github.io/docs/macie2/list_resource_profile_detections.html](https://paws-r.github.io/docs/macie2/list_resource_profile_detections.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_list_resource_profile_detections/](https://www.paws-r-sdk.com/docs/macie2_list_resource_profile_detections/) for full documentation.
 #'
 #' @param maxResults The maximum number of items to include in each page of a paginated
 #' response.
@@ -2041,7 +2041,7 @@ macie2_list_resource_profile_detections <- function(maxResults = NULL, nextToken
 #' @description
 #' Retrieves a subset of information about the sensitivity inspection template for an account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/list_sensitivity_inspection_templates.html](https://paws-r.github.io/docs/macie2/list_sensitivity_inspection_templates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_list_sensitivity_inspection_templates/](https://www.paws-r-sdk.com/docs/macie2_list_sensitivity_inspection_templates/) for full documentation.
 #'
 #' @param maxResults The maximum number of items to include in each page of a paginated
 #' response.
@@ -2074,7 +2074,7 @@ macie2_list_sensitivity_inspection_templates <- function(maxResults = NULL, next
 #' @description
 #' Retrieves the tags (keys and values) that are associated with an Amazon Macie resource.
 #'
-#' See [https://paws-r.github.io/docs/macie2/list_tags_for_resource.html](https://paws-r.github.io/docs/macie2/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/macie2_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #'
@@ -2104,7 +2104,7 @@ macie2_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Creates or updates the configuration settings for storing data classification results.
 #'
-#' See [https://paws-r.github.io/docs/macie2/put_classification_export_configuration.html](https://paws-r.github.io/docs/macie2/put_classification_export_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_put_classification_export_configuration/](https://www.paws-r-sdk.com/docs/macie2_put_classification_export_configuration/) for full documentation.
 #'
 #' @param configuration &#91;required&#93; The location to store data classification results in, and the encryption
 #' settings to use when storing results in that location.
@@ -2135,7 +2135,7 @@ macie2_put_classification_export_configuration <- function(configuration) {
 #' @description
 #' Updates the configuration settings for publishing findings to Security Hub.
 #'
-#' See [https://paws-r.github.io/docs/macie2/put_findings_publication_configuration.html](https://paws-r.github.io/docs/macie2/put_findings_publication_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_put_findings_publication_configuration/](https://www.paws-r-sdk.com/docs/macie2_put_findings_publication_configuration/) for full documentation.
 #'
 #' @param clientToken A unique, case-sensitive token that you provide to ensure the
 #' idempotency of the request.
@@ -2168,7 +2168,7 @@ macie2_put_findings_publication_configuration <- function(clientToken = NULL, se
 #' @description
 #' Retrieves (queries) statistical data and other information about Amazon Web Services resources that Amazon Macie monitors and analyzes.
 #'
-#' See [https://paws-r.github.io/docs/macie2/search_resources.html](https://paws-r.github.io/docs/macie2/search_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_search_resources/](https://www.paws-r-sdk.com/docs/macie2_search_resources/) for full documentation.
 #'
 #' @param bucketCriteria The filter conditions that determine which S3 buckets to include or
 #' exclude from the query results.
@@ -2204,7 +2204,7 @@ macie2_search_resources <- function(bucketCriteria = NULL, maxResults = NULL, ne
 #' @description
 #' Adds or updates one or more tags (keys and values) that are associated with an Amazon Macie resource.
 #'
-#' See [https://paws-r.github.io/docs/macie2/tag_resource.html](https://paws-r.github.io/docs/macie2/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_tag_resource/](https://www.paws-r-sdk.com/docs/macie2_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param tags &#91;required&#93; A map of key-value pairs that specifies the tags to associate with the
@@ -2239,7 +2239,7 @@ macie2_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Tests a custom data identifier.
 #'
-#' See [https://paws-r.github.io/docs/macie2/test_custom_data_identifier.html](https://paws-r.github.io/docs/macie2/test_custom_data_identifier.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_test_custom_data_identifier/](https://www.paws-r-sdk.com/docs/macie2_test_custom_data_identifier/) for full documentation.
 #'
 #' @param ignoreWords An array that lists specific character sequences (*ignore words*) to
 #' exclude from the results. If the text matched by the regular expression
@@ -2287,7 +2287,7 @@ macie2_test_custom_data_identifier <- function(ignoreWords = NULL, keywords = NU
 #' @description
 #' Removes one or more tags (keys and values) from an Amazon Macie resource.
 #'
-#' See [https://paws-r.github.io/docs/macie2/untag_resource.html](https://paws-r.github.io/docs/macie2/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_untag_resource/](https://www.paws-r-sdk.com/docs/macie2_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param tagKeys &#91;required&#93; One or more tags (keys) to remove from the resource. In an HTTP request
@@ -2319,7 +2319,7 @@ macie2_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates the settings for an allow list.
 #'
-#' See [https://paws-r.github.io/docs/macie2/update_allow_list.html](https://paws-r.github.io/docs/macie2/update_allow_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_update_allow_list/](https://www.paws-r-sdk.com/docs/macie2_update_allow_list/) for full documentation.
 #'
 #' @param criteria &#91;required&#93; The criteria that specify the text or text pattern to ignore. The
 #' criteria can be the location and name of an S3 object that lists
@@ -2361,7 +2361,7 @@ macie2_update_allow_list <- function(criteria, description = NULL, id, name) {
 #' @description
 #' Enables or disables automated sensitive data discovery for an account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/update_automated_discovery_configuration.html](https://paws-r.github.io/docs/macie2/update_automated_discovery_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_update_automated_discovery_configuration/](https://www.paws-r-sdk.com/docs/macie2_update_automated_discovery_configuration/) for full documentation.
 #'
 #' @param status &#91;required&#93; The new status of automated sensitive data discovery for the account.
 #' Valid values are: ENABLED, start or resume automated sensitive data
@@ -2401,7 +2401,7 @@ macie2_update_automated_discovery_configuration <- function(status) {
 #' @description
 #' Changes the status of a classification job.
 #'
-#' See [https://paws-r.github.io/docs/macie2/update_classification_job.html](https://paws-r.github.io/docs/macie2/update_classification_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_update_classification_job/](https://www.paws-r-sdk.com/docs/macie2_update_classification_job/) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The unique identifier for the classification job.
 #' @param jobStatus &#91;required&#93; The new status for the job. Valid values are:
@@ -2460,7 +2460,7 @@ macie2_update_classification_job <- function(jobId, jobStatus) {
 #' @description
 #' Updates the classification scope settings for an account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/update_classification_scope.html](https://paws-r.github.io/docs/macie2/update_classification_scope.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_update_classification_scope/](https://www.paws-r-sdk.com/docs/macie2_update_classification_scope/) for full documentation.
 #'
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
 #' applies to.
@@ -2492,7 +2492,7 @@ macie2_update_classification_scope <- function(id, s3 = NULL) {
 #' @description
 #' Updates the criteria and other settings for a findings filter.
 #'
-#' See [https://paws-r.github.io/docs/macie2/update_findings_filter.html](https://paws-r.github.io/docs/macie2/update_findings_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_update_findings_filter/](https://www.paws-r-sdk.com/docs/macie2_update_findings_filter/) for full documentation.
 #'
 #' @param action The action to perform on findings that match the filter criteria
 #' (findingCriteria). Valid values are: ARCHIVE, suppress (automatically
@@ -2548,7 +2548,7 @@ macie2_update_findings_filter <- function(action = NULL, clientToken = NULL, des
 #' @description
 #' Suspends or re-enables Amazon Macie, or updates the configuration settings for a Macie account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/update_macie_session.html](https://paws-r.github.io/docs/macie2/update_macie_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_update_macie_session/](https://www.paws-r-sdk.com/docs/macie2_update_macie_session/) for full documentation.
 #'
 #' @param findingPublishingFrequency Specifies how often to publish updates to policy findings for the
 #' account. This includes publishing updates to Security Hub and Amazon
@@ -2583,7 +2583,7 @@ macie2_update_macie_session <- function(findingPublishingFrequency = NULL, statu
 #' @description
 #' Enables an Amazon Macie administrator to suspend or re-enable Macie for a member account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/update_member_session.html](https://paws-r.github.io/docs/macie2/update_member_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_update_member_session/](https://www.paws-r-sdk.com/docs/macie2_update_member_session/) for full documentation.
 #'
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource that the request
 #' applies to.
@@ -2617,7 +2617,7 @@ macie2_update_member_session <- function(id, status) {
 #' @description
 #' Updates the Amazon Macie configuration settings for an organization in Organizations.
 #'
-#' See [https://paws-r.github.io/docs/macie2/update_organization_configuration.html](https://paws-r.github.io/docs/macie2/update_organization_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_update_organization_configuration/](https://www.paws-r-sdk.com/docs/macie2_update_organization_configuration/) for full documentation.
 #'
 #' @param autoEnable &#91;required&#93; Specifies whether to enable Amazon Macie automatically for an account
 #' when the account is added to the organization in Organizations.
@@ -2647,7 +2647,7 @@ macie2_update_organization_configuration <- function(autoEnable) {
 #' @description
 #' Updates the sensitivity score for an S3 bucket.
 #'
-#' See [https://paws-r.github.io/docs/macie2/update_resource_profile.html](https://paws-r.github.io/docs/macie2/update_resource_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_update_resource_profile/](https://www.paws-r-sdk.com/docs/macie2_update_resource_profile/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 bucket that the request applies
 #' to.
@@ -2681,7 +2681,7 @@ macie2_update_resource_profile <- function(resourceArn, sensitivityScoreOverride
 #' @description
 #' Updates the sensitivity scoring settings for an S3 bucket.
 #'
-#' See [https://paws-r.github.io/docs/macie2/update_resource_profile_detections.html](https://paws-r.github.io/docs/macie2/update_resource_profile_detections.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_update_resource_profile_detections/](https://www.paws-r-sdk.com/docs/macie2_update_resource_profile_detections/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 bucket that the request applies
 #' to.
@@ -2716,7 +2716,7 @@ macie2_update_resource_profile_detections <- function(resourceArn, suppressDataI
 #' @description
 #' Updates the status and configuration settings for retrieving occurrences of sensitive data reported by findings.
 #'
-#' See [https://paws-r.github.io/docs/macie2/update_reveal_configuration.html](https://paws-r.github.io/docs/macie2/update_reveal_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_update_reveal_configuration/](https://www.paws-r-sdk.com/docs/macie2_update_reveal_configuration/) for full documentation.
 #'
 #' @param configuration &#91;required&#93; The new configuration settings and the status of the configuration for
 #' the account.
@@ -2747,7 +2747,7 @@ macie2_update_reveal_configuration <- function(configuration) {
 #' @description
 #' Updates the settings for the sensitivity inspection template for an account.
 #'
-#' See [https://paws-r.github.io/docs/macie2/update_sensitivity_inspection_template.html](https://paws-r.github.io/docs/macie2/update_sensitivity_inspection_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/macie2_update_sensitivity_inspection_template/](https://www.paws-r-sdk.com/docs/macie2_update_sensitivity_inspection_template/) for full documentation.
 #'
 #' @param description A custom description of the template. The description can contain as
 #' many as 200 characters.

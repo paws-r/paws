@@ -18,6 +18,6 @@ all Macie activities for the account.}
 \description{
 Enables an Amazon Macie administrator to suspend or re-enable Macie for a member account.
 
-See \url{https://paws-r.github.io/docs/macie2/update_member_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_update_member_session/} for full documentation.
 }
 \keyword{internal}

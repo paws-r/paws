@@ -12,6 +12,6 @@ route53_delete_cidr_collection(Id)
 \description{
 Deletes a CIDR collection in the current Amazon Web Services account. The collection must be empty before it can be deleted.
 
-See \url{https://paws-r.github.io/docs/route53/delete_cidr_collection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_delete_cidr_collection/} for full documentation.
 }
 \keyword{internal}

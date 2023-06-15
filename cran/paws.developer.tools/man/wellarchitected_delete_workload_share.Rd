@@ -16,6 +16,6 @@ wellarchitected_delete_workload_share(ShareId, WorkloadId, ClientRequestToken)
 \description{
 Delete a workload share.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/delete_workload_share.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_delete_workload_share/} for full documentation.
 }
 \keyword{internal}

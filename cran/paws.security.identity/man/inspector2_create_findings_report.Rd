@@ -20,6 +20,6 @@ inspector2_create_findings_report(
 \description{
 Creates a finding report. By default only \code{ACTIVE} findings are returned in the report. To see \code{SUPRESSED} or \code{CLOSED} findings you must specify a value for the \code{findingStatus} filter criteria.
 
-See \url{https://paws-r.github.io/docs/inspector2/create_findings_report.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_create_findings_report/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ this must be an ARN.}
 \description{
 Sends an event to a specific room which directs clients to delete a specific message; that is, unrender it from view and delete it from the client’s chat history. This event’s \code{EventName} is \code{aws:DELETE_MESSAGE}. This replicates the \href{https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-deletemessage-publish.html}{DeleteMessage} WebSocket operation in the Amazon IVS Chat Messaging API.
 
-See \url{https://paws-r.github.io/docs/ivschat/delete_message.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivschat_delete_message/} for full documentation.
 }
 \keyword{internal}

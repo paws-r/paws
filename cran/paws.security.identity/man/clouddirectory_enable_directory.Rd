@@ -12,6 +12,6 @@ clouddirectory_enable_directory(DirectoryArn)
 \description{
 Enables the specified directory. Only disabled directories can be enabled. Once enabled, the directory can then be read and written to.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/enable_directory.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_enable_directory/} for full documentation.
 }
 \keyword{internal}

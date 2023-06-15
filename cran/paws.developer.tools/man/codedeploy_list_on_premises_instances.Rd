@@ -29,6 +29,6 @@ the list.}
 \description{
 Gets a list of names for one or more on-premises instances.
 
-See \url{https://paws-r.github.io/docs/codedeploy/list_on_premises_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_list_on_premises_instances/} for full documentation.
 }
 \keyword{internal}

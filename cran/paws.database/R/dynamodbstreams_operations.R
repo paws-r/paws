@@ -10,7 +10,7 @@ NULL
 #' @description
 #' Returns information about a stream, including the current status of the stream, its Amazon Resource Name (ARN), the composition of its shards, and its corresponding DynamoDB table.
 #'
-#' See [https://paws-r.github.io/docs/dynamodbstreams/describe_stream.html](https://paws-r.github.io/docs/dynamodbstreams/describe_stream.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodbstreams_describe_stream/](https://www.paws-r-sdk.com/docs/dynamodbstreams_describe_stream/) for full documentation.
 #'
 #' @param StreamArn &#91;required&#93; The Amazon Resource Name (ARN) for the stream.
 #' @param Limit The maximum number of shard objects to return. The upper limit is 100.
@@ -43,7 +43,7 @@ dynamodbstreams_describe_stream <- function(StreamArn, Limit = NULL, ExclusiveSt
 #' @description
 #' Retrieves the stream records from a given shard.
 #'
-#' See [https://paws-r.github.io/docs/dynamodbstreams/get_records.html](https://paws-r.github.io/docs/dynamodbstreams/get_records.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodbstreams_get_records/](https://www.paws-r-sdk.com/docs/dynamodbstreams_get_records/) for full documentation.
 #'
 #' @param ShardIterator &#91;required&#93; A shard iterator that was retrieved from a previous GetShardIterator
 #' operation. This iterator can be used to access the stream records in
@@ -76,7 +76,7 @@ dynamodbstreams_get_records <- function(ShardIterator, Limit = NULL) {
 #' @description
 #' Returns a shard iterator. A shard iterator provides information about how to retrieve the stream records from within a shard. Use the shard iterator in a subsequent [`get_records`][dynamodbstreams_get_records] request to read the stream records from the shard.
 #'
-#' See [https://paws-r.github.io/docs/dynamodbstreams/get_shard_iterator.html](https://paws-r.github.io/docs/dynamodbstreams/get_shard_iterator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodbstreams_get_shard_iterator/](https://www.paws-r-sdk.com/docs/dynamodbstreams_get_shard_iterator/) for full documentation.
 #'
 #' @param StreamArn &#91;required&#93; The Amazon Resource Name (ARN) for the stream.
 #' @param ShardId &#91;required&#93; The identifier of the shard. The iterator will be returned for this
@@ -128,7 +128,7 @@ dynamodbstreams_get_shard_iterator <- function(StreamArn, ShardId, ShardIterator
 #' @description
 #' Returns an array of stream ARNs associated with the current account and endpoint. If the `TableName` parameter is present, then [`list_streams`][dynamodbstreams_list_streams] will return only the streams ARNs for that table.
 #'
-#' See [https://paws-r.github.io/docs/dynamodbstreams/list_streams.html](https://paws-r.github.io/docs/dynamodbstreams/list_streams.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dynamodbstreams_list_streams/](https://www.paws-r-sdk.com/docs/dynamodbstreams_list_streams/) for full documentation.
 #'
 #' @param TableName If this parameter is provided, then only the streams associated with
 #' this table name are returned.

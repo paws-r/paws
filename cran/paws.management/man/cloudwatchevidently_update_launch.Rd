@@ -40,6 +40,6 @@ among the feature variations during each step of the launch.}
 \description{
 Updates a launch of a given feature.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/update_launch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_update_launch/} for full documentation.
 }
 \keyword{internal}

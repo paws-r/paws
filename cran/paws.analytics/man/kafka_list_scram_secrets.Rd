@@ -17,6 +17,6 @@ kafka_list_scram_secrets(ClusterArn, MaxResults = NULL, NextToken = NULL)
 \description{
 Returns a list of the Scram Secrets associated with an Amazon MSK cluster.
 
-See \url{https://paws-r.github.io/docs/kafka/list_scram_secrets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_list_scram_secrets/} for full documentation.
 }
 \keyword{internal}

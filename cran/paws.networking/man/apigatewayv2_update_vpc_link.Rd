@@ -14,6 +14,6 @@ apigatewayv2_update_vpc_link(Name = NULL, VpcLinkId)
 \description{
 Updates a VPC link.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/update_vpc_link.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_update_vpc_link/} for full documentation.
 }
 \keyword{internal}

@@ -9,6 +9,6 @@ ses_get_send_quota()
 \description{
 Provides the sending limits for the Amazon SES account.
 
-See \url{https://paws-r.github.io/docs/ses/get_send_quota.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_get_send_quota/} for full documentation.
 }
 \keyword{internal}

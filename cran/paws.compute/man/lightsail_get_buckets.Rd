@@ -31,6 +31,6 @@ action.}
 \description{
 Returns information about one or more Amazon Lightsail buckets. The information returned includes the synchronization status of the Amazon Simple Storage Service (Amazon S3) account-level block public access feature for your Lightsail buckets.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_buckets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_buckets/} for full documentation.
 }
 \keyword{internal}

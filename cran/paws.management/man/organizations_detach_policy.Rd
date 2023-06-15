@@ -38,6 +38,6 @@ dash and from 8 to 32 additional lowercase letters or digits.
 \description{
 Detaches a policy from a target root, organizational unit (OU), or account.
 
-See \url{https://paws-r.github.io/docs/organizations/detach_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_detach_policy/} for full documentation.
 }
 \keyword{internal}

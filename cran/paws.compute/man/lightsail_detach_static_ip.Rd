@@ -13,6 +13,6 @@ lightsail_detach_static_ip(staticIpName)
 \description{
 Detaches a static IP from the Amazon Lightsail instance to which it is attached.
 
-See \url{https://paws-r.github.io/docs/lightsail/detach_static_ip.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_detach_static_ip/} for full documentation.
 }
 \keyword{internal}

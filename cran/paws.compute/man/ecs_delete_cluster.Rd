@@ -13,6 +13,6 @@ delete.}
 \description{
 Deletes the specified cluster. The cluster transitions to the \code{INACTIVE} state. Clusters with an \code{INACTIVE} status might remain discoverable in your account for a period of time. However, this behavior is subject to change in the future. We don't recommend that you rely on \code{INACTIVE} clusters persisting.
 
-See \url{https://paws-r.github.io/docs/ecs/delete_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_delete_cluster/} for full documentation.
 }
 \keyword{internal}

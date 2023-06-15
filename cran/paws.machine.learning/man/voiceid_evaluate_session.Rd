@@ -16,6 +16,6 @@ evaluate. In Voice ID integration, this is the Contact-Id.}
 \description{
 Evaluates a specified session based on audio data accumulated during a streaming Amazon Connect Voice ID call.
 
-See \url{https://paws-r.github.io/docs/voiceid/evaluate_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/voiceid_evaluate_session/} for full documentation.
 }
 \keyword{internal}

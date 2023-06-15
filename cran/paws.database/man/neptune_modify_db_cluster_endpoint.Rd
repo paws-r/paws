@@ -27,6 +27,6 @@ endpoint. Only relevant if the list of static members is empty.}
 \description{
 Modifies the properties of an endpoint in an Amazon Neptune DB cluster.
 
-See \url{https://paws-r.github.io/docs/neptune/modify_db_cluster_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_modify_db_cluster_endpoint/} for full documentation.
 }
 \keyword{internal}

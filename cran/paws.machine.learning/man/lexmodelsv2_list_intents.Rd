@@ -49,6 +49,6 @@ page of results. For a complete set of results, call the
 \description{
 Get a list of intents that meet the specified criteria.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/list_intents.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_list_intents/} for full documentation.
 }
 \keyword{internal}

@@ -29,6 +29,6 @@ this operation. If this value is null, it retrieves the first page.}
 \description{
 Returns a list of insights associated with the account or OU Id.
 
-See \url{https://paws-r.github.io/docs/devopsguru/list_organization_insights.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_list_organization_insights/} for full documentation.
 }
 \keyword{internal}

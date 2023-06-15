@@ -21,6 +21,6 @@ value of NextToken from the previous response to continue listing data.}
 \description{
 Returns a paginated list of the current filters.
 
-See \url{https://paws-r.github.io/docs/guardduty/list_filters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_list_filters/} for full documentation.
 }
 \keyword{internal}

@@ -41,6 +41,6 @@ firewall after you create it.}
 \description{
 A complex type that contains settings for encryption of your firewall resources.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/update_firewall_encryption_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_update_firewall_encryption_configuration/} for full documentation.
 }
 \keyword{internal}

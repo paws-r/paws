@@ -26,6 +26,6 @@ is \code{SWITCHOVER_COMPLETED}.}
 \description{
 Deletes a blue/green deployment.
 
-See \url{https://paws-r.github.io/docs/rds/delete_blue_green_deployment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_delete_blue_green_deployment/} for full documentation.
 }
 \keyword{internal}

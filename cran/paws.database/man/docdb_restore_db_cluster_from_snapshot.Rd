@@ -114,6 +114,6 @@ end with a hyphen or contain two consecutive hyphens.}
 \description{
 Creates a new cluster from a snapshot or cluster snapshot.
 
-See \url{https://paws-r.github.io/docs/docdb/restore_db_cluster_from_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_restore_db_cluster_from_snapshot/} for full documentation.
 }
 \keyword{internal}

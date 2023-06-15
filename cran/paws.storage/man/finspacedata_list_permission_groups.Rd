@@ -14,6 +14,6 @@ finspacedata_list_permission_groups(nextToken = NULL, maxResults)
 \description{
 Lists all available permission groups in FinSpace.
 
-See \url{https://paws-r.github.io/docs/finspacedata/list_permission_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_list_permission_groups/} for full documentation.
 }
 \keyword{internal}

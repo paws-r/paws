@@ -37,6 +37,6 @@ default, versions without staging labels aren't included.}
 \description{
 Lists the versions of a secret. Secrets Manager uses staging labels to indicate the different versions of a secret. For more information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version}{Secrets Manager concepts: Versions}.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/list_secret_version_ids.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_list_secret_version_ids/} for full documentation.
 }
 \keyword{internal}

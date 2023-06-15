@@ -57,13 +57,16 @@ AWS Elastic Disaster Recovery Service.
 \section{Operations}{
 
 \tabular{ll}{
+\link[paws.developer.tools:drs_associate_source_network_stack]{associate_source_network_stack} \tab Associate a Source Network to an existing CloudFormation Stack and modify launch templates to use this network\cr
 \link[paws.developer.tools:drs_create_extended_source_server]{create_extended_source_server} \tab Create an extended source server in the target Account based on the source server in staging account\cr
 \link[paws.developer.tools:drs_create_launch_configuration_template]{create_launch_configuration_template} \tab Creates a new Launch Configuration Template\cr
 \link[paws.developer.tools:drs_create_replication_configuration_template]{create_replication_configuration_template} \tab Creates a new ReplicationConfigurationTemplate\cr
+\link[paws.developer.tools:drs_create_source_network]{create_source_network} \tab Create a new Source Network resource for a provided VPC ID\cr
 \link[paws.developer.tools:drs_delete_job]{delete_job} \tab Deletes a single Job by ID\cr
 \link[paws.developer.tools:drs_delete_launch_configuration_template]{delete_launch_configuration_template} \tab Deletes a single Launch Configuration Template by ID\cr
 \link[paws.developer.tools:drs_delete_recovery_instance]{delete_recovery_instance} \tab Deletes a single Recovery Instance by ID\cr
 \link[paws.developer.tools:drs_delete_replication_configuration_template]{delete_replication_configuration_template} \tab Deletes a single Replication Configuration Template by ID\cr
+\link[paws.developer.tools:drs_delete_source_network]{delete_source_network} \tab Delete Source Network resource\cr
 \link[paws.developer.tools:drs_delete_source_server]{delete_source_server} \tab Deletes a single Source Server by ID\cr
 \link[paws.developer.tools:drs_describe_job_log_items]{describe_job_log_items} \tab Retrieves a detailed Job log with pagination\cr
 \link[paws.developer.tools:drs_describe_jobs]{describe_jobs} \tab Returns a list of Jobs\cr
@@ -71,9 +74,11 @@ AWS Elastic Disaster Recovery Service.
 \link[paws.developer.tools:drs_describe_recovery_instances]{describe_recovery_instances} \tab Lists all Recovery Instances or multiple Recovery Instances by ID\cr
 \link[paws.developer.tools:drs_describe_recovery_snapshots]{describe_recovery_snapshots} \tab Lists all Recovery Snapshots for a single Source Server\cr
 \link[paws.developer.tools:drs_describe_replication_configuration_templates]{describe_replication_configuration_templates} \tab Lists all ReplicationConfigurationTemplates, filtered by Source Server IDs\cr
+\link[paws.developer.tools:drs_describe_source_networks]{describe_source_networks} \tab Lists all Source Networks or multiple Source Networks filtered by ID\cr
 \link[paws.developer.tools:drs_describe_source_servers]{describe_source_servers} \tab Lists all Source Servers or multiple Source Servers filtered by ID\cr
 \link[paws.developer.tools:drs_disconnect_recovery_instance]{disconnect_recovery_instance} \tab Disconnect a Recovery Instance from Elastic Disaster Recovery\cr
 \link[paws.developer.tools:drs_disconnect_source_server]{disconnect_source_server} \tab Disconnects a specific Source Server from Elastic Disaster Recovery\cr
+\link[paws.developer.tools:drs_export_source_network_cfn_template]{export_source_network_cfn_template} \tab Export the Source Network CloudFormation template to an S3 bucket\cr
 \link[paws.developer.tools:drs_get_failback_replication_configuration]{get_failback_replication_configuration} \tab Lists all Failback ReplicationConfigurations, filtered by Recovery Instance ID\cr
 \link[paws.developer.tools:drs_get_launch_configuration]{get_launch_configuration} \tab Gets a LaunchConfiguration, filtered by Source Server IDs\cr
 \link[paws.developer.tools:drs_get_replication_configuration]{get_replication_configuration} \tab Gets a ReplicationConfiguration, filtered by Source Server ID\cr
@@ -86,8 +91,11 @@ AWS Elastic Disaster Recovery Service.
 \link[paws.developer.tools:drs_start_failback_launch]{start_failback_launch} \tab Initiates a Job for launching the machine that is being failed back to from the specified Recovery Instance\cr
 \link[paws.developer.tools:drs_start_recovery]{start_recovery} \tab Launches Recovery Instances for the specified Source Servers\cr
 \link[paws.developer.tools:drs_start_replication]{start_replication} \tab Starts replication for a stopped Source Server\cr
+\link[paws.developer.tools:drs_start_source_network_recovery]{start_source_network_recovery} \tab Deploy VPC for the specified Source Network and modify launch templates to use this network\cr
+\link[paws.developer.tools:drs_start_source_network_replication]{start_source_network_replication} \tab Starts replication for a Source Network\cr
 \link[paws.developer.tools:drs_stop_failback]{stop_failback} \tab Stops the failback process for a specified Recovery Instance\cr
 \link[paws.developer.tools:drs_stop_replication]{stop_replication} \tab Stops replication for a Source Server\cr
+\link[paws.developer.tools:drs_stop_source_network_replication]{stop_source_network_replication} \tab Stops replication for a Source Network\cr
 \link[paws.developer.tools:drs_tag_resource]{tag_resource} \tab Adds or overwrites only the specified tags for the specified Elastic Disaster Recovery resource or resources\cr
 \link[paws.developer.tools:drs_terminate_recovery_instances]{terminate_recovery_instances} \tab Initiates a Job for terminating the EC2 resources associated with the specified Recovery Instances, and then will delete the Recovery Instances from the Elastic Disaster Recovery service\cr
 \link[paws.developer.tools:drs_untag_resource]{untag_resource} \tab Deletes the specified set of tags from the specified set of Elastic Disaster Recovery resources\cr
@@ -102,7 +110,7 @@ AWS Elastic Disaster Recovery Service.
 \examples{
 \dontrun{
 svc <- drs()
-svc$create_extended_source_server(
+svc$associate_source_network_stack(
   Foo = 123
 )
 }

@@ -35,6 +35,6 @@ populates this field. For more information about idempotency, see
 \description{
 Creates an evaluation form in the specified Amazon Connect instance. The form can be used to define questions related to agent performance, and create sections to organize such questions. Question and section identifiers cannot be duplicated within the same evaluation form.
 
-See \url{https://paws-r.github.io/docs/connect/create_evaluation_form.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_create_evaluation_form/} for full documentation.
 }
 \keyword{internal}

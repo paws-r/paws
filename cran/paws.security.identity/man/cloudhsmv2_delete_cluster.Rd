@@ -13,6 +13,6 @@ cluster ID, use \code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.}
 \description{
 Deletes the specified AWS CloudHSM cluster. Before you can delete a cluster, you must delete all HSMs in the cluster. To see if the cluster contains any HSMs, use \code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}. To delete an HSM, use \code{\link[=cloudhsmv2_delete_hsm]{delete_hsm}}.
 
-See \url{https://paws-r.github.io/docs/cloudhsmv2/delete_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_cluster/} for full documentation.
 }
 \keyword{internal}

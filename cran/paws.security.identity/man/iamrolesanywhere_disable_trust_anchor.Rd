@@ -12,6 +12,6 @@ iamrolesanywhere_disable_trust_anchor(trustAnchorId)
 \description{
 Disables a trust anchor. When disabled, temporary credential requests specifying this trust anchor are unauthorized.
 
-See \url{https://paws-r.github.io/docs/iamrolesanywhere/disable_trust_anchor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iamrolesanywhere_disable_trust_anchor/} for full documentation.
 }
 \keyword{internal}

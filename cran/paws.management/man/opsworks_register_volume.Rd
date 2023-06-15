@@ -14,6 +14,6 @@ opsworks_register_volume(Ec2VolumeId = NULL, StackId)
 \description{
 Registers an Amazon EBS volume with a specified stack. A volume can be registered with only one stack at a time. If the volume is already registered, you must first deregister it by calling \code{\link[=opsworks_deregister_volume]{deregister_volume}}. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
 
-See \url{https://paws-r.github.io/docs/opsworks/register_volume.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_register_volume/} for full documentation.
 }
 \keyword{internal}

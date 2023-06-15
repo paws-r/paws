@@ -31,6 +31,6 @@ Default: \code{false}}
 \description{
 Stops an Amazon EBS-backed instance. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html}{Stop and start your instance} in the \emph{Amazon EC2 User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/stop_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_stop_instances/} for full documentation.
 }
 \keyword{internal}

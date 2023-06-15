@@ -16,6 +16,6 @@ action.}
 \description{
 Deletes an existing default sender ID on a configuration set.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_default_sender_id.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_default_sender_id/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ resource.}
 \description{
 Removes the specified tags from the specified Amazon Transcribe resource.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_untag_resource/} for full documentation.
 }
 \keyword{internal}

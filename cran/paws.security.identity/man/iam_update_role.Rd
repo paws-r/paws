@@ -30,6 +30,6 @@ in the \emph{IAM User Guide}.}
 \description{
 Updates the description or maximum session duration setting of a role.
 
-See \url{https://paws-r.github.io/docs/iam/update_role.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_update_role/} for full documentation.
 }
 \keyword{internal}

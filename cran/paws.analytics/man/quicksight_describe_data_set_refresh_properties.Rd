@@ -14,6 +14,6 @@ quicksight_describe_data_set_refresh_properties(AwsAccountId, DataSetId)
 \description{
 Describes the refresh properties of a dataset.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_data_set_refresh_properties.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_data_set_refresh_properties/} for full documentation.
 }
 \keyword{internal}

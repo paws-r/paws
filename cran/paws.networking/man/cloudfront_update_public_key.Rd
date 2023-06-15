@@ -17,6 +17,6 @@ public key to update. For example: \code{E2QWRUHAPOMQZL}.}
 \description{
 Update public key information. Note that the only value you can change is the comment.
 
-See \url{https://paws-r.github.io/docs/cloudfront/update_public_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_update_public_key/} for full documentation.
 }
 \keyword{internal}

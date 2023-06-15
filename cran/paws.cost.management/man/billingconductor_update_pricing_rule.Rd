@@ -30,6 +30,6 @@ pricing rule.}
 \description{
 Updates an existing pricing rule.
 
-See \url{https://paws-r.github.io/docs/billingconductor/update_pricing_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_update_pricing_rule/} for full documentation.
 }
 \keyword{internal}

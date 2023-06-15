@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Accepts the invitation to be a member account and be monitored by the Security Hub administrator account that the invitation was sent from.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/accept_administrator_invitation.html](https://paws-r.github.io/docs/securityhub/accept_administrator_invitation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_accept_administrator_invitation/](https://www.paws-r-sdk.com/docs/securityhub_accept_administrator_invitation/) for full documentation.
 #'
 #' @param AdministratorId &#91;required&#93; The account ID of the Security Hub administrator account that sent the
 #' invitation.
@@ -41,7 +41,7 @@ securityhub_accept_administrator_invitation <- function(AdministratorId, Invitat
 #' @description
 #' This method is deprecated. Instead, use [`accept_administrator_invitation`][securityhub_accept_administrator_invitation].
 #'
-#' See [https://paws-r.github.io/docs/securityhub/accept_invitation.html](https://paws-r.github.io/docs/securityhub/accept_invitation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_accept_invitation/](https://www.paws-r-sdk.com/docs/securityhub_accept_invitation/) for full documentation.
 #'
 #' @param MasterId &#91;required&#93; The account ID of the Security Hub administrator account that sent the
 #' invitation.
@@ -68,13 +68,43 @@ securityhub_accept_invitation <- function(MasterId, InvitationId) {
 }
 .securityhub$operations$accept_invitation <- securityhub_accept_invitation
 
+#' Deletes one or more automation rules
+#'
+#' @description
+#' Deletes one or more automation rules.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_batch_delete_automation_rules/](https://www.paws-r-sdk.com/docs/securityhub_batch_delete_automation_rules/) for full documentation.
+#'
+#' @param AutomationRulesArns &#91;required&#93; A list of Amazon Resource Names (ARNs) for the rules that are to be
+#' deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_batch_delete_automation_rules
+securityhub_batch_delete_automation_rules <- function(AutomationRulesArns) {
+  op <- new_operation(
+    name = "BatchDeleteAutomationRules",
+    http_method = "POST",
+    http_path = "/automationrules/delete",
+    paginator = list()
+  )
+  input <- .securityhub$batch_delete_automation_rules_input(AutomationRulesArns = AutomationRulesArns)
+  output <- .securityhub$batch_delete_automation_rules_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$batch_delete_automation_rules <- securityhub_batch_delete_automation_rules
+
 #' Disables the standards specified by the provided
 #' StandardsSubscriptionArns
 #'
 #' @description
 #' Disables the standards specified by the provided `StandardsSubscriptionArns`.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/batch_disable_standards.html](https://paws-r.github.io/docs/securityhub/batch_disable_standards.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_batch_disable_standards/](https://www.paws-r-sdk.com/docs/securityhub_batch_disable_standards/) for full documentation.
 #'
 #' @param StandardsSubscriptionArns &#91;required&#93; The ARNs of the standards subscriptions to disable.
 #'
@@ -103,7 +133,7 @@ securityhub_batch_disable_standards <- function(StandardsSubscriptionArns) {
 #' @description
 #' Enables the standards specified by the provided `StandardsArn`. To obtain the ARN for a standard, use the [`describe_standards`][securityhub_describe_standards] operation.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/batch_enable_standards.html](https://paws-r.github.io/docs/securityhub/batch_enable_standards.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_batch_enable_standards/](https://www.paws-r-sdk.com/docs/securityhub_batch_enable_standards/) for full documentation.
 #'
 #' @param StandardsSubscriptionRequests &#91;required&#93; The list of standards checks to enable.
 #'
@@ -127,13 +157,43 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 }
 .securityhub$operations$batch_enable_standards <- securityhub_batch_enable_standards
 
+#' Retrieves a list of details for automation rules based on rule Amazon
+#' Resource Names (ARNs)
+#'
+#' @description
+#' Retrieves a list of details for automation rules based on rule Amazon Resource Names (ARNs).
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_batch_get_automation_rules/](https://www.paws-r-sdk.com/docs/securityhub_batch_get_automation_rules/) for full documentation.
+#'
+#' @param AutomationRulesArns &#91;required&#93; A list of rule ARNs to get details for.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_batch_get_automation_rules
+securityhub_batch_get_automation_rules <- function(AutomationRulesArns) {
+  op <- new_operation(
+    name = "BatchGetAutomationRules",
+    http_method = "POST",
+    http_path = "/automationrules/get",
+    paginator = list()
+  )
+  input <- .securityhub$batch_get_automation_rules_input(AutomationRulesArns = AutomationRulesArns)
+  output <- .securityhub$batch_get_automation_rules_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$batch_get_automation_rules <- securityhub_batch_get_automation_rules
+
 #' Provides details about a batch of security controls for the current
 #' Amazon Web Services account and Amazon Web Services Region
 #'
 #' @description
 #' Provides details about a batch of security controls for the current Amazon Web Services account and Amazon Web Services Region.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/batch_get_security_controls.html](https://paws-r.github.io/docs/securityhub/batch_get_security_controls.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_batch_get_security_controls/](https://www.paws-r-sdk.com/docs/securityhub_batch_get_security_controls/) for full documentation.
 #'
 #' @param SecurityControlIds &#91;required&#93; A list of security controls (identified with `SecurityControlId`,
 #' `SecurityControlArn`, or a mix of both parameters). The security control
@@ -165,7 +225,7 @@ securityhub_batch_get_security_controls <- function(SecurityControlIds) {
 #' @description
 #' For a batch of security controls and standards, identifies whether each control is currently enabled or disabled in a standard.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/batch_get_standards_control_associations.html](https://paws-r.github.io/docs/securityhub/batch_get_standards_control_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_batch_get_standards_control_associations/](https://www.paws-r-sdk.com/docs/securityhub_batch_get_standards_control_associations/) for full documentation.
 #'
 #' @param StandardsControlAssociationIds &#91;required&#93; An array with one or more objects that includes a security control
 #' (identified with `SecurityControlId`, `SecurityControlArn`, or a mix of
@@ -199,7 +259,7 @@ securityhub_batch_get_standards_control_associations <- function(StandardsContro
 #' @description
 #' Imports security findings generated by a finding provider into Security Hub. This action is requested by the finding provider to import its findings into Security Hub.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/batch_import_findings.html](https://paws-r.github.io/docs/securityhub/batch_import_findings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_batch_import_findings/](https://www.paws-r-sdk.com/docs/securityhub_batch_import_findings/) for full documentation.
 #'
 #' @param Findings &#91;required&#93; A list of findings to import. To successfully import a finding, it must
 #' follow the [Amazon Web Services Security Finding
@@ -226,13 +286,44 @@ securityhub_batch_import_findings <- function(Findings) {
 }
 .securityhub$operations$batch_import_findings <- securityhub_batch_import_findings
 
+#' Updates one or more automation rules based on rule Amazon Resource Names
+#' (ARNs) and input parameters
+#'
+#' @description
+#' Updates one or more automation rules based on rule Amazon Resource Names (ARNs) and input parameters.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_batch_update_automation_rules/](https://www.paws-r-sdk.com/docs/securityhub_batch_update_automation_rules/) for full documentation.
+#'
+#' @param UpdateAutomationRulesRequestItems &#91;required&#93; An array of ARNs for the rules that are to be updated. Optionally, you
+#' can also include `RuleStatus` and `RuleOrder`.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_batch_update_automation_rules
+securityhub_batch_update_automation_rules <- function(UpdateAutomationRulesRequestItems) {
+  op <- new_operation(
+    name = "BatchUpdateAutomationRules",
+    http_method = "PATCH",
+    http_path = "/automationrules/update",
+    paginator = list()
+  )
+  input <- .securityhub$batch_update_automation_rules_input(UpdateAutomationRulesRequestItems = UpdateAutomationRulesRequestItems)
+  output <- .securityhub$batch_update_automation_rules_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$batch_update_automation_rules <- securityhub_batch_update_automation_rules
+
 #' Used by Security Hub customers to update information about their
 #' investigation into a finding
 #'
 #' @description
 #' Used by Security Hub customers to update information about their investigation into a finding. Requested by administrator accounts or member accounts. Administrator accounts can update findings for their account and their member accounts. Member accounts can update findings for their account.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/batch_update_findings.html](https://paws-r.github.io/docs/securityhub/batch_update_findings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_batch_update_findings/](https://www.paws-r-sdk.com/docs/securityhub_batch_update_findings/) for full documentation.
 #'
 #' @param FindingIdentifiers &#91;required&#93; The list of findings to update.
 #' [`batch_update_findings`][securityhub_batch_update_findings] can be used
@@ -314,7 +405,7 @@ securityhub_batch_update_findings <- function(FindingIdentifiers, Note = NULL, S
 #' @description
 #' For a batch of security controls and standards, this operation updates the enablement status of a control in a standard.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/batch_update_standards_control_associations.html](https://paws-r.github.io/docs/securityhub/batch_update_standards_control_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_batch_update_standards_control_associations/](https://www.paws-r-sdk.com/docs/securityhub_batch_update_standards_control_associations/) for full documentation.
 #'
 #' @param StandardsControlAssociationUpdates &#91;required&#93; Updates the enablement status of a security control in a specified
 #' standard.
@@ -344,7 +435,7 @@ securityhub_batch_update_standards_control_associations <- function(StandardsCon
 #' @description
 #' Creates a custom action target in Security Hub.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/create_action_target.html](https://paws-r.github.io/docs/securityhub/create_action_target.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_create_action_target/](https://www.paws-r-sdk.com/docs/securityhub_create_action_target/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the custom action target. Can contain up to 20 characters.
 #' @param Description &#91;required&#93; The description for the custom action target.
@@ -371,12 +462,64 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 }
 .securityhub$operations$create_action_target <- securityhub_create_action_target
 
+#' Creates an automation rule based on input parameters
+#'
+#' @description
+#' Creates an automation rule based on input parameters.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_create_automation_rule/](https://www.paws-r-sdk.com/docs/securityhub_create_automation_rule/) for full documentation.
+#'
+#' @param Tags User-defined tags that help you label the purpose of a rule.
+#' @param RuleStatus Whether the rule is active after it is created. If this parameter is
+#' equal to `Enabled`, Security Hub will apply the rule to findings and
+#' finding updates after the rule is created. To change the value of this
+#' parameter after creating a rule, use
+#' [`batch_update_automation_rules`][securityhub_batch_update_automation_rules].
+#' @param RuleOrder &#91;required&#93; An integer ranging from 1 to 1000 that represents the order in which the
+#' rule action is applied to findings. Security Hub applies rules with
+#' lower values for this parameter first.
+#' @param RuleName &#91;required&#93; The name of the rule.
+#' @param Description &#91;required&#93; A description of the rule.
+#' @param IsTerminal Specifies whether a rule is the last to be applied with respect to a
+#' finding that matches the rule criteria. This is useful when a finding
+#' matches the criteria for multiple rules, and each rule has different
+#' actions. If the value of this field is set to `true` for a rule,
+#' Security Hub applies the rule action to a finding that matches the rule
+#' criteria and won't evaluate other rules for the finding. The default
+#' value of this field is `false`.
+#' @param Criteria &#91;required&#93; A set of ASFF finding field attributes and corresponding expected values
+#' that Security Hub uses to filter findings. If a finding matches the
+#' conditions specified in this parameter, Security Hub applies the rule
+#' action to the finding.
+#' @param Actions &#91;required&#93; One or more actions to update finding fields if a finding matches the
+#' conditions specified in `Criteria`.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_create_automation_rule
+securityhub_create_automation_rule <- function(Tags = NULL, RuleStatus = NULL, RuleOrder, RuleName, Description, IsTerminal = NULL, Criteria, Actions) {
+  op <- new_operation(
+    name = "CreateAutomationRule",
+    http_method = "POST",
+    http_path = "/automationrules/create",
+    paginator = list()
+  )
+  input <- .securityhub$create_automation_rule_input(Tags = Tags, RuleStatus = RuleStatus, RuleOrder = RuleOrder, RuleName = RuleName, Description = Description, IsTerminal = IsTerminal, Criteria = Criteria, Actions = Actions)
+  output <- .securityhub$create_automation_rule_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$create_automation_rule <- securityhub_create_automation_rule
+
 #' Used to enable finding aggregation
 #'
 #' @description
 #' Used to enable finding aggregation. Must be called from the aggregation Region.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/create_finding_aggregator.html](https://paws-r.github.io/docs/securityhub/create_finding_aggregator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_create_finding_aggregator/](https://www.paws-r-sdk.com/docs/securityhub_create_finding_aggregator/) for full documentation.
 #'
 #' @param RegionLinkingMode &#91;required&#93; Indicates whether to aggregate findings from all of the available
 #' Regions in the current partition. Also determines whether to
@@ -435,7 +578,7 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #' @description
 #' Creates a custom insight in Security Hub. An insight is a consolidation of findings that relate to a security issue that requires attention or remediation.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/create_insight.html](https://paws-r.github.io/docs/securityhub/create_insight.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_create_insight/](https://www.paws-r-sdk.com/docs/securityhub_create_insight/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the custom insight to create.
 #' @param Filters &#91;required&#93; One or more attributes used to filter the findings included in the
@@ -473,7 +616,7 @@ securityhub_create_insight <- function(Name, Filters, GroupByAttribute) {
 #' @description
 #' Creates a member association in Security Hub between the specified accounts and the account used to make the request, which is the administrator account. If you are integrated with Organizations, then the administrator account is designated by the organization management account.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/create_members.html](https://paws-r.github.io/docs/securityhub/create_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_create_members/](https://www.paws-r-sdk.com/docs/securityhub_create_members/) for full documentation.
 #'
 #' @param AccountDetails &#91;required&#93; The list of accounts to associate with the Security Hub administrator
 #' account. For each account, the list includes the account ID and
@@ -504,7 +647,7 @@ securityhub_create_members <- function(AccountDetails) {
 #' @description
 #' Declines invitations to become a member account.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/decline_invitations.html](https://paws-r.github.io/docs/securityhub/decline_invitations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_decline_invitations/](https://www.paws-r-sdk.com/docs/securityhub_decline_invitations/) for full documentation.
 #'
 #' @param AccountIds &#91;required&#93; The list of prospective member account IDs for which to decline an
 #' invitation.
@@ -534,7 +677,7 @@ securityhub_decline_invitations <- function(AccountIds) {
 #' @description
 #' Deletes a custom action target from Security Hub.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/delete_action_target.html](https://paws-r.github.io/docs/securityhub/delete_action_target.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_delete_action_target/](https://www.paws-r-sdk.com/docs/securityhub_delete_action_target/) for full documentation.
 #'
 #' @param ActionTargetArn &#91;required&#93; The Amazon Resource Name (ARN) of the custom action target to delete.
 #'
@@ -563,7 +706,7 @@ securityhub_delete_action_target <- function(ActionTargetArn) {
 #' @description
 #' Deletes a finding aggregator. When you delete the finding aggregator, you stop finding aggregation.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/delete_finding_aggregator.html](https://paws-r.github.io/docs/securityhub/delete_finding_aggregator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_delete_finding_aggregator/](https://www.paws-r-sdk.com/docs/securityhub_delete_finding_aggregator/) for full documentation.
 #'
 #' @param FindingAggregatorArn &#91;required&#93; The ARN of the finding aggregator to delete. To obtain the ARN, use
 #' [`list_finding_aggregators`][securityhub_list_finding_aggregators].
@@ -593,7 +736,7 @@ securityhub_delete_finding_aggregator <- function(FindingAggregatorArn) {
 #' @description
 #' Deletes the insight specified by the `InsightArn`.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/delete_insight.html](https://paws-r.github.io/docs/securityhub/delete_insight.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_delete_insight/](https://www.paws-r-sdk.com/docs/securityhub_delete_insight/) for full documentation.
 #'
 #' @param InsightArn &#91;required&#93; The ARN of the insight to delete.
 #'
@@ -623,7 +766,7 @@ securityhub_delete_insight <- function(InsightArn) {
 #' @description
 #' Deletes invitations received by the Amazon Web Services account to become a member account.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/delete_invitations.html](https://paws-r.github.io/docs/securityhub/delete_invitations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_delete_invitations/](https://www.paws-r-sdk.com/docs/securityhub_delete_invitations/) for full documentation.
 #'
 #' @param AccountIds &#91;required&#93; The list of member account IDs that received the invitations you want to
 #' delete.
@@ -653,7 +796,7 @@ securityhub_delete_invitations <- function(AccountIds) {
 #' @description
 #' Deletes the specified member accounts from Security Hub.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/delete_members.html](https://paws-r.github.io/docs/securityhub/delete_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_delete_members/](https://www.paws-r-sdk.com/docs/securityhub_delete_members/) for full documentation.
 #'
 #' @param AccountIds &#91;required&#93; The list of account IDs for the member accounts to delete.
 #'
@@ -683,7 +826,7 @@ securityhub_delete_members <- function(AccountIds) {
 #' @description
 #' Returns a list of the custom action targets in Security Hub in your account.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/describe_action_targets.html](https://paws-r.github.io/docs/securityhub/describe_action_targets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_describe_action_targets/](https://www.paws-r-sdk.com/docs/securityhub_describe_action_targets/) for full documentation.
 #'
 #' @param ActionTargetArns A list of custom action target ARNs for the custom action targets to
 #' retrieve.
@@ -722,7 +865,7 @@ securityhub_describe_action_targets <- function(ActionTargetArns = NULL, NextTok
 #' @description
 #' Returns details about the Hub resource in your account, including the `HubArn` and the time when you enabled Security Hub.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/describe_hub.html](https://paws-r.github.io/docs/securityhub/describe_hub.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_describe_hub/](https://www.paws-r-sdk.com/docs/securityhub_describe_hub/) for full documentation.
 #'
 #' @param HubArn The ARN of the Hub resource to retrieve.
 #'
@@ -752,7 +895,7 @@ securityhub_describe_hub <- function(HubArn = NULL) {
 #' @description
 #' Returns information about the Organizations configuration for Security Hub. Can only be called from a Security Hub administrator account.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/describe_organization_configuration.html](https://paws-r.github.io/docs/securityhub/describe_organization_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_describe_organization_configuration/](https://www.paws-r-sdk.com/docs/securityhub_describe_organization_configuration/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -779,7 +922,7 @@ securityhub_describe_organization_configuration <- function() {
 #' @description
 #' Returns information about product integrations in Security Hub.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/describe_products.html](https://paws-r.github.io/docs/securityhub/describe_products.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_describe_products/](https://www.paws-r-sdk.com/docs/securityhub_describe_products/) for full documentation.
 #'
 #' @param NextToken The token that is required for pagination. On your first call to the
 #' [`describe_products`][securityhub_describe_products] operation, set the
@@ -816,7 +959,7 @@ securityhub_describe_products <- function(NextToken = NULL, MaxResults = NULL, P
 #' @description
 #' Returns a list of the available standards in Security Hub.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/describe_standards.html](https://paws-r.github.io/docs/securityhub/describe_standards.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_describe_standards/](https://www.paws-r-sdk.com/docs/securityhub_describe_standards/) for full documentation.
 #'
 #' @param NextToken The token that is required for pagination. On your first call to the
 #' [`describe_standards`][securityhub_describe_standards] operation, set
@@ -852,7 +995,7 @@ securityhub_describe_standards <- function(NextToken = NULL, MaxResults = NULL) 
 #' @description
 #' Returns a list of security standards controls.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/describe_standards_controls.html](https://paws-r.github.io/docs/securityhub/describe_standards_controls.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_describe_standards_controls/](https://www.paws-r-sdk.com/docs/securityhub_describe_standards_controls/) for full documentation.
 #'
 #' @param StandardsSubscriptionArn &#91;required&#93; The ARN of a resource that represents your subscription to a supported
 #' standard. To get the subscription ARNs of the standards you have
@@ -892,7 +1035,7 @@ securityhub_describe_standards_controls <- function(StandardsSubscriptionArn, Ne
 #' @description
 #' Disables the integration of the specified product with Security Hub. After the integration is disabled, findings from that product are no longer sent to Security Hub.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/disable_import_findings_for_product.html](https://paws-r.github.io/docs/securityhub/disable_import_findings_for_product.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_disable_import_findings_for_product/](https://www.paws-r-sdk.com/docs/securityhub_disable_import_findings_for_product/) for full documentation.
 #'
 #' @param ProductSubscriptionArn &#91;required&#93; The ARN of the integrated product to disable the integration for.
 #'
@@ -921,7 +1064,7 @@ securityhub_disable_import_findings_for_product <- function(ProductSubscriptionA
 #' @description
 #' Disables a Security Hub administrator account. Can only be called by the organization management account.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/disable_organization_admin_account.html](https://paws-r.github.io/docs/securityhub/disable_organization_admin_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_disable_organization_admin_account/](https://www.paws-r-sdk.com/docs/securityhub_disable_organization_admin_account/) for full documentation.
 #'
 #' @param AdminAccountId &#91;required&#93; The Amazon Web Services account identifier of the Security Hub
 #' administrator account.
@@ -951,7 +1094,7 @@ securityhub_disable_organization_admin_account <- function(AdminAccountId) {
 #' @description
 #' Disables Security Hub in your account only in the current Region. To disable Security Hub in all Regions, you must submit one request per Region where you have enabled Security Hub.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/disable_security_hub.html](https://paws-r.github.io/docs/securityhub/disable_security_hub.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_disable_security_hub/](https://www.paws-r-sdk.com/docs/securityhub_disable_security_hub/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -979,7 +1122,7 @@ securityhub_disable_security_hub <- function() {
 #' @description
 #' Disassociates the current Security Hub member account from the associated administrator account.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/disassociate_from_administrator_account.html](https://paws-r.github.io/docs/securityhub/disassociate_from_administrator_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_disassociate_from_administrator_account/](https://www.paws-r-sdk.com/docs/securityhub_disassociate_from_administrator_account/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1006,7 +1149,7 @@ securityhub_disassociate_from_administrator_account <- function() {
 #' @description
 #' This method is deprecated. Instead, use [`disassociate_from_administrator_account`][securityhub_disassociate_from_administrator_account].
 #'
-#' See [https://paws-r.github.io/docs/securityhub/disassociate_from_master_account.html](https://paws-r.github.io/docs/securityhub/disassociate_from_master_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_disassociate_from_master_account/](https://www.paws-r-sdk.com/docs/securityhub_disassociate_from_master_account/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1034,7 +1177,7 @@ securityhub_disassociate_from_master_account <- function() {
 #' @description
 #' Disassociates the specified member accounts from the associated administrator account.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/disassociate_members.html](https://paws-r.github.io/docs/securityhub/disassociate_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_disassociate_members/](https://www.paws-r-sdk.com/docs/securityhub_disassociate_members/) for full documentation.
 #'
 #' @param AccountIds &#91;required&#93; The account IDs of the member accounts to disassociate from the
 #' administrator account.
@@ -1064,7 +1207,7 @@ securityhub_disassociate_members <- function(AccountIds) {
 #' @description
 #' Enables the integration of a partner product with Security Hub. Integrated products send findings to Security Hub.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/enable_import_findings_for_product.html](https://paws-r.github.io/docs/securityhub/enable_import_findings_for_product.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_enable_import_findings_for_product/](https://www.paws-r-sdk.com/docs/securityhub_enable_import_findings_for_product/) for full documentation.
 #'
 #' @param ProductArn &#91;required&#93; The ARN of the product to enable the integration for.
 #'
@@ -1093,7 +1236,7 @@ securityhub_enable_import_findings_for_product <- function(ProductArn) {
 #' @description
 #' Designates the Security Hub administrator account for an organization. Can only be called by the organization management account.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/enable_organization_admin_account.html](https://paws-r.github.io/docs/securityhub/enable_organization_admin_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_enable_organization_admin_account/](https://www.paws-r-sdk.com/docs/securityhub_enable_organization_admin_account/) for full documentation.
 #'
 #' @param AdminAccountId &#91;required&#93; The Amazon Web Services account identifier of the account to designate
 #' as the Security Hub administrator account.
@@ -1124,7 +1267,7 @@ securityhub_enable_organization_admin_account <- function(AdminAccountId) {
 #' @description
 #' Enables Security Hub for your account in the current Region or the Region you specify in the request.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/enable_security_hub.html](https://paws-r.github.io/docs/securityhub/enable_security_hub.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_enable_security_hub/](https://www.paws-r-sdk.com/docs/securityhub_enable_security_hub/) for full documentation.
 #'
 #' @param Tags The tags to add to the hub resource when you enable Security Hub.
 #' @param EnableDefaultStandards Whether to enable the security standards that Security Hub has
@@ -1173,7 +1316,7 @@ securityhub_enable_security_hub <- function(Tags = NULL, EnableDefaultStandards 
 #' @description
 #' Provides the details for the Security Hub administrator account for the current member account.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/get_administrator_account.html](https://paws-r.github.io/docs/securityhub/get_administrator_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_get_administrator_account/](https://www.paws-r-sdk.com/docs/securityhub_get_administrator_account/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1200,7 +1343,7 @@ securityhub_get_administrator_account <- function() {
 #' @description
 #' Returns a list of the standards that are currently enabled.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/get_enabled_standards.html](https://paws-r.github.io/docs/securityhub/get_enabled_standards.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_get_enabled_standards/](https://www.paws-r-sdk.com/docs/securityhub_get_enabled_standards/) for full documentation.
 #'
 #' @param StandardsSubscriptionArns The list of the standards subscription ARNs for the standards to
 #' retrieve.
@@ -1238,7 +1381,7 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #' @description
 #' Returns the current finding aggregation configuration.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/get_finding_aggregator.html](https://paws-r.github.io/docs/securityhub/get_finding_aggregator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_get_finding_aggregator/](https://www.paws-r-sdk.com/docs/securityhub_get_finding_aggregator/) for full documentation.
 #'
 #' @param FindingAggregatorArn &#91;required&#93; The ARN of the finding aggregator to return details for. To obtain the
 #' ARN, use
@@ -1269,7 +1412,7 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 #' @description
 #' Returns history for a Security Hub finding in the last 90 days. The history includes changes made to any fields in the Amazon Web Services Security Finding Format (ASFF).
 #'
-#' See [https://paws-r.github.io/docs/securityhub/get_finding_history.html](https://paws-r.github.io/docs/securityhub/get_finding_history.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_get_finding_history/](https://www.paws-r-sdk.com/docs/securityhub_get_finding_history/) for full documentation.
 #'
 #' @param FindingIdentifier &#91;required&#93; 
 #' @param StartTime An ISO 8601-formatted timestamp that indicates the start time of the
@@ -1343,7 +1486,7 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #' @description
 #' Returns a list of findings that match the specified criteria.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/get_findings.html](https://paws-r.github.io/docs/securityhub/get_findings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_get_findings/](https://www.paws-r-sdk.com/docs/securityhub_get_findings/) for full documentation.
 #'
 #' @param Filters The finding attributes used to define a condition to filter the returned
 #' findings.
@@ -1390,7 +1533,7 @@ securityhub_get_findings <- function(Filters = NULL, SortCriteria = NULL, NextTo
 #' @description
 #' Lists the results of the Security Hub insight specified by the insight ARN.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/get_insight_results.html](https://paws-r.github.io/docs/securityhub/get_insight_results.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_get_insight_results/](https://www.paws-r-sdk.com/docs/securityhub_get_insight_results/) for full documentation.
 #'
 #' @param InsightArn &#91;required&#93; The ARN of the insight for which to return results.
 #'
@@ -1419,7 +1562,7 @@ securityhub_get_insight_results <- function(InsightArn) {
 #' @description
 #' Lists and describes insights for the specified insight ARNs.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/get_insights.html](https://paws-r.github.io/docs/securityhub/get_insights.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_get_insights/](https://www.paws-r-sdk.com/docs/securityhub_get_insights/) for full documentation.
 #'
 #' @param InsightArns The ARNs of the insights to describe. If you do not provide any insight
 #' ARNs, then [`get_insights`][securityhub_get_insights] returns all of
@@ -1460,7 +1603,7 @@ securityhub_get_insights <- function(InsightArns = NULL, NextToken = NULL, MaxRe
 #' @description
 #' Returns the count of all Security Hub membership invitations that were sent to the current member account, not including the currently accepted invitation.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/get_invitations_count.html](https://paws-r.github.io/docs/securityhub/get_invitations_count.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_get_invitations_count/](https://www.paws-r-sdk.com/docs/securityhub_get_invitations_count/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1487,7 +1630,7 @@ securityhub_get_invitations_count <- function() {
 #' @description
 #' This method is deprecated. Instead, use [`get_administrator_account`][securityhub_get_administrator_account].
 #'
-#' See [https://paws-r.github.io/docs/securityhub/get_master_account.html](https://paws-r.github.io/docs/securityhub/get_master_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_get_master_account/](https://www.paws-r-sdk.com/docs/securityhub_get_master_account/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1515,7 +1658,7 @@ securityhub_get_master_account <- function() {
 #' @description
 #' Returns the details for the Security Hub member accounts for the specified account IDs.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/get_members.html](https://paws-r.github.io/docs/securityhub/get_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_get_members/](https://www.paws-r-sdk.com/docs/securityhub_get_members/) for full documentation.
 #'
 #' @param AccountIds &#91;required&#93; The list of account IDs for the Security Hub member accounts to return
 #' the details for.
@@ -1546,7 +1689,7 @@ securityhub_get_members <- function(AccountIds) {
 #' @description
 #' Invites other Amazon Web Services accounts to become member accounts for the Security Hub administrator account that the invitation is sent from.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/invite_members.html](https://paws-r.github.io/docs/securityhub/invite_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_invite_members/](https://www.paws-r-sdk.com/docs/securityhub_invite_members/) for full documentation.
 #'
 #' @param AccountIds &#91;required&#93; The list of account IDs of the Amazon Web Services accounts to invite to
 #' Security Hub as members.
@@ -1571,13 +1714,47 @@ securityhub_invite_members <- function(AccountIds) {
 }
 .securityhub$operations$invite_members <- securityhub_invite_members
 
+#' A list of automation rules and their metadata for the calling account
+#'
+#' @description
+#' A list of automation rules and their metadata for the calling account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_list_automation_rules/](https://www.paws-r-sdk.com/docs/securityhub_list_automation_rules/) for full documentation.
+#'
+#' @param NextToken A token to specify where to start paginating the response. This is the
+#' `NextToken` from a previously truncated response. On your first call to
+#' the [`list_automation_rules`][securityhub_list_automation_rules] API,
+#' set the value of this parameter to `NULL`.
+#' @param MaxResults The maximum number of rules to return in the response. This currently
+#' ranges from 1 to 100.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_list_automation_rules
+securityhub_list_automation_rules <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAutomationRules",
+    http_method = "GET",
+    http_path = "/automationrules/list",
+    paginator = list()
+  )
+  input <- .securityhub$list_automation_rules_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$list_automation_rules_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$list_automation_rules <- securityhub_list_automation_rules
+
 #' Lists all findings-generating solutions (products) that you are
 #' subscribed to receive findings from in Security Hub
 #'
 #' @description
 #' Lists all findings-generating solutions (products) that you are subscribed to receive findings from in Security Hub.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/list_enabled_products_for_import.html](https://paws-r.github.io/docs/securityhub/list_enabled_products_for_import.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_list_enabled_products_for_import/](https://www.paws-r-sdk.com/docs/securityhub_list_enabled_products_for_import/) for full documentation.
 #'
 #' @param NextToken The token that is required for pagination. On your first call to the
 #' [`list_enabled_products_for_import`][securityhub_list_enabled_products_for_import]
@@ -1614,7 +1791,7 @@ securityhub_list_enabled_products_for_import <- function(NextToken = NULL, MaxRe
 #' @description
 #' If finding aggregation is enabled, then [`list_finding_aggregators`][securityhub_list_finding_aggregators] returns the ARN of the finding aggregator. You can run this operation from any Region.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/list_finding_aggregators.html](https://paws-r.github.io/docs/securityhub/list_finding_aggregators.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_list_finding_aggregators/](https://www.paws-r-sdk.com/docs/securityhub_list_finding_aggregators/) for full documentation.
 #'
 #' @param NextToken The token returned with the previous set of results. Identifies the next
 #' set of results to return.
@@ -1647,7 +1824,7 @@ securityhub_list_finding_aggregators <- function(NextToken = NULL, MaxResults = 
 #' @description
 #' Lists all Security Hub membership invitations that were sent to the current Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/list_invitations.html](https://paws-r.github.io/docs/securityhub/list_invitations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_list_invitations/](https://www.paws-r-sdk.com/docs/securityhub_list_invitations/) for full documentation.
 #'
 #' @param MaxResults The maximum number of items to return in the response.
 #' @param NextToken The token that is required for pagination. On your first call to the
@@ -1684,7 +1861,7 @@ securityhub_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Lists details about all member accounts for the current Security Hub administrator account.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/list_members.html](https://paws-r.github.io/docs/securityhub/list_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_list_members/](https://www.paws-r-sdk.com/docs/securityhub_list_members/) for full documentation.
 #'
 #' @param OnlyAssociated Specifies which member accounts to include in the response based on
 #' their relationship status with the administrator account. The default
@@ -1730,7 +1907,7 @@ securityhub_list_members <- function(OnlyAssociated = NULL, MaxResults = NULL, N
 #' @description
 #' Lists the Security Hub administrator accounts. Can only be called by the organization management account.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/list_organization_admin_accounts.html](https://paws-r.github.io/docs/securityhub/list_organization_admin_accounts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_list_organization_admin_accounts/](https://www.paws-r-sdk.com/docs/securityhub_list_organization_admin_accounts/) for full documentation.
 #'
 #' @param MaxResults The maximum number of items to return in the response.
 #' @param NextToken The token that is required for pagination. On your first call to the
@@ -1764,7 +1941,7 @@ securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, Next
 #' @description
 #' Lists all of the security controls that apply to a specified standard.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/list_security_control_definitions.html](https://paws-r.github.io/docs/securityhub/list_security_control_definitions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_list_security_control_definitions/](https://www.paws-r-sdk.com/docs/securityhub_list_security_control_definitions/) for full documentation.
 #'
 #' @param StandardsArn The Amazon Resource Name (ARN) of the standard that you want to view
 #' controls for.
@@ -1802,7 +1979,7 @@ securityhub_list_security_control_definitions <- function(StandardsArn = NULL, N
 #' @description
 #' Specifies whether a control is currently enabled or disabled in each enabled standard in the calling account.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/list_standards_control_associations.html](https://paws-r.github.io/docs/securityhub/list_standards_control_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_list_standards_control_associations/](https://www.paws-r-sdk.com/docs/securityhub_list_standards_control_associations/) for full documentation.
 #'
 #' @param SecurityControlId &#91;required&#93; The identifier of the control (identified with `SecurityControlId`,
 #' `SecurityControlArn`, or a mix of both parameters) that you want to
@@ -1842,7 +2019,7 @@ securityhub_list_standards_control_associations <- function(SecurityControlId, N
 #' @description
 #' Returns a list of tags associated with a resource.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/list_tags_for_resource.html](https://paws-r.github.io/docs/securityhub/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/securityhub_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the resource to retrieve tags for.
 #'
@@ -1871,7 +2048,7 @@ securityhub_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Adds one or more tags to a resource.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/tag_resource.html](https://paws-r.github.io/docs/securityhub/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_tag_resource/](https://www.paws-r-sdk.com/docs/securityhub_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the resource to apply the tags to.
 #' @param Tags &#91;required&#93; The tags to add to the resource. You can add up to 50 tags at a time.
@@ -1903,7 +2080,7 @@ securityhub_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes one or more tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/untag_resource.html](https://paws-r.github.io/docs/securityhub/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_untag_resource/](https://www.paws-r-sdk.com/docs/securityhub_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the resource to remove the tags from.
 #' @param TagKeys &#91;required&#93; The tag keys associated with the tags to remove from the resource. You
@@ -1935,7 +2112,7 @@ securityhub_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates the name and description of a custom action target in Security Hub.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/update_action_target.html](https://paws-r.github.io/docs/securityhub/update_action_target.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_update_action_target/](https://www.paws-r-sdk.com/docs/securityhub_update_action_target/) for full documentation.
 #'
 #' @param ActionTargetArn &#91;required&#93; The ARN of the custom action target to update.
 #' @param Name The updated name of the custom action target.
@@ -1966,7 +2143,7 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #' @description
 #' Updates the finding aggregation configuration. Used to update the Region linking mode and the list of included or excluded Regions. You cannot use [`update_finding_aggregator`][securityhub_update_finding_aggregator] to change the aggregation Region.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/update_finding_aggregator.html](https://paws-r.github.io/docs/securityhub/update_finding_aggregator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_update_finding_aggregator/](https://www.paws-r-sdk.com/docs/securityhub_update_finding_aggregator/) for full documentation.
 #'
 #' @param FindingAggregatorArn &#91;required&#93; The ARN of the finding aggregator. To obtain the ARN, use
 #' [`list_finding_aggregators`][securityhub_list_finding_aggregators].
@@ -2027,7 +2204,7 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #' @description
 #' [`update_findings`][securityhub_update_findings] is deprecated. Instead of [`update_findings`][securityhub_update_findings], use [`batch_update_findings`][securityhub_batch_update_findings].
 #'
-#' See [https://paws-r.github.io/docs/securityhub/update_findings.html](https://paws-r.github.io/docs/securityhub/update_findings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_update_findings/](https://www.paws-r-sdk.com/docs/securityhub_update_findings/) for full documentation.
 #'
 #' @param Filters &#91;required&#93; A collection of attributes that specify which findings you want to
 #' update.
@@ -2059,7 +2236,7 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #' @description
 #' Updates the Security Hub insight identified by the specified insight ARN.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/update_insight.html](https://paws-r.github.io/docs/securityhub/update_insight.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_update_insight/](https://www.paws-r-sdk.com/docs/securityhub_update_insight/) for full documentation.
 #'
 #' @param InsightArn &#91;required&#93; The ARN of the insight that you want to update.
 #' @param Name The updated name for the insight.
@@ -2091,7 +2268,7 @@ securityhub_update_insight <- function(InsightArn, Name = NULL, Filters = NULL, 
 #' @description
 #' Used to update the configuration related to Organizations. Can only be called from a Security Hub administrator account.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/update_organization_configuration.html](https://paws-r.github.io/docs/securityhub/update_organization_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_update_organization_configuration/](https://www.paws-r-sdk.com/docs/securityhub_update_organization_configuration/) for full documentation.
 #'
 #' @param AutoEnable &#91;required&#93; Whether to automatically enable Security Hub for new accounts in the
 #' organization.
@@ -2136,7 +2313,7 @@ securityhub_update_organization_configuration <- function(AutoEnable, AutoEnable
 #' @description
 #' Updates configuration options for Security Hub.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/update_security_hub_configuration.html](https://paws-r.github.io/docs/securityhub/update_security_hub_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_update_security_hub_configuration/](https://www.paws-r-sdk.com/docs/securityhub_update_security_hub_configuration/) for full documentation.
 #'
 #' @param AutoEnableControls Whether to automatically enable new controls when they are added to
 #' standards that are enabled.
@@ -2182,7 +2359,7 @@ securityhub_update_security_hub_configuration <- function(AutoEnableControls = N
 #' @description
 #' Used to control whether an individual security standard control is enabled or disabled.
 #'
-#' See [https://paws-r.github.io/docs/securityhub/update_standards_control.html](https://paws-r.github.io/docs/securityhub/update_standards_control.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/securityhub_update_standards_control/](https://www.paws-r-sdk.com/docs/securityhub_update_standards_control/) for full documentation.
 #'
 #' @param StandardsControlArn &#91;required&#93; The ARN of the security standard control to enable or disable.
 #' @param ControlStatus The updated status of the security standard control.

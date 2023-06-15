@@ -16,6 +16,6 @@ backupstorage_start_object(BackupJobId, ObjectName, ThrowOnDuplicate = NULL)
 \description{
 Start upload containing one or many chunks.
 
-See \url{https://paws-r.github.io/docs/backupstorage/start_object.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupstorage_start_object/} for full documentation.
 }
 \keyword{internal}

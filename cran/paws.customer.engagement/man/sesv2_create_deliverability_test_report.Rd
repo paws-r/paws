@@ -27,6 +27,6 @@ to associate with the predictive inbox placement test.}
 \description{
 Create a new predictive inbox placement test. Predictive inbox placement tests can help you predict how your messages will be handled by various email providers around the world. When you perform a predictive inbox placement test, you provide a sample message that contains the content that you plan to send to your customers. Amazon SES then sends that message to special email addresses spread across several major email providers. After about 24 hours, the test is complete, and you can use the \code{\link[=sesv2_get_deliverability_test_report]{get_deliverability_test_report}} operation to view the results of the test.
 
-See \url{https://paws-r.github.io/docs/sesv2/create_deliverability_test_report.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_create_deliverability_test_report/} for full documentation.
 }
 \keyword{internal}

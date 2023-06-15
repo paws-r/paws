@@ -31,6 +31,6 @@ _ ~). This value must be 1-150 characters long.}
 \description{
 Creates a new configuration for the specified configuration name. Amazon MQ uses the default configuration (the engine type and version).
 
-See \url{https://paws-r.github.io/docs/mq/create_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mq_create_configuration/} for full documentation.
 }
 \keyword{internal}

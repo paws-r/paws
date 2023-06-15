@@ -23,6 +23,6 @@ this optional parameter, the operation generates service data.}
 \description{
 Generates a report that includes details about when an IAM resource (user, group, role, or policy) was last used in an attempt to access Amazon Web Services services. Recent activity usually appears within four hours. IAM reports activity for at least the last 400 days, or less if your Region began supporting this feature within the last year. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period}{Regions where data is tracked}.
 
-See \url{https://paws-r.github.io/docs/iam/generate_service_last_accessed_details.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_generate_service_last_accessed_details/} for full documentation.
 }
 \keyword{internal}

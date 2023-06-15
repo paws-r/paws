@@ -14,6 +14,6 @@ Account.}
 \description{
 Deletes the specified identity (an email address or a domain) from the list of verified identities.
 
-See \url{https://paws-r.github.io/docs/ses/delete_identity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_delete_identity/} for full documentation.
 }
 \keyword{internal}

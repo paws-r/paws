@@ -18,6 +18,6 @@ previous request ended.}
 \description{
 Searches for Amazon Braket jobs that match the specified filter values.
 
-See \url{https://paws-r.github.io/docs/braket/search_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/braket_search_jobs/} for full documentation.
 }
 \keyword{internal}

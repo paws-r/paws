@@ -16,6 +16,6 @@ locationservice_batch_put_geofence(CollectionName, Entries)
 \description{
 A batch request for storing geofence geometries into a given geofence collection, or updates the geometry of an existing geofence if a geofence ID is included in the request.
 
-See \url{https://paws-r.github.io/docs/locationservice/batch_put_geofence.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_batch_put_geofence/} for full documentation.
 }
 \keyword{internal}

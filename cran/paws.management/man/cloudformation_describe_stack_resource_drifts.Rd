@@ -37,6 +37,6 @@ parameter to get the next set of results.}
 \description{
 Returns drift information for the resources that have been checked for drift in the specified stack. This includes actual and expected configuration values for resources where CloudFormation detects configuration drift.
 
-See \url{https://paws-r.github.io/docs/cloudformation/describe_stack_resource_drifts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_resource_drifts/} for full documentation.
 }
 \keyword{internal}

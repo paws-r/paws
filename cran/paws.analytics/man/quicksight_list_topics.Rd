@@ -18,6 +18,6 @@ results.}
 \description{
 Lists all of the topics within an account.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_topics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_topics/} for full documentation.
 }
 \keyword{internal}

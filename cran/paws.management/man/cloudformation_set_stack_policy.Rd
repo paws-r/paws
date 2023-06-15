@@ -26,6 +26,6 @@ Amazon Web Services Region as the stack. You can specify either the
 \description{
 Sets a stack policy for a specified stack.
 
-See \url{https://paws-r.github.io/docs/cloudformation/set_stack_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_set_stack_policy/} for full documentation.
 }
 \keyword{internal}

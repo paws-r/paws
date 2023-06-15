@@ -12,6 +12,6 @@ directoryservice_get_snapshot_limits(DirectoryId)
 \description{
 Obtains the manual snapshot limits for a directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/get_snapshot_limits.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_get_snapshot_limits/} for full documentation.
 }
 \keyword{internal}

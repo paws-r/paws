@@ -14,6 +14,6 @@ datapipeline_add_tags(pipelineId, tags)
 \description{
 Adds or modifies tags for the specified pipeline.
 
-See \url{https://paws-r.github.io/docs/datapipeline/add_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/datapipeline_add_tags/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ should be applied to.}
 \description{
 Applies a policy to a container image. We recommend that you call the RAM API CreateResourceShare (https://docs.aws.amazon.com//ram/latest/APIReference/API_CreateResourceShare.html) to share resources. If you call the Image Builder API \code{PutContainerImagePolicy}, you must also call the RAM API PromoteResourceShareCreatedFromPolicy (https://docs.aws.amazon.com//ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html) in order for the resource to be visible to all principals with whom the resource is shared.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/put_container_recipe_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_put_container_recipe_policy/} for full documentation.
 }
 \keyword{internal}

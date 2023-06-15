@@ -15,6 +15,6 @@ and the maximum value is 500.}
 \description{
 Represents a collection of DomainName resources.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_domain_names.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_domain_names/} for full documentation.
 }
 \keyword{internal}

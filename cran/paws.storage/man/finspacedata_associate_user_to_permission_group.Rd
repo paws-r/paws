@@ -21,6 +21,6 @@ finspacedata_associate_user_to_permission_group(
 \description{
 Adds a user account to a permission group to grant permissions for actions a user can perform in FinSpace.
 
-See \url{https://paws-r.github.io/docs/finspacedata/associate_user_to_permission_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_associate_user_to_permission_group/} for full documentation.
 }
 \keyword{internal}

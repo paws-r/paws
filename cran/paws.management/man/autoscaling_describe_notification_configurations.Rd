@@ -23,6 +23,6 @@ is \code{50} and the maximum value is \code{100}.}
 \description{
 Gets information about the Amazon SNS notifications that are configured for one or more Auto Scaling groups.
 
-See \url{https://paws-r.github.io/docs/autoscaling/describe_notification_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_describe_notification_configurations/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ networkmanager_get_site_to_site_vpn_attachment(AttachmentId)
 \description{
 Returns information about a site-to-site VPN attachment.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_site_to_site_vpn_attachment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_site_to_site_vpn_attachment/} for full documentation.
 }
 \keyword{internal}

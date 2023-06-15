@@ -12,6 +12,6 @@ appstream_delete_application(Name)
 \description{
 Deletes an application.
 
-See \url{https://paws-r.github.io/docs/appstream/delete_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_delete_application/} for full documentation.
 }
 \keyword{internal}

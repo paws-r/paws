@@ -16,6 +16,6 @@ start with \verb{aws:}. The tag value can be up to 256 characters.}
 \description{
 Adds or updates a tag on a given resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_tag_resource/} for full documentation.
 }
 \keyword{internal}

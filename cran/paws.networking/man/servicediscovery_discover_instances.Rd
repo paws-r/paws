@@ -61,6 +61,6 @@ that case, return all instances. This is also called failing open.}
 \description{
 Discovers registered instances for a specified namespace and service. You can use \code{\link[=servicediscovery_discover_instances]{discover_instances}} to discover instances for any type of namespace. For public and private DNS namespaces, you can also use DNS queries to discover instances.
 
-See \url{https://paws-r.github.io/docs/servicediscovery/discover_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicediscovery_discover_instances/} for full documentation.
 }
 \keyword{internal}

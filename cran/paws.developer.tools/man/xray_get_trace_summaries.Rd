@@ -37,6 +37,6 @@ the next page of results.}
 \description{
 Retrieves IDs and annotations for traces available for a specified time frame using an optional filter. To get the full traces, pass the trace IDs to \code{\link[=xray_batch_get_traces]{batch_get_traces}}.
 
-See \url{https://paws-r.github.io/docs/xray/get_trace_summaries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_get_trace_summaries/} for full documentation.
 }
 \keyword{internal}

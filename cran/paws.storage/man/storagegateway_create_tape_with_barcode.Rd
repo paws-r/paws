@@ -60,6 +60,6 @@ the maximum length for a tag's value is 256.}
 \description{
 Creates a virtual tape by using your own barcode. You write data to the virtual tape and then archive the tape. A barcode is unique and cannot be reused if it has already been used on a tape. This applies to barcodes used on deleted tapes. This operation is only supported in the tape gateway type.
 
-See \url{https://paws-r.github.io/docs/storagegateway/create_tape_with_barcode.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_create_tape_with_barcode/} for full documentation.
 }
 \keyword{internal}

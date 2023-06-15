@@ -24,6 +24,6 @@ registry, the default registry is assumed.}
 \description{
 Creates a pull through cache rule. A pull through cache rule provides a way to cache images from an external public registry in your Amazon ECR private registry.
 
-See \url{https://paws-r.github.io/docs/ecr/create_pull_through_cache_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_create_pull_through_cache_rule/} for full documentation.
 }
 \keyword{internal}

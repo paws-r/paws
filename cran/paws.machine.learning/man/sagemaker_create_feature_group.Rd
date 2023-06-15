@@ -109,6 +109,6 @@ data into the \code{OfflineStore} if an \code{OfflineStoreConfig} is provided.}
 \description{
 Create a new \code{FeatureGroup}. A \code{FeatureGroup} is a group of \code{Features} defined in the \code{FeatureStore} to describe a \code{Record}.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_feature_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_feature_group/} for full documentation.
 }
 \keyword{internal}

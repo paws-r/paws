@@ -15,6 +15,6 @@ cloudsearch_define_analysis_scheme(DomainName, AnalysisScheme)
 \description{
 Configures an analysis scheme that can be applied to a \code{text} or \code{text-array} field to define language-specific text processing options. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html" target="_blank">}}Configuring Analysis Schemes\if{html}{\out{</a>}} in the \emph{Amazon CloudSearch Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/cloudsearch/define_analysis_scheme.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudsearch_define_analysis_scheme/} for full documentation.
 }
 \keyword{internal}

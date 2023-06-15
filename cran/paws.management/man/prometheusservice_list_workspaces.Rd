@@ -23,6 +23,6 @@ request.}
 \description{
 Lists all AMP workspaces, including workspaces being created or deleted.
 
-See \url{https://paws-r.github.io/docs/prometheusservice/list_workspaces.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/prometheusservice_list_workspaces/} for full documentation.
 }
 \keyword{internal}

@@ -29,6 +29,6 @@ networkmanager_list_peerings(
 \description{
 Lists the peerings for a core network.
 
-See \url{https://paws-r.github.io/docs/networkmanager/list_peerings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_list_peerings/} for full documentation.
 }
 \keyword{internal}

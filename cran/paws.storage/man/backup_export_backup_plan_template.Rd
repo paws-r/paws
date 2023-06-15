@@ -13,6 +13,6 @@ backup_export_backup_plan_template(BackupPlanId)
 \description{
 Returns the backup plan that is specified by the plan ID as a backup template.
 
-See \url{https://paws-r.github.io/docs/backup/export_backup_plan_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_export_backup_plan_template/} for full documentation.
 }
 \keyword{internal}

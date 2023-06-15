@@ -15,6 +15,6 @@ drs_tag_resource(resourceArn, tags)
 \description{
 Adds or overwrites only the specified tags for the specified Elastic Disaster Recovery resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value.
 
-See \url{https://paws-r.github.io/docs/drs/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_tag_resource/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ athena_get_database(CatalogName, DatabaseName)
 \description{
 Returns a database object for the specified database and data catalog.
 
-See \url{https://paws-r.github.io/docs/athena/get_database.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_get_database/} for full documentation.
 }
 \keyword{internal}

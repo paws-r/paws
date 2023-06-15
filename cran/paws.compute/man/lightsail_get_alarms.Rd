@@ -30,6 +30,6 @@ for a specific resource.}
 \description{
 Returns information about the configured alarms. Specify an alarm name in your request to return information about a specific alarm, or specify a monitored resource name to return information about all alarms for a specific resource.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_alarms.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_alarms/} for full documentation.
 }
 \keyword{internal}

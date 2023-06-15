@@ -27,6 +27,6 @@ beyond what is documented there.}
 \description{
 Creates a logging configuration that allows clients to store and record sent messages.
 
-See \url{https://paws-r.github.io/docs/ivschat/create_logging_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivschat_create_logging_configuration/} for full documentation.
 }
 \keyword{internal}

@@ -11,6 +11,6 @@ directconnect_describe_customer_metadata()
 \description{
 Get and view a list of customer agreements, along with their signed status and whether the customer is an NNIPartner, NNIPartnerV2, or a nonPartner.
 
-See \url{https://paws-r.github.io/docs/directconnect/describe_customer_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_describe_customer_metadata/} for full documentation.
 }
 \keyword{internal}

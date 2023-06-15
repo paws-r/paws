@@ -15,6 +15,6 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Deletes a journey from an application.
 
-See \url{https://paws-r.github.io/docs/pinpoint/delete_journey.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_delete_journey/} for full documentation.
 }
 \keyword{internal}

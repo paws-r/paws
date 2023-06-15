@@ -17,6 +17,6 @@ Names (ARNs).}
 \description{
 Disassociates resources from a Firewall Manager resource set.
 
-See \url{https://paws-r.github.io/docs/fms/batch_disassociate_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_batch_disassociate_resource/} for full documentation.
 }
 \keyword{internal}

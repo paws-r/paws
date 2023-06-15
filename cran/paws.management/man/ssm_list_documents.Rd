@@ -37,6 +37,6 @@ from a previous call.)}
 \description{
 Returns all Systems Manager (SSM) documents in the current Amazon Web Services account and Amazon Web Services Region. You can limit the results of this request by using a filter.
 
-See \url{https://paws-r.github.io/docs/ssm/list_documents.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_list_documents/} for full documentation.
 }
 \keyword{internal}

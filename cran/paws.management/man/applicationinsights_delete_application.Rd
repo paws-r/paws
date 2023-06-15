@@ -12,6 +12,6 @@ applicationinsights_delete_application(ResourceGroupName)
 \description{
 Removes the specified application from monitoring. Does not delete the application.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/delete_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_delete_application/} for full documentation.
 }
 \keyword{internal}

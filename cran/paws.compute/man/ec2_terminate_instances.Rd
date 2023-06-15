@@ -20,6 +20,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Shuts down the specified instances. This operation is idempotent; if you terminate an instance more than once, each call succeeds.
 
-See \url{https://paws-r.github.io/docs/ec2/terminate_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_terminate_instances/} for full documentation.
 }
 \keyword{internal}

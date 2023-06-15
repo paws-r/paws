@@ -16,6 +16,6 @@ that you cannot specify the name of the security group.}
 \description{
 Associates one or more security groups with your load balancer in a virtual private cloud (VPC). The specified security groups override the previously associated security groups.
 
-See \url{https://paws-r.github.io/docs/elb/apply_security_groups_to_load_balancer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_apply_security_groups_to_load_balancer/} for full documentation.
 }
 \keyword{internal}

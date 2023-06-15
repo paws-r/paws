@@ -43,6 +43,6 @@ with \code{imageIds}, you can't use this option.}
 \description{
 Returns the image tag details for a repository in a public registry.
 
-See \url{https://paws-r.github.io/docs/ecrpublic/describe_image_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecrpublic_describe_image_tags/} for full documentation.
 }
 \keyword{internal}

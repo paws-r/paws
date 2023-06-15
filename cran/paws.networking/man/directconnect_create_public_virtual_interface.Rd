@@ -17,6 +17,6 @@ directconnect_create_public_virtual_interface(
 \description{
 Creates a public virtual interface. A virtual interface is the VLAN that transports Direct Connect traffic. A public virtual interface supports sending traffic to public services of Amazon Web Services such as Amazon S3.
 
-See \url{https://paws-r.github.io/docs/directconnect/create_public_virtual_interface.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_create_public_virtual_interface/} for full documentation.
 }
 \keyword{internal}

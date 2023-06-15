@@ -17,6 +17,6 @@ Operations job.}
 \description{
 Updates an existing S3 Batch Operations job's priority. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html}{S3 Batch Operations} in the \emph{Amazon S3 User Guide}.
 
-See \url{https://paws-r.github.io/docs/s3control/update_job_priority.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_update_job_priority/} for full documentation.
 }
 \keyword{internal}

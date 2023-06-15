@@ -43,6 +43,6 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 \description{
 Disables group metrics collection for the specified Auto Scaling group.
 
-See \url{https://paws-r.github.io/docs/autoscaling/disable_metrics_collection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_disable_metrics_collection/} for full documentation.
 }
 \keyword{internal}

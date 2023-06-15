@@ -14,6 +14,6 @@ default.}
 \description{
 Retrieves the security configuration for a specified catalog.
 
-See \url{https://paws-r.github.io/docs/glue/get_data_catalog_encryption_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_data_catalog_encryption_settings/} for full documentation.
 }
 \keyword{internal}

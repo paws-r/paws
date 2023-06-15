@@ -66,6 +66,6 @@ operation.}
 \description{
 Creates a case in the Amazon Web Services Support Center. This operation is similar to how you create a case in the Amazon Web Services Support Center Create Case page.
 
-See \url{https://paws-r.github.io/docs/support/create_case.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/support_create_case/} for full documentation.
 }
 \keyword{internal}

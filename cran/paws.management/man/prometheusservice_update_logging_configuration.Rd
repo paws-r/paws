@@ -22,6 +22,6 @@ published.}
 \description{
 Update logging configuration.
 
-See \url{https://paws-r.github.io/docs/prometheusservice/update_logging_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/prometheusservice_update_logging_configuration/} for full documentation.
 }
 \keyword{internal}

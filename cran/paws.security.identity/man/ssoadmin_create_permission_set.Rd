@@ -33,6 +33,6 @@ authentication process.}
 \description{
 Creates a permission set within a specified IAM Identity Center instance.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/create_permission_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_create_permission_set/} for full documentation.
 }
 \keyword{internal}

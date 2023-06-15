@@ -37,6 +37,6 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists the tags that are attached to the specified OpenID Connect (OIDC)-compatible identity provider. The returned list of tags is sorted by tag key. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html}{About web identity federation}.
 
-See \url{https://paws-r.github.io/docs/iam/list_open_id_connect_provider_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_open_id_connect_provider_tags/} for full documentation.
 }
 \keyword{internal}

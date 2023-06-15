@@ -15,6 +15,6 @@ required key and an optional value.}
 \description{
 Add tags to the specified Amazon SNS topic. For an overview, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html}{Amazon SNS Tags} in the \emph{Amazon SNS Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/sns/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_tag_resource/} for full documentation.
 }
 \keyword{internal}

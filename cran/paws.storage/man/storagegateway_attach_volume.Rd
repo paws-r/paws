@@ -43,6 +43,6 @@ you are attaching a stored volume.}
 \description{
 Connects a volume to an iSCSI connection and then attaches the volume to the specified gateway. Detaching and attaching a volume enables you to recover your data from one gateway to a different gateway without creating a snapshot. It also makes it easier to move your volumes from an on-premises gateway to a gateway hosted on an Amazon EC2 instance.
 
-See \url{https://paws-r.github.io/docs/storagegateway/attach_volume.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_attach_volume/} for full documentation.
 }
 \keyword{internal}

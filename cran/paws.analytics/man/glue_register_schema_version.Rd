@@ -23,6 +23,6 @@ provided.
 \description{
 Adds a new version to the existing schema. Returns an error if new version of schema does not meet the compatibility requirements of the schema set. This API will not create a new schema set and will return a 404 error if the schema set is not already present in the Schema Registry.
 
-See \url{https://paws-r.github.io/docs/glue/register_schema_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_register_schema_version/} for full documentation.
 }
 \keyword{internal}

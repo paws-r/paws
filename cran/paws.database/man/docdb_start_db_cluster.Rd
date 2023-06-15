@@ -13,6 +13,6 @@ docdb_start_db_cluster(DBClusterIdentifier)
 \description{
 Restarts the stopped cluster that is specified by \code{DBClusterIdentifier}. For more information, see \href{https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-stop-start.html}{Stopping and Starting an Amazon DocumentDB Cluster}.
 
-See \url{https://paws-r.github.io/docs/docdb/start_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_start_db_cluster/} for full documentation.
 }
 \keyword{internal}

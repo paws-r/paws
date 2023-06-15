@@ -49,6 +49,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Searches for routes in the specified transit gateway route table.
 
-See \url{https://paws-r.github.io/docs/ec2/search_transit_gateway_routes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_search_transit_gateway_routes/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ element, if any.}
 \description{
 Updates the comment for a specified hosted zone.
 
-See \url{https://paws-r.github.io/docs/route53/update_hosted_zone_comment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_update_hosted_zone_comment/} for full documentation.
 }
 \keyword{internal}

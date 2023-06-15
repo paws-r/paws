@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Deletes the specified alternate contact from an Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/account/delete_alternate_contact.html](https://paws-r.github.io/docs/account/delete_alternate_contact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/account_delete_alternate_contact/](https://www.paws-r-sdk.com/docs/account_delete_alternate_contact/) for full documentation.
 #'
 #' @param AccountId Specifies the 12 digit account ID number of the Amazon Web Services
 #' account that you want to access or modify with this operation.
@@ -65,7 +65,7 @@ account_delete_alternate_contact <- function(AccountId = NULL, AlternateContactT
 #' @description
 #' Disables (opts-out) a particular Region for an account.
 #'
-#' See [https://paws-r.github.io/docs/account/disable_region.html](https://paws-r.github.io/docs/account/disable_region.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/account_disable_region/](https://www.paws-r-sdk.com/docs/account_disable_region/) for full documentation.
 #'
 #' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services
 #' account that you want to access or modify with this operation. If you
@@ -124,7 +124,7 @@ account_disable_region <- function(AccountId = NULL, RegionName) {
 #' @description
 #' Enables (opts-in) a particular Region for an account.
 #'
-#' See [https://paws-r.github.io/docs/account/enable_region.html](https://paws-r.github.io/docs/account/enable_region.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/account_enable_region/](https://www.paws-r-sdk.com/docs/account_enable_region/) for full documentation.
 #'
 #' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services
 #' account that you want to access or modify with this operation. If you
@@ -185,7 +185,7 @@ account_enable_region <- function(AccountId = NULL, RegionName) {
 #' @description
 #' Retrieves the specified alternate contact attached to an Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/account/get_alternate_contact.html](https://paws-r.github.io/docs/account/get_alternate_contact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/account_get_alternate_contact/](https://www.paws-r-sdk.com/docs/account_get_alternate_contact/) for full documentation.
 #'
 #' @param AccountId Specifies the 12 digit account ID number of the Amazon Web Services
 #' account that you want to access or modify with this operation.
@@ -242,7 +242,7 @@ account_get_alternate_contact <- function(AccountId = NULL, AlternateContactType
 #' @description
 #' Retrieves the primary contact information of an Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/account/get_contact_information.html](https://paws-r.github.io/docs/account/get_contact_information.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/account_get_contact_information/](https://www.paws-r-sdk.com/docs/account_get_contact_information/) for full documentation.
 #'
 #' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services
 #' account that you want to access or modify with this operation. If you
@@ -295,7 +295,7 @@ account_get_contact_information <- function(AccountId = NULL) {
 #' @description
 #' Retrieves the opt-in status of a particular Region.
 #'
-#' See [https://paws-r.github.io/docs/account/get_region_opt_status.html](https://paws-r.github.io/docs/account/get_region_opt_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/account_get_region_opt_status/](https://www.paws-r-sdk.com/docs/account_get_region_opt_status/) for full documentation.
 #'
 #' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services
 #' account that you want to access or modify with this operation. If you
@@ -352,7 +352,7 @@ account_get_region_opt_status <- function(AccountId = NULL, RegionName) {
 #' @description
 #' Lists all the Regions for a given account and their respective opt-in statuses. Optionally, this list can be filtered by the `region-opt-status-contains` parameter.
 #'
-#' See [https://paws-r.github.io/docs/account/list_regions.html](https://paws-r.github.io/docs/account/list_regions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/account_list_regions/](https://www.paws-r-sdk.com/docs/account_list_regions/) for full documentation.
 #'
 #' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services
 #' account that you want to access or modify with this operation. If you
@@ -423,7 +423,7 @@ account_list_regions <- function(AccountId = NULL, MaxResults = NULL, NextToken 
 #' @description
 #' Modifies the specified alternate contact attached to an Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/account/put_alternate_contact.html](https://paws-r.github.io/docs/account/put_alternate_contact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/account_put_alternate_contact/](https://www.paws-r-sdk.com/docs/account_put_alternate_contact/) for full documentation.
 #'
 #' @param AccountId Specifies the 12 digit account ID number of the Amazon Web Services
 #' account that you want to access or modify with this operation.
@@ -484,7 +484,7 @@ account_put_alternate_contact <- function(AccountId = NULL, AlternateContactType
 #' @description
 #' Updates the primary contact information of an Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/account/put_contact_information.html](https://paws-r.github.io/docs/account/put_contact_information.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/account_put_contact_information/](https://www.paws-r-sdk.com/docs/account_put_contact_information/) for full documentation.
 #'
 #' @param AccountId Specifies the 12-digit account ID number of the Amazon Web Services
 #' account that you want to access or modify with this operation. If you

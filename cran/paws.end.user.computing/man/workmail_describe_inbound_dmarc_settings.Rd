@@ -12,6 +12,6 @@ workmail_describe_inbound_dmarc_settings(OrganizationId)
 \description{
 Lists the settings in a DMARC policy for a specified organization.
 
-See \url{https://paws-r.github.io/docs/workmail/describe_inbound_dmarc_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_describe_inbound_dmarc_settings/} for full documentation.
 }
 \keyword{internal}

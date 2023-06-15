@@ -31,6 +31,6 @@ request, specify the value of \code{NextToken} from the previous response.}
 \description{
 Lists the tags that you associated with the specified resource.
 
-See \url{https://paws-r.github.io/docs/route53resolver/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

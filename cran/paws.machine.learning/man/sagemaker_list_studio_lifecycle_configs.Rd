@@ -19,8 +19,10 @@ sagemaker_list_studio_lifecycle_configs(
 )
 }
 \arguments{
-\item{MaxResults}{The maximum number of Studio Lifecycle Configurations to return in the
-response. The default value is 10.}
+\item{MaxResults}{The total number of items to return in the response. If the total number
+of items available is more than the value specified, a \code{NextToken} is
+provided in the response. To resume pagination, provide the \code{NextToken}
+value in the as part of a subsequent call. The default value is 10.}
 
 \item{NextToken}{If the previous call to ListStudioLifecycleConfigs didn't return the
 full set of Lifecycle Configurations, the call returns a token for
@@ -51,6 +53,6 @@ specified time.}
 \description{
 Lists the Studio Lifecycle Configurations in your Amazon Web Services Account.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_studio_lifecycle_configs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_studio_lifecycle_configs/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ call.}
 \description{
 Returns a list of delegations from an audit owner to a delegate.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_delegations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_delegations/} for full documentation.
 }
 \keyword{internal}

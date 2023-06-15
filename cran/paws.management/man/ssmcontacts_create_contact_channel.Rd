@@ -46,6 +46,6 @@ specified details.}
 \description{
 A contact channel is the method that Incident Manager uses to engage your contact.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/create_contact_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_create_contact_channel/} for full documentation.
 }
 \keyword{internal}

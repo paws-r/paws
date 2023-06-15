@@ -27,6 +27,6 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \description{
 Starts analyzing the specified Network Access Scope.
 
-See \url{https://paws-r.github.io/docs/ec2/start_network_insights_access_scope_analysis.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_start_network_insights_access_scope_analysis/} for full documentation.
 }
 \keyword{internal}

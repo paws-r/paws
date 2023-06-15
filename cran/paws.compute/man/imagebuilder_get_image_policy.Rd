@@ -13,6 +13,6 @@ retrieve.}
 \description{
 Gets an image policy.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/get_image_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_get_image_policy/} for full documentation.
 }
 \keyword{internal}

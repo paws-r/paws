@@ -25,6 +25,6 @@ types that are currently within their opt-in period for longer IDs.}
 \description{
 Modifies the ID format for the specified resource on a per-Region basis. You can specify that resources should receive longer IDs (17-character IDs) when they are created.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_id_format.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_id_format/} for full documentation.
 }
 \keyword{internal}

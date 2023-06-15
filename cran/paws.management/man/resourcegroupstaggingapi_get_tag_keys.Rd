@@ -15,6 +15,6 @@ empty in your initial request.}
 \description{
 Returns all tag keys currently in use in the specified Amazon Web Services Region for the calling account.
 
-See \url{https://paws-r.github.io/docs/resourcegroupstaggingapi/get_tag_keys.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_get_tag_keys/} for full documentation.
 }
 \keyword{internal}

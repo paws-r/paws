@@ -81,6 +81,6 @@ in the \emph{Amazon Cognito Developer Guide}.}
 \description{
 Lists the users in the Amazon Cognito user pool.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/list_users.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_users/} for full documentation.
 }
 \keyword{internal}

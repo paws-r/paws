@@ -12,6 +12,6 @@ storagegateway_describe_bandwidth_rate_limit(GatewayARN)
 \description{
 Returns the bandwidth rate limits of a gateway. By default, these limits are not set, which means no bandwidth rate limiting is in effect. This operation is supported only for the stored volume, cached volume, and tape gateway types. To describe bandwidth rate limits for S3 file gateways, use \code{\link[=storagegateway_describe_bandwidth_rate_limit_schedule]{describe_bandwidth_rate_limit_schedule}}.
 
-See \url{https://paws-r.github.io/docs/storagegateway/describe_bandwidth_rate_limit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_describe_bandwidth_rate_limit/} for full documentation.
 }
 \keyword{internal}

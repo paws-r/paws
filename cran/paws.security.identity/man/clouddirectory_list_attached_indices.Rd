@@ -26,6 +26,6 @@ clouddirectory_list_attached_indices(
 \description{
 Lists indices attached to the specified object.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/list_attached_indices.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_list_attached_indices/} for full documentation.
 }
 \keyword{internal}

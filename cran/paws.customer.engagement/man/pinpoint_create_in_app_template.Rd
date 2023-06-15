@@ -18,6 +18,6 @@ characters can be alphanumeric characters, underscores (_), or hyphens
 \description{
 Creates a new message template for messages using the in-app message channel.
 
-See \url{https://paws-r.github.io/docs/pinpoint/create_in_app_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_create_in_app_template/} for full documentation.
 }
 \keyword{internal}

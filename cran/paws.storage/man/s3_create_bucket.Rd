@@ -46,6 +46,6 @@ bucket.}
 \description{
 Creates a new S3 bucket. To create a bucket, you must register with Amazon S3 and have a valid Amazon Web Services Access Key ID to authenticate requests. Anonymous requests are never allowed to create buckets. By creating the bucket, you become the bucket owner.
 
-See \url{https://paws-r.github.io/docs/s3/create_bucket.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_create_bucket/} for full documentation.
 }
 \keyword{internal}

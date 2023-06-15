@@ -214,6 +214,6 @@ information, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/se
 \description{
 Starts running a build.
 
-See \url{https://paws-r.github.io/docs/codebuild/start_build.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_start_build/} for full documentation.
 }
 \keyword{internal}

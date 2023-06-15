@@ -17,6 +17,6 @@ inspector2_enable(accountIds = NULL, clientToken = NULL, resourceTypes)
 \description{
 Enables Amazon Inspector scans for one or more Amazon Web Services accounts.
 
-See \url{https://paws-r.github.io/docs/inspector2/enable.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_enable/} for full documentation.
 }
 \keyword{internal}

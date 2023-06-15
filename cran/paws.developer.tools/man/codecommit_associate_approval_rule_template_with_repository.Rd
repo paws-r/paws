@@ -18,6 +18,6 @@ codecommit_associate_approval_rule_template_with_repository(
 \description{
 Creates an association between an approval rule template and a specified repository. Then, the next time a pull request is created in the repository where the destination reference (if specified) matches the destination reference (branch) for the pull request, an approval rule that matches the template conditions is automatically created for that pull request. If no destination references are specified in the template, an approval rule that matches the template contents is created for all pull requests in that repository.
 
-See \url{https://paws-r.github.io/docs/codecommit/associate_approval_rule_template_with_repository.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_associate_approval_rule_template_with_repository/} for full documentation.
 }
 \keyword{internal}

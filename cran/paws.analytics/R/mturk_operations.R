@@ -9,7 +9,7 @@ NULL
 #' @description
 #' The [`accept_qualification_request`][mturk_accept_qualification_request] operation approves a Worker's request for a Qualification.
 #'
-#' See [https://paws-r.github.io/docs/mturk/accept_qualification_request.html](https://paws-r.github.io/docs/mturk/accept_qualification_request.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_accept_qualification_request/](https://www.paws-r-sdk.com/docs/mturk_accept_qualification_request/) for full documentation.
 #'
 #' @param QualificationRequestId &#91;required&#93; The ID of the Qualification request, as returned by the
 #' `GetQualificationRequests` operation.
@@ -43,7 +43,7 @@ mturk_accept_qualification_request <- function(QualificationRequestId, IntegerVa
 #' @description
 #' The [`approve_assignment`][mturk_approve_assignment] operation approves the results of a completed assignment.
 #'
-#' See [https://paws-r.github.io/docs/mturk/approve_assignment.html](https://paws-r.github.io/docs/mturk/approve_assignment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_approve_assignment/](https://www.paws-r-sdk.com/docs/mturk_approve_assignment/) for full documentation.
 #'
 #' @param AssignmentId &#91;required&#93; The ID of the assignment. The assignment must correspond to a HIT
 #' created by the Requester.
@@ -78,7 +78,7 @@ mturk_approve_assignment <- function(AssignmentId, RequesterFeedback = NULL, Ove
 #' @description
 #' The [`associate_qualification_with_worker`][mturk_associate_qualification_with_worker] operation gives a Worker a Qualification. [`associate_qualification_with_worker`][mturk_associate_qualification_with_worker] does not require that the Worker submit a Qualification request. It gives the Qualification directly to the Worker.
 #'
-#' See [https://paws-r.github.io/docs/mturk/associate_qualification_with_worker.html](https://paws-r.github.io/docs/mturk/associate_qualification_with_worker.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_associate_qualification_with_worker/](https://www.paws-r-sdk.com/docs/mturk_associate_qualification_with_worker/) for full documentation.
 #'
 #' @param QualificationTypeId &#91;required&#93; The ID of the Qualification type to use for the assigned Qualification.
 #' @param WorkerId &#91;required&#93; The ID of the Worker to whom the Qualification is being assigned. Worker
@@ -115,7 +115,7 @@ mturk_associate_qualification_with_worker <- function(QualificationTypeId, Worke
 #' @description
 #' The [`create_additional_assignments_for_hit`][mturk_create_additional_assignments_for_hit] operation increases the maximum number of assignments of an existing HIT.
 #'
-#' See [https://paws-r.github.io/docs/mturk/create_additional_assignments_for_hit.html](https://paws-r.github.io/docs/mturk/create_additional_assignments_for_hit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_create_additional_assignments_for_hit/](https://www.paws-r-sdk.com/docs/mturk_create_additional_assignments_for_hit/) for full documentation.
 #'
 #' @param HITId &#91;required&#93; The ID of the HIT to extend.
 #' @param NumberOfAdditionalAssignments &#91;required&#93; The number of additional assignments to request for this HIT.
@@ -152,7 +152,7 @@ mturk_create_additional_assignments_for_hit <- function(HITId, NumberOfAdditiona
 #' @description
 #' The [`create_hit`][mturk_create_hit] operation creates a new Human Intelligence Task (HIT). The new HIT is made available for Workers to find and accept on the Amazon Mechanical Turk website.
 #'
-#' See [https://paws-r.github.io/docs/mturk/create_hit.html](https://paws-r.github.io/docs/mturk/create_hit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_create_hit/](https://www.paws-r-sdk.com/docs/mturk_create_hit/) for full documentation.
 #'
 #' @param MaxAssignments The number of times the HIT can be accepted and completed before the HIT
 #' becomes unavailable.
@@ -258,7 +258,7 @@ mturk_create_hit <- function(MaxAssignments = NULL, AutoApprovalDelayInSeconds =
 #' @description
 #' The [`create_hit_type`][mturk_create_hit_type] operation creates a new HIT type. This operation allows you to define a standard set of HIT properties to use when creating HITs. If you register a HIT type with values that match an existing HIT type, the HIT type ID of the existing type will be returned.
 #'
-#' See [https://paws-r.github.io/docs/mturk/create_hit_type.html](https://paws-r.github.io/docs/mturk/create_hit_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_create_hit_type/](https://www.paws-r-sdk.com/docs/mturk_create_hit_type/) for full documentation.
 #'
 #' @param AutoApprovalDelayInSeconds The number of seconds after an assignment for the HIT has been
 #' submitted, after which the assignment is considered Approved
@@ -315,7 +315,7 @@ mturk_create_hit_type <- function(AutoApprovalDelayInSeconds = NULL, AssignmentD
 #' @description
 #' The [`create_hit_with_hit_type`][mturk_create_hit_with_hit_type] operation creates a new Human Intelligence Task (HIT) using an existing HITTypeID generated by the [`create_hit_type`][mturk_create_hit_type] operation.
 #'
-#' See [https://paws-r.github.io/docs/mturk/create_hit_with_hit_type.html](https://paws-r.github.io/docs/mturk/create_hit_with_hit_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_create_hit_with_hit_type/](https://www.paws-r-sdk.com/docs/mturk_create_hit_with_hit_type/) for full documentation.
 #'
 #' @param HITTypeId &#91;required&#93; The HIT type ID you want to create this HIT with.
 #' @param MaxAssignments The number of times the HIT can be accepted and completed before the HIT
@@ -396,7 +396,7 @@ mturk_create_hit_with_hit_type <- function(HITTypeId, MaxAssignments = NULL, Lif
 #' @description
 #' The [`create_qualification_type`][mturk_create_qualification_type] operation creates a new Qualification type, which is represented by a `QualificationType` data structure.
 #'
-#' See [https://paws-r.github.io/docs/mturk/create_qualification_type.html](https://paws-r.github.io/docs/mturk/create_qualification_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_create_qualification_type/](https://www.paws-r-sdk.com/docs/mturk_create_qualification_type/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name you give to the Qualification type. The type name is used to
 #' represent the Qualification to Workers, and to find the type using a
@@ -475,7 +475,7 @@ mturk_create_qualification_type <- function(Name, Keywords = NULL, Description, 
 #' @description
 #' The [`create_worker_block`][mturk_create_worker_block] operation allows you to prevent a Worker from working on your HITs. For example, you can block a Worker who is producing poor quality work. You can block up to 100,000 Workers.
 #'
-#' See [https://paws-r.github.io/docs/mturk/create_worker_block.html](https://paws-r.github.io/docs/mturk/create_worker_block.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_create_worker_block/](https://www.paws-r-sdk.com/docs/mturk_create_worker_block/) for full documentation.
 #'
 #' @param WorkerId &#91;required&#93; The ID of the Worker to block.
 #' @param Reason &#91;required&#93; A message explaining the reason for blocking the Worker. This parameter
@@ -507,7 +507,7 @@ mturk_create_worker_block <- function(WorkerId, Reason) {
 #' @description
 #' The [`delete_hit`][mturk_delete_hit] operation is used to delete HIT that is no longer needed. Only the Requester who created the HIT can delete it.
 #'
-#' See [https://paws-r.github.io/docs/mturk/delete_hit.html](https://paws-r.github.io/docs/mturk/delete_hit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_delete_hit/](https://www.paws-r-sdk.com/docs/mturk_delete_hit/) for full documentation.
 #'
 #' @param HITId &#91;required&#93; The ID of the HIT to be deleted.
 #'
@@ -537,7 +537,7 @@ mturk_delete_hit <- function(HITId) {
 #' @description
 #' The [`delete_qualification_type`][mturk_delete_qualification_type] deletes a Qualification type and deletes any HIT types that are associated with the Qualification type.
 #'
-#' See [https://paws-r.github.io/docs/mturk/delete_qualification_type.html](https://paws-r.github.io/docs/mturk/delete_qualification_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_delete_qualification_type/](https://www.paws-r-sdk.com/docs/mturk_delete_qualification_type/) for full documentation.
 #'
 #' @param QualificationTypeId &#91;required&#93; The ID of the QualificationType to dispose.
 #'
@@ -567,7 +567,7 @@ mturk_delete_qualification_type <- function(QualificationTypeId) {
 #' @description
 #' The [`delete_worker_block`][mturk_delete_worker_block] operation allows you to reinstate a blocked Worker to work on your HITs. This operation reverses the effects of the CreateWorkerBlock operation. You need the Worker ID to use this operation. If the Worker ID is missing or invalid, this operation fails and returns the message “WorkerId is invalid.” If the specified Worker is not blocked, this operation returns successfully.
 #'
-#' See [https://paws-r.github.io/docs/mturk/delete_worker_block.html](https://paws-r.github.io/docs/mturk/delete_worker_block.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_delete_worker_block/](https://www.paws-r-sdk.com/docs/mturk_delete_worker_block/) for full documentation.
 #'
 #' @param WorkerId &#91;required&#93; The ID of the Worker to unblock.
 #' @param Reason A message that explains the reason for unblocking the Worker. The Worker
@@ -599,7 +599,7 @@ mturk_delete_worker_block <- function(WorkerId, Reason = NULL) {
 #' @description
 #' The [`disassociate_qualification_from_worker`][mturk_disassociate_qualification_from_worker] revokes a previously granted Qualification from a user.
 #'
-#' See [https://paws-r.github.io/docs/mturk/disassociate_qualification_from_worker.html](https://paws-r.github.io/docs/mturk/disassociate_qualification_from_worker.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_disassociate_qualification_from_worker/](https://www.paws-r-sdk.com/docs/mturk_disassociate_qualification_from_worker/) for full documentation.
 #'
 #' @param WorkerId &#91;required&#93; The ID of the Worker who possesses the Qualification to be revoked.
 #' @param QualificationTypeId &#91;required&#93; The ID of the Qualification type of the Qualification to be revoked.
@@ -632,7 +632,7 @@ mturk_disassociate_qualification_from_worker <- function(WorkerId, Qualification
 #' @description
 #' The [`get_account_balance`][mturk_get_account_balance] operation retrieves the Prepaid HITs balance in your Amazon Mechanical Turk account if you are a Prepaid Requester. Alternatively, this operation will retrieve the remaining available AWS Billing usage if you have enabled AWS Billing. Note: If you have enabled AWS Billing and still have a remaining Prepaid HITs balance, this balance can be viewed on the My Account page in the Requester console.
 #'
-#' See [https://paws-r.github.io/docs/mturk/get_account_balance.html](https://paws-r.github.io/docs/mturk/get_account_balance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_get_account_balance/](https://www.paws-r-sdk.com/docs/mturk_get_account_balance/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -660,7 +660,7 @@ mturk_get_account_balance <- function() {
 #' @description
 #' The [`get_assignment`][mturk_get_assignment] operation retrieves the details of the specified Assignment.
 #'
-#' See [https://paws-r.github.io/docs/mturk/get_assignment.html](https://paws-r.github.io/docs/mturk/get_assignment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_get_assignment/](https://www.paws-r-sdk.com/docs/mturk_get_assignment/) for full documentation.
 #'
 #' @param AssignmentId &#91;required&#93; The ID of the Assignment to be retrieved.
 #'
@@ -689,7 +689,7 @@ mturk_get_assignment <- function(AssignmentId) {
 #' @description
 #' The [`get_file_upload_url`][mturk_get_file_upload_url] operation generates and returns a temporary URL. You use the temporary URL to retrieve a file uploaded by a Worker as an answer to a FileUploadAnswer question for a HIT. The temporary URL is generated the instant the GetFileUploadURL operation is called, and is valid for 60 seconds. You can get a temporary file upload URL any time until the HIT is disposed. After the HIT is disposed, any uploaded files are deleted, and cannot be retrieved. Pending Deprecation on December 12, 2017. The Answer Specification structure will no longer support the `FileUploadAnswer` element to be used for the QuestionForm data structure. Instead, we recommend that Requesters who want to create HITs asking Workers to upload files to use Amazon S3.
 #'
-#' See [https://paws-r.github.io/docs/mturk/get_file_upload_url.html](https://paws-r.github.io/docs/mturk/get_file_upload_url.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_get_file_upload_url/](https://www.paws-r-sdk.com/docs/mturk_get_file_upload_url/) for full documentation.
 #'
 #' @param AssignmentId &#91;required&#93; The ID of the assignment that contains the question with a
 #' FileUploadAnswer.
@@ -721,7 +721,7 @@ mturk_get_file_upload_url <- function(AssignmentId, QuestionIdentifier) {
 #' @description
 #' The [`get_hit`][mturk_get_hit] operation retrieves the details of the specified HIT.
 #'
-#' See [https://paws-r.github.io/docs/mturk/get_hit.html](https://paws-r.github.io/docs/mturk/get_hit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_get_hit/](https://www.paws-r-sdk.com/docs/mturk_get_hit/) for full documentation.
 #'
 #' @param HITId &#91;required&#93; The ID of the HIT to be retrieved.
 #'
@@ -751,7 +751,7 @@ mturk_get_hit <- function(HITId) {
 #' @description
 #' The [`get_qualification_score`][mturk_get_qualification_score] operation returns the value of a Worker's Qualification for a given Qualification type.
 #'
-#' See [https://paws-r.github.io/docs/mturk/get_qualification_score.html](https://paws-r.github.io/docs/mturk/get_qualification_score.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_get_qualification_score/](https://www.paws-r-sdk.com/docs/mturk_get_qualification_score/) for full documentation.
 #'
 #' @param QualificationTypeId &#91;required&#93; The ID of the QualificationType.
 #' @param WorkerId &#91;required&#93; The ID of the Worker whose Qualification is being updated.
@@ -782,7 +782,7 @@ mturk_get_qualification_score <- function(QualificationTypeId, WorkerId) {
 #' @description
 #' The [`get_qualification_type`][mturk_get_qualification_type]operation retrieves information about a Qualification type using its ID.
 #'
-#' See [https://paws-r.github.io/docs/mturk/get_qualification_type.html](https://paws-r.github.io/docs/mturk/get_qualification_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_get_qualification_type/](https://www.paws-r-sdk.com/docs/mturk_get_qualification_type/) for full documentation.
 #'
 #' @param QualificationTypeId &#91;required&#93; The ID of the QualificationType.
 #'
@@ -812,7 +812,7 @@ mturk_get_qualification_type <- function(QualificationTypeId) {
 #' @description
 #' The [`list_assignments_for_hit`][mturk_list_assignments_for_hit] operation retrieves completed assignments for a HIT. You can use this operation to retrieve the results for a HIT.
 #'
-#' See [https://paws-r.github.io/docs/mturk/list_assignments_for_hit.html](https://paws-r.github.io/docs/mturk/list_assignments_for_hit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_list_assignments_for_hit/](https://www.paws-r-sdk.com/docs/mturk_list_assignments_for_hit/) for full documentation.
 #'
 #' @param HITId &#91;required&#93; The ID of the HIT.
 #' @param NextToken Pagination token
@@ -845,7 +845,7 @@ mturk_list_assignments_for_hit <- function(HITId, NextToken = NULL, MaxResults =
 #' @description
 #' The [`list_bonus_payments`][mturk_list_bonus_payments] operation retrieves the amounts of bonuses you have paid to Workers for a given HIT or assignment.
 #'
-#' See [https://paws-r.github.io/docs/mturk/list_bonus_payments.html](https://paws-r.github.io/docs/mturk/list_bonus_payments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_list_bonus_payments/](https://www.paws-r-sdk.com/docs/mturk_list_bonus_payments/) for full documentation.
 #'
 #' @param HITId The ID of the HIT associated with the bonus payments to retrieve. If not
 #' specified, all bonus payments for all assignments for the given HIT are
@@ -883,7 +883,7 @@ mturk_list_bonus_payments <- function(HITId = NULL, AssignmentId = NULL, NextTok
 #' @description
 #' The [`list_hi_ts`][mturk_list_hi_ts] operation returns all of a Requester's HITs. The operation returns HITs of any status, except for HITs that have been deleted of with the DeleteHIT operation or that have been auto-deleted.
 #'
-#' See [https://paws-r.github.io/docs/mturk/list_hi_ts.html](https://paws-r.github.io/docs/mturk/list_hi_ts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_list_hi_ts/](https://www.paws-r-sdk.com/docs/mturk_list_hi_ts/) for full documentation.
 #'
 #' @param NextToken Pagination token
 #' @param MaxResults 
@@ -914,7 +914,7 @@ mturk_list_hi_ts <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' The [`list_hi_ts_for_qualification_type`][mturk_list_hi_ts_for_qualification_type] operation returns the HITs that use the given Qualification type for a Qualification requirement. The operation returns HITs of any status, except for HITs that have been deleted with the [`delete_hit`][mturk_delete_hit] operation or that have been auto-deleted.
 #'
-#' See [https://paws-r.github.io/docs/mturk/list_hi_ts_for_qualification_type.html](https://paws-r.github.io/docs/mturk/list_hi_ts_for_qualification_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_list_hi_ts_for_qualification_type/](https://www.paws-r-sdk.com/docs/mturk_list_hi_ts_for_qualification_type/) for full documentation.
 #'
 #' @param QualificationTypeId &#91;required&#93; The ID of the Qualification type to use when querying HITs.
 #' @param NextToken Pagination Token
@@ -946,7 +946,7 @@ mturk_list_hi_ts_for_qualification_type <- function(QualificationTypeId, NextTok
 #' @description
 #' The [`list_qualification_requests`][mturk_list_qualification_requests] operation retrieves requests for Qualifications of a particular Qualification type. The owner of the Qualification type calls this operation to poll for pending requests, and accepts them using the AcceptQualification operation.
 #'
-#' See [https://paws-r.github.io/docs/mturk/list_qualification_requests.html](https://paws-r.github.io/docs/mturk/list_qualification_requests.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_list_qualification_requests/](https://www.paws-r-sdk.com/docs/mturk_list_qualification_requests/) for full documentation.
 #'
 #' @param QualificationTypeId The ID of the QualificationType.
 #' @param NextToken 
@@ -978,7 +978,7 @@ mturk_list_qualification_requests <- function(QualificationTypeId = NULL, NextTo
 #' @description
 #' The [`list_qualification_types`][mturk_list_qualification_types] operation returns a list of Qualification types, filtered by an optional search term.
 #'
-#' See [https://paws-r.github.io/docs/mturk/list_qualification_types.html](https://paws-r.github.io/docs/mturk/list_qualification_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_list_qualification_types/](https://www.paws-r-sdk.com/docs/mturk_list_qualification_types/) for full documentation.
 #'
 #' @param Query A text query against all of the searchable attributes of Qualification
 #' types.
@@ -1020,7 +1020,7 @@ mturk_list_qualification_types <- function(Query = NULL, MustBeRequestable, Must
 #' @description
 #' The [`list_review_policy_results_for_hit`][mturk_list_review_policy_results_for_hit] operation retrieves the computed results and the actions taken in the course of executing your Review Policies for a given HIT. For information about how to specify Review Policies when you call CreateHIT, see Review Policies. The ListReviewPolicyResultsForHIT operation can return results for both Assignment-level and HIT-level review results.
 #'
-#' See [https://paws-r.github.io/docs/mturk/list_review_policy_results_for_hit.html](https://paws-r.github.io/docs/mturk/list_review_policy_results_for_hit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_list_review_policy_results_for_hit/](https://www.paws-r-sdk.com/docs/mturk_list_review_policy_results_for_hit/) for full documentation.
 #'
 #' @param HITId &#91;required&#93; The unique identifier of the HIT to retrieve review results for.
 #' @param PolicyLevels The Policy Level(s) to retrieve review results for - HIT or Assignment.
@@ -1060,7 +1060,7 @@ mturk_list_review_policy_results_for_hit <- function(HITId, PolicyLevels = NULL,
 #' @description
 #' The [`list_reviewable_hi_ts`][mturk_list_reviewable_hi_ts] operation retrieves the HITs with Status equal to Reviewable or Status equal to Reviewing that belong to the Requester calling the operation.
 #'
-#' See [https://paws-r.github.io/docs/mturk/list_reviewable_hi_ts.html](https://paws-r.github.io/docs/mturk/list_reviewable_hi_ts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_list_reviewable_hi_ts/](https://www.paws-r-sdk.com/docs/mturk_list_reviewable_hi_ts/) for full documentation.
 #'
 #' @param HITTypeId The ID of the HIT type of the HITs to consider for the query. If not
 #' specified, all HITs for the Reviewer are considered
@@ -1095,7 +1095,7 @@ mturk_list_reviewable_hi_ts <- function(HITTypeId = NULL, Status = NULL, NextTok
 #' @description
 #' The `ListWorkersBlocks` operation retrieves a list of Workers who are blocked from working on your HITs.
 #'
-#' See [https://paws-r.github.io/docs/mturk/list_worker_blocks.html](https://paws-r.github.io/docs/mturk/list_worker_blocks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_list_worker_blocks/](https://www.paws-r-sdk.com/docs/mturk_list_worker_blocks/) for full documentation.
 #'
 #' @param NextToken Pagination token
 #' @param MaxResults 
@@ -1126,7 +1126,7 @@ mturk_list_worker_blocks <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' The [`list_workers_with_qualification_type`][mturk_list_workers_with_qualification_type] operation returns all of the Workers that have been associated with a given Qualification type.
 #'
-#' See [https://paws-r.github.io/docs/mturk/list_workers_with_qualification_type.html](https://paws-r.github.io/docs/mturk/list_workers_with_qualification_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_list_workers_with_qualification_type/](https://www.paws-r-sdk.com/docs/mturk_list_workers_with_qualification_type/) for full documentation.
 #'
 #' @param QualificationTypeId &#91;required&#93; The ID of the Qualification type of the Qualifications to return.
 #' @param Status The status of the Qualifications to return. Can be `Granted | Revoked`.
@@ -1159,7 +1159,7 @@ mturk_list_workers_with_qualification_type <- function(QualificationTypeId, Stat
 #' @description
 #' The [`notify_workers`][mturk_notify_workers] operation sends an email to one or more Workers that you specify with the Worker ID. You can specify up to 100 Worker IDs to send the same message with a single call to the NotifyWorkers operation. The NotifyWorkers operation will send a notification email to a Worker only if you have previously approved or rejected work from the Worker.
 #'
-#' See [https://paws-r.github.io/docs/mturk/notify_workers.html](https://paws-r.github.io/docs/mturk/notify_workers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_notify_workers/](https://www.paws-r-sdk.com/docs/mturk_notify_workers/) for full documentation.
 #'
 #' @param Subject &#91;required&#93; The subject line of the email message to send. Can include up to 200
 #' characters.
@@ -1194,7 +1194,7 @@ mturk_notify_workers <- function(Subject, MessageText, WorkerIds) {
 #' @description
 #' The [`reject_assignment`][mturk_reject_assignment] operation rejects the results of a completed assignment.
 #'
-#' See [https://paws-r.github.io/docs/mturk/reject_assignment.html](https://paws-r.github.io/docs/mturk/reject_assignment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_reject_assignment/](https://www.paws-r-sdk.com/docs/mturk_reject_assignment/) for full documentation.
 #'
 #' @param AssignmentId &#91;required&#93; The ID of the assignment. The assignment must correspond to a HIT
 #' created by the Requester.
@@ -1227,7 +1227,7 @@ mturk_reject_assignment <- function(AssignmentId, RequesterFeedback) {
 #' @description
 #' The [`reject_qualification_request`][mturk_reject_qualification_request] operation rejects a user's request for a Qualification.
 #'
-#' See [https://paws-r.github.io/docs/mturk/reject_qualification_request.html](https://paws-r.github.io/docs/mturk/reject_qualification_request.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_reject_qualification_request/](https://www.paws-r-sdk.com/docs/mturk_reject_qualification_request/) for full documentation.
 #'
 #' @param QualificationRequestId &#91;required&#93; The ID of the Qualification request, as returned by the
 #' [`list_qualification_requests`][mturk_list_qualification_requests]
@@ -1261,7 +1261,7 @@ mturk_reject_qualification_request <- function(QualificationRequestId, Reason = 
 #' @description
 #' The [`send_bonus`][mturk_send_bonus] operation issues a payment of money from your account to a Worker. This payment happens separately from the reward you pay to the Worker when you approve the Worker's assignment. The SendBonus operation requires the Worker's ID and the assignment ID as parameters to initiate payment of the bonus. You must include a message that explains the reason for the bonus payment, as the Worker may not be expecting the payment. Amazon Mechanical Turk collects a fee for bonus payments, similar to the HIT listing fee. This operation fails if your account does not have enough funds to pay for both the bonus and the fees.
 #'
-#' See [https://paws-r.github.io/docs/mturk/send_bonus.html](https://paws-r.github.io/docs/mturk/send_bonus.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_send_bonus/](https://www.paws-r-sdk.com/docs/mturk_send_bonus/) for full documentation.
 #'
 #' @param WorkerId &#91;required&#93; The ID of the Worker being paid the bonus.
 #' @param BonusAmount &#91;required&#93; The Bonus amount is a US Dollar amount specified using a string (for
@@ -1304,7 +1304,7 @@ mturk_send_bonus <- function(WorkerId, BonusAmount, AssignmentId, Reason, Unique
 #' @description
 #' The [`send_test_event_notification`][mturk_send_test_event_notification] operation causes Amazon Mechanical Turk to send a notification message as if a HIT event occurred, according to the provided notification specification. This allows you to test notifications without setting up notifications for a real HIT type and trying to trigger them using the website. When you call this operation, the service attempts to send the test notification immediately.
 #'
-#' See [https://paws-r.github.io/docs/mturk/send_test_event_notification.html](https://paws-r.github.io/docs/mturk/send_test_event_notification.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_send_test_event_notification/](https://www.paws-r-sdk.com/docs/mturk_send_test_event_notification/) for full documentation.
 #'
 #' @param Notification &#91;required&#93; The notification specification to test. This value is identical to the
 #' value you would provide to the UpdateNotificationSettings operation when
@@ -1340,7 +1340,7 @@ mturk_send_test_event_notification <- function(Notification, TestEventType) {
 #' @description
 #' The [`update_expiration_for_hit`][mturk_update_expiration_for_hit] operation allows you update the expiration time of a HIT. If you update it to a time in the past, the HIT will be immediately expired.
 #'
-#' See [https://paws-r.github.io/docs/mturk/update_expiration_for_hit.html](https://paws-r.github.io/docs/mturk/update_expiration_for_hit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_update_expiration_for_hit/](https://www.paws-r-sdk.com/docs/mturk_update_expiration_for_hit/) for full documentation.
 #'
 #' @param HITId &#91;required&#93; The HIT to update.
 #' @param ExpireAt &#91;required&#93; The date and time at which you want the HIT to expire
@@ -1370,7 +1370,7 @@ mturk_update_expiration_for_hit <- function(HITId, ExpireAt) {
 #' @description
 #' The [`update_hit_review_status`][mturk_update_hit_review_status] operation updates the status of a HIT. If the status is Reviewable, this operation can update the status to Reviewing, or it can revert a Reviewing HIT back to the Reviewable status.
 #'
-#' See [https://paws-r.github.io/docs/mturk/update_hit_review_status.html](https://paws-r.github.io/docs/mturk/update_hit_review_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_update_hit_review_status/](https://www.paws-r-sdk.com/docs/mturk_update_hit_review_status/) for full documentation.
 #'
 #' @param HITId &#91;required&#93; The ID of the HIT to update.
 #' @param Revert Specifies how to update the HIT status. Default is `False`.
@@ -1407,7 +1407,7 @@ mturk_update_hit_review_status <- function(HITId, Revert = NULL) {
 #' @description
 #' The [`update_hit_type_of_hit`][mturk_update_hit_type_of_hit] operation allows you to change the HITType properties of a HIT. This operation disassociates the HIT from its old HITType properties and associates it with the new HITType properties. The HIT takes on the properties of the new HITType in place of the old ones.
 #'
-#' See [https://paws-r.github.io/docs/mturk/update_hit_type_of_hit.html](https://paws-r.github.io/docs/mturk/update_hit_type_of_hit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_update_hit_type_of_hit/](https://www.paws-r-sdk.com/docs/mturk_update_hit_type_of_hit/) for full documentation.
 #'
 #' @param HITId &#91;required&#93; The HIT to update.
 #' @param HITTypeId &#91;required&#93; The ID of the new HIT type.
@@ -1438,7 +1438,7 @@ mturk_update_hit_type_of_hit <- function(HITId, HITTypeId) {
 #' @description
 #' The [`update_notification_settings`][mturk_update_notification_settings] operation creates, updates, disables or re-enables notifications for a HIT type. If you call the UpdateNotificationSettings operation for a HIT type that already has a notification specification, the operation replaces the old specification with a new one. You can call the UpdateNotificationSettings operation to enable or disable notifications for the HIT type, without having to modify the notification specification itself by providing updates to the Active status without specifying a new notification specification. To change the Active status of a HIT type's notifications, the HIT type must already have a notification specification, or one must be provided in the same call to [`update_notification_settings`][mturk_update_notification_settings].
 #'
-#' See [https://paws-r.github.io/docs/mturk/update_notification_settings.html](https://paws-r.github.io/docs/mturk/update_notification_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_update_notification_settings/](https://www.paws-r-sdk.com/docs/mturk_update_notification_settings/) for full documentation.
 #'
 #' @param HITTypeId &#91;required&#93; The ID of the HIT type whose notification specification is being
 #' updated.
@@ -1475,7 +1475,7 @@ mturk_update_notification_settings <- function(HITTypeId, Notification = NULL, A
 #' @description
 #' The [`update_qualification_type`][mturk_update_qualification_type] operation modifies the attributes of an existing Qualification type, which is represented by a QualificationType data structure. Only the owner of a Qualification type can modify its attributes.
 #'
-#' See [https://paws-r.github.io/docs/mturk/update_qualification_type.html](https://paws-r.github.io/docs/mturk/update_qualification_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mturk_update_qualification_type/](https://www.paws-r-sdk.com/docs/mturk_update_qualification_type/) for full documentation.
 #'
 #' @param QualificationTypeId &#91;required&#93; The ID of the Qualification type to update.
 #' @param Description The new description of the Qualification type.

@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a resource group with the specified name and description. You can optionally include either a resource query or a service configuration. For more information about constructing a resource query, see [Build queries and groups in Resource Groups](https://docs.aws.amazon.com/ARG/latest/userguide/) in the *Resource Groups User Guide*. For more information about service-linked groups and service configurations, see [Service configurations for Resource Groups](https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html).
 #'
-#' See [https://paws-r.github.io/docs/resourcegroups/create_group.html](https://paws-r.github.io/docs/resourcegroups/create_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_create_group/](https://www.paws-r-sdk.com/docs/resourcegroups_create_group/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the group, which is the identifier of the group in other
 #' operations. You can't change the name of a resource group after you
@@ -61,7 +61,7 @@ resourcegroups_create_group <- function(Name, Description = NULL, ResourceQuery 
 #' @description
 #' Deletes the specified resource group. Deleting a resource group does not delete any resources that are members of the group; it only deletes the group structure.
 #'
-#' See [https://paws-r.github.io/docs/resourcegroups/delete_group.html](https://paws-r.github.io/docs/resourcegroups/delete_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_delete_group/](https://www.paws-r-sdk.com/docs/resourcegroups_delete_group/) for full documentation.
 #'
 #' @param GroupName Deprecated - don't use this parameter. Use `Group` instead.
 #' @param Group The name or the ARN of the resource group to delete.
@@ -91,7 +91,7 @@ resourcegroups_delete_group <- function(GroupName = NULL, Group = NULL) {
 #' @description
 #' Retrieves the current status of optional features in Resource Groups.
 #'
-#' See [https://paws-r.github.io/docs/resourcegroups/get_account_settings.html](https://paws-r.github.io/docs/resourcegroups/get_account_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_get_account_settings/](https://www.paws-r-sdk.com/docs/resourcegroups_get_account_settings/) for full documentation.
 #'
 
 #'
@@ -120,7 +120,7 @@ resourcegroups_get_account_settings <- function() {
 #' @description
 #' Returns information about a specified resource group.
 #'
-#' See [https://paws-r.github.io/docs/resourcegroups/get_group.html](https://paws-r.github.io/docs/resourcegroups/get_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_get_group/](https://www.paws-r-sdk.com/docs/resourcegroups_get_group/) for full documentation.
 #'
 #' @param GroupName Deprecated - don't use this parameter. Use `Group` instead.
 #' @param Group The name or the ARN of the resource group to retrieve.
@@ -151,7 +151,7 @@ resourcegroups_get_group <- function(GroupName = NULL, Group = NULL) {
 #' @description
 #' Retrieves the service configuration associated with the specified resource group. For details about the service configuration syntax, see [Service configurations for Resource Groups](https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html).
 #'
-#' See [https://paws-r.github.io/docs/resourcegroups/get_group_configuration.html](https://paws-r.github.io/docs/resourcegroups/get_group_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_get_group_configuration/](https://www.paws-r-sdk.com/docs/resourcegroups_get_group_configuration/) for full documentation.
 #'
 #' @param Group The name or the ARN of the resource group for which you want to retrive
 #' the service configuration.
@@ -182,7 +182,7 @@ resourcegroups_get_group_configuration <- function(Group = NULL) {
 #' @description
 #' Retrieves the resource query associated with the specified resource group. For more information about resource queries, see [Create a tag-based group in Resource Groups](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag).
 #'
-#' See [https://paws-r.github.io/docs/resourcegroups/get_group_query.html](https://paws-r.github.io/docs/resourcegroups/get_group_query.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_get_group_query/](https://www.paws-r-sdk.com/docs/resourcegroups_get_group_query/) for full documentation.
 #'
 #' @param GroupName Don't use this parameter. Use `Group` instead.
 #' @param Group The name or the ARN of the resource group to query.
@@ -213,7 +213,7 @@ resourcegroups_get_group_query <- function(GroupName = NULL, Group = NULL) {
 #' @description
 #' Returns a list of tags that are associated with a resource group, specified by an ARN.
 #'
-#' See [https://paws-r.github.io/docs/resourcegroups/get_tags.html](https://paws-r.github.io/docs/resourcegroups/get_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_get_tags/](https://www.paws-r-sdk.com/docs/resourcegroups_get_tags/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The ARN of the resource group whose tags you want to retrieve.
 #'
@@ -242,7 +242,7 @@ resourcegroups_get_tags <- function(Arn) {
 #' @description
 #' Adds the specified resources to the specified group.
 #'
-#' See [https://paws-r.github.io/docs/resourcegroups/group_resources.html](https://paws-r.github.io/docs/resourcegroups/group_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_group_resources/](https://www.paws-r-sdk.com/docs/resourcegroups_group_resources/) for full documentation.
 #'
 #' @param Group &#91;required&#93; The name or the ARN of the resource group to add resources to.
 #' @param ResourceArns &#91;required&#93; The list of ARNs of the resources to be added to the group.
@@ -273,7 +273,7 @@ resourcegroups_group_resources <- function(Group, ResourceArns) {
 #' @description
 #' Returns a list of ARNs of the resources that are members of a specified resource group.
 #'
-#' See [https://paws-r.github.io/docs/resourcegroups/list_group_resources.html](https://paws-r.github.io/docs/resourcegroups/list_group_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_list_group_resources/](https://www.paws-r-sdk.com/docs/resourcegroups_list_group_resources/) for full documentation.
 #'
 #' @param GroupName *Deprecated - don't use this parameter. Use the Group request field
 #' instead.*
@@ -347,7 +347,7 @@ resourcegroups_list_group_resources <- function(GroupName = NULL, Group = NULL, 
 #' @description
 #' Returns a list of existing Resource Groups in your account.
 #'
-#' See [https://paws-r.github.io/docs/resourcegroups/list_groups.html](https://paws-r.github.io/docs/resourcegroups/list_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_list_groups/](https://www.paws-r-sdk.com/docs/resourcegroups_list_groups/) for full documentation.
 #'
 #' @param Filters Filters, formatted as GroupFilter objects, that you want to apply to a
 #' [`list_groups`][resourcegroups_list_groups] operation.
@@ -405,7 +405,7 @@ resourcegroups_list_groups <- function(Filters = NULL, MaxResults = NULL, NextTo
 #' @description
 #' Attaches a service configuration to the specified group. This occurs asynchronously, and can take time to complete. You can use [`get_group_configuration`][resourcegroups_get_group_configuration] to check the status of the update.
 #'
-#' See [https://paws-r.github.io/docs/resourcegroups/put_group_configuration.html](https://paws-r.github.io/docs/resourcegroups/put_group_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_put_group_configuration/](https://www.paws-r-sdk.com/docs/resourcegroups_put_group_configuration/) for full documentation.
 #'
 #' @param Group The name or ARN of the resource group with the configuration that you
 #' want to update.
@@ -448,7 +448,7 @@ resourcegroups_put_group_configuration <- function(Group = NULL, Configuration =
 #' @description
 #' Returns a list of Amazon Web Services resource identifiers that matches the specified query. The query uses the same format as a resource query in a [`create_group`][resourcegroups_create_group] or [`update_group_query`][resourcegroups_update_group_query] operation.
 #'
-#' See [https://paws-r.github.io/docs/resourcegroups/search_resources.html](https://paws-r.github.io/docs/resourcegroups/search_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_search_resources/](https://www.paws-r-sdk.com/docs/resourcegroups_search_resources/) for full documentation.
 #'
 #' @param ResourceQuery &#91;required&#93; The search query, using the same formats that are supported for resource
 #' group definition. For more information, see
@@ -494,7 +494,7 @@ resourcegroups_search_resources <- function(ResourceQuery, MaxResults = NULL, Ne
 #' @description
 #' Adds tags to a resource group with the specified ARN. Existing tags on a resource group are not changed if they are not specified in the request parameters.
 #'
-#' See [https://paws-r.github.io/docs/resourcegroups/tag.html](https://paws-r.github.io/docs/resourcegroups/tag.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_tag/](https://www.paws-r-sdk.com/docs/resourcegroups_tag/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The ARN of the resource group to which to add tags.
 #' @param Tags &#91;required&#93; The tags to add to the specified resource group. A tag is a
@@ -525,7 +525,7 @@ resourcegroups_tag <- function(Arn, Tags) {
 #' @description
 #' Removes the specified resources from the specified group. This operation works only with static groups that you populated using the [`group_resources`][resourcegroups_group_resources] operation. It doesn't work with any resource groups that are automatically populated by tag-based or CloudFormation stack-based queries.
 #'
-#' See [https://paws-r.github.io/docs/resourcegroups/ungroup_resources.html](https://paws-r.github.io/docs/resourcegroups/ungroup_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_ungroup_resources/](https://www.paws-r-sdk.com/docs/resourcegroups_ungroup_resources/) for full documentation.
 #'
 #' @param Group &#91;required&#93; The name or the ARN of the resource group from which to remove the
 #' resources.
@@ -556,7 +556,7 @@ resourcegroups_ungroup_resources <- function(Group, ResourceArns) {
 #' @description
 #' Deletes tags from a specified resource group.
 #'
-#' See [https://paws-r.github.io/docs/resourcegroups/untag.html](https://paws-r.github.io/docs/resourcegroups/untag.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_untag/](https://www.paws-r-sdk.com/docs/resourcegroups_untag/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The ARN of the resource group from which to remove tags. The command
 #' removed both the specified keys and any values associated with those
@@ -588,7 +588,7 @@ resourcegroups_untag <- function(Arn, Keys) {
 #' @description
 #' Turns on or turns off optional features in Resource Groups.
 #'
-#' See [https://paws-r.github.io/docs/resourcegroups/update_account_settings.html](https://paws-r.github.io/docs/resourcegroups/update_account_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_update_account_settings/](https://www.paws-r-sdk.com/docs/resourcegroups_update_account_settings/) for full documentation.
 #'
 #' @param GroupLifecycleEventsDesiredStatus Specifies whether you want to turn [group lifecycle
 #' events](https://docs.aws.amazon.com/ARG/latest/userguide/monitor-groups.html)
@@ -619,7 +619,7 @@ resourcegroups_update_account_settings <- function(GroupLifecycleEventsDesiredSt
 #' @description
 #' Updates the description for an existing group. You cannot update the name of a resource group.
 #'
-#' See [https://paws-r.github.io/docs/resourcegroups/update_group.html](https://paws-r.github.io/docs/resourcegroups/update_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_update_group/](https://www.paws-r-sdk.com/docs/resourcegroups_update_group/) for full documentation.
 #'
 #' @param GroupName Don't use this parameter. Use `Group` instead.
 #' @param Group The name or the ARN of the resource group to modify.
@@ -652,7 +652,7 @@ resourcegroups_update_group <- function(GroupName = NULL, Group = NULL, Descript
 #' @description
 #' Updates the resource query of a group. For more information about resource queries, see [Create a tag-based group in Resource Groups](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag).
 #'
-#' See [https://paws-r.github.io/docs/resourcegroups/update_group_query.html](https://paws-r.github.io/docs/resourcegroups/update_group_query.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_update_group_query/](https://www.paws-r-sdk.com/docs/resourcegroups_update_group_query/) for full documentation.
 #'
 #' @param GroupName Don't use this parameter. Use `Group` instead.
 #' @param Group The name or the ARN of the resource group to query.

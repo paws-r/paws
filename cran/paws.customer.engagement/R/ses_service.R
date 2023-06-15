@@ -5,10 +5,9 @@ NULL
 #' Amazon Simple Email Service
 #'
 #' @description
-#' This document contains reference information for the [Amazon Simple
-#' Email Service](https://aws.amazon.com/ses/) (Amazon SES) API, version
-#' 2010-12-01. This document is best used in conjunction with the [Amazon
-#' SES Developer
+#' This document contains reference information for the Amazon Simple Email
+#' Service (Amazon SES) API, version 2010-12-01. This document is best used
+#' in conjunction with the [Amazon SES Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/dg/Welcome.html).
 #' 
 #' For a list of Amazon SES endpoints to use in service requests, see

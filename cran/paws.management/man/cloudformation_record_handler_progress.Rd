@@ -32,6 +32,6 @@ cloudformation_record_handler_progress(
 \description{
 Reports progress of a resource handler to CloudFormation.
 
-See \url{https://paws-r.github.io/docs/cloudformation/record_handler_progress.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_record_handler_progress/} for full documentation.
 }
 \keyword{internal}

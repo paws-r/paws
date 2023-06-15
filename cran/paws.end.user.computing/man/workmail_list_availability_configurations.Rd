@@ -23,6 +23,6 @@ does not require a token.}
 \description{
 List all the \code{AvailabilityConfiguration}'s for the given WorkMail organization.
 
-See \url{https://paws-r.github.io/docs/workmail/list_availability_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_list_availability_configurations/} for full documentation.
 }
 \keyword{internal}

@@ -18,6 +18,6 @@ this, the default event bus is used.}
 \description{
 Adds the specified targets to the specified rule, or updates the targets if they are already associated with the rule.
 
-See \url{https://paws-r.github.io/docs/eventbridge/put_targets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_put_targets/} for full documentation.
 }
 \keyword{internal}

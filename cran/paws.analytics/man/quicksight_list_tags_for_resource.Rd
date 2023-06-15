@@ -13,6 +13,6 @@ tags for.}
 \description{
 Lists the tags assigned to a resource.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

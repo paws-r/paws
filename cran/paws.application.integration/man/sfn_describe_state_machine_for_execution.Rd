@@ -14,6 +14,6 @@ information for.}
 \description{
 Provides information about a state machine's definition, its execution role ARN, and configuration. If an execution was dispatched by a Map Run, the Map Run is returned in the response. Additionally, the state machine returned will be the state machine associated with the Map Run.
 
-See \url{https://paws-r.github.io/docs/sfn/describe_state_machine_for_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sfn_describe_state_machine_for_execution/} for full documentation.
 }
 \keyword{internal}

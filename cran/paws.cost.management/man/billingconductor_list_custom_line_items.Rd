@@ -27,6 +27,6 @@ information.}
 \description{
 A paginated call to get a list of all custom line items (FFLIs) for the given billing period. If you don't provide a billing period, the current billing period is used.
 
-See \url{https://paws-r.github.io/docs/billingconductor/list_custom_line_items.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_list_custom_line_items/} for full documentation.
 }
 \keyword{internal}

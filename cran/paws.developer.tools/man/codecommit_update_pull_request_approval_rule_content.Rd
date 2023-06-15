@@ -55,6 +55,6 @@ in the \emph{IAM User Guide}.}
 \description{
 Updates the structure of an approval rule created specifically for a pull request. For example, you can change the number of required approvers and the approval pool for approvers.
 
-See \url{https://paws-r.github.io/docs/codecommit/update_pull_request_approval_rule_content.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_update_pull_request_approval_rule_content/} for full documentation.
 }
 \keyword{internal}

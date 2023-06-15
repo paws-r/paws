@@ -44,6 +44,6 @@ You must specify the ARN or the name, and you can specify both.}
 \description{
 Associates the specified subnets in the Amazon VPC to the firewall. You can specify one subnet for each of the Availability Zones that the VPC spans.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/associate_subnets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_associate_subnets/} for full documentation.
 }
 \keyword{internal}

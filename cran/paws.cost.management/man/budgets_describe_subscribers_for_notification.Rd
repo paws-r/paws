@@ -29,6 +29,6 @@ next set of results that you want to retrieve.}
 \description{
 Lists the subscribers that are associated with a notification.
 
-See \url{https://paws-r.github.io/docs/budgets/describe_subscribers_for_notification.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/budgets_describe_subscribers_for_notification/} for full documentation.
 }
 \keyword{internal}

@@ -58,6 +58,6 @@ The following are examples of valid ThresholdExpressions:
 \description{
 Updates an existing cost anomaly monitor subscription.
 
-See \url{https://paws-r.github.io/docs/costexplorer/update_anomaly_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_update_anomaly_subscription/} for full documentation.
 }
 \keyword{internal}

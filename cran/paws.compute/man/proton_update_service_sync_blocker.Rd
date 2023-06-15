@@ -14,6 +14,6 @@ proton_update_service_sync_blocker(id, resolvedReason)
 \description{
 Update the service sync blocker by resolving it.
 
-See \url{https://paws-r.github.io/docs/proton/update_service_sync_blocker.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_update_service_sync_blocker/} for full documentation.
 }
 \keyword{internal}

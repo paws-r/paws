@@ -23,6 +23,6 @@ wellarchitected_update_lens_review(
 \description{
 Update lens review for a particular workload.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/update_lens_review.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_update_lens_review/} for full documentation.
 }
 \keyword{internal}

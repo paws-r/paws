@@ -79,6 +79,6 @@ configuration set for this environment.}
 \description{
 Updates the environment description, deploys a new application version, updates the configuration settings to an entirely new configuration template, or updates select configuration option values in the running environment.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/update_environment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_update_environment/} for full documentation.
 }
 \keyword{internal}

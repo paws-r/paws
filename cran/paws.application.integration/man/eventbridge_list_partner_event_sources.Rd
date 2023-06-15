@@ -25,6 +25,6 @@ operation to retrieve the next set of results.}
 \description{
 An SaaS partner can use this operation to list all the partner event source names that they have created. This operation is not used by Amazon Web Services customers.
 
-See \url{https://paws-r.github.io/docs/eventbridge/list_partner_event_sources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_list_partner_event_sources/} for full documentation.
 }
 \keyword{internal}

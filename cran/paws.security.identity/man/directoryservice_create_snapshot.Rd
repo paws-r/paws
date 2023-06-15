@@ -15,6 +15,6 @@ directoryservice_create_snapshot(DirectoryId, Name = NULL)
 \description{
 Creates a snapshot of a Simple AD or Microsoft AD directory in the Amazon Web Services cloud.
 
-See \url{https://paws-r.github.io/docs/directoryservice/create_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_create_snapshot/} for full documentation.
 }
 \keyword{internal}

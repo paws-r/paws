@@ -14,6 +14,6 @@ firehose_tag_delivery_stream(DeliveryStreamName, Tags)
 \description{
 Adds or updates tags for the specified delivery stream. A tag is a key-value pair that you can define and assign to Amazon Web Services resources. If you specify a tag that already exists, the tag value is replaced with the value that you specify in the request. Tags are metadata. For example, you can add friendly names and descriptions or other types of information that can help you distinguish the delivery stream. For more information about tags, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags} in the \emph{Amazon Web Services Billing and Cost Management User Guide}.
 
-See \url{https://paws-r.github.io/docs/firehose/tag_delivery_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/firehose_tag_delivery_stream/} for full documentation.
 }
 \keyword{internal}

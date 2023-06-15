@@ -41,6 +41,6 @@ privileges.}
 \description{
 Updates the specified attributes of the specified user, and grants or revokes administrative privileges to the Amazon WorkDocs site.
 
-See \url{https://paws-r.github.io/docs/workdocs/update_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_update_user/} for full documentation.
 }
 \keyword{internal}

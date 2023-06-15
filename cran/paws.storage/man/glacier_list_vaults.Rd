@@ -24,6 +24,6 @@ but the number of returned vaults never exceeds the limit.}
 \description{
 This operation lists all vaults owned by the calling user's account. The list returned in the response is ASCII-sorted by vault name.
 
-See \url{https://paws-r.github.io/docs/glacier/list_vaults.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_list_vaults/} for full documentation.
 }
 \keyword{internal}

@@ -34,6 +34,6 @@ resource.}
 \description{
 Starts a recommendation run that is used to generate rules when you don't know what rules to write. Glue Data Quality analyzes the data and comes up with recommendations for a potential ruleset. You can then triage the ruleset and modify the generated ruleset to your liking.
 
-See \url{https://paws-r.github.io/docs/glue/start_data_quality_rule_recommendation_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_start_data_quality_rule_recommendation_run/} for full documentation.
 }
 \keyword{internal}

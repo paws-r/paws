@@ -26,6 +26,6 @@ you do not specify either, AWS Elastic Beanstalk returns
 \description{
 Causes the environment to restart the application container server running on each Amazon EC2 instance.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/restart_app_server.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_restart_app_server/} for full documentation.
 }
 \keyword{internal}

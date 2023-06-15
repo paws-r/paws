@@ -12,6 +12,6 @@ panorama_describe_package_import_job(JobId)
 \description{
 Returns information about a package import job.
 
-See \url{https://paws-r.github.io/docs/panorama/describe_package_import_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_describe_package_import_job/} for full documentation.
 }
 \keyword{internal}

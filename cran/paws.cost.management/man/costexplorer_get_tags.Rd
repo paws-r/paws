@@ -61,6 +61,6 @@ results than the maximum page size.}
 \description{
 Queries for available tag keys and tag values for a specified period. You can search the tag values for an arbitrary string.
 
-See \url{https://paws-r.github.io/docs/costexplorer/get_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_get_tags/} for full documentation.
 }
 \keyword{internal}

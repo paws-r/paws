@@ -46,6 +46,6 @@ update the tags on a bot alias. To update tags, use the
 \description{
 Creates an alias for the specified version of the bot or replaces an alias for the specified bot. To change the version of the bot that the alias points to, replace the alias. For more information about aliases, see versioning-aliases.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/put_bot_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_put_bot_alias/} for full documentation.
 }
 \keyword{internal}

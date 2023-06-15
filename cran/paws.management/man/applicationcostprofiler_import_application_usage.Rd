@@ -13,6 +13,6 @@ applicationcostprofiler_import_application_usage(sourceS3Location)
 \description{
 Ingests application usage data from Amazon Simple Storage Service (Amazon S3).
 
-See \url{https://paws-r.github.io/docs/applicationcostprofiler/import_application_usage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationcostprofiler_import_application_usage/} for full documentation.
 }
 \keyword{internal}

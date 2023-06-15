@@ -14,6 +14,6 @@ cloudhsmv2_restore_backup(BackupId)
 \description{
 Restores a specified AWS CloudHSM backup that is in the \code{PENDING_DELETION} state. For mor information on deleting a backup, see \code{\link[=cloudhsmv2_delete_backup]{delete_backup}}.
 
-See \url{https://paws-r.github.io/docs/cloudhsmv2/restore_backup.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_restore_backup/} for full documentation.
 }
 \keyword{internal}

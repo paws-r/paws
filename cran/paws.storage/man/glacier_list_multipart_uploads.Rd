@@ -34,6 +34,6 @@ If this value is not specified, the List Uploads operation returns up to
 \description{
 This operation lists in-progress multipart uploads for the specified vault. An in-progress multipart upload is a multipart upload that has been initiated by an \code{\link[=glacier_initiate_multipart_upload]{initiate_multipart_upload}} request, but has not yet been completed or aborted. The list returned in the List Multipart Upload response has no guaranteed order.
 
-See \url{https://paws-r.github.io/docs/glacier/list_multipart_uploads.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_list_multipart_uploads/} for full documentation.
 }
 \keyword{internal}

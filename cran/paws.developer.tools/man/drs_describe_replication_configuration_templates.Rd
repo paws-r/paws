@@ -22,6 +22,6 @@ list means all Replication Configuration Templates.}
 \description{
 Lists all ReplicationConfigurationTemplates, filtered by Source Server IDs.
 
-See \url{https://paws-r.github.io/docs/drs/describe_replication_configuration_templates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_describe_replication_configuration_templates/} for full documentation.
 }
 \keyword{internal}

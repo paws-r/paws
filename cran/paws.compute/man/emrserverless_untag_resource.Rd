@@ -16,6 +16,6 @@ applications and job runs.}
 \description{
 Removes tags from resources.
 
-See \url{https://paws-r.github.io/docs/emrserverless/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emrserverless_untag_resource/} for full documentation.
 }
 \keyword{internal}

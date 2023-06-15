@@ -31,6 +31,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the attributes of the specified Elastic IP addresses. For requirements, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#Using_Elastic_Addressing_Reverse_DNS}{Using reverse DNS for email applications}.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_addresses_attribute.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_addresses_attribute/} for full documentation.
 }
 \keyword{internal}

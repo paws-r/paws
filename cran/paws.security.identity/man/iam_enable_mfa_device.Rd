@@ -51,6 +51,6 @@ you can \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mf
 \description{
 Enables the specified MFA device and associates it with the specified IAM user. When enabled, the MFA device is required for every subsequent login by the IAM user associated with the device.
 
-See \url{https://paws-r.github.io/docs/iam/enable_mfa_device.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_enable_mfa_device/} for full documentation.
 }
 \keyword{internal}

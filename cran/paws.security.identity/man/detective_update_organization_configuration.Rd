@@ -16,6 +16,6 @@ member accounts in the organization behavior graph.}
 \description{
 Updates the configuration for the Organizations integration in the current Region. Can only be called by the Detective administrator account for the organization.
 
-See \url{https://paws-r.github.io/docs/detective/update_organization_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/detective_update_organization_configuration/} for full documentation.
 }
 \keyword{internal}

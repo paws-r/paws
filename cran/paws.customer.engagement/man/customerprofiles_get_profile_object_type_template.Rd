@@ -12,6 +12,6 @@ customerprofiles_get_profile_object_type_template(TemplateId)
 \description{
 Returns the template information for a specific object type.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/get_profile_object_type_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_get_profile_object_type_template/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ applicationcostprofiler_get_report_definition(reportId)
 \description{
 Retrieves the definition of a report already configured in AWS Application Cost Profiler.
 
-See \url{https://paws-r.github.io/docs/applicationcostprofiler/get_report_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationcostprofiler_get_report_definition/} for full documentation.
 }
 \keyword{internal}

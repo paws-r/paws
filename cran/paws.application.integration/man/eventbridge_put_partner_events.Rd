@@ -13,6 +13,6 @@ eventbridge_put_partner_events(Entries)
 \description{
 This is used by SaaS partners to write events to a customer's partner event bus. Amazon Web Services customers do not use this operation.
 
-See \url{https://paws-r.github.io/docs/eventbridge/put_partner_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_put_partner_events/} for full documentation.
 }
 \keyword{internal}

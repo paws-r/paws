@@ -13,6 +13,6 @@ ses_verify_domain_identity(Domain)
 \description{
 Adds a domain to the list of identities for your Amazon SES account in the current AWS Region and attempts to verify it. For more information about verifying domains, see \href{https://docs.aws.amazon.com/ses/latest/dg/verify-addresses-and-domains.html}{Verifying Email Addresses and Domains} in the \emph{Amazon SES Developer Guide.}
 
-See \url{https://paws-r.github.io/docs/ses/verify_domain_identity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_verify_domain_identity/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ storagegateway_update_bandwidth_rate_limit(
 \description{
 Updates the bandwidth rate limits of a gateway. You can update both the upload and download bandwidth rate limit or specify only one of the two. If you don't set a bandwidth rate limit, the existing rate limit remains. This operation is supported only for the stored volume, cached volume, and tape gateway types. To update bandwidth rate limits for S3 file gateways, use \code{\link[=storagegateway_update_bandwidth_rate_limit_schedule]{update_bandwidth_rate_limit_schedule}}.
 
-See \url{https://paws-r.github.io/docs/storagegateway/update_bandwidth_rate_limit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_update_bandwidth_rate_limit/} for full documentation.
 }
 \keyword{internal}

@@ -29,6 +29,6 @@ default and the only supported value at this time.}
 \description{
 Returns information about events that meet the specified filter criteria. Events are returned in a summary form and do not include the detailed description, any additional metadata that depends on the event type, or any affected resources. To retrieve that information, use the \code{\link[=health_describe_event_details]{describe_event_details}} and \code{\link[=health_describe_affected_entities]{describe_affected_entities}} operations.
 
-See \url{https://paws-r.github.io/docs/health/describe_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/health_describe_events/} for full documentation.
 }
 \keyword{internal}

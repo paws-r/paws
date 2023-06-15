@@ -39,6 +39,6 @@ value.}
 \description{
 Describes the ID format settings for the root user and all IAM roles and IAM users that have explicitly specified a longer ID (17-character ID) preference.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_principal_id_format.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_principal_id_format/} for full documentation.
 }
 \keyword{internal}

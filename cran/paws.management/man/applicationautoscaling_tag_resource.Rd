@@ -33,6 +33,6 @@ in the \emph{Amazon Web Services Billing and Cost Management User Guide}.}
 \description{
 Adds or edits tags on an Application Auto Scaling scalable target.
 
-See \url{https://paws-r.github.io/docs/applicationautoscaling/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationautoscaling_tag_resource/} for full documentation.
 }
 \keyword{internal}

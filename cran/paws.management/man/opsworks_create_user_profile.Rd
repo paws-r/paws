@@ -28,6 +28,6 @@ Settings page. For more information, see \href{https://docs.aws.amazon.com/opswo
 \description{
 Creates a new user profile.
 
-See \url{https://paws-r.github.io/docs/opsworks/create_user_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_create_user_profile/} for full documentation.
 }
 \keyword{internal}

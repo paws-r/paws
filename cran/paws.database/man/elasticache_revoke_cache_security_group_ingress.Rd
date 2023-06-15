@@ -22,6 +22,6 @@ provide a valid Amazon account number for this parameter.}
 \description{
 Revokes ingress from a cache security group. Use this operation to disallow access from an Amazon EC2 security group that had been previously authorized.
 
-See \url{https://paws-r.github.io/docs/elasticache/revoke_cache_security_group_ingress.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_revoke_cache_security_group_ingress/} for full documentation.
 }
 \keyword{internal}

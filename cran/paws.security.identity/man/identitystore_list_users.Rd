@@ -38,6 +38,6 @@ the next page.}
 \description{
 Lists all users in the identity store. Returns a paginated list of complete \code{User} objects. Filtering for a \code{User} by the \code{UserName} attribute is deprecated. Instead, use the \code{\link[=identitystore_get_user_id]{get_user_id}} API action.
 
-See \url{https://paws-r.github.io/docs/identitystore/list_users.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/identitystore_list_users/} for full documentation.
 }
 \keyword{internal}

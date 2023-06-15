@@ -50,6 +50,6 @@ different account, the request fails with the HTTP status code
 \description{
 This action uses the \code{encryption} subresource to configure default encryption and Amazon S3 Bucket Keys for an existing bucket.
 
-See \url{https://paws-r.github.io/docs/s3/put_bucket_encryption.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_encryption/} for full documentation.
 }
 \keyword{internal}

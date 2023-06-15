@@ -23,6 +23,6 @@ routes return a value of \code{100}, and passive routes return a value of
 \description{
 Submits an updated route configuration for a Multi-Region Access Point. This API operation updates the routing status for the specified Regions from active to passive, or from passive to active. A value of \code{0} indicates a passive status, which means that traffic won't be routed to the specified Region. A value of \code{100} indicates an active status, which means that traffic will be routed to the specified Region. At least one Region must be active at all times.
 
-See \url{https://paws-r.github.io/docs/s3control/submit_multi_region_access_point_routes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_submit_multi_region_access_point_routes/} for full documentation.
 }
 \keyword{internal}

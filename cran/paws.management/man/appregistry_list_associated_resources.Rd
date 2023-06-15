@@ -23,6 +23,6 @@ If this parameter is omitted, it defaults to 25. This value is optional.}
 \description{
 Lists all of the resources that are associated with the specified application. Results are paginated.
 
-See \url{https://paws-r.github.io/docs/appregistry/list_associated_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_list_associated_resources/} for full documentation.
 }
 \keyword{internal}

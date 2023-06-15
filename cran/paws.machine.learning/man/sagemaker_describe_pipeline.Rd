@@ -7,11 +7,11 @@
 sagemaker_describe_pipeline(PipelineName)
 }
 \arguments{
-\item{PipelineName}{[required] The name of the pipeline to describe.}
+\item{PipelineName}{[required] The name or Amazon Resource Name (ARN) of the pipeline to describe.}
 }
 \description{
 Describes the details of a pipeline.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_pipeline.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_pipeline/} for full documentation.
 }
 \keyword{internal}

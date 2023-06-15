@@ -14,6 +14,6 @@ licensemanager_untag_resource(ResourceArn, TagKeys)
 \description{
 Removes the specified tags from the specified license configuration.
 
-See \url{https://paws-r.github.io/docs/licensemanager/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_untag_resource/} for full documentation.
 }
 \keyword{internal}

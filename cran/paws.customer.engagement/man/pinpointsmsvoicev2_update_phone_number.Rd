@@ -38,6 +38,6 @@ be deleted.}
 \description{
 Updates the configuration of an existing origination phone number. You can update the opt-out list, enable or disable two-way messaging, change the TwoWayChannelArn, enable or disable self-managed opt-outs, and enable or disable deletion protection.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/update_phone_number.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_update_phone_number/} for full documentation.
 }
 \keyword{internal}

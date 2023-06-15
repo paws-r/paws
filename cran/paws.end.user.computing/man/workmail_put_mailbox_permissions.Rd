@@ -32,6 +32,6 @@ set on the mailbox.}
 \description{
 Sets permissions for a user, group, or resource. This replaces any pre-existing permissions.
 
-See \url{https://paws-r.github.io/docs/workmail/put_mailbox_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_put_mailbox_permissions/} for full documentation.
 }
 \keyword{internal}

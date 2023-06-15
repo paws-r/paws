@@ -46,6 +46,6 @@ chronological order of generation.}
 \description{
 Gets information about backups of AWS CloudHSM clusters.
 
-See \url{https://paws-r.github.io/docs/cloudhsmv2/describe_backups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_describe_backups/} for full documentation.
 }
 \keyword{internal}

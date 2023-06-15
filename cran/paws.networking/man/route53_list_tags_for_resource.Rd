@@ -18,6 +18,6 @@ route53_list_tags_for_resource(ResourceType, ResourceId)
 \description{
 Lists tags for one health check or hosted zone.
 
-See \url{https://paws-r.github.io/docs/route53/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

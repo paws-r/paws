@@ -18,6 +18,6 @@ example,
 \description{
 Removes key-value tag pairs associated to your Amazon Managed Workflows for Apache Airflow (MWAA) environment. For example, \code{"Environment": "Staging"}.
 
-See \url{https://paws-r.github.io/docs/mwaa/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mwaa_untag_resource/} for full documentation.
 }
 \keyword{internal}

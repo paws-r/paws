@@ -14,6 +14,6 @@ apigateway_update_usage_plan(usagePlanId, patchOperations = NULL)
 \description{
 Updates a usage plan of a given plan Id.
 
-See \url{https://paws-r.github.io/docs/apigateway/update_usage_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_update_usage_plan/} for full documentation.
 }
 \keyword{internal}

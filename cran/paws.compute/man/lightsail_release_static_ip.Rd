@@ -12,6 +12,6 @@ lightsail_release_static_ip(staticIpName)
 \description{
 Deletes a specific static IP from your account.
 
-See \url{https://paws-r.github.io/docs/lightsail/release_static_ip.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_release_static_ip/} for full documentation.
 }
 \keyword{internal}

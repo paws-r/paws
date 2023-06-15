@@ -15,6 +15,6 @@ portfolio-id or a product-id.}
 \description{
 Disassociates the specified budget from the specified resource.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/disassociate_budget_from_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_budget_from_resource/} for full documentation.
 }
 \keyword{internal}

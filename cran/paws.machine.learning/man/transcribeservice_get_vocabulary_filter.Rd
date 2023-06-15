@@ -13,6 +13,6 @@ Custom vocabulary filter names are case sensitive.}
 \description{
 Provides information about the specified custom vocabulary filter.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/get_vocabulary_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_get_vocabulary_filter/} for full documentation.
 }
 \keyword{internal}

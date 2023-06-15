@@ -14,6 +14,6 @@ keyspaces_delete_table(keyspaceName, tableName)
 \description{
 The \code{\link[=keyspaces_delete_table]{delete_table}} operation deletes a table and all of its data. After a \code{\link[=keyspaces_delete_table]{delete_table}} request is received, the specified table is in the \code{DELETING} state until Amazon Keyspaces completes the deletion. If the table is in the \code{ACTIVE} state, you can delete it. If a table is either in the \code{CREATING} or \code{UPDATING} states, then Amazon Keyspaces returns a \code{ResourceInUseException}. If the specified table does not exist, Amazon Keyspaces returns a \code{ResourceNotFoundException}. If the table is already in the \code{DELETING} state, no error is returned.
 
-See \url{https://paws-r.github.io/docs/keyspaces/delete_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/keyspaces_delete_table/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ redshift_describe_account_attributes(AttributeNames = NULL)
 \description{
 Returns a list of attributes attached to an account
 
-See \url{https://paws-r.github.io/docs/redshift/describe_account_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_account_attributes/} for full documentation.
 }
 \keyword{internal}

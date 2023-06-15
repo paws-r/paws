@@ -19,6 +19,6 @@ administrator.}
 \description{
 Enables the Amazon Inspector delegated administrator for your Organizations organization.
 
-See \url{https://paws-r.github.io/docs/inspector2/enable_delegated_admin_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_enable_delegated_admin_account/} for full documentation.
 }
 \keyword{internal}

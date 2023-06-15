@@ -39,6 +39,6 @@ have no expiration time.}
 \description{
 Updates the specified properties of a given API key resource.
 
-See \url{https://paws-r.github.io/docs/locationservice/update_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_update_key/} for full documentation.
 }
 \keyword{internal}

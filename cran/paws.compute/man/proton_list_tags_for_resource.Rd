@@ -18,6 +18,6 @@ previously requested.}
 \description{
 List tags for a resource. For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton resources and tagging} in the \emph{Proton User Guide}.
 
-See \url{https://paws-r.github.io/docs/proton/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

@@ -20,7 +20,7 @@ sqs_send_message(
 Queue URLs and names are case-sensitive.}
 
 \item{MessageBody}{[required] The message to send. The minimum size is one character. The maximum size
-is 256 KB.
+is 256 KiB.
 
 A message can include only XML, JSON, and unformatted text. The
 following Unicode characters are allowed:
@@ -146,6 +146,6 @@ Property]: R:Using\%20the\%0AMessageGroupId\%0AProperty}
 \description{
 Delivers a message to the specified queue.
 
-See \url{https://paws-r.github.io/docs/sqs/send_message.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sqs_send_message/} for full documentation.
 }
 \keyword{internal}

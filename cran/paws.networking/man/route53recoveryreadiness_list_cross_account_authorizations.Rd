@@ -18,6 +18,6 @@ route53recoveryreadiness_list_cross_account_authorizations(
 \description{
 Lists the cross-account readiness authorizations that are in place for an account.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/list_cross_account_authorizations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_list_cross_account_authorizations/} for full documentation.
 }
 \keyword{internal}

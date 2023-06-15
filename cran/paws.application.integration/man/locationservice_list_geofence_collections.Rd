@@ -19,6 +19,6 @@ Default value: \code{null}}
 \description{
 Lists geofence collections in your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/locationservice/list_geofence_collections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_list_geofence_collections/} for full documentation.
 }
 \keyword{internal}

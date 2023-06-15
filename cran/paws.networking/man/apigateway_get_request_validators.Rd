@@ -17,6 +17,6 @@ and the maximum value is 500.}
 \description{
 Gets the RequestValidators collection of a given RestApi.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_request_validators.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_request_validators/} for full documentation.
 }
 \keyword{internal}

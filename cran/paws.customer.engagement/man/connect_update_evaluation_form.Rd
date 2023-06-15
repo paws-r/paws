@@ -45,6 +45,6 @@ populates this field. For more information about idempotency, see
 \description{
 Updates details about a specific evaluation form version in the specified Amazon Connect instance. Question and section identifiers cannot be duplicated within the same evaluation form.
 
-See \url{https://paws-r.github.io/docs/connect/update_evaluation_form.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_update_evaluation_form/} for full documentation.
 }
 \keyword{internal}

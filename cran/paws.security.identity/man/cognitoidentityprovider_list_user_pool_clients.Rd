@@ -24,6 +24,6 @@ list.}
 \description{
 Lists the clients that have been created for the specified user pool.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/list_user_pool_clients.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_user_pool_clients/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ will be executed.}
 \description{
 Returns the list of IAM Identity Center identity store attributes that have been configured to work with attributes-based access control (ABAC) for the specified IAM Identity Center instance. This will not return attributes configured and sent by an external identity provider. For more information about ABAC, see Attribute-Based Access Control in the \emph{IAM Identity Center User Guide}.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/describe_instance_access_control_attribute_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_describe_instance_access_control_attribute_configuration/} for full documentation.
 }
 \keyword{internal}

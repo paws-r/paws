@@ -16,6 +16,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 This API is in preview release for Amazon Connect and is subject to change.
 
-See \url{https://paws-r.github.io/docs/connect/describe_security_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_describe_security_profile/} for full documentation.
 }
 \keyword{internal}

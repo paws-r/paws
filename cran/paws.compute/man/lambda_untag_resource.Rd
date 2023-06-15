@@ -14,6 +14,6 @@ lambda_untag_resource(Resource, TagKeys)
 \description{
 Removes \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags} from a function.
 
-See \url{https://paws-r.github.io/docs/lambda/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_untag_resource/} for full documentation.
 }
 \keyword{internal}

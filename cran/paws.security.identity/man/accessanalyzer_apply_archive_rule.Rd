@@ -17,6 +17,6 @@ accessanalyzer_apply_archive_rule(analyzerArn, ruleName, clientToken = NULL)
 \description{
 Retroactively applies the archive rule to existing findings that meet the archive rule criteria.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/apply_archive_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_apply_archive_rule/} for full documentation.
 }
 \keyword{internal}

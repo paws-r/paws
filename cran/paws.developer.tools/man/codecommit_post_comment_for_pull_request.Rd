@@ -44,6 +44,6 @@ that used that token.}
 \description{
 Posts a comment on a pull request.
 
-See \url{https://paws-r.github.io/docs/codecommit/post_comment_for_pull_request.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_post_comment_for_pull_request/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ lakeformation_delete_data_cells_filter(
 \description{
 Deletes a data cell filter.
 
-See \url{https://paws-r.github.io/docs/lakeformation/delete_data_cells_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_delete_data_cells_filter/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ and the following fields are mandatory:
 \description{
 Tests whether the specified event pattern matches the provided event.
 
-See \url{https://paws-r.github.io/docs/eventbridge/test_event_pattern.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_test_event_pattern/} for full documentation.
 }
 \keyword{internal}

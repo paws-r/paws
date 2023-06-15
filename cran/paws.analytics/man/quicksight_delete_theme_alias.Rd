@@ -18,6 +18,6 @@ to delete.}
 \description{
 Deletes the version of the theme that the specified theme alias points to. If you provide a specific alias, you delete the version of the theme that the alias points to.
 
-See \url{https://paws-r.github.io/docs/quicksight/delete_theme_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_theme_alias/} for full documentation.
 }
 \keyword{internal}

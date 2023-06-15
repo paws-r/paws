@@ -17,6 +17,6 @@ paginated response.}
 \description{
 Retrieves a subset of information about the classification scope for an account.
 
-See \url{https://paws-r.github.io/docs/macie2/list_classification_scopes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_list_classification_scopes/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ timestreamquery_update_scheduled_query(ScheduledQueryArn, State)
 \description{
 Update a scheduled query.
 
-See \url{https://paws-r.github.io/docs/timestreamquery/update_scheduled_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamquery_update_scheduled_query/} for full documentation.
 }
 \keyword{internal}

@@ -24,7 +24,7 @@ your Lake Formation environment.}
 \item{Resource}{[required] The resource to which permissions are to be revoked.}
 
 \item{Permissions}{[required] The permissions revoked to the principal on the resource. For
-information about permissions, see \href{https://docs.aws.amazon.com/lake-formation/latest/dg/security-data-access.html}{Security and Access Control to Metadata and Data}.}
+information about permissions, see \href{https://docs.aws.amazon.com/lake-formation/latest/dg/}{Security and Access Control to Metadata and Data}.}
 
 \item{PermissionsWithGrantOption}{Indicates a list of permissions for which to revoke the grant option
 allowing the principal to pass permissions to other principals.}
@@ -32,6 +32,6 @@ allowing the principal to pass permissions to other principals.}
 \description{
 Revokes permissions to the principal to access metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3.
 
-See \url{https://paws-r.github.io/docs/lakeformation/revoke_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_revoke_permissions/} for full documentation.
 }
 \keyword{internal}

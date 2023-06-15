@@ -26,6 +26,6 @@ paginated response.}
 \description{
 Retrieves (queries) statistical data and other information about one or more S3 buckets that Amazon Macie monitors and analyzes for an account.
 
-See \url{https://paws-r.github.io/docs/macie2/describe_buckets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_describe_buckets/} for full documentation.
 }
 \keyword{internal}

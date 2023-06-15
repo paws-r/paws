@@ -15,6 +15,6 @@ characters are a-z, A-Z, 0-9, and - (hyphen).}
 \description{
 Deletes a model package.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_model_package.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_model_package/} for full documentation.
 }
 \keyword{internal}

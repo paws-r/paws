@@ -12,6 +12,6 @@ locationservice_describe_place_index(IndexName)
 \description{
 Retrieves the place index resource details.
 
-See \url{https://paws-r.github.io/docs/locationservice/describe_place_index.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_describe_place_index/} for full documentation.
 }
 \keyword{internal}

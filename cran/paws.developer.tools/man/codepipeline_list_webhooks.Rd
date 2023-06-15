@@ -18,6 +18,6 @@ value.}
 \description{
 Gets a listing of all the webhooks in this Amazon Web Services Region for this account. The output lists all webhooks and includes the webhook URL and ARN and the configuration for each webhook.
 
-See \url{https://paws-r.github.io/docs/codepipeline/list_webhooks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_list_webhooks/} for full documentation.
 }
 \keyword{internal}

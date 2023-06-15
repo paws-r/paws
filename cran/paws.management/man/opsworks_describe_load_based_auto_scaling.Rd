@@ -12,6 +12,6 @@ opsworks_describe_load_based_auto_scaling(LayerIds)
 \description{
 Describes load-based auto scaling configurations for specified layers.
 
-See \url{https://paws-r.github.io/docs/opsworks/describe_load_based_auto_scaling.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_describe_load_based_auto_scaling/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ element of the collection.}
 \description{
 Gets the IntegrationResponses for an Integration.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/get_integration_responses.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_get_integration_responses/} for full documentation.
 }
 \keyword{internal}

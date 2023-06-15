@@ -12,6 +12,6 @@ locationservice_describe_key(KeyName)
 \description{
 Retrieves the API key resource details.
 
-See \url{https://paws-r.github.io/docs/locationservice/describe_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_describe_key/} for full documentation.
 }
 \keyword{internal}

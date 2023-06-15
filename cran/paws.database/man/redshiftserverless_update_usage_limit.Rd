@@ -24,6 +24,6 @@ reached.}
 \description{
 Update a usage limit in Amazon Redshift Serverless. You can't update the usage type or period of a usage limit.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/update_usage_limit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_update_usage_limit/} for full documentation.
 }
 \keyword{internal}

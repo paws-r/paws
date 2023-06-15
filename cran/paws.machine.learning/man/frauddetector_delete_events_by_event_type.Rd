@@ -12,6 +12,6 @@ frauddetector_delete_events_by_event_type(eventTypeName)
 \description{
 Deletes all events of a particular event type.
 
-See \url{https://paws-r.github.io/docs/frauddetector/delete_events_by_event_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_delete_events_by_event_type/} for full documentation.
 }
 \keyword{internal}

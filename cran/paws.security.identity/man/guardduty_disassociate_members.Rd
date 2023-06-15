@@ -17,6 +17,6 @@ disassociate from the administrator account.}
 \description{
 Disassociates GuardDuty member accounts (to the current administrator account) specified by the account IDs.
 
-See \url{https://paws-r.github.io/docs/guardduty/disassociate_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_disassociate_members/} for full documentation.
 }
 \keyword{internal}

@@ -27,6 +27,6 @@ If you specify a trail ARN, it must be in the format:
 \description{
 Describes the settings for the event selectors that you configured for your trail. The information returned for your event selectors includes the following:
 
-See \url{https://paws-r.github.io/docs/cloudtrail/get_event_selectors.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_get_event_selectors/} for full documentation.
 }
 \keyword{internal}

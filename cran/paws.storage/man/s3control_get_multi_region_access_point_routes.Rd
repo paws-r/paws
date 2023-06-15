@@ -16,6 +16,6 @@ Access Point.}
 \description{
 Returns the routing configuration for a Multi-Region Access Point, indicating which Regions are active or passive.
 
-See \url{https://paws-r.github.io/docs/s3control/get_multi_region_access_point_routes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_get_multi_region_access_point_routes/} for full documentation.
 }
 \keyword{internal}

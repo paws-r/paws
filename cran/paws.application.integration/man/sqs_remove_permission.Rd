@@ -18,6 +18,6 @@ using the \code{\link[=sqs_add_permission]{add_permission}} action.}
 \description{
 Revokes any permissions in the queue policy that matches the specified \code{Label} parameter.
 
-See \url{https://paws-r.github.io/docs/sqs/remove_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sqs_remove_permission/} for full documentation.
 }
 \keyword{internal}

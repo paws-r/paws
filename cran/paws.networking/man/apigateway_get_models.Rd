@@ -17,6 +17,6 @@ and the maximum value is 500.}
 \description{
 Describes existing Models defined for a RestApi resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_models.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_models/} for full documentation.
 }
 \keyword{internal}

@@ -29,6 +29,6 @@ results.}
 \description{
 Lists the IAM policy assignments in the current Amazon QuickSight account.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_iam_policy_assignments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_iam_policy_assignments/} for full documentation.
 }
 \keyword{internal}

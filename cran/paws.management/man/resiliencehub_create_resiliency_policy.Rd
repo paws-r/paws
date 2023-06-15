@@ -38,6 +38,6 @@ an Amazon Web Services resource. Each tag consists of a key/value pair.}
 \description{
 Creates a resiliency policy for an application.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/create_resiliency_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_create_resiliency_policy/} for full documentation.
 }
 \keyword{internal}

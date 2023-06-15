@@ -21,6 +21,6 @@ paginated response.}
 \description{
 Retrieves information about the configuration, dimension, and other settings for all the segments that are associated with an application.
 
-See \url{https://paws-r.github.io/docs/pinpoint/get_segments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_get_segments/} for full documentation.
 }
 \keyword{internal}

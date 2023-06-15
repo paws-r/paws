@@ -12,6 +12,6 @@ personalize_describe_event_tracker(eventTrackerArn)
 \description{
 Describes an event tracker. The response includes the \code{trackingId} and \code{status} of the event tracker. For more information on event trackers, see \code{\link[=personalize_create_event_tracker]{create_event_tracker}}.
 
-See \url{https://paws-r.github.io/docs/personalize/describe_event_tracker.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_describe_event_tracker/} for full documentation.
 }
 \keyword{internal}

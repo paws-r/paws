@@ -26,6 +26,6 @@ see the \emph{UserName} parameter.}
 \description{
 Enables single sign-on for a directory. Single sign-on allows users in your directory to access certain Amazon Web Services services from a computer joined to the directory without having to enter their credentials separately.
 
-See \url{https://paws-r.github.io/docs/directoryservice/enable_sso.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_enable_sso/} for full documentation.
 }
 \keyword{internal}

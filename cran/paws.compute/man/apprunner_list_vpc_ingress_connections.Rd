@@ -31,6 +31,6 @@ page.}
 \description{
 Return a list of App Runner VPC Ingress Connections in your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/apprunner/list_vpc_ingress_connections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_list_vpc_ingress_connections/} for full documentation.
 }
 \keyword{internal}

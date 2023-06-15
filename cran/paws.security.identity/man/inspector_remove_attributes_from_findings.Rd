@@ -18,6 +18,6 @@ findings.}
 \description{
 Removes entire attributes (key and value pairs) from the findings that are specified by the ARNs of the findings where an attribute with the specified key exists.
 
-See \url{https://paws-r.github.io/docs/inspector/remove_attributes_from_findings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_remove_attributes_from_findings/} for full documentation.
 }
 \keyword{internal}

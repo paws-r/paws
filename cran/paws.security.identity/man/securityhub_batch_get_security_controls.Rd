@@ -15,6 +15,6 @@ ID or Amazon Resource Name (ARN) is the same across standards.}
 \description{
 Provides details about a batch of security controls for the current Amazon Web Services account and Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/securityhub/batch_get_security_controls.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_batch_get_security_controls/} for full documentation.
 }
 \keyword{internal}

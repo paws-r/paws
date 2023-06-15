@@ -19,6 +19,6 @@ publishing of a new product.}
 \description{
 \code{\link[=marketplacemetering_batch_meter_usage]{batch_meter_usage}} is called from a SaaS application listed on AWS Marketplace to post metering records for a set of customers.
 
-See \url{https://paws-r.github.io/docs/marketplacemetering/batch_meter_usage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/marketplacemetering_batch_meter_usage/} for full documentation.
 }
 \keyword{internal}

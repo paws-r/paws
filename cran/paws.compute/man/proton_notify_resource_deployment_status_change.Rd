@@ -28,6 +28,6 @@ Proton.}
 \description{
 Notify Proton of status changes to a provisioned resource when you use self-managed provisioning.
 
-See \url{https://paws-r.github.io/docs/proton/notify_resource_deployment_status_change.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_notify_resource_deployment_status_change/} for full documentation.
 }
 \keyword{internal}

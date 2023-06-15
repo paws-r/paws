@@ -14,6 +14,6 @@ mq_create_tags(ResourceArn, Tags = NULL)
 \description{
 Add a tag to a resource.
 
-See \url{https://paws-r.github.io/docs/mq/create_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mq_create_tags/} for full documentation.
 }
 \keyword{internal}

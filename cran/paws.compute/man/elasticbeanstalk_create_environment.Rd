@@ -100,6 +100,6 @@ role. For more information, see \href{https://docs.aws.amazon.com/elasticbeansta
 \description{
 Launches an AWS Elastic Beanstalk environment for the specified application using the specified configuration.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/create_environment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_create_environment/} for full documentation.
 }
 \keyword{internal}

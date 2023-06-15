@@ -17,6 +17,6 @@ This must be of the form:
 \description{
 Lists information about your private certificate authority (CA) or one that has been shared with you. You specify the private CA on input by its ARN (Amazon Resource Name). The output contains the status of your CA. This can be any of the following:
 
-See \url{https://paws-r.github.io/docs/acmpca/describe_certificate_authority.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acmpca_describe_certificate_authority/} for full documentation.
 }
 \keyword{internal}

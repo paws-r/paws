@@ -25,6 +25,6 @@ next page of results.}
 \description{
 Returns a list of application instances.
 
-See \url{https://paws-r.github.io/docs/panorama/list_application_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_list_application_instances/} for full documentation.
 }
 \keyword{internal}

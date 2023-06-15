@@ -23,6 +23,6 @@ networkmanager_get_core_network_change_events(
 \description{
 Returns information about a core network change event.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_core_network_change_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_core_network_change_events/} for full documentation.
 }
 \keyword{internal}

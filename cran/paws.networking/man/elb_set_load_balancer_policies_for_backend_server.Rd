@@ -22,6 +22,6 @@ polices are removed from the EC2 instance.}
 \description{
 Replaces the set of policies associated with the specified port on which the EC2 instance is listening with a new set of policies. At this time, only the back-end server authentication policy type can be applied to the instance ports; this policy type is composed of multiple public key policies.
 
-See \url{https://paws-r.github.io/docs/elb/set_load_balancer_policies_for_backend_server.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_set_load_balancer_policies_for_backend_server/} for full documentation.
 }
 \keyword{internal}

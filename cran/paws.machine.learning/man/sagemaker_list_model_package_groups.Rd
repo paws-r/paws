@@ -38,6 +38,6 @@ the next set of model groups, use the token in the next request.}
 \description{
 Gets a list of the model groups in your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_model_package_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_model_package_groups/} for full documentation.
 }
 \keyword{internal}

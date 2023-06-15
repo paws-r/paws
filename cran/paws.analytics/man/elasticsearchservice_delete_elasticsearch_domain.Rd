@@ -14,6 +14,6 @@ delete.}
 \description{
 Permanently deletes the specified Elasticsearch domain and all of its data. Once a domain is deleted, it cannot be recovered.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/delete_elasticsearch_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_delete_elasticsearch_domain/} for full documentation.
 }
 \keyword{internal}

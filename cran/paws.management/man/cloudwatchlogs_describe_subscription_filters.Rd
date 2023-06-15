@@ -26,6 +26,6 @@ default is up to 50 items.}
 \description{
 Lists the subscription filters for the specified log group. You can list all the subscription filters or filter the results by prefix. The results are ASCII-sorted by filter name.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/describe_subscription_filters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_subscription_filters/} for full documentation.
 }
 \keyword{internal}

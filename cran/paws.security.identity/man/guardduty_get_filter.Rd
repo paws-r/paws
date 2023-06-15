@@ -14,6 +14,6 @@ guardduty_get_filter(DetectorId, FilterName)
 \description{
 Returns the details of the filter specified by the filter name.
 
-See \url{https://paws-r.github.io/docs/guardduty/get_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_get_filter/} for full documentation.
 }
 \keyword{internal}

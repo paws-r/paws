@@ -27,6 +27,6 @@ matches is less than 70\%. The default value is 80\%.}
 \description{
 For a given input face ID, searches for matching faces in the collection the face belongs to. You get a face ID when you add a face to the collection using the \code{\link[=rekognition_index_faces]{index_faces}} operation. The operation compares the features of the input face with faces in the specified collection.
 
-See \url{https://paws-r.github.io/docs/rekognition/search_faces.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_search_faces/} for full documentation.
 }
 \keyword{internal}

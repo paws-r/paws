@@ -41,6 +41,6 @@ time.}
 \description{
 Lists model bias jobs definitions that satisfy various filters.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_model_bias_job_definitions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_model_bias_job_definitions/} for full documentation.
 }
 \keyword{internal}

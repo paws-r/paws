@@ -23,6 +23,6 @@ access or change only the resources that have certain tag values.}
 \description{
 Creates a group which you can use to associate canaries with each other, including cross-Region canaries. Using groups can help you with managing and automating your canaries, and you can also view aggregated run results and statistics for all canaries in a group.
 
-See \url{https://paws-r.github.io/docs/synthetics/create_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/synthetics_create_group/} for full documentation.
 }
 \keyword{internal}

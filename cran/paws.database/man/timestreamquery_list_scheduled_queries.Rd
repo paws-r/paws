@@ -19,6 +19,6 @@ value as the argument to the subsequent call to
 \description{
 Gets a list of all scheduled queries in the caller's Amazon account and Region. \code{\link[=timestreamquery_list_scheduled_queries]{list_scheduled_queries}} is eventually consistent.
 
-See \url{https://paws-r.github.io/docs/timestreamquery/list_scheduled_queries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamquery_list_scheduled_queries/} for full documentation.
 }
 \keyword{internal}

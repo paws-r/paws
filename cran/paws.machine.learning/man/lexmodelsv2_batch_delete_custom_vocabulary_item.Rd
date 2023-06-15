@@ -29,6 +29,6 @@ must contain the unique custom vocabulary entry identifier.}
 \description{
 Delete a batch of custom vocabulary items for a given bot locale's custom vocabulary.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/batch_delete_custom_vocabulary_item.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_batch_delete_custom_vocabulary_item/} for full documentation.
 }
 \keyword{internal}

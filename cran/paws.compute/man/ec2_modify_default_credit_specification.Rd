@@ -26,6 +26,6 @@ Valid Values: \code{standard} | \code{unlimited}}
 \description{
 Modifies the default credit option for CPU usage of burstable performance instances. The default credit option is set at the account level per Amazon Web Services Region, and is specified per instance family. All new burstable performance instances in the account launch using the default credit option.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_default_credit_specification.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_default_credit_specification/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ apigateway_get_sdk_type(id)
 \description{
 Gets an SDK type.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_sdk_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_sdk_type/} for full documentation.
 }
 \keyword{internal}

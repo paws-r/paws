@@ -30,6 +30,6 @@ the output of previous API calls to make subsequent calls.}
 \description{
 Lists the assignee of the specified AWS account with the specified permission set.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/list_account_assignments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_list_account_assignments/} for full documentation.
 }
 \keyword{internal}

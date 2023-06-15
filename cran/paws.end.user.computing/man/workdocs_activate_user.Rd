@@ -15,6 +15,6 @@ Services administrator credentials to access the API.}
 \description{
 Activates the specified user. Only active users can access Amazon WorkDocs.
 
-See \url{https://paws-r.github.io/docs/workdocs/activate_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_activate_user/} for full documentation.
 }
 \keyword{internal}

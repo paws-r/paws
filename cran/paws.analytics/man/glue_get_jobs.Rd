@@ -14,6 +14,6 @@ glue_get_jobs(NextToken = NULL, MaxResults = NULL)
 \description{
 Retrieves all current job definitions.
 
-See \url{https://paws-r.github.io/docs/glue/get_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_jobs/} for full documentation.
 }
 \keyword{internal}

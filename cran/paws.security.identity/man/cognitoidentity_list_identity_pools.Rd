@@ -14,6 +14,6 @@ cognitoidentity_list_identity_pools(MaxResults, NextToken = NULL)
 \description{
 Lists all of the Cognito identity pools registered for your account.
 
-See \url{https://paws-r.github.io/docs/cognitoidentity/list_identity_pools.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_list_identity_pools/} for full documentation.
 }
 \keyword{internal}

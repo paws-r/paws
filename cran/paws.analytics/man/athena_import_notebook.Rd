@@ -33,6 +33,6 @@ fail.}
 \description{
 Imports a single \code{ipynb} file to a Spark enabled workgroup. The maximum file size that can be imported is 10 megabytes. If an \code{ipynb} file with the same name already exists in the workgroup, throws an error.
 
-See \url{https://paws-r.github.io/docs/athena/import_notebook.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_import_notebook/} for full documentation.
 }
 \keyword{internal}

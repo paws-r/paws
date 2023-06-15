@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Cancels an ongoing ingestion of data into SPICE.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/cancel_ingestion.html](https://paws-r.github.io/docs/quicksight/cancel_ingestion.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_cancel_ingestion/](https://www.paws-r-sdk.com/docs/quicksight_cancel_ingestion/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSetId &#91;required&#93; The ID of the dataset used in the ingestion.
@@ -40,7 +40,7 @@ quicksight_cancel_ingestion <- function(AwsAccountId, DataSetId, IngestionId) {
 #' @description
 #' Creates Amazon QuickSight customizations for the current Amazon Web Services Region. Currently, you can add a custom default theme by using the [`create_account_customization`][quicksight_create_account_customization] or [`update_account_customization`][quicksight_update_account_customization] API operation. To further customize Amazon QuickSight by removing Amazon QuickSight sample assets and videos for all new users, see [Customizing Amazon QuickSight](https://docs.aws.amazon.com/quicksight/latest/user/customizing-quicksight.html) in the *Amazon QuickSight User Guide.*
 #'
-#' See [https://paws-r.github.io/docs/quicksight/create_account_customization.html](https://paws-r.github.io/docs/quicksight/create_account_customization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_account_customization/](https://www.paws-r-sdk.com/docs/quicksight_create_account_customization/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that you want to customize
 #' Amazon QuickSight for.
@@ -82,7 +82,7 @@ quicksight_create_account_customization <- function(AwsAccountId, Namespace = NU
 #' @description
 #' Creates an Amazon QuickSight account, or subscribes to Amazon QuickSight Q.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/create_account_subscription.html](https://paws-r.github.io/docs/quicksight/create_account_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_account_subscription/](https://www.paws-r-sdk.com/docs/quicksight_create_account_subscription/) for full documentation.
 #'
 #' @param Edition &#91;required&#93; The edition of Amazon QuickSight that you want your account to have.
 #' Currently, you can choose from `ENTERPRISE` or `ENTERPRISE_AND_Q`.
@@ -175,7 +175,7 @@ quicksight_create_account_subscription <- function(Edition, AuthenticationMethod
 #' @description
 #' Creates an analysis in Amazon QuickSight. Analyses can be created either from a template or from an `AnalysisDefinition`.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/create_analysis.html](https://paws-r.github.io/docs/quicksight/create_analysis.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_analysis/](https://www.paws-r-sdk.com/docs/quicksight_create_analysis/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account where you are creating an
 #' analysis.
@@ -238,7 +238,7 @@ quicksight_create_analysis <- function(AwsAccountId, AnalysisId, Name, Parameter
 #' @description
 #' Creates a dashboard from either a template or directly with a `DashboardDefinition`. To first create a template, see the [`create_template`][quicksight_create_template] API operation.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/create_dashboard.html](https://paws-r.github.io/docs/quicksight/create_dashboard.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_dashboard/](https://www.paws-r-sdk.com/docs/quicksight_create_dashboard/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account where you want to create the
 #' dashboard.
@@ -324,7 +324,7 @@ quicksight_create_dashboard <- function(AwsAccountId, DashboardId, Name, Paramet
 #' @description
 #' Creates a dataset. This operation doesn't support datasets that include uploaded files as a source.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/create_data_set.html](https://paws-r.github.io/docs/quicksight/create_data_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_data_set/](https://www.paws-r-sdk.com/docs/quicksight_create_data_set/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSetId &#91;required&#93; An ID for the dataset that you want to create. This ID is unique per
@@ -375,7 +375,7 @@ quicksight_create_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTa
 #' @description
 #' Creates a data source.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/create_data_source.html](https://paws-r.github.io/docs/quicksight/create_data_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_data_source/](https://www.paws-r-sdk.com/docs/quicksight_create_data_source/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSourceId &#91;required&#93; An ID for the data source. This ID is unique per Amazon Web Services
@@ -423,7 +423,7 @@ quicksight_create_data_source <- function(AwsAccountId, DataSourceId, Name, Type
 #' @description
 #' Creates an empty shared folder.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/create_folder.html](https://paws-r.github.io/docs/quicksight/create_folder.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_folder/](https://www.paws-r-sdk.com/docs/quicksight_create_folder/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account where you want to create the
 #' folder.
@@ -465,7 +465,7 @@ quicksight_create_folder <- function(AwsAccountId, FolderId, Name = NULL, Folder
 #' @description
 #' Adds an asset, such as a dashboard, analysis, or dataset into a folder.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/create_folder_membership.html](https://paws-r.github.io/docs/quicksight/create_folder_membership.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_folder_membership/](https://www.paws-r-sdk.com/docs/quicksight_create_folder_membership/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
 #' @param FolderId &#91;required&#93; The ID of the folder.
@@ -498,7 +498,7 @@ quicksight_create_folder_membership <- function(AwsAccountId, FolderId, MemberId
 #' @description
 #' Use the [`create_group`][quicksight_create_group] operation to create a group in Amazon QuickSight. You can create up to 10,000 groups in a namespace. If you want to create more than 10,000 groups in a namespace, contact AWS Support.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/create_group.html](https://paws-r.github.io/docs/quicksight/create_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_group/](https://www.paws-r-sdk.com/docs/quicksight_create_group/) for full documentation.
 #'
 #' @param GroupName &#91;required&#93; A name for the group that you want to create.
 #' @param Description A description for the group that you want to create.
@@ -532,7 +532,7 @@ quicksight_create_group <- function(GroupName, Description = NULL, AwsAccountId,
 #' @description
 #' Adds an Amazon QuickSight user to an Amazon QuickSight group.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/create_group_membership.html](https://paws-r.github.io/docs/quicksight/create_group_membership.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_group_membership/](https://www.paws-r-sdk.com/docs/quicksight_create_group_membership/) for full documentation.
 #'
 #' @param MemberName &#91;required&#93; The name of the user that you want to add to the group membership.
 #' @param GroupName &#91;required&#93; The name of the group that you want to add the user to.
@@ -567,7 +567,7 @@ quicksight_create_group_membership <- function(MemberName, GroupName, AwsAccount
 #' @description
 #' Creates an assignment with one specified IAM policy, identified by its Amazon Resource Name (ARN). This policy assignment is attached to the specified groups or users of Amazon QuickSight. Assignment names are unique per Amazon Web Services account. To avoid overwriting rules in other namespaces, use assignment names that are unique.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/create_iam_policy_assignment.html](https://paws-r.github.io/docs/quicksight/create_iam_policy_assignment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_iam_policy_assignment/](https://www.paws-r-sdk.com/docs/quicksight_create_iam_policy_assignment/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account where you want to assign an
 #' IAM policy to Amazon QuickSight users or groups.
@@ -614,7 +614,7 @@ quicksight_create_iam_policy_assignment <- function(AwsAccountId, AssignmentName
 #' @description
 #' Creates and starts a new SPICE ingestion for a dataset. You can manually refresh datasets in an Enterprise edition account 32 times in a 24-hour period. You can manually refresh datasets in a Standard edition account 8 times in a 24-hour period. Each 24-hour period is measured starting 24 hours before the current date and time.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/create_ingestion.html](https://paws-r.github.io/docs/quicksight/create_ingestion.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_ingestion/](https://www.paws-r-sdk.com/docs/quicksight_create_ingestion/) for full documentation.
 #'
 #' @param DataSetId &#91;required&#93; The ID of the dataset used in the ingestion.
 #' @param IngestionId &#91;required&#93; An ID for the ingestion.
@@ -647,7 +647,7 @@ quicksight_create_ingestion <- function(DataSetId, IngestionId, AwsAccountId, In
 #' @description
 #' (Enterprise edition only) Creates a new namespace for you to use with Amazon QuickSight.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/create_namespace.html](https://paws-r.github.io/docs/quicksight/create_namespace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_namespace/](https://www.paws-r-sdk.com/docs/quicksight_create_namespace/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that you want to create the
 #' Amazon QuickSight namespace in.
@@ -682,7 +682,7 @@ quicksight_create_namespace <- function(AwsAccountId, Namespace, IdentityStore, 
 #' @description
 #' Creates a refresh schedule for a dataset. You can create up to 5 different schedules for a single dataset.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/create_refresh_schedule.html](https://paws-r.github.io/docs/quicksight/create_refresh_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_refresh_schedule/](https://www.paws-r-sdk.com/docs/quicksight_create_refresh_schedule/) for full documentation.
 #'
 #' @param DataSetId &#91;required&#93; The ID of the dataset.
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
@@ -714,7 +714,7 @@ quicksight_create_refresh_schedule <- function(DataSetId, AwsAccountId, Schedule
 #' @description
 #' Creates a template either from a `TemplateDefinition` or from an existing Amazon QuickSight analysis or template. You can use the resulting template to create additional dashboards, templates, or analyses.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/create_template.html](https://paws-r.github.io/docs/quicksight/create_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_template/](https://www.paws-r-sdk.com/docs/quicksight_create_template/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the group is in. You use
 #' the ID for the Amazon Web Services account that contains your Amazon
@@ -779,7 +779,7 @@ quicksight_create_template <- function(AwsAccountId, TemplateId, Name = NULL, Pe
 #' @description
 #' Creates a template alias for a template.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/create_template_alias.html](https://paws-r.github.io/docs/quicksight/create_template_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_template_alias/](https://www.paws-r-sdk.com/docs/quicksight_create_template_alias/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the template
 #' that you creating an alias for.
@@ -814,7 +814,7 @@ quicksight_create_template_alias <- function(AwsAccountId, TemplateId, AliasName
 #' @description
 #' Creates a theme.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/create_theme.html](https://paws-r.github.io/docs/quicksight/create_theme.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_theme/](https://www.paws-r-sdk.com/docs/quicksight_create_theme/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account where you want to store the
 #' new theme.
@@ -860,7 +860,7 @@ quicksight_create_theme <- function(AwsAccountId, ThemeId, Name, BaseThemeId, Ve
 #' @description
 #' Creates a theme alias for a theme.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/create_theme_alias.html](https://paws-r.github.io/docs/quicksight/create_theme_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_theme_alias/](https://www.paws-r-sdk.com/docs/quicksight_create_theme_alias/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the theme for
 #' the new theme alias.
@@ -895,7 +895,7 @@ quicksight_create_theme_alias <- function(AwsAccountId, ThemeId, AliasName, Them
 #' @description
 #' Creates a new Q topic.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/create_topic.html](https://paws-r.github.io/docs/quicksight/create_topic.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_topic/](https://www.paws-r-sdk.com/docs/quicksight_create_topic/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that you want to create a
 #' topic in.
@@ -930,7 +930,7 @@ quicksight_create_topic <- function(AwsAccountId, TopicId, Topic, Tags = NULL) {
 #' @description
 #' Creates a topic refresh schedule.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/create_topic_refresh_schedule.html](https://paws-r.github.io/docs/quicksight/create_topic_refresh_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_topic_refresh_schedule/](https://www.paws-r-sdk.com/docs/quicksight_create_topic_refresh_schedule/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the topic you're
 #' creating a refresh schedule for.
@@ -965,7 +965,7 @@ quicksight_create_topic_refresh_schedule <- function(AwsAccountId, TopicId, Data
 #' @description
 #' Creates a new VPC connection.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/create_vpc_connection.html](https://paws-r.github.io/docs/quicksight/create_vpc_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_vpc_connection/](https://www.paws-r-sdk.com/docs/quicksight_create_vpc_connection/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID of the account where you want to
 #' create a new VPC connection.
@@ -1007,7 +1007,7 @@ quicksight_create_vpc_connection <- function(AwsAccountId, VPCConnectionId, Name
 #' @description
 #' Deletes all Amazon QuickSight customizations in this Amazon Web Services Region for the specified Amazon Web Services account and Amazon QuickSight namespace.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_account_customization.html](https://paws-r.github.io/docs/quicksight/delete_account_customization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_account_customization/](https://www.paws-r-sdk.com/docs/quicksight_delete_account_customization/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that you want to delete
 #' Amazon QuickSight customizations from in this Amazon Web Services
@@ -1041,7 +1041,7 @@ quicksight_delete_account_customization <- function(AwsAccountId, Namespace = NU
 #' @description
 #' Use the [`delete_account_subscription`][quicksight_delete_account_subscription] operation to delete an Amazon QuickSight account. This operation will result in an error message if you have configured your account termination protection settings to `True`. To change this setting and delete your account, call the [`update_account_settings`][quicksight_update_account_settings] API and set the value of the `TerminationProtectionEnabled` parameter to `False`, then make another call to the [`delete_account_subscription`][quicksight_delete_account_subscription] API.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_account_subscription.html](https://paws-r.github.io/docs/quicksight/delete_account_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_account_subscription/](https://www.paws-r-sdk.com/docs/quicksight_delete_account_subscription/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID of the account that you want to
 #' delete.
@@ -1071,7 +1071,7 @@ quicksight_delete_account_subscription <- function(AwsAccountId) {
 #' @description
 #' Deletes an analysis from Amazon QuickSight. You can optionally include a recovery window during which you can restore the analysis. If you don't specify a recovery window value, the operation defaults to 30 days. Amazon QuickSight attaches a `DeletionTime` stamp to the response that specifies the end of the recovery window. At the end of the recovery window, Amazon QuickSight deletes the analysis permanently.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_analysis.html](https://paws-r.github.io/docs/quicksight/delete_analysis.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_analysis/](https://www.paws-r-sdk.com/docs/quicksight_delete_analysis/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account where you want to delete an
 #' analysis.
@@ -1109,7 +1109,7 @@ quicksight_delete_analysis <- function(AwsAccountId, AnalysisId, RecoveryWindowI
 #' @description
 #' Deletes a dashboard.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_dashboard.html](https://paws-r.github.io/docs/quicksight/delete_dashboard.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_dashboard/](https://www.paws-r-sdk.com/docs/quicksight_delete_dashboard/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the dashboard
 #' that you're deleting.
@@ -1142,7 +1142,7 @@ quicksight_delete_dashboard <- function(AwsAccountId, DashboardId, VersionNumber
 #' @description
 #' Deletes a dataset.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_data_set.html](https://paws-r.github.io/docs/quicksight/delete_data_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_data_set/](https://www.paws-r-sdk.com/docs/quicksight_delete_data_set/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSetId &#91;required&#93; The ID for the dataset that you want to create. This ID is unique per
@@ -1173,7 +1173,7 @@ quicksight_delete_data_set <- function(AwsAccountId, DataSetId) {
 #' @description
 #' Deletes the dataset refresh properties of the dataset.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_data_set_refresh_properties.html](https://paws-r.github.io/docs/quicksight/delete_data_set_refresh_properties.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_data_set_refresh_properties/](https://www.paws-r-sdk.com/docs/quicksight_delete_data_set_refresh_properties/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSetId &#91;required&#93; The ID of the dataset.
@@ -1203,7 +1203,7 @@ quicksight_delete_data_set_refresh_properties <- function(AwsAccountId, DataSetI
 #' @description
 #' Deletes the data source permanently. This operation breaks all the datasets that reference the deleted data source.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_data_source.html](https://paws-r.github.io/docs/quicksight/delete_data_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_data_source/](https://www.paws-r-sdk.com/docs/quicksight_delete_data_source/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSourceId &#91;required&#93; The ID of the data source. This ID is unique per Amazon Web Services
@@ -1234,7 +1234,7 @@ quicksight_delete_data_source <- function(AwsAccountId, DataSourceId) {
 #' @description
 #' Deletes an empty folder.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_folder.html](https://paws-r.github.io/docs/quicksight/delete_folder.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_folder/](https://www.paws-r-sdk.com/docs/quicksight_delete_folder/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
 #' @param FolderId &#91;required&#93; The ID of the folder.
@@ -1265,7 +1265,7 @@ quicksight_delete_folder <- function(AwsAccountId, FolderId) {
 #' @description
 #' Removes an asset, such as a dashboard, analysis, or dataset, from a folder.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_folder_membership.html](https://paws-r.github.io/docs/quicksight/delete_folder_membership.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_folder_membership/](https://www.paws-r-sdk.com/docs/quicksight_delete_folder_membership/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
 #' @param FolderId &#91;required&#93; The Folder ID.
@@ -1298,7 +1298,7 @@ quicksight_delete_folder_membership <- function(AwsAccountId, FolderId, MemberId
 #' @description
 #' Removes a user group from Amazon QuickSight.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_group.html](https://paws-r.github.io/docs/quicksight/delete_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_group/](https://www.paws-r-sdk.com/docs/quicksight_delete_group/) for full documentation.
 #'
 #' @param GroupName &#91;required&#93; The name of the group that you want to delete.
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the group is in.
@@ -1332,7 +1332,7 @@ quicksight_delete_group <- function(GroupName, AwsAccountId, Namespace) {
 #' @description
 #' Removes a user from a group so that the user is no longer a member of the group.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_group_membership.html](https://paws-r.github.io/docs/quicksight/delete_group_membership.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_group_membership/](https://www.paws-r-sdk.com/docs/quicksight_delete_group_membership/) for full documentation.
 #'
 #' @param MemberName &#91;required&#93; The name of the user that you want to delete from the group membership.
 #' @param GroupName &#91;required&#93; The name of the group that you want to delete the user from.
@@ -1366,7 +1366,7 @@ quicksight_delete_group_membership <- function(MemberName, GroupName, AwsAccount
 #' @description
 #' Deletes an existing IAM policy assignment.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_iam_policy_assignment.html](https://paws-r.github.io/docs/quicksight/delete_iam_policy_assignment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_iam_policy_assignment/](https://www.paws-r-sdk.com/docs/quicksight_delete_iam_policy_assignment/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID where you want to delete the IAM
 #' policy assignment.
@@ -1399,7 +1399,7 @@ quicksight_delete_iam_policy_assignment <- function(AwsAccountId, AssignmentName
 #' @description
 #' Deletes a namespace and the users and groups that are associated with the namespace. This is an asynchronous process. Assets including dashboards, analyses, datasets and data sources are not deleted. To delete these assets, you use the API operations for the relevant asset.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_namespace.html](https://paws-r.github.io/docs/quicksight/delete_namespace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_namespace/](https://www.paws-r-sdk.com/docs/quicksight_delete_namespace/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that you want to delete the
 #' Amazon QuickSight namespace from.
@@ -1430,7 +1430,7 @@ quicksight_delete_namespace <- function(AwsAccountId, Namespace) {
 #' @description
 #' Deletes a refresh schedule from a dataset.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_refresh_schedule.html](https://paws-r.github.io/docs/quicksight/delete_refresh_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_refresh_schedule/](https://www.paws-r-sdk.com/docs/quicksight_delete_refresh_schedule/) for full documentation.
 #'
 #' @param DataSetId &#91;required&#93; The ID of the dataset.
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
@@ -1461,7 +1461,7 @@ quicksight_delete_refresh_schedule <- function(DataSetId, AwsAccountId, Schedule
 #' @description
 #' Deletes a template.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_template.html](https://paws-r.github.io/docs/quicksight/delete_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_template/](https://www.paws-r-sdk.com/docs/quicksight_delete_template/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the template
 #' that you're deleting.
@@ -1496,7 +1496,7 @@ quicksight_delete_template <- function(AwsAccountId, TemplateId, VersionNumber =
 #' @description
 #' Deletes the item that the specified template alias points to. If you provide a specific alias, you delete the version of the template that the alias points to.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_template_alias.html](https://paws-r.github.io/docs/quicksight/delete_template_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_template_alias/](https://www.paws-r-sdk.com/docs/quicksight_delete_template_alias/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the item to
 #' delete.
@@ -1531,7 +1531,7 @@ quicksight_delete_template_alias <- function(AwsAccountId, TemplateId, AliasName
 #' @description
 #' Deletes a theme.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_theme.html](https://paws-r.github.io/docs/quicksight/delete_theme.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_theme/](https://www.paws-r-sdk.com/docs/quicksight_delete_theme/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the theme that
 #' you're deleting.
@@ -1568,7 +1568,7 @@ quicksight_delete_theme <- function(AwsAccountId, ThemeId, VersionNumber = NULL)
 #' @description
 #' Deletes the version of the theme that the specified theme alias points to. If you provide a specific alias, you delete the version of the theme that the alias points to.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_theme_alias.html](https://paws-r.github.io/docs/quicksight/delete_theme_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_theme_alias/](https://www.paws-r-sdk.com/docs/quicksight_delete_theme_alias/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the theme alias
 #' to delete.
@@ -1600,7 +1600,7 @@ quicksight_delete_theme_alias <- function(AwsAccountId, ThemeId, AliasName) {
 #' @description
 #' Deletes a topic.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_topic.html](https://paws-r.github.io/docs/quicksight/delete_topic.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_topic/](https://www.paws-r-sdk.com/docs/quicksight_delete_topic/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the topic that
 #' you want to delete.
@@ -1632,7 +1632,7 @@ quicksight_delete_topic <- function(AwsAccountId, TopicId) {
 #' @description
 #' Deletes a topic refresh schedule.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_topic_refresh_schedule.html](https://paws-r.github.io/docs/quicksight/delete_topic_refresh_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_topic_refresh_schedule/](https://www.paws-r-sdk.com/docs/quicksight_delete_topic_refresh_schedule/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param TopicId &#91;required&#93; The ID of the topic that you want to modify. This ID is unique per
@@ -1665,7 +1665,7 @@ quicksight_delete_topic_refresh_schedule <- function(AwsAccountId, TopicId, Data
 #' @description
 #' Deletes the Amazon QuickSight user that is associated with the identity of the IAM user or role that's making the call. The IAM user isn't deleted as a result of this call.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_user.html](https://paws-r.github.io/docs/quicksight/delete_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_user/](https://www.paws-r-sdk.com/docs/quicksight_delete_user/) for full documentation.
 #'
 #' @param UserName &#91;required&#93; The name of the user that you want to delete.
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the user is in.
@@ -1698,7 +1698,7 @@ quicksight_delete_user <- function(UserName, AwsAccountId, Namespace) {
 #' @description
 #' Deletes a user identified by its principal ID.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_user_by_principal_id.html](https://paws-r.github.io/docs/quicksight/delete_user_by_principal_id.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_user_by_principal_id/](https://www.paws-r-sdk.com/docs/quicksight_delete_user_by_principal_id/) for full documentation.
 #'
 #' @param PrincipalId &#91;required&#93; The principal ID of the user.
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the user is in.
@@ -1731,7 +1731,7 @@ quicksight_delete_user_by_principal_id <- function(PrincipalId, AwsAccountId, Na
 #' @description
 #' Deletes a VPC connection.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/delete_vpc_connection.html](https://paws-r.github.io/docs/quicksight/delete_vpc_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_vpc_connection/](https://www.paws-r-sdk.com/docs/quicksight_delete_vpc_connection/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID of the account where you want to
 #' delete a VPC connection.
@@ -1766,7 +1766,7 @@ quicksight_delete_vpc_connection <- function(AwsAccountId, VPCConnectionId) {
 #' @description
 #' Describes the customizations associated with the provided Amazon Web Services account and Amazon Amazon QuickSight namespace in an Amazon Web Services Region. The Amazon QuickSight console evaluates which customizations to apply by running this API operation with the `Resolved` flag included.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_account_customization.html](https://paws-r.github.io/docs/quicksight/describe_account_customization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_account_customization/](https://www.paws-r-sdk.com/docs/quicksight_describe_account_customization/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that you want to describe
 #' Amazon QuickSight customizations for.
@@ -1805,7 +1805,7 @@ quicksight_describe_account_customization <- function(AwsAccountId, Namespace = 
 #' @description
 #' Describes the settings that were used when your Amazon QuickSight subscription was first created in this Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_account_settings.html](https://paws-r.github.io/docs/quicksight/describe_account_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_account_settings/](https://www.paws-r-sdk.com/docs/quicksight_describe_account_settings/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the settings
 #' that you want to list.
@@ -1836,7 +1836,7 @@ quicksight_describe_account_settings <- function(AwsAccountId) {
 #' @description
 #' Use the DescribeAccountSubscription operation to receive a description of an Amazon QuickSight account's subscription. A successful API call returns an `AccountInfo` object that includes an account's name, subscription status, authentication type, edition, and notification email address.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_account_subscription.html](https://paws-r.github.io/docs/quicksight/describe_account_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_account_subscription/](https://www.paws-r-sdk.com/docs/quicksight_describe_account_subscription/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID associated with your Amazon
 #' QuickSight account.
@@ -1866,7 +1866,7 @@ quicksight_describe_account_subscription <- function(AwsAccountId) {
 #' @description
 #' Provides a summary of the metadata for an analysis.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_analysis.html](https://paws-r.github.io/docs/quicksight/describe_analysis.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_analysis/](https://www.paws-r-sdk.com/docs/quicksight_describe_analysis/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the analysis.
 #' You must be using the Amazon Web Services account that the analysis is
@@ -1899,7 +1899,7 @@ quicksight_describe_analysis <- function(AwsAccountId, AnalysisId) {
 #' @description
 #' Provides a detailed description of the definition of an analysis.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_analysis_definition.html](https://paws-r.github.io/docs/quicksight/describe_analysis_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_analysis_definition/](https://www.paws-r-sdk.com/docs/quicksight_describe_analysis_definition/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the analysis.
 #' You must be using the Amazon Web Services account that the analysis is
@@ -1932,7 +1932,7 @@ quicksight_describe_analysis_definition <- function(AwsAccountId, AnalysisId) {
 #' @description
 #' Provides the read and write permissions for an analysis.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_analysis_permissions.html](https://paws-r.github.io/docs/quicksight/describe_analysis_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_analysis_permissions/](https://www.paws-r-sdk.com/docs/quicksight_describe_analysis_permissions/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the analysis
 #' whose permissions you're describing. You must be using the Amazon Web
@@ -1965,7 +1965,7 @@ quicksight_describe_analysis_permissions <- function(AwsAccountId, AnalysisId) {
 #' @description
 #' Describes an existing export job.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_asset_bundle_export_job.html](https://paws-r.github.io/docs/quicksight/describe_asset_bundle_export_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_asset_bundle_export_job/](https://www.paws-r-sdk.com/docs/quicksight_describe_asset_bundle_export_job/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account the export job is executed in.
 #' @param AssetBundleExportJobId &#91;required&#93; The ID of the job that you want described. The job ID is set when you
@@ -1998,7 +1998,7 @@ quicksight_describe_asset_bundle_export_job <- function(AwsAccountId, AssetBundl
 #' @description
 #' Describes an existing import job.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_asset_bundle_import_job.html](https://paws-r.github.io/docs/quicksight/describe_asset_bundle_import_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_asset_bundle_import_job/](https://www.paws-r-sdk.com/docs/quicksight_describe_asset_bundle_import_job/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account the import job was executed
 #' in.
@@ -2031,7 +2031,7 @@ quicksight_describe_asset_bundle_import_job <- function(AwsAccountId, AssetBundl
 #' @description
 #' Provides a summary for a dashboard.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_dashboard.html](https://paws-r.github.io/docs/quicksight/describe_dashboard.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_dashboard/](https://www.paws-r-sdk.com/docs/quicksight_describe_dashboard/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the dashboard
 #' that you're describing.
@@ -2065,7 +2065,7 @@ quicksight_describe_dashboard <- function(AwsAccountId, DashboardId, VersionNumb
 #' @description
 #' Provides a detailed description of the definition of a dashboard.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_dashboard_definition.html](https://paws-r.github.io/docs/quicksight/describe_dashboard_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_dashboard_definition/](https://www.paws-r-sdk.com/docs/quicksight_describe_dashboard_definition/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the dashboard
 #' that you're describing.
@@ -2099,7 +2099,7 @@ quicksight_describe_dashboard_definition <- function(AwsAccountId, DashboardId, 
 #' @description
 #' Describes read and write permissions for a dashboard.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_dashboard_permissions.html](https://paws-r.github.io/docs/quicksight/describe_dashboard_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_dashboard_permissions/](https://www.paws-r-sdk.com/docs/quicksight_describe_dashboard_permissions/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the dashboard
 #' that you're describing permissions for.
@@ -2130,7 +2130,7 @@ quicksight_describe_dashboard_permissions <- function(AwsAccountId, DashboardId)
 #' @description
 #' Describes a dataset. This operation doesn't support datasets that include uploaded files as a source.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_data_set.html](https://paws-r.github.io/docs/quicksight/describe_data_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_data_set/](https://www.paws-r-sdk.com/docs/quicksight_describe_data_set/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSetId &#91;required&#93; The ID for the dataset that you want to create. This ID is unique per
@@ -2161,7 +2161,7 @@ quicksight_describe_data_set <- function(AwsAccountId, DataSetId) {
 #' @description
 #' Describes the permissions on a dataset.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_data_set_permissions.html](https://paws-r.github.io/docs/quicksight/describe_data_set_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_data_set_permissions/](https://www.paws-r-sdk.com/docs/quicksight_describe_data_set_permissions/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSetId &#91;required&#93; The ID for the dataset that you want to create. This ID is unique per
@@ -2192,7 +2192,7 @@ quicksight_describe_data_set_permissions <- function(AwsAccountId, DataSetId) {
 #' @description
 #' Describes the refresh properties of a dataset.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_data_set_refresh_properties.html](https://paws-r.github.io/docs/quicksight/describe_data_set_refresh_properties.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_data_set_refresh_properties/](https://www.paws-r-sdk.com/docs/quicksight_describe_data_set_refresh_properties/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSetId &#91;required&#93; The ID of the dataset.
@@ -2222,7 +2222,7 @@ quicksight_describe_data_set_refresh_properties <- function(AwsAccountId, DataSe
 #' @description
 #' Describes a data source.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_data_source.html](https://paws-r.github.io/docs/quicksight/describe_data_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_data_source/](https://www.paws-r-sdk.com/docs/quicksight_describe_data_source/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSourceId &#91;required&#93; The ID of the data source. This ID is unique per Amazon Web Services
@@ -2253,7 +2253,7 @@ quicksight_describe_data_source <- function(AwsAccountId, DataSourceId) {
 #' @description
 #' Describes the resource permissions for a data source.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_data_source_permissions.html](https://paws-r.github.io/docs/quicksight/describe_data_source_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_data_source_permissions/](https://www.paws-r-sdk.com/docs/quicksight_describe_data_source_permissions/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSourceId &#91;required&#93; The ID of the data source. This ID is unique per Amazon Web Services
@@ -2284,7 +2284,7 @@ quicksight_describe_data_source_permissions <- function(AwsAccountId, DataSource
 #' @description
 #' Describes a folder.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_folder.html](https://paws-r.github.io/docs/quicksight/describe_folder.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_folder/](https://www.paws-r-sdk.com/docs/quicksight_describe_folder/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
 #' @param FolderId &#91;required&#93; The ID of the folder.
@@ -2314,7 +2314,7 @@ quicksight_describe_folder <- function(AwsAccountId, FolderId) {
 #' @description
 #' Describes permissions for a folder.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_folder_permissions.html](https://paws-r.github.io/docs/quicksight/describe_folder_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_folder_permissions/](https://www.paws-r-sdk.com/docs/quicksight_describe_folder_permissions/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
 #' @param FolderId &#91;required&#93; The ID of the folder.
@@ -2344,7 +2344,7 @@ quicksight_describe_folder_permissions <- function(AwsAccountId, FolderId) {
 #' @description
 #' Describes the folder resolved permissions. Permissions consists of both folder direct permissions and the inherited permissions from the ancestor folders.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_folder_resolved_permissions.html](https://paws-r.github.io/docs/quicksight/describe_folder_resolved_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_folder_resolved_permissions/](https://www.paws-r-sdk.com/docs/quicksight_describe_folder_resolved_permissions/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
 #' @param FolderId &#91;required&#93; The ID of the folder.
@@ -2375,7 +2375,7 @@ quicksight_describe_folder_resolved_permissions <- function(AwsAccountId, Folder
 #' @description
 #' Returns an Amazon QuickSight group's description and Amazon Resource Name (ARN).
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_group.html](https://paws-r.github.io/docs/quicksight/describe_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_group/](https://www.paws-r-sdk.com/docs/quicksight_describe_group/) for full documentation.
 #'
 #' @param GroupName &#91;required&#93; The name of the group that you want to describe.
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the group is in.
@@ -2409,7 +2409,7 @@ quicksight_describe_group <- function(GroupName, AwsAccountId, Namespace) {
 #' @description
 #' Use the [`describe_group_membership`][quicksight_describe_group_membership] operation to determine if a user is a member of the specified group. If the user exists and is a member of the specified group, an associated `GroupMember` object is returned.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_group_membership.html](https://paws-r.github.io/docs/quicksight/describe_group_membership.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_group_membership/](https://www.paws-r-sdk.com/docs/quicksight_describe_group_membership/) for full documentation.
 #'
 #' @param MemberName &#91;required&#93; The user name of the user that you want to search for.
 #' @param GroupName &#91;required&#93; The name of the group that you want to search.
@@ -2444,7 +2444,7 @@ quicksight_describe_group_membership <- function(MemberName, GroupName, AwsAccou
 #' @description
 #' Describes an existing IAM policy assignment, as specified by the assignment name.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_iam_policy_assignment.html](https://paws-r.github.io/docs/quicksight/describe_iam_policy_assignment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_iam_policy_assignment/](https://www.paws-r-sdk.com/docs/quicksight_describe_iam_policy_assignment/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the assignment
 #' that you want to describe.
@@ -2476,7 +2476,7 @@ quicksight_describe_iam_policy_assignment <- function(AwsAccountId, AssignmentNa
 #' @description
 #' Describes a SPICE ingestion.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_ingestion.html](https://paws-r.github.io/docs/quicksight/describe_ingestion.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_ingestion/](https://www.paws-r-sdk.com/docs/quicksight_describe_ingestion/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSetId &#91;required&#93; The ID of the dataset used in the ingestion.
@@ -2507,7 +2507,7 @@ quicksight_describe_ingestion <- function(AwsAccountId, DataSetId, IngestionId) 
 #' @description
 #' Provides a summary and status of IP rules.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_ip_restriction.html](https://paws-r.github.io/docs/quicksight/describe_ip_restriction.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_ip_restriction/](https://www.paws-r-sdk.com/docs/quicksight_describe_ip_restriction/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the IP rules.
 #'
@@ -2536,7 +2536,7 @@ quicksight_describe_ip_restriction <- function(AwsAccountId) {
 #' @description
 #' Describes the current namespace.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_namespace.html](https://paws-r.github.io/docs/quicksight/describe_namespace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_namespace/](https://www.paws-r-sdk.com/docs/quicksight_describe_namespace/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the Amazon
 #' QuickSight namespace that you want to describe.
@@ -2567,7 +2567,7 @@ quicksight_describe_namespace <- function(AwsAccountId, Namespace) {
 #' @description
 #' Provides a summary of a refresh schedule.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_refresh_schedule.html](https://paws-r.github.io/docs/quicksight/describe_refresh_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_refresh_schedule/](https://www.paws-r-sdk.com/docs/quicksight_describe_refresh_schedule/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSetId &#91;required&#93; The ID of the dataset.
@@ -2598,7 +2598,7 @@ quicksight_describe_refresh_schedule <- function(AwsAccountId, DataSetId, Schedu
 #' @description
 #' Describes a template's metadata.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_template.html](https://paws-r.github.io/docs/quicksight/describe_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_template/](https://www.paws-r-sdk.com/docs/quicksight_describe_template/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the template
 #' that you're describing.
@@ -2637,7 +2637,7 @@ quicksight_describe_template <- function(AwsAccountId, TemplateId, VersionNumber
 #' @description
 #' Describes the template alias for a template.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_template_alias.html](https://paws-r.github.io/docs/quicksight/describe_template_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_template_alias/](https://www.paws-r-sdk.com/docs/quicksight_describe_template_alias/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the template
 #' alias that you're describing.
@@ -2673,7 +2673,7 @@ quicksight_describe_template_alias <- function(AwsAccountId, TemplateId, AliasNa
 #' @description
 #' Provides a detailed description of the definition of a template.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_template_definition.html](https://paws-r.github.io/docs/quicksight/describe_template_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_template_definition/](https://www.paws-r-sdk.com/docs/quicksight_describe_template_definition/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the template.
 #' You must be using the Amazon Web Services account that the template is
@@ -2711,7 +2711,7 @@ quicksight_describe_template_definition <- function(AwsAccountId, TemplateId, Ve
 #' @description
 #' Describes read and write permissions on a template.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_template_permissions.html](https://paws-r.github.io/docs/quicksight/describe_template_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_template_permissions/](https://www.paws-r-sdk.com/docs/quicksight_describe_template_permissions/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the template
 #' that you're describing.
@@ -2742,7 +2742,7 @@ quicksight_describe_template_permissions <- function(AwsAccountId, TemplateId) {
 #' @description
 #' Describes a theme.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_theme.html](https://paws-r.github.io/docs/quicksight/describe_theme.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_theme/](https://www.paws-r-sdk.com/docs/quicksight_describe_theme/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the theme that
 #' you're describing.
@@ -2781,7 +2781,7 @@ quicksight_describe_theme <- function(AwsAccountId, ThemeId, VersionNumber = NUL
 #' @description
 #' Describes the alias for a theme.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_theme_alias.html](https://paws-r.github.io/docs/quicksight/describe_theme_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_theme_alias/](https://www.paws-r-sdk.com/docs/quicksight_describe_theme_alias/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the theme alias
 #' that you're describing.
@@ -2813,7 +2813,7 @@ quicksight_describe_theme_alias <- function(AwsAccountId, ThemeId, AliasName) {
 #' @description
 #' Describes the read and write permissions for a theme.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_theme_permissions.html](https://paws-r.github.io/docs/quicksight/describe_theme_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_theme_permissions/](https://www.paws-r-sdk.com/docs/quicksight_describe_theme_permissions/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the theme that
 #' you're describing.
@@ -2844,7 +2844,7 @@ quicksight_describe_theme_permissions <- function(AwsAccountId, ThemeId) {
 #' @description
 #' Describes a topic.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_topic.html](https://paws-r.github.io/docs/quicksight/describe_topic.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_topic/](https://www.paws-r-sdk.com/docs/quicksight_describe_topic/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param TopicId &#91;required&#93; The ID of the topic that you want to describe. This ID is unique per
@@ -2875,7 +2875,7 @@ quicksight_describe_topic <- function(AwsAccountId, TopicId) {
 #' @description
 #' Describes the permissions of a topic.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_topic_permissions.html](https://paws-r.github.io/docs/quicksight/describe_topic_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_topic_permissions/](https://www.paws-r-sdk.com/docs/quicksight_describe_topic_permissions/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the topic that
 #' you want described.
@@ -2907,7 +2907,7 @@ quicksight_describe_topic_permissions <- function(AwsAccountId, TopicId) {
 #' @description
 #' Describes the status of a topic refresh.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_topic_refresh.html](https://paws-r.github.io/docs/quicksight/describe_topic_refresh.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_topic_refresh/](https://www.paws-r-sdk.com/docs/quicksight_describe_topic_refresh/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the topic whose
 #' refresh you want to describe.
@@ -2941,7 +2941,7 @@ quicksight_describe_topic_refresh <- function(AwsAccountId, TopicId, RefreshId) 
 #' @description
 #' Deletes a topic refresh schedule.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_topic_refresh_schedule.html](https://paws-r.github.io/docs/quicksight/describe_topic_refresh_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_topic_refresh_schedule/](https://www.paws-r-sdk.com/docs/quicksight_describe_topic_refresh_schedule/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param TopicId &#91;required&#93; The ID of the topic that contains the refresh schedule that you want to
@@ -2974,7 +2974,7 @@ quicksight_describe_topic_refresh_schedule <- function(AwsAccountId, TopicId, Da
 #' @description
 #' Returns information about a user, given the user name.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_user.html](https://paws-r.github.io/docs/quicksight/describe_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_user/](https://www.paws-r-sdk.com/docs/quicksight_describe_user/) for full documentation.
 #'
 #' @param UserName &#91;required&#93; The name of the user that you want to describe.
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the user is in.
@@ -3007,7 +3007,7 @@ quicksight_describe_user <- function(UserName, AwsAccountId, Namespace) {
 #' @description
 #' Describes a VPC connection.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/describe_vpc_connection.html](https://paws-r.github.io/docs/quicksight/describe_vpc_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_vpc_connection/](https://www.paws-r-sdk.com/docs/quicksight_describe_vpc_connection/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID of the account that contains the VPC
 #' connection that you want described.
@@ -3042,7 +3042,7 @@ quicksight_describe_vpc_connection <- function(AwsAccountId, VPCConnectionId) {
 #' @description
 #' Generates an embed URL that you can use to embed an Amazon QuickSight dashboard or visual in your website, without having to register any reader users. Before you use this action, make sure that you have configured the dashboards and permissions.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/generate_embed_url_for_anonymous_user.html](https://paws-r.github.io/docs/quicksight/generate_embed_url_for_anonymous_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_generate_embed_url_for_anonymous_user/](https://www.paws-r-sdk.com/docs/quicksight_generate_embed_url_for_anonymous_user/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the dashboard
 #' that you're embedding.
@@ -3103,7 +3103,7 @@ quicksight_generate_embed_url_for_anonymous_user <- function(AwsAccountId, Sessi
 #' @description
 #' Generates an embed URL that you can use to embed an Amazon QuickSight experience in your website. This action can be used for any type of user registered in an Amazon QuickSight account. Before you use this action, make sure that you have configured the relevant Amazon QuickSight resource and permissions.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/generate_embed_url_for_registered_user.html](https://paws-r.github.io/docs/quicksight/generate_embed_url_for_registered_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_generate_embed_url_for_registered_user/](https://www.paws-r-sdk.com/docs/quicksight_generate_embed_url_for_registered_user/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the dashboard
 #' that you're embedding.
@@ -3151,7 +3151,7 @@ quicksight_generate_embed_url_for_registered_user <- function(AwsAccountId, Sess
 #' @description
 #' Generates a temporary session URL and authorization code(bearer token) that you can use to embed an Amazon QuickSight read-only dashboard in your website or application. Before you use this command, make sure that you have configured the dashboards and permissions.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/get_dashboard_embed_url.html](https://paws-r.github.io/docs/quicksight/get_dashboard_embed_url.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_get_dashboard_embed_url/](https://www.paws-r-sdk.com/docs/quicksight_get_dashboard_embed_url/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the dashboard
 #' that you're embedding.
@@ -3223,7 +3223,7 @@ quicksight_get_dashboard_embed_url <- function(AwsAccountId, DashboardId, Identi
 #' @description
 #' Generates a session URL and authorization code that you can use to embed the Amazon Amazon QuickSight console in your web server code. Use [`get_session_embed_url`][quicksight_get_session_embed_url] where you want to provide an authoring portal that allows users to create data sources, datasets, analyses, and dashboards. The users who access an embedded Amazon QuickSight console need belong to the author or admin security cohort. If you want to restrict permissions to some of these features, add a custom permissions profile to the user with the [`update_user`][quicksight_update_user] API operation. Use [`register_user`][quicksight_register_user] API operation to add a new user with a custom permission profile attached. For more information, see the following sections in the *Amazon QuickSight User Guide*:
 #'
-#' See [https://paws-r.github.io/docs/quicksight/get_session_embed_url.html](https://paws-r.github.io/docs/quicksight/get_session_embed_url.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_get_session_embed_url/](https://www.paws-r-sdk.com/docs/quicksight_get_session_embed_url/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account associated with your Amazon
 #' QuickSight subscription.
@@ -3287,7 +3287,7 @@ quicksight_get_session_embed_url <- function(AwsAccountId, EntryPoint = NULL, Se
 #' @description
 #' Lists Amazon QuickSight analyses that exist in the specified Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_analyses.html](https://paws-r.github.io/docs/quicksight/list_analyses.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_analyses/](https://www.paws-r-sdk.com/docs/quicksight_list_analyses/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the analyses.
 #' @param NextToken A pagination token that can be used in a subsequent request.
@@ -3319,7 +3319,7 @@ quicksight_list_analyses <- function(AwsAccountId, NextToken = NULL, MaxResults 
 #' @description
 #' Lists all asset bundle export jobs that have been taken place in the last 14 days. Jobs created more than 14 days ago are deleted forever and are not returned. If you are using the same job ID for multiple jobs, [`list_asset_bundle_export_jobs`][quicksight_list_asset_bundle_export_jobs] only returns the most recent job that uses the repeated job ID.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_asset_bundle_export_jobs.html](https://paws-r.github.io/docs/quicksight/list_asset_bundle_export_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_asset_bundle_export_jobs/](https://www.paws-r-sdk.com/docs/quicksight_list_asset_bundle_export_jobs/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that the export jobs were
 #' executed in.
@@ -3353,7 +3353,7 @@ quicksight_list_asset_bundle_export_jobs <- function(AwsAccountId, NextToken = N
 #' @description
 #' Lists all asset bundle import jobs that have taken place in the last 14 days. Jobs created more than 14 days ago are deleted forever and are not returned. If you are using the same job ID for multiple jobs, [`list_asset_bundle_import_jobs`][quicksight_list_asset_bundle_import_jobs] only returns the most recent job that uses the repeated job ID.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_asset_bundle_import_jobs.html](https://paws-r.github.io/docs/quicksight/list_asset_bundle_import_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_asset_bundle_import_jobs/](https://www.paws-r-sdk.com/docs/quicksight_list_asset_bundle_import_jobs/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that the import jobs were
 #' executed in.
@@ -3387,7 +3387,7 @@ quicksight_list_asset_bundle_import_jobs <- function(AwsAccountId, NextToken = N
 #' @description
 #' Lists all the versions of the dashboards in the Amazon QuickSight subscription.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_dashboard_versions.html](https://paws-r.github.io/docs/quicksight/list_dashboard_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_dashboard_versions/](https://www.paws-r-sdk.com/docs/quicksight_list_dashboard_versions/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the dashboard
 #' that you're listing versions for.
@@ -3421,7 +3421,7 @@ quicksight_list_dashboard_versions <- function(AwsAccountId, DashboardId, NextTo
 #' @description
 #' Lists dashboards in an Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_dashboards.html](https://paws-r.github.io/docs/quicksight/list_dashboards.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_dashboards/](https://www.paws-r-sdk.com/docs/quicksight_list_dashboards/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the dashboards
 #' that you're listing.
@@ -3455,7 +3455,7 @@ quicksight_list_dashboards <- function(AwsAccountId, NextToken = NULL, MaxResult
 #' @description
 #' Lists all of the datasets belonging to the current Amazon Web Services account in an Amazon Web Services Region.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_data_sets.html](https://paws-r.github.io/docs/quicksight/list_data_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_data_sets/](https://www.paws-r-sdk.com/docs/quicksight_list_data_sets/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param NextToken The token for the next set of results, or null if there are no more
@@ -3488,7 +3488,7 @@ quicksight_list_data_sets <- function(AwsAccountId, NextToken = NULL, MaxResults
 #' @description
 #' Lists data sources in current Amazon Web Services Region that belong to this Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_data_sources.html](https://paws-r.github.io/docs/quicksight/list_data_sources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_data_sources/](https://www.paws-r-sdk.com/docs/quicksight_list_data_sources/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param NextToken The token for the next set of results, or null if there are no more
@@ -3520,7 +3520,7 @@ quicksight_list_data_sources <- function(AwsAccountId, NextToken = NULL, MaxResu
 #' @description
 #' List all assets (`DASHBOARD`, `ANALYSIS`, and `DATASET`) in a folder.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_folder_members.html](https://paws-r.github.io/docs/quicksight/list_folder_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_folder_members/](https://www.paws-r-sdk.com/docs/quicksight_list_folder_members/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
 #' @param FolderId &#91;required&#93; The ID of the folder.
@@ -3553,7 +3553,7 @@ quicksight_list_folder_members <- function(AwsAccountId, FolderId, NextToken = N
 #' @description
 #' Lists all folders in an account.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_folders.html](https://paws-r.github.io/docs/quicksight/list_folders.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_folders/](https://www.paws-r-sdk.com/docs/quicksight_list_folders/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
 #' @param NextToken The token for the next set of results, or null if there are no more
@@ -3585,7 +3585,7 @@ quicksight_list_folders <- function(AwsAccountId, NextToken = NULL, MaxResults =
 #' @description
 #' Lists member users in a group.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_group_memberships.html](https://paws-r.github.io/docs/quicksight/list_group_memberships.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_group_memberships/](https://www.paws-r-sdk.com/docs/quicksight_list_group_memberships/) for full documentation.
 #'
 #' @param GroupName &#91;required&#93; The name of the group that you want to see a membership list of.
 #' @param NextToken A pagination token that can be used in a subsequent request.
@@ -3620,7 +3620,7 @@ quicksight_list_group_memberships <- function(GroupName, NextToken = NULL, MaxRe
 #' @description
 #' Lists all user groups in Amazon QuickSight.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_groups.html](https://paws-r.github.io/docs/quicksight/list_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_groups/](https://www.paws-r-sdk.com/docs/quicksight_list_groups/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the group is in.
 #' Currently, you use the ID for the Amazon Web Services account that
@@ -3655,7 +3655,7 @@ quicksight_list_groups <- function(AwsAccountId, NextToken = NULL, MaxResults = 
 #' @description
 #' Lists the IAM policy assignments in the current Amazon QuickSight account.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_iam_policy_assignments.html](https://paws-r.github.io/docs/quicksight/list_iam_policy_assignments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_iam_policy_assignments/](https://www.paws-r-sdk.com/docs/quicksight_list_iam_policy_assignments/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains these IAM policy
 #' assignments.
@@ -3692,7 +3692,7 @@ quicksight_list_iam_policy_assignments <- function(AwsAccountId, AssignmentStatu
 #' @description
 #' Lists all of the IAM policy assignments, including the Amazon Resource Names (ARNs), for the IAM policies assigned to the specified user and group, or groups that the user belongs to.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_iam_policy_assignments_for_user.html](https://paws-r.github.io/docs/quicksight/list_iam_policy_assignments_for_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_iam_policy_assignments_for_user/](https://www.paws-r-sdk.com/docs/quicksight_list_iam_policy_assignments_for_user/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the assignments.
 #' @param UserName &#91;required&#93; The name of the user.
@@ -3726,7 +3726,7 @@ quicksight_list_iam_policy_assignments_for_user <- function(AwsAccountId, UserNa
 #' @description
 #' Lists the history of SPICE ingestions for a dataset.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_ingestions.html](https://paws-r.github.io/docs/quicksight/list_ingestions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_ingestions/](https://www.paws-r-sdk.com/docs/quicksight_list_ingestions/) for full documentation.
 #'
 #' @param DataSetId &#91;required&#93; The ID of the dataset used in the ingestion.
 #' @param NextToken The token for the next set of results, or null if there are no more
@@ -3759,7 +3759,7 @@ quicksight_list_ingestions <- function(DataSetId, NextToken = NULL, AwsAccountId
 #' @description
 #' Lists the namespaces for the specified Amazon Web Services account. This operation doesn't list deleted namespaces.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_namespaces.html](https://paws-r.github.io/docs/quicksight/list_namespaces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_namespaces/](https://www.paws-r-sdk.com/docs/quicksight_list_namespaces/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the Amazon
 #' QuickSight namespaces that you want to list.
@@ -3799,7 +3799,7 @@ quicksight_list_namespaces <- function(AwsAccountId, NextToken = NULL, MaxResult
 #' @description
 #' Lists the refresh schedules of a dataset. Each dataset can have up to 5 schedules.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_refresh_schedules.html](https://paws-r.github.io/docs/quicksight/list_refresh_schedules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_refresh_schedules/](https://www.paws-r-sdk.com/docs/quicksight_list_refresh_schedules/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSetId &#91;required&#93; The ID of the dataset.
@@ -3829,7 +3829,7 @@ quicksight_list_refresh_schedules <- function(AwsAccountId, DataSetId) {
 #' @description
 #' Lists the tags assigned to a resource.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_tags_for_resource.html](https://paws-r.github.io/docs/quicksight/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/quicksight_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want a list of
 #' tags for.
@@ -3859,7 +3859,7 @@ quicksight_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Lists all the aliases of a template.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_template_aliases.html](https://paws-r.github.io/docs/quicksight/list_template_aliases.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_template_aliases/](https://www.paws-r-sdk.com/docs/quicksight_list_template_aliases/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the template
 #' aliases that you're listing.
@@ -3894,7 +3894,7 @@ quicksight_list_template_aliases <- function(AwsAccountId, TemplateId, NextToken
 #' @description
 #' Lists all the versions of the templates in the current Amazon QuickSight account.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_template_versions.html](https://paws-r.github.io/docs/quicksight/list_template_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_template_versions/](https://www.paws-r-sdk.com/docs/quicksight_list_template_versions/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the templates
 #' that you're listing.
@@ -3928,7 +3928,7 @@ quicksight_list_template_versions <- function(AwsAccountId, TemplateId, NextToke
 #' @description
 #' Lists all the templates in the current Amazon QuickSight account.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_templates.html](https://paws-r.github.io/docs/quicksight/list_templates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_templates/](https://www.paws-r-sdk.com/docs/quicksight_list_templates/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the templates
 #' that you're listing.
@@ -3961,7 +3961,7 @@ quicksight_list_templates <- function(AwsAccountId, NextToken = NULL, MaxResults
 #' @description
 #' Lists all the aliases of a theme.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_theme_aliases.html](https://paws-r.github.io/docs/quicksight/list_theme_aliases.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_theme_aliases/](https://www.paws-r-sdk.com/docs/quicksight_list_theme_aliases/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the theme
 #' aliases that you're listing.
@@ -3996,7 +3996,7 @@ quicksight_list_theme_aliases <- function(AwsAccountId, ThemeId, NextToken = NUL
 #' @description
 #' Lists all the versions of the themes in the current Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_theme_versions.html](https://paws-r.github.io/docs/quicksight/list_theme_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_theme_versions/](https://www.paws-r-sdk.com/docs/quicksight_list_theme_versions/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the themes that
 #' you're listing.
@@ -4030,7 +4030,7 @@ quicksight_list_theme_versions <- function(AwsAccountId, ThemeId, NextToken = NU
 #' @description
 #' Lists all the themes in the current Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_themes.html](https://paws-r.github.io/docs/quicksight/list_themes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_themes/](https://www.paws-r-sdk.com/docs/quicksight_list_themes/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the themes that
 #' you're listing.
@@ -4073,7 +4073,7 @@ quicksight_list_themes <- function(AwsAccountId, NextToken = NULL, MaxResults = 
 #' @description
 #' Lists all of the refresh schedules for a topic.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_topic_refresh_schedules.html](https://paws-r.github.io/docs/quicksight/list_topic_refresh_schedules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_topic_refresh_schedules/](https://www.paws-r-sdk.com/docs/quicksight_list_topic_refresh_schedules/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the topic whose
 #' refresh schedule you want described.
@@ -4105,7 +4105,7 @@ quicksight_list_topic_refresh_schedules <- function(AwsAccountId, TopicId) {
 #' @description
 #' Lists all of the topics within an account.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_topics.html](https://paws-r.github.io/docs/quicksight/list_topics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_topics/](https://www.paws-r-sdk.com/docs/quicksight_list_topics/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the topics that
 #' you want to list.
@@ -4139,7 +4139,7 @@ quicksight_list_topics <- function(AwsAccountId, NextToken = NULL, MaxResults = 
 #' @description
 #' Lists the Amazon QuickSight groups that an Amazon QuickSight user is a member of.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_user_groups.html](https://paws-r.github.io/docs/quicksight/list_user_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_user_groups/](https://www.paws-r-sdk.com/docs/quicksight_list_user_groups/) for full documentation.
 #'
 #' @param UserName &#91;required&#93; The Amazon QuickSight user name that you want to list group memberships
 #' for.
@@ -4176,7 +4176,7 @@ quicksight_list_user_groups <- function(UserName, AwsAccountId, Namespace, NextT
 #' @description
 #' Returns a list of all of the Amazon QuickSight users belonging to this account.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_users.html](https://paws-r.github.io/docs/quicksight/list_users.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_users/](https://www.paws-r-sdk.com/docs/quicksight_list_users/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the user is in.
 #' Currently, you use the ID for the Amazon Web Services account that
@@ -4211,7 +4211,7 @@ quicksight_list_users <- function(AwsAccountId, NextToken = NULL, MaxResults = N
 #' @description
 #' Lists all of the VPC connections in the current set Amazon Web Services Region of an Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/list_vpc_connections.html](https://paws-r.github.io/docs/quicksight/list_vpc_connections.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_vpc_connections/](https://www.paws-r-sdk.com/docs/quicksight_list_vpc_connections/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID of the account that contains the VPC
 #' connections that you want to list.
@@ -4244,7 +4244,7 @@ quicksight_list_vpc_connections <- function(AwsAccountId, NextToken = NULL, MaxR
 #' @description
 #' Creates or updates the dataset refresh properties for the dataset.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/put_data_set_refresh_properties.html](https://paws-r.github.io/docs/quicksight/put_data_set_refresh_properties.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_put_data_set_refresh_properties/](https://www.paws-r-sdk.com/docs/quicksight_put_data_set_refresh_properties/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSetId &#91;required&#93; The ID of the dataset.
@@ -4277,7 +4277,7 @@ quicksight_put_data_set_refresh_properties <- function(AwsAccountId, DataSetId, 
 #' @description
 #' Creates an Amazon QuickSight user whose identity is associated with the Identity and Access Management (IAM) identity or role specified in the request. When you register a new user from the Amazon QuickSight API, Amazon QuickSight generates a registration URL. The user accesses this registration URL to create their account. Amazon QuickSight doesn't send a registration email to users who are registered from the Amazon QuickSight API. If you want new users to receive a registration email, then add those users in the Amazon QuickSight console. For more information on registering a new user in the Amazon QuickSight console, see [Inviting users to access Amazon QuickSight](https://docs.aws.amazon.com/quicksight/latest/user/managing-users.html#inviting-users).
 #'
-#' See [https://paws-r.github.io/docs/quicksight/register_user.html](https://paws-r.github.io/docs/quicksight/register_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_register_user/](https://www.paws-r-sdk.com/docs/quicksight_register_user/) for full documentation.
 #'
 #' @param IdentityType &#91;required&#93; Amazon QuickSight supports several ways of managing the identity of
 #' users. This parameter accepts two values:
@@ -4391,7 +4391,7 @@ quicksight_register_user <- function(IdentityType, Email, UserRole, IamArn = NUL
 #' @description
 #' Restores an analysis.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/restore_analysis.html](https://paws-r.github.io/docs/quicksight/restore_analysis.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_restore_analysis/](https://www.paws-r-sdk.com/docs/quicksight_restore_analysis/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the analysis.
 #' @param AnalysisId &#91;required&#93; The ID of the analysis that you're restoring.
@@ -4421,7 +4421,7 @@ quicksight_restore_analysis <- function(AwsAccountId, AnalysisId) {
 #' @description
 #' Searches for analyses that belong to the user specified in the filter.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/search_analyses.html](https://paws-r.github.io/docs/quicksight/search_analyses.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_search_analyses/](https://www.paws-r-sdk.com/docs/quicksight_search_analyses/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the analyses
 #' that you're searching for.
@@ -4455,7 +4455,7 @@ quicksight_search_analyses <- function(AwsAccountId, Filters, NextToken = NULL, 
 #' @description
 #' Searches for dashboards that belong to a user.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/search_dashboards.html](https://paws-r.github.io/docs/quicksight/search_dashboards.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_search_dashboards/](https://www.paws-r-sdk.com/docs/quicksight_search_dashboards/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the user whose
 #' dashboards you're searching for.
@@ -4492,7 +4492,7 @@ quicksight_search_dashboards <- function(AwsAccountId, Filters, NextToken = NULL
 #' @description
 #' Use the [`search_data_sets`][quicksight_search_data_sets] operation to search for datasets that belong to an account.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/search_data_sets.html](https://paws-r.github.io/docs/quicksight/search_data_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_search_data_sets/](https://www.paws-r-sdk.com/docs/quicksight_search_data_sets/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param Filters &#91;required&#93; The filters to apply to the search.
@@ -4525,7 +4525,7 @@ quicksight_search_data_sets <- function(AwsAccountId, Filters, NextToken = NULL,
 #' @description
 #' Use the [`search_data_sources`][quicksight_search_data_sources] operation to search for data sources that belong to an account.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/search_data_sources.html](https://paws-r.github.io/docs/quicksight/search_data_sources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_search_data_sources/](https://www.paws-r-sdk.com/docs/quicksight_search_data_sources/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param Filters &#91;required&#93; The filters to apply to the search.
@@ -4557,7 +4557,7 @@ quicksight_search_data_sources <- function(AwsAccountId, Filters, NextToken = NU
 #' @description
 #' Searches the subfolders in a folder.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/search_folders.html](https://paws-r.github.io/docs/quicksight/search_folders.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_search_folders/](https://www.paws-r-sdk.com/docs/quicksight_search_folders/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
 #' @param Filters &#91;required&#93; The filters to apply to the search. Currently, you can search only by
@@ -4593,7 +4593,7 @@ quicksight_search_folders <- function(AwsAccountId, Filters, NextToken = NULL, M
 #' @description
 #' Use the [`search_groups`][quicksight_search_groups] operation to search groups in a specified Amazon QuickSight namespace using the supplied filters.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/search_groups.html](https://paws-r.github.io/docs/quicksight/search_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_search_groups/](https://www.paws-r-sdk.com/docs/quicksight_search_groups/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the group is in.
 #' Currently, you use the ID for the Amazon Web Services account that
@@ -4629,7 +4629,7 @@ quicksight_search_groups <- function(AwsAccountId, NextToken = NULL, MaxResults 
 #' @description
 #' Starts an Asset Bundle export job.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/start_asset_bundle_export_job.html](https://paws-r.github.io/docs/quicksight/start_asset_bundle_export_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_start_asset_bundle_export_job/](https://www.paws-r-sdk.com/docs/quicksight_start_asset_bundle_export_job/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account to export assets from.
 #' @param AssetBundleExportJobId &#91;required&#93; The ID of the job. This ID is unique while the job is running. After the
@@ -4656,7 +4656,7 @@ quicksight_search_groups <- function(AwsAccountId, NextToken = NULL, MaxResults 
 #' @param IncludeAllDependencies A Boolean that determines whether all dependencies of each resource ARN
 #' are recursively exported with the job. For example, say you provided a
 #' Dashboard ARN to the `ResourceArns` parameter. If you set
-#' `IncludeAllDependencies` to `TRUE`, any theme, dataset, and dataource
+#' `IncludeAllDependencies` to `TRUE`, any theme, dataset, and data source
 #' resource that is a dependency of the dashboard is also exported.
 #' @param ExportFormat &#91;required&#93; The export data format.
 #' @param CloudFormationOverridePropertyConfiguration An optional collection of structures that generate CloudFormation
@@ -4692,7 +4692,7 @@ quicksight_start_asset_bundle_export_job <- function(AwsAccountId, AssetBundleEx
 #' @description
 #' Starts an Asset Bundle import job.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/start_asset_bundle_import_job.html](https://paws-r.github.io/docs/quicksight/start_asset_bundle_import_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_start_asset_bundle_import_job/](https://www.paws-r-sdk.com/docs/quicksight_start_asset_bundle_import_job/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account to import assets into.
 #' @param AssetBundleImportJobId &#91;required&#93; The ID of the job. This ID is unique while the job is running. After the
@@ -4707,7 +4707,7 @@ quicksight_start_asset_bundle_export_job <- function(AwsAccountId, AssetBundleEx
 #' asset changes caused by the failed job.
 #' 
 #' If you choose `DO_NOTHING`, failed import jobs will not attempt to roll
-#' back any asset changes caused by the failed job, possibly leaving the
+#' back any asset changes caused by the failed job, possibly keeping the
 #' Amazon QuickSight account in an inconsistent state.
 #'
 #' @keywords internal
@@ -4736,7 +4736,7 @@ quicksight_start_asset_bundle_import_job <- function(AwsAccountId, AssetBundleIm
 #' @description
 #' Assigns one or more tags (key-value pairs) to the specified Amazon QuickSight resource.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/tag_resource.html](https://paws-r.github.io/docs/quicksight/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_tag_resource/](https://www.paws-r-sdk.com/docs/quicksight_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to tag.
 #' @param Tags &#91;required&#93; Contains a map of the key-value pairs for the resource tag or tags
@@ -4767,7 +4767,7 @@ quicksight_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes a tag or tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/untag_resource.html](https://paws-r.github.io/docs/quicksight/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_untag_resource/](https://www.paws-r-sdk.com/docs/quicksight_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to untag.
 #' @param TagKeys &#91;required&#93; The keys of the key-value pairs for the resource tag or tags assigned to
@@ -4799,7 +4799,7 @@ quicksight_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates Amazon QuickSight customizations for the current Amazon Web Services Region. Currently, the only customization that you can use is a theme.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_account_customization.html](https://paws-r.github.io/docs/quicksight/update_account_customization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_account_customization/](https://www.paws-r-sdk.com/docs/quicksight_update_account_customization/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that you want to update
 #' Amazon QuickSight customizations for.
@@ -4834,7 +4834,7 @@ quicksight_update_account_customization <- function(AwsAccountId, Namespace = NU
 #' @description
 #' Updates the Amazon QuickSight settings in your Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_account_settings.html](https://paws-r.github.io/docs/quicksight/update_account_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_account_settings/](https://www.paws-r-sdk.com/docs/quicksight_update_account_settings/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the Amazon
 #' QuickSight settings that you want to list.
@@ -4876,7 +4876,7 @@ quicksight_update_account_settings <- function(AwsAccountId, DefaultNamespace, N
 #' @description
 #' Updates an analysis in Amazon QuickSight
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_analysis.html](https://paws-r.github.io/docs/quicksight/update_analysis.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_analysis/](https://www.paws-r-sdk.com/docs/quicksight_update_analysis/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the analysis
 #' that you're updating.
@@ -4923,7 +4923,7 @@ quicksight_update_analysis <- function(AwsAccountId, AnalysisId, Name, Parameter
 #' @description
 #' Updates the read and write permissions for an analysis.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_analysis_permissions.html](https://paws-r.github.io/docs/quicksight/update_analysis_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_analysis_permissions/](https://www.paws-r-sdk.com/docs/quicksight_update_analysis_permissions/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the analysis
 #' whose permissions you're updating. You must be using the Amazon Web
@@ -4960,7 +4960,7 @@ quicksight_update_analysis_permissions <- function(AwsAccountId, AnalysisId, Gra
 #' @description
 #' Updates a dashboard in an Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_dashboard.html](https://paws-r.github.io/docs/quicksight/update_dashboard.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_dashboard/](https://www.paws-r-sdk.com/docs/quicksight_update_dashboard/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the dashboard
 #' that you're updating.
@@ -5033,7 +5033,7 @@ quicksight_update_dashboard <- function(AwsAccountId, DashboardId, Name, SourceE
 #' @description
 #' Updates read and write permissions on a dashboard.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_dashboard_permissions.html](https://paws-r.github.io/docs/quicksight/update_dashboard_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_dashboard_permissions/](https://www.paws-r-sdk.com/docs/quicksight_update_dashboard_permissions/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the dashboard
 #' whose permissions you're updating.
@@ -5068,7 +5068,7 @@ quicksight_update_dashboard_permissions <- function(AwsAccountId, DashboardId, G
 #' @description
 #' Updates the published version of a dashboard.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_dashboard_published_version.html](https://paws-r.github.io/docs/quicksight/update_dashboard_published_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_dashboard_published_version/](https://www.paws-r-sdk.com/docs/quicksight_update_dashboard_published_version/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the dashboard
 #' that you're updating.
@@ -5100,7 +5100,7 @@ quicksight_update_dashboard_published_version <- function(AwsAccountId, Dashboar
 #' @description
 #' Updates a dataset. This operation doesn't support datasets that include uploaded files as a source. Partial updates are not supported by this operation.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_data_set.html](https://paws-r.github.io/docs/quicksight/update_data_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_data_set/](https://www.paws-r-sdk.com/docs/quicksight_update_data_set/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSetId &#91;required&#93; The ID for the dataset that you want to update. This ID is unique per
@@ -5147,7 +5147,7 @@ quicksight_update_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTa
 #' @description
 #' Updates the permissions on a dataset.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_data_set_permissions.html](https://paws-r.github.io/docs/quicksight/update_data_set_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_data_set_permissions/](https://www.paws-r-sdk.com/docs/quicksight_update_data_set_permissions/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSetId &#91;required&#93; The ID for the dataset whose permissions you want to update. This ID is
@@ -5181,7 +5181,7 @@ quicksight_update_data_set_permissions <- function(AwsAccountId, DataSetId, Gran
 #' @description
 #' Updates a data source.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_data_source.html](https://paws-r.github.io/docs/quicksight/update_data_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_data_source/](https://www.paws-r-sdk.com/docs/quicksight_update_data_source/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSourceId &#91;required&#93; The ID of the data source. This ID is unique per Amazon Web Services
@@ -5222,7 +5222,7 @@ quicksight_update_data_source <- function(AwsAccountId, DataSourceId, Name, Data
 #' @description
 #' Updates the permissions to a data source.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_data_source_permissions.html](https://paws-r.github.io/docs/quicksight/update_data_source_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_data_source_permissions/](https://www.paws-r-sdk.com/docs/quicksight_update_data_source_permissions/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSourceId &#91;required&#93; The ID of the data source. This ID is unique per Amazon Web Services
@@ -5257,7 +5257,7 @@ quicksight_update_data_source_permissions <- function(AwsAccountId, DataSourceId
 #' @description
 #' Updates the name of a folder.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_folder.html](https://paws-r.github.io/docs/quicksight/update_folder.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_folder/](https://www.paws-r-sdk.com/docs/quicksight_update_folder/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder to
 #' update.
@@ -5289,7 +5289,7 @@ quicksight_update_folder <- function(AwsAccountId, FolderId, Name) {
 #' @description
 #' Updates permissions of a folder.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_folder_permissions.html](https://paws-r.github.io/docs/quicksight/update_folder_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_folder_permissions/](https://www.paws-r-sdk.com/docs/quicksight_update_folder_permissions/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder to
 #' update.
@@ -5322,7 +5322,7 @@ quicksight_update_folder_permissions <- function(AwsAccountId, FolderId, GrantPe
 #' @description
 #' Changes a group description.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_group.html](https://paws-r.github.io/docs/quicksight/update_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_group/](https://www.paws-r-sdk.com/docs/quicksight_update_group/) for full documentation.
 #'
 #' @param GroupName &#91;required&#93; The name of the group that you want to update.
 #' @param Description The description for the group that you want to update.
@@ -5356,7 +5356,7 @@ quicksight_update_group <- function(GroupName, Description = NULL, AwsAccountId,
 #' @description
 #' Updates an existing IAM policy assignment. This operation updates only the optional parameter or parameters that are specified in the request. This overwrites all of the users included in `Identities`.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_iam_policy_assignment.html](https://paws-r.github.io/docs/quicksight/update_iam_policy_assignment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_iam_policy_assignment/](https://www.paws-r-sdk.com/docs/quicksight_update_iam_policy_assignment/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the IAM policy
 #' assignment.
@@ -5403,7 +5403,7 @@ quicksight_update_iam_policy_assignment <- function(AwsAccountId, AssignmentName
 #' @description
 #' Updates the content and status of IP rules. To use this operation, you must provide the entire map of rules. You can use the [`describe_ip_restriction`][quicksight_describe_ip_restriction] operation to get the current rule map.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_ip_restriction.html](https://paws-r.github.io/docs/quicksight/update_ip_restriction.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_ip_restriction/](https://www.paws-r-sdk.com/docs/quicksight_update_ip_restriction/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the IP rules.
 #' @param IpRestrictionRuleMap A map that describes the updated IP rules with CIDR ranges and
@@ -5436,7 +5436,7 @@ quicksight_update_ip_restriction <- function(AwsAccountId, IpRestrictionRuleMap 
 #' @description
 #' Use the [`update_public_sharing_settings`][quicksight_update_public_sharing_settings] operation to turn on or turn off the public sharing settings of an Amazon QuickSight dashboard.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_public_sharing_settings.html](https://paws-r.github.io/docs/quicksight/update_public_sharing_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_public_sharing_settings/](https://www.paws-r-sdk.com/docs/quicksight_update_public_sharing_settings/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID associated with your Amazon
 #' QuickSight subscription.
@@ -5468,7 +5468,7 @@ quicksight_update_public_sharing_settings <- function(AwsAccountId, PublicSharin
 #' @description
 #' Updates a refresh schedule for a dataset.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_refresh_schedule.html](https://paws-r.github.io/docs/quicksight/update_refresh_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_refresh_schedule/](https://www.paws-r-sdk.com/docs/quicksight_update_refresh_schedule/) for full documentation.
 #'
 #' @param DataSetId &#91;required&#93; The ID of the dataset.
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
@@ -5500,7 +5500,7 @@ quicksight_update_refresh_schedule <- function(DataSetId, AwsAccountId, Schedule
 #' @description
 #' Updates a template from an existing Amazon QuickSight analysis or another template.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_template.html](https://paws-r.github.io/docs/quicksight/update_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_template/](https://www.paws-r-sdk.com/docs/quicksight_update_template/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the template
 #' that you're updating.
@@ -5554,7 +5554,7 @@ quicksight_update_template <- function(AwsAccountId, TemplateId, SourceEntity = 
 #' @description
 #' Updates the template alias of a template.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_template_alias.html](https://paws-r.github.io/docs/quicksight/update_template_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_template_alias/](https://www.paws-r-sdk.com/docs/quicksight_update_template_alias/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the template
 #' alias that you're updating.
@@ -5591,7 +5591,7 @@ quicksight_update_template_alias <- function(AwsAccountId, TemplateId, AliasName
 #' @description
 #' Updates the resource permissions for a template.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_template_permissions.html](https://paws-r.github.io/docs/quicksight/update_template_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_template_permissions/](https://www.paws-r-sdk.com/docs/quicksight_update_template_permissions/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the template.
 #' @param TemplateId &#91;required&#93; The ID for the template.
@@ -5623,7 +5623,7 @@ quicksight_update_template_permissions <- function(AwsAccountId, TemplateId, Gra
 #' @description
 #' Updates a theme.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_theme.html](https://paws-r.github.io/docs/quicksight/update_theme.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_theme/](https://www.paws-r-sdk.com/docs/quicksight_update_theme/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the theme that
 #' you're updating.
@@ -5663,7 +5663,7 @@ quicksight_update_theme <- function(AwsAccountId, ThemeId, Name = NULL, BaseThem
 #' @description
 #' Updates an alias of a theme.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_theme_alias.html](https://paws-r.github.io/docs/quicksight/update_theme_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_theme_alias/](https://www.paws-r-sdk.com/docs/quicksight_update_theme_alias/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the theme alias
 #' that you're updating.
@@ -5696,7 +5696,7 @@ quicksight_update_theme_alias <- function(AwsAccountId, ThemeId, AliasName, Them
 #' @description
 #' Updates the resource permissions for a theme. Permissions apply to the action to grant or revoke permissions on, for example `"quicksight:DescribeTheme"`.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_theme_permissions.html](https://paws-r.github.io/docs/quicksight/update_theme_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_theme_permissions/](https://www.paws-r-sdk.com/docs/quicksight_update_theme_permissions/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the theme.
 #' @param ThemeId &#91;required&#93; The ID for the theme.
@@ -5728,7 +5728,7 @@ quicksight_update_theme_permissions <- function(AwsAccountId, ThemeId, GrantPerm
 #' @description
 #' Updates a topic.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_topic.html](https://paws-r.github.io/docs/quicksight/update_topic.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_topic/](https://www.paws-r-sdk.com/docs/quicksight_update_topic/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the topic that
 #' you want to update.
@@ -5761,7 +5761,7 @@ quicksight_update_topic <- function(AwsAccountId, TopicId, Topic) {
 #' @description
 #' Updates the permissions of a topic.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_topic_permissions.html](https://paws-r.github.io/docs/quicksight/update_topic_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_topic_permissions/](https://www.paws-r-sdk.com/docs/quicksight_update_topic_permissions/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the topic that
 #' you want to update the permissions for.
@@ -5795,7 +5795,7 @@ quicksight_update_topic_permissions <- function(AwsAccountId, TopicId, GrantPerm
 #' @description
 #' Updates a topic refresh schedule.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_topic_refresh_schedule.html](https://paws-r.github.io/docs/quicksight/update_topic_refresh_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_topic_refresh_schedule/](https://www.paws-r-sdk.com/docs/quicksight_update_topic_refresh_schedule/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the topic whose
 #' refresh schedule you want to update.
@@ -5829,7 +5829,7 @@ quicksight_update_topic_refresh_schedule <- function(AwsAccountId, TopicId, Data
 #' @description
 #' Updates an Amazon QuickSight user.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_user.html](https://paws-r.github.io/docs/quicksight/update_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_user/](https://www.paws-r-sdk.com/docs/quicksight_update_user/) for full documentation.
 #'
 #' @param UserName &#91;required&#93; The Amazon QuickSight user name that you want to update.
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the user is in.
@@ -5930,7 +5930,7 @@ quicksight_update_user <- function(UserName, AwsAccountId, Namespace, Email, Rol
 #' @description
 #' Updates a VPC connection.
 #'
-#' See [https://paws-r.github.io/docs/quicksight/update_vpc_connection.html](https://paws-r.github.io/docs/quicksight/update_vpc_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_vpc_connection/](https://www.paws-r-sdk.com/docs/quicksight_update_vpc_connection/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID of the account that contains the VPC
 #' connection that you want to update.

@@ -39,6 +39,6 @@ values for \code{Filters}, if any, as in the previous request.}
 \description{
 Lists all the Resolver endpoints that were created using the current Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/route53resolver/list_resolver_endpoints.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_list_resolver_endpoints/} for full documentation.
 }
 \keyword{internal}

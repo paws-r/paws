@@ -24,6 +24,6 @@ operation.}
 \description{
 Modifies the configuration of Bring Your Own License (BYOL) for the specified account.
 
-See \url{https://paws-r.github.io/docs/workspaces/modify_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_modify_account/} for full documentation.
 }
 \keyword{internal}

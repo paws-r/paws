@@ -52,6 +52,6 @@ randomly generated token is used for the request to ensure idempotency.}
 \description{
 Request an origination phone number for use in your account. For more information on phone number request see \href{https://docs.aws.amazon.com/pinpoint/latest/userguide/settings-sms-request-number.html}{Requesting a number} in the \emph{Amazon Pinpoint User Guide}.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/request_phone_number.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_request_phone_number/} for full documentation.
 }
 \keyword{internal}

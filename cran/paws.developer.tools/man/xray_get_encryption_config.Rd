@@ -9,6 +9,6 @@ xray_get_encryption_config()
 \description{
 Retrieves the current encryption configuration for X-Ray data.
 
-See \url{https://paws-r.github.io/docs/xray/get_encryption_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_get_encryption_config/} for full documentation.
 }
 \keyword{internal}

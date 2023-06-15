@@ -39,6 +39,6 @@ language. Comprehend Medical; processes files in US English (en).}
 \description{
 Starts an asynchronous medical entity detection job for a collection of documents. Use the \code{\link[=comprehendmedical_describe_entities_detection_v2_job]{describe_entities_detection_v2_job}} operation to track the status of a job.
 
-See \url{https://paws-r.github.io/docs/comprehendmedical/start_entities_detection_v2_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehendmedical_start_entities_detection_v2_job/} for full documentation.
 }
 \keyword{internal}

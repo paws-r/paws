@@ -27,6 +27,6 @@ command.}
 \description{
 Describes the results of specified commands.
 
-See \url{https://paws-r.github.io/docs/opsworks/describe_commands.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_describe_commands/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ ssm_delete_parameter(Name)
 \description{
 Delete a parameter from the system. After deleting a parameter, wait for at least 30 seconds to create a parameter with the same name.
 
-See \url{https://paws-r.github.io/docs/ssm/delete_parameter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_delete_parameter/} for full documentation.
 }
 \keyword{internal}

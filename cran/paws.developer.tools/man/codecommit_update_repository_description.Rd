@@ -19,6 +19,6 @@ descriptions are limited to 1,000 characters.}
 \description{
 Sets or changes the comment or description for a repository.
 
-See \url{https://paws-r.github.io/docs/codecommit/update_repository_description.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_update_repository_description/} for full documentation.
 }
 \keyword{internal}

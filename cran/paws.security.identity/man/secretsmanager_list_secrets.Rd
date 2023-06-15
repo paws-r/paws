@@ -35,6 +35,6 @@ previous call did not show all results. To get the next results, call
 \description{
 Lists the secrets that are stored by Secrets Manager in the Amazon Web Services account, not including secrets that are marked for deletion. To see secrets marked for deletion, use the Secrets Manager console.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/list_secrets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_list_secrets/} for full documentation.
 }
 \keyword{internal}

@@ -31,6 +31,6 @@ specified by \code{MaxResults}.}
 \description{
 Returns the detailed parameter list for a particular parameter group.
 
-See \url{https://paws-r.github.io/docs/dax/describe_parameters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dax_describe_parameters/} for full documentation.
 }
 \keyword{internal}

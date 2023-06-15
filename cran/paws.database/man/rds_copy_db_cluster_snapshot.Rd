@@ -132,6 +132,6 @@ not copied.}
 \description{
 Copies a snapshot of a DB cluster.
 
-See \url{https://paws-r.github.io/docs/rds/copy_db_cluster_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_copy_db_cluster_snapshot/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ in the \emph{Amazon Web Services General Reference}.}
 \description{
 Updates the metadata document for an existing SAML provider resource object.
 
-See \url{https://paws-r.github.io/docs/iam/update_saml_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_update_saml_provider/} for full documentation.
 }
 \keyword{internal}

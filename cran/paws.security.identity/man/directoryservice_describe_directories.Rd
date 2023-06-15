@@ -28,6 +28,6 @@ operation.}
 \description{
 Obtains information about the directories that belong to this account.
 
-See \url{https://paws-r.github.io/docs/directoryservice/describe_directories.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_describe_directories/} for full documentation.
 }
 \keyword{internal}

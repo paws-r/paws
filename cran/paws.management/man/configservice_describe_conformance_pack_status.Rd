@@ -21,6 +21,6 @@ request the next page of results in a paginated response.}
 \description{
 Provides one or more conformance packs deployment status.
 
-See \url{https://paws-r.github.io/docs/configservice/describe_conformance_pack_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_describe_conformance_pack_status/} for full documentation.
 }
 \keyword{internal}

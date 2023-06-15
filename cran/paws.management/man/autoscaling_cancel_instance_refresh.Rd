@@ -12,6 +12,6 @@ autoscaling_cancel_instance_refresh(AutoScalingGroupName)
 \description{
 Cancels an instance refresh or rollback that is in progress. If an instance refresh or rollback is not in progress, an \code{ActiveInstanceRefreshNotFound} error occurs.
 
-See \url{https://paws-r.github.io/docs/autoscaling/cancel_instance_refresh.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_cancel_instance_refresh/} for full documentation.
 }
 \keyword{internal}

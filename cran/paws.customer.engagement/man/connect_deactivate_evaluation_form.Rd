@@ -22,6 +22,6 @@ provided, the latest version of the evaluation form is deactivated.}
 \description{
 Deactivates an evaluation form in the specified Amazon Connect instance. After a form is deactivated, it is no longer available for users to start new evaluations based on the form.
 
-See \url{https://paws-r.github.io/docs/connect/deactivate_evaluation_form.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_deactivate_evaluation_form/} for full documentation.
 }
 \keyword{internal}

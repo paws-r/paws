@@ -24,6 +24,6 @@ request.}
 \description{
 Returns all of the runtime parameters offered by the underlying database software, or engine, for a specific database in Amazon Lightsail.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_relational_database_parameters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_parameters/} for full documentation.
 }
 \keyword{internal}

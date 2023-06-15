@@ -17,7 +17,10 @@ sagemaker_list_spaces(
 \item{NextToken}{If the previous response was truncated, you will receive this token. Use
 it in your next request to receive the next set of results.}
 
-\item{MaxResults}{Returns a list up to a specified limit.}
+\item{MaxResults}{The total number of items to return in the response. If the total number
+of items available is more than the value specified, a \code{NextToken} is
+provided in the response. To resume pagination, provide the \code{NextToken}
+value in the as part of a subsequent call. The default value is 10.}
 
 \item{SortOrder}{The sort order for the results. The default is \code{Ascending}.}
 
@@ -31,6 +34,6 @@ it in your next request to receive the next set of results.}
 \description{
 Lists spaces.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_spaces.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_spaces/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ sagemaker_delete_endpoint(EndpointName)
 \description{
 Deletes an endpoint. SageMaker frees up all of the resources that were deployed when the endpoint was created.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_endpoint/} for full documentation.
 }
 \keyword{internal}

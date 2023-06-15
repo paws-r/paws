@@ -38,6 +38,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the state of fast snapshot restores for your snapshots.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_fast_snapshot_restores.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_fast_snapshot_restores/} for full documentation.
 }
 \keyword{internal}

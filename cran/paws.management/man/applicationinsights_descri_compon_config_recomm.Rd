@@ -20,6 +20,6 @@ applicationinsights_describe_component_configuration_recommendation(
 \description{
 Describes the recommended monitoring configuration of the component.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/describe_component_configuration_recommendation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_describe_component_configuration_recommendation/} for full documentation.
 }
 \keyword{internal}

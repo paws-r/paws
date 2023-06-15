@@ -24,6 +24,6 @@ the previous request to continue listing results after the first page.}
 \description{
 Returns a list of publishing destinations associated with the specified \code{detectorId}.
 
-See \url{https://paws-r.github.io/docs/guardduty/list_publishing_destinations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_list_publishing_destinations/} for full documentation.
 }
 \keyword{internal}

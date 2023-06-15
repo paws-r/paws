@@ -12,6 +12,6 @@ eventbridge_describe_archive(ArchiveName)
 \description{
 Retrieves details about an archive.
 
-See \url{https://paws-r.github.io/docs/eventbridge/describe_archive.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_describe_archive/} for full documentation.
 }
 \keyword{internal}

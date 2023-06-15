@@ -26,6 +26,6 @@ specified for this rule.}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-See \url{https://paws-r.github.io/docs/waf/update_rate_based_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/waf_update_rate_based_rule/} for full documentation.
 }
 \keyword{internal}

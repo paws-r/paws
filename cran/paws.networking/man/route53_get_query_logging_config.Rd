@@ -13,6 +13,6 @@ information about.}
 \description{
 Gets information about a specified configuration for DNS query logging.
 
-See \url{https://paws-r.github.io/docs/route53/get_query_logging_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_get_query_logging_config/} for full documentation.
 }
 \keyword{internal}

@@ -53,6 +53,6 @@ a resource to indicate its use by the sales department.}
 \description{
 Starts an asynchronous targeted sentiment detection job for a collection of documents. Use the \code{\link[=comprehend_describe_targeted_sentiment_detection_job]{describe_targeted_sentiment_detection_job}} operation to track the status of a job.
 
-See \url{https://paws-r.github.io/docs/comprehend/start_targeted_sentiment_detection_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_start_targeted_sentiment_detection_job/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ the default values. You can't use this parameter if the
 \description{
 Modifies the parameters of a DB cluster parameter group to the default value. To reset specific parameters submit a list of the following: \code{ParameterName} and \code{ApplyMethod}. To reset the entire DB cluster parameter group, specify the \code{DBClusterParameterGroupName} and \code{ResetAllParameters} parameters.
 
-See \url{https://paws-r.github.io/docs/rds/reset_db_cluster_parameter_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_reset_db_cluster_parameter_group/} for full documentation.
 }
 \keyword{internal}

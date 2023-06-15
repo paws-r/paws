@@ -64,6 +64,6 @@ in the \emph{Amazon SNS Developer Guide}.
 \description{
 Allows a subscription owner to set an attribute of the subscription to a new value.
 
-See \url{https://paws-r.github.io/docs/sns/set_subscription_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_set_subscription_attributes/} for full documentation.
 }
 \keyword{internal}

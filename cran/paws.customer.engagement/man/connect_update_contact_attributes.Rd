@@ -24,6 +24,6 @@ underscore characters.}
 \description{
 Creates or updates user-defined contact attributes associated with the specified contact.
 
-See \url{https://paws-r.github.io/docs/connect/update_contact_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_update_contact_attributes/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ lookoutmetrics_describe_metric_set(MetricSetArn)
 \description{
 Describes a dataset.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/describe_metric_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_describe_metric_set/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ route53recoveryreadiness_delete_resource_set(ResourceSetName)
 \description{
 Deletes a resource set.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/delete_resource_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_delete_resource_set/} for full documentation.
 }
 \keyword{internal}

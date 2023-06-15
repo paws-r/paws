@@ -40,6 +40,6 @@ to be returned by \code{\link[=servicediscovery_list_operations]{list_operations
 \description{
 Lists operations that match the criteria that you specify.
 
-See \url{https://paws-r.github.io/docs/servicediscovery/list_operations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicediscovery_list_operations/} for full documentation.
 }
 \keyword{internal}

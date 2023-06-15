@@ -68,6 +68,6 @@ For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide
 \description{
 Updates an existing custom vocabulary with new values. This operation overwrites all existing information with your new values; you cannot append new terms onto an existing custom vocabulary.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/update_vocabulary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_update_vocabulary/} for full documentation.
 }
 \keyword{internal}

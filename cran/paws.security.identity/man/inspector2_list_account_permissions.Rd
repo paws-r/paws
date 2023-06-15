@@ -23,6 +23,6 @@ the previous request to continue listing results after the first page.}
 \description{
 Lists the permissions an account has to configure Amazon Inspector.
 
-See \url{https://paws-r.github.io/docs/inspector2/list_account_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_list_account_permissions/} for full documentation.
 }
 \keyword{internal}

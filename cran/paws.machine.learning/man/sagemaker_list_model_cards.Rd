@@ -39,6 +39,6 @@ by default.}
 \description{
 List existing model cards.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_model_cards.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_model_cards/} for full documentation.
 }
 \keyword{internal}

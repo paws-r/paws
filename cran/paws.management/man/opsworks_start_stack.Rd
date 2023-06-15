@@ -12,6 +12,6 @@ opsworks_start_stack(StackId)
 \description{
 Starts a stack's instances.
 
-See \url{https://paws-r.github.io/docs/opsworks/start_stack.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_start_stack/} for full documentation.
 }
 \keyword{internal}

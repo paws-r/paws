@@ -9,6 +9,6 @@ securityhub_disable_security_hub()
 \description{
 Disables Security Hub in your account only in the current Region. To disable Security Hub in all Regions, you must submit one request per Region where you have enabled Security Hub.
 
-See \url{https://paws-r.github.io/docs/securityhub/disable_security_hub.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_disable_security_hub/} for full documentation.
 }
 \keyword{internal}

@@ -78,6 +78,6 @@ recommendations to export.}
 \description{
 Exports optimization recommendations for Auto Scaling groups.
 
-See \url{https://paws-r.github.io/docs/computeoptimizer/export_auto_scaling_group_recommendations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/computeoptimizer_export_auto_scaling_group_recommendations/} for full documentation.
 }
 \keyword{internal}

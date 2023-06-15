@@ -36,6 +36,6 @@ thumbnails are generated for the live session.}
 \description{
 Creates a new recording configuration, used to enable recording to Amazon S3.
 
-See \url{https://paws-r.github.io/docs/ivs/create_recording_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivs_create_recording_configuration/} for full documentation.
 }
 \keyword{internal}

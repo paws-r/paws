@@ -14,6 +14,6 @@ networkmanager_register_transit_gateway(GlobalNetworkId, TransitGatewayArn)
 \description{
 Registers a transit gateway in your global network. Not all Regions support transit gateways for global networks. For a list of the supported Regions, see \href{https://docs.aws.amazon.com/network-manager/latest/tgwnm/what-are-global-networks.html#nm-available-regions}{Region Availability} in the \emph{Amazon Web Services Transit Gateways for Global Networks User Guide}. The transit gateway can be in any of the supported Amazon Web Services Regions, but it must be owned by the same Amazon Web Services account that owns the global network. You cannot register a transit gateway in more than one global network.
 
-See \url{https://paws-r.github.io/docs/networkmanager/register_transit_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_register_transit_gateway/} for full documentation.
 }
 \keyword{internal}

@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Creates an association between an approval rule template and a specified repository. Then, the next time a pull request is created in the repository where the destination reference (if specified) matches the destination reference (branch) for the pull request, an approval rule that matches the template conditions is automatically created for that pull request. If no destination references are specified in the template, an approval rule that matches the template contents is created for all pull requests in that repository.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/associate_approval_rule_template_with_repository.html](https://paws-r.github.io/docs/codecommit/associate_approval_rule_template_with_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_associate_approval_rule_template_with_repository/](https://www.paws-r-sdk.com/docs/codecommit_associate_approval_rule_template_with_repository/) for full documentation.
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name for the approval rule template.
 #' @param repositoryName &#91;required&#93; The name of the repository that you want to associate with the template.
@@ -40,7 +40,7 @@ codecommit_associate_approval_rule_template_with_repository <- function(approval
 #' @description
 #' Creates an association between an approval rule template and one or more specified repositories.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/batch_associate_approval_rule_template_with_repositories.html](https://paws-r.github.io/docs/codecommit/batch_associate_approval_rule_template_with_repositories.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_batch_associate_approval_rule_template_with_repositories/](https://www.paws-r-sdk.com/docs/codecommit_batch_associate_approval_rule_template_with_repositories/) for full documentation.
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name of the template you want to associate with one or more
 #' repositories.
@@ -76,7 +76,7 @@ codecommit_batch_associate_approval_rule_template_with_repositories <- function(
 #' @description
 #' Returns information about one or more merge conflicts in the attempted merge of two commit specifiers using the squash or three-way merge strategy.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/batch_describe_merge_conflicts.html](https://paws-r.github.io/docs/codecommit/batch_describe_merge_conflicts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_batch_describe_merge_conflicts/](https://www.paws-r-sdk.com/docs/codecommit_batch_describe_merge_conflicts/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the merge conflicts you want to
 #' review.
@@ -127,7 +127,7 @@ codecommit_batch_describe_merge_conflicts <- function(repositoryName, destinatio
 #' @description
 #' Removes the association between an approval rule template and one or more specified repositories.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/batch_disassociate_approval_rule_template_from_repositories.html](https://paws-r.github.io/docs/codecommit/batch_disassociate_approval_rule_template_from_repositories.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_batch_disassociate_approval_rule_template_from_repositories/](https://www.paws-r-sdk.com/docs/codecommit_batch_disassociate_approval_rule_template_from_repositories/) for full documentation.
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name of the template that you want to disassociate from one or more
 #' repositories.
@@ -163,7 +163,7 @@ codecommit_batch_disassociate_approval_rule_template_from_repositories <- functi
 #' @description
 #' Returns information about the contents of one or more commits in a repository.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/batch_get_commits.html](https://paws-r.github.io/docs/codecommit/batch_get_commits.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_batch_get_commits/](https://www.paws-r-sdk.com/docs/codecommit_batch_get_commits/) for full documentation.
 #'
 #' @param commitIds &#91;required&#93; The full commit IDs of the commits to get information about.
 #' 
@@ -196,7 +196,7 @@ codecommit_batch_get_commits <- function(commitIds, repositoryName) {
 #' @description
 #' Returns information about one or more repositories.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/batch_get_repositories.html](https://paws-r.github.io/docs/codecommit/batch_get_repositories.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_batch_get_repositories/](https://www.paws-r-sdk.com/docs/codecommit_batch_get_repositories/) for full documentation.
 #'
 #' @param repositoryNames &#91;required&#93; The names of the repositories to get information about.
 #' 
@@ -229,7 +229,7 @@ codecommit_batch_get_repositories <- function(repositoryNames) {
 #' @description
 #' Creates a template for approval rules that can then be associated with one or more repositories in your AWS account. When you associate a template with a repository, AWS CodeCommit creates an approval rule that matches the conditions of the template for all pull requests that meet the conditions of the template. For more information, see [`associate_approval_rule_template_with_repository`][codecommit_associate_approval_rule_template_with_repository].
 #'
-#' See [https://paws-r.github.io/docs/codecommit/create_approval_rule_template.html](https://paws-r.github.io/docs/codecommit/create_approval_rule_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_create_approval_rule_template/](https://www.paws-r-sdk.com/docs/codecommit_create_approval_rule_template/) for full documentation.
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name of the approval rule template. Provide descriptive names,
 #' because this name is applied to the approval rules created automatically
@@ -298,7 +298,7 @@ codecommit_create_approval_rule_template <- function(approvalRuleTemplateName, a
 #' @description
 #' Creates a branch in a repository and points the branch to a commit.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/create_branch.html](https://paws-r.github.io/docs/codecommit/create_branch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_create_branch/](https://www.paws-r-sdk.com/docs/codecommit_create_branch/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository in which you want to create the new branch.
 #' @param branchName &#91;required&#93; The name of the new branch to create.
@@ -329,7 +329,7 @@ codecommit_create_branch <- function(repositoryName, branchName, commitId) {
 #' @description
 #' Creates a commit for a repository on the tip of a specified branch.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/create_commit.html](https://paws-r.github.io/docs/codecommit/create_commit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_create_commit/](https://www.paws-r-sdk.com/docs/codecommit_create_commit/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you create the commit.
 #' @param branchName &#91;required&#93; The name of the branch where you create the commit.
@@ -374,7 +374,7 @@ codecommit_create_commit <- function(repositoryName, branchName, parentCommitId 
 #' @description
 #' Creates a pull request in the specified repository.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/create_pull_request.html](https://paws-r.github.io/docs/codecommit/create_pull_request.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_create_pull_request/](https://www.paws-r-sdk.com/docs/codecommit_create_pull_request/) for full documentation.
 #'
 #' @param title &#91;required&#93; The title of the pull request. This title is used to identify the pull
 #' request to other users in the repository.
@@ -417,7 +417,7 @@ codecommit_create_pull_request <- function(title, description = NULL, targets, c
 #' @description
 #' Creates an approval rule for a pull request.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/create_pull_request_approval_rule.html](https://paws-r.github.io/docs/codecommit/create_pull_request_approval_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_create_pull_request_approval_rule/](https://www.paws-r-sdk.com/docs/codecommit_create_pull_request_approval_rule/) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request for which you want to create
 #' the approval rule.
@@ -482,7 +482,7 @@ codecommit_create_pull_request_approval_rule <- function(pullRequestId, approval
 #' @description
 #' Creates a new, empty repository.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/create_repository.html](https://paws-r.github.io/docs/codecommit/create_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_create_repository/](https://www.paws-r-sdk.com/docs/codecommit_create_repository/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the new repository to be created.
 #' 
@@ -528,7 +528,7 @@ codecommit_create_repository <- function(repositoryName, repositoryDescription =
 #' @description
 #' Creates an unreferenced commit that represents the result of merging two branches using a specified merge strategy. This can help you determine the outcome of a potential merge. This API cannot be used with the fast-forward merge strategy because that strategy does not create a merge commit.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/create_unreferenced_merge_commit.html](https://paws-r.github.io/docs/codecommit/create_unreferenced_merge_commit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_create_unreferenced_merge_commit/](https://www.paws-r-sdk.com/docs/codecommit_create_unreferenced_merge_commit/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to create the unreferenced
 #' merge commit.
@@ -582,7 +582,7 @@ codecommit_create_unreferenced_merge_commit <- function(repositoryName, sourceCo
 #' @description
 #' Deletes a specified approval rule template. Deleting a template does not remove approval rules on pull requests already created with the template.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/delete_approval_rule_template.html](https://paws-r.github.io/docs/codecommit/delete_approval_rule_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_delete_approval_rule_template/](https://www.paws-r-sdk.com/docs/codecommit_delete_approval_rule_template/) for full documentation.
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name of the approval rule template to delete.
 #'
@@ -612,7 +612,7 @@ codecommit_delete_approval_rule_template <- function(approvalRuleTemplateName) {
 #' @description
 #' Deletes a branch from a repository, unless that branch is the default branch for the repository.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/delete_branch.html](https://paws-r.github.io/docs/codecommit/delete_branch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_delete_branch/](https://www.paws-r-sdk.com/docs/codecommit_delete_branch/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the branch to be deleted.
 #' @param branchName &#91;required&#93; The name of the branch to delete.
@@ -643,7 +643,7 @@ codecommit_delete_branch <- function(repositoryName, branchName) {
 #' @description
 #' Deletes the content of a comment made on a change, file, or commit in a repository.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/delete_comment_content.html](https://paws-r.github.io/docs/codecommit/delete_comment_content.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_delete_comment_content/](https://www.paws-r-sdk.com/docs/codecommit_delete_comment_content/) for full documentation.
 #'
 #' @param commentId &#91;required&#93; The unique, system-generated ID of the comment. To get this ID, use
 #' [`get_comments_for_compared_commit`][codecommit_get_comments_for_compared_commit]
@@ -675,7 +675,7 @@ codecommit_delete_comment_content <- function(commentId) {
 #' @description
 #' Deletes a specified file from a specified branch. A commit is created on the branch that contains the revision. The file still exists in the commits earlier to the commit that contains the deletion.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/delete_file.html](https://paws-r.github.io/docs/codecommit/delete_file.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_delete_file/](https://www.paws-r-sdk.com/docs/codecommit_delete_file/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the file to delete.
 #' @param branchName &#91;required&#93; The name of the branch where the commit that deletes the file is made.
@@ -727,7 +727,7 @@ codecommit_delete_file <- function(repositoryName, branchName, filePath, parentC
 #' @description
 #' Deletes an approval rule from a specified pull request. Approval rules can be deleted from a pull request only if the pull request is open, and if the approval rule was created specifically for a pull request and not generated from an approval rule template associated with the repository where the pull request was created. You cannot delete an approval rule from a merged or closed pull request.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/delete_pull_request_approval_rule.html](https://paws-r.github.io/docs/codecommit/delete_pull_request_approval_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_delete_pull_request_approval_rule/](https://www.paws-r-sdk.com/docs/codecommit_delete_pull_request_approval_rule/) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request that contains the approval
 #' rule you want to delete.
@@ -758,7 +758,7 @@ codecommit_delete_pull_request_approval_rule <- function(pullRequestId, approval
 #' @description
 #' Deletes a repository. If a specified repository was already deleted, a null repository ID is returned.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/delete_repository.html](https://paws-r.github.io/docs/codecommit/delete_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_delete_repository/](https://www.paws-r-sdk.com/docs/codecommit_delete_repository/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository to delete.
 #'
@@ -789,7 +789,7 @@ codecommit_delete_repository <- function(repositoryName) {
 #' @description
 #' Returns information about one or more merge conflicts in the attempted merge of two commit specifiers using the squash or three-way merge strategy. If the merge option for the attempted merge is specified as FAST_FORWARD_MERGE, an exception is thrown.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/describe_merge_conflicts.html](https://paws-r.github.io/docs/codecommit/describe_merge_conflicts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_describe_merge_conflicts/](https://www.paws-r-sdk.com/docs/codecommit_describe_merge_conflicts/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to get information about a
 #' merge conflict.
@@ -837,7 +837,7 @@ codecommit_describe_merge_conflicts <- function(repositoryName, destinationCommi
 #' @description
 #' Returns information about one or more pull request events.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/describe_pull_request_events.html](https://paws-r.github.io/docs/codecommit/describe_pull_request_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_describe_pull_request_events/](https://www.paws-r-sdk.com/docs/codecommit_describe_pull_request_events/) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
@@ -879,7 +879,7 @@ codecommit_describe_pull_request_events <- function(pullRequestId, pullRequestEv
 #' @description
 #' Removes the association between a template and a repository so that approval rules based on the template are not automatically created when pull requests are created in the specified repository. This does not delete any approval rules previously created for pull requests through the template association.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/disassociate_approval_rule_template_from_repository.html](https://paws-r.github.io/docs/codecommit/disassociate_approval_rule_template_from_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_disassociate_approval_rule_template_from_repository/](https://www.paws-r-sdk.com/docs/codecommit_disassociate_approval_rule_template_from_repository/) for full documentation.
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name of the approval rule template to disassociate from a specified
 #' repository.
@@ -911,7 +911,7 @@ codecommit_disassociate_approval_rule_template_from_repository <- function(appro
 #' @description
 #' Evaluates whether a pull request has met all the conditions specified in its associated approval rules.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/evaluate_pull_request_approval_rules.html](https://paws-r.github.io/docs/codecommit/evaluate_pull_request_approval_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_evaluate_pull_request_approval_rules/](https://www.paws-r-sdk.com/docs/codecommit_evaluate_pull_request_approval_rules/) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request you want to evaluate.
 #' @param revisionId &#91;required&#93; The system-generated ID for the pull request revision. To retrieve the
@@ -943,7 +943,7 @@ codecommit_evaluate_pull_request_approval_rules <- function(pullRequestId, revis
 #' @description
 #' Returns information about a specified approval rule template.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/get_approval_rule_template.html](https://paws-r.github.io/docs/codecommit/get_approval_rule_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_get_approval_rule_template/](https://www.paws-r-sdk.com/docs/codecommit_get_approval_rule_template/) for full documentation.
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name of the approval rule template for which you want to get
 #' information.
@@ -974,7 +974,7 @@ codecommit_get_approval_rule_template <- function(approvalRuleTemplateName) {
 #' @description
 #' Returns the base-64 encoded content of an individual blob in a repository.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/get_blob.html](https://paws-r.github.io/docs/codecommit/get_blob.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_get_blob/](https://www.paws-r-sdk.com/docs/codecommit_get_blob/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the blob.
 #' @param blobId &#91;required&#93; The ID of the blob, which is its SHA-1 pointer.
@@ -1005,7 +1005,7 @@ codecommit_get_blob <- function(repositoryName, blobId) {
 #' @description
 #' Returns information about a repository branch, including its name and the last commit ID.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/get_branch.html](https://paws-r.github.io/docs/codecommit/get_branch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_get_branch/](https://www.paws-r-sdk.com/docs/codecommit_get_branch/) for full documentation.
 #'
 #' @param repositoryName The name of the repository that contains the branch for which you want
 #' to retrieve information.
@@ -1037,7 +1037,7 @@ codecommit_get_branch <- function(repositoryName = NULL, branchName = NULL) {
 #' @description
 #' Returns the content of a comment made on a change, file, or commit in a repository.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/get_comment.html](https://paws-r.github.io/docs/codecommit/get_comment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_get_comment/](https://www.paws-r-sdk.com/docs/codecommit_get_comment/) for full documentation.
 #'
 #' @param commentId &#91;required&#93; The unique, system-generated ID of the comment. To get this ID, use
 #' [`get_comments_for_compared_commit`][codecommit_get_comments_for_compared_commit]
@@ -1069,7 +1069,7 @@ codecommit_get_comment <- function(commentId) {
 #' @description
 #' Returns information about reactions to a specified comment ID. Reactions from users who have been deleted will not be included in the count.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/get_comment_reactions.html](https://paws-r.github.io/docs/codecommit/get_comment_reactions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_get_comment_reactions/](https://www.paws-r-sdk.com/docs/codecommit_get_comment_reactions/) for full documentation.
 #'
 #' @param commentId &#91;required&#93; The ID of the comment for which you want to get reactions information.
 #' @param reactionUserArn Optional. The Amazon Resource Name (ARN) of the user or identity for
@@ -1105,7 +1105,7 @@ codecommit_get_comment_reactions <- function(commentId, reactionUserArn = NULL, 
 #' @description
 #' Returns information about comments made on the comparison between two commits.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/get_comments_for_compared_commit.html](https://paws-r.github.io/docs/codecommit/get_comments_for_compared_commit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_get_comments_for_compared_commit/](https://www.paws-r-sdk.com/docs/codecommit_get_comments_for_compared_commit/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to compare commits.
 #' @param beforeCommitId To establish the directionality of the comparison, the full commit ID of
@@ -1142,7 +1142,7 @@ codecommit_get_comments_for_compared_commit <- function(repositoryName, beforeCo
 #' @description
 #' Returns comments made on a pull request.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/get_comments_for_pull_request.html](https://paws-r.github.io/docs/codecommit/get_comments_for_pull_request.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_get_comments_for_pull_request/](https://www.paws-r-sdk.com/docs/codecommit_get_comments_for_pull_request/) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
@@ -1183,7 +1183,7 @@ codecommit_get_comments_for_pull_request <- function(pullRequestId, repositoryNa
 #' @description
 #' Returns information about a commit, including commit message and committer information.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/get_commit.html](https://paws-r.github.io/docs/codecommit/get_commit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_get_commit/](https://www.paws-r-sdk.com/docs/codecommit_get_commit/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository to which the commit was made.
 #' @param commitId &#91;required&#93; The commit ID. Commit IDs are the full SHA ID of the commit.
@@ -1215,7 +1215,7 @@ codecommit_get_commit <- function(repositoryName, commitId) {
 #' @description
 #' Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID, or other fully qualified reference). Results can be limited to a specified path.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/get_differences.html](https://paws-r.github.io/docs/codecommit/get_differences.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_get_differences/](https://www.paws-r-sdk.com/docs/codecommit_get_differences/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to get differences.
 #' @param beforeCommitSpecifier The branch, tag, HEAD, or other fully qualified reference used to
@@ -1264,7 +1264,7 @@ codecommit_get_differences <- function(repositoryName, beforeCommitSpecifier = N
 #' @description
 #' Returns the base-64 encoded contents of a specified file and its metadata.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/get_file.html](https://paws-r.github.io/docs/codecommit/get_file.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_get_file/](https://www.paws-r-sdk.com/docs/codecommit_get_file/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the file.
 #' @param commitSpecifier The fully quaified reference that identifies the commit that contains
@@ -1300,7 +1300,7 @@ codecommit_get_file <- function(repositoryName, commitSpecifier = NULL, filePath
 #' @description
 #' Returns the contents of a specified folder in a repository.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/get_folder.html](https://paws-r.github.io/docs/codecommit/get_folder.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_get_folder/](https://www.paws-r-sdk.com/docs/codecommit_get_folder/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository.
 #' @param commitSpecifier A fully qualified reference used to identify a commit that contains the
@@ -1338,7 +1338,7 @@ codecommit_get_folder <- function(repositoryName, commitSpecifier = NULL, folder
 #' @description
 #' Returns information about a specified merge commit.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/get_merge_commit.html](https://paws-r.github.io/docs/codecommit/get_merge_commit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_get_merge_commit/](https://www.paws-r-sdk.com/docs/codecommit_get_merge_commit/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the merge commit about which
 #' you want to get information.
@@ -1382,7 +1382,7 @@ codecommit_get_merge_commit <- function(repositoryName, sourceCommitSpecifier, d
 #' @description
 #' Returns information about merge conflicts between the before and after commit IDs for a pull request in a repository.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/get_merge_conflicts.html](https://paws-r.github.io/docs/codecommit/get_merge_conflicts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_get_merge_conflicts/](https://www.paws-r-sdk.com/docs/codecommit_get_merge_conflicts/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where the pull request was created.
 #' @param destinationCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
@@ -1429,7 +1429,7 @@ codecommit_get_merge_conflicts <- function(repositoryName, destinationCommitSpec
 #' @description
 #' Returns information about the merge options available for merging two specified branches. For details about why a merge option is not available, use GetMergeConflicts or DescribeMergeConflicts.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/get_merge_options.html](https://paws-r.github.io/docs/codecommit/get_merge_options.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_get_merge_options/](https://www.paws-r-sdk.com/docs/codecommit_get_merge_options/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the commits about which you
 #' want to get merge options.
@@ -1472,7 +1472,7 @@ codecommit_get_merge_options <- function(repositoryName, sourceCommitSpecifier, 
 #' @description
 #' Gets information about a pull request in a specified repository.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/get_pull_request.html](https://paws-r.github.io/docs/codecommit/get_pull_request.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_get_pull_request/](https://www.paws-r-sdk.com/docs/codecommit_get_pull_request/) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
@@ -1502,7 +1502,7 @@ codecommit_get_pull_request <- function(pullRequestId) {
 #' @description
 #' Gets information about the approval states for a specified pull request. Approval states only apply to pull requests that have one or more approval rules applied to them.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/get_pull_request_approval_states.html](https://paws-r.github.io/docs/codecommit/get_pull_request_approval_states.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_get_pull_request_approval_states/](https://www.paws-r-sdk.com/docs/codecommit_get_pull_request_approval_states/) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID for the pull request.
 #' @param revisionId &#91;required&#93; The system-generated ID for the pull request revision.
@@ -1535,7 +1535,7 @@ codecommit_get_pull_request_approval_states <- function(pullRequestId, revisionI
 #' @description
 #' Returns information about whether approval rules have been set aside (overridden) for a pull request, and if so, the Amazon Resource Name (ARN) of the user or identity that overrode the rules and their requirements for the pull request.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/get_pull_request_override_state.html](https://paws-r.github.io/docs/codecommit/get_pull_request_override_state.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_get_pull_request_override_state/](https://www.paws-r-sdk.com/docs/codecommit_get_pull_request_override_state/) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The ID of the pull request for which you want to get information about
 #' whether approval rules have been set aside (overridden).
@@ -1568,7 +1568,7 @@ codecommit_get_pull_request_override_state <- function(pullRequestId, revisionId
 #' @description
 #' Returns information about a repository.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/get_repository.html](https://paws-r.github.io/docs/codecommit/get_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_get_repository/](https://www.paws-r-sdk.com/docs/codecommit_get_repository/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository to get information about.
 #'
@@ -1597,7 +1597,7 @@ codecommit_get_repository <- function(repositoryName) {
 #' @description
 #' Gets information about triggers configured for a repository.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/get_repository_triggers.html](https://paws-r.github.io/docs/codecommit/get_repository_triggers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_get_repository_triggers/](https://www.paws-r-sdk.com/docs/codecommit_get_repository_triggers/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository for which the trigger is configured.
 #'
@@ -1627,7 +1627,7 @@ codecommit_get_repository_triggers <- function(repositoryName) {
 #' @description
 #' Lists all approval rule templates in the specified AWS Region in your AWS account. If an AWS Region is not specified, the AWS Region where you are signed in is used.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/list_approval_rule_templates.html](https://paws-r.github.io/docs/codecommit/list_approval_rule_templates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_list_approval_rule_templates/](https://www.paws-r-sdk.com/docs/codecommit_list_approval_rule_templates/) for full documentation.
 #'
 #' @param nextToken An enumeration token that, when provided in a request, returns the next
 #' batch of the results.
@@ -1660,7 +1660,7 @@ codecommit_list_approval_rule_templates <- function(nextToken = NULL, maxResults
 #' @description
 #' Lists all approval rule templates that are associated with a specified repository.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/list_associated_approval_rule_templates_for_repository.html](https://paws-r.github.io/docs/codecommit/list_associated_approval_rule_templates_for_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_list_associated_approval_rule_templates_for_repository/](https://www.paws-r-sdk.com/docs/codecommit_list_associated_approval_rule_templates_for_repository/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository for which you want to list all associated
 #' approval rule templates.
@@ -1694,7 +1694,7 @@ codecommit_list_associated_approval_rule_templates_for_repository <- function(re
 #' @description
 #' Gets information about one or more branches in a repository.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/list_branches.html](https://paws-r.github.io/docs/codecommit/list_branches.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_list_branches/](https://www.paws-r-sdk.com/docs/codecommit_list_branches/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the branches.
 #' @param nextToken An enumeration token that allows the operation to batch the results.
@@ -1724,7 +1724,7 @@ codecommit_list_branches <- function(repositoryName, nextToken = NULL) {
 #' @description
 #' Returns a list of pull requests for a specified repository. The return list can be refined by pull request status or pull request author ARN.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/list_pull_requests.html](https://paws-r.github.io/docs/codecommit/list_pull_requests.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_list_pull_requests/](https://www.paws-r-sdk.com/docs/codecommit_list_pull_requests/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository for which you want to list pull requests.
 #' @param authorArn Optional. The Amazon Resource Name (ARN) of the user who created the
@@ -1762,7 +1762,7 @@ codecommit_list_pull_requests <- function(repositoryName, authorArn = NULL, pull
 #' @description
 #' Gets information about one or more repositories.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/list_repositories.html](https://paws-r.github.io/docs/codecommit/list_repositories.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_list_repositories/](https://www.paws-r-sdk.com/docs/codecommit_list_repositories/) for full documentation.
 #'
 #' @param nextToken An enumeration token that allows the operation to batch the results of
 #' the operation. Batch sizes are 1,000 for list repository operations.
@@ -1797,7 +1797,7 @@ codecommit_list_repositories <- function(nextToken = NULL, sortBy = NULL, order 
 #' @description
 #' Lists all repositories associated with the specified approval rule template.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/list_repositories_for_approval_rule_template.html](https://paws-r.github.io/docs/codecommit/list_repositories_for_approval_rule_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_list_repositories_for_approval_rule_template/](https://www.paws-r-sdk.com/docs/codecommit_list_repositories_for_approval_rule_template/) for full documentation.
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name of the approval rule template for which you want to list
 #' repositories that are associated with that template.
@@ -1832,7 +1832,7 @@ codecommit_list_repositories_for_approval_rule_template <- function(approvalRule
 #' @description
 #' Gets information about AWS tags for a specified Amazon Resource Name (ARN) in AWS CodeCommit. For a list of valid resources in AWS CodeCommit, see [CodeCommit Resources and Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats) in the *AWS CodeCommit User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/list_tags_for_resource.html](https://paws-r.github.io/docs/codecommit/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/codecommit_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which you want to get
 #' information about tags, if any.
@@ -1864,7 +1864,7 @@ codecommit_list_tags_for_resource <- function(resourceArn, nextToken = NULL) {
 #' @description
 #' Merges two branches using the fast-forward merge strategy.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/merge_branches_by_fast_forward.html](https://paws-r.github.io/docs/codecommit/merge_branches_by_fast_forward.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_merge_branches_by_fast_forward/](https://www.paws-r-sdk.com/docs/codecommit_merge_branches_by_fast_forward/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to merge two branches.
 #' @param sourceCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
@@ -1898,7 +1898,7 @@ codecommit_merge_branches_by_fast_forward <- function(repositoryName, sourceComm
 #' @description
 #' Merges two branches using the squash merge strategy.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/merge_branches_by_squash.html](https://paws-r.github.io/docs/codecommit/merge_branches_by_squash.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_merge_branches_by_squash/](https://www.paws-r-sdk.com/docs/codecommit_merge_branches_by_squash/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to merge two branches.
 #' @param sourceCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
@@ -1952,7 +1952,7 @@ codecommit_merge_branches_by_squash <- function(repositoryName, sourceCommitSpec
 #' @description
 #' Merges two specified branches using the three-way merge strategy.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/merge_branches_by_three_way.html](https://paws-r.github.io/docs/codecommit/merge_branches_by_three_way.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_merge_branches_by_three_way/](https://www.paws-r-sdk.com/docs/codecommit_merge_branches_by_three_way/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to merge two branches.
 #' @param sourceCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
@@ -2007,7 +2007,7 @@ codecommit_merge_branches_by_three_way <- function(repositoryName, sourceCommitS
 #' @description
 #' Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the fast-forward merge strategy. If the merge is successful, it closes the pull request.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/merge_pull_request_by_fast_forward.html](https://paws-r.github.io/docs/codecommit/merge_pull_request_by_fast_forward.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_merge_pull_request_by_fast_forward/](https://www.paws-r-sdk.com/docs/codecommit_merge_pull_request_by_fast_forward/) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
@@ -2044,7 +2044,7 @@ codecommit_merge_pull_request_by_fast_forward <- function(pullRequestId, reposit
 #' @description
 #' Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the squash merge strategy. If the merge is successful, it closes the pull request.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/merge_pull_request_by_squash.html](https://paws-r.github.io/docs/codecommit/merge_pull_request_by_squash.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_merge_pull_request_by_squash/](https://www.paws-r-sdk.com/docs/codecommit_merge_pull_request_by_squash/) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
@@ -2100,7 +2100,7 @@ codecommit_merge_pull_request_by_squash <- function(pullRequestId, repositoryNam
 #' @description
 #' Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the three-way merge strategy. If the merge is successful, it closes the pull request.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/merge_pull_request_by_three_way.html](https://paws-r.github.io/docs/codecommit/merge_pull_request_by_three_way.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_merge_pull_request_by_three_way/](https://www.paws-r-sdk.com/docs/codecommit_merge_pull_request_by_three_way/) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
@@ -2155,7 +2155,7 @@ codecommit_merge_pull_request_by_three_way <- function(pullRequestId, repository
 #' @description
 #' Sets aside (overrides) all approval rule requirements for a specified pull request.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/override_pull_request_approval_rules.html](https://paws-r.github.io/docs/codecommit/override_pull_request_approval_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_override_pull_request_approval_rules/](https://www.paws-r-sdk.com/docs/codecommit_override_pull_request_approval_rules/) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request for which you want to
 #' override all approval rule requirements. To get this information, use
@@ -2192,7 +2192,7 @@ codecommit_override_pull_request_approval_rules <- function(pullRequestId, revis
 #' @description
 #' Posts a comment on the comparison between two commits.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/post_comment_for_compared_commit.html](https://paws-r.github.io/docs/codecommit/post_comment_for_compared_commit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_post_comment_for_compared_commit/](https://www.paws-r-sdk.com/docs/codecommit_post_comment_for_compared_commit/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to post a comment on the
 #' comparison between commits.
@@ -2234,7 +2234,7 @@ codecommit_post_comment_for_compared_commit <- function(repositoryName, beforeCo
 #' @description
 #' Posts a comment on a pull request.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/post_comment_for_pull_request.html](https://paws-r.github.io/docs/codecommit/post_comment_for_pull_request.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_post_comment_for_pull_request/](https://www.paws-r-sdk.com/docs/codecommit_post_comment_for_pull_request/) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
@@ -2282,7 +2282,7 @@ codecommit_post_comment_for_pull_request <- function(pullRequestId, repositoryNa
 #' @description
 #' Posts a comment in reply to an existing comment on a comparison between commits or a pull request.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/post_comment_reply.html](https://paws-r.github.io/docs/codecommit/post_comment_reply.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_post_comment_reply/](https://www.paws-r-sdk.com/docs/codecommit_post_comment_reply/) for full documentation.
 #'
 #' @param inReplyTo &#91;required&#93; The system-generated ID of the comment to which you want to reply. To
 #' get this ID, use
@@ -2322,7 +2322,7 @@ codecommit_post_comment_reply <- function(inReplyTo, clientRequestToken = NULL, 
 #' @description
 #' Adds or updates a reaction to a specified comment for the user whose identity is used to make the request. You can only add or update a reaction for yourself. You cannot add, modify, or delete a reaction for another user.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/put_comment_reaction.html](https://paws-r.github.io/docs/codecommit/put_comment_reaction.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_put_comment_reaction/](https://www.paws-r-sdk.com/docs/codecommit_put_comment_reaction/) for full documentation.
 #'
 #' @param commentId &#91;required&#93; The ID of the comment to which you want to add or update a reaction.
 #' @param reactionValue &#91;required&#93; The emoji reaction you want to add or update. To remove a reaction,
@@ -2357,7 +2357,7 @@ codecommit_put_comment_reaction <- function(commentId, reactionValue) {
 #' @description
 #' Adds or updates a file in a branch in an AWS CodeCommit repository, and generates a commit for the addition in the specified branch.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/put_file.html](https://paws-r.github.io/docs/codecommit/put_file.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_put_file/](https://www.paws-r-sdk.com/docs/codecommit_put_file/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to add or update the file.
 #' @param branchName &#91;required&#93; The name of the branch where you want to add or update the file. If this
@@ -2410,7 +2410,7 @@ codecommit_put_file <- function(repositoryName, branchName, fileContent, filePat
 #' @description
 #' Replaces all triggers for a repository. Used to create or delete triggers.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/put_repository_triggers.html](https://paws-r.github.io/docs/codecommit/put_repository_triggers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_put_repository_triggers/](https://www.paws-r-sdk.com/docs/codecommit_put_repository_triggers/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to create or update the
 #' trigger.
@@ -2441,7 +2441,7 @@ codecommit_put_repository_triggers <- function(repositoryName, triggers) {
 #' @description
 #' Adds or updates tags for a resource in AWS CodeCommit. For a list of valid resources in AWS CodeCommit, see [CodeCommit Resources and Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats) in the *AWS CodeCommit User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/tag_resource.html](https://paws-r.github.io/docs/codecommit/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_tag_resource/](https://www.paws-r-sdk.com/docs/codecommit_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which you want to add
 #' or update tags.
@@ -2473,7 +2473,7 @@ codecommit_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Tests the functionality of repository triggers by sending information to the trigger target. If real data is available in the repository, the test sends data from the last commit. If no data is available, sample data is generated.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/test_repository_triggers.html](https://paws-r.github.io/docs/codecommit/test_repository_triggers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_test_repository_triggers/](https://www.paws-r-sdk.com/docs/codecommit_test_repository_triggers/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository in which to test the triggers.
 #' @param triggers &#91;required&#93; The list of triggers to test.
@@ -2503,7 +2503,7 @@ codecommit_test_repository_triggers <- function(repositoryName, triggers) {
 #' @description
 #' Removes tags for a resource in AWS CodeCommit. For a list of valid resources in AWS CodeCommit, see [CodeCommit Resources and Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats) in the *AWS CodeCommit User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/untag_resource.html](https://paws-r.github.io/docs/codecommit/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_untag_resource/](https://www.paws-r-sdk.com/docs/codecommit_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which you want to
 #' remove tags.
@@ -2534,7 +2534,7 @@ codecommit_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates the content of an approval rule template. You can change the number of required approvals, the membership of the approval rule, and whether an approval pool is defined.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/update_approval_rule_template_content.html](https://paws-r.github.io/docs/codecommit/update_approval_rule_template_content.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_update_approval_rule_template_content/](https://www.paws-r-sdk.com/docs/codecommit_update_approval_rule_template_content/) for full documentation.
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name of the approval rule template where you want to update the
 #' content of the rule.
@@ -2569,7 +2569,7 @@ codecommit_update_approval_rule_template_content <- function(approvalRuleTemplat
 #' @description
 #' Updates the description for a specified approval rule template.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/update_approval_rule_template_description.html](https://paws-r.github.io/docs/codecommit/update_approval_rule_template_description.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_update_approval_rule_template_description/](https://www.paws-r-sdk.com/docs/codecommit_update_approval_rule_template_description/) for full documentation.
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name of the template for which you want to update the description.
 #' @param approvalRuleTemplateDescription &#91;required&#93; The updated description of the approval rule template.
@@ -2599,7 +2599,7 @@ codecommit_update_approval_rule_template_description <- function(approvalRuleTem
 #' @description
 #' Updates the name of a specified approval rule template.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/update_approval_rule_template_name.html](https://paws-r.github.io/docs/codecommit/update_approval_rule_template_name.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_update_approval_rule_template_name/](https://www.paws-r-sdk.com/docs/codecommit_update_approval_rule_template_name/) for full documentation.
 #'
 #' @param oldApprovalRuleTemplateName &#91;required&#93; The current name of the approval rule template.
 #' @param newApprovalRuleTemplateName &#91;required&#93; The new name you want to apply to the approval rule template.
@@ -2629,7 +2629,7 @@ codecommit_update_approval_rule_template_name <- function(oldApprovalRuleTemplat
 #' @description
 #' Replaces the contents of a comment.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/update_comment.html](https://paws-r.github.io/docs/codecommit/update_comment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_update_comment/](https://www.paws-r-sdk.com/docs/codecommit_update_comment/) for full documentation.
 #'
 #' @param commentId &#91;required&#93; The system-generated ID of the comment you want to update. To get this
 #' ID, use
@@ -2663,7 +2663,7 @@ codecommit_update_comment <- function(commentId, content) {
 #' @description
 #' Sets or changes the default branch name for the specified repository.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/update_default_branch.html](https://paws-r.github.io/docs/codecommit/update_default_branch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_update_default_branch/](https://www.paws-r-sdk.com/docs/codecommit_update_default_branch/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository to set or change the default branch for.
 #' @param defaultBranchName &#91;required&#93; The name of the branch to set as the default.
@@ -2694,7 +2694,7 @@ codecommit_update_default_branch <- function(repositoryName, defaultBranchName) 
 #' @description
 #' Updates the structure of an approval rule created specifically for a pull request. For example, you can change the number of required approvers and the approval pool for approvers.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/update_pull_request_approval_rule_content.html](https://paws-r.github.io/docs/codecommit/update_pull_request_approval_rule_content.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_update_pull_request_approval_rule_content/](https://www.paws-r-sdk.com/docs/codecommit_update_pull_request_approval_rule_content/) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request.
 #' @param approvalRuleName &#91;required&#93; The name of the approval rule you want to update.
@@ -2758,7 +2758,7 @@ codecommit_update_pull_request_approval_rule_content <- function(pullRequestId, 
 #' @description
 #' Updates the state of a user's approval on a pull request. The user is derived from the signed-in account when the request is made.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/update_pull_request_approval_state.html](https://paws-r.github.io/docs/codecommit/update_pull_request_approval_state.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_update_pull_request_approval_state/](https://www.paws-r-sdk.com/docs/codecommit_update_pull_request_approval_state/) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request.
 #' @param revisionId &#91;required&#93; The system-generated ID of the revision.
@@ -2789,7 +2789,7 @@ codecommit_update_pull_request_approval_state <- function(pullRequestId, revisio
 #' @description
 #' Replaces the contents of the description of a pull request.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/update_pull_request_description.html](https://paws-r.github.io/docs/codecommit/update_pull_request_description.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_update_pull_request_description/](https://www.paws-r-sdk.com/docs/codecommit_update_pull_request_description/) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
@@ -2821,7 +2821,7 @@ codecommit_update_pull_request_description <- function(pullRequestId, descriptio
 #' @description
 #' Updates the status of a pull request.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/update_pull_request_status.html](https://paws-r.github.io/docs/codecommit/update_pull_request_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_update_pull_request_status/](https://www.paws-r-sdk.com/docs/codecommit_update_pull_request_status/) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
@@ -2854,7 +2854,7 @@ codecommit_update_pull_request_status <- function(pullRequestId, pullRequestStat
 #' @description
 #' Replaces the title of a pull request.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/update_pull_request_title.html](https://paws-r.github.io/docs/codecommit/update_pull_request_title.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_update_pull_request_title/](https://www.paws-r-sdk.com/docs/codecommit_update_pull_request_title/) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
@@ -2885,7 +2885,7 @@ codecommit_update_pull_request_title <- function(pullRequestId, title) {
 #' @description
 #' Sets or changes the comment or description for a repository.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/update_repository_description.html](https://paws-r.github.io/docs/codecommit/update_repository_description.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_update_repository_description/](https://www.paws-r-sdk.com/docs/codecommit_update_repository_description/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository to set or change the comment or description
 #' for.
@@ -2917,7 +2917,7 @@ codecommit_update_repository_description <- function(repositoryName, repositoryD
 #' @description
 #' Renames a repository. The repository name must be unique across the calling AWS account. Repository names are limited to 100 alphanumeric, dash, and underscore characters, and cannot include certain characters. The suffix .git is prohibited. For more information about the limits on repository names, see [Limits](https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html) in the AWS CodeCommit User Guide.
 #'
-#' See [https://paws-r.github.io/docs/codecommit/update_repository_name.html](https://paws-r.github.io/docs/codecommit/update_repository_name.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codecommit_update_repository_name/](https://www.paws-r-sdk.com/docs/codecommit_update_repository_name/) for full documentation.
 #'
 #' @param oldName &#91;required&#93; The current name of the repository.
 #' @param newName &#91;required&#93; The new name for the repository.

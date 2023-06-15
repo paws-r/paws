@@ -17,6 +17,6 @@ and the maximum value is 500.}
 \description{
 Gets all the usage plans of the caller's account.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_usage_plans.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_usage_plans/} for full documentation.
 }
 \keyword{internal}

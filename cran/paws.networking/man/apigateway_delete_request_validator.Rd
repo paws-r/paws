@@ -14,6 +14,6 @@ apigateway_delete_request_validator(restApiId, requestValidatorId)
 \description{
 Deletes a RequestValidator of a given RestApi.
 
-See \url{https://paws-r.github.io/docs/apigateway/delete_request_validator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_delete_request_validator/} for full documentation.
 }
 \keyword{internal}

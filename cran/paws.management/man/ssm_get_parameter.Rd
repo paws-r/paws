@@ -19,6 +19,6 @@ ignored for \code{String} and \code{StringList} parameter types.}
 \description{
 Get information about a single parameter by specifying the parameter name.
 
-See \url{https://paws-r.github.io/docs/ssm/get_parameter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_parameter/} for full documentation.
 }
 \keyword{internal}

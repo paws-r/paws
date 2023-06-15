@@ -12,6 +12,6 @@ sagemaker_describe_subscribed_workteam(WorkteamArn)
 \description{
 Gets information about a work team provided by a vendor. It returns details about the subscription with a vendor in the Amazon Web Services Marketplace.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_subscribed_workteam.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_subscribed_workteam/} for full documentation.
 }
 \keyword{internal}

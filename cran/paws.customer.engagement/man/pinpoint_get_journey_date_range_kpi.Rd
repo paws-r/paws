@@ -50,6 +50,6 @@ should also be fewer than 90 days from the current day.}
 \description{
 Retrieves (queries) pre-aggregated data for a standard engagement metric that applies to a journey.
 
-See \url{https://paws-r.github.io/docs/pinpoint/get_journey_date_range_kpi.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_get_journey_date_range_kpi/} for full documentation.
 }
 \keyword{internal}

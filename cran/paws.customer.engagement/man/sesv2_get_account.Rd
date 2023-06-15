@@ -10,6 +10,6 @@ sesv2_get_account()
 \description{
 Obtain information about the email-sending status and capabilities of your Amazon SES account in the current Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/sesv2/get_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_get_account/} for full documentation.
 }
 \keyword{internal}

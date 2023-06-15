@@ -12,6 +12,6 @@ docdb_delete_global_cluster(GlobalClusterIdentifier)
 \description{
 Deletes a global cluster. The primary and secondary clusters must already be detached or deleted before attempting to delete a global cluster.
 
-See \url{https://paws-r.github.io/docs/docdb/delete_global_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_delete_global_cluster/} for full documentation.
 }
 \keyword{internal}

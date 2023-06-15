@@ -18,6 +18,6 @@ spaces. You can also include any of the following characters: _+=,.@-}
 \description{
 Retrieves information about the specified IAM user, including the user's creation date, path, unique ID, and ARN.
 
-See \url{https://paws-r.github.io/docs/iam/get_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_get_user/} for full documentation.
 }
 \keyword{internal}

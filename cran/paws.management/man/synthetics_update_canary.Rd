@@ -84,6 +84,6 @@ uploads to Amazon S3.}
 \description{
 Updates the configuration of a canary that has already been created.
 
-See \url{https://paws-r.github.io/docs/synthetics/update_canary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/synthetics_update_canary/} for full documentation.
 }
 \keyword{internal}

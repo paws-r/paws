@@ -61,6 +61,6 @@ new token.}
 \description{
 Updates the TLS inspection configuration settings for the specified TLS inspection configuration. You use a TLS inspection configuration by reference in one or more firewall policies. When you modify a TLS inspection configuration, you modify all firewall policies that use the TLS inspection configuration.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/update_tls_inspection_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_update_tls_inspection_configuration/} for full documentation.
 }
 \keyword{internal}

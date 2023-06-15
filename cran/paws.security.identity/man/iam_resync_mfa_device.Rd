@@ -36,6 +36,6 @@ The format for this parameter is a sequence of six digits.}
 \description{
 Synchronizes the specified MFA device with its IAM resource object on the Amazon Web Services servers.
 
-See \url{https://paws-r.github.io/docs/iam/resync_mfa_device.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_resync_mfa_device/} for full documentation.
 }
 \keyword{internal}

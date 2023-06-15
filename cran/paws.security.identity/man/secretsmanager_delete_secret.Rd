@@ -44,6 +44,6 @@ the secret permanently.}
 \description{
 Deletes a secret and all of its versions. You can specify a recovery window during which you can restore the secret. The minimum recovery window is 7 days. The default recovery window is 30 days. Secrets Manager attaches a \code{DeletionDate} stamp to the secret that specifies the end of the recovery window. At the end of the recovery window, Secrets Manager deletes the secret permanently.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/delete_secret.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_delete_secret/} for full documentation.
 }
 \keyword{internal}

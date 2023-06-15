@@ -15,6 +15,6 @@ from 1 to 10000 characters.}
 \description{
 InferRxNorm detects medications as entities listed in a patient record and links to the normalized concept identifiers in the RxNorm database from the National Library of Medicine. Amazon Comprehend Medical only detects medical entities in English language texts.
 
-See \url{https://paws-r.github.io/docs/comprehendmedical/infer_rx_norm.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehendmedical_infer_rx_norm/} for full documentation.
 }
 \keyword{internal}

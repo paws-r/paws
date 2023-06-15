@@ -21,6 +21,6 @@ account ID, do not include any hyphens ('-') in the ID.}
 \description{
 This operation configures an access policy for a vault and will overwrite an existing policy. To configure a vault access policy, send a PUT request to the \code{access-policy} subresource of the vault. An access policy is specific to a vault and is also called a vault subresource. You can set one access policy per vault and the policy can be up to 20 KB in size. For more information about vault access policies, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html}{Amazon Glacier Access Control with Vault Access Policies}.
 
-See \url{https://paws-r.github.io/docs/glacier/set_vault_access_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_set_vault_access_policy/} for full documentation.
 }
 \keyword{internal}

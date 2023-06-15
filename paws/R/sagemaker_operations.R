@@ -1439,7 +1439,7 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig, Tags
 #'   ),
 #'   OutputConfig = list(
 #'     S3OutputLocation = "string",
-#'     TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_g4dn"|"ml_inf1"|"ml_eia2"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"jetson_xavier"|"rasp3b"|"imx8qm"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"|"sitara_am57x"|"amba_cv2"|"amba_cv22"|"amba_cv25"|"x86_win32"|"x86_win64"|"coreml"|"jacinto_tda4vm"|"imx8mplus",
+#'     TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_g4dn"|"ml_inf1"|"ml_inf2"|"ml_trn1"|"ml_eia2"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"jetson_xavier"|"rasp3b"|"imx8qm"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"|"sitara_am57x"|"amba_cv2"|"amba_cv22"|"amba_cv25"|"x86_win32"|"x86_win64"|"coreml"|"jacinto_tda4vm"|"imx8mplus",
 #'     TargetPlatform = list(
 #'       Os = "ANDROID"|"LINUX",
 #'       Arch = "X86_64"|"X86"|"ARM64"|"ARM_EABI"|"ARM_EABIHF",
@@ -11397,7 +11397,7 @@ sagemaker_describe_code_repository <- function(CodeRepositoryName) {
 #'   ),
 #'   OutputConfig = list(
 #'     S3OutputLocation = "string",
-#'     TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_g4dn"|"ml_inf1"|"ml_eia2"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"jetson_xavier"|"rasp3b"|"imx8qm"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"|"sitara_am57x"|"amba_cv2"|"amba_cv22"|"amba_cv25"|"x86_win32"|"x86_win64"|"coreml"|"jacinto_tda4vm"|"imx8mplus",
+#'     TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_g4dn"|"ml_inf1"|"ml_inf2"|"ml_trn1"|"ml_eia2"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"jetson_xavier"|"rasp3b"|"imx8qm"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"|"sitara_am57x"|"amba_cv2"|"amba_cv22"|"amba_cv25"|"x86_win32"|"x86_win64"|"coreml"|"jacinto_tda4vm"|"imx8mplus",
 #'     TargetPlatform = list(
 #'       Os = "ANDROID"|"LINUX",
 #'       Arch = "X86_64"|"X86"|"ARM64"|"ARM_EABI"|"ARM_EABIHF",
@@ -15782,7 +15782,7 @@ sagemaker_describe_notebook_instance_lifecycle_config <- function(NotebookInstan
 #' @usage
 #' sagemaker_describe_pipeline(PipelineName)
 #'
-#' @param PipelineName &#91;required&#93; The name of the pipeline to describe.
+#' @param PipelineName &#91;required&#93; The name or Amazon Resource Name (ARN) of the pipeline to describe.
 #'
 #' @return
 #' A list with the following syntax:
@@ -15962,6 +15962,14 @@ sagemaker_describe_pipeline_definition_for_execution <- function(PipelineExecuti
 #'   ),
 #'   ParallelismConfiguration = list(
 #'     MaxParallelExecutionSteps = 123
+#'   ),
+#'   SelectiveExecutionConfig = list(
+#'     SourcePipelineExecutionArn = "string",
+#'     SelectedSteps = list(
+#'       list(
+#'         StepName = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -18147,8 +18155,10 @@ sagemaker_list_aliases <- function(ImageName, Alias = NULL, Version = NULL, MaxR
 #'   CreationTimeBefore, CreationTimeAfter, ModifiedTimeBefore,
 #'   ModifiedTimeAfter, SortBy, SortOrder)
 #'
-#' @param MaxResults The maximum number of AppImageConfigs to return in the response. The
-#' default value is 10.
+#' @param MaxResults The total number of items to return in the response. If the total number
+#' of items available is more than the value specified, a `NextToken` is
+#' provided in the response. To resume pagination, provide the `NextToken`
+#' value in the as part of a subsequent call. The default value is 10.
 #' @param NextToken If the previous call to [`list_images`][sagemaker_list_images] didn't
 #' return the full set of AppImageConfigs, the call returns a token for
 #' getting the next set of AppImageConfigs.
@@ -18254,7 +18264,10 @@ sagemaker_list_app_image_configs <- function(MaxResults = NULL, NextToken = NULL
 #'
 #' @param NextToken If the previous response was truncated, you will receive this token. Use
 #' it in your next request to receive the next set of results.
-#' @param MaxResults Returns a list up to a specified limit.
+#' @param MaxResults The total number of items to return in the response. If the total number
+#' of items available is more than the value specified, a `NextToken` is
+#' provided in the response. To resume pagination, provide the `NextToken`
+#' value in the as part of a subsequent call. The default value is 10.
 #' @param SortOrder The sort order for the results. The default is Ascending.
 #' @param SortBy The parameter by which to sort the results. The default is CreationTime.
 #' @param DomainIdEquals A parameter to search for the domain ID.
@@ -18890,7 +18903,7 @@ sagemaker_list_code_repositories <- function(CreationTimeAfter = NULL, CreationT
 #'       CompilationEndTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       CompilationTargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_g4dn"|"ml_inf1"|"ml_eia2"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"jetson_xavier"|"rasp3b"|"imx8qm"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"|"sitara_am57x"|"amba_cv2"|"amba_cv22"|"amba_cv25"|"x86_win32"|"x86_win64"|"coreml"|"jacinto_tda4vm"|"imx8mplus",
+#'       CompilationTargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_g4dn"|"ml_inf1"|"ml_inf2"|"ml_trn1"|"ml_eia2"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"jetson_xavier"|"rasp3b"|"imx8qm"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"|"sitara_am57x"|"amba_cv2"|"amba_cv22"|"amba_cv25"|"x86_win32"|"x86_win64"|"coreml"|"jacinto_tda4vm"|"imx8mplus",
 #'       CompilationTargetPlatformOs = "ANDROID"|"LINUX",
 #'       CompilationTargetPlatformArch = "X86_64"|"X86"|"ARM64"|"ARM_EABI"|"ARM_EABIHF",
 #'       CompilationTargetPlatformAccelerator = "INTEL_GRAPHICS"|"MALI"|"NVIDIA"|"NNA",
@@ -19304,7 +19317,10 @@ sagemaker_list_devices <- function(NextToken = NULL, MaxResults = NULL, LatestHe
 #'
 #' @param NextToken If the previous response was truncated, you will receive this token. Use
 #' it in your next request to receive the next set of results.
-#' @param MaxResults Returns a list up to a specified limit.
+#' @param MaxResults The total number of items to return in the response. If the total number
+#' of items available is more than the value specified, a `NextToken` is
+#' provided in the response. To resume pagination, provide the `NextToken`
+#' value in the as part of a subsequent call. The default value is 10.
 #'
 #' @return
 #' A list with the following syntax:
@@ -22866,6 +22882,9 @@ sagemaker_list_notebook_instances <- function(NextToken = NULL, MaxResults = NUL
 #'         AutoMLJob = list(
 #'           Arn = "string"
 #'         )
+#'       ),
+#'       SelectiveExecutionResult = list(
+#'         SourcePipelineExecutionArn = "string"
 #'       )
 #'     )
 #'   ),
@@ -22914,7 +22933,7 @@ sagemaker_list_pipeline_execution_steps <- function(PipelineExecutionArn = NULL,
 #' sagemaker_list_pipeline_executions(PipelineName, CreatedAfter,
 #'   CreatedBefore, SortBy, SortOrder, NextToken, MaxResults)
 #'
-#' @param PipelineName &#91;required&#93; The name of the pipeline.
+#' @param PipelineName &#91;required&#93; The name or Amazon Resource Name (ARN) of the pipeline.
 #' @param CreatedAfter A filter that returns the pipeline executions that were created after a
 #' specified time.
 #' @param CreatedBefore A filter that returns the pipeline executions that were created before a
@@ -23327,7 +23346,10 @@ sagemaker_list_projects <- function(CreationTimeAfter = NULL, CreationTimeBefore
 #'
 #' @param NextToken If the previous response was truncated, you will receive this token. Use
 #' it in your next request to receive the next set of results.
-#' @param MaxResults Returns a list up to a specified limit.
+#' @param MaxResults The total number of items to return in the response. If the total number
+#' of items available is more than the value specified, a `NextToken` is
+#' provided in the response. To resume pagination, provide the `NextToken`
+#' value in the as part of a subsequent call. The default value is 10.
 #' @param SortOrder The sort order for the results. The default is `Ascending`.
 #' @param SortBy The parameter by which to sort the results. The default is
 #' `CreationTime`.
@@ -23477,8 +23499,10 @@ sagemaker_list_stage_devices <- function(NextToken = NULL, MaxResults = NULL, Ed
 #'   NameContains, AppTypeEquals, CreationTimeBefore, CreationTimeAfter,
 #'   ModifiedTimeBefore, ModifiedTimeAfter, SortBy, SortOrder)
 #'
-#' @param MaxResults The maximum number of Studio Lifecycle Configurations to return in the
-#' response. The default value is 10.
+#' @param MaxResults The total number of items to return in the response. If the total number
+#' of items available is more than the value specified, a `NextToken` is
+#' provided in the response. To resume pagination, provide the `NextToken`
+#' value in the as part of a subsequent call. The default value is 10.
 #' @param NextToken If the previous call to ListStudioLifecycleConfigs didn't return the
 #' full set of Lifecycle Configurations, the call returns a token for
 #' getting the next set of Lifecycle Configurations.
@@ -24254,7 +24278,10 @@ sagemaker_list_trials <- function(ExperimentName = NULL, TrialComponentName = NU
 #'
 #' @param NextToken If the previous response was truncated, you will receive this token. Use
 #' it in your next request to receive the next set of results.
-#' @param MaxResults Returns a list up to a specified limit.
+#' @param MaxResults The total number of items to return in the response. If the total number
+#' of items available is more than the value specified, a `NextToken` is
+#' provided in the response. To resume pagination, provide the `NextToken`
+#' value in the as part of a subsequent call. The default value is 10.
 #' @param SortOrder The sort order for the results. The default is Ascending.
 #' @param SortBy The parameter by which to sort the results. The default is CreationTime.
 #' @param DomainIdEquals A parameter by which to filter the results.
@@ -26387,6 +26414,14 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'             Name = "string",
 #'             Value = "string"
 #'           )
+#'         ),
+#'         SelectiveExecutionConfig = list(
+#'           SourcePipelineExecutionArn = "string",
+#'           SelectedSteps = list(
+#'             list(
+#'               StepName = "string"
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       FeatureGroup = list(
@@ -27751,9 +27786,9 @@ sagemaker_start_notebook_instance <- function(NotebookInstanceName) {
 #' sagemaker_start_pipeline_execution(PipelineName,
 #'   PipelineExecutionDisplayName, PipelineParameters,
 #'   PipelineExecutionDescription, ClientRequestToken,
-#'   ParallelismConfiguration)
+#'   ParallelismConfiguration, SelectiveExecutionConfig)
 #'
-#' @param PipelineName &#91;required&#93; The name of the pipeline.
+#' @param PipelineName &#91;required&#93; The name or Amazon Resource Name (ARN) of the pipeline.
 #' @param PipelineExecutionDisplayName The display name of the pipeline execution.
 #' @param PipelineParameters Contains a list of pipeline parameters. This list can be empty.
 #' @param PipelineExecutionDescription The description of the pipeline execution.
@@ -27762,6 +27797,7 @@ sagemaker_start_notebook_instance <- function(NotebookInstanceName) {
 #' than once.
 #' @param ParallelismConfiguration This configuration, if specified, overrides the parallelism
 #' configuration of the parent pipeline for this specific run.
+#' @param SelectiveExecutionConfig The selective execution configuration applied to the pipeline run.
 #'
 #' @return
 #' A list with the following syntax:
@@ -27786,6 +27822,14 @@ sagemaker_start_notebook_instance <- function(NotebookInstanceName) {
 #'   ClientRequestToken = "string",
 #'   ParallelismConfiguration = list(
 #'     MaxParallelExecutionSteps = 123
+#'   ),
+#'   SelectiveExecutionConfig = list(
+#'     SourcePipelineExecutionArn = "string",
+#'     SelectedSteps = list(
+#'       list(
+#'         StepName = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -27795,14 +27839,14 @@ sagemaker_start_notebook_instance <- function(NotebookInstanceName) {
 #' @rdname sagemaker_start_pipeline_execution
 #'
 #' @aliases sagemaker_start_pipeline_execution
-sagemaker_start_pipeline_execution <- function(PipelineName, PipelineExecutionDisplayName = NULL, PipelineParameters = NULL, PipelineExecutionDescription = NULL, ClientRequestToken, ParallelismConfiguration = NULL) {
+sagemaker_start_pipeline_execution <- function(PipelineName, PipelineExecutionDisplayName = NULL, PipelineParameters = NULL, PipelineExecutionDescription = NULL, ClientRequestToken, ParallelismConfiguration = NULL, SelectiveExecutionConfig = NULL) {
   op <- new_operation(
     name = "StartPipelineExecution",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$start_pipeline_execution_input(PipelineName = PipelineName, PipelineExecutionDisplayName = PipelineExecutionDisplayName, PipelineParameters = PipelineParameters, PipelineExecutionDescription = PipelineExecutionDescription, ClientRequestToken = ClientRequestToken, ParallelismConfiguration = ParallelismConfiguration)
+  input <- .sagemaker$start_pipeline_execution_input(PipelineName = PipelineName, PipelineExecutionDisplayName = PipelineExecutionDisplayName, PipelineParameters = PipelineParameters, PipelineExecutionDescription = PipelineExecutionDescription, ClientRequestToken = ClientRequestToken, ParallelismConfiguration = ParallelismConfiguration, SelectiveExecutionConfig = SelectiveExecutionConfig)
   output <- .sagemaker$start_pipeline_execution_output()
   config <- get_config()
   svc <- .sagemaker$service(config)

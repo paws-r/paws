@@ -14,6 +14,6 @@ appstream_associate_application_fleet(FleetName, ApplicationArn)
 \description{
 Associates the specified application with the specified fleet. This is only supported for Elastic fleets.
 
-See \url{https://paws-r.github.io/docs/appstream/associate_application_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_associate_application_fleet/} for full documentation.
 }
 \keyword{internal}

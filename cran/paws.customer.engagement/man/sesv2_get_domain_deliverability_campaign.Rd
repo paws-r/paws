@@ -13,6 +13,6 @@ automatically generates and assigns this identifier to a campaign.}
 \description{
 Retrieve all the deliverability data for a specific campaign. This data is available for a campaign only if the campaign sent email by using a domain that the Deliverability dashboard is enabled for.
 
-See \url{https://paws-r.github.io/docs/sesv2/get_domain_deliverability_campaign.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_get_domain_deliverability_campaign/} for full documentation.
 }
 \keyword{internal}

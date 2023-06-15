@@ -12,6 +12,6 @@ drs_stop_failback(recoveryInstanceID)
 \description{
 Stops the failback process for a specified Recovery Instance. This changes the Failback State of the Recovery Instance back to FAILBACK_NOT_STARTED.
 
-See \url{https://paws-r.github.io/docs/drs/stop_failback.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_stop_failback/} for full documentation.
 }
 \keyword{internal}

@@ -33,6 +33,6 @@ directory sharing request (\code{HANDSHAKE}).}
 \description{
 Shares a specified directory (\code{DirectoryId}) in your Amazon Web Services account (directory owner) with another Amazon Web Services account (directory consumer). With this operation you can use your directory from any Amazon Web Services account and from any Amazon VPC within an Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/directoryservice/share_directory.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_share_directory/} for full documentation.
 }
 \keyword{internal}

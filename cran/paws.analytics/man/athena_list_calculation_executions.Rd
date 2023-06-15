@@ -46,6 +46,6 @@ previous page call.}
 \description{
 Lists the calculations that have been submitted to a session in descending order. Newer calculations are listed first; older calculations are listed later.
 
-See \url{https://paws-r.github.io/docs/athena/list_calculation_executions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_list_calculation_executions/} for full documentation.
 }
 \keyword{internal}

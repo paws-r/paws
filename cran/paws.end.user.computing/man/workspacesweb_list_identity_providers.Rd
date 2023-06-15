@@ -21,6 +21,6 @@ operation.}
 \description{
 Retrieves a list of identity providers for a specific web portal.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/list_identity_providers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_list_identity_providers/} for full documentation.
 }
 \keyword{internal}

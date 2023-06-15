@@ -14,6 +14,6 @@ sns_remove_permission(TopicArn, Label)
 \description{
 Removes a statement from a topic's access control policy.
 
-See \url{https://paws-r.github.io/docs/sns/remove_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_remove_permission/} for full documentation.
 }
 \keyword{internal}

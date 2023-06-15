@@ -18,6 +18,6 @@ configservice_delete_pending_aggregation_request(
 \description{
 Deletes pending authorization requests for a specified aggregator account in a specified region.
 
-See \url{https://paws-r.github.io/docs/configservice/delete_pending_aggregation_request.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_delete_pending_aggregation_request/} for full documentation.
 }
 \keyword{internal}

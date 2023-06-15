@@ -40,6 +40,6 @@ Default: \code{ASCENDING}}
 \description{
 List service instances with summary data. This action lists service instances of all services in the Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/proton/list_service_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_list_service_instances/} for full documentation.
 }
 \keyword{internal}

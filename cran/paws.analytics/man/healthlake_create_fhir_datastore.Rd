@@ -10,7 +10,8 @@ healthlake_create_fhir_datastore(
   SseConfiguration = NULL,
   PreloadDataConfig = NULL,
   ClientToken = NULL,
-  Tags = NULL
+  Tags = NULL,
+  IdentityProviderConfiguration = NULL
 )
 }
 \arguments{
@@ -28,10 +29,13 @@ from Synthea.}
 \item{ClientToken}{Optional user provided token used for ensuring idempotency.}
 
 \item{Tags}{Resource tags that are applied to a Data Store when it is created.}
+
+\item{IdentityProviderConfiguration}{The configuration of the identity provider that you want to use for your
+Data Store.}
 }
 \description{
 Creates a Data Store that can ingest and export FHIR formatted data.
 
-See \url{https://paws-r.github.io/docs/healthlake/create_fhir_datastore.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/healthlake_create_fhir_datastore/} for full documentation.
 }
 \keyword{internal}

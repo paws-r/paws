@@ -71,6 +71,6 @@ the developer guide.}
 \description{
 Creates a new crawler with specified targets, role, configuration, and optional schedule. At least one crawl target must be specified, in the \code{s3Targets} field, the \code{jdbcTargets} field, or the \code{DynamoDBTargets} field.
 
-See \url{https://paws-r.github.io/docs/glue/create_crawler.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_create_crawler/} for full documentation.
 }
 \keyword{internal}

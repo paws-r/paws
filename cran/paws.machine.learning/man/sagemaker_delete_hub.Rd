@@ -12,6 +12,6 @@ sagemaker_delete_hub(HubName)
 \description{
 Delete a hub.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_hub.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_hub/} for full documentation.
 }
 \keyword{internal}

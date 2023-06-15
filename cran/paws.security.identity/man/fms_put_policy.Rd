@@ -14,6 +14,6 @@ fms_put_policy(Policy, TagList = NULL)
 \description{
 Creates an Firewall Manager policy.
 
-See \url{https://paws-r.github.io/docs/fms/put_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_put_policy/} for full documentation.
 }
 \keyword{internal}

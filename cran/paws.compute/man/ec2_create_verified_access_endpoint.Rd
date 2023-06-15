@@ -65,6 +65,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 An Amazon Web Services Verified Access endpoint is where you define your application along with an optional endpoint-level access policy.
 
-See \url{https://paws-r.github.io/docs/ec2/create_verified_access_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_verified_access_endpoint/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ Amazon Simple Notification Service (Amazon SNS).}
 \description{
 Adds a notification channel to DevOps Guru. A notification channel is used to notify you about important DevOps Guru events, such as when an insight is generated.
 
-See \url{https://paws-r.github.io/docs/devopsguru/add_notification_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_add_notification_channel/} for full documentation.
 }
 \keyword{internal}

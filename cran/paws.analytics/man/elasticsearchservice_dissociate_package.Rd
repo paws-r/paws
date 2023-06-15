@@ -16,6 +16,6 @@ this value.}
 \description{
 Dissociates a package from the Amazon ES domain.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/dissociate_package.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_dissociate_package/} for full documentation.
 }
 \keyword{internal}

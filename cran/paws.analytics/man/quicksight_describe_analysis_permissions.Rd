@@ -17,6 +17,6 @@ part of the analysis URL.}
 \description{
 Provides the read and write permissions for an analysis.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_analysis_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_analysis_permissions/} for full documentation.
 }
 \keyword{internal}

@@ -25,6 +25,6 @@ Region.}
 \description{
 Creates a fleet. A fleet consists of resources and the configuration that delivers associated websites to authorized users who download and set up the Amazon WorkLink app.
 
-See \url{https://paws-r.github.io/docs/worklink/create_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_create_fleet/} for full documentation.
 }
 \keyword{internal}

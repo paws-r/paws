@@ -31,6 +31,6 @@ temporary credentials.}
 \description{
 Allows a caller to assume an IAM role decorated as the SAML user specified in the SAML assertion included in the request. This decoration allows Lake Formation to enforce access policies against the SAML users and groups. This API operation requires SAML federation setup in the caller’s account as it can only be called with valid SAML assertions. Lake Formation does not scope down the permission of the assumed role. All permissions attached to the role via the SAML federation setup will be included in the role session.
 
-See \url{https://paws-r.github.io/docs/lakeformation/assume_decorated_role_with_saml.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_assume_decorated_role_with_saml/} for full documentation.
 }
 \keyword{internal}

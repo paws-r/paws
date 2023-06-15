@@ -57,6 +57,6 @@ notification rule.}
 \description{
 Creates a notification rule for a resource. The rule specifies the events you want notifications about and the targets (such as Chatbot topics or Chatbot clients configured for Slack) where you want to receive them.
 
-See \url{https://paws-r.github.io/docs/codestarnotifications/create_notification_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestarnotifications_create_notification_rule/} for full documentation.
 }
 \keyword{internal}

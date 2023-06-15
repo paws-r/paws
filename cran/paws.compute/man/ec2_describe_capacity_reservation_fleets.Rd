@@ -42,6 +42,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes one or more Capacity Reservation Fleets.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_capacity_reservation_fleets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_capacity_reservation_fleets/} for full documentation.
 }
 \keyword{internal}

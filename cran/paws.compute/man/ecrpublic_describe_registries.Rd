@@ -33,6 +33,6 @@ results and a \code{nextToken} value, if applicable.}
 \description{
 Returns details for a public registry.
 
-See \url{https://paws-r.github.io/docs/ecrpublic/describe_registries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecrpublic_describe_registries/} for full documentation.
 }
 \keyword{internal}

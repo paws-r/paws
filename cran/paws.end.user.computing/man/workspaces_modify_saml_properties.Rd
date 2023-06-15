@@ -28,6 +28,6 @@ state parameter name.
 \description{
 Modifies multiple properties related to SAML 2.0 authentication, including the enablement status, user access URL, and relay state parameter name that are used for configuring federation with an SAML 2.0 identity provider.
 
-See \url{https://paws-r.github.io/docs/workspaces/modify_saml_properties.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_modify_saml_properties/} for full documentation.
 }
 \keyword{internal}

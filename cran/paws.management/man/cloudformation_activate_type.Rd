@@ -39,23 +39,23 @@ and \code{PublisherId}.}
 Conditional: You must specify \code{PublicTypeArn}, or \code{TypeName}, \code{Type},
 and \code{PublisherId}.}
 
-\item{TypeNameAlias}{An alias to assign to the public extension, in this account and region.
+\item{TypeNameAlias}{An alias to assign to the public extension, in this account and Region.
 If you specify an alias for the extension, CloudFormation treats the
-alias as the extension type name within this account and region. You
+alias as the extension type name within this account and Region. You
 must use the alias to refer to the extension in your templates, API
 calls, and CloudFormation console.
 
-An extension alias must be unique within a given account and region. You
+An extension alias must be unique within a given account and Region. You
 can activate the same public resource multiple times in the same account
-and region, using different type name aliases.}
+and Region, using different type name aliases.}
 
-\item{AutoUpdate}{Whether to automatically update the extension in this account and region
+\item{AutoUpdate}{Whether to automatically update the extension in this account and Region
 when a new \emph{minor} version is published by the extension publisher.
 Major versions released by the publisher must be manually updated.
 
 The default is \code{true}.}
 
-\item{LoggingConfig}{}
+\item{LoggingConfig}{Contains logging configuration information for an extension.}
 
 \item{ExecutionRoleArn}{The name of the IAM execution role to use to activate the extension.}
 
@@ -79,6 +79,6 @@ You can specify \code{MajorVersion} or \code{VersionBump}, but not both.}
 \description{
 Activates a public third-party extension, making it available for use in stack templates. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-public.html}{Using public extensions} in the \emph{CloudFormation User Guide}.
 
-See \url{https://paws-r.github.io/docs/cloudformation/activate_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_activate_type/} for full documentation.
 }
 \keyword{internal}

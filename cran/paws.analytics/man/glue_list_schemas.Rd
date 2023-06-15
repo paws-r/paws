@@ -18,6 +18,6 @@ supplied, this will be defaulted to 25 per page.}
 \description{
 Returns a list of schemas with minimal details. Schemas in Deleting status will not be included in the results. Empty results will be returned if there are no schemas available.
 
-See \url{https://paws-r.github.io/docs/glue/list_schemas.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_list_schemas/} for full documentation.
 }
 \keyword{internal}

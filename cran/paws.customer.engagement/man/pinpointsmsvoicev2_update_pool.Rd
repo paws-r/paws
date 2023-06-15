@@ -40,6 +40,6 @@ OptOutListName or OptOutListArn.}
 \description{
 Updates the configuration of an existing pool. You can update the opt-out list, enable or disable two-way messaging, change the \code{TwoWayChannelArn}, enable or disable self-managed opt-outs, enable or disable deletion protection, and enable or disable shared routes.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/update_pool.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_update_pool/} for full documentation.
 }
 \keyword{internal}

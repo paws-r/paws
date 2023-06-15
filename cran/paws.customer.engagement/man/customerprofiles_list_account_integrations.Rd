@@ -25,6 +25,6 @@ to \code{False}.}
 \description{
 Lists all of the integrations associated to a specific URI in the AWS account.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/list_account_integrations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_list_account_integrations/} for full documentation.
 }
 \keyword{internal}

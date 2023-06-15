@@ -78,6 +78,6 @@ in the \emph{AWS Elastic Beanstalk Developer Guide}.}
 \description{
 Creates an AWS Elastic Beanstalk configuration template, associated with a specific Elastic Beanstalk application. You define application configuration settings in a configuration template. You can then use the configuration template to deploy different versions of the application with the same configuration settings.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/create_configuration_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_create_configuration_template/} for full documentation.
 }
 \keyword{internal}

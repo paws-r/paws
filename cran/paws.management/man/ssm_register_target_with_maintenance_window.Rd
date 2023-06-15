@@ -72,6 +72,6 @@ maintenance window.}
 \description{
 Registers a target with a maintenance window.
 
-See \url{https://paws-r.github.io/docs/ssm/register_target_with_maintenance_window.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_register_target_with_maintenance_window/} for full documentation.
 }
 \keyword{internal}

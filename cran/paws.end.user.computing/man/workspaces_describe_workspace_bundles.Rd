@@ -27,6 +27,6 @@ previous call.)}
 \description{
 Retrieves a list that describes the available WorkSpace bundles.
 
-See \url{https://paws-r.github.io/docs/workspaces/describe_workspace_bundles.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_describe_workspace_bundles/} for full documentation.
 }
 \keyword{internal}

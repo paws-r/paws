@@ -15,6 +15,6 @@ directoryservice_deregister_certificate(DirectoryId, CertificateId)
 \description{
 Deletes from the system the certificate that was registered for secure LDAP or client certificate authentication.
 
-See \url{https://paws-r.github.io/docs/directoryservice/deregister_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_deregister_certificate/} for full documentation.
 }
 \keyword{internal}

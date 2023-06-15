@@ -20,6 +20,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Releases the specified address range that you provisioned for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and deletes the corresponding address pool.
 
-See \url{https://paws-r.github.io/docs/ec2/deprovision_byoip_cidr.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_deprovision_byoip_cidr/} for full documentation.
 }
 \keyword{internal}

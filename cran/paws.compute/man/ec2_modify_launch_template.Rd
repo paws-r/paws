@@ -38,6 +38,6 @@ You must specify either the \code{LaunchTemplateName} or the
 \description{
 Modifies a launch template. You can specify which version of the launch template to set as the default version. When launching an instance, the default version applies when a launch template version is not specified.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_launch_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_launch_template/} for full documentation.
 }
 \keyword{internal}

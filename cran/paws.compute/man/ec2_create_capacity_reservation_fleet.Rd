@@ -78,6 +78,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a Capacity Reservation Fleet. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-cr-fleets.html#create-crfleet}{Create a Capacity Reservation Fleet} in the Amazon EC2 User Guide.
 
-See \url{https://paws-r.github.io/docs/ec2/create_capacity_reservation_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_capacity_reservation_fleet/} for full documentation.
 }
 \keyword{internal}

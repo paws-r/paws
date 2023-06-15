@@ -12,6 +12,6 @@ codecommit_delete_repository(repositoryName)
 \description{
 Deletes a repository. If a specified repository was already deleted, a null repository ID is returned.
 
-See \url{https://paws-r.github.io/docs/codecommit/delete_repository.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_delete_repository/} for full documentation.
 }
 \keyword{internal}

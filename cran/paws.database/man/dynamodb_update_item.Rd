@@ -233,6 +233,6 @@ in the \emph{Amazon DynamoDB Developer Guide}.}
 \description{
 Edits an existing item's attributes, or adds a new item to the table if it does not already exist. You can put, delete, or add attribute values. You can also perform a conditional update on an existing item (insert a new attribute name-value pair if it doesn't exist, or replace an existing name-value pair if it has certain expected attribute values).
 
-See \url{https://paws-r.github.io/docs/dynamodb/update_item.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_update_item/} for full documentation.
 }
 \keyword{internal}

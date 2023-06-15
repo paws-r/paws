@@ -17,6 +17,6 @@ GetActivityTaskOutput$taskToken.}
 \description{
 Used by activity workers and task states using the \href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token}{callback} pattern to report to Step Functions that the task represented by the specified \code{taskToken} is still making progress. This action resets the \code{Heartbeat} clock. The \code{Heartbeat} threshold is specified in the state machine's Amazon States Language definition (\code{HeartbeatSeconds}). This action does not in itself create an event in the execution history. However, if the task times out, the execution history contains an \code{ActivityTimedOut} entry for activities, or a \code{TaskTimedOut} entry for for tasks using the \href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync}{job run} or \href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token}{callback} pattern.
 
-See \url{https://paws-r.github.io/docs/sfn/send_task_heartbeat.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sfn_send_task_heartbeat/} for full documentation.
 }
 \keyword{internal}

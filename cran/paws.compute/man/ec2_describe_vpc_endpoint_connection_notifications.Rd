@@ -42,6 +42,6 @@ the remaining results, make another request with the returned
 \description{
 Describes the connection notifications for VPC endpoints and VPC endpoint services.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_vpc_endpoint_connection_notifications.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_vpc_endpoint_connection_notifications/} for full documentation.
 }
 \keyword{internal}

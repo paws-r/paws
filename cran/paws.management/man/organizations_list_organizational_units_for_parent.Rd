@@ -46,6 +46,6 @@ results.}
 \description{
 Lists the organizational units (OUs) in a parent organizational unit or root.
 
-See \url{https://paws-r.github.io/docs/organizations/list_organizational_units_for_parent.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_list_organizational_units_for_parent/} for full documentation.
 }
 \keyword{internal}

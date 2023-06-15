@@ -33,6 +33,6 @@ the request payload.}
 \description{
 Starts a Synchronous Express state machine execution. \code{\link[=sfn_start_sync_execution]{start_sync_execution}} is not available for \code{STANDARD} workflows.
 
-See \url{https://paws-r.github.io/docs/sfn/start_sync_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sfn_start_sync_execution/} for full documentation.
 }
 \keyword{internal}

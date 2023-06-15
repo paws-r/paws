@@ -36,6 +36,6 @@ sends data to Amazon SNS.}
 \description{
 Updates an existing event destination in a configuration set. You can update the IAM role ARN for CloudWatch Logs and Kinesis Data Firehose. You can also enable or disable the event destination.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/update_event_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_update_event_destination/} for full documentation.
 }
 \keyword{internal}

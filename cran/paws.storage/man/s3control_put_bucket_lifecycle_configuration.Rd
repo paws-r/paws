@@ -21,6 +21,6 @@ s3control_put_bucket_lifecycle_configuration(
 \description{
 This action puts a lifecycle configuration to an Amazon S3 on Outposts bucket. To put a lifecycle configuration to an S3 bucket, see \code{\link[=s3control_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration}} in the \emph{Amazon S3 API Reference}.
 
-See \url{https://paws-r.github.io/docs/s3control/put_bucket_lifecycle_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_put_bucket_lifecycle_configuration/} for full documentation.
 }
 \keyword{internal}

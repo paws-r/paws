@@ -30,6 +30,6 @@ Services use.
 \description{
 Creates a rule to control sampling behavior for instrumented applications. Services retrieve rules with \code{\link[=xray_get_sampling_rules]{get_sampling_rules}}, and evaluate each rule in ascending order of \emph{priority} for each request. If a rule matches, the service records a trace, borrowing it from the reservoir size. After 10 seconds, the service reports back to X-Ray with \code{\link[=xray_get_sampling_targets]{get_sampling_targets}} to get updated versions of each in-use rule. The updated rule contains a trace quota that the service can use instead of borrowing from the reservoir.
 
-See \url{https://paws-r.github.io/docs/xray/create_sampling_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_create_sampling_rule/} for full documentation.
 }
 \keyword{internal}

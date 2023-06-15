@@ -12,6 +12,6 @@ swf_undeprecate_domain(name)
 \description{
 Undeprecates a previously deprecated domain. After a domain has been undeprecated it can be used to create new workflow executions or register new types.
 
-See \url{https://paws-r.github.io/docs/swf/undeprecate_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_undeprecate_domain/} for full documentation.
 }
 \keyword{internal}

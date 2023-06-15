@@ -32,6 +32,6 @@ within the FinSpace environment.
 \description{
 Update your FinSpace environment.
 
-See \url{https://paws-r.github.io/docs/finspace/update_environment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspace_update_environment/} for full documentation.
 }
 \keyword{internal}

@@ -31,6 +31,6 @@ to GetEntitlements.}
 \description{
 GetEntitlements retrieves entitlement values for a given product. The results can be filtered based on customer identifier or product dimensions.
 
-See \url{https://paws-r.github.io/docs/marketplaceentitlementservice/get_entitlements.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/marketplaceentitlementservice_get_entitlements/} for full documentation.
 }
 \keyword{internal}

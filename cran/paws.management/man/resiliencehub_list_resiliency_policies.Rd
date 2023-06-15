@@ -22,6 +22,6 @@ in the response so that the remaining results can be retrieved.}
 \description{
 Lists the resiliency policies for the Resilience Hub applications.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/list_resiliency_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_list_resiliency_policies/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ of repositories, after the list of repositories previously requested.}
 \description{
 List linked repositories with detail data.
 
-See \url{https://paws-r.github.io/docs/proton/list_repositories.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_list_repositories/} for full documentation.
 }
 \keyword{internal}

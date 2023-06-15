@@ -17,6 +17,6 @@ elb_describe_load_balancer_policies(
 \description{
 Describes the specified policies.
 
-See \url{https://paws-r.github.io/docs/elb/describe_load_balancer_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_describe_load_balancer_policies/} for full documentation.
 }
 \keyword{internal}

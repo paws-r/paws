@@ -13,6 +13,6 @@ lexmodelsv2_delete_export(exportId)
 \description{
 Removes a previous export and the associated files stored in an S3 bucket.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/delete_export.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_delete_export/} for full documentation.
 }
 \keyword{internal}

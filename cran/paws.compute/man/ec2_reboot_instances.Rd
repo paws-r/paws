@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Requests a reboot of the specified instances. This operation is asynchronous; it only queues a request to reboot the specified instances. The operation succeeds if the instances are valid and belong to you. Requests to reboot terminated instances are ignored.
 
-See \url{https://paws-r.github.io/docs/ec2/reboot_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_reboot_instances/} for full documentation.
 }
 \keyword{internal}

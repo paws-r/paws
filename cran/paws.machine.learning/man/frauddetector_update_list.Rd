@@ -39,6 +39,6 @@ the list does not already have a variable type.}
 \description{
 Updates a list.
 
-See \url{https://paws-r.github.io/docs/frauddetector/update_list.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_update_list/} for full documentation.
 }
 \keyword{internal}

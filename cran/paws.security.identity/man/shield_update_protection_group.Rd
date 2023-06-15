@@ -49,6 +49,6 @@ protection group. You must set this when you set \code{Pattern} to
 \description{
 Updates an existing protection group. A protection group is a grouping of protected resources so they can be handled as a collective. This resource grouping improves the accuracy of detection and reduces false positives.
 
-See \url{https://paws-r.github.io/docs/shield/update_protection_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_update_protection_group/} for full documentation.
 }
 \keyword{internal}

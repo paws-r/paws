@@ -12,6 +12,6 @@ securityhub_enable_import_findings_for_product(ProductArn)
 \description{
 Enables the integration of a partner product with Security Hub. Integrated products send findings to Security Hub.
 
-See \url{https://paws-r.github.io/docs/securityhub/enable_import_findings_for_product.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_enable_import_findings_for_product/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ to authorize the request.}
 \description{
 Retrieves a vector data tile from the map resource. Map tiles are used by clients to render a map. they're addressed using a grid arrangement with an X coordinate, Y coordinate, and Z (zoom) level.
 
-See \url{https://paws-r.github.io/docs/locationservice/get_map_tile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_get_map_tile/} for full documentation.
 }
 \keyword{internal}

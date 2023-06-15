@@ -14,6 +14,6 @@ create an exclusions preview.}
 \description{
 Starts the generation of an exclusions preview for the specified assessment template. The exclusions preview lists the potential exclusions (ExclusionPreview) that Inspector can detect before it runs the assessment.
 
-See \url{https://paws-r.github.io/docs/inspector/create_exclusions_preview.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_create_exclusions_preview/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ sagemaker_stop_training_job(TrainingJobName)
 \description{
 Stops a training job. To stop a job, SageMaker sends the algorithm the \code{SIGTERM} signal, which delays job termination for 120 seconds. Algorithms might use this 120-second window to save the model artifacts, so the results of the training is not lost.
 
-See \url{https://paws-r.github.io/docs/sagemaker/stop_training_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_stop_training_job/} for full documentation.
 }
 \keyword{internal}

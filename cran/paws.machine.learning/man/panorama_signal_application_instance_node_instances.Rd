@@ -17,6 +17,6 @@ panorama_signal_application_instance_node_instances(
 \description{
 Signal camera nodes to stop or resume.
 
-See \url{https://paws-r.github.io/docs/panorama/signal_application_instance_node_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_signal_application_instance_node_instances/} for full documentation.
 }
 \keyword{internal}

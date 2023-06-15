@@ -12,6 +12,6 @@ finspacedata_get_dataset(datasetId)
 \description{
 Returns information about a Dataset.
 
-See \url{https://paws-r.github.io/docs/finspacedata/get_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_get_dataset/} for full documentation.
 }
 \keyword{internal}

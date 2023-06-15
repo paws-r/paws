@@ -27,6 +27,6 @@ Optional.}
 \description{
 Gets a list of \code{FileSystemAssociationSummary} objects. Each object contains a summary of a file system association. This operation is only supported for FSx File Gateways.
 
-See \url{https://paws-r.github.io/docs/storagegateway/list_file_system_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_list_file_system_associations/} for full documentation.
 }
 \keyword{internal}

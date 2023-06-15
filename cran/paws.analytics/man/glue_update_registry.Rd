@@ -17,6 +17,6 @@ field will not be updated.}
 \description{
 Updates an existing registry which is used to hold a collection of schemas. The updated properties relate to the registry, and do not modify any of the schemas within the registry.
 
-See \url{https://paws-r.github.io/docs/glue/update_registry.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_update_registry/} for full documentation.
 }
 \keyword{internal}

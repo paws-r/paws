@@ -25,6 +25,6 @@ update operation is successful, it generates a new cluster version.}
 \description{
 Updates the security settings for the cluster. You can use this operation to specify encryption and authentication on existing clusters.
 
-See \url{https://paws-r.github.io/docs/kafka/update_security.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_update_security/} for full documentation.
 }
 \keyword{internal}

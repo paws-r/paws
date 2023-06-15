@@ -15,6 +15,6 @@ details are being requested.}
 \description{
 Requests a user's mailbox details for a specified organization and user.
 
-See \url{https://paws-r.github.io/docs/workmail/get_mailbox_details.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_get_mailbox_details/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ To get the key ID and key ARN for a KMS key, use
 \description{
 Sets the key state of a KMS key to enabled. This allows you to use the KMS key for \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}.
 
-See \url{https://paws-r.github.io/docs/kms/enable_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_enable_key/} for full documentation.
 }
 \keyword{internal}

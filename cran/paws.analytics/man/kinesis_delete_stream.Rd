@@ -23,6 +23,6 @@ stream has registered consumers, the call to
 \description{
 Deletes a Kinesis data stream and all its shards and data. You must shut down any applications that are operating on the stream before you delete the stream. If an application attempts to operate on a deleted stream, it receives the exception \code{ResourceNotFoundException}.
 
-See \url{https://paws-r.github.io/docs/kinesis/delete_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesis_delete_stream/} for full documentation.
 }
 \keyword{internal}

@@ -49,6 +49,6 @@ ValidationException error occurs. The default value is 100.}
 \description{
 Lists the entries (images) within a dataset. An entry is a JSON Line that contains the information for a single image, including the image location, assigned labels, and object location bounding boxes. For more information, see \href{https://docs.aws.amazon.com/rekognition/latest/customlabels-dg/}{Creating a manifest file}.
 
-See \url{https://paws-r.github.io/docs/rekognition/list_dataset_entries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_list_dataset_entries/} for full documentation.
 }
 \keyword{internal}

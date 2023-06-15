@@ -25,6 +25,6 @@ run in parallel for the Map Run at the same time.}
 \description{
 Updates an in-progress Map Run's configuration to include changes to the settings that control maximum concurrency and Map Run failure.
 
-See \url{https://paws-r.github.io/docs/sfn/update_map_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sfn_update_map_run/} for full documentation.
 }
 \keyword{internal}

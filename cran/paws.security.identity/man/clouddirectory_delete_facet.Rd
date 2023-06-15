@@ -15,6 +15,6 @@ more information, see arns.}
 \description{
 Deletes a given Facet. All attributes and Rules that are associated with the facet will be deleted. Only development schema facets are allowed deletion.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/delete_facet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_delete_facet/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ route53domains_push_domain(DomainName, Target)
 \description{
 Moves a domain from Amazon Web Services to another registrar.
 
-See \url{https://paws-r.github.io/docs/route53domains/push_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_push_domain/} for full documentation.
 }
 \keyword{internal}

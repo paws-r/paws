@@ -13,6 +13,6 @@ route53resolver_get_firewall_config(ResourceId)
 \description{
 Retrieves the configuration of the firewall behavior provided by DNS Firewall for a single VPC from Amazon Virtual Private Cloud (Amazon VPC).
 
-See \url{https://paws-r.github.io/docs/route53resolver/get_firewall_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_get_firewall_config/} for full documentation.
 }
 \keyword{internal}

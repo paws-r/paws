@@ -57,6 +57,6 @@ different account, the request fails with the HTTP status code
 \description{
 Removes the null version (if there is one) of an object and inserts a delete marker, which becomes the latest version of the object. If there isn't a null version, Amazon S3 does not remove any objects but will still respond that the command was successful.
 
-See \url{https://paws-r.github.io/docs/s3/delete_object.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_delete_object/} for full documentation.
 }
 \keyword{internal}

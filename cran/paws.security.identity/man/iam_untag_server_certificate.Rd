@@ -20,6 +20,6 @@ keys are removed from the specified IAM server certificate.}
 \description{
 Removes the specified tags from the IAM server certificate. For more information about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources} in the \emph{IAM User Guide}.
 
-See \url{https://paws-r.github.io/docs/iam/untag_server_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_untag_server_certificate/} for full documentation.
 }
 \keyword{internal}

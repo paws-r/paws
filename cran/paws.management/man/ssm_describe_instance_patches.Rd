@@ -45,6 +45,6 @@ from a previous call.)}
 \description{
 Retrieves information about the patches on the specified managed node and their state relative to the patch baseline being used for the node.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_instance_patches.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_instance_patches/} for full documentation.
 }
 \keyword{internal}

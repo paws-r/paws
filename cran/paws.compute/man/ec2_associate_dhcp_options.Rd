@@ -21,6 +21,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Associates a set of DHCP options (that you've previously created) with the specified VPC, or associates no DHCP options with the VPC.
 
-See \url{https://paws-r.github.io/docs/ec2/associate_dhcp_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_associate_dhcp_options/} for full documentation.
 }
 \keyword{internal}

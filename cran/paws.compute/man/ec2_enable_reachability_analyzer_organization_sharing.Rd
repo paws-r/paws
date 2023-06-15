@@ -16,6 +16,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Establishes a trust relationship between Reachability Analyzer and Organizations. This operation must be performed by the management account for the organization.
 
-See \url{https://paws-r.github.io/docs/ec2/enable_reachability_analyzer_organization_sharing.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_enable_reachability_analyzer_organization_sharing/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ billingconductor_associate_pricing_rules(Arn, PricingRuleArns)
 \description{
 Connects an array of \code{PricingRuleArns} to a defined \code{PricingPlan}. The maximum number \code{PricingRuleArn} that can be associated in one call is 30.
 
-See \url{https://paws-r.github.io/docs/billingconductor/associate_pricing_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_associate_pricing_rules/} for full documentation.
 }
 \keyword{internal}

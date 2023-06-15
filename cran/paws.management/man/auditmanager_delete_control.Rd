@@ -12,6 +12,6 @@ auditmanager_delete_control(controlId)
 \description{
 Deletes a custom control in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/delete_control.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_delete_control/} for full documentation.
 }
 \keyword{internal}

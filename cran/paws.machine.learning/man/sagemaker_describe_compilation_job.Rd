@@ -12,6 +12,6 @@ sagemaker_describe_compilation_job(CompilationJobName)
 \description{
 Returns information about a model compilation job.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_compilation_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_compilation_job/} for full documentation.
 }
 \keyword{internal}

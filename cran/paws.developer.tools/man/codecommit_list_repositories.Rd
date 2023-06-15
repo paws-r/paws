@@ -19,6 +19,6 @@ When the client sends the token back to AWS CodeCommit, another page of
 \description{
 Gets information about one or more repositories.
 
-See \url{https://paws-r.github.io/docs/codecommit/list_repositories.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_list_repositories/} for full documentation.
 }
 \keyword{internal}

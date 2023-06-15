@@ -13,6 +13,6 @@ wafv2_put_logging_configuration(LoggingConfiguration)
 \description{
 Enables the specified LoggingConfiguration, to start logging from a web ACL, according to the configuration provided.
 
-See \url{https://paws-r.github.io/docs/wafv2/put_logging_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_put_logging_configuration/} for full documentation.
 }
 \keyword{internal}

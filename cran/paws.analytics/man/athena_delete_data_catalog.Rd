@@ -12,6 +12,6 @@ athena_delete_data_catalog(Name)
 \description{
 Deletes a data catalog.
 
-See \url{https://paws-r.github.io/docs/athena/delete_data_catalog.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_delete_data_catalog/} for full documentation.
 }
 \keyword{internal}

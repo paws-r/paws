@@ -42,6 +42,6 @@ aggregation Region.}
 \description{
 Used to enable finding aggregation. Must be called from the aggregation Region.
 
-See \url{https://paws-r.github.io/docs/securityhub/create_finding_aggregator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_create_finding_aggregator/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ different account, the request fails with the HTTP status code
 \description{
 Deletes an analytics configuration for the bucket (specified by the analytics configuration ID).
 
-See \url{https://paws-r.github.io/docs/s3/delete_bucket_analytics_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_delete_bucket_analytics_configuration/} for full documentation.
 }
 \keyword{internal}

@@ -27,6 +27,6 @@ backups. Automated backups are enabled by default.}
 \description{
 Updates settings for a server.
 
-See \url{https://paws-r.github.io/docs/opsworkscm/update_server.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworkscm_update_server/} for full documentation.
 }
 \keyword{internal}

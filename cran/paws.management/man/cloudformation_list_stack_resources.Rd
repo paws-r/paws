@@ -23,6 +23,6 @@ to retrieve.}
 \description{
 Returns descriptions of all resources of the specified stack.
 
-See \url{https://paws-r.github.io/docs/cloudformation/list_stack_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_list_stack_resources/} for full documentation.
 }
 \keyword{internal}

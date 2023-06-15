@@ -62,6 +62,6 @@ permission. This parameter is supported for backwards compatibility.}
 \description{
 Adds or replaces the RAM permission for a resource type included in a resource share. You can have exactly one permission associated with each resource type in the resource share. You can add a new RAM permission only if there are currently no resources of that resource type currently in the resource share.
 
-See \url{https://paws-r.github.io/docs/ram/associate_resource_share_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_associate_resource_share_permission/} for full documentation.
 }
 \keyword{internal}

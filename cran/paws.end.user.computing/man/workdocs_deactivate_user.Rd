@@ -16,6 +16,6 @@ Services administrator credentials to access the API.}
 \description{
 Deactivates the specified user, which revokes the user's access to Amazon WorkDocs.
 
-See \url{https://paws-r.github.io/docs/workdocs/deactivate_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_deactivate_user/} for full documentation.
 }
 \keyword{internal}

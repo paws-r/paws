@@ -17,6 +17,6 @@ lookoutmetrics_detect_metric_set_config(
 \description{
 Detects an Amazon S3 dataset's file format, interval, and offset.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/detect_metric_set_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_detect_metric_set_config/} for full documentation.
 }
 \keyword{internal}

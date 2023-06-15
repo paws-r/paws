@@ -38,6 +38,6 @@ have explicit account settings set for them.}
 \description{
 Modifies an account setting. Account settings are set on a per-Region basis.
 
-See \url{https://paws-r.github.io/docs/ecs/put_account_setting.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_put_account_setting/} for full documentation.
 }
 \keyword{internal}

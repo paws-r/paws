@@ -9,6 +9,6 @@ shield_get_subscription_state()
 \description{
 Returns the \code{SubscriptionState}, either \code{Active} or \code{Inactive}.
 
-See \url{https://paws-r.github.io/docs/shield/get_subscription_state.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_get_subscription_state/} for full documentation.
 }
 \keyword{internal}

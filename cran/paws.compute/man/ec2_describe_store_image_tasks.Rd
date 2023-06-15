@@ -43,6 +43,6 @@ same call.}
 \description{
 Describes the progress of the AMI store tasks. You can describe the store tasks for specified AMIs. If you don't specify the AMIs, you get a paginated list of store tasks from the last 31 days.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_store_image_tasks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_store_image_tasks/} for full documentation.
 }
 \keyword{internal}

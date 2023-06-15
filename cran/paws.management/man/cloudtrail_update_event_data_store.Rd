@@ -25,8 +25,8 @@ want to update.}
 store. You can configure up to five advanced event selectors for each
 event data store.}
 
-\item{MultiRegionEnabled}{Specifies whether an event data store collects events from all regions,
-or only from the region in which it was created.}
+\item{MultiRegionEnabled}{Specifies whether an event data store collects events from all Regions,
+or only from the Region in which it was created.}
 
 \item{OrganizationEnabled}{Specifies whether an event data store collects events logged for an
 organization in Organizations.}
@@ -64,6 +64,6 @@ Examples:
 \description{
 Updates an event data store. The required \code{EventDataStore} value is an ARN or the ID portion of the ARN. Other parameters are optional, but at least one optional parameter must be specified, or CloudTrail throws an error. \code{RetentionPeriod} is in days, and valid values are integers between 90 and 2557. By default, \code{TerminationProtection} is enabled.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/update_event_data_store.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_update_event_data_store/} for full documentation.
 }
 \keyword{internal}

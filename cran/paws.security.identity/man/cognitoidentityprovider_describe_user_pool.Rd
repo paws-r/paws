@@ -13,6 +13,6 @@ cognitoidentityprovider_describe_user_pool(UserPoolId)
 \description{
 Returns the configuration information and metadata of the specified user pool.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/describe_user_pool.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_user_pool/} for full documentation.
 }
 \keyword{internal}

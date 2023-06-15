@@ -23,6 +23,6 @@ the function name, it is limited to 64 characters in length.}
 \description{
 Removes a concurrent execution limit from a function.
 
-See \url{https://paws-r.github.io/docs/lambda/delete_function_concurrency.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_delete_function_concurrency/} for full documentation.
 }
 \keyword{internal}

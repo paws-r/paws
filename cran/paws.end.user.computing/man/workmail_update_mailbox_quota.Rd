@@ -18,6 +18,6 @@ update the mailbox quota.}
 \description{
 Updates a user's current mailbox quota for a specified organization and user.
 
-See \url{https://paws-r.github.io/docs/workmail/update_mailbox_quota.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_update_mailbox_quota/} for full documentation.
 }
 \keyword{internal}

@@ -48,6 +48,6 @@ data.}
 \description{
 Retrieves search metrics data. The data provides a snapshot of how your users interact with your search application and how effective the application is.
 
-See \url{https://paws-r.github.io/docs/kendra/get_snapshots.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_get_snapshots/} for full documentation.
 }
 \keyword{internal}

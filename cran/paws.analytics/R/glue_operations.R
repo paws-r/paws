@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates one or more partitions in a batch operation.
 #'
-#' See [https://paws-r.github.io/docs/glue/batch_create_partition.html](https://paws-r.github.io/docs/glue/batch_create_partition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_batch_create_partition/](https://www.paws-r-sdk.com/docs/glue_batch_create_partition/) for full documentation.
 #'
 #' @param CatalogId The ID of the catalog in which the partition is to be created.
 #' Currently, this should be the Amazon Web Services account ID.
@@ -43,7 +43,7 @@ glue_batch_create_partition <- function(CatalogId = NULL, DatabaseName, TableNam
 #' @description
 #' Deletes a list of connection definitions from the Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/glue/batch_delete_connection.html](https://paws-r.github.io/docs/glue/batch_delete_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_batch_delete_connection/](https://www.paws-r-sdk.com/docs/glue_batch_delete_connection/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which the connections reside. If none is
 #' provided, the Amazon Web Services account ID is used by default.
@@ -74,7 +74,7 @@ glue_batch_delete_connection <- function(CatalogId = NULL, ConnectionNameList) {
 #' @description
 #' Deletes one or more partitions in a batch operation.
 #'
-#' See [https://paws-r.github.io/docs/glue/batch_delete_partition.html](https://paws-r.github.io/docs/glue/batch_delete_partition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_batch_delete_partition/](https://www.paws-r-sdk.com/docs/glue_batch_delete_partition/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partition to be deleted resides. If
 #' none is provided, the Amazon Web Services account ID is used by default.
@@ -108,7 +108,7 @@ glue_batch_delete_partition <- function(CatalogId = NULL, DatabaseName, TableNam
 #' @description
 #' Deletes multiple tables at once.
 #'
-#' See [https://paws-r.github.io/docs/glue/batch_delete_table.html](https://paws-r.github.io/docs/glue/batch_delete_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_batch_delete_table/](https://www.paws-r-sdk.com/docs/glue_batch_delete_table/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the table resides. If none is provided,
 #' the Amazon Web Services account ID is used by default.
@@ -142,7 +142,7 @@ glue_batch_delete_table <- function(CatalogId = NULL, DatabaseName, TablesToDele
 #' @description
 #' Deletes a specified batch of versions of a table.
 #'
-#' See [https://paws-r.github.io/docs/glue/batch_delete_table_version.html](https://paws-r.github.io/docs/glue/batch_delete_table_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_batch_delete_table_version/](https://www.paws-r-sdk.com/docs/glue_batch_delete_table_version/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the tables reside. If none is provided,
 #' the Amazon Web Services account ID is used by default.
@@ -178,7 +178,7 @@ glue_batch_delete_table_version <- function(CatalogId = NULL, DatabaseName, Tabl
 #' @description
 #' Retrieves information about a list of blueprints.
 #'
-#' See [https://paws-r.github.io/docs/glue/batch_get_blueprints.html](https://paws-r.github.io/docs/glue/batch_get_blueprints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_batch_get_blueprints/](https://www.paws-r-sdk.com/docs/glue_batch_get_blueprints/) for full documentation.
 #'
 #' @param Names &#91;required&#93; A list of blueprint names.
 #' @param IncludeBlueprint Specifies whether or not to include the blueprint in the response.
@@ -210,7 +210,7 @@ glue_batch_get_blueprints <- function(Names, IncludeBlueprint = NULL, IncludePar
 #' @description
 #' Returns a list of resource metadata for a given list of crawler names. After calling the [`list_crawlers`][glue_list_crawlers] operation, you can call this operation to access the data to which you have been granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.
 #'
-#' See [https://paws-r.github.io/docs/glue/batch_get_crawlers.html](https://paws-r.github.io/docs/glue/batch_get_crawlers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_batch_get_crawlers/](https://www.paws-r-sdk.com/docs/glue_batch_get_crawlers/) for full documentation.
 #'
 #' @param CrawlerNames &#91;required&#93; A list of crawler names, which might be the names returned from the
 #' [`list_crawlers`][glue_list_crawlers] operation.
@@ -241,7 +241,7 @@ glue_batch_get_crawlers <- function(CrawlerNames) {
 #' @description
 #' Retrieves the details for the custom patterns specified by a list of names.
 #'
-#' See [https://paws-r.github.io/docs/glue/batch_get_custom_entity_types.html](https://paws-r.github.io/docs/glue/batch_get_custom_entity_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_batch_get_custom_entity_types/](https://www.paws-r-sdk.com/docs/glue_batch_get_custom_entity_types/) for full documentation.
 #'
 #' @param Names &#91;required&#93; A list of names of the custom patterns that you want to retrieve.
 #'
@@ -270,7 +270,7 @@ glue_batch_get_custom_entity_types <- function(Names) {
 #' @description
 #' Retrieves a list of data quality results for the specified result IDs.
 #'
-#' See [https://paws-r.github.io/docs/glue/batch_get_data_quality_result.html](https://paws-r.github.io/docs/glue/batch_get_data_quality_result.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_batch_get_data_quality_result/](https://www.paws-r-sdk.com/docs/glue_batch_get_data_quality_result/) for full documentation.
 #'
 #' @param ResultIds &#91;required&#93; A list of unique result IDs for the data quality results.
 #'
@@ -300,7 +300,7 @@ glue_batch_get_data_quality_result <- function(ResultIds) {
 #' @description
 #' Returns a list of resource metadata for a given list of development endpoint names. After calling the [`list_dev_endpoints`][glue_list_dev_endpoints] operation, you can call this operation to access the data to which you have been granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.
 #'
-#' See [https://paws-r.github.io/docs/glue/batch_get_dev_endpoints.html](https://paws-r.github.io/docs/glue/batch_get_dev_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_batch_get_dev_endpoints/](https://www.paws-r-sdk.com/docs/glue_batch_get_dev_endpoints/) for full documentation.
 #'
 #' @param DevEndpointNames &#91;required&#93; The list of `DevEndpoint` names, which might be the names returned from
 #' the `ListDevEndpoint` operation.
@@ -330,7 +330,7 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #' @description
 #' Returns a list of resource metadata for a given list of job names. After calling the [`list_jobs`][glue_list_jobs] operation, you can call this operation to access the data to which you have been granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.
 #'
-#' See [https://paws-r.github.io/docs/glue/batch_get_jobs.html](https://paws-r.github.io/docs/glue/batch_get_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_batch_get_jobs/](https://www.paws-r-sdk.com/docs/glue_batch_get_jobs/) for full documentation.
 #'
 #' @param JobNames &#91;required&#93; A list of job names, which might be the names returned from the
 #' [`list_jobs`][glue_list_jobs] operation.
@@ -360,7 +360,7 @@ glue_batch_get_jobs <- function(JobNames) {
 #' @description
 #' Retrieves partitions in a batch request.
 #'
-#' See [https://paws-r.github.io/docs/glue/batch_get_partition.html](https://paws-r.github.io/docs/glue/batch_get_partition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_batch_get_partition/](https://www.paws-r-sdk.com/docs/glue_batch_get_partition/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
 #' none is supplied, the Amazon Web Services account ID is used by default.
@@ -393,7 +393,7 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
 #' @description
 #' Returns a list of resource metadata for a given list of trigger names. After calling the [`list_triggers`][glue_list_triggers] operation, you can call this operation to access the data to which you have been granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.
 #'
-#' See [https://paws-r.github.io/docs/glue/batch_get_triggers.html](https://paws-r.github.io/docs/glue/batch_get_triggers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_batch_get_triggers/](https://www.paws-r-sdk.com/docs/glue_batch_get_triggers/) for full documentation.
 #'
 #' @param TriggerNames &#91;required&#93; A list of trigger names, which may be the names returned from the
 #' [`list_triggers`][glue_list_triggers] operation.
@@ -423,7 +423,7 @@ glue_batch_get_triggers <- function(TriggerNames) {
 #' @description
 #' Returns a list of resource metadata for a given list of workflow names. After calling the [`list_workflows`][glue_list_workflows] operation, you can call this operation to access the data to which you have been granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.
 #'
-#' See [https://paws-r.github.io/docs/glue/batch_get_workflows.html](https://paws-r.github.io/docs/glue/batch_get_workflows.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_batch_get_workflows/](https://www.paws-r-sdk.com/docs/glue_batch_get_workflows/) for full documentation.
 #'
 #' @param Names &#91;required&#93; A list of workflow names, which may be the names returned from the
 #' [`list_workflows`][glue_list_workflows] operation.
@@ -455,7 +455,7 @@ glue_batch_get_workflows <- function(Names, IncludeGraph = NULL) {
 #' @description
 #' Stops one or more job runs for a specified job definition.
 #'
-#' See [https://paws-r.github.io/docs/glue/batch_stop_job_run.html](https://paws-r.github.io/docs/glue/batch_stop_job_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_batch_stop_job_run/](https://www.paws-r-sdk.com/docs/glue_batch_stop_job_run/) for full documentation.
 #'
 #' @param JobName &#91;required&#93; The name of the job definition for which to stop job runs.
 #' @param JobRunIds &#91;required&#93; A list of the `JobRunIds` that should be stopped for that job
@@ -486,7 +486,7 @@ glue_batch_stop_job_run <- function(JobName, JobRunIds) {
 #' @description
 #' Updates one or more partitions in a batch operation.
 #'
-#' See [https://paws-r.github.io/docs/glue/batch_update_partition.html](https://paws-r.github.io/docs/glue/batch_update_partition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_batch_update_partition/](https://www.paws-r-sdk.com/docs/glue_batch_update_partition/) for full documentation.
 #'
 #' @param CatalogId The ID of the catalog in which the partition is to be updated.
 #' Currently, this should be the Amazon Web Services account ID.
@@ -522,7 +522,7 @@ glue_batch_update_partition <- function(CatalogId = NULL, DatabaseName, TableNam
 #' @description
 #' Cancels the specified recommendation run that was being used to generate rules.
 #'
-#' See [https://paws-r.github.io/docs/glue/cancel_data_quality_rule_recommendation_run.html](https://paws-r.github.io/docs/glue/cancel_data_quality_rule_recommendation_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_cancel_data_quality_rule_recommendation_run/](https://www.paws-r-sdk.com/docs/glue_cancel_data_quality_rule_recommendation_run/) for full documentation.
 #'
 #' @param RunId &#91;required&#93; The unique run identifier associated with this run.
 #'
@@ -551,7 +551,7 @@ glue_cancel_data_quality_rule_recommendation_run <- function(RunId) {
 #' @description
 #' Cancels a run where a ruleset is being evaluated against a data source.
 #'
-#' See [https://paws-r.github.io/docs/glue/cancel_data_quality_ruleset_evaluation_run.html](https://paws-r.github.io/docs/glue/cancel_data_quality_ruleset_evaluation_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_cancel_data_quality_ruleset_evaluation_run/](https://www.paws-r-sdk.com/docs/glue_cancel_data_quality_ruleset_evaluation_run/) for full documentation.
 #'
 #' @param RunId &#91;required&#93; The unique run identifier associated with this run.
 #'
@@ -580,7 +580,7 @@ glue_cancel_data_quality_ruleset_evaluation_run <- function(RunId) {
 #' @description
 #' Cancels (stops) a task run. Machine learning task runs are asynchronous tasks that Glue runs on your behalf as part of various machine learning workflows. You can cancel a machine learning task run at any time by calling [`cancel_ml_task_run`][glue_cancel_ml_task_run] with a task run's parent transform's `TransformID` and the task run's `TaskRunId`.
 #'
-#' See [https://paws-r.github.io/docs/glue/cancel_ml_task_run.html](https://paws-r.github.io/docs/glue/cancel_ml_task_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_cancel_ml_task_run/](https://www.paws-r-sdk.com/docs/glue_cancel_ml_task_run/) for full documentation.
 #'
 #' @param TransformId &#91;required&#93; The unique identifier of the machine learning transform.
 #' @param TaskRunId &#91;required&#93; A unique identifier for the task run.
@@ -610,7 +610,7 @@ glue_cancel_ml_task_run <- function(TransformId, TaskRunId) {
 #' @description
 #' Cancels the statement.
 #'
-#' See [https://paws-r.github.io/docs/glue/cancel_statement.html](https://paws-r.github.io/docs/glue/cancel_statement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_cancel_statement/](https://www.paws-r-sdk.com/docs/glue_cancel_statement/) for full documentation.
 #'
 #' @param SessionId &#91;required&#93; The Session ID of the statement to be cancelled.
 #' @param Id &#91;required&#93; The ID of the statement to be cancelled.
@@ -641,7 +641,7 @@ glue_cancel_statement <- function(SessionId, Id, RequestOrigin = NULL) {
 #' @description
 #' Validates the supplied schema. This call has no side effects, it simply validates using the supplied schema using `DataFormat` as the format. Since it does not take a schema set name, no compatibility checks are performed.
 #'
-#' See [https://paws-r.github.io/docs/glue/check_schema_version_validity.html](https://paws-r.github.io/docs/glue/check_schema_version_validity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_check_schema_version_validity/](https://www.paws-r-sdk.com/docs/glue_check_schema_version_validity/) for full documentation.
 #'
 #' @param DataFormat &#91;required&#93; The data format of the schema definition. Currently `AVRO`, `JSON` and
 #' `PROTOBUF` are supported.
@@ -672,7 +672,7 @@ glue_check_schema_version_validity <- function(DataFormat, SchemaDefinition) {
 #' @description
 #' Registers a blueprint with Glue.
 #'
-#' See [https://paws-r.github.io/docs/glue/create_blueprint.html](https://paws-r.github.io/docs/glue/create_blueprint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_create_blueprint/](https://www.paws-r-sdk.com/docs/glue_create_blueprint/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the blueprint.
 #' @param Description A description of the blueprint.
@@ -704,7 +704,7 @@ glue_create_blueprint <- function(Name, Description = NULL, BlueprintLocation, T
 #' @description
 #' Creates a classifier in the user's account. This can be a `GrokClassifier`, an `XMLClassifier`, a `JsonClassifier`, or a `CsvClassifier`, depending on which field of the request is present.
 #'
-#' See [https://paws-r.github.io/docs/glue/create_classifier.html](https://paws-r.github.io/docs/glue/create_classifier.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_create_classifier/](https://www.paws-r-sdk.com/docs/glue_create_classifier/) for full documentation.
 #'
 #' @param GrokClassifier A `GrokClassifier` object specifying the classifier to create.
 #' @param XMLClassifier An `XMLClassifier` object specifying the classifier to create.
@@ -736,7 +736,7 @@ glue_create_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #' @description
 #' Creates a connection definition in the Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/glue/create_connection.html](https://paws-r.github.io/docs/glue/create_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_create_connection/](https://www.paws-r-sdk.com/docs/glue_create_connection/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which to create the connection. If none is
 #' provided, the Amazon Web Services account ID is used by default.
@@ -769,7 +769,7 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput, Tags = NUL
 #' @description
 #' Creates a new crawler with specified targets, role, configuration, and optional schedule. At least one crawl target must be specified, in the `s3Targets` field, the `jdbcTargets` field, or the `DynamoDBTargets` field.
 #'
-#' See [https://paws-r.github.io/docs/glue/create_crawler.html](https://paws-r.github.io/docs/glue/create_crawler.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_create_crawler/](https://www.paws-r-sdk.com/docs/glue_create_crawler/) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the new crawler.
 #' @param Role &#91;required&#93; The IAM role or Amazon Resource Name (ARN) of an IAM role used by the
@@ -831,7 +831,7 @@ glue_create_crawler <- function(Name, Role, DatabaseName = NULL, Description = N
 #' @description
 #' Creates a custom pattern that is used to detect sensitive data across the columns and rows of your structured data.
 #'
-#' See [https://paws-r.github.io/docs/glue/create_custom_entity_type.html](https://paws-r.github.io/docs/glue/create_custom_entity_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_create_custom_entity_type/](https://www.paws-r-sdk.com/docs/glue_create_custom_entity_type/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A name for the custom pattern that allows it to be retrieved or deleted
 #' later. This name must be unique per Amazon Web Services account.
@@ -870,7 +870,7 @@ glue_create_custom_entity_type <- function(Name, RegexString, ContextWords = NUL
 #' @description
 #' Creates a data quality ruleset with DQDL rules applied to a specified Glue table.
 #'
-#' See [https://paws-r.github.io/docs/glue/create_data_quality_ruleset.html](https://paws-r.github.io/docs/glue/create_data_quality_ruleset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_create_data_quality_ruleset/](https://www.paws-r-sdk.com/docs/glue_create_data_quality_ruleset/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A unique name for the data quality ruleset.
 #' @param Description A description of the data quality ruleset.
@@ -907,7 +907,7 @@ glue_create_data_quality_ruleset <- function(Name, Description = NULL, Ruleset, 
 #' @description
 #' Creates a new database in a Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/glue/create_database.html](https://paws-r.github.io/docs/glue/create_database.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_create_database/](https://www.paws-r-sdk.com/docs/glue_create_database/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which to create the database. If none is
 #' provided, the Amazon Web Services account ID is used by default.
@@ -939,7 +939,7 @@ glue_create_database <- function(CatalogId = NULL, DatabaseInput, Tags = NULL) {
 #' @description
 #' Creates a new development endpoint.
 #'
-#' See [https://paws-r.github.io/docs/glue/create_dev_endpoint.html](https://paws-r.github.io/docs/glue/create_dev_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_create_dev_endpoint/](https://www.paws-r-sdk.com/docs/glue_create_dev_endpoint/) for full documentation.
 #'
 #' @param EndpointName &#91;required&#93; The name to be assigned to the new `DevEndpoint`.
 #' @param RoleArn &#91;required&#93; The IAM role for the `DevEndpoint`.
@@ -1044,7 +1044,7 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' @description
 #' Creates a new job definition.
 #'
-#' See [https://paws-r.github.io/docs/glue/create_job.html](https://paws-r.github.io/docs/glue/create_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_create_job/](https://www.paws-r-sdk.com/docs/glue_create_job/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name you assign to this job definition. It must be unique in your
 #' account.
@@ -1055,7 +1055,8 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' @param ExecutionProperty An `ExecutionProperty` specifying the maximum number of concurrent runs
 #' allowed for this job.
 #' @param Command &#91;required&#93; The `JobCommand` that runs this job.
-#' @param DefaultArguments The default arguments for this job.
+#' @param DefaultArguments The default arguments for every run of this job, specified as name-value
+#' pairs.
 #' 
 #' You can specify arguments here that your own job-execution script
 #' consumes, as well as arguments that Glue itself consumes.
@@ -1069,11 +1070,17 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' Python](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html)
 #' topic in the developer guide.
 #' 
-#' For information about the key-value pairs that Glue consumes to set up
-#' your job, see the [Special Parameters Used by
+#' For information about the arguments you can provide to this field when
+#' configuring Spark jobs, see the [Special Parameters Used by
 #' Glue](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
 #' topic in the developer guide.
-#' @param NonOverridableArguments Non-overridable arguments for this job, specified as name-value pairs.
+#' 
+#' For information about the arguments you can provide to this field when
+#' configuring Ray jobs, see [Using job parameters in Ray
+#' jobs](https://docs.aws.amazon.com/glue/latest/dg/author-job-ray-job-parameters.html)
+#' in the developer guide.
+#' @param NonOverridableArguments Arguments for this job that are not overridden when providing job
+#' arguments in a job run, specified as name-value pairs.
 #' @param Connections The connections used for this job.
 #' @param MaxRetries The maximum number of times to retry this job if it fails.
 #' @param AllocatedCapacity This parameter is deprecated. Use `MaxCapacity` instead.
@@ -1093,10 +1100,14 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' information, see the [Glue pricing
 #' page](https://aws.amazon.com/glue/pricing/).
 #' 
-#' Do not set `Max Capacity` if using `WorkerType` and `NumberOfWorkers`.
+#' For Glue version 2.0+ jobs, you cannot specify a `Maximum capacity`.
+#' Instead, you should specify a `Worker type` and the `Number of workers`.
+#' 
+#' Do not set `MaxCapacity` if using `WorkerType` and `NumberOfWorkers`.
 #' 
 #' The value that can be allocated for `MaxCapacity` depends on whether you
-#' are running a Python shell job or an Apache Spark ETL job:
+#' are running a Python shell job, an Apache Spark ETL job, or an Apache
+#' Spark streaming ETL job:
 #' 
 #' -   When you specify a Python shell job
 #'     (`JobCommand.Name`="pythonshell"), you can allocate either 0.0625 or
@@ -1104,13 +1115,9 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' 
 #' -   When you specify an Apache Spark ETL job
 #'     (`JobCommand.Name`="glueetl") or Apache Spark streaming ETL job
-#'     (`JobCommand.Name`="gluestreaming"), you can allocate a minimum of 2
+#'     (`JobCommand.Name`="gluestreaming"), you can allocate from 2 to 100
 #'     DPUs. The default is 10 DPUs. This job type cannot have a fractional
 #'     DPU allocation.
-#' 
-#' For Glue version 2.0 jobs, you cannot instead specify a
-#' `Maximum capacity`. Instead, you should specify a `Worker type` and the
-#' `Number of workers`.
 #' @param SecurityConfiguration The name of the `SecurityConfiguration` structure to be used with this
 #' job.
 #' @param Tags The tags to use with this job. You may use tags to limit access to the
@@ -1119,9 +1126,13 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' Glue](https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in
 #' the developer guide.
 #' @param NotificationProperty Specifies configuration properties of a job notification.
-#' @param GlueVersion Glue version determines the versions of Apache Spark and Python that
-#' Glue supports. The Python version indicates the version supported for
-#' jobs of type Spark.
+#' @param GlueVersion In Spark jobs, `GlueVersion` determines the versions of Apache Spark and
+#' Python that Glue available in a job. The Python version indicates the
+#' version supported for jobs of type Spark.
+#' 
+#' Ray jobs should set `GlueVersion` to `4.0` or greater. However, the
+#' versions of Ray, Python and additional libraries available in your Ray
+#' job are determined by the `Runtime` parameter of the Job command.
 #' 
 #' For more information about the available Glue versions and corresponding
 #' Spark and Python versions, see [Glue
@@ -1133,7 +1144,8 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' @param NumberOfWorkers The number of workers of a defined `workerType` that are allocated when
 #' a job runs.
 #' @param WorkerType The type of predefined worker that is allocated when a job runs. Accepts
-#' a value of Standard, G.1X, G.2X, or G.025X.
+#' a value of Standard, G.1X, G.2X, or G.025X for Spark jobs. Accepts the
+#' value Z.2X for Ray jobs.
 #' 
 #' -   For the `Standard` worker type, each worker provides 4 vCPU, 16 GB
 #'     of memory and a 50GB disk, and 2 executors per worker.
@@ -1150,6 +1162,10 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #'     4 GB of memory, 64 GB disk), and provides 1 executor per worker. We
 #'     recommend this worker type for low volume streaming jobs. This
 #'     worker type is only available for Glue version 3.0 streaming jobs.
+#' 
+#' -   For the `Z.2X` worker type, each worker maps to 2 M-DPU (8vCPU, 64
+#'     GB of m emory, 128 GB disk), and provides up to 8 Ray workers based
+#'     on the autoscaler.
 #' @param CodeGenConfigurationNodes The representation of a directed acyclic graph on which both the Glue
 #' Studio visual component and Glue Studio code generation is based.
 #' @param ExecutionClass Indicates whether the job is run with a standard or flexible execution
@@ -1190,7 +1206,7 @@ glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, Execu
 #' @description
 #' Creates an Glue machine learning transform. This operation creates the transform and all the necessary parameters to train it.
 #'
-#' See [https://paws-r.github.io/docs/glue/create_ml_transform.html](https://paws-r.github.io/docs/glue/create_ml_transform.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_create_ml_transform/](https://www.paws-r-sdk.com/docs/glue_create_ml_transform/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The unique name that you give the transform when you create it.
 #' @param Description A description of the machine learning transform that is being defined.
@@ -1312,7 +1328,7 @@ glue_create_ml_transform <- function(Name, Description = NULL, InputRecordTables
 #' @description
 #' Creates a new partition.
 #'
-#' See [https://paws-r.github.io/docs/glue/create_partition.html](https://paws-r.github.io/docs/glue/create_partition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_create_partition/](https://www.paws-r-sdk.com/docs/glue_create_partition/) for full documentation.
 #'
 #' @param CatalogId The Amazon Web Services account ID of the catalog in which the partition
 #' is to be created.
@@ -1346,7 +1362,7 @@ glue_create_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
 #' @description
 #' Creates a specified partition index in an existing table.
 #'
-#' See [https://paws-r.github.io/docs/glue/create_partition_index.html](https://paws-r.github.io/docs/glue/create_partition_index.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_create_partition_index/](https://www.paws-r-sdk.com/docs/glue_create_partition_index/) for full documentation.
 #'
 #' @param CatalogId The catalog ID where the table resides.
 #' @param DatabaseName &#91;required&#93; Specifies the name of a database in which you want to create a partition
@@ -1381,7 +1397,7 @@ glue_create_partition_index <- function(CatalogId = NULL, DatabaseName, TableNam
 #' @description
 #' Creates a new registry which may be used to hold a collection of schemas.
 #'
-#' See [https://paws-r.github.io/docs/glue/create_registry.html](https://paws-r.github.io/docs/glue/create_registry.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_create_registry/](https://www.paws-r-sdk.com/docs/glue_create_registry/) for full documentation.
 #'
 #' @param RegistryName &#91;required&#93; Name of the registry to be created of max length of 255, and may only
 #' contain letters, numbers, hyphen, underscore, dollar sign, or hash mark.
@@ -1416,7 +1432,7 @@ glue_create_registry <- function(RegistryName, Description = NULL, Tags = NULL) 
 #' @description
 #' Creates a new schema set and registers the schema definition. Returns an error if the schema set already exists without actually registering the version.
 #'
-#' See [https://paws-r.github.io/docs/glue/create_schema.html](https://paws-r.github.io/docs/glue/create_schema.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_create_schema/](https://www.paws-r-sdk.com/docs/glue_create_schema/) for full documentation.
 #'
 #' @param RegistryId This is a wrapper shape to contain the registry identity fields. If this
 #' is not provided, the default registry will be used. The ARN format for
@@ -1502,7 +1518,7 @@ glue_create_schema <- function(RegistryId = NULL, SchemaName, DataFormat, Compat
 #' @description
 #' Transforms a directed acyclic graph (DAG) into code.
 #'
-#' See [https://paws-r.github.io/docs/glue/create_script.html](https://paws-r.github.io/docs/glue/create_script.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_create_script/](https://www.paws-r-sdk.com/docs/glue_create_script/) for full documentation.
 #'
 #' @param DagNodes A list of the nodes in the DAG.
 #' @param DagEdges A list of the edges in the DAG.
@@ -1533,7 +1549,7 @@ glue_create_script <- function(DagNodes = NULL, DagEdges = NULL, Language = NULL
 #' @description
 #' Creates a new security configuration. A security configuration is a set of security properties that can be used by Glue. You can use a security configuration to encrypt data at rest. For information about using security configurations in Glue, see [Encrypting Data Written by Crawlers, Jobs, and Development Endpoints](https://docs.aws.amazon.com/glue/latest/dg/encryption-security-configuration.html).
 #'
-#' See [https://paws-r.github.io/docs/glue/create_security_configuration.html](https://paws-r.github.io/docs/glue/create_security_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_create_security_configuration/](https://www.paws-r-sdk.com/docs/glue_create_security_configuration/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name for the new security configuration.
 #' @param EncryptionConfiguration &#91;required&#93; The encryption configuration for the new security configuration.
@@ -1563,7 +1579,7 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 #' @description
 #' Creates a new session.
 #'
-#' See [https://paws-r.github.io/docs/glue/create_session.html](https://paws-r.github.io/docs/glue/create_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_create_session/](https://www.paws-r-sdk.com/docs/glue_create_session/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the session request.
 #' @param Description The description of the session.
@@ -1631,7 +1647,7 @@ glue_create_session <- function(Id, Description = NULL, Role, Command, Timeout =
 #' @description
 #' Creates a new table definition in the Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/glue/create_table.html](https://paws-r.github.io/docs/glue/create_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_create_table/](https://www.paws-r-sdk.com/docs/glue_create_table/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which to create the `Table`. If none is
 #' supplied, the Amazon Web Services account ID is used by default.
@@ -1668,7 +1684,7 @@ glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput, Partit
 #' @description
 #' Creates a new trigger.
 #'
-#' See [https://paws-r.github.io/docs/glue/create_trigger.html](https://paws-r.github.io/docs/glue/create_trigger.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_create_trigger/](https://www.paws-r-sdk.com/docs/glue_create_trigger/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the trigger.
 #' @param WorkflowName The name of the workflow associated with the trigger.
@@ -1720,7 +1736,7 @@ glue_create_trigger <- function(Name, WorkflowName = NULL, Type, Schedule = NULL
 #' @description
 #' Creates a new function definition in the Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/glue/create_user_defined_function.html](https://paws-r.github.io/docs/glue/create_user_defined_function.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_create_user_defined_function/](https://www.paws-r-sdk.com/docs/glue_create_user_defined_function/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which to create the function. If none is
 #' provided, the Amazon Web Services account ID is used by default.
@@ -1753,7 +1769,7 @@ glue_create_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 #' @description
 #' Creates a new workflow.
 #'
-#' See [https://paws-r.github.io/docs/glue/create_workflow.html](https://paws-r.github.io/docs/glue/create_workflow.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_create_workflow/](https://www.paws-r-sdk.com/docs/glue_create_workflow/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name to be assigned to the workflow. It should be unique within your
 #' account.
@@ -1792,7 +1808,7 @@ glue_create_workflow <- function(Name, Description = NULL, DefaultRunProperties 
 #' @description
 #' Deletes an existing blueprint.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_blueprint.html](https://paws-r.github.io/docs/glue/delete_blueprint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_blueprint/](https://www.paws-r-sdk.com/docs/glue_delete_blueprint/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the blueprint to delete.
 #'
@@ -1821,7 +1837,7 @@ glue_delete_blueprint <- function(Name) {
 #' @description
 #' Removes a classifier from the Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_classifier.html](https://paws-r.github.io/docs/glue/delete_classifier.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_classifier/](https://www.paws-r-sdk.com/docs/glue_delete_classifier/) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the classifier to remove.
 #'
@@ -1850,7 +1866,7 @@ glue_delete_classifier <- function(Name) {
 #' @description
 #' Delete the partition column statistics of a column.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_column_statistics_for_partition.html](https://paws-r.github.io/docs/glue/delete_column_statistics_for_partition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_column_statistics_for_partition/](https://www.paws-r-sdk.com/docs/glue_delete_column_statistics_for_partition/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
 #' none is supplied, the Amazon Web Services account ID is used by default.
@@ -1884,7 +1900,7 @@ glue_delete_column_statistics_for_partition <- function(CatalogId = NULL, Databa
 #' @description
 #' Retrieves table statistics of columns.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_column_statistics_for_table.html](https://paws-r.github.io/docs/glue/delete_column_statistics_for_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_column_statistics_for_table/](https://www.paws-r-sdk.com/docs/glue_delete_column_statistics_for_table/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
 #' none is supplied, the Amazon Web Services account ID is used by default.
@@ -1917,7 +1933,7 @@ glue_delete_column_statistics_for_table <- function(CatalogId = NULL, DatabaseNa
 #' @description
 #' Deletes a connection from the Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_connection.html](https://paws-r.github.io/docs/glue/delete_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_connection/](https://www.paws-r-sdk.com/docs/glue_delete_connection/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which the connection resides. If none is
 #' provided, the Amazon Web Services account ID is used by default.
@@ -1949,7 +1965,7 @@ glue_delete_connection <- function(CatalogId = NULL, ConnectionName) {
 #' @description
 #' Removes a specified crawler from the Glue Data Catalog, unless the crawler state is `RUNNING`.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_crawler.html](https://paws-r.github.io/docs/glue/delete_crawler.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_crawler/](https://www.paws-r-sdk.com/docs/glue_delete_crawler/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the crawler to remove.
 #'
@@ -1978,7 +1994,7 @@ glue_delete_crawler <- function(Name) {
 #' @description
 #' Deletes a custom pattern by specifying its name.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_custom_entity_type.html](https://paws-r.github.io/docs/glue/delete_custom_entity_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_custom_entity_type/](https://www.paws-r-sdk.com/docs/glue_delete_custom_entity_type/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the custom pattern that you want to delete.
 #'
@@ -2007,7 +2023,7 @@ glue_delete_custom_entity_type <- function(Name) {
 #' @description
 #' Deletes a data quality ruleset.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_data_quality_ruleset.html](https://paws-r.github.io/docs/glue/delete_data_quality_ruleset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_data_quality_ruleset/](https://www.paws-r-sdk.com/docs/glue_delete_data_quality_ruleset/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A name for the data quality ruleset.
 #'
@@ -2036,7 +2052,7 @@ glue_delete_data_quality_ruleset <- function(Name) {
 #' @description
 #' Removes a specified database from a Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_database.html](https://paws-r.github.io/docs/glue/delete_database.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_database/](https://www.paws-r-sdk.com/docs/glue_delete_database/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which the database resides. If none is
 #' provided, the Amazon Web Services account ID is used by default.
@@ -2068,7 +2084,7 @@ glue_delete_database <- function(CatalogId = NULL, Name) {
 #' @description
 #' Deletes a specified development endpoint.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_dev_endpoint.html](https://paws-r.github.io/docs/glue/delete_dev_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_dev_endpoint/](https://www.paws-r-sdk.com/docs/glue_delete_dev_endpoint/) for full documentation.
 #'
 #' @param EndpointName &#91;required&#93; The name of the `DevEndpoint`.
 #'
@@ -2097,7 +2113,7 @@ glue_delete_dev_endpoint <- function(EndpointName) {
 #' @description
 #' Deletes a specified job definition. If the job definition is not found, no exception is thrown.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_job.html](https://paws-r.github.io/docs/glue/delete_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_job/](https://www.paws-r-sdk.com/docs/glue_delete_job/) for full documentation.
 #'
 #' @param JobName &#91;required&#93; The name of the job definition to delete.
 #'
@@ -2126,7 +2142,7 @@ glue_delete_job <- function(JobName) {
 #' @description
 #' Deletes an Glue machine learning transform. Machine learning transforms are a special type of transform that use machine learning to learn the details of the transformation to be performed by learning from examples provided by humans. These transformations are then saved by Glue. If you no longer need a transform, you can delete it by calling `DeleteMLTransforms`. However, any Glue jobs that still reference the deleted transform will no longer succeed.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_ml_transform.html](https://paws-r.github.io/docs/glue/delete_ml_transform.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_ml_transform/](https://www.paws-r-sdk.com/docs/glue_delete_ml_transform/) for full documentation.
 #'
 #' @param TransformId &#91;required&#93; The unique identifier of the transform to delete.
 #'
@@ -2155,7 +2171,7 @@ glue_delete_ml_transform <- function(TransformId) {
 #' @description
 #' Deletes a specified partition.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_partition.html](https://paws-r.github.io/docs/glue/delete_partition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_partition/](https://www.paws-r-sdk.com/docs/glue_delete_partition/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partition to be deleted resides. If
 #' none is provided, the Amazon Web Services account ID is used by default.
@@ -2188,7 +2204,7 @@ glue_delete_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
 #' @description
 #' Deletes a specified partition index from an existing table.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_partition_index.html](https://paws-r.github.io/docs/glue/delete_partition_index.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_partition_index/](https://www.paws-r-sdk.com/docs/glue_delete_partition_index/) for full documentation.
 #'
 #' @param CatalogId The catalog ID where the table resides.
 #' @param DatabaseName &#91;required&#93; Specifies the name of a database from which you want to delete a
@@ -2222,7 +2238,7 @@ glue_delete_partition_index <- function(CatalogId = NULL, DatabaseName, TableNam
 #' @description
 #' Delete the entire registry including schema and all of its versions. To get the status of the delete operation, you can call the [`get_registry`][glue_get_registry] API after the asynchronous call. Deleting a registry will deactivate all online operations for the registry such as the [`update_registry`][glue_update_registry], [`create_schema`][glue_create_schema], [`update_schema`][glue_update_schema], and [`register_schema_version`][glue_register_schema_version] APIs.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_registry.html](https://paws-r.github.io/docs/glue/delete_registry.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_registry/](https://www.paws-r-sdk.com/docs/glue_delete_registry/) for full documentation.
 #'
 #' @param RegistryId &#91;required&#93; This is a wrapper structure that may contain the registry name and
 #' Amazon Resource Name (ARN).
@@ -2252,7 +2268,7 @@ glue_delete_registry <- function(RegistryId) {
 #' @description
 #' Deletes a specified policy.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_resource_policy.html](https://paws-r.github.io/docs/glue/delete_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_resource_policy/](https://www.paws-r-sdk.com/docs/glue_delete_resource_policy/) for full documentation.
 #'
 #' @param PolicyHashCondition The hash value returned when this policy was set.
 #' @param ResourceArn The ARN of the Glue resource for the resource policy to be deleted.
@@ -2283,7 +2299,7 @@ glue_delete_resource_policy <- function(PolicyHashCondition = NULL, ResourceArn 
 #' @description
 #' Deletes the entire schema set, including the schema set and all of its versions. To get the status of the delete operation, you can call [`get_schema`][glue_get_schema] API after the asynchronous call. Deleting a registry will deactivate all online operations for the schema, such as the [`get_schema_by_definition`][glue_get_schema_by_definition], and [`register_schema_version`][glue_register_schema_version] APIs.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_schema.html](https://paws-r.github.io/docs/glue/delete_schema.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_schema/](https://www.paws-r-sdk.com/docs/glue_delete_schema/) for full documentation.
 #'
 #' @param SchemaId &#91;required&#93; This is a wrapper structure that may contain the schema name and Amazon
 #' Resource Name (ARN).
@@ -2313,7 +2329,7 @@ glue_delete_schema <- function(SchemaId) {
 #' @description
 #' Remove versions from the specified schema. A version number or range may be supplied. If the compatibility mode forbids deleting of a version that is necessary, such as BACKWARDS_FULL, an error is returned. Calling the `GetSchemaVersions` API after this call will list the status of the deleted versions.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_schema_versions.html](https://paws-r.github.io/docs/glue/delete_schema_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_schema_versions/](https://www.paws-r-sdk.com/docs/glue_delete_schema_versions/) for full documentation.
 #'
 #' @param SchemaId &#91;required&#93; This is a wrapper structure that may contain the schema name and Amazon
 #' Resource Name (ARN).
@@ -2348,7 +2364,7 @@ glue_delete_schema_versions <- function(SchemaId, Versions) {
 #' @description
 #' Deletes a specified security configuration.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_security_configuration.html](https://paws-r.github.io/docs/glue/delete_security_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_security_configuration/](https://www.paws-r-sdk.com/docs/glue_delete_security_configuration/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the security configuration to delete.
 #'
@@ -2377,7 +2393,7 @@ glue_delete_security_configuration <- function(Name) {
 #' @description
 #' Deletes the session.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_session.html](https://paws-r.github.io/docs/glue/delete_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_session/](https://www.paws-r-sdk.com/docs/glue_delete_session/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the session to be deleted.
 #' @param RequestOrigin The name of the origin of the delete session request.
@@ -2407,7 +2423,7 @@ glue_delete_session <- function(Id, RequestOrigin = NULL) {
 #' @description
 #' Removes a table definition from the Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_table.html](https://paws-r.github.io/docs/glue/delete_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_table/](https://www.paws-r-sdk.com/docs/glue_delete_table/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the table resides. If none is provided,
 #' the Amazon Web Services account ID is used by default.
@@ -2442,7 +2458,7 @@ glue_delete_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionI
 #' @description
 #' Deletes a specified version of a table.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_table_version.html](https://paws-r.github.io/docs/glue/delete_table_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_table_version/](https://www.paws-r-sdk.com/docs/glue_delete_table_version/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the tables reside. If none is provided,
 #' the Amazon Web Services account ID is used by default.
@@ -2478,7 +2494,7 @@ glue_delete_table_version <- function(CatalogId = NULL, DatabaseName, TableName,
 #' @description
 #' Deletes a specified trigger. If the trigger is not found, no exception is thrown.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_trigger.html](https://paws-r.github.io/docs/glue/delete_trigger.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_trigger/](https://www.paws-r-sdk.com/docs/glue_delete_trigger/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the trigger to delete.
 #'
@@ -2507,7 +2523,7 @@ glue_delete_trigger <- function(Name) {
 #' @description
 #' Deletes an existing function definition from the Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_user_defined_function.html](https://paws-r.github.io/docs/glue/delete_user_defined_function.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_user_defined_function/](https://www.paws-r-sdk.com/docs/glue_delete_user_defined_function/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the function to be deleted is located.
 #' If none is supplied, the Amazon Web Services account ID is used by
@@ -2540,7 +2556,7 @@ glue_delete_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 #' @description
 #' Deletes a workflow.
 #'
-#' See [https://paws-r.github.io/docs/glue/delete_workflow.html](https://paws-r.github.io/docs/glue/delete_workflow.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_workflow/](https://www.paws-r-sdk.com/docs/glue_delete_workflow/) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the workflow to be deleted.
 #'
@@ -2569,7 +2585,7 @@ glue_delete_workflow <- function(Name) {
 #' @description
 #' Retrieves the details of a blueprint.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_blueprint.html](https://paws-r.github.io/docs/glue/get_blueprint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_blueprint/](https://www.paws-r-sdk.com/docs/glue_get_blueprint/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the blueprint.
 #' @param IncludeBlueprint Specifies whether or not to include the blueprint in the response.
@@ -2600,7 +2616,7 @@ glue_get_blueprint <- function(Name, IncludeBlueprint = NULL, IncludeParameterSp
 #' @description
 #' Retrieves the details of a blueprint run.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_blueprint_run.html](https://paws-r.github.io/docs/glue/get_blueprint_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_blueprint_run/](https://www.paws-r-sdk.com/docs/glue_get_blueprint_run/) for full documentation.
 #'
 #' @param BlueprintName &#91;required&#93; The name of the blueprint.
 #' @param RunId &#91;required&#93; The run ID for the blueprint run you want to retrieve.
@@ -2630,7 +2646,7 @@ glue_get_blueprint_run <- function(BlueprintName, RunId) {
 #' @description
 #' Retrieves the details of blueprint runs for a specified blueprint.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_blueprint_runs.html](https://paws-r.github.io/docs/glue/get_blueprint_runs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_blueprint_runs/](https://www.paws-r-sdk.com/docs/glue_get_blueprint_runs/) for full documentation.
 #'
 #' @param BlueprintName &#91;required&#93; The name of the blueprint.
 #' @param NextToken A continuation token, if this is a continuation request.
@@ -2661,7 +2677,7 @@ glue_get_blueprint_runs <- function(BlueprintName, NextToken = NULL, MaxResults 
 #' @description
 #' Retrieves the status of a migration operation.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_catalog_import_status.html](https://paws-r.github.io/docs/glue/get_catalog_import_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_catalog_import_status/](https://www.paws-r-sdk.com/docs/glue_get_catalog_import_status/) for full documentation.
 #'
 #' @param CatalogId The ID of the catalog to migrate. Currently, this should be the Amazon
 #' Web Services account ID.
@@ -2691,7 +2707,7 @@ glue_get_catalog_import_status <- function(CatalogId = NULL) {
 #' @description
 #' Retrieve a classifier by name.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_classifier.html](https://paws-r.github.io/docs/glue/get_classifier.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_classifier/](https://www.paws-r-sdk.com/docs/glue_get_classifier/) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the classifier to retrieve.
 #'
@@ -2720,7 +2736,7 @@ glue_get_classifier <- function(Name) {
 #' @description
 #' Lists all classifier objects in the Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_classifiers.html](https://paws-r.github.io/docs/glue/get_classifiers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_classifiers/](https://www.paws-r-sdk.com/docs/glue_get_classifiers/) for full documentation.
 #'
 #' @param MaxResults The size of the list to return (optional).
 #' @param NextToken An optional continuation token.
@@ -2750,7 +2766,7 @@ glue_get_classifiers <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Retrieves partition statistics of columns.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_column_statistics_for_partition.html](https://paws-r.github.io/docs/glue/get_column_statistics_for_partition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_column_statistics_for_partition/](https://www.paws-r-sdk.com/docs/glue_get_column_statistics_for_partition/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
 #' none is supplied, the Amazon Web Services account ID is used by default.
@@ -2784,7 +2800,7 @@ glue_get_column_statistics_for_partition <- function(CatalogId = NULL, DatabaseN
 #' @description
 #' Retrieves table statistics of columns.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_column_statistics_for_table.html](https://paws-r.github.io/docs/glue/get_column_statistics_for_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_column_statistics_for_table/](https://www.paws-r-sdk.com/docs/glue_get_column_statistics_for_table/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
 #' none is supplied, the Amazon Web Services account ID is used by default.
@@ -2817,7 +2833,7 @@ glue_get_column_statistics_for_table <- function(CatalogId = NULL, DatabaseName,
 #' @description
 #' Retrieves a connection definition from the Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_connection.html](https://paws-r.github.io/docs/glue/get_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_connection/](https://www.paws-r-sdk.com/docs/glue_get_connection/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which the connection resides. If none is
 #' provided, the Amazon Web Services account ID is used by default.
@@ -2854,7 +2870,7 @@ glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL) {
 #' @description
 #' Retrieves a list of connection definitions from the Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_connections.html](https://paws-r.github.io/docs/glue/get_connections.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_connections/](https://www.paws-r-sdk.com/docs/glue_get_connections/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which the connections reside. If none is
 #' provided, the Amazon Web Services account ID is used by default.
@@ -2893,7 +2909,7 @@ glue_get_connections <- function(CatalogId = NULL, Filter = NULL, HidePassword =
 #' @description
 #' Retrieves metadata for a specified crawler.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_crawler.html](https://paws-r.github.io/docs/glue/get_crawler.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_crawler/](https://www.paws-r-sdk.com/docs/glue_get_crawler/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the crawler to retrieve metadata for.
 #'
@@ -2922,7 +2938,7 @@ glue_get_crawler <- function(Name) {
 #' @description
 #' Retrieves metrics about specified crawlers.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_crawler_metrics.html](https://paws-r.github.io/docs/glue/get_crawler_metrics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_crawler_metrics/](https://www.paws-r-sdk.com/docs/glue_get_crawler_metrics/) for full documentation.
 #'
 #' @param CrawlerNameList A list of the names of crawlers about which to retrieve metrics.
 #' @param MaxResults The maximum size of a list to return.
@@ -2953,7 +2969,7 @@ glue_get_crawler_metrics <- function(CrawlerNameList = NULL, MaxResults = NULL, 
 #' @description
 #' Retrieves metadata for all crawlers defined in the customer account.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_crawlers.html](https://paws-r.github.io/docs/glue/get_crawlers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_crawlers/](https://www.paws-r-sdk.com/docs/glue_get_crawlers/) for full documentation.
 #'
 #' @param MaxResults The number of crawlers to return on each call.
 #' @param NextToken A continuation token, if this is a continuation request.
@@ -2983,7 +2999,7 @@ glue_get_crawlers <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Retrieves the details of a custom pattern by specifying its name.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_custom_entity_type.html](https://paws-r.github.io/docs/glue/get_custom_entity_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_custom_entity_type/](https://www.paws-r-sdk.com/docs/glue_get_custom_entity_type/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the custom pattern that you want to retrieve.
 #'
@@ -3012,7 +3028,7 @@ glue_get_custom_entity_type <- function(Name) {
 #' @description
 #' Retrieves the security configuration for a specified catalog.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_data_catalog_encryption_settings.html](https://paws-r.github.io/docs/glue/get_data_catalog_encryption_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_data_catalog_encryption_settings/](https://www.paws-r-sdk.com/docs/glue_get_data_catalog_encryption_settings/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog to retrieve the security configuration for.
 #' If none is provided, the Amazon Web Services account ID is used by
@@ -3043,7 +3059,7 @@ glue_get_data_catalog_encryption_settings <- function(CatalogId = NULL) {
 #' @description
 #' Retrieves the result of a data quality rule evaluation.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_data_quality_result.html](https://paws-r.github.io/docs/glue/get_data_quality_result.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_data_quality_result/](https://www.paws-r-sdk.com/docs/glue_get_data_quality_result/) for full documentation.
 #'
 #' @param ResultId &#91;required&#93; A unique result ID for the data quality result.
 #'
@@ -3072,7 +3088,7 @@ glue_get_data_quality_result <- function(ResultId) {
 #' @description
 #' Gets the specified recommendation run that was used to generate rules.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_data_quality_rule_recommendation_run.html](https://paws-r.github.io/docs/glue/get_data_quality_rule_recommendation_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_data_quality_rule_recommendation_run/](https://www.paws-r-sdk.com/docs/glue_get_data_quality_rule_recommendation_run/) for full documentation.
 #'
 #' @param RunId &#91;required&#93; The unique run identifier associated with this run.
 #'
@@ -3101,7 +3117,7 @@ glue_get_data_quality_rule_recommendation_run <- function(RunId) {
 #' @description
 #' Returns an existing ruleset by identifier or name.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_data_quality_ruleset.html](https://paws-r.github.io/docs/glue/get_data_quality_ruleset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_data_quality_ruleset/](https://www.paws-r-sdk.com/docs/glue_get_data_quality_ruleset/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the ruleset.
 #'
@@ -3131,7 +3147,7 @@ glue_get_data_quality_ruleset <- function(Name) {
 #' @description
 #' Retrieves a specific run where a ruleset is evaluated against a data source.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_data_quality_ruleset_evaluation_run.html](https://paws-r.github.io/docs/glue/get_data_quality_ruleset_evaluation_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_data_quality_ruleset_evaluation_run/](https://www.paws-r-sdk.com/docs/glue_get_data_quality_ruleset_evaluation_run/) for full documentation.
 #'
 #' @param RunId &#91;required&#93; The unique run identifier associated with this run.
 #'
@@ -3160,7 +3176,7 @@ glue_get_data_quality_ruleset_evaluation_run <- function(RunId) {
 #' @description
 #' Retrieves the definition of a specified database.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_database.html](https://paws-r.github.io/docs/glue/get_database.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_database/](https://www.paws-r-sdk.com/docs/glue_get_database/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which the database resides. If none is
 #' provided, the Amazon Web Services account ID is used by default.
@@ -3192,7 +3208,7 @@ glue_get_database <- function(CatalogId = NULL, Name) {
 #' @description
 #' Retrieves all databases defined in a given Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_databases.html](https://paws-r.github.io/docs/glue/get_databases.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_databases/](https://www.paws-r-sdk.com/docs/glue_get_databases/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog from which to retrieve `Databases`. If none
 #' is provided, the Amazon Web Services account ID is used by default.
@@ -3235,7 +3251,7 @@ glue_get_databases <- function(CatalogId = NULL, NextToken = NULL, MaxResults = 
 #' @description
 #' Transforms a Python script into a directed acyclic graph (DAG).
 #'
-#' See [https://paws-r.github.io/docs/glue/get_dataflow_graph.html](https://paws-r.github.io/docs/glue/get_dataflow_graph.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_dataflow_graph/](https://www.paws-r-sdk.com/docs/glue_get_dataflow_graph/) for full documentation.
 #'
 #' @param PythonScript The Python script to transform.
 #'
@@ -3264,7 +3280,7 @@ glue_get_dataflow_graph <- function(PythonScript = NULL) {
 #' @description
 #' Retrieves information about a specified development endpoint.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_dev_endpoint.html](https://paws-r.github.io/docs/glue/get_dev_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_dev_endpoint/](https://www.paws-r-sdk.com/docs/glue_get_dev_endpoint/) for full documentation.
 #'
 #' @param EndpointName &#91;required&#93; Name of the `DevEndpoint` to retrieve information for.
 #'
@@ -3294,7 +3310,7 @@ glue_get_dev_endpoint <- function(EndpointName) {
 #' @description
 #' Retrieves all the development endpoints in this Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_dev_endpoints.html](https://paws-r.github.io/docs/glue/get_dev_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_dev_endpoints/](https://www.paws-r-sdk.com/docs/glue_get_dev_endpoints/) for full documentation.
 #'
 #' @param MaxResults The maximum size of information to return.
 #' @param NextToken A continuation token, if this is a continuation call.
@@ -3324,7 +3340,7 @@ glue_get_dev_endpoints <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Retrieves an existing job definition.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_job.html](https://paws-r.github.io/docs/glue/get_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_job/](https://www.paws-r-sdk.com/docs/glue_get_job/) for full documentation.
 #'
 #' @param JobName &#91;required&#93; The name of the job definition to retrieve.
 #'
@@ -3353,7 +3369,7 @@ glue_get_job <- function(JobName) {
 #' @description
 #' Returns information on a job bookmark entry.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_job_bookmark.html](https://paws-r.github.io/docs/glue/get_job_bookmark.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_job_bookmark/](https://www.paws-r-sdk.com/docs/glue_get_job_bookmark/) for full documentation.
 #'
 #' @param JobName &#91;required&#93; The name of the job in question.
 #' @param RunId The unique run identifier associated with this job run.
@@ -3383,7 +3399,7 @@ glue_get_job_bookmark <- function(JobName, RunId = NULL) {
 #' @description
 #' Retrieves the metadata for a given job run.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_job_run.html](https://paws-r.github.io/docs/glue/get_job_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_job_run/](https://www.paws-r-sdk.com/docs/glue_get_job_run/) for full documentation.
 #'
 #' @param JobName &#91;required&#93; Name of the job definition being run.
 #' @param RunId &#91;required&#93; The ID of the job run.
@@ -3414,7 +3430,7 @@ glue_get_job_run <- function(JobName, RunId, PredecessorsIncluded = NULL) {
 #' @description
 #' Retrieves metadata for all runs of a given job definition.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_job_runs.html](https://paws-r.github.io/docs/glue/get_job_runs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_job_runs/](https://www.paws-r-sdk.com/docs/glue_get_job_runs/) for full documentation.
 #'
 #' @param JobName &#91;required&#93; The name of the job definition for which to retrieve all job runs.
 #' @param NextToken A continuation token, if this is a continuation call.
@@ -3445,7 +3461,7 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Retrieves all current job definitions.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_jobs.html](https://paws-r.github.io/docs/glue/get_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_jobs/](https://www.paws-r-sdk.com/docs/glue_get_jobs/) for full documentation.
 #'
 #' @param NextToken A continuation token, if this is a continuation call.
 #' @param MaxResults The maximum size of the response.
@@ -3475,7 +3491,7 @@ glue_get_jobs <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Gets details for a specific task run on a machine learning transform. Machine learning task runs are asynchronous tasks that Glue runs on your behalf as part of various machine learning workflows. You can check the stats of any task run by calling [`get_ml_task_run`][glue_get_ml_task_run] with the `TaskRunID` and its parent transform's `TransformID`.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_ml_task_run.html](https://paws-r.github.io/docs/glue/get_ml_task_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_ml_task_run/](https://www.paws-r-sdk.com/docs/glue_get_ml_task_run/) for full documentation.
 #'
 #' @param TransformId &#91;required&#93; The unique identifier of the machine learning transform.
 #' @param TaskRunId &#91;required&#93; The unique identifier of the task run.
@@ -3505,7 +3521,7 @@ glue_get_ml_task_run <- function(TransformId, TaskRunId) {
 #' @description
 #' Gets a list of runs for a machine learning transform. Machine learning task runs are asynchronous tasks that Glue runs on your behalf as part of various machine learning workflows. You can get a sortable, filterable list of machine learning task runs by calling [`get_ml_task_runs`][glue_get_ml_task_runs] with their parent transform's `TransformID` and other optional parameters as documented in this section.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_ml_task_runs.html](https://paws-r.github.io/docs/glue/get_ml_task_runs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_ml_task_runs/](https://www.paws-r-sdk.com/docs/glue_get_ml_task_runs/) for full documentation.
 #'
 #' @param TransformId &#91;required&#93; The unique identifier of the machine learning transform.
 #' @param NextToken A token for pagination of the results. The default is empty.
@@ -3541,7 +3557,7 @@ glue_get_ml_task_runs <- function(TransformId, NextToken = NULL, MaxResults = NU
 #' @description
 #' Gets an Glue machine learning transform artifact and all its corresponding metadata. Machine learning transforms are a special type of transform that use machine learning to learn the details of the transformation to be performed by learning from examples provided by humans. These transformations are then saved by Glue. You can retrieve their metadata by calling [`get_ml_transform`][glue_get_ml_transform].
 #'
-#' See [https://paws-r.github.io/docs/glue/get_ml_transform.html](https://paws-r.github.io/docs/glue/get_ml_transform.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_ml_transform/](https://www.paws-r-sdk.com/docs/glue_get_ml_transform/) for full documentation.
 #'
 #' @param TransformId &#91;required&#93; The unique identifier of the transform, generated at the time that the
 #' transform was created.
@@ -3572,7 +3588,7 @@ glue_get_ml_transform <- function(TransformId) {
 #' @description
 #' Gets a sortable, filterable list of existing Glue machine learning transforms. Machine learning transforms are a special type of transform that use machine learning to learn the details of the transformation to be performed by learning from examples provided by humans. These transformations are then saved by Glue, and you can retrieve their metadata by calling [`get_ml_transforms`][glue_get_ml_transforms].
 #'
-#' See [https://paws-r.github.io/docs/glue/get_ml_transforms.html](https://paws-r.github.io/docs/glue/get_ml_transforms.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_ml_transforms/](https://www.paws-r-sdk.com/docs/glue_get_ml_transforms/) for full documentation.
 #'
 #' @param NextToken A paginated token to offset the results.
 #' @param MaxResults The maximum number of results to return.
@@ -3604,7 +3620,7 @@ glue_get_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter =
 #' @description
 #' Creates mappings.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_mapping.html](https://paws-r.github.io/docs/glue/get_mapping.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_mapping/](https://www.paws-r-sdk.com/docs/glue_get_mapping/) for full documentation.
 #'
 #' @param Source &#91;required&#93; Specifies the source table.
 #' @param Sinks A list of target tables.
@@ -3635,7 +3651,7 @@ glue_get_mapping <- function(Source, Sinks = NULL, Location = NULL) {
 #' @description
 #' Retrieves information about a specified partition.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_partition.html](https://paws-r.github.io/docs/glue/get_partition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_partition/](https://www.paws-r-sdk.com/docs/glue_get_partition/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partition in question resides. If
 #' none is provided, the Amazon Web Services account ID is used by default.
@@ -3668,7 +3684,7 @@ glue_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, Partit
 #' @description
 #' Retrieves the partition indexes associated with a table.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_partition_indexes.html](https://paws-r.github.io/docs/glue/get_partition_indexes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_partition_indexes/](https://www.paws-r-sdk.com/docs/glue_get_partition_indexes/) for full documentation.
 #'
 #' @param CatalogId The catalog ID where the table resides.
 #' @param DatabaseName &#91;required&#93; Specifies the name of a database from which you want to retrieve
@@ -3702,7 +3718,7 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 #' @description
 #' Retrieves information about the partitions in a table.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_partitions.html](https://paws-r.github.io/docs/glue/get_partitions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_partitions/](https://www.paws-r-sdk.com/docs/glue_get_partitions/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
 #' none is provided, the Amazon Web Services account ID is used by default.
@@ -3832,7 +3848,7 @@ glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expre
 #' @description
 #' Gets code to perform a specified mapping.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_plan.html](https://paws-r.github.io/docs/glue/get_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_plan/](https://www.paws-r-sdk.com/docs/glue_get_plan/) for full documentation.
 #'
 #' @param Mapping &#91;required&#93; The list of mappings from a source table to target tables.
 #' @param Source &#91;required&#93; The source table.
@@ -3874,7 +3890,7 @@ glue_get_plan <- function(Mapping, Source, Sinks = NULL, Location = NULL, Langua
 #' @description
 #' Describes the specified registry in detail.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_registry.html](https://paws-r.github.io/docs/glue/get_registry.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_registry/](https://www.paws-r-sdk.com/docs/glue_get_registry/) for full documentation.
 #'
 #' @param RegistryId &#91;required&#93; This is a wrapper structure that may contain the registry name and
 #' Amazon Resource Name (ARN).
@@ -3905,7 +3921,7 @@ glue_get_registry <- function(RegistryId) {
 #' @description
 #' Retrieves the resource policies set on individual resources by Resource Access Manager during cross-account permission grants. Also retrieves the Data Catalog resource policy.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_resource_policies.html](https://paws-r.github.io/docs/glue/get_resource_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_resource_policies/](https://www.paws-r-sdk.com/docs/glue_get_resource_policies/) for full documentation.
 #'
 #' @param NextToken A continuation token, if this is a continuation request.
 #' @param MaxResults The maximum size of a list to return.
@@ -3935,7 +3951,7 @@ glue_get_resource_policies <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Retrieves a specified resource policy.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_resource_policy.html](https://paws-r.github.io/docs/glue/get_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_resource_policy/](https://www.paws-r-sdk.com/docs/glue_get_resource_policy/) for full documentation.
 #'
 #' @param ResourceArn The ARN of the Glue resource for which to retrieve the resource policy.
 #' If not supplied, the Data Catalog resource policy is returned. Use
@@ -3969,7 +3985,7 @@ glue_get_resource_policy <- function(ResourceArn = NULL) {
 #' @description
 #' Describes the specified schema in detail.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_schema.html](https://paws-r.github.io/docs/glue/get_schema.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_schema/](https://www.paws-r-sdk.com/docs/glue_get_schema/) for full documentation.
 #'
 #' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
 #' structure contains:
@@ -4006,7 +4022,7 @@ glue_get_schema <- function(SchemaId) {
 #' @description
 #' Retrieves a schema by the `SchemaDefinition`. The schema definition is sent to the Schema Registry, canonicalized, and hashed. If the hash is matched within the scope of the `SchemaName` or ARN (or the default registry, if none is supplied), that schema’s metadata is returned. Otherwise, a 404 or NotFound error is returned. Schema versions in `Deleted` statuses will not be included in the results.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_schema_by_definition.html](https://paws-r.github.io/docs/glue/get_schema_by_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_schema_by_definition/](https://www.paws-r-sdk.com/docs/glue_get_schema_by_definition/) for full documentation.
 #'
 #' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
 #' structure contains:
@@ -4044,7 +4060,7 @@ glue_get_schema_by_definition <- function(SchemaId, SchemaDefinition) {
 #' @description
 #' Get the specified schema by its unique ID assigned when a version of the schema is created or registered. Schema versions in Deleted status will not be included in the results.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_schema_version.html](https://paws-r.github.io/docs/glue/get_schema_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_schema_version/](https://www.paws-r-sdk.com/docs/glue_get_schema_version/) for full documentation.
 #'
 #' @param SchemaId This is a wrapper structure to contain schema identity fields. The
 #' structure contains:
@@ -4086,7 +4102,7 @@ glue_get_schema_version <- function(SchemaId = NULL, SchemaVersionId = NULL, Sch
 #' @description
 #' Fetches the schema version difference in the specified difference type between two stored schema versions in the Schema Registry.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_schema_versions_diff.html](https://paws-r.github.io/docs/glue/get_schema_versions_diff.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_schema_versions_diff/](https://www.paws-r-sdk.com/docs/glue_get_schema_versions_diff/) for full documentation.
 #'
 #' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
 #' structure contains:
@@ -4125,7 +4141,7 @@ glue_get_schema_versions_diff <- function(SchemaId, FirstSchemaVersionNumber, Se
 #' @description
 #' Retrieves a specified security configuration.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_security_configuration.html](https://paws-r.github.io/docs/glue/get_security_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_security_configuration/](https://www.paws-r-sdk.com/docs/glue_get_security_configuration/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the security configuration to retrieve.
 #'
@@ -4154,7 +4170,7 @@ glue_get_security_configuration <- function(Name) {
 #' @description
 #' Retrieves a list of all security configurations.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_security_configurations.html](https://paws-r.github.io/docs/glue/get_security_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_security_configurations/](https://www.paws-r-sdk.com/docs/glue_get_security_configurations/) for full documentation.
 #'
 #' @param MaxResults The maximum number of results to return.
 #' @param NextToken A continuation token, if this is a continuation call.
@@ -4184,7 +4200,7 @@ glue_get_security_configurations <- function(MaxResults = NULL, NextToken = NULL
 #' @description
 #' Retrieves the session.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_session.html](https://paws-r.github.io/docs/glue/get_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_session/](https://www.paws-r-sdk.com/docs/glue_get_session/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the session.
 #' @param RequestOrigin The origin of the request.
@@ -4214,7 +4230,7 @@ glue_get_session <- function(Id, RequestOrigin = NULL) {
 #' @description
 #' Retrieves the statement.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_statement.html](https://paws-r.github.io/docs/glue/get_statement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_statement/](https://www.paws-r-sdk.com/docs/glue_get_statement/) for full documentation.
 #'
 #' @param SessionId &#91;required&#93; The Session ID of the statement.
 #' @param Id &#91;required&#93; The Id of the statement.
@@ -4245,7 +4261,7 @@ glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
 #' @description
 #' Retrieves the `Table` definition in a Data Catalog for a specified table.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_table.html](https://paws-r.github.io/docs/glue/get_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_table/](https://www.paws-r-sdk.com/docs/glue_get_table/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the table resides. If none is provided,
 #' the Amazon Web Services account ID is used by default.
@@ -4283,7 +4299,7 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
 #' @description
 #' Retrieves a specified version of a table.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_table_version.html](https://paws-r.github.io/docs/glue/get_table_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_table_version/](https://www.paws-r-sdk.com/docs/glue_get_table_version/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the tables reside. If none is provided,
 #' the Amazon Web Services account ID is used by default.
@@ -4320,7 +4336,7 @@ glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, Ve
 #' @description
 #' Retrieves a list of strings that identify available versions of a specified table.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_table_versions.html](https://paws-r.github.io/docs/glue/get_table_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_table_versions/](https://www.paws-r-sdk.com/docs/glue_get_table_versions/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the tables reside. If none is provided,
 #' the Amazon Web Services account ID is used by default.
@@ -4357,7 +4373,7 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
 #' @description
 #' Retrieves the definitions of some or all of the tables in a given `Database`.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_tables.html](https://paws-r.github.io/docs/glue/get_tables.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_tables/](https://www.paws-r-sdk.com/docs/glue_get_tables/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the tables reside. If none is provided,
 #' the Amazon Web Services account ID is used by default.
@@ -4397,7 +4413,7 @@ glue_get_tables <- function(CatalogId = NULL, DatabaseName, Expression = NULL, N
 #' @description
 #' Retrieves a list of tags associated with a resource.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_tags.html](https://paws-r.github.io/docs/glue/get_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_tags/](https://www.paws-r-sdk.com/docs/glue_get_tags/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which to retrieve
 #' tags.
@@ -4427,7 +4443,7 @@ glue_get_tags <- function(ResourceArn) {
 #' @description
 #' Retrieves the definition of a trigger.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_trigger.html](https://paws-r.github.io/docs/glue/get_trigger.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_trigger/](https://www.paws-r-sdk.com/docs/glue_get_trigger/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the trigger to retrieve.
 #'
@@ -4456,7 +4472,7 @@ glue_get_trigger <- function(Name) {
 #' @description
 #' Gets all the triggers associated with a job.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_triggers.html](https://paws-r.github.io/docs/glue/get_triggers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_triggers/](https://www.paws-r-sdk.com/docs/glue_get_triggers/) for full documentation.
 #'
 #' @param NextToken A continuation token, if this is a continuation call.
 #' @param DependentJobName The name of the job to retrieve triggers for. The trigger that can start
@@ -4490,7 +4506,7 @@ glue_get_triggers <- function(NextToken = NULL, DependentJobName = NULL, MaxResu
 #' @description
 #' Retrieves partition metadata from the Data Catalog that contains unfiltered metadata.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_unfiltered_partition_metadata.html](https://paws-r.github.io/docs/glue/get_unfiltered_partition_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_unfiltered_partition_metadata/](https://www.paws-r-sdk.com/docs/glue_get_unfiltered_partition_metadata/) for full documentation.
 #'
 #' @param CatalogId &#91;required&#93; The catalog ID where the partition resides.
 #' @param DatabaseName &#91;required&#93; (Required) Specifies the name of a database that contains the partition.
@@ -4525,7 +4541,7 @@ glue_get_unfiltered_partition_metadata <- function(CatalogId, DatabaseName, Tabl
 #' @description
 #' Retrieves partition metadata from the Data Catalog that contains unfiltered metadata.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_unfiltered_partitions_metadata.html](https://paws-r.github.io/docs/glue/get_unfiltered_partitions_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_unfiltered_partitions_metadata/](https://www.paws-r-sdk.com/docs/glue_get_unfiltered_partitions_metadata/) for full documentation.
 #'
 #' @param CatalogId &#91;required&#93; The ID of the Data Catalog where the partitions in question reside. If
 #' none is provided, the AWS account ID is used by default.
@@ -4644,7 +4660,7 @@ glue_get_unfiltered_partitions_metadata <- function(CatalogId, DatabaseName, Tab
 #' @description
 #' Retrieves table metadata from the Data Catalog that contains unfiltered metadata.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_unfiltered_table_metadata.html](https://paws-r.github.io/docs/glue/get_unfiltered_table_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_unfiltered_table_metadata/](https://www.paws-r-sdk.com/docs/glue_get_unfiltered_table_metadata/) for full documentation.
 #'
 #' @param CatalogId &#91;required&#93; The catalog ID where the table resides.
 #' @param DatabaseName &#91;required&#93; (Required) Specifies the name of a database that contains the table.
@@ -4678,7 +4694,7 @@ glue_get_unfiltered_table_metadata <- function(CatalogId, DatabaseName, Name, Au
 #' @description
 #' Retrieves a specified function definition from the Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_user_defined_function.html](https://paws-r.github.io/docs/glue/get_user_defined_function.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_user_defined_function/](https://www.paws-r-sdk.com/docs/glue_get_user_defined_function/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the function to be retrieved is
 #' located. If none is provided, the Amazon Web Services account ID is used
@@ -4711,7 +4727,7 @@ glue_get_user_defined_function <- function(CatalogId = NULL, DatabaseName, Funct
 #' @description
 #' Retrieves multiple function definitions from the Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_user_defined_functions.html](https://paws-r.github.io/docs/glue/get_user_defined_functions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_user_defined_functions/](https://www.paws-r-sdk.com/docs/glue_get_user_defined_functions/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the functions to be retrieved are
 #' located. If none is provided, the Amazon Web Services account ID is used
@@ -4749,7 +4765,7 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NUL
 #' @description
 #' Retrieves resource metadata for a workflow.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_workflow.html](https://paws-r.github.io/docs/glue/get_workflow.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_workflow/](https://www.paws-r-sdk.com/docs/glue_get_workflow/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the workflow to retrieve.
 #' @param IncludeGraph Specifies whether to include a graph when returning the workflow
@@ -4780,7 +4796,7 @@ glue_get_workflow <- function(Name, IncludeGraph = NULL) {
 #' @description
 #' Retrieves the metadata for a given workflow run.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_workflow_run.html](https://paws-r.github.io/docs/glue/get_workflow_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_workflow_run/](https://www.paws-r-sdk.com/docs/glue_get_workflow_run/) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the workflow being run.
 #' @param RunId &#91;required&#93; The ID of the workflow run.
@@ -4811,7 +4827,7 @@ glue_get_workflow_run <- function(Name, RunId, IncludeGraph = NULL) {
 #' @description
 #' Retrieves the workflow run properties which were set during the run.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_workflow_run_properties.html](https://paws-r.github.io/docs/glue/get_workflow_run_properties.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_workflow_run_properties/](https://www.paws-r-sdk.com/docs/glue_get_workflow_run_properties/) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the workflow which was run.
 #' @param RunId &#91;required&#93; The ID of the workflow run whose run properties should be returned.
@@ -4841,7 +4857,7 @@ glue_get_workflow_run_properties <- function(Name, RunId) {
 #' @description
 #' Retrieves metadata for all runs of a given workflow.
 #'
-#' See [https://paws-r.github.io/docs/glue/get_workflow_runs.html](https://paws-r.github.io/docs/glue/get_workflow_runs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_get_workflow_runs/](https://www.paws-r-sdk.com/docs/glue_get_workflow_runs/) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the workflow whose metadata of runs should be returned.
 #' @param IncludeGraph Specifies whether to include the workflow graph in response or not.
@@ -4873,7 +4889,7 @@ glue_get_workflow_runs <- function(Name, IncludeGraph = NULL, NextToken = NULL, 
 #' @description
 #' Imports an existing Amazon Athena Data Catalog to Glue.
 #'
-#' See [https://paws-r.github.io/docs/glue/import_catalog_to_glue.html](https://paws-r.github.io/docs/glue/import_catalog_to_glue.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_import_catalog_to_glue/](https://www.paws-r-sdk.com/docs/glue_import_catalog_to_glue/) for full documentation.
 #'
 #' @param CatalogId The ID of the catalog to import. Currently, this should be the Amazon
 #' Web Services account ID.
@@ -4903,7 +4919,7 @@ glue_import_catalog_to_glue <- function(CatalogId = NULL) {
 #' @description
 #' Lists all the blueprint names in an account.
 #'
-#' See [https://paws-r.github.io/docs/glue/list_blueprints.html](https://paws-r.github.io/docs/glue/list_blueprints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_list_blueprints/](https://www.paws-r-sdk.com/docs/glue_list_blueprints/) for full documentation.
 #'
 #' @param NextToken A continuation token, if this is a continuation request.
 #' @param MaxResults The maximum size of a list to return.
@@ -4935,7 +4951,7 @@ glue_list_blueprints <- function(NextToken = NULL, MaxResults = NULL, Tags = NUL
 #' @description
 #' Retrieves the names of all crawler resources in this Amazon Web Services account, or the resources with the specified tag. This operation allows you to see which resources are available in your account, and their names.
 #'
-#' See [https://paws-r.github.io/docs/glue/list_crawlers.html](https://paws-r.github.io/docs/glue/list_crawlers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_list_crawlers/](https://www.paws-r-sdk.com/docs/glue_list_crawlers/) for full documentation.
 #'
 #' @param MaxResults The maximum size of a list to return.
 #' @param NextToken A continuation token, if this is a continuation request.
@@ -4966,7 +4982,7 @@ glue_list_crawlers <- function(MaxResults = NULL, NextToken = NULL, Tags = NULL)
 #' @description
 #' Returns all the crawls of a specified crawler. Returns only the crawls that have occurred since the launch date of the crawler history feature, and only retains up to 12 months of crawls. Older crawls will not be returned.
 #'
-#' See [https://paws-r.github.io/docs/glue/list_crawls.html](https://paws-r.github.io/docs/glue/list_crawls.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_list_crawls/](https://www.paws-r-sdk.com/docs/glue_list_crawls/) for full documentation.
 #'
 #' @param CrawlerName &#91;required&#93; The name of the crawler whose runs you want to retrieve.
 #' @param MaxResults The maximum number of results to return. The default is 20, and maximum
@@ -5000,7 +5016,7 @@ glue_list_crawls <- function(CrawlerName, MaxResults = NULL, Filters = NULL, Nex
 #' @description
 #' Lists all the custom patterns that have been created.
 #'
-#' See [https://paws-r.github.io/docs/glue/list_custom_entity_types.html](https://paws-r.github.io/docs/glue/list_custom_entity_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_list_custom_entity_types/](https://www.paws-r-sdk.com/docs/glue_list_custom_entity_types/) for full documentation.
 #'
 #' @param NextToken A paginated token to offset the results.
 #' @param MaxResults The maximum number of results to return.
@@ -5031,7 +5047,7 @@ glue_list_custom_entity_types <- function(NextToken = NULL, MaxResults = NULL, T
 #' @description
 #' Returns all data quality execution results for your account.
 #'
-#' See [https://paws-r.github.io/docs/glue/list_data_quality_results.html](https://paws-r.github.io/docs/glue/list_data_quality_results.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_list_data_quality_results/](https://www.paws-r-sdk.com/docs/glue_list_data_quality_results/) for full documentation.
 #'
 #' @param Filter The filter criteria.
 #' @param NextToken A paginated token to offset the results.
@@ -5062,7 +5078,7 @@ glue_list_data_quality_results <- function(Filter = NULL, NextToken = NULL, MaxR
 #' @description
 #' Lists the recommendation runs meeting the filter criteria.
 #'
-#' See [https://paws-r.github.io/docs/glue/list_data_quality_rule_recommendation_runs.html](https://paws-r.github.io/docs/glue/list_data_quality_rule_recommendation_runs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_list_data_quality_rule_recommendation_runs/](https://www.paws-r-sdk.com/docs/glue_list_data_quality_rule_recommendation_runs/) for full documentation.
 #'
 #' @param Filter The filter criteria.
 #' @param NextToken A paginated token to offset the results.
@@ -5094,7 +5110,7 @@ glue_list_data_quality_rule_recommendation_runs <- function(Filter = NULL, NextT
 #' @description
 #' Lists all the runs meeting the filter criteria, where a ruleset is evaluated against a data source.
 #'
-#' See [https://paws-r.github.io/docs/glue/list_data_quality_ruleset_evaluation_runs.html](https://paws-r.github.io/docs/glue/list_data_quality_ruleset_evaluation_runs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_list_data_quality_ruleset_evaluation_runs/](https://www.paws-r-sdk.com/docs/glue_list_data_quality_ruleset_evaluation_runs/) for full documentation.
 #'
 #' @param Filter The filter criteria.
 #' @param NextToken A paginated token to offset the results.
@@ -5126,7 +5142,7 @@ glue_list_data_quality_ruleset_evaluation_runs <- function(Filter = NULL, NextTo
 #' @description
 #' Returns a paginated list of rulesets for the specified list of Glue tables.
 #'
-#' See [https://paws-r.github.io/docs/glue/list_data_quality_rulesets.html](https://paws-r.github.io/docs/glue/list_data_quality_rulesets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_list_data_quality_rulesets/](https://www.paws-r-sdk.com/docs/glue_list_data_quality_rulesets/) for full documentation.
 #'
 #' @param NextToken A paginated token to offset the results.
 #' @param MaxResults The maximum number of results to return.
@@ -5159,7 +5175,7 @@ glue_list_data_quality_rulesets <- function(NextToken = NULL, MaxResults = NULL,
 #' @description
 #' Retrieves the names of all `DevEndpoint` resources in this Amazon Web Services account, or the resources with the specified tag. This operation allows you to see which resources are available in your account, and their names.
 #'
-#' See [https://paws-r.github.io/docs/glue/list_dev_endpoints.html](https://paws-r.github.io/docs/glue/list_dev_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_list_dev_endpoints/](https://www.paws-r-sdk.com/docs/glue_list_dev_endpoints/) for full documentation.
 #'
 #' @param NextToken A continuation token, if this is a continuation request.
 #' @param MaxResults The maximum size of a list to return.
@@ -5191,7 +5207,7 @@ glue_list_dev_endpoints <- function(NextToken = NULL, MaxResults = NULL, Tags = 
 #' @description
 #' Retrieves the names of all job resources in this Amazon Web Services account, or the resources with the specified tag. This operation allows you to see which resources are available in your account, and their names.
 #'
-#' See [https://paws-r.github.io/docs/glue/list_jobs.html](https://paws-r.github.io/docs/glue/list_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_list_jobs/](https://www.paws-r-sdk.com/docs/glue_list_jobs/) for full documentation.
 #'
 #' @param NextToken A continuation token, if this is a continuation request.
 #' @param MaxResults The maximum size of a list to return.
@@ -5224,7 +5240,7 @@ glue_list_jobs <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL) {
 #' @description
 #' Retrieves a sortable, filterable list of existing Glue machine learning transforms in this Amazon Web Services account, or the resources with the specified tag. This operation takes the optional `Tags` field, which you can use as a filter of the responses so that tagged resources can be retrieved as a group. If you choose to use tag filtering, only resources with the tags are retrieved.
 #'
-#' See [https://paws-r.github.io/docs/glue/list_ml_transforms.html](https://paws-r.github.io/docs/glue/list_ml_transforms.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_list_ml_transforms/](https://www.paws-r-sdk.com/docs/glue_list_ml_transforms/) for full documentation.
 #'
 #' @param NextToken A continuation token, if this is a continuation request.
 #' @param MaxResults The maximum size of a list to return.
@@ -5259,7 +5275,7 @@ glue_list_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter 
 #' @description
 #' Returns a list of registries that you have created, with minimal registry information. Registries in the `Deleting` status will not be included in the results. Empty results will be returned if there are no registries available.
 #'
-#' See [https://paws-r.github.io/docs/glue/list_registries.html](https://paws-r.github.io/docs/glue/list_registries.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_list_registries/](https://www.paws-r-sdk.com/docs/glue_list_registries/) for full documentation.
 #'
 #' @param MaxResults Maximum number of results required per page. If the value is not
 #' supplied, this will be defaulted to 25 per page.
@@ -5291,7 +5307,7 @@ glue_list_registries <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Returns a list of schema versions that you have created, with minimal information. Schema versions in Deleted status will not be included in the results. Empty results will be returned if there are no schema versions available.
 #'
-#' See [https://paws-r.github.io/docs/glue/list_schema_versions.html](https://paws-r.github.io/docs/glue/list_schema_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_list_schema_versions/](https://www.paws-r-sdk.com/docs/glue_list_schema_versions/) for full documentation.
 #'
 #' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
 #' structure contains:
@@ -5331,7 +5347,7 @@ glue_list_schema_versions <- function(SchemaId, MaxResults = NULL, NextToken = N
 #' @description
 #' Returns a list of schemas with minimal details. Schemas in Deleting status will not be included in the results. Empty results will be returned if there are no schemas available.
 #'
-#' See [https://paws-r.github.io/docs/glue/list_schemas.html](https://paws-r.github.io/docs/glue/list_schemas.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_list_schemas/](https://www.paws-r-sdk.com/docs/glue_list_schemas/) for full documentation.
 #'
 #' @param RegistryId A wrapper structure that may contain the registry name and Amazon
 #' Resource Name (ARN).
@@ -5364,7 +5380,7 @@ glue_list_schemas <- function(RegistryId = NULL, MaxResults = NULL, NextToken = 
 #' @description
 #' Retrieve a list of sessions.
 #'
-#' See [https://paws-r.github.io/docs/glue/list_sessions.html](https://paws-r.github.io/docs/glue/list_sessions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_list_sessions/](https://www.paws-r-sdk.com/docs/glue_list_sessions/) for full documentation.
 #'
 #' @param NextToken The token for the next set of results, or null if there are no more
 #' result.
@@ -5397,7 +5413,7 @@ glue_list_sessions <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL,
 #' @description
 #' Lists statements for the session.
 #'
-#' See [https://paws-r.github.io/docs/glue/list_statements.html](https://paws-r.github.io/docs/glue/list_statements.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_list_statements/](https://www.paws-r-sdk.com/docs/glue_list_statements/) for full documentation.
 #'
 #' @param SessionId &#91;required&#93; The Session ID of the statements.
 #' @param RequestOrigin The origin of the request to list statements.
@@ -5429,7 +5445,7 @@ glue_list_statements <- function(SessionId, RequestOrigin = NULL, NextToken = NU
 #' @description
 #' Retrieves the names of all trigger resources in this Amazon Web Services account, or the resources with the specified tag. This operation allows you to see which resources are available in your account, and their names.
 #'
-#' See [https://paws-r.github.io/docs/glue/list_triggers.html](https://paws-r.github.io/docs/glue/list_triggers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_list_triggers/](https://www.paws-r-sdk.com/docs/glue_list_triggers/) for full documentation.
 #'
 #' @param NextToken A continuation token, if this is a continuation request.
 #' @param DependentJobName The name of the job for which to retrieve triggers. The trigger that can
@@ -5463,7 +5479,7 @@ glue_list_triggers <- function(NextToken = NULL, DependentJobName = NULL, MaxRes
 #' @description
 #' Lists names of workflows created in the account.
 #'
-#' See [https://paws-r.github.io/docs/glue/list_workflows.html](https://paws-r.github.io/docs/glue/list_workflows.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_list_workflows/](https://www.paws-r-sdk.com/docs/glue_list_workflows/) for full documentation.
 #'
 #' @param NextToken A continuation token, if this is a continuation request.
 #' @param MaxResults The maximum size of a list to return.
@@ -5493,7 +5509,7 @@ glue_list_workflows <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Sets the security configuration for a specified catalog. After the configuration has been set, the specified encryption is applied to every catalog write thereafter.
 #'
-#' See [https://paws-r.github.io/docs/glue/put_data_catalog_encryption_settings.html](https://paws-r.github.io/docs/glue/put_data_catalog_encryption_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_put_data_catalog_encryption_settings/](https://www.paws-r-sdk.com/docs/glue_put_data_catalog_encryption_settings/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog to set the security configuration for. If
 #' none is provided, the Amazon Web Services account ID is used by default.
@@ -5524,7 +5540,7 @@ glue_put_data_catalog_encryption_settings <- function(CatalogId = NULL, DataCata
 #' @description
 #' Sets the Data Catalog resource policy for access control.
 #'
-#' See [https://paws-r.github.io/docs/glue/put_resource_policy.html](https://paws-r.github.io/docs/glue/put_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_put_resource_policy/](https://www.paws-r-sdk.com/docs/glue_put_resource_policy/) for full documentation.
 #'
 #' @param PolicyInJson &#91;required&#93; Contains the policy document to set, in JSON format.
 #' @param ResourceArn Do not use. For internal use only.
@@ -5573,7 +5589,7 @@ glue_put_resource_policy <- function(PolicyInJson, ResourceArn = NULL, PolicyHas
 #' @description
 #' Puts the metadata key value pair for a specified schema version ID. A maximum of 10 key value pairs will be allowed per schema version. They can be added over one or more calls.
 #'
-#' See [https://paws-r.github.io/docs/glue/put_schema_version_metadata.html](https://paws-r.github.io/docs/glue/put_schema_version_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_put_schema_version_metadata/](https://www.paws-r-sdk.com/docs/glue_put_schema_version_metadata/) for full documentation.
 #'
 #' @param SchemaId The unique ID for the schema.
 #' @param SchemaVersionNumber The version number of the schema.
@@ -5605,7 +5621,7 @@ glue_put_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNumbe
 #' @description
 #' Puts the specified workflow run properties for the given workflow run. If a property already exists for the specified run, then it overrides the value otherwise adds the property to existing properties.
 #'
-#' See [https://paws-r.github.io/docs/glue/put_workflow_run_properties.html](https://paws-r.github.io/docs/glue/put_workflow_run_properties.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_put_workflow_run_properties/](https://www.paws-r-sdk.com/docs/glue_put_workflow_run_properties/) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the workflow which was run.
 #' @param RunId &#91;required&#93; The ID of the workflow run for which the run properties should be
@@ -5637,7 +5653,7 @@ glue_put_workflow_run_properties <- function(Name, RunId, RunProperties) {
 #' @description
 #' Queries for the schema version metadata information.
 #'
-#' See [https://paws-r.github.io/docs/glue/query_schema_version_metadata.html](https://paws-r.github.io/docs/glue/query_schema_version_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_query_schema_version_metadata/](https://www.paws-r-sdk.com/docs/glue_query_schema_version_metadata/) for full documentation.
 #'
 #' @param SchemaId A wrapper structure that may contain the schema name and Amazon Resource
 #' Name (ARN).
@@ -5674,7 +5690,7 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #' @description
 #' Adds a new version to the existing schema. Returns an error if new version of schema does not meet the compatibility requirements of the schema set. This API will not create a new schema set and will return a 404 error if the schema set is not already present in the Schema Registry.
 #'
-#' See [https://paws-r.github.io/docs/glue/register_schema_version.html](https://paws-r.github.io/docs/glue/register_schema_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_register_schema_version/](https://www.paws-r-sdk.com/docs/glue_register_schema_version/) for full documentation.
 #'
 #' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
 #' structure contains:
@@ -5714,7 +5730,7 @@ glue_register_schema_version <- function(SchemaId, SchemaDefinition) {
 #' @description
 #' Removes a key value pair from the schema version metadata for the specified schema version ID.
 #'
-#' See [https://paws-r.github.io/docs/glue/remove_schema_version_metadata.html](https://paws-r.github.io/docs/glue/remove_schema_version_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_remove_schema_version_metadata/](https://www.paws-r-sdk.com/docs/glue_remove_schema_version_metadata/) for full documentation.
 #'
 #' @param SchemaId A wrapper structure that may contain the schema name and Amazon Resource
 #' Name (ARN).
@@ -5747,7 +5763,7 @@ glue_remove_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNu
 #' @description
 #' Resets a bookmark entry.
 #'
-#' See [https://paws-r.github.io/docs/glue/reset_job_bookmark.html](https://paws-r.github.io/docs/glue/reset_job_bookmark.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_reset_job_bookmark/](https://www.paws-r-sdk.com/docs/glue_reset_job_bookmark/) for full documentation.
 #'
 #' @param JobName &#91;required&#93; The name of the job in question.
 #' @param RunId The unique run identifier associated with this job run.
@@ -5778,7 +5794,7 @@ glue_reset_job_bookmark <- function(JobName, RunId = NULL) {
 #' @description
 #' Restarts selected nodes of a previous partially completed workflow run and resumes the workflow run. The selected nodes and all nodes that are downstream from the selected nodes are run.
 #'
-#' See [https://paws-r.github.io/docs/glue/resume_workflow_run.html](https://paws-r.github.io/docs/glue/resume_workflow_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_resume_workflow_run/](https://www.paws-r-sdk.com/docs/glue_resume_workflow_run/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the workflow to resume.
 #' @param RunId &#91;required&#93; The ID of the workflow run to resume.
@@ -5810,7 +5826,7 @@ glue_resume_workflow_run <- function(Name, RunId, NodeIds) {
 #' @description
 #' Executes the statement.
 #'
-#' See [https://paws-r.github.io/docs/glue/run_statement.html](https://paws-r.github.io/docs/glue/run_statement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_run_statement/](https://www.paws-r-sdk.com/docs/glue_run_statement/) for full documentation.
 #'
 #' @param SessionId &#91;required&#93; The Session Id of the statement to be run.
 #' @param Code &#91;required&#93; The statement code to be run.
@@ -5842,7 +5858,7 @@ glue_run_statement <- function(SessionId, Code, RequestOrigin = NULL) {
 #' @description
 #' Searches a set of tables based on properties in the table metadata as well as on the parent database. You can search against text or filter conditions.
 #'
-#' See [https://paws-r.github.io/docs/glue/search_tables.html](https://paws-r.github.io/docs/glue/search_tables.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_search_tables/](https://www.paws-r-sdk.com/docs/glue_search_tables/) for full documentation.
 #'
 #' @param CatalogId A unique identifier, consisting of ` account_id `.
 #' @param NextToken A continuation token, included if this is a continuation call.
@@ -5899,7 +5915,7 @@ glue_search_tables <- function(CatalogId = NULL, NextToken = NULL, Filters = NUL
 #' @description
 #' Starts a new run of the specified blueprint.
 #'
-#' See [https://paws-r.github.io/docs/glue/start_blueprint_run.html](https://paws-r.github.io/docs/glue/start_blueprint_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_start_blueprint_run/](https://www.paws-r-sdk.com/docs/glue_start_blueprint_run/) for full documentation.
 #'
 #' @param BlueprintName &#91;required&#93; The name of the blueprint.
 #' @param Parameters Specifies the parameters as a `BlueprintParameters` object.
@@ -5931,7 +5947,7 @@ glue_start_blueprint_run <- function(BlueprintName, Parameters = NULL, RoleArn) 
 #' @description
 #' Starts a crawl using the specified crawler, regardless of what is scheduled. If the crawler is already running, returns a [CrawlerRunningException](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-exceptions.html#aws-glue-api-exceptions-CrawlerRunningException).
 #'
-#' See [https://paws-r.github.io/docs/glue/start_crawler.html](https://paws-r.github.io/docs/glue/start_crawler.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_start_crawler/](https://www.paws-r-sdk.com/docs/glue_start_crawler/) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the crawler to start.
 #'
@@ -5962,7 +5978,7 @@ glue_start_crawler <- function(Name) {
 #' @description
 #' Changes the schedule state of the specified crawler to `SCHEDULED`, unless the crawler is already running or the schedule state is already `SCHEDULED`.
 #'
-#' See [https://paws-r.github.io/docs/glue/start_crawler_schedule.html](https://paws-r.github.io/docs/glue/start_crawler_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_start_crawler_schedule/](https://www.paws-r-sdk.com/docs/glue_start_crawler_schedule/) for full documentation.
 #'
 #' @param CrawlerName &#91;required&#93; Name of the crawler to schedule.
 #'
@@ -5992,7 +6008,7 @@ glue_start_crawler_schedule <- function(CrawlerName) {
 #' @description
 #' Starts a recommendation run that is used to generate rules when you don't know what rules to write. Glue Data Quality analyzes the data and comes up with recommendations for a potential ruleset. You can then triage the ruleset and modify the generated ruleset to your liking.
 #'
-#' See [https://paws-r.github.io/docs/glue/start_data_quality_rule_recommendation_run.html](https://paws-r.github.io/docs/glue/start_data_quality_rule_recommendation_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_start_data_quality_rule_recommendation_run/](https://www.paws-r-sdk.com/docs/glue_start_data_quality_rule_recommendation_run/) for full documentation.
 #'
 #' @param DataSource &#91;required&#93; The data source (Glue table) associated with this run.
 #' @param Role &#91;required&#93; An IAM role supplied to encrypt the results of the run.
@@ -6032,7 +6048,7 @@ glue_start_data_quality_rule_recommendation_run <- function(DataSource, Role, Nu
 #' @description
 #' Once you have a ruleset definition (either recommended or your own), you call this operation to evaluate the ruleset against a data source (Glue table). The evaluation computes results which you can retrieve with the [`get_data_quality_result`][glue_get_data_quality_result] API.
 #'
-#' See [https://paws-r.github.io/docs/glue/start_data_quality_ruleset_evaluation_run.html](https://paws-r.github.io/docs/glue/start_data_quality_ruleset_evaluation_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_start_data_quality_ruleset_evaluation_run/](https://www.paws-r-sdk.com/docs/glue_start_data_quality_ruleset_evaluation_run/) for full documentation.
 #'
 #' @param DataSource &#91;required&#93; The data source (Glue table) associated with this run.
 #' @param Role &#91;required&#93; An IAM role supplied to encrypt the results of the run.
@@ -6074,7 +6090,7 @@ glue_start_data_quality_ruleset_evaluation_run <- function(DataSource, Role, Num
 #' @description
 #' Begins an asynchronous task to export all labeled data for a particular transform. This task is the only label-related API call that is not part of the typical active learning workflow. You typically use [`start_export_labels_task_run`][glue_start_export_labels_task_run] when you want to work with all of your existing labels at the same time, such as when you want to remove or change labels that were previously submitted as truth. This API operation accepts the `TransformId` whose labels you want to export and an Amazon Simple Storage Service (Amazon S3) path to export the labels to. The operation returns a `TaskRunId`. You can check on the status of your task run by calling the [`get_ml_task_run`][glue_get_ml_task_run] API.
 #'
-#' See [https://paws-r.github.io/docs/glue/start_export_labels_task_run.html](https://paws-r.github.io/docs/glue/start_export_labels_task_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_start_export_labels_task_run/](https://www.paws-r-sdk.com/docs/glue_start_export_labels_task_run/) for full documentation.
 #'
 #' @param TransformId &#91;required&#93; The unique identifier of the machine learning transform.
 #' @param OutputS3Path &#91;required&#93; The Amazon S3 path where you export the labels.
@@ -6105,7 +6121,7 @@ glue_start_export_labels_task_run <- function(TransformId, OutputS3Path) {
 #' @description
 #' Enables you to provide additional labels (examples of truth) to be used to teach the machine learning transform and improve its quality. This API operation is generally used as part of the active learning workflow that starts with the [`start_ml_labeling_set_generation_task_run`][glue_start_ml_labeling_set_generation_task_run] call and that ultimately results in improving the quality of your machine learning transform.
 #'
-#' See [https://paws-r.github.io/docs/glue/start_import_labels_task_run.html](https://paws-r.github.io/docs/glue/start_import_labels_task_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_start_import_labels_task_run/](https://www.paws-r-sdk.com/docs/glue_start_import_labels_task_run/) for full documentation.
 #'
 #' @param TransformId &#91;required&#93; The unique identifier of the machine learning transform.
 #' @param InputS3Path &#91;required&#93; The Amazon Simple Storage Service (Amazon S3) path from where you import
@@ -6137,11 +6153,11 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' @description
 #' Starts a job run using a job definition.
 #'
-#' See [https://paws-r.github.io/docs/glue/start_job_run.html](https://paws-r.github.io/docs/glue/start_job_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_start_job_run/](https://www.paws-r-sdk.com/docs/glue_start_job_run/) for full documentation.
 #'
 #' @param JobName &#91;required&#93; The name of the job definition to use.
 #' @param JobRunId The ID of a previous `JobRun` to retry.
-#' @param Arguments The job arguments specifically for this run. For this job run, they
+#' @param Arguments The job arguments associated with this run. For this job run, they
 #' replace the default arguments set in the job definition itself.
 #' 
 #' You can specify arguments here that your own job-execution script
@@ -6156,10 +6172,15 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' Python](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html)
 #' topic in the developer guide.
 #' 
-#' For information about the key-value pairs that Glue consumes to set up
-#' your job, see the [Special Parameters Used by
+#' For information about the arguments you can provide to this field when
+#' configuring Spark jobs, see the [Special Parameters Used by
 #' Glue](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
 #' topic in the developer guide.
+#' 
+#' For information about the arguments you can provide to this field when
+#' configuring Ray jobs, see [Using job parameters in Ray
+#' jobs](https://docs.aws.amazon.com/glue/latest/dg/author-job-ray-job-parameters.html)
+#' in the developer guide.
 #' @param AllocatedCapacity This field is deprecated. Use `MaxCapacity` instead.
 #' 
 #' The number of Glue data processing units (DPUs) to allocate to this
@@ -6173,44 +6194,57 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' 
 #' Streaming jobs do not have a timeout. The default for non-streaming jobs
 #' is 2,880 minutes (48 hours).
-#' @param MaxCapacity The number of Glue data processing units (DPUs) that can be allocated
+#' @param MaxCapacity For Glue version 1.0 or earlier jobs, using the standard worker type,
+#' the number of Glue data processing units (DPUs) that can be allocated
 #' when this job runs. A DPU is a relative measure of processing power that
 #' consists of 4 vCPUs of compute capacity and 16 GB of memory. For more
 #' information, see the [Glue pricing
 #' page](https://aws.amazon.com/glue/pricing/).
 #' 
-#' Do not set `Max Capacity` if using `WorkerType` and `NumberOfWorkers`.
+#' For Glue version 2.0+ jobs, you cannot specify a `Maximum capacity`.
+#' Instead, you should specify a `Worker type` and the `Number of workers`.
+#' 
+#' Do not set `MaxCapacity` if using `WorkerType` and `NumberOfWorkers`.
 #' 
 #' The value that can be allocated for `MaxCapacity` depends on whether you
-#' are running a Python shell job, or an Apache Spark ETL job:
+#' are running a Python shell job, an Apache Spark ETL job, or an Apache
+#' Spark streaming ETL job:
 #' 
 #' -   When you specify a Python shell job
 #'     (`JobCommand.Name`="pythonshell"), you can allocate either 0.0625 or
 #'     1 DPU. The default is 0.0625 DPU.
 #' 
 #' -   When you specify an Apache Spark ETL job
-#'     (`JobCommand.Name`="glueetl"), you can allocate a minimum of 2 DPUs.
-#'     The default is 10 DPUs. This job type cannot have a fractional DPU
-#'     allocation.
+#'     (`JobCommand.Name`="glueetl") or Apache Spark streaming ETL job
+#'     (`JobCommand.Name`="gluestreaming"), you can allocate from 2 to 100
+#'     DPUs. The default is 10 DPUs. This job type cannot have a fractional
+#'     DPU allocation.
 #' @param SecurityConfiguration The name of the `SecurityConfiguration` structure to be used with this
 #' job run.
 #' @param NotificationProperty Specifies configuration properties of a job run notification.
 #' @param WorkerType The type of predefined worker that is allocated when a job runs. Accepts
-#' a value of Standard, G.1X, G.2X, or G.025X.
+#' a value of Standard, G.1X, G.2X, or G.025X for Spark jobs. Accepts the
+#' value Z.2X for Ray jobs.
 #' 
 #' -   For the `Standard` worker type, each worker provides 4 vCPU, 16 GB
 #'     of memory and a 50GB disk, and 2 executors per worker.
 #' 
-#' -   For the `G.1X` worker type, each worker provides 4 vCPU, 16 GB of
-#'     memory and a 64GB disk, and 1 executor per worker.
+#' -   For the `G.1X` worker type, each worker maps to 1 DPU (4 vCPU, 16 GB
+#'     of memory, 64 GB disk), and provides 1 executor per worker. We
+#'     recommend this worker type for memory-intensive jobs.
 #' 
-#' -   For the `G.2X` worker type, each worker provides 8 vCPU, 32 GB of
-#'     memory and a 128GB disk, and 1 executor per worker.
+#' -   For the `G.2X` worker type, each worker maps to 2 DPU (8 vCPU, 32 GB
+#'     of memory, 128 GB disk), and provides 1 executor per worker. We
+#'     recommend this worker type for memory-intensive jobs.
 #' 
 #' -   For the `G.025X` worker type, each worker maps to 0.25 DPU (2 vCPU,
 #'     4 GB of memory, 64 GB disk), and provides 1 executor per worker. We
 #'     recommend this worker type for low volume streaming jobs. This
 #'     worker type is only available for Glue version 3.0 streaming jobs.
+#' 
+#' -   For the `Z.2X` worker type, each worker maps to 2 DPU (8vCPU, 64 GB
+#'     of m emory, 128 GB disk), and provides up to 8 Ray workers (one per
+#'     vCPU) based on the autoscaler.
 #' @param NumberOfWorkers The number of workers of a defined `workerType` that are allocated when
 #' a job runs.
 #' @param ExecutionClass Indicates whether the job is run with a standard or flexible execution
@@ -6249,7 +6283,7 @@ glue_start_job_run <- function(JobName, JobRunId = NULL, Arguments = NULL, Alloc
 #' @description
 #' Starts a task to estimate the quality of the transform.
 #'
-#' See [https://paws-r.github.io/docs/glue/start_ml_evaluation_task_run.html](https://paws-r.github.io/docs/glue/start_ml_evaluation_task_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_start_ml_evaluation_task_run/](https://www.paws-r-sdk.com/docs/glue_start_ml_evaluation_task_run/) for full documentation.
 #'
 #' @param TransformId &#91;required&#93; The unique identifier of the machine learning transform.
 #'
@@ -6280,7 +6314,7 @@ glue_start_ml_evaluation_task_run <- function(TransformId) {
 #' @description
 #' Starts the active learning workflow for your machine learning transform to improve the transform's quality by generating label sets and adding labels.
 #'
-#' See [https://paws-r.github.io/docs/glue/start_ml_labeling_set_generation_task_run.html](https://paws-r.github.io/docs/glue/start_ml_labeling_set_generation_task_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_start_ml_labeling_set_generation_task_run/](https://www.paws-r-sdk.com/docs/glue_start_ml_labeling_set_generation_task_run/) for full documentation.
 #'
 #' @param TransformId &#91;required&#93; The unique identifier of the machine learning transform.
 #' @param OutputS3Path &#91;required&#93; The Amazon Simple Storage Service (Amazon S3) path where you generate
@@ -6311,7 +6345,7 @@ glue_start_ml_labeling_set_generation_task_run <- function(TransformId, OutputS3
 #' @description
 #' Starts an existing trigger. See [Triggering Jobs](https://docs.aws.amazon.com/glue/latest/dg/trigger-job.html) for information about how different types of trigger are started.
 #'
-#' See [https://paws-r.github.io/docs/glue/start_trigger.html](https://paws-r.github.io/docs/glue/start_trigger.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_start_trigger/](https://www.paws-r-sdk.com/docs/glue_start_trigger/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the trigger to start.
 #'
@@ -6340,7 +6374,7 @@ glue_start_trigger <- function(Name) {
 #' @description
 #' Starts a new run of the specified workflow.
 #'
-#' See [https://paws-r.github.io/docs/glue/start_workflow_run.html](https://paws-r.github.io/docs/glue/start_workflow_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_start_workflow_run/](https://www.paws-r-sdk.com/docs/glue_start_workflow_run/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the workflow to start.
 #' @param RunProperties The workflow run properties for the new workflow run.
@@ -6370,7 +6404,7 @@ glue_start_workflow_run <- function(Name, RunProperties = NULL) {
 #' @description
 #' If the specified crawler is running, stops the crawl.
 #'
-#' See [https://paws-r.github.io/docs/glue/stop_crawler.html](https://paws-r.github.io/docs/glue/stop_crawler.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_stop_crawler/](https://www.paws-r-sdk.com/docs/glue_stop_crawler/) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the crawler to stop.
 #'
@@ -6400,7 +6434,7 @@ glue_stop_crawler <- function(Name) {
 #' @description
 #' Sets the schedule state of the specified crawler to `NOT_SCHEDULED`, but does not stop the crawler if it is already running.
 #'
-#' See [https://paws-r.github.io/docs/glue/stop_crawler_schedule.html](https://paws-r.github.io/docs/glue/stop_crawler_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_stop_crawler_schedule/](https://www.paws-r-sdk.com/docs/glue_stop_crawler_schedule/) for full documentation.
 #'
 #' @param CrawlerName &#91;required&#93; Name of the crawler whose schedule state to set.
 #'
@@ -6429,7 +6463,7 @@ glue_stop_crawler_schedule <- function(CrawlerName) {
 #' @description
 #' Stops the session.
 #'
-#' See [https://paws-r.github.io/docs/glue/stop_session.html](https://paws-r.github.io/docs/glue/stop_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_stop_session/](https://www.paws-r-sdk.com/docs/glue_stop_session/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the session to be stopped.
 #' @param RequestOrigin The origin of the request.
@@ -6459,7 +6493,7 @@ glue_stop_session <- function(Id, RequestOrigin = NULL) {
 #' @description
 #' Stops a specified trigger.
 #'
-#' See [https://paws-r.github.io/docs/glue/stop_trigger.html](https://paws-r.github.io/docs/glue/stop_trigger.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_stop_trigger/](https://www.paws-r-sdk.com/docs/glue_stop_trigger/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the trigger to stop.
 #'
@@ -6488,7 +6522,7 @@ glue_stop_trigger <- function(Name) {
 #' @description
 #' Stops the execution of the specified workflow run.
 #'
-#' See [https://paws-r.github.io/docs/glue/stop_workflow_run.html](https://paws-r.github.io/docs/glue/stop_workflow_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_stop_workflow_run/](https://www.paws-r-sdk.com/docs/glue_stop_workflow_run/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the workflow to stop.
 #' @param RunId &#91;required&#93; The ID of the workflow run to stop.
@@ -6518,7 +6552,7 @@ glue_stop_workflow_run <- function(Name, RunId) {
 #' @description
 #' Adds tags to a resource. A tag is a label you can assign to an Amazon Web Services resource. In Glue, you can tag only certain resources. For information about what resources you can tag, see [Amazon Web Services Tags in Glue](https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html).
 #'
-#' See [https://paws-r.github.io/docs/glue/tag_resource.html](https://paws-r.github.io/docs/glue/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_tag_resource/](https://www.paws-r-sdk.com/docs/glue_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the Glue resource to which to add the tags. For more
 #' information about Glue resource ARNs, see the [Glue ARN string
@@ -6550,7 +6584,7 @@ glue_tag_resource <- function(ResourceArn, TagsToAdd) {
 #' @description
 #' Removes tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/glue/untag_resource.html](https://paws-r.github.io/docs/glue/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_untag_resource/](https://www.paws-r-sdk.com/docs/glue_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource from which to remove the
 #' tags.
@@ -6581,7 +6615,7 @@ glue_untag_resource <- function(ResourceArn, TagsToRemove) {
 #' @description
 #' Updates a registered blueprint.
 #'
-#' See [https://paws-r.github.io/docs/glue/update_blueprint.html](https://paws-r.github.io/docs/glue/update_blueprint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_update_blueprint/](https://www.paws-r-sdk.com/docs/glue_update_blueprint/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the blueprint.
 #' @param Description A description of the blueprint.
@@ -6613,7 +6647,7 @@ glue_update_blueprint <- function(Name, Description = NULL, BlueprintLocation) {
 #' @description
 #' Modifies an existing classifier (a `GrokClassifier`, an `XMLClassifier`, a `JsonClassifier`, or a `CsvClassifier`, depending on which field is present).
 #'
-#' See [https://paws-r.github.io/docs/glue/update_classifier.html](https://paws-r.github.io/docs/glue/update_classifier.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_update_classifier/](https://www.paws-r-sdk.com/docs/glue_update_classifier/) for full documentation.
 #'
 #' @param GrokClassifier A `GrokClassifier` object with updated fields.
 #' @param XMLClassifier An `XMLClassifier` object with updated fields.
@@ -6645,7 +6679,7 @@ glue_update_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #' @description
 #' Creates or updates partition statistics of columns.
 #'
-#' See [https://paws-r.github.io/docs/glue/update_column_statistics_for_partition.html](https://paws-r.github.io/docs/glue/update_column_statistics_for_partition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_update_column_statistics_for_partition/](https://www.paws-r-sdk.com/docs/glue_update_column_statistics_for_partition/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
 #' none is supplied, the Amazon Web Services account ID is used by default.
@@ -6679,7 +6713,7 @@ glue_update_column_statistics_for_partition <- function(CatalogId = NULL, Databa
 #' @description
 #' Creates or updates table statistics of columns.
 #'
-#' See [https://paws-r.github.io/docs/glue/update_column_statistics_for_table.html](https://paws-r.github.io/docs/glue/update_column_statistics_for_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_update_column_statistics_for_table/](https://www.paws-r-sdk.com/docs/glue_update_column_statistics_for_table/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
 #' none is supplied, the Amazon Web Services account ID is used by default.
@@ -6712,7 +6746,7 @@ glue_update_column_statistics_for_table <- function(CatalogId = NULL, DatabaseNa
 #' @description
 #' Updates a connection definition in the Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/glue/update_connection.html](https://paws-r.github.io/docs/glue/update_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_update_connection/](https://www.paws-r-sdk.com/docs/glue_update_connection/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which the connection resides. If none is
 #' provided, the Amazon Web Services account ID is used by default.
@@ -6744,7 +6778,7 @@ glue_update_connection <- function(CatalogId = NULL, Name, ConnectionInput) {
 #' @description
 #' Updates a crawler. If a crawler is running, you must stop it using [`stop_crawler`][glue_stop_crawler] before updating it.
 #'
-#' See [https://paws-r.github.io/docs/glue/update_crawler.html](https://paws-r.github.io/docs/glue/update_crawler.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_update_crawler/](https://www.paws-r-sdk.com/docs/glue_update_crawler/) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the new crawler.
 #' @param Role The IAM role or Amazon Resource Name (ARN) of an IAM role that is used
@@ -6800,7 +6834,7 @@ glue_update_crawler <- function(Name, Role = NULL, DatabaseName = NULL, Descript
 #' @description
 #' Updates the schedule of a crawler using a `cron` expression.
 #'
-#' See [https://paws-r.github.io/docs/glue/update_crawler_schedule.html](https://paws-r.github.io/docs/glue/update_crawler_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_update_crawler_schedule/](https://www.paws-r-sdk.com/docs/glue_update_crawler_schedule/) for full documentation.
 #'
 #' @param CrawlerName &#91;required&#93; The name of the crawler whose schedule to update.
 #' @param Schedule The updated `cron` expression used to specify the schedule (see
@@ -6834,7 +6868,7 @@ glue_update_crawler_schedule <- function(CrawlerName, Schedule = NULL) {
 #' @description
 #' Updates the specified data quality ruleset.
 #'
-#' See [https://paws-r.github.io/docs/glue/update_data_quality_ruleset.html](https://paws-r.github.io/docs/glue/update_data_quality_ruleset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_update_data_quality_ruleset/](https://www.paws-r-sdk.com/docs/glue_update_data_quality_ruleset/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the data quality ruleset.
 #' @param Description A description of the ruleset.
@@ -6866,7 +6900,7 @@ glue_update_data_quality_ruleset <- function(Name, Description = NULL, Ruleset =
 #' @description
 #' Updates an existing database definition in a Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/glue/update_database.html](https://paws-r.github.io/docs/glue/update_database.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_update_database/](https://www.paws-r-sdk.com/docs/glue_update_database/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog in which the metadata database resides. If
 #' none is provided, the Amazon Web Services account ID is used by default.
@@ -6900,7 +6934,7 @@ glue_update_database <- function(CatalogId = NULL, Name, DatabaseInput) {
 #' @description
 #' Updates a specified development endpoint.
 #'
-#' See [https://paws-r.github.io/docs/glue/update_dev_endpoint.html](https://paws-r.github.io/docs/glue/update_dev_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_update_dev_endpoint/](https://www.paws-r-sdk.com/docs/glue_update_dev_endpoint/) for full documentation.
 #'
 #' @param EndpointName &#91;required&#93; The name of the `DevEndpoint` to be updated.
 #' @param PublicKey The public key for the `DevEndpoint` to use.
@@ -6949,7 +6983,7 @@ glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKe
 #' @description
 #' Updates an existing job definition. The previous job definition is completely overwritten by this information.
 #'
-#' See [https://paws-r.github.io/docs/glue/update_job.html](https://paws-r.github.io/docs/glue/update_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_update_job/](https://www.paws-r-sdk.com/docs/glue_update_job/) for full documentation.
 #'
 #' @param JobName &#91;required&#93; The name of the job definition to update.
 #' @param JobUpdate &#91;required&#93; Specifies the values with which to update the job definition.
@@ -6980,7 +7014,7 @@ glue_update_job <- function(JobName, JobUpdate) {
 #' @description
 #' Synchronizes a job from the source control repository. This operation takes the job artifacts that are located in the remote repository and updates the Glue internal stores with these artifacts.
 #'
-#' See [https://paws-r.github.io/docs/glue/update_job_from_source_control.html](https://paws-r.github.io/docs/glue/update_job_from_source_control.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_update_job_from_source_control/](https://www.paws-r-sdk.com/docs/glue_update_job_from_source_control/) for full documentation.
 #'
 #' @param JobName The name of the Glue job to be synchronized to or from the remote
 #' repository.
@@ -7019,7 +7053,7 @@ glue_update_job_from_source_control <- function(JobName = NULL, Provider = NULL,
 #' @description
 #' Updates an existing machine learning transform. Call this operation to tune the algorithm parameters to achieve better results.
 #'
-#' See [https://paws-r.github.io/docs/glue/update_ml_transform.html](https://paws-r.github.io/docs/glue/update_ml_transform.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_update_ml_transform/](https://www.paws-r-sdk.com/docs/glue_update_ml_transform/) for full documentation.
 #'
 #' @param TransformId &#91;required&#93; A unique identifier that was generated when the transform was created.
 #' @param Name The unique name that you gave the transform when you created it.
@@ -7088,7 +7122,7 @@ glue_update_ml_transform <- function(TransformId, Name = NULL, Description = NUL
 #' @description
 #' Updates a partition.
 #'
-#' See [https://paws-r.github.io/docs/glue/update_partition.html](https://paws-r.github.io/docs/glue/update_partition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_update_partition/](https://www.paws-r-sdk.com/docs/glue_update_partition/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the partition to be updated resides. If
 #' none is provided, the Amazon Web Services account ID is used by default.
@@ -7126,7 +7160,7 @@ glue_update_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
 #' @description
 #' Updates an existing registry which is used to hold a collection of schemas. The updated properties relate to the registry, and do not modify any of the schemas within the registry.
 #'
-#' See [https://paws-r.github.io/docs/glue/update_registry.html](https://paws-r.github.io/docs/glue/update_registry.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_update_registry/](https://www.paws-r-sdk.com/docs/glue_update_registry/) for full documentation.
 #'
 #' @param RegistryId &#91;required&#93; This is a wrapper structure that may contain the registry name and
 #' Amazon Resource Name (ARN).
@@ -7159,7 +7193,7 @@ glue_update_registry <- function(RegistryId, Description) {
 #' @description
 #' Updates the description, compatibility setting, or version checkpoint for a schema set.
 #'
-#' See [https://paws-r.github.io/docs/glue/update_schema.html](https://paws-r.github.io/docs/glue/update_schema.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_update_schema/](https://www.paws-r-sdk.com/docs/glue_update_schema/) for full documentation.
 #'
 #' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
 #' structure contains:
@@ -7199,7 +7233,7 @@ glue_update_schema <- function(SchemaId, SchemaVersionNumber = NULL, Compatibili
 #' @description
 #' Synchronizes a job to the source control repository. This operation takes the job artifacts from the Glue internal stores and makes a commit to the remote repository that is configured on the job.
 #'
-#' See [https://paws-r.github.io/docs/glue/update_source_control_from_job.html](https://paws-r.github.io/docs/glue/update_source_control_from_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_update_source_control_from_job/](https://www.paws-r-sdk.com/docs/glue_update_source_control_from_job/) for full documentation.
 #'
 #' @param JobName The name of the Glue job to be synchronized to or from the remote
 #' repository.
@@ -7238,7 +7272,7 @@ glue_update_source_control_from_job <- function(JobName = NULL, Provider = NULL,
 #' @description
 #' Updates a metadata table in the Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/glue/update_table.html](https://paws-r.github.io/docs/glue/update_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_update_table/](https://www.paws-r-sdk.com/docs/glue_update_table/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the table resides. If none is provided,
 #' the Amazon Web Services account ID is used by default.
@@ -7278,7 +7312,7 @@ glue_update_table <- function(CatalogId = NULL, DatabaseName, TableInput, SkipAr
 #' @description
 #' Updates a trigger definition.
 #'
-#' See [https://paws-r.github.io/docs/glue/update_trigger.html](https://paws-r.github.io/docs/glue/update_trigger.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_update_trigger/](https://www.paws-r-sdk.com/docs/glue_update_trigger/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the trigger to update.
 #' @param TriggerUpdate &#91;required&#93; The new values with which to update the trigger.
@@ -7308,7 +7342,7 @@ glue_update_trigger <- function(Name, TriggerUpdate) {
 #' @description
 #' Updates an existing function definition in the Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/glue/update_user_defined_function.html](https://paws-r.github.io/docs/glue/update_user_defined_function.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_update_user_defined_function/](https://www.paws-r-sdk.com/docs/glue_update_user_defined_function/) for full documentation.
 #'
 #' @param CatalogId The ID of the Data Catalog where the function to be updated is located.
 #' If none is provided, the Amazon Web Services account ID is used by
@@ -7344,7 +7378,7 @@ glue_update_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 #' @description
 #' Updates an existing workflow.
 #'
-#' See [https://paws-r.github.io/docs/glue/update_workflow.html](https://paws-r.github.io/docs/glue/update_workflow.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glue_update_workflow/](https://www.paws-r-sdk.com/docs/glue_update_workflow/) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the workflow to be updated.
 #' @param Description The description of the workflow.

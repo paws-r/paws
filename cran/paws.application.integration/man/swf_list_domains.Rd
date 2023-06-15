@@ -34,6 +34,6 @@ the domains.}
 \description{
 Returns the list of domains registered in the account. The results may be split into multiple pages. To retrieve subsequent pages, make the call again using the nextPageToken returned by the initial call.
 
-See \url{https://paws-r.github.io/docs/swf/list_domains.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_list_domains/} for full documentation.
 }
 \keyword{internal}

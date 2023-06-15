@@ -38,6 +38,6 @@ original environment ("BLUE") or those in the replacement environment
 \description{
 The newer \code{\link[=codedeploy_batch_get_deployment_targets]{batch_get_deployment_targets}} should be used instead because it works with all compute types. \code{\link[=codedeploy_list_deployment_instances]{list_deployment_instances}} throws an exception if it is used with a compute platform other than EC2/On-premises or Lambda.
 
-See \url{https://paws-r.github.io/docs/codedeploy/list_deployment_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_list_deployment_instances/} for full documentation.
 }
 \keyword{internal}

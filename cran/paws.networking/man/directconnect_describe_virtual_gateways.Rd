@@ -10,6 +10,6 @@ directconnect_describe_virtual_gateways()
 \description{
 Lists the virtual private gateways owned by the Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/directconnect/describe_virtual_gateways.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_describe_virtual_gateways/} for full documentation.
 }
 \keyword{internal}

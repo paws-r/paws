@@ -22,6 +22,6 @@ Services administrator credentials to access the API.}
 \description{
 Aborts the upload of the specified document version that was previously initiated by \code{\link[=workdocs_initiate_document_version_upload]{initiate_document_version_upload}}. The client should make this call only when it no longer intends to upload the document version, or fails to do so.
 
-See \url{https://paws-r.github.io/docs/workdocs/abort_document_version_upload.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_abort_document_version_upload/} for full documentation.
 }
 \keyword{internal}

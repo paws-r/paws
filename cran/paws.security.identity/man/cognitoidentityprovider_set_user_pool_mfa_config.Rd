@@ -32,6 +32,6 @@ an MFA factor activated.
 \description{
 Sets the user pool multi-factor authentication (MFA) configuration.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/set_user_pool_mfa_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_set_user_pool_mfa_config/} for full documentation.
 }
 \keyword{internal}

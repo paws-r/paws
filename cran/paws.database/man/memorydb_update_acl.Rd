@@ -16,6 +16,6 @@ memorydb_update_acl(ACLName, UserNamesToAdd = NULL, UserNamesToRemove = NULL)
 \description{
 Changes the list of users that belong to the Access Control List.
 
-See \url{https://paws-r.github.io/docs/memorydb/update_acl.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_update_acl/} for full documentation.
 }
 \keyword{internal}

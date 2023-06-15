@@ -17,6 +17,6 @@ password is reset.}
 \description{
 Allows the administrator to reset the password for a user.
 
-See \url{https://paws-r.github.io/docs/workmail/reset_password.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_reset_password/} for full documentation.
 }
 \keyword{internal}

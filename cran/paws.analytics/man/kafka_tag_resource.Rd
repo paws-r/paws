@@ -15,6 +15,6 @@ that's associated with the tags.}
 \description{
 Adds tags to the specified MSK resource.
 
-See \url{https://paws-r.github.io/docs/kafka/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_tag_resource/} for full documentation.
 }
 \keyword{internal}

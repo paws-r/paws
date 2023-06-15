@@ -14,6 +14,6 @@ ssm_delete_resource_data_sync(SyncName, SyncType = NULL)
 \description{
 Deletes a resource data sync configuration. After the configuration is deleted, changes to data on managed nodes are no longer synced to or from the target. Deleting a sync configuration doesn't delete data.
 
-See \url{https://paws-r.github.io/docs/ssm/delete_resource_data_sync.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_delete_resource_data_sync/} for full documentation.
 }
 \keyword{internal}

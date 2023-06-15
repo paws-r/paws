@@ -12,6 +12,6 @@ personalize_describe_campaign(campaignArn)
 \description{
 Describes the given campaign, including its status.
 
-See \url{https://paws-r.github.io/docs/personalize/describe_campaign.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_describe_campaign/} for full documentation.
 }
 \keyword{internal}

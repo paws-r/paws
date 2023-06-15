@@ -18,6 +18,6 @@ for \code{AutoRenew} remains unchanged.}
 \description{
 Updates the details of an existing subscription. Only enter values for parameters you want to change. Empty parameters are not updated.
 
-See \url{https://paws-r.github.io/docs/shield/update_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_update_subscription/} for full documentation.
 }
 \keyword{internal}

@@ -33,6 +33,6 @@ between 1 and 50. The default value is 50.}
 \description{
 Describes one or more of your scaling plans.
 
-See \url{https://paws-r.github.io/docs/autoscalingplans/describe_scaling_plans.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscalingplans_describe_scaling_plans/} for full documentation.
 }
 \keyword{internal}

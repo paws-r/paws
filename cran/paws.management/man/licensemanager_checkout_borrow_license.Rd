@@ -32,6 +32,6 @@ idempotency of the request.}
 \description{
 Checks out the specified license for offline use.
 
-See \url{https://paws-r.github.io/docs/licensemanager/checkout_borrow_license.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_checkout_borrow_license/} for full documentation.
 }
 \keyword{internal}

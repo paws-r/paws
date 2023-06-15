@@ -42,6 +42,6 @@ each account individually by the administrator.
 \description{
 Configures the delegated administrator account with the provided values. You must provide the value for either \code{autoEnableOrganizationMembers} or \code{autoEnable}.
 
-See \url{https://paws-r.github.io/docs/guardduty/update_organization_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_update_organization_configuration/} for full documentation.
 }
 \keyword{internal}

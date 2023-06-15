@@ -20,6 +20,6 @@ networkmanager_update_network_resource_metadata(
 \description{
 Updates the resource metadata for the specified global network.
 
-See \url{https://paws-r.github.io/docs/networkmanager/update_network_resource_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_update_network_resource_metadata/} for full documentation.
 }
 \keyword{internal}

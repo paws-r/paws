@@ -49,6 +49,6 @@ source account ID in this field, and also specify \code{true} for
 \description{
 List the specified metrics. You can use the returned metrics with \code{\link[=cloudwatch_get_metric_data]{get_metric_data}} or \code{\link[=cloudwatch_get_metric_statistics]{get_metric_statistics}} to get statistical data.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/list_metrics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_list_metrics/} for full documentation.
 }
 \keyword{internal}

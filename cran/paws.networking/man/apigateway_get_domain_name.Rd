@@ -13,6 +13,6 @@ apigateway_get_domain_name(domainName)
 \description{
 Represents a domain name that is contained in a simpler, more intuitive URL that can be called.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_domain_name.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_domain_name/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ provided, the Amazon Web Services account ID is used by default.}
 \description{
 Updates a connection definition in the Data Catalog.
 
-See \url{https://paws-r.github.io/docs/glue/update_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_update_connection/} for full documentation.
 }
 \keyword{internal}

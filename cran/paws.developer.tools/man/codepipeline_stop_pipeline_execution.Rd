@@ -29,6 +29,6 @@ stopped.}
 \description{
 Stops the specified pipeline execution. You choose to either stop the pipeline execution by completing in-progress actions without starting subsequent actions, or by abandoning in-progress actions. While completing or abandoning in-progress actions, the pipeline execution is in a \code{Stopping} state. After all in-progress actions are completed or abandoned, the pipeline execution is in a \code{Stopped} state.
 
-See \url{https://paws-r.github.io/docs/codepipeline/stop_pipeline_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_stop_pipeline_execution/} for full documentation.
 }
 \keyword{internal}

@@ -25,6 +25,6 @@ Name (ARN).}
 \description{
 Removes a key value pair from the schema version metadata for the specified schema version ID.
 
-See \url{https://paws-r.github.io/docs/glue/remove_schema_version_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_remove_schema_version_metadata/} for full documentation.
 }
 \keyword{internal}

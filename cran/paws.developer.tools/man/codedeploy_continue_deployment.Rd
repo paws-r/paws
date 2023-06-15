@@ -21,6 +21,6 @@ original target is not terminated.}
 \description{
 For a blue/green deployment, starts the process of rerouting traffic from instances in the original environment to instances in the replacement environment without waiting for a specified wait time to elapse. (Traffic rerouting, which is achieved by registering instances in the replacement environment with the load balancer, can start as soon as all instances have a status of Ready.)
 
-See \url{https://paws-r.github.io/docs/codedeploy/continue_deployment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_continue_deployment/} for full documentation.
 }
 \keyword{internal}

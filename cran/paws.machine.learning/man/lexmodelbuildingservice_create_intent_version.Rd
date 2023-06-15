@@ -21,6 +21,6 @@ version. If you don't specify a checksum, Amazon Lex publishes the
 \description{
 Creates a new version of an intent based on the \verb{$LATEST} version of the intent. If the \verb{$LATEST} version of this intent hasn't changed since you last updated it, Amazon Lex doesn't create a new version. It returns the last version you created.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/create_intent_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_create_intent_version/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ cognitosync_set_cognito_events(IdentityPoolId, Events)
 \description{
 Sets the AWS Lambda function for a given event type for an identity pool. This request only updates the key/value pair specified. Other key/values pairs are not updated. To remove a key value pair, pass a empty value for the particular key.
 
-See \url{https://paws-r.github.io/docs/cognitosync/set_cognito_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitosync_set_cognito_events/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ add-on.}
 \description{
 Enables or modifies an add-on for an Amazon Lightsail resource. For more information, see the Amazon Lightsail Developer Guide.
 
-See \url{https://paws-r.github.io/docs/lightsail/enable_add_on.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_enable_add_on/} for full documentation.
 }
 \keyword{internal}

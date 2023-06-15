@@ -25,6 +25,6 @@ different account, the request fails with the HTTP status code
 \description{
 No longer used, see \code{\link[=s3_get_bucket_notification_configuration]{get_bucket_notification_configuration}}.
 
-See \url{https://paws-r.github.io/docs/s3/get_bucket_notification.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_notification/} for full documentation.
 }
 \keyword{internal}

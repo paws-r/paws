@@ -23,6 +23,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a set of DHCP options for your VPC. After creating the set, you must associate it with the VPC, causing all existing and new instances that you launch in the VPC to use this set of DHCP options. The following are the individual DHCP options you can specify. For more information about the options, see \href{https://www.ietf.org/rfc/rfc2132.txt}{RFC 2132}.
 
-See \url{https://paws-r.github.io/docs/ec2/create_dhcp_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_dhcp_options/} for full documentation.
 }
 \keyword{internal}

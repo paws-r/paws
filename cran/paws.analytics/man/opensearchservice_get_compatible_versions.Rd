@@ -14,6 +14,6 @@ results to a single domain.}
 \description{
 Returns a map of OpenSearch or Elasticsearch versions and the versions you can upgrade them to.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/get_compatible_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_get_compatible_versions/} for full documentation.
 }
 \keyword{internal}

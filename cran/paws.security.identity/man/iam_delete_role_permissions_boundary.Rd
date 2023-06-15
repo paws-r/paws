@@ -13,6 +13,6 @@ remove the permissions boundary.}
 \description{
 Deletes the permissions boundary for the specified IAM role.
 
-See \url{https://paws-r.github.io/docs/iam/delete_role_permissions_boundary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_delete_role_permissions_boundary/} for full documentation.
 }
 \keyword{internal}

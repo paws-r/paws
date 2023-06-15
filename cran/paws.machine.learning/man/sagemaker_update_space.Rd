@@ -16,6 +16,6 @@ sagemaker_update_space(DomainId, SpaceName, SpaceSettings = NULL)
 \description{
 Updates the settings of a space.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_space.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_space/} for full documentation.
 }
 \keyword{internal}

@@ -18,6 +18,6 @@ specify as the page token in a subsequent request.}
 \description{
 Returns information about all Amazon Lightsail virtual private servers, or \emph{instances}.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_instances/} for full documentation.
 }
 \keyword{internal}

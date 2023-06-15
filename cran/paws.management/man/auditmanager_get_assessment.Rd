@@ -12,6 +12,6 @@ auditmanager_get_assessment(assessmentId)
 \description{
 Returns an assessment from Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_assessment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_assessment/} for full documentation.
 }
 \keyword{internal}

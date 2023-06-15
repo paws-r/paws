@@ -81,6 +81,6 @@ and one variant for \code{ShadowProductionVariants}.}
 \description{
 Creates an endpoint configuration that SageMaker hosting services uses to deploy models. In the configuration, you identify one or more models, created using the \code{\link[=sagemaker_create_model]{create_model}} API, to deploy and the resources that you want SageMaker to provision. Then you call the \code{\link[=sagemaker_create_endpoint]{create_endpoint}} API.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_endpoint_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_endpoint_config/} for full documentation.
 }
 \keyword{internal}

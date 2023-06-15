@@ -12,6 +12,6 @@ fms_get_admin_scope(AdminAccount)
 \description{
 Returns information about the specified account's administrative scope. The admistrative scope defines the resources that an Firewall Manager administrator can manage.
 
-See \url{https://paws-r.github.io/docs/fms/get_admin_scope.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_get_admin_scope/} for full documentation.
 }
 \keyword{internal}

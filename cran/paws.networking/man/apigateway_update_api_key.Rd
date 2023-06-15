@@ -14,6 +14,6 @@ apigateway_update_api_key(apiKey, patchOperations = NULL)
 \description{
 Changes information about an ApiKey resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/update_api_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_update_api_key/} for full documentation.
 }
 \keyword{internal}

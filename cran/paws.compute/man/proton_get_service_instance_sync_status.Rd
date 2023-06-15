@@ -15,6 +15,6 @@ for.}
 \description{
 Get the status of the synced service instance.
 
-See \url{https://paws-r.github.io/docs/proton/get_service_instance_sync_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_get_service_instance_sync_status/} for full documentation.
 }
 \keyword{internal}

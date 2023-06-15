@@ -138,6 +138,6 @@ in the \emph{Amazon SWF Developer Guide}.}
 \description{
 Starts an execution of the workflow type in the specified domain using the provided \code{workflowId} and input data.
 
-See \url{https://paws-r.github.io/docs/swf/start_workflow_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_start_workflow_execution/} for full documentation.
 }
 \keyword{internal}

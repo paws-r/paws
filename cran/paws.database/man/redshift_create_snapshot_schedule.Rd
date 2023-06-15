@@ -32,6 +32,6 @@ characters are allowed for the identifier.}
 \description{
 Create a snapshot schedule that can be associated to a cluster and which overrides the default system backup schedule.
 
-See \url{https://paws-r.github.io/docs/redshift/create_snapshot_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_create_snapshot_schedule/} for full documentation.
 }
 \keyword{internal}

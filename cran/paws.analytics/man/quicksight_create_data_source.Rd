@@ -51,6 +51,6 @@ assigned to the data source.}
 \description{
 Creates a data source.
 
-See \url{https://paws-r.github.io/docs/quicksight/create_data_source.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_create_data_source/} for full documentation.
 }
 \keyword{internal}

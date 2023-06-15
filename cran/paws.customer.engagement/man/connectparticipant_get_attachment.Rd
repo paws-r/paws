@@ -14,6 +14,6 @@ connectparticipant_get_attachment(AttachmentId, ConnectionToken)
 \description{
 Provides a pre-signed URL for download of a completed attachment. This is an asynchronous API for use with active contacts.
 
-See \url{https://paws-r.github.io/docs/connectparticipant/get_attachment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectparticipant_get_attachment/} for full documentation.
 }
 \keyword{internal}

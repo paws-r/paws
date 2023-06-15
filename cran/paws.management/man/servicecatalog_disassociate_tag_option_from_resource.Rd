@@ -14,6 +14,6 @@ servicecatalog_disassociate_tag_option_from_resource(ResourceId, TagOptionId)
 \description{
 Disassociates the specified TagOption from the specified resource.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/disassociate_tag_option_from_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_tag_option_from_resource/} for full documentation.
 }
 \keyword{internal}

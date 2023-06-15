@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Adds permissions to the resource-based policy of a version of an [Lambda layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html). Use this action to grant layer usage permission to other accounts. You can grant permission to a single account, all accounts in an organization, or all Amazon Web Services accounts.
 #'
-#' See [https://paws-r.github.io/docs/lambda/add_layer_version_permission.html](https://paws-r.github.io/docs/lambda/add_layer_version_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_add_layer_version_permission/](https://www.paws-r-sdk.com/docs/lambda_add_layer_version_permission/) for full documentation.
 #'
 #' @param LayerName &#91;required&#93; The name or Amazon Resource Name (ARN) of the layer.
 #' @param VersionNumber &#91;required&#93; The version number.
@@ -54,7 +54,7 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #' @description
 #' Grants an Amazon Web Service, Amazon Web Services account, or Amazon Web Services organization permission to use a function. You can apply the policy at the function level, or specify a qualifier to restrict access to a single version or alias. If you use a qualifier, the invoker must use the full Amazon Resource Name (ARN) of that version or alias to invoke the function. Note: Lambda does not support adding policies to version $LATEST.
 #'
-#' See [https://paws-r.github.io/docs/lambda/add_permission.html](https://paws-r.github.io/docs/lambda/add_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_add_permission/](https://www.paws-r-sdk.com/docs/lambda_add_permission/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
 #' 
@@ -129,7 +129,7 @@ lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, 
 #' @description
 #' Creates an [alias](https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html) for a Lambda function version. Use aliases to provide clients with a function identifier that you can update to invoke a different version.
 #'
-#' See [https://paws-r.github.io/docs/lambda/create_alias.html](https://paws-r.github.io/docs/lambda/create_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_create_alias/](https://www.paws-r-sdk.com/docs/lambda_create_alias/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -176,7 +176,7 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #' @description
 #' Creates a code signing configuration. A [code signing configuration](https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html) defines a list of allowed signing profiles and defines the code-signing validation policy (action to be taken if deployment validation checks fail).
 #'
-#' See [https://paws-r.github.io/docs/lambda/create_code_signing_config.html](https://paws-r.github.io/docs/lambda/create_code_signing_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_create_code_signing_config/](https://www.paws-r-sdk.com/docs/lambda_create_code_signing_config/) for full documentation.
 #'
 #' @param Description Descriptive name for this code signing configuration.
 #' @param AllowedPublishers &#91;required&#93; Signing profiles for this code signing configuration.
@@ -208,7 +208,7 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' @description
 #' Creates a mapping between an event source and an Lambda function. Lambda reads items from the event source and invokes the function.
 #'
-#' See [https://paws-r.github.io/docs/lambda/create_event_source_mapping.html](https://paws-r.github.io/docs/lambda/create_event_source_mapping.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_create_event_source_mapping/](https://www.paws-r-sdk.com/docs/lambda_create_event_source_mapping/) for full documentation.
 #'
 #' @param EventSourceArn The Amazon Resource Name (ARN) of the event source.
 #' 
@@ -346,7 +346,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' @description
 #' Creates a Lambda function. To create a function, you need a [deployment package](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html) and an [execution role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html#lambda-intro-execution-role). The deployment package is a .zip file archive or container image that contains your function code. The execution role grants the function permission to use Amazon Web Services, such as Amazon CloudWatch Logs for log streaming and X-Ray for request tracing.
 #'
-#' See [https://paws-r.github.io/docs/lambda/create_function.html](https://paws-r.github.io/docs/lambda/create_function.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_create_function/](https://www.paws-r-sdk.com/docs/lambda_create_function/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -407,9 +407,12 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html#configuration-envvars-encryption).
 #' When [Lambda
 #' SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart-security.html)
-#' is activated, this key is also used to encrypt your function's snapshot.
-#' If you don't provide a customer managed key, Lambda uses a default
-#' service key.
+#' is activated, Lambda also uses this key is to encrypt your function's
+#' snapshot. If you deploy your function using a container image, Lambda
+#' also uses this key to encrypt your function when it's deployed. Note
+#' that this is not the same key that's used to protect your container
+#' image in the Amazon Elastic Container Registry (Amazon ECR). If you
+#' don't provide a customer managed key, Lambda uses a default service key.
 #' @param TracingConfig Set `Mode` to `Active` to sample and trace a subset of incoming requests
 #' with
 #' [X-Ray](https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html).
@@ -463,7 +466,7 @@ lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler =
 #' @description
 #' Creates a Lambda function URL with the specified configuration parameters. A function URL is a dedicated HTTP(S) endpoint that you can use to invoke your function.
 #'
-#' See [https://paws-r.github.io/docs/lambda/create_function_url_config.html](https://paws-r.github.io/docs/lambda/create_function_url_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_create_function_url_config/](https://www.paws-r-sdk.com/docs/lambda_create_function_url_config/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -527,7 +530,7 @@ lambda_create_function_url_config <- function(FunctionName, Qualifier = NULL, Au
 #' @description
 #' Deletes a Lambda function [alias](https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html).
 #'
-#' See [https://paws-r.github.io/docs/lambda/delete_alias.html](https://paws-r.github.io/docs/lambda/delete_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_delete_alias/](https://www.paws-r-sdk.com/docs/lambda_delete_alias/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -569,7 +572,7 @@ lambda_delete_alias <- function(FunctionName, Name) {
 #' @description
 #' Deletes the code signing configuration. You can delete the code signing configuration only if no function is using it.
 #'
-#' See [https://paws-r.github.io/docs/lambda/delete_code_signing_config.html](https://paws-r.github.io/docs/lambda/delete_code_signing_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_delete_code_signing_config/](https://www.paws-r-sdk.com/docs/lambda_delete_code_signing_config/) for full documentation.
 #'
 #' @param CodeSigningConfigArn &#91;required&#93; The The Amazon Resource Name (ARN) of the code signing configuration.
 #'
@@ -598,7 +601,7 @@ lambda_delete_code_signing_config <- function(CodeSigningConfigArn) {
 #' @description
 #' Deletes an [event source mapping](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html). You can get the identifier of a mapping from the output of [`list_event_source_mappings`][lambda_list_event_source_mappings].
 #'
-#' See [https://paws-r.github.io/docs/lambda/delete_event_source_mapping.html](https://paws-r.github.io/docs/lambda/delete_event_source_mapping.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_delete_event_source_mapping/](https://www.paws-r-sdk.com/docs/lambda_delete_event_source_mapping/) for full documentation.
 #'
 #' @param UUID &#91;required&#93; The identifier of the event source mapping.
 #'
@@ -627,7 +630,7 @@ lambda_delete_event_source_mapping <- function(UUID) {
 #' @description
 #' Deletes a Lambda function. To delete a specific function version, use the `Qualifier` parameter. Otherwise, all versions and aliases are deleted.
 #'
-#' See [https://paws-r.github.io/docs/lambda/delete_function.html](https://paws-r.github.io/docs/lambda/delete_function.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_delete_function/](https://www.paws-r-sdk.com/docs/lambda_delete_function/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function or version.
 #' 
@@ -672,7 +675,7 @@ lambda_delete_function <- function(FunctionName, Qualifier = NULL) {
 #' @description
 #' Removes the code signing configuration from the function.
 #'
-#' See [https://paws-r.github.io/docs/lambda/delete_function_code_signing_config.html](https://paws-r.github.io/docs/lambda/delete_function_code_signing_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_delete_function_code_signing_config/](https://www.paws-r-sdk.com/docs/lambda_delete_function_code_signing_config/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -713,7 +716,7 @@ lambda_delete_function_code_signing_config <- function(FunctionName) {
 #' @description
 #' Removes a concurrent execution limit from a function.
 #'
-#' See [https://paws-r.github.io/docs/lambda/delete_function_concurrency.html](https://paws-r.github.io/docs/lambda/delete_function_concurrency.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_delete_function_concurrency/](https://www.paws-r-sdk.com/docs/lambda_delete_function_concurrency/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -755,7 +758,7 @@ lambda_delete_function_concurrency <- function(FunctionName) {
 #' @description
 #' Deletes the configuration for asynchronous invocation for a function, version, or alias.
 #'
-#' See [https://paws-r.github.io/docs/lambda/delete_function_event_invoke_config.html](https://paws-r.github.io/docs/lambda/delete_function_event_invoke_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_delete_function_event_invoke_config/](https://www.paws-r-sdk.com/docs/lambda_delete_function_event_invoke_config/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
 #' 
@@ -799,7 +802,7 @@ lambda_delete_function_event_invoke_config <- function(FunctionName, Qualifier =
 #' @description
 #' Deletes a Lambda function URL. When you delete a function URL, you can't recover it. Creating a new function URL results in a different URL address.
 #'
-#' See [https://paws-r.github.io/docs/lambda/delete_function_url_config.html](https://paws-r.github.io/docs/lambda/delete_function_url_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_delete_function_url_config/](https://www.paws-r-sdk.com/docs/lambda_delete_function_url_config/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -841,7 +844,7 @@ lambda_delete_function_url_config <- function(FunctionName, Qualifier = NULL) {
 #' @description
 #' Deletes a version of an [Lambda layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html). Deleted versions can no longer be viewed or added to functions. To avoid breaking functions, a copy of the version remains in Lambda until no functions refer to it.
 #'
-#' See [https://paws-r.github.io/docs/lambda/delete_layer_version.html](https://paws-r.github.io/docs/lambda/delete_layer_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_delete_layer_version/](https://www.paws-r-sdk.com/docs/lambda_delete_layer_version/) for full documentation.
 #'
 #' @param LayerName &#91;required&#93; The name or Amazon Resource Name (ARN) of the layer.
 #' @param VersionNumber &#91;required&#93; The version number.
@@ -871,7 +874,7 @@ lambda_delete_layer_version <- function(LayerName, VersionNumber) {
 #' @description
 #' Deletes the provisioned concurrency configuration for a function.
 #'
-#' See [https://paws-r.github.io/docs/lambda/delete_provisioned_concurrency_config.html](https://paws-r.github.io/docs/lambda/delete_provisioned_concurrency_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_delete_provisioned_concurrency_config/](https://www.paws-r-sdk.com/docs/lambda_delete_provisioned_concurrency_config/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -914,7 +917,7 @@ lambda_delete_provisioned_concurrency_config <- function(FunctionName, Qualifier
 #' @description
 #' Retrieves details about your account's [limits](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html) and usage in an Amazon Web Services Region.
 #'
-#' See [https://paws-r.github.io/docs/lambda/get_account_settings.html](https://paws-r.github.io/docs/lambda/get_account_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_get_account_settings/](https://www.paws-r-sdk.com/docs/lambda_get_account_settings/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -941,7 +944,7 @@ lambda_get_account_settings <- function() {
 #' @description
 #' Returns details about a Lambda function [alias](https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html).
 #'
-#' See [https://paws-r.github.io/docs/lambda/get_alias.html](https://paws-r.github.io/docs/lambda/get_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_get_alias/](https://www.paws-r-sdk.com/docs/lambda_get_alias/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -983,7 +986,7 @@ lambda_get_alias <- function(FunctionName, Name) {
 #' @description
 #' Returns information about the specified code signing configuration.
 #'
-#' See [https://paws-r.github.io/docs/lambda/get_code_signing_config.html](https://paws-r.github.io/docs/lambda/get_code_signing_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_get_code_signing_config/](https://www.paws-r-sdk.com/docs/lambda_get_code_signing_config/) for full documentation.
 #'
 #' @param CodeSigningConfigArn &#91;required&#93; The The Amazon Resource Name (ARN) of the code signing configuration.
 #'
@@ -1012,7 +1015,7 @@ lambda_get_code_signing_config <- function(CodeSigningConfigArn) {
 #' @description
 #' Returns details about an event source mapping. You can get the identifier of a mapping from the output of [`list_event_source_mappings`][lambda_list_event_source_mappings].
 #'
-#' See [https://paws-r.github.io/docs/lambda/get_event_source_mapping.html](https://paws-r.github.io/docs/lambda/get_event_source_mapping.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_get_event_source_mapping/](https://www.paws-r-sdk.com/docs/lambda_get_event_source_mapping/) for full documentation.
 #'
 #' @param UUID &#91;required&#93; The identifier of the event source mapping.
 #'
@@ -1042,7 +1045,7 @@ lambda_get_event_source_mapping <- function(UUID) {
 #' @description
 #' Returns information about the function or function version, with a link to download the deployment package that's valid for 10 minutes. If you specify a function version, only details that are specific to that version are returned.
 #'
-#' See [https://paws-r.github.io/docs/lambda/get_function.html](https://paws-r.github.io/docs/lambda/get_function.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_get_function/](https://www.paws-r-sdk.com/docs/lambda_get_function/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
 #' 
@@ -1087,7 +1090,7 @@ lambda_get_function <- function(FunctionName, Qualifier = NULL) {
 #' @description
 #' Returns the code signing configuration for the specified function.
 #'
-#' See [https://paws-r.github.io/docs/lambda/get_function_code_signing_config.html](https://paws-r.github.io/docs/lambda/get_function_code_signing_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_get_function_code_signing_config/](https://www.paws-r-sdk.com/docs/lambda_get_function_code_signing_config/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -1129,7 +1132,7 @@ lambda_get_function_code_signing_config <- function(FunctionName) {
 #' @description
 #' Returns details about the reserved concurrency configuration for a function. To set a concurrency limit for a function, use [`put_function_concurrency`][lambda_put_function_concurrency].
 #'
-#' See [https://paws-r.github.io/docs/lambda/get_function_concurrency.html](https://paws-r.github.io/docs/lambda/get_function_concurrency.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_get_function_concurrency/](https://www.paws-r-sdk.com/docs/lambda_get_function_concurrency/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -1170,7 +1173,7 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #' @description
 #' Returns the version-specific settings of a Lambda function or version. The output includes only options that can vary between versions of a function. To modify these settings, use [`update_function_configuration`][lambda_update_function_configuration].
 #'
-#' See [https://paws-r.github.io/docs/lambda/get_function_configuration.html](https://paws-r.github.io/docs/lambda/get_function_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_get_function_configuration/](https://www.paws-r-sdk.com/docs/lambda_get_function_configuration/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
 #' 
@@ -1216,7 +1219,7 @@ lambda_get_function_configuration <- function(FunctionName, Qualifier = NULL) {
 #' @description
 #' Retrieves the configuration for asynchronous invocation for a function, version, or alias.
 #'
-#' See [https://paws-r.github.io/docs/lambda/get_function_event_invoke_config.html](https://paws-r.github.io/docs/lambda/get_function_event_invoke_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_get_function_event_invoke_config/](https://www.paws-r-sdk.com/docs/lambda_get_function_event_invoke_config/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
 #' 
@@ -1260,7 +1263,7 @@ lambda_get_function_event_invoke_config <- function(FunctionName, Qualifier = NU
 #' @description
 #' Returns details about a Lambda function URL.
 #'
-#' See [https://paws-r.github.io/docs/lambda/get_function_url_config.html](https://paws-r.github.io/docs/lambda/get_function_url_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_get_function_url_config/](https://www.paws-r-sdk.com/docs/lambda_get_function_url_config/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -1303,7 +1306,7 @@ lambda_get_function_url_config <- function(FunctionName, Qualifier = NULL) {
 #' @description
 #' Returns information about a version of an [Lambda layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html), with a link to download the layer archive that's valid for 10 minutes.
 #'
-#' See [https://paws-r.github.io/docs/lambda/get_layer_version.html](https://paws-r.github.io/docs/lambda/get_layer_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_get_layer_version/](https://www.paws-r-sdk.com/docs/lambda_get_layer_version/) for full documentation.
 #'
 #' @param LayerName &#91;required&#93; The name or Amazon Resource Name (ARN) of the layer.
 #' @param VersionNumber &#91;required&#93; The version number.
@@ -1334,7 +1337,7 @@ lambda_get_layer_version <- function(LayerName, VersionNumber) {
 #' @description
 #' Returns information about a version of an [Lambda layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html), with a link to download the layer archive that's valid for 10 minutes.
 #'
-#' See [https://paws-r.github.io/docs/lambda/get_layer_version_by_arn.html](https://paws-r.github.io/docs/lambda/get_layer_version_by_arn.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_get_layer_version_by_arn/](https://www.paws-r-sdk.com/docs/lambda_get_layer_version_by_arn/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The ARN of the layer version.
 #'
@@ -1363,7 +1366,7 @@ lambda_get_layer_version_by_arn <- function(Arn) {
 #' @description
 #' Returns the permission policy for a version of an [Lambda layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html). For more information, see [`add_layer_version_permission`][lambda_add_layer_version_permission].
 #'
-#' See [https://paws-r.github.io/docs/lambda/get_layer_version_policy.html](https://paws-r.github.io/docs/lambda/get_layer_version_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_get_layer_version_policy/](https://www.paws-r-sdk.com/docs/lambda_get_layer_version_policy/) for full documentation.
 #'
 #' @param LayerName &#91;required&#93; The name or Amazon Resource Name (ARN) of the layer.
 #' @param VersionNumber &#91;required&#93; The version number.
@@ -1393,7 +1396,7 @@ lambda_get_layer_version_policy <- function(LayerName, VersionNumber) {
 #' @description
 #' Returns the [resource-based IAM policy](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html) for a function, version, or alias.
 #'
-#' See [https://paws-r.github.io/docs/lambda/get_policy.html](https://paws-r.github.io/docs/lambda/get_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_get_policy/](https://www.paws-r-sdk.com/docs/lambda_get_policy/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
 #' 
@@ -1438,7 +1441,7 @@ lambda_get_policy <- function(FunctionName, Qualifier = NULL) {
 #' @description
 #' Retrieves the provisioned concurrency configuration for a function's alias or version.
 #'
-#' See [https://paws-r.github.io/docs/lambda/get_provisioned_concurrency_config.html](https://paws-r.github.io/docs/lambda/get_provisioned_concurrency_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_get_provisioned_concurrency_config/](https://www.paws-r-sdk.com/docs/lambda_get_provisioned_concurrency_config/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -1480,7 +1483,7 @@ lambda_get_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
 #' @description
 #' Retrieves the runtime management configuration for a function's version. If the runtime update mode is **Manual**, this includes the ARN of the runtime version and the runtime update mode. If the runtime update mode is **Auto** or **Function update**, this includes the runtime update mode and `null` is returned for the ARN. For more information, see [Runtime updates](https://docs.aws.amazon.com/lambda/latest/dg/runtimes-update.html).
 #'
-#' See [https://paws-r.github.io/docs/lambda/get_runtime_management_config.html](https://paws-r.github.io/docs/lambda/get_runtime_management_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_get_runtime_management_config/](https://www.paws-r-sdk.com/docs/lambda_get_runtime_management_config/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -1524,7 +1527,7 @@ lambda_get_runtime_management_config <- function(FunctionName, Qualifier = NULL)
 #' @description
 #' Invokes a Lambda function. You can invoke a function synchronously (and wait for the response), or asynchronously. To invoke a function asynchronously, set `InvocationType` to `Event`.
 #'
-#' See [https://paws-r.github.io/docs/lambda/invoke.html](https://paws-r.github.io/docs/lambda/invoke.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_invoke/](https://www.paws-r-sdk.com/docs/lambda_invoke/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
 #' 
@@ -1591,7 +1594,7 @@ lambda_invoke <- function(FunctionName, InvocationType = NULL, LogType = NULL, C
 #' @description
 #' For asynchronous function invocation, use [`invoke`][lambda_invoke].
 #'
-#' See [https://paws-r.github.io/docs/lambda/invoke_async.html](https://paws-r.github.io/docs/lambda/invoke_async.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_invoke_async/](https://www.paws-r-sdk.com/docs/lambda_invoke_async/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -1634,7 +1637,7 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 #' @description
 #' Configure your Lambda functions to stream response payloads back to clients. For more information, see [Configuring a Lambda function to stream responses](https://docs.aws.amazon.com/lambda/latest/dg/configuration-response-streaming.html).
 #'
-#' See [https://paws-r.github.io/docs/lambda/invoke_with_response_stream.html](https://paws-r.github.io/docs/lambda/invoke_with_response_stream.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_invoke_with_response_stream/](https://www.paws-r-sdk.com/docs/lambda_invoke_with_response_stream/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -1694,7 +1697,7 @@ lambda_invoke_with_response_stream <- function(FunctionName, InvocationType = NU
 #' @description
 #' Returns a list of [aliases](https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html) for a Lambda function.
 #'
-#' See [https://paws-r.github.io/docs/lambda/list_aliases.html](https://paws-r.github.io/docs/lambda/list_aliases.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_list_aliases/](https://www.paws-r-sdk.com/docs/lambda_list_aliases/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -1740,7 +1743,7 @@ lambda_list_aliases <- function(FunctionName, FunctionVersion = NULL, Marker = N
 #' @description
 #' Returns a list of [code signing configurations](https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html). A request returns up to 10,000 configurations per call. You can use the `MaxItems` parameter to return fewer configurations per call.
 #'
-#' See [https://paws-r.github.io/docs/lambda/list_code_signing_configs.html](https://paws-r.github.io/docs/lambda/list_code_signing_configs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_list_code_signing_configs/](https://www.paws-r-sdk.com/docs/lambda_list_code_signing_configs/) for full documentation.
 #'
 #' @param Marker Specify the pagination token that's returned by a previous request to
 #' retrieve the next page of results.
@@ -1771,7 +1774,7 @@ lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
 #' @description
 #' Lists event source mappings. Specify an `EventSourceArn` to show only event source mappings for a single event source.
 #'
-#' See [https://paws-r.github.io/docs/lambda/list_event_source_mappings.html](https://paws-r.github.io/docs/lambda/list_event_source_mappings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_list_event_source_mappings/](https://www.paws-r-sdk.com/docs/lambda_list_event_source_mappings/) for full documentation.
 #'
 #' @param EventSourceArn The Amazon Resource Name (ARN) of the event source.
 #' 
@@ -1835,7 +1838,7 @@ lambda_list_event_source_mappings <- function(EventSourceArn = NULL, FunctionNam
 #' @description
 #' Retrieves a list of configurations for asynchronous invocation for a function.
 #'
-#' See [https://paws-r.github.io/docs/lambda/list_function_event_invoke_configs.html](https://paws-r.github.io/docs/lambda/list_function_event_invoke_configs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_list_function_event_invoke_configs/](https://www.paws-r-sdk.com/docs/lambda_list_function_event_invoke_configs/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -1879,7 +1882,7 @@ lambda_list_function_event_invoke_configs <- function(FunctionName, Marker = NUL
 #' @description
 #' Returns a list of Lambda function URLs for the specified function.
 #'
-#' See [https://paws-r.github.io/docs/lambda/list_function_url_configs.html](https://paws-r.github.io/docs/lambda/list_function_url_configs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_list_function_url_configs/](https://www.paws-r-sdk.com/docs/lambda_list_function_url_configs/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -1927,7 +1930,7 @@ lambda_list_function_url_configs <- function(FunctionName, Marker = NULL, MaxIte
 #' @description
 #' Returns a list of Lambda functions, with the version-specific configuration of each. Lambda returns up to 50 functions per call.
 #'
-#' See [https://paws-r.github.io/docs/lambda/list_functions.html](https://paws-r.github.io/docs/lambda/list_functions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_list_functions/](https://www.paws-r-sdk.com/docs/lambda_list_functions/) for full documentation.
 #'
 #' @param MasterRegion For Lambda@@Edge functions, the Amazon Web Services Region of the master
 #' function. For example, `us-east-1` filters the list of functions to
@@ -1967,7 +1970,7 @@ lambda_list_functions <- function(MasterRegion = NULL, FunctionVersion = NULL, M
 #' @description
 #' List the functions that use the specified code signing configuration. You can use this method prior to deleting a code signing configuration, to verify that no functions are using it.
 #'
-#' See [https://paws-r.github.io/docs/lambda/list_functions_by_code_signing_config.html](https://paws-r.github.io/docs/lambda/list_functions_by_code_signing_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_list_functions_by_code_signing_config/](https://www.paws-r-sdk.com/docs/lambda_list_functions_by_code_signing_config/) for full documentation.
 #'
 #' @param CodeSigningConfigArn &#91;required&#93; The The Amazon Resource Name (ARN) of the code signing configuration.
 #' @param Marker Specify the pagination token that's returned by a previous request to
@@ -1999,9 +2002,13 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 #' @description
 #' Lists the versions of an [Lambda layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html). Versions that have been deleted aren't listed. Specify a [runtime identifier](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) to list only versions that indicate that they're compatible with that runtime. Specify a compatible architecture to include only layer versions that are compatible with that architecture.
 #'
-#' See [https://paws-r.github.io/docs/lambda/list_layer_versions.html](https://paws-r.github.io/docs/lambda/list_layer_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_list_layer_versions/](https://www.paws-r-sdk.com/docs/lambda_list_layer_versions/) for full documentation.
 #'
 #' @param CompatibleRuntime A runtime identifier. For example, `go1.x`.
+#' 
+#' The following list includes deprecated runtimes. For more information,
+#' see [Runtime deprecation
+#' policy](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-support-policy).
 #' @param LayerName &#91;required&#93; The name or Amazon Resource Name (ARN) of the layer.
 #' @param Marker A pagination token returned by a previous call.
 #' @param MaxItems The maximum number of versions to return.
@@ -2034,9 +2041,13 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #' @description
 #' Lists [Lambda layers](https://docs.aws.amazon.com/lambda/latest/dg/invocation-layers.html) and shows information about the latest version of each. Specify a [runtime identifier](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) to list only layers that indicate that they're compatible with that runtime. Specify a compatible architecture to include only layers that are compatible with that [instruction set architecture](https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html).
 #'
-#' See [https://paws-r.github.io/docs/lambda/list_layers.html](https://paws-r.github.io/docs/lambda/list_layers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_list_layers/](https://www.paws-r-sdk.com/docs/lambda_list_layers/) for full documentation.
 #'
 #' @param CompatibleRuntime A runtime identifier. For example, `go1.x`.
+#' 
+#' The following list includes deprecated runtimes. For more information,
+#' see [Runtime deprecation
+#' policy](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-support-policy).
 #' @param Marker A pagination token returned by a previous call.
 #' @param MaxItems The maximum number of layers to return.
 #' @param CompatibleArchitecture The compatible [instruction set
@@ -2068,7 +2079,7 @@ lambda_list_layers <- function(CompatibleRuntime = NULL, Marker = NULL, MaxItems
 #' @description
 #' Retrieves a list of provisioned concurrency configurations for a function.
 #'
-#' See [https://paws-r.github.io/docs/lambda/list_provisioned_concurrency_configs.html](https://paws-r.github.io/docs/lambda/list_provisioned_concurrency_configs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_list_provisioned_concurrency_configs/](https://www.paws-r-sdk.com/docs/lambda_list_provisioned_concurrency_configs/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -2112,7 +2123,7 @@ lambda_list_provisioned_concurrency_configs <- function(FunctionName, Marker = N
 #' @description
 #' Returns a function's [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html). You can also view tags with [`get_function`][lambda_get_function].
 #'
-#' See [https://paws-r.github.io/docs/lambda/list_tags.html](https://paws-r.github.io/docs/lambda/list_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_list_tags/](https://www.paws-r-sdk.com/docs/lambda_list_tags/) for full documentation.
 #'
 #' @param Resource &#91;required&#93; The function's Amazon Resource Name (ARN). Note: Lambda does not support
 #' adding tags to aliases or versions.
@@ -2143,7 +2154,7 @@ lambda_list_tags <- function(Resource) {
 #' @description
 #' Returns a list of [versions](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html), with the version-specific configuration of each. Lambda returns up to 50 versions per call.
 #'
-#' See [https://paws-r.github.io/docs/lambda/list_versions_by_function.html](https://paws-r.github.io/docs/lambda/list_versions_by_function.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_list_versions_by_function/](https://www.paws-r-sdk.com/docs/lambda_list_versions_by_function/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -2190,7 +2201,7 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #' @description
 #' Creates an [Lambda layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) from a ZIP archive. Each time you call [`publish_layer_version`][lambda_publish_layer_version] with the same layer name, a new version is created.
 #'
-#' See [https://paws-r.github.io/docs/lambda/publish_layer_version.html](https://paws-r.github.io/docs/lambda/publish_layer_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_publish_layer_version/](https://www.paws-r-sdk.com/docs/lambda_publish_layer_version/) for full documentation.
 #'
 #' @param LayerName &#91;required&#93; The name or Amazon Resource Name (ARN) of the layer.
 #' @param Description The description of the version.
@@ -2199,6 +2210,10 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #' runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
 #' Used for filtering with [`list_layers`][lambda_list_layers] and
 #' [`list_layer_versions`][lambda_list_layer_versions].
+#' 
+#' The following list includes deprecated runtimes. For more information,
+#' see [Runtime deprecation
+#' policy](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-support-policy).
 #' @param LicenseInfo The layer's software license. It can be any of the following:
 #' 
 #' -   An [SPDX license identifier](https://spdx.org/licenses/). For
@@ -2236,7 +2251,7 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #' @description
 #' Creates a [version](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html) from the current code and configuration of a function. Use versions to create a snapshot of your function code and configuration that doesn't change.
 #'
-#' See [https://paws-r.github.io/docs/lambda/publish_version.html](https://paws-r.github.io/docs/lambda/publish_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_publish_version/](https://www.paws-r-sdk.com/docs/lambda_publish_version/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -2287,7 +2302,7 @@ lambda_publish_version <- function(FunctionName, CodeSha256 = NULL, Description 
 #' @description
 #' Update the code signing configuration for the function. Changes to the code signing configuration take effect the next time a user tries to deploy a code package to the function.
 #'
-#' See [https://paws-r.github.io/docs/lambda/put_function_code_signing_config.html](https://paws-r.github.io/docs/lambda/put_function_code_signing_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_put_function_code_signing_config/](https://www.paws-r-sdk.com/docs/lambda_put_function_code_signing_config/) for full documentation.
 #'
 #' @param CodeSigningConfigArn &#91;required&#93; The The Amazon Resource Name (ARN) of the code signing configuration.
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
@@ -2330,7 +2345,7 @@ lambda_put_function_code_signing_config <- function(CodeSigningConfigArn, Functi
 #' @description
 #' Sets the maximum number of simultaneous executions for a function, and reserves capacity for that concurrency level.
 #'
-#' See [https://paws-r.github.io/docs/lambda/put_function_concurrency.html](https://paws-r.github.io/docs/lambda/put_function_concurrency.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_put_function_concurrency/](https://www.paws-r-sdk.com/docs/lambda_put_function_concurrency/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -2373,7 +2388,7 @@ lambda_put_function_concurrency <- function(FunctionName, ReservedConcurrentExec
 #' @description
 #' Configures options for [asynchronous invocation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html) on a function, version, or alias. If a configuration already exists for a function, version, or alias, this operation overwrites it. If you exclude any settings, they are removed. To set one option without affecting existing settings for other options, use [`update_function_event_invoke_config`][lambda_update_function_event_invoke_config].
 #'
-#' See [https://paws-r.github.io/docs/lambda/put_function_event_invoke_config.html](https://paws-r.github.io/docs/lambda/put_function_event_invoke_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_put_function_event_invoke_config/](https://www.paws-r-sdk.com/docs/lambda_put_function_event_invoke_config/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
 #' 
@@ -2433,7 +2448,7 @@ lambda_put_function_event_invoke_config <- function(FunctionName, Qualifier = NU
 #' @description
 #' Adds a provisioned concurrency configuration to a function's alias or version.
 #'
-#' See [https://paws-r.github.io/docs/lambda/put_provisioned_concurrency_config.html](https://paws-r.github.io/docs/lambda/put_provisioned_concurrency_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_put_provisioned_concurrency_config/](https://www.paws-r-sdk.com/docs/lambda_put_provisioned_concurrency_config/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -2477,7 +2492,7 @@ lambda_put_provisioned_concurrency_config <- function(FunctionName, Qualifier, P
 #' @description
 #' Sets the runtime management configuration for a function's version. For more information, see [Runtime updates](https://docs.aws.amazon.com/lambda/latest/dg/runtimes-update.html).
 #'
-#' See [https://paws-r.github.io/docs/lambda/put_runtime_management_config.html](https://paws-r.github.io/docs/lambda/put_runtime_management_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_put_runtime_management_config/](https://www.paws-r-sdk.com/docs/lambda_put_runtime_management_config/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -2549,7 +2564,7 @@ lambda_put_runtime_management_config <- function(FunctionName, Qualifier = NULL,
 #' @description
 #' Removes a statement from the permissions policy for a version of an [Lambda layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html). For more information, see [`add_layer_version_permission`][lambda_add_layer_version_permission].
 #'
-#' See [https://paws-r.github.io/docs/lambda/remove_layer_version_permission.html](https://paws-r.github.io/docs/lambda/remove_layer_version_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_remove_layer_version_permission/](https://www.paws-r-sdk.com/docs/lambda_remove_layer_version_permission/) for full documentation.
 #'
 #' @param LayerName &#91;required&#93; The name or Amazon Resource Name (ARN) of the layer.
 #' @param VersionNumber &#91;required&#93; The version number.
@@ -2584,7 +2599,7 @@ lambda_remove_layer_version_permission <- function(LayerName, VersionNumber, Sta
 #' @description
 #' Revokes function-use permission from an Amazon Web Service or another Amazon Web Services account. You can get the ID of the statement from the output of [`get_policy`][lambda_get_policy].
 #'
-#' See [https://paws-r.github.io/docs/lambda/remove_permission.html](https://paws-r.github.io/docs/lambda/remove_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_remove_permission/](https://www.paws-r-sdk.com/docs/lambda_remove_permission/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
 #' 
@@ -2633,7 +2648,7 @@ lambda_remove_permission <- function(FunctionName, StatementId, Qualifier = NULL
 #' @description
 #' Adds [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html) to a function.
 #'
-#' See [https://paws-r.github.io/docs/lambda/tag_resource.html](https://paws-r.github.io/docs/lambda/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_tag_resource/](https://www.paws-r-sdk.com/docs/lambda_tag_resource/) for full documentation.
 #'
 #' @param Resource &#91;required&#93; The function's Amazon Resource Name (ARN).
 #' @param Tags &#91;required&#93; A list of tags to apply to the function.
@@ -2663,7 +2678,7 @@ lambda_tag_resource <- function(Resource, Tags) {
 #' @description
 #' Removes [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html) from a function.
 #'
-#' See [https://paws-r.github.io/docs/lambda/untag_resource.html](https://paws-r.github.io/docs/lambda/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_untag_resource/](https://www.paws-r-sdk.com/docs/lambda_untag_resource/) for full documentation.
 #'
 #' @param Resource &#91;required&#93; The function's Amazon Resource Name (ARN).
 #' @param TagKeys &#91;required&#93; A list of tag keys to remove from the function.
@@ -2693,7 +2708,7 @@ lambda_untag_resource <- function(Resource, TagKeys) {
 #' @description
 #' Updates the configuration of a Lambda function [alias](https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html).
 #'
-#' See [https://paws-r.github.io/docs/lambda/update_alias.html](https://paws-r.github.io/docs/lambda/update_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_update_alias/](https://www.paws-r-sdk.com/docs/lambda_update_alias/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -2743,7 +2758,7 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 #' @description
 #' Update the code signing configuration. Changes to the code signing configuration take effect the next time a user tries to deploy a code package to the function.
 #'
-#' See [https://paws-r.github.io/docs/lambda/update_code_signing_config.html](https://paws-r.github.io/docs/lambda/update_code_signing_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_update_code_signing_config/](https://www.paws-r-sdk.com/docs/lambda_update_code_signing_config/) for full documentation.
 #'
 #' @param CodeSigningConfigArn &#91;required&#93; The The Amazon Resource Name (ARN) of the code signing configuration.
 #' @param Description Descriptive name for this code signing configuration.
@@ -2775,7 +2790,7 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' @description
 #' Updates an event source mapping. You can change the function that Lambda invokes, or pause invocation and resume later from the same location.
 #'
-#' See [https://paws-r.github.io/docs/lambda/update_event_source_mapping.html](https://paws-r.github.io/docs/lambda/update_event_source_mapping.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_update_event_source_mapping/](https://www.paws-r-sdk.com/docs/lambda_update_event_source_mapping/) for full documentation.
 #'
 #' @param UUID &#91;required&#93; The identifier of the event source mapping.
 #' @param FunctionName The name of the Lambda function.
@@ -2886,7 +2901,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' @description
 #' Updates a Lambda function's code. If code signing is enabled for the function, the code package must be signed by a trusted publisher. For more information, see [Configuring code signing for Lambda](https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html).
 #'
-#' See [https://paws-r.github.io/docs/lambda/update_function_code.html](https://paws-r.github.io/docs/lambda/update_function_code.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_update_function_code/](https://www.paws-r-sdk.com/docs/lambda_update_function_code/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -2951,7 +2966,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' @description
 #' Modify the version-specific settings of a Lambda function.
 #'
-#' See [https://paws-r.github.io/docs/lambda/update_function_configuration.html](https://paws-r.github.io/docs/lambda/update_function_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_update_function_configuration/](https://www.paws-r-sdk.com/docs/lambda_update_function_configuration/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -3007,9 +3022,12 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html#configuration-envvars-encryption).
 #' When [Lambda
 #' SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart-security.html)
-#' is activated, this key is also used to encrypt your function's snapshot.
-#' If you don't provide a customer managed key, Lambda uses a default
-#' service key.
+#' is activated, Lambda also uses this key is to encrypt your function's
+#' snapshot. If you deploy your function using a container image, Lambda
+#' also uses this key to encrypt your function when it's deployed. Note
+#' that this is not the same key that's used to protect your container
+#' image in the Amazon Elastic Container Registry (Amazon ECR). If you
+#' don't provide a customer managed key, Lambda uses a default service key.
 #' @param TracingConfig Set `Mode` to `Active` to sample and trace a subset of incoming requests
 #' with
 #' [X-Ray](https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html).
@@ -3056,7 +3074,7 @@ lambda_update_function_configuration <- function(FunctionName, Role = NULL, Hand
 #' @description
 #' Updates the configuration for asynchronous invocation for a function, version, or alias.
 #'
-#' See [https://paws-r.github.io/docs/lambda/update_function_event_invoke_config.html](https://paws-r.github.io/docs/lambda/update_function_event_invoke_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_update_function_event_invoke_config/](https://www.paws-r-sdk.com/docs/lambda_update_function_event_invoke_config/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
 #' 
@@ -3115,7 +3133,7 @@ lambda_update_function_event_invoke_config <- function(FunctionName, Qualifier =
 #' @description
 #' Updates the configuration for a Lambda function URL.
 #'
-#' See [https://paws-r.github.io/docs/lambda/update_function_url_config.html](https://paws-r.github.io/docs/lambda/update_function_url_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lambda_update_function_url_config/](https://www.paws-r-sdk.com/docs/lambda_update_function_url_config/) for full documentation.
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 

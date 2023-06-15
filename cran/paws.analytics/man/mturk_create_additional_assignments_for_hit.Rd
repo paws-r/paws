@@ -27,6 +27,6 @@ request ID.}
 \description{
 The \code{\link[=mturk_create_additional_assignments_for_hit]{create_additional_assignments_for_hit}} operation increases the maximum number of assignments of an existing HIT.
 
-See \url{https://paws-r.github.io/docs/mturk/create_additional_assignments_for_hit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_create_additional_assignments_for_hit/} for full documentation.
 }
 \keyword{internal}

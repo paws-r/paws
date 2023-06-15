@@ -27,6 +27,6 @@ name, the ARN, or the group ID as the \code{GroupIdentifier}.}
 \description{
 This operation returns a list of the ARNs of the canaries that are associated with the specified group.
 
-See \url{https://paws-r.github.io/docs/synthetics/list_group_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/synthetics_list_group_resources/} for full documentation.
 }
 \keyword{internal}

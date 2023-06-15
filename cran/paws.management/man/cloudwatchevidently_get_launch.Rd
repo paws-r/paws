@@ -14,6 +14,6 @@ cloudwatchevidently_get_launch(launch, project)
 \description{
 Returns the details about one launch. You must already know the launch name. To retrieve a list of launches in your account, use \code{\link[=cloudwatchevidently_list_launches]{list_launches}}.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/get_launch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_get_launch/} for full documentation.
 }
 \keyword{internal}

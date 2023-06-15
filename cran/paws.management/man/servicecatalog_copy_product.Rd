@@ -44,6 +44,6 @@ returned for each repeated request.}
 \description{
 Copies the specified source product to the specified target product or a new product.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/copy_product.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_copy_product/} for full documentation.
 }
 \keyword{internal}

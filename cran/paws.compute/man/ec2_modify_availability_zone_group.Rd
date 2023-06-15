@@ -24,6 +24,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Changes the opt-in status of the Local Zone and Wavelength Zone group for your account.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_availability_zone_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_availability_zone_group/} for full documentation.
 }
 \keyword{internal}

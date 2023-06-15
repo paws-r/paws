@@ -12,6 +12,6 @@ sagemaker_describe_context(ContextName)
 \description{
 Describes a context.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_context.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_context/} for full documentation.
 }
 \keyword{internal}

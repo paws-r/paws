@@ -21,6 +21,6 @@ owner, or environment. For more information, see \href{https://docs.aws.amazon.c
 \description{
 Creates a Git repository as a resource in your SageMaker account. You can associate the repository with notebook instances so that you can use Git source control for the notebooks you create. The Git repository is a resource in your SageMaker account, so it can be associated with more than one notebook instance, and it persists independently from the lifecycle of any notebook instances it is associated with.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_code_repository.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_code_repository/} for full documentation.
 }
 \keyword{internal}

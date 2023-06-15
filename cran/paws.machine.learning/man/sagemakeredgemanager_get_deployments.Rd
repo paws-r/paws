@@ -15,6 +15,6 @@ active deployments from.}
 \description{
 Use to get the active deployments from a device.
 
-See \url{https://paws-r.github.io/docs/sagemakeredgemanager/get_deployments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemakeredgemanager_get_deployments/} for full documentation.
 }
 \keyword{internal}

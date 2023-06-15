@@ -44,6 +44,6 @@ of hub content, use the token in the next request.}
 \description{
 List the contents of a hub.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_hub_contents.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_hub_contents/} for full documentation.
 }
 \keyword{internal}

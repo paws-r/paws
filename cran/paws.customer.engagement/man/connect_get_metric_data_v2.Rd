@@ -307,6 +307,6 @@ results.}
 \description{
 Gets metric data from the specified Amazon Connect instance.
 
-See \url{https://paws-r.github.io/docs/connect/get_metric_data_v2.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_get_metric_data_v2/} for full documentation.
 }
 \keyword{internal}

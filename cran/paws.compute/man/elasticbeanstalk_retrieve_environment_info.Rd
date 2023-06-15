@@ -34,6 +34,6 @@ you do not specify either, AWS Elastic Beanstalk returns
 \description{
 Retrieves the compiled information from a \code{\link[=elasticbeanstalk_request_environment_info]{request_environment_info}} request.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/retrieve_environment_info.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_retrieve_environment_info/} for full documentation.
 }
 \keyword{internal}

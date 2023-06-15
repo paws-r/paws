@@ -27,6 +27,6 @@ results.}
 \description{
 Lists versions of an evaluation form in the specified Amazon Connect instance.
 
-See \url{https://paws-r.github.io/docs/connect/list_evaluation_form_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_list_evaluation_form_versions/} for full documentation.
 }
 \keyword{internal}

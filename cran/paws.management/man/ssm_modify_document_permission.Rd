@@ -34,6 +34,6 @@ the system choose the \code{Default} version to share.}
 \description{
 Shares a Amazon Web Services Systems Manager document (SSM document)publicly or privately. If you share a document privately, you must specify the Amazon Web Services user IDs for those people who can use the document. If you share a document publicly, you must specify \emph{All} as the account ID.
 
-See \url{https://paws-r.github.io/docs/ssm/modify_document_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_modify_document_permission/} for full documentation.
 }
 \keyword{internal}

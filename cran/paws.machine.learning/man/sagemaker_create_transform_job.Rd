@@ -102,6 +102,6 @@ in the \emph{Amazon Web Services Billing and Cost Management User Guide}.}
 \description{
 Starts a transform job. A transform job uses a trained model to get inferences on a dataset and saves these results to an Amazon S3 location that you specify.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_transform_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_transform_job/} for full documentation.
 }
 \keyword{internal}

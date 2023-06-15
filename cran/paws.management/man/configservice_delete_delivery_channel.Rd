@@ -12,6 +12,6 @@ configservice_delete_delivery_channel(DeliveryChannelName)
 \description{
 Deletes the delivery channel.
 
-See \url{https://paws-r.github.io/docs/configservice/delete_delivery_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_delete_delivery_channel/} for full documentation.
 }
 \keyword{internal}

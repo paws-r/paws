@@ -36,6 +36,6 @@ on the load balancer or target group.}
 \description{
 Deregisters an Amazon ECS container instance from the specified cluster. This instance is no longer available to run tasks.
 
-See \url{https://paws-r.github.io/docs/ecs/deregister_container_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_deregister_container_instance/} for full documentation.
 }
 \keyword{internal}

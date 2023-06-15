@@ -18,6 +18,6 @@ will be executed.}
 \description{
 Obtains the permissions boundary for a specified PermissionSet.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/get_permissions_boundary_for_permission_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_get_permissions_boundary_for_permission_set/} for full documentation.
 }
 \keyword{internal}

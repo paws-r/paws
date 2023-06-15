@@ -12,6 +12,6 @@ forecastservice_delete_monitor(MonitorArn)
 \description{
 Deletes a monitor resource. You can only delete a monitor resource with a status of \code{ACTIVE}, \code{ACTIVE_STOPPED}, \code{CREATE_FAILED}, or \code{CREATE_STOPPED}.
 
-See \url{https://paws-r.github.io/docs/forecastservice/delete_monitor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_delete_monitor/} for full documentation.
 }
 \keyword{internal}

@@ -28,6 +28,6 @@ The value must be URL encoded.}
 \description{
 This action deletes an Amazon S3 on Outposts bucket's tags. To delete an S3 bucket tags, see \code{\link[=s3control_delete_bucket_tagging]{delete_bucket_tagging}} in the \emph{Amazon S3 API Reference}.
 
-See \url{https://paws-r.github.io/docs/s3control/delete_bucket_tagging.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_delete_bucket_tagging/} for full documentation.
 }
 \keyword{internal}

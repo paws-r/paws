@@ -44,6 +44,6 @@ contents of your repository are encrypted at rest.}
 \description{
 Creates a repository. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html}{Amazon ECR repositories} in the \emph{Amazon Elastic Container Registry User Guide}.
 
-See \url{https://paws-r.github.io/docs/ecr/create_repository.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_create_repository/} for full documentation.
 }
 \keyword{internal}

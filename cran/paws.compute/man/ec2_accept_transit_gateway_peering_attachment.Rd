@@ -20,6 +20,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Accepts a transit gateway peering attachment request. The peering attachment must be in the \code{pendingAcceptance} state.
 
-See \url{https://paws-r.github.io/docs/ec2/accept_transit_gateway_peering_attachment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_accept_transit_gateway_peering_attachment/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ element of the collection.}
 \description{
 Gets the Authorizers for an API.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/get_authorizers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_get_authorizers/} for full documentation.
 }
 \keyword{internal}

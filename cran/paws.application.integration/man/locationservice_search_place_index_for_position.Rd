@@ -49,6 +49,6 @@ For example, \verb{[-123.1174, 49.2847]} represents a position with longitude
 \description{
 Reverse geocodes a given coordinate and returns a legible address. Allows you to search for Places or points of interest near a given position.
 
-See \url{https://paws-r.github.io/docs/locationservice/search_place_index_for_position.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_search_place_index_for_position/} for full documentation.
 }
 \keyword{internal}

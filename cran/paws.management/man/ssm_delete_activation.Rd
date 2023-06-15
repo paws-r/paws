@@ -12,6 +12,6 @@ ssm_delete_activation(ActivationId)
 \description{
 Deletes an activation. You aren't required to delete an activation. If you delete an activation, you can no longer use it to register additional managed nodes. Deleting an activation doesn't de-register managed nodes. You must manually de-register managed nodes.
 
-See \url{https://paws-r.github.io/docs/ssm/delete_activation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_delete_activation/} for full documentation.
 }
 \keyword{internal}

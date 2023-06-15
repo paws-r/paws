@@ -351,6 +351,6 @@ Valid for: Aurora DB clusters only}
 \description{
 Restores a DB cluster to an arbitrary point in time. Users can restore to any point in time before \code{LatestRestorableTime} for up to \code{BackupRetentionPeriod} days. The target DB cluster is created from the source DB cluster with the same configuration as the original DB cluster, except that the new DB cluster is created with the default DB security group.
 
-See \url{https://paws-r.github.io/docs/rds/restore_db_cluster_to_point_in_time.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_restore_db_cluster_to_point_in_time/} for full documentation.
 }
 \keyword{internal}

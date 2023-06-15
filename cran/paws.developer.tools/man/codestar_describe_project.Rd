@@ -12,6 +12,6 @@ codestar_describe_project(id)
 \description{
 Describes a project and its resources.
 
-See \url{https://paws-r.github.io/docs/codestar/describe_project.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestar_describe_project/} for full documentation.
 }
 \keyword{internal}

@@ -45,6 +45,6 @@ specify:
 \description{
 Returns a list of the monitoring evaluation results and predictor events collected by the monitor resource during different windows of time.
 
-See \url{https://paws-r.github.io/docs/forecastservice/list_monitor_evaluations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_list_monitor_evaluations/} for full documentation.
 }
 \keyword{internal}

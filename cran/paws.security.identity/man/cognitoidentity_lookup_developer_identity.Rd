@@ -35,6 +35,6 @@ call the API again and get results starting from the 11th match.}
 \description{
 Retrieves the \code{IdentityID} associated with a \code{DeveloperUserIdentifier} or the list of \code{DeveloperUserIdentifier} values associated with an \code{IdentityId} for an existing identity. Either \code{IdentityID} or \code{DeveloperUserIdentifier} must not be null. If you supply only one of these values, the other value will be searched in the database and returned as a part of the response. If you supply both, \code{DeveloperUserIdentifier} will be matched against \code{IdentityID}. If the values are verified against the database, the response returns both values and is the same as the request. Otherwise a \code{ResourceConflictException} is thrown.
 
-See \url{https://paws-r.github.io/docs/cognitoidentity/lookup_developer_identity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_lookup_developer_identity/} for full documentation.
 }
 \keyword{internal}

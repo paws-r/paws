@@ -11,12 +11,12 @@ sqs_change_message_visibility_batch(QueueUrl, Entries)
 
 Queue URLs and names are case-sensitive.}
 
-\item{Entries}{[required] A list of receipt handles of the messages for which the visibility
+\item{Entries}{[required] Lists the receipt handles of the messages for which the visibility
 timeout must be changed.}
 }
 \description{
 Changes the visibility timeout of multiple messages. This is a batch version of \code{ ChangeMessageVisibility.} The result of the action on each message is reported individually in the response. You can send up to 10 \code{\link[=sqs_change_message_visibility]{change_message_visibility}} requests with each \code{\link[=sqs_change_message_visibility_batch]{change_message_visibility_batch}} action.
 
-See \url{https://paws-r.github.io/docs/sqs/change_message_visibility_batch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sqs_change_message_visibility_batch/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Disables detailed monitoring for a running instance. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html}{Monitoring your instances and volumes} in the \emph{Amazon EC2 User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/unmonitor_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_unmonitor_instances/} for full documentation.
 }
 \keyword{internal}

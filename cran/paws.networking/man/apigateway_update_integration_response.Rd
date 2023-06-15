@@ -26,6 +26,6 @@ apigateway_update_integration_response(
 \description{
 Represents an update integration response.
 
-See \url{https://paws-r.github.io/docs/apigateway/update_integration_response.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_update_integration_response/} for full documentation.
 }
 \keyword{internal}

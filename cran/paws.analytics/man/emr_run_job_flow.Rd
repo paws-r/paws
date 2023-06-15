@@ -206,6 +206,6 @@ uses the latest validated Amazon Linux release for cluster launch.}
 \description{
 RunJobFlow creates and starts running a new cluster (job flow). The cluster runs the steps specified. After the steps complete, the cluster stops and the HDFS partition is lost. To prevent loss of data, configure the last step of the job flow to store results in Amazon S3. If the JobFlowInstancesConfig \code{KeepJobFlowAliveWhenNoSteps} parameter is set to \code{TRUE}, the cluster transitions to the WAITING state rather than shutting down after the steps have completed.
 
-See \url{https://paws-r.github.io/docs/emr/run_job_flow.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_run_job_flow/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ lightsail_delete_load_balancer(loadBalancerName)
 \description{
 Deletes a Lightsail load balancer and all its associated SSL/TLS certificates. Once the load balancer is deleted, you will need to create a new load balancer, create a new certificate, and verify domain ownership again.
 
-See \url{https://paws-r.github.io/docs/lightsail/delete_load_balancer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_delete_load_balancer/} for full documentation.
 }
 \keyword{internal}

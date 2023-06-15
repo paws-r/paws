@@ -18,6 +18,6 @@ length of 300. You can get the disk IDs from the
 \description{
 Configures one or more gateway local disks as upload buffer for a specified gateway. This operation is supported for the stored volume, cached volume, and tape gateway types.
 
-See \url{https://paws-r.github.io/docs/storagegateway/add_upload_buffer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_add_upload_buffer/} for full documentation.
 }
 \keyword{internal}

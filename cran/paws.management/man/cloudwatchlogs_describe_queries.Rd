@@ -26,6 +26,6 @@ and \code{Scheduled}.}
 \description{
 Returns a list of CloudWatch Logs Insights queries that are scheduled, running, or have been run recently in this account. You can request all queries or limit it to queries of a specific log group or queries with a certain status.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/describe_queries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_queries/} for full documentation.
 }
 \keyword{internal}

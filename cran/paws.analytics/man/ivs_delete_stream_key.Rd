@@ -13,6 +13,6 @@ ivs_delete_stream_key(arn)
 \description{
 Deletes the stream key for the specified ARN, so it can no longer be used to stream.
 
-See \url{https://paws-r.github.io/docs/ivs/delete_stream_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivs_delete_stream_key/} for full documentation.
 }
 \keyword{internal}

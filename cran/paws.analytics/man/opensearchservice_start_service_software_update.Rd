@@ -38,6 +38,6 @@ You only need to specify this parameter if you set \code{ScheduleAt} to
 \description{
 Schedules a service software update for an Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html}{Service software updates in Amazon OpenSearch Service}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/start_service_software_update.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_start_service_software_update/} for full documentation.
 }
 \keyword{internal}

@@ -33,6 +33,6 @@ idempotency of the request.}
 \description{
 Checks out the specified license.
 
-See \url{https://paws-r.github.io/docs/licensemanager/checkout_license.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_checkout_license/} for full documentation.
 }
 \keyword{internal}

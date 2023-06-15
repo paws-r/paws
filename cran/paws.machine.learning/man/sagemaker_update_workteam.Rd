@@ -46,6 +46,6 @@ with the work team you update.}
 \description{
 Updates an existing work team with new member definitions or description.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_workteam.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_workteam/} for full documentation.
 }
 \keyword{internal}

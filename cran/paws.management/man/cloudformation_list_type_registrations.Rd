@@ -45,6 +45,6 @@ there are no remaining results, the previous response object's
 \description{
 Returns a list of registration tokens for the specified extension(s).
 
-See \url{https://paws-r.github.io/docs/cloudformation/list_type_registrations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_list_type_registrations/} for full documentation.
 }
 \keyword{internal}

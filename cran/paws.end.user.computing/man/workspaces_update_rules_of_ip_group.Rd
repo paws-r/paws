@@ -15,6 +15,6 @@ workspaces_update_rules_of_ip_group(GroupId, UserRules)
 \description{
 Replaces the current rules of the specified IP access control group with the specified rules.
 
-See \url{https://paws-r.github.io/docs/workspaces/update_rules_of_ip_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_update_rules_of_ip_group/} for full documentation.
 }
 \keyword{internal}

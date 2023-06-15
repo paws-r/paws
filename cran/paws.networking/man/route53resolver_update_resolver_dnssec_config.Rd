@@ -17,6 +17,6 @@ for a validation status change to be completed.}
 \description{
 Updates an existing DNSSEC validation configuration. If there is no existing DNSSEC validation configuration, one is created.
 
-See \url{https://paws-r.github.io/docs/route53resolver/update_resolver_dnssec_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_update_resolver_dnssec_config/} for full documentation.
 }
 \keyword{internal}

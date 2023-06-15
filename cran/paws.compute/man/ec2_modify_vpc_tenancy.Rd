@@ -19,6 +19,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Modifies the instance tenancy attribute of the specified VPC. You can change the instance tenancy attribute of a VPC to \code{default} only. You cannot change the instance tenancy attribute to \code{dedicated}.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_vpc_tenancy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_vpc_tenancy/} for full documentation.
 }
 \keyword{internal}

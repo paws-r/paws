@@ -10,6 +10,6 @@ lightsail_get_container_service_powers()
 \description{
 Returns the list of powers that can be specified for your Amazon Lightsail container services.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_container_service_powers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_container_service_powers/} for full documentation.
 }
 \keyword{internal}

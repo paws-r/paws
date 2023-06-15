@@ -21,6 +21,6 @@ account.}
 \description{
 Enable an Organizations member account as the IPAM admin account. You cannot select the Organizations management account as the IPAM admin account. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/ipam/enable-integ-ipam.html}{Enable integration with Organizations} in the \emph{Amazon VPC IPAM User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/enable_ipam_organization_admin_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_enable_ipam_organization_admin_account/} for full documentation.
 }
 \keyword{internal}

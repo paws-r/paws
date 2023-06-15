@@ -42,6 +42,6 @@ the \verb{Ipv4 Prefixes} option.}
 \description{
 Assigns one or more secondary private IP addresses to the specified network interface.
 
-See \url{https://paws-r.github.io/docs/ec2/assign_private_ip_addresses.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_assign_private_ip_addresses/} for full documentation.
 }
 \keyword{internal}

@@ -28,6 +28,6 @@ different parameters, the retry fails with an
 \description{
 Deletes the specified customer managed permission in the Amazon Web Services Region in which you call this operation. You can delete a customer managed permission only if it isn't attached to any resource share. The operation deletes all versions associated with the customer managed permission.
 
-See \url{https://paws-r.github.io/docs/ram/delete_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_delete_permission/} for full documentation.
 }
 \keyword{internal}

@@ -44,6 +44,6 @@ you import a bot, you can't add tags to an intent or slot type.}
 \description{
 Starts a job to import a resource to Amazon Lex.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/start_import.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_start_import/} for full documentation.
 }
 \keyword{internal}

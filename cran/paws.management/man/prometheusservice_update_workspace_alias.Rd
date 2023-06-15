@@ -21,6 +21,6 @@ idempotency of the request.}
 \description{
 Updates an AMP workspace alias.
 
-See \url{https://paws-r.github.io/docs/prometheusservice/update_workspace_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/prometheusservice_update_workspace_alias/} for full documentation.
 }
 \keyword{internal}

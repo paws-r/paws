@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Performs [`get_channel`][ivs_get_channel] on multiple ARNs simultaneously.
 #'
-#' See [https://paws-r.github.io/docs/ivs/batch_get_channel.html](https://paws-r.github.io/docs/ivs/batch_get_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_batch_get_channel/](https://www.paws-r-sdk.com/docs/ivs_batch_get_channel/) for full documentation.
 #'
 #' @param arns &#91;required&#93; Array of ARNs, one per channel.
 #'
@@ -37,7 +37,7 @@ ivs_batch_get_channel <- function(arns) {
 #' @description
 #' Performs [`get_stream_key`][ivs_get_stream_key] on multiple ARNs simultaneously.
 #'
-#' See [https://paws-r.github.io/docs/ivs/batch_get_stream_key.html](https://paws-r.github.io/docs/ivs/batch_get_stream_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_batch_get_stream_key/](https://www.paws-r-sdk.com/docs/ivs_batch_get_stream_key/) for full documentation.
 #'
 #' @param arns &#91;required&#93; Array of ARNs, one per stream key.
 #'
@@ -66,7 +66,7 @@ ivs_batch_get_stream_key <- function(arns) {
 #' @description
 #' Creates a new channel and an associated stream key to start streaming.
 #'
-#' See [https://paws-r.github.io/docs/ivs/create_channel.html](https://paws-r.github.io/docs/ivs/create_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_create_channel/](https://www.paws-r-sdk.com/docs/ivs_create_channel/) for full documentation.
 #'
 #' @param authorized Whether the channel is private (enabled for playback authorization).
 #' Default: `false`.
@@ -76,6 +76,10 @@ ivs_batch_get_stream_key <- function(arns) {
 #' (Note: In the Amazon IVS console, `LOW` and `NORMAL` correspond to
 #' Ultra-low and Standard, respectively.) Default: `LOW`.
 #' @param name Channel name.
+#' @param preset Optional transcode preset for the channel. This is selectable only for
+#' `ADVANCED_HD` and `ADVANCED_SD` channel types. For those channel types,
+#' the default `preset` is `HIGHER_BANDWIDTH_DELIVERY`. For other channel
+#' types (`BASIC` and `STANDARD`), `preset` is the empty string (`""`).
 #' @param recordingConfigurationArn Recording-configuration ARN. Default: "" (empty string, recording is
 #' disabled).
 #' @param tags Array of 1-50 maps, each of the form `string:string (key:value)`. See
@@ -85,8 +89,19 @@ ivs_batch_get_stream_key <- function(arns) {
 #' naming limits and requirements"; Amazon IVS has no service-specific
 #' constraints beyond what is documented there.
 #' @param type Channel type, which determines the allowable resolution and bitrate. *If
-#' you exceed the allowable resolution or bitrate, the stream probably will
-#' disconnect immediately.* Default: `STANDARD`. Valid values:
+#' you exceed the allowable input resolution or bitrate, the stream
+#' probably will disconnect immediately.* Some types generate multiple
+#' qualities (renditions) from the original input; this automatically gives
+#' viewers the best experience for their devices and network conditions.
+#' Some types provide transcoded video; transcoding allows higher playback
+#' quality across a range of download speeds. Default: `STANDARD`. Valid
+#' values:
+#' 
+#' -   `BASIC`: Video is transmuxed: Amazon IVS delivers the original input
+#'     quality to viewers. The viewer’s video-quality choice is limited to
+#'     the original input. Input resolution can be up to 1080p and bitrate
+#'     can be up to 1.5 Mbps for 480p and up to 3.5 Mbps for resolutions
+#'     between 480p and 1080p. Original audio is passed through.
 #' 
 #' -   `STANDARD`: Video is transcoded: multiple qualities are generated
 #'     from the original input, to automatically give viewers the best
@@ -94,25 +109,48 @@ ivs_batch_get_stream_key <- function(arns) {
 #'     allows higher playback quality across a range of download speeds.
 #'     Resolution can be up to 1080p and bitrate can be up to 8.5 Mbps.
 #'     Audio is transcoded only for renditions 360p and below; above that,
-#'     audio is passed through. This is the default.
+#'     audio is passed through. This is the default when you create a
+#'     channel.
 #' 
-#' -   `BASIC`: Video is transmuxed: Amazon IVS delivers the original input
-#'     to viewers. The viewer’s video-quality choice is limited to the
-#'     original input. Resolution can be up to 1080p and bitrate can be up
-#'     to 1.5 Mbps for 480p and up to 3.5 Mbps for resolutions between 480p
-#'     and 1080p.
+#' -   `ADVANCED_SD`: Video is transcoded; multiple qualities are generated
+#'     from the original input, to automatically give viewers the best
+#'     experience for their devices and network conditions. Input
+#'     resolution can be up to 1080p and bitrate can be up to 8.5 Mbps;
+#'     output is capped at SD quality (480p). You can select an optional
+#'     transcode preset (see below). Audio for all renditions is
+#'     transcoded, and an audio-only rendition is available.
+#' 
+#' -   `ADVANCED_HD`: Video is transcoded; multiple qualities are generated
+#'     from the original input, to automatically give viewers the best
+#'     experience for their devices and network conditions. Input
+#'     resolution can be up to 1080p and bitrate can be up to 8.5 Mbps;
+#'     output is capped at HD quality (720p). You can select an optional
+#'     transcode preset (see below). Audio for all renditions is
+#'     transcoded, and an audio-only rendition is available.
+#' 
+#' Optional *transcode presets* (available for the `ADVANCED` types) allow
+#' you to trade off available download bandwidth and video quality, to
+#' optimize the viewing experience. There are two presets:
+#' 
+#' -   *Constrained bandwidth delivery* uses a lower bitrate for each
+#'     quality level. Use it if you have low download bandwidth and/or
+#'     simple video content (e.g., talking heads)
+#' 
+#' -   *Higher bandwidth delivery* uses a higher bitrate for each quality
+#'     level. Use it if you have high download bandwidth and/or complex
+#'     video content (e.g., flashes and quick scene changes).
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_create_channel
-ivs_create_channel <- function(authorized = NULL, insecureIngest = NULL, latencyMode = NULL, name = NULL, recordingConfigurationArn = NULL, tags = NULL, type = NULL) {
+ivs_create_channel <- function(authorized = NULL, insecureIngest = NULL, latencyMode = NULL, name = NULL, preset = NULL, recordingConfigurationArn = NULL, tags = NULL, type = NULL) {
   op <- new_operation(
     name = "CreateChannel",
     http_method = "POST",
     http_path = "/CreateChannel",
     paginator = list()
   )
-  input <- .ivs$create_channel_input(authorized = authorized, insecureIngest = insecureIngest, latencyMode = latencyMode, name = name, recordingConfigurationArn = recordingConfigurationArn, tags = tags, type = type)
+  input <- .ivs$create_channel_input(authorized = authorized, insecureIngest = insecureIngest, latencyMode = latencyMode, name = name, preset = preset, recordingConfigurationArn = recordingConfigurationArn, tags = tags, type = type)
   output <- .ivs$create_channel_output()
   config <- get_config()
   svc <- .ivs$service(config)
@@ -128,7 +166,7 @@ ivs_create_channel <- function(authorized = NULL, insecureIngest = NULL, latency
 #' @description
 #' Creates a new recording configuration, used to enable recording to Amazon S3.
 #'
-#' See [https://paws-r.github.io/docs/ivs/create_recording_configuration.html](https://paws-r.github.io/docs/ivs/create_recording_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_create_recording_configuration/](https://www.paws-r-sdk.com/docs/ivs_create_recording_configuration/) for full documentation.
 #'
 #' @param destinationConfiguration &#91;required&#93; A complex type that contains a destination configuration for where
 #' recorded video will be stored.
@@ -172,7 +210,7 @@ ivs_create_recording_configuration <- function(destinationConfiguration, name = 
 #' @description
 #' Creates a stream key, used to initiate a stream, for the specified channel ARN.
 #'
-#' See [https://paws-r.github.io/docs/ivs/create_stream_key.html](https://paws-r.github.io/docs/ivs/create_stream_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_create_stream_key/](https://www.paws-r-sdk.com/docs/ivs_create_stream_key/) for full documentation.
 #'
 #' @param channelArn &#91;required&#93; ARN of the channel for which to create the stream key.
 #' @param tags Array of 1-50 maps, each of the form `string:string (key:value)`. See
@@ -207,7 +245,7 @@ ivs_create_stream_key <- function(channelArn, tags = NULL) {
 #' @description
 #' Deletes the specified channel and its associated stream keys.
 #'
-#' See [https://paws-r.github.io/docs/ivs/delete_channel.html](https://paws-r.github.io/docs/ivs/delete_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_delete_channel/](https://www.paws-r-sdk.com/docs/ivs_delete_channel/) for full documentation.
 #'
 #' @param arn &#91;required&#93; ARN of the channel to be deleted.
 #'
@@ -236,7 +274,7 @@ ivs_delete_channel <- function(arn) {
 #' @description
 #' Deletes a specified authorization key pair. This invalidates future viewer tokens generated using the key pair’s `privateKey`. For more information, see [Setting Up Private Channels](https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html) in the *Amazon IVS User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ivs/delete_playback_key_pair.html](https://paws-r.github.io/docs/ivs/delete_playback_key_pair.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_delete_playback_key_pair/](https://www.paws-r-sdk.com/docs/ivs_delete_playback_key_pair/) for full documentation.
 #'
 #' @param arn &#91;required&#93; ARN of the key pair to be deleted.
 #'
@@ -265,7 +303,7 @@ ivs_delete_playback_key_pair <- function(arn) {
 #' @description
 #' Deletes the recording configuration for the specified ARN.
 #'
-#' See [https://paws-r.github.io/docs/ivs/delete_recording_configuration.html](https://paws-r.github.io/docs/ivs/delete_recording_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_delete_recording_configuration/](https://www.paws-r-sdk.com/docs/ivs_delete_recording_configuration/) for full documentation.
 #'
 #' @param arn &#91;required&#93; ARN of the recording configuration to be deleted.
 #'
@@ -295,7 +333,7 @@ ivs_delete_recording_configuration <- function(arn) {
 #' @description
 #' Deletes the stream key for the specified ARN, so it can no longer be used to stream.
 #'
-#' See [https://paws-r.github.io/docs/ivs/delete_stream_key.html](https://paws-r.github.io/docs/ivs/delete_stream_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_delete_stream_key/](https://www.paws-r-sdk.com/docs/ivs_delete_stream_key/) for full documentation.
 #'
 #' @param arn &#91;required&#93; ARN of the stream key to be deleted.
 #'
@@ -324,7 +362,7 @@ ivs_delete_stream_key <- function(arn) {
 #' @description
 #' Gets the channel configuration for the specified channel ARN. See also [`batch_get_channel`][ivs_batch_get_channel].
 #'
-#' See [https://paws-r.github.io/docs/ivs/get_channel.html](https://paws-r.github.io/docs/ivs/get_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_get_channel/](https://www.paws-r-sdk.com/docs/ivs_get_channel/) for full documentation.
 #'
 #' @param arn &#91;required&#93; ARN of the channel for which the configuration is to be retrieved.
 #'
@@ -354,7 +392,7 @@ ivs_get_channel <- function(arn) {
 #' @description
 #' Gets a specified playback authorization key pair and returns the `arn` and `fingerprint`. The `privateKey` held by the caller can be used to generate viewer authorization tokens, to grant viewers access to private channels. For more information, see [Setting Up Private Channels](https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html) in the *Amazon IVS User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ivs/get_playback_key_pair.html](https://paws-r.github.io/docs/ivs/get_playback_key_pair.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_get_playback_key_pair/](https://www.paws-r-sdk.com/docs/ivs_get_playback_key_pair/) for full documentation.
 #'
 #' @param arn &#91;required&#93; ARN of the key pair to be returned.
 #'
@@ -383,7 +421,7 @@ ivs_get_playback_key_pair <- function(arn) {
 #' @description
 #' Gets the recording configuration for the specified ARN.
 #'
-#' See [https://paws-r.github.io/docs/ivs/get_recording_configuration.html](https://paws-r.github.io/docs/ivs/get_recording_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_get_recording_configuration/](https://www.paws-r-sdk.com/docs/ivs_get_recording_configuration/) for full documentation.
 #'
 #' @param arn &#91;required&#93; ARN of the recording configuration to be retrieved.
 #'
@@ -412,7 +450,7 @@ ivs_get_recording_configuration <- function(arn) {
 #' @description
 #' Gets information about the active (live) stream on a specified channel.
 #'
-#' See [https://paws-r.github.io/docs/ivs/get_stream.html](https://paws-r.github.io/docs/ivs/get_stream.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_get_stream/](https://www.paws-r-sdk.com/docs/ivs_get_stream/) for full documentation.
 #'
 #' @param channelArn &#91;required&#93; Channel ARN for stream to be accessed.
 #'
@@ -441,7 +479,7 @@ ivs_get_stream <- function(channelArn) {
 #' @description
 #' Gets stream-key information for a specified ARN.
 #'
-#' See [https://paws-r.github.io/docs/ivs/get_stream_key.html](https://paws-r.github.io/docs/ivs/get_stream_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_get_stream_key/](https://www.paws-r-sdk.com/docs/ivs_get_stream_key/) for full documentation.
 #'
 #' @param arn &#91;required&#93; ARN for the stream key to be retrieved.
 #'
@@ -470,7 +508,7 @@ ivs_get_stream_key <- function(arn) {
 #' @description
 #' Gets metadata on a specified stream.
 #'
-#' See [https://paws-r.github.io/docs/ivs/get_stream_session.html](https://paws-r.github.io/docs/ivs/get_stream_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_get_stream_session/](https://www.paws-r-sdk.com/docs/ivs_get_stream_session/) for full documentation.
 #'
 #' @param channelArn &#91;required&#93; ARN of the channel resource
 #' @param streamId Unique identifier for a live or previously live stream in the specified
@@ -503,7 +541,7 @@ ivs_get_stream_session <- function(channelArn, streamId = NULL) {
 #' @description
 #' Imports the public portion of a new key pair and returns its `arn` and `fingerprint`. The `privateKey` can then be used to generate viewer authorization tokens, to grant viewers access to private channels. For more information, see [Setting Up Private Channels](https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html) in the *Amazon IVS User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ivs/import_playback_key_pair.html](https://paws-r.github.io/docs/ivs/import_playback_key_pair.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_import_playback_key_pair/](https://www.paws-r-sdk.com/docs/ivs_import_playback_key_pair/) for full documentation.
 #'
 #' @param name Playback-key-pair name. The value does not need to be unique.
 #' @param publicKeyMaterial &#91;required&#93; The public portion of a customer-generated key pair.
@@ -540,7 +578,7 @@ ivs_import_playback_key_pair <- function(name = NULL, publicKeyMaterial, tags = 
 #' @description
 #' Gets summary information about all channels in your account, in the Amazon Web Services region where the API request is processed. This list can be filtered to match a specified name or recording-configuration ARN. Filters are mutually exclusive and cannot be used together. If you try to use both filters, you will get an error (409 ConflictException).
 #'
-#' See [https://paws-r.github.io/docs/ivs/list_channels.html](https://paws-r.github.io/docs/ivs/list_channels.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_list_channels/](https://www.paws-r-sdk.com/docs/ivs_list_channels/) for full documentation.
 #'
 #' @param filterByName Filters the channel list to match the specified name.
 #' @param filterByRecordingConfigurationArn Filters the channel list to match the specified recording-configuration
@@ -574,7 +612,7 @@ ivs_list_channels <- function(filterByName = NULL, filterByRecordingConfiguratio
 #' @description
 #' Gets summary information about playback key pairs. For more information, see [Setting Up Private Channels](https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html) in the *Amazon IVS User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ivs/list_playback_key_pairs.html](https://paws-r.github.io/docs/ivs/list_playback_key_pairs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_list_playback_key_pairs/](https://www.paws-r-sdk.com/docs/ivs_list_playback_key_pairs/) for full documentation.
 #'
 #' @param maxResults Maximum number of key pairs to return. Default: your service quota or
 #' 100, whichever is smaller.
@@ -608,7 +646,7 @@ ivs_list_playback_key_pairs <- function(maxResults = NULL, nextToken = NULL) {
 #' @description
 #' Gets summary information about all recording configurations in your account, in the Amazon Web Services region where the API request is processed.
 #'
-#' See [https://paws-r.github.io/docs/ivs/list_recording_configurations.html](https://paws-r.github.io/docs/ivs/list_recording_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_list_recording_configurations/](https://www.paws-r-sdk.com/docs/ivs_list_recording_configurations/) for full documentation.
 #'
 #' @param maxResults Maximum number of recording configurations to return. Default: your
 #' service quota or 100, whichever is smaller.
@@ -640,7 +678,7 @@ ivs_list_recording_configurations <- function(maxResults = NULL, nextToken = NUL
 #' @description
 #' Gets summary information about stream keys for the specified channel.
 #'
-#' See [https://paws-r.github.io/docs/ivs/list_stream_keys.html](https://paws-r.github.io/docs/ivs/list_stream_keys.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_list_stream_keys/](https://www.paws-r-sdk.com/docs/ivs_list_stream_keys/) for full documentation.
 #'
 #' @param channelArn &#91;required&#93; Channel ARN used to filter the list.
 #' @param maxResults Maximum number of streamKeys to return. Default: 1.
@@ -673,7 +711,7 @@ ivs_list_stream_keys <- function(channelArn, maxResults = NULL, nextToken = NULL
 #' @description
 #' Gets a summary of current and previous streams for a specified channel in your account, in the AWS region where the API request is processed.
 #'
-#' See [https://paws-r.github.io/docs/ivs/list_stream_sessions.html](https://paws-r.github.io/docs/ivs/list_stream_sessions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_list_stream_sessions/](https://www.paws-r-sdk.com/docs/ivs_list_stream_sessions/) for full documentation.
 #'
 #' @param channelArn &#91;required&#93; Channel ARN used to filter the list.
 #' @param maxResults Maximum number of streams to return. Default: 100.
@@ -706,7 +744,7 @@ ivs_list_stream_sessions <- function(channelArn, maxResults = NULL, nextToken = 
 #' @description
 #' Gets summary information about live streams in your account, in the Amazon Web Services region where the API request is processed.
 #'
-#' See [https://paws-r.github.io/docs/ivs/list_streams.html](https://paws-r.github.io/docs/ivs/list_streams.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_list_streams/](https://www.paws-r-sdk.com/docs/ivs_list_streams/) for full documentation.
 #'
 #' @param filterBy Filters the stream list to match the specified criterion.
 #' @param maxResults Maximum number of streams to return. Default: 100.
@@ -738,7 +776,7 @@ ivs_list_streams <- function(filterBy = NULL, maxResults = NULL, nextToken = NUL
 #' @description
 #' Gets information about Amazon Web Services tags for the specified ARN.
 #'
-#' See [https://paws-r.github.io/docs/ivs/list_tags_for_resource.html](https://paws-r.github.io/docs/ivs/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/ivs_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource to be retrieved. The ARN must be URL-encoded.
 #'
@@ -767,7 +805,7 @@ ivs_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Inserts metadata into the active stream of the specified channel. At most 5 requests per second per channel are allowed, each with a maximum 1 KB payload. (If 5 TPS is not sufficient for your needs, we recommend batching your data into a single PutMetadata call.) At most 155 requests per second per account are allowed. Also see [Embedding Metadata within a Video Stream](https://docs.aws.amazon.com/ivs/latest/userguide/metadata.html) in the *Amazon IVS User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ivs/put_metadata.html](https://paws-r.github.io/docs/ivs/put_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_put_metadata/](https://www.paws-r-sdk.com/docs/ivs_put_metadata/) for full documentation.
 #'
 #' @param channelArn &#91;required&#93; ARN of the channel into which metadata is inserted. This channel must
 #' have an active stream.
@@ -798,7 +836,7 @@ ivs_put_metadata <- function(channelArn, metadata) {
 #' @description
 #' Disconnects the incoming RTMPS stream for the specified channel. Can be used in conjunction with [`delete_stream_key`][ivs_delete_stream_key] to prevent further streaming to a channel.
 #'
-#' See [https://paws-r.github.io/docs/ivs/stop_stream.html](https://paws-r.github.io/docs/ivs/stop_stream.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_stop_stream/](https://www.paws-r-sdk.com/docs/ivs_stop_stream/) for full documentation.
 #'
 #' @param channelArn &#91;required&#93; ARN of the channel for which the stream is to be stopped.
 #'
@@ -828,7 +866,7 @@ ivs_stop_stream <- function(channelArn) {
 #' @description
 #' Adds or updates tags for the Amazon Web Services resource with the specified ARN.
 #'
-#' See [https://paws-r.github.io/docs/ivs/tag_resource.html](https://paws-r.github.io/docs/ivs/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_tag_resource/](https://www.paws-r-sdk.com/docs/ivs_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; ARN of the resource for which tags are to be added or updated. The ARN
 #' must be URL-encoded.
@@ -864,7 +902,7 @@ ivs_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes tags from the resource with the specified ARN.
 #'
-#' See [https://paws-r.github.io/docs/ivs/untag_resource.html](https://paws-r.github.io/docs/ivs/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_untag_resource/](https://www.paws-r-sdk.com/docs/ivs_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; ARN of the resource for which tags are to be removed. The ARN must be
 #' URL-encoded.
@@ -898,9 +936,9 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates a channel's configuration
 #'
 #' @description
-#' Updates a channel's configuration. This does not affect an ongoing stream of this channel. You must stop and restart the stream for the changes to take effect.
+#' Updates a channel's configuration. Live channels cannot be updated. You must stop the ongoing stream, update the channel, and restart the stream for the changes to take effect.
 #'
-#' See [https://paws-r.github.io/docs/ivs/update_channel.html](https://paws-r.github.io/docs/ivs/update_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ivs_update_channel/](https://www.paws-r-sdk.com/docs/ivs_update_channel/) for full documentation.
 #'
 #' @param arn &#91;required&#93; ARN of the channel to be updated.
 #' @param authorized Whether the channel is private (enabled for playback authorization).
@@ -910,12 +948,27 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #' (Note: In the Amazon IVS console, `LOW` and `NORMAL` correspond to
 #' Ultra-low and Standard, respectively.)
 #' @param name Channel name.
+#' @param preset Optional transcode preset for the channel. This is selectable only for
+#' `ADVANCED_HD` and `ADVANCED_SD` channel types. For those channel types,
+#' the default `preset` is `HIGHER_BANDWIDTH_DELIVERY`. For other channel
+#' types (`BASIC` and `STANDARD`), `preset` is the empty string (`""`).
 #' @param recordingConfigurationArn Recording-configuration ARN. If this is set to an empty string,
 #' recording is disabled. A value other than an empty string indicates that
 #' recording is enabled
 #' @param type Channel type, which determines the allowable resolution and bitrate. *If
-#' you exceed the allowable resolution or bitrate, the stream probably will
-#' disconnect immediately*. Valid values:
+#' you exceed the allowable input resolution or bitrate, the stream
+#' probably will disconnect immediately.* Some types generate multiple
+#' qualities (renditions) from the original input; this automatically gives
+#' viewers the best experience for their devices and network conditions.
+#' Some types provide transcoded video; transcoding allows higher playback
+#' quality across a range of download speeds. Default: `STANDARD`. Valid
+#' values:
+#' 
+#' -   `BASIC`: Video is transmuxed: Amazon IVS delivers the original input
+#'     quality to viewers. The viewer’s video-quality choice is limited to
+#'     the original input. Input resolution can be up to 1080p and bitrate
+#'     can be up to 1.5 Mbps for 480p and up to 3.5 Mbps for resolutions
+#'     between 480p and 1080p. Original audio is passed through.
 #' 
 #' -   `STANDARD`: Video is transcoded: multiple qualities are generated
 #'     from the original input, to automatically give viewers the best
@@ -923,25 +976,48 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #'     allows higher playback quality across a range of download speeds.
 #'     Resolution can be up to 1080p and bitrate can be up to 8.5 Mbps.
 #'     Audio is transcoded only for renditions 360p and below; above that,
-#'     audio is passed through. This is the default.
+#'     audio is passed through. This is the default when you create a
+#'     channel.
 #' 
-#' -   `BASIC`: Video is transmuxed: Amazon IVS delivers the original input
-#'     to viewers. The viewer’s video-quality choice is limited to the
-#'     original input. Resolution can be up to 1080p and bitrate can be up
-#'     to 1.5 Mbps for 480p and up to 3.5 Mbps for resolutions between 480p
-#'     and 1080p.
+#' -   `ADVANCED_SD`: Video is transcoded; multiple qualities are generated
+#'     from the original input, to automatically give viewers the best
+#'     experience for their devices and network conditions. Input
+#'     resolution can be up to 1080p and bitrate can be up to 8.5 Mbps;
+#'     output is capped at SD quality (480p). You can select an optional
+#'     transcode preset (see below). Audio for all renditions is
+#'     transcoded, and an audio-only rendition is available.
+#' 
+#' -   `ADVANCED_HD`: Video is transcoded; multiple qualities are generated
+#'     from the original input, to automatically give viewers the best
+#'     experience for their devices and network conditions. Input
+#'     resolution can be up to 1080p and bitrate can be up to 8.5 Mbps;
+#'     output is capped at HD quality (720p). You can select an optional
+#'     transcode preset (see below). Audio for all renditions is
+#'     transcoded, and an audio-only rendition is available.
+#' 
+#' Optional *transcode presets* (available for the `ADVANCED` types) allow
+#' you to trade off available download bandwidth and video quality, to
+#' optimize the viewing experience. There are two presets:
+#' 
+#' -   *Constrained bandwidth delivery* uses a lower bitrate for each
+#'     quality level. Use it if you have low download bandwidth and/or
+#'     simple video content (e.g., talking heads)
+#' 
+#' -   *Higher bandwidth delivery* uses a higher bitrate for each quality
+#'     level. Use it if you have high download bandwidth and/or complex
+#'     video content (e.g., flashes and quick scene changes).
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_update_channel
-ivs_update_channel <- function(arn, authorized = NULL, insecureIngest = NULL, latencyMode = NULL, name = NULL, recordingConfigurationArn = NULL, type = NULL) {
+ivs_update_channel <- function(arn, authorized = NULL, insecureIngest = NULL, latencyMode = NULL, name = NULL, preset = NULL, recordingConfigurationArn = NULL, type = NULL) {
   op <- new_operation(
     name = "UpdateChannel",
     http_method = "POST",
     http_path = "/UpdateChannel",
     paginator = list()
   )
-  input <- .ivs$update_channel_input(arn = arn, authorized = authorized, insecureIngest = insecureIngest, latencyMode = latencyMode, name = name, recordingConfigurationArn = recordingConfigurationArn, type = type)
+  input <- .ivs$update_channel_input(arn = arn, authorized = authorized, insecureIngest = insecureIngest, latencyMode = latencyMode, name = name, preset = preset, recordingConfigurationArn = recordingConfigurationArn, type = type)
   output <- .ivs$update_channel_output()
   config <- get_config()
   svc <- .ivs$service(config)

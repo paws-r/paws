@@ -19,6 +19,6 @@ different account, the request fails with the HTTP status code
 \description{
 This implementation of the DELETE action resets the default encryption for the bucket as server-side encryption with Amazon S3 managed keys (SSE-S3). For information about the bucket default encryption feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html}{Amazon S3 Bucket Default Encryption} in the \emph{Amazon S3 User Guide}.
 
-See \url{https://paws-r.github.io/docs/s3/delete_bucket_encryption.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_delete_bucket_encryption/} for full documentation.
 }
 \keyword{internal}

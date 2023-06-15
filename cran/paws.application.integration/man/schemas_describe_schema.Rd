@@ -16,6 +16,6 @@ schemas_describe_schema(RegistryName, SchemaName, SchemaVersion = NULL)
 \description{
 Retrieve the schema definition.
 
-See \url{https://paws-r.github.io/docs/schemas/describe_schema.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/schemas_describe_schema/} for full documentation.
 }
 \keyword{internal}

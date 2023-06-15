@@ -14,6 +14,6 @@ lexmodelsv2_update_export(exportId, filePassword = NULL)
 \description{
 Updates the password used to protect an export zip archive.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/update_export.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_update_export/} for full documentation.
 }
 \keyword{internal}

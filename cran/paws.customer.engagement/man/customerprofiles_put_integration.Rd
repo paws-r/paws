@@ -37,6 +37,6 @@ types: \code{SegmentIdentify}, \code{ShopifyCreateCustomers},
 \description{
 Adds an integration between the service and a third-party service, which includes Amazon AppFlow and Amazon Connect.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/put_integration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_put_integration/} for full documentation.
 }
 \keyword{internal}

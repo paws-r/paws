@@ -12,6 +12,6 @@ lookoutequipment_delete_model(ModelName)
 \description{
 Deletes an ML model currently available for Amazon Lookout for Equipment. This will prevent it from being used with an inference scheduler, even one that is already set up.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/delete_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_delete_model/} for full documentation.
 }
 \keyword{internal}

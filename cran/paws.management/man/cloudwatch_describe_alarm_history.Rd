@@ -41,6 +41,6 @@ returned first.}
 \description{
 Retrieves the history for the specified alarm. You can filter the results by date range or item type. If an alarm name is not specified, the histories for either all metric alarms or all composite alarms are returned.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/describe_alarm_history.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_describe_alarm_history/} for full documentation.
 }
 \keyword{internal}

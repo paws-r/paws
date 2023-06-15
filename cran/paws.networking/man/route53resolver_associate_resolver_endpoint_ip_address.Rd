@@ -20,6 +20,6 @@ for you from the available IPs in the specified subnet.}
 \description{
 Adds IP addresses to an inbound or an outbound Resolver endpoint. If you want to add more than one IP address, submit one \code{\link[=route53resolver_associate_resolver_endpoint_ip_address]{associate_resolver_endpoint_ip_address}} request for each IP address.
 
-See \url{https://paws-r.github.io/docs/route53resolver/associate_resolver_endpoint_ip_address.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_associate_resolver_endpoint_ip_address/} for full documentation.
 }
 \keyword{internal}

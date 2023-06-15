@@ -31,6 +31,6 @@ continues the list from where the previous returning call left off.}
 \description{
 Returns the DNS aliases that are associated with the specified Amazon FSx for Windows File Server file system. A history of all DNS aliases that have been associated with and disassociated from the file system is available in the list of AdministrativeAction provided in the \code{\link[=fsx_describe_file_systems]{describe_file_systems}} operation response.
 
-See \url{https://paws-r.github.io/docs/fsx/describe_file_system_aliases.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_describe_file_system_aliases/} for full documentation.
 }
 \keyword{internal}

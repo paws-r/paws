@@ -17,6 +17,6 @@ workspaces_modify_workspace_creation_properties(
 \description{
 Modify the default properties used to create WorkSpaces.
 
-See \url{https://paws-r.github.io/docs/workspaces/modify_workspace_creation_properties.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_modify_workspace_creation_properties/} for full documentation.
 }
 \keyword{internal}

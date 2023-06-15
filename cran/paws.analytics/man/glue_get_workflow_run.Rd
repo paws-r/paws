@@ -16,6 +16,6 @@ glue_get_workflow_run(Name, RunId, IncludeGraph = NULL)
 \description{
 Retrieves the metadata for a given workflow run.
 
-See \url{https://paws-r.github.io/docs/glue/get_workflow_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_workflow_run/} for full documentation.
 }
 \keyword{internal}

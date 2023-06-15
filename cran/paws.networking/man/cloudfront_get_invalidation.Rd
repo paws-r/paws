@@ -15,6 +15,6 @@ cloudfront_get_invalidation(DistributionId, Id)
 \description{
 Get the information about an invalidation.
 
-See \url{https://paws-r.github.io/docs/cloudfront/get_invalidation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_get_invalidation/} for full documentation.
 }
 \keyword{internal}

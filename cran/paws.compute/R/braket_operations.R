@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Cancels an Amazon Braket job.
 #'
-#' See [https://paws-r.github.io/docs/braket/cancel_job.html](https://paws-r.github.io/docs/braket/cancel_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/braket_cancel_job/](https://www.paws-r-sdk.com/docs/braket_cancel_job/) for full documentation.
 #'
 #' @param jobArn &#91;required&#93; The ARN of the Amazon Braket job to cancel.
 #'
@@ -37,7 +37,7 @@ braket_cancel_job <- function(jobArn) {
 #' @description
 #' Cancels the specified task.
 #'
-#' See [https://paws-r.github.io/docs/braket/cancel_quantum_task.html](https://paws-r.github.io/docs/braket/cancel_quantum_task.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/braket_cancel_quantum_task/](https://www.paws-r-sdk.com/docs/braket_cancel_quantum_task/) for full documentation.
 #'
 #' @param clientToken &#91;required&#93; The client token associated with the request.
 #' @param quantumTaskArn &#91;required&#93; The ARN of the task to cancel.
@@ -67,7 +67,7 @@ braket_cancel_quantum_task <- function(clientToken, quantumTaskArn) {
 #' @description
 #' Creates an Amazon Braket job.
 #'
-#' See [https://paws-r.github.io/docs/braket/create_job.html](https://paws-r.github.io/docs/braket/create_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/braket_create_job/](https://www.paws-r-sdk.com/docs/braket_create_job/) for full documentation.
 #'
 #' @param algorithmSpecification &#91;required&#93; Definition of the Amazon Braket job to be created. Specifies the
 #' container image the job uses and information about the Python scripts
@@ -120,7 +120,7 @@ braket_create_job <- function(algorithmSpecification, checkpointConfig = NULL, c
 #' @description
 #' Creates a quantum task.
 #'
-#' See [https://paws-r.github.io/docs/braket/create_quantum_task.html](https://paws-r.github.io/docs/braket/create_quantum_task.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/braket_create_quantum_task/](https://www.paws-r-sdk.com/docs/braket_create_quantum_task/) for full documentation.
 #'
 #' @param action &#91;required&#93; The action associated with the task.
 #' @param clientToken &#91;required&#93; The client token associated with the request.
@@ -159,7 +159,7 @@ braket_create_quantum_task <- function(action, clientToken, deviceArn, devicePar
 #' @description
 #' Retrieves the devices available in Amazon Braket.
 #'
-#' See [https://paws-r.github.io/docs/braket/get_device.html](https://paws-r.github.io/docs/braket/get_device.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/braket_get_device/](https://www.paws-r-sdk.com/docs/braket_get_device/) for full documentation.
 #'
 #' @param deviceArn &#91;required&#93; The ARN of the device to retrieve.
 #'
@@ -188,7 +188,7 @@ braket_get_device <- function(deviceArn) {
 #' @description
 #' Retrieves the specified Amazon Braket job.
 #'
-#' See [https://paws-r.github.io/docs/braket/get_job.html](https://paws-r.github.io/docs/braket/get_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/braket_get_job/](https://www.paws-r-sdk.com/docs/braket_get_job/) for full documentation.
 #'
 #' @param jobArn &#91;required&#93; The ARN of the job to retrieve.
 #'
@@ -217,7 +217,7 @@ braket_get_job <- function(jobArn) {
 #' @description
 #' Retrieves the specified quantum task.
 #'
-#' See [https://paws-r.github.io/docs/braket/get_quantum_task.html](https://paws-r.github.io/docs/braket/get_quantum_task.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/braket_get_quantum_task/](https://www.paws-r-sdk.com/docs/braket_get_quantum_task/) for full documentation.
 #'
 #' @param quantumTaskArn &#91;required&#93; the ARN of the task to retrieve.
 #'
@@ -246,7 +246,7 @@ braket_get_quantum_task <- function(quantumTaskArn) {
 #' @description
 #' Shows the tags associated with this resource.
 #'
-#' See [https://paws-r.github.io/docs/braket/list_tags_for_resource.html](https://paws-r.github.io/docs/braket/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/braket_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/braket_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; Specify the `resourceArn` for the resource whose tags to display.
 #'
@@ -275,7 +275,7 @@ braket_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Searches for devices using the specified filters.
 #'
-#' See [https://paws-r.github.io/docs/braket/search_devices.html](https://paws-r.github.io/docs/braket/search_devices.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/braket_search_devices/](https://www.paws-r-sdk.com/docs/braket_search_devices/) for full documentation.
 #'
 #' @param filters &#91;required&#93; The filter values to use to search for a device.
 #' @param maxResults The maximum number of results to return in the response.
@@ -308,7 +308,7 @@ braket_search_devices <- function(filters, maxResults = NULL, nextToken = NULL) 
 #' @description
 #' Searches for Amazon Braket jobs that match the specified filter values.
 #'
-#' See [https://paws-r.github.io/docs/braket/search_jobs.html](https://paws-r.github.io/docs/braket/search_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/braket_search_jobs/](https://www.paws-r-sdk.com/docs/braket_search_jobs/) for full documentation.
 #'
 #' @param filters &#91;required&#93; The filter values to use when searching for a job.
 #' @param maxResults The maximum number of results to return in the response.
@@ -341,7 +341,7 @@ braket_search_jobs <- function(filters, maxResults = NULL, nextToken = NULL) {
 #' @description
 #' Searches for tasks that match the specified filter values.
 #'
-#' See [https://paws-r.github.io/docs/braket/search_quantum_tasks.html](https://paws-r.github.io/docs/braket/search_quantum_tasks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/braket_search_quantum_tasks/](https://www.paws-r-sdk.com/docs/braket_search_quantum_tasks/) for full documentation.
 #'
 #' @param filters &#91;required&#93; Array of `SearchQuantumTasksFilter` objects.
 #' @param maxResults Maximum number of results to return in the response.
@@ -374,7 +374,7 @@ braket_search_quantum_tasks <- function(filters, maxResults = NULL, nextToken = 
 #' @description
 #' Add a tag to the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/braket/tag_resource.html](https://paws-r.github.io/docs/braket/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/braket_tag_resource/](https://www.paws-r-sdk.com/docs/braket_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; Specify the `resourceArn` of the resource to which a tag will be added.
 #' @param tags &#91;required&#93; Specify the tags to add to the resource.
@@ -404,7 +404,7 @@ braket_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Remove tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/braket/untag_resource.html](https://paws-r.github.io/docs/braket/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/braket_untag_resource/](https://www.paws-r-sdk.com/docs/braket_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; Specify the `resourceArn` for the resource from which to remove the
 #' tags.

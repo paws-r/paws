@@ -14,6 +14,6 @@ emr_add_instance_fleet(ClusterId, InstanceFleet)
 \description{
 Adds an instance fleet to a running cluster.
 
-See \url{https://paws-r.github.io/docs/emr/add_instance_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_add_instance_fleet/} for full documentation.
 }
 \keyword{internal}

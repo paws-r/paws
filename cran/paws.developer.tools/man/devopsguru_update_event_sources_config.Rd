@@ -14,6 +14,6 @@ Consumer via EventBridge with another AWS Service.}
 \description{
 Enables or disables integration with a service that can be integrated with DevOps Guru. The one service that can be integrated with DevOps Guru is Amazon CodeGuru Profiler, which can produce proactive recommendations which can be stored and viewed in DevOps Guru.
 
-See \url{https://paws-r.github.io/docs/devopsguru/update_event_sources_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_update_event_sources_config/} for full documentation.
 }
 \keyword{internal}

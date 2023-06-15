@@ -27,6 +27,6 @@ frauddetector_get_rules(
 \description{
 Get all rules for a detector (paginated) if \code{ruleId} and \code{ruleVersion} are not specified. Gets all rules for the detector and the \code{ruleId} if present (paginated). Gets a specific rule if both the \code{ruleId} and the \code{ruleVersion} are specified.
 
-See \url{https://paws-r.github.io/docs/frauddetector/get_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_get_rules/} for full documentation.
 }
 \keyword{internal}

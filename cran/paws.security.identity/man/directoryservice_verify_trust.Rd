@@ -13,6 +13,6 @@ directoryservice_verify_trust(TrustId)
 \description{
 Directory Service for Microsoft Active Directory allows you to configure and verify trust relationships.
 
-See \url{https://paws-r.github.io/docs/directoryservice/verify_trust.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_verify_trust/} for full documentation.
 }
 \keyword{internal}

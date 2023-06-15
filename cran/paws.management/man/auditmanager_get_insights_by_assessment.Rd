@@ -12,6 +12,6 @@ auditmanager_get_insights_by_assessment(assessmentId)
 \description{
 Gets the latest analytics data for a specific active assessment.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_insights_by_assessment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_insights_by_assessment/} for full documentation.
 }
 \keyword{internal}

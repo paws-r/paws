@@ -44,6 +44,6 @@ tags with the same key but different values), the tags created with the
 \description{
 Copies an existing backup within the same Amazon Web Services account to another Amazon Web Services Region (cross-Region copy) or within the same Amazon Web Services Region (in-Region copy). You can have up to five backup copy requests in progress to a single destination Region per account.
 
-See \url{https://paws-r.github.io/docs/fsx/copy_backup.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_copy_backup/} for full documentation.
 }
 \keyword{internal}

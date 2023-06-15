@@ -51,6 +51,6 @@ address is specified, the email address is left blank.}
 \description{
 Deletes a specified file from a specified branch. A commit is created on the branch that contains the revision. The file still exists in the commits earlier to the commit that contains the deletion.
 
-See \url{https://paws-r.github.io/docs/codecommit/delete_file.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_delete_file/} for full documentation.
 }
 \keyword{internal}

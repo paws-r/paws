@@ -23,6 +23,6 @@ current policy for the repository is used.}
 \description{
 Starts a preview of a lifecycle policy for the specified repository. This allows you to see the results before associating the lifecycle policy with the repository.
 
-See \url{https://paws-r.github.io/docs/ecr/start_lifecycle_policy_preview.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_start_lifecycle_policy_preview/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ workspace.}
 \description{
 Use this operation to define the identity provider (IdP) that this workspace authenticates users from, using SAML. You can also map SAML assertion attributes to workspace user information and define which groups in the assertion attribute are to have the \code{Admin} and \code{Editor} roles in the workspace.
 
-See \url{https://paws-r.github.io/docs/managedgrafana/update_workspace_authentication.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/managedgrafana_update_workspace_authentication/} for full documentation.
 }
 \keyword{internal}

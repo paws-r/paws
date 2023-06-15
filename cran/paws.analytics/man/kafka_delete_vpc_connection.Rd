@@ -13,6 +13,6 @@ connection.}
 \description{
 Deletes a MSK VPC connection.
 
-See \url{https://paws-r.github.io/docs/kafka/delete_vpc_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_delete_vpc_connection/} for full documentation.
 }
 \keyword{internal}

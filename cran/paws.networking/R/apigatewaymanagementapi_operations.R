@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Delete the connection with the provided id.
 #'
-#' See [https://paws-r.github.io/docs/apigatewaymanagementapi/delete_connection.html](https://paws-r.github.io/docs/apigatewaymanagementapi/delete_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewaymanagementapi_delete_connection/](https://www.paws-r-sdk.com/docs/apigatewaymanagementapi_delete_connection/) for full documentation.
 #'
 #' @param ConnectionId &#91;required&#93; 
 #'
@@ -37,7 +37,7 @@ apigatewaymanagementapi_delete_connection <- function(ConnectionId) {
 #' @description
 #' Get information about the connection with the provided id.
 #'
-#' See [https://paws-r.github.io/docs/apigatewaymanagementapi/get_connection.html](https://paws-r.github.io/docs/apigatewaymanagementapi/get_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewaymanagementapi_get_connection/](https://www.paws-r-sdk.com/docs/apigatewaymanagementapi_get_connection/) for full documentation.
 #'
 #' @param ConnectionId &#91;required&#93; 
 #'
@@ -66,7 +66,7 @@ apigatewaymanagementapi_get_connection <- function(ConnectionId) {
 #' @description
 #' Sends the provided data to the specified connection.
 #'
-#' See [https://paws-r.github.io/docs/apigatewaymanagementapi/post_to_connection.html](https://paws-r.github.io/docs/apigatewaymanagementapi/post_to_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewaymanagementapi_post_to_connection/](https://www.paws-r-sdk.com/docs/apigatewaymanagementapi_post_to_connection/) for full documentation.
 #'
 #' @param Data &#91;required&#93; The data to be sent to the client specified by its connection id.
 #' @param ConnectionId &#91;required&#93; The identifier of the connection that a specific client is using.

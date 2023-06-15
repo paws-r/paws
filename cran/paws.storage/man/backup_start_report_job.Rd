@@ -17,6 +17,6 @@ message with no action taken.}
 \description{
 Starts an on-demand report job for the specified report plan.
 
-See \url{https://paws-r.github.io/docs/backup/start_report_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_start_report_job/} for full documentation.
 }
 \keyword{internal}

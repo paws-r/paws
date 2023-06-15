@@ -12,6 +12,6 @@ frauddetector_delete_event_type(name)
 \description{
 Deletes an event type.
 
-See \url{https://paws-r.github.io/docs/frauddetector/delete_event_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_delete_event_type/} for full documentation.
 }
 \keyword{internal}

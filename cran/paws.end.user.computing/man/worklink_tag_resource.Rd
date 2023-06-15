@@ -15,6 +15,6 @@ worklink_tag_resource(ResourceArn, Tags)
 \description{
 Adds or overwrites one or more tags for the specified resource, such as a fleet. Each tag consists of a key and an optional value. If a resource already has a tag with the same key, this operation updates its value.
 
-See \url{https://paws-r.github.io/docs/worklink/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_tag_resource/} for full documentation.
 }
 \keyword{internal}

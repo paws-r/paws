@@ -23,6 +23,6 @@ Cloud Messaging).}
 \description{
 Creates a platform application object for one of the supported push notification services, such as APNS and GCM (Firebase Cloud Messaging), to which devices and mobile apps may register. You must specify \code{PlatformPrincipal} and \code{PlatformCredential} attributes when using the \code{\link[=sns_create_platform_application]{create_platform_application}} action.
 
-See \url{https://paws-r.github.io/docs/sns/create_platform_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_create_platform_application/} for full documentation.
 }
 \keyword{internal}

@@ -31,6 +31,6 @@ specified number.}
 \description{
 Returns a description of virtual tape library (VTL) devices for the specified tape gateway. In the response, Storage Gateway returns VTL device information.
 
-See \url{https://paws-r.github.io/docs/storagegateway/describe_vtl_devices.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_describe_vtl_devices/} for full documentation.
 }
 \keyword{internal}

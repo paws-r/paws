@@ -28,6 +28,6 @@ addresses.}
 \description{
 Lists all of the import jobs.
 
-See \url{https://paws-r.github.io/docs/sesv2/list_import_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_list_import_jobs/} for full documentation.
 }
 \keyword{internal}

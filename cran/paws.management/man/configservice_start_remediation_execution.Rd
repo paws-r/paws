@@ -17,6 +17,6 @@ element in the list consists of the resource type and resource ID.}
 \description{
 Runs an on-demand remediation for the specified Config rules against the last known remediation configuration. It runs an execution against the current state of your resources. Remediation execution is asynchronous.
 
-See \url{https://paws-r.github.io/docs/configservice/start_remediation_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_start_remediation_execution/} for full documentation.
 }
 \keyword{internal}

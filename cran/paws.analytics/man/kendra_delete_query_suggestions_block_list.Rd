@@ -14,6 +14,6 @@ kendra_delete_query_suggestions_block_list(IndexId, Id)
 \description{
 Deletes a block list used for query suggestions for an index.
 
-See \url{https://paws-r.github.io/docs/kendra/delete_query_suggestions_block_list.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_delete_query_suggestions_block_list/} for full documentation.
 }
 \keyword{internal}

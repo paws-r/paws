@@ -66,6 +66,6 @@ are returned. For more information, see
 \description{
 Returns a list of \href{https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageSummary.html}{PackageSummary} objects for packages in a repository that match the request parameters.
 
-See \url{https://paws-r.github.io/docs/codeartifact/list_packages.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_list_packages/} for full documentation.
 }
 \keyword{internal}

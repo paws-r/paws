@@ -27,6 +27,6 @@ value.}
 \description{
 The \code{\link[=mturk_list_reviewable_hi_ts]{list_reviewable_hi_ts}} operation retrieves the HITs with Status equal to Reviewable or Status equal to Reviewing that belong to the Requester calling the operation.
 
-See \url{https://paws-r.github.io/docs/mturk/list_reviewable_hi_ts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_list_reviewable_hi_ts/} for full documentation.
 }
 \keyword{internal}

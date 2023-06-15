@@ -13,6 +13,6 @@ you are querying.}
 \description{
 Lists all tags associated with a given Amazon Translate resource. For more information, see \href{https://docs.aws.amazon.com/translate/latest/dg/tagging.html}{Tagging your resources}.
 
-See \url{https://paws-r.github.io/docs/translate/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/translate_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

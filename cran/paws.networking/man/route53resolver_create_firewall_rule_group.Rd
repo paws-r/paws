@@ -20,6 +20,6 @@ rule group.}
 \description{
 Creates an empty DNS Firewall rule group for filtering DNS network traffic in a VPC. You can add rules to the new rule group by calling \code{\link[=route53resolver_create_firewall_rule]{create_firewall_rule}}.
 
-See \url{https://paws-r.github.io/docs/route53resolver/create_firewall_rule_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_create_firewall_rule_group/} for full documentation.
 }
 \keyword{internal}

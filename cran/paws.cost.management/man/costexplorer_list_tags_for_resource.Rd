@@ -15,6 +15,6 @@ resources, see
 \description{
 Returns a list of resource tags associated with the resource specified by the Amazon Resource Name (ARN).
 
-See \url{https://paws-r.github.io/docs/costexplorer/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

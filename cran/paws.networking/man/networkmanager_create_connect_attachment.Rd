@@ -30,6 +30,6 @@ networkmanager_create_connect_attachment(
 \description{
 Creates a core network Connect attachment from a specified core network attachment.
 
-See \url{https://paws-r.github.io/docs/networkmanager/create_connect_attachment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_create_connect_attachment/} for full documentation.
 }
 \keyword{internal}

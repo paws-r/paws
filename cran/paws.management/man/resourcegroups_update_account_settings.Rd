@@ -15,6 +15,6 @@ on or off.}
 \description{
 Turns on or turns off optional features in Resource Groups.
 
-See \url{https://paws-r.github.io/docs/resourcegroups/update_account_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroups_update_account_settings/} for full documentation.
 }
 \keyword{internal}

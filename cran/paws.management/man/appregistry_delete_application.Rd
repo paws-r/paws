@@ -13,6 +13,6 @@ appregistry_delete_application(application)
 \description{
 Deletes an application that is specified either by its application ID, name, or ARN. All associated attribute groups and resources must be disassociated from it before deleting an application.
 
-See \url{https://paws-r.github.io/docs/appregistry/delete_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_delete_application/} for full documentation.
 }
 \keyword{internal}

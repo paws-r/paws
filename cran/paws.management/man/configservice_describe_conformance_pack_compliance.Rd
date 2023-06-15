@@ -25,6 +25,6 @@ request the next page of results in a paginated response.}
 \description{
 Returns compliance details for each rule in that conformance pack.
 
-See \url{https://paws-r.github.io/docs/configservice/describe_conformance_pack_compliance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_describe_conformance_pack_compliance/} for full documentation.
 }
 \keyword{internal}

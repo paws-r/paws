@@ -13,6 +13,6 @@ forecastservice_get_accuracy_metrics(PredictorArn)
 \description{
 Provides metrics on the accuracy of the models that were trained by the \code{\link[=forecastservice_create_predictor]{create_predictor}} operation. Use metrics to see how well the model performed and to decide whether to use the predictor to generate a forecast. For more information, see \href{https://docs.aws.amazon.com/forecast/latest/dg/metrics.html}{Predictor Metrics}.
 
-See \url{https://paws-r.github.io/docs/forecastservice/get_accuracy_metrics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_get_accuracy_metrics/} for full documentation.
 }
 \keyword{internal}

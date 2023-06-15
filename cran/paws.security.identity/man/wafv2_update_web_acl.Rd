@@ -114,6 +114,6 @@ body sizes that are larger than the default. For more information, see
 \description{
 Updates the specified WebACL. While updating a web ACL, WAF provides continuous coverage to the resources that you have associated with the web ACL.
 
-See \url{https://paws-r.github.io/docs/wafv2/update_web_acl.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_update_web_acl/} for full documentation.
 }
 \keyword{internal}

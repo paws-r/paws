@@ -14,6 +14,6 @@ backupstorage_get_object_metadata(StorageJobId, ObjectToken)
 \description{
 Get metadata associated with an Object.
 
-See \url{https://paws-r.github.io/docs/backupstorage/get_object_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupstorage_get_object_metadata/} for full documentation.
 }
 \keyword{internal}

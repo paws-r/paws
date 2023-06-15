@@ -11,6 +11,6 @@ dynamodb_describe_limits()
 \description{
 Returns the current provisioned-capacity quotas for your Amazon Web Services account in a Region, both for the Region as a whole and for any one DynamoDB table that you create there.
 
-See \url{https://paws-r.github.io/docs/dynamodb/describe_limits.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_describe_limits/} for full documentation.
 }
 \keyword{internal}

@@ -28,6 +28,6 @@ those jobs that are associated with the specified project.}
 \description{
 Lists all of the DataBrew jobs that are defined.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/list_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_list_jobs/} for full documentation.
 }
 \keyword{internal}

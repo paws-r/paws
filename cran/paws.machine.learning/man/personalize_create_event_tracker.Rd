@@ -13,11 +13,13 @@ personalize_create_event_tracker(name, datasetGroupArn, tags = NULL)
 \item{datasetGroupArn}{[required] The Amazon Resource Name (ARN) of the dataset group that receives the
 event data.}
 
-\item{tags}{A list of tags to apply to the event tracker.}
+\item{tags}{A list of
+\href{https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html}{tags}
+to apply to the event tracker.}
 }
 \description{
 Creates an event tracker that you use when adding event data to a specified dataset group using the \href{https://docs.aws.amazon.com/personalize/latest/dg/API_UBS_PutEvents.html}{PutEvents} API.
 
-See \url{https://paws-r.github.io/docs/personalize/create_event_tracker.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_create_event_tracker/} for full documentation.
 }
 \keyword{internal}

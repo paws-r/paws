@@ -44,6 +44,6 @@ request to get the next group of results. Specify the value of
 \description{
 Gets the current health status (\code{Healthy}, \code{Unhealthy}, or \code{Unknown}) of one or more instances that are associated with a specified service.
 
-See \url{https://paws-r.github.io/docs/servicediscovery/get_instances_health_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicediscovery_get_instances_health_status/} for full documentation.
 }
 \keyword{internal}

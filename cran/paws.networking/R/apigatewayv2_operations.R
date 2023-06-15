@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates an Api resource.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/create_api.html](https://paws-r.github.io/docs/apigatewayv2/create_api.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_create_api/](https://www.paws-r-sdk.com/docs/apigatewayv2_create_api/) for full documentation.
 #'
 #' @param ApiKeySelectionExpression An API key selection expression. Supported only for WebSocket APIs. See
 #' [API Key Selection
@@ -79,7 +79,7 @@ apigatewayv2_create_api <- function(ApiKeySelectionExpression = NULL, CorsConfig
 #' @description
 #' Creates an API mapping.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/create_api_mapping.html](https://paws-r.github.io/docs/apigatewayv2/create_api_mapping.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_create_api_mapping/](https://www.paws-r-sdk.com/docs/apigatewayv2_create_api_mapping/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ApiMappingKey The API mapping key.
@@ -111,7 +111,7 @@ apigatewayv2_create_api_mapping <- function(ApiId, ApiMappingKey = NULL, DomainN
 #' @description
 #' Creates an Authorizer for an API.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/create_authorizer.html](https://paws-r.github.io/docs/apigatewayv2/create_authorizer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_create_authorizer/](https://www.paws-r-sdk.com/docs/apigatewayv2_create_authorizer/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param AuthorizerCredentialsArn Specifies the required credentials as an IAM role for API Gateway to
@@ -203,7 +203,7 @@ apigatewayv2_create_authorizer <- function(ApiId, AuthorizerCredentialsArn = NUL
 #' @description
 #' Creates a Deployment for an API.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/create_deployment.html](https://paws-r.github.io/docs/apigatewayv2/create_deployment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_create_deployment/](https://www.paws-r-sdk.com/docs/apigatewayv2_create_deployment/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param Description The description for the deployment resource.
@@ -234,7 +234,7 @@ apigatewayv2_create_deployment <- function(ApiId, Description = NULL, StageName 
 #' @description
 #' Creates a domain name.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/create_domain_name.html](https://paws-r.github.io/docs/apigatewayv2/create_domain_name.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_create_domain_name/](https://www.paws-r-sdk.com/docs/apigatewayv2_create_domain_name/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The domain name.
 #' @param DomainNameConfigurations The domain name configurations.
@@ -266,7 +266,7 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' @description
 #' Creates an Integration.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/create_integration.html](https://paws-r.github.io/docs/apigatewayv2/create_integration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_create_integration/](https://www.paws-r-sdk.com/docs/apigatewayv2_create_integration/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ConnectionId The ID of the VPC link for a private integration. Supported only for
@@ -427,7 +427,7 @@ apigatewayv2_create_integration <- function(ApiId, ConnectionId = NULL, Connecti
 #' @description
 #' Creates an IntegrationResponses.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/create_integration_response.html](https://paws-r.github.io/docs/apigatewayv2/create_integration_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_create_integration_response/](https://www.paws-r-sdk.com/docs/apigatewayv2_create_integration_response/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ContentHandlingStrategy Specifies how to handle response payload content type conversions.
@@ -488,7 +488,7 @@ apigatewayv2_create_integration_response <- function(ApiId, ContentHandlingStrat
 #' @description
 #' Creates a Model for an API.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/create_model.html](https://paws-r.github.io/docs/apigatewayv2/create_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_create_model/](https://www.paws-r-sdk.com/docs/apigatewayv2_create_model/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ContentType The content-type for the model, for example, "application/json".
@@ -522,7 +522,7 @@ apigatewayv2_create_model <- function(ApiId, ContentType = NULL, Description = N
 #' @description
 #' Creates a Route for an API.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/create_route.html](https://paws-r.github.io/docs/apigatewayv2/create_route.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_create_route/](https://www.paws-r-sdk.com/docs/apigatewayv2_create_route/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ApiKeyRequired Specifies whether an API key is required for the route. Supported only
@@ -571,7 +571,7 @@ apigatewayv2_create_route <- function(ApiId, ApiKeyRequired = NULL, Authorizatio
 #' @description
 #' Creates a RouteResponse for a Route.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/create_route_response.html](https://paws-r.github.io/docs/apigatewayv2/create_route_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_create_route_response/](https://www.paws-r-sdk.com/docs/apigatewayv2_create_route_response/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ModelSelectionExpression The model selection expression for the route response. Supported only
@@ -606,7 +606,7 @@ apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression =
 #' @description
 #' Creates a Stage for an API.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/create_stage.html](https://paws-r.github.io/docs/apigatewayv2/create_stage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_create_stage/](https://www.paws-r-sdk.com/docs/apigatewayv2_create_stage/) for full documentation.
 #'
 #' @param AccessLogSettings Settings for logging access in this stage.
 #' @param ApiId &#91;required&#93; The API identifier.
@@ -650,7 +650,7 @@ apigatewayv2_create_stage <- function(AccessLogSettings = NULL, ApiId, AutoDeplo
 #' @description
 #' Creates a VPC link.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/create_vpc_link.html](https://paws-r.github.io/docs/apigatewayv2/create_vpc_link.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_create_vpc_link/](https://www.paws-r-sdk.com/docs/apigatewayv2_create_vpc_link/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the VPC link.
 #' @param SecurityGroupIds A list of security group IDs for the VPC link.
@@ -682,7 +682,7 @@ apigatewayv2_create_vpc_link <- function(Name, SecurityGroupIds = NULL, SubnetId
 #' @description
 #' Deletes the AccessLogSettings for a Stage. To disable access logging for a Stage, delete its AccessLogSettings.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/delete_access_log_settings.html](https://paws-r.github.io/docs/apigatewayv2/delete_access_log_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_access_log_settings/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_access_log_settings/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param StageName &#91;required&#93; The stage name. Stage names can only contain alphanumeric characters,
@@ -713,7 +713,7 @@ apigatewayv2_delete_access_log_settings <- function(ApiId, StageName) {
 #' @description
 #' Deletes an Api resource.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/delete_api.html](https://paws-r.github.io/docs/apigatewayv2/delete_api.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_api/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_api/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #'
@@ -742,7 +742,7 @@ apigatewayv2_delete_api <- function(ApiId) {
 #' @description
 #' Deletes an API mapping.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/delete_api_mapping.html](https://paws-r.github.io/docs/apigatewayv2/delete_api_mapping.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_api_mapping/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_api_mapping/) for full documentation.
 #'
 #' @param ApiMappingId &#91;required&#93; The API mapping identifier.
 #' @param DomainName &#91;required&#93; The domain name.
@@ -772,7 +772,7 @@ apigatewayv2_delete_api_mapping <- function(ApiMappingId, DomainName) {
 #' @description
 #' Deletes an Authorizer.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/delete_authorizer.html](https://paws-r.github.io/docs/apigatewayv2/delete_authorizer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_authorizer/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_authorizer/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param AuthorizerId &#91;required&#93; The authorizer identifier.
@@ -802,7 +802,7 @@ apigatewayv2_delete_authorizer <- function(ApiId, AuthorizerId) {
 #' @description
 #' Deletes a CORS configuration.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/delete_cors_configuration.html](https://paws-r.github.io/docs/apigatewayv2/delete_cors_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_cors_configuration/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_cors_configuration/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #'
@@ -831,7 +831,7 @@ apigatewayv2_delete_cors_configuration <- function(ApiId) {
 #' @description
 #' Deletes a Deployment.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/delete_deployment.html](https://paws-r.github.io/docs/apigatewayv2/delete_deployment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_deployment/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_deployment/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param DeploymentId &#91;required&#93; The deployment ID.
@@ -861,7 +861,7 @@ apigatewayv2_delete_deployment <- function(ApiId, DeploymentId) {
 #' @description
 #' Deletes a domain name.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/delete_domain_name.html](https://paws-r.github.io/docs/apigatewayv2/delete_domain_name.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_domain_name/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_domain_name/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The domain name.
 #'
@@ -890,7 +890,7 @@ apigatewayv2_delete_domain_name <- function(DomainName) {
 #' @description
 #' Deletes an Integration.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/delete_integration.html](https://paws-r.github.io/docs/apigatewayv2/delete_integration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_integration/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_integration/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param IntegrationId &#91;required&#93; The integration ID.
@@ -920,7 +920,7 @@ apigatewayv2_delete_integration <- function(ApiId, IntegrationId) {
 #' @description
 #' Deletes an IntegrationResponses.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/delete_integration_response.html](https://paws-r.github.io/docs/apigatewayv2/delete_integration_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_integration_response/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_integration_response/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param IntegrationId &#91;required&#93; The integration ID.
@@ -951,7 +951,7 @@ apigatewayv2_delete_integration_response <- function(ApiId, IntegrationId, Integ
 #' @description
 #' Deletes a Model.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/delete_model.html](https://paws-r.github.io/docs/apigatewayv2/delete_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_model/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_model/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ModelId &#91;required&#93; The model ID.
@@ -981,7 +981,7 @@ apigatewayv2_delete_model <- function(ApiId, ModelId) {
 #' @description
 #' Deletes a Route.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/delete_route.html](https://paws-r.github.io/docs/apigatewayv2/delete_route.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_route/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_route/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param RouteId &#91;required&#93; The route ID.
@@ -1011,7 +1011,7 @@ apigatewayv2_delete_route <- function(ApiId, RouteId) {
 #' @description
 #' Deletes a route request parameter.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/delete_route_request_parameter.html](https://paws-r.github.io/docs/apigatewayv2/delete_route_request_parameter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_route_request_parameter/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_route_request_parameter/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param RequestParameterKey &#91;required&#93; The route request parameter key.
@@ -1042,7 +1042,7 @@ apigatewayv2_delete_route_request_parameter <- function(ApiId, RequestParameterK
 #' @description
 #' Deletes a RouteResponse.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/delete_route_response.html](https://paws-r.github.io/docs/apigatewayv2/delete_route_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_route_response/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_route_response/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param RouteId &#91;required&#93; The route ID.
@@ -1073,7 +1073,7 @@ apigatewayv2_delete_route_response <- function(ApiId, RouteId, RouteResponseId) 
 #' @description
 #' Deletes the RouteSettings for a stage.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/delete_route_settings.html](https://paws-r.github.io/docs/apigatewayv2/delete_route_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_route_settings/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_route_settings/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param RouteKey &#91;required&#93; The route key.
@@ -1105,7 +1105,7 @@ apigatewayv2_delete_route_settings <- function(ApiId, RouteKey, StageName) {
 #' @description
 #' Deletes a Stage.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/delete_stage.html](https://paws-r.github.io/docs/apigatewayv2/delete_stage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_stage/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_stage/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param StageName &#91;required&#93; The stage name. Stage names can only contain alphanumeric characters,
@@ -1136,7 +1136,7 @@ apigatewayv2_delete_stage <- function(ApiId, StageName) {
 #' @description
 #' Deletes a VPC link.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/delete_vpc_link.html](https://paws-r.github.io/docs/apigatewayv2/delete_vpc_link.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_vpc_link/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_vpc_link/) for full documentation.
 #'
 #' @param VpcLinkId &#91;required&#93; The ID of the VPC link.
 #'
@@ -1165,7 +1165,7 @@ apigatewayv2_delete_vpc_link <- function(VpcLinkId) {
 #' @description
 #' Export api
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/export_api.html](https://paws-r.github.io/docs/apigatewayv2/export_api.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_export_api/](https://www.paws-r-sdk.com/docs/apigatewayv2_export_api/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ExportVersion The version of the API Gateway export algorithm. API Gateway uses the
@@ -1206,7 +1206,7 @@ apigatewayv2_export_api <- function(ApiId, ExportVersion = NULL, IncludeExtensio
 #' @description
 #' Resets all authorizer cache entries on a stage. Supported only for HTTP APIs.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/reset_authorizers_cache.html](https://paws-r.github.io/docs/apigatewayv2/reset_authorizers_cache.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_reset_authorizers_cache/](https://www.paws-r-sdk.com/docs/apigatewayv2_reset_authorizers_cache/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param StageName &#91;required&#93; The stage name. Stage names can contain only alphanumeric characters,
@@ -1238,7 +1238,7 @@ apigatewayv2_reset_authorizers_cache <- function(ApiId, StageName) {
 #' @description
 #' Gets an Api resource.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_api.html](https://paws-r.github.io/docs/apigatewayv2/get_api.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_api/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_api/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #'
@@ -1267,7 +1267,7 @@ apigatewayv2_get_api <- function(ApiId) {
 #' @description
 #' Gets an API mapping.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_api_mapping.html](https://paws-r.github.io/docs/apigatewayv2/get_api_mapping.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_api_mapping/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_api_mapping/) for full documentation.
 #'
 #' @param ApiMappingId &#91;required&#93; The API mapping identifier.
 #' @param DomainName &#91;required&#93; The domain name.
@@ -1297,7 +1297,7 @@ apigatewayv2_get_api_mapping <- function(ApiMappingId, DomainName) {
 #' @description
 #' Gets API mappings.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_api_mappings.html](https://paws-r.github.io/docs/apigatewayv2/get_api_mappings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_api_mappings/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_api_mappings/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The domain name.
 #' @param MaxResults The maximum number of elements to be returned for this resource.
@@ -1329,7 +1329,7 @@ apigatewayv2_get_api_mappings <- function(DomainName, MaxResults = NULL, NextTok
 #' @description
 #' Gets a collection of Api resources.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_apis.html](https://paws-r.github.io/docs/apigatewayv2/get_apis.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_apis/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_apis/) for full documentation.
 #'
 #' @param MaxResults The maximum number of elements to be returned for this resource.
 #' @param NextToken The next page of elements from this collection. Not valid for the last
@@ -1360,7 +1360,7 @@ apigatewayv2_get_apis <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Gets an Authorizer.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_authorizer.html](https://paws-r.github.io/docs/apigatewayv2/get_authorizer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_authorizer/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_authorizer/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param AuthorizerId &#91;required&#93; The authorizer identifier.
@@ -1390,7 +1390,7 @@ apigatewayv2_get_authorizer <- function(ApiId, AuthorizerId) {
 #' @description
 #' Gets the Authorizers for an API.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_authorizers.html](https://paws-r.github.io/docs/apigatewayv2/get_authorizers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_authorizers/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_authorizers/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param MaxResults The maximum number of elements to be returned for this resource.
@@ -1422,7 +1422,7 @@ apigatewayv2_get_authorizers <- function(ApiId, MaxResults = NULL, NextToken = N
 #' @description
 #' Gets a Deployment.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_deployment.html](https://paws-r.github.io/docs/apigatewayv2/get_deployment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_deployment/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_deployment/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param DeploymentId &#91;required&#93; The deployment ID.
@@ -1452,7 +1452,7 @@ apigatewayv2_get_deployment <- function(ApiId, DeploymentId) {
 #' @description
 #' Gets the Deployments for an API.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_deployments.html](https://paws-r.github.io/docs/apigatewayv2/get_deployments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_deployments/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_deployments/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param MaxResults The maximum number of elements to be returned for this resource.
@@ -1484,7 +1484,7 @@ apigatewayv2_get_deployments <- function(ApiId, MaxResults = NULL, NextToken = N
 #' @description
 #' Gets a domain name.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_domain_name.html](https://paws-r.github.io/docs/apigatewayv2/get_domain_name.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_domain_name/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_domain_name/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The domain name.
 #'
@@ -1513,7 +1513,7 @@ apigatewayv2_get_domain_name <- function(DomainName) {
 #' @description
 #' Gets the domain names for an AWS account.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_domain_names.html](https://paws-r.github.io/docs/apigatewayv2/get_domain_names.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_domain_names/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_domain_names/) for full documentation.
 #'
 #' @param MaxResults The maximum number of elements to be returned for this resource.
 #' @param NextToken The next page of elements from this collection. Not valid for the last
@@ -1544,7 +1544,7 @@ apigatewayv2_get_domain_names <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Gets an Integration.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_integration.html](https://paws-r.github.io/docs/apigatewayv2/get_integration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_integration/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_integration/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param IntegrationId &#91;required&#93; The integration ID.
@@ -1574,7 +1574,7 @@ apigatewayv2_get_integration <- function(ApiId, IntegrationId) {
 #' @description
 #' Gets an IntegrationResponses.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_integration_response.html](https://paws-r.github.io/docs/apigatewayv2/get_integration_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_integration_response/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_integration_response/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param IntegrationId &#91;required&#93; The integration ID.
@@ -1605,7 +1605,7 @@ apigatewayv2_get_integration_response <- function(ApiId, IntegrationId, Integrat
 #' @description
 #' Gets the IntegrationResponses for an Integration.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_integration_responses.html](https://paws-r.github.io/docs/apigatewayv2/get_integration_responses.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_integration_responses/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_integration_responses/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param IntegrationId &#91;required&#93; The integration ID.
@@ -1638,7 +1638,7 @@ apigatewayv2_get_integration_responses <- function(ApiId, IntegrationId, MaxResu
 #' @description
 #' Gets the Integrations for an API.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_integrations.html](https://paws-r.github.io/docs/apigatewayv2/get_integrations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_integrations/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_integrations/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param MaxResults The maximum number of elements to be returned for this resource.
@@ -1670,7 +1670,7 @@ apigatewayv2_get_integrations <- function(ApiId, MaxResults = NULL, NextToken = 
 #' @description
 #' Gets a Model.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_model.html](https://paws-r.github.io/docs/apigatewayv2/get_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_model/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_model/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ModelId &#91;required&#93; The model ID.
@@ -1700,7 +1700,7 @@ apigatewayv2_get_model <- function(ApiId, ModelId) {
 #' @description
 #' Gets a model template.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_model_template.html](https://paws-r.github.io/docs/apigatewayv2/get_model_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_model_template/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_model_template/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ModelId &#91;required&#93; The model ID.
@@ -1730,7 +1730,7 @@ apigatewayv2_get_model_template <- function(ApiId, ModelId) {
 #' @description
 #' Gets the Models for an API.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_models.html](https://paws-r.github.io/docs/apigatewayv2/get_models.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_models/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_models/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param MaxResults The maximum number of elements to be returned for this resource.
@@ -1762,7 +1762,7 @@ apigatewayv2_get_models <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 #' @description
 #' Gets a Route.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_route.html](https://paws-r.github.io/docs/apigatewayv2/get_route.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_route/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_route/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param RouteId &#91;required&#93; The route ID.
@@ -1792,7 +1792,7 @@ apigatewayv2_get_route <- function(ApiId, RouteId) {
 #' @description
 #' Gets a RouteResponse.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_route_response.html](https://paws-r.github.io/docs/apigatewayv2/get_route_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_route_response/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_route_response/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param RouteId &#91;required&#93; The route ID.
@@ -1823,7 +1823,7 @@ apigatewayv2_get_route_response <- function(ApiId, RouteId, RouteResponseId) {
 #' @description
 #' Gets the RouteResponses for a Route.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_route_responses.html](https://paws-r.github.io/docs/apigatewayv2/get_route_responses.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_route_responses/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_route_responses/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param MaxResults The maximum number of elements to be returned for this resource.
@@ -1856,7 +1856,7 @@ apigatewayv2_get_route_responses <- function(ApiId, MaxResults = NULL, NextToken
 #' @description
 #' Gets the Routes for an API.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_routes.html](https://paws-r.github.io/docs/apigatewayv2/get_routes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_routes/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_routes/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param MaxResults The maximum number of elements to be returned for this resource.
@@ -1888,7 +1888,7 @@ apigatewayv2_get_routes <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 #' @description
 #' Gets a Stage.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_stage.html](https://paws-r.github.io/docs/apigatewayv2/get_stage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_stage/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_stage/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param StageName &#91;required&#93; The stage name. Stage names can only contain alphanumeric characters,
@@ -1919,7 +1919,7 @@ apigatewayv2_get_stage <- function(ApiId, StageName) {
 #' @description
 #' Gets the Stages for an API.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_stages.html](https://paws-r.github.io/docs/apigatewayv2/get_stages.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_stages/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_stages/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param MaxResults The maximum number of elements to be returned for this resource.
@@ -1951,7 +1951,7 @@ apigatewayv2_get_stages <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 #' @description
 #' Gets a collection of Tag resources.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_tags.html](https://paws-r.github.io/docs/apigatewayv2/get_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_tags/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_tags/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The resource ARN for the tag.
 #'
@@ -1980,7 +1980,7 @@ apigatewayv2_get_tags <- function(ResourceArn) {
 #' @description
 #' Gets a VPC link.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_vpc_link.html](https://paws-r.github.io/docs/apigatewayv2/get_vpc_link.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_vpc_link/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_vpc_link/) for full documentation.
 #'
 #' @param VpcLinkId &#91;required&#93; The ID of the VPC link.
 #'
@@ -2009,7 +2009,7 @@ apigatewayv2_get_vpc_link <- function(VpcLinkId) {
 #' @description
 #' Gets a collection of VPC links.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/get_vpc_links.html](https://paws-r.github.io/docs/apigatewayv2/get_vpc_links.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_get_vpc_links/](https://www.paws-r-sdk.com/docs/apigatewayv2_get_vpc_links/) for full documentation.
 #'
 #' @param MaxResults The maximum number of elements to be returned for this resource.
 #' @param NextToken The next page of elements from this collection. Not valid for the last
@@ -2040,7 +2040,7 @@ apigatewayv2_get_vpc_links <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Imports an API.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/import_api.html](https://paws-r.github.io/docs/apigatewayv2/import_api.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_import_api/](https://www.paws-r-sdk.com/docs/apigatewayv2_import_api/) for full documentation.
 #'
 #' @param Basepath Specifies how to interpret the base path of the API during import. Valid
 #' values are ignore, prepend, and split. The default value is ignore. To
@@ -2077,7 +2077,7 @@ apigatewayv2_import_api <- function(Basepath = NULL, Body, FailOnWarnings = NULL
 #' @description
 #' Puts an Api resource.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/reimport_api.html](https://paws-r.github.io/docs/apigatewayv2/reimport_api.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_reimport_api/](https://www.paws-r-sdk.com/docs/apigatewayv2_reimport_api/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param Basepath Specifies how to interpret the base path of the API during import. Valid
@@ -2115,7 +2115,7 @@ apigatewayv2_reimport_api <- function(ApiId, Basepath = NULL, Body, FailOnWarnin
 #' @description
 #' Creates a new Tag resource to represent a tag.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/tag_resource.html](https://paws-r.github.io/docs/apigatewayv2/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_tag_resource/](https://www.paws-r-sdk.com/docs/apigatewayv2_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The resource ARN for the tag.
 #' @param Tags The collection of tags. Each tag element is associated with a given
@@ -2146,7 +2146,7 @@ apigatewayv2_tag_resource <- function(ResourceArn, Tags = NULL) {
 #' @description
 #' Deletes a Tag.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/untag_resource.html](https://paws-r.github.io/docs/apigatewayv2/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_untag_resource/](https://www.paws-r-sdk.com/docs/apigatewayv2_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The resource ARN for the tag.
 #' @param TagKeys &#91;required&#93; The Tag keys to delete
@@ -2176,7 +2176,7 @@ apigatewayv2_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates an Api resource.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/update_api.html](https://paws-r.github.io/docs/apigatewayv2/update_api.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_update_api/](https://www.paws-r-sdk.com/docs/apigatewayv2_update_api/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ApiKeySelectionExpression An API key selection expression. Supported only for WebSocket APIs. See
@@ -2243,7 +2243,7 @@ apigatewayv2_update_api <- function(ApiId, ApiKeySelectionExpression = NULL, Cor
 #' @description
 #' The API mapping.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/update_api_mapping.html](https://paws-r.github.io/docs/apigatewayv2/update_api_mapping.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_update_api_mapping/](https://www.paws-r-sdk.com/docs/apigatewayv2_update_api_mapping/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ApiMappingId &#91;required&#93; The API mapping identifier.
@@ -2276,7 +2276,7 @@ apigatewayv2_update_api_mapping <- function(ApiId, ApiMappingId, ApiMappingKey =
 #' @description
 #' Updates an Authorizer.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/update_authorizer.html](https://paws-r.github.io/docs/apigatewayv2/update_authorizer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_update_authorizer/](https://www.paws-r-sdk.com/docs/apigatewayv2_update_authorizer/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param AuthorizerCredentialsArn Specifies the required credentials as an IAM role for API Gateway to
@@ -2368,7 +2368,7 @@ apigatewayv2_update_authorizer <- function(ApiId, AuthorizerCredentialsArn = NUL
 #' @description
 #' Updates a Deployment.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/update_deployment.html](https://paws-r.github.io/docs/apigatewayv2/update_deployment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_update_deployment/](https://www.paws-r-sdk.com/docs/apigatewayv2_update_deployment/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param DeploymentId &#91;required&#93; The deployment ID.
@@ -2399,7 +2399,7 @@ apigatewayv2_update_deployment <- function(ApiId, DeploymentId, Description = NU
 #' @description
 #' Updates a domain name.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/update_domain_name.html](https://paws-r.github.io/docs/apigatewayv2/update_domain_name.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_update_domain_name/](https://www.paws-r-sdk.com/docs/apigatewayv2_update_domain_name/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The domain name.
 #' @param DomainNameConfigurations The domain name configurations.
@@ -2430,7 +2430,7 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' @description
 #' Updates an Integration.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/update_integration.html](https://paws-r.github.io/docs/apigatewayv2/update_integration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_update_integration/](https://www.paws-r-sdk.com/docs/apigatewayv2_update_integration/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ConnectionId The ID of the VPC link for a private integration. Supported only for
@@ -2592,7 +2592,7 @@ apigatewayv2_update_integration <- function(ApiId, ConnectionId = NULL, Connecti
 #' @description
 #' Updates an IntegrationResponses.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/update_integration_response.html](https://paws-r.github.io/docs/apigatewayv2/update_integration_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_update_integration_response/](https://www.paws-r-sdk.com/docs/apigatewayv2_update_integration_response/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ContentHandlingStrategy Supported only for WebSocket APIs. Specifies how to handle response
@@ -2654,7 +2654,7 @@ apigatewayv2_update_integration_response <- function(ApiId, ContentHandlingStrat
 #' @description
 #' Updates a Model.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/update_model.html](https://paws-r.github.io/docs/apigatewayv2/update_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_update_model/](https://www.paws-r-sdk.com/docs/apigatewayv2_update_model/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ContentType The content-type for the model, for example, "application/json".
@@ -2689,7 +2689,7 @@ apigatewayv2_update_model <- function(ApiId, ContentType = NULL, Description = N
 #' @description
 #' Updates a Route.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/update_route.html](https://paws-r.github.io/docs/apigatewayv2/update_route.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_update_route/](https://www.paws-r-sdk.com/docs/apigatewayv2_update_route/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ApiKeyRequired Specifies whether an API key is required for the route. Supported only
@@ -2739,7 +2739,7 @@ apigatewayv2_update_route <- function(ApiId, ApiKeyRequired = NULL, Authorizatio
 #' @description
 #' Updates a RouteResponse.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/update_route_response.html](https://paws-r.github.io/docs/apigatewayv2/update_route_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_update_route_response/](https://www.paws-r-sdk.com/docs/apigatewayv2_update_route_response/) for full documentation.
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ModelSelectionExpression The model selection expression for the route response. Supported only
@@ -2775,7 +2775,7 @@ apigatewayv2_update_route_response <- function(ApiId, ModelSelectionExpression =
 #' @description
 #' Updates a Stage.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/update_stage.html](https://paws-r.github.io/docs/apigatewayv2/update_stage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_update_stage/](https://www.paws-r-sdk.com/docs/apigatewayv2_update_stage/) for full documentation.
 #'
 #' @param AccessLogSettings Settings for logging access in this stage.
 #' @param ApiId &#91;required&#93; The API identifier.
@@ -2819,7 +2819,7 @@ apigatewayv2_update_stage <- function(AccessLogSettings = NULL, ApiId, AutoDeplo
 #' @description
 #' Updates a VPC link.
 #'
-#' See [https://paws-r.github.io/docs/apigatewayv2/update_vpc_link.html](https://paws-r.github.io/docs/apigatewayv2/update_vpc_link.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigatewayv2_update_vpc_link/](https://www.paws-r-sdk.com/docs/apigatewayv2_update_vpc_link/) for full documentation.
 #'
 #' @param Name The name of the VPC link.
 #' @param VpcLinkId &#91;required&#93; The ID of the VPC link.

@@ -18,6 +18,6 @@ this operation. If this value is null, it retrieves the first page.}
 \description{
 Retrieves a list that describes one or more usage report subscriptions.
 
-See \url{https://paws-r.github.io/docs/appstream/describe_usage_report_subscriptions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_describe_usage_report_subscriptions/} for full documentation.
 }
 \keyword{internal}

@@ -13,7 +13,10 @@ lambda_list_layers(
 )
 }
 \arguments{
-\item{CompatibleRuntime}{A runtime identifier. For example, \code{go1.x}.}
+\item{CompatibleRuntime}{A runtime identifier. For example, \code{go1.x}.
+
+The following list includes deprecated runtimes. For more information,
+see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-support-policy}{Runtime deprecation policy}.}
 
 \item{Marker}{A pagination token returned by a previous call.}
 
@@ -24,6 +27,6 @@ lambda_list_layers(
 \description{
 Lists \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-layers.html}{Lambda layers} and shows information about the latest version of each. Specify a \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime identifier} to list only layers that indicate that they're compatible with that runtime. Specify a compatible architecture to include only layers that are compatible with that \href{https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html}{instruction set architecture}.
 
-See \url{https://paws-r.github.io/docs/lambda/list_layers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_list_layers/} for full documentation.
 }
 \keyword{internal}

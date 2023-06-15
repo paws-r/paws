@@ -12,6 +12,6 @@ elbv2_delete_listener(ListenerArn)
 \description{
 Deletes the specified listener.
 
-See \url{https://paws-r.github.io/docs/elbv2/delete_listener.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_delete_listener/} for full documentation.
 }
 \keyword{internal}

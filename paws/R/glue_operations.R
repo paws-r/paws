@@ -861,7 +861,7 @@ glue_batch_get_data_quality_result <- function(ResultIds) {
 #'       ZeppelinRemoteSparkInterpreterPort = 123,
 #'       PublicAddress = "string",
 #'       Status = "string",
-#'       WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'       WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'       GlueVersion = "string",
 #'       NumberOfWorkers = 123,
 #'       NumberOfNodes = 123,
@@ -961,7 +961,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'       Command = list(
 #'         Name = "string",
 #'         ScriptLocation = "string",
-#'         PythonVersion = "string"
+#'         PythonVersion = "string",
+#'         Runtime = "string"
 #'       ),
 #'       DefaultArguments = list(
 #'         "string"
@@ -978,7 +979,7 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'       AllocatedCapacity = 123,
 #'       Timeout = 123,
 #'       MaxCapacity = 123.0,
-#'       WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'       WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'       NumberOfWorkers = 123,
 #'       SecurityConfiguration = "string",
 #'       NotificationProperty = list(
@@ -2640,7 +2641,7 @@ glue_batch_get_triggers <- function(TriggerNames) {
 #'                     ExecutionTime = 123,
 #'                     Timeout = 123,
 #'                     MaxCapacity = 123.0,
-#'                     WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'                     WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'                     NumberOfWorkers = 123,
 #'                     SecurityConfiguration = "string",
 #'                     LogGroupName = "string",
@@ -2762,7 +2763,7 @@ glue_batch_get_triggers <- function(TriggerNames) {
 #'                   ExecutionTime = 123,
 #'                   Timeout = 123,
 #'                   MaxCapacity = 123.0,
-#'                   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'                   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'                   NumberOfWorkers = 123,
 #'                   SecurityConfiguration = "string",
 #'                   LogGroupName = "string",
@@ -3984,7 +3985,7 @@ glue_create_database <- function(CatalogId = NULL, DatabaseInput, Tags = NULL) {
 #'   YarnEndpointAddress = "string",
 #'   ZeppelinRemoteSparkInterpreterPort = 123,
 #'   NumberOfNodes = 123,
-#'   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'   GlueVersion = "string",
 #'   NumberOfWorkers = 123,
 #'   AvailabilityZone = "string",
@@ -4016,7 +4017,7 @@ glue_create_database <- function(CatalogId = NULL, DatabaseInput, Tags = NULL) {
 #'     "string"
 #'   ),
 #'   NumberOfNodes = 123,
-#'   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'   GlueVersion = "string",
 #'   NumberOfWorkers = 123,
 #'   ExtraPythonLibsS3Path = "string",
@@ -4075,7 +4076,8 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' @param ExecutionProperty An `ExecutionProperty` specifying the maximum number of concurrent runs
 #' allowed for this job.
 #' @param Command &#91;required&#93; The `JobCommand` that runs this job.
-#' @param DefaultArguments The default arguments for this job.
+#' @param DefaultArguments The default arguments for every run of this job, specified as name-value
+#' pairs.
 #' 
 #' You can specify arguments here that your own job-execution script
 #' consumes, as well as arguments that Glue itself consumes.
@@ -4089,11 +4091,17 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' Python](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html)
 #' topic in the developer guide.
 #' 
-#' For information about the key-value pairs that Glue consumes to set up
-#' your job, see the [Special Parameters Used by
+#' For information about the arguments you can provide to this field when
+#' configuring Spark jobs, see the [Special Parameters Used by
 #' Glue](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
 #' topic in the developer guide.
-#' @param NonOverridableArguments Non-overridable arguments for this job, specified as name-value pairs.
+#' 
+#' For information about the arguments you can provide to this field when
+#' configuring Ray jobs, see [Using job parameters in Ray
+#' jobs](https://docs.aws.amazon.com/glue/latest/dg/author-job-ray-job-parameters.html)
+#' in the developer guide.
+#' @param NonOverridableArguments Arguments for this job that are not overridden when providing job
+#' arguments in a job run, specified as name-value pairs.
 #' @param Connections The connections used for this job.
 #' @param MaxRetries The maximum number of times to retry this job if it fails.
 #' @param AllocatedCapacity This parameter is deprecated. Use `MaxCapacity` instead.
@@ -4113,10 +4121,14 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' information, see the [Glue pricing
 #' page](https://aws.amazon.com/glue/pricing/).
 #' 
-#' Do not set `Max Capacity` if using `WorkerType` and `NumberOfWorkers`.
+#' For Glue version 2.0+ jobs, you cannot specify a `Maximum capacity`.
+#' Instead, you should specify a `Worker type` and the `Number of workers`.
+#' 
+#' Do not set `MaxCapacity` if using `WorkerType` and `NumberOfWorkers`.
 #' 
 #' The value that can be allocated for `MaxCapacity` depends on whether you
-#' are running a Python shell job or an Apache Spark ETL job:
+#' are running a Python shell job, an Apache Spark ETL job, or an Apache
+#' Spark streaming ETL job:
 #' 
 #' -   When you specify a Python shell job
 #'     (`JobCommand.Name`="pythonshell"), you can allocate either 0.0625 or
@@ -4124,13 +4136,9 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' 
 #' -   When you specify an Apache Spark ETL job
 #'     (`JobCommand.Name`="glueetl") or Apache Spark streaming ETL job
-#'     (`JobCommand.Name`="gluestreaming"), you can allocate a minimum of 2
+#'     (`JobCommand.Name`="gluestreaming"), you can allocate from 2 to 100
 #'     DPUs. The default is 10 DPUs. This job type cannot have a fractional
 #'     DPU allocation.
-#' 
-#' For Glue version 2.0 jobs, you cannot instead specify a
-#' `Maximum capacity`. Instead, you should specify a `Worker type` and the
-#' `Number of workers`.
 #' @param SecurityConfiguration The name of the `SecurityConfiguration` structure to be used with this
 #' job.
 #' @param Tags The tags to use with this job. You may use tags to limit access to the
@@ -4139,9 +4147,13 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' Glue](https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in
 #' the developer guide.
 #' @param NotificationProperty Specifies configuration properties of a job notification.
-#' @param GlueVersion Glue version determines the versions of Apache Spark and Python that
-#' Glue supports. The Python version indicates the version supported for
-#' jobs of type Spark.
+#' @param GlueVersion In Spark jobs, `GlueVersion` determines the versions of Apache Spark and
+#' Python that Glue available in a job. The Python version indicates the
+#' version supported for jobs of type Spark.
+#' 
+#' Ray jobs should set `GlueVersion` to `4.0` or greater. However, the
+#' versions of Ray, Python and additional libraries available in your Ray
+#' job are determined by the `Runtime` parameter of the Job command.
 #' 
 #' For more information about the available Glue versions and corresponding
 #' Spark and Python versions, see [Glue
@@ -4153,7 +4165,8 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' @param NumberOfWorkers The number of workers of a defined `workerType` that are allocated when
 #' a job runs.
 #' @param WorkerType The type of predefined worker that is allocated when a job runs. Accepts
-#' a value of Standard, G.1X, G.2X, or G.025X.
+#' a value of Standard, G.1X, G.2X, or G.025X for Spark jobs. Accepts the
+#' value Z.2X for Ray jobs.
 #' 
 #' -   For the `Standard` worker type, each worker provides 4 vCPU, 16 GB
 #'     of memory and a 50GB disk, and 2 executors per worker.
@@ -4170,6 +4183,10 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #'     4 GB of memory, 64 GB disk), and provides 1 executor per worker. We
 #'     recommend this worker type for low volume streaming jobs. This
 #'     worker type is only available for Glue version 3.0 streaming jobs.
+#' 
+#' -   For the `Z.2X` worker type, each worker maps to 2 M-DPU (8vCPU, 64
+#'     GB of m emory, 128 GB disk), and provides up to 8 Ray workers based
+#'     on the autoscaler.
 #' @param CodeGenConfigurationNodes The representation of a directed acyclic graph on which both the Glue
 #' Studio visual component and Glue Studio code generation is based.
 #' @param ExecutionClass Indicates whether the job is run with a standard or flexible execution
@@ -4206,7 +4223,8 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #'   Command = list(
 #'     Name = "string",
 #'     ScriptLocation = "string",
-#'     PythonVersion = "string"
+#'     PythonVersion = "string",
+#'     Runtime = "string"
 #'   ),
 #'   DefaultArguments = list(
 #'     "string"
@@ -4232,7 +4250,7 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #'   ),
 #'   GlueVersion = "string",
 #'   NumberOfWorkers = 123,
-#'   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'   CodeGenConfigurationNodes = list(
 #'     list(
 #'       AthenaConnectorSource = list(
@@ -5644,7 +5662,7 @@ glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, Execu
 #'   Role = "string",
 #'   GlueVersion = "string",
 #'   MaxCapacity = 123.0,
-#'   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'   NumberOfWorkers = 123,
 #'   Timeout = 123,
 #'   MaxRetries = 123,
@@ -6321,7 +6339,7 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 #'   ),
 #'   MaxCapacity = 123.0,
 #'   NumberOfWorkers = 123,
-#'   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'   SecurityConfiguration = "string",
 #'   GlueVersion = "string",
 #'   Tags = list(
@@ -10025,7 +10043,7 @@ glue_get_dataflow_graph <- function(PythonScript = NULL) {
 #'     ZeppelinRemoteSparkInterpreterPort = 123,
 #'     PublicAddress = "string",
 #'     Status = "string",
-#'     WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'     WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'     GlueVersion = "string",
 #'     NumberOfWorkers = 123,
 #'     NumberOfNodes = 123,
@@ -10117,7 +10135,7 @@ glue_get_dev_endpoint <- function(EndpointName) {
 #'       ZeppelinRemoteSparkInterpreterPort = 123,
 #'       PublicAddress = "string",
 #'       Status = "string",
-#'       WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'       WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'       GlueVersion = "string",
 #'       NumberOfWorkers = 123,
 #'       NumberOfNodes = 123,
@@ -10208,7 +10226,8 @@ glue_get_dev_endpoints <- function(MaxResults = NULL, NextToken = NULL) {
 #'     Command = list(
 #'       Name = "string",
 #'       ScriptLocation = "string",
-#'       PythonVersion = "string"
+#'       PythonVersion = "string",
+#'       Runtime = "string"
 #'     ),
 #'     DefaultArguments = list(
 #'       "string"
@@ -10225,7 +10244,7 @@ glue_get_dev_endpoints <- function(MaxResults = NULL, NextToken = NULL) {
 #'     AllocatedCapacity = 123,
 #'     Timeout = 123,
 #'     MaxCapacity = 123.0,
-#'     WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'     WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'     NumberOfWorkers = 123,
 #'     SecurityConfiguration = "string",
 #'     NotificationProperty = list(
@@ -11611,7 +11630,7 @@ glue_get_job_bookmark <- function(JobName, RunId = NULL) {
 #'     ExecutionTime = 123,
 #'     Timeout = 123,
 #'     MaxCapacity = 123.0,
-#'     WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'     WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'     NumberOfWorkers = 123,
 #'     SecurityConfiguration = "string",
 #'     LogGroupName = "string",
@@ -11703,7 +11722,7 @@ glue_get_job_run <- function(JobName, RunId, PredecessorsIncluded = NULL) {
 #'       ExecutionTime = 123,
 #'       Timeout = 123,
 #'       MaxCapacity = 123.0,
-#'       WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'       WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'       NumberOfWorkers = 123,
 #'       SecurityConfiguration = "string",
 #'       LogGroupName = "string",
@@ -11783,7 +11802,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'       Command = list(
 #'         Name = "string",
 #'         ScriptLocation = "string",
-#'         PythonVersion = "string"
+#'         PythonVersion = "string",
+#'         Runtime = "string"
 #'       ),
 #'       DefaultArguments = list(
 #'         "string"
@@ -11800,7 +11820,7 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'       AllocatedCapacity = 123,
 #'       Timeout = 123,
 #'       MaxCapacity = 123.0,
-#'       WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'       WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'       NumberOfWorkers = 123,
 #'       SecurityConfiguration = "string",
 #'       NotificationProperty = list(
@@ -13357,7 +13377,7 @@ glue_get_ml_task_runs <- function(TransformId, NextToken = NULL, MaxResults = NU
 #'   Role = "string",
 #'   GlueVersion = "string",
 #'   MaxCapacity = 123.0,
-#'   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'   NumberOfWorkers = 123,
 #'   Timeout = 123,
 #'   MaxRetries = 123,
@@ -13486,7 +13506,7 @@ glue_get_ml_transform <- function(TransformId) {
 #'       Role = "string",
 #'       GlueVersion = "string",
 #'       MaxCapacity = 123.0,
-#'       WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'       WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'       NumberOfWorkers = 123,
 #'       Timeout = 123,
 #'       MaxRetries = 123,
@@ -16780,7 +16800,7 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NUL
 #'                   ExecutionTime = 123,
 #'                   Timeout = 123,
 #'                   MaxCapacity = 123.0,
-#'                   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'                   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'                   NumberOfWorkers = 123,
 #'                   SecurityConfiguration = "string",
 #'                   LogGroupName = "string",
@@ -16902,7 +16922,7 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NUL
 #'                 ExecutionTime = 123,
 #'                 Timeout = 123,
 #'                 MaxCapacity = 123.0,
-#'                 WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'                 WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'                 NumberOfWorkers = 123,
 #'                 SecurityConfiguration = "string",
 #'                 LogGroupName = "string",
@@ -17099,7 +17119,7 @@ glue_get_workflow <- function(Name, IncludeGraph = NULL) {
 #'                 ExecutionTime = 123,
 #'                 Timeout = 123,
 #'                 MaxCapacity = 123.0,
-#'                 WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'                 WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'                 NumberOfWorkers = 123,
 #'                 SecurityConfiguration = "string",
 #'                 LogGroupName = "string",
@@ -17349,7 +17369,7 @@ glue_get_workflow_run_properties <- function(Name, RunId) {
 #'                   ExecutionTime = 123,
 #'                   Timeout = 123,
 #'                   MaxCapacity = 123.0,
-#'                   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'                   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'                   NumberOfWorkers = 123,
 #'                   SecurityConfiguration = "string",
 #'                   LogGroupName = "string",
@@ -20201,7 +20221,7 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #'
 #' @param JobName &#91;required&#93; The name of the job definition to use.
 #' @param JobRunId The ID of a previous `JobRun` to retry.
-#' @param Arguments The job arguments specifically for this run. For this job run, they
+#' @param Arguments The job arguments associated with this run. For this job run, they
 #' replace the default arguments set in the job definition itself.
 #' 
 #' You can specify arguments here that your own job-execution script
@@ -20216,10 +20236,15 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' Python](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html)
 #' topic in the developer guide.
 #' 
-#' For information about the key-value pairs that Glue consumes to set up
-#' your job, see the [Special Parameters Used by
+#' For information about the arguments you can provide to this field when
+#' configuring Spark jobs, see the [Special Parameters Used by
 #' Glue](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
 #' topic in the developer guide.
+#' 
+#' For information about the arguments you can provide to this field when
+#' configuring Ray jobs, see [Using job parameters in Ray
+#' jobs](https://docs.aws.amazon.com/glue/latest/dg/author-job-ray-job-parameters.html)
+#' in the developer guide.
 #' @param AllocatedCapacity This field is deprecated. Use `MaxCapacity` instead.
 #' 
 #' The number of Glue data processing units (DPUs) to allocate to this
@@ -20233,44 +20258,57 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' 
 #' Streaming jobs do not have a timeout. The default for non-streaming jobs
 #' is 2,880 minutes (48 hours).
-#' @param MaxCapacity The number of Glue data processing units (DPUs) that can be allocated
+#' @param MaxCapacity For Glue version 1.0 or earlier jobs, using the standard worker type,
+#' the number of Glue data processing units (DPUs) that can be allocated
 #' when this job runs. A DPU is a relative measure of processing power that
 #' consists of 4 vCPUs of compute capacity and 16 GB of memory. For more
 #' information, see the [Glue pricing
 #' page](https://aws.amazon.com/glue/pricing/).
 #' 
-#' Do not set `Max Capacity` if using `WorkerType` and `NumberOfWorkers`.
+#' For Glue version 2.0+ jobs, you cannot specify a `Maximum capacity`.
+#' Instead, you should specify a `Worker type` and the `Number of workers`.
+#' 
+#' Do not set `MaxCapacity` if using `WorkerType` and `NumberOfWorkers`.
 #' 
 #' The value that can be allocated for `MaxCapacity` depends on whether you
-#' are running a Python shell job, or an Apache Spark ETL job:
+#' are running a Python shell job, an Apache Spark ETL job, or an Apache
+#' Spark streaming ETL job:
 #' 
 #' -   When you specify a Python shell job
 #'     (`JobCommand.Name`="pythonshell"), you can allocate either 0.0625 or
 #'     1 DPU. The default is 0.0625 DPU.
 #' 
 #' -   When you specify an Apache Spark ETL job
-#'     (`JobCommand.Name`="glueetl"), you can allocate a minimum of 2 DPUs.
-#'     The default is 10 DPUs. This job type cannot have a fractional DPU
-#'     allocation.
+#'     (`JobCommand.Name`="glueetl") or Apache Spark streaming ETL job
+#'     (`JobCommand.Name`="gluestreaming"), you can allocate from 2 to 100
+#'     DPUs. The default is 10 DPUs. This job type cannot have a fractional
+#'     DPU allocation.
 #' @param SecurityConfiguration The name of the `SecurityConfiguration` structure to be used with this
 #' job run.
 #' @param NotificationProperty Specifies configuration properties of a job run notification.
 #' @param WorkerType The type of predefined worker that is allocated when a job runs. Accepts
-#' a value of Standard, G.1X, G.2X, or G.025X.
+#' a value of Standard, G.1X, G.2X, or G.025X for Spark jobs. Accepts the
+#' value Z.2X for Ray jobs.
 #' 
 #' -   For the `Standard` worker type, each worker provides 4 vCPU, 16 GB
 #'     of memory and a 50GB disk, and 2 executors per worker.
 #' 
-#' -   For the `G.1X` worker type, each worker provides 4 vCPU, 16 GB of
-#'     memory and a 64GB disk, and 1 executor per worker.
+#' -   For the `G.1X` worker type, each worker maps to 1 DPU (4 vCPU, 16 GB
+#'     of memory, 64 GB disk), and provides 1 executor per worker. We
+#'     recommend this worker type for memory-intensive jobs.
 #' 
-#' -   For the `G.2X` worker type, each worker provides 8 vCPU, 32 GB of
-#'     memory and a 128GB disk, and 1 executor per worker.
+#' -   For the `G.2X` worker type, each worker maps to 2 DPU (8 vCPU, 32 GB
+#'     of memory, 128 GB disk), and provides 1 executor per worker. We
+#'     recommend this worker type for memory-intensive jobs.
 #' 
 #' -   For the `G.025X` worker type, each worker maps to 0.25 DPU (2 vCPU,
 #'     4 GB of memory, 64 GB disk), and provides 1 executor per worker. We
 #'     recommend this worker type for low volume streaming jobs. This
 #'     worker type is only available for Glue version 3.0 streaming jobs.
+#' 
+#' -   For the `Z.2X` worker type, each worker maps to 2 DPU (8vCPU, 64 GB
+#'     of m emory, 128 GB disk), and provides up to 8 Ray workers (one per
+#'     vCPU) based on the autoscaler.
 #' @param NumberOfWorkers The number of workers of a defined `workerType` that are allocated when
 #' a job runs.
 #' @param ExecutionClass Indicates whether the job is run with a standard or flexible execution
@@ -20307,7 +20345,7 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #'   NotificationProperty = list(
 #'     NotifyDelayAfter = 123
 #'   ),
-#'   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'   NumberOfWorkers = 123,
 #'   ExecutionClass = "FLEX"|"STANDARD"
 #' )
@@ -21907,7 +21945,8 @@ glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKe
 #'     Command = list(
 #'       Name = "string",
 #'       ScriptLocation = "string",
-#'       PythonVersion = "string"
+#'       PythonVersion = "string",
+#'       Runtime = "string"
 #'     ),
 #'     DefaultArguments = list(
 #'       "string"
@@ -21924,7 +21963,7 @@ glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKe
 #'     AllocatedCapacity = 123,
 #'     Timeout = 123,
 #'     MaxCapacity = 123.0,
-#'     WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'     WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'     NumberOfWorkers = 123,
 #'     SecurityConfiguration = "string",
 #'     NotificationProperty = list(
@@ -23345,7 +23384,7 @@ glue_update_job_from_source_control <- function(JobName = NULL, Provider = NULL,
 #'   Role = "string",
 #'   GlueVersion = "string",
 #'   MaxCapacity = 123.0,
-#'   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X",
+#'   WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
 #'   NumberOfWorkers = 123,
 #'   Timeout = 123,
 #'   MaxRetries = 123

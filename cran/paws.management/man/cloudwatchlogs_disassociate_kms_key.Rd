@@ -12,6 +12,6 @@ cloudwatchlogs_disassociate_kms_key(logGroupName)
 \description{
 Disassociates the associated KMS key from the specified log group.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/disassociate_kms_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_disassociate_kms_key/} for full documentation.
 }
 \keyword{internal}

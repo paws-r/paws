@@ -12,6 +12,6 @@ glue_get_crawler(Name)
 \description{
 Retrieves metadata for a specified crawler.
 
-See \url{https://paws-r.github.io/docs/glue/get_crawler.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_crawler/} for full documentation.
 }
 \keyword{internal}

@@ -39,6 +39,6 @@ by timestamps or segments.}
 \description{
 Gets the label detection results of a Amazon Rekognition Video analysis started by \code{\link[=rekognition_start_label_detection]{start_label_detection}}.
 
-See \url{https://paws-r.github.io/docs/rekognition/get_label_detection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_get_label_detection/} for full documentation.
 }
 \keyword{internal}

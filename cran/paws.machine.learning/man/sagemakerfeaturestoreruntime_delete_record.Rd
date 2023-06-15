@@ -31,6 +31,6 @@ deletion mode is set to \code{SoftDelete}.}
 \description{
 Deletes a \code{Record} from a \code{FeatureGroup} in the \code{OnlineStore}. Feature Store supports both \code{SOFT_DELETE} and \code{HARD_DELETE}. For \code{SOFT_DELETE} (default), feature columns are set to \code{null} and the record is no longer retrievable by \code{\link[=sagemakerfeaturestoreruntime_get_record]{get_record}} or \code{\link[=sagemakerfeaturestoreruntime_batch_get_record]{batch_get_record}}. For\code{ HARD_DELETE}, the complete \code{Record} is removed from the \code{OnlineStore}. In both cases, Feature Store appends the deleted record marker to the \code{OfflineStore} with feature values set to \code{null}, \code{is_deleted} value set to \code{True}, and \code{EventTime} set to the delete input \code{EventTime}.
 
-See \url{https://paws-r.github.io/docs/sagemakerfeaturestoreruntime/delete_record.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemakerfeaturestoreruntime_delete_record/} for full documentation.
 }
 \keyword{internal}

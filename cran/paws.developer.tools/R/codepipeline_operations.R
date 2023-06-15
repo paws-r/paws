@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Returns information about a specified job and whether that job has been received by the job worker. Used for custom actions only.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/acknowledge_job.html](https://paws-r.github.io/docs/codepipeline/acknowledge_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_acknowledge_job/](https://www.paws-r-sdk.com/docs/codepipeline_acknowledge_job/) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The unique system-generated ID of the job for which you want to confirm
 #' receipt.
@@ -43,7 +43,7 @@ codepipeline_acknowledge_job <- function(jobId, nonce) {
 #' @description
 #' Confirms a job worker has received the specified job. Used for partner actions only.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/acknowledge_third_party_job.html](https://paws-r.github.io/docs/codepipeline/acknowledge_third_party_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_acknowledge_third_party_job/](https://www.paws-r-sdk.com/docs/codepipeline_acknowledge_third_party_job/) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The unique system-generated ID of the job.
 #' @param nonce &#91;required&#93; A system-generated random number that CodePipeline uses to ensure that
@@ -81,7 +81,7 @@ codepipeline_acknowledge_third_party_job <- function(jobId, nonce, clientToken) 
 #' @description
 #' Creates a new custom action that can be used in all pipelines associated with the Amazon Web Services account. Only used for custom actions.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/create_custom_action_type.html](https://paws-r.github.io/docs/codepipeline/create_custom_action_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_create_custom_action_type/](https://www.paws-r-sdk.com/docs/codepipeline_create_custom_action_type/) for full documentation.
 #'
 #' @param category &#91;required&#93; The category of the custom action, such as a build action or a test
 #' action.
@@ -126,7 +126,7 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #' @description
 #' Creates a pipeline.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/create_pipeline.html](https://paws-r.github.io/docs/codepipeline/create_pipeline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_create_pipeline/](https://www.paws-r-sdk.com/docs/codepipeline_create_pipeline/) for full documentation.
 #'
 #' @param pipeline &#91;required&#93; Represents the structure of actions and stages to be performed in the
 #' pipeline.
@@ -157,7 +157,7 @@ codepipeline_create_pipeline <- function(pipeline, tags = NULL) {
 #' @description
 #' Marks a custom action as deleted. [`poll_for_jobs`][codepipeline_poll_for_jobs] for the custom action fails after the action is marked for deletion. Used for custom actions only.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/delete_custom_action_type.html](https://paws-r.github.io/docs/codepipeline/delete_custom_action_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_delete_custom_action_type/](https://www.paws-r-sdk.com/docs/codepipeline_delete_custom_action_type/) for full documentation.
 #'
 #' @param category &#91;required&#93; The category of the custom action that you want to delete, such as
 #' source or deploy.
@@ -190,7 +190,7 @@ codepipeline_delete_custom_action_type <- function(category, provider, version) 
 #' @description
 #' Deletes the specified pipeline.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/delete_pipeline.html](https://paws-r.github.io/docs/codepipeline/delete_pipeline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_delete_pipeline/](https://www.paws-r-sdk.com/docs/codepipeline_delete_pipeline/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the pipeline to be deleted.
 #'
@@ -219,7 +219,7 @@ codepipeline_delete_pipeline <- function(name) {
 #' @description
 #' Deletes a previously created webhook by name. Deleting the webhook stops CodePipeline from starting a pipeline every time an external event occurs. The API returns successfully when trying to delete a webhook that is already deleted. If a deleted webhook is re-created by calling PutWebhook with the same name, it will have a different URL.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/delete_webhook.html](https://paws-r.github.io/docs/codepipeline/delete_webhook.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_delete_webhook/](https://www.paws-r-sdk.com/docs/codepipeline_delete_webhook/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the webhook you want to delete.
 #'
@@ -249,7 +249,7 @@ codepipeline_delete_webhook <- function(name) {
 #' @description
 #' Removes the connection between the webhook that was created by CodePipeline and the external tool with events to be detected. Currently supported only for webhooks that target an action type of GitHub.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/deregister_webhook_with_third_party.html](https://paws-r.github.io/docs/codepipeline/deregister_webhook_with_third_party.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_deregister_webhook_with_third_party/](https://www.paws-r-sdk.com/docs/codepipeline_deregister_webhook_with_third_party/) for full documentation.
 #'
 #' @param webhookName The name of the webhook you want to deregister.
 #'
@@ -279,7 +279,7 @@ codepipeline_deregister_webhook_with_third_party <- function(webhookName = NULL)
 #' @description
 #' Prevents artifacts in a pipeline from transitioning to the next stage in the pipeline.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/disable_stage_transition.html](https://paws-r.github.io/docs/codepipeline/disable_stage_transition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_disable_stage_transition/](https://www.paws-r-sdk.com/docs/codepipeline_disable_stage_transition/) for full documentation.
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline in which you want to disable the flow of
 #' artifacts from one stage to another.
@@ -318,7 +318,7 @@ codepipeline_disable_stage_transition <- function(pipelineName, stageName, trans
 #' @description
 #' Enables artifacts in a pipeline to transition to a stage in a pipeline.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/enable_stage_transition.html](https://paws-r.github.io/docs/codepipeline/enable_stage_transition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_enable_stage_transition/](https://www.paws-r-sdk.com/docs/codepipeline_enable_stage_transition/) for full documentation.
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline in which you want to enable the flow of
 #' artifacts from one stage to another.
@@ -357,7 +357,7 @@ codepipeline_enable_stage_transition <- function(pipelineName, stageName, transi
 #' @description
 #' Returns information about an action type created for an external provider, where the action is to be used by customers of the external provider. The action can be created with any supported integration model.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/get_action_type.html](https://paws-r.github.io/docs/codepipeline/get_action_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_get_action_type/](https://www.paws-r-sdk.com/docs/codepipeline_get_action_type/) for full documentation.
 #'
 #' @param category &#91;required&#93; Defines what kind of action can be taken in the stage. The following are
 #' the valid values:
@@ -404,7 +404,7 @@ codepipeline_get_action_type <- function(category, owner, provider, version) {
 #' @description
 #' Returns information about a job. Used for custom actions only.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/get_job_details.html](https://paws-r.github.io/docs/codepipeline/get_job_details.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_get_job_details/](https://www.paws-r-sdk.com/docs/codepipeline_get_job_details/) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The unique system-generated ID for the job.
 #'
@@ -433,7 +433,7 @@ codepipeline_get_job_details <- function(jobId) {
 #' @description
 #' Returns the metadata, structure, stages, and actions of a pipeline. Can be used to return the entire structure of a pipeline in JSON format, which can then be modified and used to update the pipeline structure with [`update_pipeline`][codepipeline_update_pipeline].
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/get_pipeline.html](https://paws-r.github.io/docs/codepipeline/get_pipeline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_get_pipeline/](https://www.paws-r-sdk.com/docs/codepipeline_get_pipeline/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the pipeline for which you want to get information. Pipeline
 #' names must be unique in an Amazon Web Services account.
@@ -467,7 +467,7 @@ codepipeline_get_pipeline <- function(name, version = NULL) {
 #' @description
 #' Returns information about an execution of a pipeline, including details about artifacts, the pipeline execution ID, and the name, version, and status of the pipeline.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/get_pipeline_execution.html](https://paws-r.github.io/docs/codepipeline/get_pipeline_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_get_pipeline_execution/](https://www.paws-r-sdk.com/docs/codepipeline_get_pipeline_execution/) for full documentation.
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline about which you want to get execution details.
 #' @param pipelineExecutionId &#91;required&#93; The ID of the pipeline execution about which you want to get execution
@@ -499,7 +499,7 @@ codepipeline_get_pipeline_execution <- function(pipelineName, pipelineExecutionI
 #' @description
 #' Returns information about the state of a pipeline, including the stages and actions.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/get_pipeline_state.html](https://paws-r.github.io/docs/codepipeline/get_pipeline_state.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_get_pipeline_state/](https://www.paws-r-sdk.com/docs/codepipeline_get_pipeline_state/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the pipeline about which you want to get information.
 #'
@@ -528,7 +528,7 @@ codepipeline_get_pipeline_state <- function(name) {
 #' @description
 #' Requests the details of a job for a third party action. Used for partner actions only.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/get_third_party_job_details.html](https://paws-r.github.io/docs/codepipeline/get_third_party_job_details.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_get_third_party_job_details/](https://www.paws-r-sdk.com/docs/codepipeline_get_third_party_job_details/) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The unique system-generated ID used for identifying the job.
 #' @param clientToken &#91;required&#93; The clientToken portion of the clientId and clientToken pair used to
@@ -560,7 +560,7 @@ codepipeline_get_third_party_job_details <- function(jobId, clientToken) {
 #' @description
 #' Lists the action executions that have occurred in a pipeline.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/list_action_executions.html](https://paws-r.github.io/docs/codepipeline/list_action_executions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_list_action_executions/](https://www.paws-r-sdk.com/docs/codepipeline_list_action_executions/) for full documentation.
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline for which you want to list action execution
 #' history.
@@ -603,7 +603,7 @@ codepipeline_list_action_executions <- function(pipelineName, filter = NULL, max
 #' @description
 #' Gets a summary of all CodePipeline action types associated with your account.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/list_action_types.html](https://paws-r.github.io/docs/codepipeline/list_action_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_list_action_types/](https://www.paws-r-sdk.com/docs/codepipeline_list_action_types/) for full documentation.
 #'
 #' @param actionOwnerFilter Filters the list of action types to those created by a specified entity.
 #' @param nextToken An identifier that was returned from the previous list action types
@@ -636,7 +636,7 @@ codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken =
 #' @description
 #' Gets a summary of the most recent executions for a pipeline.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/list_pipeline_executions.html](https://paws-r.github.io/docs/codepipeline/list_pipeline_executions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_list_pipeline_executions/](https://www.paws-r-sdk.com/docs/codepipeline_list_pipeline_executions/) for full documentation.
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline for which you want to get execution summary
 #' information.
@@ -674,7 +674,7 @@ codepipeline_list_pipeline_executions <- function(pipelineName, maxResults = NUL
 #' @description
 #' Gets a summary of all of the pipelines associated with your account.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/list_pipelines.html](https://paws-r.github.io/docs/codepipeline/list_pipelines.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_list_pipelines/](https://www.paws-r-sdk.com/docs/codepipeline_list_pipelines/) for full documentation.
 #'
 #' @param nextToken An identifier that was returned from the previous list pipelines call.
 #' It can be used to return the next set of pipelines in the list.
@@ -709,7 +709,7 @@ codepipeline_list_pipelines <- function(nextToken = NULL, maxResults = NULL) {
 #' @description
 #' Gets the set of key-value pairs (metadata) that are used to manage the resource.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/list_tags_for_resource.html](https://paws-r.github.io/docs/codepipeline/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/codepipeline_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to get tags for.
 #' @param nextToken The token that was returned from the previous API call, which would be
@@ -743,7 +743,7 @@ codepipeline_list_tags_for_resource <- function(resourceArn, nextToken = NULL, m
 #' @description
 #' Gets a listing of all the webhooks in this Amazon Web Services Region for this account. The output lists all webhooks and includes the webhook URL and ARN and the configuration for each webhook.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/list_webhooks.html](https://paws-r.github.io/docs/codepipeline/list_webhooks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_list_webhooks/](https://www.paws-r-sdk.com/docs/codepipeline_list_webhooks/) for full documentation.
 #'
 #' @param NextToken The token that was returned from the previous ListWebhooks call, which
 #' can be used to return the next set of webhooks in the list.
@@ -776,7 +776,7 @@ codepipeline_list_webhooks <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Returns information about any jobs for CodePipeline to act on. [`poll_for_jobs`][codepipeline_poll_for_jobs] is valid only for action types with "Custom" in the owner field. If the action type contains `AWS` or `ThirdParty` in the owner field, the [`poll_for_jobs`][codepipeline_poll_for_jobs] action returns an error.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/poll_for_jobs.html](https://paws-r.github.io/docs/codepipeline/poll_for_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_poll_for_jobs/](https://www.paws-r-sdk.com/docs/codepipeline_poll_for_jobs/) for full documentation.
 #'
 #' @param actionTypeId &#91;required&#93; Represents information about an action type.
 #' @param maxBatchSize The maximum number of jobs to return in a poll for jobs call.
@@ -812,7 +812,7 @@ codepipeline_poll_for_jobs <- function(actionTypeId, maxBatchSize = NULL, queryP
 #' @description
 #' Determines whether there are any third party jobs for a job worker to act on. Used for partner actions only.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/poll_for_third_party_jobs.html](https://paws-r.github.io/docs/codepipeline/poll_for_third_party_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_poll_for_third_party_jobs/](https://www.paws-r-sdk.com/docs/codepipeline_poll_for_third_party_jobs/) for full documentation.
 #'
 #' @param actionTypeId &#91;required&#93; Represents information about an action type.
 #' @param maxBatchSize The maximum number of jobs to return in a poll for jobs call.
@@ -842,7 +842,7 @@ codepipeline_poll_for_third_party_jobs <- function(actionTypeId, maxBatchSize = 
 #' @description
 #' Provides information to CodePipeline about new revisions to a source.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/put_action_revision.html](https://paws-r.github.io/docs/codepipeline/put_action_revision.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_put_action_revision/](https://www.paws-r-sdk.com/docs/codepipeline_put_action_revision/) for full documentation.
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline that starts processing the revision to the
 #' source.
@@ -876,7 +876,7 @@ codepipeline_put_action_revision <- function(pipelineName, stageName, actionName
 #' @description
 #' Provides the response to a manual approval request to CodePipeline. Valid responses include Approved and Rejected.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/put_approval_result.html](https://paws-r.github.io/docs/codepipeline/put_approval_result.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_put_approval_result/](https://www.paws-r-sdk.com/docs/codepipeline_put_approval_result/) for full documentation.
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline that contains the action.
 #' @param stageName &#91;required&#93; The name of the stage that contains the action.
@@ -914,7 +914,7 @@ codepipeline_put_approval_result <- function(pipelineName, stageName, actionName
 #' @description
 #' Represents the failure of a job as returned to the pipeline by a job worker. Used for custom actions only.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/put_job_failure_result.html](https://paws-r.github.io/docs/codepipeline/put_job_failure_result.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_put_job_failure_result/](https://www.paws-r-sdk.com/docs/codepipeline_put_job_failure_result/) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The unique system-generated ID of the job that failed. This is the same
 #' ID returned from [`poll_for_jobs`][codepipeline_poll_for_jobs].
@@ -946,7 +946,7 @@ codepipeline_put_job_failure_result <- function(jobId, failureDetails) {
 #' @description
 #' Represents the success of a job as returned to the pipeline by a job worker. Used for custom actions only.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/put_job_success_result.html](https://paws-r.github.io/docs/codepipeline/put_job_success_result.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_put_job_success_result/](https://www.paws-r-sdk.com/docs/codepipeline_put_job_success_result/) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The unique system-generated ID of the job that succeeded. This is the
 #' same ID returned from [`poll_for_jobs`][codepipeline_poll_for_jobs].
@@ -990,7 +990,7 @@ codepipeline_put_job_success_result <- function(jobId, currentRevision = NULL, c
 #' @description
 #' Represents the failure of a third party job as returned to the pipeline by a job worker. Used for partner actions only.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/put_third_party_job_failure_result.html](https://paws-r.github.io/docs/codepipeline/put_third_party_job_failure_result.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_put_third_party_job_failure_result/](https://www.paws-r-sdk.com/docs/codepipeline_put_third_party_job_failure_result/) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The ID of the job that failed. This is the same ID returned from
 #' [`poll_for_third_party_jobs`][codepipeline_poll_for_third_party_jobs].
@@ -1025,7 +1025,7 @@ codepipeline_put_third_party_job_failure_result <- function(jobId, clientToken, 
 #' @description
 #' Represents the success of a third party job as returned to the pipeline by a job worker. Used for partner actions only.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/put_third_party_job_success_result.html](https://paws-r.github.io/docs/codepipeline/put_third_party_job_success_result.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_put_third_party_job_success_result/](https://www.paws-r-sdk.com/docs/codepipeline_put_third_party_job_success_result/) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The ID of the job that successfully completed. This is the same ID
 #' returned from
@@ -1069,7 +1069,7 @@ codepipeline_put_third_party_job_success_result <- function(jobId, clientToken, 
 #' @description
 #' Defines a webhook and returns a unique webhook URL generated by CodePipeline. This URL can be supplied to third party source hosting providers to call every time there's a code change. When CodePipeline receives a POST request on this URL, the pipeline defined in the webhook is started as long as the POST request satisfied the authentication and filtering requirements supplied when defining the webhook. RegisterWebhookWithThirdParty and DeregisterWebhookWithThirdParty APIs can be used to automatically configure supported third parties to call the generated webhook URL.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/put_webhook.html](https://paws-r.github.io/docs/codepipeline/put_webhook.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_put_webhook/](https://www.paws-r-sdk.com/docs/codepipeline_put_webhook/) for full documentation.
 #'
 #' @param webhook &#91;required&#93; The detail provided in an input file to create the webhook, such as the
 #' webhook name, the pipeline name, and the action name. Give the webhook a
@@ -1104,7 +1104,7 @@ codepipeline_put_webhook <- function(webhook, tags = NULL) {
 #' @description
 #' Configures a connection between the webhook that was created and the external tool with events to be detected.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/register_webhook_with_third_party.html](https://paws-r.github.io/docs/codepipeline/register_webhook_with_third_party.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_register_webhook_with_third_party/](https://www.paws-r-sdk.com/docs/codepipeline_register_webhook_with_third_party/) for full documentation.
 #'
 #' @param webhookName The name of an existing webhook created with PutWebhook to register with
 #' a supported third party.
@@ -1135,7 +1135,7 @@ codepipeline_register_webhook_with_third_party <- function(webhookName = NULL) {
 #' @description
 #' Resumes the pipeline execution by retrying the last failed actions in a stage. You can retry a stage immediately if any of the actions in the stage fail. When you retry, all actions that are still in progress continue working, and failed actions are triggered again.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/retry_stage_execution.html](https://paws-r.github.io/docs/codepipeline/retry_stage_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_retry_stage_execution/](https://www.paws-r-sdk.com/docs/codepipeline_retry_stage_execution/) for full documentation.
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline that contains the failed stage.
 #' @param stageName &#91;required&#93; The name of the failed stage to be retried.
@@ -1170,7 +1170,7 @@ codepipeline_retry_stage_execution <- function(pipelineName, stageName, pipeline
 #' @description
 #' Starts the specified pipeline. Specifically, it begins processing the latest commit to the source location specified as part of the pipeline.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/start_pipeline_execution.html](https://paws-r.github.io/docs/codepipeline/start_pipeline_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_start_pipeline_execution/](https://www.paws-r-sdk.com/docs/codepipeline_start_pipeline_execution/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the pipeline to start.
 #' @param clientRequestToken The system-generated unique ID used to identify a unique execution
@@ -1201,7 +1201,7 @@ codepipeline_start_pipeline_execution <- function(name, clientRequestToken = NUL
 #' @description
 #' Stops the specified pipeline execution. You choose to either stop the pipeline execution by completing in-progress actions without starting subsequent actions, or by abandoning in-progress actions. While completing or abandoning in-progress actions, the pipeline execution is in a `Stopping` state. After all in-progress actions are completed or abandoned, the pipeline execution is in a `Stopped` state.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/stop_pipeline_execution.html](https://paws-r.github.io/docs/codepipeline/stop_pipeline_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_stop_pipeline_execution/](https://www.paws-r-sdk.com/docs/codepipeline_stop_pipeline_execution/) for full documentation.
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline to stop.
 #' @param pipelineExecutionId &#91;required&#93; The ID of the pipeline execution to be stopped in the current stage. Use
@@ -1239,7 +1239,7 @@ codepipeline_stop_pipeline_execution <- function(pipelineName, pipelineExecution
 #' @description
 #' Adds to or modifies the tags of the given resource. Tags are metadata that can be used to manage a resource.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/tag_resource.html](https://paws-r.github.io/docs/codepipeline/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_tag_resource/](https://www.paws-r-sdk.com/docs/codepipeline_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource you want to add tags to.
 #' @param tags &#91;required&#93; The tags you want to modify or add to the resource.
@@ -1269,7 +1269,7 @@ codepipeline_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes tags from an Amazon Web Services resource.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/untag_resource.html](https://paws-r.github.io/docs/codepipeline/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_untag_resource/](https://www.paws-r-sdk.com/docs/codepipeline_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to remove tags from.
 #' @param tagKeys &#91;required&#93; The list of keys for the tags to be removed from the resource.
@@ -1301,7 +1301,7 @@ codepipeline_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates an action type that was created with any supported integration model, where the action type is to be used by customers of the action type provider. Use a JSON file with the action definition and [`update_action_type`][codepipeline_update_action_type] to provide the full structure.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/update_action_type.html](https://paws-r.github.io/docs/codepipeline/update_action_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_update_action_type/](https://www.paws-r-sdk.com/docs/codepipeline_update_action_type/) for full documentation.
 #'
 #' @param actionType &#91;required&#93; The action type definition for the action type to be updated.
 #'
@@ -1330,7 +1330,7 @@ codepipeline_update_action_type <- function(actionType) {
 #' @description
 #' Updates a specified pipeline with edits or changes to its structure. Use a JSON file with the pipeline structure and [`update_pipeline`][codepipeline_update_pipeline] to provide the full structure of the pipeline. Updating the pipeline increases the version number of the pipeline by 1.
 #'
-#' See [https://paws-r.github.io/docs/codepipeline/update_pipeline.html](https://paws-r.github.io/docs/codepipeline/update_pipeline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_update_pipeline/](https://www.paws-r-sdk.com/docs/codepipeline_update_pipeline/) for full documentation.
 #'
 #' @param pipeline &#91;required&#93; The name of the pipeline to be updated.
 #'

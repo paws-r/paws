@@ -14,6 +14,6 @@ auditmanager_delete_assessment_report(assessmentId, assessmentReportId)
 \description{
 Deletes an assessment report in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/delete_assessment_report.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_delete_assessment_report/} for full documentation.
 }
 \keyword{internal}

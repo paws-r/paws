@@ -28,6 +28,6 @@ command line tools, base64 encoding is performed for you.}
 \description{
 Imports the public key from an RSA or ED25519 key pair that you created with a third-party tool. Compare this with \code{\link[=ec2_create_key_pair]{create_key_pair}}, in which Amazon Web Services creates the key pair and gives the keys to you (Amazon Web Services keeps a copy of the public key). With ImportKeyPair, you create the key pair and give Amazon Web Services just the public key. The private key is never transferred between you and Amazon Web Services.
 
-See \url{https://paws-r.github.io/docs/ec2/import_key_pair.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_import_key_pair/} for full documentation.
 }
 \keyword{internal}

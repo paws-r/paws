@@ -33,6 +33,6 @@ in the \emph{Amazon Web Services General Reference}.}
 \description{
 Retrieves a list of policies that the IAM identity (user, group, or role) can use to access each specified service.
 
-See \url{https://paws-r.github.io/docs/iam/list_policies_granting_service_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_policies_granting_service_access/} for full documentation.
 }
 \keyword{internal}

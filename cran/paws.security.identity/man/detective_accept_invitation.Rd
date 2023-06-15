@@ -16,6 +16,6 @@ The member account status in the behavior graph must be \code{INVITED}.}
 \description{
 Accepts an invitation for the member account to contribute data to a behavior graph. This operation can only be called by an invited member account.
 
-See \url{https://paws-r.github.io/docs/detective/accept_invitation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/detective_accept_invitation/} for full documentation.
 }
 \keyword{internal}

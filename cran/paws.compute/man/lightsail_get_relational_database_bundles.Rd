@@ -24,6 +24,6 @@ bundles in the response of your request.}
 \description{
 Returns the list of bundles that are available in Amazon Lightsail. A bundle describes the performance specifications for a database.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_relational_database_bundles.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_bundles/} for full documentation.
 }
 \keyword{internal}

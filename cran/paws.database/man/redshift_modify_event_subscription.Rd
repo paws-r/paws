@@ -56,6 +56,6 @@ indicates the subscription is enabled}
 \description{
 Modifies an existing Amazon Redshift event notification subscription.
 
-See \url{https://paws-r.github.io/docs/redshift/modify_event_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_modify_event_subscription/} for full documentation.
 }
 \keyword{internal}

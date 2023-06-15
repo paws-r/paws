@@ -26,6 +26,6 @@ part of its name matches the substring. For example, "xyz" matches both
 \description{
 Returns intent information as follows:
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_intents.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_intents/} for full documentation.
 }
 \keyword{internal}

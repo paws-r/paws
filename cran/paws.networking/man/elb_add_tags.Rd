@@ -14,6 +14,6 @@ elb_add_tags(LoadBalancerNames, Tags)
 \description{
 Adds the specified tags to the specified load balancer. Each load balancer can have a maximum of 10 tags.
 
-See \url{https://paws-r.github.io/docs/elb/add_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_add_tags/} for full documentation.
 }
 \keyword{internal}

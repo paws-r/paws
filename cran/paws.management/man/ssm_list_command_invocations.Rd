@@ -34,6 +34,6 @@ and any command output. The default value is \code{false}.}
 \description{
 An invocation is copy of a command sent to a specific managed node. A command can apply to one or more managed nodes. A command invocation applies to one managed node. For example, if a user runs \code{\link[=ssm_send_command]{send_command}} against three managed nodes, then a command invocation is created for each requested managed node ID. \code{\link[=ssm_list_command_invocations]{list_command_invocations}} provide status about command execution.
 
-See \url{https://paws-r.github.io/docs/ssm/list_command_invocations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_list_command_invocations/} for full documentation.
 }
 \keyword{internal}

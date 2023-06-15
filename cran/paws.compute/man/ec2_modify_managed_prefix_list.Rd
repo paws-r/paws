@@ -42,6 +42,6 @@ new maximum size.}
 \description{
 Modifies the specified managed prefix list.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_managed_prefix_list.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_managed_prefix_list/} for full documentation.
 }
 \keyword{internal}

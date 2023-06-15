@@ -34,6 +34,6 @@ is \code{50}.}
 \description{
 Gets information about the traffic sources for the specified Auto Scaling group.
 
-See \url{https://paws-r.github.io/docs/autoscaling/describe_traffic_sources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_describe_traffic_sources/} for full documentation.
 }
 \keyword{internal}

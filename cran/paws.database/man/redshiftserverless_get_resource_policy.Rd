@@ -12,6 +12,6 @@ redshiftserverless_get_resource_policy(resourceArn)
 \description{
 Returns a resource policy.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/get_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_get_resource_policy/} for full documentation.
 }
 \keyword{internal}

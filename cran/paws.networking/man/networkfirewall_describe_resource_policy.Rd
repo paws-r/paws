@@ -14,6 +14,6 @@ whose resource policy you want to retrieve.}
 \description{
 Retrieves a resource policy that you created in a \code{\link[=networkfirewall_put_resource_policy]{put_resource_policy}} request.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/describe_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_describe_resource_policy/} for full documentation.
 }
 \keyword{internal}

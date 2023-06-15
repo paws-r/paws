@@ -29,6 +29,6 @@ describe your feature.}
 \description{
 Updates the description and parameters of the feature group.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_feature_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_feature_metadata/} for full documentation.
 }
 \keyword{internal}

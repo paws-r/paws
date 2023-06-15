@@ -36,6 +36,6 @@ in the \emph{AWS Data Pipeline Developer Guide}.}
 \description{
 Creates a new, empty pipeline. Use \code{\link[=datapipeline_put_pipeline_definition]{put_pipeline_definition}} to populate the pipeline.
 
-See \url{https://paws-r.github.io/docs/datapipeline/create_pipeline.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/datapipeline_create_pipeline/} for full documentation.
 }
 \keyword{internal}

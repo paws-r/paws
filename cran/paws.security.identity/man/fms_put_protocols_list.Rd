@@ -14,6 +14,6 @@ fms_put_protocols_list(ProtocolsList, TagList = NULL)
 \description{
 Creates an Firewall Manager protocols list.
 
-See \url{https://paws-r.github.io/docs/fms/put_protocols_list.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_put_protocols_list/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ optionally the email address.}
 \description{
 Creates a member association in Security Hub between the specified accounts and the account used to make the request, which is the administrator account. If you are integrated with Organizations, then the administrator account is designated by the organization management account.
 
-See \url{https://paws-r.github.io/docs/securityhub/create_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_create_members/} for full documentation.
 }
 \keyword{internal}

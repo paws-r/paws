@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Gets the properties associated with a medical entities detection job. Use this operation to get the status of a detection job.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/describe_entities_detection_v2_job.html](https://paws-r.github.io/docs/comprehendmedical/describe_entities_detection_v2_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_describe_entities_detection_v2_job/](https://www.paws-r-sdk.com/docs/comprehendmedical_describe_entities_detection_v2_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Comprehend Medical; generated for the job. The
 #' [`start_entities_detection_v2_job`][comprehendmedical_start_entities_detection_v2_job]
@@ -39,7 +39,7 @@ comprehendmedical_describe_entities_detection_v2_job <- function(JobId) {
 #' @description
 #' Gets the properties associated with an InferICD10CM job. Use this operation to get the status of an inference job.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/describe_icd10cm_inference_job.html](https://paws-r.github.io/docs/comprehendmedical/describe_icd10cm_inference_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_describe_icd10cm_inference_job/](https://www.paws-r-sdk.com/docs/comprehendmedical_describe_icd10cm_inference_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend Medical generated for the job.
 #' `The StartICD10CMInferenceJob` operation returns this identifier in its
@@ -71,7 +71,7 @@ comprehendmedical_describe_icd10cm_inference_job <- function(JobId) {
 #' @description
 #' Gets the properties associated with a protected health information (PHI) detection job. Use this operation to get the status of a detection job.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/describe_phi_detection_job.html](https://paws-r.github.io/docs/comprehendmedical/describe_phi_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_describe_phi_detection_job/](https://www.paws-r-sdk.com/docs/comprehendmedical_describe_phi_detection_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Comprehend Medical; generated for the job. The
 #' [`start_phi_detection_job`][comprehendmedical_start_phi_detection_job]
@@ -102,7 +102,7 @@ comprehendmedical_describe_phi_detection_job <- function(JobId) {
 #' @description
 #' Gets the properties associated with an InferRxNorm job. Use this operation to get the status of an inference job.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/describe_rx_norm_inference_job.html](https://paws-r.github.io/docs/comprehendmedical/describe_rx_norm_inference_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_describe_rx_norm_inference_job/](https://www.paws-r-sdk.com/docs/comprehendmedical_describe_rx_norm_inference_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend Medical generated for the job. The
 #' StartRxNormInferenceJob operation returns this identifier in its
@@ -133,7 +133,7 @@ comprehendmedical_describe_rx_norm_inference_job <- function(JobId) {
 #' @description
 #' Gets the properties associated with an InferSNOMEDCT job. Use this operation to get the status of an inference job.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/describe_snomedct_inference_job.html](https://paws-r.github.io/docs/comprehendmedical/describe_snomedct_inference_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_describe_snomedct_inference_job/](https://www.paws-r-sdk.com/docs/comprehendmedical_describe_snomedct_inference_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend Medical generated for the job. The
 #' StartSNOMEDCTInferenceJob operation returns this identifier in its
@@ -164,7 +164,7 @@ comprehendmedical_describe_snomedct_inference_job <- function(JobId) {
 #' @description
 #' The [`detect_entities`][comprehendmedical_detect_entities] operation is deprecated. You should use the [`detect_entities_v2`][comprehendmedical_detect_entities_v2] operation instead.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/detect_entities.html](https://paws-r.github.io/docs/comprehendmedical/detect_entities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_detect_entities/](https://www.paws-r-sdk.com/docs/comprehendmedical_detect_entities/) for full documentation.
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string containing the clinical content being examined for
 #' entities. Each string must contain fewer than 20,000 bytes of
@@ -197,7 +197,7 @@ comprehendmedical_detect_entities <- function(Text) {
 #' @description
 #' Inspects the clinical text for a variety of medical entities and returns specific information about them such as entity category, location, and confidence score on that information. Amazon Comprehend Medical only detects medical entities in English language texts.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/detect_entities_v2.html](https://paws-r.github.io/docs/comprehendmedical/detect_entities_v2.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_detect_entities_v2/](https://www.paws-r-sdk.com/docs/comprehendmedical_detect_entities_v2/) for full documentation.
 #'
 #' @param Text &#91;required&#93; A UTF-8 string containing the clinical content being examined for
 #' entities. Each string must contain fewer than 20,000 bytes of
@@ -230,7 +230,7 @@ comprehendmedical_detect_entities_v2 <- function(Text) {
 #' @description
 #' Inspects the clinical text for protected health information (PHI) entities and returns the entity category, location, and confidence score for each entity. Amazon Comprehend Medical only detects entities in English language texts.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/detect_phi.html](https://paws-r.github.io/docs/comprehendmedical/detect_phi.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_detect_phi/](https://www.paws-r-sdk.com/docs/comprehendmedical_detect_phi/) for full documentation.
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string containing the clinical content being examined for
 #' PHI entities. Each string must contain fewer than 20,000 bytes of
@@ -263,7 +263,7 @@ comprehendmedical_detect_phi <- function(Text) {
 #' @description
 #' InferICD10CM detects medical conditions as entities listed in a patient record and links those entities to normalized concept identifiers in the ICD-10-CM knowledge base from the Centers for Disease Control. Amazon Comprehend Medical only detects medical entities in English language texts.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/infer_icd10cm.html](https://paws-r.github.io/docs/comprehendmedical/infer_icd10cm.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_infer_icd10cm/](https://www.paws-r-sdk.com/docs/comprehendmedical_infer_icd10cm/) for full documentation.
 #'
 #' @param Text &#91;required&#93; The input text used for analysis. The input for InferICD10CM is a string
 #' from 1 to 10000 characters.
@@ -295,7 +295,7 @@ comprehendmedical_infer_icd10cm <- function(Text) {
 #' @description
 #' InferRxNorm detects medications as entities listed in a patient record and links to the normalized concept identifiers in the RxNorm database from the National Library of Medicine. Amazon Comprehend Medical only detects medical entities in English language texts.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/infer_rx_norm.html](https://paws-r.github.io/docs/comprehendmedical/infer_rx_norm.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_infer_rx_norm/](https://www.paws-r-sdk.com/docs/comprehendmedical_infer_rx_norm/) for full documentation.
 #'
 #' @param Text &#91;required&#93; The input text used for analysis. The input for InferRxNorm is a string
 #' from 1 to 10000 characters.
@@ -327,7 +327,7 @@ comprehendmedical_infer_rx_norm <- function(Text) {
 #' @description
 #' InferSNOMEDCT detects possible medical concepts as entities and links them to codes from the Systematized Nomenclature of Medicine, Clinical Terms (SNOMED-CT) ontology
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/infer_snomedct.html](https://paws-r.github.io/docs/comprehendmedical/infer_snomedct.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_infer_snomedct/](https://www.paws-r-sdk.com/docs/comprehendmedical_infer_snomedct/) for full documentation.
 #'
 #' @param Text &#91;required&#93; The input text to be analyzed using InferSNOMEDCT. The text should be a
 #' string with 1 to 10000 characters.
@@ -357,7 +357,7 @@ comprehendmedical_infer_snomedct <- function(Text) {
 #' @description
 #' Gets a list of medical entity detection jobs that you have submitted.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/list_entities_detection_v2_jobs.html](https://paws-r.github.io/docs/comprehendmedical/list_entities_detection_v2_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_list_entities_detection_v2_jobs/](https://www.paws-r-sdk.com/docs/comprehendmedical_list_entities_detection_v2_jobs/) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs based on their
 #' names, status, or the date and time that they were submitted. You can
@@ -391,7 +391,7 @@ comprehendmedical_list_entities_detection_v2_jobs <- function(Filter = NULL, Nex
 #' @description
 #' Gets a list of InferICD10CM jobs that you have submitted.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/list_icd10cm_inference_jobs.html](https://paws-r.github.io/docs/comprehendmedical/list_icd10cm_inference_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_list_icd10cm_inference_jobs/](https://www.paws-r-sdk.com/docs/comprehendmedical_list_icd10cm_inference_jobs/) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs based on their
 #' names, status, or the date and time that they were submitted. You can
@@ -426,7 +426,7 @@ comprehendmedical_list_icd10cm_inference_jobs <- function(Filter = NULL, NextTok
 #' @description
 #' Gets a list of protected health information (PHI) detection jobs that you have submitted.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/list_phi_detection_jobs.html](https://paws-r.github.io/docs/comprehendmedical/list_phi_detection_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_list_phi_detection_jobs/](https://www.paws-r-sdk.com/docs/comprehendmedical_list_phi_detection_jobs/) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs based on their
 #' names, status, or the date and time that they were submitted. You can
@@ -460,7 +460,7 @@ comprehendmedical_list_phi_detection_jobs <- function(Filter = NULL, NextToken =
 #' @description
 #' Gets a list of InferRxNorm jobs that you have submitted.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/list_rx_norm_inference_jobs.html](https://paws-r.github.io/docs/comprehendmedical/list_rx_norm_inference_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_list_rx_norm_inference_jobs/](https://www.paws-r-sdk.com/docs/comprehendmedical_list_rx_norm_inference_jobs/) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs based on their
 #' names, status, or the date and time that they were submitted. You can
@@ -493,7 +493,7 @@ comprehendmedical_list_rx_norm_inference_jobs <- function(Filter = NULL, NextTok
 #' @description
 #' Gets a list of InferSNOMEDCT jobs a user has submitted.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/list_snomedct_inference_jobs.html](https://paws-r.github.io/docs/comprehendmedical/list_snomedct_inference_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_list_snomedct_inference_jobs/](https://www.paws-r-sdk.com/docs/comprehendmedical_list_snomedct_inference_jobs/) for full documentation.
 #'
 #' @param Filter 
 #' @param NextToken Identifies the next page of InferSNOMEDCT results to return.
@@ -526,7 +526,7 @@ comprehendmedical_list_snomedct_inference_jobs <- function(Filter = NULL, NextTo
 #' @description
 #' Starts an asynchronous medical entity detection job for a collection of documents. Use the [`describe_entities_detection_v2_job`][comprehendmedical_describe_entities_detection_v2_job] operation to track the status of a job.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/start_entities_detection_v2_job.html](https://paws-r.github.io/docs/comprehendmedical/start_entities_detection_v2_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_start_entities_detection_v2_job/](https://www.paws-r-sdk.com/docs/comprehendmedical_start_entities_detection_v2_job/) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; The input configuration that specifies the format and location of the
 #' input data for the job.
@@ -570,7 +570,7 @@ comprehendmedical_start_entities_detection_v2_job <- function(InputDataConfig, O
 #' @description
 #' Starts an asynchronous job to detect medical conditions and link them to the ICD-10-CM ontology. Use the [`describe_icd10cm_inference_job`][comprehendmedical_describe_icd10cm_inference_job] operation to track the status of a job.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/start_icd10cm_inference_job.html](https://paws-r.github.io/docs/comprehendmedical/start_icd10cm_inference_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_start_icd10cm_inference_job/](https://www.paws-r-sdk.com/docs/comprehendmedical_start_icd10cm_inference_job/) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -612,7 +612,7 @@ comprehendmedical_start_icd10cm_inference_job <- function(InputDataConfig, Outpu
 #' @description
 #' Starts an asynchronous job to detect protected health information (PHI). Use the [`describe_phi_detection_job`][comprehendmedical_describe_phi_detection_job] operation to track the status of a job.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/start_phi_detection_job.html](https://paws-r.github.io/docs/comprehendmedical/start_phi_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_start_phi_detection_job/](https://www.paws-r-sdk.com/docs/comprehendmedical_start_phi_detection_job/) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -655,7 +655,7 @@ comprehendmedical_start_phi_detection_job <- function(InputDataConfig, OutputDat
 #' @description
 #' Starts an asynchronous job to detect medication entities and link them to the RxNorm ontology. Use the [`describe_rx_norm_inference_job`][comprehendmedical_describe_rx_norm_inference_job] operation to track the status of a job.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/start_rx_norm_inference_job.html](https://paws-r.github.io/docs/comprehendmedical/start_rx_norm_inference_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_start_rx_norm_inference_job/](https://www.paws-r-sdk.com/docs/comprehendmedical_start_rx_norm_inference_job/) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -698,7 +698,7 @@ comprehendmedical_start_rx_norm_inference_job <- function(InputDataConfig, Outpu
 #' @description
 #' Starts an asynchronous job to detect medical concepts and link them to the SNOMED-CT ontology. Use the DescribeSNOMEDCTInferenceJob operation to track the status of a job.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/start_snomedct_inference_job.html](https://paws-r.github.io/docs/comprehendmedical/start_snomedct_inference_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_start_snomedct_inference_job/](https://www.paws-r-sdk.com/docs/comprehendmedical_start_snomedct_inference_job/) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; 
 #' @param OutputDataConfig &#91;required&#93; 
@@ -738,7 +738,7 @@ comprehendmedical_start_snomedct_inference_job <- function(InputDataConfig, Outp
 #' @description
 #' Stops a medical entities detection job in progress.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/stop_entities_detection_v2_job.html](https://paws-r.github.io/docs/comprehendmedical/stop_entities_detection_v2_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_stop_entities_detection_v2_job/](https://www.paws-r-sdk.com/docs/comprehendmedical_stop_entities_detection_v2_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the medical entities job to stop.
 #'
@@ -767,7 +767,7 @@ comprehendmedical_stop_entities_detection_v2_job <- function(JobId) {
 #' @description
 #' Stops an InferICD10CM inference job in progress.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/stop_icd10cm_inference_job.html](https://paws-r.github.io/docs/comprehendmedical/stop_icd10cm_inference_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_stop_icd10cm_inference_job/](https://www.paws-r-sdk.com/docs/comprehendmedical_stop_icd10cm_inference_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the job.
 #'
@@ -796,7 +796,7 @@ comprehendmedical_stop_icd10cm_inference_job <- function(JobId) {
 #' @description
 #' Stops a protected health information (PHI) detection job in progress.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/stop_phi_detection_job.html](https://paws-r.github.io/docs/comprehendmedical/stop_phi_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_stop_phi_detection_job/](https://www.paws-r-sdk.com/docs/comprehendmedical_stop_phi_detection_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the PHI detection job to stop.
 #'
@@ -825,7 +825,7 @@ comprehendmedical_stop_phi_detection_job <- function(JobId) {
 #' @description
 #' Stops an InferRxNorm inference job in progress.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/stop_rx_norm_inference_job.html](https://paws-r.github.io/docs/comprehendmedical/stop_rx_norm_inference_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_stop_rx_norm_inference_job/](https://www.paws-r-sdk.com/docs/comprehendmedical_stop_rx_norm_inference_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the job.
 #'
@@ -854,7 +854,7 @@ comprehendmedical_stop_rx_norm_inference_job <- function(JobId) {
 #' @description
 #' Stops an InferSNOMEDCT inference job in progress.
 #'
-#' See [https://paws-r.github.io/docs/comprehendmedical/stop_snomedct_inference_job.html](https://paws-r.github.io/docs/comprehendmedical/stop_snomedct_inference_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehendmedical_stop_snomedct_inference_job/](https://www.paws-r-sdk.com/docs/comprehendmedical_stop_snomedct_inference_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The job id of the asynchronous InferSNOMEDCT job to be stopped.
 #'

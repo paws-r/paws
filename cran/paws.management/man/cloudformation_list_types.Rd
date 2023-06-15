@@ -22,12 +22,12 @@ CloudFormation operations.
 Valid values include:
 \itemize{
 \item \code{PRIVATE}: Extensions that are visible and usable within this
-account and region. This includes:
+account and Region. This includes:
 \itemize{
 \item Private extensions you have registered in this account and
-region.
+Region.
 \item Public extensions that you have activated in this account and
-region.
+Region.
 }
 \item \code{PUBLIC}: Extensions that are publicly visible and available to be
 activated within any Amazon Web Services account. This includes
@@ -89,6 +89,6 @@ there are no remaining results, the previous response object's
 \description{
 Returns summary information about extension that have been registered with CloudFormation.
 
-See \url{https://paws-r.github.io/docs/cloudformation/list_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_list_types/} for full documentation.
 }
 \keyword{internal}

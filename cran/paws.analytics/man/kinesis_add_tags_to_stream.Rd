@@ -16,6 +16,6 @@ kinesis_add_tags_to_stream(StreamName = NULL, Tags, StreamARN = NULL)
 \description{
 Adds or updates tags for the specified Kinesis data stream. You can assign up to 50 tags to a data stream.
 
-See \url{https://paws-r.github.io/docs/kinesis/add_tags_to_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesis_add_tags_to_stream/} for full documentation.
 }
 \keyword{internal}

@@ -25,6 +25,6 @@ start all Macie activities for the account, set this value to ENABLED.}
 \description{
 Enables Amazon Macie and specifies the configuration settings for a Macie account.
 
-See \url{https://paws-r.github.io/docs/macie2/enable_macie.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_enable_macie/} for full documentation.
 }
 \keyword{internal}

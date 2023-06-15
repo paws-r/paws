@@ -116,6 +116,6 @@ Pattern:
 \description{
 Creates an AWS CloudFormation change set for the given application.
 
-See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/create_cloud_formation_change_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_create_cloud_formation_change_set/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ that should be retrieved.}
 \description{
 Retrieves the details about a specific task run as part of a maintenance window execution.
 
-See \url{https://paws-r.github.io/docs/ssm/get_maintenance_window_execution_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_maintenance_window_execution_task/} for full documentation.
 }
 \keyword{internal}

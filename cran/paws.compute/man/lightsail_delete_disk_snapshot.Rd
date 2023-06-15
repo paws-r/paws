@@ -13,6 +13,6 @@ lightsail_delete_disk_snapshot(diskSnapshotName)
 \description{
 Deletes the specified disk snapshot.
 
-See \url{https://paws-r.github.io/docs/lightsail/delete_disk_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_delete_disk_snapshot/} for full documentation.
 }
 \keyword{internal}

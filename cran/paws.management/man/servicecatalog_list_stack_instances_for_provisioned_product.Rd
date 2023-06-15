@@ -29,6 +29,6 @@ results, use null.}
 \description{
 Returns summary information about stack instances that are associated with the specified \code{CFN_STACKSET} type provisioned product. You can filter for stack instances that are associated with a specific Amazon Web Services account name or Region.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/list_stack_instances_for_provisioned_product.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_list_stack_instances_for_provisioned_product/} for full documentation.
 }
 \keyword{internal}

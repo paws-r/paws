@@ -21,6 +21,6 @@ in IAM. Each tag consists of a key name and an associated value.}
 \description{
 Adds one or more tags to an OpenID Connect (OIDC)-compatible identity provider. For more information about these providers, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html}{About web identity federation}. If a tag with the same key name already exists, then that tag is overwritten with the new value.
 
-See \url{https://paws-r.github.io/docs/iam/tag_open_id_connect_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_tag_open_id_connect_provider/} for full documentation.
 }
 \keyword{internal}

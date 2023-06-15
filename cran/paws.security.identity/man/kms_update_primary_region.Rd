@@ -32,6 +32,6 @@ be the primary key.}
 \description{
 Changes the primary key of a multi-Region key.
 
-See \url{https://paws-r.github.io/docs/kms/update_primary_region.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_update_primary_region/} for full documentation.
 }
 \keyword{internal}

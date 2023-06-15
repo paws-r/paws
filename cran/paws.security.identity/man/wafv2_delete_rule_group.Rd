@@ -40,6 +40,6 @@ and use the new token returned by that operation.}
 \description{
 Deletes the specified RuleGroup.
 
-See \url{https://paws-r.github.io/docs/wafv2/delete_rule_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_delete_rule_group/} for full documentation.
 }
 \keyword{internal}

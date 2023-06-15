@@ -15,6 +15,6 @@ kafka_delete_cluster(ClusterArn, CurrentVersion = NULL)
 \description{
 Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in the request.
 
-See \url{https://paws-r.github.io/docs/kafka/delete_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_delete_cluster/} for full documentation.
 }
 \keyword{internal}

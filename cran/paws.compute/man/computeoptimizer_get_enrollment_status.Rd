@@ -10,6 +10,6 @@ computeoptimizer_get_enrollment_status()
 \description{
 Returns the enrollment (opt in) status of an account to the Compute Optimizer service.
 
-See \url{https://paws-r.github.io/docs/computeoptimizer/get_enrollment_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/computeoptimizer_get_enrollment_status/} for full documentation.
 }
 \keyword{internal}

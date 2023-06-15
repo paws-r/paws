@@ -12,6 +12,6 @@ ses_describe_receipt_rule_set(RuleSetName)
 \description{
 Returns the details of the specified receipt rule set.
 
-See \url{https://paws-r.github.io/docs/ses/describe_receipt_rule_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_describe_receipt_rule_set/} for full documentation.
 }
 \keyword{internal}

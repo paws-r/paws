@@ -35,6 +35,6 @@ assessment template, each key must be unique.}
 \description{
 Creates an assessment template for the assessment target that is specified by the ARN of the assessment target. If the \href{https://docs.aws.amazon.com/inspector/v1/userguide/inspector_slr.html}{service-linked role} isn’t already registered, this action also creates and registers a service-linked role to grant Amazon Inspector access to AWS Services needed to perform security assessments.
 
-See \url{https://paws-r.github.io/docs/inspector/create_assessment_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_create_assessment_template/} for full documentation.
 }
 \keyword{internal}

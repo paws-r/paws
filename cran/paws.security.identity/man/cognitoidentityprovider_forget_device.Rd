@@ -15,6 +15,6 @@ registered device you want to forget.}
 \description{
 Forgets the specified device.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/forget_device.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_forget_device/} for full documentation.
 }
 \keyword{internal}

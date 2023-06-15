@@ -27,6 +27,6 @@ already passed.}
 \description{
 Modifies the settings for a snapshot.
 
-See \url{https://paws-r.github.io/docs/redshift/modify_cluster_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_modify_cluster_snapshot/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ to 10 target groups.}
 \description{
 This API operation is superseded by \code{\link[=autoscaling_detach_traffic_sources]{detach_traffic_sources}}, which can detach multiple traffic sources types. We recommend using \code{\link[=autoscaling_detach_traffic_sources]{detach_traffic_sources}} to simplify how you manage traffic sources. However, we continue to support \code{\link[=autoscaling_detach_load_balancer_target_groups]{detach_load_balancer_target_groups}}. You can use both the original \code{\link[=autoscaling_detach_load_balancer_target_groups]{detach_load_balancer_target_groups}} API operation and \code{\link[=autoscaling_detach_traffic_sources]{detach_traffic_sources}} on the same Auto Scaling group.
 
-See \url{https://paws-r.github.io/docs/autoscaling/detach_load_balancer_target_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_detach_load_balancer_target_groups/} for full documentation.
 }
 \keyword{internal}

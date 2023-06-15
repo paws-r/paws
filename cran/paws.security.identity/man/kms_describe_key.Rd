@@ -43,6 +43,6 @@ in the \emph{Key Management Service Developer Guide}.}
 \description{
 Provides detailed information about a KMS key. You can run \code{\link[=kms_describe_key]{describe_key}} on a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed key} or an \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed key}.
 
-See \url{https://paws-r.github.io/docs/kms/describe_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_describe_key/} for full documentation.
 }
 \keyword{internal}

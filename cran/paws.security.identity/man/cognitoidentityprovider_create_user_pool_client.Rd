@@ -247,6 +247,6 @@ authentication challenge before the session expires.}
 \description{
 Creates the user pool client.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/create_user_pool_client.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_user_pool_client/} for full documentation.
 }
 \keyword{internal}

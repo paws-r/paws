@@ -20,6 +20,6 @@ codedeploy_register_on_premises_instance(
 \description{
 Registers an on-premises instance.
 
-See \url{https://paws-r.github.io/docs/codedeploy/register_on_premises_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_register_on_premises_instance/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ instance the attachment belongs to.}
 \description{
 This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 
-See \url{https://paws-r.github.io/docs/ecs/submit_attachment_state_changes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_submit_attachment_state_changes/} for full documentation.
 }
 \keyword{internal}

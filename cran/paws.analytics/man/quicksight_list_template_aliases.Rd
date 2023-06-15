@@ -25,6 +25,6 @@ results.}
 \description{
 Lists all the aliases of a template.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_template_aliases.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_template_aliases/} for full documentation.
 }
 \keyword{internal}

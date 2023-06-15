@@ -17,6 +17,6 @@ the to-be-created UsagePlanKey resource representing a plan customer.}
 \description{
 Creates a usage plan key for adding an existing API key to a usage plan.
 
-See \url{https://paws-r.github.io/docs/apigateway/create_usage_plan_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_create_usage_plan_key/} for full documentation.
 }
 \keyword{internal}

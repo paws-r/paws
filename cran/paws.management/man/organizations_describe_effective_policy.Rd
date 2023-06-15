@@ -23,6 +23,6 @@ organizational unit (OU) as the target is not supported.}
 \description{
 Returns the contents of the effective policy for specified policy type and account. The effective policy is the aggregation of any policies of the specified type that the account inherits, plus any policy of that type that is directly attached to the account.
 
-See \url{https://paws-r.github.io/docs/organizations/describe_effective_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_describe_effective_policy/} for full documentation.
 }
 \keyword{internal}

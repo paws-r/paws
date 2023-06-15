@@ -65,6 +65,6 @@ in the \emph{Amazon VPC IPAM User Guide}.}
 \description{
 Modify the configurations of an IPAM pool.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_ipam_pool.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_ipam_pool/} for full documentation.
 }
 \keyword{internal}

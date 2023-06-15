@@ -15,6 +15,6 @@ inspector_describe_rules_packages(rulesPackageArns, locale = NULL)
 \description{
 Describes the rules packages that are specified by the ARNs of the rules packages.
 
-See \url{https://paws-r.github.io/docs/inspector/describe_rules_packages.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_describe_rules_packages/} for full documentation.
 }
 \keyword{internal}

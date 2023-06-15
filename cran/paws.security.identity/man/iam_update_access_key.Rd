@@ -26,6 +26,6 @@ while \code{Inactive} means that the key cannot be used.}
 \description{
 Changes the status of the specified access key from Active to Inactive, or vice versa. This operation can be used to disable a user's key as part of a key rotation workflow.
 
-See \url{https://paws-r.github.io/docs/iam/update_access_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_update_access_key/} for full documentation.
 }
 \keyword{internal}

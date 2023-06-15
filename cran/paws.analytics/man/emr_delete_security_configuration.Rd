@@ -12,6 +12,6 @@ emr_delete_security_configuration(Name)
 \description{
 Deletes a security configuration.
 
-See \url{https://paws-r.github.io/docs/emr/delete_security_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_delete_security_configuration/} for full documentation.
 }
 \keyword{internal}

@@ -38,6 +38,6 @@ export jobs, specify \code{IS_NOT}.
 \description{
 Returns a list of predictor backtest export jobs created using the \code{\link[=forecastservice_create_predictor_backtest_export_job]{create_predictor_backtest_export_job}} operation. This operation returns a summary for each backtest export job. You can filter the list using an array of Filter objects.
 
-See \url{https://paws-r.github.io/docs/forecastservice/list_predictor_backtest_export_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_list_predictor_backtest_export_jobs/} for full documentation.
 }
 \keyword{internal}

@@ -37,7 +37,7 @@ access each resource before the resources can be exported.}
 \item{IncludeAllDependencies}{A Boolean that determines whether all dependencies of each resource ARN
 are recursively exported with the job. For example, say you provided a
 Dashboard ARN to the \code{ResourceArns} parameter. If you set
-\code{IncludeAllDependencies} to \code{TRUE}, any theme, dataset, and dataource
+\code{IncludeAllDependencies} to \code{TRUE}, any theme, dataset, and data source
 resource that is a dependency of the dashboard is also exported.}
 
 \item{ExportFormat}{[required] The export data format.}
@@ -53,6 +53,6 @@ Use this field if the \code{ExportFormat} field of a
 \description{
 Starts an Asset Bundle export job.
 
-See \url{https://paws-r.github.io/docs/quicksight/start_asset_bundle_export_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_start_asset_bundle_export_job/} for full documentation.
 }
 \keyword{internal}

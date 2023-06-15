@@ -15,8 +15,8 @@ following is the format of a trail ARN.
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 }
 \description{
-Suspends the recording of Amazon Web Services API calls and log file delivery for the specified trail. Under most circumstances, there is no need to use this action. You can update a trail without stopping it first. This action is the only way to stop recording. For a trail enabled in all regions, this operation must be called from the region in which the trail was created, or an \code{InvalidHomeRegionException} will occur. This operation cannot be called on the shadow trails (replicated trails in other regions) of a trail enabled in all regions.
+Suspends the recording of Amazon Web Services API calls and log file delivery for the specified trail. Under most circumstances, there is no need to use this action. You can update a trail without stopping it first. This action is the only way to stop recording. For a trail enabled in all Regions, this operation must be called from the Region in which the trail was created, or an \code{InvalidHomeRegionException} will occur. This operation cannot be called on the shadow trails (replicated trails in other Regions) of a trail enabled in all Regions.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/stop_logging.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_stop_logging/} for full documentation.
 }
 \keyword{internal}

@@ -29,6 +29,6 @@ subsequent call to get the next batch of objects.}
 \description{
 Retrieves the metadata for the firewalls that you have defined. If you provide VPC identifiers in your request, this returns only the firewalls for those VPCs.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/list_firewalls.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_list_firewalls/} for full documentation.
 }
 \keyword{internal}

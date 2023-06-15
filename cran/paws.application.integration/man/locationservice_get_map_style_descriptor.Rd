@@ -15,6 +15,6 @@ to authorize the request.}
 \description{
 Retrieves the map style descriptor from a map resource.
 
-See \url{https://paws-r.github.io/docs/locationservice/get_map_style_descriptor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_get_map_style_descriptor/} for full documentation.
 }
 \keyword{internal}

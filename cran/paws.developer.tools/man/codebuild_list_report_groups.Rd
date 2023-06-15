@@ -40,6 +40,6 @@ objects. The default value is 100.}
 \description{
 Gets a list ARNs for the report groups in the current Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/codebuild/list_report_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_list_report_groups/} for full documentation.
 }
 \keyword{internal}

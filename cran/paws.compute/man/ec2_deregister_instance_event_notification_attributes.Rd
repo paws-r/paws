@@ -8,7 +8,7 @@ the Region}
 \usage{
 ec2_deregister_instance_event_notification_attributes(
   DryRun = NULL,
-  InstanceTagAttribute = NULL
+  InstanceTagAttribute
 )
 }
 \arguments{
@@ -17,11 +17,11 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{InstanceTagAttribute}{Information about the tag keys to deregister.}
+\item{InstanceTagAttribute}{[required] Information about the tag keys to deregister.}
 }
 \description{
 Deregisters tag keys to prevent tags that have the specified tag keys from being included in scheduled event notifications for resources in the Region.
 
-See \url{https://paws-r.github.io/docs/ec2/deregister_instance_event_notification_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_deregister_instance_event_notification_attributes/} for full documentation.
 }
 \keyword{internal}

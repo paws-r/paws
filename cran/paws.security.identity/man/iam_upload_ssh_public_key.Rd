@@ -33,6 +33,6 @@ carriage return (\verb{U+000D})
 \description{
 Uploads an SSH public key and associates it with the specified IAM user.
 
-See \url{https://paws-r.github.io/docs/iam/upload_ssh_public_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_upload_ssh_public_key/} for full documentation.
 }
 \keyword{internal}

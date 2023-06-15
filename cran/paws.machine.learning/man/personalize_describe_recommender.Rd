@@ -12,6 +12,6 @@ personalize_describe_recommender(recommenderArn)
 \description{
 Describes the given recommender, including its status.
 
-See \url{https://paws-r.github.io/docs/personalize/describe_recommender.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_describe_recommender/} for full documentation.
 }
 \keyword{internal}

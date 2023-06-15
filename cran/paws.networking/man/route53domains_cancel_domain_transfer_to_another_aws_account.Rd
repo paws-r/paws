@@ -14,6 +14,6 @@ another Amazon Web Services account.}
 \description{
 Cancels the transfer of a domain from the current Amazon Web Services account to another Amazon Web Services account. You initiate a transfer betweenAmazon Web Services accounts using \code{\link[=route53domains_transfer_domain_to_another_aws_account]{transfer_domain_to_another_aws_account}}.
 
-See \url{https://paws-r.github.io/docs/route53domains/cancel_domain_transfer_to_another_aws_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_cancel_domain_transfer_to_another_aws_account/} for full documentation.
 }
 \keyword{internal}

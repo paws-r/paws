@@ -14,6 +14,6 @@ cloudfront_create_cloud_front_origin_access_identity(
 \description{
 Creates a new origin access identity. If you're using Amazon S3 for your origin, you can use an origin access identity to require users to access your content using a CloudFront URL instead of the Amazon S3 URL. For more information about how to use origin access identities, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html}{Serving Private Content through CloudFront} in the \emph{Amazon CloudFront Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/cloudfront/create_cloud_front_origin_access_identity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_create_cloud_front_origin_access_identity/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ costandusagereportservice_describe_report_definitions(
 \description{
 Lists the AWS Cost and Usage reports available to this account.
 
-See \url{https://paws-r.github.io/docs/costandusagereportservice/describe_report_definitions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costandusagereportservice_describe_report_definitions/} for full documentation.
 }
 \keyword{internal}

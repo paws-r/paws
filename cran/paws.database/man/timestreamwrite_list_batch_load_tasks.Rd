@@ -25,6 +25,6 @@ value as argument of a subsequent API invocation.}
 \description{
 Provides a list of batch load tasks, along with the name, status, when the task is resumable until, and other details. See \href{https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.list-batch-load-tasks.html}{code sample} for details.
 
-See \url{https://paws-r.github.io/docs/timestreamwrite/list_batch_load_tasks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamwrite_list_batch_load_tasks/} for full documentation.
 }
 \keyword{internal}

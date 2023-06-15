@@ -19,6 +19,6 @@ and flags.}
 \description{
 Creates a delegation signer (DS) record in the registry zone for this domain name.
 
-See \url{https://paws-r.github.io/docs/route53domains/associate_delegation_signer_to_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_associate_delegation_signer_to_domain/} for full documentation.
 }
 \keyword{internal}

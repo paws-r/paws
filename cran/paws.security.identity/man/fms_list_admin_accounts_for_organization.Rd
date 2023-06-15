@@ -23,6 +23,6 @@ subsequent call to get the next batch of objects.}
 \description{
 Returns a \code{AdminAccounts} object that lists the Firewall Manager administrators within the organization that are onboarded to Firewall Manager by \code{\link[=fms_associate_admin_account]{associate_admin_account}}.
 
-See \url{https://paws-r.github.io/docs/fms/list_admin_accounts_for_organization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_list_admin_accounts_for_organization/} for full documentation.
 }
 \keyword{internal}

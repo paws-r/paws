@@ -16,6 +16,6 @@ sagemaker_update_user_profile(DomainId, UserProfileName, UserSettings = NULL)
 \description{
 Updates a user profile.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_user_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_user_profile/} for full documentation.
 }
 \keyword{internal}

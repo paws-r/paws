@@ -116,6 +116,6 @@ For more information, see \href{https://docs.aws.amazon.com/memorydb/latest/devg
 \description{
 Creates a cluster. All nodes in the cluster run the same protocol-compliant engine software.
 
-See \url{https://paws-r.github.io/docs/memorydb/create_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_create_cluster/} for full documentation.
 }
 \keyword{internal}

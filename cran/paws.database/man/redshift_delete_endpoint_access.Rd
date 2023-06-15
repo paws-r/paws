@@ -12,6 +12,6 @@ redshift_delete_endpoint_access(EndpointName)
 \description{
 Deletes a Redshift-managed VPC endpoint.
 
-See \url{https://paws-r.github.io/docs/redshift/delete_endpoint_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_delete_endpoint_access/} for full documentation.
 }
 \keyword{internal}

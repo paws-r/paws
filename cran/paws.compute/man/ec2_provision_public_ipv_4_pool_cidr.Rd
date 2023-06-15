@@ -27,6 +27,6 @@ IPv4 pool.}
 \description{
 Provision a CIDR to a public IPv4 pool.
 
-See \url{https://paws-r.github.io/docs/ec2/provision_public_ipv_4_pool_cidr.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_provision_public_ipv_4_pool_cidr/} for full documentation.
 }
 \keyword{internal}

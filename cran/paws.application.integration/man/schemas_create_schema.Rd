@@ -29,6 +29,6 @@ schemas_create_schema(
 \description{
 Creates a schema definition.
 
-See \url{https://paws-r.github.io/docs/schemas/create_schema.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/schemas_create_schema/} for full documentation.
 }
 \keyword{internal}

@@ -33,6 +33,6 @@ the next items in a list and not for other programmatic purposes.}
 \description{
 Returns a list of Batch scheduling policies.
 
-See \url{https://paws-r.github.io/docs/batch/list_scheduling_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/batch_list_scheduling_policies/} for full documentation.
 }
 \keyword{internal}

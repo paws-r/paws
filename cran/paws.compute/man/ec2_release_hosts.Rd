@@ -13,6 +13,6 @@ ec2_release_hosts(HostIds)
 \description{
 When you no longer want to use an On-Demand Dedicated Host it can be released. On-Demand billing is stopped and the host goes into \code{released} state. The host ID of Dedicated Hosts that have been released can no longer be specified in another request, for example, to modify the host. You must stop or terminate all instances on a host before it can be released.
 
-See \url{https://paws-r.github.io/docs/ec2/release_hosts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_release_hosts/} for full documentation.
 }
 \keyword{internal}

@@ -41,6 +41,6 @@ server side, using SSE-S3.}
 \description{
 Starts the classification and analysis of an input document. \code{\link[=textract_start_lending_analysis]{start_lending_analysis}} initiates the classification and analysis of a packet of lending documents. \code{\link[=textract_start_lending_analysis]{start_lending_analysis}} operates on a document file located in an Amazon S3 bucket.
 
-See \url{https://paws-r.github.io/docs/textract/start_lending_analysis.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/textract_start_lending_analysis/} for full documentation.
 }
 \keyword{internal}

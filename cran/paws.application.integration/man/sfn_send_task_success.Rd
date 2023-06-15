@@ -19,6 +19,6 @@ size, and are expressed as bytes in UTF-8 encoding.}
 \description{
 Used by activity workers and task states using the \href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token}{callback} pattern to report that the task identified by the \code{taskToken} completed successfully.
 
-See \url{https://paws-r.github.io/docs/sfn/send_task_success.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sfn_send_task_success/} for full documentation.
 }
 \keyword{internal}

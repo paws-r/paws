@@ -12,6 +12,6 @@ clouddirectory_disable_directory(DirectoryArn)
 \description{
 Disables the specified directory. Disabled directories cannot be read or written to. Only enabled directories can be disabled. Disabled directories may be reenabled.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/disable_directory.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_disable_directory/} for full documentation.
 }
 \keyword{internal}

@@ -76,6 +76,6 @@ format and Coordinated Universal Time (UTC).}
 \description{
 Returns a list of existing backup jobs for an authenticated account for the last 30 days. For a longer period of time, consider using these \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/monitoring.html}{monitoring tools}.
 
-See \url{https://paws-r.github.io/docs/backup/list_backup_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_list_backup_jobs/} for full documentation.
 }
 \keyword{internal}

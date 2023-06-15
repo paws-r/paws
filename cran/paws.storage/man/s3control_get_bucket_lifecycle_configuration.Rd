@@ -28,6 +28,6 @@ The value must be URL encoded.}
 \description{
 This action gets an Amazon S3 on Outposts bucket's lifecycle configuration. To get an S3 bucket's lifecycle configuration, see \code{\link[=s3control_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}} in the \emph{Amazon S3 API Reference}.
 
-See \url{https://paws-r.github.io/docs/s3control/get_bucket_lifecycle_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_get_bucket_lifecycle_configuration/} for full documentation.
 }
 \keyword{internal}

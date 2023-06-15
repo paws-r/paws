@@ -20,6 +20,6 @@ opensearchservice_purchase_reserved_instance_offering(
 \description{
 Allows you to purchase Amazon OpenSearch Service Reserved Instances.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/purchase_reserved_instance_offering.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_purchase_reserved_instance_offering/} for full documentation.
 }
 \keyword{internal}

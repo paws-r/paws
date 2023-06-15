@@ -30,6 +30,6 @@ account ID, do not include any hyphens ('-') in the ID.}
 \description{
 This operation adds an archive to a vault. This is a synchronous operation, and for a successful upload, your data is durably persisted. Amazon S3 Glacier returns the archive ID in the \code{x-amz-archive-id} header of the response.
 
-See \url{https://paws-r.github.io/docs/glacier/upload_archive.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_upload_archive/} for full documentation.
 }
 \keyword{internal}

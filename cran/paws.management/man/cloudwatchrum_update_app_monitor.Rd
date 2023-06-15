@@ -40,6 +40,6 @@ administrative authority.}
 \description{
 Updates the configuration of an existing app monitor. When you use this operation, only the parts of the app monitor configuration that you specify in this operation are changed. For any parameters that you omit, the existing values are kept.
 
-See \url{https://paws-r.github.io/docs/cloudwatchrum/update_app_monitor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchrum_update_app_monitor/} for full documentation.
 }
 \keyword{internal}

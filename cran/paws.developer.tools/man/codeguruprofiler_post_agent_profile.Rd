@@ -31,6 +31,6 @@ receives the submitted profiling data.}
 \description{
 Submits profiling data to an aggregated profile of a profiling group. To get an aggregated profile that is created with this profiling data, use \href{https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_GetProfile.html}{\code{get_profile}} .
 
-See \url{https://paws-r.github.io/docs/codeguruprofiler/post_agent_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeguruprofiler_post_agent_profile/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ key-value pair.}
 \description{
 Creates a backup gateway. After you create a gateway, you can associate it with a server using the \code{\link[=backupgateway_associate_gateway_to_server]{associate_gateway_to_server}} operation.
 
-See \url{https://paws-r.github.io/docs/backupgateway/create_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupgateway_create_gateway/} for full documentation.
 }
 \keyword{internal}

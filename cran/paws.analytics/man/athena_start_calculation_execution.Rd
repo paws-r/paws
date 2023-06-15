@@ -36,6 +36,6 @@ fail.}
 \description{
 Submits calculations for execution within a session. You can supply the code to run as an inline code block within the request.
 
-See \url{https://paws-r.github.io/docs/athena/start_calculation_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_start_calculation_execution/} for full documentation.
 }
 \keyword{internal}

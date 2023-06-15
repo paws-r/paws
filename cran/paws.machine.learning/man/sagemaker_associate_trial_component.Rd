@@ -14,6 +14,6 @@ sagemaker_associate_trial_component(TrialComponentName, TrialName)
 \description{
 Associates a trial component with a trial. A trial component can be associated with multiple trials. To disassociate a trial component from a trial, call the \code{\link[=sagemaker_disassociate_trial_component]{disassociate_trial_component}} API.
 
-See \url{https://paws-r.github.io/docs/sagemaker/associate_trial_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_associate_trial_component/} for full documentation.
 }
 \keyword{internal}

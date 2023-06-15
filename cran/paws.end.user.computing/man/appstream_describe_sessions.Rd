@@ -35,6 +35,6 @@ authenticate users using a streaming URL.}
 \description{
 Retrieves a list that describes the streaming sessions for a specified stack and fleet. If a UserId is provided for the stack and fleet, only streaming sessions for that user are described. If an authentication type is not provided, the default is to authenticate users using a streaming URL.
 
-See \url{https://paws-r.github.io/docs/appstream/describe_sessions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_describe_sessions/} for full documentation.
 }
 \keyword{internal}

@@ -48,6 +48,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Searches one or more transit gateway multicast groups and returns the group membership information.
 
-See \url{https://paws-r.github.io/docs/ec2/search_transit_gateway_multicast_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_search_transit_gateway_multicast_groups/} for full documentation.
 }
 \keyword{internal}

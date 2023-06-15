@@ -33,6 +33,6 @@ made to the model card, but it can still be exported.
 \description{
 Update an Amazon SageMaker Model Card.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_model_card.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_model_card/} for full documentation.
 }
 \keyword{internal}

@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a group within the specified identity store.
 #'
-#' See [https://paws-r.github.io/docs/identitystore/create_group.html](https://paws-r.github.io/docs/identitystore/create_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/identitystore_create_group/](https://www.paws-r-sdk.com/docs/identitystore_create_group/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
 #' @param DisplayName A string containing the name of the group. This value is commonly
@@ -42,7 +42,7 @@ identitystore_create_group <- function(IdentityStoreId, DisplayName = NULL, Desc
 #' @description
 #' Creates a relationship between a member and a group. The following identifiers must be specified: `GroupId`, `IdentityStoreId`, and `MemberId`.
 #'
-#' See [https://paws-r.github.io/docs/identitystore/create_group_membership.html](https://paws-r.github.io/docs/identitystore/create_group_membership.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/identitystore_create_group_membership/](https://www.paws-r-sdk.com/docs/identitystore_create_group_membership/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
 #' @param GroupId &#91;required&#93; The identifier for a group in the identity store.
@@ -75,7 +75,7 @@ identitystore_create_group_membership <- function(IdentityStoreId, GroupId, Memb
 #' @description
 #' Creates a user within the specified identity store.
 #'
-#' See [https://paws-r.github.io/docs/identitystore/create_user.html](https://paws-r.github.io/docs/identitystore/create_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/identitystore_create_user/](https://www.paws-r-sdk.com/docs/identitystore_create_user/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
 #' @param UserName A unique string used to identify the user. The length limit is 128
@@ -130,7 +130,7 @@ identitystore_create_user <- function(IdentityStoreId, UserName = NULL, Name = N
 #' @description
 #' Delete a group within an identity store given `GroupId`.
 #'
-#' See [https://paws-r.github.io/docs/identitystore/delete_group.html](https://paws-r.github.io/docs/identitystore/delete_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/identitystore_delete_group/](https://www.paws-r-sdk.com/docs/identitystore_delete_group/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
 #' @param GroupId &#91;required&#93; The identifier for a group in the identity store.
@@ -160,7 +160,7 @@ identitystore_delete_group <- function(IdentityStoreId, GroupId) {
 #' @description
 #' Delete a membership within a group given `MembershipId`.
 #'
-#' See [https://paws-r.github.io/docs/identitystore/delete_group_membership.html](https://paws-r.github.io/docs/identitystore/delete_group_membership.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/identitystore_delete_group_membership/](https://www.paws-r-sdk.com/docs/identitystore_delete_group_membership/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
 #' @param MembershipId &#91;required&#93; The identifier for a `GroupMembership` in an identity store.
@@ -190,7 +190,7 @@ identitystore_delete_group_membership <- function(IdentityStoreId, MembershipId)
 #' @description
 #' Deletes a user within an identity store given `UserId`.
 #'
-#' See [https://paws-r.github.io/docs/identitystore/delete_user.html](https://paws-r.github.io/docs/identitystore/delete_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/identitystore_delete_user/](https://www.paws-r-sdk.com/docs/identitystore_delete_user/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
 #' @param UserId &#91;required&#93; The identifier for a user in the identity store.
@@ -221,7 +221,7 @@ identitystore_delete_user <- function(IdentityStoreId, UserId) {
 #' @description
 #' Retrieves the group metadata and attributes from `GroupId` in an identity store.
 #'
-#' See [https://paws-r.github.io/docs/identitystore/describe_group.html](https://paws-r.github.io/docs/identitystore/describe_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/identitystore_describe_group/](https://www.paws-r-sdk.com/docs/identitystore_describe_group/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store, such as
 #' `d-1234567890`. In this example, `d-` is a fixed prefix, and
@@ -256,7 +256,7 @@ identitystore_describe_group <- function(IdentityStoreId, GroupId) {
 #' @description
 #' Retrieves membership metadata and attributes from `MembershipId` in an identity store.
 #'
-#' See [https://paws-r.github.io/docs/identitystore/describe_group_membership.html](https://paws-r.github.io/docs/identitystore/describe_group_membership.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/identitystore_describe_group_membership/](https://www.paws-r-sdk.com/docs/identitystore_describe_group_membership/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
 #' @param MembershipId &#91;required&#93; The identifier for a `GroupMembership` in an identity store.
@@ -287,7 +287,7 @@ identitystore_describe_group_membership <- function(IdentityStoreId, MembershipI
 #' @description
 #' Retrieves the user metadata and attributes from the `UserId` in an identity store.
 #'
-#' See [https://paws-r.github.io/docs/identitystore/describe_user.html](https://paws-r.github.io/docs/identitystore/describe_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/identitystore_describe_user/](https://www.paws-r-sdk.com/docs/identitystore_describe_user/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store, such as
 #' `d-1234567890`. In this example, `d-` is a fixed prefix, and
@@ -321,7 +321,7 @@ identitystore_describe_user <- function(IdentityStoreId, UserId) {
 #' @description
 #' Retrieves `GroupId` in an identity store.
 #'
-#' See [https://paws-r.github.io/docs/identitystore/get_group_id.html](https://paws-r.github.io/docs/identitystore/get_group_id.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/identitystore_get_group_id/](https://www.paws-r-sdk.com/docs/identitystore_get_group_id/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
 #' @param AlternateIdentifier &#91;required&#93; A unique identifier for a user or group that is not the primary
@@ -355,7 +355,7 @@ identitystore_get_group_id <- function(IdentityStoreId, AlternateIdentifier) {
 #' @description
 #' Retrieves the `MembershipId` in an identity store.
 #'
-#' See [https://paws-r.github.io/docs/identitystore/get_group_membership_id.html](https://paws-r.github.io/docs/identitystore/get_group_membership_id.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/identitystore_get_group_membership_id/](https://www.paws-r-sdk.com/docs/identitystore_get_group_membership_id/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
 #' @param GroupId &#91;required&#93; The identifier for a group in the identity store.
@@ -388,7 +388,7 @@ identitystore_get_group_membership_id <- function(IdentityStoreId, GroupId, Memb
 #' @description
 #' Retrieves the `UserId` in an identity store.
 #'
-#' See [https://paws-r.github.io/docs/identitystore/get_user_id.html](https://paws-r.github.io/docs/identitystore/get_user_id.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/identitystore_get_user_id/](https://www.paws-r-sdk.com/docs/identitystore_get_user_id/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
 #' @param AlternateIdentifier &#91;required&#93; A unique identifier for a user or group that is not the primary
@@ -423,7 +423,7 @@ identitystore_get_user_id <- function(IdentityStoreId, AlternateIdentifier) {
 #' @description
 #' Checks the user's membership in all requested groups and returns if the member exists in all queried groups.
 #'
-#' See [https://paws-r.github.io/docs/identitystore/is_member_in_groups.html](https://paws-r.github.io/docs/identitystore/is_member_in_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/identitystore_is_member_in_groups/](https://www.paws-r-sdk.com/docs/identitystore_is_member_in_groups/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
 #' @param MemberId &#91;required&#93; An object containing the identifier of a group member.
@@ -456,7 +456,7 @@ identitystore_is_member_in_groups <- function(IdentityStoreId, MemberId, GroupId
 #' @description
 #' For the specified group in the specified identity store, returns the list of all `GroupMembership` objects and returns results in paginated form.
 #'
-#' See [https://paws-r.github.io/docs/identitystore/list_group_memberships.html](https://paws-r.github.io/docs/identitystore/list_group_memberships.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/identitystore_list_group_memberships/](https://www.paws-r-sdk.com/docs/identitystore_list_group_memberships/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
 #' @param GroupId &#91;required&#93; The identifier for a group in the identity store.
@@ -499,7 +499,7 @@ identitystore_list_group_memberships <- function(IdentityStoreId, GroupId, MaxRe
 #' @description
 #' For the specified member in the specified identity store, returns the list of all `GroupMembership` objects and returns results in paginated form.
 #'
-#' See [https://paws-r.github.io/docs/identitystore/list_group_memberships_for_member.html](https://paws-r.github.io/docs/identitystore/list_group_memberships_for_member.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/identitystore_list_group_memberships_for_member/](https://www.paws-r-sdk.com/docs/identitystore_list_group_memberships_for_member/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
 #' @param MemberId &#91;required&#93; An object that contains the identifier of a group member. Setting the
@@ -543,7 +543,7 @@ identitystore_list_group_memberships_for_member <- function(IdentityStoreId, Mem
 #' @description
 #' Lists all groups in the identity store. Returns a paginated list of complete `Group` objects. Filtering for a `Group` by the `DisplayName` attribute is deprecated. Instead, use the [`get_group_id`][identitystore_get_group_id] API action.
 #'
-#' See [https://paws-r.github.io/docs/identitystore/list_groups.html](https://paws-r.github.io/docs/identitystore/list_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/identitystore_list_groups/](https://www.paws-r-sdk.com/docs/identitystore_list_groups/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store, such as
 #' `d-1234567890`. In this example, `d-` is a fixed prefix, and
@@ -590,7 +590,7 @@ identitystore_list_groups <- function(IdentityStoreId, MaxResults = NULL, NextTo
 #' @description
 #' Lists all users in the identity store. Returns a paginated list of complete `User` objects. Filtering for a `User` by the `UserName` attribute is deprecated. Instead, use the [`get_user_id`][identitystore_get_user_id] API action.
 #'
-#' See [https://paws-r.github.io/docs/identitystore/list_users.html](https://paws-r.github.io/docs/identitystore/list_users.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/identitystore_list_users/](https://www.paws-r-sdk.com/docs/identitystore_list_users/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store, such as
 #' `d-1234567890`. In this example, `d-` is a fixed prefix, and
@@ -638,7 +638,7 @@ identitystore_list_users <- function(IdentityStoreId, MaxResults = NULL, NextTok
 #' @description
 #' For the specified group in the specified identity store, updates the group metadata and attributes.
 #'
-#' See [https://paws-r.github.io/docs/identitystore/update_group.html](https://paws-r.github.io/docs/identitystore/update_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/identitystore_update_group/](https://www.paws-r-sdk.com/docs/identitystore_update_group/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
 #' @param GroupId &#91;required&#93; The identifier for a group in the identity store.
@@ -671,7 +671,7 @@ identitystore_update_group <- function(IdentityStoreId, GroupId, Operations) {
 #' @description
 #' For the specified user in the specified identity store, updates the user metadata and attributes.
 #'
-#' See [https://paws-r.github.io/docs/identitystore/update_user.html](https://paws-r.github.io/docs/identitystore/update_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/identitystore_update_user/](https://www.paws-r-sdk.com/docs/identitystore_update_user/) for full documentation.
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
 #' @param UserId &#91;required&#93; The identifier for a user in the identity store.

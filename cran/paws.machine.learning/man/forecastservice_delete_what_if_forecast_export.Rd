@@ -14,6 +14,6 @@ want to delete.}
 \description{
 Deletes a what-if forecast export created using the \code{\link[=forecastservice_create_what_if_forecast_export]{create_what_if_forecast_export}} operation. You can delete only what-if forecast exports that have a status of \code{ACTIVE} or \code{CREATE_FAILED}. To get the status, use the \code{\link[=forecastservice_describe_what_if_forecast_export]{describe_what_if_forecast_export}} operation.
 
-See \url{https://paws-r.github.io/docs/forecastservice/delete_what_if_forecast_export.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_delete_what_if_forecast_export/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ can have a maximum of 1,000 vertices.}
 \description{
 Stores a geofence geometry in a given geofence collection, or updates the geometry of an existing geofence if a geofence ID is included in the request.
 
-See \url{https://paws-r.github.io/docs/locationservice/put_geofence.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_put_geofence/} for full documentation.
 }
 \keyword{internal}

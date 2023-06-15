@@ -30,6 +30,6 @@ accepted and never return \code{InvalidSequenceTokenException} or
 \description{
 Uploads a batch of log events to the specified log stream.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/put_log_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_log_events/} for full documentation.
 }
 \keyword{internal}

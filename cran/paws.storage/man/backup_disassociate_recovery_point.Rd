@@ -17,6 +17,6 @@ recovery point.}
 \description{
 Deletes the specified continuous backup recovery point from Backup and releases control of that continuous backup to the source service, such as Amazon RDS. The source service will continue to create and retain continuous backups using the lifecycle that you specified in your original backup plan.
 
-See \url{https://paws-r.github.io/docs/backup/disassociate_recovery_point.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_disassociate_recovery_point/} for full documentation.
 }
 \keyword{internal}

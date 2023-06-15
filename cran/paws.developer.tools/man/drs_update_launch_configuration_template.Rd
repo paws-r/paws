@@ -7,6 +7,7 @@
 drs_update_launch_configuration_template(
   copyPrivateIp = NULL,
   copyTags = NULL,
+  exportBucketArn = NULL,
   launchConfigurationTemplateID,
   launchDisposition = NULL,
   licensing = NULL,
@@ -17,6 +18,8 @@ drs_update_launch_configuration_template(
 \item{copyPrivateIp}{Copy private IP.}
 
 \item{copyTags}{Copy tags.}
+
+\item{exportBucketArn}{S3 bucket ARN to export Source Network templates.}
 
 \item{launchConfigurationTemplateID}{[required] Launch Configuration Template ID.}
 
@@ -29,6 +32,6 @@ drs_update_launch_configuration_template(
 \description{
 Updates an existing Launch Configuration Template by ID.
 
-See \url{https://paws-r.github.io/docs/drs/update_launch_configuration_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_update_launch_configuration_template/} for full documentation.
 }
 \keyword{internal}

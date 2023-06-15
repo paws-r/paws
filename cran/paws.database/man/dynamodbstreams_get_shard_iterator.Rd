@@ -40,6 +40,6 @@ reading.}
 \description{
 Returns a shard iterator. A shard iterator provides information about how to retrieve the stream records from within a shard. Use the shard iterator in a subsequent \code{\link[=dynamodbstreams_get_records]{get_records}} request to read the stream records from the shard.
 
-See \url{https://paws-r.github.io/docs/dynamodbstreams/get_shard_iterator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodbstreams_get_shard_iterator/} for full documentation.
 }
 \keyword{internal}

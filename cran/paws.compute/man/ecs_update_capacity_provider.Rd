@@ -15,6 +15,6 @@ group capacity provider.}
 \description{
 Modifies the parameters for a capacity provider.
 
-See \url{https://paws-r.github.io/docs/ecs/update_capacity_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_update_capacity_provider/} for full documentation.
 }
 \keyword{internal}

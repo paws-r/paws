@@ -14,6 +14,6 @@ guardduty_get_ip_set(DetectorId, IpSetId)
 \description{
 Retrieves the IPSet specified by the \code{ipSetId}.
 
-See \url{https://paws-r.github.io/docs/guardduty/get_ip_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_get_ip_set/} for full documentation.
 }
 \keyword{internal}

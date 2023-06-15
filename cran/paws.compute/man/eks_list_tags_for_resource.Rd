@@ -14,6 +14,6 @@ clusters and managed node groups.}
 \description{
 List the tags for an Amazon EKS resource.
 
-See \url{https://paws-r.github.io/docs/eks/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

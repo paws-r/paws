@@ -14,6 +14,6 @@ characters and can contain the following characters: a-z, A-Z, 0-9,
 \description{
 The \code{\link[=simpledb_create_domain]{create_domain}} operation creates a new domain. The domain name should be unique among the domains associated with the Access Key ID provided in the request. The \code{\link[=simpledb_create_domain]{create_domain}} operation may take 10 or more seconds to complete.
 
-See \url{https://paws-r.github.io/docs/simpledb/create_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/simpledb_create_domain/} for full documentation.
 }
 \keyword{internal}

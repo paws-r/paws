@@ -16,6 +16,6 @@ specified VPC.}
 \description{
 Removes the association between a specified Resolver rule and a specified VPC.
 
-See \url{https://paws-r.github.io/docs/route53resolver/disassociate_resolver_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_disassociate_resolver_rule/} for full documentation.
 }
 \keyword{internal}

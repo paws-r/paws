@@ -38,6 +38,6 @@ Do not attempt to construct this value. Use only the value of
 \description{
 Returns all tags on the specified KMS key.
 
-See \url{https://paws-r.github.io/docs/kms/list_resource_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_list_resource_tags/} for full documentation.
 }
 \keyword{internal}

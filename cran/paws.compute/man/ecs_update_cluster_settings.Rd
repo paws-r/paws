@@ -25,6 +25,6 @@ before you can re-create it.}
 \description{
 Modifies the settings to use for a cluster.
 
-See \url{https://paws-r.github.io/docs/ecs/update_cluster_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_update_cluster_settings/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ without adding this parameter to your API request.}
 \description{
 Stops a specific Amazon Lightsail instance that is currently running.
 
-See \url{https://paws-r.github.io/docs/lightsail/stop_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_stop_instance/} for full documentation.
 }
 \keyword{internal}

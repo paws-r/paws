@@ -26,6 +26,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Modifies the start time for a scheduled Amazon EC2 instance event.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_instance_event_start_time.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_instance_event_start_time/} for full documentation.
 }
 \keyword{internal}

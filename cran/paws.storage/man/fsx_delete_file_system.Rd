@@ -30,6 +30,6 @@ SDK.}
 \description{
 Deletes a file system. After deletion, the file system no longer exists, and its data is gone. Any existing automatic backups and snapshots are also deleted.
 
-See \url{https://paws-r.github.io/docs/fsx/delete_file_system.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_delete_file_system/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ associate with a resource policy.}
 \description{
 Attaches a resource-based policy to an Entity. Examples of an entity include: \code{AmiProduct} and \code{ContainerProduct}.
 
-See \url{https://paws-r.github.io/docs/marketplacecatalog/put_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/marketplacecatalog_put_resource_policy/} for full documentation.
 }
 \keyword{internal}

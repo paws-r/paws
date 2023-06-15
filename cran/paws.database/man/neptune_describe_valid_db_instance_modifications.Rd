@@ -13,6 +13,6 @@ neptune_describe_valid_db_instance_modifications(DBInstanceIdentifier)
 \description{
 You can call \code{\link[=neptune_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications}} to learn what modifications you can make to your DB instance. You can use this information when you call \code{\link[=neptune_modify_db_instance]{modify_db_instance}}.
 
-See \url{https://paws-r.github.io/docs/neptune/describe_valid_db_instance_modifications.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_describe_valid_db_instance_modifications/} for full documentation.
 }
 \keyword{internal}

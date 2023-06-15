@@ -35,6 +35,6 @@ retrying the request.}
 \description{
 Returns exchange status details and associated metadata for a reserved-node exchange. Statuses include such values as in progress and requested.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_reserved_node_exchange_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_reserved_node_exchange_status/} for full documentation.
 }
 \keyword{internal}

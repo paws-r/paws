@@ -14,6 +14,6 @@ apigatewayv2_get_integration(ApiId, IntegrationId)
 \description{
 Gets an Integration.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/get_integration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_get_integration/} for full documentation.
 }
 \keyword{internal}

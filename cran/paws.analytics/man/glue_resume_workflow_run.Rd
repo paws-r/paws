@@ -18,6 +18,6 @@ are to be restarted must have a run attempt in the original run.}
 \description{
 Restarts selected nodes of a previous partially completed workflow run and resumes the workflow run. The selected nodes and all nodes that are downstream from the selected nodes are run.
 
-See \url{https://paws-r.github.io/docs/glue/resume_workflow_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_resume_workflow_run/} for full documentation.
 }
 \keyword{internal}

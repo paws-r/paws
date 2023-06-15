@@ -30,6 +30,6 @@ Redshift Serverless.}
 \description{
 Returns an array of \code{EndpointAccess} objects and relevant information.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/list_endpoint_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_list_endpoint_access/} for full documentation.
 }
 \keyword{internal}

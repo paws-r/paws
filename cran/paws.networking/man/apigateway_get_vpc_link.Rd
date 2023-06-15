@@ -13,6 +13,6 @@ this VpcLink.}
 \description{
 Gets a specified VPC link under the caller's account in a region.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_vpc_link.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_vpc_link/} for full documentation.
 }
 \keyword{internal}

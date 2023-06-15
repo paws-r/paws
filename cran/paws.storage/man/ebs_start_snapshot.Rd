@@ -96,6 +96,6 @@ If no value is specified, the timeout defaults to \code{60} minutes.}
 \description{
 Creates a new Amazon EBS snapshot. The new snapshot enters the \code{pending} state after the request completes.
 
-See \url{https://paws-r.github.io/docs/ebs/start_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ebs_start_snapshot/} for full documentation.
 }
 \keyword{internal}

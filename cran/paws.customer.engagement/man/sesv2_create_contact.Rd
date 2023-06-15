@@ -28,6 +28,6 @@ contact list topics.}
 \description{
 Creates a contact, which is an end-user who is receiving the email, and adds them to a contact list.
 
-See \url{https://paws-r.github.io/docs/sesv2/create_contact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_create_contact/} for full documentation.
 }
 \keyword{internal}

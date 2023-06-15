@@ -15,6 +15,6 @@ elb_describe_instance_health(LoadBalancerName, Instances = NULL)
 \description{
 Describes the state of the specified instances with respect to the specified load balancer. If no instances are specified, the call describes the state of all instances that are currently registered with the load balancer. If instances are specified, their state is returned even if they are no longer registered with the load balancer. The state of terminated instances is not returned.
 
-See \url{https://paws-r.github.io/docs/elb/describe_instance_health.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_describe_instance_health/} for full documentation.
 }
 \keyword{internal}

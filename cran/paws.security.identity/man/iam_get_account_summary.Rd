@@ -10,6 +10,6 @@ iam_get_account_summary()
 \description{
 Retrieves information about IAM entity usage and IAM quotas in the Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/iam/get_account_summary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_get_account_summary/} for full documentation.
 }
 \keyword{internal}

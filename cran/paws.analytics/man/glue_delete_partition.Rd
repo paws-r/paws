@@ -24,6 +24,6 @@ none is provided, the Amazon Web Services account ID is used by default.}
 \description{
 Deletes a specified partition.
 
-See \url{https://paws-r.github.io/docs/glue/delete_partition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_delete_partition/} for full documentation.
 }
 \keyword{internal}

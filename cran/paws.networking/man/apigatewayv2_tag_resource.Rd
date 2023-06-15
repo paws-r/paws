@@ -15,6 +15,6 @@ resource.}
 \description{
 Creates a new Tag resource to represent a tag.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_tag_resource/} for full documentation.
 }
 \keyword{internal}

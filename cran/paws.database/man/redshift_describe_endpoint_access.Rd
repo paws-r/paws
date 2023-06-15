@@ -36,6 +36,6 @@ parameter.}
 \description{
 Describes a Redshift-managed VPC endpoint.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_endpoint_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_endpoint_access/} for full documentation.
 }
 \keyword{internal}

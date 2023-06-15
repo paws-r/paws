@@ -15,6 +15,6 @@ wafv2_get_mobile_sdk_release(Platform, ReleaseVersion)
 \description{
 Retrieves information for the specified mobile SDK release, including release notes and tags.
 
-See \url{https://paws-r.github.io/docs/wafv2/get_mobile_sdk_release.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_get_mobile_sdk_release/} for full documentation.
 }
 \keyword{internal}

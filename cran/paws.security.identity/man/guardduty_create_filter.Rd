@@ -110,6 +110,6 @@ milliseconds.
 \description{
 Creates a filter using the specified finding criteria. The maximum number of saved filters per Amazon Web Services account per Region is 100. For more information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_limits.html}{Quotas for GuardDuty}.
 
-See \url{https://paws-r.github.io/docs/guardduty/create_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_create_filter/} for full documentation.
 }
 \keyword{internal}

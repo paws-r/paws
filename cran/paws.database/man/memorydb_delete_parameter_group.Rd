@@ -12,6 +12,6 @@ memorydb_delete_parameter_group(ParameterGroupName)
 \description{
 Deletes the specified parameter group. You cannot delete a parameter group if it is associated with any clusters. You cannot delete the default parameter groups in your account.
 
-See \url{https://paws-r.github.io/docs/memorydb/delete_parameter_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_delete_parameter_group/} for full documentation.
 }
 \keyword{internal}

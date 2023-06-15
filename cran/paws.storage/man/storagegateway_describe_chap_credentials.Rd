@@ -16,6 +16,6 @@ operation to return to retrieve the TargetARN for specified VolumeARN.}
 \description{
 Returns an array of Challenge-Handshake Authentication Protocol (CHAP) credentials information for a specified iSCSI target, one for each target-initiator pair. This operation is supported in the volume and tape gateway types.
 
-See \url{https://paws-r.github.io/docs/storagegateway/describe_chap_credentials.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_describe_chap_credentials/} for full documentation.
 }
 \keyword{internal}

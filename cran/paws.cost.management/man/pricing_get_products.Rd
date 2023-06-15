@@ -30,6 +30,6 @@ want to retrieve.}
 \description{
 Returns a list of all products that match the filter criteria.
 
-See \url{https://paws-r.github.io/docs/pricing/get_products.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pricing_get_products/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ remove, separated by an ampersand (&).}
 \description{
 Removes one or more tags (keys and values) from an application, campaign, message template, or segment.
 
-See \url{https://paws-r.github.io/docs/pinpoint/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_untag_resource/} for full documentation.
 }
 \keyword{internal}

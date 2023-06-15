@@ -38,6 +38,6 @@ shared through account-to-account sharing.
 \description{
 Lists all imported portfolios for which account-to-account shares were accepted by this account. By specifying the \code{PortfolioShareType}, you can list portfolios for which organizational shares were accepted by this account.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/list_accepted_portfolio_shares.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_list_accepted_portfolio_shares/} for full documentation.
 }
 \keyword{internal}

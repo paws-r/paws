@@ -16,6 +16,6 @@ timeline event.}
 \description{
 Retrieves a timeline event based on its ID and incident record.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/get_timeline_event.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_get_timeline_event/} for full documentation.
 }
 \keyword{internal}

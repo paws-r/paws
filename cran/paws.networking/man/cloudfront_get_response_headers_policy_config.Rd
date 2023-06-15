@@ -20,6 +20,6 @@ identifier using
 \description{
 Gets a response headers policy configuration.
 
-See \url{https://paws-r.github.io/docs/cloudfront/get_response_headers_policy_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_get_response_headers_policy_config/} for full documentation.
 }
 \keyword{internal}

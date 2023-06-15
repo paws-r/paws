@@ -14,6 +14,6 @@ cognitoidentityprovider_get_group(GroupName, UserPoolId)
 \description{
 Gets a group.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/get_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_group/} for full documentation.
 }
 \keyword{internal}

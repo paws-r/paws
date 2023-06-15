@@ -32,6 +32,6 @@ workflow runs.}
 \description{
 Creates a new workflow.
 
-See \url{https://paws-r.github.io/docs/glue/create_workflow.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_create_workflow/} for full documentation.
 }
 \keyword{internal}

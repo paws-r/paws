@@ -73,6 +73,6 @@ The default value is \code{ALL}.}
 \description{
 Lists the resources that you added to a resource share or the resources that are shared with you.
 
-See \url{https://paws-r.github.io/docs/ram/list_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_list_resources/} for full documentation.
 }
 \keyword{internal}

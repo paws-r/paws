@@ -29,6 +29,6 @@ from a previous call.)}
 \description{
 Lists all related-item resources associated with a Systems Manager OpsCenter OpsItem. OpsCenter is a capability of Amazon Web Services Systems Manager.
 
-See \url{https://paws-r.github.io/docs/ssm/list_ops_item_related_items.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_list_ops_item_related_items/} for full documentation.
 }
 \keyword{internal}

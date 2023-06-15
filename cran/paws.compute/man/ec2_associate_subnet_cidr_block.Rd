@@ -15,6 +15,6 @@ length.}
 \description{
 Associates a CIDR block with your subnet. You can only associate a single IPv6 CIDR block with your subnet. An IPv6 CIDR block must have a prefix length of /64.
 
-See \url{https://paws-r.github.io/docs/ec2/associate_subnet_cidr_block.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_associate_subnet_cidr_block/} for full documentation.
 }
 \keyword{internal}

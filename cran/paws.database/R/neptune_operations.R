@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Associates an Identity and Access Management (IAM) role with an Neptune DB cluster.
 #'
-#' See [https://paws-r.github.io/docs/neptune/add_role_to_db_cluster.html](https://paws-r.github.io/docs/neptune/add_role_to_db_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_add_role_to_db_cluster/](https://www.paws-r-sdk.com/docs/neptune_add_role_to_db_cluster/) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The name of the DB cluster to associate the IAM role with.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to associate with the
@@ -44,7 +44,7 @@ neptune_add_role_to_db_cluster <- function(DBClusterIdentifier, RoleArn, Feature
 #' @description
 #' Adds a source identifier to an existing event notification subscription.
 #'
-#' See [https://paws-r.github.io/docs/neptune/add_source_identifier_to_subscription.html](https://paws-r.github.io/docs/neptune/add_source_identifier_to_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_add_source_identifier_to_subscription/](https://www.paws-r-sdk.com/docs/neptune_add_source_identifier_to_subscription/) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the event notification subscription you want to add a source
 #' identifier to.
@@ -89,7 +89,7 @@ neptune_add_source_identifier_to_subscription <- function(SubscriptionName, Sour
 #' @description
 #' Adds metadata tags to an Amazon Neptune resource. These tags can also be used with cost allocation reporting to track cost associated with Amazon Neptune resources, or used in a Condition statement in an IAM policy for Amazon Neptune.
 #'
-#' See [https://paws-r.github.io/docs/neptune/add_tags_to_resource.html](https://paws-r.github.io/docs/neptune/add_tags_to_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_add_tags_to_resource/](https://www.paws-r-sdk.com/docs/neptune_add_tags_to_resource/) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The Amazon Neptune resource that the tags are added to. This value is an
 #' Amazon Resource Name (ARN). For information about creating an ARN, see
@@ -123,7 +123,7 @@ neptune_add_tags_to_resource <- function(ResourceName, Tags) {
 #' @description
 #' Applies a pending maintenance action to a resource (for example, to a DB instance).
 #'
-#' See [https://paws-r.github.io/docs/neptune/apply_pending_maintenance_action.html](https://paws-r.github.io/docs/neptune/apply_pending_maintenance_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_apply_pending_maintenance_action/](https://www.paws-r-sdk.com/docs/neptune_apply_pending_maintenance_action/) for full documentation.
 #'
 #' @param ResourceIdentifier &#91;required&#93; The Amazon Resource Name (ARN) of the resource that the pending
 #' maintenance action applies to. For information about creating an ARN,
@@ -170,7 +170,7 @@ neptune_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAc
 #' @description
 #' Copies the specified DB cluster parameter group.
 #'
-#' See [https://paws-r.github.io/docs/neptune/copy_db_cluster_parameter_group.html](https://paws-r.github.io/docs/neptune/copy_db_cluster_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_copy_db_cluster_parameter_group/](https://www.paws-r-sdk.com/docs/neptune_copy_db_cluster_parameter_group/) for full documentation.
 #'
 #' @param SourceDBClusterParameterGroupIdentifier &#91;required&#93; The identifier or Amazon Resource Name (ARN) for the source DB cluster
 #' parameter group. For information about creating an ARN, see
@@ -230,7 +230,7 @@ neptune_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGrou
 #' @description
 #' Copies a snapshot of a DB cluster.
 #'
-#' See [https://paws-r.github.io/docs/neptune/copy_db_cluster_snapshot.html](https://paws-r.github.io/docs/neptune/copy_db_cluster_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_copy_db_cluster_snapshot/](https://www.paws-r-sdk.com/docs/neptune_copy_db_cluster_snapshot/) for full documentation.
 #'
 #' @param SourceDBClusterSnapshotIdentifier &#91;required&#93; The identifier of the DB cluster snapshot to copy. This parameter is not
 #' case-sensitive.
@@ -304,7 +304,7 @@ neptune_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, 
 #' @description
 #' Copies the specified DB parameter group.
 #'
-#' See [https://paws-r.github.io/docs/neptune/copy_db_parameter_group.html](https://paws-r.github.io/docs/neptune/copy_db_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_copy_db_parameter_group/](https://www.paws-r-sdk.com/docs/neptune_copy_db_parameter_group/) for full documentation.
 #'
 #' @param SourceDBParameterGroupIdentifier &#91;required&#93; The identifier or ARN for the source DB parameter group. For information
 #' about creating an ARN, see [Constructing an Amazon Resource Name
@@ -357,7 +357,7 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' @description
 #' Creates a new Amazon Neptune DB cluster.
 #'
-#' See [https://paws-r.github.io/docs/neptune/create_db_cluster.html](https://paws-r.github.io/docs/neptune/create_db_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_create_db_cluster/](https://www.paws-r-sdk.com/docs/neptune_create_db_cluster/) for full documentation.
 #'
 #' @param AvailabilityZones A list of EC2 Availability Zones that instances in the DB cluster can be
 #' created in.
@@ -520,7 +520,7 @@ neptune_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionP
 #' @description
 #' Creates a new custom endpoint and associates it with an Amazon Neptune DB cluster.
 #'
-#' See [https://paws-r.github.io/docs/neptune/create_db_cluster_endpoint.html](https://paws-r.github.io/docs/neptune/create_db_cluster_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_create_db_cluster_endpoint/](https://www.paws-r-sdk.com/docs/neptune_create_db_cluster_endpoint/) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier of the DB cluster associated with the
 #' endpoint. This parameter is stored as a lowercase string.
@@ -559,7 +559,7 @@ neptune_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEnd
 #' @description
 #' Creates a new DB cluster parameter group.
 #'
-#' See [https://paws-r.github.io/docs/neptune/create_db_cluster_parameter_group.html](https://paws-r.github.io/docs/neptune/create_db_cluster_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_create_db_cluster_parameter_group/](https://www.paws-r-sdk.com/docs/neptune_create_db_cluster_parameter_group/) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the DB cluster parameter group.
 #' 
@@ -601,7 +601,7 @@ neptune_create_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
 #' @description
 #' Creates a snapshot of a DB cluster.
 #'
-#' See [https://paws-r.github.io/docs/neptune/create_db_cluster_snapshot.html](https://paws-r.github.io/docs/neptune/create_db_cluster_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_create_db_cluster_snapshot/](https://www.paws-r-sdk.com/docs/neptune_create_db_cluster_snapshot/) for full documentation.
 #'
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier of the DB cluster snapshot. This parameter is stored as a
 #' lowercase string.
@@ -650,7 +650,7 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 #' @description
 #' Creates a new DB instance.
 #'
-#' See [https://paws-r.github.io/docs/neptune/create_db_instance.html](https://paws-r.github.io/docs/neptune/create_db_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_create_db_instance/](https://www.paws-r-sdk.com/docs/neptune_create_db_instance/) for full documentation.
 #'
 #' @param DBName Not supported.
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier. This parameter is stored as a lowercase
@@ -865,7 +865,7 @@ neptune_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allo
 #' @description
 #' Creates a new DB parameter group.
 #'
-#' See [https://paws-r.github.io/docs/neptune/create_db_parameter_group.html](https://paws-r.github.io/docs/neptune/create_db_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_create_db_parameter_group/](https://www.paws-r-sdk.com/docs/neptune_create_db_parameter_group/) for full documentation.
 #'
 #' @param DBParameterGroupName &#91;required&#93; The name of the DB parameter group.
 #' 
@@ -910,7 +910,7 @@ neptune_create_db_parameter_group <- function(DBParameterGroupName, DBParameterG
 #' @description
 #' Creates a new DB subnet group. DB subnet groups must contain at least one subnet in at least two AZs in the Amazon Region.
 #'
-#' See [https://paws-r.github.io/docs/neptune/create_db_subnet_group.html](https://paws-r.github.io/docs/neptune/create_db_subnet_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_create_db_subnet_group/](https://www.paws-r-sdk.com/docs/neptune_create_db_subnet_group/) for full documentation.
 #'
 #' @param DBSubnetGroupName &#91;required&#93; The name for the DB subnet group. This value is stored as a lowercase
 #' string.
@@ -948,7 +948,7 @@ neptune_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescr
 #' @description
 #' Creates an event notification subscription. This action requires a topic ARN (Amazon Resource Name) created by either the Neptune console, the SNS console, or the SNS API. To obtain an ARN with SNS, you must create a topic in Amazon SNS and subscribe to the topic. The ARN is displayed in the SNS console.
 #'
-#' See [https://paws-r.github.io/docs/neptune/create_event_subscription.html](https://paws-r.github.io/docs/neptune/create_event_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_create_event_subscription/](https://www.paws-r-sdk.com/docs/neptune_create_event_subscription/) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the subscription.
 #' 
@@ -1016,7 +1016,7 @@ neptune_create_event_subscription <- function(SubscriptionName, SnsTopicArn, Sou
 #' @description
 #' Creates a Neptune global database spread across multiple Amazon Regions. The global database contains a single primary cluster with read-write capability, and read-only secondary clusters that receive data from the primary cluster through high-speed replication performed by the Neptune storage subsystem.
 #'
-#' See [https://paws-r.github.io/docs/neptune/create_global_cluster.html](https://paws-r.github.io/docs/neptune/create_global_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_create_global_cluster/](https://www.paws-r-sdk.com/docs/neptune_create_global_cluster/) for full documentation.
 #'
 #' @param GlobalClusterIdentifier &#91;required&#93; The cluster identifier of the new global database cluster.
 #' @param SourceDBClusterIdentifier (*Optional*) The Amazon Resource Name (ARN) of an existing Neptune DB
@@ -1056,7 +1056,7 @@ neptune_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBClust
 #' @description
 #' The DeleteDBCluster action deletes a previously provisioned DB cluster. When you delete a DB cluster, all automated backups for that DB cluster are deleted and can't be recovered. Manual DB cluster snapshots of the specified DB cluster are not deleted.
 #'
-#' See [https://paws-r.github.io/docs/neptune/delete_db_cluster.html](https://paws-r.github.io/docs/neptune/delete_db_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_delete_db_cluster/](https://www.paws-r-sdk.com/docs/neptune_delete_db_cluster/) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier for the DB cluster to be deleted. This
 #' parameter isn't case-sensitive.
@@ -1113,7 +1113,7 @@ neptune_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = N
 #' @description
 #' Deletes a custom endpoint and removes it from an Amazon Neptune DB cluster.
 #'
-#' See [https://paws-r.github.io/docs/neptune/delete_db_cluster_endpoint.html](https://paws-r.github.io/docs/neptune/delete_db_cluster_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_delete_db_cluster_endpoint/](https://www.paws-r-sdk.com/docs/neptune_delete_db_cluster_endpoint/) for full documentation.
 #'
 #' @param DBClusterEndpointIdentifier &#91;required&#93; The identifier associated with the custom endpoint. This parameter is
 #' stored as a lowercase string.
@@ -1143,7 +1143,7 @@ neptune_delete_db_cluster_endpoint <- function(DBClusterEndpointIdentifier) {
 #' @description
 #' Deletes a specified DB cluster parameter group. The DB cluster parameter group to be deleted can't be associated with any DB clusters.
 #'
-#' See [https://paws-r.github.io/docs/neptune/delete_db_cluster_parameter_group.html](https://paws-r.github.io/docs/neptune/delete_db_cluster_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_delete_db_cluster_parameter_group/](https://www.paws-r-sdk.com/docs/neptune_delete_db_cluster_parameter_group/) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the DB cluster parameter group.
 #' 
@@ -1180,7 +1180,7 @@ neptune_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
 #' @description
 #' Deletes a DB cluster snapshot. If the snapshot is being copied, the copy operation is terminated.
 #'
-#' See [https://paws-r.github.io/docs/neptune/delete_db_cluster_snapshot.html](https://paws-r.github.io/docs/neptune/delete_db_cluster_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_delete_db_cluster_snapshot/](https://www.paws-r-sdk.com/docs/neptune_delete_db_cluster_snapshot/) for full documentation.
 #'
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier of the DB cluster snapshot to delete.
 #' 
@@ -1212,7 +1212,7 @@ neptune_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' @description
 #' The DeleteDBInstance action deletes a previously provisioned DB instance. When you delete a DB instance, all automated backups for that instance are deleted and can't be recovered. Manual DB snapshots of the DB instance to be deleted by [`delete_db_instance`][neptune_delete_db_instance] are not deleted.
 #'
-#' See [https://paws-r.github.io/docs/neptune/delete_db_instance.html](https://paws-r.github.io/docs/neptune/delete_db_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_delete_db_instance/](https://www.paws-r-sdk.com/docs/neptune_delete_db_instance/) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier for the DB instance to be deleted. This
 #' parameter isn't case-sensitive.
@@ -1276,7 +1276,7 @@ neptune_delete_db_instance <- function(DBInstanceIdentifier, SkipFinalSnapshot =
 #' @description
 #' Deletes a specified DBParameterGroup. The DBParameterGroup to be deleted can't be associated with any DB instances.
 #'
-#' See [https://paws-r.github.io/docs/neptune/delete_db_parameter_group.html](https://paws-r.github.io/docs/neptune/delete_db_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_delete_db_parameter_group/](https://www.paws-r-sdk.com/docs/neptune_delete_db_parameter_group/) for full documentation.
 #'
 #' @param DBParameterGroupName &#91;required&#93; The name of the DB parameter group.
 #' 
@@ -1313,7 +1313,7 @@ neptune_delete_db_parameter_group <- function(DBParameterGroupName) {
 #' @description
 #' Deletes a DB subnet group.
 #'
-#' See [https://paws-r.github.io/docs/neptune/delete_db_subnet_group.html](https://paws-r.github.io/docs/neptune/delete_db_subnet_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_delete_db_subnet_group/](https://www.paws-r-sdk.com/docs/neptune_delete_db_subnet_group/) for full documentation.
 #'
 #' @param DBSubnetGroupName &#91;required&#93; The name of the database subnet group to delete.
 #' 
@@ -1351,7 +1351,7 @@ neptune_delete_db_subnet_group <- function(DBSubnetGroupName) {
 #' @description
 #' Deletes an event notification subscription.
 #'
-#' See [https://paws-r.github.io/docs/neptune/delete_event_subscription.html](https://paws-r.github.io/docs/neptune/delete_event_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_delete_event_subscription/](https://www.paws-r-sdk.com/docs/neptune_delete_event_subscription/) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the event notification subscription you want to delete.
 #'
@@ -1380,7 +1380,7 @@ neptune_delete_event_subscription <- function(SubscriptionName) {
 #' @description
 #' Deletes a global database. The primary and all secondary clusters must already be detached or deleted first.
 #'
-#' See [https://paws-r.github.io/docs/neptune/delete_global_cluster.html](https://paws-r.github.io/docs/neptune/delete_global_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_delete_global_cluster/](https://www.paws-r-sdk.com/docs/neptune_delete_global_cluster/) for full documentation.
 #'
 #' @param GlobalClusterIdentifier &#91;required&#93; The cluster identifier of the global database cluster being deleted.
 #'
@@ -1409,7 +1409,7 @@ neptune_delete_global_cluster <- function(GlobalClusterIdentifier) {
 #' @description
 #' Returns information about endpoints for an Amazon Neptune DB cluster.
 #'
-#' See [https://paws-r.github.io/docs/neptune/describe_db_cluster_endpoints.html](https://paws-r.github.io/docs/neptune/describe_db_cluster_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_describe_db_cluster_endpoints/](https://www.paws-r-sdk.com/docs/neptune_describe_db_cluster_endpoints/) for full documentation.
 #'
 #' @param DBClusterIdentifier The DB cluster identifier of the DB cluster associated with the
 #' endpoint. This parameter is stored as a lowercase string.
@@ -1464,7 +1464,7 @@ neptune_describe_db_cluster_endpoints <- function(DBClusterIdentifier = NULL, DB
 #' @description
 #' Returns a list of `DBClusterParameterGroup` descriptions. If a `DBClusterParameterGroupName` parameter is specified, the list will contain only the description of the specified DB cluster parameter group.
 #'
-#' See [https://paws-r.github.io/docs/neptune/describe_db_cluster_parameter_groups.html](https://paws-r.github.io/docs/neptune/describe_db_cluster_parameter_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_describe_db_cluster_parameter_groups/](https://www.paws-r-sdk.com/docs/neptune_describe_db_cluster_parameter_groups/) for full documentation.
 #'
 #' @param DBClusterParameterGroupName The name of a specific DB cluster parameter group to return details for.
 #' 
@@ -1512,7 +1512,7 @@ neptune_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroup
 #' @description
 #' Returns the detailed parameter list for a particular DB cluster parameter group.
 #'
-#' See [https://paws-r.github.io/docs/neptune/describe_db_cluster_parameters.html](https://paws-r.github.io/docs/neptune/describe_db_cluster_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_describe_db_cluster_parameters/](https://www.paws-r-sdk.com/docs/neptune_describe_db_cluster_parameters/) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of a specific DB cluster parameter group to return parameter
 #' details for.
@@ -1563,7 +1563,7 @@ neptune_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, 
 #' @description
 #' Returns a list of DB cluster snapshot attribute names and values for a manual DB cluster snapshot.
 #'
-#' See [https://paws-r.github.io/docs/neptune/describe_db_cluster_snapshot_attributes.html](https://paws-r.github.io/docs/neptune/describe_db_cluster_snapshot_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_describe_db_cluster_snapshot_attributes/](https://www.paws-r-sdk.com/docs/neptune_describe_db_cluster_snapshot_attributes/) for full documentation.
 #'
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier for the DB cluster snapshot to describe the attributes
 #' for.
@@ -1593,7 +1593,7 @@ neptune_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIde
 #' @description
 #' Returns information about DB cluster snapshots. This API action supports pagination.
 #'
-#' See [https://paws-r.github.io/docs/neptune/describe_db_cluster_snapshots.html](https://paws-r.github.io/docs/neptune/describe_db_cluster_snapshots.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_describe_db_cluster_snapshots/](https://www.paws-r-sdk.com/docs/neptune_describe_db_cluster_snapshots/) for full documentation.
 #'
 #' @param DBClusterIdentifier The ID of the DB cluster to retrieve the list of DB cluster snapshots
 #' for. This parameter can't be used in conjunction with the
@@ -1695,7 +1695,7 @@ neptune_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DB
 #' @description
 #' Returns information about provisioned DB clusters, and supports pagination.
 #'
-#' See [https://paws-r.github.io/docs/neptune/describe_db_clusters.html](https://paws-r.github.io/docs/neptune/describe_db_clusters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_describe_db_clusters/](https://www.paws-r-sdk.com/docs/neptune_describe_db_clusters/) for full documentation.
 #'
 #' @param DBClusterIdentifier The user-supplied DB cluster identifier. If this parameter is specified,
 #' information from only the specific DB cluster is returned. This
@@ -1756,7 +1756,7 @@ neptune_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = N
 #' @description
 #' Returns a list of the available DB engines.
 #'
-#' See [https://paws-r.github.io/docs/neptune/describe_db_engine_versions.html](https://paws-r.github.io/docs/neptune/describe_db_engine_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_describe_db_engine_versions/](https://www.paws-r-sdk.com/docs/neptune_describe_db_engine_versions/) for full documentation.
 #'
 #' @param Engine The database engine to return.
 #' @param EngineVersion The database engine version to return.
@@ -1815,7 +1815,7 @@ neptune_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = N
 #' @description
 #' Returns information about provisioned instances, and supports pagination.
 #'
-#' See [https://paws-r.github.io/docs/neptune/describe_db_instances.html](https://paws-r.github.io/docs/neptune/describe_db_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_describe_db_instances/](https://www.paws-r-sdk.com/docs/neptune_describe_db_instances/) for full documentation.
 #'
 #' @param DBInstanceIdentifier The user-supplied instance identifier. If this parameter is specified,
 #' information from only the specific DB instance is returned. This
@@ -1877,7 +1877,7 @@ neptune_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters =
 #' @description
 #' Returns a list of `DBParameterGroup` descriptions. If a `DBParameterGroupName` is specified, the list will contain only the description of the specified DB parameter group.
 #'
-#' See [https://paws-r.github.io/docs/neptune/describe_db_parameter_groups.html](https://paws-r.github.io/docs/neptune/describe_db_parameter_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_describe_db_parameter_groups/](https://www.paws-r-sdk.com/docs/neptune_describe_db_parameter_groups/) for full documentation.
 #'
 #' @param DBParameterGroupName The name of a specific DB parameter group to return details for.
 #' 
@@ -1924,7 +1924,7 @@ neptune_describe_db_parameter_groups <- function(DBParameterGroupName = NULL, Fi
 #' @description
 #' Returns the detailed parameter list for a particular DB parameter group.
 #'
-#' See [https://paws-r.github.io/docs/neptune/describe_db_parameters.html](https://paws-r.github.io/docs/neptune/describe_db_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_describe_db_parameters/](https://www.paws-r-sdk.com/docs/neptune_describe_db_parameters/) for full documentation.
 #'
 #' @param DBParameterGroupName &#91;required&#93; The name of a specific DB parameter group to return details for.
 #' 
@@ -1975,7 +1975,7 @@ neptune_describe_db_parameters <- function(DBParameterGroupName, Source = NULL, 
 #' @description
 #' Returns a list of DBSubnetGroup descriptions. If a DBSubnetGroupName is specified, the list will contain only the descriptions of the specified DBSubnetGroup.
 #'
-#' See [https://paws-r.github.io/docs/neptune/describe_db_subnet_groups.html](https://paws-r.github.io/docs/neptune/describe_db_subnet_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_describe_db_subnet_groups/](https://www.paws-r-sdk.com/docs/neptune_describe_db_subnet_groups/) for full documentation.
 #'
 #' @param DBSubnetGroupName The name of the DB subnet group to return details for.
 #' @param Filters This parameter is not currently supported.
@@ -2018,7 +2018,7 @@ neptune_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters 
 #' @description
 #' Returns the default engine and system parameter information for the cluster database engine.
 #'
-#' See [https://paws-r.github.io/docs/neptune/describe_engine_default_cluster_parameters.html](https://paws-r.github.io/docs/neptune/describe_engine_default_cluster_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_describe_engine_default_cluster_parameters/](https://www.paws-r-sdk.com/docs/neptune_describe_engine_default_cluster_parameters/) for full documentation.
 #'
 #' @param DBParameterGroupFamily &#91;required&#93; The name of the DB cluster parameter group family to return engine
 #' parameter information for.
@@ -2062,7 +2062,7 @@ neptune_describe_engine_default_cluster_parameters <- function(DBParameterGroupF
 #' @description
 #' Returns the default engine and system parameter information for the specified database engine.
 #'
-#' See [https://paws-r.github.io/docs/neptune/describe_engine_default_parameters.html](https://paws-r.github.io/docs/neptune/describe_engine_default_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_describe_engine_default_parameters/](https://www.paws-r-sdk.com/docs/neptune_describe_engine_default_parameters/) for full documentation.
 #'
 #' @param DBParameterGroupFamily &#91;required&#93; The name of the DB parameter group family.
 #' @param Filters Not currently supported.
@@ -2105,7 +2105,7 @@ neptune_describe_engine_default_parameters <- function(DBParameterGroupFamily, F
 #' @description
 #' Displays a list of categories for all event source types, or, if specified, for a specified source type.
 #'
-#' See [https://paws-r.github.io/docs/neptune/describe_event_categories.html](https://paws-r.github.io/docs/neptune/describe_event_categories.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_describe_event_categories/](https://www.paws-r-sdk.com/docs/neptune_describe_event_categories/) for full documentation.
 #'
 #' @param SourceType The type of source that is generating the events.
 #' 
@@ -2138,7 +2138,7 @@ neptune_describe_event_categories <- function(SourceType = NULL, Filters = NULL)
 #' @description
 #' Lists all the subscription descriptions for a customer account. The description for a subscription includes SubscriptionName, SNSTopicARN, CustomerID, SourceType, SourceID, CreationTime, and Status.
 #'
-#' See [https://paws-r.github.io/docs/neptune/describe_event_subscriptions.html](https://paws-r.github.io/docs/neptune/describe_event_subscriptions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_describe_event_subscriptions/](https://www.paws-r-sdk.com/docs/neptune_describe_event_subscriptions/) for full documentation.
 #'
 #' @param SubscriptionName The name of the event notification subscription you want to describe.
 #' @param Filters This parameter is not currently supported.
@@ -2181,7 +2181,7 @@ neptune_describe_event_subscriptions <- function(SubscriptionName = NULL, Filter
 #' @description
 #' Returns events related to DB instances, DB security groups, DB snapshots, and DB parameter groups for the past 14 days. Events specific to a particular DB instance, DB security group, database snapshot, or DB parameter group can be obtained by providing the name as a parameter. By default, the past hour of events are returned.
 #'
-#' See [https://paws-r.github.io/docs/neptune/describe_events.html](https://paws-r.github.io/docs/neptune/describe_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_describe_events/](https://www.paws-r-sdk.com/docs/neptune_describe_events/) for full documentation.
 #'
 #' @param SourceIdentifier The identifier of the event source for which events are returned. If not
 #' specified, then all sources are included in the response.
@@ -2258,7 +2258,7 @@ neptune_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, 
 #' @description
 #' Returns information about Neptune global database clusters. This API supports pagination.
 #'
-#' See [https://paws-r.github.io/docs/neptune/describe_global_clusters.html](https://paws-r.github.io/docs/neptune/describe_global_clusters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_describe_global_clusters/](https://www.paws-r-sdk.com/docs/neptune_describe_global_clusters/) for full documentation.
 #'
 #' @param GlobalClusterIdentifier The user-supplied DB cluster identifier. If this parameter is specified,
 #' only information about the specified DB cluster is returned. This
@@ -2303,7 +2303,7 @@ neptune_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Max
 #' @description
 #' Returns a list of orderable DB instance options for the specified engine.
 #'
-#' See [https://paws-r.github.io/docs/neptune/describe_orderable_db_instance_options.html](https://paws-r.github.io/docs/neptune/describe_orderable_db_instance_options.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_describe_orderable_db_instance_options/](https://www.paws-r-sdk.com/docs/neptune_describe_orderable_db_instance_options/) for full documentation.
 #'
 #' @param Engine &#91;required&#93; The name of the engine to retrieve DB instance options for.
 #' @param EngineVersion The engine version filter value. Specify this parameter to show only the
@@ -2354,7 +2354,7 @@ neptune_describe_orderable_db_instance_options <- function(Engine, EngineVersion
 #' @description
 #' Returns a list of resources (for example, DB instances) that have at least one pending maintenance action.
 #'
-#' See [https://paws-r.github.io/docs/neptune/describe_pending_maintenance_actions.html](https://paws-r.github.io/docs/neptune/describe_pending_maintenance_actions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_describe_pending_maintenance_actions/](https://www.paws-r-sdk.com/docs/neptune_describe_pending_maintenance_actions/) for full documentation.
 #'
 #' @param ResourceIdentifier The ARN of a resource to return pending maintenance actions for.
 #' @param Filters A filter that specifies one or more resources to return pending
@@ -2410,7 +2410,7 @@ neptune_describe_pending_maintenance_actions <- function(ResourceIdentifier = NU
 #' @description
 #' You can call [`describe_valid_db_instance_modifications`][neptune_describe_valid_db_instance_modifications] to learn what modifications you can make to your DB instance. You can use this information when you call [`modify_db_instance`][neptune_modify_db_instance].
 #'
-#' See [https://paws-r.github.io/docs/neptune/describe_valid_db_instance_modifications.html](https://paws-r.github.io/docs/neptune/describe_valid_db_instance_modifications.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_describe_valid_db_instance_modifications/](https://www.paws-r-sdk.com/docs/neptune_describe_valid_db_instance_modifications/) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The customer identifier or the ARN of your DB instance.
 #'
@@ -2439,7 +2439,7 @@ neptune_describe_valid_db_instance_modifications <- function(DBInstanceIdentifie
 #' @description
 #' Forces a failover for a DB cluster.
 #'
-#' See [https://paws-r.github.io/docs/neptune/failover_db_cluster.html](https://paws-r.github.io/docs/neptune/failover_db_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_failover_db_cluster/](https://www.paws-r-sdk.com/docs/neptune_failover_db_cluster/) for full documentation.
 #'
 #' @param DBClusterIdentifier A DB cluster identifier to force a failover for. This parameter is not
 #' case-sensitive.
@@ -2477,7 +2477,7 @@ neptune_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInst
 #' @description
 #' Initiates the failover process for a Neptune global database.
 #'
-#' See [https://paws-r.github.io/docs/neptune/failover_global_cluster.html](https://paws-r.github.io/docs/neptune/failover_global_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_failover_global_cluster/](https://www.paws-r-sdk.com/docs/neptune_failover_global_cluster/) for full documentation.
 #'
 #' @param GlobalClusterIdentifier &#91;required&#93; Identifier of the Neptune global database that should be failed over.
 #' The identifier is the unique key assigned by the user when the Neptune
@@ -2514,7 +2514,7 @@ neptune_failover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClu
 #' @description
 #' Lists all tags on an Amazon Neptune resource.
 #'
-#' See [https://paws-r.github.io/docs/neptune/list_tags_for_resource.html](https://paws-r.github.io/docs/neptune/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/neptune_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The Amazon Neptune resource with tags to be listed. This value is an
 #' Amazon Resource Name (ARN). For information about creating an ARN, see
@@ -2547,7 +2547,7 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' @description
 #' Modify a setting for a DB cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request.
 #'
-#' See [https://paws-r.github.io/docs/neptune/modify_db_cluster.html](https://paws-r.github.io/docs/neptune/modify_db_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_modify_db_cluster/](https://www.paws-r-sdk.com/docs/neptune_modify_db_cluster/) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier for the cluster being modified. This parameter
 #' is not case-sensitive.
@@ -2694,7 +2694,7 @@ neptune_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifie
 #' @description
 #' Modifies the properties of an endpoint in an Amazon Neptune DB cluster.
 #'
-#' See [https://paws-r.github.io/docs/neptune/modify_db_cluster_endpoint.html](https://paws-r.github.io/docs/neptune/modify_db_cluster_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_modify_db_cluster_endpoint/](https://www.paws-r-sdk.com/docs/neptune_modify_db_cluster_endpoint/) for full documentation.
 #'
 #' @param DBClusterEndpointIdentifier &#91;required&#93; The identifier of the endpoint to modify. This parameter is stored as a
 #' lowercase string.
@@ -2730,7 +2730,7 @@ neptune_modify_db_cluster_endpoint <- function(DBClusterEndpointIdentifier, Endp
 #' @description
 #' Modifies the parameters of a DB cluster parameter group. To modify more than one parameter, submit a list of the following: `ParameterName`, `ParameterValue`, and `ApplyMethod`. A maximum of 20 parameters can be modified in a single request.
 #'
-#' See [https://paws-r.github.io/docs/neptune/modify_db_cluster_parameter_group.html](https://paws-r.github.io/docs/neptune/modify_db_cluster_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_modify_db_cluster_parameter_group/](https://www.paws-r-sdk.com/docs/neptune_modify_db_cluster_parameter_group/) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the DB cluster parameter group to modify.
 #' @param Parameters &#91;required&#93; A list of parameters in the DB cluster parameter group to modify.
@@ -2761,7 +2761,7 @@ neptune_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
 #' @description
 #' Adds an attribute and values to, or removes an attribute and values from, a manual DB cluster snapshot.
 #'
-#' See [https://paws-r.github.io/docs/neptune/modify_db_cluster_snapshot_attribute.html](https://paws-r.github.io/docs/neptune/modify_db_cluster_snapshot_attribute.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_modify_db_cluster_snapshot_attribute/](https://www.paws-r-sdk.com/docs/neptune_modify_db_cluster_snapshot_attribute/) for full documentation.
 #'
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier for the DB cluster snapshot to modify the attributes for.
 #' @param AttributeName &#91;required&#93; The name of the DB cluster snapshot attribute to modify.
@@ -2813,7 +2813,7 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 #' @description
 #' Modifies settings for a DB instance. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. To learn what modifications you can make to your DB instance, call [`describe_valid_db_instance_modifications`][neptune_describe_valid_db_instance_modifications] before you call [`modify_db_instance`][neptune_modify_db_instance].
 #'
-#' See [https://paws-r.github.io/docs/neptune/modify_db_instance.html](https://paws-r.github.io/docs/neptune/modify_db_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_modify_db_instance/](https://www.paws-r-sdk.com/docs/neptune_modify_db_instance/) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier. This value is stored as a lowercase string.
 #' 
@@ -3048,7 +3048,7 @@ neptune_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = 
 #' @description
 #' Modifies the parameters of a DB parameter group. To modify more than one parameter, submit a list of the following: `ParameterName`, `ParameterValue`, and `ApplyMethod`. A maximum of 20 parameters can be modified in a single request.
 #'
-#' See [https://paws-r.github.io/docs/neptune/modify_db_parameter_group.html](https://paws-r.github.io/docs/neptune/modify_db_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_modify_db_parameter_group/](https://www.paws-r-sdk.com/docs/neptune_modify_db_parameter_group/) for full documentation.
 #'
 #' @param DBParameterGroupName &#91;required&#93; The name of the DB parameter group.
 #' 
@@ -3091,7 +3091,7 @@ neptune_modify_db_parameter_group <- function(DBParameterGroupName, Parameters) 
 #' @description
 #' Modifies an existing DB subnet group. DB subnet groups must contain at least one subnet in at least two AZs in the Amazon Region.
 #'
-#' See [https://paws-r.github.io/docs/neptune/modify_db_subnet_group.html](https://paws-r.github.io/docs/neptune/modify_db_subnet_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_modify_db_subnet_group/](https://www.paws-r-sdk.com/docs/neptune_modify_db_subnet_group/) for full documentation.
 #'
 #' @param DBSubnetGroupName &#91;required&#93; The name for the DB subnet group. This value is stored as a lowercase
 #' string. You can't modify the default subnet group.
@@ -3128,7 +3128,7 @@ neptune_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescr
 #' @description
 #' Modifies an existing event notification subscription. Note that you can't modify the source identifiers using this call; to change source identifiers for a subscription, use the [`add_source_identifier_to_subscription`][neptune_add_source_identifier_to_subscription] and [`remove_source_identifier_from_subscription`][neptune_remove_source_identifier_from_subscription] calls.
 #'
-#' See [https://paws-r.github.io/docs/neptune/modify_event_subscription.html](https://paws-r.github.io/docs/neptune/modify_event_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_modify_event_subscription/](https://www.paws-r-sdk.com/docs/neptune_modify_event_subscription/) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the event notification subscription.
 #' @param SnsTopicArn The Amazon Resource Name (ARN) of the SNS topic created for event
@@ -3171,7 +3171,7 @@ neptune_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NU
 #' @description
 #' Modify a setting for an Amazon Neptune global cluster. You can change one or more database configuration parameters by specifying these parameters and their new values in the request.
 #'
-#' See [https://paws-r.github.io/docs/neptune/modify_global_cluster.html](https://paws-r.github.io/docs/neptune/modify_global_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_modify_global_cluster/](https://www.paws-r-sdk.com/docs/neptune_modify_global_cluster/) for full documentation.
 #'
 #' @param GlobalClusterIdentifier &#91;required&#93; The DB cluster identifier for the global cluster being modified. This
 #' parameter is not case-sensitive.
@@ -3235,7 +3235,7 @@ neptune_modify_global_cluster <- function(GlobalClusterIdentifier, NewGlobalClus
 #' @description
 #' Not supported.
 #'
-#' See [https://paws-r.github.io/docs/neptune/promote_read_replica_db_cluster.html](https://paws-r.github.io/docs/neptune/promote_read_replica_db_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_promote_read_replica_db_cluster/](https://www.paws-r-sdk.com/docs/neptune_promote_read_replica_db_cluster/) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; Not supported.
 #'
@@ -3265,7 +3265,7 @@ neptune_promote_read_replica_db_cluster <- function(DBClusterIdentifier) {
 #' @description
 #' You might need to reboot your DB instance, usually for maintenance reasons. For example, if you make certain modifications, or if you change the DB parameter group associated with the DB instance, you must reboot the instance for the changes to take effect.
 #'
-#' See [https://paws-r.github.io/docs/neptune/reboot_db_instance.html](https://paws-r.github.io/docs/neptune/reboot_db_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_reboot_db_instance/](https://www.paws-r-sdk.com/docs/neptune_reboot_db_instance/) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier. This parameter is stored as a lowercase
 #' string.
@@ -3303,7 +3303,7 @@ neptune_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NUL
 #' @description
 #' Detaches a Neptune DB cluster from a Neptune global database. A secondary cluster becomes a normal standalone cluster with read-write capability instead of being read-only, and no longer receives data from a the primary cluster.
 #'
-#' See [https://paws-r.github.io/docs/neptune/remove_from_global_cluster.html](https://paws-r.github.io/docs/neptune/remove_from_global_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_remove_from_global_cluster/](https://www.paws-r-sdk.com/docs/neptune_remove_from_global_cluster/) for full documentation.
 #'
 #' @param GlobalClusterIdentifier &#91;required&#93; The identifier of the Neptune global database from which to detach the
 #' specified Neptune DB cluster.
@@ -3336,7 +3336,7 @@ neptune_remove_from_global_cluster <- function(GlobalClusterIdentifier, DbCluste
 #' @description
 #' Disassociates an Identity and Access Management (IAM) role from a DB cluster.
 #'
-#' See [https://paws-r.github.io/docs/neptune/remove_role_from_db_cluster.html](https://paws-r.github.io/docs/neptune/remove_role_from_db_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_remove_role_from_db_cluster/](https://www.paws-r-sdk.com/docs/neptune_remove_role_from_db_cluster/) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The name of the DB cluster to disassociate the IAM role from.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to disassociate from the
@@ -3372,7 +3372,7 @@ neptune_remove_role_from_db_cluster <- function(DBClusterIdentifier, RoleArn, Fe
 #' @description
 #' Removes a source identifier from an existing event notification subscription.
 #'
-#' See [https://paws-r.github.io/docs/neptune/remove_source_identifier_from_subscription.html](https://paws-r.github.io/docs/neptune/remove_source_identifier_from_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_remove_source_identifier_from_subscription/](https://www.paws-r-sdk.com/docs/neptune_remove_source_identifier_from_subscription/) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the event notification subscription you want to remove a
 #' source identifier from.
@@ -3405,7 +3405,7 @@ neptune_remove_source_identifier_from_subscription <- function(SubscriptionName,
 #' @description
 #' Removes metadata tags from an Amazon Neptune resource.
 #'
-#' See [https://paws-r.github.io/docs/neptune/remove_tags_from_resource.html](https://paws-r.github.io/docs/neptune/remove_tags_from_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_remove_tags_from_resource/](https://www.paws-r-sdk.com/docs/neptune_remove_tags_from_resource/) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The Amazon Neptune resource that the tags are removed from. This value
 #' is an Amazon Resource Name (ARN). For information about creating an ARN,
@@ -3439,7 +3439,7 @@ neptune_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' @description
 #' Modifies the parameters of a DB cluster parameter group to the default value. To reset specific parameters submit a list of the following: `ParameterName` and `ApplyMethod`. To reset the entire DB cluster parameter group, specify the `DBClusterParameterGroupName` and `ResetAllParameters` parameters.
 #'
-#' See [https://paws-r.github.io/docs/neptune/reset_db_cluster_parameter_group.html](https://paws-r.github.io/docs/neptune/reset_db_cluster_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_reset_db_cluster_parameter_group/](https://www.paws-r-sdk.com/docs/neptune_reset_db_cluster_parameter_group/) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the DB cluster parameter group to reset.
 #' @param ResetAllParameters A value that is set to `true` to reset all parameters in the DB cluster
@@ -3476,7 +3476,7 @@ neptune_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName
 #' @description
 #' Modifies the parameters of a DB parameter group to the engine/system default value. To reset specific parameters, provide a list of the following: `ParameterName` and `ApplyMethod`. To reset the entire DB parameter group, specify the `DBParameterGroup` name and `ResetAllParameters` parameters. When resetting the entire group, dynamic parameters are updated immediately and static parameters are set to `pending-reboot` to take effect on the next DB instance restart or [`reboot_db_instance`][neptune_reboot_db_instance] request.
 #'
-#' See [https://paws-r.github.io/docs/neptune/reset_db_parameter_group.html](https://paws-r.github.io/docs/neptune/reset_db_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_reset_db_parameter_group/](https://www.paws-r-sdk.com/docs/neptune_reset_db_parameter_group/) for full documentation.
 #'
 #' @param DBParameterGroupName &#91;required&#93; The name of the DB parameter group.
 #' 
@@ -3519,7 +3519,7 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
 #' @description
 #' Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
 #'
-#' See [https://paws-r.github.io/docs/neptune/restore_db_cluster_from_snapshot.html](https://paws-r.github.io/docs/neptune/restore_db_cluster_from_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_restore_db_cluster_from_snapshot/](https://www.paws-r-sdk.com/docs/neptune_restore_db_cluster_from_snapshot/) for full documentation.
 #'
 #' @param AvailabilityZones Provides the list of EC2 Availability Zones that instances in the
 #' restored DB cluster can be created in.
@@ -3629,7 +3629,7 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #' @description
 #' Restores a DB cluster to an arbitrary point in time. Users can restore to any point in time before `LatestRestorableTime` for up to `BackupRetentionPeriod` days. The target DB cluster is created from the source DB cluster with the same configuration as the original DB cluster, except that the new DB cluster is created with the default DB security group.
 #'
-#' See [https://paws-r.github.io/docs/neptune/restore_db_cluster_to_point_in_time.html](https://paws-r.github.io/docs/neptune/restore_db_cluster_to_point_in_time.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_restore_db_cluster_to_point_in_time/](https://www.paws-r-sdk.com/docs/neptune_restore_db_cluster_to_point_in_time/) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The name of the new DB cluster to be created.
 #' 
@@ -3765,7 +3765,7 @@ neptune_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Res
 #' @description
 #' Starts an Amazon Neptune DB cluster that was stopped using the Amazon console, the Amazon CLI stop-db-cluster command, or the StopDBCluster API.
 #'
-#' See [https://paws-r.github.io/docs/neptune/start_db_cluster.html](https://paws-r.github.io/docs/neptune/start_db_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_start_db_cluster/](https://www.paws-r-sdk.com/docs/neptune_start_db_cluster/) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier of the Neptune DB cluster to be started. This
 #' parameter is stored as a lowercase string.
@@ -3795,7 +3795,7 @@ neptune_start_db_cluster <- function(DBClusterIdentifier) {
 #' @description
 #' Stops an Amazon Neptune DB cluster. When you stop a DB cluster, Neptune retains the DB cluster's metadata, including its endpoints and DB parameter groups.
 #'
-#' See [https://paws-r.github.io/docs/neptune/stop_db_cluster.html](https://paws-r.github.io/docs/neptune/stop_db_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/neptune_stop_db_cluster/](https://www.paws-r-sdk.com/docs/neptune_stop_db_cluster/) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier of the Neptune DB cluster to be stopped. This
 #' parameter is stored as a lowercase string.

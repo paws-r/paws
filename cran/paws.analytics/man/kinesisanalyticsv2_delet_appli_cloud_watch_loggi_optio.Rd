@@ -37,6 +37,6 @@ instead of \code{CurrentApplicationVersionId}.}
 \description{
 Deletes an Amazon CloudWatch log stream from an Kinesis Data Analytics application.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_cloud_watch_logging_option.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_cloud_watch_logging_option/} for full documentation.
 }
 \keyword{internal}

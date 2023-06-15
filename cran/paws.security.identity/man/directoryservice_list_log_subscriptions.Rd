@@ -24,6 +24,6 @@ the directory, an empty list will be returned.}
 \description{
 Lists the active log subscriptions for the Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/directoryservice/list_log_subscriptions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_list_log_subscriptions/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ about the metrics published to Amazon CloudWatch, see \href{https://docs.aws.ama
 \description{
 \strong{Internal only}. Publishes environment health metrics to Amazon CloudWatch.
 
-See \url{https://paws-r.github.io/docs/mwaa/publish_metrics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mwaa_publish_metrics/} for full documentation.
 }
 \keyword{internal}

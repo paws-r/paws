@@ -80,6 +80,6 @@ You cannot provide data for both RelatedContactId and PersistentChat.}
 \description{
 Initiates a flow to start a new chat for the customer. Response of this API provides a token required to obtain credentials from the \href{https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html}{CreateParticipantConnection} API in the Amazon Connect Participant Service.
 
-See \url{https://paws-r.github.io/docs/connect/start_chat_contact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_start_chat_contact/} for full documentation.
 }
 \keyword{internal}

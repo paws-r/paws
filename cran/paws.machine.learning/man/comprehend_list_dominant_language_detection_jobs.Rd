@@ -24,6 +24,6 @@ one filter at a time.}
 \description{
 Gets a list of the dominant language detection jobs that you have submitted.
 
-See \url{https://paws-r.github.io/docs/comprehend/list_dominant_language_detection_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_list_dominant_language_detection_jobs/} for full documentation.
 }
 \keyword{internal}

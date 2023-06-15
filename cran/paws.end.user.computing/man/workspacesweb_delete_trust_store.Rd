@@ -12,6 +12,6 @@ workspacesweb_delete_trust_store(trustStoreArn)
 \description{
 Deletes the trust store.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/delete_trust_store.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_delete_trust_store/} for full documentation.
 }
 \keyword{internal}

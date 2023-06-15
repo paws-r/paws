@@ -62,6 +62,6 @@ page token in a subsequent request.}
 \description{
 Returns a list of log events for a database in Amazon Lightsail.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_relational_database_log_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_log_events/} for full documentation.
 }
 \keyword{internal}

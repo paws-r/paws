@@ -12,6 +12,6 @@ sagemaker_delete_inference_experiment(Name)
 \description{
 Deletes an inference experiment.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_inference_experiment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_inference_experiment/} for full documentation.
 }
 \keyword{internal}

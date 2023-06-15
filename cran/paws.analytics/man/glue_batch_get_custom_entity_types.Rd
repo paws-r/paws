@@ -13,6 +13,6 @@ glue_batch_get_custom_entity_types(Names)
 \description{
 Retrieves the details for the custom patterns specified by a list of names.
 
-See \url{https://paws-r.github.io/docs/glue/batch_get_custom_entity_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_batch_get_custom_entity_types/} for full documentation.
 }
 \keyword{internal}

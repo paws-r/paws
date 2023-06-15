@@ -14,6 +14,6 @@ want information about.}
 \description{
 Returns information about the requested human task user interface (worker task template).
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_human_task_ui.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_human_task_ui/} for full documentation.
 }
 \keyword{internal}

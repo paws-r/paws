@@ -24,6 +24,6 @@ AssociateRoutingProfileQueues.}
 \description{
 Updates the properties associated with a set of queues for a routing profile.
 
-See \url{https://paws-r.github.io/docs/connect/update_routing_profile_queues.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_update_routing_profile_queues/} for full documentation.
 }
 \keyword{internal}

@@ -28,6 +28,6 @@ call.}
 \description{
 Returns a list of evidence folders that are associated with a specified control in an Audit Manager assessment.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_evidence_folders_by_assessment_control.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_evidence_folders_by_assessment_control/} for full documentation.
 }
 \keyword{internal}

@@ -79,6 +79,6 @@ DRA automatic import and automatic export is not supported.}
 \description{
 Creates a new Amazon File Cache resource.
 
-See \url{https://paws-r.github.io/docs/fsx/create_file_cache.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_create_file_cache/} for full documentation.
 }
 \keyword{internal}

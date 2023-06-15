@@ -13,6 +13,6 @@ glue_delete_crawler(Name)
 \description{
 Removes a specified crawler from the Glue Data Catalog, unless the crawler state is \code{RUNNING}.
 
-See \url{https://paws-r.github.io/docs/glue/delete_crawler.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_delete_crawler/} for full documentation.
 }
 \keyword{internal}

@@ -61,6 +61,6 @@ provided.
 \description{
 Creates an Amazon DocumentDB event notification subscription. This action requires a topic Amazon Resource Name (ARN) created by using the Amazon DocumentDB console, the Amazon SNS console, or the Amazon SNS API. To obtain an ARN with Amazon SNS, you must create a topic in Amazon SNS and subscribe to the topic. The ARN is displayed in the Amazon SNS console.
 
-See \url{https://paws-r.github.io/docs/docdb/create_event_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_create_event_subscription/} for full documentation.
 }
 \keyword{internal}

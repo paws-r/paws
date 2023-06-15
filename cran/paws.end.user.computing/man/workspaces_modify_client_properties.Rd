@@ -14,6 +14,6 @@ workspaces_modify_client_properties(ResourceId, ClientProperties)
 \description{
 Modifies the properties of the specified Amazon WorkSpaces clients.
 
-See \url{https://paws-r.github.io/docs/workspaces/modify_client_properties.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_modify_client_properties/} for full documentation.
 }
 \keyword{internal}

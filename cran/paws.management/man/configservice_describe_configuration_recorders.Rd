@@ -14,6 +14,6 @@ configservice_describe_configuration_recorders(
 \description{
 Returns the details for the specified configuration recorders. If the configuration recorder is not specified, this action returns the details for all configuration recorders associated with the account.
 
-See \url{https://paws-r.github.io/docs/configservice/describe_configuration_recorders.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_describe_configuration_recorders/} for full documentation.
 }
 \keyword{internal}

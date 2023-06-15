@@ -26,6 +26,6 @@ destination and the KMS key used for encryption.}
 \description{
 Creates a publishing destination to export findings to. The resource to export findings to must exist before you use this operation.
 
-See \url{https://paws-r.github.io/docs/guardduty/create_publishing_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_create_publishing_destination/} for full documentation.
 }
 \keyword{internal}

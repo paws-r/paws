@@ -30,6 +30,6 @@ listed.}
 \description{
 Lists all fraudsters in a specified watchlist or domain.
 
-See \url{https://paws-r.github.io/docs/voiceid/list_fraudsters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/voiceid_list_fraudsters/} for full documentation.
 }
 \keyword{internal}

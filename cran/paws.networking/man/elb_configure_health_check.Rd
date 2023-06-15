@@ -15,6 +15,6 @@ elb_configure_health_check(LoadBalancerName, HealthCheck)
 \description{
 Specifies the health check settings to use when evaluating the health state of your EC2 instances.
 
-See \url{https://paws-r.github.io/docs/elb/configure_health_check.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_configure_health_check/} for full documentation.
 }
 \keyword{internal}

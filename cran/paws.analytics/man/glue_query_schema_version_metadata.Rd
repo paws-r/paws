@@ -32,6 +32,6 @@ supplied, this will be defaulted to 25 per page.}
 \description{
 Queries for the schema version metadata information.
 
-See \url{https://paws-r.github.io/docs/glue/query_schema_version_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_query_schema_version_metadata/} for full documentation.
 }
 \keyword{internal}

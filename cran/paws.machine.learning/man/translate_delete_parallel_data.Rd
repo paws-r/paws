@@ -12,6 +12,6 @@ translate_delete_parallel_data(Name)
 \description{
 Deletes a parallel data resource in Amazon Translate.
 
-See \url{https://paws-r.github.io/docs/translate/delete_parallel_data.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/translate_delete_parallel_data/} for full documentation.
 }
 \keyword{internal}

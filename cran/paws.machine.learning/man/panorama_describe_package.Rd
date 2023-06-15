@@ -12,6 +12,6 @@ panorama_describe_package(PackageId)
 \description{
 Returns information about a package.
 
-See \url{https://paws-r.github.io/docs/panorama/describe_package.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_describe_package/} for full documentation.
 }
 \keyword{internal}

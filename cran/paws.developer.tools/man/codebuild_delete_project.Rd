@@ -12,6 +12,6 @@ codebuild_delete_project(name)
 \description{
 Deletes a build project. When you delete a project, its builds are not deleted.
 
-See \url{https://paws-r.github.io/docs/codebuild/delete_project.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_delete_project/} for full documentation.
 }
 \keyword{internal}

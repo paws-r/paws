@@ -44,6 +44,6 @@ otherwise.}
 \description{
 Executes the specified policy. This can be useful for testing the design of your scaling policy.
 
-See \url{https://paws-r.github.io/docs/autoscaling/execute_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_execute_policy/} for full documentation.
 }
 \keyword{internal}

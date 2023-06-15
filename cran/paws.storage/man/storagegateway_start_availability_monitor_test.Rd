@@ -13,6 +13,6 @@ storagegateway_start_availability_monitor_test(GatewayARN)
 \description{
 Start a test that verifies that the specified gateway is configured for High Availability monitoring in your host environment. This request only initiates the test and that a successful response only indicates that the test was started. It doesn't indicate that the test passed. For the status of the test, invoke the \code{\link[=storagegateway_describe_availability_monitor_test]{describe_availability_monitor_test}} API.
 
-See \url{https://paws-r.github.io/docs/storagegateway/start_availability_monitor_test.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_start_availability_monitor_test/} for full documentation.
 }
 \keyword{internal}

@@ -35,6 +35,6 @@ resource after it's created.}
 \description{
 Creates an SSL/TLS certificate for an Amazon Lightsail content delivery network (CDN) distribution and a container service.
 
-See \url{https://paws-r.github.io/docs/lightsail/create_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_create_certificate/} for full documentation.
 }
 \keyword{internal}

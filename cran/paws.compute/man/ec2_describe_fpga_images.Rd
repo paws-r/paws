@@ -55,6 +55,6 @@ regardless of the tag value.
 \description{
 Describes the Amazon FPGA Images (AFIs) available to you. These include public AFIs, private AFIs that you own, and AFIs owned by other Amazon Web Services accounts for which you have load permissions.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_fpga_images.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_fpga_images/} for full documentation.
 }
 \keyword{internal}

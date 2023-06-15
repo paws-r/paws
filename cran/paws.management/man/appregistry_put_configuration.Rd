@@ -12,6 +12,6 @@ appregistry_put_configuration(configuration)
 \description{
 Associates a \code{TagKey} configuration to an account.
 
-See \url{https://paws-r.github.io/docs/appregistry/put_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_put_configuration/} for full documentation.
 }
 \keyword{internal}

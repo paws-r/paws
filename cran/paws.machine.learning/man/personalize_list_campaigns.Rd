@@ -24,6 +24,6 @@ of campaigns (if they exist).}
 \description{
 Returns a list of campaigns that use the given solution. When a solution is not specified, all the campaigns associated with the account are listed. The response provides the properties for each campaign, including the Amazon Resource Name (ARN). For more information on campaigns, see \code{\link[=personalize_create_campaign]{create_campaign}}.
 
-See \url{https://paws-r.github.io/docs/personalize/list_campaigns.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_list_campaigns/} for full documentation.
 }
 \keyword{internal}

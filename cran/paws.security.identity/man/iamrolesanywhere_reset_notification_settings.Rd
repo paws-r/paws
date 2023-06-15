@@ -19,6 +19,6 @@ includes the event and the channel.}
 \description{
 Resets the \emph{custom notification setting} to IAM Roles Anywhere default setting.
 
-See \url{https://paws-r.github.io/docs/iamrolesanywhere/reset_notification_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iamrolesanywhere_reset_notification_settings/} for full documentation.
 }
 \keyword{internal}

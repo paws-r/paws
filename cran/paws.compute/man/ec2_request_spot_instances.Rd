@@ -110,6 +110,6 @@ it has been created, see \code{\link[=ec2_create_tags]{create_tags}}.}
 \description{
 Creates a Spot Instance request.
 
-See \url{https://paws-r.github.io/docs/ec2/request_spot_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_request_spot_instances/} for full documentation.
 }
 \keyword{internal}

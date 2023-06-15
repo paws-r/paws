@@ -16,6 +16,6 @@ the to-be-deleted UsagePlanKey resource representing a plan customer.}
 \description{
 Deletes a usage plan key and remove the underlying API key from the associated usage plan.
 
-See \url{https://paws-r.github.io/docs/apigateway/delete_usage_plan_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_delete_usage_plan_key/} for full documentation.
 }
 \keyword{internal}

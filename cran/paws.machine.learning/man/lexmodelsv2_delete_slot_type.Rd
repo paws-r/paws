@@ -32,6 +32,6 @@ a slot uses it.}
 \description{
 Deletes a slot type from a bot locale.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/delete_slot_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_delete_slot_type/} for full documentation.
 }
 \keyword{internal}

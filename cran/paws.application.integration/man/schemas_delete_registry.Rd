@@ -12,6 +12,6 @@ schemas_delete_registry(RegistryName)
 \description{
 Deletes a Registry.
 
-See \url{https://paws-r.github.io/docs/schemas/delete_registry.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/schemas_delete_registry/} for full documentation.
 }
 \keyword{internal}

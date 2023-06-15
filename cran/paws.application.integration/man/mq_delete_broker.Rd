@@ -12,6 +12,6 @@ mq_delete_broker(BrokerId)
 \description{
 Deletes a broker. Note: This API is asynchronous.
 
-See \url{https://paws-r.github.io/docs/mq/delete_broker.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mq_delete_broker/} for full documentation.
 }
 \keyword{internal}

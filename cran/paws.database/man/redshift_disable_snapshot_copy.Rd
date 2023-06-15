@@ -17,6 +17,6 @@ cross-region snapshot copy enabled.}
 \description{
 Disables the automatic copying of snapshots from one region to another region for a specified cluster.
 
-See \url{https://paws-r.github.io/docs/redshift/disable_snapshot_copy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_disable_snapshot_copy/} for full documentation.
 }
 \keyword{internal}

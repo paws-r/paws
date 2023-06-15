@@ -21,6 +21,6 @@ glue_list_data_quality_ruleset_evaluation_runs(
 \description{
 Lists all the runs meeting the filter criteria, where a ruleset is evaluated against a data source.
 
-See \url{https://paws-r.github.io/docs/glue/list_data_quality_ruleset_evaluation_runs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_list_data_quality_ruleset_evaluation_runs/} for full documentation.
 }
 \keyword{internal}

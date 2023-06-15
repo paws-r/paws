@@ -44,6 +44,6 @@ in the \emph{Amazon Web Services Billing and Cost Management User Guide}.}
 \description{
 Creates a definition for a job that monitors model quality and drift. For information about model monitor, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html}{Amazon SageMaker Model Monitor}.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_model_quality_job_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_model_quality_job_definition/} for full documentation.
 }
 \keyword{internal}

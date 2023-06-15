@@ -188,6 +188,6 @@ disabled (false) on the table.}
 \description{
 The \code{\link[=dynamodb_create_table]{create_table}} operation adds a new table to your account. In an Amazon Web Services account, table names must be unique within each Region. That is, you can have two tables with same name if you create the tables in different Regions.
 
-See \url{https://paws-r.github.io/docs/dynamodb/create_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_create_table/} for full documentation.
 }
 \keyword{internal}

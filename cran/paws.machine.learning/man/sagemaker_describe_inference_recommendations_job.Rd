@@ -13,6 +13,6 @@ Services Region in the Amazon Web Services account.}
 \description{
 Provides the results of the Inference Recommender job. One or more recommendation jobs are returned.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_inference_recommendations_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_inference_recommendations_job/} for full documentation.
 }
 \keyword{internal}

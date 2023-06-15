@@ -15,6 +15,6 @@ that you're describing.}
 \description{
 Describes read and write permissions on a template.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_template_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_template_permissions/} for full documentation.
 }
 \keyword{internal}

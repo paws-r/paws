@@ -16,6 +16,6 @@ codestarnotifications_unsubscribe(Arn, TargetAddress)
 \description{
 Removes an association between a notification rule and an Chatbot topic so that subscribers to that topic stop receiving notifications when the events described in the rule are triggered.
 
-See \url{https://paws-r.github.io/docs/codestarnotifications/unsubscribe.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestarnotifications_unsubscribe/} for full documentation.
 }
 \keyword{internal}

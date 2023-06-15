@@ -20,6 +20,6 @@ frauddetector_update_detector_version_metadata(
 \description{
 Updates the detector version's description. You can update the metadata for any detector version (\verb{DRAFT, ACTIVE,} or \code{INACTIVE}).
 
-See \url{https://paws-r.github.io/docs/frauddetector/update_detector_version_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_update_detector_version_metadata/} for full documentation.
 }
 \keyword{internal}

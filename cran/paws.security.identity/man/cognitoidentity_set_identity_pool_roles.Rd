@@ -27,6 +27,6 @@ Up to 25 rules can be specified per identity provider.}
 \description{
 Sets the roles for an identity pool. These roles are used when making calls to \code{\link[=cognitoidentity_get_credentials_for_identity]{get_credentials_for_identity}} action.
 
-See \url{https://paws-r.github.io/docs/cognitoidentity/set_identity_pool_roles.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_set_identity_pool_roles/} for full documentation.
 }
 \keyword{internal}

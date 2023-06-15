@@ -18,6 +18,6 @@ investigate.}
 \description{
 Returns details about the requested data quality metrics.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/get_data_quality_metrics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_get_data_quality_metrics/} for full documentation.
 }
 \keyword{internal}

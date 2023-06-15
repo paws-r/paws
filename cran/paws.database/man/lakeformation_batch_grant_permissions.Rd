@@ -18,6 +18,6 @@ batch operation to the principal.}
 \description{
 Batch operation to grant permissions to the principal.
 
-See \url{https://paws-r.github.io/docs/lakeformation/batch_grant_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_batch_grant_permissions/} for full documentation.
 }
 \keyword{internal}

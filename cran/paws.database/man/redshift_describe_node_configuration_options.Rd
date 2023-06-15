@@ -60,6 +60,6 @@ Constraints: minimum 100, maximum 500.}
 \description{
 Returns properties of possible node configurations such as node type, number of nodes, and disk usage for the specified action type.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_node_configuration_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_node_configuration_options/} for full documentation.
 }
 \keyword{internal}

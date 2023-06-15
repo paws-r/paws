@@ -21,6 +21,6 @@ route53recoverycontrolconfig_list_safety_rules(
 \description{
 List the safety rules (the assertion rules and gating rules) that you've defined for the routing controls in a control panel.
 
-See \url{https://paws-r.github.io/docs/route53recoverycontrolconfig/list_safety_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_list_safety_rules/} for full documentation.
 }
 \keyword{internal}

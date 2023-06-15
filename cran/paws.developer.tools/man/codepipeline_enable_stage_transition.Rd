@@ -22,6 +22,6 @@ processed artifacts are allowed to transition to the next stage
 \description{
 Enables artifacts in a pipeline to transition to a stage in a pipeline.
 
-See \url{https://paws-r.github.io/docs/codepipeline/enable_stage_transition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_enable_stage_transition/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ sagemaker_deregister_devices(DeviceFleetName, DeviceNames)
 \description{
 Deregisters the specified devices. After you deregister a device, you will need to re-register the devices.
 
-See \url{https://paws-r.github.io/docs/sagemaker/deregister_devices.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_deregister_devices/} for full documentation.
 }
 \keyword{internal}

@@ -10,7 +10,7 @@ NULL
 #' @description
 #' Given a data set type and data set publication date, asynchronously publishes the requested data set to the specified S3 bucket and notifies the specified SNS topic once the data is available. Returns a unique request identifier that can be used to correlate requests with notifications from the SNS topic. Data sets will be published in comma-separated values (CSV) format with the file name \{data_set_type\}_YYYY-MM-DD.csv. If a file with the same name already exists (e.g. if the same data set is requested twice), the original file will be overwritten by the new file. Requires a Role with an attached permissions policy providing Allow permissions for the following actions: s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
 #'
-#' See [https://paws-r.github.io/docs/marketplacecommerceanalytics/generate_data_set.html](https://paws-r.github.io/docs/marketplacecommerceanalytics/generate_data_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/marketplacecommerceanalytics_generate_data_set/](https://www.paws-r-sdk.com/docs/marketplacecommerceanalytics_generate_data_set/) for full documentation.
 #'
 #' @param dataSetType &#91;required&#93; The desired data set type.
 #' 
@@ -179,7 +179,7 @@ marketplacecommerceanalytics_generate_data_set <- function(dataSetType, dataSetP
 #' @description
 #' Given a data set type and a from date, asynchronously publishes the requested customer support data to the specified S3 bucket and notifies the specified SNS topic once the data is available. Returns a unique request identifier that can be used to correlate requests with notifications from the SNS topic. Data sets will be published in comma-separated values (CSV) format with the file name \{data_set_type\}_YYYY-MM-DD'T'HH-mm-ss'Z'.csv. If a file with the same name already exists (e.g. if the same data set is requested twice), the original file will be overwritten by the new file. Requires a Role with an attached permissions policy providing Allow permissions for the following actions: s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
 #'
-#' See [https://paws-r.github.io/docs/marketplacecommerceanalytics/start_support_data_export.html](https://paws-r.github.io/docs/marketplacecommerceanalytics/start_support_data_export.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/marketplacecommerceanalytics_start_support_data_export/](https://www.paws-r-sdk.com/docs/marketplacecommerceanalytics_start_support_data_export/) for full documentation.
 #'
 #' @param dataSetType &#91;required&#93; Specifies the data set type to be written to the output csv file. The
 #' data set types customer_support_contacts_data and

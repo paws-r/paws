@@ -13,6 +13,6 @@ retrieve.}
 \description{
 Retrieve your Incident Manager replication set.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/get_replication_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_get_replication_set/} for full documentation.
 }
 \keyword{internal}

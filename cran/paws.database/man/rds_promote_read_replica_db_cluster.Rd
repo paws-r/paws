@@ -20,6 +20,6 @@ Example: \code{my-cluster-replica1}}
 \description{
 Promotes a read replica DB cluster to a standalone DB cluster.
 
-See \url{https://paws-r.github.io/docs/rds/promote_read_replica_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_promote_read_replica_db_cluster/} for full documentation.
 }
 \keyword{internal}

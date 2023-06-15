@@ -12,6 +12,6 @@ gluedatabrew_describe_job(Name)
 \description{
 Returns the definition of a specific DataBrew job.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/describe_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_describe_job/} for full documentation.
 }
 \keyword{internal}

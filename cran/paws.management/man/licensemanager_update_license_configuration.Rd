@@ -39,6 +39,6 @@ license configuration is licenseAffinityToHost.}
 \description{
 Modifies the attributes of an existing license configuration.
 
-See \url{https://paws-r.github.io/docs/licensemanager/update_license_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_update_license_configuration/} for full documentation.
 }
 \keyword{internal}

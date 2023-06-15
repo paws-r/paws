@@ -27,6 +27,6 @@ results.}
 \description{
 Lists the default vocabularies for the specified Amazon Connect instance.
 
-See \url{https://paws-r.github.io/docs/connect/list_default_vocabularies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_list_default_vocabularies/} for full documentation.
 }
 \keyword{internal}

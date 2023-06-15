@@ -16,6 +16,6 @@ ID string requires exactly 12 digits.}
 \description{
 Removes the specified account from the organization.
 
-See \url{https://paws-r.github.io/docs/organizations/remove_account_from_organization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_remove_account_from_organization/} for full documentation.
 }
 \keyword{internal}

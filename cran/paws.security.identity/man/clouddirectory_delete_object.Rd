@@ -15,6 +15,6 @@ where the object resides. For more information, see arns.}
 \description{
 Deletes an object and its associated attributes. Only objects with no children and no parents can be deleted. The maximum number of attributes that can be deleted during an object deletion is 30. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/limits.html}{Amazon Cloud Directory Limits}.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/delete_object.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_delete_object/} for full documentation.
 }
 \keyword{internal}

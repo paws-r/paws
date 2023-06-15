@@ -12,6 +12,6 @@ locationservice_delete_geofence_collection(CollectionName)
 \description{
 Deletes a geofence collection from your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/locationservice/delete_geofence_collection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_delete_geofence_collection/} for full documentation.
 }
 \keyword{internal}

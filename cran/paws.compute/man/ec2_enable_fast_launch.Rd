@@ -41,6 +41,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 When you enable faster launching for a Windows AMI, images are pre-provisioned, using snapshots to launch instances up to 65\% faster. To create the optimized Windows image, Amazon EC2 launches an instance and runs through Sysprep steps, rebooting as required. Then it creates a set of reserved snapshots that are used for subsequent launches. The reserved snapshots are automatically replenished as they are used, depending on your settings for launch frequency.
 
-See \url{https://paws-r.github.io/docs/ec2/enable_fast_launch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_enable_fast_launch/} for full documentation.
 }
 \keyword{internal}

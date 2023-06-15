@@ -24,6 +24,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Removes the association between an an attachment and a policy table.
 
-See \url{https://paws-r.github.io/docs/ec2/disassociate_transit_gateway_policy_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_disassociate_transit_gateway_policy_table/} for full documentation.
 }
 \keyword{internal}

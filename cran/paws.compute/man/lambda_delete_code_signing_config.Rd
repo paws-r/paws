@@ -12,6 +12,6 @@ lambda_delete_code_signing_config(CodeSigningConfigArn)
 \description{
 Deletes the code signing configuration. You can delete the code signing configuration only if no function is using it.
 
-See \url{https://paws-r.github.io/docs/lambda/delete_code_signing_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_delete_code_signing_config/} for full documentation.
 }
 \keyword{internal}

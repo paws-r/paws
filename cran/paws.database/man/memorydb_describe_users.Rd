@@ -29,6 +29,6 @@ the next page. Keep all other arguments unchanged.}
 \description{
 Returns a list of users.
 
-See \url{https://paws-r.github.io/docs/memorydb/describe_users.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_describe_users/} for full documentation.
 }
 \keyword{internal}

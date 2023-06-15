@@ -19,6 +19,6 @@ query logging configuration.}
 \description{
 Disassociates a VPC from a query logging configuration.
 
-See \url{https://paws-r.github.io/docs/route53resolver/disassociate_resolver_query_log_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_disassociate_resolver_query_log_config/} for full documentation.
 }
 \keyword{internal}

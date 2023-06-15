@@ -22,6 +22,6 @@ ListFHIRDatastoresRequest call.}
 \description{
 Lists all FHIR Data Stores that are in the user’s account, regardless of Data Store status.
 
-See \url{https://paws-r.github.io/docs/healthlake/list_fhir_datastores.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/healthlake_list_fhir_datastores/} for full documentation.
 }
 \keyword{internal}

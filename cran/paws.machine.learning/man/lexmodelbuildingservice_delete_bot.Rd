@@ -12,6 +12,6 @@ lexmodelbuildingservice_delete_bot(name)
 \description{
 Deletes all versions of the bot, including the \verb{$LATEST} version. To delete a specific version of the bot, use the \code{\link[=lexmodelbuildingservice_delete_bot_version]{delete_bot_version}} operation. The \code{\link[=lexmodelbuildingservice_delete_bot]{delete_bot}} operation doesn't immediately remove the bot schema. Instead, it is marked for deletion and removed later.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_bot/} for full documentation.
 }
 \keyword{internal}

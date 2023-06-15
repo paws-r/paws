@@ -26,6 +26,6 @@ Default: \code{CURRENT}}
 \description{
 Returns the current, previous, or pending versions of the master user password for a Lightsail database.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_relational_database_master_user_password.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_master_user_password/} for full documentation.
 }
 \keyword{internal}

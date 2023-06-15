@@ -26,6 +26,6 @@ version.}
 \description{
 Lists schema major versions applied to a directory. If \code{SchemaArn} is provided, lists the minor version.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/list_applied_schema_arns.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_list_applied_schema_arns/} for full documentation.
 }
 \keyword{internal}

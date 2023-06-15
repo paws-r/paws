@@ -31,6 +31,6 @@ takes precedence.}
 \description{
 Starts the process of verifying an email identity. An \emph{identity} is an email address or domain that you use when you send email. Before you can use an identity to send email, you first have to verify it. By verifying an identity, you demonstrate that you're the owner of the identity, and that you've given Amazon SES API v2 permission to send email from the identity.
 
-See \url{https://paws-r.github.io/docs/sesv2/create_email_identity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_create_email_identity/} for full documentation.
 }
 \keyword{internal}

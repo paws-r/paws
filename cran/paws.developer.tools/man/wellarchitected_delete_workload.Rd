@@ -14,6 +14,6 @@ wellarchitected_delete_workload(WorkloadId, ClientRequestToken)
 \description{
 Delete an existing workload.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/delete_workload.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_delete_workload/} for full documentation.
 }
 \keyword{internal}

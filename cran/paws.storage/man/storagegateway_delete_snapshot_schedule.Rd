@@ -12,6 +12,6 @@ storagegateway_delete_snapshot_schedule(VolumeARN)
 \description{
 Deletes a snapshot of a volume.
 
-See \url{https://paws-r.github.io/docs/storagegateway/delete_snapshot_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_delete_snapshot_schedule/} for full documentation.
 }
 \keyword{internal}

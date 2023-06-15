@@ -14,6 +14,6 @@ lookoutmetrics_untag_resource(ResourceArn, TagKeys)
 \description{
 Removes \href{https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html}{tags} from a detector, dataset, or alert.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_untag_resource/} for full documentation.
 }
 \keyword{internal}

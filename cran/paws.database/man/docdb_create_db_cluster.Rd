@@ -157,6 +157,6 @@ from being accidentally deleted.}
 \description{
 Creates a new Amazon DocumentDB cluster.
 
-See \url{https://paws-r.github.io/docs/docdb/create_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_create_db_cluster/} for full documentation.
 }
 \keyword{internal}

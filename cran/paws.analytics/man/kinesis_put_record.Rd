@@ -46,6 +46,6 @@ time.}
 \description{
 Writes a single data record into an Amazon Kinesis data stream. Call \code{\link[=kinesis_put_record]{put_record}} to send data into the stream for real-time ingestion and subsequent processing, one record at a time. Each shard can support writes up to 1,000 records per second, up to a maximum data write total of 1 MiB per second.
 
-See \url{https://paws-r.github.io/docs/kinesis/put_record.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesis_put_record/} for full documentation.
 }
 \keyword{internal}

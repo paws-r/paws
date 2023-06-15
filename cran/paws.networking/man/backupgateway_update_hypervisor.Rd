@@ -32,6 +32,6 @@ requested log.}
 \description{
 Updates a hypervisor metadata, including its host, username, and password. Specify which hypervisor to update using the Amazon Resource Name (ARN) of the hypervisor in your request.
 
-See \url{https://paws-r.github.io/docs/backupgateway/update_hypervisor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupgateway_update_hypervisor/} for full documentation.
 }
 \keyword{internal}

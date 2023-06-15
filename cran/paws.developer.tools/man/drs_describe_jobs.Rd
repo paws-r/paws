@@ -16,6 +16,6 @@ drs_describe_jobs(filters = NULL, maxResults = NULL, nextToken = NULL)
 \description{
 Returns a list of Jobs. Use the JobsID and fromDate and toDate filters to limit which jobs are returned. The response is sorted by creationDataTime - latest date first. Jobs are created by the StartRecovery, TerminateRecoveryInstances and StartFailbackLaunch APIs. Jobs are also created by DiagnosticLaunch and TerminateDiagnosticInstances, which are APIs available only to \emph{Support} and only used in response to relevant support tickets.
 
-See \url{https://paws-r.github.io/docs/drs/describe_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_describe_jobs/} for full documentation.
 }
 \keyword{internal}

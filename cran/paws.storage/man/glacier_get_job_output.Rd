@@ -51,6 +51,6 @@ downloaded the entire archive content with no errors.
 \description{
 This operation downloads the output of the job you initiated using \code{\link[=glacier_initiate_job]{initiate_job}}. Depending on the job type you specified when you initiated the job, the output will be either the content of an archive or a vault inventory.
 
-See \url{https://paws-r.github.io/docs/glacier/get_job_output.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_get_job_output/} for full documentation.
 }
 \keyword{internal}

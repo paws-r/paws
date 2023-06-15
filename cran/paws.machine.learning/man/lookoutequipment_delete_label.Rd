@@ -16,6 +16,6 @@ best practices for the security of your data.}
 \description{
 Deletes a label.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/delete_label.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_delete_label/} for full documentation.
 }
 \keyword{internal}

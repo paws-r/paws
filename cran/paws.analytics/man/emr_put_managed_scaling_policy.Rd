@@ -15,6 +15,6 @@ policy is attached.}
 \description{
 Creates or updates a managed scaling policy for an Amazon EMR cluster. The managed scaling policy defines the limits for resources, such as Amazon EC2 instances that can be added or terminated from a cluster. The policy only applies to the core and task nodes. The master node cannot be scaled after initial configuration.
 
-See \url{https://paws-r.github.io/docs/emr/put_managed_scaling_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_put_managed_scaling_policy/} for full documentation.
 }
 \keyword{internal}

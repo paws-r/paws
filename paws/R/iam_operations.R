@@ -620,8 +620,10 @@ iam_create_access_key <- function(UserName = NULL) {
 #'
 #' @description
 #' Creates an alias for your Amazon Web Services account. For information
-#' about using an Amazon Web Services account alias, see Using an alias for
-#' your Amazon Web Services account ID in the *IAM User Guide*.
+#' about using an Amazon Web Services account alias, see [Creating,
+#' deleting, and listing an Amazon Web Services account
+#' alias](https://docs.aws.amazon.com/signin/latest/userguide/) in the
+#' *Amazon Web Services Sign-In User Guide*.
 #'
 #' @usage
 #' iam_create_account_alias(AccountAlias)
@@ -2361,8 +2363,10 @@ iam_delete_access_key <- function(UserName = NULL, AccessKeyId) {
 #'
 #' @description
 #' Deletes the specified Amazon Web Services account alias. For information
-#' about using an Amazon Web Services account alias, see Using an alias for
-#' your Amazon Web Services account ID in the *IAM User Guide*.
+#' about using an Amazon Web Services account alias, see [Creating,
+#' deleting, and listing an Amazon Web Services account
+#' alias](https://docs.aws.amazon.com/signin/latest/userguide/) in the
+#' *Amazon Web Services Sign-In User Guide*.
 #'
 #' @usage
 #' iam_delete_account_alias(AccountAlias)
@@ -6900,8 +6904,10 @@ iam_list_access_keys <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
 #' @description
 #' Lists the account alias associated with the Amazon Web Services account
 #' (Note: you can have only one). For information about using an Amazon Web
-#' Services account alias, see Using an alias for your Amazon Web Services
-#' account ID in the *IAM User Guide*.
+#' Services account alias, see [Creating, deleting, and listing an Amazon
+#' Web Services account
+#' alias](https://docs.aws.amazon.com/signin/latest/userguide/) in the
+#' *Amazon Web Services Sign-In User Guide*.
 #'
 #' @usage
 #' iam_list_account_aliases(Marker, MaxItems)

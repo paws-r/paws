@@ -12,6 +12,6 @@ personalize_describe_metric_attribution(metricAttributionArn)
 \description{
 Describes a metric attribution.
 
-See \url{https://paws-r.github.io/docs/personalize/describe_metric_attribution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_describe_metric_attribution/} for full documentation.
 }
 \keyword{internal}

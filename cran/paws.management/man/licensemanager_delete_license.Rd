@@ -14,6 +14,6 @@ licensemanager_delete_license(LicenseArn, SourceVersion)
 \description{
 Deletes the specified license.
 
-See \url{https://paws-r.github.io/docs/licensemanager/delete_license.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_delete_license/} for full documentation.
 }
 \keyword{internal}

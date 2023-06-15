@@ -17,6 +17,6 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/lates
 \description{
 Lists the tags that have been applied to the ACM certificate. Use the certificate's Amazon Resource Name (ARN) to specify the certificate. To add a tag to an ACM certificate, use the \code{\link[=acm_add_tags_to_certificate]{add_tags_to_certificate}} action. To delete a tag, use the \code{\link[=acm_remove_tags_from_certificate]{remove_tags_from_certificate}} action.
 
-See \url{https://paws-r.github.io/docs/acm/list_tags_for_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acm_list_tags_for_certificate/} for full documentation.
 }
 \keyword{internal}

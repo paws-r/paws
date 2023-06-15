@@ -17,6 +17,6 @@ the request again with this value.}
 \description{
 Lists all profiles in the authenticated account and Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/iamrolesanywhere/list_profiles.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iamrolesanywhere_list_profiles/} for full documentation.
 }
 \keyword{internal}

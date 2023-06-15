@@ -17,6 +17,6 @@ operation to return to retrieve the TargetARN for specified VolumeARN.}
 \description{
 Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target and initiator pair. This operation is supported in volume and tape gateway types.
 
-See \url{https://paws-r.github.io/docs/storagegateway/delete_chap_credentials.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_delete_chap_credentials/} for full documentation.
 }
 \keyword{internal}

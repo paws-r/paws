@@ -20,6 +20,6 @@ redshiftserverless_restore_from_recovery_point(
 \description{
 Restore the data from a recovery point.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/restore_from_recovery_point.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_restore_from_recovery_point/} for full documentation.
 }
 \keyword{internal}

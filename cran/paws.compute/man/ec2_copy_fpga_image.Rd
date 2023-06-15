@@ -33,6 +33,6 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \description{
 Copies the specified Amazon FPGA Image (AFI) to the current Region.
 
-See \url{https://paws-r.github.io/docs/ec2/copy_fpga_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_copy_fpga_image/} for full documentation.
 }
 \keyword{internal}

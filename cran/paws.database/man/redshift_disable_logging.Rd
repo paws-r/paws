@@ -15,6 +15,6 @@ Example: \code{examplecluster}}
 \description{
 Stops logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster.
 
-See \url{https://paws-r.github.io/docs/redshift/disable_logging.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_disable_logging/} for full documentation.
 }
 \keyword{internal}

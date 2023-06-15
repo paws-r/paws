@@ -26,6 +26,6 @@ need to supply a value for this field in the initial request.}
 \description{
 Retrieves the specified pools or all pools associated with your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_pools.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_pools/} for full documentation.
 }
 \keyword{internal}

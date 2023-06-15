@@ -27,6 +27,6 @@ in the response so that the remaining results can be retrieved.}
 \description{
 Lists the standard operating procedure (SOP) recommendations for the Resilience Hub applications.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/list_sop_recommendations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_list_sop_recommendations/} for full documentation.
 }
 \keyword{internal}

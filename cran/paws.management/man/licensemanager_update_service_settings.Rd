@@ -25,6 +25,6 @@ Manager alerts.}
 \description{
 Updates License Manager settings for the current Region.
 
-See \url{https://paws-r.github.io/docs/licensemanager/update_service_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_update_service_settings/} for full documentation.
 }
 \keyword{internal}

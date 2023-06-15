@@ -28,6 +28,6 @@ models.}
 \description{
 A list of devices.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_devices.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_devices/} for full documentation.
 }
 \keyword{internal}

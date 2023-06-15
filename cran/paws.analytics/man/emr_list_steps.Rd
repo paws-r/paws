@@ -25,6 +25,6 @@ results to retrieve.}
 \description{
 Provides a list of steps for the cluster in reverse order unless you specify \code{stepIds} with the request or filter by \code{StepStates}. You can specify a maximum of 10 \code{stepIDs}. The CLI automatically paginates results to return a list greater than 50 steps. To return more than 50 steps using the CLI, specify a \code{Marker}, which is a pagination token that indicates the next set of steps to retrieve.
 
-See \url{https://paws-r.github.io/docs/emr/list_steps.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_list_steps/} for full documentation.
 }
 \keyword{internal}

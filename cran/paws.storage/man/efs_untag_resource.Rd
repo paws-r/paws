@@ -15,6 +15,6 @@ specified EFS resource.}
 \description{
 Removes tags from an EFS resource. You can remove tags from EFS file systems and access points using this API operation.
 
-See \url{https://paws-r.github.io/docs/efs/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_untag_resource/} for full documentation.
 }
 \keyword{internal}

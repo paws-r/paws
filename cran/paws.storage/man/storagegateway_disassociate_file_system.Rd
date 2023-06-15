@@ -22,6 +22,6 @@ disassociate until all data is uploaded.}
 \description{
 Disassociates an Amazon FSx file system from the specified gateway. After the disassociation process finishes, the gateway can no longer access the Amazon FSx file system. This operation is only supported in the FSx File Gateway type.
 
-See \url{https://paws-r.github.io/docs/storagegateway/disassociate_file_system.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_disassociate_file_system/} for full documentation.
 }
 \keyword{internal}

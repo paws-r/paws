@@ -27,6 +27,6 @@ or the ones provided by AWS.}
 \description{
 List the registries.
 
-See \url{https://paws-r.github.io/docs/schemas/list_registries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/schemas_list_registries/} for full documentation.
 }
 \keyword{internal}

@@ -93,6 +93,6 @@ If the fleet type is \code{maintain} or \code{request}, specify a resource type 
 \description{
 Launches an EC2 Fleet.
 
-See \url{https://paws-r.github.io/docs/ec2/create_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_fleet/} for full documentation.
 }
 \keyword{internal}

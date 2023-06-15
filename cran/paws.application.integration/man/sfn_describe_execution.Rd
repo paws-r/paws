@@ -14,6 +14,6 @@ sfn_describe_execution(executionArn)
 \description{
 Provides all information about a state machine execution, such as the state machine associated with the execution, the execution input and output, and relevant execution metadata. Use this API action to return the Map Run ARN if the execution was dispatched by a Map Run.
 
-See \url{https://paws-r.github.io/docs/sfn/describe_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sfn_describe_execution/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Updates specified flow module for the specified Amazon Connect instance.
 
-See \url{https://paws-r.github.io/docs/connect/update_contact_flow_module_content.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_update_contact_flow_module_content/} for full documentation.
 }
 \keyword{internal}

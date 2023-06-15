@@ -38,6 +38,6 @@ Identity Store API Reference.}
 \description{
 Assigns access to a principal for a specified AWS account using a specified permission set.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/create_account_assignment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_create_account_assignment/} for full documentation.
 }
 \keyword{internal}

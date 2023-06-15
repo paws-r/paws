@@ -17,6 +17,6 @@ API fetches the next page of results.}
 \description{
 List all tags on an Amazon DynamoDB resource. You can call ListTagsOfResource up to 10 times per second, per account.
 
-See \url{https://paws-r.github.io/docs/dynamodb/list_tags_of_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_list_tags_of_resource/} for full documentation.
 }
 \keyword{internal}

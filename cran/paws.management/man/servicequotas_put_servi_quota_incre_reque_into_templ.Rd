@@ -23,6 +23,6 @@ servicequotas_put_service_quota_increase_request_into_template(
 \description{
 Adds a quota increase request to your quota request template.
 
-See \url{https://paws-r.github.io/docs/servicequotas/put_service_quota_increase_request_into_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicequotas_put_service_quota_increase_request_into_template/} for full documentation.
 }
 \keyword{internal}

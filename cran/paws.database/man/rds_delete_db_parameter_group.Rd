@@ -19,6 +19,6 @@ Constraints:
 \description{
 Deletes a specified DB parameter group. The DB parameter group to be deleted can't be associated with any DB instances.
 
-See \url{https://paws-r.github.io/docs/rds/delete_db_parameter_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_delete_db_parameter_group/} for full documentation.
 }
 \keyword{internal}

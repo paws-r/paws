@@ -18,6 +18,6 @@ number of keyspaces available is more than the value specified, a
 \description{
 Returns a list of keyspaces.
 
-See \url{https://paws-r.github.io/docs/keyspaces/list_keyspaces.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/keyspaces_list_keyspaces/} for full documentation.
 }
 \keyword{internal}

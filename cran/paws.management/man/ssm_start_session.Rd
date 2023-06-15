@@ -34,6 +34,6 @@ document.}
 \description{
 Initiates a connection to a target (for example, a managed node) for a Session Manager session. Returns a URL and token that can be used to open a WebSocket connection for sending input and receiving outputs.
 
-See \url{https://paws-r.github.io/docs/ssm/start_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_start_session/} for full documentation.
 }
 \keyword{internal}

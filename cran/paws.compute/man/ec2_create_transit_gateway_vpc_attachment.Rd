@@ -35,6 +35,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Attaches the specified VPC to the specified transit gateway.
 
-See \url{https://paws-r.github.io/docs/ec2/create_transit_gateway_vpc_attachment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_transit_gateway_vpc_attachment/} for full documentation.
 }
 \keyword{internal}

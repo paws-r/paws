@@ -32,6 +32,6 @@ for more details on how the KMS key is used.}
 \description{
 Creates a domain that contains all Amazon Connect Voice ID data, such as speakers, fraudsters, customer audio, and voiceprints. Every domain is created with a default watchlist that fraudsters can be a part of.
 
-See \url{https://paws-r.github.io/docs/voiceid/create_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/voiceid_create_domain/} for full documentation.
 }
 \keyword{internal}

@@ -75,6 +75,6 @@ characters, and the maximum length for a tag's value is 256 characters.}
 \description{
 Activates the gateway you previously deployed on your host. In the activation process, you specify information such as the Amazon Web Services Region that you want to use for storing snapshots or tapes, the time zone for scheduled snapshots the gateway snapshot schedule window, an activation key, and a name for your gateway. The activation process also associates your gateway with your account. For more information, see \code{\link[=storagegateway_update_gateway_information]{update_gateway_information}}.
 
-See \url{https://paws-r.github.io/docs/storagegateway/activate_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_activate_gateway/} for full documentation.
 }
 \keyword{internal}

@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Returns the current configuration items for resources that are present in your Config aggregator. The operation also returns a list of resources that are not processed in the current request. If there are no unprocessed resources, the operation returns an empty `unprocessedResourceIdentifiers` list.
 #'
-#' See [https://paws-r.github.io/docs/configservice/batch_get_aggregate_resource_config.html](https://paws-r.github.io/docs/configservice/batch_get_aggregate_resource_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_batch_get_aggregate_resource_config/](https://www.paws-r-sdk.com/docs/configservice_batch_get_aggregate_resource_config/) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param ResourceIdentifiers &#91;required&#93; A list of aggregate ResourceIdentifiers objects.
@@ -39,7 +39,7 @@ configservice_batch_get_aggregate_resource_config <- function(ConfigurationAggre
 #' @description
 #' Returns the `BaseConfigurationItem` for one or more requested resources. The operation also returns a list of resources that are not processed in the current request. If there are no unprocessed resources, the operation returns an empty unprocessedResourceKeys list.
 #'
-#' See [https://paws-r.github.io/docs/configservice/batch_get_resource_config.html](https://paws-r.github.io/docs/configservice/batch_get_resource_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_batch_get_resource_config/](https://www.paws-r-sdk.com/docs/configservice_batch_get_resource_config/) for full documentation.
 #'
 #' @param resourceKeys &#91;required&#93; A list of resource keys to be processed with the current request. Each
 #' element in the list consists of the resource type and resource ID.
@@ -70,7 +70,7 @@ configservice_batch_get_resource_config <- function(resourceKeys) {
 #' @description
 #' Deletes the authorization granted to the specified configuration aggregator account in a specified region.
 #'
-#' See [https://paws-r.github.io/docs/configservice/delete_aggregation_authorization.html](https://paws-r.github.io/docs/configservice/delete_aggregation_authorization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_delete_aggregation_authorization/](https://www.paws-r-sdk.com/docs/configservice_delete_aggregation_authorization/) for full documentation.
 #'
 #' @param AuthorizedAccountId &#91;required&#93; The 12-digit account ID of the account authorized to aggregate data.
 #' @param AuthorizedAwsRegion &#91;required&#93; The region authorized to collect aggregated data.
@@ -100,7 +100,7 @@ configservice_delete_aggregation_authorization <- function(AuthorizedAccountId, 
 #' @description
 #' Deletes the specified Config rule and all of its evaluation results.
 #'
-#' See [https://paws-r.github.io/docs/configservice/delete_config_rule.html](https://paws-r.github.io/docs/configservice/delete_config_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_delete_config_rule/](https://www.paws-r-sdk.com/docs/configservice_delete_config_rule/) for full documentation.
 #'
 #' @param ConfigRuleName &#91;required&#93; The name of the Config rule that you want to delete.
 #'
@@ -130,7 +130,7 @@ configservice_delete_config_rule <- function(ConfigRuleName) {
 #' @description
 #' Deletes the specified configuration aggregator and the aggregated data associated with the aggregator.
 #'
-#' See [https://paws-r.github.io/docs/configservice/delete_configuration_aggregator.html](https://paws-r.github.io/docs/configservice/delete_configuration_aggregator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_delete_configuration_aggregator/](https://www.paws-r-sdk.com/docs/configservice_delete_configuration_aggregator/) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #'
@@ -159,7 +159,7 @@ configservice_delete_configuration_aggregator <- function(ConfigurationAggregato
 #' @description
 #' Deletes the configuration recorder.
 #'
-#' See [https://paws-r.github.io/docs/configservice/delete_configuration_recorder.html](https://paws-r.github.io/docs/configservice/delete_configuration_recorder.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_delete_configuration_recorder/](https://www.paws-r-sdk.com/docs/configservice_delete_configuration_recorder/) for full documentation.
 #'
 #' @param ConfigurationRecorderName &#91;required&#93; The name of the configuration recorder to be deleted. You can retrieve
 #' the name of your configuration recorder by using the
@@ -193,7 +193,7 @@ configservice_delete_configuration_recorder <- function(ConfigurationRecorderNam
 #' @description
 #' Deletes the specified conformance pack and all the Config rules, remediation actions, and all evaluation results within that conformance pack.
 #'
-#' See [https://paws-r.github.io/docs/configservice/delete_conformance_pack.html](https://paws-r.github.io/docs/configservice/delete_conformance_pack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_delete_conformance_pack/](https://www.paws-r-sdk.com/docs/configservice_delete_conformance_pack/) for full documentation.
 #'
 #' @param ConformancePackName &#91;required&#93; Name of the conformance pack you want to delete.
 #'
@@ -222,7 +222,7 @@ configservice_delete_conformance_pack <- function(ConformancePackName) {
 #' @description
 #' Deletes the delivery channel.
 #'
-#' See [https://paws-r.github.io/docs/configservice/delete_delivery_channel.html](https://paws-r.github.io/docs/configservice/delete_delivery_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_delete_delivery_channel/](https://www.paws-r-sdk.com/docs/configservice_delete_delivery_channel/) for full documentation.
 #'
 #' @param DeliveryChannelName &#91;required&#93; The name of the delivery channel to delete.
 #'
@@ -251,7 +251,7 @@ configservice_delete_delivery_channel <- function(DeliveryChannelName) {
 #' @description
 #' Deletes the evaluation results for the specified Config rule. You can specify one Config rule per request. After you delete the evaluation results, you can call the [`start_config_rules_evaluation`][configservice_start_config_rules_evaluation] API to start evaluating your Amazon Web Services resources against the rule.
 #'
-#' See [https://paws-r.github.io/docs/configservice/delete_evaluation_results.html](https://paws-r.github.io/docs/configservice/delete_evaluation_results.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_delete_evaluation_results/](https://www.paws-r-sdk.com/docs/configservice_delete_evaluation_results/) for full documentation.
 #'
 #' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want to delete the evaluation
 #' results.
@@ -282,7 +282,7 @@ configservice_delete_evaluation_results <- function(ConfigRuleName) {
 #' @description
 #' Deletes the specified organization Config rule and all of its evaluation results from all member accounts in that organization.
 #'
-#' See [https://paws-r.github.io/docs/configservice/delete_organization_config_rule.html](https://paws-r.github.io/docs/configservice/delete_organization_config_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_delete_organization_config_rule/](https://www.paws-r-sdk.com/docs/configservice_delete_organization_config_rule/) for full documentation.
 #'
 #' @param OrganizationConfigRuleName &#91;required&#93; The name of organization Config rule that you want to delete.
 #'
@@ -313,7 +313,7 @@ configservice_delete_organization_config_rule <- function(OrganizationConfigRule
 #' @description
 #' Deletes the specified organization conformance pack and all of the Config rules and remediation actions from all member accounts in that organization.
 #'
-#' See [https://paws-r.github.io/docs/configservice/delete_organization_conformance_pack.html](https://paws-r.github.io/docs/configservice/delete_organization_conformance_pack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_delete_organization_conformance_pack/](https://www.paws-r-sdk.com/docs/configservice_delete_organization_conformance_pack/) for full documentation.
 #'
 #' @param OrganizationConformancePackName &#91;required&#93; The name of organization conformance pack that you want to delete.
 #'
@@ -343,7 +343,7 @@ configservice_delete_organization_conformance_pack <- function(OrganizationConfo
 #' @description
 #' Deletes pending authorization requests for a specified aggregator account in a specified region.
 #'
-#' See [https://paws-r.github.io/docs/configservice/delete_pending_aggregation_request.html](https://paws-r.github.io/docs/configservice/delete_pending_aggregation_request.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_delete_pending_aggregation_request/](https://www.paws-r-sdk.com/docs/configservice_delete_pending_aggregation_request/) for full documentation.
 #'
 #' @param RequesterAccountId &#91;required&#93; The 12-digit account ID of the account requesting to aggregate data.
 #' @param RequesterAwsRegion &#91;required&#93; The region requesting to aggregate data.
@@ -373,7 +373,7 @@ configservice_delete_pending_aggregation_request <- function(RequesterAccountId,
 #' @description
 #' Deletes the remediation configuration.
 #'
-#' See [https://paws-r.github.io/docs/configservice/delete_remediation_configuration.html](https://paws-r.github.io/docs/configservice/delete_remediation_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_delete_remediation_configuration/](https://www.paws-r-sdk.com/docs/configservice_delete_remediation_configuration/) for full documentation.
 #'
 #' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want to delete remediation
 #' configuration.
@@ -405,7 +405,7 @@ configservice_delete_remediation_configuration <- function(ConfigRuleName, Resou
 #' @description
 #' Deletes one or more remediation exceptions mentioned in the resource keys.
 #'
-#' See [https://paws-r.github.io/docs/configservice/delete_remediation_exceptions.html](https://paws-r.github.io/docs/configservice/delete_remediation_exceptions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_delete_remediation_exceptions/](https://www.paws-r-sdk.com/docs/configservice_delete_remediation_exceptions/) for full documentation.
 #'
 #' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want to delete remediation
 #' exception configuration.
@@ -439,7 +439,7 @@ configservice_delete_remediation_exceptions <- function(ConfigRuleName, Resource
 #' @description
 #' Records the configuration state for a custom resource that has been deleted. This API records a new ConfigurationItem with a ResourceDeleted status. You can retrieve the ConfigurationItems recorded for this resource in your Config History.
 #'
-#' See [https://paws-r.github.io/docs/configservice/delete_resource_config.html](https://paws-r.github.io/docs/configservice/delete_resource_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_delete_resource_config/](https://www.paws-r-sdk.com/docs/configservice_delete_resource_config/) for full documentation.
 #'
 #' @param ResourceType &#91;required&#93; The type of the resource.
 #' @param ResourceId &#91;required&#93; Unique identifier of the resource.
@@ -469,7 +469,7 @@ configservice_delete_resource_config <- function(ResourceType, ResourceId) {
 #' @description
 #' Deletes the retention configuration.
 #'
-#' See [https://paws-r.github.io/docs/configservice/delete_retention_configuration.html](https://paws-r.github.io/docs/configservice/delete_retention_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_delete_retention_configuration/](https://www.paws-r-sdk.com/docs/configservice_delete_retention_configuration/) for full documentation.
 #'
 #' @param RetentionConfigurationName &#91;required&#93; The name of the retention configuration to delete.
 #'
@@ -499,7 +499,7 @@ configservice_delete_retention_configuration <- function(RetentionConfigurationN
 #' @description
 #' Deletes the stored query for a single Amazon Web Services account and a single Amazon Web Services Region.
 #'
-#' See [https://paws-r.github.io/docs/configservice/delete_stored_query.html](https://paws-r.github.io/docs/configservice/delete_stored_query.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_delete_stored_query/](https://www.paws-r-sdk.com/docs/configservice_delete_stored_query/) for full documentation.
 #'
 #' @param QueryName &#91;required&#93; The name of the query that you want to delete.
 #'
@@ -529,7 +529,7 @@ configservice_delete_stored_query <- function(QueryName) {
 #' @description
 #' Schedules delivery of a configuration snapshot to the Amazon S3 bucket in the specified delivery channel. After the delivery has started, Config sends the following notifications using an Amazon SNS topic that you have specified.
 #'
-#' See [https://paws-r.github.io/docs/configservice/deliver_config_snapshot.html](https://paws-r.github.io/docs/configservice/deliver_config_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_deliver_config_snapshot/](https://www.paws-r-sdk.com/docs/configservice_deliver_config_snapshot/) for full documentation.
 #'
 #' @param deliveryChannelName &#91;required&#93; The name of the delivery channel through which the snapshot is
 #' delivered.
@@ -560,7 +560,7 @@ configservice_deliver_config_snapshot <- function(deliveryChannelName) {
 #' @description
 #' Returns a list of compliant and noncompliant rules with the number of resources for compliant and noncompliant rules. Does not display rules that do not have compliance results.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_aggregate_compliance_by_config_rules.html](https://paws-r.github.io/docs/configservice/describe_aggregate_compliance_by_config_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_aggregate_compliance_by_config_rules/](https://www.paws-r-sdk.com/docs/configservice_describe_aggregate_compliance_by_config_rules/) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param Filters Filters the results by ConfigRuleComplianceFilters object.
@@ -596,7 +596,7 @@ configservice_describe_aggregate_compliance_by_config_rules <- function(Configur
 #' @description
 #' Returns a list of the conformance packs and their associated compliance status with the count of compliant and noncompliant Config rules within each conformance pack. Also returns the total rule count which includes compliant rules, noncompliant rules, and rules that cannot be evaluated due to insufficient data.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_aggregate_compliance_by_conformance_packs.html](https://paws-r.github.io/docs/configservice/describe_aggregate_compliance_by_conformance_packs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_aggregate_compliance_by_conformance_packs/](https://www.paws-r-sdk.com/docs/configservice_describe_aggregate_compliance_by_conformance_packs/) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param Filters Filters the result by `AggregateConformancePackComplianceFilters`
@@ -633,7 +633,7 @@ configservice_describe_aggregate_compliance_by_conformance_packs <- function(Con
 #' @description
 #' Returns a list of authorizations granted to various aggregator accounts and regions.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_aggregation_authorizations.html](https://paws-r.github.io/docs/configservice/describe_aggregation_authorizations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_aggregation_authorizations/](https://www.paws-r-sdk.com/docs/configservice_describe_aggregation_authorizations/) for full documentation.
 #'
 #' @param Limit The maximum number of AggregationAuthorizations returned on each page.
 #' The default is maximum. If you specify 0, Config uses the default.
@@ -665,7 +665,7 @@ configservice_describe_aggregation_authorizations <- function(Limit = NULL, Next
 #' @description
 #' Indicates whether the specified Config rules are compliant. If a rule is noncompliant, this action returns the number of Amazon Web Services resources that do not comply with the rule.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_compliance_by_config_rule.html](https://paws-r.github.io/docs/configservice/describe_compliance_by_config_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_compliance_by_config_rule/](https://www.paws-r-sdk.com/docs/configservice_describe_compliance_by_config_rule/) for full documentation.
 #'
 #' @param ConfigRuleNames Specify one or more Config rule names to filter the results by rule.
 #' @param ComplianceTypes Filters the results by compliance.
@@ -698,7 +698,7 @@ configservice_describe_compliance_by_config_rule <- function(ConfigRuleNames = N
 #' @description
 #' Indicates whether the specified Amazon Web Services resources are compliant. If a resource is noncompliant, this action returns the number of Config rules that the resource does not comply with.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_compliance_by_resource.html](https://paws-r.github.io/docs/configservice/describe_compliance_by_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_compliance_by_resource/](https://www.paws-r-sdk.com/docs/configservice_describe_compliance_by_resource/) for full documentation.
 #'
 #' @param ResourceType The types of Amazon Web Services resources for which you want compliance
 #' information (for example, `AWS::EC2::Instance`). For this action, you
@@ -739,7 +739,7 @@ configservice_describe_compliance_by_resource <- function(ResourceType = NULL, R
 #' @description
 #' Returns status information for each of your Config managed rules. The status includes information such as the last time Config invoked the rule, the last time Config failed to invoke the rule, and the related error for the last failure.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_config_rule_evaluation_status.html](https://paws-r.github.io/docs/configservice/describe_config_rule_evaluation_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_config_rule_evaluation_status/](https://www.paws-r-sdk.com/docs/configservice_describe_config_rule_evaluation_status/) for full documentation.
 #'
 #' @param ConfigRuleNames The name of the Config managed rules for which you want status
 #' information. If you do not specify any names, Config returns status
@@ -780,7 +780,7 @@ configservice_describe_config_rule_evaluation_status <- function(ConfigRuleNames
 #' @description
 #' Returns details about your Config rules.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_config_rules.html](https://paws-r.github.io/docs/configservice/describe_config_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_config_rules/](https://www.paws-r-sdk.com/docs/configservice_describe_config_rules/) for full documentation.
 #'
 #' @param ConfigRuleNames The names of the Config rules for which you want details. If you do not
 #' specify any names, Config returns details for all your rules.
@@ -790,7 +790,7 @@ configservice_describe_config_rule_evaluation_status <- function(ConfigRuleNames
 #' API returns an unfiltered list. For more information on Detective or
 #' Proactive Config rules, see [**Evaluation
 #' Mode**](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config-rules.html)
-#' in the Config Developer Guide.
+#' in the *Config Developer Guide*.
 #'
 #' @keywords internal
 #'
@@ -817,7 +817,7 @@ configservice_describe_config_rules <- function(ConfigRuleNames = NULL, NextToke
 #' @description
 #' Returns status information for sources within an aggregator. The status includes information about the last time Config verified authorization between the source account and an aggregator account. In case of a failure, the status contains the related error code or message.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_configuration_aggregator_sources_status.html](https://paws-r.github.io/docs/configservice/describe_configuration_aggregator_sources_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_configuration_aggregator_sources_status/](https://www.paws-r-sdk.com/docs/configservice_describe_configuration_aggregator_sources_status/) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param UpdateStatus Filters the status type.
@@ -857,7 +857,7 @@ configservice_describe_configuration_aggregator_sources_status <- function(Confi
 #' @description
 #' Returns the details of one or more configuration aggregators. If the configuration aggregator is not specified, this action returns the details for all the configuration aggregators associated with the account.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_configuration_aggregators.html](https://paws-r.github.io/docs/configservice/describe_configuration_aggregators.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_configuration_aggregators/](https://www.paws-r-sdk.com/docs/configservice_describe_configuration_aggregators/) for full documentation.
 #'
 #' @param ConfigurationAggregatorNames The name of the configuration aggregators.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
@@ -891,7 +891,7 @@ configservice_describe_configuration_aggregators <- function(ConfigurationAggreg
 #' @description
 #' Returns the current status of the specified configuration recorder as well as the status of the last recording event for the recorder. If a configuration recorder is not specified, this action returns the status of all configuration recorders associated with the account.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_configuration_recorder_status.html](https://paws-r.github.io/docs/configservice/describe_configuration_recorder_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_configuration_recorder_status/](https://www.paws-r-sdk.com/docs/configservice_describe_configuration_recorder_status/) for full documentation.
 #'
 #' @param ConfigurationRecorderNames The name(s) of the configuration recorder. If the name is not specified,
 #' the action returns the current status of all the configuration recorders
@@ -922,7 +922,7 @@ configservice_describe_configuration_recorder_status <- function(ConfigurationRe
 #' @description
 #' Returns the details for the specified configuration recorders. If the configuration recorder is not specified, this action returns the details for all configuration recorders associated with the account.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_configuration_recorders.html](https://paws-r.github.io/docs/configservice/describe_configuration_recorders.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_configuration_recorders/](https://www.paws-r-sdk.com/docs/configservice_describe_configuration_recorders/) for full documentation.
 #'
 #' @param ConfigurationRecorderNames A list of configuration recorder names.
 #'
@@ -951,7 +951,7 @@ configservice_describe_configuration_recorders <- function(ConfigurationRecorder
 #' @description
 #' Returns compliance details for each rule in that conformance pack.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_conformance_pack_compliance.html](https://paws-r.github.io/docs/configservice/describe_conformance_pack_compliance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_conformance_pack_compliance/](https://www.paws-r-sdk.com/docs/configservice_describe_conformance_pack_compliance/) for full documentation.
 #'
 #' @param ConformancePackName &#91;required&#93; Name of the conformance pack.
 #' @param Filters A `ConformancePackComplianceFilters` object.
@@ -985,7 +985,7 @@ configservice_describe_conformance_pack_compliance <- function(ConformancePackNa
 #' @description
 #' Provides one or more conformance packs deployment status.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_conformance_pack_status.html](https://paws-r.github.io/docs/configservice/describe_conformance_pack_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_conformance_pack_status/](https://www.paws-r-sdk.com/docs/configservice_describe_conformance_pack_status/) for full documentation.
 #'
 #' @param ConformancePackNames Comma-separated list of conformance pack names.
 #' @param Limit The maximum number of conformance packs status returned on each page.
@@ -1017,7 +1017,7 @@ configservice_describe_conformance_pack_status <- function(ConformancePackNames 
 #' @description
 #' Returns a list of one or more conformance packs.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_conformance_packs.html](https://paws-r.github.io/docs/configservice/describe_conformance_packs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_conformance_packs/](https://www.paws-r-sdk.com/docs/configservice_describe_conformance_packs/) for full documentation.
 #'
 #' @param ConformancePackNames Comma-separated list of conformance pack names for which you want
 #' details. If you do not specify any names, Config returns details for all
@@ -1051,7 +1051,7 @@ configservice_describe_conformance_packs <- function(ConformancePackNames = NULL
 #' @description
 #' Returns the current status of the specified delivery channel. If a delivery channel is not specified, this action returns the current status of all delivery channels associated with the account.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_delivery_channel_status.html](https://paws-r.github.io/docs/configservice/describe_delivery_channel_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_delivery_channel_status/](https://www.paws-r-sdk.com/docs/configservice_describe_delivery_channel_status/) for full documentation.
 #'
 #' @param DeliveryChannelNames A list of delivery channel names.
 #'
@@ -1080,7 +1080,7 @@ configservice_describe_delivery_channel_status <- function(DeliveryChannelNames 
 #' @description
 #' Returns details about the specified delivery channel. If a delivery channel is not specified, this action returns the details of all delivery channels associated with the account.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_delivery_channels.html](https://paws-r.github.io/docs/configservice/describe_delivery_channels.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_delivery_channels/](https://www.paws-r-sdk.com/docs/configservice_describe_delivery_channels/) for full documentation.
 #'
 #' @param DeliveryChannelNames A list of delivery channel names.
 #'
@@ -1109,7 +1109,7 @@ configservice_describe_delivery_channels <- function(DeliveryChannelNames = NULL
 #' @description
 #' Provides organization Config rule deployment status for an organization.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_organization_config_rule_statuses.html](https://paws-r.github.io/docs/configservice/describe_organization_config_rule_statuses.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_organization_config_rule_statuses/](https://www.paws-r-sdk.com/docs/configservice_describe_organization_config_rule_statuses/) for full documentation.
 #'
 #' @param OrganizationConfigRuleNames The names of organization Config rules for which you want status
 #' details. If you do not specify any names, Config returns details for all
@@ -1145,7 +1145,7 @@ configservice_describe_organization_config_rule_statuses <- function(Organizatio
 #' @description
 #' Returns a list of organization Config rules.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_organization_config_rules.html](https://paws-r.github.io/docs/configservice/describe_organization_config_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_organization_config_rules/](https://www.paws-r-sdk.com/docs/configservice_describe_organization_config_rules/) for full documentation.
 #'
 #' @param OrganizationConfigRuleNames The names of organization Config rules for which you want details. If
 #' you do not specify any names, Config returns details for all your
@@ -1182,7 +1182,7 @@ configservice_describe_organization_config_rules <- function(OrganizationConfigR
 #' @description
 #' Provides organization conformance pack deployment status for an organization.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_organization_conformance_pack_statuses.html](https://paws-r.github.io/docs/configservice/describe_organization_conformance_pack_statuses.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_organization_conformance_pack_statuses/](https://www.paws-r-sdk.com/docs/configservice_describe_organization_conformance_pack_statuses/) for full documentation.
 #'
 #' @param OrganizationConformancePackNames The names of organization conformance packs for which you want status
 #' details. If you do not specify any names, Config returns details for all
@@ -1218,7 +1218,7 @@ configservice_describe_organization_conformance_pack_statuses <- function(Organi
 #' @description
 #' Returns a list of organization conformance packs.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_organization_conformance_packs.html](https://paws-r.github.io/docs/configservice/describe_organization_conformance_packs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_organization_conformance_packs/](https://www.paws-r-sdk.com/docs/configservice_describe_organization_conformance_packs/) for full documentation.
 #'
 #' @param OrganizationConformancePackNames The name that you assign to an organization conformance pack.
 #' @param Limit The maximum number of organization config packs returned on each page.
@@ -1252,7 +1252,7 @@ configservice_describe_organization_conformance_packs <- function(OrganizationCo
 #' @description
 #' Returns a list of all pending aggregation requests.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_pending_aggregation_requests.html](https://paws-r.github.io/docs/configservice/describe_pending_aggregation_requests.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_pending_aggregation_requests/](https://www.paws-r-sdk.com/docs/configservice_describe_pending_aggregation_requests/) for full documentation.
 #'
 #' @param Limit The maximum number of evaluation results returned on each page. The
 #' default is maximum. If you specify 0, Config uses the default.
@@ -1284,7 +1284,7 @@ configservice_describe_pending_aggregation_requests <- function(Limit = NULL, Ne
 #' @description
 #' Returns the details of one or more remediation configurations.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_remediation_configurations.html](https://paws-r.github.io/docs/configservice/describe_remediation_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_remediation_configurations/](https://www.paws-r-sdk.com/docs/configservice_describe_remediation_configurations/) for full documentation.
 #'
 #' @param ConfigRuleNames &#91;required&#93; A list of Config rule names of remediation configurations for which you
 #' want details.
@@ -1314,7 +1314,7 @@ configservice_describe_remediation_configurations <- function(ConfigRuleNames) {
 #' @description
 #' Returns the details of one or more remediation exceptions. A detailed view of a remediation exception for a set of resources that includes an explanation of an exception and the time when the exception will be deleted. When you specify the limit and the next token, you receive a paginated response.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_remediation_exceptions.html](https://paws-r.github.io/docs/configservice/describe_remediation_exceptions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_remediation_exceptions/](https://www.paws-r-sdk.com/docs/configservice_describe_remediation_exceptions/) for full documentation.
 #'
 #' @param ConfigRuleName &#91;required&#93; The name of the Config rule.
 #' @param ResourceKeys An exception list of resource exception keys to be processed with the
@@ -1352,7 +1352,7 @@ configservice_describe_remediation_exceptions <- function(ConfigRuleName, Resour
 #' @description
 #' Provides a detailed view of a Remediation Execution for a set of resources including state, timestamps for when steps for the remediation execution occur, and any error messages for steps that have failed. When you specify the limit and the next token, you receive a paginated response.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_remediation_execution_status.html](https://paws-r.github.io/docs/configservice/describe_remediation_execution_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_remediation_execution_status/](https://www.paws-r-sdk.com/docs/configservice_describe_remediation_execution_status/) for full documentation.
 #'
 #' @param ConfigRuleName &#91;required&#93; A list of Config rule names.
 #' @param ResourceKeys A list of resource keys to be processed with the current request. Each
@@ -1387,7 +1387,7 @@ configservice_describe_remediation_execution_status <- function(ConfigRuleName, 
 #' @description
 #' Returns the details of one or more retention configurations. If the retention configuration name is not specified, this action returns the details for all the retention configurations for that account.
 #'
-#' See [https://paws-r.github.io/docs/configservice/describe_retention_configurations.html](https://paws-r.github.io/docs/configservice/describe_retention_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_describe_retention_configurations/](https://www.paws-r-sdk.com/docs/configservice_describe_retention_configurations/) for full documentation.
 #'
 #' @param RetentionConfigurationNames A list of names of retention configurations for which you want details.
 #' If you do not specify a name, Config returns details for all the
@@ -1424,7 +1424,7 @@ configservice_describe_retention_configurations <- function(RetentionConfigurati
 #' @description
 #' Returns the evaluation results for the specified Config rule for a specific resource in a rule. The results indicate which Amazon Web Services resources were evaluated by the rule, when each resource was last evaluated, and whether each resource complies with the rule.
 #'
-#' See [https://paws-r.github.io/docs/configservice/get_aggregate_compliance_details_by_config_rule.html](https://paws-r.github.io/docs/configservice/get_aggregate_compliance_details_by_config_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_get_aggregate_compliance_details_by_config_rule/](https://www.paws-r-sdk.com/docs/configservice_get_aggregate_compliance_details_by_config_rule/) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want compliance information.
@@ -1467,7 +1467,7 @@ configservice_get_aggregate_compliance_details_by_config_rule <- function(Config
 #' @description
 #' Returns the number of compliant and noncompliant rules for one or more accounts and regions in an aggregator.
 #'
-#' See [https://paws-r.github.io/docs/configservice/get_aggregate_config_rule_compliance_summary.html](https://paws-r.github.io/docs/configservice/get_aggregate_config_rule_compliance_summary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_get_aggregate_config_rule_compliance_summary/](https://www.paws-r-sdk.com/docs/configservice_get_aggregate_config_rule_compliance_summary/) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param Filters Filters the results based on the ConfigRuleComplianceSummaryFilters
@@ -1506,7 +1506,7 @@ configservice_get_aggregate_config_rule_compliance_summary <- function(Configura
 #' @description
 #' Returns the count of compliant and noncompliant conformance packs across all Amazon Web Services accounts and Amazon Web Services Regions in an aggregator. You can filter based on Amazon Web Services account ID or Amazon Web Services Region.
 #'
-#' See [https://paws-r.github.io/docs/configservice/get_aggregate_conformance_pack_compliance_summary.html](https://paws-r.github.io/docs/configservice/get_aggregate_conformance_pack_compliance_summary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_get_aggregate_conformance_pack_compliance_summary/](https://www.paws-r-sdk.com/docs/configservice_get_aggregate_conformance_pack_compliance_summary/) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param Filters Filters the results based on the
@@ -1544,7 +1544,7 @@ configservice_get_aggregate_conformance_pack_compliance_summary <- function(Conf
 #' @description
 #' Returns the resource counts across accounts and regions that are present in your Config aggregator. You can request the resource counts by providing filters and GroupByKey.
 #'
-#' See [https://paws-r.github.io/docs/configservice/get_aggregate_discovered_resource_counts.html](https://paws-r.github.io/docs/configservice/get_aggregate_discovered_resource_counts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_get_aggregate_discovered_resource_counts/](https://www.paws-r-sdk.com/docs/configservice_get_aggregate_discovered_resource_counts/) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param Filters Filters the results based on the `ResourceCountFilters` object.
@@ -1581,7 +1581,7 @@ configservice_get_aggregate_discovered_resource_counts <- function(Configuration
 #' @description
 #' Returns configuration item that is aggregated for your specific resource in a specific source account and region.
 #'
-#' See [https://paws-r.github.io/docs/configservice/get_aggregate_resource_config.html](https://paws-r.github.io/docs/configservice/get_aggregate_resource_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_get_aggregate_resource_config/](https://www.paws-r-sdk.com/docs/configservice_get_aggregate_resource_config/) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param ResourceIdentifier &#91;required&#93; An object that identifies aggregate resource.
@@ -1611,7 +1611,7 @@ configservice_get_aggregate_resource_config <- function(ConfigurationAggregatorN
 #' @description
 #' Returns the evaluation results for the specified Config rule. The results indicate which Amazon Web Services resources were evaluated by the rule, when each resource was last evaluated, and whether each resource complies with the rule.
 #'
-#' See [https://paws-r.github.io/docs/configservice/get_compliance_details_by_config_rule.html](https://paws-r.github.io/docs/configservice/get_compliance_details_by_config_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_get_compliance_details_by_config_rule/](https://www.paws-r-sdk.com/docs/configservice_get_compliance_details_by_config_rule/) for full documentation.
 #'
 #' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want compliance information.
 #' @param ComplianceTypes Filters the results by compliance.
@@ -1651,7 +1651,7 @@ configservice_get_compliance_details_by_config_rule <- function(ConfigRuleName, 
 #' @description
 #' Returns the evaluation results for the specified Amazon Web Services resource. The results indicate which Config rules were used to evaluate the resource, when each rule was last invoked, and whether the resource complies with each rule.
 #'
-#' See [https://paws-r.github.io/docs/configservice/get_compliance_details_by_resource.html](https://paws-r.github.io/docs/configservice/get_compliance_details_by_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_get_compliance_details_by_resource/](https://www.paws-r-sdk.com/docs/configservice_get_compliance_details_by_resource/) for full documentation.
 #'
 #' @param ResourceType The type of the Amazon Web Services resource for which you want
 #' compliance information.
@@ -1696,7 +1696,7 @@ configservice_get_compliance_details_by_resource <- function(ResourceType = NULL
 #' @description
 #' Returns the number of Config rules that are compliant and noncompliant, up to a maximum of 25 for each.
 #'
-#' See [https://paws-r.github.io/docs/configservice/get_compliance_summary_by_config_rule.html](https://paws-r.github.io/docs/configservice/get_compliance_summary_by_config_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_get_compliance_summary_by_config_rule/](https://www.paws-r-sdk.com/docs/configservice_get_compliance_summary_by_config_rule/) for full documentation.
 #'
 
 #'
@@ -1726,7 +1726,7 @@ configservice_get_compliance_summary_by_config_rule <- function() {
 #' @description
 #' Returns the number of resources that are compliant and the number that are noncompliant. You can specify one or more resource types to get these numbers for each resource type. The maximum number returned is 100.
 #'
-#' See [https://paws-r.github.io/docs/configservice/get_compliance_summary_by_resource_type.html](https://paws-r.github.io/docs/configservice/get_compliance_summary_by_resource_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_get_compliance_summary_by_resource_type/](https://www.paws-r-sdk.com/docs/configservice_get_compliance_summary_by_resource_type/) for full documentation.
 #'
 #' @param ResourceTypes Specify one or more resource types to get the number of resources that
 #' are compliant and the number that are noncompliant for each resource
@@ -1762,7 +1762,7 @@ configservice_get_compliance_summary_by_resource_type <- function(ResourceTypes 
 #' @description
 #' Returns compliance details of a conformance pack for all Amazon Web Services resources that are monitered by conformance pack.
 #'
-#' See [https://paws-r.github.io/docs/configservice/get_conformance_pack_compliance_details.html](https://paws-r.github.io/docs/configservice/get_conformance_pack_compliance_details.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_get_conformance_pack_compliance_details/](https://www.paws-r-sdk.com/docs/configservice_get_conformance_pack_compliance_details/) for full documentation.
 #'
 #' @param ConformancePackName &#91;required&#93; Name of the conformance pack.
 #' @param Filters A `ConformancePackEvaluationFilters` object.
@@ -1797,7 +1797,7 @@ configservice_get_conformance_pack_compliance_details <- function(ConformancePac
 #' @description
 #' Returns compliance details for the conformance pack based on the cumulative compliance results of all the rules in that conformance pack.
 #'
-#' See [https://paws-r.github.io/docs/configservice/get_conformance_pack_compliance_summary.html](https://paws-r.github.io/docs/configservice/get_conformance_pack_compliance_summary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_get_conformance_pack_compliance_summary/](https://www.paws-r-sdk.com/docs/configservice_get_conformance_pack_compliance_summary/) for full documentation.
 #'
 #' @param ConformancePackNames &#91;required&#93; Names of conformance packs.
 #' @param Limit The maximum number of conformance packs returned on each page.
@@ -1830,7 +1830,7 @@ configservice_get_conformance_pack_compliance_summary <- function(ConformancePac
 #' @description
 #' Returns the policy definition containing the logic for your Config Custom Policy rule.
 #'
-#' See [https://paws-r.github.io/docs/configservice/get_custom_rule_policy.html](https://paws-r.github.io/docs/configservice/get_custom_rule_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_get_custom_rule_policy/](https://www.paws-r-sdk.com/docs/configservice_get_custom_rule_policy/) for full documentation.
 #'
 #' @param ConfigRuleName The name of your Config Custom Policy rule.
 #'
@@ -1861,7 +1861,7 @@ configservice_get_custom_rule_policy <- function(ConfigRuleName = NULL) {
 #' @description
 #' Returns the resource types, the number of each resource type, and the total number of resources that Config is recording in this region for your Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/configservice/get_discovered_resource_counts.html](https://paws-r.github.io/docs/configservice/get_discovered_resource_counts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_get_discovered_resource_counts/](https://www.paws-r-sdk.com/docs/configservice_get_discovered_resource_counts/) for full documentation.
 #'
 #' @param resourceTypes The comma-separated list that specifies the resource types that you want
 #' Config to return (for example, `"AWS::EC2::Instance"`,
@@ -1906,7 +1906,7 @@ configservice_get_discovered_resource_counts <- function(resourceTypes = NULL, l
 #' @description
 #' Returns detailed status for each member account within an organization for a given organization Config rule.
 #'
-#' See [https://paws-r.github.io/docs/configservice/get_organization_config_rule_detailed_status.html](https://paws-r.github.io/docs/configservice/get_organization_config_rule_detailed_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_get_organization_config_rule_detailed_status/](https://www.paws-r-sdk.com/docs/configservice_get_organization_config_rule_detailed_status/) for full documentation.
 #'
 #' @param OrganizationConfigRuleName &#91;required&#93; The name of your organization Config rule for which you want status
 #' details for member accounts.
@@ -1943,7 +1943,7 @@ configservice_get_organization_config_rule_detailed_status <- function(Organizat
 #' @description
 #' Returns detailed status for each member account within an organization for a given organization conformance pack.
 #'
-#' See [https://paws-r.github.io/docs/configservice/get_organization_conformance_pack_detailed_status.html](https://paws-r.github.io/docs/configservice/get_organization_conformance_pack_detailed_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_get_organization_conformance_pack_detailed_status/](https://www.paws-r-sdk.com/docs/configservice_get_organization_conformance_pack_detailed_status/) for full documentation.
 #'
 #' @param OrganizationConformancePackName &#91;required&#93; The name of organization conformance pack for which you want status
 #' details for member accounts.
@@ -1980,7 +1980,7 @@ configservice_get_organization_conformance_pack_detailed_status <- function(Orga
 #' @description
 #' Returns the policy definition containing the logic for your organization Config Custom Policy rule.
 #'
-#' See [https://paws-r.github.io/docs/configservice/get_organization_custom_rule_policy.html](https://paws-r.github.io/docs/configservice/get_organization_custom_rule_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_get_organization_custom_rule_policy/](https://www.paws-r-sdk.com/docs/configservice_get_organization_custom_rule_policy/) for full documentation.
 #'
 #' @param OrganizationConfigRuleName &#91;required&#93; The name of your organization Config Custom Policy rule.
 #'
@@ -2009,7 +2009,7 @@ configservice_get_organization_custom_rule_policy <- function(OrganizationConfig
 #' @description
 #' Returns a list of `ConfigurationItems` for the specified resource. The list contains details about each state of the resource during the specified time interval. If you specified a retention period to retain your `ConfigurationItems` between a minimum of 30 days and a maximum of 7 years (2557 days), Config returns the `ConfigurationItems` for the specified retention period.
 #'
-#' See [https://paws-r.github.io/docs/configservice/get_resource_config_history.html](https://paws-r.github.io/docs/configservice/get_resource_config_history.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_get_resource_config_history/](https://www.paws-r-sdk.com/docs/configservice_get_resource_config_history/) for full documentation.
 #'
 #' @param resourceType &#91;required&#93; The resource type.
 #' @param resourceId &#91;required&#93; The ID of the resource (for example., `sg-xxxxxx`).
@@ -2052,7 +2052,7 @@ configservice_get_resource_config_history <- function(resourceType, resourceId, 
 #' @description
 #' Returns a summary of resource evaluation for the specified resource evaluation ID from the proactive rules that were run. The results indicate which evaluation context was used to evaluate the rules, which resource details were evaluated, the evaluation mode that was run, and whether the resource details comply with the configuration of the proactive rules.
 #'
-#' See [https://paws-r.github.io/docs/configservice/get_resource_evaluation_summary.html](https://paws-r.github.io/docs/configservice/get_resource_evaluation_summary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_get_resource_evaluation_summary/](https://www.paws-r-sdk.com/docs/configservice_get_resource_evaluation_summary/) for full documentation.
 #'
 #' @param ResourceEvaluationId &#91;required&#93; The unique `ResourceEvaluationId` of Amazon Web Services resource
 #' execution for which you want to retrieve the evaluation summary.
@@ -2082,7 +2082,7 @@ configservice_get_resource_evaluation_summary <- function(ResourceEvaluationId) 
 #' @description
 #' Returns the details of a specific stored query.
 #'
-#' See [https://paws-r.github.io/docs/configservice/get_stored_query.html](https://paws-r.github.io/docs/configservice/get_stored_query.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_get_stored_query/](https://www.paws-r-sdk.com/docs/configservice_get_stored_query/) for full documentation.
 #'
 #' @param QueryName &#91;required&#93; The name of the query.
 #'
@@ -2112,7 +2112,7 @@ configservice_get_stored_query <- function(QueryName) {
 #' @description
 #' Accepts a resource type and returns a list of resource identifiers that are aggregated for a specific resource type across accounts and regions. A resource identifier includes the resource type, ID, (if available) the custom resource name, source account, and source region. You can narrow the results to include only resources that have specific resource IDs, or a resource name, or source account ID, or source region.
 #'
-#' See [https://paws-r.github.io/docs/configservice/list_aggregate_discovered_resources.html](https://paws-r.github.io/docs/configservice/list_aggregate_discovered_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_list_aggregate_discovered_resources/](https://www.paws-r-sdk.com/docs/configservice_list_aggregate_discovered_resources/) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param ResourceType &#91;required&#93; The type of resources that you want Config to list in the response.
@@ -2148,7 +2148,7 @@ configservice_list_aggregate_discovered_resources <- function(ConfigurationAggre
 #' @description
 #' Returns a list of conformance pack compliance scores. A compliance score is the percentage of the number of compliant rule-resource combinations in a conformance pack compared to the number of total possible rule-resource combinations in the conformance pack. This metric provides you with a high-level view of the compliance state of your conformance packs. You can use it to identify, investigate, and understand the level of compliance in your conformance packs.
 #'
-#' See [https://paws-r.github.io/docs/configservice/list_conformance_pack_compliance_scores.html](https://paws-r.github.io/docs/configservice/list_conformance_pack_compliance_scores.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_list_conformance_pack_compliance_scores/](https://www.paws-r-sdk.com/docs/configservice_list_conformance_pack_compliance_scores/) for full documentation.
 #'
 #' @param Filters Filters the results based on the
 #' `ConformancePackComplianceScoresFilters`.
@@ -2204,7 +2204,7 @@ configservice_list_conformance_pack_compliance_scores <- function(Filters = NULL
 #' @description
 #' Accepts a resource type and returns a list of resource identifiers for the resources of that type. A resource identifier includes the resource type, ID, and (if available) the custom resource name. The results consist of resources that Config has discovered, including those that Config is not currently recording. You can narrow the results to include only resources that have specific resource IDs or a resource name.
 #'
-#' See [https://paws-r.github.io/docs/configservice/list_discovered_resources.html](https://paws-r.github.io/docs/configservice/list_discovered_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_list_discovered_resources/](https://www.paws-r-sdk.com/docs/configservice_list_discovered_resources/) for full documentation.
 #'
 #' @param resourceType &#91;required&#93; The type of resources that you want Config to list in the response.
 #' @param resourceIds The IDs of only those resources that you want Config to list in the
@@ -2247,7 +2247,7 @@ configservice_list_discovered_resources <- function(resourceType, resourceIds = 
 #' @description
 #' Returns a list of proactive resource evaluations.
 #'
-#' See [https://paws-r.github.io/docs/configservice/list_resource_evaluations.html](https://paws-r.github.io/docs/configservice/list_resource_evaluations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_list_resource_evaluations/](https://www.paws-r-sdk.com/docs/configservice_list_resource_evaluations/) for full documentation.
 #'
 #' @param Filters Returns a `ResourceEvaluationFilters` object.
 #' @param Limit The maximum number of evaluations returned on each page. The default is
@@ -2282,7 +2282,7 @@ configservice_list_resource_evaluations <- function(Filters = NULL, Limit = NULL
 #' @description
 #' Lists the stored queries for a single Amazon Web Services account and a single Amazon Web Services Region. The default is 100.
 #'
-#' See [https://paws-r.github.io/docs/configservice/list_stored_queries.html](https://paws-r.github.io/docs/configservice/list_stored_queries.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_list_stored_queries/](https://www.paws-r-sdk.com/docs/configservice_list_stored_queries/) for full documentation.
 #'
 #' @param NextToken The nextToken string returned in a previous request that you use to
 #' request the next page of results in a paginated response.
@@ -2313,7 +2313,7 @@ configservice_list_stored_queries <- function(NextToken = NULL, MaxResults = NUL
 #' @description
 #' List the tags for Config resource.
 #'
-#' See [https://paws-r.github.io/docs/configservice/list_tags_for_resource.html](https://paws-r.github.io/docs/configservice/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/configservice_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
 #' list the tags. Currently, the supported resources are `ConfigRule`,
@@ -2350,7 +2350,7 @@ configservice_list_tags_for_resource <- function(ResourceArn, Limit = NULL, Next
 #' @description
 #' Authorizes the aggregator account and region to collect data from the source account and region.
 #'
-#' See [https://paws-r.github.io/docs/configservice/put_aggregation_authorization.html](https://paws-r.github.io/docs/configservice/put_aggregation_authorization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_put_aggregation_authorization/](https://www.paws-r-sdk.com/docs/configservice_put_aggregation_authorization/) for full documentation.
 #'
 #' @param AuthorizedAccountId &#91;required&#93; The 12-digit account ID of the account authorized to aggregate data.
 #' @param AuthorizedAwsRegion &#91;required&#93; The region authorized to collect aggregated data.
@@ -2382,7 +2382,7 @@ configservice_put_aggregation_authorization <- function(AuthorizedAccountId, Aut
 #' @description
 #' Adds or updates an Config rule to evaluate if your Amazon Web Services resources comply with your desired configurations. For information on how many Config rules you can have per account, see [**Service Limits**](https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html) in the *Config Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/configservice/put_config_rule.html](https://paws-r.github.io/docs/configservice/put_config_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_put_config_rule/](https://www.paws-r-sdk.com/docs/configservice_put_config_rule/) for full documentation.
 #'
 #' @param ConfigRule &#91;required&#93; The rule that you want to add to your account.
 #' @param Tags An array of tag object.
@@ -2413,7 +2413,7 @@ configservice_put_config_rule <- function(ConfigRule, Tags = NULL) {
 #' @description
 #' Creates and updates the configuration aggregator with the selected source accounts and regions. The source account can be individual account(s) or an organization.
 #'
-#' See [https://paws-r.github.io/docs/configservice/put_configuration_aggregator.html](https://paws-r.github.io/docs/configservice/put_configuration_aggregator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_put_configuration_aggregator/](https://www.paws-r-sdk.com/docs/configservice_put_configuration_aggregator/) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param AccountAggregationSources A list of AccountAggregationSource object.
@@ -2440,16 +2440,16 @@ configservice_put_configuration_aggregator <- function(ConfigurationAggregatorNa
 }
 .configservice$operations$put_configuration_aggregator <- configservice_put_configuration_aggregator
 
-#' Creates a new configuration recorder to record the selected resource
-#' configurations
+#' Creates a new configuration recorder to record configuration changes for
+#' specified resource types
 #'
 #' @description
-#' Creates a new configuration recorder to record the selected resource configurations.
+#' Creates a new configuration recorder to record configuration changes for specified resource types.
 #'
-#' See [https://paws-r.github.io/docs/configservice/put_configuration_recorder.html](https://paws-r.github.io/docs/configservice/put_configuration_recorder.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_put_configuration_recorder/](https://www.paws-r-sdk.com/docs/configservice_put_configuration_recorder/) for full documentation.
 #'
-#' @param ConfigurationRecorder &#91;required&#93; The configuration recorder object that records each configuration change
-#' made to the resources.
+#' @param ConfigurationRecorder &#91;required&#93; An object for the configuration recorder to record configuration changes
+#' for specified resource types.
 #'
 #' @keywords internal
 #'
@@ -2474,9 +2474,9 @@ configservice_put_configuration_recorder <- function(ConfigurationRecorder) {
 #' Creates or updates a conformance pack
 #'
 #' @description
-#' Creates or updates a conformance pack. A conformance pack is a collection of Config rules that can be easily deployed in an account and a region and across an organization. For information on how many conformance packs you can have per account, see [**Service Limits**](https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html) in the Config Developer Guide.
+#' Creates or updates a conformance pack. A conformance pack is a collection of Config rules that can be easily deployed in an account and a region and across an organization. For information on how many conformance packs you can have per account, see [**Service Limits**](https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html) in the *Config Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/configservice/put_conformance_pack.html](https://paws-r.github.io/docs/configservice/put_conformance_pack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_put_conformance_pack/](https://www.paws-r-sdk.com/docs/configservice_put_conformance_pack/) for full documentation.
 #'
 #' @param ConformancePackName &#91;required&#93; The unique name of the conformance pack you want to deploy.
 #' @param TemplateS3Uri The location of the file containing the template body
@@ -2531,7 +2531,7 @@ configservice_put_conformance_pack <- function(ConformancePackName, TemplateS3Ur
 #' @description
 #' Creates a delivery channel object to deliver configuration information to an Amazon S3 bucket and Amazon SNS topic.
 #'
-#' See [https://paws-r.github.io/docs/configservice/put_delivery_channel.html](https://paws-r.github.io/docs/configservice/put_delivery_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_put_delivery_channel/](https://www.paws-r-sdk.com/docs/configservice_put_delivery_channel/) for full documentation.
 #'
 #' @param DeliveryChannel &#91;required&#93; The configuration delivery channel object that delivers the
 #' configuration information to an Amazon S3 bucket and to an Amazon SNS
@@ -2562,7 +2562,7 @@ configservice_put_delivery_channel <- function(DeliveryChannel) {
 #' @description
 #' Used by an Lambda function to deliver evaluation results to Config. This action is required in every Lambda function that is invoked by an Config rule.
 #'
-#' See [https://paws-r.github.io/docs/configservice/put_evaluations.html](https://paws-r.github.io/docs/configservice/put_evaluations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_put_evaluations/](https://www.paws-r-sdk.com/docs/configservice_put_evaluations/) for full documentation.
 #'
 #' @param Evaluations The assessments that the Lambda function performs. Each evaluation
 #' identifies an Amazon Web Services resource and indicates whether it
@@ -2605,7 +2605,7 @@ configservice_put_evaluations <- function(Evaluations = NULL, ResultToken, TestM
 #' @description
 #' Add or updates the evaluations for process checks. This API checks if the rule is a process check when the name of the Config rule is provided.
 #'
-#' See [https://paws-r.github.io/docs/configservice/put_external_evaluation.html](https://paws-r.github.io/docs/configservice/put_external_evaluation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_put_external_evaluation/](https://www.paws-r-sdk.com/docs/configservice_put_external_evaluation/) for full documentation.
 #'
 #' @param ConfigRuleName &#91;required&#93; The name of the Config rule.
 #' @param ExternalEvaluation &#91;required&#93; An `ExternalEvaluation` object that provides details about compliance.
@@ -2637,7 +2637,7 @@ configservice_put_external_evaluation <- function(ConfigRuleName, ExternalEvalua
 #' @description
 #' Adds or updates an Config rule for your entire organization to evaluate if your Amazon Web Services resources comply with your desired configurations. For information on how many organization Config rules you can have per account, see [**Service Limits**](https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html) in the *Config Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/configservice/put_organization_config_rule.html](https://paws-r.github.io/docs/configservice/put_organization_config_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_put_organization_config_rule/](https://www.paws-r-sdk.com/docs/configservice_put_organization_config_rule/) for full documentation.
 #'
 #' @param OrganizationConfigRuleName &#91;required&#93; The name that you assign to an organization Config rule.
 #' @param OrganizationManagedRuleMetadata An `OrganizationManagedRuleMetadata` object. This object specifies
@@ -2686,9 +2686,9 @@ configservice_put_organization_config_rule <- function(OrganizationConfigRuleNam
 #' Services Organization
 #'
 #' @description
-#' Deploys conformance packs across member accounts in an Amazon Web Services Organization. For information on how many organization conformance packs and how many Config rules you can have per account, see [**Service Limits**](https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html) in the Config Developer Guide.
+#' Deploys conformance packs across member accounts in an Amazon Web Services Organization. For information on how many organization conformance packs and how many Config rules you can have per account, see [**Service Limits**](https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html) in the *Config Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/configservice/put_organization_conformance_pack.html](https://paws-r.github.io/docs/configservice/put_organization_conformance_pack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_put_organization_conformance_pack/](https://www.paws-r-sdk.com/docs/configservice_put_organization_conformance_pack/) for full documentation.
 #'
 #' @param OrganizationConformancePackName &#91;required&#93; Name of the organization conformance pack you want to create.
 #' @param TemplateS3Uri Location of file containing the template body. The uri must point to the
@@ -2736,7 +2736,7 @@ configservice_put_organization_conformance_pack <- function(OrganizationConforma
 #' @description
 #' Adds or updates the remediation configuration with a specific Config rule with the selected target or action. The API creates the `RemediationConfiguration` object for the Config rule. The Config rule must already exist for you to add a remediation configuration. The target (SSM document) must exist and have permissions to use the target.
 #'
-#' See [https://paws-r.github.io/docs/configservice/put_remediation_configurations.html](https://paws-r.github.io/docs/configservice/put_remediation_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_put_remediation_configurations/](https://www.paws-r-sdk.com/docs/configservice_put_remediation_configurations/) for full documentation.
 #'
 #' @param RemediationConfigurations &#91;required&#93; A list of remediation configuration objects.
 #'
@@ -2766,7 +2766,7 @@ configservice_put_remediation_configurations <- function(RemediationConfiguratio
 #' @description
 #' A remediation exception is when a specified resource is no longer considered for auto-remediation. This API adds a new exception or updates an existing exception for a specified resource with a specified Config rule.
 #'
-#' See [https://paws-r.github.io/docs/configservice/put_remediation_exceptions.html](https://paws-r.github.io/docs/configservice/put_remediation_exceptions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_put_remediation_exceptions/](https://www.paws-r-sdk.com/docs/configservice_put_remediation_exceptions/) for full documentation.
 #'
 #' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want to create remediation
 #' exception.
@@ -2801,7 +2801,7 @@ configservice_put_remediation_exceptions <- function(ConfigRuleName, ResourceKey
 #' @description
 #' Records the configuration state for the resource provided in the request. The configuration state of a resource is represented in Config as Configuration Items. Once this API records the configuration item, you can retrieve the list of configuration items for the custom resource type using existing Config APIs.
 #'
-#' See [https://paws-r.github.io/docs/configservice/put_resource_config.html](https://paws-r.github.io/docs/configservice/put_resource_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_put_resource_config/](https://www.paws-r-sdk.com/docs/configservice_put_resource_config/) for full documentation.
 #'
 #' @param ResourceType &#91;required&#93; The type of the resource. The custom resource type must be registered
 #' with CloudFormation.
@@ -2850,7 +2850,7 @@ configservice_put_resource_config <- function(ResourceType, SchemaVersionId, Res
 #' @description
 #' Creates and updates the retention configuration with details about retention period (number of days) that Config stores your historical information. The API creates the `RetentionConfiguration` object and names the object as **default**. When you have a `RetentionConfiguration` object named **default**, calling the API modifies the default object.
 #'
-#' See [https://paws-r.github.io/docs/configservice/put_retention_configuration.html](https://paws-r.github.io/docs/configservice/put_retention_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_put_retention_configuration/](https://www.paws-r-sdk.com/docs/configservice_put_retention_configuration/) for full documentation.
 #'
 #' @param RetentionPeriodInDays &#91;required&#93; Number of days Config stores your historical information.
 #' 
@@ -2881,7 +2881,7 @@ configservice_put_retention_configuration <- function(RetentionPeriodInDays) {
 #' @description
 #' Saves a new query or updates an existing saved query. The `QueryName` must be unique for a single Amazon Web Services account and a single Amazon Web Services Region. You can create upto 300 queries in a single Amazon Web Services account and a single Amazon Web Services Region.
 #'
-#' See [https://paws-r.github.io/docs/configservice/put_stored_query.html](https://paws-r.github.io/docs/configservice/put_stored_query.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_put_stored_query/](https://www.paws-r-sdk.com/docs/configservice_put_stored_query/) for full documentation.
 #'
 #' @param StoredQuery &#91;required&#93; A list of `StoredQuery` objects. The mandatory fields are `QueryName`
 #' and `Expression`.
@@ -2919,7 +2919,7 @@ configservice_put_stored_query <- function(StoredQuery, Tags = NULL) {
 #' @description
 #' Accepts a structured query language (SQL) SELECT command and an aggregator to query configuration state of Amazon Web Services resources across multiple accounts and regions, performs the corresponding search, and returns resource configurations matching the properties.
 #'
-#' See [https://paws-r.github.io/docs/configservice/select_aggregate_resource_config.html](https://paws-r.github.io/docs/configservice/select_aggregate_resource_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_select_aggregate_resource_config/](https://www.paws-r-sdk.com/docs/configservice_select_aggregate_resource_config/) for full documentation.
 #'
 #' @param Expression &#91;required&#93; The SQL query SELECT command.
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
@@ -2956,7 +2956,7 @@ configservice_select_aggregate_resource_config <- function(Expression, Configura
 #' @description
 #' Accepts a structured query language (SQL) `SELECT` command, performs the corresponding search, and returns resource configurations matching the properties.
 #'
-#' See [https://paws-r.github.io/docs/configservice/select_resource_config.html](https://paws-r.github.io/docs/configservice/select_resource_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_select_resource_config/](https://www.paws-r-sdk.com/docs/configservice_select_resource_config/) for full documentation.
 #'
 #' @param Expression &#91;required&#93; The SQL query `SELECT` command.
 #' @param Limit The maximum number of query results returned on each page.
@@ -2989,7 +2989,7 @@ configservice_select_resource_config <- function(Expression, Limit = NULL, NextT
 #' @description
 #' Runs an on-demand evaluation for the specified Config rules against the last known configuration state of the resources. Use [`start_config_rules_evaluation`][configservice_start_config_rules_evaluation] when you want to test that a rule you updated is working as expected. [`start_config_rules_evaluation`][configservice_start_config_rules_evaluation] does not re-record the latest configuration state for your resources. It re-runs an evaluation against the last known state of your resources.
 #'
-#' See [https://paws-r.github.io/docs/configservice/start_config_rules_evaluation.html](https://paws-r.github.io/docs/configservice/start_config_rules_evaluation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_start_config_rules_evaluation/](https://www.paws-r-sdk.com/docs/configservice_start_config_rules_evaluation/) for full documentation.
 #'
 #' @param ConfigRuleNames The list of names of Config rules that you want to run evaluations for.
 #'
@@ -3019,7 +3019,7 @@ configservice_start_config_rules_evaluation <- function(ConfigRuleNames = NULL) 
 #' @description
 #' Starts recording configurations of the Amazon Web Services resources you have selected to record in your Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/configservice/start_configuration_recorder.html](https://paws-r.github.io/docs/configservice/start_configuration_recorder.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_start_configuration_recorder/](https://www.paws-r-sdk.com/docs/configservice_start_configuration_recorder/) for full documentation.
 #'
 #' @param ConfigurationRecorderName &#91;required&#93; The name of the recorder object that records each configuration change
 #' made to the resources.
@@ -3050,7 +3050,7 @@ configservice_start_configuration_recorder <- function(ConfigurationRecorderName
 #' @description
 #' Runs an on-demand remediation for the specified Config rules against the last known remediation configuration. It runs an execution against the current state of your resources. Remediation execution is asynchronous.
 #'
-#' See [https://paws-r.github.io/docs/configservice/start_remediation_execution.html](https://paws-r.github.io/docs/configservice/start_remediation_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_start_remediation_execution/](https://www.paws-r-sdk.com/docs/configservice_start_remediation_execution/) for full documentation.
 #'
 #' @param ConfigRuleName &#91;required&#93; The list of names of Config rules that you want to run remediation
 #' execution for.
@@ -3083,7 +3083,7 @@ configservice_start_remediation_execution <- function(ConfigRuleName, ResourceKe
 #' @description
 #' Runs an on-demand evaluation for the specified resource to determine whether the resource details will comply with configured Config rules. You can also use it for evaluation purposes. Config recommends using an evaluation context. It runs an execution against the resource details with all of the Config rules in your account that match with the specified proactive mode and resource type.
 #'
-#' See [https://paws-r.github.io/docs/configservice/start_resource_evaluation.html](https://paws-r.github.io/docs/configservice/start_resource_evaluation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_start_resource_evaluation/](https://www.paws-r-sdk.com/docs/configservice_start_resource_evaluation/) for full documentation.
 #'
 #' @param ResourceDetails &#91;required&#93; Returns a `ResourceDetails` object.
 #' @param EvaluationContext Returns an `EvaluationContext` object.
@@ -3130,7 +3130,7 @@ configservice_start_resource_evaluation <- function(ResourceDetails, EvaluationC
 #' @description
 #' Stops recording configurations of the Amazon Web Services resources you have selected to record in your Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/configservice/stop_configuration_recorder.html](https://paws-r.github.io/docs/configservice/stop_configuration_recorder.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_stop_configuration_recorder/](https://www.paws-r-sdk.com/docs/configservice_stop_configuration_recorder/) for full documentation.
 #'
 #' @param ConfigurationRecorderName &#91;required&#93; The name of the recorder object that records each configuration change
 #' made to the resources.
@@ -3161,7 +3161,7 @@ configservice_stop_configuration_recorder <- function(ConfigurationRecorderName)
 #' @description
 #' Associates the specified tags to a resource with the specified resourceArn. If existing tags on a resource are not specified in the request parameters, they are not changed. If existing tags are specified, however, then their values will be updated. When a resource is deleted, the tags associated with that resource are deleted as well.
 #'
-#' See [https://paws-r.github.io/docs/configservice/tag_resource.html](https://paws-r.github.io/docs/configservice/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_tag_resource/](https://www.paws-r-sdk.com/docs/configservice_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
 #' list the tags. Currently, the supported resources are `ConfigRule`,
@@ -3193,7 +3193,7 @@ configservice_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Deletes specified tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/configservice/untag_resource.html](https://paws-r.github.io/docs/configservice/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/configservice_untag_resource/](https://www.paws-r-sdk.com/docs/configservice_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
 #' list the tags. Currently, the supported resources are `ConfigRule`,

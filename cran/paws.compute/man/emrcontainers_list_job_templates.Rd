@@ -23,6 +23,6 @@ emrcontainers_list_job_templates(
 \description{
 Lists job templates based on a set of parameters. Job template stores values of StartJobRun API request in a template and can be used to start a job run. Job template allows two use cases: avoid repeating recurring StartJobRun API request values, enforcing certain values in StartJobRun API request.
 
-See \url{https://paws-r.github.io/docs/emrcontainers/list_job_templates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emrcontainers_list_job_templates/} for full documentation.
 }
 \keyword{internal}

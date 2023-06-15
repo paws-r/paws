@@ -32,6 +32,6 @@ specify the value of \code{NextToken} from the previous response.}
 \description{
 Gets the IP addresses for a specified Resolver endpoint.
 
-See \url{https://paws-r.github.io/docs/route53resolver/list_resolver_endpoint_ip_addresses.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_list_resolver_endpoint_ip_addresses/} for full documentation.
 }
 \keyword{internal}

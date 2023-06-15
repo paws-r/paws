@@ -21,6 +21,6 @@ implementation specific.}
 \description{
 Used by workers to tell the service that the ActivityTask identified by the \code{taskToken} completed successfully with a \code{result} (if provided). The \code{result} appears in the \code{ActivityTaskCompleted} event in the workflow history.
 
-See \url{https://paws-r.github.io/docs/swf/respond_activity_task_completed.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_respond_activity_task_completed/} for full documentation.
 }
 \keyword{internal}

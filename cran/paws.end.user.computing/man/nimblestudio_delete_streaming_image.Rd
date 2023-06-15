@@ -23,6 +23,6 @@ it for the request to ensure idempotency.}
 \description{
 Delete streaming image.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/delete_streaming_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_delete_streaming_image/} for full documentation.
 }
 \keyword{internal}

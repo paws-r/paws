@@ -12,6 +12,6 @@ sagemaker_delete_model_package_group(ModelPackageGroupName)
 \description{
 Deletes the specified model group.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_model_package_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_model_package_group/} for full documentation.
 }
 \keyword{internal}

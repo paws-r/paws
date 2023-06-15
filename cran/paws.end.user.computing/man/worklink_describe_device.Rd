@@ -14,6 +14,6 @@ worklink_describe_device(FleetArn, DeviceId)
 \description{
 Provides information about a user's device.
 
-See \url{https://paws-r.github.io/docs/worklink/describe_device.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_describe_device/} for full documentation.
 }
 \keyword{internal}

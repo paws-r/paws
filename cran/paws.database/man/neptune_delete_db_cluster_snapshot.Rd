@@ -15,6 +15,6 @@ Constraints: Must be the name of an existing DB cluster snapshot in the
 \description{
 Deletes a DB cluster snapshot. If the snapshot is being copied, the copy operation is terminated.
 
-See \url{https://paws-r.github.io/docs/neptune/delete_db_cluster_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_delete_db_cluster_snapshot/} for full documentation.
 }
 \keyword{internal}

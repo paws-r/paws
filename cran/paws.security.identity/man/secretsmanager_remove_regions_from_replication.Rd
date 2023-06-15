@@ -15,6 +15,6 @@ secretsmanager_remove_regions_from_replication(SecretId, RemoveReplicaRegions)
 \description{
 For a secret that is replicated to other Regions, deletes the secret replicas from the Regions you specify.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/remove_regions_from_replication.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_remove_regions_from_replication/} for full documentation.
 }
 \keyword{internal}

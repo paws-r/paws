@@ -50,6 +50,6 @@ profane words and phrases.}
 \description{
 Translates input text from the source language to the target language. For a list of available languages and language codes, see \href{https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html}{Supported languages}.
 
-See \url{https://paws-r.github.io/docs/translate/translate_text.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/translate_translate_text/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ redshiftserverless_delete_namespace(
 \description{
 Deletes a namespace from Amazon Redshift Serverless. Before you delete the namespace, you can create a final snapshot that has all of the data within the namespace.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/delete_namespace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_delete_namespace/} for full documentation.
 }
 \keyword{internal}

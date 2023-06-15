@@ -25,6 +25,6 @@ operation to retrieve the next set of results.}
 \description{
 You can use this to see all the partner event sources that have been shared with your Amazon Web Services account. For more information about partner event sources, see \code{\link[=eventbridge_create_event_bus]{create_event_bus}}.
 
-See \url{https://paws-r.github.io/docs/eventbridge/list_event_sources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_list_event_sources/} for full documentation.
 }
 \keyword{internal}

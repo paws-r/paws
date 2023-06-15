@@ -60,6 +60,6 @@ different account, the request fails with the HTTP status code
 \description{
 Restores an archived copy of an object back into Amazon S3
 
-See \url{https://paws-r.github.io/docs/s3/restore_object.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_restore_object/} for full documentation.
 }
 \keyword{internal}

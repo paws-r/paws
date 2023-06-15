@@ -24,6 +24,6 @@ starting at the location pointed to by the next token.}
 \description{
 This action returns recovery point ARNs (Amazon Resource Names) of the specified legal hold.
 
-See \url{https://paws-r.github.io/docs/backup/list_recovery_points_by_legal_hold.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_list_recovery_points_by_legal_hold/} for full documentation.
 }
 \keyword{internal}

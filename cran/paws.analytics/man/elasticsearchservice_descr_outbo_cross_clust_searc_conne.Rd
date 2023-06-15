@@ -31,6 +31,6 @@ NextToken. It is used for pagination.}
 \description{
 Lists all the outbound cross-cluster search connections for a source domain.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/describe_outbound_cross_cluster_search_connections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_outbound_cross_cluster_search_connections/} for full documentation.
 }
 \keyword{internal}

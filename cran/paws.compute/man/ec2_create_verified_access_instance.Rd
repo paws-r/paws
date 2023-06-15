@@ -29,6 +29,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 An Amazon Web Services Verified Access instance is a regional entity that evaluates application requests and grants access only when your security requirements are met.
 
-See \url{https://paws-r.github.io/docs/ec2/create_verified_access_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_verified_access_instance/} for full documentation.
 }
 \keyword{internal}

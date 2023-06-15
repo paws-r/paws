@@ -32,6 +32,6 @@ You must specify either the \code{LaunchTemplateName} or the
 \description{
 Deletes one or more versions of a launch template. You cannot delete the default version of a launch template; you must first assign a different version as the default. If the default version is the only version for the launch template, you must delete the entire launch template using \code{\link[=ec2_delete_launch_template]{delete_launch_template}}.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_launch_template_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_launch_template_versions/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Modifies the specified transit gateway. When you modify a transit gateway, the modified options are applied to new transit gateway attachments only. Your existing transit gateway attachments are not modified.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_transit_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_transit_gateway/} for full documentation.
 }
 \keyword{internal}

@@ -10,7 +10,7 @@ NULL
 #' @description
 #' Use to associate an Amazon Web Services CodeCommit repository or a repository managed by Amazon Web Services CodeStar Connections with Amazon CodeGuru Reviewer. When you associate a repository, CodeGuru Reviewer reviews source code changes in the repository's pull requests and provides automatic recommendations. You can view recommendations using the CodeGuru Reviewer console. For more information, see [Recommendations in Amazon CodeGuru Reviewer](https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/recommendations.html) in the *Amazon CodeGuru Reviewer User Guide.*
 #'
-#' See [https://paws-r.github.io/docs/codegurureviewer/associate_repository.html](https://paws-r.github.io/docs/codegurureviewer/associate_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codegurureviewer_associate_repository/](https://www.paws-r-sdk.com/docs/codegurureviewer_associate_repository/) for full documentation.
 #'
 #' @param Repository &#91;required&#93; The repository to associate.
 #' @param ClientRequestToken Amazon CodeGuru Reviewer uses this value to prevent the accidental
@@ -60,7 +60,7 @@ codegurureviewer_associate_repository <- function(Repository, ClientRequestToken
 #' @description
 #' Use to create a code review with a [CodeReviewType](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReviewType.html) of `RepositoryAnalysis`. This type of code review analyzes all code under a specified branch in an associated repository. `PullRequest` code reviews are automatically triggered by a pull request.
 #'
-#' See [https://paws-r.github.io/docs/codegurureviewer/create_code_review.html](https://paws-r.github.io/docs/codegurureviewer/create_code_review.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codegurureviewer_create_code_review/](https://www.paws-r-sdk.com/docs/codegurureviewer_create_code_review/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the code review. The name of each code review in your Amazon
 #' Web Services account must be unique.
@@ -103,7 +103,7 @@ codegurureviewer_create_code_review <- function(Name, RepositoryAssociationArn, 
 #' @description
 #' Returns the metadata associated with the code review along with its status.
 #'
-#' See [https://paws-r.github.io/docs/codegurureviewer/describe_code_review.html](https://paws-r.github.io/docs/codegurureviewer/describe_code_review.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codegurureviewer_describe_code_review/](https://www.paws-r-sdk.com/docs/codegurureviewer_describe_code_review/) for full documentation.
 #'
 #' @param CodeReviewArn &#91;required&#93; The Amazon Resource Name (ARN) of the
 #' [CodeReview](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReview.html)
@@ -134,7 +134,7 @@ codegurureviewer_describe_code_review <- function(CodeReviewArn) {
 #' @description
 #' Describes the customer feedback for a CodeGuru Reviewer recommendation.
 #'
-#' See [https://paws-r.github.io/docs/codegurureviewer/describe_recommendation_feedback.html](https://paws-r.github.io/docs/codegurureviewer/describe_recommendation_feedback.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codegurureviewer_describe_recommendation_feedback/](https://www.paws-r-sdk.com/docs/codegurureviewer_describe_recommendation_feedback/) for full documentation.
 #'
 #' @param CodeReviewArn &#91;required&#93; The Amazon Resource Name (ARN) of the
 #' [CodeReview](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReview.html)
@@ -176,7 +176,7 @@ codegurureviewer_describe_recommendation_feedback <- function(CodeReviewArn, Rec
 #' @description
 #' Returns a [RepositoryAssociation](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html) object that contains information about the requested repository association.
 #'
-#' See [https://paws-r.github.io/docs/codegurureviewer/describe_repository_association.html](https://paws-r.github.io/docs/codegurureviewer/describe_repository_association.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codegurureviewer_describe_repository_association/](https://www.paws-r-sdk.com/docs/codegurureviewer_describe_repository_association/) for full documentation.
 #'
 #' @param AssociationArn &#91;required&#93; The Amazon Resource Name (ARN) of the
 #' [RepositoryAssociation](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
@@ -209,7 +209,7 @@ codegurureviewer_describe_repository_association <- function(AssociationArn) {
 #' @description
 #' Removes the association between Amazon CodeGuru Reviewer and a repository.
 #'
-#' See [https://paws-r.github.io/docs/codegurureviewer/disassociate_repository.html](https://paws-r.github.io/docs/codegurureviewer/disassociate_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codegurureviewer_disassociate_repository/](https://www.paws-r-sdk.com/docs/codegurureviewer_disassociate_repository/) for full documentation.
 #'
 #' @param AssociationArn &#91;required&#93; The Amazon Resource Name (ARN) of the
 #' [RepositoryAssociation](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
@@ -242,7 +242,7 @@ codegurureviewer_disassociate_repository <- function(AssociationArn) {
 #' @description
 #' Lists all the code reviews that the customer has created in the past 90 days.
 #'
-#' See [https://paws-r.github.io/docs/codegurureviewer/list_code_reviews.html](https://paws-r.github.io/docs/codegurureviewer/list_code_reviews.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codegurureviewer_list_code_reviews/](https://www.paws-r-sdk.com/docs/codegurureviewer_list_code_reviews/) for full documentation.
 #'
 #' @param ProviderTypes List of provider types for filtering that needs to be applied before
 #' displaying the result. For example, `providerTypes=[GitHub]` lists code
@@ -296,7 +296,7 @@ codegurureviewer_list_code_reviews <- function(ProviderTypes = NULL, States = NU
 #' @description
 #' Returns a list of [RecommendationFeedbackSummary](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RecommendationFeedbackSummary.html) objects that contain customer recommendation feedback for all CodeGuru Reviewer users.
 #'
-#' See [https://paws-r.github.io/docs/codegurureviewer/list_recommendation_feedback.html](https://paws-r.github.io/docs/codegurureviewer/list_recommendation_feedback.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codegurureviewer_list_recommendation_feedback/](https://www.paws-r-sdk.com/docs/codegurureviewer_list_recommendation_feedback/) for full documentation.
 #'
 #' @param NextToken If `nextToken` is returned, there are more results available. The value
 #' of `nextToken` is a unique pagination token for each page. Make the call
@@ -343,7 +343,7 @@ codegurureviewer_list_recommendation_feedback <- function(NextToken = NULL, MaxR
 #' @description
 #' Returns the list of all recommendations for a completed code review.
 #'
-#' See [https://paws-r.github.io/docs/codegurureviewer/list_recommendations.html](https://paws-r.github.io/docs/codegurureviewer/list_recommendations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codegurureviewer_list_recommendations/](https://www.paws-r-sdk.com/docs/codegurureviewer_list_recommendations/) for full documentation.
 #'
 #' @param NextToken Pagination token.
 #' @param MaxResults The maximum number of results that are returned per call. The default is
@@ -378,7 +378,7 @@ codegurureviewer_list_recommendations <- function(NextToken = NULL, MaxResults =
 #' @description
 #' Returns a list of [RepositoryAssociationSummary](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html) objects that contain summary information about a repository association. You can filter the returned list by [ProviderType](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-ProviderType), [Name](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-Name), [State](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-State), and [Owner](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-Owner).
 #'
-#' See [https://paws-r.github.io/docs/codegurureviewer/list_repository_associations.html](https://paws-r.github.io/docs/codegurureviewer/list_repository_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codegurureviewer_list_repository_associations/](https://www.paws-r-sdk.com/docs/codegurureviewer_list_repository_associations/) for full documentation.
 #'
 #' @param ProviderTypes List of provider types to use as a filter.
 #' @param States List of repository association states to use as a filter.
@@ -467,7 +467,7 @@ codegurureviewer_list_repository_associations <- function(ProviderTypes = NULL, 
 #' @description
 #' Returns the list of tags associated with an associated repository resource.
 #'
-#' See [https://paws-r.github.io/docs/codegurureviewer/list_tags_for_resource.html](https://paws-r.github.io/docs/codegurureviewer/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codegurureviewer_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/codegurureviewer_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the
 #' [RepositoryAssociation](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
@@ -499,7 +499,7 @@ codegurureviewer_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Stores customer feedback for a CodeGuru Reviewer recommendation. When this API is called again with different reactions the previous feedback is overwritten.
 #'
-#' See [https://paws-r.github.io/docs/codegurureviewer/put_recommendation_feedback.html](https://paws-r.github.io/docs/codegurureviewer/put_recommendation_feedback.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codegurureviewer_put_recommendation_feedback/](https://www.paws-r-sdk.com/docs/codegurureviewer_put_recommendation_feedback/) for full documentation.
 #'
 #' @param CodeReviewArn &#91;required&#93; The Amazon Resource Name (ARN) of the
 #' [CodeReview](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReview.html)
@@ -534,7 +534,7 @@ codegurureviewer_put_recommendation_feedback <- function(CodeReviewArn, Recommen
 #' @description
 #' Adds one or more tags to an associated repository.
 #'
-#' See [https://paws-r.github.io/docs/codegurureviewer/tag_resource.html](https://paws-r.github.io/docs/codegurureviewer/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codegurureviewer_tag_resource/](https://www.paws-r-sdk.com/docs/codegurureviewer_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the
 #' [RepositoryAssociation](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
@@ -576,7 +576,7 @@ codegurureviewer_tag_resource <- function(resourceArn, Tags) {
 #' @description
 #' Removes a tag from an associated repository.
 #'
-#' See [https://paws-r.github.io/docs/codegurureviewer/untag_resource.html](https://paws-r.github.io/docs/codegurureviewer/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codegurureviewer_untag_resource/](https://www.paws-r-sdk.com/docs/codegurureviewer_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the
 #' [RepositoryAssociation](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)

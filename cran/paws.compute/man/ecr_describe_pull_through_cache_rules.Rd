@@ -40,6 +40,6 @@ returns up to 100 results and a \code{nextToken} value, if applicable.}
 \description{
 Returns the pull through cache rules for a registry.
 
-See \url{https://paws-r.github.io/docs/ecr/describe_pull_through_cache_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_describe_pull_through_cache_rules/} for full documentation.
 }
 \keyword{internal}

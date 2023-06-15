@@ -44,6 +44,6 @@ recommendations to return in the response.}
 \description{
 Returns Auto Scaling group recommendations.
 
-See \url{https://paws-r.github.io/docs/computeoptimizer/get_auto_scaling_group_recommendations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/computeoptimizer_get_auto_scaling_group_recommendations/} for full documentation.
 }
 \keyword{internal}

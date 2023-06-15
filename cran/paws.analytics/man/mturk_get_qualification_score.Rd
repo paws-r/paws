@@ -15,6 +15,6 @@ mturk_get_qualification_score(QualificationTypeId, WorkerId)
 \description{
 The \code{\link[=mturk_get_qualification_score]{get_qualification_score}} operation returns the value of a Worker's Qualification for a given Qualification type.
 
-See \url{https://paws-r.github.io/docs/mturk/get_qualification_score.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_get_qualification_score/} for full documentation.
 }
 \keyword{internal}

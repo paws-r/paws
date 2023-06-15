@@ -82,6 +82,6 @@ multiple times.}
 \description{
 Registers an extension with the CloudFormation service. Registering an extension makes it available for use in CloudFormation templates in your Amazon Web Services account, and includes:
 
-See \url{https://paws-r.github.io/docs/cloudformation/register_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_register_type/} for full documentation.
 }
 \keyword{internal}

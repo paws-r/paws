@@ -15,6 +15,6 @@ definition.}
 \description{
 Stops one or more job runs for a specified job definition.
 
-See \url{https://paws-r.github.io/docs/glue/batch_stop_job_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_batch_stop_job_run/} for full documentation.
 }
 \keyword{internal}

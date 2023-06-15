@@ -20,6 +20,6 @@ servicequotas_request_service_quota_increase(
 \description{
 Submits a quota increase request for the specified quota.
 
-See \url{https://paws-r.github.io/docs/servicequotas/request_service_quota_increase.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicequotas_request_service_quota_increase/} for full documentation.
 }
 \keyword{internal}

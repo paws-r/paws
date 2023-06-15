@@ -36,6 +36,6 @@ different parameters, the retry fails with an
 \description{
 Removes a managed permission from a resource share. Permission changes take effect immediately. You can remove a managed permission from a resource share only if there are currently no resources of the relevant resource type currently attached to the resource share.
 
-See \url{https://paws-r.github.io/docs/ram/disassociate_resource_share_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_disassociate_resource_share_permission/} for full documentation.
 }
 \keyword{internal}

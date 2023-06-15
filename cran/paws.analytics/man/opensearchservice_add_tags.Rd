@@ -15,6 +15,6 @@ you want to attach resource tags.}
 \description{
 Attaches tags to an existing Amazon OpenSearch Service domain. Tags are a set of case-sensitive key-value pairs. A domain can have up to 10 tags. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-awsresourcetagging.html}{Tagging Amazon OpenSearch Service domains}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/add_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_add_tags/} for full documentation.
 }
 \keyword{internal}

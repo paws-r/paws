@@ -14,6 +14,6 @@ swf_undeprecate_activity_type(domain, activityType)
 \description{
 Undeprecates a previously deprecated \emph{activity type}. After an activity type has been undeprecated, you can create new tasks of that activity type.
 
-See \url{https://paws-r.github.io/docs/swf/undeprecate_activity_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_undeprecate_activity_type/} for full documentation.
 }
 \keyword{internal}

@@ -22,6 +22,6 @@ want in the response. The default value is 10. The maximum value is 500.}
 \description{
 Previews the agents installed on the EC2 instances that are part of the specified assessment target.
 
-See \url{https://paws-r.github.io/docs/inspector/preview_agents.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_preview_agents/} for full documentation.
 }
 \keyword{internal}

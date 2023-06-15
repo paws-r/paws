@@ -16,6 +16,6 @@ Amazon Pinpoint account.}
 \description{
 Get information about a dedicated IP address, including the name of the dedicated IP pool that it's associated with, as well information about the automatic warm-up process for the address.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/get_dedicated_ip.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_get_dedicated_ip/} for full documentation.
 }
 \keyword{internal}

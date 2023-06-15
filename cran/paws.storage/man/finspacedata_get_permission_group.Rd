@@ -12,6 +12,6 @@ finspacedata_get_permission_group(permissionGroupId)
 \description{
 Retrieves the details of a specific permission group.
 
-See \url{https://paws-r.github.io/docs/finspacedata/get_permission_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_get_permission_group/} for full documentation.
 }
 \keyword{internal}

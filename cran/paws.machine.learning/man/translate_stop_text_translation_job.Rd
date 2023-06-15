@@ -12,6 +12,6 @@ translate_stop_text_translation_job(JobId)
 \description{
 Stops an asynchronous batch translation job that is in progress.
 
-See \url{https://paws-r.github.io/docs/translate/stop_text_translation_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/translate_stop_text_translation_job/} for full documentation.
 }
 \keyword{internal}

@@ -32,6 +32,6 @@ value.}
 \description{
 Gets information about the entries for a specified managed prefix list.
 
-See \url{https://paws-r.github.io/docs/ec2/get_managed_prefix_list_entries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_managed_prefix_list_entries/} for full documentation.
 }
 \keyword{internal}

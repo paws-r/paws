@@ -41,6 +41,6 @@ specify the \code{SourceEnvironmentName} with the
 \description{
 Swaps the CNAMEs of two environments.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/swap_environment_cnam_es.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_swap_environment_cnam_es/} for full documentation.
 }
 \keyword{internal}

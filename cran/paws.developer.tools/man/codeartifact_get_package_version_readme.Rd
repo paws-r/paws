@@ -43,6 +43,6 @@ namespace.
 \description{
 Gets the readme file or descriptive text for a package version.
 
-See \url{https://paws-r.github.io/docs/codeartifact/get_package_version_readme.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_get_package_version_readme/} for full documentation.
 }
 \keyword{internal}

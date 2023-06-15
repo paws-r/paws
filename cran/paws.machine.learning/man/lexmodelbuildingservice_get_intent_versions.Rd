@@ -24,6 +24,6 @@ default is 10.}
 \description{
 Gets information about all of the versions of an intent.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_intent_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_intent_versions/} for full documentation.
 }
 \keyword{internal}

@@ -22,6 +22,6 @@ previous call.)}
 \description{
 Describes the current user's special folders; the \code{RootFolder} and the \code{RecycleBin}. \code{RootFolder} is the root of user's files and folders and \code{RecycleBin} is the root of recycled items. This is not a valid action for SigV4 (administrative API) clients.
 
-See \url{https://paws-r.github.io/docs/workdocs/describe_root_folders.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_describe_root_folders/} for full documentation.
 }
 \keyword{internal}

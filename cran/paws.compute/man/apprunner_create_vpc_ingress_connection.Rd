@@ -29,6 +29,6 @@ Ingress Connection resource. A tag is a key-value pair.}
 \description{
 Create an App Runner VPC Ingress Connection resource. App Runner requires this resource when you want to associate your App Runner service with an Amazon VPC endpoint.
 
-See \url{https://paws-r.github.io/docs/apprunner/create_vpc_ingress_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_create_vpc_ingress_connection/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ workmail_describe_organization(OrganizationId)
 \description{
 Provides more information regarding a given organization based on its identifier.
 
-See \url{https://paws-r.github.io/docs/workmail/describe_organization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_describe_organization/} for full documentation.
 }
 \keyword{internal}

@@ -64,6 +64,6 @@ owner, or environment. For more information, see \href{https://docs.aws.amazon.c
 \description{
 Starts a model compilation job. After the model has been compiled, Amazon SageMaker saves the resulting model artifacts to an Amazon Simple Storage Service (Amazon S3) bucket that you specify.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_compilation_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_compilation_job/} for full documentation.
 }
 \keyword{internal}

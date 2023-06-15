@@ -59,6 +59,6 @@ specify \code{dualstack} for a load balancer with a UDP or TCP_UDP listener.
 \description{
 Enables the Availability Zones for the specified public subnets for the specified Application Load Balancer or Network Load Balancer. The specified subnets replace the previously enabled subnets.
 
-See \url{https://paws-r.github.io/docs/elbv2/set_subnets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_set_subnets/} for full documentation.
 }
 \keyword{internal}

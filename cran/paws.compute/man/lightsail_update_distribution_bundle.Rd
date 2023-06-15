@@ -21,6 +21,6 @@ action to get a list of distribution bundle IDs that you can specify.}
 \description{
 Updates the bundle of your Amazon Lightsail content delivery network (CDN) distribution.
 
-See \url{https://paws-r.github.io/docs/lightsail/update_distribution_bundle.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_update_distribution_bundle/} for full documentation.
 }
 \keyword{internal}

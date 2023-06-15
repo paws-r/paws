@@ -15,6 +15,6 @@ idempotency of the request.}
 \description{
 Deletes an AMP workspace.
 
-See \url{https://paws-r.github.io/docs/prometheusservice/delete_workspace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/prometheusservice_delete_workspace/} for full documentation.
 }
 \keyword{internal}

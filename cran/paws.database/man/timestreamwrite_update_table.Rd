@@ -9,7 +9,8 @@ timestreamwrite_update_table(
   DatabaseName,
   TableName,
   RetentionProperties = NULL,
-  MagneticStoreWriteProperties = NULL
+  MagneticStoreWriteProperties = NULL,
+  Schema = NULL
 )
 }
 \arguments{
@@ -21,10 +22,12 @@ timestreamwrite_update_table(
 
 \item{MagneticStoreWriteProperties}{Contains properties to set on the table when enabling magnetic store
 writes.}
+
+\item{Schema}{The schema of the table.}
 }
 \description{
 Modifies the retention duration of the memory store and magnetic store for your Timestream table. Note that the change in retention duration takes effect immediately. For example, if the retention period of the memory store was initially set to 2 hours and then changed to 24 hours, the memory store will be capable of holding 24 hours of data, but will be populated with 24 hours of data 22 hours after this change was made. Timestream does not retrieve data from the magnetic store to populate the memory store.
 
-See \url{https://paws-r.github.io/docs/timestreamwrite/update_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamwrite_update_table/} for full documentation.
 }
 \keyword{internal}

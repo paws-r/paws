@@ -38,6 +38,6 @@ of the template.
 \description{
 Deletes a message template for messages that were sent through the voice channel.
 
-See \url{https://paws-r.github.io/docs/pinpoint/delete_voice_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_delete_voice_template/} for full documentation.
 }
 \keyword{internal}

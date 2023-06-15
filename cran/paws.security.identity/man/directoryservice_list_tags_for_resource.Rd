@@ -20,6 +20,6 @@ directoryservice_list_tags_for_resource(
 \description{
 Lists all tags on a directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

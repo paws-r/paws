@@ -20,6 +20,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes the specified VPC endpoint connection notifications.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_vpc_endpoint_connection_notifications.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_vpc_endpoint_connection_notifications/} for full documentation.
 }
 \keyword{internal}

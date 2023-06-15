@@ -30,6 +30,6 @@ authentication process.}
 \description{
 Updates an existing permission set.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/update_permission_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_update_permission_set/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ backupgateway_list_tags_for_resource(ResourceArn)
 \description{
 Lists the tags applied to the resource identified by its Amazon Resource Name (ARN).
 
-See \url{https://paws-r.github.io/docs/backupgateway/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupgateway_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

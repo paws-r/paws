@@ -14,6 +14,6 @@ applies to.}
 \description{
 Deletes the association between an Amazon Macie administrator account and an account.
 
-See \url{https://paws-r.github.io/docs/macie2/delete_member.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_delete_member/} for full documentation.
 }
 \keyword{internal}

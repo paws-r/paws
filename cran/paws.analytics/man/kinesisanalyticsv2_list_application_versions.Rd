@@ -24,6 +24,6 @@ information about pagination, see \href{https://docs.aws.amazon.com/cli/latest/u
 \description{
 Lists all the versions for the specified application, including versions that were rolled back. The response also includes a summary of the configuration associated with each version.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/list_application_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_list_application_versions/} for full documentation.
 }
 \keyword{internal}

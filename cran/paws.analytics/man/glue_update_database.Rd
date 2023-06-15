@@ -19,6 +19,6 @@ database in the catalog.}
 \description{
 Updates an existing database definition in a Data Catalog.
 
-See \url{https://paws-r.github.io/docs/glue/update_database.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_update_database/} for full documentation.
 }
 \keyword{internal}

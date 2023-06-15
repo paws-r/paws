@@ -12,6 +12,6 @@ athena_get_data_catalog(Name)
 \description{
 Returns the specified data catalog.
 
-See \url{https://paws-r.github.io/docs/athena/get_data_catalog.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_get_data_catalog/} for full documentation.
 }
 \keyword{internal}

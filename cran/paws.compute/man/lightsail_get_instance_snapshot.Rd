@@ -12,6 +12,6 @@ lightsail_get_instance_snapshot(instanceSnapshotName)
 \description{
 Returns information about a specific instance snapshot.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_instance_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_instance_snapshot/} for full documentation.
 }
 \keyword{internal}

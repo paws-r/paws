@@ -20,6 +20,6 @@ batch of the results.}
 \description{
 Creates an association between a notification rule and an Chatbot topic or Chatbot client so that the associated target can receive notifications when the events described in the rule are triggered.
 
-See \url{https://paws-r.github.io/docs/codestarnotifications/subscribe.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestarnotifications_subscribe/} for full documentation.
 }
 \keyword{internal}

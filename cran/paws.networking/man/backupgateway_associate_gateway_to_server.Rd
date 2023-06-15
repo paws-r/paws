@@ -17,6 +17,6 @@ machines.}
 \description{
 Associates a backup gateway with your server. After you complete the association process, you can back up and restore your VMs through the gateway.
 
-See \url{https://paws-r.github.io/docs/backupgateway/associate_gateway_to_server.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupgateway_associate_gateway_to_server/} for full documentation.
 }
 \keyword{internal}

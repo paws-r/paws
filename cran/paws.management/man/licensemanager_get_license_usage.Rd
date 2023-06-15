@@ -12,6 +12,6 @@ licensemanager_get_license_usage(LicenseArn)
 \description{
 Gets detailed information about the usage of the specified license.
 
-See \url{https://paws-r.github.io/docs/licensemanager/get_license_usage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_get_license_usage/} for full documentation.
 }
 \keyword{internal}

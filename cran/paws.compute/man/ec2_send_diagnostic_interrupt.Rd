@@ -19,6 +19,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Sends a diagnostic interrupt to the specified Amazon EC2 instance to trigger a \emph{kernel panic} (on Linux instances), or a \emph{blue screen}/\emph{stop error} (on Windows instances). For instances based on Intel and AMD processors, the interrupt is received as a \emph{non-maskable interrupt} (NMI).
 
-See \url{https://paws-r.github.io/docs/ec2/send_diagnostic_interrupt.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_send_diagnostic_interrupt/} for full documentation.
 }
 \keyword{internal}

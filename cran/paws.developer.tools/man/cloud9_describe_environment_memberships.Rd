@@ -43,6 +43,6 @@ token that is returned, until no more next tokens are returned.}
 \description{
 Gets information about environment members for an Cloud9 development environment.
 
-See \url{https://paws-r.github.io/docs/cloud9/describe_environment_memberships.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloud9_describe_environment_memberships/} for full documentation.
 }
 \keyword{internal}

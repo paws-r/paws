@@ -19,6 +19,6 @@ domain to.}
 \description{
 Specify a custom domain to use for open and click tracking elements in email that you send using Amazon Pinpoint.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/put_configuration_set_tracking_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_put_configuration_set_tracking_options/} for full documentation.
 }
 \keyword{internal}

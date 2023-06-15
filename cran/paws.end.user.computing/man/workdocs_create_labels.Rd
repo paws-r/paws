@@ -18,6 +18,6 @@ Services administrator credentials to access the API.}
 \description{
 Adds the specified list of labels to the given resource (a document or folder)
 
-See \url{https://paws-r.github.io/docs/workdocs/create_labels.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_create_labels/} for full documentation.
 }
 \keyword{internal}

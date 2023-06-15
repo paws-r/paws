@@ -14,6 +14,6 @@ braket_tag_resource(resourceArn, tags)
 \description{
 Add a tag to the specified resource.
 
-See \url{https://paws-r.github.io/docs/braket/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/braket_tag_resource/} for full documentation.
 }
 \keyword{internal}

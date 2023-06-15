@@ -14,6 +14,6 @@ provide this token to receive the next set of results.}
 \description{
 Retrieves a list that describes modifications to the configuration of Bring Your Own License (BYOL) for the specified account.
 
-See \url{https://paws-r.github.io/docs/workspaces/describe_account_modifications.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_describe_account_modifications/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ in the \emph{Amazon Web Services General Reference}.}
 \description{
 Deletes the specified managed policy.
 
-See \url{https://paws-r.github.io/docs/iam/delete_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_delete_policy/} for full documentation.
 }
 \keyword{internal}

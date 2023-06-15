@@ -15,6 +15,6 @@ Amazon Fraud Detector will throw an error if the batch import job is in
 \description{
 Cancels an in-progress batch import job.
 
-See \url{https://paws-r.github.io/docs/frauddetector/cancel_batch_import_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_cancel_batch_import_job/} for full documentation.
 }
 \keyword{internal}

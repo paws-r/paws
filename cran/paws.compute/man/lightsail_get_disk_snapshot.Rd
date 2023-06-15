@@ -12,6 +12,6 @@ lightsail_get_disk_snapshot(diskSnapshotName)
 \description{
 Returns information about a specific block storage disk snapshot.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_disk_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_disk_snapshot/} for full documentation.
 }
 \keyword{internal}

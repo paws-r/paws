@@ -22,6 +22,6 @@ from a previous call.)}
 \description{
 Retrieves the current effective patches (the patch and the approval state) for the specified patch baseline. Applies to patch baselines for Windows only.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_effective_patches_for_patch_baseline.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_effective_patches_for_patch_baseline/} for full documentation.
 }
 \keyword{internal}

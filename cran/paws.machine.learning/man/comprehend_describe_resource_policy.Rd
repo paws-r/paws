@@ -14,6 +14,6 @@ resource policy.}
 \description{
 Gets the details of a resource-based policy that is attached to a custom model, including the JSON body of the policy.
 
-See \url{https://paws-r.github.io/docs/comprehend/describe_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_describe_resource_policy/} for full documentation.
 }
 \keyword{internal}

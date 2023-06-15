@@ -14,6 +14,6 @@ licensemanager_get_grant(GrantArn, Version = NULL)
 \description{
 Gets detailed information about the specified grant.
 
-See \url{https://paws-r.github.io/docs/licensemanager/get_grant.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_get_grant/} for full documentation.
 }
 \keyword{internal}

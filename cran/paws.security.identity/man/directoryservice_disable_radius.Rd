@@ -14,6 +14,6 @@ directoryservice_disable_radius(DirectoryId)
 \description{
 Disables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/disable_radius.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_disable_radius/} for full documentation.
 }
 \keyword{internal}

@@ -37,6 +37,6 @@ the next set of projects, use the token in the next request.}
 \description{
 Gets a list of the projects in an Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_projects.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_projects/} for full documentation.
 }
 \keyword{internal}

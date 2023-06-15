@@ -24,6 +24,6 @@ error.}
 \description{
 Lists the existing state machines.
 
-See \url{https://paws-r.github.io/docs/sfn/list_state_machines.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sfn_list_state_machines/} for full documentation.
 }
 \keyword{internal}

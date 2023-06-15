@@ -27,6 +27,6 @@ results.}
 \description{
 This API is in preview release for Amazon Connect and is subject to change.
 
-See \url{https://paws-r.github.io/docs/connect/list_instance_storage_configs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_list_instance_storage_configs/} for full documentation.
 }
 \keyword{internal}

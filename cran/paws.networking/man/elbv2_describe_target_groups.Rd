@@ -27,6 +27,6 @@ previous call.)}
 \description{
 Describes the specified target groups or all of your target groups. By default, all target groups are described. Alternatively, you can specify one of the following to filter the results: the ARN of the load balancer, the names of one or more target groups, or the ARNs of one or more target groups.
 
-See \url{https://paws-r.github.io/docs/elbv2/describe_target_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_describe_target_groups/} for full documentation.
 }
 \keyword{internal}

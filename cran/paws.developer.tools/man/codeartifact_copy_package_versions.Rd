@@ -73,6 +73,6 @@ is false. For more information, see \href{https://docs.aws.amazon.com/codeartifa
 \description{
 Copies package versions from one repository to another repository in the same domain.
 
-See \url{https://paws-r.github.io/docs/codeartifact/copy_package_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_copy_package_versions/} for full documentation.
 }
 \keyword{internal}

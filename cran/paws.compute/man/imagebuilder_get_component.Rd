@@ -13,6 +13,6 @@ Regex requires the suffix \verb{/\\\\d+$}.}
 \description{
 Gets a component object.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/get_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_get_component/} for full documentation.
 }
 \keyword{internal}

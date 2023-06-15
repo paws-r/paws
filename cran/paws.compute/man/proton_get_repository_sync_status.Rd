@@ -23,6 +23,6 @@ proton_get_repository_sync_status(
 \description{
 Get the sync status of a repository used for Proton template sync. For more information about template sync, see .
 
-See \url{https://paws-r.github.io/docs/proton/get_repository_sync_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_get_repository_sync_status/} for full documentation.
 }
 \keyword{internal}

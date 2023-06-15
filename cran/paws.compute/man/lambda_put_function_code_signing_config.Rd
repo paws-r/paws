@@ -25,6 +25,6 @@ the function name, it is limited to 64 characters in length.}
 \description{
 Update the code signing configuration for the function. Changes to the code signing configuration take effect the next time a user tries to deploy a code package to the function.
 
-See \url{https://paws-r.github.io/docs/lambda/put_function_code_signing_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_put_function_code_signing_config/} for full documentation.
 }
 \keyword{internal}

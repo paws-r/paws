@@ -12,6 +12,6 @@ apigateway_get_client_certificate(clientCertificateId)
 \description{
 Gets information about the current ClientCertificate resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_client_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_client_certificate/} for full documentation.
 }
 \keyword{internal}

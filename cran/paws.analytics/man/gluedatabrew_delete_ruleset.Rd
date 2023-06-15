@@ -12,6 +12,6 @@ gluedatabrew_delete_ruleset(Name)
 \description{
 Deletes a ruleset.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/delete_ruleset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_delete_ruleset/} for full documentation.
 }
 \keyword{internal}

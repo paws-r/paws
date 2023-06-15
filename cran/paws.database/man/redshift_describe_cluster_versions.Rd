@@ -47,6 +47,6 @@ in the \code{Marker} parameter and retrying the request.}
 \description{
 Returns descriptions of the available Amazon Redshift cluster versions. You can call this operation even before creating any clusters to learn more about the Amazon Redshift versions. For more information about managing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters} in the \emph{Amazon Redshift Cluster Management Guide}.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_cluster_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_cluster_versions/} for full documentation.
 }
 \keyword{internal}

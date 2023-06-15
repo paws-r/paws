@@ -17,6 +17,6 @@ describe the application.}
 \description{
 Disassociates an attribute group from an application to remove the extra attributes contained in the attribute group from the application's metadata. This operation reverts \code{\link[=appregistry_associate_attribute_group]{associate_attribute_group}}.
 
-See \url{https://paws-r.github.io/docs/appregistry/disassociate_attribute_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_disassociate_attribute_group/} for full documentation.
 }
 \keyword{internal}

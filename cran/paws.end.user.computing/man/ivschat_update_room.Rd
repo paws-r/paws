@@ -34,6 +34,6 @@ specified room.}
 \description{
 Updates a room’s configuration.
 
-See \url{https://paws-r.github.io/docs/ivschat/update_room.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivschat_update_room/} for full documentation.
 }
 \keyword{internal}

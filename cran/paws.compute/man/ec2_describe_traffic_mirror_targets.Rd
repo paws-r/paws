@@ -41,6 +41,6 @@ value.}
 \description{
 Information about one or more Traffic Mirror targets.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_traffic_mirror_targets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_traffic_mirror_targets/} for full documentation.
 }
 \keyword{internal}

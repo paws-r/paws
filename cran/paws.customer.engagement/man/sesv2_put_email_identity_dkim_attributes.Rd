@@ -18,6 +18,6 @@ messages are sent without DKIM signing.}
 \description{
 Used to enable or disable DKIM authentication for an email identity.
 
-See \url{https://paws-r.github.io/docs/sesv2/put_email_identity_dkim_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_put_email_identity_dkim_attributes/} for full documentation.
 }
 \keyword{internal}

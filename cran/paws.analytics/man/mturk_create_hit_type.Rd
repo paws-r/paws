@@ -52,6 +52,6 @@ field on each \code{QualificationRequirement} structure.}
 \description{
 The \code{\link[=mturk_create_hit_type]{create_hit_type}} operation creates a new HIT type. This operation allows you to define a standard set of HIT properties to use when creating HITs. If you register a HIT type with values that match an existing HIT type, the HIT type ID of the existing type will be returned.
 
-See \url{https://paws-r.github.io/docs/mturk/create_hit_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_create_hit_type/} for full documentation.
 }
 \keyword{internal}

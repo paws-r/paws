@@ -12,6 +12,6 @@ billingconductor_delete_pricing_plan(Arn)
 \description{
 Deletes a pricing plan. The pricing plan must not be associated with any billing groups to delete successfully.
 
-See \url{https://paws-r.github.io/docs/billingconductor/delete_pricing_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_delete_pricing_plan/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ dataset, a job, a project, or a recipe.}
 \description{
 Adds metadata tags to a DataBrew resource, such as a dataset, project, recipe, job, or schedule.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_tag_resource/} for full documentation.
 }
 \keyword{internal}

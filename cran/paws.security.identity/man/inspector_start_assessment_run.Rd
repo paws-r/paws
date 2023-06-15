@@ -18,6 +18,6 @@ run.}
 \description{
 Starts the assessment run specified by the ARN of the assessment template. For this API to function properly, you must not exceed the limit of running up to 500 concurrent agents per AWS account.
 
-See \url{https://paws-r.github.io/docs/inspector/start_assessment_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_start_assessment_run/} for full documentation.
 }
 \keyword{internal}

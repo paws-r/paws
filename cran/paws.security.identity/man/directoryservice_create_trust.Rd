@@ -37,6 +37,6 @@ RemoteDomainName.}
 \description{
 Directory Service for Microsoft Active Directory allows you to configure trust relationships. For example, you can establish a trust between your Managed Microsoft AD directory, and your existing self-managed Microsoft Active Directory. This would allow you to provide users and groups access to resources in either domain, with a single set of credentials.
 
-See \url{https://paws-r.github.io/docs/directoryservice/create_trust.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_create_trust/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ sfn_stop_execution(executionArn, error = NULL, cause = NULL)
 \description{
 Stops an execution.
 
-See \url{https://paws-r.github.io/docs/sfn/stop_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sfn_stop_execution/} for full documentation.
 }
 \keyword{internal}

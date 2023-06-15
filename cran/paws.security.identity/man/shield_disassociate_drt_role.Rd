@@ -10,6 +10,6 @@ shield_disassociate_drt_role()
 \description{
 Removes the Shield Response Team's (SRT) access to your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/shield/disassociate_drt_role.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_disassociate_drt_role/} for full documentation.
 }
 \keyword{internal}

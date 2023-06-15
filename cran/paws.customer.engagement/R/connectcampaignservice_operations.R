@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a campaign for the specified Amazon Connect account. This API is idempotent.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/create_campaign.html](https://paws-r.github.io/docs/connectcampaignservice/create_campaign.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_create_campaign/](https://www.paws-r-sdk.com/docs/connectcampaignservice_create_campaign/) for full documentation.
 #'
 #' @param connectInstanceId &#91;required&#93; 
 #' @param dialerConfig &#91;required&#93; 
@@ -41,7 +41,7 @@ connectcampaignservice_create_campaign <- function(connectInstanceId, dialerConf
 #' @description
 #' Deletes a campaign from the specified Amazon Connect account.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/delete_campaign.html](https://paws-r.github.io/docs/connectcampaignservice/delete_campaign.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_delete_campaign/](https://www.paws-r-sdk.com/docs/connectcampaignservice_delete_campaign/) for full documentation.
 #'
 #' @param id &#91;required&#93; 
 #'
@@ -70,7 +70,7 @@ connectcampaignservice_delete_campaign <- function(id) {
 #' @description
 #' Deletes a connect instance config from the specified AWS account.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/delete_connect_instance_config.html](https://paws-r.github.io/docs/connectcampaignservice/delete_connect_instance_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_delete_connect_instance_config/](https://www.paws-r-sdk.com/docs/connectcampaignservice_delete_connect_instance_config/) for full documentation.
 #'
 #' @param connectInstanceId &#91;required&#93; 
 #'
@@ -100,7 +100,7 @@ connectcampaignservice_delete_connect_instance_config <- function(connectInstanc
 #' @description
 #' Delete the Connect Campaigns onboarding job for the specified Amazon Connect instance.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/delete_instance_onboarding_job.html](https://paws-r.github.io/docs/connectcampaignservice/delete_instance_onboarding_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_delete_instance_onboarding_job/](https://www.paws-r-sdk.com/docs/connectcampaignservice_delete_instance_onboarding_job/) for full documentation.
 #'
 #' @param connectInstanceId &#91;required&#93; 
 #'
@@ -129,7 +129,7 @@ connectcampaignservice_delete_instance_onboarding_job <- function(connectInstanc
 #' @description
 #' Describes the specific campaign.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/describe_campaign.html](https://paws-r.github.io/docs/connectcampaignservice/describe_campaign.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_describe_campaign/](https://www.paws-r-sdk.com/docs/connectcampaignservice_describe_campaign/) for full documentation.
 #'
 #' @param id &#91;required&#93; 
 #'
@@ -158,7 +158,7 @@ connectcampaignservice_describe_campaign <- function(id) {
 #' @description
 #' Get state of a campaign for the specified Amazon Connect account.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/get_campaign_state.html](https://paws-r.github.io/docs/connectcampaignservice/get_campaign_state.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_get_campaign_state/](https://www.paws-r-sdk.com/docs/connectcampaignservice_get_campaign_state/) for full documentation.
 #'
 #' @param id &#91;required&#93; 
 #'
@@ -187,7 +187,7 @@ connectcampaignservice_get_campaign_state <- function(id) {
 #' @description
 #' Get state of campaigns for the specified Amazon Connect account.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/get_campaign_state_batch.html](https://paws-r.github.io/docs/connectcampaignservice/get_campaign_state_batch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_get_campaign_state_batch/](https://www.paws-r-sdk.com/docs/connectcampaignservice_get_campaign_state_batch/) for full documentation.
 #'
 #' @param campaignIds &#91;required&#93; 
 #'
@@ -216,7 +216,7 @@ connectcampaignservice_get_campaign_state_batch <- function(campaignIds) {
 #' @description
 #' Get the specific Connect instance config.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/get_connect_instance_config.html](https://paws-r.github.io/docs/connectcampaignservice/get_connect_instance_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_get_connect_instance_config/](https://www.paws-r-sdk.com/docs/connectcampaignservice_get_connect_instance_config/) for full documentation.
 #'
 #' @param connectInstanceId &#91;required&#93; 
 #'
@@ -245,7 +245,7 @@ connectcampaignservice_get_connect_instance_config <- function(connectInstanceId
 #' @description
 #' Get the specific instance onboarding job status.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/get_instance_onboarding_job_status.html](https://paws-r.github.io/docs/connectcampaignservice/get_instance_onboarding_job_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_get_instance_onboarding_job_status/](https://www.paws-r-sdk.com/docs/connectcampaignservice_get_instance_onboarding_job_status/) for full documentation.
 #'
 #' @param connectInstanceId &#91;required&#93; 
 #'
@@ -275,7 +275,7 @@ connectcampaignservice_get_instance_onboarding_job_status <- function(connectIns
 #' @description
 #' Provides summary information about the campaigns under the specified Amazon Connect account.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/list_campaigns.html](https://paws-r.github.io/docs/connectcampaignservice/list_campaigns.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_list_campaigns/](https://www.paws-r-sdk.com/docs/connectcampaignservice_list_campaigns/) for full documentation.
 #'
 #' @param filters 
 #' @param maxResults 
@@ -306,7 +306,7 @@ connectcampaignservice_list_campaigns <- function(filters = NULL, maxResults = N
 #' @description
 #' List tags for a resource.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/list_tags_for_resource.html](https://paws-r.github.io/docs/connectcampaignservice/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/connectcampaignservice_list_tags_for_resource/) for full documentation.
 #'
 #' @param arn &#91;required&#93; 
 #'
@@ -335,7 +335,7 @@ connectcampaignservice_list_tags_for_resource <- function(arn) {
 #' @description
 #' Pauses a campaign for the specified Amazon Connect account.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/pause_campaign.html](https://paws-r.github.io/docs/connectcampaignservice/pause_campaign.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_pause_campaign/](https://www.paws-r-sdk.com/docs/connectcampaignservice_pause_campaign/) for full documentation.
 #'
 #' @param id &#91;required&#93; 
 #'
@@ -364,7 +364,7 @@ connectcampaignservice_pause_campaign <- function(id) {
 #' @description
 #' Creates dials requests for the specified campaign Amazon Connect account. This API is idempotent.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/put_dial_request_batch.html](https://paws-r.github.io/docs/connectcampaignservice/put_dial_request_batch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_put_dial_request_batch/](https://www.paws-r-sdk.com/docs/connectcampaignservice_put_dial_request_batch/) for full documentation.
 #'
 #' @param dialRequests &#91;required&#93; 
 #' @param id &#91;required&#93; 
@@ -394,7 +394,7 @@ connectcampaignservice_put_dial_request_batch <- function(dialRequests, id) {
 #' @description
 #' Stops a campaign for the specified Amazon Connect account.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/resume_campaign.html](https://paws-r.github.io/docs/connectcampaignservice/resume_campaign.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_resume_campaign/](https://www.paws-r-sdk.com/docs/connectcampaignservice_resume_campaign/) for full documentation.
 #'
 #' @param id &#91;required&#93; 
 #'
@@ -423,7 +423,7 @@ connectcampaignservice_resume_campaign <- function(id) {
 #' @description
 #' Starts a campaign for the specified Amazon Connect account.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/start_campaign.html](https://paws-r.github.io/docs/connectcampaignservice/start_campaign.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_start_campaign/](https://www.paws-r-sdk.com/docs/connectcampaignservice_start_campaign/) for full documentation.
 #'
 #' @param id &#91;required&#93; 
 #'
@@ -452,7 +452,7 @@ connectcampaignservice_start_campaign <- function(id) {
 #' @description
 #' Onboard the specific Amazon Connect instance to Connect Campaigns.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/start_instance_onboarding_job.html](https://paws-r.github.io/docs/connectcampaignservice/start_instance_onboarding_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_start_instance_onboarding_job/](https://www.paws-r-sdk.com/docs/connectcampaignservice_start_instance_onboarding_job/) for full documentation.
 #'
 #' @param connectInstanceId &#91;required&#93; 
 #' @param encryptionConfig &#91;required&#93; 
@@ -482,7 +482,7 @@ connectcampaignservice_start_instance_onboarding_job <- function(connectInstance
 #' @description
 #' Stops a campaign for the specified Amazon Connect account.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/stop_campaign.html](https://paws-r.github.io/docs/connectcampaignservice/stop_campaign.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_stop_campaign/](https://www.paws-r-sdk.com/docs/connectcampaignservice_stop_campaign/) for full documentation.
 #'
 #' @param id &#91;required&#93; 
 #'
@@ -511,7 +511,7 @@ connectcampaignservice_stop_campaign <- function(id) {
 #' @description
 #' Tag a resource.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/tag_resource.html](https://paws-r.github.io/docs/connectcampaignservice/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_tag_resource/](https://www.paws-r-sdk.com/docs/connectcampaignservice_tag_resource/) for full documentation.
 #'
 #' @param arn &#91;required&#93; 
 #' @param tags &#91;required&#93; 
@@ -541,7 +541,7 @@ connectcampaignservice_tag_resource <- function(arn, tags) {
 #' @description
 #' Untag a resource.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/untag_resource.html](https://paws-r.github.io/docs/connectcampaignservice/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_untag_resource/](https://www.paws-r-sdk.com/docs/connectcampaignservice_untag_resource/) for full documentation.
 #'
 #' @param arn &#91;required&#93; 
 #' @param tagKeys &#91;required&#93; 
@@ -571,7 +571,7 @@ connectcampaignservice_untag_resource <- function(arn, tagKeys) {
 #' @description
 #' Updates the dialer config of a campaign. This API is idempotent.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/update_campaign_dialer_config.html](https://paws-r.github.io/docs/connectcampaignservice/update_campaign_dialer_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_update_campaign_dialer_config/](https://www.paws-r-sdk.com/docs/connectcampaignservice_update_campaign_dialer_config/) for full documentation.
 #'
 #' @param dialerConfig &#91;required&#93; 
 #' @param id &#91;required&#93; 
@@ -601,7 +601,7 @@ connectcampaignservice_update_campaign_dialer_config <- function(dialerConfig, i
 #' @description
 #' Updates the name of a campaign. This API is idempotent.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/update_campaign_name.html](https://paws-r.github.io/docs/connectcampaignservice/update_campaign_name.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_update_campaign_name/](https://www.paws-r-sdk.com/docs/connectcampaignservice_update_campaign_name/) for full documentation.
 #'
 #' @param id &#91;required&#93; 
 #' @param name &#91;required&#93; 
@@ -631,7 +631,7 @@ connectcampaignservice_update_campaign_name <- function(id, name) {
 #' @description
 #' Updates the outbound call config of a campaign. This API is idempotent.
 #'
-#' See [https://paws-r.github.io/docs/connectcampaignservice/update_campaign_outbound_call_config.html](https://paws-r.github.io/docs/connectcampaignservice/update_campaign_outbound_call_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_update_campaign_outbound_call_config/](https://www.paws-r-sdk.com/docs/connectcampaignservice_update_campaign_outbound_call_config/) for full documentation.
 #'
 #' @param answerMachineDetectionConfig 
 #' @param connectContactFlowId 

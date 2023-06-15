@@ -26,6 +26,6 @@ results.}
 \description{
 Performs a manual search against the specified assistant. To retrieve recommendations for an assistant, use \code{\link[=connectwisdomservice_get_recommendations]{get_recommendations}}.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/query_assistant.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_query_assistant/} for full documentation.
 }
 \keyword{internal}

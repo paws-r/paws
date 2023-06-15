@@ -40,6 +40,6 @@ a success message with no action taken.}
 \description{
 Starts a job to create a one-time copy of the specified resource.
 
-See \url{https://paws-r.github.io/docs/backup/start_copy_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_start_copy_job/} for full documentation.
 }
 \keyword{internal}

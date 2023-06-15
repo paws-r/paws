@@ -20,11 +20,11 @@ the next page of results in a paginated response.}
 \item{Filters}{Returns a list of Detective or Proactive Config rules. By default, this
 API returns an unfiltered list. For more information on Detective or
 Proactive Config rules, see \href{https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config-rules.html}{\strong{Evaluation Mode}}
-in the Config Developer Guide.}
+in the \emph{Config Developer Guide}.}
 }
 \description{
 Returns details about your Config rules.
 
-See \url{https://paws-r.github.io/docs/configservice/describe_config_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_describe_config_rules/} for full documentation.
 }
 \keyword{internal}

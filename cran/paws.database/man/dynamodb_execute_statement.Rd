@@ -41,6 +41,6 @@ apply in a subsequent operation to continue the operation.}
 \description{
 This operation allows you to perform reads and singleton writes on data stored in DynamoDB, using PartiQL.
 
-See \url{https://paws-r.github.io/docs/dynamodb/execute_statement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_execute_statement/} for full documentation.
 }
 \keyword{internal}

@@ -38,6 +38,6 @@ results.}
 \description{
 Finds SageMaker resources that match a search query. Matching resources are returned as a list of \code{SearchRecord} objects in the response. You can sort the search results by any resource property in a ascending or descending order.
 
-See \url{https://paws-r.github.io/docs/sagemaker/search.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_search/} for full documentation.
 }
 \keyword{internal}

@@ -41,6 +41,6 @@ specify:
 \description{
 Returns a list of forecasts created using the \code{\link[=forecastservice_create_forecast]{create_forecast}} operation. For each forecast, this operation returns a summary of its properties, including its Amazon Resource Name (ARN). To retrieve the complete set of properties, specify the ARN with the \code{\link[=forecastservice_describe_forecast]{describe_forecast}} operation. You can filter the list using an array of Filter objects.
 
-See \url{https://paws-r.github.io/docs/forecastservice/list_forecasts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_list_forecasts/} for full documentation.
 }
 \keyword{internal}

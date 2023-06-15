@@ -14,6 +14,6 @@ opensearchservice_update_vpc_endpoint(VpcEndpointId, VpcOptions)
 \description{
 Modifies an Amazon OpenSearch Service-managed interface VPC endpoint.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/update_vpc_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_update_vpc_endpoint/} for full documentation.
 }
 \keyword{internal}

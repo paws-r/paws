@@ -35,6 +35,6 @@ EKS clusters. '\code{all}' must be in lowercase otherwise an error occurs.}
 \description{
 Lists the Amazon EKS clusters in your Amazon Web Services account in the specified Region.
 
-See \url{https://paws-r.github.io/docs/eks/list_clusters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_list_clusters/} for full documentation.
 }
 \keyword{internal}

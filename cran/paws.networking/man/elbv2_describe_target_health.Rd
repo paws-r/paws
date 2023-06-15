@@ -14,6 +14,6 @@ elbv2_describe_target_health(TargetGroupArn, Targets = NULL)
 \description{
 Describes the health of the specified targets or all of your targets.
 
-See \url{https://paws-r.github.io/docs/elbv2/describe_target_health.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_describe_target_health/} for full documentation.
 }
 \keyword{internal}

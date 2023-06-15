@@ -40,6 +40,6 @@ IdempotentParameterMismatch error.}
 \description{
 Runs an on-demand evaluation for the specified resource to determine whether the resource details will comply with configured Config rules. You can also use it for evaluation purposes. Config recommends using an evaluation context. It runs an execution against the resource details with all of the Config rules in your account that match with the specified proactive mode and resource type.
 
-See \url{https://paws-r.github.io/docs/configservice/start_resource_evaluation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_start_resource_evaluation/} for full documentation.
 }
 \keyword{internal}

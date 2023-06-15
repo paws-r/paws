@@ -10,6 +10,6 @@ inspector2_describe_organization_configuration()
 \description{
 Describe Amazon Inspector configuration settings for an Amazon Web Services organization.
 
-See \url{https://paws-r.github.io/docs/inspector2/describe_organization_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_describe_organization_configuration/} for full documentation.
 }
 \keyword{internal}

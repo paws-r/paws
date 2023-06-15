@@ -16,6 +16,6 @@ value.}
 \description{
 Lists the available FIS actions.
 
-See \url{https://paws-r.github.io/docs/fis/list_actions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fis_list_actions/} for full documentation.
 }
 \keyword{internal}

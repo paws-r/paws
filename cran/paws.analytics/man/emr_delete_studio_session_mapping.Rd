@@ -36,6 +36,6 @@ user or a group.}
 \description{
 Removes a user or group from an Amazon EMR Studio.
 
-See \url{https://paws-r.github.io/docs/emr/delete_studio_session_mapping.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_delete_studio_session_mapping/} for full documentation.
 }
 \keyword{internal}

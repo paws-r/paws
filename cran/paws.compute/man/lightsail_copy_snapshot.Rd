@@ -71,6 +71,6 @@ snapshot is located.}
 \description{
 Copies a manual snapshot of an instance or disk as another manual snapshot, or copies an automatic snapshot of an instance or disk as a manual snapshot. This operation can also be used to copy a manual or automatic snapshot of an instance or a disk from one Amazon Web Services Region to another in Amazon Lightsail.
 
-See \url{https://paws-r.github.io/docs/lightsail/copy_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_copy_snapshot/} for full documentation.
 }
 \keyword{internal}

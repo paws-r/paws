@@ -25,6 +25,6 @@ results.}
 \description{
 Lists the targets assigned to the specified rule.
 
-See \url{https://paws-r.github.io/docs/eventbridge/list_targets_by_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_list_targets_by_rule/} for full documentation.
 }
 \keyword{internal}

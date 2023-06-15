@@ -12,6 +12,6 @@ fis_delete_experiment_template(id)
 \description{
 Deletes the specified experiment template.
 
-See \url{https://paws-r.github.io/docs/fis/delete_experiment_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fis_delete_experiment_template/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ configuration identity to update. For example: \code{E2QWRUHAPOMQZL}.}
 \description{
 Update a field-level encryption configuration.
 
-See \url{https://paws-r.github.io/docs/cloudfront/update_field_level_encryption_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_update_field_level_encryption_config/} for full documentation.
 }
 \keyword{internal}

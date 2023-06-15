@@ -33,6 +33,6 @@ setting is ignored on individual streams.}
 \description{
 Allows you to update a stream processor. You can change some settings and regions of interest and delete certain parameters.
 
-See \url{https://paws-r.github.io/docs/rekognition/update_stream_processor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_update_stream_processor/} for full documentation.
 }
 \keyword{internal}

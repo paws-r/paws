@@ -20,6 +20,6 @@ and \code{DELETE} actions for mapping users to their groups.}
 \description{
 Describes the processing of \code{PUT} and \code{DELETE} actions for mapping users to their groups. This includes information on the status of actions currently processing or yet to be processed, when actions were last updated, when actions were received by Amazon Kendra, the latest action that should process and apply after other actions, and useful error messages if an action could not be processed.
 
-See \url{https://paws-r.github.io/docs/kendra/describe_principal_mapping.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_describe_principal_mapping/} for full documentation.
 }
 \keyword{internal}

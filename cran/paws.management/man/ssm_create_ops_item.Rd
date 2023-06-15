@@ -124,6 +124,6 @@ in the \emph{Amazon Web Services Systems Manager User Guide}.}
 \description{
 Creates a new OpsItem. You must have permission in Identity and Access Management (IAM) to create a new OpsItem. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Getting started with OpsCenter} in the \emph{Amazon Web Services Systems Manager User Guide}.
 
-See \url{https://paws-r.github.io/docs/ssm/create_ops_item.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_create_ops_item/} for full documentation.
 }
 \keyword{internal}

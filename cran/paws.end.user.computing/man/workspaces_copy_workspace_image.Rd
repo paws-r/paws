@@ -27,6 +27,6 @@ workspaces_copy_workspace_image(
 \description{
 Copies the specified image from the specified Region to the current Region. For more information about copying images, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/copy-custom-image.html}{Copy a Custom WorkSpaces Image}.
 
-See \url{https://paws-r.github.io/docs/workspaces/copy_workspace_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_copy_workspace_image/} for full documentation.
 }
 \keyword{internal}

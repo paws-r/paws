@@ -12,6 +12,6 @@ dynamodb_describe_export(ExportArn)
 \description{
 Describes an existing table export.
 
-See \url{https://paws-r.github.io/docs/dynamodb/describe_export.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_describe_export/} for full documentation.
 }
 \keyword{internal}

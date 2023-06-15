@@ -43,6 +43,6 @@ You can only specify one account ID per request.}
 \description{
 Returns Amazon ECS service recommendations.
 
-See \url{https://paws-r.github.io/docs/computeoptimizer/get_ecs_service_recommendations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/computeoptimizer_get_ecs_service_recommendations/} for full documentation.
 }
 \keyword{internal}

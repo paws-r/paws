@@ -31,6 +31,6 @@ To get the key ID and key ARN for a KMS key, use
 \description{
 Deletes the specified grant. You revoke a grant to terminate the permissions that the grant allows. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/#grant-delete}{Retiring and revoking grants} in the \emph{Key Management Service Developer Guide} .
 
-See \url{https://paws-r.github.io/docs/kms/revoke_grant.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_revoke_grant/} for full documentation.
 }
 \keyword{internal}

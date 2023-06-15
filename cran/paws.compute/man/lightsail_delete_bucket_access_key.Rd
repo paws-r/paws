@@ -17,6 +17,6 @@ action to get a list of access key IDs that you can specify.}
 \description{
 Deletes an access key for the specified Amazon Lightsail bucket.
 
-See \url{https://paws-r.github.io/docs/lightsail/delete_bucket_access_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_delete_bucket_access_key/} for full documentation.
 }
 \keyword{internal}

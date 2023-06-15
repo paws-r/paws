@@ -15,6 +15,6 @@ the NextToken to fetch the next group of custom terminologies.}
 \description{
 Provides a list of custom terminologies associated with your account.
 
-See \url{https://paws-r.github.io/docs/translate/list_terminologies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/translate_list_terminologies/} for full documentation.
 }
 \keyword{internal}

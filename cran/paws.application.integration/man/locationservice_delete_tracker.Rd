@@ -12,6 +12,6 @@ locationservice_delete_tracker(TrackerName)
 \description{
 Deletes a tracker resource from your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/locationservice/delete_tracker.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_delete_tracker/} for full documentation.
 }
 \keyword{internal}

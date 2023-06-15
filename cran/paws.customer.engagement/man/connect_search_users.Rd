@@ -29,6 +29,6 @@ results.}
 \description{
 Searches users in an Amazon Connect instance, with optional filtering.
 
-See \url{https://paws-r.github.io/docs/connect/search_users.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_search_users/} for full documentation.
 }
 \keyword{internal}

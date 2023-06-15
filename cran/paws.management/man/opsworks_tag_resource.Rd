@@ -28,6 +28,6 @@ value.
 \description{
 Apply cost-allocation tags to a specified stack or layer in AWS OpsWorks Stacks. For more information about how tagging works, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/tagging.html}{Tags} in the AWS OpsWorks User Guide.
 
-See \url{https://paws-r.github.io/docs/opsworks/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_tag_resource/} for full documentation.
 }
 \keyword{internal}

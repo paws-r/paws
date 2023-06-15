@@ -10,7 +10,8 @@ NULL
 #'
 #' @usage
 #' healthlake_create_fhir_datastore(DatastoreName, DatastoreTypeVersion,
-#'   SseConfiguration, PreloadDataConfig, ClientToken, Tags)
+#'   SseConfiguration, PreloadDataConfig, ClientToken, Tags,
+#'   IdentityProviderConfiguration)
 #'
 #' @param DatastoreName The user generated name for the Data Store.
 #' @param DatastoreTypeVersion &#91;required&#93; The FHIR version of the Data Store. The only supported version is R4.
@@ -21,6 +22,8 @@ NULL
 #' from Synthea.
 #' @param ClientToken Optional user provided token used for ensuring idempotency.
 #' @param Tags Resource tags that are applied to a Data Store when it is created.
+#' @param IdentityProviderConfiguration The configuration of the identity provider that you want to use for your
+#' Data Store.
 #'
 #' @return
 #' A list with the following syntax:
@@ -53,6 +56,12 @@ NULL
 #'       Key = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   IdentityProviderConfiguration = list(
+#'     AuthorizationStrategy = "SMART_ON_FHIR_V1"|"AWS_AUTH",
+#'     FineGrainedAuthorizationEnabled = TRUE|FALSE,
+#'     Metadata = "string",
+#'     IdpLambdaArn = "string"
 #'   )
 #' )
 #' ```
@@ -62,14 +71,14 @@ NULL
 #' @rdname healthlake_create_fhir_datastore
 #'
 #' @aliases healthlake_create_fhir_datastore
-healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreTypeVersion, SseConfiguration = NULL, PreloadDataConfig = NULL, ClientToken = NULL, Tags = NULL) {
+healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreTypeVersion, SseConfiguration = NULL, PreloadDataConfig = NULL, ClientToken = NULL, Tags = NULL, IdentityProviderConfiguration = NULL) {
   op <- new_operation(
     name = "CreateFHIRDatastore",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .healthlake$create_fhir_datastore_input(DatastoreName = DatastoreName, DatastoreTypeVersion = DatastoreTypeVersion, SseConfiguration = SseConfiguration, PreloadDataConfig = PreloadDataConfig, ClientToken = ClientToken, Tags = Tags)
+  input <- .healthlake$create_fhir_datastore_input(DatastoreName = DatastoreName, DatastoreTypeVersion = DatastoreTypeVersion, SseConfiguration = SseConfiguration, PreloadDataConfig = PreloadDataConfig, ClientToken = ClientToken, Tags = Tags, IdentityProviderConfiguration = IdentityProviderConfiguration)
   output <- .healthlake$create_fhir_datastore_output()
   config <- get_config()
   svc <- .healthlake$service(config)
@@ -87,7 +96,7 @@ healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreType
 #' @usage
 #' healthlake_delete_fhir_datastore(DatastoreId)
 #'
-#' @param DatastoreId The AWS-generated ID for the Data Store to be deleted.
+#' @param DatastoreId &#91;required&#93; The AWS-generated ID for the Data Store to be deleted.
 #'
 #' @return
 #' A list with the following syntax:
@@ -112,7 +121,7 @@ healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreType
 #' @rdname healthlake_delete_fhir_datastore
 #'
 #' @aliases healthlake_delete_fhir_datastore
-healthlake_delete_fhir_datastore <- function(DatastoreId = NULL) {
+healthlake_delete_fhir_datastore <- function(DatastoreId) {
   op <- new_operation(
     name = "DeleteFHIRDatastore",
     http_method = "POST",
@@ -141,8 +150,7 @@ healthlake_delete_fhir_datastore <- function(DatastoreId = NULL) {
 #' @usage
 #' healthlake_describe_fhir_datastore(DatastoreId)
 #'
-#' @param DatastoreId The AWS-generated Data Store id. This is part of the
-#' ‘CreateFHIRDatastore’ output.
+#' @param DatastoreId &#91;required&#93; The AWS-generated Data Store ID.
 #'
 #' @return
 #' A list with the following syntax:
@@ -166,6 +174,12 @@ healthlake_delete_fhir_datastore <- function(DatastoreId = NULL) {
 #'     ),
 #'     PreloadDataConfig = list(
 #'       PreloadDataType = "SYNTHEA"
+#'     ),
+#'     IdentityProviderConfiguration = list(
+#'       AuthorizationStrategy = "SMART_ON_FHIR_V1"|"AWS_AUTH",
+#'       FineGrainedAuthorizationEnabled = TRUE|FALSE,
+#'       Metadata = "string",
+#'       IdpLambdaArn = "string"
 #'     )
 #'   )
 #' )
@@ -183,7 +197,7 @@ healthlake_delete_fhir_datastore <- function(DatastoreId = NULL) {
 #' @rdname healthlake_describe_fhir_datastore
 #'
 #' @aliases healthlake_describe_fhir_datastore
-healthlake_describe_fhir_datastore <- function(DatastoreId = NULL) {
+healthlake_describe_fhir_datastore <- function(DatastoreId) {
   op <- new_operation(
     name = "DescribeFHIRDatastore",
     http_method = "POST",
@@ -221,7 +235,7 @@ healthlake_describe_fhir_datastore <- function(DatastoreId = NULL) {
 #'   ExportJobProperties = list(
 #'     JobId = "string",
 #'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED",
+#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
 #'     SubmitTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -291,7 +305,7 @@ healthlake_describe_fhir_export_job <- function(DatastoreId, JobId) {
 #'   ImportJobProperties = list(
 #'     JobId = "string",
 #'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED",
+#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
 #'     SubmitTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -382,6 +396,12 @@ healthlake_describe_fhir_import_job <- function(DatastoreId, JobId) {
 #'       ),
 #'       PreloadDataConfig = list(
 #'         PreloadDataType = "SYNTHEA"
+#'       ),
+#'       IdentityProviderConfiguration = list(
+#'         AuthorizationStrategy = "SMART_ON_FHIR_V1"|"AWS_AUTH",
+#'         FineGrainedAuthorizationEnabled = TRUE|FALSE,
+#'         Metadata = "string",
+#'         IdpLambdaArn = "string"
 #'       )
 #'     )
 #'   ),
@@ -462,7 +482,7 @@ healthlake_list_fhir_datastores <- function(Filter = NULL, NextToken = NULL, Max
 #'     list(
 #'       JobId = "string",
 #'       JobName = "string",
-#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED",
+#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
 #'       SubmitTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -491,7 +511,7 @@ healthlake_list_fhir_datastores <- function(Filter = NULL, NextToken = NULL, Max
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   JobName = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
 #'   SubmittedBefore = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -556,7 +576,7 @@ healthlake_list_fhir_export_jobs <- function(DatastoreId, NextToken = NULL, MaxR
 #'     list(
 #'       JobId = "string",
 #'       JobName = "string",
-#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED",
+#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
 #'       SubmitTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -588,7 +608,7 @@ healthlake_list_fhir_export_jobs <- function(DatastoreId, NextToken = NULL, MaxR
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   JobName = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
 #'   SubmittedBefore = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -695,7 +715,7 @@ healthlake_list_tags_for_resource <- function(ResourceARN) {
 #' ```
 #' list(
 #'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
 #'   DatastoreId = "string"
 #' )
 #' ```
@@ -761,7 +781,7 @@ healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, D
 #' ```
 #' list(
 #'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED",
+#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
 #'   DatastoreId = "string"
 #' )
 #' ```
@@ -807,10 +827,10 @@ healthlake_start_fhir_import_job <- function(JobName = NULL, InputDataConfig, Jo
 }
 .healthlake$operations$start_fhir_import_job <- healthlake_start_fhir_import_job
 
-#' Adds a user specifed key and value tag to a Data Store
+#' Adds a user specified key and value tag to a Data Store
 #'
 #' @description
-#' Adds a user specifed key and value tag to a Data Store.
+#' Adds a user specified key and value tag to a Data Store.
 #'
 #' @usage
 #' healthlake_tag_resource(ResourceARN, Tags)

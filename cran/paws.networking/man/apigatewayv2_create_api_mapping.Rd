@@ -18,6 +18,6 @@ apigatewayv2_create_api_mapping(ApiId, ApiMappingKey = NULL, DomainName, Stage)
 \description{
 Creates an API mapping.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/create_api_mapping.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_create_api_mapping/} for full documentation.
 }
 \keyword{internal}

@@ -10,6 +10,6 @@ securityhub_describe_organization_configuration()
 \description{
 Returns information about the Organizations configuration for Security Hub. Can only be called from a Security Hub administrator account.
 
-See \url{https://paws-r.github.io/docs/securityhub/describe_organization_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_describe_organization_configuration/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ or retrieve.}
 \description{
 Gets the S3 Intelligent-Tiering configuration from the specified bucket.
 
-See \url{https://paws-r.github.io/docs/s3/get_bucket_intelligent_tiering_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_intelligent_tiering_configuration/} for full documentation.
 }
 \keyword{internal}

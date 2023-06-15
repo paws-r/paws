@@ -12,6 +12,6 @@ codebuild_delete_report(arn)
 \description{
 Deletes a report.
 
-See \url{https://paws-r.github.io/docs/codebuild/delete_report.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_delete_report/} for full documentation.
 }
 \keyword{internal}

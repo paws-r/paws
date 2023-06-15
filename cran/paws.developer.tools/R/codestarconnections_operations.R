@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Creates a connection that can then be given to other AWS services like CodePipeline so that it can access third-party code repositories. The connection is in pending status until the third-party connection handshake is completed from the console.
 #'
-#' See [https://paws-r.github.io/docs/codestarconnections/create_connection.html](https://paws-r.github.io/docs/codestarconnections/create_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarconnections_create_connection/](https://www.paws-r-sdk.com/docs/codestarconnections_create_connection/) for full documentation.
 #'
 #' @param ProviderType The name of the external provider where your third-party code repository
 #' is configured.
@@ -45,7 +45,7 @@ codestarconnections_create_connection <- function(ProviderType = NULL, Connectio
 #' @description
 #' Creates a resource that represents the infrastructure where a third-party provider is installed. The host is used when you create connections to an installed third-party provider type, such as GitHub Enterprise Server. You create one host for all connections to that provider.
 #'
-#' See [https://paws-r.github.io/docs/codestarconnections/create_host.html](https://paws-r.github.io/docs/codestarconnections/create_host.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarconnections_create_host/](https://www.paws-r-sdk.com/docs/codestarconnections_create_host/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the host to be created. The name must be unique in the
 #' calling AWS account.
@@ -85,7 +85,7 @@ codestarconnections_create_host <- function(Name, ProviderType, ProviderEndpoint
 #' @description
 #' The connection to be deleted.
 #'
-#' See [https://paws-r.github.io/docs/codestarconnections/delete_connection.html](https://paws-r.github.io/docs/codestarconnections/delete_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarconnections_delete_connection/](https://www.paws-r-sdk.com/docs/codestarconnections_delete_connection/) for full documentation.
 #'
 #' @param ConnectionArn &#91;required&#93; The Amazon Resource Name (ARN) of the connection to be deleted.
 #' 
@@ -116,7 +116,7 @@ codestarconnections_delete_connection <- function(ConnectionArn) {
 #' @description
 #' The host to be deleted. Before you delete a host, all connections associated to the host must be deleted.
 #'
-#' See [https://paws-r.github.io/docs/codestarconnections/delete_host.html](https://paws-r.github.io/docs/codestarconnections/delete_host.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarconnections_delete_host/](https://www.paws-r-sdk.com/docs/codestarconnections_delete_host/) for full documentation.
 #'
 #' @param HostArn &#91;required&#93; The Amazon Resource Name (ARN) of the host to be deleted.
 #'
@@ -146,7 +146,7 @@ codestarconnections_delete_host <- function(HostArn) {
 #' @description
 #' Returns the connection ARN and details such as status, owner, and provider type.
 #'
-#' See [https://paws-r.github.io/docs/codestarconnections/get_connection.html](https://paws-r.github.io/docs/codestarconnections/get_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarconnections_get_connection/](https://www.paws-r-sdk.com/docs/codestarconnections_get_connection/) for full documentation.
 #'
 #' @param ConnectionArn &#91;required&#93; The Amazon Resource Name (ARN) of a connection.
 #'
@@ -176,7 +176,7 @@ codestarconnections_get_connection <- function(ConnectionArn) {
 #' @description
 #' Returns the host ARN and details such as status, provider type, endpoint, and, if applicable, the VPC configuration.
 #'
-#' See [https://paws-r.github.io/docs/codestarconnections/get_host.html](https://paws-r.github.io/docs/codestarconnections/get_host.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarconnections_get_host/](https://www.paws-r-sdk.com/docs/codestarconnections_get_host/) for full documentation.
 #'
 #' @param HostArn &#91;required&#93; The Amazon Resource Name (ARN) of the requested host.
 #'
@@ -205,7 +205,7 @@ codestarconnections_get_host <- function(HostArn) {
 #' @description
 #' Lists the connections associated with your account.
 #'
-#' See [https://paws-r.github.io/docs/codestarconnections/list_connections.html](https://paws-r.github.io/docs/codestarconnections/list_connections.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarconnections_list_connections/](https://www.paws-r-sdk.com/docs/codestarconnections_list_connections/) for full documentation.
 #'
 #' @param ProviderTypeFilter Filters the list of connections to those associated with a specified
 #' provider, such as Bitbucket.
@@ -243,7 +243,7 @@ codestarconnections_list_connections <- function(ProviderTypeFilter = NULL, Host
 #' @description
 #' Lists the hosts associated with your account.
 #'
-#' See [https://paws-r.github.io/docs/codestarconnections/list_hosts.html](https://paws-r.github.io/docs/codestarconnections/list_hosts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarconnections_list_hosts/](https://www.paws-r-sdk.com/docs/codestarconnections_list_hosts/) for full documentation.
 #'
 #' @param MaxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
@@ -278,7 +278,7 @@ codestarconnections_list_hosts <- function(MaxResults = NULL, NextToken = NULL) 
 #' @description
 #' Gets the set of key-value pairs (metadata) that are used to manage the resource.
 #'
-#' See [https://paws-r.github.io/docs/codestarconnections/list_tags_for_resource.html](https://paws-r.github.io/docs/codestarconnections/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarconnections_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/codestarconnections_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which you want to get
 #' information about tags, if any.
@@ -308,7 +308,7 @@ codestarconnections_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Adds to or modifies the tags of the given resource. Tags are metadata that can be used to manage a resource.
 #'
-#' See [https://paws-r.github.io/docs/codestarconnections/tag_resource.html](https://paws-r.github.io/docs/codestarconnections/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarconnections_tag_resource/](https://www.paws-r-sdk.com/docs/codestarconnections_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which you want to add
 #' or update tags.
@@ -339,7 +339,7 @@ codestarconnections_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes tags from an AWS resource.
 #'
-#' See [https://paws-r.github.io/docs/codestarconnections/untag_resource.html](https://paws-r.github.io/docs/codestarconnections/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarconnections_untag_resource/](https://www.paws-r-sdk.com/docs/codestarconnections_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to remove tags from.
 #' @param TagKeys &#91;required&#93; The list of keys for the tags to be removed from the resource.
@@ -369,7 +369,7 @@ codestarconnections_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates a specified host with the provided configurations.
 #'
-#' See [https://paws-r.github.io/docs/codestarconnections/update_host.html](https://paws-r.github.io/docs/codestarconnections/update_host.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarconnections_update_host/](https://www.paws-r-sdk.com/docs/codestarconnections_update_host/) for full documentation.
 #'
 #' @param HostArn &#91;required&#93; The Amazon Resource Name (ARN) of the host to be updated.
 #' @param ProviderEndpoint The URL or endpoint of the host to be updated.

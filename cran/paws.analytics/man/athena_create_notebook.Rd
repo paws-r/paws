@@ -26,6 +26,6 @@ fail.}
 \description{
 Creates an empty \code{ipynb} file in the specified Apache Spark enabled workgroup. Throws an error if a file in the workgroup with the same name already exists.
 
-See \url{https://paws-r.github.io/docs/athena/create_notebook.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_create_notebook/} for full documentation.
 }
 \keyword{internal}

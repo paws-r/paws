@@ -83,6 +83,6 @@ correct time for your time zone.}
 \description{
 You can use the \code{\link[=cloudwatch_get_metric_data]{get_metric_data}} API to retrieve CloudWatch metric values. The operation can also include a CloudWatch Metrics Insights query, and one or more metric math functions.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/get_metric_data.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_get_metric_data/} for full documentation.
 }
 \keyword{internal}

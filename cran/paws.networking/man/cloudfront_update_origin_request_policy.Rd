@@ -26,6 +26,6 @@ response to
 \description{
 Updates an origin request policy configuration.
 
-See \url{https://paws-r.github.io/docs/cloudfront/update_origin_request_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_update_origin_request_policy/} for full documentation.
 }
 \keyword{internal}

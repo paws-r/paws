@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates and returns an access token for the authorized client. The access token issued will be used to fetch short-term credentials for the assigned roles in the AWS account.
 #'
-#' See [https://paws-r.github.io/docs/ssooidc/create_token.html](https://paws-r.github.io/docs/ssooidc/create_token.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssooidc_create_token/](https://www.paws-r-sdk.com/docs/ssooidc_create_token/) for full documentation.
 #'
 #' @param clientId &#91;required&#93; The unique identifier string for each client. This value should come
 #' from the persisted result of the
@@ -70,7 +70,7 @@ ssooidc_create_token <- function(clientId, clientSecret, grantType, deviceCode =
 #' @description
 #' Registers a client with IAM Identity Center. This allows clients to initiate device authorization. The output should be persisted for reuse through many authentication requests.
 #'
-#' See [https://paws-r.github.io/docs/ssooidc/register_client.html](https://paws-r.github.io/docs/ssooidc/register_client.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssooidc_register_client/](https://www.paws-r-sdk.com/docs/ssooidc_register_client/) for full documentation.
 #'
 #' @param clientName &#91;required&#93; The friendly name of the client.
 #' @param clientType &#91;required&#93; The type of client. The service supports only `public` as a client type.
@@ -104,7 +104,7 @@ ssooidc_register_client <- function(clientName, clientType, scopes = NULL) {
 #' @description
 #' Initiates device authorization by requesting a pair of verification codes from the authorization service.
 #'
-#' See [https://paws-r.github.io/docs/ssooidc/start_device_authorization.html](https://paws-r.github.io/docs/ssooidc/start_device_authorization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssooidc_start_device_authorization/](https://www.paws-r-sdk.com/docs/ssooidc_start_device_authorization/) for full documentation.
 #'
 #' @param clientId &#91;required&#93; The unique identifier string for the client that is registered with IAM
 #' Identity Center. This value should come from the persisted result of the

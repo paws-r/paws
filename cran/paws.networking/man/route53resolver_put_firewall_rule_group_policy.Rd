@@ -17,6 +17,6 @@ attach to the rule group.}
 \description{
 Attaches an Identity and Access Management (Amazon Web Services IAM) policy for sharing the rule group. You can use the policy to share the rule group using Resource Access Manager (RAM).
 
-See \url{https://paws-r.github.io/docs/route53resolver/put_firewall_rule_group_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_put_firewall_rule_group_policy/} for full documentation.
 }
 \keyword{internal}

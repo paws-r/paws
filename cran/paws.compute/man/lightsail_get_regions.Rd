@@ -21,6 +21,6 @@ indicated with a letter (e.g., \verb{us-east-2a}).}
 \description{
 Returns a list of all valid regions for Amazon Lightsail. Use the \verb{include availability zones} parameter to also return the Availability Zones in a region.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_regions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_regions/} for full documentation.
 }
 \keyword{internal}

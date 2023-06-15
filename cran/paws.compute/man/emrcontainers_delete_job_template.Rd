@@ -12,6 +12,6 @@ emrcontainers_delete_job_template(id)
 \description{
 Deletes a job template. Job template stores values of StartJobRun API request in a template and can be used to start a job run. Job template allows two use cases: avoid repeating recurring StartJobRun API request values, enforcing certain values in StartJobRun API request.
 
-See \url{https://paws-r.github.io/docs/emrcontainers/delete_job_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emrcontainers_delete_job_template/} for full documentation.
 }
 \keyword{internal}

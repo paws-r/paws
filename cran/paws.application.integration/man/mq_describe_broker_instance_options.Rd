@@ -28,6 +28,6 @@ return. To request the first page, leave nextToken empty.}
 \description{
 Describe available broker instance options.
 
-See \url{https://paws-r.github.io/docs/mq/describe_broker_instance_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mq_describe_broker_instance_options/} for full documentation.
 }
 \keyword{internal}

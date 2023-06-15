@@ -49,6 +49,6 @@ the client request token, Lookout for Equipment generates one.}
 \description{
 Creates a label for an event.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/create_label.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_create_label/} for full documentation.
 }
 \keyword{internal}

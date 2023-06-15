@@ -21,6 +21,6 @@ ec2_unassign_ipv_6_addresses(
 \description{
 Unassigns one or more IPv6 addresses IPv4 Prefix Delegation prefixes from a network interface.
 
-See \url{https://paws-r.github.io/docs/ec2/unassign_ipv_6_addresses.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_unassign_ipv_6_addresses/} for full documentation.
 }
 \keyword{internal}

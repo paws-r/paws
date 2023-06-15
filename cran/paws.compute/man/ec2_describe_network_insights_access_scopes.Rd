@@ -31,6 +31,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the specified Network Access Scopes.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_network_insights_access_scopes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_network_insights_access_scopes/} for full documentation.
 }
 \keyword{internal}

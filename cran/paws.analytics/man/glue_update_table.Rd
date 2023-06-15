@@ -35,6 +35,6 @@ not create the archived version.}
 \description{
 Updates a metadata table in the Data Catalog.
 
-See \url{https://paws-r.github.io/docs/glue/update_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_update_table/} for full documentation.
 }
 \keyword{internal}

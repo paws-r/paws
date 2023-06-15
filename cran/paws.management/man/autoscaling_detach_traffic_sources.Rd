@@ -16,6 +16,6 @@ up to 10 traffic sources.}
 \description{
 Detaches one or more traffic sources from the specified Auto Scaling group.
 
-See \url{https://paws-r.github.io/docs/autoscaling/detach_traffic_sources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_detach_traffic_sources/} for full documentation.
 }
 \keyword{internal}

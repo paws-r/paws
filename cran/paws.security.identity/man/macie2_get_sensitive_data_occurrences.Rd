@@ -12,6 +12,6 @@ macie2_get_sensitive_data_occurrences(findingId)
 \description{
 Retrieves occurrences of sensitive data reported by a finding.
 
-See \url{https://paws-r.github.io/docs/macie2/get_sensitive_data_occurrences.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_get_sensitive_data_occurrences/} for full documentation.
 }
 \keyword{internal}

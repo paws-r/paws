@@ -25,6 +25,6 @@ search.}
 \description{
 Searches for analyses that belong to the user specified in the filter.
 
-See \url{https://paws-r.github.io/docs/quicksight/search_analyses.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_search_analyses/} for full documentation.
 }
 \keyword{internal}

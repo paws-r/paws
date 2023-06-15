@@ -21,6 +21,6 @@ account ID, do not include any hyphens ('-') in the ID.}
 \description{
 This operation returns information about a vault, including the vault's Amazon Resource Name (ARN), the date the vault was created, the number of archives it contains, and the total size of all the archives in the vault. The number of archives and their total size are as of the last inventory generation. This means that if you add or remove an archive from a vault, and then immediately use Describe Vault, the change in contents will not be immediately reflected. If you want to retrieve the latest inventory of the vault, use \code{\link[=glacier_initiate_job]{initiate_job}}. Amazon S3 Glacier generates vault inventories approximately daily. For more information, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html}{Downloading a Vault Inventory in Amazon S3 Glacier}.
 
-See \url{https://paws-r.github.io/docs/glacier/describe_vault.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_describe_vault/} for full documentation.
 }
 \keyword{internal}

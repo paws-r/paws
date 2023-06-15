@@ -19,6 +19,6 @@ return in the response. The default is 1000.}
 \description{
 Gets a list of stream processors that you have created with \code{\link[=rekognition_create_stream_processor]{create_stream_processor}}.
 
-See \url{https://paws-r.github.io/docs/rekognition/list_stream_processors.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_list_stream_processors/} for full documentation.
 }
 \keyword{internal}

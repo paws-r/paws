@@ -22,6 +22,6 @@ task. Up to 255 characters are allowed in this message.}
 \description{
 Stops a running task. Any tags associated with the task will be deleted.
 
-See \url{https://paws-r.github.io/docs/ecs/stop_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_stop_task/} for full documentation.
 }
 \keyword{internal}

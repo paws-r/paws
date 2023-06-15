@@ -120,6 +120,6 @@ your tags per resource limit.
 \description{
 Create a task set in the specified cluster and service. This is used when a service uses the \code{EXTERNAL} deployment controller type. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS deployment types} in the \emph{Amazon Elastic Container Service Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/ecs/create_task_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_create_task_set/} for full documentation.
 }
 \keyword{internal}

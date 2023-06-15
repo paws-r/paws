@@ -14,6 +14,6 @@ redshiftserverless_update_snapshot(retentionPeriod = NULL, snapshotName)
 \description{
 Updates a snapshot.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/update_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_update_snapshot/} for full documentation.
 }
 \keyword{internal}

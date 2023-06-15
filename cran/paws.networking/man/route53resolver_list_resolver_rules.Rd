@@ -38,6 +38,6 @@ specify the \code{NextToken} parameter, you must use the same values for
 \description{
 Lists the Resolver rules that were created using the current Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/route53resolver/list_resolver_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_list_resolver_rules/} for full documentation.
 }
 \keyword{internal}

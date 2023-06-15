@@ -24,6 +24,6 @@ licensemanagerusersubscriptions_stop_product_subscription(
 \description{
 Stops a product subscription for a user with the specified identity provider.
 
-See \url{https://paws-r.github.io/docs/licensemanagerusersubscriptions/stop_product_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_stop_product_subscription/} for full documentation.
 }
 \keyword{internal}

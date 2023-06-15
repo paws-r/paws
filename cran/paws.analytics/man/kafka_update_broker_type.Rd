@@ -18,6 +18,6 @@ cluster to be.}
 \description{
 Updates EC2 instance type.
 
-See \url{https://paws-r.github.io/docs/kafka/update_broker_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_update_broker_type/} for full documentation.
 }
 \keyword{internal}

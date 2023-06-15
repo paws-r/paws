@@ -12,6 +12,6 @@ codedeploy_get_on_premises_instance(instanceName)
 \description{
 Gets information about an on-premises instance.
 
-See \url{https://paws-r.github.io/docs/codedeploy/get_on_premises_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_get_on_premises_instance/} for full documentation.
 }
 \keyword{internal}

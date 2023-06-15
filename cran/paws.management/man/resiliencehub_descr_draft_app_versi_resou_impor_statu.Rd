@@ -16,6 +16,6 @@ in the \emph{AWS General Reference} guide.}
 \description{
 Describes the status of importing resources to an application version.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/describe_draft_app_version_resources_import_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_describe_draft_app_version_resources_import_status/} for full documentation.
 }
 \keyword{internal}

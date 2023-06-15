@@ -30,6 +30,6 @@ For more information about the hosted domain and custom domains, see
 \description{
 Creates a new domain for a user pool.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/create_user_pool_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_user_pool_domain/} for full documentation.
 }
 \keyword{internal}

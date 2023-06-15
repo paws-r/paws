@@ -12,6 +12,6 @@ glue_delete_job(JobName)
 \description{
 Deletes a specified job definition. If the job definition is not found, no exception is thrown.
 
-See \url{https://paws-r.github.io/docs/glue/delete_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_delete_job/} for full documentation.
 }
 \keyword{internal}

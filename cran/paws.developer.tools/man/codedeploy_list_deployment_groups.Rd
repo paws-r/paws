@@ -17,6 +17,6 @@ can be used to return the next set of deployment groups in the list.}
 \description{
 Lists the deployment groups for an application registered with the IAM user or Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/codedeploy/list_deployment_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_list_deployment_groups/} for full documentation.
 }
 \keyword{internal}

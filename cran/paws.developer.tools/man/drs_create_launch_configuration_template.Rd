@@ -7,6 +7,7 @@
 drs_create_launch_configuration_template(
   copyPrivateIp = NULL,
   copyTags = NULL,
+  exportBucketArn = NULL,
   launchDisposition = NULL,
   licensing = NULL,
   tags = NULL,
@@ -17,6 +18,8 @@ drs_create_launch_configuration_template(
 \item{copyPrivateIp}{Copy private IP.}
 
 \item{copyTags}{Copy tags.}
+
+\item{exportBucketArn}{S3 bucket ARN to export Source Network templates.}
 
 \item{launchDisposition}{Launch disposition.}
 
@@ -30,6 +33,6 @@ Template.}
 \description{
 Creates a new Launch Configuration Template.
 
-See \url{https://paws-r.github.io/docs/drs/create_launch_configuration_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_create_launch_configuration_template/} for full documentation.
 }
 \keyword{internal}

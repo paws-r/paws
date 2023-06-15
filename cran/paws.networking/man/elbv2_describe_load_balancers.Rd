@@ -25,6 +25,6 @@ previous call.)}
 \description{
 Describes the specified load balancers or all of your load balancers.
 
-See \url{https://paws-r.github.io/docs/elbv2/describe_load_balancers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_describe_load_balancers/} for full documentation.
 }
 \keyword{internal}

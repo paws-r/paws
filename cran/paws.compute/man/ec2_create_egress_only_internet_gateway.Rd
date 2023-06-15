@@ -27,6 +27,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 [IPv6 only] Creates an egress-only internet gateway for your VPC. An egress-only internet gateway is used to enable outbound communication over IPv6 from instances in your VPC to the internet, and prevents hosts outside of your VPC from initiating an IPv6 connection with your instance.
 
-See \url{https://paws-r.github.io/docs/ec2/create_egress_only_internet_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_egress_only_internet_gateway/} for full documentation.
 }
 \keyword{internal}

@@ -57,6 +57,6 @@ service are encrypted using a key that AWS owns and manages.}
 \description{
 Creates a new version of a model and begins training. Models are managed as part of an Amazon Rekognition Custom Labels project. The response from \code{\link[=rekognition_create_project_version]{create_project_version}} is an Amazon Resource Name (ARN) for the version of the model.
 
-See \url{https://paws-r.github.io/docs/rekognition/create_project_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_create_project_version/} for full documentation.
 }
 \keyword{internal}

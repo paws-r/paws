@@ -19,6 +19,6 @@ all Macie activities for the account.}
 \description{
 Suspends or re-enables Amazon Macie, or updates the configuration settings for a Macie account.
 
-See \url{https://paws-r.github.io/docs/macie2/update_macie_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_update_macie_session/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ stack, or an Amazon S3 bucket.}
 \description{
 Syncs the resource with current AppRegistry records.
 
-See \url{https://paws-r.github.io/docs/appregistry/sync_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_sync_resource/} for full documentation.
 }
 \keyword{internal}

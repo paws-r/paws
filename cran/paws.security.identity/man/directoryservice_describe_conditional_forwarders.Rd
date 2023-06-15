@@ -20,6 +20,6 @@ null, all conditional forwarders are returned.}
 \description{
 Obtains information about the conditional forwarders for this account.
 
-See \url{https://paws-r.github.io/docs/directoryservice/describe_conditional_forwarders.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_describe_conditional_forwarders/} for full documentation.
 }
 \keyword{internal}

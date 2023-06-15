@@ -51,6 +51,6 @@ are not sent.}
 \description{
 Sends an invitation to another account to join your organization as a member account. Organizations sends email on your behalf to the email address that is associated with the other account's owner. The invitation is implemented as a Handshake whose details are in the response.
 
-See \url{https://paws-r.github.io/docs/organizations/invite_account_to_organization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_invite_account_to_organization/} for full documentation.
 }
 \keyword{internal}

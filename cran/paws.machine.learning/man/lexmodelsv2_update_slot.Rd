@@ -57,6 +57,6 @@ composite slot.}
 \description{
 Updates the settings for a slot.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/update_slot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_update_slot/} for full documentation.
 }
 \keyword{internal}

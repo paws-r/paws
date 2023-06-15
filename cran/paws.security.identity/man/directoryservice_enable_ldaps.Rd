@@ -16,6 +16,6 @@ is supported.}
 \description{
 Activates the switch for the specific directory to always use LDAP secure calls.
 
-See \url{https://paws-r.github.io/docs/directoryservice/enable_ldaps.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_enable_ldaps/} for full documentation.
 }
 \keyword{internal}

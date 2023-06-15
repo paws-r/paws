@@ -14,6 +14,6 @@ dynamodb_update_global_table(GlobalTableName, ReplicaUpdates)
 \description{
 Adds or removes replicas in the specified global table. The global table must already exist to be able to use this operation. Any replica to be added must be empty, have the same name as the global table, have the same key schema, have DynamoDB Streams enabled, and have the same provisioned and maximum write capacity units.
 
-See \url{https://paws-r.github.io/docs/dynamodb/update_global_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_update_global_table/} for full documentation.
 }
 \keyword{internal}

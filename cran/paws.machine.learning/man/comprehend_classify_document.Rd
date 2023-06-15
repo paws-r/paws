@@ -40,6 +40,6 @@ extracting text from PDF documents and image files.}
 \description{
 Creates a new document classification request to analyze a single document in real-time, using a previously created and trained custom model and an endpoint.
 
-See \url{https://paws-r.github.io/docs/comprehend/classify_document.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_classify_document/} for full documentation.
 }
 \keyword{internal}

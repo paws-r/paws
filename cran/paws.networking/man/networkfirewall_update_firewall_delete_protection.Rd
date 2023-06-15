@@ -49,6 +49,6 @@ initializes this flag to \code{TRUE}.}
 \description{
 Modifies the flag, \code{DeleteProtection}, which indicates whether it is possible to delete the firewall. If the flag is set to \code{TRUE}, the firewall is protected against deletion. This setting helps protect against accidentally deleting a firewall that's in use.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/update_firewall_delete_protection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_update_firewall_delete_protection/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ workmail_list_mailbox_export_jobs(
 \description{
 Lists the mailbox export jobs started for the specified organization within the last seven days.
 
-See \url{https://paws-r.github.io/docs/workmail/list_mailbox_export_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_list_mailbox_export_jobs/} for full documentation.
 }
 \keyword{internal}

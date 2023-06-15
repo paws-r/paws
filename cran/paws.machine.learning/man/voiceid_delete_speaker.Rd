@@ -14,6 +14,6 @@ voiceid_delete_speaker(DomainId, SpeakerId)
 \description{
 Deletes the specified speaker from Voice ID.
 
-See \url{https://paws-r.github.io/docs/voiceid/delete_speaker.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/voiceid_delete_speaker/} for full documentation.
 }
 \keyword{internal}

@@ -40,6 +40,6 @@ a previously truncated response.}
 \description{
 Returns the list of components that can be filtered by name, or by using the listed \code{filters} to streamline results. Newly created components can take up to two minutes to appear in the ListComponents API Results.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/list_components.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_list_components/} for full documentation.
 }
 \keyword{internal}

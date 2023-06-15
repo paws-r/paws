@@ -26,6 +26,6 @@ it for the request to ensure idempotency.}
 \description{
 Transitions sessions from the \code{STOPPED} state into the \code{READY} state. The \code{START_IN_PROGRESS} state is the intermediate state between the \code{STOPPED} and \code{READY} states.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/start_streaming_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_start_streaming_session/} for full documentation.
 }
 \keyword{internal}

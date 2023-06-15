@@ -28,6 +28,6 @@ for the custom line item.}
 \description{
 Update an existing custom line item in the current or previous billing period.
 
-See \url{https://paws-r.github.io/docs/billingconductor/update_custom_line_item.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_update_custom_line_item/} for full documentation.
 }
 \keyword{internal}

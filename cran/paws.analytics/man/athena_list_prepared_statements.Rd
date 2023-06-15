@@ -19,6 +19,6 @@ previous page call.}
 \description{
 Lists the prepared statements in the specified workgroup.
 
-See \url{https://paws-r.github.io/docs/athena/list_prepared_statements.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_list_prepared_statements/} for full documentation.
 }
 \keyword{internal}

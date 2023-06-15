@@ -13,6 +13,6 @@ lightsail_start_gui_session(resourceName)
 \description{
 Initiates a graphical user interface (GUI) session that’s used to access a virtual computer’s operating system and application. The session will be active for 1 hour. Use this action to resume the session after it expires.
 
-See \url{https://paws-r.github.io/docs/lightsail/start_gui_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_start_gui_session/} for full documentation.
 }
 \keyword{internal}

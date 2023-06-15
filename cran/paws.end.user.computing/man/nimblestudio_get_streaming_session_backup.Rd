@@ -14,6 +14,6 @@ nimblestudio_get_streaming_session_backup(backupId, studioId)
 \description{
 Gets \code{StreamingSessionBackup} resource.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/get_streaming_session_backup.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_get_streaming_session_backup/} for full documentation.
 }
 \keyword{internal}

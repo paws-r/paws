@@ -25,6 +25,6 @@ Constraints: Must be the name of valid cluster.}
 \description{
 Deletes the specified manual snapshot. The snapshot must be in the \code{available} state, with no other users authorized to access the snapshot.
 
-See \url{https://paws-r.github.io/docs/redshift/delete_cluster_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_delete_cluster_snapshot/} for full documentation.
 }
 \keyword{internal}

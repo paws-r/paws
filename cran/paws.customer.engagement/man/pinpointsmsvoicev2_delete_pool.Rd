@@ -14,6 +14,6 @@ for PoolId and PoolArn .}
 \description{
 Deletes an existing pool. Deleting a pool disassociates all origination identities from that pool.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_pool.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_pool/} for full documentation.
 }
 \keyword{internal}

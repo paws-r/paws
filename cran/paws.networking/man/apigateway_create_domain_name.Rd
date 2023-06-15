@@ -72,6 +72,6 @@ regionalCertificateArn.}
 \description{
 Creates a new domain name.
 
-See \url{https://paws-r.github.io/docs/apigateway/create_domain_name.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_create_domain_name/} for full documentation.
 }
 \keyword{internal}

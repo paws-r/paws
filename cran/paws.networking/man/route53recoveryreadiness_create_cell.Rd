@@ -18,6 +18,6 @@ Amazon Web Services Regions.}
 \description{
 Creates a cell in an account.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/create_cell.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_create_cell/} for full documentation.
 }
 \keyword{internal}

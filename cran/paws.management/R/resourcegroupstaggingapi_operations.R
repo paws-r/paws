@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Describes the status of the [`start_report_creation`][resourcegroupstaggingapi_start_report_creation] operation.
 #'
-#' See [https://paws-r.github.io/docs/resourcegroupstaggingapi/describe_report_creation.html](https://paws-r.github.io/docs/resourcegroupstaggingapi/describe_report_creation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_describe_report_creation/](https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_describe_report_creation/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -36,7 +36,7 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
 #' @description
 #' Returns a table that shows counts of resources that are noncompliant with their tag policies.
 #'
-#' See [https://paws-r.github.io/docs/resourcegroupstaggingapi/get_compliance_summary.html](https://paws-r.github.io/docs/resourcegroupstaggingapi/get_compliance_summary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_get_compliance_summary/](https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_get_compliance_summary/) for full documentation.
 #'
 #' @param TargetIdFilters Specifies target identifiers (usually, specific account IDs) to limit
 #' the output by. If you use this parameter, the count of returned
@@ -110,7 +110,7 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' @description
 #' Returns all the tagged or previously tagged resources that are located in the specified Amazon Web Services Region for the account.
 #'
-#' See [https://paws-r.github.io/docs/resourcegroupstaggingapi/get_resources.html](https://paws-r.github.io/docs/resourcegroupstaggingapi/get_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_get_resources/](https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_get_resources/) for full documentation.
 #'
 #' @param PaginationToken Specifies a `PaginationToken` response value from a previous request to
 #' indicate that you want the next page of results. Leave this parameter
@@ -249,7 +249,7 @@ resourcegroupstaggingapi_get_resources <- function(PaginationToken = NULL, TagFi
 #' @description
 #' Returns all tag keys currently in use in the specified Amazon Web Services Region for the calling account.
 #'
-#' See [https://paws-r.github.io/docs/resourcegroupstaggingapi/get_tag_keys.html](https://paws-r.github.io/docs/resourcegroupstaggingapi/get_tag_keys.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_get_tag_keys/](https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_get_tag_keys/) for full documentation.
 #'
 #' @param PaginationToken Specifies a `PaginationToken` response value from a previous request to
 #' indicate that you want the next page of results. Leave this parameter
@@ -281,7 +281,7 @@ resourcegroupstaggingapi_get_tag_keys <- function(PaginationToken = NULL) {
 #' @description
 #' Returns all tag values for the specified key that are used in the specified Amazon Web Services Region for the calling account.
 #'
-#' See [https://paws-r.github.io/docs/resourcegroupstaggingapi/get_tag_values.html](https://paws-r.github.io/docs/resourcegroupstaggingapi/get_tag_values.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_get_tag_values/](https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_get_tag_values/) for full documentation.
 #'
 #' @param PaginationToken Specifies a `PaginationToken` response value from a previous request to
 #' indicate that you want the next page of results. Leave this parameter
@@ -317,7 +317,7 @@ resourcegroupstaggingapi_get_tag_values <- function(PaginationToken = NULL, Key)
 #' @description
 #' Generates a report that lists all tagged resources in the accounts across your organization and tells whether each resource is compliant with the effective tag policy. Compliance data is refreshed daily. The report is generated asynchronously.
 #'
-#' See [https://paws-r.github.io/docs/resourcegroupstaggingapi/start_report_creation.html](https://paws-r.github.io/docs/resourcegroupstaggingapi/start_report_creation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_start_report_creation/](https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_start_report_creation/) for full documentation.
 #'
 #' @param S3Bucket &#91;required&#93; The name of the Amazon S3 bucket where the report will be stored; for
 #' example:
@@ -352,7 +352,7 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
 #' @description
 #' Applies one or more tags to the specified resources. Note the following:
 #'
-#' See [https://paws-r.github.io/docs/resourcegroupstaggingapi/tag_resources.html](https://paws-r.github.io/docs/resourcegroupstaggingapi/tag_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_tag_resources/](https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_tag_resources/) for full documentation.
 #'
 #' @param ResourceARNList &#91;required&#93; Specifies the list of ARNs of the resources that you want to apply tags
 #' to.
@@ -390,7 +390,7 @@ resourcegroupstaggingapi_tag_resources <- function(ResourceARNList, Tags) {
 #' @description
 #' Removes the specified tags from the specified resources. When you specify a tag key, the action removes both that key and its associated value. The operation succeeds even if you attempt to remove tags from a resource that were already removed. Note the following:
 #'
-#' See [https://paws-r.github.io/docs/resourcegroupstaggingapi/untag_resources.html](https://paws-r.github.io/docs/resourcegroupstaggingapi/untag_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_untag_resources/](https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_untag_resources/) for full documentation.
 #'
 #' @param ResourceARNList &#91;required&#93; Specifies a list of ARNs of the resources that you want to remove tags
 #' from.

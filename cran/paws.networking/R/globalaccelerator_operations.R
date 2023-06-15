@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Associate a virtual private cloud (VPC) subnet endpoint with your custom routing accelerator.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/add_custom_routing_endpoints.html](https://paws-r.github.io/docs/globalaccelerator/add_custom_routing_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_add_custom_routing_endpoints/](https://www.paws-r-sdk.com/docs/globalaccelerator_add_custom_routing_endpoints/) for full documentation.
 #'
 #' @param EndpointConfigurations &#91;required&#93; The list of endpoint objects to add to a custom routing accelerator.
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group for the custom
@@ -40,7 +40,7 @@ globalaccelerator_add_custom_routing_endpoints <- function(EndpointConfiguration
 #' @description
 #' Add endpoints to an endpoint group. The [`add_endpoints`][globalaccelerator_add_endpoints] API operation is the recommended option for adding endpoints. The alternative options are to add endpoints when you create an endpoint group (with the [`create_endpoint_group`][globalaccelerator_create_endpoint_group] API) or when you update an endpoint group (with the [`update_endpoint_group`][globalaccelerator_update_endpoint_group] API).
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/add_endpoints.html](https://paws-r.github.io/docs/globalaccelerator/add_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_add_endpoints/](https://www.paws-r-sdk.com/docs/globalaccelerator_add_endpoints/) for full documentation.
 #'
 #' @param EndpointConfigurations &#91;required&#93; The list of endpoint objects.
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group.
@@ -72,7 +72,7 @@ globalaccelerator_add_endpoints <- function(EndpointConfigurations, EndpointGrou
 #' @description
 #' Advertises an IPv4 address range that is provisioned for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP). It can take a few minutes before traffic to the specified addresses starts routing to Amazon Web Services because of propagation delays.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/advertise_byoip_cidr.html](https://paws-r.github.io/docs/globalaccelerator/advertise_byoip_cidr.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_advertise_byoip_cidr/](https://www.paws-r-sdk.com/docs/globalaccelerator_advertise_byoip_cidr/) for full documentation.
 #'
 #' @param Cidr &#91;required&#93; The address range, in CIDR notation. This must be the exact range that
 #' you provisioned. You can't advertise only a portion of the provisioned
@@ -105,7 +105,7 @@ globalaccelerator_advertise_byoip_cidr <- function(Cidr) {
 #' @description
 #' Specify the Amazon EC2 instance (destination) IP addresses and ports for a VPC subnet endpoint that can receive traffic for a custom routing accelerator. You can allow traffic to all destinations in the subnet endpoint, or allow traffic to a specified list of destination IP addresses and ports in the subnet. Note that you cannot specify IP addresses or ports outside of the range that you configured for the endpoint group.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/allow_custom_routing_traffic.html](https://paws-r.github.io/docs/globalaccelerator/allow_custom_routing_traffic.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_allow_custom_routing_traffic/](https://www.paws-r-sdk.com/docs/globalaccelerator_allow_custom_routing_traffic/) for full documentation.
 #'
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group.
 #' @param EndpointId &#91;required&#93; An ID for the endpoint. For custom routing accelerators, this is the
@@ -160,7 +160,7 @@ globalaccelerator_allow_custom_routing_traffic <- function(EndpointGroupArn, End
 #' @description
 #' Create an accelerator. An accelerator includes one or more listeners that process inbound connections and direct traffic to one or more endpoint groups, each of which includes endpoints, such as Network Load Balancers.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/create_accelerator.html](https://paws-r.github.io/docs/globalaccelerator/create_accelerator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_create_accelerator/](https://www.paws-r-sdk.com/docs/globalaccelerator_create_accelerator/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the accelerator. The name can have a maximum of 64
 #' characters, must contain only alphanumeric characters, periods (.), or
@@ -228,7 +228,7 @@ globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, IpA
 #' @description
 #' Create a custom routing accelerator. A custom routing accelerator directs traffic to one of possibly thousands of Amazon EC2 instance destinations running in a single or multiple virtual private clouds (VPC) subnet endpoints.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/create_custom_routing_accelerator.html](https://paws-r.github.io/docs/globalaccelerator/create_custom_routing_accelerator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_create_custom_routing_accelerator/](https://www.paws-r-sdk.com/docs/globalaccelerator_create_custom_routing_accelerator/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of a custom routing accelerator. The name can have a maximum of
 #' 64 characters, must contain only alphanumeric characters or hyphens (-),
@@ -297,7 +297,7 @@ globalaccelerator_create_custom_routing_accelerator <- function(Name, IpAddressT
 #' @description
 #' Create an endpoint group for the specified listener for a custom routing accelerator. An endpoint group is a collection of endpoints in one Amazon Web Services Region.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/create_custom_routing_endpoint_group.html](https://paws-r.github.io/docs/globalaccelerator/create_custom_routing_endpoint_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_create_custom_routing_endpoint_group/](https://www.paws-r-sdk.com/docs/globalaccelerator_create_custom_routing_endpoint_group/) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener for a custom routing
 #' endpoint.
@@ -335,7 +335,7 @@ globalaccelerator_create_custom_routing_endpoint_group <- function(ListenerArn, 
 #' @description
 #' Create a listener to process inbound connections from clients to a custom routing accelerator. Connections arrive to assigned static IP addresses on the port range that you specify.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/create_custom_routing_listener.html](https://paws-r.github.io/docs/globalaccelerator/create_custom_routing_listener.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_create_custom_routing_listener/](https://www.paws-r-sdk.com/docs/globalaccelerator_create_custom_routing_listener/) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator for a custom routing
 #' listener.
@@ -373,7 +373,7 @@ globalaccelerator_create_custom_routing_listener <- function(AcceleratorArn, Por
 #' @description
 #' Create an endpoint group for the specified listener. An endpoint group is a collection of endpoints in one Amazon Web Services Region. A resource must be valid and active when you add it as an endpoint.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/create_endpoint_group.html](https://paws-r.github.io/docs/globalaccelerator/create_endpoint_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_create_endpoint_group/](https://www.paws-r-sdk.com/docs/globalaccelerator_create_endpoint_group/) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
 #' @param EndpointGroupRegion &#91;required&#93; The Amazon Web Services Region where the endpoint group is located. A
@@ -440,7 +440,7 @@ globalaccelerator_create_endpoint_group <- function(ListenerArn, EndpointGroupRe
 #' @description
 #' Create a listener to process inbound connections from clients to an accelerator. Connections arrive to assigned static IP addresses on a port, port range, or list of port ranges that you specify.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/create_listener.html](https://paws-r.github.io/docs/globalaccelerator/create_listener.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_create_listener/](https://www.paws-r-sdk.com/docs/globalaccelerator_create_listener/) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of your accelerator.
 #' @param PortRanges &#91;required&#93; The list of port ranges to support for connections from clients to your
@@ -495,7 +495,7 @@ globalaccelerator_create_listener <- function(AcceleratorArn, PortRanges, Protoc
 #' @description
 #' Delete an accelerator. Before you can delete an accelerator, you must disable it and remove all dependent resources (listeners and endpoint groups). To disable the accelerator, update the accelerator to set `Enabled` to false.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/delete_accelerator.html](https://paws-r.github.io/docs/globalaccelerator/delete_accelerator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_delete_accelerator/](https://www.paws-r-sdk.com/docs/globalaccelerator_delete_accelerator/) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of an accelerator.
 #'
@@ -524,7 +524,7 @@ globalaccelerator_delete_accelerator <- function(AcceleratorArn) {
 #' @description
 #' Delete a custom routing accelerator. Before you can delete an accelerator, you must disable it and remove all dependent resources (listeners and endpoint groups). To disable the accelerator, update the accelerator to set `Enabled` to false.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/delete_custom_routing_accelerator.html](https://paws-r.github.io/docs/globalaccelerator/delete_custom_routing_accelerator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_delete_custom_routing_accelerator/](https://www.paws-r-sdk.com/docs/globalaccelerator_delete_custom_routing_accelerator/) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the custom routing accelerator to
 #' delete.
@@ -555,7 +555,7 @@ globalaccelerator_delete_custom_routing_accelerator <- function(AcceleratorArn) 
 #' @description
 #' Delete an endpoint group from a listener for a custom routing accelerator.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/delete_custom_routing_endpoint_group.html](https://paws-r.github.io/docs/globalaccelerator/delete_custom_routing_endpoint_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_delete_custom_routing_endpoint_group/](https://www.paws-r-sdk.com/docs/globalaccelerator_delete_custom_routing_endpoint_group/) for full documentation.
 #'
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group to delete.
 #'
@@ -584,7 +584,7 @@ globalaccelerator_delete_custom_routing_endpoint_group <- function(EndpointGroup
 #' @description
 #' Delete a listener for a custom routing accelerator.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/delete_custom_routing_listener.html](https://paws-r.github.io/docs/globalaccelerator/delete_custom_routing_listener.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_delete_custom_routing_listener/](https://www.paws-r-sdk.com/docs/globalaccelerator_delete_custom_routing_listener/) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener to delete.
 #'
@@ -613,7 +613,7 @@ globalaccelerator_delete_custom_routing_listener <- function(ListenerArn) {
 #' @description
 #' Delete an endpoint group from a listener.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/delete_endpoint_group.html](https://paws-r.github.io/docs/globalaccelerator/delete_endpoint_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_delete_endpoint_group/](https://www.paws-r-sdk.com/docs/globalaccelerator_delete_endpoint_group/) for full documentation.
 #'
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group to delete.
 #'
@@ -642,7 +642,7 @@ globalaccelerator_delete_endpoint_group <- function(EndpointGroupArn) {
 #' @description
 #' Delete a listener from an accelerator.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/delete_listener.html](https://paws-r.github.io/docs/globalaccelerator/delete_listener.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_delete_listener/](https://www.paws-r-sdk.com/docs/globalaccelerator_delete_listener/) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
 #'
@@ -673,7 +673,7 @@ globalaccelerator_delete_listener <- function(ListenerArn) {
 #' @description
 #' Specify the Amazon EC2 instance (destination) IP addresses and ports for a VPC subnet endpoint that cannot receive traffic for a custom routing accelerator. You can deny traffic to all destinations in the VPC endpoint, or deny traffic to a specified list of destination IP addresses and ports. Note that you cannot specify IP addresses or ports outside of the range that you configured for the endpoint group.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/deny_custom_routing_traffic.html](https://paws-r.github.io/docs/globalaccelerator/deny_custom_routing_traffic.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_deny_custom_routing_traffic/](https://www.paws-r-sdk.com/docs/globalaccelerator_deny_custom_routing_traffic/) for full documentation.
 #'
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group.
 #' @param EndpointId &#91;required&#93; An ID for the endpoint. For custom routing accelerators, this is the
@@ -727,7 +727,7 @@ globalaccelerator_deny_custom_routing_traffic <- function(EndpointGroupArn, Endp
 #' @description
 #' Releases the specified address range that you provisioned to use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and deletes the corresponding address pool.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/deprovision_byoip_cidr.html](https://paws-r.github.io/docs/globalaccelerator/deprovision_byoip_cidr.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_deprovision_byoip_cidr/](https://www.paws-r-sdk.com/docs/globalaccelerator_deprovision_byoip_cidr/) for full documentation.
 #'
 #' @param Cidr &#91;required&#93; The address range, in CIDR notation. The prefix must be the same prefix
 #' that you specified when you provisioned the address range.
@@ -757,7 +757,7 @@ globalaccelerator_deprovision_byoip_cidr <- function(Cidr) {
 #' @description
 #' Describe an accelerator.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/describe_accelerator.html](https://paws-r.github.io/docs/globalaccelerator/describe_accelerator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_describe_accelerator/](https://www.paws-r-sdk.com/docs/globalaccelerator_describe_accelerator/) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator to describe.
 #'
@@ -786,7 +786,7 @@ globalaccelerator_describe_accelerator <- function(AcceleratorArn) {
 #' @description
 #' Describe the attributes of an accelerator.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/describe_accelerator_attributes.html](https://paws-r.github.io/docs/globalaccelerator/describe_accelerator_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_describe_accelerator_attributes/](https://www.paws-r-sdk.com/docs/globalaccelerator_describe_accelerator_attributes/) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator with the attributes
 #' that you want to describe.
@@ -816,7 +816,7 @@ globalaccelerator_describe_accelerator_attributes <- function(AcceleratorArn) {
 #' @description
 #' Describe a custom routing accelerator.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/describe_custom_routing_accelerator.html](https://paws-r.github.io/docs/globalaccelerator/describe_custom_routing_accelerator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_describe_custom_routing_accelerator/](https://www.paws-r-sdk.com/docs/globalaccelerator_describe_custom_routing_accelerator/) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator to describe.
 #'
@@ -845,7 +845,7 @@ globalaccelerator_describe_custom_routing_accelerator <- function(AcceleratorArn
 #' @description
 #' Describe the attributes of a custom routing accelerator.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/describe_custom_routing_accelerator_attributes.html](https://paws-r.github.io/docs/globalaccelerator/describe_custom_routing_accelerator_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_describe_custom_routing_accelerator_attributes/](https://www.paws-r-sdk.com/docs/globalaccelerator_describe_custom_routing_accelerator_attributes/) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the custom routing accelerator to
 #' describe the attributes for.
@@ -875,7 +875,7 @@ globalaccelerator_describe_custom_routing_accelerator_attributes <- function(Acc
 #' @description
 #' Describe an endpoint group for a custom routing accelerator.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/describe_custom_routing_endpoint_group.html](https://paws-r.github.io/docs/globalaccelerator/describe_custom_routing_endpoint_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_describe_custom_routing_endpoint_group/](https://www.paws-r-sdk.com/docs/globalaccelerator_describe_custom_routing_endpoint_group/) for full documentation.
 #'
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group to describe.
 #'
@@ -904,7 +904,7 @@ globalaccelerator_describe_custom_routing_endpoint_group <- function(EndpointGro
 #' @description
 #' The description of a listener for a custom routing accelerator.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/describe_custom_routing_listener.html](https://paws-r.github.io/docs/globalaccelerator/describe_custom_routing_listener.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_describe_custom_routing_listener/](https://www.paws-r-sdk.com/docs/globalaccelerator_describe_custom_routing_listener/) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener to describe.
 #'
@@ -933,7 +933,7 @@ globalaccelerator_describe_custom_routing_listener <- function(ListenerArn) {
 #' @description
 #' Describe an endpoint group.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/describe_endpoint_group.html](https://paws-r.github.io/docs/globalaccelerator/describe_endpoint_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_describe_endpoint_group/](https://www.paws-r-sdk.com/docs/globalaccelerator_describe_endpoint_group/) for full documentation.
 #'
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group to describe.
 #'
@@ -962,7 +962,7 @@ globalaccelerator_describe_endpoint_group <- function(EndpointGroupArn) {
 #' @description
 #' Describe a listener.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/describe_listener.html](https://paws-r.github.io/docs/globalaccelerator/describe_listener.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_describe_listener/](https://www.paws-r-sdk.com/docs/globalaccelerator_describe_listener/) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener to describe.
 #'
@@ -991,7 +991,7 @@ globalaccelerator_describe_listener <- function(ListenerArn) {
 #' @description
 #' List the accelerators for an Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/list_accelerators.html](https://paws-r.github.io/docs/globalaccelerator/list_accelerators.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_list_accelerators/](https://www.paws-r-sdk.com/docs/globalaccelerator_list_accelerators/) for full documentation.
 #'
 #' @param MaxResults The number of Global Accelerator objects that you want to return with
 #' this call. The default value is 10.
@@ -1025,7 +1025,7 @@ globalaccelerator_list_accelerators <- function(MaxResults = NULL, NextToken = N
 #' @description
 #' Lists the IP address ranges that were specified in calls to [`provision_byoip_cidr`][globalaccelerator_provision_byoip_cidr], including the current state and a history of state changes.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/list_byoip_cidrs.html](https://paws-r.github.io/docs/globalaccelerator/list_byoip_cidrs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_list_byoip_cidrs/](https://www.paws-r-sdk.com/docs/globalaccelerator_list_byoip_cidrs/) for full documentation.
 #'
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
@@ -1057,7 +1057,7 @@ globalaccelerator_list_byoip_cidrs <- function(MaxResults = NULL, NextToken = NU
 #' @description
 #' List the custom routing accelerators for an Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_accelerators.html](https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_accelerators.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_list_custom_routing_accelerators/](https://www.paws-r-sdk.com/docs/globalaccelerator_list_custom_routing_accelerators/) for full documentation.
 #'
 #' @param MaxResults The number of custom routing Global Accelerator objects that you want to
 #' return with this call. The default value is 10.
@@ -1090,7 +1090,7 @@ globalaccelerator_list_custom_routing_accelerators <- function(MaxResults = NULL
 #' @description
 #' List the endpoint groups that are associated with a listener for a custom routing accelerator.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_endpoint_groups.html](https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_endpoint_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_list_custom_routing_endpoint_groups/](https://www.paws-r-sdk.com/docs/globalaccelerator_list_custom_routing_endpoint_groups/) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener to list endpoint groups
 #' for.
@@ -1124,7 +1124,7 @@ globalaccelerator_list_custom_routing_endpoint_groups <- function(ListenerArn, M
 #' @description
 #' List the listeners for a custom routing accelerator.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_listeners.html](https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_listeners.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_list_custom_routing_listeners/](https://www.paws-r-sdk.com/docs/globalaccelerator_list_custom_routing_listeners/) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator to list listeners for.
 #' @param MaxResults The number of listener objects that you want to return with this call.
@@ -1159,7 +1159,7 @@ globalaccelerator_list_custom_routing_listeners <- function(AcceleratorArn, MaxR
 #' @description
 #' Provides a complete mapping from the public accelerator IP address and port to destination EC2 instance IP addresses and ports in the virtual public cloud (VPC) subnet endpoint for a custom routing accelerator. For each subnet endpoint that you add, Global Accelerator creates a new static port mapping for the accelerator. The port mappings don't change after Global Accelerator generates them, so you can retrieve and cache the full mapping on your servers.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_port_mappings.html](https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_port_mappings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_list_custom_routing_port_mappings/](https://www.paws-r-sdk.com/docs/globalaccelerator_list_custom_routing_port_mappings/) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator to list the custom
 #' routing port mappings for.
@@ -1196,7 +1196,7 @@ globalaccelerator_list_custom_routing_port_mappings <- function(AcceleratorArn, 
 #' @description
 #' List the port mappings for a specific EC2 instance (destination) in a VPC subnet endpoint. The response is the mappings for one destination IP address. This is useful when your subnet endpoint has mappings that span multiple custom routing accelerators in your account, or for scenarios where you only want to list the port mappings for a specific destination instance.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_port_mappings_by_destination.html](https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_port_mappings_by_destination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_list_custom_routing_port_mappings_by_destination/](https://www.paws-r-sdk.com/docs/globalaccelerator_list_custom_routing_port_mappings_by_destination/) for full documentation.
 #'
 #' @param EndpointId &#91;required&#93; The ID for the virtual private cloud (VPC) subnet.
 #' @param DestinationAddress &#91;required&#93; The endpoint IP address in a virtual private cloud (VPC) subnet for
@@ -1231,7 +1231,7 @@ globalaccelerator_list_custom_routing_port_mappings_by_destination <- function(E
 #' @description
 #' List the endpoint groups that are associated with a listener.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/list_endpoint_groups.html](https://paws-r.github.io/docs/globalaccelerator/list_endpoint_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_list_endpoint_groups/](https://www.paws-r-sdk.com/docs/globalaccelerator_list_endpoint_groups/) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
 #' @param MaxResults The number of endpoint group objects that you want to return with this
@@ -1264,7 +1264,7 @@ globalaccelerator_list_endpoint_groups <- function(ListenerArn, MaxResults = NUL
 #' @description
 #' List the listeners for an accelerator.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/list_listeners.html](https://paws-r.github.io/docs/globalaccelerator/list_listeners.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_list_listeners/](https://www.paws-r-sdk.com/docs/globalaccelerator_list_listeners/) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator for which you want to
 #' list listener objects.
@@ -1298,7 +1298,7 @@ globalaccelerator_list_listeners <- function(AcceleratorArn, MaxResults = NULL, 
 #' @description
 #' List all tags for an accelerator.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/list_tags_for_resource.html](https://paws-r.github.io/docs/globalaccelerator/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/globalaccelerator_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator to list tags for. An
 #' ARN uniquely identifies an accelerator.
@@ -1330,7 +1330,7 @@ globalaccelerator_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Provisions an IP address range to use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool. After the address range is provisioned, it is ready to be advertised using [AdvertiseByoipCidr](https://docs.aws.amazon.com/global-accelerator/latest/api/).
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/provision_byoip_cidr.html](https://paws-r.github.io/docs/globalaccelerator/provision_byoip_cidr.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_provision_byoip_cidr/](https://www.paws-r-sdk.com/docs/globalaccelerator_provision_byoip_cidr/) for full documentation.
 #'
 #' @param Cidr &#91;required&#93; The public IPv4 address range, in CIDR notation. The most specific IP
 #' prefix that you can specify is /24. The address range cannot overlap
@@ -1364,7 +1364,7 @@ globalaccelerator_provision_byoip_cidr <- function(Cidr, CidrAuthorizationContex
 #' @description
 #' Remove endpoints from a custom routing accelerator.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/remove_custom_routing_endpoints.html](https://paws-r.github.io/docs/globalaccelerator/remove_custom_routing_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_remove_custom_routing_endpoints/](https://www.paws-r-sdk.com/docs/globalaccelerator_remove_custom_routing_endpoints/) for full documentation.
 #'
 #' @param EndpointIds &#91;required&#93; The IDs for the endpoints. For custom routing accelerators, endpoint IDs
 #' are the virtual private cloud (VPC) subnet IDs.
@@ -1396,7 +1396,7 @@ globalaccelerator_remove_custom_routing_endpoints <- function(EndpointIds, Endpo
 #' @description
 #' Remove endpoints from an endpoint group.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/remove_endpoints.html](https://paws-r.github.io/docs/globalaccelerator/remove_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_remove_endpoints/](https://www.paws-r-sdk.com/docs/globalaccelerator_remove_endpoints/) for full documentation.
 #'
 #' @param EndpointIdentifiers &#91;required&#93; The identifiers of the endpoints that you want to remove.
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group.
@@ -1426,7 +1426,7 @@ globalaccelerator_remove_endpoints <- function(EndpointIdentifiers, EndpointGrou
 #' @description
 #' Add tags to an accelerator resource.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/tag_resource.html](https://paws-r.github.io/docs/globalaccelerator/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_tag_resource/](https://www.paws-r-sdk.com/docs/globalaccelerator_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Global Accelerator resource to add
 #' tags to. An ARN uniquely identifies a resource.
@@ -1458,7 +1458,7 @@ globalaccelerator_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Remove tags from a Global Accelerator resource. When you specify a tag key, the action removes both that key and its associated value. The operation succeeds even if you attempt to remove tags from an accelerator that was already removed.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/untag_resource.html](https://paws-r.github.io/docs/globalaccelerator/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_untag_resource/](https://www.paws-r-sdk.com/docs/globalaccelerator_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Global Accelerator resource to
 #' remove tags from. An ARN uniquely identifies a resource.
@@ -1489,7 +1489,7 @@ globalaccelerator_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Update an accelerator.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/update_accelerator.html](https://paws-r.github.io/docs/globalaccelerator/update_accelerator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_update_accelerator/](https://www.paws-r-sdk.com/docs/globalaccelerator_update_accelerator/) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator to update.
 #' @param Name The name of the accelerator. The name can have a maximum of 64
@@ -1528,7 +1528,7 @@ globalaccelerator_update_accelerator <- function(AcceleratorArn, Name = NULL, Ip
 #' @description
 #' Update the attributes for an accelerator.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/update_accelerator_attributes.html](https://paws-r.github.io/docs/globalaccelerator/update_accelerator_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_update_accelerator_attributes/](https://www.paws-r-sdk.com/docs/globalaccelerator_update_accelerator_attributes/) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator that you want to
 #' update.
@@ -1576,7 +1576,7 @@ globalaccelerator_update_accelerator_attributes <- function(AcceleratorArn, Flow
 #' @description
 #' Update a custom routing accelerator.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/update_custom_routing_accelerator.html](https://paws-r.github.io/docs/globalaccelerator/update_custom_routing_accelerator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_update_custom_routing_accelerator/](https://www.paws-r-sdk.com/docs/globalaccelerator_update_custom_routing_accelerator/) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator to update.
 #' @param Name The name of the accelerator. The name can have a maximum of 64
@@ -1615,7 +1615,7 @@ globalaccelerator_update_custom_routing_accelerator <- function(AcceleratorArn, 
 #' @description
 #' Update the attributes for a custom routing accelerator.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/update_custom_routing_accelerator_attributes.html](https://paws-r.github.io/docs/globalaccelerator/update_custom_routing_accelerator_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_update_custom_routing_accelerator_attributes/](https://www.paws-r-sdk.com/docs/globalaccelerator_update_custom_routing_accelerator_attributes/) for full documentation.
 #'
 #' @param AcceleratorArn &#91;required&#93; The Amazon Resource Name (ARN) of the custom routing accelerator to
 #' update attributes for.
@@ -1665,7 +1665,7 @@ globalaccelerator_update_custom_routing_accelerator_attributes <- function(Accel
 #' @description
 #' Update a listener for a custom routing accelerator.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/update_custom_routing_listener.html](https://paws-r.github.io/docs/globalaccelerator/update_custom_routing_listener.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_update_custom_routing_listener/](https://www.paws-r-sdk.com/docs/globalaccelerator_update_custom_routing_listener/) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener to update.
 #' @param PortRanges &#91;required&#93; The updated port range to support for connections from clients to your
@@ -1701,7 +1701,7 @@ globalaccelerator_update_custom_routing_listener <- function(ListenerArn, PortRa
 #' @description
 #' Update an endpoint group. A resource must be valid and active when you add it as an endpoint.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/update_endpoint_group.html](https://paws-r.github.io/docs/globalaccelerator/update_endpoint_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_update_endpoint_group/](https://www.paws-r-sdk.com/docs/globalaccelerator_update_endpoint_group/) for full documentation.
 #'
 #' @param EndpointGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the endpoint group.
 #' @param EndpointConfigurations The list of endpoint objects. A resource must be valid and active when
@@ -1764,7 +1764,7 @@ globalaccelerator_update_endpoint_group <- function(EndpointGroupArn, EndpointCo
 #' @description
 #' Update a listener.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/update_listener.html](https://paws-r.github.io/docs/globalaccelerator/update_listener.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_update_listener/](https://www.paws-r-sdk.com/docs/globalaccelerator_update_listener/) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener to update.
 #' @param PortRanges The updated list of port ranges for the connections from clients to the
@@ -1819,7 +1819,7 @@ globalaccelerator_update_listener <- function(ListenerArn, PortRanges = NULL, Pr
 #' @description
 #' Stops advertising an address range that is provisioned as an address pool. You can perform this operation at most once every 10 seconds, even if you specify different address ranges each time.
 #'
-#' See [https://paws-r.github.io/docs/globalaccelerator/withdraw_byoip_cidr.html](https://paws-r.github.io/docs/globalaccelerator/withdraw_byoip_cidr.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/globalaccelerator_withdraw_byoip_cidr/](https://www.paws-r-sdk.com/docs/globalaccelerator_withdraw_byoip_cidr/) for full documentation.
 #'
 #' @param Cidr &#91;required&#93; The address range, in CIDR notation.
 #'

@@ -12,6 +12,6 @@ cloudwatch_delete_metric_stream(Name)
 \description{
 Permanently deletes the metric stream that you specify.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/delete_metric_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_delete_metric_stream/} for full documentation.
 }
 \keyword{internal}

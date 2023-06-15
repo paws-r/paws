@@ -30,6 +30,6 @@ licensemanager_list_received_licenses(
 \description{
 Lists received licenses.
 
-See \url{https://paws-r.github.io/docs/licensemanager/list_received_licenses.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_list_received_licenses/} for full documentation.
 }
 \keyword{internal}

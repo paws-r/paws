@@ -8,7 +8,7 @@ NULL
 #' @description
 #' GetEntitlements retrieves entitlement values for a given product. The results can be filtered based on customer identifier or product dimensions.
 #'
-#' See [https://paws-r.github.io/docs/marketplaceentitlementservice/get_entitlements.html](https://paws-r.github.io/docs/marketplaceentitlementservice/get_entitlements.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/marketplaceentitlementservice_get_entitlements/](https://www.paws-r-sdk.com/docs/marketplaceentitlementservice_get_entitlements/) for full documentation.
 #'
 #' @param ProductCode &#91;required&#93; Product code is used to uniquely identify a product in AWS Marketplace.
 #' The product code will be provided by AWS Marketplace when the product

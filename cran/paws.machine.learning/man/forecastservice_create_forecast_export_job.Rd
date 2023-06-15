@@ -58,6 +58,6 @@ CSV.}
 \description{
 Exports a forecast created by the \code{\link[=forecastservice_create_forecast]{create_forecast}} operation to your Amazon Simple Storage Service (Amazon S3) bucket. The forecast file name will match the following conventions:
 
-See \url{https://paws-r.github.io/docs/forecastservice/create_forecast_export_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_create_forecast_export_job/} for full documentation.
 }
 \keyword{internal}

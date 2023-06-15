@@ -94,6 +94,6 @@ Length Constraints: Maximum length of 30,720.}
 \description{
 Creates a topic to which notifications can be published. Users can create at most 100,000 standard topics (at most 1,000 FIFO topics). For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html}{Creating an Amazon SNS topic} in the \emph{Amazon SNS Developer Guide}. This action is idempotent, so if the requester already owns a topic with the specified name, that topic's ARN is returned without creating a new topic.
 
-See \url{https://paws-r.github.io/docs/sns/create_topic.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_create_topic/} for full documentation.
 }
 \keyword{internal}

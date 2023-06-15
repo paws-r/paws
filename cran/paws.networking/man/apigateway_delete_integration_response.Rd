@@ -23,6 +23,6 @@ apigateway_delete_integration_response(
 \description{
 Represents a delete integration response.
 
-See \url{https://paws-r.github.io/docs/apigateway/delete_integration_response.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_delete_integration_response/} for full documentation.
 }
 \keyword{internal}

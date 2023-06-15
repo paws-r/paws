@@ -12,6 +12,6 @@ lightsail_get_key_pair(keyPairName)
 \description{
 Returns information about a specific key pair.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_key_pair.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_key_pair/} for full documentation.
 }
 \keyword{internal}

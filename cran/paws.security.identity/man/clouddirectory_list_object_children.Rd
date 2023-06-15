@@ -32,6 +32,6 @@ object.}
 \description{
 Returns a paginated list of child objects that are associated with a given object.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/list_object_children.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_list_object_children/} for full documentation.
 }
 \keyword{internal}

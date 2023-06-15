@@ -244,6 +244,6 @@ different account, the request fails with the HTTP status code
 \description{
 Adds an object to a bucket. You must have WRITE permissions on a bucket to add an object to it.
 
-See \url{https://paws-r.github.io/docs/s3/put_object.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_put_object/} for full documentation.
 }
 \keyword{internal}

@@ -30,6 +30,6 @@ it returns a \code{CidrCollectionVersionMismatch} error.
 \description{
 Creates, changes, or deletes CIDR blocks within a collection. Contains authoritative IP information mapping blocks to one or multiple locations.
 
-See \url{https://paws-r.github.io/docs/route53/change_cidr_collection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_change_cidr_collection/} for full documentation.
 }
 \keyword{internal}

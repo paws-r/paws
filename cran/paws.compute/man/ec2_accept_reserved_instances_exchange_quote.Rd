@@ -26,6 +26,6 @@ exchange for your current Convertible Reserved Instances.}
 \description{
 Accepts the Convertible Reserved Instance exchange quote described in the \code{\link[=ec2_get_reserved_instances_exchange_quote]{get_reserved_instances_exchange_quote}} call.
 
-See \url{https://paws-r.github.io/docs/ec2/accept_reserved_instances_exchange_quote.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_accept_reserved_instances_exchange_quote/} for full documentation.
 }
 \keyword{internal}

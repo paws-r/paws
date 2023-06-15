@@ -20,6 +20,6 @@ apigateway_update_request_validator(
 \description{
 Updates a RequestValidator of a given RestApi.
 
-See \url{https://paws-r.github.io/docs/apigateway/update_request_validator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_update_request_validator/} for full documentation.
 }
 \keyword{internal}

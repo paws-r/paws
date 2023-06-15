@@ -52,6 +52,6 @@ timestamp.}
 \description{
 Returns detailed information about the recovery points stored in a backup vault.
 
-See \url{https://paws-r.github.io/docs/backup/list_recovery_points_by_backup_vault.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_list_recovery_points_by_backup_vault/} for full documentation.
 }
 \keyword{internal}

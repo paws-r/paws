@@ -13,6 +13,6 @@ access to.}
 \description{
 Creates a new access key for the specified Amazon Lightsail bucket. Access keys consist of an access key ID and corresponding secret access key.
 
-See \url{https://paws-r.github.io/docs/lightsail/create_bucket_access_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_create_bucket_access_key/} for full documentation.
 }
 \keyword{internal}

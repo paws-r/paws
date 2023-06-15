@@ -43,6 +43,6 @@ the virtual gateway resource.}
 \description{
 Creates a gateway route.
 
-See \url{https://paws-r.github.io/docs/appmesh/create_gateway_route.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appmesh_create_gateway_route/} for full documentation.
 }
 \keyword{internal}

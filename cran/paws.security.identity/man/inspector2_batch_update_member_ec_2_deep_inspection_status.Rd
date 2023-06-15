@@ -14,6 +14,6 @@ Amazon Inspector deep inspection status for.}
 \description{
 Activates or deactivates Amazon Inspector deep inspection for the provided member accounts in your organization. You must be the delegated administrator of an organization in Amazon Inspector to use this API.
 
-See \url{https://paws-r.github.io/docs/inspector2/batch_update_member_ec_2_deep_inspection_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_batch_update_member_ec_2_deep_inspection_status/} for full documentation.
 }
 \keyword{internal}

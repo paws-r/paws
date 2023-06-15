@@ -63,10 +63,14 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=customerprofiles_add_profile_key]{add_profile_key} \tab Associates a new key value with a specific profile, such as a Contact Record ContactId\cr
+#'  \link[=customerprofiles_create_calculated_attribute_definition]{create_calculated_attribute_definition} \tab Creates a new calculated attribute definition\cr
 #'  \link[=customerprofiles_create_domain]{create_domain} \tab Creates a domain, which is a container for all customer data, such as customer profile attributes, object types, profile keys, and encryption keys\cr
+#'  \link[=customerprofiles_create_event_stream]{create_event_stream} \tab Creates an event stream, which is a subscription to real-time events, such as when profiles are created and updated through Amazon Connect Customer Profiles\cr
 #'  \link[=customerprofiles_create_integration_workflow]{create_integration_workflow} \tab Creates an integration workflow\cr
 #'  \link[=customerprofiles_create_profile]{create_profile} \tab Creates a standard profile\cr
+#'  \link[=customerprofiles_delete_calculated_attribute_definition]{delete_calculated_attribute_definition} \tab Deletes an existing calculated attribute definition\cr
 #'  \link[=customerprofiles_delete_domain]{delete_domain} \tab Deletes a specific domain and all of its customer data, such as customer profile attributes and their related objects\cr
+#'  \link[=customerprofiles_delete_event_stream]{delete_event_stream} \tab Disables and deletes the specified event stream\cr
 #'  \link[=customerprofiles_delete_integration]{delete_integration} \tab Removes an integration from a specific domain\cr
 #'  \link[=customerprofiles_delete_profile]{delete_profile} \tab Deletes the standard customer profile and all data pertaining to the profile\cr
 #'  \link[=customerprofiles_delete_profile_key]{delete_profile_key} \tab Removes a searchable key from a customer profile\cr
@@ -74,7 +78,10 @@ NULL
 #'  \link[=customerprofiles_delete_profile_object_type]{delete_profile_object_type} \tab Removes a ProfileObjectType from a specific domain as well as removes all the ProfileObjects of that type\cr
 #'  \link[=customerprofiles_delete_workflow]{delete_workflow} \tab Deletes the specified workflow and all its corresponding resources\cr
 #'  \link[=customerprofiles_get_auto_merging_preview]{get_auto_merging_preview} \tab Tests the auto-merging settings of your Identity Resolution Job without merging your data\cr
+#'  \link[=customerprofiles_get_calculated_attribute_definition]{get_calculated_attribute_definition} \tab Provides more information on a calculated attribute definition for Customer Profiles\cr
+#'  \link[=customerprofiles_get_calculated_attribute_for_profile]{get_calculated_attribute_for_profile} \tab Retrieve a calculated attribute for a customer profile\cr
 #'  \link[=customerprofiles_get_domain]{get_domain} \tab Returns information about a specific domain\cr
+#'  \link[=customerprofiles_get_event_stream]{get_event_stream} \tab Returns information about the specified event stream in a specific domain\cr
 #'  \link[=customerprofiles_get_identity_resolution_job]{get_identity_resolution_job} \tab Returns information about an Identity Resolution Job in a specific domain\cr
 #'  \link[=customerprofiles_get_integration]{get_integration} \tab Returns an integration for a domain\cr
 #'  \link[=customerprofiles_get_matches]{get_matches} \tab Before calling this API, use CreateDomain or UpdateDomain to enable identity resolution: set Matching to true\cr
@@ -83,7 +90,10 @@ NULL
 #'  \link[=customerprofiles_get_workflow]{get_workflow} \tab Get details of specified workflow\cr
 #'  \link[=customerprofiles_get_workflow_steps]{get_workflow_steps} \tab Get granular list of steps in workflow\cr
 #'  \link[=customerprofiles_list_account_integrations]{list_account_integrations} \tab Lists all of the integrations associated to a specific URI in the AWS account\cr
+#'  \link[=customerprofiles_list_calculated_attribute_definitions]{list_calculated_attribute_definitions} \tab Lists calculated attribute definitions for Customer Profiles\cr
+#'  \link[=customerprofiles_list_calculated_attributes_for_profile]{list_calculated_attributes_for_profile} \tab Retrieve a list of calculated attributes for a customer profile\cr
 #'  \link[=customerprofiles_list_domains]{list_domains} \tab Returns a list of all the domains for an AWS account that have been created\cr
+#'  \link[=customerprofiles_list_event_streams]{list_event_streams} \tab Returns a list of all the event streams in a specific domain\cr
 #'  \link[=customerprofiles_list_identity_resolution_jobs]{list_identity_resolution_jobs} \tab Lists all of the Identity Resolution Jobs in your domain\cr
 #'  \link[=customerprofiles_list_integrations]{list_integrations} \tab Lists all of the integrations in your domain\cr
 #'  \link[=customerprofiles_list_profile_objects]{list_profile_objects} \tab Returns a list of objects associated with a profile of a given ProfileObjectType\cr
@@ -98,6 +108,7 @@ NULL
 #'  \link[=customerprofiles_search_profiles]{search_profiles} \tab Searches for profiles within a specific domain using one or more predefined search keys (e\cr
 #'  \link[=customerprofiles_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified Amazon Connect Customer Profiles resource\cr
 #'  \link[=customerprofiles_untag_resource]{untag_resource} \tab Removes one or more tags from the specified Amazon Connect Customer Profiles resource\cr
+#'  \link[=customerprofiles_update_calculated_attribute_definition]{update_calculated_attribute_definition} \tab Updates an existing calculated attribute definition\cr
 #'  \link[=customerprofiles_update_domain]{update_domain} \tab Updates the properties of a domain, including creating or selecting a dead letter queue or an encryption key\cr
 #'  \link[=customerprofiles_update_profile]{update_profile} \tab Updates the properties of a profile
 #' }

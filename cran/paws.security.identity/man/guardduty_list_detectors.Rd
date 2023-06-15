@@ -20,6 +20,6 @@ value of NextToken from the previous response to continue listing data.}
 \description{
 Lists detectorIds of all the existing Amazon GuardDuty detector resources.
 
-See \url{https://paws-r.github.io/docs/guardduty/list_detectors.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_list_detectors/} for full documentation.
 }
 \keyword{internal}

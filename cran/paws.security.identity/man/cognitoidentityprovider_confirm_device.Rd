@@ -24,6 +24,6 @@ you want to confirm.}
 \description{
 Confirms tracking of the device. This API call is the call that begins device tracking.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/confirm_device.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_confirm_device/} for full documentation.
 }
 \keyword{internal}

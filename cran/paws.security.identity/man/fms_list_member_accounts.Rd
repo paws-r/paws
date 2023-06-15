@@ -24,6 +24,6 @@ value that you can use to get another batch of member account IDs.}
 \description{
 Returns a \code{MemberAccounts} object that lists the member accounts in the administrator's Amazon Web Services organization.
 
-See \url{https://paws-r.github.io/docs/fms/list_member_accounts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_list_member_accounts/} for full documentation.
 }
 \keyword{internal}

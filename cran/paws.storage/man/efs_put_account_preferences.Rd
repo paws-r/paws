@@ -22,6 +22,6 @@ target resources.}
 \description{
 Use this operation to set the account preference in the current Amazon Web Services Region to use long 17 character (63 bit) or short 8 character (32 bit) resource IDs for new EFS file system and mount target resources. All existing resource IDs are not affected by any changes you make. You can set the ID preference during the opt-in period as EFS transitions to long resource IDs. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/}{Managing Amazon EFS resource IDs}.
 
-See \url{https://paws-r.github.io/docs/efs/put_account_preferences.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_put_account_preferences/} for full documentation.
 }
 \keyword{internal}

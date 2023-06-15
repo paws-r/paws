@@ -17,6 +17,6 @@ with a resource policy.}
 \description{
 Stores a resource policy for the ARN of a \code{Project} or \code{ReportGroup} object.
 
-See \url{https://paws-r.github.io/docs/codebuild/put_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_put_resource_policy/} for full documentation.
 }
 \keyword{internal}

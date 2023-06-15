@@ -21,6 +21,6 @@ DBEngineVersion.}
 \description{
 Associates an Identity and Access Management (IAM) role with a DB cluster.
 
-See \url{https://paws-r.github.io/docs/rds/add_role_to_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_add_role_to_db_cluster/} for full documentation.
 }
 \keyword{internal}

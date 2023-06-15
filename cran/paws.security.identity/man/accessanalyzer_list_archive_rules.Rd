@@ -20,6 +20,6 @@ accessanalyzer_list_archive_rules(
 \description{
 Retrieves a list of archive rules created for the specified analyzer.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/list_archive_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_list_archive_rules/} for full documentation.
 }
 \keyword{internal}

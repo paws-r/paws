@@ -27,6 +27,6 @@ networkmanager_create_core_network(
 \description{
 Creates a core network as part of your global network, and optionally, with a core network policy.
 
-See \url{https://paws-r.github.io/docs/networkmanager/create_core_network.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_create_core_network/} for full documentation.
 }
 \keyword{internal}

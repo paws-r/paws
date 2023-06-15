@@ -13,6 +13,6 @@ storagegateway_describe_smb_settings(GatewayARN)
 \description{
 Gets a description of a Server Message Block (SMB) file share settings from a file gateway. This operation is only supported for file gateways.
 
-See \url{https://paws-r.github.io/docs/storagegateway/describe_smb_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_describe_smb_settings/} for full documentation.
 }
 \keyword{internal}

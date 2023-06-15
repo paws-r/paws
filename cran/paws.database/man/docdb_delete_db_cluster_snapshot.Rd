@@ -15,6 +15,6 @@ Constraints: Must be the name of an existing cluster snapshot in the
 \description{
 Deletes a cluster snapshot. If the snapshot is being copied, the copy operation is terminated.
 
-See \url{https://paws-r.github.io/docs/docdb/delete_db_cluster_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_delete_db_cluster_snapshot/} for full documentation.
 }
 \keyword{internal}

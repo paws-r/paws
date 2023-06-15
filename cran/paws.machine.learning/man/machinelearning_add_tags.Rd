@@ -18,6 +18,6 @@ value of null.}
 \description{
 Adds one or more tags to an object, up to a limit of 10. Each tag consists of a key and an optional value. If you add a tag using a key that is already associated with the ML object, \code{\link[=machinelearning_add_tags]{add_tags}} updates the tag's value.
 
-See \url{https://paws-r.github.io/docs/machinelearning/add_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_add_tags/} for full documentation.
 }
 \keyword{internal}

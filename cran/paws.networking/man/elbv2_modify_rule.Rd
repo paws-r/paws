@@ -16,6 +16,6 @@ elbv2_modify_rule(RuleArn, Conditions = NULL, Actions = NULL)
 \description{
 Replaces the specified properties of the specified rule. Any properties that you do not specify are unchanged.
 
-See \url{https://paws-r.github.io/docs/elbv2/modify_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_modify_rule/} for full documentation.
 }
 \keyword{internal}

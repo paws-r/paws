@@ -29,6 +29,6 @@ field may be displayed in plaintext in CloudTrail logs and other output.}
 \description{
 Updates the description of a KMS key. To see the description of a KMS key, use \code{\link[=kms_describe_key]{describe_key}}.
 
-See \url{https://paws-r.github.io/docs/kms/update_key_description.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_update_key_description/} for full documentation.
 }
 \keyword{internal}

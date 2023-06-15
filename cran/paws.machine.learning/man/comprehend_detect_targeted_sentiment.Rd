@@ -16,6 +16,6 @@ supported language.}
 \description{
 Inspects the input text and returns a sentiment analysis for each entity identified in the text.
 
-See \url{https://paws-r.github.io/docs/comprehend/detect_targeted_sentiment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_detect_targeted_sentiment/} for full documentation.
 }
 \keyword{internal}

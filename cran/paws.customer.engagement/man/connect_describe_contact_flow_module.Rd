@@ -15,6 +15,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Describes the specified flow module.
 
-See \url{https://paws-r.github.io/docs/connect/describe_contact_flow_module.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_describe_contact_flow_module/} for full documentation.
 }
 \keyword{internal}

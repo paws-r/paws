@@ -35,6 +35,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes one or more Client VPN endpoints in the account.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_client_vpn_endpoints.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_client_vpn_endpoints/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ to 50 tags for a resource.}
 \description{
 Creates the resource set.
 
-See \url{https://paws-r.github.io/docs/fms/put_resource_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_put_resource_set/} for full documentation.
 }
 \keyword{internal}

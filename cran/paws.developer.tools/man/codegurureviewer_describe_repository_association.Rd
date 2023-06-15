@@ -16,6 +16,6 @@ object. You can retrieve this ARN by calling
 \description{
 Returns a \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html}{RepositoryAssociation} object that contains information about the requested repository association.
 
-See \url{https://paws-r.github.io/docs/codegurureviewer/describe_repository_association.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codegurureviewer_describe_repository_association/} for full documentation.
 }
 \keyword{internal}

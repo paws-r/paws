@@ -12,6 +12,6 @@ drs_stop_replication(sourceServerID)
 \description{
 Stops replication for a Source Server. This action would make the Source Server unprotected, delete its existing snapshots and stop billing for it.
 
-See \url{https://paws-r.github.io/docs/drs/stop_replication.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_stop_replication/} for full documentation.
 }
 \keyword{internal}

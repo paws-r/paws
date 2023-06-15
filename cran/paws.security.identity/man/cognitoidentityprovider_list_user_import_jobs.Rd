@@ -23,6 +23,6 @@ which can be used to return the next set of import jobs in the list.}
 \description{
 Lists the user import jobs.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/list_user_import_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_user_import_jobs/} for full documentation.
 }
 \keyword{internal}

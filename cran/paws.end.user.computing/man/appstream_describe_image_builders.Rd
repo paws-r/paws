@@ -22,6 +22,6 @@ this operation. If this value is null, it retrieves the first page.}
 \description{
 Retrieves a list that describes one or more specified image builders, if the image builder names are provided. Otherwise, all image builders in the account are described.
 
-See \url{https://paws-r.github.io/docs/appstream/describe_image_builders.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_describe_image_builders/} for full documentation.
 }
 \keyword{internal}

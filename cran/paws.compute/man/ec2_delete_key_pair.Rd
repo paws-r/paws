@@ -20,6 +20,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes the specified key pair, by removing the public key from Amazon EC2.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_key_pair.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_key_pair/} for full documentation.
 }
 \keyword{internal}

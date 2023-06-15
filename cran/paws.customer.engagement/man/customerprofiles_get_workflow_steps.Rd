@@ -25,6 +25,6 @@ results.}
 \description{
 Get granular list of steps in workflow.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/get_workflow_steps.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_get_workflow_steps/} for full documentation.
 }
 \keyword{internal}

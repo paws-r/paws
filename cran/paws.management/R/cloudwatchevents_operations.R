@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Activates a partner event source that has been deactivated. Once activated, your matching event bus will start receiving events from the event source.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/activate_event_source.html](https://paws-r.github.io/docs/cloudwatchevents/activate_event_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_activate_event_source/](https://www.paws-r-sdk.com/docs/cloudwatchevents_activate_event_source/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the partner event source to activate.
 #'
@@ -37,7 +37,7 @@ cloudwatchevents_activate_event_source <- function(Name) {
 #' @description
 #' Cancels the specified replay.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/cancel_replay.html](https://paws-r.github.io/docs/cloudwatchevents/cancel_replay.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_cancel_replay/](https://www.paws-r-sdk.com/docs/cloudwatchevents_cancel_replay/) for full documentation.
 #'
 #' @param ReplayName &#91;required&#93; The name of the replay to cancel.
 #'
@@ -67,7 +67,7 @@ cloudwatchevents_cancel_replay <- function(ReplayName) {
 #' @description
 #' Creates an API destination, which is an HTTP invocation endpoint configured as a target for events.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/create_api_destination.html](https://paws-r.github.io/docs/cloudwatchevents/create_api_destination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_create_api_destination/](https://www.paws-r-sdk.com/docs/cloudwatchevents_create_api_destination/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name for the API destination to create.
 #' @param Description A description for the API destination to create.
@@ -104,7 +104,7 @@ cloudwatchevents_create_api_destination <- function(Name, Description = NULL, Co
 #' @description
 #' Creates an archive of events with the specified settings. When you create an archive, incoming events might not immediately start being sent to the archive. Allow a short period of time for changes to take effect. If you do not specify a pattern to filter events sent to the archive, all events are sent to the archive except replayed events. Replayed events are not sent to an archive.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/create_archive.html](https://paws-r.github.io/docs/cloudwatchevents/create_archive.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_create_archive/](https://www.paws-r-sdk.com/docs/cloudwatchevents_create_archive/) for full documentation.
 #'
 #' @param ArchiveName &#91;required&#93; The name for the archive to create.
 #' @param EventSourceArn &#91;required&#93; The ARN of the event bus that sends events to the archive.
@@ -138,7 +138,7 @@ cloudwatchevents_create_archive <- function(ArchiveName, EventSourceArn, Descrip
 #' @description
 #' Creates a connection. A connection defines the authorization type and credentials to use for authorization with an API destination HTTP endpoint.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/create_connection.html](https://paws-r.github.io/docs/cloudwatchevents/create_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_create_connection/](https://www.paws-r-sdk.com/docs/cloudwatchevents_create_connection/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name for the connection to create.
 #' @param Description A description for the connection to create.
@@ -171,7 +171,7 @@ cloudwatchevents_create_connection <- function(Name, Description = NULL, Authori
 #' @description
 #' Creates a new event bus within your account. This can be a custom event bus which you can use to receive events from your custom applications and services, or it can be a partner event bus which can be matched to a partner event source.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/create_event_bus.html](https://paws-r.github.io/docs/cloudwatchevents/create_event_bus.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_create_event_bus/](https://www.paws-r-sdk.com/docs/cloudwatchevents_create_event_bus/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the new event bus.
 #' 
@@ -210,7 +210,7 @@ cloudwatchevents_create_event_bus <- function(Name, EventSourceName = NULL, Tags
 #' @description
 #' Called by an SaaS partner to create a partner event source. This operation is not used by Amazon Web Services customers.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/create_partner_event_source.html](https://paws-r.github.io/docs/cloudwatchevents/create_partner_event_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_create_partner_event_source/](https://www.paws-r-sdk.com/docs/cloudwatchevents_create_partner_event_source/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the partner event source. This name must be unique and must
 #' be in the format ` partner_name/event_namespace/event_name `. The Amazon
@@ -246,7 +246,7 @@ cloudwatchevents_create_partner_event_source <- function(Name, Account) {
 #' @description
 #' You can use this operation to temporarily stop receiving events from the specified partner event source. The matching event bus is not deleted.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/deactivate_event_source.html](https://paws-r.github.io/docs/cloudwatchevents/deactivate_event_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_deactivate_event_source/](https://www.paws-r-sdk.com/docs/cloudwatchevents_deactivate_event_source/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the partner event source to deactivate.
 #'
@@ -275,7 +275,7 @@ cloudwatchevents_deactivate_event_source <- function(Name) {
 #' @description
 #' Removes all authorization parameters from the connection. This lets you remove the secret from the connection so you can reuse it without having to create a new connection.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/deauthorize_connection.html](https://paws-r.github.io/docs/cloudwatchevents/deauthorize_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_deauthorize_connection/](https://www.paws-r-sdk.com/docs/cloudwatchevents_deauthorize_connection/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the connection to remove authorization from.
 #'
@@ -304,7 +304,7 @@ cloudwatchevents_deauthorize_connection <- function(Name) {
 #' @description
 #' Deletes the specified API destination.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/delete_api_destination.html](https://paws-r.github.io/docs/cloudwatchevents/delete_api_destination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_delete_api_destination/](https://www.paws-r-sdk.com/docs/cloudwatchevents_delete_api_destination/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the destination to delete.
 #'
@@ -333,7 +333,7 @@ cloudwatchevents_delete_api_destination <- function(Name) {
 #' @description
 #' Deletes the specified archive.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/delete_archive.html](https://paws-r.github.io/docs/cloudwatchevents/delete_archive.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_delete_archive/](https://www.paws-r-sdk.com/docs/cloudwatchevents_delete_archive/) for full documentation.
 #'
 #' @param ArchiveName &#91;required&#93; The name of the archive to delete.
 #'
@@ -362,7 +362,7 @@ cloudwatchevents_delete_archive <- function(ArchiveName) {
 #' @description
 #' Deletes a connection.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/delete_connection.html](https://paws-r.github.io/docs/cloudwatchevents/delete_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_delete_connection/](https://www.paws-r-sdk.com/docs/cloudwatchevents_delete_connection/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the connection to delete.
 #'
@@ -391,7 +391,7 @@ cloudwatchevents_delete_connection <- function(Name) {
 #' @description
 #' Deletes the specified custom event bus or partner event bus. All rules associated with this event bus need to be deleted. You can't delete your account's default event bus.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/delete_event_bus.html](https://paws-r.github.io/docs/cloudwatchevents/delete_event_bus.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_delete_event_bus/](https://www.paws-r-sdk.com/docs/cloudwatchevents_delete_event_bus/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the event bus to delete.
 #'
@@ -420,7 +420,7 @@ cloudwatchevents_delete_event_bus <- function(Name) {
 #' @description
 #' This operation is used by SaaS partners to delete a partner event source. This operation is not used by Amazon Web Services customers.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/delete_partner_event_source.html](https://paws-r.github.io/docs/cloudwatchevents/delete_partner_event_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_delete_partner_event_source/](https://www.paws-r-sdk.com/docs/cloudwatchevents_delete_partner_event_source/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the event source to delete.
 #' @param Account &#91;required&#93; The Amazon Web Services account ID of the Amazon Web Services customer
@@ -451,7 +451,7 @@ cloudwatchevents_delete_partner_event_source <- function(Name, Account) {
 #' @description
 #' Deletes the specified rule.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/delete_rule.html](https://paws-r.github.io/docs/cloudwatchevents/delete_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_delete_rule/](https://www.paws-r-sdk.com/docs/cloudwatchevents_delete_rule/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the rule.
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
@@ -489,7 +489,7 @@ cloudwatchevents_delete_rule <- function(Name, EventBusName = NULL, Force = NULL
 #' @description
 #' Retrieves details about an API destination.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/describe_api_destination.html](https://paws-r.github.io/docs/cloudwatchevents/describe_api_destination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_describe_api_destination/](https://www.paws-r-sdk.com/docs/cloudwatchevents_describe_api_destination/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the API destination to retrieve.
 #'
@@ -518,7 +518,7 @@ cloudwatchevents_describe_api_destination <- function(Name) {
 #' @description
 #' Retrieves details about an archive.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/describe_archive.html](https://paws-r.github.io/docs/cloudwatchevents/describe_archive.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_describe_archive/](https://www.paws-r-sdk.com/docs/cloudwatchevents_describe_archive/) for full documentation.
 #'
 #' @param ArchiveName &#91;required&#93; The name of the archive to retrieve.
 #'
@@ -547,7 +547,7 @@ cloudwatchevents_describe_archive <- function(ArchiveName) {
 #' @description
 #' Retrieves details about a connection.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/describe_connection.html](https://paws-r.github.io/docs/cloudwatchevents/describe_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_describe_connection/](https://www.paws-r-sdk.com/docs/cloudwatchevents_describe_connection/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the connection to retrieve.
 #'
@@ -576,7 +576,7 @@ cloudwatchevents_describe_connection <- function(Name) {
 #' @description
 #' Displays details about an event bus in your account. This can include the external Amazon Web Services accounts that are permitted to write events to your default event bus, and the associated policy. For custom event buses and partner event buses, it displays the name, ARN, policy, state, and creation time.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/describe_event_bus.html](https://paws-r.github.io/docs/cloudwatchevents/describe_event_bus.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_describe_event_bus/](https://www.paws-r-sdk.com/docs/cloudwatchevents_describe_event_bus/) for full documentation.
 #'
 #' @param Name The name or ARN of the event bus to show details for. If you omit this,
 #' the default event bus is displayed.
@@ -607,7 +607,7 @@ cloudwatchevents_describe_event_bus <- function(Name = NULL) {
 #' @description
 #' This operation lists details about a partner event source that is shared with your account.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/describe_event_source.html](https://paws-r.github.io/docs/cloudwatchevents/describe_event_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_describe_event_source/](https://www.paws-r-sdk.com/docs/cloudwatchevents_describe_event_source/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the partner event source to display the details of.
 #'
@@ -637,7 +637,7 @@ cloudwatchevents_describe_event_source <- function(Name) {
 #' @description
 #' An SaaS partner can use this operation to list details about a partner event source that they have created. Amazon Web Services customers do not use this operation. Instead, Amazon Web Services customers can use [`describe_event_source`][cloudwatchevents_describe_event_source] to see details about a partner event source that is shared with them.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/describe_partner_event_source.html](https://paws-r.github.io/docs/cloudwatchevents/describe_partner_event_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_describe_partner_event_source/](https://www.paws-r-sdk.com/docs/cloudwatchevents_describe_partner_event_source/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the event source to display.
 #'
@@ -666,7 +666,7 @@ cloudwatchevents_describe_partner_event_source <- function(Name) {
 #' @description
 #' Retrieves details about a replay. Use [`describe_replay`][cloudwatchevents_describe_replay] to determine the progress of a running replay. A replay processes events to replay based on the time in the event, and replays them using 1 minute intervals. If you use [`start_replay`][cloudwatchevents_start_replay] and specify an `EventStartTime` and an `EventEndTime` that covers a 20 minute time range, the events are replayed from the first minute of that 20 minute range first. Then the events from the second minute are replayed. You can use [`describe_replay`][cloudwatchevents_describe_replay] to determine the progress of a replay. The value returned for `EventLastReplayedTime` indicates the time within the specified time range associated with the last event replayed.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/describe_replay.html](https://paws-r.github.io/docs/cloudwatchevents/describe_replay.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_describe_replay/](https://www.paws-r-sdk.com/docs/cloudwatchevents_describe_replay/) for full documentation.
 #'
 #' @param ReplayName &#91;required&#93; The name of the replay to retrieve.
 #'
@@ -695,7 +695,7 @@ cloudwatchevents_describe_replay <- function(ReplayName) {
 #' @description
 #' Describes the specified rule.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/describe_rule.html](https://paws-r.github.io/docs/cloudwatchevents/describe_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_describe_rule/](https://www.paws-r-sdk.com/docs/cloudwatchevents_describe_rule/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the rule.
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
@@ -726,7 +726,7 @@ cloudwatchevents_describe_rule <- function(Name, EventBusName = NULL) {
 #' @description
 #' Disables the specified rule. A disabled rule won't match any events, and won't self-trigger if it has a schedule expression.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/disable_rule.html](https://paws-r.github.io/docs/cloudwatchevents/disable_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_disable_rule/](https://www.paws-r-sdk.com/docs/cloudwatchevents_disable_rule/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the rule.
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
@@ -757,7 +757,7 @@ cloudwatchevents_disable_rule <- function(Name, EventBusName = NULL) {
 #' @description
 #' Enables the specified rule. If the rule does not exist, the operation fails.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/enable_rule.html](https://paws-r.github.io/docs/cloudwatchevents/enable_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_enable_rule/](https://www.paws-r-sdk.com/docs/cloudwatchevents_enable_rule/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the rule.
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
@@ -788,7 +788,7 @@ cloudwatchevents_enable_rule <- function(Name, EventBusName = NULL) {
 #' @description
 #' Retrieves a list of API destination in the account in the current Region.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/list_api_destinations.html](https://paws-r.github.io/docs/cloudwatchevents/list_api_destinations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_list_api_destinations/](https://www.paws-r-sdk.com/docs/cloudwatchevents_list_api_destinations/) for full documentation.
 #'
 #' @param NamePrefix A name prefix to filter results returned. Only API destinations with a
 #' name that starts with the prefix are returned.
@@ -822,7 +822,7 @@ cloudwatchevents_list_api_destinations <- function(NamePrefix = NULL, Connection
 #' @description
 #' Lists your archives. You can either list all the archives or you can provide a prefix to match to the archive names. Filter parameters are exclusive.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/list_archives.html](https://paws-r.github.io/docs/cloudwatchevents/list_archives.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_list_archives/](https://www.paws-r-sdk.com/docs/cloudwatchevents_list_archives/) for full documentation.
 #'
 #' @param NamePrefix A name prefix to filter the archives returned. Only archives with name
 #' that match the prefix are returned.
@@ -857,7 +857,7 @@ cloudwatchevents_list_archives <- function(NamePrefix = NULL, EventSourceArn = N
 #' @description
 #' Retrieves a list of connections from the account.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/list_connections.html](https://paws-r.github.io/docs/cloudwatchevents/list_connections.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_list_connections/](https://www.paws-r-sdk.com/docs/cloudwatchevents_list_connections/) for full documentation.
 #'
 #' @param NamePrefix A name prefix to filter results returned. Only connections with a name
 #' that starts with the prefix are returned.
@@ -892,7 +892,7 @@ cloudwatchevents_list_connections <- function(NamePrefix = NULL, ConnectionState
 #' @description
 #' Lists all the event buses in your account, including the default event bus, custom event buses, and partner event buses.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/list_event_buses.html](https://paws-r.github.io/docs/cloudwatchevents/list_event_buses.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_list_event_buses/](https://www.paws-r-sdk.com/docs/cloudwatchevents_list_event_buses/) for full documentation.
 #'
 #' @param NamePrefix Specifying this limits the results to only those event buses with names
 #' that start with the specified prefix.
@@ -928,7 +928,7 @@ cloudwatchevents_list_event_buses <- function(NamePrefix = NULL, NextToken = NUL
 #' @description
 #' You can use this to see all the partner event sources that have been shared with your Amazon Web Services account. For more information about partner event sources, see [`create_event_bus`][cloudwatchevents_create_event_bus].
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/list_event_sources.html](https://paws-r.github.io/docs/cloudwatchevents/list_event_sources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_list_event_sources/](https://www.paws-r-sdk.com/docs/cloudwatchevents_list_event_sources/) for full documentation.
 #'
 #' @param NamePrefix Specifying this limits the results to only those partner event sources
 #' with names that start with the specified prefix.
@@ -965,7 +965,7 @@ cloudwatchevents_list_event_sources <- function(NamePrefix = NULL, NextToken = N
 #' @description
 #' An SaaS partner can use this operation to display the Amazon Web Services account ID that a particular partner event source name is associated with. This operation is not used by Amazon Web Services customers.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/list_partner_event_source_accounts.html](https://paws-r.github.io/docs/cloudwatchevents/list_partner_event_source_accounts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_list_partner_event_source_accounts/](https://www.paws-r-sdk.com/docs/cloudwatchevents_list_partner_event_source_accounts/) for full documentation.
 #'
 #' @param EventSourceName &#91;required&#93; The name of the partner event source to display account information
 #' about.
@@ -1001,7 +1001,7 @@ cloudwatchevents_list_partner_event_source_accounts <- function(EventSourceName,
 #' @description
 #' An SaaS partner can use this operation to list all the partner event source names that they have created. This operation is not used by Amazon Web Services customers.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/list_partner_event_sources.html](https://paws-r.github.io/docs/cloudwatchevents/list_partner_event_sources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_list_partner_event_sources/](https://www.paws-r-sdk.com/docs/cloudwatchevents_list_partner_event_sources/) for full documentation.
 #'
 #' @param NamePrefix &#91;required&#93; If you specify this, the results are limited to only those partner event
 #' sources that start with the string you specify.
@@ -1036,7 +1036,7 @@ cloudwatchevents_list_partner_event_sources <- function(NamePrefix, NextToken = 
 #' @description
 #' Lists your replays. You can either list all the replays or you can provide a prefix to match to the replay names. Filter parameters are exclusive.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/list_replays.html](https://paws-r.github.io/docs/cloudwatchevents/list_replays.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_list_replays/](https://www.paws-r-sdk.com/docs/cloudwatchevents_list_replays/) for full documentation.
 #'
 #' @param NamePrefix A name prefix to filter the replays returned. Only replays with name
 #' that match the prefix are returned.
@@ -1071,7 +1071,7 @@ cloudwatchevents_list_replays <- function(NamePrefix = NULL, State = NULL, Event
 #' @description
 #' Lists the rules for the specified target. You can see which of the rules in Amazon EventBridge can invoke a specific target in your account.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/list_rule_names_by_target.html](https://paws-r.github.io/docs/cloudwatchevents/list_rule_names_by_target.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_list_rule_names_by_target/](https://www.paws-r-sdk.com/docs/cloudwatchevents_list_rule_names_by_target/) for full documentation.
 #'
 #' @param TargetArn &#91;required&#93; The Amazon Resource Name (ARN) of the target resource.
 #' @param EventBusName The name or ARN of the event bus to list rules for. If you omit this,
@@ -1105,7 +1105,7 @@ cloudwatchevents_list_rule_names_by_target <- function(TargetArn, EventBusName =
 #' @description
 #' Lists your Amazon EventBridge rules. You can either list all the rules or you can provide a prefix to match to the rule names.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/list_rules.html](https://paws-r.github.io/docs/cloudwatchevents/list_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_list_rules/](https://www.paws-r-sdk.com/docs/cloudwatchevents_list_rules/) for full documentation.
 #'
 #' @param NamePrefix The prefix matching the rule name.
 #' @param EventBusName The name or ARN of the event bus to list the rules for. If you omit
@@ -1139,7 +1139,7 @@ cloudwatchevents_list_rules <- function(NamePrefix = NULL, EventBusName = NULL, 
 #' @description
 #' Displays the tags associated with an EventBridge resource. In EventBridge, rules and event buses can be tagged.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/list_tags_for_resource.html](https://paws-r.github.io/docs/cloudwatchevents/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/cloudwatchevents_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the EventBridge resource for which you want to view tags.
 #'
@@ -1168,7 +1168,7 @@ cloudwatchevents_list_tags_for_resource <- function(ResourceARN) {
 #' @description
 #' Lists the targets assigned to the specified rule.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/list_targets_by_rule.html](https://paws-r.github.io/docs/cloudwatchevents/list_targets_by_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_list_targets_by_rule/](https://www.paws-r-sdk.com/docs/cloudwatchevents_list_targets_by_rule/) for full documentation.
 #'
 #' @param Rule &#91;required&#93; The name of the rule.
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
@@ -1203,7 +1203,7 @@ cloudwatchevents_list_targets_by_rule <- function(Rule, EventBusName = NULL, Nex
 #' @description
 #' Sends custom events to Amazon EventBridge so that they can be matched to rules.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/put_events.html](https://paws-r.github.io/docs/cloudwatchevents/put_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_put_events/](https://www.paws-r-sdk.com/docs/cloudwatchevents_put_events/) for full documentation.
 #'
 #' @param Entries &#91;required&#93; The entry that defines an event in your system. You can specify several
 #' parameters for the entry such as the source and type of the event,
@@ -1235,7 +1235,7 @@ cloudwatchevents_put_events <- function(Entries) {
 #' @description
 #' This is used by SaaS partners to write events to a customer's partner event bus. Amazon Web Services customers do not use this operation.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/put_partner_events.html](https://paws-r.github.io/docs/cloudwatchevents/put_partner_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_put_partner_events/](https://www.paws-r-sdk.com/docs/cloudwatchevents_put_partner_events/) for full documentation.
 #'
 #' @param Entries &#91;required&#93; The list of events to write to the event bus.
 #'
@@ -1266,7 +1266,7 @@ cloudwatchevents_put_partner_events <- function(Entries) {
 #' @description
 #' Running [`put_permission`][cloudwatchevents_put_permission] permits the specified Amazon Web Services account or Amazon Web Services organization to put events to the specified *event bus*. Amazon EventBridge (CloudWatch Events) rules in your account are triggered by these events arriving to an event bus in your account.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/put_permission.html](https://paws-r.github.io/docs/cloudwatchevents/put_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_put_permission/](https://www.paws-r-sdk.com/docs/cloudwatchevents_put_permission/) for full documentation.
 #'
 #' @param EventBusName The name of the event bus associated with the rule. If you omit this,
 #' the default event bus is used.
@@ -1326,7 +1326,7 @@ cloudwatchevents_put_permission <- function(EventBusName = NULL, Action = NULL, 
 #' @description
 #' Creates or updates the specified rule. Rules are enabled by default, or based on value of the state. You can disable a rule using [`disable_rule`][cloudwatchevents_disable_rule].
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/put_rule.html](https://paws-r.github.io/docs/cloudwatchevents/put_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_put_rule/](https://www.paws-r-sdk.com/docs/cloudwatchevents_put_rule/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the rule that you are creating or updating.
 #' @param ScheduleExpression The scheduling expression. For example, "cron(0 20 * * ? *)" or
@@ -1373,7 +1373,7 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #' @description
 #' Adds the specified targets to the specified rule, or updates the targets if they are already associated with the rule.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/put_targets.html](https://paws-r.github.io/docs/cloudwatchevents/put_targets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_put_targets/](https://www.paws-r-sdk.com/docs/cloudwatchevents_put_targets/) for full documentation.
 #'
 #' @param Rule &#91;required&#93; The name of the rule.
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
@@ -1406,7 +1406,7 @@ cloudwatchevents_put_targets <- function(Rule, EventBusName = NULL, Targets) {
 #' @description
 #' Revokes the permission of another Amazon Web Services account to be able to put events to the specified event bus. Specify the account to revoke by the `StatementId` value that you associated with the account when you granted it permission with [`put_permission`][cloudwatchevents_put_permission]. You can find the `StatementId` by using [`describe_event_bus`][cloudwatchevents_describe_event_bus].
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/remove_permission.html](https://paws-r.github.io/docs/cloudwatchevents/remove_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_remove_permission/](https://www.paws-r-sdk.com/docs/cloudwatchevents_remove_permission/) for full documentation.
 #'
 #' @param StatementId The statement ID corresponding to the account that is no longer allowed
 #' to put events to the default event bus.
@@ -1439,7 +1439,7 @@ cloudwatchevents_remove_permission <- function(StatementId = NULL, RemoveAllPerm
 #' @description
 #' Removes the specified targets from the specified rule. When the rule is triggered, those targets are no longer be invoked.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/remove_targets.html](https://paws-r.github.io/docs/cloudwatchevents/remove_targets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_remove_targets/](https://www.paws-r-sdk.com/docs/cloudwatchevents_remove_targets/) for full documentation.
 #'
 #' @param Rule &#91;required&#93; The name of the rule.
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
@@ -1478,7 +1478,7 @@ cloudwatchevents_remove_targets <- function(Rule, EventBusName = NULL, Ids, Forc
 #' @description
 #' Starts the specified replay. Events are not necessarily replayed in the exact same order that they were added to the archive. A replay processes events to replay based on the time in the event, and replays them using 1 minute intervals. If you specify an `EventStartTime` and an `EventEndTime` that covers a 20 minute time range, the events are replayed from the first minute of that 20 minute range first. Then the events from the second minute are replayed. You can use [`describe_replay`][cloudwatchevents_describe_replay] to determine the progress of a replay. The value returned for `EventLastReplayedTime` indicates the time within the specified time range associated with the last event replayed.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/start_replay.html](https://paws-r.github.io/docs/cloudwatchevents/start_replay.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_start_replay/](https://www.paws-r-sdk.com/docs/cloudwatchevents_start_replay/) for full documentation.
 #'
 #' @param ReplayName &#91;required&#93; The name of the replay to start.
 #' @param Description A description for the replay to start.
@@ -1516,7 +1516,7 @@ cloudwatchevents_start_replay <- function(ReplayName, Description = NULL, EventS
 #' @description
 #' Assigns one or more tags (key-value pairs) to the specified EventBridge resource. Tags can help you organize and categorize your resources. You can also use them to scope user permissions by granting a user permission to access or change only resources with certain tag values. In EventBridge, rules and event buses can be tagged.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/tag_resource.html](https://paws-r.github.io/docs/cloudwatchevents/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_tag_resource/](https://www.paws-r-sdk.com/docs/cloudwatchevents_tag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the EventBridge resource that you're adding tags to.
 #' @param Tags &#91;required&#93; The list of key-value pairs to associate with the resource.
@@ -1546,7 +1546,7 @@ cloudwatchevents_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Tests whether the specified event pattern matches the provided event.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/test_event_pattern.html](https://paws-r.github.io/docs/cloudwatchevents/test_event_pattern.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_test_event_pattern/](https://www.paws-r-sdk.com/docs/cloudwatchevents_test_event_pattern/) for full documentation.
 #'
 #' @param EventPattern &#91;required&#93; The event pattern. For more information, see [Events and Event
 #' Patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html)
@@ -1595,7 +1595,7 @@ cloudwatchevents_test_event_pattern <- function(EventPattern, Event) {
 #' @description
 #' Removes one or more tags from the specified EventBridge resource. In Amazon EventBridge (CloudWatch Events), rules and event buses can be tagged.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/untag_resource.html](https://paws-r.github.io/docs/cloudwatchevents/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_untag_resource/](https://www.paws-r-sdk.com/docs/cloudwatchevents_untag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the EventBridge resource from which you are removing tags.
 #' @param TagKeys &#91;required&#93; The list of tag keys to remove from the resource.
@@ -1625,7 +1625,7 @@ cloudwatchevents_untag_resource <- function(ResourceARN, TagKeys) {
 #' @description
 #' Updates an API destination.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/update_api_destination.html](https://paws-r.github.io/docs/cloudwatchevents/update_api_destination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_update_api_destination/](https://www.paws-r-sdk.com/docs/cloudwatchevents_update_api_destination/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the API destination to update.
 #' @param Description The name of the API destination to update.
@@ -1660,7 +1660,7 @@ cloudwatchevents_update_api_destination <- function(Name, Description = NULL, Co
 #' @description
 #' Updates the specified archive.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/update_archive.html](https://paws-r.github.io/docs/cloudwatchevents/update_archive.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_update_archive/](https://www.paws-r-sdk.com/docs/cloudwatchevents_update_archive/) for full documentation.
 #'
 #' @param ArchiveName &#91;required&#93; The name of the archive to update.
 #' @param Description The description for the archive.
@@ -1692,7 +1692,7 @@ cloudwatchevents_update_archive <- function(ArchiveName, Description = NULL, Eve
 #' @description
 #' Updates settings for a connection.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevents/update_connection.html](https://paws-r.github.io/docs/cloudwatchevents/update_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevents_update_connection/](https://www.paws-r-sdk.com/docs/cloudwatchevents_update_connection/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the connection to update.
 #' @param Description A description for the connection.

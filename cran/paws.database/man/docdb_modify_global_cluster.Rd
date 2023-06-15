@@ -37,6 +37,6 @@ global cluster can't be deleted when deletion protection is enabled.}
 \description{
 Modify a setting for an Amazon DocumentDB global cluster. You can change one or more configuration parameters (for example: deletion protection), or the global cluster identifier by specifying these parameters and the new values in the request.
 
-See \url{https://paws-r.github.io/docs/docdb/modify_global_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_modify_global_cluster/} for full documentation.
 }
 \keyword{internal}

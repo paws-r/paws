@@ -20,6 +20,6 @@ account ID, do not include any hyphens ('-') in the ID.}
 \description{
 This operation deletes an archive from a vault. Subsequent requests to initiate a retrieval of this archive will fail. Archive retrievals that are in progress for this archive ID may or may not succeed according to the following scenarios:
 
-See \url{https://paws-r.github.io/docs/glacier/delete_archive.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_delete_archive/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ locationservice_describe_map(MapName)
 \description{
 Retrieves the map resource details.
 
-See \url{https://paws-r.github.io/docs/locationservice/describe_map.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_describe_map/} for full documentation.
 }
 \keyword{internal}

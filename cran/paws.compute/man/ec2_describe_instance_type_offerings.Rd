@@ -39,6 +39,6 @@ continues from the end of the items returned by the previous request.}
 \description{
 Returns a list of all instance types offered. The results can be filtered by location (Region or Availability Zone). If no location is specified, the instance types offered in the current Region are returned.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_instance_type_offerings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_instance_type_offerings/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ your Lake Formation environment.}
 \description{
 Updates the list of possible values for the specified LF-tag key. If the LF-tag does not exist, the operation throws an EntityNotFoundException. The values in the delete key values will be deleted from list of possible values. If any value in the delete key values is attached to a resource, then API errors out with a 400 Exception - "Update not allowed". Untag the attribute before deleting the LF-tag key's value.
 
-See \url{https://paws-r.github.io/docs/lakeformation/update_lf_tag.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_update_lf_tag/} for full documentation.
 }
 \keyword{internal}

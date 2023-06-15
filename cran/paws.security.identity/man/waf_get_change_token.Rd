@@ -9,6 +9,6 @@ waf_get_change_token()
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-See \url{https://paws-r.github.io/docs/waf/get_change_token.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/waf_get_change_token/} for full documentation.
 }
 \keyword{internal}

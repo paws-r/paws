@@ -15,6 +15,6 @@ exist on the resource, it is ignored.}
 \description{
 Removes tags from a bot, bot alias or bot channel.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_untag_resource/} for full documentation.
 }
 \keyword{internal}

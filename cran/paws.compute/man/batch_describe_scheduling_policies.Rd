@@ -13,6 +13,6 @@ entries.}
 \description{
 Describes one or more of your scheduling policies.
 
-See \url{https://paws-r.github.io/docs/batch/describe_scheduling_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/batch_describe_scheduling_policies/} for full documentation.
 }
 \keyword{internal}

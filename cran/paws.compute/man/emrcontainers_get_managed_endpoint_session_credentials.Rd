@@ -35,6 +35,6 @@ uploaded to S3.}
 \description{
 Generate a session token to connect to a managed endpoint.
 
-See \url{https://paws-r.github.io/docs/emrcontainers/get_managed_endpoint_session_credentials.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emrcontainers_get_managed_endpoint_session_credentials/} for full documentation.
 }
 \keyword{internal}

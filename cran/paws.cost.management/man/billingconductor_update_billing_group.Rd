@@ -29,6 +29,6 @@ Services charges for a billing group.}
 \description{
 This updates an existing billing group.
 
-See \url{https://paws-r.github.io/docs/billingconductor/update_billing_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_update_billing_group/} for full documentation.
 }
 \keyword{internal}

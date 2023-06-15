@@ -13,6 +13,6 @@ described.}
 \description{
 Describe specified users.
 
-See \url{https://paws-r.github.io/docs/opsworks/describe_user_profiles.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_describe_user_profiles/} for full documentation.
 }
 \keyword{internal}

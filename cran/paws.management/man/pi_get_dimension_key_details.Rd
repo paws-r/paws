@@ -53,6 +53,6 @@ or the short dimension name \code{statement} (Aurora and RDS only).
 \description{
 Get the attributes of the specified dimension group for a DB instance or data source. For example, if you specify a SQL ID, \code{\link[=pi_get_dimension_key_details]{get_dimension_key_details}} retrieves the full text of the dimension \code{db.sql.statement} associated with this ID. This operation is useful because \code{\link[=pi_get_resource_metrics]{get_resource_metrics}} and \code{\link[=pi_describe_dimension_keys]{describe_dimension_keys}} don't support retrieval of large SQL statement text.
 
-See \url{https://paws-r.github.io/docs/pi/get_dimension_key_details.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pi_get_dimension_key_details/} for full documentation.
 }
 \keyword{internal}

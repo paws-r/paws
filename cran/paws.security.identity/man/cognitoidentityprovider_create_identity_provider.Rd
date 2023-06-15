@@ -79,6 +79,6 @@ automatically. They are read-only.
 \description{
 Creates an IdP for a user pool.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/create_identity_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_identity_provider/} for full documentation.
 }
 \keyword{internal}

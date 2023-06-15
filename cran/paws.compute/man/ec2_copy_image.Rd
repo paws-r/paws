@@ -90,6 +90,6 @@ Default: Your user-defined AMI tags are not copied.}
 \description{
 Initiates the copy of an AMI. You can copy an AMI from one Region to another, or from a Region to an Outpost. You can't copy an AMI from an Outpost to a Region, from one Outpost to another, or within the same Outpost. To copy an AMI to another partition, see \code{\link[=ec2_create_store_image_task]{create_store_image_task}}.
 
-See \url{https://paws-r.github.io/docs/ec2/copy_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_copy_image/} for full documentation.
 }
 \keyword{internal}

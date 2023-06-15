@@ -19,6 +19,6 @@ attributes you want to delete.}
 \description{
 Deletes the attributes for a user.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/delete_user_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_user_attributes/} for full documentation.
 }
 \keyword{internal}

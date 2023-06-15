@@ -33,6 +33,6 @@ as well as the databases in yor local account.
 \description{
 Retrieves all databases defined in a given Data Catalog.
 
-See \url{https://paws-r.github.io/docs/glue/get_databases.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_databases/} for full documentation.
 }
 \keyword{internal}

@@ -44,6 +44,6 @@ For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June
 \description{
 Returns a list of \href{https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Recommendation.html}{\code{Recommendation}} objects that contain recommendations for a profiling group for a given time period. A list of \href{https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Anomaly.html}{\code{Anomaly}} objects that contains details about anomalies detected in the profiling group for the same time period is also returned.
 
-See \url{https://paws-r.github.io/docs/codeguruprofiler/get_recommendations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeguruprofiler_get_recommendations/} for full documentation.
 }
 \keyword{internal}

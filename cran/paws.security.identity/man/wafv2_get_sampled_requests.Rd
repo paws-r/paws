@@ -53,6 +53,6 @@ returns information about all of them.}
 \description{
 Gets detailed information about a specified number of requests--a sample--that WAF randomly selects from among the first 5,000 requests that your Amazon Web Services resource received during a time range that you choose. You can specify a sample size of up to 500 requests, and you can specify any time range in the previous three hours.
 
-See \url{https://paws-r.github.io/docs/wafv2/get_sampled_requests.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_get_sampled_requests/} for full documentation.
 }
 \keyword{internal}

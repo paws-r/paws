@@ -21,6 +21,6 @@ idempotency of the request.}
 \description{
 Delete a rule groups namespace.
 
-See \url{https://paws-r.github.io/docs/prometheusservice/delete_rule_groups_namespace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/prometheusservice_delete_rule_groups_namespace/} for full documentation.
 }
 \keyword{internal}

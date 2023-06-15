@@ -13,6 +13,6 @@ kafka_delete_cluster_policy(ClusterArn)
 \description{
 Deletes the MSK cluster policy specified by the Amazon Resource Name (ARN) in the request.
 
-See \url{https://paws-r.github.io/docs/kafka/delete_cluster_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_delete_cluster_policy/} for full documentation.
 }
 \keyword{internal}

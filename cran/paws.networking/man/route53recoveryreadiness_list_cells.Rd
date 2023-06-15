@@ -14,6 +14,6 @@ route53recoveryreadiness_list_cells(MaxResults = NULL, NextToken = NULL)
 \description{
 Lists the cells for an account.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/list_cells.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_list_cells/} for full documentation.
 }
 \keyword{internal}

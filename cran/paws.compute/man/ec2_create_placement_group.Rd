@@ -40,6 +40,6 @@ Constraints: Up to 255 ASCII characters}
 \description{
 Creates a placement group in which to launch instances. The strategy of the placement group determines how the instances are organized within the group.
 
-See \url{https://paws-r.github.io/docs/ec2/create_placement_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_placement_group/} for full documentation.
 }
 \keyword{internal}

@@ -33,6 +33,6 @@ the value specified by \code{MaxRecords} .}
 \description{
 Lists all the subscription descriptions for a customer account. The description for a subscription includes SubscriptionName, SNSTopicARN, CustomerID, SourceType, SourceID, CreationTime, and Status.
 
-See \url{https://paws-r.github.io/docs/neptune/describe_event_subscriptions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_describe_event_subscriptions/} for full documentation.
 }
 \keyword{internal}

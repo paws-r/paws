@@ -22,6 +22,6 @@ results.}
 \description{
 Lists metric attributions.
 
-See \url{https://paws-r.github.io/docs/personalize/list_metric_attributions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_list_metric_attributions/} for full documentation.
 }
 \keyword{internal}

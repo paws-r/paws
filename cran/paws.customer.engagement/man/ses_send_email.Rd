@@ -94,6 +94,6 @@ email sending events.}
 \description{
 Composes an email message and immediately queues it for sending. In order to send email using the \code{\link[=ses_send_email]{send_email}} operation, your message must meet the following requirements:
 
-See \url{https://paws-r.github.io/docs/ses/send_email.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_send_email/} for full documentation.
 }
 \keyword{internal}

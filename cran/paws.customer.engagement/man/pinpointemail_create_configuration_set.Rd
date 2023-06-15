@@ -35,6 +35,6 @@ to associate with the configuration set.}
 \description{
 Create a configuration set. \emph{Configuration sets} are groups of rules that you can apply to the emails you send using Amazon Pinpoint. You apply a configuration set to an email by including a reference to the configuration set in the headers of the email. When you apply a configuration set to an email, all of the rules in that configuration set are applied to the email.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/create_configuration_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_create_configuration_set/} for full documentation.
 }
 \keyword{internal}

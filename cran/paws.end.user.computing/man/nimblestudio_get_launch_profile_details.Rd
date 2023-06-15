@@ -17,6 +17,6 @@ session.}
 \description{
 Launch profile details include the launch profile resource and summary information of resources that are used by, or available to, the launch profile. This includes the name and description of all studio components used by the launch profiles, and the name and description of streaming images that can be used with this launch profile.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/get_launch_profile_details.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_get_launch_profile_details/} for full documentation.
 }
 \keyword{internal}

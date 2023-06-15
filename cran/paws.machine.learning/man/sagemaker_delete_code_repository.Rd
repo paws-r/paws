@@ -12,6 +12,6 @@ sagemaker_delete_code_repository(CodeRepositoryName)
 \description{
 Deletes the specified Git repository from your account.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_code_repository.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_code_repository/} for full documentation.
 }
 \keyword{internal}

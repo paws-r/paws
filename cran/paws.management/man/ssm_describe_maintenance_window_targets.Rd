@@ -28,6 +28,6 @@ from a previous call.)}
 \description{
 Lists the targets registered with the maintenance window.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_maintenance_window_targets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_window_targets/} for full documentation.
 }
 \keyword{internal}

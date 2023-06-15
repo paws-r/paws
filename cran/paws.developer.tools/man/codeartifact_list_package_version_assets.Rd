@@ -55,6 +55,6 @@ results.}
 \description{
 Returns a list of \href{https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_AssetSummary.html}{AssetSummary} objects for assets in a package version.
 
-See \url{https://paws-r.github.io/docs/codeartifact/list_package_version_assets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_list_package_version_assets/} for full documentation.
 }
 \keyword{internal}

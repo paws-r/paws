@@ -36,6 +36,6 @@ in the \emph{AWS General Reference} guide.}
 \description{
 Describes a resource of the Resilience Hub application.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/describe_app_version_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_describe_app_version_resource/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ response.}
 \description{
 Returns a list of the available standards in Security Hub.
 
-See \url{https://paws-r.github.io/docs/securityhub/describe_standards.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_describe_standards/} for full documentation.
 }
 \keyword{internal}

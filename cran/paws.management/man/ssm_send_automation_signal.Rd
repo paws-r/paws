@@ -34,6 +34,6 @@ the payload. For example:
 \description{
 Sends a signal to an Automation execution to change the current behavior or status of the execution.
 
-See \url{https://paws-r.github.io/docs/ssm/send_automation_signal.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_send_automation_signal/} for full documentation.
 }
 \keyword{internal}

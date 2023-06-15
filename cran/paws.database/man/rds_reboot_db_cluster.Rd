@@ -19,6 +19,6 @@ Constraints:
 \description{
 You might need to reboot your DB cluster, usually for maintenance reasons. For example, if you make certain modifications, or if you change the DB cluster parameter group associated with the DB cluster, reboot the DB cluster for the changes to take effect.
 
-See \url{https://paws-r.github.io/docs/rds/reboot_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_reboot_db_cluster/} for full documentation.
 }
 \keyword{internal}

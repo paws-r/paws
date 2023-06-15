@@ -48,6 +48,6 @@ If you specify \strong{NextToken}, then \strong{StartingBlockIndex} is ignored.}
 \description{
 Returns information about the blocks that are different between two Amazon Elastic Block Store snapshots of the same volume/snapshot lineage.
 
-See \url{https://paws-r.github.io/docs/ebs/list_changed_blocks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ebs_list_changed_blocks/} for full documentation.
 }
 \keyword{internal}

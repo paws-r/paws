@@ -13,6 +13,6 @@ resource operation request.}
 \description{
 Cancels the specified resource operation request. For more information, see \href{https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-manage-requests.html#resource-operations-manage-requests-cancel}{Canceling resource operation requests} in the \emph{Amazon Web Services Cloud Control API User Guide}.
 
-See \url{https://paws-r.github.io/docs/cloudcontrolapi/cancel_resource_request.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudcontrolapi_cancel_resource_request/} for full documentation.
 }
 \keyword{internal}

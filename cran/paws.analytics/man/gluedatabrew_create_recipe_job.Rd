@@ -70,6 +70,6 @@ this timeout period ends with a status of \code{TIMEOUT}.}
 \description{
 Creates a new job to transform input data, using steps defined in an existing Glue DataBrew recipe
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/create_recipe_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_create_recipe_job/} for full documentation.
 }
 \keyword{internal}

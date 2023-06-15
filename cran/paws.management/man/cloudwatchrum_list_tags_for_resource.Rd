@@ -12,6 +12,6 @@ cloudwatchrum_list_tags_for_resource(ResourceArn)
 \description{
 Displays the tags associated with a CloudWatch RUM resource.
 
-See \url{https://paws-r.github.io/docs/cloudwatchrum/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchrum_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

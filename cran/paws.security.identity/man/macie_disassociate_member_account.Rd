@@ -14,6 +14,6 @@ Amazon Macie Classic.}
 \description{
 (Discontinued) Removes the specified member account from Amazon Macie Classic.
 
-See \url{https://paws-r.github.io/docs/macie/disassociate_member_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie_disassociate_member_account/} for full documentation.
 }
 \keyword{internal}

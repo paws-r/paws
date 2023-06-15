@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a new identity pool. The identity pool is a store of user identity information that is specific to your AWS account. The keys for `SupportedLoginProviders` are as follows:
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/create_identity_pool.html](https://paws-r.github.io/docs/cognitoidentity/create_identity_pool.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_create_identity_pool/](https://www.paws-r-sdk.com/docs/cognitoidentity_create_identity_pool/) for full documentation.
 #'
 #' @param IdentityPoolName &#91;required&#93; A string that you provide.
 #' @param AllowUnauthenticatedIdentities &#91;required&#93; TRUE if the identity pool supports unauthenticated logins.
@@ -58,7 +58,7 @@ cognitoidentity_create_identity_pool <- function(IdentityPoolName, AllowUnauthen
 #' @description
 #' Deletes identities from an identity pool. You can specify a list of 1-60 identities that you want to delete.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/delete_identities.html](https://paws-r.github.io/docs/cognitoidentity/delete_identities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_delete_identities/](https://www.paws-r-sdk.com/docs/cognitoidentity_delete_identities/) for full documentation.
 #'
 #' @param IdentityIdsToDelete &#91;required&#93; A list of 1-60 identities that you want to delete.
 #'
@@ -87,7 +87,7 @@ cognitoidentity_delete_identities <- function(IdentityIdsToDelete) {
 #' @description
 #' Deletes an identity pool. Once a pool is deleted, users will not be able to authenticate with the pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/delete_identity_pool.html](https://paws-r.github.io/docs/cognitoidentity/delete_identity_pool.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_delete_identity_pool/](https://www.paws-r-sdk.com/docs/cognitoidentity_delete_identity_pool/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
 #'
@@ -117,7 +117,7 @@ cognitoidentity_delete_identity_pool <- function(IdentityPoolId) {
 #' @description
 #' Returns metadata related to the given identity, including when the identity was created and any associated linked logins.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/describe_identity.html](https://paws-r.github.io/docs/cognitoidentity/describe_identity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_describe_identity/](https://www.paws-r-sdk.com/docs/cognitoidentity_describe_identity/) for full documentation.
 #'
 #' @param IdentityId &#91;required&#93; A unique identifier in the format REGION:GUID.
 #'
@@ -147,7 +147,7 @@ cognitoidentity_describe_identity <- function(IdentityId) {
 #' @description
 #' Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/describe_identity_pool.html](https://paws-r.github.io/docs/cognitoidentity/describe_identity_pool.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_describe_identity_pool/](https://www.paws-r-sdk.com/docs/cognitoidentity_describe_identity_pool/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
 #'
@@ -176,7 +176,7 @@ cognitoidentity_describe_identity_pool <- function(IdentityPoolId) {
 #' @description
 #' Returns credentials for the provided identity ID. Any provided logins will be validated against supported login providers. If the token is for cognito-identity.amazonaws.com, it will be passed through to AWS Security Token Service with the appropriate role for the token.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/get_credentials_for_identity.html](https://paws-r.github.io/docs/cognitoidentity/get_credentials_for_identity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_get_credentials_for_identity/](https://www.paws-r-sdk.com/docs/cognitoidentity_get_credentials_for_identity/) for full documentation.
 #'
 #' @param IdentityId &#91;required&#93; A unique identifier in the format REGION:GUID.
 #' @param Logins A set of optional name-value pairs that map provider names to provider
@@ -221,7 +221,7 @@ cognitoidentity_get_credentials_for_identity <- function(IdentityId, Logins = NU
 #' @description
 #' Generates (or retrieves) a Cognito ID. Supplying multiple logins will create an implicit linked account.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/get_id.html](https://paws-r.github.io/docs/cognitoidentity/get_id.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_get_id/](https://www.paws-r-sdk.com/docs/cognitoidentity_get_id/) for full documentation.
 #'
 #' @param AccountId A standard AWS account ID (9+ digits).
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
@@ -267,7 +267,7 @@ cognitoidentity_get_id <- function(AccountId = NULL, IdentityPoolId, Logins = NU
 #' @description
 #' Gets the roles for an identity pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/get_identity_pool_roles.html](https://paws-r.github.io/docs/cognitoidentity/get_identity_pool_roles.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_get_identity_pool_roles/](https://www.paws-r-sdk.com/docs/cognitoidentity_get_identity_pool_roles/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
 #'
@@ -296,7 +296,7 @@ cognitoidentity_get_identity_pool_roles <- function(IdentityPoolId) {
 #' @description
 #' Gets an OpenID token, using a known Cognito ID. This known Cognito ID is returned by [`get_id`][cognitoidentity_get_id]. You can optionally add additional logins for the identity. Supplying multiple logins creates an implicit link.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/get_open_id_token.html](https://paws-r.github.io/docs/cognitoidentity/get_open_id_token.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_get_open_id_token/](https://www.paws-r-sdk.com/docs/cognitoidentity_get_open_id_token/) for full documentation.
 #'
 #' @param IdentityId &#91;required&#93; A unique identifier in the format REGION:GUID.
 #' @param Logins A set of optional name-value pairs that map provider names to provider
@@ -331,7 +331,7 @@ cognitoidentity_get_open_id_token <- function(IdentityId, Logins = NULL) {
 #' @description
 #' Registers (or retrieves) a Cognito `IdentityId` and an OpenID Connect token for a user authenticated by your backend authentication process. Supplying multiple logins will create an implicit linked account. You can only specify one developer provider as part of the `Logins` map, which is linked to the identity pool. The developer provider is the "domain" by which Cognito will refer to your users.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/get_open_id_token_for_developer_identity.html](https://paws-r.github.io/docs/cognitoidentity/get_open_id_token_for_developer_identity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_get_open_id_token_for_developer_identity/](https://www.paws-r-sdk.com/docs/cognitoidentity_get_open_id_token_for_developer_identity/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
 #' @param IdentityId A unique identifier in the format REGION:GUID.
@@ -385,7 +385,7 @@ cognitoidentity_get_open_id_token_for_developer_identity <- function(IdentityPoo
 #' @description
 #' Use [`get_principal_tag_attribute_map`][cognitoidentity_get_principal_tag_attribute_map] to list all mappings between `PrincipalTags` and user attributes.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/get_principal_tag_attribute_map.html](https://paws-r.github.io/docs/cognitoidentity/get_principal_tag_attribute_map.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_get_principal_tag_attribute_map/](https://www.paws-r-sdk.com/docs/cognitoidentity_get_principal_tag_attribute_map/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; You can use this operation to get the ID of the Identity Pool you setup
 #' attribute mappings for.
@@ -416,7 +416,7 @@ cognitoidentity_get_principal_tag_attribute_map <- function(IdentityPoolId, Iden
 #' @description
 #' Lists the identities in an identity pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/list_identities.html](https://paws-r.github.io/docs/cognitoidentity/list_identities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_list_identities/](https://www.paws-r-sdk.com/docs/cognitoidentity_list_identities/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
 #' @param MaxResults &#91;required&#93; The maximum number of identities to return.
@@ -450,7 +450,7 @@ cognitoidentity_list_identities <- function(IdentityPoolId, MaxResults, NextToke
 #' @description
 #' Lists all of the Cognito identity pools registered for your account.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/list_identity_pools.html](https://paws-r.github.io/docs/cognitoidentity/list_identity_pools.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_list_identity_pools/](https://www.paws-r-sdk.com/docs/cognitoidentity_list_identity_pools/) for full documentation.
 #'
 #' @param MaxResults &#91;required&#93; The maximum number of identities to return.
 #' @param NextToken A pagination token.
@@ -480,7 +480,7 @@ cognitoidentity_list_identity_pools <- function(MaxResults, NextToken = NULL) {
 #' @description
 #' Lists the tags that are assigned to an Amazon Cognito identity pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/list_tags_for_resource.html](https://paws-r.github.io/docs/cognitoidentity/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/cognitoidentity_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the identity pool that the tags are
 #' assigned to.
@@ -512,7 +512,7 @@ cognitoidentity_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Retrieves the `IdentityID` associated with a `DeveloperUserIdentifier` or the list of `DeveloperUserIdentifier` values associated with an `IdentityId` for an existing identity. Either `IdentityID` or `DeveloperUserIdentifier` must not be null. If you supply only one of these values, the other value will be searched in the database and returned as a part of the response. If you supply both, `DeveloperUserIdentifier` will be matched against `IdentityID`. If the values are verified against the database, the response returns both values and is the same as the request. Otherwise a `ResourceConflictException` is thrown.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/lookup_developer_identity.html](https://paws-r.github.io/docs/cognitoidentity/lookup_developer_identity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_lookup_developer_identity/](https://www.paws-r-sdk.com/docs/cognitoidentity_lookup_developer_identity/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
 #' @param IdentityId A unique identifier in the format REGION:GUID.
@@ -553,7 +553,7 @@ cognitoidentity_lookup_developer_identity <- function(IdentityPoolId, IdentityId
 #' @description
 #' Merges two users having different `IdentityId`s, existing in the same identity pool, and identified by the same developer provider. You can use this action to request that discrete users be merged and identified as a single user in the Cognito environment. Cognito associates the given source user (`SourceUserIdentifier`) with the `IdentityId` of the `DestinationUserIdentifier`. Only developer-authenticated users can be merged. If the users to be merged are associated with the same public provider, but as two different users, an exception will be thrown.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/merge_developer_identities.html](https://paws-r.github.io/docs/cognitoidentity/merge_developer_identities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_merge_developer_identities/](https://www.paws-r-sdk.com/docs/cognitoidentity_merge_developer_identities/) for full documentation.
 #'
 #' @param SourceUserIdentifier &#91;required&#93; User identifier for the source user. The value should be a
 #' `DeveloperUserIdentifier`.
@@ -592,7 +592,7 @@ cognitoidentity_merge_developer_identities <- function(SourceUserIdentifier, Des
 #' @description
 #' Sets the roles for an identity pool. These roles are used when making calls to [`get_credentials_for_identity`][cognitoidentity_get_credentials_for_identity] action.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/set_identity_pool_roles.html](https://paws-r.github.io/docs/cognitoidentity/set_identity_pool_roles.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_set_identity_pool_roles/](https://www.paws-r-sdk.com/docs/cognitoidentity_set_identity_pool_roles/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
 #' @param Roles &#91;required&#93; The map of roles associated with this pool. For a given role, the key
@@ -631,7 +631,7 @@ cognitoidentity_set_identity_pool_roles <- function(IdentityPoolId, Roles, RoleM
 #' @description
 #' You can use this operation to use default (username and clientID) attribute or custom attribute mappings.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/set_principal_tag_attribute_map.html](https://paws-r.github.io/docs/cognitoidentity/set_principal_tag_attribute_map.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_set_principal_tag_attribute_map/](https://www.paws-r-sdk.com/docs/cognitoidentity_set_principal_tag_attribute_map/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; The ID of the Identity Pool you want to set attribute mappings for.
 #' @param IdentityProviderName &#91;required&#93; The provider name you want to use for attribute mappings.
@@ -664,7 +664,7 @@ cognitoidentity_set_principal_tag_attribute_map <- function(IdentityPoolId, Iden
 #' @description
 #' Assigns a set of tags to the specified Amazon Cognito identity pool. A tag is a label that you can use to categorize and manage identity pools in different ways, such as by purpose, owner, environment, or other criteria.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/tag_resource.html](https://paws-r.github.io/docs/cognitoidentity/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_tag_resource/](https://www.paws-r-sdk.com/docs/cognitoidentity_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the identity pool.
 #' @param Tags &#91;required&#93; The tags to assign to the identity pool.
@@ -694,7 +694,7 @@ cognitoidentity_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Unlinks a `DeveloperUserIdentifier` from an existing identity. Unlinked developer users will be considered new identities next time they are seen. If, for a given Cognito identity, you remove all federated identities as well as the developer user identifier, the Cognito identity becomes inaccessible.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/unlink_developer_identity.html](https://paws-r.github.io/docs/cognitoidentity/unlink_developer_identity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_unlink_developer_identity/](https://www.paws-r-sdk.com/docs/cognitoidentity_unlink_developer_identity/) for full documentation.
 #'
 #' @param IdentityId &#91;required&#93; A unique identifier in the format REGION:GUID.
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
@@ -727,7 +727,7 @@ cognitoidentity_unlink_developer_identity <- function(IdentityId, IdentityPoolId
 #' @description
 #' Unlinks a federated identity from an existing account. Unlinked logins will be considered new identities next time they are seen. Removing the last linked login will make this identity inaccessible.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/unlink_identity.html](https://paws-r.github.io/docs/cognitoidentity/unlink_identity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_unlink_identity/](https://www.paws-r-sdk.com/docs/cognitoidentity_unlink_identity/) for full documentation.
 #'
 #' @param IdentityId &#91;required&#93; A unique identifier in the format REGION:GUID.
 #' @param Logins &#91;required&#93; A set of optional name-value pairs that map provider names to provider
@@ -760,7 +760,7 @@ cognitoidentity_unlink_identity <- function(IdentityId, Logins, LoginsToRemove) 
 #' @description
 #' Removes the specified tags from the specified Amazon Cognito identity pool. You can use this action up to 5 times per second, per account
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/untag_resource.html](https://paws-r.github.io/docs/cognitoidentity/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_untag_resource/](https://www.paws-r-sdk.com/docs/cognitoidentity_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the identity pool.
 #' @param TagKeys &#91;required&#93; The keys of the tags to remove from the user pool.
@@ -790,7 +790,7 @@ cognitoidentity_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates an identity pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentity/update_identity_pool.html](https://paws-r.github.io/docs/cognitoidentity/update_identity_pool.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentity_update_identity_pool/](https://www.paws-r-sdk.com/docs/cognitoidentity_update_identity_pool/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
 #' @param IdentityPoolName &#91;required&#93; A string that you provide.

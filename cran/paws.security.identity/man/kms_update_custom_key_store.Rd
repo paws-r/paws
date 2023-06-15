@@ -133,6 +133,6 @@ To change this value, the external key store must be disconnected.}
 \description{
 Changes the properties of a custom key store. You can use this operation to change the properties of an CloudHSM key store or an external key store.
 
-See \url{https://paws-r.github.io/docs/kms/update_custom_key_store.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_update_custom_key_store/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ schemas_delete_schema(RegistryName, SchemaName)
 \description{
 Delete a schema definition.
 
-See \url{https://paws-r.github.io/docs/schemas/delete_schema.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/schemas_delete_schema/} for full documentation.
 }
 \keyword{internal}

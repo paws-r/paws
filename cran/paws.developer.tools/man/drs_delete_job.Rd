@@ -12,6 +12,6 @@ drs_delete_job(jobID)
 \description{
 Deletes a single Job by ID.
 
-See \url{https://paws-r.github.io/docs/drs/delete_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_delete_job/} for full documentation.
 }
 \keyword{internal}

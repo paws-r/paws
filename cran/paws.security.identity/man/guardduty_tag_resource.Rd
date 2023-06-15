@@ -15,6 +15,6 @@ to.}
 \description{
 Adds tags to a resource.
 
-See \url{https://paws-r.github.io/docs/guardduty/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_tag_resource/} for full documentation.
 }
 \keyword{internal}

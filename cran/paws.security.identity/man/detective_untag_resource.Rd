@@ -15,6 +15,6 @@ remove up to 50 tags at a time.}
 \description{
 Removes tags from a behavior graph.
 
-See \url{https://paws-r.github.io/docs/detective/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/detective_untag_resource/} for full documentation.
 }
 \keyword{internal}

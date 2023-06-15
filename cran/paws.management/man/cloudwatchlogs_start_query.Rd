@@ -58,6 +58,6 @@ values are returned. The default is 1000.}
 \description{
 Schedules a query of a log group using CloudWatch Logs Insights. You specify the log group and time range to query and the query string to use.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/start_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_start_query/} for full documentation.
 }
 \keyword{internal}

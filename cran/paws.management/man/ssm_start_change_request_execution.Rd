@@ -82,6 +82,6 @@ associated change template is added.}
 \description{
 Creates a change request for Change Manager. The Automation runbooks specified in the change request run only after all required approvals for the change request have been received.
 
-See \url{https://paws-r.github.io/docs/ssm/start_change_request_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_start_change_request_execution/} for full documentation.
 }
 \keyword{internal}

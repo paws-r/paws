@@ -31,6 +31,6 @@ permission.}
 \description{
 Begins a FHIR Import job.
 
-See \url{https://paws-r.github.io/docs/healthlake/start_fhir_import_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/healthlake_start_fhir_import_job/} for full documentation.
 }
 \keyword{internal}

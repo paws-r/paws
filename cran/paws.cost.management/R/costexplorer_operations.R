@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Creates a new cost anomaly detection monitor with the requested type and monitor specification.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/create_anomaly_monitor.html](https://paws-r.github.io/docs/costexplorer/create_anomaly_monitor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_create_anomaly_monitor/](https://www.paws-r-sdk.com/docs/costexplorer_create_anomaly_monitor/) for full documentation.
 #'
 #' @param AnomalyMonitor &#91;required&#93; The cost anomaly detection monitor object that you want to create.
 #' @param ResourceTags An optional list of tags to associate with the specified
@@ -63,7 +63,7 @@ costexplorer_create_anomaly_monitor <- function(AnomalyMonitor, ResourceTags = N
 #' @description
 #' Adds an alert subscription to a cost anomaly detection monitor. You can use each subscription to define subscribers with email or SNS notifications. Email subscribers can set an absolute or percentage threshold and a time frequency for receiving notifications.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/create_anomaly_subscription.html](https://paws-r.github.io/docs/costexplorer/create_anomaly_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_create_anomaly_subscription/](https://www.paws-r-sdk.com/docs/costexplorer_create_anomaly_subscription/) for full documentation.
 #'
 #' @param AnomalySubscription &#91;required&#93; The cost anomaly subscription object that you want to create.
 #' @param ResourceTags An optional list of tags to associate with the specified
@@ -117,7 +117,7 @@ costexplorer_create_anomaly_subscription <- function(AnomalySubscription, Resour
 #' @description
 #' Creates a new Cost Category with the requested name and rules.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/create_cost_category_definition.html](https://paws-r.github.io/docs/costexplorer/create_cost_category_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_create_cost_category_definition/](https://www.paws-r-sdk.com/docs/costexplorer_create_cost_category_definition/) for full documentation.
 #'
 #' @param Name &#91;required&#93; 
 #' @param EffectiveStart The Cost Category's effective start date. It can only be a billing start
@@ -182,7 +182,7 @@ costexplorer_create_cost_category_definition <- function(Name, EffectiveStart = 
 #' @description
 #' Deletes a cost anomaly monitor.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/delete_anomaly_monitor.html](https://paws-r.github.io/docs/costexplorer/delete_anomaly_monitor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_delete_anomaly_monitor/](https://www.paws-r-sdk.com/docs/costexplorer_delete_anomaly_monitor/) for full documentation.
 #'
 #' @param MonitorArn &#91;required&#93; The unique identifier of the cost anomaly monitor that you want to
 #' delete.
@@ -212,7 +212,7 @@ costexplorer_delete_anomaly_monitor <- function(MonitorArn) {
 #' @description
 #' Deletes a cost anomaly subscription.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/delete_anomaly_subscription.html](https://paws-r.github.io/docs/costexplorer/delete_anomaly_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_delete_anomaly_subscription/](https://www.paws-r-sdk.com/docs/costexplorer_delete_anomaly_subscription/) for full documentation.
 #'
 #' @param SubscriptionArn &#91;required&#93; The unique identifier of the cost anomaly subscription that you want to
 #' delete.
@@ -242,7 +242,7 @@ costexplorer_delete_anomaly_subscription <- function(SubscriptionArn) {
 #' @description
 #' Deletes a Cost Category. Expenses from this month going forward will no longer be categorized with this Cost Category.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/delete_cost_category_definition.html](https://paws-r.github.io/docs/costexplorer/delete_cost_category_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_delete_cost_category_definition/](https://www.paws-r-sdk.com/docs/costexplorer_delete_cost_category_definition/) for full documentation.
 #'
 #' @param CostCategoryArn &#91;required&#93; The unique identifier for your Cost Category.
 #'
@@ -272,7 +272,7 @@ costexplorer_delete_cost_category_definition <- function(CostCategoryArn) {
 #' @description
 #' Returns the name, Amazon Resource Name (ARN), rules, definition, and effective dates of a Cost Category that's defined in the account.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/describe_cost_category_definition.html](https://paws-r.github.io/docs/costexplorer/describe_cost_category_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_describe_cost_category_definition/](https://www.paws-r-sdk.com/docs/costexplorer_describe_cost_category_definition/) for full documentation.
 #'
 #' @param CostCategoryArn &#91;required&#93; The unique identifier for your Cost Category.
 #' @param EffectiveOn The date when the Cost Category was effective.
@@ -303,7 +303,7 @@ costexplorer_describe_cost_category_definition <- function(CostCategoryArn, Effe
 #' @description
 #' Retrieves all of the cost anomalies detected on your account during the time period that's specified by the `DateInterval` object. Anomalies are available for up to 90 days.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/get_anomalies.html](https://paws-r.github.io/docs/costexplorer/get_anomalies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_get_anomalies/](https://www.paws-r-sdk.com/docs/costexplorer_get_anomalies/) for full documentation.
 #'
 #' @param MonitorArn Retrieves all of the cost anomalies detected for a specific cost anomaly
 #' monitor Amazon Resource Name (ARN).
@@ -344,7 +344,7 @@ costexplorer_get_anomalies <- function(MonitorArn = NULL, DateInterval, Feedback
 #' @description
 #' Retrieves the cost anomaly monitor definitions for your account. You can filter using a list of cost anomaly monitor Amazon Resource Names (ARNs).
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/get_anomaly_monitors.html](https://paws-r.github.io/docs/costexplorer/get_anomaly_monitors.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_get_anomaly_monitors/](https://www.paws-r-sdk.com/docs/costexplorer_get_anomaly_monitors/) for full documentation.
 #'
 #' @param MonitorArnList A list of cost anomaly monitor ARNs.
 #' @param NextPageToken The token to retrieve the next set of results. Amazon Web Services
@@ -377,7 +377,7 @@ costexplorer_get_anomaly_monitors <- function(MonitorArnList = NULL, NextPageTok
 #' @description
 #' Retrieves the cost anomaly subscription objects for your account. You can filter using a list of cost anomaly monitor Amazon Resource Names (ARNs).
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/get_anomaly_subscriptions.html](https://paws-r.github.io/docs/costexplorer/get_anomaly_subscriptions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_get_anomaly_subscriptions/](https://www.paws-r-sdk.com/docs/costexplorer_get_anomaly_subscriptions/) for full documentation.
 #'
 #' @param SubscriptionArnList A list of cost anomaly subscription ARNs.
 #' @param MonitorArn Cost anomaly monitor ARNs.
@@ -411,7 +411,7 @@ costexplorer_get_anomaly_subscriptions <- function(SubscriptionArnList = NULL, M
 #' @description
 #' Retrieves cost and usage metrics for your account. You can specify which cost and usage-related metric that you want the request to return. For example, you can specify `BlendedCosts` or `UsageQuantity`. You can also filter and group your data by various dimensions, such as `SERVICE` or `AZ`, in a specific time range. For a complete list of valid dimensions, see the [`get_dimension_values`][costexplorer_get_dimension_values] operation. Management account in an organization in Organizations have access to all member accounts.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/get_cost_and_usage.html](https://paws-r.github.io/docs/costexplorer/get_cost_and_usage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_get_cost_and_usage/](https://www.paws-r-sdk.com/docs/costexplorer_get_cost_and_usage/) for full documentation.
 #'
 #' @param TimePeriod &#91;required&#93; Sets the start date and end date for retrieving Amazon Web Services
 #' costs. The start date is inclusive, but the end date is exclusive. For
@@ -492,7 +492,7 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NU
 #' @description
 #' Retrieves cost and usage metrics with resources for your account. You can specify which cost and usage-related metric, such as `BlendedCosts` or `UsageQuantity`, that you want the request to return. You can also filter and group your data by various dimensions, such as `SERVICE` or `AZ`, in a specific time range. For a complete list of valid dimensions, see the [`get_dimension_values`][costexplorer_get_dimension_values] operation. Management account in an organization in Organizations have access to all member accounts. This API is currently available for the Amazon Elastic Compute Cloud – Compute service only.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/get_cost_and_usage_with_resources.html](https://paws-r.github.io/docs/costexplorer/get_cost_and_usage_with_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_get_cost_and_usage_with_resources/](https://www.paws-r-sdk.com/docs/costexplorer_get_cost_and_usage_with_resources/) for full documentation.
 #'
 #' @param TimePeriod &#91;required&#93; Sets the start and end dates for retrieving Amazon Web Services costs.
 #' The range must be within the last 14 days (the start date cannot be
@@ -574,7 +574,7 @@ costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granulari
 #' @description
 #' Retrieves an array of Cost Category names and values incurred cost.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/get_cost_categories.html](https://paws-r.github.io/docs/costexplorer/get_cost_categories.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_get_cost_categories/](https://www.paws-r-sdk.com/docs/costexplorer_get_cost_categories/) for full documentation.
 #'
 #' @param SearchString The value that you want to search the filter values for.
 #' 
@@ -650,7 +650,7 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
 #' @description
 #' Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast time period that you select, based on your past costs.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/get_cost_forecast.html](https://paws-r.github.io/docs/costexplorer/get_cost_forecast.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_get_cost_forecast/](https://www.paws-r-sdk.com/docs/costexplorer_get_cost_forecast/) for full documentation.
 #'
 #' @param TimePeriod &#91;required&#93; The period of time that you want the forecast to cover. The start date
 #' must be equal to or no later than the current date to avoid a validation
@@ -757,7 +757,7 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #' @description
 #' Retrieves all available filter values for a specified filter over a period of time. You can search the dimension values for an arbitrary string.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/get_dimension_values.html](https://paws-r.github.io/docs/costexplorer/get_dimension_values.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_get_dimension_values/](https://www.paws-r-sdk.com/docs/costexplorer_get_dimension_values/) for full documentation.
 #'
 #' @param SearchString The value that you want to search the filter values for.
 #' @param TimePeriod &#91;required&#93; The start date and end date for retrieving the dimension values. The
@@ -982,7 +982,7 @@ costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, D
 #' @description
 #' Retrieves the reservation coverage for your account, which you can use to see how much of your Amazon Elastic Compute Cloud, Amazon ElastiCache, Amazon Relational Database Service, or Amazon Redshift usage is covered by a reservation. An organization's management account can see the coverage of the associated member accounts. This supports dimensions, Cost Categories, and nested expressions. For any time period, you can filter data about reservation usage by the following dimensions:
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/get_reservation_coverage.html](https://paws-r.github.io/docs/costexplorer/get_reservation_coverage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_get_reservation_coverage/](https://www.paws-r-sdk.com/docs/costexplorer_get_reservation_coverage/) for full documentation.
 #'
 #' @param TimePeriod &#91;required&#93; The start and end dates of the period that you want to retrieve data
 #' about reservation coverage for. You can retrieve data for a maximum of
@@ -1122,7 +1122,7 @@ costexplorer_get_reservation_coverage <- function(TimePeriod, GroupBy = NULL, Gr
 #' @description
 #' Gets recommendations for reservation purchases. These recommendations might help you to reduce your costs. Reservations provide a discounted hourly rate (up to 75%) compared to On-Demand pricing.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/get_reservation_purchase_recommendation.html](https://paws-r.github.io/docs/costexplorer/get_reservation_purchase_recommendation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_get_reservation_purchase_recommendation/](https://www.paws-r-sdk.com/docs/costexplorer_get_reservation_purchase_recommendation/) for full documentation.
 #'
 #' @param AccountId The account ID that's associated with the recommendation.
 #' @param Service &#91;required&#93; The specific service that you want recommendations for.
@@ -1169,7 +1169,7 @@ costexplorer_get_reservation_purchase_recommendation <- function(AccountId = NUL
 #' @description
 #' Retrieves the reservation utilization for your account. Management account in an organization have access to member accounts. You can filter data by dimensions in a time period. You can use [`get_dimension_values`][costexplorer_get_dimension_values] to determine the possible dimension values. Currently, you can group only by `SUBSCRIPTION_ID`.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/get_reservation_utilization.html](https://paws-r.github.io/docs/costexplorer/get_reservation_utilization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_get_reservation_utilization/](https://www.paws-r-sdk.com/docs/costexplorer_get_reservation_utilization/) for full documentation.
 #'
 #' @param TimePeriod &#91;required&#93; Sets the start and end dates for retrieving Reserved Instance (RI)
 #' utilization. The start date is inclusive, but the end date is exclusive.
@@ -1290,7 +1290,7 @@ costexplorer_get_reservation_utilization <- function(TimePeriod, GroupBy = NULL,
 #' @description
 #' Creates recommendations that help you save cost by identifying idle and underutilized Amazon EC2 instances.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/get_rightsizing_recommendation.html](https://paws-r.github.io/docs/costexplorer/get_rightsizing_recommendation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_get_rightsizing_recommendation/](https://www.paws-r-sdk.com/docs/costexplorer_get_rightsizing_recommendation/) for full documentation.
 #'
 #' @param Filter 
 #' @param Configuration You can use Configuration to customize recommendations across two
@@ -1333,7 +1333,7 @@ costexplorer_get_rightsizing_recommendation <- function(Filter = NULL, Configura
 #' @description
 #' Retrieves the Savings Plans covered for your account. This enables you to see how much of your cost is covered by a Savings Plan. An organization’s management account can see the coverage of the associated member accounts. This supports dimensions, Cost Categories, and nested expressions. For any time period, you can filter data for Savings Plans usage with the following dimensions:
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/get_savings_plans_coverage.html](https://paws-r.github.io/docs/costexplorer/get_savings_plans_coverage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_get_savings_plans_coverage/](https://www.paws-r-sdk.com/docs/costexplorer_get_savings_plans_coverage/) for full documentation.
 #'
 #' @param TimePeriod &#91;required&#93; The time period that you want the usage and costs for. The `Start` date
 #' must be within 13 months. The `End` date must be after the `Start` date,
@@ -1418,7 +1418,7 @@ costexplorer_get_savings_plans_coverage <- function(TimePeriod, GroupBy = NULL, 
 #' @description
 #' Retrieves the Savings Plans recommendations for your account. First use [`start_savings_plans_purchase_recommendation_generation`][costexplorer_start_savings_plans_purchase_recommendation_generation] to generate a new set of recommendations, and then use [`get_savings_plans_purchase_recommendation`][costexplorer_get_savings_plans_purchase_recommendation] to retrieve them.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/get_savings_plans_purchase_recommendation.html](https://paws-r.github.io/docs/costexplorer/get_savings_plans_purchase_recommendation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_get_savings_plans_purchase_recommendation/](https://www.paws-r-sdk.com/docs/costexplorer_get_savings_plans_purchase_recommendation/) for full documentation.
 #'
 #' @param SavingsPlansType &#91;required&#93; The Savings Plans recommendation type that's requested.
 #' @param TermInYears &#91;required&#93; The savings plan recommendation term that's used to generate these
@@ -1474,7 +1474,7 @@ costexplorer_get_savings_plans_purchase_recommendation <- function(SavingsPlansT
 #' @description
 #' Retrieves the Savings Plans utilization for your account across date ranges with daily or monthly granularity. Management account in an organization have access to member accounts. You can use [`get_dimension_values`][costexplorer_get_dimension_values] in `SAVINGS_PLANS` to determine the possible dimension values.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/get_savings_plans_utilization.html](https://paws-r.github.io/docs/costexplorer/get_savings_plans_utilization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_get_savings_plans_utilization/](https://www.paws-r-sdk.com/docs/costexplorer_get_savings_plans_utilization/) for full documentation.
 #'
 #' @param TimePeriod &#91;required&#93; The time period that you want the usage and costs for. The `Start` date
 #' must be within 13 months. The `End` date must be after the `Start` date,
@@ -1548,7 +1548,7 @@ costexplorer_get_savings_plans_utilization <- function(TimePeriod, Granularity =
 #' @description
 #' Retrieves attribute data along with aggregate utilization and savings data for a given time period. This doesn't support granular or grouped data (daily/monthly) in response. You can't retrieve data by dates in a single response similar to `GetSavingsPlanUtilization`, but you have the option to make multiple calls to `GetSavingsPlanUtilizationDetails` by providing individual dates. You can use [`get_dimension_values`][costexplorer_get_dimension_values] in `SAVINGS_PLANS` to determine the possible dimension values.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/get_savings_plans_utilization_details.html](https://paws-r.github.io/docs/costexplorer/get_savings_plans_utilization_details.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_get_savings_plans_utilization_details/](https://www.paws-r-sdk.com/docs/costexplorer_get_savings_plans_utilization_details/) for full documentation.
 #'
 #' @param TimePeriod &#91;required&#93; The time period that you want the usage and costs for. The `Start` date
 #' must be within 13 months. The `End` date must be after the `Start` date,
@@ -1623,7 +1623,7 @@ costexplorer_get_savings_plans_utilization_details <- function(TimePeriod, Filte
 #' @description
 #' Queries for available tag keys and tag values for a specified period. You can search the tag values for an arbitrary string.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/get_tags.html](https://paws-r.github.io/docs/costexplorer/get_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_get_tags/](https://www.paws-r-sdk.com/docs/costexplorer_get_tags/) for full documentation.
 #'
 #' @param SearchString The value that you want to search for.
 #' @param TimePeriod &#91;required&#93; The start and end dates for retrieving the dimension values. The start
@@ -1694,7 +1694,7 @@ costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL
 #' @description
 #' Retrieves a forecast for how much Amazon Web Services predicts that you will use over the forecast time period that you select, based on your past usage.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/get_usage_forecast.html](https://paws-r.github.io/docs/costexplorer/get_usage_forecast.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_get_usage_forecast/](https://www.paws-r-sdk.com/docs/costexplorer_get_usage_forecast/) for full documentation.
 #'
 #' @param TimePeriod &#91;required&#93; The start and end dates of the period that you want to retrieve usage
 #' forecast for. The start date is included in the period, but the end date
@@ -1798,7 +1798,7 @@ costexplorer_get_usage_forecast <- function(TimePeriod, Metric, Granularity, Fil
 #' @description
 #' Get a list of cost allocation tags. All inputs in the API are optional and serve as filters. By default, all cost allocation tags are returned.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/list_cost_allocation_tags.html](https://paws-r.github.io/docs/costexplorer/list_cost_allocation_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_list_cost_allocation_tags/](https://www.paws-r-sdk.com/docs/costexplorer_list_cost_allocation_tags/) for full documentation.
 #'
 #' @param Status The status of cost allocation tag keys that are returned for this
 #' request.
@@ -1840,7 +1840,7 @@ costexplorer_list_cost_allocation_tags <- function(Status = NULL, TagKeys = NULL
 #' @description
 #' Returns the name, Amazon Resource Name (ARN), `NumberOfRules` and effective dates of all Cost Categories defined in the account. You have the option to use `EffectiveOn` to return a list of Cost Categories that were active on a specific date. If there is no `EffectiveOn` specified, you’ll see Cost Categories that are effective on the current date. If Cost Category is still effective, `EffectiveEnd` is omitted in the response. [`list_cost_category_definitions`][costexplorer_list_cost_category_definitions] supports pagination. The request can have a `MaxResults` range up to 100.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/list_cost_category_definitions.html](https://paws-r.github.io/docs/costexplorer/list_cost_category_definitions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_list_cost_category_definitions/](https://www.paws-r-sdk.com/docs/costexplorer_list_cost_category_definitions/) for full documentation.
 #'
 #' @param EffectiveOn The date when the Cost Category was effective.
 #' @param NextToken The token to retrieve the next set of results. Amazon Web Services
@@ -1874,7 +1874,7 @@ costexplorer_list_cost_category_definitions <- function(EffectiveOn = NULL, Next
 #' @description
 #' Retrieves a list of your historical recommendation generations within the past 30 days.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/list_savings_plans_purchase_recommendation_generation.html](https://paws-r.github.io/docs/costexplorer/list_savings_plans_purchase_recommendation_generation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_list_savings_plans_purchase_recommendation_generation/](https://www.paws-r-sdk.com/docs/costexplorer_list_savings_plans_purchase_recommendation_generation/) for full documentation.
 #'
 #' @param GenerationStatus The status of the recommendation generation.
 #' @param RecommendationIds The IDs for each specific recommendation.
@@ -1908,7 +1908,7 @@ costexplorer_list_savings_plans_purchase_recommendation_generation <- function(G
 #' @description
 #' Returns a list of resource tags associated with the resource specified by the Amazon Resource Name (ARN).
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/list_tags_for_resource.html](https://paws-r.github.io/docs/costexplorer/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/costexplorer_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource. For a list of supported
 #' resources, see
@@ -1939,7 +1939,7 @@ costexplorer_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Modifies the feedback property of a given cost anomaly.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/provide_anomaly_feedback.html](https://paws-r.github.io/docs/costexplorer/provide_anomaly_feedback.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_provide_anomaly_feedback/](https://www.paws-r-sdk.com/docs/costexplorer_provide_anomaly_feedback/) for full documentation.
 #'
 #' @param AnomalyId &#91;required&#93; A cost anomaly ID.
 #' @param Feedback &#91;required&#93; Describes whether the cost anomaly was a planned activity or you
@@ -1970,7 +1970,7 @@ costexplorer_provide_anomaly_feedback <- function(AnomalyId, Feedback) {
 #' @description
 #' Requests a Savings Plans recommendation generation. This enables you to calculate a fresh set of Savings Plans recommendations that takes your latest usage data and current Savings Plans inventory into account. You can refresh Savings Plans recommendations up to three times daily for a consolidated billing family.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/start_savings_plans_purchase_recommendation_generation.html](https://paws-r.github.io/docs/costexplorer/start_savings_plans_purchase_recommendation_generation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_start_savings_plans_purchase_recommendation_generation/](https://www.paws-r-sdk.com/docs/costexplorer_start_savings_plans_purchase_recommendation_generation/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1998,7 +1998,7 @@ costexplorer_start_savings_plans_purchase_recommendation_generation <- function(
 #' @description
 #' An API operation for adding one or more tags (key-value pairs) to a resource.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/tag_resource.html](https://paws-r.github.io/docs/costexplorer/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_tag_resource/](https://www.paws-r-sdk.com/docs/costexplorer_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource. For a list of supported
 #' resources, see
@@ -2051,7 +2051,7 @@ costexplorer_tag_resource <- function(ResourceArn, ResourceTags) {
 #' @description
 #' Removes one or more tags from a resource. Specify only tag keys in your request. Don't specify the value.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/untag_resource.html](https://paws-r.github.io/docs/costexplorer/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_untag_resource/](https://www.paws-r-sdk.com/docs/costexplorer_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource. For a list of supported
 #' resources, see
@@ -2086,7 +2086,7 @@ costexplorer_untag_resource <- function(ResourceArn, ResourceTagKeys) {
 #' @description
 #' Updates an existing cost anomaly monitor. The changes made are applied going forward, and doesn't change anomalies detected in the past.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/update_anomaly_monitor.html](https://paws-r.github.io/docs/costexplorer/update_anomaly_monitor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_update_anomaly_monitor/](https://www.paws-r-sdk.com/docs/costexplorer_update_anomaly_monitor/) for full documentation.
 #'
 #' @param MonitorArn &#91;required&#93; Cost anomaly monitor Amazon Resource Names (ARNs).
 #' @param MonitorName The new name for the cost anomaly monitor.
@@ -2116,7 +2116,7 @@ costexplorer_update_anomaly_monitor <- function(MonitorArn, MonitorName = NULL) 
 #' @description
 #' Updates an existing cost anomaly monitor subscription.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/update_anomaly_subscription.html](https://paws-r.github.io/docs/costexplorer/update_anomaly_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_update_anomaly_subscription/](https://www.paws-r-sdk.com/docs/costexplorer_update_anomaly_subscription/) for full documentation.
 #'
 #' @param SubscriptionArn &#91;required&#93; A cost anomaly subscription Amazon Resource Name (ARN).
 #' @param Threshold (deprecated)
@@ -2180,7 +2180,7 @@ costexplorer_update_anomaly_subscription <- function(SubscriptionArn, Threshold 
 #' @description
 #' Updates status for cost allocation tags in bulk, with maximum batch size of 20. If the tag status that's updated is the same as the existing tag status, the request doesn't fail. Instead, it doesn't have any effect on the tag status (for example, activating the active tag).
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/update_cost_allocation_tags_status.html](https://paws-r.github.io/docs/costexplorer/update_cost_allocation_tags_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_update_cost_allocation_tags_status/](https://www.paws-r-sdk.com/docs/costexplorer_update_cost_allocation_tags_status/) for full documentation.
 #'
 #' @param CostAllocationTagsStatus &#91;required&#93; The list of `CostAllocationTagStatusEntry` objects that are used to
 #' update cost allocation tags status for this request.
@@ -2210,7 +2210,7 @@ costexplorer_update_cost_allocation_tags_status <- function(CostAllocationTagsSt
 #' @description
 #' Updates an existing Cost Category. Changes made to the Cost Category rules will be used to categorize the current month’s expenses and future expenses. This won’t change categorization for the previous months.
 #'
-#' See [https://paws-r.github.io/docs/costexplorer/update_cost_category_definition.html](https://paws-r.github.io/docs/costexplorer/update_cost_category_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_update_cost_category_definition/](https://www.paws-r-sdk.com/docs/costexplorer_update_cost_category_definition/) for full documentation.
 #'
 #' @param CostCategoryArn &#91;required&#93; The unique identifier for your Cost Category.
 #' @param EffectiveStart The Cost Category's effective start date. It can only be a billing start

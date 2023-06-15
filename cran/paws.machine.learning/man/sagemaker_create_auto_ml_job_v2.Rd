@@ -71,6 +71,6 @@ validation dataset must be less than 2 GB in size.}
 \description{
 Creates an Amazon SageMaker AutoML job that uses non-tabular data such as images or text for Computer Vision or Natural Language Processing problems.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_auto_ml_job_v2.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_auto_ml_job_v2/} for full documentation.
 }
 \keyword{internal}

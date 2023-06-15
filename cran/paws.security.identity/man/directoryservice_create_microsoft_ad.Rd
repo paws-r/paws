@@ -45,6 +45,6 @@ created.}
 \description{
 Creates a Microsoft AD directory in the Amazon Web Services Cloud. For more information, see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_microsoft_ad.html}{Managed Microsoft AD} in the \emph{Directory Service Admin Guide}.
 
-See \url{https://paws-r.github.io/docs/directoryservice/create_microsoft_ad.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_create_microsoft_ad/} for full documentation.
 }
 \keyword{internal}

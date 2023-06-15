@@ -14,6 +14,6 @@ sesv2_get_email_identity(EmailIdentity)
 \description{
 Provides information about a specific identity, including the identity's verification status, sending authorization policies, its DKIM authentication status, and its custom Mail-From settings.
 
-See \url{https://paws-r.github.io/docs/sesv2/get_email_identity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_get_email_identity/} for full documentation.
 }
 \keyword{internal}

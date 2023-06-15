@@ -12,6 +12,6 @@ elasticache_delete_user(UserId)
 \description{
 For Redis engine version 6.0 onwards: Deletes a user. The user will be removed from all user groups and in turn removed from all replication groups. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}.
 
-See \url{https://paws-r.github.io/docs/elasticache/delete_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_delete_user/} for full documentation.
 }
 \keyword{internal}

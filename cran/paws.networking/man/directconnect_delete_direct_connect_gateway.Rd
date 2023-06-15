@@ -12,6 +12,6 @@ directconnect_delete_direct_connect_gateway(directConnectGatewayId)
 \description{
 Deletes the specified Direct Connect gateway. You must first delete all virtual interfaces that are attached to the Direct Connect gateway and disassociate all virtual private gateways associated with the Direct Connect gateway.
 
-See \url{https://paws-r.github.io/docs/directconnect/delete_direct_connect_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_delete_direct_connect_gateway/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ panorama_update_device_metadata(Description = NULL, DeviceId)
 \description{
 Updates a device's metadata.
 
-See \url{https://paws-r.github.io/docs/panorama/update_device_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_update_device_metadata/} for full documentation.
 }
 \keyword{internal}

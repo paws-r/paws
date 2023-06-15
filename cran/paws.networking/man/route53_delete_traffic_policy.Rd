@@ -14,6 +14,6 @@ route53_delete_traffic_policy(Id, Version)
 \description{
 Deletes a traffic policy.
 
-See \url{https://paws-r.github.io/docs/route53/delete_traffic_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_delete_traffic_policy/} for full documentation.
 }
 \keyword{internal}

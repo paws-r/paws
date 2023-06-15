@@ -43,6 +43,6 @@ tagged.}
 \description{
 Updates an existing Recycle Bin retention rule. You can update a retention rule's description, resource tags, and retention period at any time after creation. You can't update a retention rule's resource type after creation. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-update-rule}{Update Recycle Bin retention rules} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-See \url{https://paws-r.github.io/docs/recyclebin/update_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/recyclebin_update_rule/} for full documentation.
 }
 \keyword{internal}

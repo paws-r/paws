@@ -36,6 +36,6 @@ the ID of that reusable delegation set.}
 \description{
 Retrieves a list of the public and private hosted zones that are associated with the current Amazon Web Services account. The response includes a \code{HostedZones} child element for each hosted zone.
 
-See \url{https://paws-r.github.io/docs/route53/list_hosted_zones.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_list_hosted_zones/} for full documentation.
 }
 \keyword{internal}

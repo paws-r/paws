@@ -23,6 +23,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Cancels an active conversion task. The task can be the import of an instance or volume. The action removes all artifacts of the conversion, including a partially uploaded volume or instance. If the conversion is complete or is in the process of transferring the final disk image, the command fails and returns an exception.
 
-See \url{https://paws-r.github.io/docs/ec2/cancel_conversion_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_cancel_conversion_task/} for full documentation.
 }
 \keyword{internal}

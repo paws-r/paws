@@ -24,6 +24,6 @@ default is 10.}
 \description{
 Gets information about all of the versions of a bot.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_bot_versions/} for full documentation.
 }
 \keyword{internal}

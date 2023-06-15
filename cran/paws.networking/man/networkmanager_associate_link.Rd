@@ -16,6 +16,6 @@ networkmanager_associate_link(GlobalNetworkId, DeviceId, LinkId)
 \description{
 Associates a link to a device. A device can be associated to multiple links and a link can be associated to multiple devices. The device and link must be in the same global network and the same site.
 
-See \url{https://paws-r.github.io/docs/networkmanager/associate_link.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_associate_link/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ tasks, services, task definitions, clusters, and container instances.}
 \description{
 Deletes specified tags from a resource.
 
-See \url{https://paws-r.github.io/docs/ecs/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_untag_resource/} for full documentation.
 }
 \keyword{internal}

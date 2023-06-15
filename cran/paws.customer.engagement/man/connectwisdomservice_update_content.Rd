@@ -50,6 +50,6 @@ since it was last read. If it has been modified, this API throws a
 \description{
 Updates information about the content.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/update_content.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_update_content/} for full documentation.
 }
 \keyword{internal}

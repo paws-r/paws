@@ -47,6 +47,6 @@ timeline event.}
 \description{
 Updates a timeline event. You can update events of type \verb{Custom Event}.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/update_timeline_event.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_update_timeline_event/} for full documentation.
 }
 \keyword{internal}

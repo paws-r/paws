@@ -47,6 +47,6 @@ purposes.}
 \description{
 Describes one or more of your capacity providers.
 
-See \url{https://paws-r.github.io/docs/ecs/describe_capacity_providers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_describe_capacity_providers/} for full documentation.
 }
 \keyword{internal}

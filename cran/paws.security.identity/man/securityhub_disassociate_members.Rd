@@ -14,6 +14,6 @@ administrator account.}
 \description{
 Disassociates the specified member accounts from the associated administrator account.
 
-See \url{https://paws-r.github.io/docs/securityhub/disassociate_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_disassociate_members/} for full documentation.
 }
 \keyword{internal}

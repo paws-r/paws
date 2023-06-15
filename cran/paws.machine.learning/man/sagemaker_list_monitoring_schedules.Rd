@@ -61,6 +61,6 @@ monitoring type.}
 \description{
 Returns list of all monitoring schedules.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_monitoring_schedules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_monitoring_schedules/} for full documentation.
 }
 \keyword{internal}

@@ -48,6 +48,6 @@ in the \emph{Amazon Web Services Cloud Control API User Guide}.}
 \description{
 Returns information about the current state of the specified resource. For details, see \href{https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-read.html}{Reading a resource's current state}.
 
-See \url{https://paws-r.github.io/docs/cloudcontrolapi/get_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudcontrolapi_get_resource/} for full documentation.
 }
 \keyword{internal}

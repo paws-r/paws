@@ -53,6 +53,6 @@ authenticating using either Secrets Manager or temporary credentials.}
 \description{
 Runs an SQL statement, which can be data manipulation language (DML) or data definition language (DDL). This statement must be a single SQL statement. Depending on the authorization method, use one of the following combinations of request parameters:
 
-See \url{https://paws-r.github.io/docs/redshiftdataapiservice/execute_statement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftdataapiservice_execute_statement/} for full documentation.
 }
 \keyword{internal}

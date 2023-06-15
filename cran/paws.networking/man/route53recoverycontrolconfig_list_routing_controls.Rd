@@ -20,6 +20,6 @@ route53recoverycontrolconfig_list_routing_controls(
 \description{
 Returns an array of routing controls for a control panel. A routing control is an Amazon Route 53 Application Recovery Controller construct that has one of two states: ON and OFF. You can map the routing control state to the state of an Amazon Route 53 health check, which can be used to control routing.
 
-See \url{https://paws-r.github.io/docs/route53recoverycontrolconfig/list_routing_controls.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_list_routing_controls/} for full documentation.
 }
 \keyword{internal}

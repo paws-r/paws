@@ -27,6 +27,6 @@ page of results.}
 \description{
 Returns a list of destinations that you have created to receive RUM extended metrics, for the specified app monitor.
 
-See \url{https://paws-r.github.io/docs/cloudwatchrum/list_rum_metrics_destinations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchrum_list_rum_metrics_destinations/} for full documentation.
 }
 \keyword{internal}

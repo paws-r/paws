@@ -15,6 +15,6 @@ to delete.}
 \description{
 Deletes the publishing definition with the specified \code{destinationId}.
 
-See \url{https://paws-r.github.io/docs/guardduty/delete_publishing_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_delete_publishing_destination/} for full documentation.
 }
 \keyword{internal}

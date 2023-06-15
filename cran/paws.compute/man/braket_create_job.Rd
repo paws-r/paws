@@ -60,6 +60,6 @@ manage metadata for Amazon Braket resources.}
 \description{
 Creates an Amazon Braket job.
 
-See \url{https://paws-r.github.io/docs/braket/create_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/braket_create_job/} for full documentation.
 }
 \keyword{internal}

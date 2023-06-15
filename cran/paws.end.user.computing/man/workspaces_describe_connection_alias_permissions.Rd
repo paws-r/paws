@@ -23,6 +23,6 @@ provide this token to receive the next set of results.}
 \description{
 Describes the permissions that the owner of a connection alias has granted to another Amazon Web Services account for the specified connection alias. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.
 
-See \url{https://paws-r.github.io/docs/workspaces/describe_connection_alias_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_describe_connection_alias_permissions/} for full documentation.
 }
 \keyword{internal}

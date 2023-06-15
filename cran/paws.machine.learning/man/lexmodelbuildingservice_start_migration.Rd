@@ -43,6 +43,6 @@ locale is created in the Amazon Lex V2 bot.
 \description{
 Starts migrating a bot from Amazon Lex V1 to Amazon Lex V2. Migrate your bot when you want to take advantage of the new features of Amazon Lex V2.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/start_migration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_start_migration/} for full documentation.
 }
 \keyword{internal}

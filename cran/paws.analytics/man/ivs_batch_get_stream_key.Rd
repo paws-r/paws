@@ -12,6 +12,6 @@ ivs_batch_get_stream_key(arns)
 \description{
 Performs \code{\link[=ivs_get_stream_key]{get_stream_key}} on multiple ARNs simultaneously.
 
-See \url{https://paws-r.github.io/docs/ivs/batch_get_stream_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivs_batch_get_stream_key/} for full documentation.
 }
 \keyword{internal}

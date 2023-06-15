@@ -35,6 +35,6 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \description{
 Creates a connection notification for a specified VPC endpoint or VPC endpoint service. A connection notification notifies you of specific endpoint events. You must create an SNS topic to receive notifications. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html}{Create a Topic} in the \emph{Amazon Simple Notification Service Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/create_vpc_endpoint_connection_notification.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_vpc_endpoint_connection_notification/} for full documentation.
 }
 \keyword{internal}

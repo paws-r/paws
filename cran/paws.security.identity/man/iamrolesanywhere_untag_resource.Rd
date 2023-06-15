@@ -14,6 +14,6 @@ iamrolesanywhere_untag_resource(resourceArn, tagKeys)
 \description{
 Removes tags from the resource.
 
-See \url{https://paws-r.github.io/docs/iamrolesanywhere/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iamrolesanywhere_untag_resource/} for full documentation.
 }
 \keyword{internal}

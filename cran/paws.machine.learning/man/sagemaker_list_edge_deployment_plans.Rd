@@ -44,6 +44,6 @@ name.}
 \description{
 Lists all edge deployment plans.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_edge_deployment_plans.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_edge_deployment_plans/} for full documentation.
 }
 \keyword{internal}

@@ -28,11 +28,13 @@ datasets and the use cases available for recommenders. If you don't
 specify a domain, you create a Custom dataset group with solution
 versions that you deploy with a campaign.}
 
-\item{tags}{A list of tags to apply to the dataset group.}
+\item{tags}{A list of
+\href{https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html}{tags}
+to apply to the dataset group.}
 }
 \description{
 Creates an empty dataset group. A dataset group is a container for Amazon Personalize resources. A dataset group can contain at most three datasets, one for each type of dataset:
 
-See \url{https://paws-r.github.io/docs/personalize/create_dataset_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_create_dataset_group/} for full documentation.
 }
 \keyword{internal}

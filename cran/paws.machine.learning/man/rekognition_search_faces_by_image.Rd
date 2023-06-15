@@ -48,6 +48,6 @@ associated with version 3 of the face model or higher.}
 \description{
 For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces. The operation compares the features of the input face with faces in the specified collection.
 
-See \url{https://paws-r.github.io/docs/rekognition/search_faces_by_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_search_faces_by_image/} for full documentation.
 }
 \keyword{internal}

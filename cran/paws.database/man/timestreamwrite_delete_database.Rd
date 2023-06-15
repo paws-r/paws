@@ -12,6 +12,6 @@ timestreamwrite_delete_database(DatabaseName)
 \description{
 Deletes a given Timestream database. \emph{This is an irreversible operation. After a database is deleted, the time-series data from its tables cannot be recovered.}
 
-See \url{https://paws-r.github.io/docs/timestreamwrite/delete_database.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamwrite_delete_database/} for full documentation.
 }
 \keyword{internal}

@@ -27,6 +27,6 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \description{
 Creates a carrier gateway. For more information about carrier gateways, see \href{https://docs.aws.amazon.com/wavelength/latest/developerguide/how-wavelengths-work.html#wavelength-carrier-gateway}{Carrier gateways} in the \emph{Amazon Web Services Wavelength Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/create_carrier_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_carrier_gateway/} for full documentation.
 }
 \keyword{internal}

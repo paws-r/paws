@@ -12,6 +12,6 @@ storagegateway_list_volume_recovery_points(GatewayARN)
 \description{
 Lists the recovery points for a specified gateway. This operation is only supported in the cached volume gateway type.
 
-See \url{https://paws-r.github.io/docs/storagegateway/list_volume_recovery_points.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_list_volume_recovery_points/} for full documentation.
 }
 \keyword{internal}

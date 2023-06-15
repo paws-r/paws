@@ -15,6 +15,6 @@ emr_modify_instance_groups(ClusterId = NULL, InstanceGroups = NULL)
 \description{
 ModifyInstanceGroups modifies the number of nodes and configuration settings of an instance group. The input parameters include the new target instance count for the group and the instance group ID. The call will either succeed or fail atomically.
 
-See \url{https://paws-r.github.io/docs/emr/modify_instance_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_modify_instance_groups/} for full documentation.
 }
 \keyword{internal}

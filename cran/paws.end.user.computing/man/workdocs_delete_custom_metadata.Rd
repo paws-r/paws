@@ -29,6 +29,6 @@ specified resource.}
 \description{
 Deletes custom metadata from the specified resource.
 
-See \url{https://paws-r.github.io/docs/workdocs/delete_custom_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_delete_custom_metadata/} for full documentation.
 }
 \keyword{internal}

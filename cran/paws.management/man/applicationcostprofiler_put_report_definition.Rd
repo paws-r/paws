@@ -28,6 +28,6 @@ Application Cost Profiler uploads the report.}
 \description{
 Creates the report definition for a report in Application Cost Profiler.
 
-See \url{https://paws-r.github.io/docs/applicationcostprofiler/put_report_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationcostprofiler_put_report_definition/} for full documentation.
 }
 \keyword{internal}

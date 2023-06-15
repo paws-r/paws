@@ -12,6 +12,6 @@ codepipeline_update_pipeline(pipeline)
 \description{
 Updates a specified pipeline with edits or changes to its structure. Use a JSON file with the pipeline structure and \code{\link[=codepipeline_update_pipeline]{update_pipeline}} to provide the full structure of the pipeline. Updating the pipeline increases the version number of the pipeline by 1.
 
-See \url{https://paws-r.github.io/docs/codepipeline/update_pipeline.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_update_pipeline/} for full documentation.
 }
 \keyword{internal}

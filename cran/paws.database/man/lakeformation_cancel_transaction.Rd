@@ -12,6 +12,6 @@ lakeformation_cancel_transaction(TransactionId)
 \description{
 Attempts to cancel the specified transaction. Returns an exception if the transaction was previously committed.
 
-See \url{https://paws-r.github.io/docs/lakeformation/cancel_transaction.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_cancel_transaction/} for full documentation.
 }
 \keyword{internal}

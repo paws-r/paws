@@ -16,6 +16,6 @@ Changing the scaling mode from \code{MANAGED} to \code{STANDARD} is not supporte
 \description{
 Used to convert a dedicated IP pool to a different scaling mode.
 
-See \url{https://paws-r.github.io/docs/sesv2/put_dedicated_ip_pool_scaling_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_put_dedicated_ip_pool_scaling_attributes/} for full documentation.
 }
 \keyword{internal}

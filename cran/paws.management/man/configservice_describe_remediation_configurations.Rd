@@ -13,6 +13,6 @@ want details.}
 \description{
 Returns the details of one or more remediation configurations.
 
-See \url{https://paws-r.github.io/docs/configservice/describe_remediation_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_describe_remediation_configurations/} for full documentation.
 }
 \keyword{internal}

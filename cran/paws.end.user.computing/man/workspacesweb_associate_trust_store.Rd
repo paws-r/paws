@@ -14,6 +14,6 @@ workspacesweb_associate_trust_store(portalArn, trustStoreArn)
 \description{
 Associates a trust store with a web portal.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/associate_trust_store.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_associate_trust_store/} for full documentation.
 }
 \keyword{internal}

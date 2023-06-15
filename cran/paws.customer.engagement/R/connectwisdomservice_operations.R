@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates an Amazon Connect Wisdom assistant.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/create_assistant.html](https://paws-r.github.io/docs/connectwisdomservice/create_assistant.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_create_assistant/](https://www.paws-r-sdk.com/docs/connectwisdomservice_create_assistant/) for full documentation.
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If not provided, the Amazon Web Services SDK
@@ -47,7 +47,7 @@ connectwisdomservice_create_assistant <- function(clientToken = NULL, descriptio
 #' @description
 #' Creates an association between an Amazon Connect Wisdom assistant and another resource. Currently, the only supported association is with a knowledge base. An assistant can have only a single association.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/create_assistant_association.html](https://paws-r.github.io/docs/connectwisdomservice/create_assistant_association.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_create_assistant_association/](https://www.paws-r-sdk.com/docs/connectwisdomservice_create_assistant_association/) for full documentation.
 #'
 #' @param assistantId &#91;required&#93; The identifier of the Wisdom assistant. Can be either the ID or the ARN.
 #' URLs cannot contain the ARN.
@@ -85,7 +85,7 @@ connectwisdomservice_create_assistant_association <- function(assistantId, assoc
 #' @description
 #' Creates Wisdom content. Before to calling this API, use [`start_content_upload`][connectwisdomservice_start_content_upload] to upload an asset.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/create_content.html](https://paws-r.github.io/docs/connectwisdomservice/create_content.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_create_content/](https://www.paws-r-sdk.com/docs/connectwisdomservice_create_content/) for full documentation.
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If not provided, the Amazon Web Services SDK
@@ -135,7 +135,7 @@ connectwisdomservice_create_content <- function(clientToken = NULL, knowledgeBas
 #' @description
 #' Creates a knowledge base.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/create_knowledge_base.html](https://paws-r.github.io/docs/connectwisdomservice/create_knowledge_base.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_create_knowledge_base/](https://www.paws-r-sdk.com/docs/connectwisdomservice_create_knowledge_base/) for full documentation.
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If not provided, the Amazon Web Services SDK
@@ -178,7 +178,7 @@ connectwisdomservice_create_knowledge_base <- function(clientToken = NULL, descr
 #' @description
 #' Creates a session. A session is a contextual container used for generating recommendations. Amazon Connect creates a new Wisdom session for each contact on which Wisdom is enabled.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/create_session.html](https://paws-r.github.io/docs/connectwisdomservice/create_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_create_session/](https://www.paws-r-sdk.com/docs/connectwisdomservice_create_session/) for full documentation.
 #'
 #' @param assistantId &#91;required&#93; The identifier of the Wisdom assistant. Can be either the ID or the ARN.
 #' URLs cannot contain the ARN.
@@ -216,7 +216,7 @@ connectwisdomservice_create_session <- function(assistantId, clientToken = NULL,
 #' @description
 #' Deletes an assistant.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/delete_assistant.html](https://paws-r.github.io/docs/connectwisdomservice/delete_assistant.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_delete_assistant/](https://www.paws-r-sdk.com/docs/connectwisdomservice_delete_assistant/) for full documentation.
 #'
 #' @param assistantId &#91;required&#93; The identifier of the Wisdom assistant. Can be either the ID or the ARN.
 #' URLs cannot contain the ARN.
@@ -246,7 +246,7 @@ connectwisdomservice_delete_assistant <- function(assistantId) {
 #' @description
 #' Deletes an assistant association.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/delete_assistant_association.html](https://paws-r.github.io/docs/connectwisdomservice/delete_assistant_association.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_delete_assistant_association/](https://www.paws-r-sdk.com/docs/connectwisdomservice_delete_assistant_association/) for full documentation.
 #'
 #' @param assistantAssociationId &#91;required&#93; The identifier of the assistant association. Can be either the ID or the
 #' ARN. URLs cannot contain the ARN.
@@ -278,7 +278,7 @@ connectwisdomservice_delete_assistant_association <- function(assistantAssociati
 #' @description
 #' Deletes the content.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/delete_content.html](https://paws-r.github.io/docs/connectwisdomservice/delete_content.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_delete_content/](https://www.paws-r-sdk.com/docs/connectwisdomservice_delete_content/) for full documentation.
 #'
 #' @param contentId &#91;required&#93; The identifier of the content. Can be either the ID or the ARN. URLs
 #' cannot contain the ARN.
@@ -310,7 +310,7 @@ connectwisdomservice_delete_content <- function(contentId, knowledgeBaseId) {
 #' @description
 #' Deletes the knowledge base.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/delete_knowledge_base.html](https://paws-r.github.io/docs/connectwisdomservice/delete_knowledge_base.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_delete_knowledge_base/](https://www.paws-r-sdk.com/docs/connectwisdomservice_delete_knowledge_base/) for full documentation.
 #'
 #' @param knowledgeBaseId &#91;required&#93; The knowledge base to delete content from. Can be either the ID or the
 #' ARN. URLs cannot contain the ARN.
@@ -340,7 +340,7 @@ connectwisdomservice_delete_knowledge_base <- function(knowledgeBaseId) {
 #' @description
 #' Retrieves information about an assistant.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/get_assistant.html](https://paws-r.github.io/docs/connectwisdomservice/get_assistant.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_get_assistant/](https://www.paws-r-sdk.com/docs/connectwisdomservice_get_assistant/) for full documentation.
 #'
 #' @param assistantId &#91;required&#93; The identifier of the Wisdom assistant. Can be either the ID or the ARN.
 #' URLs cannot contain the ARN.
@@ -370,7 +370,7 @@ connectwisdomservice_get_assistant <- function(assistantId) {
 #' @description
 #' Retrieves information about an assistant association.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/get_assistant_association.html](https://paws-r.github.io/docs/connectwisdomservice/get_assistant_association.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_get_assistant_association/](https://www.paws-r-sdk.com/docs/connectwisdomservice_get_assistant_association/) for full documentation.
 #'
 #' @param assistantAssociationId &#91;required&#93; The identifier of the assistant association. Can be either the ID or the
 #' ARN. URLs cannot contain the ARN.
@@ -402,7 +402,7 @@ connectwisdomservice_get_assistant_association <- function(assistantAssociationI
 #' @description
 #' Retrieves content, including a pre-signed URL to download the content.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/get_content.html](https://paws-r.github.io/docs/connectwisdomservice/get_content.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_get_content/](https://www.paws-r-sdk.com/docs/connectwisdomservice_get_content/) for full documentation.
 #'
 #' @param contentId &#91;required&#93; The identifier of the content. Can be either the ID or the ARN. URLs
 #' cannot contain the ARN.
@@ -434,7 +434,7 @@ connectwisdomservice_get_content <- function(contentId, knowledgeBaseId) {
 #' @description
 #' Retrieves summary information about the content.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/get_content_summary.html](https://paws-r.github.io/docs/connectwisdomservice/get_content_summary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_get_content_summary/](https://www.paws-r-sdk.com/docs/connectwisdomservice_get_content_summary/) for full documentation.
 #'
 #' @param contentId &#91;required&#93; The identifier of the content. Can be either the ID or the ARN. URLs
 #' cannot contain the ARN.
@@ -466,7 +466,7 @@ connectwisdomservice_get_content_summary <- function(contentId, knowledgeBaseId)
 #' @description
 #' Retrieves information about the knowledge base.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/get_knowledge_base.html](https://paws-r.github.io/docs/connectwisdomservice/get_knowledge_base.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_get_knowledge_base/](https://www.paws-r-sdk.com/docs/connectwisdomservice_get_knowledge_base/) for full documentation.
 #'
 #' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. Can be either the ID or the ARN.
 #' URLs cannot contain the ARN.
@@ -496,7 +496,7 @@ connectwisdomservice_get_knowledge_base <- function(knowledgeBaseId) {
 #' @description
 #' Retrieves recommendations for the specified session. To avoid retrieving the same recommendations in subsequent calls, use [`notify_recommendations_received`][connectwisdomservice_notify_recommendations_received]. This API supports long-polling behavior with the `waitTimeSeconds` parameter. Short poll is the default behavior and only returns recommendations already available. To perform a manual query against an assistant, use [`query_assistant`][connectwisdomservice_query_assistant].
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/get_recommendations.html](https://paws-r.github.io/docs/connectwisdomservice/get_recommendations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_get_recommendations/](https://www.paws-r-sdk.com/docs/connectwisdomservice_get_recommendations/) for full documentation.
 #'
 #' @param assistantId &#91;required&#93; The identifier of the Wisdom assistant. Can be either the ID or the ARN.
 #' URLs cannot contain the ARN.
@@ -534,7 +534,7 @@ connectwisdomservice_get_recommendations <- function(assistantId, maxResults = N
 #' @description
 #' Retrieves information for a specified session.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/get_session.html](https://paws-r.github.io/docs/connectwisdomservice/get_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_get_session/](https://www.paws-r-sdk.com/docs/connectwisdomservice_get_session/) for full documentation.
 #'
 #' @param assistantId &#91;required&#93; The identifier of the Wisdom assistant. Can be either the ID or the ARN.
 #' URLs cannot contain the ARN.
@@ -566,7 +566,7 @@ connectwisdomservice_get_session <- function(assistantId, sessionId) {
 #' @description
 #' Lists information about assistant associations.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/list_assistant_associations.html](https://paws-r.github.io/docs/connectwisdomservice/list_assistant_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_list_assistant_associations/](https://www.paws-r-sdk.com/docs/connectwisdomservice_list_assistant_associations/) for full documentation.
 #'
 #' @param assistantId &#91;required&#93; The identifier of the Wisdom assistant. Can be either the ID or the ARN.
 #' URLs cannot contain the ARN.
@@ -600,7 +600,7 @@ connectwisdomservice_list_assistant_associations <- function(assistantId, maxRes
 #' @description
 #' Lists information about assistants.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/list_assistants.html](https://paws-r.github.io/docs/connectwisdomservice/list_assistants.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_list_assistants/](https://www.paws-r-sdk.com/docs/connectwisdomservice_list_assistants/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to return per page.
 #' @param nextToken The token for the next set of results. Use the value returned in the
@@ -632,7 +632,7 @@ connectwisdomservice_list_assistants <- function(maxResults = NULL, nextToken = 
 #' @description
 #' Lists the content.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/list_contents.html](https://paws-r.github.io/docs/connectwisdomservice/list_contents.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_list_contents/](https://www.paws-r-sdk.com/docs/connectwisdomservice_list_contents/) for full documentation.
 #'
 #' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. Can be either the ID or the ARN.
 #' URLs cannot contain the ARN.
@@ -666,7 +666,7 @@ connectwisdomservice_list_contents <- function(knowledgeBaseId, maxResults = NUL
 #' @description
 #' Lists the knowledge bases.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/list_knowledge_bases.html](https://paws-r.github.io/docs/connectwisdomservice/list_knowledge_bases.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_list_knowledge_bases/](https://www.paws-r-sdk.com/docs/connectwisdomservice_list_knowledge_bases/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to return per page.
 #' @param nextToken The token for the next set of results. Use the value returned in the
@@ -698,7 +698,7 @@ connectwisdomservice_list_knowledge_bases <- function(maxResults = NULL, nextTok
 #' @description
 #' Lists the tags for the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/list_tags_for_resource.html](https://paws-r.github.io/docs/connectwisdomservice/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/connectwisdomservice_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #'
@@ -728,7 +728,7 @@ connectwisdomservice_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Removes the specified recommendations from the specified assistant's queue of newly available recommendations. You can use this API in conjunction with [`get_recommendations`][connectwisdomservice_get_recommendations] and a `waitTimeSeconds` input for long-polling behavior and avoiding duplicate recommendations.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/notify_recommendations_received.html](https://paws-r.github.io/docs/connectwisdomservice/notify_recommendations_received.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_notify_recommendations_received/](https://www.paws-r-sdk.com/docs/connectwisdomservice_notify_recommendations_received/) for full documentation.
 #'
 #' @param assistantId &#91;required&#93; The identifier of the Wisdom assistant. Can be either the ID or the ARN.
 #' URLs cannot contain the ARN.
@@ -761,7 +761,7 @@ connectwisdomservice_notify_recommendations_received <- function(assistantId, re
 #' @description
 #' Performs a manual search against the specified assistant. To retrieve recommendations for an assistant, use [`get_recommendations`][connectwisdomservice_get_recommendations].
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/query_assistant.html](https://paws-r.github.io/docs/connectwisdomservice/query_assistant.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_query_assistant/](https://www.paws-r-sdk.com/docs/connectwisdomservice_query_assistant/) for full documentation.
 #'
 #' @param assistantId &#91;required&#93; The identifier of the Wisdom assistant. Can be either the ID or the ARN.
 #' URLs cannot contain the ARN.
@@ -796,7 +796,7 @@ connectwisdomservice_query_assistant <- function(assistantId, maxResults = NULL,
 #' @description
 #' Removes a URI template from a knowledge base.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/remove_knowledge_base_template_uri.html](https://paws-r.github.io/docs/connectwisdomservice/remove_knowledge_base_template_uri.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_remove_knowledge_base_template_uri/](https://www.paws-r-sdk.com/docs/connectwisdomservice_remove_knowledge_base_template_uri/) for full documentation.
 #'
 #' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. Can be either the ID or the ARN.
 #' URLs cannot contain the ARN.
@@ -826,7 +826,7 @@ connectwisdomservice_remove_knowledge_base_template_uri <- function(knowledgeBas
 #' @description
 #' Searches for content in a specified knowledge base. Can be used to get a specific content resource by its name.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/search_content.html](https://paws-r.github.io/docs/connectwisdomservice/search_content.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_search_content/](https://www.paws-r-sdk.com/docs/connectwisdomservice_search_content/) for full documentation.
 #'
 #' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. Can be either the ID or the ARN.
 #' URLs cannot contain the ARN.
@@ -861,7 +861,7 @@ connectwisdomservice_search_content <- function(knowledgeBaseId, maxResults = NU
 #' @description
 #' Searches for sessions.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/search_sessions.html](https://paws-r.github.io/docs/connectwisdomservice/search_sessions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_search_sessions/](https://www.paws-r-sdk.com/docs/connectwisdomservice_search_sessions/) for full documentation.
 #'
 #' @param assistantId &#91;required&#93; The identifier of the Wisdom assistant. Can be either the ID or the ARN.
 #' URLs cannot contain the ARN.
@@ -896,7 +896,7 @@ connectwisdomservice_search_sessions <- function(assistantId, maxResults = NULL,
 #' @description
 #' Get a URL to upload content to a knowledge base. To upload content, first make a PUT request to the returned URL with your file, making sure to include the required headers. Then use [`create_content`][connectwisdomservice_create_content] to finalize the content creation process or [`update_content`][connectwisdomservice_update_content] to modify an existing resource. You can only upload content to a knowledge base of type CUSTOM.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/start_content_upload.html](https://paws-r.github.io/docs/connectwisdomservice/start_content_upload.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_start_content_upload/](https://www.paws-r-sdk.com/docs/connectwisdomservice_start_content_upload/) for full documentation.
 #'
 #' @param contentType &#91;required&#93; The type of content to upload.
 #' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. Can be either the ID or the ARN.
@@ -927,7 +927,7 @@ connectwisdomservice_start_content_upload <- function(contentType, knowledgeBase
 #' @description
 #' Adds the specified tags to the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/tag_resource.html](https://paws-r.github.io/docs/connectwisdomservice/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_tag_resource/](https://www.paws-r-sdk.com/docs/connectwisdomservice_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param tags &#91;required&#93; The tags used to organize, track, or control access for this resource.
@@ -957,7 +957,7 @@ connectwisdomservice_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes the specified tags from the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/untag_resource.html](https://paws-r.github.io/docs/connectwisdomservice/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_untag_resource/](https://www.paws-r-sdk.com/docs/connectwisdomservice_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param tagKeys &#91;required&#93; The tag keys.
@@ -987,7 +987,7 @@ connectwisdomservice_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates information about the content.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/update_content.html](https://paws-r.github.io/docs/connectwisdomservice/update_content.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_update_content/](https://www.paws-r-sdk.com/docs/connectwisdomservice_update_content/) for full documentation.
 #'
 #' @param contentId &#91;required&#93; The identifier of the content. Can be either the ID or the ARN. URLs
 #' cannot contain the ARN.
@@ -1038,7 +1038,7 @@ connectwisdomservice_update_content <- function(contentId, knowledgeBaseId, meta
 #' @description
 #' Updates the template URI of a knowledge base. This is only supported for knowledge bases of type EXTERNAL. Include a single variable in `${variable}` format; this interpolated by Wisdom using ingested content. For example, if you ingest a Salesforce article, it has an `Id` value, and you can set the template URI to `https://myInstanceName.lightning.force.com/lightning/r/Knowledge__kav/*${Id}*/view`.
 #'
-#' See [https://paws-r.github.io/docs/connectwisdomservice/update_knowledge_base_template_uri.html](https://paws-r.github.io/docs/connectwisdomservice/update_knowledge_base_template_uri.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectwisdomservice_update_knowledge_base_template_uri/](https://www.paws-r-sdk.com/docs/connectwisdomservice_update_knowledge_base_template_uri/) for full documentation.
 #'
 #' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. Can be either the ID or the ARN.
 #' URLs cannot contain the ARN.

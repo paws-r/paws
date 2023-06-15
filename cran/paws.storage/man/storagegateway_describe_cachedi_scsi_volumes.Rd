@@ -16,6 +16,6 @@ gateway.}
 \description{
 Returns a description of the gateway volumes specified in the request. This operation is only supported in the cached volume gateway types.
 
-See \url{https://paws-r.github.io/docs/storagegateway/describe_cachedi_scsi_volumes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_describe_cachedi_scsi_volumes/} for full documentation.
 }
 \keyword{internal}

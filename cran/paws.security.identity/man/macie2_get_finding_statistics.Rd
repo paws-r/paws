@@ -34,6 +34,6 @@ and SensitiveData:S3Object/Personal.
 \description{
 Retrieves (queries) aggregated statistical data about findings.
 
-See \url{https://paws-r.github.io/docs/macie2/get_finding_statistics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_get_finding_statistics/} for full documentation.
 }
 \keyword{internal}

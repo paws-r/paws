@@ -14,6 +14,6 @@ this value.}
 \description{
 Delete the package.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/delete_package.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_delete_package/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ glue_get_job_runs(JobName, NextToken = NULL, MaxResults = NULL)
 \description{
 Retrieves metadata for all runs of a given job definition.
 
-See \url{https://paws-r.github.io/docs/glue/get_job_runs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_job_runs/} for full documentation.
 }
 \keyword{internal}

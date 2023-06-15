@@ -14,6 +14,6 @@ QuickSight account.}
 \description{
 Use the DescribeAccountSubscription operation to receive a description of an Amazon QuickSight account's subscription. A successful API call returns an \code{AccountInfo} object that includes an account's name, subscription status, authentication type, edition, and notification email address.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_account_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_account_subscription/} for full documentation.
 }
 \keyword{internal}

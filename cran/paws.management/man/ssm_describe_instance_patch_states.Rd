@@ -22,6 +22,6 @@ from a previous call.)}
 \description{
 Retrieves the high-level patch state of one or more managed nodes.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_instance_patch_states.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_instance_patch_states/} for full documentation.
 }
 \keyword{internal}

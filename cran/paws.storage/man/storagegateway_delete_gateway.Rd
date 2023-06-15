@@ -12,6 +12,6 @@ storagegateway_delete_gateway(GatewayARN)
 \description{
 Deletes a gateway. To specify which gateway to delete, use the Amazon Resource Name (ARN) of the gateway in your request. The operation deletes the gateway; however, it does not delete the gateway virtual machine (VM) from your host computer.
 
-See \url{https://paws-r.github.io/docs/storagegateway/delete_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_delete_gateway/} for full documentation.
 }
 \keyword{internal}

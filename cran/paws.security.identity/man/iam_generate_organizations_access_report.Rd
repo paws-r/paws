@@ -28,6 +28,6 @@ service.}
 \description{
 Generates a report for service last accessed data for Organizations. You can generate a report for any entities (organization root, organizational unit, or account) or policies in your organization.
 
-See \url{https://paws-r.github.io/docs/iam/generate_organizations_access_report.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_generate_organizations_access_report/} for full documentation.
 }
 \keyword{internal}

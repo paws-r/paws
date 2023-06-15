@@ -73,6 +73,6 @@ output. For more information, see
 \description{
 Describes one or more of your network ACLs.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_network_acls.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_network_acls/} for full documentation.
 }
 \keyword{internal}

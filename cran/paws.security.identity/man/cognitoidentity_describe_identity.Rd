@@ -13,6 +13,6 @@ cognitoidentity_describe_identity(IdentityId)
 \description{
 Returns metadata related to the given identity, including when the identity was created and any associated linked logins.
 
-See \url{https://paws-r.github.io/docs/cognitoidentity/describe_identity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_describe_identity/} for full documentation.
 }
 \keyword{internal}

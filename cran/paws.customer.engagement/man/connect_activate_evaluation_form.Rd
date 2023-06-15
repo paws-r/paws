@@ -22,6 +22,6 @@ is not provided, the latest version of the evaluation form is activated.}
 \description{
 Activates an evaluation form in the specified Amazon Connect instance. After the evaluation form is activated, it is available to start new evaluations based on the form.
 
-See \url{https://paws-r.github.io/docs/connect/activate_evaluation_form.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_activate_evaluation_form/} for full documentation.
 }
 \keyword{internal}

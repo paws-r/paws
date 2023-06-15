@@ -26,6 +26,6 @@ the next page. Keep all other arguments unchanged.}
 \description{
 Returns a list of parameter group descriptions. If a parameter group name is specified, the list contains only the descriptions for that group.
 
-See \url{https://paws-r.github.io/docs/memorydb/describe_parameter_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_describe_parameter_groups/} for full documentation.
 }
 \keyword{internal}

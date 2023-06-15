@@ -88,6 +88,6 @@ To add tags to an existing maintenance window, use the
 \description{
 Creates a new maintenance window.
 
-See \url{https://paws-r.github.io/docs/ssm/create_maintenance_window.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_create_maintenance_window/} for full documentation.
 }
 \keyword{internal}

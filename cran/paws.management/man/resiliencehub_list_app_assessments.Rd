@@ -43,6 +43,6 @@ in the response so that the remaining results can be retrieved.}
 \description{
 Lists the assessments for an Resilience Hub application. You can use request parameters to refine the results for the response object.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/list_app_assessments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_list_app_assessments/} for full documentation.
 }
 \keyword{internal}

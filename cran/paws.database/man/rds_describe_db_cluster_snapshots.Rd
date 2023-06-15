@@ -111,6 +111,6 @@ API action.}
 \description{
 Returns information about DB cluster snapshots. This API action supports pagination.
 
-See \url{https://paws-r.github.io/docs/rds/describe_db_cluster_snapshots.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_describe_db_cluster_snapshots/} for full documentation.
 }
 \keyword{internal}

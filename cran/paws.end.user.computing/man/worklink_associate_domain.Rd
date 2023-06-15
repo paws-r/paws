@@ -24,6 +24,6 @@ associated.}
 \description{
 Specifies a domain to be associated to Amazon WorkLink.
 
-See \url{https://paws-r.github.io/docs/worklink/associate_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_associate_domain/} for full documentation.
 }
 \keyword{internal}

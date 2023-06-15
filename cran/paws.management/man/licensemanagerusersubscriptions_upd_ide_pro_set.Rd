@@ -28,6 +28,6 @@ operation such as the:
 \description{
 Updates additional product configuration settings for the registered identity provider.
 
-See \url{https://paws-r.github.io/docs/licensemanagerusersubscriptions/update_identity_provider_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_update_identity_provider_settings/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ recipients, domains, enabled status, scan status, and TLS policy.}
 \description{
 Creates a receipt rule.
 
-See \url{https://paws-r.github.io/docs/ses/create_receipt_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_create_receipt_rule/} for full documentation.
 }
 \keyword{internal}

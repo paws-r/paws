@@ -36,6 +36,6 @@ from a previous call.)}
 \description{
 Lists the patch baselines in your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_patch_baselines.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_patch_baselines/} for full documentation.
 }
 \keyword{internal}

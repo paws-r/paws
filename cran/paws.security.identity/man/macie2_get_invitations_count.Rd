@@ -10,6 +10,6 @@ macie2_get_invitations_count()
 \description{
 Retrieves the count of Amazon Macie membership invitations that were received by an account.
 
-See \url{https://paws-r.github.io/docs/macie2/get_invitations_count.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_get_invitations_count/} for full documentation.
 }
 \keyword{internal}

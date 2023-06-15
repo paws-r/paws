@@ -29,6 +29,6 @@ budgets_describe_budget_action_histories(
 \description{
 Describes a budget action history detail.
 
-See \url{https://paws-r.github.io/docs/budgets/describe_budget_action_histories.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/budgets_describe_budget_action_histories/} for full documentation.
 }
 \keyword{internal}

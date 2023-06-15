@@ -13,6 +13,6 @@ iamrolesanywhere_get_subject(subjectId)
 \description{
 Gets a \emph{subject}, which associates a certificate identity with authentication attempts. The subject stores auditing information such as the status of the last authentication attempt, the certificate data used in the attempt, and the last time the associated identity attempted authentication.
 
-See \url{https://paws-r.github.io/docs/iamrolesanywhere/get_subject.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iamrolesanywhere_get_subject/} for full documentation.
 }
 \keyword{internal}

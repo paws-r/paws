@@ -18,6 +18,6 @@ permissions.}
 \description{
 Deletes permissions granted to a member (user or group).
 
-See \url{https://paws-r.github.io/docs/workmail/delete_mailbox_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_delete_mailbox_permissions/} for full documentation.
 }
 \keyword{internal}

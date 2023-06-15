@@ -36,6 +36,6 @@ disk.}
 \description{
 Creates a block storage disk that can be attached to an Amazon Lightsail instance in the same Availability Zone (e.g., \verb{us-east-2a}).
 
-See \url{https://paws-r.github.io/docs/lightsail/create_disk.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_create_disk/} for full documentation.
 }
 \keyword{internal}

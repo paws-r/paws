@@ -58,6 +58,6 @@ the \code{MetricMathAnomalyDetector} property.}
 \description{
 Deletes the specified anomaly detection model from your account. For more information about how to delete an anomaly detection model, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Anomaly_Detection_Alarm.html#Delete_Anomaly_Detection_Model}{Deleting an anomaly detection model} in the \emph{CloudWatch User Guide}.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/delete_anomaly_detector.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_delete_anomaly_detector/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ cognitoidentityprovider_list_resource_servers(
 \description{
 Lists the resource servers for a user pool.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/list_resource_servers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_resource_servers/} for full documentation.
 }
 \keyword{internal}

@@ -51,6 +51,6 @@ objects.}
 \description{
 Returns the set of Amazon S3 objects that make up the specified governed table. A transaction ID or timestamp can be specified for time-travel queries.
 
-See \url{https://paws-r.github.io/docs/lakeformation/get_table_objects.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_get_table_objects/} for full documentation.
 }
 \keyword{internal}

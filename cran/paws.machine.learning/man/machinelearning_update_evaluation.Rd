@@ -15,6 +15,6 @@ replace the current content.}
 \description{
 Updates the \code{EvaluationName} of an \code{Evaluation}.
 
-See \url{https://paws-r.github.io/docs/machinelearning/update_evaluation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_update_evaluation/} for full documentation.
 }
 \keyword{internal}

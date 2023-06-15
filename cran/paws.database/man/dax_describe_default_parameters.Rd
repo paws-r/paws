@@ -22,6 +22,6 @@ specified by \code{MaxResults}.}
 \description{
 Returns the default system parameter information for the DAX caching software.
 
-See \url{https://paws-r.github.io/docs/dax/describe_default_parameters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dax_describe_default_parameters/} for full documentation.
 }
 \keyword{internal}

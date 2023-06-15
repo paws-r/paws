@@ -45,6 +45,6 @@ a canary release deployment.}
 \description{
 Creates a Deployment resource, which makes a specified RestApi callable over the internet.
 
-See \url{https://paws-r.github.io/docs/apigateway/create_deployment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_create_deployment/} for full documentation.
 }
 \keyword{internal}

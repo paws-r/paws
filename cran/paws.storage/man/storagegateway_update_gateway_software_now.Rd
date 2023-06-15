@@ -12,6 +12,6 @@ storagegateway_update_gateway_software_now(GatewayARN)
 \description{
 Updates the gateway virtual machine (VM) software. The request immediately triggers the software update.
 
-See \url{https://paws-r.github.io/docs/storagegateway/update_gateway_software_now.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_update_gateway_software_now/} for full documentation.
 }
 \keyword{internal}

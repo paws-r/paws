@@ -16,6 +16,6 @@ budgets_delete_budget_action(AccountId, BudgetName, ActionId)
 \description{
 Deletes a budget action.
 
-See \url{https://paws-r.github.io/docs/budgets/delete_budget_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/budgets_delete_budget_action/} for full documentation.
 }
 \keyword{internal}

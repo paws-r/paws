@@ -129,6 +129,6 @@ provide sensitive information.
 \description{
 Responds to an authentication challenge, as an administrator.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_respond_to_auth_challenge.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_respond_to_auth_challenge/} for full documentation.
 }
 \keyword{internal}

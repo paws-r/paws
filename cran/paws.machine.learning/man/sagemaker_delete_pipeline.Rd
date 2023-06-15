@@ -16,6 +16,6 @@ than one time.}
 \description{
 Deletes a pipeline if there are no running instances of the pipeline. To delete a pipeline, you must stop all running instances of the pipeline using the \code{\link[=sagemaker_stop_pipeline_execution]{stop_pipeline_execution}} API. When you delete a pipeline, all instances of the pipeline are deleted.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_pipeline.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_pipeline/} for full documentation.
 }
 \keyword{internal}

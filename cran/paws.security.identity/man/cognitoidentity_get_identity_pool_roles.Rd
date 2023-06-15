@@ -12,6 +12,6 @@ cognitoidentity_get_identity_pool_roles(IdentityPoolId)
 \description{
 Gets the roles for an identity pool.
 
-See \url{https://paws-r.github.io/docs/cognitoidentity/get_identity_pool_roles.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_get_identity_pool_roles/} for full documentation.
 }
 \keyword{internal}

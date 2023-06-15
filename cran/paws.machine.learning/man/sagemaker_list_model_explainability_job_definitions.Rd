@@ -42,6 +42,6 @@ specified time.}
 \description{
 Lists model explainability job definitions that satisfy various filters.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_model_explainability_job_definitions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_model_explainability_job_definitions/} for full documentation.
 }
 \keyword{internal}

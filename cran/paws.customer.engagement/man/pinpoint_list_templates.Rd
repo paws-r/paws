@@ -32,6 +32,6 @@ the results, don't include this parameter in your request.}
 \description{
 Retrieves information about all the message templates that are associated with your Amazon Pinpoint account.
 
-See \url{https://paws-r.github.io/docs/pinpoint/list_templates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_list_templates/} for full documentation.
 }
 \keyword{internal}

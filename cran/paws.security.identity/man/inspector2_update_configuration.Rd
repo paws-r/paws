@@ -13,6 +13,6 @@ environment.}
 \description{
 Updates setting configurations for your Amazon Inspector account. When you use this API as an Amazon Inspector delegated administrator this updates the setting for all accounts you manage. Member accounts in an organization cannot update this setting.
 
-See \url{https://paws-r.github.io/docs/inspector2/update_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_update_configuration/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ your Lake Formation environment.}
 \description{
 Creates an LF-tag with the specified name and values.
 
-See \url{https://paws-r.github.io/docs/lakeformation/create_lf_tag.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_create_lf_tag/} for full documentation.
 }
 \keyword{internal}

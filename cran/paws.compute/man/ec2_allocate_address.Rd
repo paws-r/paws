@@ -15,14 +15,10 @@ ec2_allocate_address(
 )
 }
 \arguments{
-\item{Domain}{Indicates whether the Elastic IP address is for use with instances in a
-VPC or instances in EC2-Classic.
+\item{Domain}{The network (\code{vpc}).}
 
-Default: If the Region supports EC2-Classic, the default is \code{standard}.
-Otherwise, the default is \code{vpc}.}
-
-\item{Address}{[EC2-VPC] The Elastic IP address to recover or an IPv4 address from an
-address pool.}
+\item{Address}{The Elastic IP address to recover or an IPv4 address from an address
+pool.}
 
 \item{PublicIpv4Pool}{The ID of an address pool that you own. Use this parameter to let Amazon
 EC2 select an address from the address pool. To specify a specific
@@ -54,6 +50,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Allocates an Elastic IP address to your Amazon Web Services account. After you allocate the Elastic IP address you can associate it with an instance or network interface. After you release an Elastic IP address, it is released to the IP address pool and can be allocated to a different Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/ec2/allocate_address.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_allocate_address/} for full documentation.
 }
 \keyword{internal}

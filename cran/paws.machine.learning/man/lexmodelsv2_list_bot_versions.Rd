@@ -30,6 +30,6 @@ page of results.}
 \description{
 Gets information about all of the versions of a bot.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/list_bot_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_list_bot_versions/} for full documentation.
 }
 \keyword{internal}

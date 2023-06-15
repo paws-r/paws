@@ -163,6 +163,6 @@ nominal value.}
 \description{
 \strong{We strongly recommend that all Auto Scaling groups use launch templates to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2.}
 
-See \url{https://paws-r.github.io/docs/autoscaling/update_auto_scaling_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_update_auto_scaling_group/} for full documentation.
 }
 \keyword{internal}

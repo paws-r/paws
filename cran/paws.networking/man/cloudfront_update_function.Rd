@@ -22,6 +22,6 @@ in the \emph{Amazon CloudFront Developer Guide}.}
 \description{
 Updates a CloudFront function.
 
-See \url{https://paws-r.github.io/docs/cloudfront/update_function.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_update_function/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ sesv2_get_dedicated_ip_pool(PoolName)
 \description{
 Retrieve information about the dedicated pool.
 
-See \url{https://paws-r.github.io/docs/sesv2/get_dedicated_ip_pool.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_get_dedicated_ip_pool/} for full documentation.
 }
 \keyword{internal}

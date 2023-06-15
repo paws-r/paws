@@ -16,6 +16,6 @@ apigatewayv2_delete_route_response(ApiId, RouteId, RouteResponseId)
 \description{
 Deletes a RouteResponse.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/delete_route_response.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_delete_route_response/} for full documentation.
 }
 \keyword{internal}

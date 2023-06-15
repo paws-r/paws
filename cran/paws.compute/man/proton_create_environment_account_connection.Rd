@@ -60,6 +60,6 @@ in the \emph{Proton User Guide}.}
 \description{
 Create an environment account connection in an environment account so that environment infrastructure resources can be provisioned in the environment account from a management account.
 
-See \url{https://paws-r.github.io/docs/proton/create_environment_account_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_create_environment_account_connection/} for full documentation.
 }
 \keyword{internal}

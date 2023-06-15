@@ -23,6 +23,6 @@ request.}
 \description{
 Accepts the transfer of a domain from another Amazon Web Services account to the currentAmazon Web Services account. You initiate a transfer between Amazon Web Services accounts using \code{\link[=route53domains_transfer_domain_to_another_aws_account]{transfer_domain_to_another_aws_account}}.
 
-See \url{https://paws-r.github.io/docs/route53domains/accept_domain_transfer_from_another_aws_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_accept_domain_transfer_from_another_aws_account/} for full documentation.
 }
 \keyword{internal}

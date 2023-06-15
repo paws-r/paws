@@ -14,6 +14,6 @@ personalize_describe_batch_segment_job(batchSegmentJobArn)
 \description{
 Gets the properties of a batch segment job including name, Amazon Resource Name (ARN), status, input and output configurations, and the ARN of the solution version used to generate segments.
 
-See \url{https://paws-r.github.io/docs/personalize/describe_batch_segment_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_describe_batch_segment_job/} for full documentation.
 }
 \keyword{internal}

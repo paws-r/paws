@@ -12,6 +12,6 @@ ssmcontacts_send_activation_code(ContactChannelId)
 \description{
 Sends an activation code to a contact channel. The contact can use this code to activate the contact channel in the console or with the \code{ActivateChannel} operation. Incident Manager can't engage a contact channel until it has been activated.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/send_activation_code.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_send_activation_code/} for full documentation.
 }
 \keyword{internal}

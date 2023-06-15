@@ -30,6 +30,6 @@ For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide
 \description{
 Attaches an IAM policy to the specified resource. Use this to share a rule group across accounts.
 
-See \url{https://paws-r.github.io/docs/wafv2/put_permission_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_put_permission_policy/} for full documentation.
 }
 \keyword{internal}

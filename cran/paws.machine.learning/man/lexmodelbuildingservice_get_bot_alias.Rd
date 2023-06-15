@@ -14,6 +14,6 @@ lexmodelbuildingservice_get_bot_alias(name, botName)
 \description{
 Returns information about an Amazon Lex bot alias. For more information about aliases, see versioning-aliases.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_bot_alias/} for full documentation.
 }
 \keyword{internal}

@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Adds the specified SSL server certificate to the certificate list for the specified HTTPS or TLS listener.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/add_listener_certificates.html](https://paws-r.github.io/docs/elbv2/add_listener_certificates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_add_listener_certificates/](https://www.paws-r-sdk.com/docs/elbv2_add_listener_certificates/) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
 #' @param Certificates &#91;required&#93; The certificate to add. You can specify one certificate per call. Set
@@ -40,7 +40,7 @@ elbv2_add_listener_certificates <- function(ListenerArn, Certificates) {
 #' @description
 #' Adds the specified tags to the specified Elastic Load Balancing resource. You can tag your Application Load Balancers, Network Load Balancers, Gateway Load Balancers, target groups, listeners, and rules.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/add_tags.html](https://paws-r.github.io/docs/elbv2/add_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_add_tags/](https://www.paws-r-sdk.com/docs/elbv2_add_tags/) for full documentation.
 #'
 #' @param ResourceArns &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param Tags &#91;required&#93; The tags.
@@ -71,7 +71,7 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #' @description
 #' Creates a listener for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/create_listener.html](https://paws-r.github.io/docs/elbv2/create_listener.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_create_listener/](https://www.paws-r-sdk.com/docs/elbv2_create_listener/) for full documentation.
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
 #' @param Protocol The protocol for connections from clients to the load balancer. For
@@ -139,7 +139,7 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #' @description
 #' Creates an Application Load Balancer, Network Load Balancer, or Gateway Load Balancer.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/create_load_balancer.html](https://paws-r.github.io/docs/elbv2/create_load_balancer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_create_load_balancer/](https://www.paws-r-sdk.com/docs/elbv2_create_load_balancer/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the load balancer.
 #' 
@@ -239,7 +239,7 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #' @description
 #' Creates a rule for the specified listener. The listener must be associated with an Application Load Balancer.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/create_rule.html](https://paws-r.github.io/docs/elbv2/create_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_create_rule/](https://www.paws-r-sdk.com/docs/elbv2_create_rule/) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
 #' @param Conditions &#91;required&#93; The conditions.
@@ -273,7 +273,7 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #' @description
 #' Creates a target group.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/create_target_group.html](https://paws-r.github.io/docs/elbv2/create_target_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_create_target_group/](https://www.paws-r-sdk.com/docs/elbv2_create_target_group/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the target group.
 #' 
@@ -392,7 +392,7 @@ elbv2_create_target_group <- function(Name, Protocol = NULL, ProtocolVersion = N
 #' @description
 #' Deletes the specified listener.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/delete_listener.html](https://paws-r.github.io/docs/elbv2/delete_listener.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_delete_listener/](https://www.paws-r-sdk.com/docs/elbv2_delete_listener/) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
 #'
@@ -422,7 +422,7 @@ elbv2_delete_listener <- function(ListenerArn) {
 #' @description
 #' Deletes the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer. Deleting a load balancer also deletes its listeners.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/delete_load_balancer.html](https://paws-r.github.io/docs/elbv2/delete_load_balancer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_delete_load_balancer/](https://www.paws-r-sdk.com/docs/elbv2_delete_load_balancer/) for full documentation.
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
 #'
@@ -451,7 +451,7 @@ elbv2_delete_load_balancer <- function(LoadBalancerArn) {
 #' @description
 #' Deletes the specified rule.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/delete_rule.html](https://paws-r.github.io/docs/elbv2/delete_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_delete_rule/](https://www.paws-r-sdk.com/docs/elbv2_delete_rule/) for full documentation.
 #'
 #' @param RuleArn &#91;required&#93; The Amazon Resource Name (ARN) of the rule.
 #'
@@ -480,7 +480,7 @@ elbv2_delete_rule <- function(RuleArn) {
 #' @description
 #' Deletes the specified target group.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/delete_target_group.html](https://paws-r.github.io/docs/elbv2/delete_target_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_delete_target_group/](https://www.paws-r-sdk.com/docs/elbv2_delete_target_group/) for full documentation.
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
 #'
@@ -509,7 +509,7 @@ elbv2_delete_target_group <- function(TargetGroupArn) {
 #' @description
 #' Deregisters the specified targets from the specified target group. After the targets are deregistered, they no longer receive traffic from the load balancer.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/deregister_targets.html](https://paws-r.github.io/docs/elbv2/deregister_targets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_deregister_targets/](https://www.paws-r-sdk.com/docs/elbv2_deregister_targets/) for full documentation.
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
 #' @param Targets &#91;required&#93; The targets. If you specified a port override when you registered a
@@ -542,7 +542,7 @@ elbv2_deregister_targets <- function(TargetGroupArn, Targets) {
 #' @description
 #' Describes the current Elastic Load Balancing resource limits for your Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/describe_account_limits.html](https://paws-r.github.io/docs/elbv2/describe_account_limits.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_describe_account_limits/](https://www.paws-r-sdk.com/docs/elbv2_describe_account_limits/) for full documentation.
 #'
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call.)
@@ -574,7 +574,7 @@ elbv2_describe_account_limits <- function(Marker = NULL, PageSize = NULL) {
 #' @description
 #' Describes the default certificate and the certificate list for the specified HTTPS or TLS listener.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/describe_listener_certificates.html](https://paws-r.github.io/docs/elbv2/describe_listener_certificates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_describe_listener_certificates/](https://www.paws-r-sdk.com/docs/elbv2_describe_listener_certificates/) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Names (ARN) of the listener.
 #' @param Marker The marker for the next set of results. (You received this marker from a
@@ -608,7 +608,7 @@ elbv2_describe_listener_certificates <- function(ListenerArn, Marker = NULL, Pag
 #' @description
 #' Describes the specified listeners or the listeners for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer. You must specify either a load balancer or one or more listeners.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/describe_listeners.html](https://paws-r.github.io/docs/elbv2/describe_listeners.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_describe_listeners/](https://www.paws-r-sdk.com/docs/elbv2_describe_listeners/) for full documentation.
 #'
 #' @param LoadBalancerArn The Amazon Resource Name (ARN) of the load balancer.
 #' @param ListenerArns The Amazon Resource Names (ARN) of the listeners.
@@ -642,7 +642,7 @@ elbv2_describe_listeners <- function(LoadBalancerArn = NULL, ListenerArns = NULL
 #' @description
 #' Describes the attributes for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/describe_load_balancer_attributes.html](https://paws-r.github.io/docs/elbv2/describe_load_balancer_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_describe_load_balancer_attributes/](https://www.paws-r-sdk.com/docs/elbv2_describe_load_balancer_attributes/) for full documentation.
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
 #'
@@ -671,7 +671,7 @@ elbv2_describe_load_balancer_attributes <- function(LoadBalancerArn) {
 #' @description
 #' Describes the specified load balancers or all of your load balancers.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/describe_load_balancers.html](https://paws-r.github.io/docs/elbv2/describe_load_balancers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_describe_load_balancers/](https://www.paws-r-sdk.com/docs/elbv2_describe_load_balancers/) for full documentation.
 #'
 #' @param LoadBalancerArns The Amazon Resource Names (ARN) of the load balancers. You can specify
 #' up to 20 load balancers in a single call.
@@ -705,7 +705,7 @@ elbv2_describe_load_balancers <- function(LoadBalancerArns = NULL, Names = NULL,
 #' @description
 #' Describes the specified rules or the rules for the specified listener. You must specify either a listener or one or more rules.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/describe_rules.html](https://paws-r.github.io/docs/elbv2/describe_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_describe_rules/](https://www.paws-r-sdk.com/docs/elbv2_describe_rules/) for full documentation.
 #'
 #' @param ListenerArn The Amazon Resource Name (ARN) of the listener.
 #' @param RuleArns The Amazon Resource Names (ARN) of the rules.
@@ -739,7 +739,7 @@ elbv2_describe_rules <- function(ListenerArn = NULL, RuleArns = NULL, Marker = N
 #' @description
 #' Describes the specified policies or all policies used for SSL negotiation.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/describe_ssl_policies.html](https://paws-r.github.io/docs/elbv2/describe_ssl_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_describe_ssl_policies/](https://www.paws-r-sdk.com/docs/elbv2_describe_ssl_policies/) for full documentation.
 #'
 #' @param Names The names of the policies.
 #' @param Marker The marker for the next set of results. (You received this marker from a
@@ -773,7 +773,7 @@ elbv2_describe_ssl_policies <- function(Names = NULL, Marker = NULL, PageSize = 
 #' @description
 #' Describes the tags for the specified Elastic Load Balancing resources. You can describe the tags for one or more Application Load Balancers, Network Load Balancers, Gateway Load Balancers, target groups, listeners, or rules.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/describe_tags.html](https://paws-r.github.io/docs/elbv2/describe_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_describe_tags/](https://www.paws-r-sdk.com/docs/elbv2_describe_tags/) for full documentation.
 #'
 #' @param ResourceArns &#91;required&#93; The Amazon Resource Names (ARN) of the resources. You can specify up to
 #' 20 resources in a single call.
@@ -803,7 +803,7 @@ elbv2_describe_tags <- function(ResourceArns) {
 #' @description
 #' Describes the attributes for the specified target group.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/describe_target_group_attributes.html](https://paws-r.github.io/docs/elbv2/describe_target_group_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_describe_target_group_attributes/](https://www.paws-r-sdk.com/docs/elbv2_describe_target_group_attributes/) for full documentation.
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
 #'
@@ -832,7 +832,7 @@ elbv2_describe_target_group_attributes <- function(TargetGroupArn) {
 #' @description
 #' Describes the specified target groups or all of your target groups. By default, all target groups are described. Alternatively, you can specify one of the following to filter the results: the ARN of the load balancer, the names of one or more target groups, or the ARNs of one or more target groups.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/describe_target_groups.html](https://paws-r.github.io/docs/elbv2/describe_target_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_describe_target_groups/](https://www.paws-r-sdk.com/docs/elbv2_describe_target_groups/) for full documentation.
 #'
 #' @param LoadBalancerArn The Amazon Resource Name (ARN) of the load balancer.
 #' @param TargetGroupArns The Amazon Resource Names (ARN) of the target groups.
@@ -866,7 +866,7 @@ elbv2_describe_target_groups <- function(LoadBalancerArn = NULL, TargetGroupArns
 #' @description
 #' Describes the health of the specified targets or all of your targets.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/describe_target_health.html](https://paws-r.github.io/docs/elbv2/describe_target_health.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_describe_target_health/](https://www.paws-r-sdk.com/docs/elbv2_describe_target_health/) for full documentation.
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
 #' @param Targets The targets.
@@ -896,7 +896,7 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #' @description
 #' Replaces the specified properties of the specified listener. Any properties that you do not specify remain unchanged.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/modify_listener.html](https://paws-r.github.io/docs/elbv2/modify_listener.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_modify_listener/](https://www.paws-r-sdk.com/docs/elbv2_modify_listener/) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
 #' @param Port The port for connections from clients to the load balancer. You cannot
@@ -962,7 +962,7 @@ elbv2_modify_listener <- function(ListenerArn, Port = NULL, Protocol = NULL, Ssl
 #' @description
 #' Modifies the specified attributes of the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/modify_load_balancer_attributes.html](https://paws-r.github.io/docs/elbv2/modify_load_balancer_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_modify_load_balancer_attributes/](https://www.paws-r-sdk.com/docs/elbv2_modify_load_balancer_attributes/) for full documentation.
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
 #' @param Attributes &#91;required&#93; The load balancer attributes.
@@ -992,7 +992,7 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 #' @description
 #' Replaces the specified properties of the specified rule. Any properties that you do not specify are unchanged.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/modify_rule.html](https://paws-r.github.io/docs/elbv2/modify_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_modify_rule/](https://www.paws-r-sdk.com/docs/elbv2_modify_rule/) for full documentation.
 #'
 #' @param RuleArn &#91;required&#93; The Amazon Resource Name (ARN) of the rule.
 #' @param Conditions The conditions.
@@ -1024,7 +1024,7 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' @description
 #' Modifies the health checks used when evaluating the health state of the targets in the specified target group.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/modify_target_group.html](https://paws-r.github.io/docs/elbv2/modify_target_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_modify_target_group/](https://www.paws-r-sdk.com/docs/elbv2_modify_target_group/) for full documentation.
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
 #' @param HealthCheckProtocol The protocol the load balancer uses when performing health checks on
@@ -1085,7 +1085,7 @@ elbv2_modify_target_group <- function(TargetGroupArn, HealthCheckProtocol = NULL
 #' @description
 #' Modifies the specified attributes of the specified target group.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/modify_target_group_attributes.html](https://paws-r.github.io/docs/elbv2/modify_target_group_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_modify_target_group_attributes/](https://www.paws-r-sdk.com/docs/elbv2_modify_target_group_attributes/) for full documentation.
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
 #' @param Attributes &#91;required&#93; The attributes.
@@ -1115,7 +1115,7 @@ elbv2_modify_target_group_attributes <- function(TargetGroupArn, Attributes) {
 #' @description
 #' Registers the specified targets with the specified target group.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/register_targets.html](https://paws-r.github.io/docs/elbv2/register_targets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_register_targets/](https://www.paws-r-sdk.com/docs/elbv2_register_targets/) for full documentation.
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
 #' @param Targets &#91;required&#93; The targets.
@@ -1146,7 +1146,7 @@ elbv2_register_targets <- function(TargetGroupArn, Targets) {
 #' @description
 #' Removes the specified certificate from the certificate list for the specified HTTPS or TLS listener.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/remove_listener_certificates.html](https://paws-r.github.io/docs/elbv2/remove_listener_certificates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_remove_listener_certificates/](https://www.paws-r-sdk.com/docs/elbv2_remove_listener_certificates/) for full documentation.
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
 #' @param Certificates &#91;required&#93; The certificate to remove. You can specify one certificate per call. Set
@@ -1178,7 +1178,7 @@ elbv2_remove_listener_certificates <- function(ListenerArn, Certificates) {
 #' @description
 #' Removes the specified tags from the specified Elastic Load Balancing resources. You can remove the tags for one or more Application Load Balancers, Network Load Balancers, Gateway Load Balancers, target groups, listeners, or rules.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/remove_tags.html](https://paws-r.github.io/docs/elbv2/remove_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_remove_tags/](https://www.paws-r-sdk.com/docs/elbv2_remove_tags/) for full documentation.
 #'
 #' @param ResourceArns &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param TagKeys &#91;required&#93; The tag keys for the tags to remove.
@@ -1209,7 +1209,7 @@ elbv2_remove_tags <- function(ResourceArns, TagKeys) {
 #' @description
 #' Sets the type of IP addresses used by the subnets of the specified load balancer.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/set_ip_address_type.html](https://paws-r.github.io/docs/elbv2/set_ip_address_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_set_ip_address_type/](https://www.paws-r-sdk.com/docs/elbv2_set_ip_address_type/) for full documentation.
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
 #' @param IpAddressType &#91;required&#93; The IP address type. The possible values are `ipv4` (for IPv4 addresses)
@@ -1241,7 +1241,7 @@ elbv2_set_ip_address_type <- function(LoadBalancerArn, IpAddressType) {
 #' @description
 #' Sets the priorities of the specified rules.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/set_rule_priorities.html](https://paws-r.github.io/docs/elbv2/set_rule_priorities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_set_rule_priorities/](https://www.paws-r-sdk.com/docs/elbv2_set_rule_priorities/) for full documentation.
 #'
 #' @param RulePriorities &#91;required&#93; The rule priorities.
 #'
@@ -1271,7 +1271,7 @@ elbv2_set_rule_priorities <- function(RulePriorities) {
 #' @description
 #' Associates the specified security groups with the specified Application Load Balancer. The specified security groups override the previously associated security groups.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/set_security_groups.html](https://paws-r.github.io/docs/elbv2/set_security_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_set_security_groups/](https://www.paws-r-sdk.com/docs/elbv2_set_security_groups/) for full documentation.
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
 #' @param SecurityGroups &#91;required&#93; The IDs of the security groups.
@@ -1302,7 +1302,7 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups) {
 #' @description
 #' Enables the Availability Zones for the specified public subnets for the specified Application Load Balancer or Network Load Balancer. The specified subnets replace the previously enabled subnets.
 #'
-#' See [https://paws-r.github.io/docs/elbv2/set_subnets.html](https://paws-r.github.io/docs/elbv2/set_subnets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elbv2_set_subnets/](https://www.paws-r-sdk.com/docs/elbv2_set_subnets/) for full documentation.
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
 #' @param Subnets The IDs of the public subnets. You can specify only one subnet per

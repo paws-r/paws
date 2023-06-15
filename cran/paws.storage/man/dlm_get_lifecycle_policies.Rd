@@ -34,6 +34,6 @@ Services-added lifecycle tags.}
 \description{
 Gets summary information about all or the specified data lifecycle policies.
 
-See \url{https://paws-r.github.io/docs/dlm/get_lifecycle_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dlm_get_lifecycle_policies/} for full documentation.
 }
 \keyword{internal}

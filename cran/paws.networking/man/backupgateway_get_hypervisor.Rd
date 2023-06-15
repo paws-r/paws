@@ -13,6 +13,6 @@ backupgateway_get_hypervisor(HypervisorArn)
 \description{
 This action requests information about the specified hypervisor to which the gateway will connect. A hypervisor is hardware, software, or firmware that creates and manages virtual machines, and allocates resources to them.
 
-See \url{https://paws-r.github.io/docs/backupgateway/get_hypervisor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupgateway_get_hypervisor/} for full documentation.
 }
 \keyword{internal}

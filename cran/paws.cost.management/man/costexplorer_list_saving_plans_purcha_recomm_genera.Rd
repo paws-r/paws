@@ -25,6 +25,6 @@ response object.}
 \description{
 Retrieves a list of your historical recommendation generations within the past 30 days.
 
-See \url{https://paws-r.github.io/docs/costexplorer/list_savings_plans_purchase_recommendation_generation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_list_savings_plans_purchase_recommendation_generation/} for full documentation.
 }
 \keyword{internal}

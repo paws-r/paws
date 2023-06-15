@@ -14,6 +14,6 @@ iamrolesanywhere_put_notification_settings(notificationSettings, trustAnchorId)
 \description{
 Attaches a list of \emph{notification settings} to a trust anchor.
 
-See \url{https://paws-r.github.io/docs/iamrolesanywhere/put_notification_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iamrolesanywhere_put_notification_settings/} for full documentation.
 }
 \keyword{internal}

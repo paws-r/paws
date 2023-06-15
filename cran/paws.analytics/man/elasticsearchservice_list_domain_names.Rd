@@ -14,6 +14,6 @@ Acceptable values are 'Elasticsearch' and 'OpenSearch'.}
 \description{
 Returns the name of all Elasticsearch domains owned by the current user's account.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/list_domain_names.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_list_domain_names/} for full documentation.
 }
 \keyword{internal}

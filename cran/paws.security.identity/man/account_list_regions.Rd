@@ -57,6 +57,6 @@ list of Regions with a Region status of ENABLING.}
 \description{
 Lists all the Regions for a given account and their respective opt-in statuses. Optionally, this list can be filtered by the \code{region-opt-status-contains} parameter.
 
-See \url{https://paws-r.github.io/docs/account/list_regions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/account_list_regions/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ different account, the request fails with the HTTP status code
 \description{
 Lists the metrics configurations for the bucket. The metrics configurations are only for the request metrics of the bucket and do not provide information on daily storage metrics. You can have up to 1,000 configurations per bucket.
 
-See \url{https://paws-r.github.io/docs/s3/list_bucket_metrics_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_list_bucket_metrics_configurations/} for full documentation.
 }
 \keyword{internal}

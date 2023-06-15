@@ -36,6 +36,6 @@ retrieve the next page of results.}
 \description{
 Returns a list of \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html}{aliases} for a Lambda function.
 
-See \url{https://paws-r.github.io/docs/lambda/list_aliases.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_list_aliases/} for full documentation.
 }
 \keyword{internal}

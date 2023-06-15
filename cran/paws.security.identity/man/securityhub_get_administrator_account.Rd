@@ -10,6 +10,6 @@ securityhub_get_administrator_account()
 \description{
 Provides the details for the Security Hub administrator account for the current member account.
 
-See \url{https://paws-r.github.io/docs/securityhub/get_administrator_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_get_administrator_account/} for full documentation.
 }
 \keyword{internal}

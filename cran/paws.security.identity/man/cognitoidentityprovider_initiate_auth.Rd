@@ -118,6 +118,6 @@ generates and passes to Amazon Cognito when it makes API requests.}
 \description{
 Initiates sign-in for a user in the Amazon Cognito user directory. You can't sign in a user with a federated IdP with \code{\link[=cognitoidentityprovider_initiate_auth]{initiate_auth}}. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation.html}{Adding user pool sign-in through a third party}.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/initiate_auth.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_initiate_auth/} for full documentation.
 }
 \keyword{internal}

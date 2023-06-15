@@ -24,6 +24,6 @@ tags from. To get the ARN for a resource, use the applicable \code{Get} or
 \description{
 Removes one or more tags from a specified resource.
 
-See \url{https://paws-r.github.io/docs/route53resolver/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_untag_resource/} for full documentation.
 }
 \keyword{internal}

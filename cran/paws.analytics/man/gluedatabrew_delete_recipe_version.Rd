@@ -16,6 +16,6 @@ supported.}
 \description{
 Deletes a single version of a DataBrew recipe.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/delete_recipe_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_delete_recipe_version/} for full documentation.
 }
 \keyword{internal}

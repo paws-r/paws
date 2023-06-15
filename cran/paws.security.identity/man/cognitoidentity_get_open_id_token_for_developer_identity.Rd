@@ -47,6 +47,6 @@ to account for clock skew.}
 \description{
 Registers (or retrieves) a Cognito \code{IdentityId} and an OpenID Connect token for a user authenticated by your backend authentication process. Supplying multiple logins will create an implicit linked account. You can only specify one developer provider as part of the \code{Logins} map, which is linked to the identity pool. The developer provider is the "domain" by which Cognito will refer to your users.
 
-See \url{https://paws-r.github.io/docs/cognitoidentity/get_open_id_token_for_developer_identity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_get_open_id_token_for_developer_identity/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ route53recoverycontrolconfig_update_safety_rule(
 \description{
 Update a safety rule (an assertion rule or gating rule). You can only update the name and the waiting period for a safety rule. To make other updates, delete the safety rule and create a new one.
 
-See \url{https://paws-r.github.io/docs/route53recoverycontrolconfig/update_safety_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_update_safety_rule/} for full documentation.
 }
 \keyword{internal}

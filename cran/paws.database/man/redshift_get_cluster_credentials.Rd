@@ -87,6 +87,6 @@ in the Amazon Redshift Database Developer Guide.
 \description{
 Returns a database user name and temporary password with temporary authorization to log on to an Amazon Redshift database. The action returns the database user name prefixed with \verb{IAM:} if \code{AutoCreate} is \code{False} or \verb{IAMA:} if \code{AutoCreate} is \code{True}. You can optionally specify one or more database user groups that the user will join at log on. By default, the temporary credentials expire in 900 seconds. You can optionally specify a duration between 900 seconds (15 minutes) and 3600 seconds (60 minutes). For more information, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html}{Using IAM Authentication to Generate Database User Credentials} in the Amazon Redshift Cluster Management Guide.
 
-See \url{https://paws-r.github.io/docs/redshift/get_cluster_credentials.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_get_cluster_credentials/} for full documentation.
 }
 \keyword{internal}

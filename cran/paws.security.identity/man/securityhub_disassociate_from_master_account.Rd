@@ -9,6 +9,6 @@ securityhub_disassociate_from_master_account()
 \description{
 This method is deprecated. Instead, use \code{\link[=securityhub_disassociate_from_administrator_account]{disassociate_from_administrator_account}}.
 
-See \url{https://paws-r.github.io/docs/securityhub/disassociate_from_master_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_disassociate_from_master_account/} for full documentation.
 }
 \keyword{internal}

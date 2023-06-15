@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Activates the gateway you previously deployed on your host. In the activation process, you specify information such as the Amazon Web Services Region that you want to use for storing snapshots or tapes, the time zone for scheduled snapshots the gateway snapshot schedule window, an activation key, and a name for your gateway. The activation process also associates your gateway with your account. For more information, see [`update_gateway_information`][storagegateway_update_gateway_information].
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/activate_gateway.html](https://paws-r.github.io/docs/storagegateway/activate_gateway.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_activate_gateway/](https://www.paws-r-sdk.com/docs/storagegateway_activate_gateway/) for full documentation.
 #'
 #' @param ActivationKey &#91;required&#93; Your gateway activation key. You can obtain the activation key by
 #' sending an HTTP GET request with redirects enabled to the gateway IP
@@ -87,7 +87,7 @@ storagegateway_activate_gateway <- function(ActivationKey, GatewayName, GatewayT
 #' @description
 #' Configures one or more gateway local disks as cache for a gateway. This operation is only supported in the cached volume, tape, and file gateway type (see [How Storage Gateway works (architecture)](https://docs.aws.amazon.com/storagegateway/index.html).
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/add_cache.html](https://paws-r.github.io/docs/storagegateway/add_cache.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_add_cache/](https://www.paws-r-sdk.com/docs/storagegateway_add_cache/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param DiskIds &#91;required&#93; An array of strings that identify disks that are to be configured as
@@ -120,7 +120,7 @@ storagegateway_add_cache <- function(GatewayARN, DiskIds) {
 #' @description
 #' Adds one or more tags to the specified resource. You use tags to add metadata to resources, which you can use to categorize these resources. For example, you can categorize resources by purpose, owner, environment, or team. Each tag consists of a key and a value, which you define. You can add tags to the following Storage Gateway resources:
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/add_tags_to_resource.html](https://paws-r.github.io/docs/storagegateway/add_tags_to_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_add_tags_to_resource/](https://www.paws-r-sdk.com/docs/storagegateway_add_tags_to_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource you want to add tags to.
 #' @param Tags &#91;required&#93; The key-value pair that represents the tag you want to add to the
@@ -157,7 +157,7 @@ storagegateway_add_tags_to_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Configures one or more gateway local disks as upload buffer for a specified gateway. This operation is supported for the stored volume, cached volume, and tape gateway types.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/add_upload_buffer.html](https://paws-r.github.io/docs/storagegateway/add_upload_buffer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_add_upload_buffer/](https://www.paws-r-sdk.com/docs/storagegateway_add_upload_buffer/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param DiskIds &#91;required&#93; An array of strings that identify disks that are to be configured as
@@ -191,7 +191,7 @@ storagegateway_add_upload_buffer <- function(GatewayARN, DiskIds) {
 #' @description
 #' Configures one or more gateway local disks as working storage for a gateway. This operation is only supported in the stored volume gateway type. This operation is deprecated in cached volume API version 20120630. Use [`add_upload_buffer`][storagegateway_add_upload_buffer] instead.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/add_working_storage.html](https://paws-r.github.io/docs/storagegateway/add_working_storage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_add_working_storage/](https://www.paws-r-sdk.com/docs/storagegateway_add_working_storage/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param DiskIds &#91;required&#93; An array of strings that identify disks that are to be configured as
@@ -224,7 +224,7 @@ storagegateway_add_working_storage <- function(GatewayARN, DiskIds) {
 #' @description
 #' Assigns a tape to a tape pool for archiving. The tape assigned to a pool is archived in the S3 storage class that is associated with the pool. When you use your backup application to eject the tape, the tape is archived directly into the S3 storage class (S3 Glacier or S3 Glacier Deep Archive) that corresponds to the pool.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/assign_tape_pool.html](https://paws-r.github.io/docs/storagegateway/assign_tape_pool.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_assign_tape_pool/](https://www.paws-r-sdk.com/docs/storagegateway_assign_tape_pool/) for full documentation.
 #'
 #' @param TapeARN &#91;required&#93; The unique Amazon Resource Name (ARN) of the virtual tape that you want
 #' to add to the tape pool.
@@ -267,7 +267,7 @@ storagegateway_assign_tape_pool <- function(TapeARN, PoolId, BypassGovernanceRet
 #' @description
 #' Associate an Amazon FSx file system with the FSx File Gateway. After the association process is complete, the file shares on the Amazon FSx file system are available for access through the gateway. This operation only supports the FSx File Gateway type.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/associate_file_system.html](https://paws-r.github.io/docs/storagegateway/associate_file_system.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_associate_file_system/](https://www.paws-r-sdk.com/docs/storagegateway_associate_file_system/) for full documentation.
 #'
 #' @param UserName &#91;required&#93; The user name of the user credential that has permission to access the
 #' root share D$ of the Amazon FSx file system. The user account must
@@ -314,7 +314,7 @@ storagegateway_associate_file_system <- function(UserName, Password, ClientToken
 #' @description
 #' Connects a volume to an iSCSI connection and then attaches the volume to the specified gateway. Detaching and attaching a volume enables you to recover your data from one gateway to a different gateway without creating a snapshot. It also makes it easier to move your volumes from an on-premises gateway to a gateway hosted on an Amazon EC2 instance.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/attach_volume.html](https://paws-r.github.io/docs/storagegateway/attach_volume.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_attach_volume/](https://www.paws-r-sdk.com/docs/storagegateway_attach_volume/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; The Amazon Resource Name (ARN) of the gateway that you want to attach
 #' the volume to.
@@ -364,7 +364,7 @@ storagegateway_attach_volume <- function(GatewayARN, TargetName = NULL, VolumeAR
 #' @description
 #' Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after the archiving process is initiated. This operation is only supported in the tape gateway type.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/cancel_archival.html](https://paws-r.github.io/docs/storagegateway/cancel_archival.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_cancel_archival/](https://www.paws-r-sdk.com/docs/storagegateway_cancel_archival/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param TapeARN &#91;required&#93; The Amazon Resource Name (ARN) of the virtual tape you want to cancel
@@ -396,7 +396,7 @@ storagegateway_cancel_archival <- function(GatewayARN, TapeARN) {
 #' @description
 #' Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to a gateway after the retrieval process is initiated. The virtual tape is returned to the VTS. This operation is only supported in the tape gateway type.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/cancel_retrieval.html](https://paws-r.github.io/docs/storagegateway/cancel_retrieval.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_cancel_retrieval/](https://www.paws-r-sdk.com/docs/storagegateway_cancel_retrieval/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param TapeARN &#91;required&#93; The Amazon Resource Name (ARN) of the virtual tape you want to cancel
@@ -427,7 +427,7 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
 #' @description
 #' Creates a cached volume on a specified cached volume gateway. This operation is only supported in the cached volume gateway type.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/create_cachedi_scsi_volume.html](https://paws-r.github.io/docs/storagegateway/create_cachedi_scsi_volume.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_create_cachedi_scsi_volume/](https://www.paws-r-sdk.com/docs/storagegateway_create_cachedi_scsi_volume/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param VolumeSizeInBytes &#91;required&#93; The size of the volume in bytes.
@@ -500,7 +500,7 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #' @description
 #' Creates a Network File System (NFS) file share on an existing S3 File Gateway. In Storage Gateway, a file share is a file system mount point backed by Amazon S3 cloud storage. Storage Gateway exposes file shares using an NFS interface. This operation is only supported for S3 File Gateways.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/create_nfs_file_share.html](https://paws-r.github.io/docs/storagegateway/create_nfs_file_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_create_nfs_file_share/](https://www.paws-r-sdk.com/docs/storagegateway_create_nfs_file_share/) for full documentation.
 #'
 #' @param ClientToken &#91;required&#93; A unique string value that you supply that is used by S3 File Gateway to
 #' ensure idempotent file share creation.
@@ -649,7 +649,7 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' @description
 #' Creates a Server Message Block (SMB) file share on an existing S3 File Gateway. In Storage Gateway, a file share is a file system mount point backed by Amazon S3 cloud storage. Storage Gateway exposes file shares using an SMB interface. This operation is only supported for S3 File Gateways.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/create_smb_file_share.html](https://paws-r.github.io/docs/storagegateway/create_smb_file_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_create_smb_file_share/](https://www.paws-r-sdk.com/docs/storagegateway_create_smb_file_share/) for full documentation.
 #'
 #' @param ClientToken &#91;required&#93; A unique string value that you supply that is used by S3 File Gateway to
 #' ensure idempotent file share creation.
@@ -829,7 +829,7 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
 #' @description
 #' Initiates a snapshot of a volume.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/create_snapshot.html](https://paws-r.github.io/docs/storagegateway/create_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_create_snapshot/](https://www.paws-r-sdk.com/docs/storagegateway_create_snapshot/) for full documentation.
 #'
 #' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume. Use the
 #' [`list_volumes`][storagegateway_list_volumes] operation to return a list
@@ -871,7 +871,7 @@ storagegateway_create_snapshot <- function(VolumeARN, SnapshotDescription, Tags 
 #' @description
 #' Initiates a snapshot of a gateway from a volume recovery point. This operation is only supported in the cached volume gateway type.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/create_snapshot_from_volume_recovery_point.html](https://paws-r.github.io/docs/storagegateway/create_snapshot_from_volume_recovery_point.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_create_snapshot_from_volume_recovery_point/](https://www.paws-r-sdk.com/docs/storagegateway_create_snapshot_from_volume_recovery_point/) for full documentation.
 #'
 #' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
 #' [`describe_storedi_scsi_volumes`][storagegateway_describe_storedi_scsi_volumes]
@@ -913,7 +913,7 @@ storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN,
 #' @description
 #' Creates a volume on a specified gateway. This operation is only supported in the stored volume gateway type.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/create_storedi_scsi_volume.html](https://paws-r.github.io/docs/storagegateway/create_storedi_scsi_volume.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_create_storedi_scsi_volume/](https://www.paws-r-sdk.com/docs/storagegateway_create_storedi_scsi_volume/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param DiskId &#91;required&#93; The unique identifier for the gateway local disk that is configured as a
@@ -984,7 +984,7 @@ storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, Snapsh
 #' @description
 #' Creates a new custom tape pool. You can use custom tape pool to enable tape retention lock on tapes that are archived in the custom pool.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/create_tape_pool.html](https://paws-r.github.io/docs/storagegateway/create_tape_pool.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_create_tape_pool/](https://www.paws-r-sdk.com/docs/storagegateway_create_tape_pool/) for full documentation.
 #'
 #' @param PoolName &#91;required&#93; The name of the new custom tape pool.
 #' @param StorageClass &#91;required&#93; The storage class that is associated with the new custom pool. When you
@@ -1032,7 +1032,7 @@ storagegateway_create_tape_pool <- function(PoolName, StorageClass, RetentionLoc
 #' @description
 #' Creates a virtual tape by using your own barcode. You write data to the virtual tape and then archive the tape. A barcode is unique and cannot be reused if it has already been used on a tape. This applies to barcodes used on deleted tapes. This operation is only supported in the tape gateway type.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/create_tape_with_barcode.html](https://paws-r.github.io/docs/storagegateway/create_tape_with_barcode.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_create_tape_with_barcode/](https://www.paws-r-sdk.com/docs/storagegateway_create_tape_with_barcode/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; The unique Amazon Resource Name (ARN) that represents the gateway to
 #' associate the virtual tape with. Use the
@@ -1093,7 +1093,7 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 #' @description
 #' Creates one or more virtual tapes. You write data to the virtual tapes and then archive the tapes. This operation is only supported in the tape gateway type.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/create_tapes.html](https://paws-r.github.io/docs/storagegateway/create_tapes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_create_tapes/](https://www.paws-r-sdk.com/docs/storagegateway_create_tapes/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; The unique Amazon Resource Name (ARN) that represents the gateway to
 #' associate the virtual tapes with. Use the
@@ -1161,7 +1161,7 @@ storagegateway_create_tapes <- function(GatewayARN, TapeSizeInBytes, ClientToken
 #' @description
 #' Deletes the automatic tape creation policy of a gateway. If you delete this policy, new virtual tapes must be created manually. Use the Amazon Resource Name (ARN) of the gateway in your request to remove the policy.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/delete_automatic_tape_creation_policy.html](https://paws-r.github.io/docs/storagegateway/delete_automatic_tape_creation_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_delete_automatic_tape_creation_policy/](https://www.paws-r-sdk.com/docs/storagegateway_delete_automatic_tape_creation_policy/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
@@ -1190,7 +1190,7 @@ storagegateway_delete_automatic_tape_creation_policy <- function(GatewayARN) {
 #' @description
 #' Deletes the bandwidth rate limits of a gateway. You can delete either the upload and download bandwidth rate limit, or you can delete both. If you delete only one of the limits, the other limit remains unchanged. To specify which gateway to work with, use the Amazon Resource Name (ARN) of the gateway in your request. This operation is supported only for the stored volume, cached volume, and tape gateway types.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/delete_bandwidth_rate_limit.html](https://paws-r.github.io/docs/storagegateway/delete_bandwidth_rate_limit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_delete_bandwidth_rate_limit/](https://www.paws-r-sdk.com/docs/storagegateway_delete_bandwidth_rate_limit/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param BandwidthType &#91;required&#93; One of the BandwidthType values that indicates the gateway bandwidth
@@ -1224,7 +1224,7 @@ storagegateway_delete_bandwidth_rate_limit <- function(GatewayARN, BandwidthType
 #' @description
 #' Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target and initiator pair. This operation is supported in volume and tape gateway types.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/delete_chap_credentials.html](https://paws-r.github.io/docs/storagegateway/delete_chap_credentials.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_delete_chap_credentials/](https://www.paws-r-sdk.com/docs/storagegateway_delete_chap_credentials/) for full documentation.
 #'
 #' @param TargetARN &#91;required&#93; The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
 #' [`describe_storedi_scsi_volumes`][storagegateway_describe_storedi_scsi_volumes]
@@ -1256,7 +1256,7 @@ storagegateway_delete_chap_credentials <- function(TargetARN, InitiatorName) {
 #' @description
 #' Deletes a file share from an S3 File Gateway. This operation is only supported for S3 File Gateways.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/delete_file_share.html](https://paws-r.github.io/docs/storagegateway/delete_file_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_delete_file_share/](https://www.paws-r-sdk.com/docs/storagegateway_delete_file_share/) for full documentation.
 #'
 #' @param FileShareARN &#91;required&#93; The Amazon Resource Name (ARN) of the file share to be deleted.
 #' @param ForceDelete If this value is set to `true`, the operation deletes a file share
@@ -1292,7 +1292,7 @@ storagegateway_delete_file_share <- function(FileShareARN, ForceDelete = NULL) {
 #' @description
 #' Deletes a gateway. To specify which gateway to delete, use the Amazon Resource Name (ARN) of the gateway in your request. The operation deletes the gateway; however, it does not delete the gateway virtual machine (VM) from your host computer.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/delete_gateway.html](https://paws-r.github.io/docs/storagegateway/delete_gateway.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_delete_gateway/](https://www.paws-r-sdk.com/docs/storagegateway_delete_gateway/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
@@ -1321,7 +1321,7 @@ storagegateway_delete_gateway <- function(GatewayARN) {
 #' @description
 #' Deletes a snapshot of a volume.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/delete_snapshot_schedule.html](https://paws-r.github.io/docs/storagegateway/delete_snapshot_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_delete_snapshot_schedule/](https://www.paws-r-sdk.com/docs/storagegateway_delete_snapshot_schedule/) for full documentation.
 #'
 #' @param VolumeARN &#91;required&#93; The volume which snapshot schedule to delete.
 #'
@@ -1350,7 +1350,7 @@ storagegateway_delete_snapshot_schedule <- function(VolumeARN) {
 #' @description
 #' Deletes the specified virtual tape. This operation is only supported in the tape gateway type.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/delete_tape.html](https://paws-r.github.io/docs/storagegateway/delete_tape.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_delete_tape/](https://www.paws-r-sdk.com/docs/storagegateway_delete_tape/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; The unique Amazon Resource Name (ARN) of the gateway that the virtual
 #' tape to delete is associated with. Use the
@@ -1387,7 +1387,7 @@ storagegateway_delete_tape <- function(GatewayARN, TapeARN, BypassGovernanceRete
 #' @description
 #' Deletes the specified virtual tape from the virtual tape shelf (VTS). This operation is only supported in the tape gateway type.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/delete_tape_archive.html](https://paws-r.github.io/docs/storagegateway/delete_tape_archive.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_delete_tape_archive/](https://www.paws-r-sdk.com/docs/storagegateway_delete_tape_archive/) for full documentation.
 #'
 #' @param TapeARN &#91;required&#93; The Amazon Resource Name (ARN) of the virtual tape to delete from the
 #' virtual tape shelf (VTS).
@@ -1421,7 +1421,7 @@ storagegateway_delete_tape_archive <- function(TapeARN, BypassGovernanceRetentio
 #' @description
 #' Delete a custom tape pool. A custom tape pool can only be deleted if there are no tapes in the pool and if there are no automatic tape creation policies that reference the custom tape pool.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/delete_tape_pool.html](https://paws-r.github.io/docs/storagegateway/delete_tape_pool.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_delete_tape_pool/](https://www.paws-r-sdk.com/docs/storagegateway_delete_tape_pool/) for full documentation.
 #'
 #' @param PoolARN &#91;required&#93; The Amazon Resource Name (ARN) of the custom tape pool to delete.
 #'
@@ -1451,7 +1451,7 @@ storagegateway_delete_tape_pool <- function(PoolARN) {
 #' @description
 #' Deletes the specified storage volume that you previously created using the [`create_cachedi_scsi_volume`][storagegateway_create_cachedi_scsi_volume] or [`create_storedi_scsi_volume`][storagegateway_create_storedi_scsi_volume] API. This operation is only supported in the cached volume and stored volume types. For stored volume gateways, the local disk that was configured as the storage volume is not deleted. You can reuse the local disk to create another storage volume.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/delete_volume.html](https://paws-r.github.io/docs/storagegateway/delete_volume.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_delete_volume/](https://www.paws-r-sdk.com/docs/storagegateway_delete_volume/) for full documentation.
 #'
 #' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume. Use the
 #' [`list_volumes`][storagegateway_list_volumes] operation to return a list
@@ -1483,7 +1483,7 @@ storagegateway_delete_volume <- function(VolumeARN) {
 #' @description
 #' Returns information about the most recent high availability monitoring test that was performed on the host in a cluster. If a test isn't performed, the status and start time in the response would be null.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/describe_availability_monitor_test.html](https://paws-r.github.io/docs/storagegateway/describe_availability_monitor_test.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_availability_monitor_test/](https://www.paws-r-sdk.com/docs/storagegateway_describe_availability_monitor_test/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
@@ -1512,7 +1512,7 @@ storagegateway_describe_availability_monitor_test <- function(GatewayARN) {
 #' @description
 #' Returns the bandwidth rate limits of a gateway. By default, these limits are not set, which means no bandwidth rate limiting is in effect. This operation is supported only for the stored volume, cached volume, and tape gateway types. To describe bandwidth rate limits for S3 file gateways, use [`describe_bandwidth_rate_limit_schedule`][storagegateway_describe_bandwidth_rate_limit_schedule].
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/describe_bandwidth_rate_limit.html](https://paws-r.github.io/docs/storagegateway/describe_bandwidth_rate_limit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_bandwidth_rate_limit/](https://www.paws-r-sdk.com/docs/storagegateway_describe_bandwidth_rate_limit/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
@@ -1541,7 +1541,7 @@ storagegateway_describe_bandwidth_rate_limit <- function(GatewayARN) {
 #' @description
 #' Returns information about the bandwidth rate limit schedule of a gateway. By default, gateways do not have bandwidth rate limit schedules, which means no bandwidth rate limiting is in effect. This operation is supported only for volume, tape and S3 file gateways. FSx file gateways do not support bandwidth rate limits.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/describe_bandwidth_rate_limit_schedule.html](https://paws-r.github.io/docs/storagegateway/describe_bandwidth_rate_limit_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_bandwidth_rate_limit_schedule/](https://www.paws-r-sdk.com/docs/storagegateway_describe_bandwidth_rate_limit_schedule/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
@@ -1570,7 +1570,7 @@ storagegateway_describe_bandwidth_rate_limit_schedule <- function(GatewayARN) {
 #' @description
 #' Returns information about the cache of a gateway. This operation is only supported in the cached volume, tape, and file gateway types.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/describe_cache.html](https://paws-r.github.io/docs/storagegateway/describe_cache.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_cache/](https://www.paws-r-sdk.com/docs/storagegateway_describe_cache/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
@@ -1599,7 +1599,7 @@ storagegateway_describe_cache <- function(GatewayARN) {
 #' @description
 #' Returns a description of the gateway volumes specified in the request. This operation is only supported in the cached volume gateway types.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/describe_cachedi_scsi_volumes.html](https://paws-r.github.io/docs/storagegateway/describe_cachedi_scsi_volumes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_cachedi_scsi_volumes/](https://www.paws-r-sdk.com/docs/storagegateway_describe_cachedi_scsi_volumes/) for full documentation.
 #'
 #' @param VolumeARNs &#91;required&#93; An array of strings where each string represents the Amazon Resource
 #' Name (ARN) of a cached volume. All of the specified cached volumes must
@@ -1634,7 +1634,7 @@ storagegateway_describe_cachedi_scsi_volumes <- function(VolumeARNs) {
 #' @description
 #' Returns an array of Challenge-Handshake Authentication Protocol (CHAP) credentials information for a specified iSCSI target, one for each target-initiator pair. This operation is supported in the volume and tape gateway types.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/describe_chap_credentials.html](https://paws-r.github.io/docs/storagegateway/describe_chap_credentials.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_chap_credentials/](https://www.paws-r-sdk.com/docs/storagegateway_describe_chap_credentials/) for full documentation.
 #'
 #' @param TargetARN &#91;required&#93; The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
 #' [`describe_storedi_scsi_volumes`][storagegateway_describe_storedi_scsi_volumes]
@@ -1665,7 +1665,7 @@ storagegateway_describe_chap_credentials <- function(TargetARN) {
 #' @description
 #' Gets the file system association information. This operation is only supported for FSx File Gateways.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/describe_file_system_associations.html](https://paws-r.github.io/docs/storagegateway/describe_file_system_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_file_system_associations/](https://www.paws-r-sdk.com/docs/storagegateway_describe_file_system_associations/) for full documentation.
 #'
 #' @param FileSystemAssociationARNList &#91;required&#93; An array containing the Amazon Resource Name (ARN) of each file system
 #' association to be described.
@@ -1697,7 +1697,7 @@ storagegateway_describe_file_system_associations <- function(FileSystemAssociati
 #' @description
 #' Returns metadata about a gateway such as its name, network interfaces, configured time zone, and the state (whether the gateway is running or not). To specify which gateway to describe, use the Amazon Resource Name (ARN) of the gateway in your request.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/describe_gateway_information.html](https://paws-r.github.io/docs/storagegateway/describe_gateway_information.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_gateway_information/](https://www.paws-r-sdk.com/docs/storagegateway_describe_gateway_information/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
@@ -1727,7 +1727,7 @@ storagegateway_describe_gateway_information <- function(GatewayARN) {
 #' @description
 #' Returns your gateway's weekly maintenance start time including the day and time of the week. Note that values are in terms of the gateway's time zone.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/describe_maintenance_start_time.html](https://paws-r.github.io/docs/storagegateway/describe_maintenance_start_time.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_maintenance_start_time/](https://www.paws-r-sdk.com/docs/storagegateway_describe_maintenance_start_time/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
@@ -1757,7 +1757,7 @@ storagegateway_describe_maintenance_start_time <- function(GatewayARN) {
 #' @description
 #' Gets a description for one or more Network File System (NFS) file shares from an S3 File Gateway. This operation is only supported for S3 File Gateways.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/describe_nfs_file_shares.html](https://paws-r.github.io/docs/storagegateway/describe_nfs_file_shares.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_nfs_file_shares/](https://www.paws-r-sdk.com/docs/storagegateway_describe_nfs_file_shares/) for full documentation.
 #'
 #' @param FileShareARNList &#91;required&#93; An array containing the Amazon Resource Name (ARN) of each file share to
 #' be described.
@@ -1788,7 +1788,7 @@ storagegateway_describe_nfs_file_shares <- function(FileShareARNList) {
 #' @description
 #' Gets a description for one or more Server Message Block (SMB) file shares from a S3 File Gateway. This operation is only supported for S3 File Gateways.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/describe_smb_file_shares.html](https://paws-r.github.io/docs/storagegateway/describe_smb_file_shares.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_smb_file_shares/](https://www.paws-r-sdk.com/docs/storagegateway_describe_smb_file_shares/) for full documentation.
 #'
 #' @param FileShareARNList &#91;required&#93; An array containing the Amazon Resource Name (ARN) of each file share to
 #' be described.
@@ -1819,7 +1819,7 @@ storagegateway_describe_smb_file_shares <- function(FileShareARNList) {
 #' @description
 #' Gets a description of a Server Message Block (SMB) file share settings from a file gateway. This operation is only supported for file gateways.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/describe_smb_settings.html](https://paws-r.github.io/docs/storagegateway/describe_smb_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_smb_settings/](https://www.paws-r-sdk.com/docs/storagegateway_describe_smb_settings/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
@@ -1848,7 +1848,7 @@ storagegateway_describe_smb_settings <- function(GatewayARN) {
 #' @description
 #' Describes the snapshot schedule for the specified gateway volume. The snapshot schedule information includes intervals at which snapshots are automatically initiated on the volume. This operation is only supported in the cached volume and stored volume types.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/describe_snapshot_schedule.html](https://paws-r.github.io/docs/storagegateway/describe_snapshot_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_snapshot_schedule/](https://www.paws-r-sdk.com/docs/storagegateway_describe_snapshot_schedule/) for full documentation.
 #'
 #' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume. Use the
 #' [`list_volumes`][storagegateway_list_volumes] operation to return a list
@@ -1879,7 +1879,7 @@ storagegateway_describe_snapshot_schedule <- function(VolumeARN) {
 #' @description
 #' Returns the description of the gateway volumes specified in the request. The list of gateway volumes in the request must be from one gateway. In the response, Storage Gateway returns volume information sorted by volume ARNs. This operation is only supported in stored volume gateway type.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/describe_storedi_scsi_volumes.html](https://paws-r.github.io/docs/storagegateway/describe_storedi_scsi_volumes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_storedi_scsi_volumes/](https://www.paws-r-sdk.com/docs/storagegateway_describe_storedi_scsi_volumes/) for full documentation.
 #'
 #' @param VolumeARNs &#91;required&#93; An array of strings where each string represents the Amazon Resource
 #' Name (ARN) of a stored volume. All of the specified stored volumes must
@@ -1913,7 +1913,7 @@ storagegateway_describe_storedi_scsi_volumes <- function(VolumeARNs) {
 #' @description
 #' Returns a description of specified virtual tapes in the virtual tape shelf (VTS). This operation is only supported in the tape gateway type.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/describe_tape_archives.html](https://paws-r.github.io/docs/storagegateway/describe_tape_archives.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_tape_archives/](https://www.paws-r-sdk.com/docs/storagegateway_describe_tape_archives/) for full documentation.
 #'
 #' @param TapeARNs Specifies one or more unique Amazon Resource Names (ARNs) that represent
 #' the virtual tapes you want to describe.
@@ -1948,7 +1948,7 @@ storagegateway_describe_tape_archives <- function(TapeARNs = NULL, Marker = NULL
 #' @description
 #' Returns a list of virtual tape recovery points that are available for the specified tape gateway.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/describe_tape_recovery_points.html](https://paws-r.github.io/docs/storagegateway/describe_tape_recovery_points.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_tape_recovery_points/](https://www.paws-r-sdk.com/docs/storagegateway_describe_tape_recovery_points/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param Marker An opaque string that indicates the position at which to begin
@@ -1982,7 +1982,7 @@ storagegateway_describe_tape_recovery_points <- function(GatewayARN, Marker = NU
 #' @description
 #' Returns a description of the specified Amazon Resource Name (ARN) of virtual tapes. If a `TapeARN` is not specified, returns a description of all virtual tapes associated with the specified gateway. This operation is only supported in the tape gateway type.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/describe_tapes.html](https://paws-r.github.io/docs/storagegateway/describe_tapes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_tapes/](https://www.paws-r-sdk.com/docs/storagegateway_describe_tapes/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param TapeARNs Specifies one or more unique Amazon Resource Names (ARNs) that represent
@@ -2024,7 +2024,7 @@ storagegateway_describe_tapes <- function(GatewayARN, TapeARNs = NULL, Marker = 
 #' @description
 #' Returns information about the upload buffer of a gateway. This operation is supported for the stored volume, cached volume, and tape gateway types.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/describe_upload_buffer.html](https://paws-r.github.io/docs/storagegateway/describe_upload_buffer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_upload_buffer/](https://www.paws-r-sdk.com/docs/storagegateway_describe_upload_buffer/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
@@ -2054,7 +2054,7 @@ storagegateway_describe_upload_buffer <- function(GatewayARN) {
 #' @description
 #' Returns a description of virtual tape library (VTL) devices for the specified tape gateway. In the response, Storage Gateway returns VTL device information.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/describe_vtl_devices.html](https://paws-r.github.io/docs/storagegateway/describe_vtl_devices.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_vtl_devices/](https://www.paws-r-sdk.com/docs/storagegateway_describe_vtl_devices/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param VTLDeviceARNs An array of strings, where each string represents the Amazon Resource
@@ -2093,7 +2093,7 @@ storagegateway_describe_vtl_devices <- function(GatewayARN, VTLDeviceARNs = NULL
 #' @description
 #' Returns information about the working storage of a gateway. This operation is only supported in the stored volumes gateway type. This operation is deprecated in cached volumes API version (20120630). Use DescribeUploadBuffer instead.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/describe_working_storage.html](https://paws-r.github.io/docs/storagegateway/describe_working_storage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_working_storage/](https://www.paws-r-sdk.com/docs/storagegateway_describe_working_storage/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
@@ -2123,7 +2123,7 @@ storagegateway_describe_working_storage <- function(GatewayARN) {
 #' @description
 #' Disconnects a volume from an iSCSI connection and then detaches the volume from the specified gateway. Detaching and attaching a volume enables you to recover your data from one gateway to a different gateway without creating a snapshot. It also makes it easier to move your volumes from an on-premises gateway to a gateway hosted on an Amazon EC2 instance. This operation is only supported in the volume gateway type.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/detach_volume.html](https://paws-r.github.io/docs/storagegateway/detach_volume.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_detach_volume/](https://www.paws-r-sdk.com/docs/storagegateway_detach_volume/) for full documentation.
 #'
 #' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume to detach from the gateway.
 #' @param ForceDetach Set to `true` to forcibly remove the iSCSI connection of the target
@@ -2158,7 +2158,7 @@ storagegateway_detach_volume <- function(VolumeARN, ForceDetach = NULL) {
 #' @description
 #' Disables a tape gateway when the gateway is no longer functioning. For example, if your gateway VM is damaged, you can disable the gateway so you can recover virtual tapes.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/disable_gateway.html](https://paws-r.github.io/docs/storagegateway/disable_gateway.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_disable_gateway/](https://www.paws-r-sdk.com/docs/storagegateway_disable_gateway/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
@@ -2187,7 +2187,7 @@ storagegateway_disable_gateway <- function(GatewayARN) {
 #' @description
 #' Disassociates an Amazon FSx file system from the specified gateway. After the disassociation process finishes, the gateway can no longer access the Amazon FSx file system. This operation is only supported in the FSx File Gateway type.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/disassociate_file_system.html](https://paws-r.github.io/docs/storagegateway/disassociate_file_system.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_disassociate_file_system/](https://www.paws-r-sdk.com/docs/storagegateway_disassociate_file_system/) for full documentation.
 #'
 #' @param FileSystemAssociationARN &#91;required&#93; The Amazon Resource Name (ARN) of the file system association to be
 #' deleted.
@@ -2222,7 +2222,7 @@ storagegateway_disassociate_file_system <- function(FileSystemAssociationARN, Fo
 #' @description
 #' Adds a file gateway to an Active Directory domain. This operation is only supported for file gateways that support the SMB file protocol.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/join_domain.html](https://paws-r.github.io/docs/storagegateway/join_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_join_domain/](https://www.paws-r-sdk.com/docs/storagegateway_join_domain/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; The Amazon Resource Name (ARN) of the gateway. Use the
 #' [`list_gateways`][storagegateway_list_gateways] operation to return a
@@ -2270,7 +2270,7 @@ storagegateway_join_domain <- function(GatewayARN, DomainName, OrganizationalUni
 #' @description
 #' Lists the automatic tape creation policies for a gateway. If there are no automatic tape creation policies for the gateway, it returns an empty list.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/list_automatic_tape_creation_policies.html](https://paws-r.github.io/docs/storagegateway/list_automatic_tape_creation_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_list_automatic_tape_creation_policies/](https://www.paws-r-sdk.com/docs/storagegateway_list_automatic_tape_creation_policies/) for full documentation.
 #'
 #' @param GatewayARN 
 #'
@@ -2300,7 +2300,7 @@ storagegateway_list_automatic_tape_creation_policies <- function(GatewayARN = NU
 #' @description
 #' Gets a list of the file shares for a specific S3 File Gateway, or the list of file shares that belong to the calling user account. This operation is only supported for S3 File Gateways.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/list_file_shares.html](https://paws-r.github.io/docs/storagegateway/list_file_shares.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_list_file_shares/](https://www.paws-r-sdk.com/docs/storagegateway_list_file_shares/) for full documentation.
 #'
 #' @param GatewayARN The Amazon Resource Name (ARN) of the gateway whose file shares you want
 #' to list. If this field is not present, all file shares under your
@@ -2336,7 +2336,7 @@ storagegateway_list_file_shares <- function(GatewayARN = NULL, Limit = NULL, Mar
 #' @description
 #' Gets a list of `FileSystemAssociationSummary` objects. Each object contains a summary of a file system association. This operation is only supported for FSx File Gateways.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/list_file_system_associations.html](https://paws-r.github.io/docs/storagegateway/list_file_system_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_list_file_system_associations/](https://www.paws-r-sdk.com/docs/storagegateway_list_file_system_associations/) for full documentation.
 #'
 #' @param GatewayARN 
 #' @param Limit The maximum number of file system associations to return in the
@@ -2375,7 +2375,7 @@ storagegateway_list_file_system_associations <- function(GatewayARN = NULL, Limi
 #' @description
 #' Lists gateways owned by an Amazon Web Services account in an Amazon Web Services Region specified in the request. The returned list is ordered by gateway Amazon Resource Name (ARN).
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/list_gateways.html](https://paws-r.github.io/docs/storagegateway/list_gateways.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_list_gateways/](https://www.paws-r-sdk.com/docs/storagegateway_list_gateways/) for full documentation.
 #'
 #' @param Marker An opaque string that indicates the position at which to begin the
 #' returned list of gateways.
@@ -2407,7 +2407,7 @@ storagegateway_list_gateways <- function(Marker = NULL, Limit = NULL) {
 #' @description
 #' Returns a list of the gateway's local disks. To specify which gateway to describe, you use the Amazon Resource Name (ARN) of the gateway in the body of the request.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/list_local_disks.html](https://paws-r.github.io/docs/storagegateway/list_local_disks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_list_local_disks/](https://www.paws-r-sdk.com/docs/storagegateway_list_local_disks/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
@@ -2436,7 +2436,7 @@ storagegateway_list_local_disks <- function(GatewayARN) {
 #' @description
 #' Lists the tags that have been added to the specified resource. This operation is supported in storage gateways of all types.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/list_tags_for_resource.html](https://paws-r.github.io/docs/storagegateway/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/storagegateway_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which you want to
 #' list tags.
@@ -2470,7 +2470,7 @@ storagegateway_list_tags_for_resource <- function(ResourceARN, Marker = NULL, Li
 #' @description
 #' Lists custom tape pools. You specify custom tape pools to list by specifying one or more custom tape pool Amazon Resource Names (ARNs). If you don't specify a custom tape pool ARN, the operation lists all custom tape pools.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/list_tape_pools.html](https://paws-r.github.io/docs/storagegateway/list_tape_pools.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_list_tape_pools/](https://www.paws-r-sdk.com/docs/storagegateway_list_tape_pools/) for full documentation.
 #'
 #' @param PoolARNs The Amazon Resource Name (ARN) of each of the custom tape pools you want
 #' to list. If you don't specify a custom tape pool ARN, the response lists
@@ -2506,7 +2506,7 @@ storagegateway_list_tape_pools <- function(PoolARNs = NULL, Marker = NULL, Limit
 #' @description
 #' Lists virtual tapes in your virtual tape library (VTL) and your virtual tape shelf (VTS). You specify the tapes to list by specifying one or more tape Amazon Resource Names (ARNs). If you don't specify a tape ARN, the operation lists all virtual tapes in both your VTL and VTS.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/list_tapes.html](https://paws-r.github.io/docs/storagegateway/list_tapes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_list_tapes/](https://www.paws-r-sdk.com/docs/storagegateway_list_tapes/) for full documentation.
 #'
 #' @param TapeARNs 
 #' @param Marker A string that indicates the position at which to begin the returned list
@@ -2539,7 +2539,7 @@ storagegateway_list_tapes <- function(TapeARNs = NULL, Marker = NULL, Limit = NU
 #' @description
 #' Lists iSCSI initiators that are connected to a volume. You can use this operation to determine whether a volume is being used or not. This operation is only supported in the cached volume and stored volume gateway types.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/list_volume_initiators.html](https://paws-r.github.io/docs/storagegateway/list_volume_initiators.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_list_volume_initiators/](https://www.paws-r-sdk.com/docs/storagegateway_list_volume_initiators/) for full documentation.
 #'
 #' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume. Use the
 #' [`list_volumes`][storagegateway_list_volumes] operation to return a list
@@ -2570,7 +2570,7 @@ storagegateway_list_volume_initiators <- function(VolumeARN) {
 #' @description
 #' Lists the recovery points for a specified gateway. This operation is only supported in the cached volume gateway type.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/list_volume_recovery_points.html](https://paws-r.github.io/docs/storagegateway/list_volume_recovery_points.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_list_volume_recovery_points/](https://www.paws-r-sdk.com/docs/storagegateway_list_volume_recovery_points/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
@@ -2599,7 +2599,7 @@ storagegateway_list_volume_recovery_points <- function(GatewayARN) {
 #' @description
 #' Lists the iSCSI stored volumes of a gateway. Results are sorted by volume ARN. The response includes only the volume ARNs. If you want additional volume information, use the [`describe_storedi_scsi_volumes`][storagegateway_describe_storedi_scsi_volumes] or the [`describe_cachedi_scsi_volumes`][storagegateway_describe_cachedi_scsi_volumes] API.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/list_volumes.html](https://paws-r.github.io/docs/storagegateway/list_volumes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_list_volumes/](https://www.paws-r-sdk.com/docs/storagegateway_list_volumes/) for full documentation.
 #'
 #' @param GatewayARN 
 #' @param Marker A string that indicates the position at which to begin the returned list
@@ -2634,7 +2634,7 @@ storagegateway_list_volumes <- function(GatewayARN = NULL, Marker = NULL, Limit 
 #' @description
 #' Sends you notification through CloudWatch Events when all files written to your file share have been uploaded to S3. Amazon S3.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/notify_when_uploaded.html](https://paws-r.github.io/docs/storagegateway/notify_when_uploaded.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_notify_when_uploaded/](https://www.paws-r-sdk.com/docs/storagegateway_notify_when_uploaded/) for full documentation.
 #'
 #' @param FileShareARN &#91;required&#93; 
 #'
@@ -2663,7 +2663,7 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
 #' @description
 #' Refreshes the cached inventory of objects for the specified file share. This operation finds objects in the Amazon S3 bucket that were added, removed, or replaced since the gateway last listed the bucket's contents and cached the results. This operation does not import files into the S3 File Gateway cache storage. It only updates the cached inventory to reflect changes in the inventory of the objects in the S3 bucket. This operation is only supported in the S3 File Gateway types.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/refresh_cache.html](https://paws-r.github.io/docs/storagegateway/refresh_cache.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_refresh_cache/](https://www.paws-r-sdk.com/docs/storagegateway_refresh_cache/) for full documentation.
 #'
 #' @param FileShareARN &#91;required&#93; The Amazon Resource Name (ARN) of the file share you want to refresh.
 #' @param FolderList A comma-separated list of the paths of folders to refresh in the cache.
@@ -2705,7 +2705,7 @@ storagegateway_refresh_cache <- function(FileShareARN, FolderList = NULL, Recurs
 #' @description
 #' Removes one or more tags from the specified resource. This operation is supported in storage gateways of all types.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/remove_tags_from_resource.html](https://paws-r.github.io/docs/storagegateway/remove_tags_from_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_remove_tags_from_resource/](https://www.paws-r-sdk.com/docs/storagegateway_remove_tags_from_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource you want to remove the
 #' tags from.
@@ -2738,7 +2738,7 @@ storagegateway_remove_tags_from_resource <- function(ResourceARN, TagKeys) {
 #' @description
 #' Resets all cache disks that have encountered an error and makes the disks available for reconfiguration as cache storage. If your cache disk encounters an error, the gateway prevents read and write operations on virtual tapes in the gateway. For example, an error can occur when a disk is corrupted or removed from the gateway. When a cache is reset, the gateway loses its cache storage. At this point, you can reconfigure the disks as cache disks. This operation is only supported in the cached volume and tape types.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/reset_cache.html](https://paws-r.github.io/docs/storagegateway/reset_cache.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_reset_cache/](https://www.paws-r-sdk.com/docs/storagegateway_reset_cache/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
@@ -2768,7 +2768,7 @@ storagegateway_reset_cache <- function(GatewayARN) {
 #' @description
 #' Retrieves an archived virtual tape from the virtual tape shelf (VTS) to a tape gateway. Virtual tapes archived in the VTS are not associated with any gateway. However after a tape is retrieved, it is associated with a gateway, even though it is also listed in the VTS, that is, archive. This operation is only supported in the tape gateway type.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/retrieve_tape_archive.html](https://paws-r.github.io/docs/storagegateway/retrieve_tape_archive.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_retrieve_tape_archive/](https://www.paws-r-sdk.com/docs/storagegateway_retrieve_tape_archive/) for full documentation.
 #'
 #' @param TapeARN &#91;required&#93; The Amazon Resource Name (ARN) of the virtual tape you want to retrieve
 #' from the virtual tape shelf (VTS).
@@ -2805,7 +2805,7 @@ storagegateway_retrieve_tape_archive <- function(TapeARN, GatewayARN) {
 #' @description
 #' Retrieves the recovery point for the specified virtual tape. This operation is only supported in the tape gateway type.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/retrieve_tape_recovery_point.html](https://paws-r.github.io/docs/storagegateway/retrieve_tape_recovery_point.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_retrieve_tape_recovery_point/](https://www.paws-r-sdk.com/docs/storagegateway_retrieve_tape_recovery_point/) for full documentation.
 #'
 #' @param TapeARN &#91;required&#93; The Amazon Resource Name (ARN) of the virtual tape for which you want to
 #' retrieve the recovery point.
@@ -2836,7 +2836,7 @@ storagegateway_retrieve_tape_recovery_point <- function(TapeARN, GatewayARN) {
 #' @description
 #' Sets the password for your VM local console. When you log in to the local console for the first time, you log in to the VM with the default credentials. We recommend that you set a new password. You don't need to know the default password to set a new password.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/set_local_console_password.html](https://paws-r.github.io/docs/storagegateway/set_local_console_password.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_set_local_console_password/](https://www.paws-r-sdk.com/docs/storagegateway_set_local_console_password/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param LocalConsolePassword &#91;required&#93; The password you want to set for your VM local console.
@@ -2866,7 +2866,7 @@ storagegateway_set_local_console_password <- function(GatewayARN, LocalConsolePa
 #' @description
 #' Sets the password for the guest user `smbguest`. The `smbguest` user is the user when the authentication method for the file share is set to `GuestAccess`. This operation only supported for S3 File Gateways
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/set_smb_guest_password.html](https://paws-r.github.io/docs/storagegateway/set_smb_guest_password.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_set_smb_guest_password/](https://www.paws-r-sdk.com/docs/storagegateway_set_smb_guest_password/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; The Amazon Resource Name (ARN) of the S3 File Gateway the SMB file share
 #' is associated with.
@@ -2897,7 +2897,7 @@ storagegateway_set_smb_guest_password <- function(GatewayARN, Password) {
 #' @description
 #' Shuts down a gateway. To specify which gateway to shut down, use the Amazon Resource Name (ARN) of the gateway in the body of your request.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/shutdown_gateway.html](https://paws-r.github.io/docs/storagegateway/shutdown_gateway.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_shutdown_gateway/](https://www.paws-r-sdk.com/docs/storagegateway_shutdown_gateway/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
@@ -2927,7 +2927,7 @@ storagegateway_shutdown_gateway <- function(GatewayARN) {
 #' @description
 #' Start a test that verifies that the specified gateway is configured for High Availability monitoring in your host environment. This request only initiates the test and that a successful response only indicates that the test was started. It doesn't indicate that the test passed. For the status of the test, invoke the [`describe_availability_monitor_test`][storagegateway_describe_availability_monitor_test] API.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/start_availability_monitor_test.html](https://paws-r.github.io/docs/storagegateway/start_availability_monitor_test.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_start_availability_monitor_test/](https://www.paws-r-sdk.com/docs/storagegateway_start_availability_monitor_test/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
@@ -2956,7 +2956,7 @@ storagegateway_start_availability_monitor_test <- function(GatewayARN) {
 #' @description
 #' Starts a gateway that you previously shut down (see [`shutdown_gateway`][storagegateway_shutdown_gateway]). After the gateway starts, you can then make other API calls, your applications can read from or write to the gateway's storage volumes and you will be able to take snapshot backups.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/start_gateway.html](https://paws-r.github.io/docs/storagegateway/start_gateway.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_start_gateway/](https://www.paws-r-sdk.com/docs/storagegateway_start_gateway/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
@@ -2985,7 +2985,7 @@ storagegateway_start_gateway <- function(GatewayARN) {
 #' @description
 #' Updates the automatic tape creation policy of a gateway. Use this to update the policy with a new set of automatic tape creation rules. This is only supported for tape gateways.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/update_automatic_tape_creation_policy.html](https://paws-r.github.io/docs/storagegateway/update_automatic_tape_creation_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_update_automatic_tape_creation_policy/](https://www.paws-r-sdk.com/docs/storagegateway_update_automatic_tape_creation_policy/) for full documentation.
 #'
 #' @param AutomaticTapeCreationRules &#91;required&#93; An automatic tape creation policy consists of a list of automatic tape
 #' creation rules. The rules determine when and how to automatically create
@@ -3017,7 +3017,7 @@ storagegateway_update_automatic_tape_creation_policy <- function(AutomaticTapeCr
 #' @description
 #' Updates the bandwidth rate limits of a gateway. You can update both the upload and download bandwidth rate limit or specify only one of the two. If you don't set a bandwidth rate limit, the existing rate limit remains. This operation is supported only for the stored volume, cached volume, and tape gateway types. To update bandwidth rate limits for S3 file gateways, use [`update_bandwidth_rate_limit_schedule`][storagegateway_update_bandwidth_rate_limit_schedule].
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/update_bandwidth_rate_limit.html](https://paws-r.github.io/docs/storagegateway/update_bandwidth_rate_limit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_update_bandwidth_rate_limit/](https://www.paws-r-sdk.com/docs/storagegateway_update_bandwidth_rate_limit/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param AverageUploadRateLimitInBitsPerSec The average upload bandwidth rate limit in bits per second.
@@ -3048,7 +3048,7 @@ storagegateway_update_bandwidth_rate_limit <- function(GatewayARN, AverageUpload
 #' @description
 #' Updates the bandwidth rate limit schedule for a specified gateway. By default, gateways do not have bandwidth rate limit schedules, which means no bandwidth rate limiting is in effect. Use this to initiate or update a gateway's bandwidth rate limit schedule. This operation is supported only for volume, tape and S3 file gateways. FSx file gateways do not support bandwidth rate limits.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/update_bandwidth_rate_limit_schedule.html](https://paws-r.github.io/docs/storagegateway/update_bandwidth_rate_limit_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_update_bandwidth_rate_limit_schedule/](https://www.paws-r-sdk.com/docs/storagegateway_update_bandwidth_rate_limit_schedule/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param BandwidthRateLimitIntervals &#91;required&#93; An array containing bandwidth rate limit schedule intervals for a
@@ -3081,7 +3081,7 @@ storagegateway_update_bandwidth_rate_limit_schedule <- function(GatewayARN, Band
 #' @description
 #' Updates the Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target. By default, a gateway does not have CHAP enabled; however, for added security, you might use it. This operation is supported in the volume and tape gateway types.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/update_chap_credentials.html](https://paws-r.github.io/docs/storagegateway/update_chap_credentials.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_update_chap_credentials/](https://www.paws-r-sdk.com/docs/storagegateway_update_chap_credentials/) for full documentation.
 #'
 #' @param TargetARN &#91;required&#93; The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
 #' [`describe_storedi_scsi_volumes`][storagegateway_describe_storedi_scsi_volumes]
@@ -3123,7 +3123,7 @@ storagegateway_update_chap_credentials <- function(TargetARN, SecretToAuthentica
 #' @description
 #' Updates a file system association. This operation is only supported in the FSx File Gateways.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/update_file_system_association.html](https://paws-r.github.io/docs/storagegateway/update_file_system_association.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_update_file_system_association/](https://www.paws-r-sdk.com/docs/storagegateway_update_file_system_association/) for full documentation.
 #'
 #' @param FileSystemAssociationARN &#91;required&#93; The Amazon Resource Name (ARN) of the file system association that you
 #' want to update.
@@ -3160,7 +3160,7 @@ storagegateway_update_file_system_association <- function(FileSystemAssociationA
 #' @description
 #' Updates a gateway's metadata, which includes the gateway's name and time zone. To specify which gateway to update, use the Amazon Resource Name (ARN) of the gateway in your request.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/update_gateway_information.html](https://paws-r.github.io/docs/storagegateway/update_gateway_information.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_update_gateway_information/](https://www.paws-r-sdk.com/docs/storagegateway_update_gateway_information/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param GatewayName 
@@ -3197,7 +3197,7 @@ storagegateway_update_gateway_information <- function(GatewayARN, GatewayName = 
 #' @description
 #' Updates the gateway virtual machine (VM) software. The request immediately triggers the software update.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/update_gateway_software_now.html](https://paws-r.github.io/docs/storagegateway/update_gateway_software_now.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_update_gateway_software_now/](https://www.paws-r-sdk.com/docs/storagegateway_update_gateway_software_now/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #'
@@ -3227,7 +3227,7 @@ storagegateway_update_gateway_software_now <- function(GatewayARN) {
 #' @description
 #' Updates a gateway's weekly maintenance start time information, including day and time of the week. The maintenance time is the time in your gateway's time zone.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/update_maintenance_start_time.html](https://paws-r.github.io/docs/storagegateway/update_maintenance_start_time.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_update_maintenance_start_time/](https://www.paws-r-sdk.com/docs/storagegateway_update_maintenance_start_time/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param HourOfDay &#91;required&#93; The hour component of the maintenance start time represented as *hh*,
@@ -3268,7 +3268,7 @@ storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay, 
 #' @description
 #' Updates a Network File System (NFS) file share. This operation is only supported in S3 File Gateways.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/update_nfs_file_share.html](https://paws-r.github.io/docs/storagegateway/update_nfs_file_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_update_nfs_file_share/](https://www.paws-r-sdk.com/docs/storagegateway_update_nfs_file_share/) for full documentation.
 #'
 #' @param FileShareARN &#91;required&#93; The Amazon Resource Name (ARN) of the file share to be updated.
 #' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own KMS
@@ -3368,7 +3368,7 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' @description
 #' Updates a Server Message Block (SMB) file share. This operation is only supported for S3 File Gateways.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/update_smb_file_share.html](https://paws-r.github.io/docs/storagegateway/update_smb_file_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_update_smb_file_share/](https://www.paws-r-sdk.com/docs/storagegateway_update_smb_file_share/) for full documentation.
 #'
 #' @param FileShareARN &#91;required&#93; The Amazon Resource Name (ARN) of the SMB file share that you want to
 #' update.
@@ -3497,7 +3497,7 @@ storagegateway_update_smb_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' @description
 #' Controls whether the shares on an S3 File Gateway are visible in a net view or browse list. The operation is only supported for S3 File Gateways.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/update_smb_file_share_visibility.html](https://paws-r.github.io/docs/storagegateway/update_smb_file_share_visibility.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_update_smb_file_share_visibility/](https://www.paws-r-sdk.com/docs/storagegateway_update_smb_file_share_visibility/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param FileSharesVisible &#91;required&#93; The shares on this gateway appear when listing shares.
@@ -3528,7 +3528,7 @@ storagegateway_update_smb_file_share_visibility <- function(GatewayARN, FileShar
 #' @description
 #' Updates the list of Active Directory users and groups that have special permissions for SMB file shares on the gateway.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/update_smb_local_groups.html](https://paws-r.github.io/docs/storagegateway/update_smb_local_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_update_smb_local_groups/](https://www.paws-r-sdk.com/docs/storagegateway_update_smb_local_groups/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param SMBLocalGroups &#91;required&#93; A list of Active Directory users and groups that you want to grant
@@ -3559,7 +3559,7 @@ storagegateway_update_smb_local_groups <- function(GatewayARN, SMBLocalGroups) {
 #' @description
 #' Updates the SMB security strategy on a file gateway. This action is only supported in file gateways.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/update_smb_security_strategy.html](https://paws-r.github.io/docs/storagegateway/update_smb_security_strategy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_update_smb_security_strategy/](https://www.paws-r-sdk.com/docs/storagegateway_update_smb_security_strategy/) for full documentation.
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param SMBSecurityStrategy &#91;required&#93; Specifies the type of security strategy.
@@ -3605,7 +3605,7 @@ storagegateway_update_smb_security_strategy <- function(GatewayARN, SMBSecurityS
 #' @description
 #' Updates a snapshot schedule configured for a gateway volume. This operation is only supported in the cached volume and stored volume gateway types.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/update_snapshot_schedule.html](https://paws-r.github.io/docs/storagegateway/update_snapshot_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_update_snapshot_schedule/](https://www.paws-r-sdk.com/docs/storagegateway_update_snapshot_schedule/) for full documentation.
 #'
 #' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume. Use the
 #' [`list_volumes`][storagegateway_list_volumes] operation to return a list
@@ -3649,7 +3649,7 @@ storagegateway_update_snapshot_schedule <- function(VolumeARN, StartAt, Recurren
 #' @description
 #' Updates the type of medium changer in a tape gateway. When you activate a tape gateway, you select a medium changer type for the tape gateway. This operation enables you to select a different type of medium changer after a tape gateway is activated. This operation is only supported in the tape gateway type.
 #'
-#' See [https://paws-r.github.io/docs/storagegateway/update_vtl_device_type.html](https://paws-r.github.io/docs/storagegateway/update_vtl_device_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/storagegateway_update_vtl_device_type/](https://www.paws-r-sdk.com/docs/storagegateway_update_vtl_device_type/) for full documentation.
 #'
 #' @param VTLDeviceARN &#91;required&#93; The Amazon Resource Name (ARN) of the medium changer you want to select.
 #' @param DeviceType &#91;required&#93; The type of medium changer you want to select.

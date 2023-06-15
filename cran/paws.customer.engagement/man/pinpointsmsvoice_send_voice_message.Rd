@@ -31,6 +31,6 @@ specify a CallerId parameter in the request.}
 \description{
 Create a new voice message and send it to a recipient's phone number.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoice/send_voice_message.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoice_send_voice_message/} for full documentation.
 }
 \keyword{internal}

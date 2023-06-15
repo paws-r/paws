@@ -27,6 +27,6 @@ from a previous call.)}
 \description{
 Retrieves the history of all changes to a parameter.
 
-See \url{https://paws-r.github.io/docs/ssm/get_parameter_history.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_parameter_history/} for full documentation.
 }
 \keyword{internal}

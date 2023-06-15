@@ -23,6 +23,6 @@ kafka_create_cluster_v2(
 \description{
 Creates a new MSK cluster.
 
-See \url{https://paws-r.github.io/docs/kafka/create_cluster_v2.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_create_cluster_v2/} for full documentation.
 }
 \keyword{internal}

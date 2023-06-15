@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Cancels in-progress environment configuration update or application version deployment.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/abort_environment_update.html](https://paws-r.github.io/docs/elasticbeanstalk/abort_environment_update.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_abort_environment_update/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_abort_environment_update/) for full documentation.
 #'
 #' @param EnvironmentId This specifies the ID of the environment with the in-progress update
 #' that you want to cancel.
@@ -41,7 +41,7 @@ elasticbeanstalk_abort_environment_update <- function(EnvironmentId = NULL, Envi
 #' @description
 #' Applies a scheduled managed action immediately. A managed action can be applied only if its status is `Scheduled`. Get the status and action ID of a managed action with [`describe_environment_managed_actions`][elasticbeanstalk_describe_environment_managed_actions].
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/apply_environment_managed_action.html](https://paws-r.github.io/docs/elasticbeanstalk/apply_environment_managed_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_apply_environment_managed_action/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_apply_environment_managed_action/) for full documentation.
 #'
 #' @param EnvironmentName The name of the target environment.
 #' @param EnvironmentId The environment ID of the target environment.
@@ -72,7 +72,7 @@ elasticbeanstalk_apply_environment_managed_action <- function(EnvironmentName = 
 #' @description
 #' Add or change the operations role used by an environment. After this call is made, Elastic Beanstalk uses the associated operations role for permissions to downstream services during subsequent calls acting on this environment. For more information, see [Operations roles](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/) in the *AWS Elastic Beanstalk Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/associate_environment_operations_role.html](https://paws-r.github.io/docs/elasticbeanstalk/associate_environment_operations_role.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_associate_environment_operations_role/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_associate_environment_operations_role/) for full documentation.
 #'
 #' @param EnvironmentName &#91;required&#93; The name of the environment to which to set the operations role.
 #' @param OperationsRole &#91;required&#93; The Amazon Resource Name (ARN) of an existing IAM role to be used as the
@@ -103,7 +103,7 @@ elasticbeanstalk_associate_environment_operations_role <- function(EnvironmentNa
 #' @description
 #' Checks if the specified CNAME is available.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/check_dns_availability.html](https://paws-r.github.io/docs/elasticbeanstalk/check_dns_availability.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_check_dns_availability/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_check_dns_availability/) for full documentation.
 #'
 #' @param CNAMEPrefix &#91;required&#93; The prefix used when this CNAME is reserved.
 #'
@@ -133,7 +133,7 @@ elasticbeanstalk_check_dns_availability <- function(CNAMEPrefix) {
 #' @description
 #' Create or update a group of environments that each run a separate component of a single application. Takes a list of version labels that specify application source bundles for each of the environments to create or update. The name of each environment and other required information must be included in the source bundles in an environment manifest named `env.yaml`. See [Compose Environments](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html) for details.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/compose_environments.html](https://paws-r.github.io/docs/elasticbeanstalk/compose_environments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_compose_environments/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_compose_environments/) for full documentation.
 #'
 #' @param ApplicationName The name of the application to which the specified source bundles
 #' belong.
@@ -175,7 +175,7 @@ elasticbeanstalk_compose_environments <- function(ApplicationName = NULL, GroupN
 #' @description
 #' Creates an application that has one configuration template named `default` and no application versions.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/create_application.html](https://paws-r.github.io/docs/elasticbeanstalk/create_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_create_application/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_create_application/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application. Must be unique within your account.
 #' @param Description Your description of the application.
@@ -211,7 +211,7 @@ elasticbeanstalk_create_application <- function(ApplicationName, Description = N
 #' @description
 #' Creates an application version for the specified application. You can create an application version from a source bundle in Amazon S3, a commit in AWS CodeCommit, or the output of an AWS CodeBuild build as follows:
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/create_application_version.html](https://paws-r.github.io/docs/elasticbeanstalk/create_application_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_create_application_version/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_create_application_version/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application. If no application is found with this name,
 #' and `AutoCreateApplication` is `false`, returns an
@@ -279,7 +279,7 @@ elasticbeanstalk_create_application_version <- function(ApplicationName, Version
 #' @description
 #' Creates an AWS Elastic Beanstalk configuration template, associated with a specific Elastic Beanstalk application. You define application configuration settings in a configuration template. You can then use the configuration template to deploy different versions of the application with the same configuration settings.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/create_configuration_template.html](https://paws-r.github.io/docs/elasticbeanstalk/create_configuration_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_create_configuration_template/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_create_configuration_template/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the Elastic Beanstalk application to associate with this
 #' configuration template.
@@ -359,7 +359,7 @@ elasticbeanstalk_create_configuration_template <- function(ApplicationName, Temp
 #' @description
 #' Launches an AWS Elastic Beanstalk environment for the specified application using the specified configuration.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/create_environment.html](https://paws-r.github.io/docs/elasticbeanstalk/create_environment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_create_environment/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_create_environment/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application that is associated with this environment.
 #' @param EnvironmentName A unique name for the environment.
@@ -453,7 +453,7 @@ elasticbeanstalk_create_environment <- function(ApplicationName, EnvironmentName
 #' @description
 #' Create a new version of your custom platform.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/create_platform_version.html](https://paws-r.github.io/docs/elasticbeanstalk/create_platform_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_create_platform_version/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_create_platform_version/) for full documentation.
 #'
 #' @param PlatformName &#91;required&#93; The name of your custom platform.
 #' @param PlatformVersion &#91;required&#93; The number, such as 1.0.2, for the new platform version.
@@ -492,7 +492,7 @@ elasticbeanstalk_create_platform_version <- function(PlatformName, PlatformVersi
 #' @description
 #' Creates a bucket in Amazon S3 to store application versions, logs, and other files used by Elastic Beanstalk environments. The Elastic Beanstalk console and EB CLI call this API the first time you create an environment in a region. If the storage location already exists, [`create_storage_location`][elasticbeanstalk_create_storage_location] still returns the bucket name but does not create a new bucket.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/create_storage_location.html](https://paws-r.github.io/docs/elasticbeanstalk/create_storage_location.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_create_storage_location/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_create_storage_location/) for full documentation.
 #'
 
 #'
@@ -522,7 +522,7 @@ elasticbeanstalk_create_storage_location <- function() {
 #' @description
 #' Deletes the specified application along with all associated versions and configurations. The application versions will not be deleted from your Amazon S3 bucket.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/delete_application.html](https://paws-r.github.io/docs/elasticbeanstalk/delete_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_delete_application/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_delete_application/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application to delete.
 #' @param TerminateEnvByForce When set to true, running environments will be terminated before
@@ -553,7 +553,7 @@ elasticbeanstalk_delete_application <- function(ApplicationName, TerminateEnvByF
 #' @description
 #' Deletes the specified version from the specified application.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/delete_application_version.html](https://paws-r.github.io/docs/elasticbeanstalk/delete_application_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_delete_application_version/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_delete_application_version/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application to which the version belongs.
 #' @param VersionLabel &#91;required&#93; The label of the version to delete.
@@ -586,7 +586,7 @@ elasticbeanstalk_delete_application_version <- function(ApplicationName, Version
 #' @description
 #' Deletes the specified configuration template.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/delete_configuration_template.html](https://paws-r.github.io/docs/elasticbeanstalk/delete_configuration_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_delete_configuration_template/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_delete_configuration_template/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application to delete the configuration template from.
 #' @param TemplateName &#91;required&#93; The name of the configuration template to delete.
@@ -616,7 +616,7 @@ elasticbeanstalk_delete_configuration_template <- function(ApplicationName, Temp
 #' @description
 #' Deletes the draft configuration associated with the running environment.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/delete_environment_configuration.html](https://paws-r.github.io/docs/elasticbeanstalk/delete_environment_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_delete_environment_configuration/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_delete_environment_configuration/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application the environment is associated with.
 #' @param EnvironmentName &#91;required&#93; The name of the environment to delete the draft configuration from.
@@ -646,7 +646,7 @@ elasticbeanstalk_delete_environment_configuration <- function(ApplicationName, E
 #' @description
 #' Deletes the specified version of a custom platform.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/delete_platform_version.html](https://paws-r.github.io/docs/elasticbeanstalk/delete_platform_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_delete_platform_version/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_delete_platform_version/) for full documentation.
 #'
 #' @param PlatformArn The ARN of the version of the custom platform.
 #'
@@ -676,7 +676,7 @@ elasticbeanstalk_delete_platform_version <- function(PlatformArn = NULL) {
 #' @description
 #' Returns attributes related to AWS Elastic Beanstalk that are associated with the calling AWS account.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_account_attributes.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_account_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_account_attributes/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_account_attributes/) for full documentation.
 #'
 
 #'
@@ -705,7 +705,7 @@ elasticbeanstalk_describe_account_attributes <- function() {
 #' @description
 #' Retrieve a list of application versions.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_application_versions.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_application_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_application_versions/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_application_versions/) for full documentation.
 #'
 #' @param ApplicationName Specify an application name to show only application versions for that
 #' application.
@@ -746,7 +746,7 @@ elasticbeanstalk_describe_application_versions <- function(ApplicationName = NUL
 #' @description
 #' Returns the descriptions of existing applications.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_applications.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_applications.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_applications/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_applications/) for full documentation.
 #'
 #' @param ApplicationNames If specified, AWS Elastic Beanstalk restricts the returned descriptions
 #' to only include those with the specified names.
@@ -778,7 +778,7 @@ elasticbeanstalk_describe_applications <- function(ApplicationNames = NULL) {
 #' @description
 #' Describes the configuration options that are used in a particular configuration template or environment, or that a specified solution stack defines. The description includes the values the options, their default values, and an indication of the required action on a running environment if an option value is changed.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_configuration_options.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_configuration_options.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_configuration_options/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_configuration_options/) for full documentation.
 #'
 #' @param ApplicationName The name of the application associated with the configuration template
 #' or environment. Only needed if you want to describe the configuration
@@ -820,7 +820,7 @@ elasticbeanstalk_describe_configuration_options <- function(ApplicationName = NU
 #' @description
 #' Returns a description of the settings for the specified configuration set, that is, either a configuration template or the configuration set associated with a running environment.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_configuration_settings.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_configuration_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_configuration_settings/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_configuration_settings/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The application for the environment or configuration template.
 #' @param TemplateName The name of the configuration template to describe.
@@ -863,7 +863,7 @@ elasticbeanstalk_describe_configuration_settings <- function(ApplicationName, Te
 #' @description
 #' Returns information about the overall health of the specified environment. The **DescribeEnvironmentHealth** operation is only available with AWS Elastic Beanstalk Enhanced Health.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_environment_health.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_environment_health.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_environment_health/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_environment_health/) for full documentation.
 #'
 #' @param EnvironmentName Specify the environment by name.
 #' 
@@ -900,7 +900,7 @@ elasticbeanstalk_describe_environment_health <- function(EnvironmentName = NULL,
 #' @description
 #' Lists an environment's completed and failed managed actions.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_environment_managed_action_history.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_environment_managed_action_history.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_environment_managed_action_history/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_environment_managed_action_history/) for full documentation.
 #'
 #' @param EnvironmentId The environment ID of the target environment.
 #' @param EnvironmentName The name of the target environment.
@@ -932,7 +932,7 @@ elasticbeanstalk_describe_environment_managed_action_history <- function(Environ
 #' @description
 #' Lists an environment's upcoming and in-progress managed actions.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_environment_managed_actions.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_environment_managed_actions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_environment_managed_actions/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_environment_managed_actions/) for full documentation.
 #'
 #' @param EnvironmentName The name of the target environment.
 #' @param EnvironmentId The environment ID of the target environment.
@@ -963,7 +963,7 @@ elasticbeanstalk_describe_environment_managed_actions <- function(EnvironmentNam
 #' @description
 #' Returns AWS resources for this environment.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_environment_resources.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_environment_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_environment_resources/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_environment_resources/) for full documentation.
 #'
 #' @param EnvironmentId The ID of the environment to retrieve AWS resource usage data.
 #' 
@@ -1001,7 +1001,7 @@ elasticbeanstalk_describe_environment_resources <- function(EnvironmentId = NULL
 #' @description
 #' Returns descriptions for existing environments.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_environments.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_environments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_environments/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_environments/) for full documentation.
 #'
 #' @param ApplicationName If specified, AWS Elastic Beanstalk restricts the returned descriptions
 #' to include only those that are associated with this application.
@@ -1056,7 +1056,7 @@ elasticbeanstalk_describe_environments <- function(ApplicationName = NULL, Versi
 #' @description
 #' Returns list of event descriptions matching criteria up to the last 6 weeks.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_events.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_events/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_events/) for full documentation.
 #'
 #' @param ApplicationName If specified, AWS Elastic Beanstalk restricts the returned descriptions
 #' to include only those associated with this application.
@@ -1110,7 +1110,7 @@ elasticbeanstalk_describe_events <- function(ApplicationName = NULL, VersionLabe
 #' @description
 #' Retrieves detailed information about the health of instances in your AWS Elastic Beanstalk. This operation requires [enhanced health reporting](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html).
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_instances_health.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_instances_health.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_instances_health/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_instances_health/) for full documentation.
 #'
 #' @param EnvironmentName Specify the AWS Elastic Beanstalk environment by name.
 #' @param EnvironmentId Specify the AWS Elastic Beanstalk environment by ID.
@@ -1144,7 +1144,7 @@ elasticbeanstalk_describe_instances_health <- function(EnvironmentName = NULL, E
 #' @description
 #' Describes a platform version. Provides full details. Compare to [`list_platform_versions`][elasticbeanstalk_list_platform_versions], which provides summary information about a list of platform versions.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/describe_platform_version.html](https://paws-r.github.io/docs/elasticbeanstalk/describe_platform_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_platform_version/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_platform_version/) for full documentation.
 #'
 #' @param PlatformArn The ARN of the platform version.
 #'
@@ -1173,7 +1173,7 @@ elasticbeanstalk_describe_platform_version <- function(PlatformArn = NULL) {
 #' @description
 #' Disassociate the operations role from an environment. After this call is made, Elastic Beanstalk uses the caller's permissions for permissions to downstream services during subsequent calls acting on this environment. For more information, see [Operations roles](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/) in the *AWS Elastic Beanstalk Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/disassociate_environment_operations_role.html](https://paws-r.github.io/docs/elasticbeanstalk/disassociate_environment_operations_role.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_disassociate_environment_operations_role/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_disassociate_environment_operations_role/) for full documentation.
 #'
 #' @param EnvironmentName &#91;required&#93; The name of the environment from which to disassociate the operations
 #' role.
@@ -1204,7 +1204,7 @@ elasticbeanstalk_disassociate_environment_operations_role <- function(Environmen
 #' @description
 #' Returns a list of the available solution stack names, with the public version first and then in reverse chronological order.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/list_available_solution_stacks.html](https://paws-r.github.io/docs/elasticbeanstalk/list_available_solution_stacks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_list_available_solution_stacks/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_list_available_solution_stacks/) for full documentation.
 #'
 
 #'
@@ -1233,7 +1233,7 @@ elasticbeanstalk_list_available_solution_stacks <- function() {
 #' @description
 #' Lists the platform branches available for your account in an AWS Region. Provides summary information about each platform branch.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/list_platform_branches.html](https://paws-r.github.io/docs/elasticbeanstalk/list_platform_branches.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_list_platform_branches/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_list_platform_branches/) for full documentation.
 #'
 #' @param Filters Criteria for restricting the resulting list of platform branches. The
 #' filter is evaluated as a logical conjunction (AND) of the separate
@@ -1301,7 +1301,7 @@ elasticbeanstalk_list_platform_branches <- function(Filters = NULL, MaxRecords =
 #' @description
 #' Lists the platform versions available for your account in an AWS Region. Provides summary information about each platform version. Compare to [`describe_platform_version`][elasticbeanstalk_describe_platform_version], which provides full details about a single platform version.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/list_platform_versions.html](https://paws-r.github.io/docs/elasticbeanstalk/list_platform_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_list_platform_versions/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_list_platform_versions/) for full documentation.
 #'
 #' @param Filters Criteria for restricting the resulting list of platform versions. The
 #' filter is interpreted as a logical conjunction (AND) of the separate
@@ -1338,7 +1338,7 @@ elasticbeanstalk_list_platform_versions <- function(Filters = NULL, MaxRecords =
 #' @description
 #' Return the tags applied to an AWS Elastic Beanstalk resource. The response contains a list of tag key-value pairs.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/list_tags_for_resource.html](https://paws-r.github.io/docs/elasticbeanstalk/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resouce for which a tag list is
 #' requested.
@@ -1371,7 +1371,7 @@ elasticbeanstalk_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Deletes and recreates all of the AWS resources (for example: the Auto Scaling group, load balancer, etc.) for a specified environment and forces a restart.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/rebuild_environment.html](https://paws-r.github.io/docs/elasticbeanstalk/rebuild_environment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_rebuild_environment/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_rebuild_environment/) for full documentation.
 #'
 #' @param EnvironmentId The ID of the environment to rebuild.
 #' 
@@ -1410,7 +1410,7 @@ elasticbeanstalk_rebuild_environment <- function(EnvironmentId = NULL, Environme
 #' @description
 #' Initiates a request to compile the specified type of information of the deployed environment.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/request_environment_info.html](https://paws-r.github.io/docs/elasticbeanstalk/request_environment_info.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_request_environment_info/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_request_environment_info/) for full documentation.
 #'
 #' @param EnvironmentId The ID of the environment of the requested data.
 #' 
@@ -1458,7 +1458,7 @@ elasticbeanstalk_request_environment_info <- function(EnvironmentId = NULL, Envi
 #' @description
 #' Causes the environment to restart the application container server running on each Amazon EC2 instance.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/restart_app_server.html](https://paws-r.github.io/docs/elasticbeanstalk/restart_app_server.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_restart_app_server/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_restart_app_server/) for full documentation.
 #'
 #' @param EnvironmentId The ID of the environment to restart the server for.
 #' 
@@ -1496,7 +1496,7 @@ elasticbeanstalk_restart_app_server <- function(EnvironmentId = NULL, Environmen
 #' @description
 #' Retrieves the compiled information from a [`request_environment_info`][elasticbeanstalk_request_environment_info] request.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/retrieve_environment_info.html](https://paws-r.github.io/docs/elasticbeanstalk/retrieve_environment_info.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_retrieve_environment_info/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_retrieve_environment_info/) for full documentation.
 #'
 #' @param EnvironmentId The ID of the data's environment.
 #' 
@@ -1541,7 +1541,7 @@ elasticbeanstalk_retrieve_environment_info <- function(EnvironmentId = NULL, Env
 #' @description
 #' Swaps the CNAMEs of two environments.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/swap_environment_cnam_es.html](https://paws-r.github.io/docs/elasticbeanstalk/swap_environment_cnam_es.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_swap_environment_cnam_es/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_swap_environment_cnam_es/) for full documentation.
 #'
 #' @param SourceEnvironmentId The ID of the source environment.
 #' 
@@ -1591,7 +1591,7 @@ elasticbeanstalk_swap_environment_cnam_es <- function(SourceEnvironmentId = NULL
 #' @description
 #' Terminates the specified environment.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/terminate_environment.html](https://paws-r.github.io/docs/elasticbeanstalk/terminate_environment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_terminate_environment/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_terminate_environment/) for full documentation.
 #'
 #' @param EnvironmentId The ID of the environment to terminate.
 #' 
@@ -1647,7 +1647,7 @@ elasticbeanstalk_terminate_environment <- function(EnvironmentId = NULL, Environ
 #' @description
 #' Updates the specified application to have the specified properties.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/update_application.html](https://paws-r.github.io/docs/elasticbeanstalk/update_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_update_application/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_update_application/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application to update. If no such application is found,
 #' [`update_application`][elasticbeanstalk_update_application] returns an
@@ -1682,7 +1682,7 @@ elasticbeanstalk_update_application <- function(ApplicationName, Description = N
 #' @description
 #' Modifies lifecycle settings for an application.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/update_application_resource_lifecycle.html](https://paws-r.github.io/docs/elasticbeanstalk/update_application_resource_lifecycle.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_update_application_resource_lifecycle/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_update_application_resource_lifecycle/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application.
 #' @param ResourceLifecycleConfig &#91;required&#93; The lifecycle configuration.
@@ -1713,7 +1713,7 @@ elasticbeanstalk_update_application_resource_lifecycle <- function(ApplicationNa
 #' @description
 #' Updates the specified application version to have the specified properties.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/update_application_version.html](https://paws-r.github.io/docs/elasticbeanstalk/update_application_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_update_application_version/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_update_application_version/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application associated with this version.
 #' 
@@ -1753,7 +1753,7 @@ elasticbeanstalk_update_application_version <- function(ApplicationName, Version
 #' @description
 #' Updates the specified configuration template to have the specified properties or configuration option values.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/update_configuration_template.html](https://paws-r.github.io/docs/elasticbeanstalk/update_configuration_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_update_configuration_template/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_update_configuration_template/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application associated with the configuration template
 #' to update.
@@ -1801,7 +1801,7 @@ elasticbeanstalk_update_configuration_template <- function(ApplicationName, Temp
 #' @description
 #' Updates the environment description, deploys a new application version, updates the configuration settings to an entirely new configuration template, or updates select configuration option values in the running environment.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/update_environment.html](https://paws-r.github.io/docs/elasticbeanstalk/update_environment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_update_environment/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_update_environment/) for full documentation.
 #'
 #' @param ApplicationName The name of the application with which the environment is associated.
 #' @param EnvironmentId The ID of the environment to update.
@@ -1871,7 +1871,7 @@ elasticbeanstalk_update_environment <- function(ApplicationName = NULL, Environm
 #' @description
 #' Update the list of tags applied to an AWS Elastic Beanstalk resource. Two lists can be passed: `TagsToAdd` for tags to add or update, and `TagsToRemove`.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/update_tags_for_resource.html](https://paws-r.github.io/docs/elasticbeanstalk/update_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_update_tags_for_resource/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_update_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resouce to be updated.
 #' 
@@ -1911,7 +1911,7 @@ elasticbeanstalk_update_tags_for_resource <- function(ResourceArn, TagsToAdd = N
 #' @description
 #' Takes a set of configuration settings and either a configuration template or environment, and determines whether those values are valid.
 #'
-#' See [https://paws-r.github.io/docs/elasticbeanstalk/validate_configuration_settings.html](https://paws-r.github.io/docs/elasticbeanstalk/validate_configuration_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticbeanstalk_validate_configuration_settings/](https://www.paws-r-sdk.com/docs/elasticbeanstalk_validate_configuration_settings/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application that the configuration template or
 #' environment belongs to.

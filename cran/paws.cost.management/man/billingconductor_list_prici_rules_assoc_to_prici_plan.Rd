@@ -25,6 +25,6 @@ associations are to be listed.}
 \description{
 Lists the pricing rules that are associated with a pricing plan.
 
-See \url{https://paws-r.github.io/docs/billingconductor/list_pricing_rules_associated_to_pricing_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_list_pricing_rules_associated_to_pricing_plan/} for full documentation.
 }
 \keyword{internal}

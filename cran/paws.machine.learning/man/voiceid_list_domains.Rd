@@ -19,6 +19,6 @@ arguments unchanged. Each pagination token expires after 24 hours.}
 \description{
 Lists all the domains in the Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/voiceid/list_domains.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/voiceid_list_domains/} for full documentation.
 }
 \keyword{internal}

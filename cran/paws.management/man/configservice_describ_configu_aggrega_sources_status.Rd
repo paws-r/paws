@@ -30,6 +30,6 @@ default is maximum. If you specify 0, Config uses the default.}
 \description{
 Returns status information for sources within an aggregator. The status includes information about the last time Config verified authorization between the source account and an aggregator account. In case of a failure, the status contains the related error code or message.
 
-See \url{https://paws-r.github.io/docs/configservice/describe_configuration_aggregator_sources_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_describe_configuration_aggregator_sources_status/} for full documentation.
 }
 \keyword{internal}

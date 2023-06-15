@@ -26,6 +26,6 @@ contains your Amazon QuickSight account.}
 \description{
 Returns a list of all of the Amazon QuickSight users belonging to this account.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_users.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_users/} for full documentation.
 }
 \keyword{internal}

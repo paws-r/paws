@@ -52,6 +52,6 @@ Constraints: minimum 20, maximum 100.}
 \description{
 Describes properties of scheduled actions.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_scheduled_actions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_scheduled_actions/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ eventbridge_describe_partner_event_source(Name)
 \description{
 An SaaS partner can use this operation to list details about a partner event source that they have created. Amazon Web Services customers do not use this operation. Instead, Amazon Web Services customers can use \code{\link[=eventbridge_describe_event_source]{describe_event_source}} to see details about a partner event source that is shared with them.
 
-See \url{https://paws-r.github.io/docs/eventbridge/describe_partner_event_source.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_describe_partner_event_source/} for full documentation.
 }
 \keyword{internal}

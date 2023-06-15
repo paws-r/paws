@@ -16,6 +16,6 @@ environment.}
 \description{
 Removes tags from an Cloud9 development environment.
 
-See \url{https://paws-r.github.io/docs/cloud9/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloud9_untag_resource/} for full documentation.
 }
 \keyword{internal}

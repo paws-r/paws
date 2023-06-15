@@ -17,6 +17,6 @@ It must be the ARN of an App Runner resource.}
 \description{
 Remove tags from an App Runner resource.
 
-See \url{https://paws-r.github.io/docs/apprunner/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_untag_resource/} for full documentation.
 }
 \keyword{internal}

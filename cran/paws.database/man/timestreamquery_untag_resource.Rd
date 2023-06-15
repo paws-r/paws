@@ -16,6 +16,6 @@ members of this list will be removed from the Timestream resource.}
 \description{
 Removes the association of tags from a Timestream query resource.
 
-See \url{https://paws-r.github.io/docs/timestreamquery/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamquery_untag_resource/} for full documentation.
 }
 \keyword{internal}

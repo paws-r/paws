@@ -28,6 +28,6 @@ based on their owner. The default is SELF.}
 \description{
 Lists the private certificate authorities that you created by using the \code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}} action.
 
-See \url{https://paws-r.github.io/docs/acmpca/list_certificate_authorities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acmpca_list_certificate_authorities/} for full documentation.
 }
 \keyword{internal}

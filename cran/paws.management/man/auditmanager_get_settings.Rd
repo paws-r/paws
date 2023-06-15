@@ -12,6 +12,6 @@ auditmanager_get_settings(attribute)
 \description{
 Returns the settings for the specified Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_settings/} for full documentation.
 }
 \keyword{internal}

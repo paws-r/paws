@@ -12,6 +12,6 @@ machinelearning_delete_batch_prediction(BatchPredictionId)
 \description{
 Assigns the DELETED status to a \code{BatchPrediction}, rendering it unusable.
 
-See \url{https://paws-r.github.io/docs/machinelearning/delete_batch_prediction.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_delete_batch_prediction/} for full documentation.
 }
 \keyword{internal}

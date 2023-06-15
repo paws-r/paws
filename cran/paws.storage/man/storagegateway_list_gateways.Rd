@@ -17,6 +17,6 @@ number of items.}
 \description{
 Lists gateways owned by an Amazon Web Services account in an Amazon Web Services Region specified in the request. The returned list is ordered by gateway Amazon Resource Name (ARN).
 
-See \url{https://paws-r.github.io/docs/storagegateway/list_gateways.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_list_gateways/} for full documentation.
 }
 \keyword{internal}

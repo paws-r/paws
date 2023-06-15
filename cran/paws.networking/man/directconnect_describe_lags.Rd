@@ -12,6 +12,6 @@ directconnect_describe_lags(lagId = NULL)
 \description{
 Describes all your link aggregation groups (LAG) or the specified LAG.
 
-See \url{https://paws-r.github.io/docs/directconnect/describe_lags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_describe_lags/} for full documentation.
 }
 \keyword{internal}

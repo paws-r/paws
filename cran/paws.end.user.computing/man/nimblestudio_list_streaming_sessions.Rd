@@ -27,6 +27,6 @@ results.}
 \description{
 Lists the streaming sessions in a studio.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/list_streaming_sessions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_list_streaming_sessions/} for full documentation.
 }
 \keyword{internal}

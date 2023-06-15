@@ -68,6 +68,6 @@ browser to cache the provided override record. Used for the rule action
 \description{
 Updates the specified firewall rule.
 
-See \url{https://paws-r.github.io/docs/route53resolver/update_firewall_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_update_firewall_rule/} for full documentation.
 }
 \keyword{internal}

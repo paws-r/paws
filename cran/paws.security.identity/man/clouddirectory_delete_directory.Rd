@@ -12,6 +12,6 @@ clouddirectory_delete_directory(DirectoryArn)
 \description{
 Deletes a directory. Only disabled directories can be deleted. A deleted directory cannot be undone. Exercise extreme caution when deleting directories.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/delete_directory.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_delete_directory/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ part of the query result.}
 \description{
 Cancels a query that has been issued. Cancellation is provided only if the query has not completed running before the cancellation request was issued. Because cancellation is an idempotent operation, subsequent cancellation requests will return a \code{CancellationMessage}, indicating that the query has already been canceled. See \href{https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.cancel-query.html}{code sample} for details.
 
-See \url{https://paws-r.github.io/docs/timestreamquery/cancel_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamquery_cancel_query/} for full documentation.
 }
 \keyword{internal}

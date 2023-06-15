@@ -14,6 +14,6 @@ autoscaling_delete_lifecycle_hook(LifecycleHookName, AutoScalingGroupName)
 \description{
 Deletes the specified lifecycle hook.
 
-See \url{https://paws-r.github.io/docs/autoscaling/delete_lifecycle_hook.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_delete_lifecycle_hook/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ elasticbeanstalk_describe_environment_managed_actions(
 \description{
 Lists an environment's upcoming and in-progress managed actions.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/describe_environment_managed_actions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_environment_managed_actions/} for full documentation.
 }
 \keyword{internal}

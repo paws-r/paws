@@ -20,6 +20,6 @@ contains your Amazon QuickSight account.}
 \description{
 Use the \code{\link[=quicksight_create_group]{create_group}} operation to create a group in Amazon QuickSight. You can create up to 10,000 groups in a namespace. If you want to create more than 10,000 groups in a namespace, contact AWS Support.
 
-See \url{https://paws-r.github.io/docs/quicksight/create_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_create_group/} for full documentation.
 }
 \keyword{internal}

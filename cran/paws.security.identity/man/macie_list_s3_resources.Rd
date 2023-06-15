@@ -27,6 +27,6 @@ items that you want in the response. The default value is 250.}
 \description{
 (Discontinued) Lists all the S3 resources associated with Amazon Macie Classic. If \code{memberAccountId} isn't specified, the action lists the S3 resources associated with Macie Classic for the current Macie Classic administrator account. If \code{memberAccountId} is specified, the action lists the S3 resources associated with Macie Classic for the specified member account.
 
-See \url{https://paws-r.github.io/docs/macie/list_s3_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie_list_s3_resources/} for full documentation.
 }
 \keyword{internal}

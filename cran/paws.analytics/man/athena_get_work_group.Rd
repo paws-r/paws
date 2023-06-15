@@ -12,6 +12,6 @@ athena_get_work_group(WorkGroup)
 \description{
 Returns information about the workgroup with the specified name.
 
-See \url{https://paws-r.github.io/docs/athena/get_work_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_get_work_group/} for full documentation.
 }
 \keyword{internal}

@@ -38,6 +38,6 @@ of which you define.}
 \description{
 Use this operation to create a workforce. This operation will return an error if a workforce already exists in the Amazon Web Services Region that you specify. You can only create one workforce in each Amazon Web Services Region per Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_workforce.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_workforce/} for full documentation.
 }
 \keyword{internal}

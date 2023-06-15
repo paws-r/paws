@@ -20,6 +20,6 @@ clouddirectory_remove_facet_from_object(
 \description{
 Removes the specified facet from the specified object.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/remove_facet_from_object.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_remove_facet_from_object/} for full documentation.
 }
 \keyword{internal}

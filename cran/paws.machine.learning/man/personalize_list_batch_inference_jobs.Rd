@@ -23,6 +23,6 @@ page. The default value is 100.}
 \description{
 Gets a list of the batch inference jobs that have been performed off of a solution version.
 
-See \url{https://paws-r.github.io/docs/personalize/list_batch_inference_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_list_batch_inference_jobs/} for full documentation.
 }
 \keyword{internal}

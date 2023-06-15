@@ -13,6 +13,18 @@ NULL
   list()
 }
 
+.sqs$cancel_message_move_task_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TaskHandle = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sqs$cancel_message_move_task_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApproximateNumberOfMessagesMoved = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure", resultWrapper = "CancelMessageMoveTaskResult"))
+  return(populate(args, shape))
+}
+
 .sqs$change_message_visibility_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string")), ReceiptHandle = structure(logical(0), tags = list(type = "string")), VisibilityTimeout = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -115,6 +127,18 @@ NULL
   return(populate(args, shape))
 }
 
+.sqs$list_message_move_tasks_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SourceArn = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sqs$list_message_move_tasks_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Results = structure(list(structure(list(TaskHandle = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SourceArn = structure(logical(0), tags = list(type = "string")), DestinationArn = structure(logical(0), tags = list(type = "string")), MaxNumberOfMessagesPerSecond = structure(logical(0), tags = list(type = "integer")), ApproximateNumberOfMessagesMoved = structure(logical(0), tags = list(type = "long")), ApproximateNumberOfMessagesToMove = structure(logical(0), tags = list(type = "long")), FailureReason = structure(logical(0), tags = list(type = "string")), StartedTimestamp = structure(logical(0), tags = list(type = "long"))), tags = list(locationName = "ListMessageMoveTasksResultEntry", type = "structure"))), tags = list(locationNameList = "ListMessageMoveTasksResultEntry", type = "list", flattened = TRUE))), tags = list(type = "structure", resultWrapper = "ListMessageMoveTasksResult"))
+  return(populate(args, shape))
+}
+
 .sqs$list_queue_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -203,6 +227,18 @@ NULL
 
 .sqs$set_queue_attributes_output <- function(...) {
   list()
+}
+
+.sqs$start_message_move_task_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SourceArn = structure(logical(0), tags = list(type = "string")), DestinationArn = structure(logical(0), tags = list(type = "string")), MaxNumberOfMessagesPerSecond = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sqs$start_message_move_task_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TaskHandle = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "StartMessageMoveTaskResult"))
+  return(populate(args, shape))
 }
 
 .sqs$tag_queue_input <- function(...) {

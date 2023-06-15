@@ -15,6 +15,6 @@ the dataset group.}
 \description{
 Replaces the datasets in a dataset group with the specified datasets.
 
-See \url{https://paws-r.github.io/docs/forecastservice/update_dataset_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_update_dataset_group/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ where the object resides. For more information, see arns.}
 \description{
 Updates a given object's attributes.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/update_object_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_update_object_attributes/} for full documentation.
 }
 \keyword{internal}

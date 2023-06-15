@@ -31,8 +31,8 @@ filtering, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-
 \item{NextToken}{The token for the next page of results.}
 }
 \description{
-Get a list of all the CIDR allocations in an IPAM pool.
+Get a list of all the CIDR allocations in an IPAM pool. The Region you use should be the IPAM pool locale. The locale is the Amazon Web Services Region where this IPAM pool is available for allocations.
 
-See \url{https://paws-r.github.io/docs/ec2/get_ipam_pool_allocations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_ipam_pool_allocations/} for full documentation.
 }
 \keyword{internal}

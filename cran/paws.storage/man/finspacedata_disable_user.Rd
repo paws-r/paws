@@ -15,6 +15,6 @@ finspacedata_disable_user(userId, clientToken = NULL)
 \description{
 Denies access to the FinSpace web application and API for the specified user.
 
-See \url{https://paws-r.github.io/docs/finspacedata/disable_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_disable_user/} for full documentation.
 }
 \keyword{internal}

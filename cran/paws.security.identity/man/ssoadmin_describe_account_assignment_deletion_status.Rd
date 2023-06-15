@@ -19,6 +19,6 @@ Names (ARNs) and AWS Service Namespaces in the \emph{AWS General Reference}.}
 \description{
 Describes the status of the assignment deletion request.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/describe_account_assignment_deletion_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_describe_account_assignment_deletion_status/} for full documentation.
 }
 \keyword{internal}

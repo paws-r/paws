@@ -30,6 +30,6 @@ during transit between your site and Amazon Lex.}
 \description{
 Starts importing a bot, bot locale, or custom vocabulary from a zip archive that you uploaded to an S3 bucket.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/start_import.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_start_import/} for full documentation.
 }
 \keyword{internal}

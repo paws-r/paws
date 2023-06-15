@@ -12,6 +12,6 @@ forecastservice_describe_auto_predictor(PredictorArn)
 \description{
 Describes a predictor created using the CreateAutoPredictor operation.
 
-See \url{https://paws-r.github.io/docs/forecastservice/describe_auto_predictor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_describe_auto_predictor/} for full documentation.
 }
 \keyword{internal}

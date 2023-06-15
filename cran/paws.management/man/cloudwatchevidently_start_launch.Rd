@@ -14,6 +14,6 @@ cloudwatchevidently_start_launch(launch, project)
 \description{
 Starts an existing launch. To create a launch, use \code{\link[=cloudwatchevidently_create_launch]{create_launch}}.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/start_launch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_start_launch/} for full documentation.
 }
 \keyword{internal}

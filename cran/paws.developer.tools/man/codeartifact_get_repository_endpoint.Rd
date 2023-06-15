@@ -26,6 +26,6 @@ endpoint for each package format.}
 \description{
 Returns the endpoint of a repository for a specific package format. A repository has one endpoint for each package format:
 
-See \url{https://paws-r.github.io/docs/codeartifact/get_repository_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_get_repository_endpoint/} for full documentation.
 }
 \keyword{internal}

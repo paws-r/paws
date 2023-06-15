@@ -13,6 +13,6 @@ vocabulary filter names are case sensitive.}
 \description{
 Deletes a custom vocabulary filter. To use this operation, specify the name of the custom vocabulary filter you want to delete using \code{VocabularyFilterName}. Custom vocabulary filter names are case sensitive.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/delete_vocabulary_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_delete_vocabulary_filter/} for full documentation.
 }
 \keyword{internal}

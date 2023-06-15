@@ -8,7 +8,8 @@ certificates}
 lightsail_get_certificates(
   certificateStatuses = NULL,
   includeCertificateDetails = NULL,
-  certificateName = NULL
+  certificateName = NULL,
+  pageToken = NULL
 )
 }
 \arguments{
@@ -31,10 +32,17 @@ Resource Names (ARNs), domain names, and tags.}
 
 When omitted, the response includes all of your certificates in the
 Amazon Web Services Region where the request is made.}
+
+\item{pageToken}{The token to advance to the next page of results from your request.
+
+To get a page token, perform an initial
+\code{\link[=lightsail_get_certificates]{get_certificates}} request. If your
+results are paginated, the response will return a next page token that
+you can specify as the page token in a subsequent request.}
 }
 \description{
 Returns information about one or more Amazon Lightsail SSL/TLS certificates.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_certificates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_certificates/} for full documentation.
 }
 \keyword{internal}

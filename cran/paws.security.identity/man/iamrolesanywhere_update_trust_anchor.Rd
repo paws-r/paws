@@ -16,6 +16,6 @@ iamrolesanywhere_update_trust_anchor(name = NULL, source = NULL, trustAnchorId)
 \description{
 Updates a trust anchor. You establish trust between IAM Roles Anywhere and your certificate authority (CA) by configuring a trust anchor. You can define a trust anchor as a reference to an Private Certificate Authority (Private CA) or by uploading a CA certificate. Your Amazon Web Services workloads can authenticate with the trust anchor using certificates issued by the CA in exchange for temporary Amazon Web Services credentials.
 
-See \url{https://paws-r.github.io/docs/iamrolesanywhere/update_trust_anchor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iamrolesanywhere_update_trust_anchor/} for full documentation.
 }
 \keyword{internal}

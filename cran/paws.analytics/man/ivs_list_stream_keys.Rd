@@ -17,6 +17,6 @@ ivs_list_stream_keys(channelArn, maxResults = NULL, nextToken = NULL)
 \description{
 Gets summary information about stream keys for the specified channel.
 
-See \url{https://paws-r.github.io/docs/ivs/list_stream_keys.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivs_list_stream_keys/} for full documentation.
 }
 \keyword{internal}

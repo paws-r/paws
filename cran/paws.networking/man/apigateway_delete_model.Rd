@@ -14,6 +14,6 @@ apigateway_delete_model(restApiId, modelName)
 \description{
 Deletes a model.
 
-See \url{https://paws-r.github.io/docs/apigateway/delete_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_delete_model/} for full documentation.
 }
 \keyword{internal}

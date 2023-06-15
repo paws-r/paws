@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Associate a lens to a workload.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/associate_lenses.html](https://paws-r.github.io/docs/wellarchitected/associate_lenses.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_associate_lenses/](https://www.paws-r-sdk.com/docs/wellarchitected_associate_lenses/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param LensAliases &#91;required&#93; 
@@ -33,12 +33,42 @@ wellarchitected_associate_lenses <- function(WorkloadId, LensAliases) {
 }
 .wellarchitected$operations$associate_lenses <- wellarchitected_associate_lenses
 
+#' Associate a profile with a workload
+#'
+#' @description
+#' Associate a profile with a workload.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_associate_profiles/](https://www.paws-r-sdk.com/docs/wellarchitected_associate_profiles/) for full documentation.
+#'
+#' @param WorkloadId &#91;required&#93; 
+#' @param ProfileArns &#91;required&#93; The list of profile ARNs to associate with the workload.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_associate_profiles
+wellarchitected_associate_profiles <- function(WorkloadId, ProfileArns) {
+  op <- new_operation(
+    name = "AssociateProfiles",
+    http_method = "PATCH",
+    http_path = "/workloads/{WorkloadId}/associateProfiles",
+    paginator = list()
+  )
+  input <- .wellarchitected$associate_profiles_input(WorkloadId = WorkloadId, ProfileArns = ProfileArns)
+  output <- .wellarchitected$associate_profiles_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$associate_profiles <- wellarchitected_associate_profiles
+
 #' Create a lens share
 #'
 #' @description
 #' Create a lens share.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/create_lens_share.html](https://paws-r.github.io/docs/wellarchitected/create_lens_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_create_lens_share/](https://www.paws-r-sdk.com/docs/wellarchitected_create_lens_share/) for full documentation.
 #'
 #' @param LensAlias &#91;required&#93; 
 #' @param SharedWith &#91;required&#93; 
@@ -69,7 +99,7 @@ wellarchitected_create_lens_share <- function(LensAlias, SharedWith, ClientReque
 #' @description
 #' Create a new lens version.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/create_lens_version.html](https://paws-r.github.io/docs/wellarchitected/create_lens_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_create_lens_version/](https://www.paws-r-sdk.com/docs/wellarchitected_create_lens_version/) for full documentation.
 #'
 #' @param LensAlias &#91;required&#93; 
 #' @param LensVersion &#91;required&#93; The version of the lens being created.
@@ -101,7 +131,7 @@ wellarchitected_create_lens_version <- function(LensAlias, LensVersion, IsMajorV
 #' @description
 #' Create a milestone for an existing workload.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/create_milestone.html](https://paws-r.github.io/docs/wellarchitected/create_milestone.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_create_milestone/](https://www.paws-r-sdk.com/docs/wellarchitected_create_milestone/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param MilestoneName &#91;required&#93; 
@@ -127,12 +157,76 @@ wellarchitected_create_milestone <- function(WorkloadId, MilestoneName, ClientRe
 }
 .wellarchitected$operations$create_milestone <- wellarchitected_create_milestone
 
+#' Create a profile
+#'
+#' @description
+#' Create a profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_create_profile/](https://www.paws-r-sdk.com/docs/wellarchitected_create_profile/) for full documentation.
+#'
+#' @param ProfileName &#91;required&#93; Name of the profile.
+#' @param ProfileDescription &#91;required&#93; The profile description.
+#' @param ProfileQuestions &#91;required&#93; The profile questions.
+#' @param ClientRequestToken &#91;required&#93; 
+#' @param Tags The tags assigned to the profile.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_create_profile
+wellarchitected_create_profile <- function(ProfileName, ProfileDescription, ProfileQuestions, ClientRequestToken, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateProfile",
+    http_method = "POST",
+    http_path = "/profiles",
+    paginator = list()
+  )
+  input <- .wellarchitected$create_profile_input(ProfileName = ProfileName, ProfileDescription = ProfileDescription, ProfileQuestions = ProfileQuestions, ClientRequestToken = ClientRequestToken, Tags = Tags)
+  output <- .wellarchitected$create_profile_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$create_profile <- wellarchitected_create_profile
+
+#' Create a profile share
+#'
+#' @description
+#' Create a profile share.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_create_profile_share/](https://www.paws-r-sdk.com/docs/wellarchitected_create_profile_share/) for full documentation.
+#'
+#' @param ProfileArn &#91;required&#93; The profile ARN.
+#' @param SharedWith &#91;required&#93; 
+#' @param ClientRequestToken &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_create_profile_share
+wellarchitected_create_profile_share <- function(ProfileArn, SharedWith, ClientRequestToken) {
+  op <- new_operation(
+    name = "CreateProfileShare",
+    http_method = "POST",
+    http_path = "/profiles/{ProfileArn}/shares",
+    paginator = list()
+  )
+  input <- .wellarchitected$create_profile_share_input(ProfileArn = ProfileArn, SharedWith = SharedWith, ClientRequestToken = ClientRequestToken)
+  output <- .wellarchitected$create_profile_share_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$create_profile_share <- wellarchitected_create_profile_share
+
 #' Create a new workload
 #'
 #' @description
 #' Create a new workload.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/create_workload.html](https://paws-r.github.io/docs/wellarchitected/create_workload.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_create_workload/](https://www.paws-r-sdk.com/docs/wellarchitected_create_workload/) for full documentation.
 #'
 #' @param WorkloadName &#91;required&#93; 
 #' @param Description &#91;required&#93; 
@@ -152,18 +246,19 @@ wellarchitected_create_milestone <- function(WorkloadId, MilestoneName, ClientRe
 #' @param DiscoveryConfig Well-Architected discovery configuration settings associated to the
 #' workload.
 #' @param Applications List of AppRegistry application ARNs associated to the workload.
+#' @param ProfileArns The list of profile ARNs associated with the workload.
 #'
 #' @keywords internal
 #'
 #' @rdname wellarchitected_create_workload
-wellarchitected_create_workload <- function(WorkloadName, Description, Environment, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner = NULL, IndustryType = NULL, Industry = NULL, Lenses, Notes = NULL, ClientRequestToken, Tags = NULL, DiscoveryConfig = NULL, Applications = NULL) {
+wellarchitected_create_workload <- function(WorkloadName, Description, Environment, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner = NULL, IndustryType = NULL, Industry = NULL, Lenses, Notes = NULL, ClientRequestToken, Tags = NULL, DiscoveryConfig = NULL, Applications = NULL, ProfileArns = NULL) {
   op <- new_operation(
     name = "CreateWorkload",
     http_method = "POST",
     http_path = "/workloads",
     paginator = list()
   )
-  input <- .wellarchitected$create_workload_input(WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IndustryType = IndustryType, Industry = Industry, Lenses = Lenses, Notes = Notes, ClientRequestToken = ClientRequestToken, Tags = Tags, DiscoveryConfig = DiscoveryConfig, Applications = Applications)
+  input <- .wellarchitected$create_workload_input(WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IndustryType = IndustryType, Industry = Industry, Lenses = Lenses, Notes = Notes, ClientRequestToken = ClientRequestToken, Tags = Tags, DiscoveryConfig = DiscoveryConfig, Applications = Applications, ProfileArns = ProfileArns)
   output <- .wellarchitected$create_workload_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)
@@ -178,7 +273,7 @@ wellarchitected_create_workload <- function(WorkloadName, Description, Environme
 #' @description
 #' Create a workload share.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/create_workload_share.html](https://paws-r.github.io/docs/wellarchitected/create_workload_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_create_workload_share/](https://www.paws-r-sdk.com/docs/wellarchitected_create_workload_share/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param SharedWith &#91;required&#93; 
@@ -210,7 +305,7 @@ wellarchitected_create_workload_share <- function(WorkloadId, SharedWith, Permis
 #' @description
 #' Delete an existing lens.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/delete_lens.html](https://paws-r.github.io/docs/wellarchitected/delete_lens.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_delete_lens/](https://www.paws-r-sdk.com/docs/wellarchitected_delete_lens/) for full documentation.
 #'
 #' @param LensAlias &#91;required&#93; 
 #' @param ClientRequestToken &#91;required&#93; 
@@ -241,7 +336,7 @@ wellarchitected_delete_lens <- function(LensAlias, ClientRequestToken, LensStatu
 #' @description
 #' Delete a lens share.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/delete_lens_share.html](https://paws-r.github.io/docs/wellarchitected/delete_lens_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_delete_lens_share/](https://www.paws-r-sdk.com/docs/wellarchitected_delete_lens_share/) for full documentation.
 #'
 #' @param ShareId &#91;required&#93; 
 #' @param LensAlias &#91;required&#93; 
@@ -267,12 +362,73 @@ wellarchitected_delete_lens_share <- function(ShareId, LensAlias, ClientRequestT
 }
 .wellarchitected$operations$delete_lens_share <- wellarchitected_delete_lens_share
 
+#' Delete a profile
+#'
+#' @description
+#' Delete a profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_delete_profile/](https://www.paws-r-sdk.com/docs/wellarchitected_delete_profile/) for full documentation.
+#'
+#' @param ProfileArn &#91;required&#93; The profile ARN.
+#' @param ClientRequestToken &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_delete_profile
+wellarchitected_delete_profile <- function(ProfileArn, ClientRequestToken) {
+  op <- new_operation(
+    name = "DeleteProfile",
+    http_method = "DELETE",
+    http_path = "/profiles/{ProfileArn}",
+    paginator = list()
+  )
+  input <- .wellarchitected$delete_profile_input(ProfileArn = ProfileArn, ClientRequestToken = ClientRequestToken)
+  output <- .wellarchitected$delete_profile_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$delete_profile <- wellarchitected_delete_profile
+
+#' Delete a profile share
+#'
+#' @description
+#' Delete a profile share.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_delete_profile_share/](https://www.paws-r-sdk.com/docs/wellarchitected_delete_profile_share/) for full documentation.
+#'
+#' @param ShareId &#91;required&#93; 
+#' @param ProfileArn &#91;required&#93; The profile ARN.
+#' @param ClientRequestToken &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_delete_profile_share
+wellarchitected_delete_profile_share <- function(ShareId, ProfileArn, ClientRequestToken) {
+  op <- new_operation(
+    name = "DeleteProfileShare",
+    http_method = "DELETE",
+    http_path = "/profiles/{ProfileArn}/shares/{ShareId}",
+    paginator = list()
+  )
+  input <- .wellarchitected$delete_profile_share_input(ShareId = ShareId, ProfileArn = ProfileArn, ClientRequestToken = ClientRequestToken)
+  output <- .wellarchitected$delete_profile_share_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$delete_profile_share <- wellarchitected_delete_profile_share
+
 #' Delete an existing workload
 #'
 #' @description
 #' Delete an existing workload.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/delete_workload.html](https://paws-r.github.io/docs/wellarchitected/delete_workload.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_delete_workload/](https://www.paws-r-sdk.com/docs/wellarchitected_delete_workload/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param ClientRequestToken &#91;required&#93; 
@@ -302,7 +458,7 @@ wellarchitected_delete_workload <- function(WorkloadId, ClientRequestToken) {
 #' @description
 #' Delete a workload share.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/delete_workload_share.html](https://paws-r.github.io/docs/wellarchitected/delete_workload_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_delete_workload_share/](https://www.paws-r-sdk.com/docs/wellarchitected_delete_workload_share/) for full documentation.
 #'
 #' @param ShareId &#91;required&#93; 
 #' @param WorkloadId &#91;required&#93; 
@@ -333,7 +489,7 @@ wellarchitected_delete_workload_share <- function(ShareId, WorkloadId, ClientReq
 #' @description
 #' Disassociate a lens from a workload.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/disassociate_lenses.html](https://paws-r.github.io/docs/wellarchitected/disassociate_lenses.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_disassociate_lenses/](https://www.paws-r-sdk.com/docs/wellarchitected_disassociate_lenses/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param LensAliases &#91;required&#93; 
@@ -358,12 +514,42 @@ wellarchitected_disassociate_lenses <- function(WorkloadId, LensAliases) {
 }
 .wellarchitected$operations$disassociate_lenses <- wellarchitected_disassociate_lenses
 
+#' Disassociate a profile from a workload
+#'
+#' @description
+#' Disassociate a profile from a workload.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_disassociate_profiles/](https://www.paws-r-sdk.com/docs/wellarchitected_disassociate_profiles/) for full documentation.
+#'
+#' @param WorkloadId &#91;required&#93; 
+#' @param ProfileArns &#91;required&#93; The list of profile ARNs to disassociate from the workload.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_disassociate_profiles
+wellarchitected_disassociate_profiles <- function(WorkloadId, ProfileArns) {
+  op <- new_operation(
+    name = "DisassociateProfiles",
+    http_method = "PATCH",
+    http_path = "/workloads/{WorkloadId}/disassociateProfiles",
+    paginator = list()
+  )
+  input <- .wellarchitected$disassociate_profiles_input(WorkloadId = WorkloadId, ProfileArns = ProfileArns)
+  output <- .wellarchitected$disassociate_profiles_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$disassociate_profiles <- wellarchitected_disassociate_profiles
+
 #' Export an existing lens
 #'
 #' @description
 #' Export an existing lens.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/export_lens.html](https://paws-r.github.io/docs/wellarchitected/export_lens.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_export_lens/](https://www.paws-r-sdk.com/docs/wellarchitected_export_lens/) for full documentation.
 #'
 #' @param LensAlias &#91;required&#93; 
 #' @param LensVersion The lens version to be exported.
@@ -393,7 +579,7 @@ wellarchitected_export_lens <- function(LensAlias, LensVersion = NULL) {
 #' @description
 #' Get the answer to a specific question in a workload review.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/get_answer.html](https://paws-r.github.io/docs/wellarchitected/get_answer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_get_answer/](https://www.paws-r-sdk.com/docs/wellarchitected_get_answer/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param LensAlias &#91;required&#93; 
@@ -425,7 +611,7 @@ wellarchitected_get_answer <- function(WorkloadId, LensAlias, QuestionId, Milest
 #' @description
 #' Get a consolidated report of your workloads.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/get_consolidated_report.html](https://paws-r.github.io/docs/wellarchitected/get_consolidated_report.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_get_consolidated_report/](https://www.paws-r-sdk.com/docs/wellarchitected_get_consolidated_report/) for full documentation.
 #'
 #' @param Format &#91;required&#93; The format of the consolidated report.
 #' 
@@ -460,7 +646,7 @@ wellarchitected_get_consolidated_report <- function(Format, IncludeSharedResourc
 #' @description
 #' Get an existing lens.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/get_lens.html](https://paws-r.github.io/docs/wellarchitected/get_lens.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_get_lens/](https://www.paws-r-sdk.com/docs/wellarchitected_get_lens/) for full documentation.
 #'
 #' @param LensAlias &#91;required&#93; 
 #' @param LensVersion The lens version to be retrieved.
@@ -490,7 +676,7 @@ wellarchitected_get_lens <- function(LensAlias, LensVersion = NULL) {
 #' @description
 #' Get lens review.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/get_lens_review.html](https://paws-r.github.io/docs/wellarchitected/get_lens_review.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_get_lens_review/](https://www.paws-r-sdk.com/docs/wellarchitected_get_lens_review/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param LensAlias &#91;required&#93; 
@@ -521,7 +707,7 @@ wellarchitected_get_lens_review <- function(WorkloadId, LensAlias, MilestoneNumb
 #' @description
 #' Get lens review report.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/get_lens_review_report.html](https://paws-r.github.io/docs/wellarchitected/get_lens_review_report.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_get_lens_review_report/](https://www.paws-r-sdk.com/docs/wellarchitected_get_lens_review_report/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param LensAlias &#91;required&#93; 
@@ -552,7 +738,7 @@ wellarchitected_get_lens_review_report <- function(WorkloadId, LensAlias, Milest
 #' @description
 #' Get lens version differences.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/get_lens_version_difference.html](https://paws-r.github.io/docs/wellarchitected/get_lens_version_difference.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_get_lens_version_difference/](https://www.paws-r-sdk.com/docs/wellarchitected_get_lens_version_difference/) for full documentation.
 #'
 #' @param LensAlias &#91;required&#93; 
 #' @param BaseLensVersion The base version of the lens.
@@ -583,7 +769,7 @@ wellarchitected_get_lens_version_difference <- function(LensAlias, BaseLensVersi
 #' @description
 #' Get a milestone for an existing workload.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/get_milestone.html](https://paws-r.github.io/docs/wellarchitected/get_milestone.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_get_milestone/](https://www.paws-r-sdk.com/docs/wellarchitected_get_milestone/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param MilestoneNumber &#91;required&#93; 
@@ -608,12 +794,69 @@ wellarchitected_get_milestone <- function(WorkloadId, MilestoneNumber) {
 }
 .wellarchitected$operations$get_milestone <- wellarchitected_get_milestone
 
+#' Get profile information
+#'
+#' @description
+#' Get profile information.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_get_profile/](https://www.paws-r-sdk.com/docs/wellarchitected_get_profile/) for full documentation.
+#'
+#' @param ProfileArn &#91;required&#93; The profile ARN.
+#' @param ProfileVersion The profile version.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_get_profile
+wellarchitected_get_profile <- function(ProfileArn, ProfileVersion = NULL) {
+  op <- new_operation(
+    name = "GetProfile",
+    http_method = "GET",
+    http_path = "/profiles/{ProfileArn}",
+    paginator = list()
+  )
+  input <- .wellarchitected$get_profile_input(ProfileArn = ProfileArn, ProfileVersion = ProfileVersion)
+  output <- .wellarchitected$get_profile_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$get_profile <- wellarchitected_get_profile
+
+#' Get profile template
+#'
+#' @description
+#' Get profile template.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_get_profile_template/](https://www.paws-r-sdk.com/docs/wellarchitected_get_profile_template/) for full documentation.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_get_profile_template
+wellarchitected_get_profile_template <- function() {
+  op <- new_operation(
+    name = "GetProfileTemplate",
+    http_method = "GET",
+    http_path = "/profileTemplate",
+    paginator = list()
+  )
+  input <- .wellarchitected$get_profile_template_input()
+  output <- .wellarchitected$get_profile_template_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$get_profile_template <- wellarchitected_get_profile_template
+
 #' Get an existing workload
 #'
 #' @description
 #' Get an existing workload.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/get_workload.html](https://paws-r.github.io/docs/wellarchitected/get_workload.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_get_workload/](https://www.paws-r-sdk.com/docs/wellarchitected_get_workload/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
 #'
@@ -642,7 +885,7 @@ wellarchitected_get_workload <- function(WorkloadId) {
 #' @description
 #' Import a new custom lens or update an existing custom lens.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/import_lens.html](https://paws-r.github.io/docs/wellarchitected/import_lens.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_import_lens/](https://www.paws-r-sdk.com/docs/wellarchitected_import_lens/) for full documentation.
 #'
 #' @param LensAlias 
 #' @param JSONString &#91;required&#93; The JSON representation of a lens.
@@ -674,7 +917,7 @@ wellarchitected_import_lens <- function(LensAlias = NULL, JSONString, ClientRequ
 #' @description
 #' List of answers for a particular workload and lens.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/list_answers.html](https://paws-r.github.io/docs/wellarchitected/list_answers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_answers/](https://www.paws-r-sdk.com/docs/wellarchitected_list_answers/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param LensAlias &#91;required&#93; 
@@ -682,18 +925,19 @@ wellarchitected_import_lens <- function(LensAlias = NULL, JSONString, ClientRequ
 #' @param MilestoneNumber 
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return for this request.
+#' @param QuestionPriority The priority of the question.
 #'
 #' @keywords internal
 #'
 #' @rdname wellarchitected_list_answers
-wellarchitected_list_answers <- function(WorkloadId, LensAlias, PillarId = NULL, MilestoneNumber = NULL, NextToken = NULL, MaxResults = NULL) {
+wellarchitected_list_answers <- function(WorkloadId, LensAlias, PillarId = NULL, MilestoneNumber = NULL, NextToken = NULL, MaxResults = NULL, QuestionPriority = NULL) {
   op <- new_operation(
     name = "ListAnswers",
     http_method = "GET",
     http_path = "/workloads/{WorkloadId}/lensReviews/{LensAlias}/answers",
     paginator = list()
   )
-  input <- .wellarchitected$list_answers_input(WorkloadId = WorkloadId, LensAlias = LensAlias, PillarId = PillarId, MilestoneNumber = MilestoneNumber, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .wellarchitected$list_answers_input(WorkloadId = WorkloadId, LensAlias = LensAlias, PillarId = PillarId, MilestoneNumber = MilestoneNumber, NextToken = NextToken, MaxResults = MaxResults, QuestionPriority = QuestionPriority)
   output <- .wellarchitected$list_answers_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)
@@ -708,7 +952,7 @@ wellarchitected_list_answers <- function(WorkloadId, LensAlias, PillarId = NULL,
 #' @description
 #' List of Trusted Advisor check details by account related to the workload.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/list_check_details.html](https://paws-r.github.io/docs/wellarchitected/list_check_details.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_check_details/](https://www.paws-r-sdk.com/docs/wellarchitected_list_check_details/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param NextToken 
@@ -744,7 +988,7 @@ wellarchitected_list_check_details <- function(WorkloadId, NextToken = NULL, Max
 #' @description
 #' List of Trusted Advisor checks summarized for all accounts related to the workload.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/list_check_summaries.html](https://paws-r.github.io/docs/wellarchitected/list_check_summaries.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_check_summaries/](https://www.paws-r-sdk.com/docs/wellarchitected_list_check_summaries/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param NextToken 
@@ -779,7 +1023,7 @@ wellarchitected_list_check_summaries <- function(WorkloadId, NextToken = NULL, M
 #' @description
 #' List lens review improvements.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/list_lens_review_improvements.html](https://paws-r.github.io/docs/wellarchitected/list_lens_review_improvements.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_lens_review_improvements/](https://www.paws-r-sdk.com/docs/wellarchitected_list_lens_review_improvements/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param LensAlias &#91;required&#93; 
@@ -787,18 +1031,19 @@ wellarchitected_list_check_summaries <- function(WorkloadId, NextToken = NULL, M
 #' @param MilestoneNumber 
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return for this request.
+#' @param QuestionPriority The priority of the question.
 #'
 #' @keywords internal
 #'
 #' @rdname wellarchitected_list_lens_review_improvements
-wellarchitected_list_lens_review_improvements <- function(WorkloadId, LensAlias, PillarId = NULL, MilestoneNumber = NULL, NextToken = NULL, MaxResults = NULL) {
+wellarchitected_list_lens_review_improvements <- function(WorkloadId, LensAlias, PillarId = NULL, MilestoneNumber = NULL, NextToken = NULL, MaxResults = NULL, QuestionPriority = NULL) {
   op <- new_operation(
     name = "ListLensReviewImprovements",
     http_method = "GET",
     http_path = "/workloads/{WorkloadId}/lensReviews/{LensAlias}/improvements",
     paginator = list()
   )
-  input <- .wellarchitected$list_lens_review_improvements_input(WorkloadId = WorkloadId, LensAlias = LensAlias, PillarId = PillarId, MilestoneNumber = MilestoneNumber, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .wellarchitected$list_lens_review_improvements_input(WorkloadId = WorkloadId, LensAlias = LensAlias, PillarId = PillarId, MilestoneNumber = MilestoneNumber, NextToken = NextToken, MaxResults = MaxResults, QuestionPriority = QuestionPriority)
   output <- .wellarchitected$list_lens_review_improvements_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)
@@ -813,7 +1058,7 @@ wellarchitected_list_lens_review_improvements <- function(WorkloadId, LensAlias,
 #' @description
 #' List lens reviews for a particular workload.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/list_lens_reviews.html](https://paws-r.github.io/docs/wellarchitected/list_lens_reviews.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_lens_reviews/](https://www.paws-r-sdk.com/docs/wellarchitected_list_lens_reviews/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param MilestoneNumber 
@@ -845,7 +1090,7 @@ wellarchitected_list_lens_reviews <- function(WorkloadId, MilestoneNumber = NULL
 #' @description
 #' List the lens shares associated with the lens.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/list_lens_shares.html](https://paws-r.github.io/docs/wellarchitected/list_lens_shares.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_lens_shares/](https://www.paws-r-sdk.com/docs/wellarchitected_list_lens_shares/) for full documentation.
 #'
 #' @param LensAlias &#91;required&#93; 
 #' @param SharedWithPrefix The Amazon Web Services account ID, IAM role, organization ID, or
@@ -879,7 +1124,7 @@ wellarchitected_list_lens_shares <- function(LensAlias, SharedWithPrefix = NULL,
 #' @description
 #' List the available lenses.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/list_lenses.html](https://paws-r.github.io/docs/wellarchitected/list_lenses.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_lenses/](https://www.paws-r-sdk.com/docs/wellarchitected_list_lenses/) for full documentation.
 #'
 #' @param NextToken 
 #' @param MaxResults 
@@ -912,7 +1157,7 @@ wellarchitected_list_lenses <- function(NextToken = NULL, MaxResults = NULL, Len
 #' @description
 #' List all milestones for an existing workload.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/list_milestones.html](https://paws-r.github.io/docs/wellarchitected/list_milestones.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_milestones/](https://www.paws-r-sdk.com/docs/wellarchitected_list_milestones/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param NextToken 
@@ -943,7 +1188,7 @@ wellarchitected_list_milestones <- function(WorkloadId, NextToken = NULL, MaxRes
 #' @description
 #' List lens notifications.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/list_notifications.html](https://paws-r.github.io/docs/wellarchitected/list_notifications.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_notifications/](https://www.paws-r-sdk.com/docs/wellarchitected_list_notifications/) for full documentation.
 #'
 #' @param WorkloadId 
 #' @param NextToken 
@@ -969,12 +1214,109 @@ wellarchitected_list_notifications <- function(WorkloadId = NULL, NextToken = NU
 }
 .wellarchitected$operations$list_notifications <- wellarchitected_list_notifications
 
+#' List profile notifications
+#'
+#' @description
+#' List profile notifications.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_profile_notifications/](https://www.paws-r-sdk.com/docs/wellarchitected_list_profile_notifications/) for full documentation.
+#'
+#' @param WorkloadId 
+#' @param NextToken 
+#' @param MaxResults 
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_list_profile_notifications
+wellarchitected_list_profile_notifications <- function(WorkloadId = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListProfileNotifications",
+    http_method = "GET",
+    http_path = "/profileNotifications/",
+    paginator = list()
+  )
+  input <- .wellarchitected$list_profile_notifications_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .wellarchitected$list_profile_notifications_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$list_profile_notifications <- wellarchitected_list_profile_notifications
+
+#' List profile shares
+#'
+#' @description
+#' List profile shares.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_profile_shares/](https://www.paws-r-sdk.com/docs/wellarchitected_list_profile_shares/) for full documentation.
+#'
+#' @param ProfileArn &#91;required&#93; The profile ARN.
+#' @param SharedWithPrefix The Amazon Web Services account ID, IAM role, organization ID, or
+#' organizational unit (OU) ID with which the profile is shared.
+#' @param NextToken 
+#' @param MaxResults The maximum number of results to return for this request.
+#' @param Status 
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_list_profile_shares
+wellarchitected_list_profile_shares <- function(ProfileArn, SharedWithPrefix = NULL, NextToken = NULL, MaxResults = NULL, Status = NULL) {
+  op <- new_operation(
+    name = "ListProfileShares",
+    http_method = "GET",
+    http_path = "/profiles/{ProfileArn}/shares",
+    paginator = list()
+  )
+  input <- .wellarchitected$list_profile_shares_input(ProfileArn = ProfileArn, SharedWithPrefix = SharedWithPrefix, NextToken = NextToken, MaxResults = MaxResults, Status = Status)
+  output <- .wellarchitected$list_profile_shares_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$list_profile_shares <- wellarchitected_list_profile_shares
+
+#' List profiles
+#'
+#' @description
+#' List profiles.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_profiles/](https://www.paws-r-sdk.com/docs/wellarchitected_list_profiles/) for full documentation.
+#'
+#' @param ProfileNamePrefix Prefix for profile name.
+#' @param ProfileOwnerType Profile owner type.
+#' @param NextToken 
+#' @param MaxResults 
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_list_profiles
+wellarchitected_list_profiles <- function(ProfileNamePrefix = NULL, ProfileOwnerType = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListProfiles",
+    http_method = "GET",
+    http_path = "/profileSummaries",
+    paginator = list()
+  )
+  input <- .wellarchitected$list_profiles_input(ProfileNamePrefix = ProfileNamePrefix, ProfileOwnerType = ProfileOwnerType, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .wellarchitected$list_profiles_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$list_profiles <- wellarchitected_list_profiles
+
 #' List the workload invitations
 #'
 #' @description
 #' List the workload invitations.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/list_share_invitations.html](https://paws-r.github.io/docs/wellarchitected/list_share_invitations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_share_invitations/](https://www.paws-r-sdk.com/docs/wellarchitected_list_share_invitations/) for full documentation.
 #'
 #' @param WorkloadNamePrefix 
 #' @param LensNamePrefix An optional string added to the beginning of each lens name returned in
@@ -982,18 +1324,19 @@ wellarchitected_list_notifications <- function(WorkloadId = NULL, NextToken = NU
 #' @param ShareResourceType The type of share invitations to be returned.
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return for this request.
+#' @param ProfileNamePrefix Profile name prefix.
 #'
 #' @keywords internal
 #'
 #' @rdname wellarchitected_list_share_invitations
-wellarchitected_list_share_invitations <- function(WorkloadNamePrefix = NULL, LensNamePrefix = NULL, ShareResourceType = NULL, NextToken = NULL, MaxResults = NULL) {
+wellarchitected_list_share_invitations <- function(WorkloadNamePrefix = NULL, LensNamePrefix = NULL, ShareResourceType = NULL, NextToken = NULL, MaxResults = NULL, ProfileNamePrefix = NULL) {
   op <- new_operation(
     name = "ListShareInvitations",
     http_method = "GET",
     http_path = "/shareInvitations",
     paginator = list()
   )
-  input <- .wellarchitected$list_share_invitations_input(WorkloadNamePrefix = WorkloadNamePrefix, LensNamePrefix = LensNamePrefix, ShareResourceType = ShareResourceType, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .wellarchitected$list_share_invitations_input(WorkloadNamePrefix = WorkloadNamePrefix, LensNamePrefix = LensNamePrefix, ShareResourceType = ShareResourceType, NextToken = NextToken, MaxResults = MaxResults, ProfileNamePrefix = ProfileNamePrefix)
   output <- .wellarchitected$list_share_invitations_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)
@@ -1008,7 +1351,7 @@ wellarchitected_list_share_invitations <- function(WorkloadNamePrefix = NULL, Le
 #' @description
 #' List the tags for a resource.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/list_tags_for_resource.html](https://paws-r.github.io/docs/wellarchitected/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/wellarchitected_list_tags_for_resource/) for full documentation.
 #'
 #' @param WorkloadArn &#91;required&#93; 
 #'
@@ -1037,7 +1380,7 @@ wellarchitected_list_tags_for_resource <- function(WorkloadArn) {
 #' @description
 #' List the workload shares associated with the workload.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/list_workload_shares.html](https://paws-r.github.io/docs/wellarchitected/list_workload_shares.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_workload_shares/](https://www.paws-r-sdk.com/docs/wellarchitected_list_workload_shares/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param SharedWithPrefix The Amazon Web Services account ID, IAM role, organization ID, or
@@ -1071,7 +1414,7 @@ wellarchitected_list_workload_shares <- function(WorkloadId, SharedWithPrefix = 
 #' @description
 #' Paginated list of workloads.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/list_workloads.html](https://paws-r.github.io/docs/wellarchitected/list_workloads.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_workloads/](https://www.paws-r-sdk.com/docs/wellarchitected_list_workloads/) for full documentation.
 #'
 #' @param WorkloadNamePrefix 
 #' @param NextToken 
@@ -1102,7 +1445,7 @@ wellarchitected_list_workloads <- function(WorkloadNamePrefix = NULL, NextToken 
 #' @description
 #' Adds one or more tags to the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/tag_resource.html](https://paws-r.github.io/docs/wellarchitected/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_tag_resource/](https://www.paws-r-sdk.com/docs/wellarchitected_tag_resource/) for full documentation.
 #'
 #' @param WorkloadArn &#91;required&#93; 
 #' @param Tags &#91;required&#93; The tags for the resource.
@@ -1132,7 +1475,7 @@ wellarchitected_tag_resource <- function(WorkloadArn, Tags) {
 #' @description
 #' Deletes specified tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/untag_resource.html](https://paws-r.github.io/docs/wellarchitected/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_untag_resource/](https://www.paws-r-sdk.com/docs/wellarchitected_untag_resource/) for full documentation.
 #'
 #' @param WorkloadArn &#91;required&#93; 
 #' @param TagKeys &#91;required&#93; A list of tag keys. Existing tags of the resource whose keys are members
@@ -1163,7 +1506,7 @@ wellarchitected_untag_resource <- function(WorkloadArn, TagKeys) {
 #' @description
 #' Update the answer to a specific question in a workload review.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/update_answer.html](https://paws-r.github.io/docs/wellarchitected/update_answer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_update_answer/](https://www.paws-r-sdk.com/docs/wellarchitected_update_answer/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param LensAlias &#91;required&#93; 
@@ -1201,7 +1544,7 @@ wellarchitected_update_answer <- function(WorkloadId, LensAlias, QuestionId, Sel
 #' @description
 #' Updates whether the Amazon Web Services account is opted into organization sharing and discovery integration features.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/update_global_settings.html](https://paws-r.github.io/docs/wellarchitected/update_global_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_update_global_settings/](https://www.paws-r-sdk.com/docs/wellarchitected_update_global_settings/) for full documentation.
 #'
 #' @param OrganizationSharingStatus The status of organization sharing settings.
 #' @param DiscoveryIntegrationStatus The status of discovery support settings.
@@ -1231,7 +1574,7 @@ wellarchitected_update_global_settings <- function(OrganizationSharingStatus = N
 #' @description
 #' Update lens review for a particular workload.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/update_lens_review.html](https://paws-r.github.io/docs/wellarchitected/update_lens_review.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_update_lens_review/](https://www.paws-r-sdk.com/docs/wellarchitected_update_lens_review/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param LensAlias &#91;required&#93; 
@@ -1258,12 +1601,43 @@ wellarchitected_update_lens_review <- function(WorkloadId, LensAlias, LensNotes 
 }
 .wellarchitected$operations$update_lens_review <- wellarchitected_update_lens_review
 
+#' Update a profile
+#'
+#' @description
+#' Update a profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_update_profile/](https://www.paws-r-sdk.com/docs/wellarchitected_update_profile/) for full documentation.
+#'
+#' @param ProfileArn &#91;required&#93; The profile ARN.
+#' @param ProfileDescription The profile description.
+#' @param ProfileQuestions Profile questions.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_update_profile
+wellarchitected_update_profile <- function(ProfileArn, ProfileDescription = NULL, ProfileQuestions = NULL) {
+  op <- new_operation(
+    name = "UpdateProfile",
+    http_method = "PATCH",
+    http_path = "/profiles/{ProfileArn}",
+    paginator = list()
+  )
+  input <- .wellarchitected$update_profile_input(ProfileArn = ProfileArn, ProfileDescription = ProfileDescription, ProfileQuestions = ProfileQuestions)
+  output <- .wellarchitected$update_profile_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$update_profile <- wellarchitected_update_profile
+
 #' Update a workload or custom lens share invitation
 #'
 #' @description
 #' Update a workload or custom lens share invitation.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/update_share_invitation.html](https://paws-r.github.io/docs/wellarchitected/update_share_invitation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_update_share_invitation/](https://www.paws-r-sdk.com/docs/wellarchitected_update_share_invitation/) for full documentation.
 #'
 #' @param ShareInvitationId &#91;required&#93; The ID assigned to the share invitation.
 #' @param ShareInvitationAction &#91;required&#93; 
@@ -1293,7 +1667,7 @@ wellarchitected_update_share_invitation <- function(ShareInvitationId, ShareInvi
 #' @description
 #' Update an existing workload.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/update_workload.html](https://paws-r.github.io/docs/wellarchitected/update_workload.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_update_workload/](https://www.paws-r-sdk.com/docs/wellarchitected_update_workload/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param WorkloadName 
@@ -1344,7 +1718,7 @@ wellarchitected_update_workload <- function(WorkloadId, WorkloadName = NULL, Des
 #' @description
 #' Update a workload share.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/update_workload_share.html](https://paws-r.github.io/docs/wellarchitected/update_workload_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_update_workload_share/](https://www.paws-r-sdk.com/docs/wellarchitected_update_workload_share/) for full documentation.
 #'
 #' @param ShareId &#91;required&#93; 
 #' @param WorkloadId &#91;required&#93; 
@@ -1375,7 +1749,7 @@ wellarchitected_update_workload_share <- function(ShareId, WorkloadId, Permissio
 #' @description
 #' Upgrade lens review for a particular workload.
 #'
-#' See [https://paws-r.github.io/docs/wellarchitected/upgrade_lens_review.html](https://paws-r.github.io/docs/wellarchitected/upgrade_lens_review.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_upgrade_lens_review/](https://www.paws-r-sdk.com/docs/wellarchitected_upgrade_lens_review/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param LensAlias &#91;required&#93; 
@@ -1401,3 +1775,35 @@ wellarchitected_upgrade_lens_review <- function(WorkloadId, LensAlias, Milestone
   return(response)
 }
 .wellarchitected$operations$upgrade_lens_review <- wellarchitected_upgrade_lens_review
+
+#' Upgrade a profile
+#'
+#' @description
+#' Upgrade a profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_upgrade_profile_version/](https://www.paws-r-sdk.com/docs/wellarchitected_upgrade_profile_version/) for full documentation.
+#'
+#' @param WorkloadId &#91;required&#93; 
+#' @param ProfileArn &#91;required&#93; The profile ARN.
+#' @param MilestoneName 
+#' @param ClientRequestToken 
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_upgrade_profile_version
+wellarchitected_upgrade_profile_version <- function(WorkloadId, ProfileArn, MilestoneName = NULL, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "UpgradeProfileVersion",
+    http_method = "PUT",
+    http_path = "/workloads/{WorkloadId}/profiles/{ProfileArn}/upgrade",
+    paginator = list()
+  )
+  input <- .wellarchitected$upgrade_profile_version_input(WorkloadId = WorkloadId, ProfileArn = ProfileArn, MilestoneName = MilestoneName, ClientRequestToken = ClientRequestToken)
+  output <- .wellarchitected$upgrade_profile_version_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$upgrade_profile_version <- wellarchitected_upgrade_profile_version

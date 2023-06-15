@@ -12,6 +12,6 @@ sagemaker_describe_model(ModelName)
 \description{
 Describes a model that you created using the \code{\link[=sagemaker_create_model]{create_model}} API.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_model/} for full documentation.
 }
 \keyword{internal}

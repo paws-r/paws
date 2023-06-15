@@ -16,6 +16,6 @@ behalf when using the CLI or SDK.}
 \description{
 Deletes an Amazon FSx backup. After deletion, the backup no longer exists, and its data is gone.
 
-See \url{https://paws-r.github.io/docs/fsx/delete_backup.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_delete_backup/} for full documentation.
 }
 \keyword{internal}

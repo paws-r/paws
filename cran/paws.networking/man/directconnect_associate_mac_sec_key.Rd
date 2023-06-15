@@ -54,6 +54,6 @@ parameter and not use the \code{secretARN} request parameter.}
 \description{
 Associates a MAC Security (MACsec) Connection Key Name (CKN)/ Connectivity Association Key (CAK) pair with an Direct Connect dedicated connection.
 
-See \url{https://paws-r.github.io/docs/directconnect/associate_mac_sec_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_associate_mac_sec_key/} for full documentation.
 }
 \keyword{internal}

@@ -27,6 +27,6 @@ environment.}
 \description{
 Returns information about the overall health of the specified environment. The \strong{DescribeEnvironmentHealth} operation is only available with AWS Elastic Beanstalk Enhanced Health.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/describe_environment_health.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_environment_health/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ Operations job.}
 \description{
 Sets the supplied tag-set on an S3 Batch Operations job.
 
-See \url{https://paws-r.github.io/docs/s3control/put_job_tagging.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_put_job_tagging/} for full documentation.
 }
 \keyword{internal}

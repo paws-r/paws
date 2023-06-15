@@ -12,6 +12,6 @@ managedgrafana_describe_workspace(workspaceId)
 \description{
 Displays information about one Amazon Managed Grafana workspace.
 
-See \url{https://paws-r.github.io/docs/managedgrafana/describe_workspace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/managedgrafana_describe_workspace/} for full documentation.
 }
 \keyword{internal}

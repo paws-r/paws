@@ -12,6 +12,6 @@ ses_delete_configuration_set(ConfigurationSetName)
 \description{
 Deletes a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the \href{https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html}{Amazon SES Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/ses/delete_configuration_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_delete_configuration_set/} for full documentation.
 }
 \keyword{internal}

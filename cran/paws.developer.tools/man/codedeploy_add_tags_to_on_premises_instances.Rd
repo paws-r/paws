@@ -17,6 +17,6 @@ Value-only tags are not allowed.}
 \description{
 Adds tags to on-premises instances.
 
-See \url{https://paws-r.github.io/docs/codedeploy/add_tags_to_on_premises_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_add_tags_to_on_premises_instances/} for full documentation.
 }
 \keyword{internal}

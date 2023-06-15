@@ -15,6 +15,6 @@ enable DKIM signing for this identity; \code{false} to disable it.}
 \description{
 Enables or disables Easy DKIM signing of email sent from an identity. If Easy DKIM signing is enabled for a domain, then Amazon SES uses DKIM to sign all email that it sends from addresses on that domain. If Easy DKIM signing is enabled for an email address, then Amazon SES uses DKIM to sign all email it sends from that address.
 
-See \url{https://paws-r.github.io/docs/ses/set_identity_dkim_enabled.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_set_identity_dkim_enabled/} for full documentation.
 }
 \keyword{internal}

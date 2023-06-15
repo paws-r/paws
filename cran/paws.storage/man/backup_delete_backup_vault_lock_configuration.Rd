@@ -13,6 +13,6 @@ backup_delete_backup_vault_lock_configuration(BackupVaultName)
 \description{
 Deletes Backup Vault Lock from a backup vault specified by a backup vault name.
 
-See \url{https://paws-r.github.io/docs/backup/delete_backup_vault_lock_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_delete_backup_vault_lock_configuration/} for full documentation.
 }
 \keyword{internal}

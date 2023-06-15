@@ -13,6 +13,6 @@ deleted.}
 \description{
 Deletes an Amazon Redshift event notification subscription.
 
-See \url{https://paws-r.github.io/docs/redshift/delete_event_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_delete_event_subscription/} for full documentation.
 }
 \keyword{internal}

@@ -27,6 +27,6 @@ none is supplied, the Amazon Web Services account ID is used by default.}
 \description{
 Creates or updates partition statistics of columns.
 
-See \url{https://paws-r.github.io/docs/glue/update_column_statistics_for_partition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_update_column_statistics_for_partition/} for full documentation.
 }
 \keyword{internal}

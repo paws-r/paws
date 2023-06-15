@@ -21,6 +21,6 @@ operation.}
 \description{
 Retrieves a list of trust store certificates.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/list_trust_store_certificates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_list_trust_store_certificates/} for full documentation.
 }
 \keyword{internal}

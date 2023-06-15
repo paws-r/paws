@@ -13,6 +13,6 @@ emr_describe_studio(StudioId)
 \description{
 Returns details for the specified Amazon EMR Studio including ID, Name, VPC, Studio access URL, and so on.
 
-See \url{https://paws-r.github.io/docs/emr/describe_studio.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_describe_studio/} for full documentation.
 }
 \keyword{internal}

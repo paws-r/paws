@@ -21,6 +21,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Describes an evaluation form in the specified Amazon Connect instance. If the version property is not provided, the latest version of the evaluation form is described.
 
-See \url{https://paws-r.github.io/docs/connect/describe_evaluation_form.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_describe_evaluation_form/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ kinesisanalytics_list_tags_for_resource(ResourceARN)
 \description{
 Retrieves the list of key-value tags assigned to the application. For more information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html}{Using Tagging}.
 
-See \url{https://paws-r.github.io/docs/kinesisanalytics/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalytics_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

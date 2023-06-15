@@ -12,6 +12,6 @@ dynamodb_describe_global_table_settings(GlobalTableName)
 \description{
 Describes Region-specific settings for a global table.
 
-See \url{https://paws-r.github.io/docs/dynamodb/describe_global_table_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_describe_global_table_settings/} for full documentation.
 }
 \keyword{internal}

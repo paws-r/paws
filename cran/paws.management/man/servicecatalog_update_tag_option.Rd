@@ -16,6 +16,6 @@ servicecatalog_update_tag_option(Id, Value = NULL, Active = NULL)
 \description{
 Updates the specified TagOption.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/update_tag_option.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_update_tag_option/} for full documentation.
 }
 \keyword{internal}

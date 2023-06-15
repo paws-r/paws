@@ -13,6 +13,6 @@ route53domains_get_domain_detail(DomainName)
 \description{
 This operation returns detailed information about a specified domain that is associated with the current Amazon Web Services account. Contact information for the domain is also returned as part of the output.
 
-See \url{https://paws-r.github.io/docs/route53domains/get_domain_detail.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_get_domain_detail/} for full documentation.
 }
 \keyword{internal}

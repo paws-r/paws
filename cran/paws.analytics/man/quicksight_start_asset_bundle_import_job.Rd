@@ -30,12 +30,12 @@ If you choose \code{ROLLBACK}, failed import jobs will attempt to undo any
 asset changes caused by the failed job.
 
 If you choose \code{DO_NOTHING}, failed import jobs will not attempt to roll
-back any asset changes caused by the failed job, possibly leaving the
+back any asset changes caused by the failed job, possibly keeping the
 Amazon QuickSight account in an inconsistent state.}
 }
 \description{
 Starts an Asset Bundle import job.
 
-See \url{https://paws-r.github.io/docs/quicksight/start_asset_bundle_import_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_start_asset_bundle_import_job/} for full documentation.
 }
 \keyword{internal}

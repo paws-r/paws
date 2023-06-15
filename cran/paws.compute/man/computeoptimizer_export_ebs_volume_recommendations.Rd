@@ -63,6 +63,6 @@ this parameter, or the account IDs parameter, is omitted.}
 \description{
 Exports optimization recommendations for Amazon EBS volumes.
 
-See \url{https://paws-r.github.io/docs/computeoptimizer/export_ebs_volume_recommendations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/computeoptimizer_export_ebs_volume_recommendations/} for full documentation.
 }
 \keyword{internal}

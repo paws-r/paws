@@ -23,6 +23,6 @@ to retrieve the ARN of the MAC Security (MACsec) secret key.}
 \description{
 Removes the association between a MAC Security (MACsec) security key and an Direct Connect dedicated connection.
 
-See \url{https://paws-r.github.io/docs/directconnect/disassociate_mac_sec_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_disassociate_mac_sec_key/} for full documentation.
 }
 \keyword{internal}

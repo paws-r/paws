@@ -12,6 +12,6 @@ appstream_delete_fleet(Name)
 \description{
 Deletes the specified fleet.
 
-See \url{https://paws-r.github.io/docs/appstream/delete_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_delete_fleet/} for full documentation.
 }
 \keyword{internal}

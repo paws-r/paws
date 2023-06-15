@@ -31,6 +31,6 @@ value.}
 \description{
 Describes your import snapshot tasks.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_import_snapshot_tasks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_import_snapshot_tasks/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ If the policy isn't valid, Amazon Lex returns a validation exception.}
 \description{
 Creates a new resource policy with the specified policy statements.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/create_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_create_resource_policy/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Submits a contact evaluation in the specified Amazon Connect instance. Answers included in the request are merged with existing answers for the given evaluation. If no answers or notes are passed, the evaluation is submitted with the existing answers and notes. You can delete an answer or note by passing an empty object (\code{{}}) to the question identifier.
 
-See \url{https://paws-r.github.io/docs/connect/submit_contact_evaluation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_submit_contact_evaluation/} for full documentation.
 }
 \keyword{internal}

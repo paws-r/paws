@@ -13,6 +13,6 @@ locationservice_delete_route_calculator(CalculatorName)
 \description{
 Deletes a route calculator resource from your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/locationservice/delete_route_calculator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_delete_route_calculator/} for full documentation.
 }
 \keyword{internal}

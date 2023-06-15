@@ -17,6 +17,6 @@ revision id does not match the latest policy revision id, an
 \description{
 Deletes a resource policy from the target Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/xray/delete_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_delete_resource_policy/} for full documentation.
 }
 \keyword{internal}

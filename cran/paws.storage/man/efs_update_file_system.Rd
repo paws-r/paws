@@ -28,6 +28,6 @@ update.}
 \description{
 Updates the throughput mode or the amount of provisioned throughput of an existing file system.
 
-See \url{https://paws-r.github.io/docs/efs/update_file_system.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_update_file_system/} for full documentation.
 }
 \keyword{internal}

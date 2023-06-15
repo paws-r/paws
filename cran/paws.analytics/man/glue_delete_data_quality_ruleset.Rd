@@ -12,6 +12,6 @@ glue_delete_data_quality_ruleset(Name)
 \description{
 Deletes a data quality ruleset.
 
-See \url{https://paws-r.github.io/docs/glue/delete_data_quality_ruleset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_delete_data_quality_ruleset/} for full documentation.
 }
 \keyword{internal}

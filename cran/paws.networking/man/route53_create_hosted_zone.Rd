@@ -63,6 +63,6 @@ sets, see
 \description{
 Creates a new public or private hosted zone. You create records in a public hosted zone to define how you want to route traffic on the internet for a domain, such as example.com, and its subdomains (apex.example.com, acme.example.com). You create records in a private hosted zone to define how you want to route traffic for a domain and its subdomains within one or more Amazon Virtual Private Clouds (Amazon VPCs).
 
-See \url{https://paws-r.github.io/docs/route53/create_hosted_zone.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_create_hosted_zone/} for full documentation.
 }
 \keyword{internal}

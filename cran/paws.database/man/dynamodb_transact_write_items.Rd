@@ -54,6 +54,6 @@ parameters within the 10-minute idempotency window, DynamoDB returns an
 \description{
 \code{\link[=dynamodb_transact_write_items]{transact_write_items}} is a synchronous write operation that groups up to 100 action requests. These actions can target items in different tables, but not in different Amazon Web Services accounts or Regions, and no two actions can target the same item. For example, you cannot both \code{ConditionCheck} and \code{Update} the same item. The aggregate size of the items in the transaction cannot exceed 4 MB.
 
-See \url{https://paws-r.github.io/docs/dynamodb/transact_write_items.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_transact_write_items/} for full documentation.
 }
 \keyword{internal}

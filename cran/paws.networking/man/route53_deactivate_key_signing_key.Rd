@@ -15,6 +15,6 @@ route53_deactivate_key_signing_key(HostedZoneId, Name)
 \description{
 Deactivates a key-signing key (KSK) so that it will not be used for signing by DNSSEC. This operation changes the KSK status to \code{INACTIVE}.
 
-See \url{https://paws-r.github.io/docs/route53/deactivate_key_signing_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_deactivate_key_signing_key/} for full documentation.
 }
 \keyword{internal}

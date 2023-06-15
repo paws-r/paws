@@ -12,6 +12,6 @@ cloudwatchevents_list_tags_for_resource(ResourceARN)
 \description{
 Displays the tags associated with an EventBridge resource. In EventBridge, rules and event buses can be tagged.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevents/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevents_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

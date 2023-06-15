@@ -32,6 +32,6 @@ longitude are automatically calculated.
 \description{
 Creates a new site in a global network.
 
-See \url{https://paws-r.github.io/docs/networkmanager/create_site.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_create_site/} for full documentation.
 }
 \keyword{internal}

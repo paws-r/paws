@@ -34,6 +34,6 @@ batch of objects.}
 \description{
 Retrieves an array of your LoggingConfiguration objects.
 
-See \url{https://paws-r.github.io/docs/wafv2/list_logging_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_list_logging_configurations/} for full documentation.
 }
 \keyword{internal}

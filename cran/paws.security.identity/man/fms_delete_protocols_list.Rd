@@ -15,6 +15,6 @@ this ID from \code{\link[=fms_put_protocols_list]{put_protocols_list}},
 \description{
 Permanently deletes an Firewall Manager protocols list.
 
-See \url{https://paws-r.github.io/docs/fms/delete_protocols_list.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_delete_protocols_list/} for full documentation.
 }
 \keyword{internal}

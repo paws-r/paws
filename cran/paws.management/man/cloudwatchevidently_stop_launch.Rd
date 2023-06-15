@@ -25,6 +25,6 @@ stop.}
 \description{
 Stops a launch that is currently running. After you stop a launch, you will not be able to resume it or restart it. Also, it will not be evaluated as a rule for traffic allocation, and the traffic that was allocated to the launch will instead be available to the feature's experiment, if there is one. Otherwise, all traffic will be served the default variation after the launch is stopped.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/stop_launch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_stop_launch/} for full documentation.
 }
 \keyword{internal}

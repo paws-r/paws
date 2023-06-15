@@ -54,6 +54,6 @@ returns up to 100 results and a \code{nextToken} value if applicable.}
 \description{
 Returns a list of task definition families that are registered to your account. This list includes task definition families that no longer have any \code{ACTIVE} task definition revisions.
 
-See \url{https://paws-r.github.io/docs/ecs/list_task_definition_families.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_list_task_definition_families/} for full documentation.
 }
 \keyword{internal}

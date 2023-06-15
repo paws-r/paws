@@ -14,6 +14,6 @@ results.}
 \description{
 List studios in your Amazon Web Services accounts in the requested Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/list_studios.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_list_studios/} for full documentation.
 }
 \keyword{internal}

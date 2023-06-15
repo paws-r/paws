@@ -17,6 +17,6 @@ want to associate with the GuardDuty administrator account.}
 \description{
 Creates member accounts of the current Amazon Web Services account by specifying a list of Amazon Web Services account IDs. This step is a prerequisite for managing the associated member accounts either by invitation or through an organization.
 
-See \url{https://paws-r.github.io/docs/guardduty/create_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_create_members/} for full documentation.
 }
 \keyword{internal}

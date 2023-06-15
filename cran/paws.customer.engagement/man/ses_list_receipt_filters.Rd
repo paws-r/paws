@@ -10,6 +10,6 @@ ses_list_receipt_filters()
 \description{
 Lists the IP address filters associated with your AWS account in the current AWS Region.
 
-See \url{https://paws-r.github.io/docs/ses/list_receipt_filters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_list_receipt_filters/} for full documentation.
 }
 \keyword{internal}

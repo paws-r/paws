@@ -22,6 +22,6 @@ that you want to describe.}
 \description{
 Describes an existing IAM policy assignment, as specified by the assignment name.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_iam_policy_assignment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_iam_policy_assignment/} for full documentation.
 }
 \keyword{internal}

@@ -22,6 +22,6 @@ Access Point.}
 \description{
 Returns a list of the Multi-Region Access Points currently associated with the specified Amazon Web Services account. Each call can return up to 100 Multi-Region Access Points, the maximum number of Multi-Region Access Points that can be associated with a single account.
 
-See \url{https://paws-r.github.io/docs/s3control/list_multi_region_access_points.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_list_multi_region_access_points/} for full documentation.
 }
 \keyword{internal}

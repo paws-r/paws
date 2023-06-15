@@ -14,6 +14,6 @@ dax_tag_resource(ResourceName, Tags)
 \description{
 Associates a set of tags with a DAX resource. You can call \code{\link[=dax_tag_resource]{tag_resource}} up to 5 times per second, per account.
 
-See \url{https://paws-r.github.io/docs/dax/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dax_tag_resource/} for full documentation.
 }
 \keyword{internal}

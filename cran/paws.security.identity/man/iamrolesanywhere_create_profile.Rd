@@ -40,6 +40,6 @@ session credentials.}
 \description{
 Creates a \emph{profile}, a list of the roles that Roles Anywhere service is trusted to assume. You use profiles to intersect permissions with IAM managed policies.
 
-See \url{https://paws-r.github.io/docs/iamrolesanywhere/create_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iamrolesanywhere_create_profile/} for full documentation.
 }
 \keyword{internal}

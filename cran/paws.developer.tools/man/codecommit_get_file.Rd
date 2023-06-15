@@ -22,6 +22,6 @@ qualified path to a file named file.md in a folder named examples.}
 \description{
 Returns the base-64 encoded contents of a specified file and its metadata.
 
-See \url{https://paws-r.github.io/docs/codecommit/get_file.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_get_file/} for full documentation.
 }
 \keyword{internal}

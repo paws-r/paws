@@ -114,6 +114,6 @@ token, up to the value specified by \code{MaxRecords}.}
 \description{
 For a specific time period, retrieve the top \code{N} dimension keys for a metric.
 
-See \url{https://paws-r.github.io/docs/pi/describe_dimension_keys.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pi_describe_dimension_keys/} for full documentation.
 }
 \keyword{internal}

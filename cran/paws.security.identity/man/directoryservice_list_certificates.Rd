@@ -20,6 +20,6 @@ token comes back as \code{null}. Pass \code{null} if this is the first call.}
 \description{
 For the specified directory, lists all the certificates registered for a secure LDAP or client certificate authentication.
 
-See \url{https://paws-r.github.io/docs/directoryservice/list_certificates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_list_certificates/} for full documentation.
 }
 \keyword{internal}

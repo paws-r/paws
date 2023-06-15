@@ -32,6 +32,6 @@ inviting to GuardDuty as members.}
 \description{
 Invites other Amazon Web Services accounts (created as members of the current Amazon Web Services account by CreateMembers) to enable GuardDuty, and allow the current Amazon Web Services account to view and manage these accounts' findings on their behalf as the GuardDuty administrator account.
 
-See \url{https://paws-r.github.io/docs/guardduty/invite_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_invite_members/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ provide this token to receive the next set of results.}
 \description{
 Describes the available directories that are registered with Amazon WorkSpaces.
 
-See \url{https://paws-r.github.io/docs/workspaces/describe_workspace_directories.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_describe_workspace_directories/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ sagemaker_stop_monitoring_schedule(MonitoringScheduleName)
 \description{
 Stops a previously started monitoring schedule.
 
-See \url{https://paws-r.github.io/docs/sagemaker/stop_monitoring_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_stop_monitoring_schedule/} for full documentation.
 }
 \keyword{internal}

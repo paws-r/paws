@@ -16,6 +16,22 @@ test_that("list_notifications", {
   expect_error(svc$list_notifications(MaxResults = 20), NA)
 })
 
+test_that("list_profile_notifications", {
+  expect_error(svc$list_profile_notifications(), NA)
+})
+
+test_that("list_profile_notifications", {
+  expect_error(svc$list_profile_notifications(MaxResults = 20), NA)
+})
+
+test_that("list_profiles", {
+  expect_error(svc$list_profiles(), NA)
+})
+
+test_that("list_profiles", {
+  expect_error(svc$list_profiles(MaxResults = 20), NA)
+})
+
 test_that("list_share_invitations", {
   expect_error(svc$list_share_invitations(), NA)
 })

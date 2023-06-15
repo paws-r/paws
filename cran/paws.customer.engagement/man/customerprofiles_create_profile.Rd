@@ -86,6 +86,6 @@ shipping, or billing.}
 \description{
 Creates a standard profile.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/create_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_create_profile/} for full documentation.
 }
 \keyword{internal}

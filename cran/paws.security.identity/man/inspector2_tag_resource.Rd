@@ -14,6 +14,6 @@ inspector2_tag_resource(resourceArn, tags)
 \description{
 Adds tags to a resource.
 
-See \url{https://paws-r.github.io/docs/inspector2/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_tag_resource/} for full documentation.
 }
 \keyword{internal}

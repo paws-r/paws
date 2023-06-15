@@ -18,6 +18,6 @@ tag value is 256 characters.}
 \description{
 Add one or more tags (keys and values) to a specified application. A \emph{tag} is a label that you optionally define and associate with an application. Tags can help you categorize and manage application in different ways, such as by purpose, owner, environment, or other criteria.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_tag_resource/} for full documentation.
 }
 \keyword{internal}

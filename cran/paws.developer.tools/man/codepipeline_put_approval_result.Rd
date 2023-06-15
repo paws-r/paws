@@ -30,6 +30,6 @@ is still valid.}
 \description{
 Provides the response to a manual approval request to CodePipeline. Valid responses include Approved and Rejected.
 
-See \url{https://paws-r.github.io/docs/codepipeline/put_approval_result.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_put_approval_result/} for full documentation.
 }
 \keyword{internal}

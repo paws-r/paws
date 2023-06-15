@@ -12,6 +12,6 @@ emrserverless_delete_application(applicationId)
 \description{
 Deletes an application. An application has to be in a stopped or created state in order to be deleted.
 
-See \url{https://paws-r.github.io/docs/emrserverless/delete_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emrserverless_delete_application/} for full documentation.
 }
 \keyword{internal}

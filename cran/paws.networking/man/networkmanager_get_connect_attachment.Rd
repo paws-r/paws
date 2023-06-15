@@ -12,6 +12,6 @@ networkmanager_get_connect_attachment(AttachmentId)
 \description{
 Returns information about a core network Connect attachment.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_connect_attachment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_connect_attachment/} for full documentation.
 }
 \keyword{internal}

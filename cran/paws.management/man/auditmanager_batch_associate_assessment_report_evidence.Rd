@@ -21,6 +21,6 @@ auditmanager_batch_associate_assessment_report_evidence(
 \description{
 Associates a list of evidence to an assessment report in an Audit Manager assessment.
 
-See \url{https://paws-r.github.io/docs/auditmanager/batch_associate_assessment_report_evidence.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_batch_associate_assessment_report_evidence/} for full documentation.
 }
 \keyword{internal}

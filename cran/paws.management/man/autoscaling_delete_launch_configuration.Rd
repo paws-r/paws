@@ -12,6 +12,6 @@ autoscaling_delete_launch_configuration(LaunchConfigurationName)
 \description{
 Deletes the specified launch configuration.
 
-See \url{https://paws-r.github.io/docs/autoscaling/delete_launch_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_delete_launch_configuration/} for full documentation.
 }
 \keyword{internal}

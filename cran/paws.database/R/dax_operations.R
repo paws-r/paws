@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a DAX cluster. All nodes in the cluster run the same DAX caching software.
 #'
-#' See [https://paws-r.github.io/docs/dax/create_cluster.html](https://paws-r.github.io/docs/dax/create_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dax_create_cluster/](https://www.paws-r-sdk.com/docs/dax_create_cluster/) for full documentation.
 #'
 #' @param ClusterName &#91;required&#93; The cluster identifier. This parameter is stored as a lowercase string.
 #' 
@@ -111,7 +111,7 @@ dax_create_cluster <- function(ClusterName, NodeType, Description = NULL, Replic
 #' @description
 #' Creates a new parameter group. A parameter group is a collection of parameters that you apply to all of the nodes in a DAX cluster.
 #'
-#' See [https://paws-r.github.io/docs/dax/create_parameter_group.html](https://paws-r.github.io/docs/dax/create_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dax_create_parameter_group/](https://www.paws-r-sdk.com/docs/dax_create_parameter_group/) for full documentation.
 #'
 #' @param ParameterGroupName &#91;required&#93; The name of the parameter group to apply to all of the clusters in this
 #' replication group.
@@ -142,7 +142,7 @@ dax_create_parameter_group <- function(ParameterGroupName, Description = NULL) {
 #' @description
 #' Creates a new subnet group.
 #'
-#' See [https://paws-r.github.io/docs/dax/create_subnet_group.html](https://paws-r.github.io/docs/dax/create_subnet_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dax_create_subnet_group/](https://www.paws-r-sdk.com/docs/dax_create_subnet_group/) for full documentation.
 #'
 #' @param SubnetGroupName &#91;required&#93; A name for the subnet group. This value is stored as a lowercase string.
 #' @param Description A description for the subnet group
@@ -173,7 +173,7 @@ dax_create_subnet_group <- function(SubnetGroupName, Description = NULL, SubnetI
 #' @description
 #' Removes one or more nodes from a DAX cluster.
 #'
-#' See [https://paws-r.github.io/docs/dax/decrease_replication_factor.html](https://paws-r.github.io/docs/dax/decrease_replication_factor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dax_decrease_replication_factor/](https://www.paws-r-sdk.com/docs/dax_decrease_replication_factor/) for full documentation.
 #'
 #' @param ClusterName &#91;required&#93; The name of the DAX cluster from which you want to remove nodes.
 #' @param NewReplicationFactor &#91;required&#93; The new number of nodes for the DAX cluster.
@@ -205,7 +205,7 @@ dax_decrease_replication_factor <- function(ClusterName, NewReplicationFactor, A
 #' @description
 #' Deletes a previously provisioned DAX cluster. *DeleteCluster* deletes all associated nodes, node endpoints and the DAX cluster itself. When you receive a successful response from this action, DAX immediately begins deleting the cluster; you cannot cancel or revert this action.
 #'
-#' See [https://paws-r.github.io/docs/dax/delete_cluster.html](https://paws-r.github.io/docs/dax/delete_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dax_delete_cluster/](https://www.paws-r-sdk.com/docs/dax_delete_cluster/) for full documentation.
 #'
 #' @param ClusterName &#91;required&#93; The name of the cluster to be deleted.
 #'
@@ -234,7 +234,7 @@ dax_delete_cluster <- function(ClusterName) {
 #' @description
 #' Deletes the specified parameter group. You cannot delete a parameter group if it is associated with any DAX clusters.
 #'
-#' See [https://paws-r.github.io/docs/dax/delete_parameter_group.html](https://paws-r.github.io/docs/dax/delete_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dax_delete_parameter_group/](https://www.paws-r-sdk.com/docs/dax_delete_parameter_group/) for full documentation.
 #'
 #' @param ParameterGroupName &#91;required&#93; The name of the parameter group to delete.
 #'
@@ -263,7 +263,7 @@ dax_delete_parameter_group <- function(ParameterGroupName) {
 #' @description
 #' Deletes a subnet group.
 #'
-#' See [https://paws-r.github.io/docs/dax/delete_subnet_group.html](https://paws-r.github.io/docs/dax/delete_subnet_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dax_delete_subnet_group/](https://www.paws-r-sdk.com/docs/dax_delete_subnet_group/) for full documentation.
 #'
 #' @param SubnetGroupName &#91;required&#93; The name of the subnet group to delete.
 #'
@@ -294,7 +294,7 @@ dax_delete_subnet_group <- function(SubnetGroupName) {
 #' @description
 #' Returns information about all provisioned DAX clusters if no cluster identifier is specified, or about a specific DAX cluster if a cluster identifier is supplied.
 #'
-#' See [https://paws-r.github.io/docs/dax/describe_clusters.html](https://paws-r.github.io/docs/dax/describe_clusters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dax_describe_clusters/](https://www.paws-r-sdk.com/docs/dax_describe_clusters/) for full documentation.
 #'
 #' @param ClusterNames The names of the DAX clusters being described.
 #' @param MaxResults The maximum number of results to include in the response. If more
@@ -333,7 +333,7 @@ dax_describe_clusters <- function(ClusterNames = NULL, MaxResults = NULL, NextTo
 #' @description
 #' Returns the default system parameter information for the DAX caching software.
 #'
-#' See [https://paws-r.github.io/docs/dax/describe_default_parameters.html](https://paws-r.github.io/docs/dax/describe_default_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dax_describe_default_parameters/](https://www.paws-r-sdk.com/docs/dax_describe_default_parameters/) for full documentation.
 #'
 #' @param MaxResults The maximum number of results to include in the response. If more
 #' results exist than the specified `MaxResults` value, a token is included
@@ -370,7 +370,7 @@ dax_describe_default_parameters <- function(MaxResults = NULL, NextToken = NULL)
 #' @description
 #' Returns events related to DAX clusters and parameter groups. You can obtain events specific to a particular DAX cluster or parameter group by providing the name as a parameter.
 #'
-#' See [https://paws-r.github.io/docs/dax/describe_events.html](https://paws-r.github.io/docs/dax/describe_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dax_describe_events/](https://www.paws-r-sdk.com/docs/dax_describe_events/) for full documentation.
 #'
 #' @param SourceName The identifier of the event source for which events will be returned. If
 #' not specified, then all sources are included in the response.
@@ -416,7 +416,7 @@ dax_describe_events <- function(SourceName = NULL, SourceType = NULL, StartTime 
 #' @description
 #' Returns a list of parameter group descriptions. If a parameter group name is specified, the list will contain only the descriptions for that group.
 #'
-#' See [https://paws-r.github.io/docs/dax/describe_parameter_groups.html](https://paws-r.github.io/docs/dax/describe_parameter_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dax_describe_parameter_groups/](https://www.paws-r-sdk.com/docs/dax_describe_parameter_groups/) for full documentation.
 #'
 #' @param ParameterGroupNames The names of the parameter groups.
 #' @param MaxResults The maximum number of results to include in the response. If more
@@ -454,7 +454,7 @@ dax_describe_parameter_groups <- function(ParameterGroupNames = NULL, MaxResults
 #' @description
 #' Returns the detailed parameter list for a particular parameter group.
 #'
-#' See [https://paws-r.github.io/docs/dax/describe_parameters.html](https://paws-r.github.io/docs/dax/describe_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dax_describe_parameters/](https://www.paws-r-sdk.com/docs/dax_describe_parameters/) for full documentation.
 #'
 #' @param ParameterGroupName &#91;required&#93; The name of the parameter group.
 #' @param Source How the parameter is defined. For example, `system` denotes a
@@ -494,7 +494,7 @@ dax_describe_parameters <- function(ParameterGroupName, Source = NULL, MaxResult
 #' @description
 #' Returns a list of subnet group descriptions. If a subnet group name is specified, the list will contain only the description of that group.
 #'
-#' See [https://paws-r.github.io/docs/dax/describe_subnet_groups.html](https://paws-r.github.io/docs/dax/describe_subnet_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dax_describe_subnet_groups/](https://www.paws-r-sdk.com/docs/dax_describe_subnet_groups/) for full documentation.
 #'
 #' @param SubnetGroupNames The name of the subnet group.
 #' @param MaxResults The maximum number of results to include in the response. If more
@@ -532,7 +532,7 @@ dax_describe_subnet_groups <- function(SubnetGroupNames = NULL, MaxResults = NUL
 #' @description
 #' Adds one or more nodes to a DAX cluster.
 #'
-#' See [https://paws-r.github.io/docs/dax/increase_replication_factor.html](https://paws-r.github.io/docs/dax/increase_replication_factor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dax_increase_replication_factor/](https://www.paws-r-sdk.com/docs/dax_increase_replication_factor/) for full documentation.
 #'
 #' @param ClusterName &#91;required&#93; The name of the DAX cluster that will receive additional nodes.
 #' @param NewReplicationFactor &#91;required&#93; The new number of nodes for the DAX cluster.
@@ -566,7 +566,7 @@ dax_increase_replication_factor <- function(ClusterName, NewReplicationFactor, A
 #' @description
 #' List all of the tags for a DAX cluster. You can call [`list_tags`][dax_list_tags] up to 10 times per second, per account.
 #'
-#' See [https://paws-r.github.io/docs/dax/list_tags.html](https://paws-r.github.io/docs/dax/list_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dax_list_tags/](https://www.paws-r-sdk.com/docs/dax_list_tags/) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The name of the DAX resource to which the tags belong.
 #' @param NextToken An optional token returned from a prior request. Use this token for
@@ -598,7 +598,7 @@ dax_list_tags <- function(ResourceName, NextToken = NULL) {
 #' @description
 #' Reboots a single node of a DAX cluster. The reboot action takes place as soon as possible. During the reboot, the node status is set to REBOOTING.
 #'
-#' See [https://paws-r.github.io/docs/dax/reboot_node.html](https://paws-r.github.io/docs/dax/reboot_node.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dax_reboot_node/](https://www.paws-r-sdk.com/docs/dax_reboot_node/) for full documentation.
 #'
 #' @param ClusterName &#91;required&#93; The name of the DAX cluster containing the node to be rebooted.
 #' @param NodeId &#91;required&#93; The system-assigned ID of the node to be rebooted.
@@ -628,7 +628,7 @@ dax_reboot_node <- function(ClusterName, NodeId) {
 #' @description
 #' Associates a set of tags with a DAX resource. You can call [`tag_resource`][dax_tag_resource] up to 5 times per second, per account.
 #'
-#' See [https://paws-r.github.io/docs/dax/tag_resource.html](https://paws-r.github.io/docs/dax/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dax_tag_resource/](https://www.paws-r-sdk.com/docs/dax_tag_resource/) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The name of the DAX resource to which tags should be added.
 #' @param Tags &#91;required&#93; The tags to be assigned to the DAX resource.
@@ -658,7 +658,7 @@ dax_tag_resource <- function(ResourceName, Tags) {
 #' @description
 #' Removes the association of tags from a DAX resource. You can call [`untag_resource`][dax_untag_resource] up to 5 times per second, per account.
 #'
-#' See [https://paws-r.github.io/docs/dax/untag_resource.html](https://paws-r.github.io/docs/dax/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dax_untag_resource/](https://www.paws-r-sdk.com/docs/dax_untag_resource/) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The name of the DAX resource from which the tags should be removed.
 #' @param TagKeys &#91;required&#93; A list of tag keys. If the DAX cluster has any tags with these keys,
@@ -689,7 +689,7 @@ dax_untag_resource <- function(ResourceName, TagKeys) {
 #' @description
 #' Modifies the settings for a DAX cluster. You can use this action to change one or more cluster configuration parameters by specifying the parameters and the new values.
 #'
-#' See [https://paws-r.github.io/docs/dax/update_cluster.html](https://paws-r.github.io/docs/dax/update_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dax_update_cluster/](https://www.paws-r-sdk.com/docs/dax_update_cluster/) for full documentation.
 #'
 #' @param ClusterName &#91;required&#93; The name of the DAX cluster to be modified.
 #' @param Description A description of the changes being made to the cluster.
@@ -731,7 +731,7 @@ dax_update_cluster <- function(ClusterName, Description = NULL, PreferredMainten
 #' @description
 #' Modifies the parameters of a parameter group. You can modify up to 20 parameters in a single request by submitting a list parameter name and value pairs.
 #'
-#' See [https://paws-r.github.io/docs/dax/update_parameter_group.html](https://paws-r.github.io/docs/dax/update_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dax_update_parameter_group/](https://www.paws-r-sdk.com/docs/dax_update_parameter_group/) for full documentation.
 #'
 #' @param ParameterGroupName &#91;required&#93; The name of the parameter group.
 #' @param ParameterNameValues &#91;required&#93; An array of name-value pairs for the parameters in the group. Each
@@ -766,7 +766,7 @@ dax_update_parameter_group <- function(ParameterGroupName, ParameterNameValues) 
 #' @description
 #' Modifies an existing subnet group.
 #'
-#' See [https://paws-r.github.io/docs/dax/update_subnet_group.html](https://paws-r.github.io/docs/dax/update_subnet_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dax_update_subnet_group/](https://www.paws-r-sdk.com/docs/dax_update_subnet_group/) for full documentation.
 #'
 #' @param SubnetGroupName &#91;required&#93; The name of the subnet group.
 #' @param Description A description of the subnet group.

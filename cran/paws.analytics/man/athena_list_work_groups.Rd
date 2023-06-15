@@ -17,6 +17,6 @@ previous page call.}
 \description{
 Lists available workgroups for the account.
 
-See \url{https://paws-r.github.io/docs/athena/list_work_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_list_work_groups/} for full documentation.
 }
 \keyword{internal}

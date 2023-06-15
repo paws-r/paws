@@ -12,6 +12,6 @@ braket_get_device(deviceArn)
 \description{
 Retrieves the devices available in Amazon Braket.
 
-See \url{https://paws-r.github.io/docs/braket/get_device.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/braket_get_device/} for full documentation.
 }
 \keyword{internal}

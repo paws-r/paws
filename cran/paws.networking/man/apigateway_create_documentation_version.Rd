@@ -23,6 +23,6 @@ apigateway_create_documentation_version(
 \description{
 Creates a documentation version
 
-See \url{https://paws-r.github.io/docs/apigateway/create_documentation_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_create_documentation_version/} for full documentation.
 }
 \keyword{internal}

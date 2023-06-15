@@ -17,6 +17,6 @@ fsx_update_snapshot(ClientRequestToken = NULL, Name, SnapshotId)
 \description{
 Updates the name of an Amazon FSx for OpenZFS snapshot.
 
-See \url{https://paws-r.github.io/docs/fsx/update_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_update_snapshot/} for full documentation.
 }
 \keyword{internal}

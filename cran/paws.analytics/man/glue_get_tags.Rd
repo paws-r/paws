@@ -13,6 +13,6 @@ tags.}
 \description{
 Retrieves a list of tags associated with a resource.
 
-See \url{https://paws-r.github.io/docs/glue/get_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_tags/} for full documentation.
 }
 \keyword{internal}

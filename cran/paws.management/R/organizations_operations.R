@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Sends a response to the originator of a handshake agreeing to the action proposed by the handshake request.
 #'
-#' See [https://paws-r.github.io/docs/organizations/accept_handshake.html](https://paws-r.github.io/docs/organizations/accept_handshake.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_accept_handshake/](https://www.paws-r-sdk.com/docs/organizations_accept_handshake/) for full documentation.
 #'
 #' @param HandshakeId &#91;required&#93; The unique identifier (ID) of the handshake that you want to accept.
 #' 
@@ -43,7 +43,7 @@ organizations_accept_handshake <- function(HandshakeId) {
 #' @description
 #' Attaches a policy to a root, an organizational unit (OU), or an individual account. How the policy affects accounts depends on the type of policy. Refer to the *Organizations User Guide* for information about each policy type:
 #'
-#' See [https://paws-r.github.io/docs/organizations/attach_policy.html](https://paws-r.github.io/docs/organizations/attach_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_attach_policy/](https://www.paws-r-sdk.com/docs/organizations_attach_policy/) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The unique identifier (ID) of the policy that you want to attach to the
 #' target. You can get the ID for the policy by calling the
@@ -96,7 +96,7 @@ organizations_attach_policy <- function(PolicyId, TargetId) {
 #' @description
 #' Cancels a handshake. Canceling a handshake sets the handshake state to `CANCELED`.
 #'
-#' See [https://paws-r.github.io/docs/organizations/cancel_handshake.html](https://paws-r.github.io/docs/organizations/cancel_handshake.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_cancel_handshake/](https://www.paws-r-sdk.com/docs/organizations_cancel_handshake/) for full documentation.
 #'
 #' @param HandshakeId &#91;required&#93; The unique identifier (ID) of the handshake that you want to cancel. You
 #' can get the ID from the
@@ -132,7 +132,7 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #' @description
 #' Closes an Amazon Web Services member account within an organization. You can close an account when [all features are enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html) . You can't close the management account with this API. This is an asynchronous request that Amazon Web Services performs in the background. Because [`close_account`][organizations_close_account] operates asynchronously, it can return a successful completion message even though account closure might still be in progress. You need to wait a few minutes before the account is fully closed. To check the status of the request, do one of the following:
 #'
-#' See [https://paws-r.github.io/docs/organizations/close_account.html](https://paws-r.github.io/docs/organizations/close_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_close_account/](https://www.paws-r-sdk.com/docs/organizations_close_account/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; Retrieves the Amazon Web Services account Id for the current
 #' [`close_account`][organizations_close_account] API request.
@@ -163,7 +163,7 @@ organizations_close_account <- function(AccountId) {
 #' @description
 #' Creates an Amazon Web Services account that is automatically a member of the organization whose credentials made the request. This is an asynchronous request that Amazon Web Services performs in the background. Because [`create_account`][organizations_create_account] operates asynchronously, it can return a successful completion message even though account initialization might still be in progress. You might need to wait a few minutes before you can successfully access the account. To check the status of the request, do one of the following:
 #'
-#' See [https://paws-r.github.io/docs/organizations/create_account.html](https://paws-r.github.io/docs/organizations/create_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_create_account/](https://www.paws-r-sdk.com/docs/organizations_create_account/) for full documentation.
 #'
 #' @param Email &#91;required&#93; The email address of the owner to assign to the new member account. This
 #' email address must not already be associated with another Amazon Web
@@ -268,7 +268,7 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' @description
 #' This action is available if all of the following are true:
 #'
-#' See [https://paws-r.github.io/docs/organizations/create_gov_cloud_account.html](https://paws-r.github.io/docs/organizations/create_gov_cloud_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_create_gov_cloud_account/](https://www.paws-r-sdk.com/docs/organizations_create_gov_cloud_account/) for full documentation.
 #'
 #' @param Email &#91;required&#93; Specifies the email address of the owner to assign to the new member
 #' account in the commercial Region. This email address must not already be
@@ -387,7 +387,7 @@ organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName 
 #' @description
 #' Creates an Amazon Web Services organization. The account whose user is calling the [`create_organization`][organizations_create_organization] operation automatically becomes the [management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account) of the new organization.
 #'
-#' See [https://paws-r.github.io/docs/organizations/create_organization.html](https://paws-r.github.io/docs/organizations/create_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_create_organization/](https://www.paws-r-sdk.com/docs/organizations_create_organization/) for full documentation.
 #'
 #' @param FeatureSet Specifies the feature set supported by the new organization. Each
 #' feature set supports different levels of functionality.
@@ -433,7 +433,7 @@ organizations_create_organization <- function(FeatureSet = NULL) {
 #' @description
 #' Creates an organizational unit (OU) within a root or parent OU. An OU is a container for accounts that enables you to organize your accounts to apply policies according to your business requirements. The number of levels deep that you can nest OUs is dependent upon the policy types enabled for that root. For service control policies, the limit is five.
 #'
-#' See [https://paws-r.github.io/docs/organizations/create_organizational_unit.html](https://paws-r.github.io/docs/organizations/create_organizational_unit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_create_organizational_unit/](https://www.paws-r-sdk.com/docs/organizations_create_organizational_unit/) for full documentation.
 #'
 #' @param ParentId &#91;required&#93; The unique identifier (ID) of the parent root or OU that you want to
 #' create the new OU in.
@@ -486,7 +486,7 @@ organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL
 #' @description
 #' Creates a policy of a specified type that you can attach to a root, an organizational unit (OU), or an individual Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/organizations/create_policy.html](https://paws-r.github.io/docs/organizations/create_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_create_policy/](https://www.paws-r-sdk.com/docs/organizations_create_policy/) for full documentation.
 #'
 #' @param Content &#91;required&#93; The policy text content to add to the new policy. The text that you
 #' supply must adhere to the rules of the policy type you specify in the
@@ -543,7 +543,7 @@ organizations_create_policy <- function(Content, Description, Name, Type, Tags =
 #' @description
 #' Declines a handshake request. This sets the handshake state to `DECLINED` and effectively deactivates the request.
 #'
-#' See [https://paws-r.github.io/docs/organizations/decline_handshake.html](https://paws-r.github.io/docs/organizations/decline_handshake.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_decline_handshake/](https://www.paws-r-sdk.com/docs/organizations_decline_handshake/) for full documentation.
 #'
 #' @param HandshakeId &#91;required&#93; The unique identifier (ID) of the handshake that you want to decline.
 #' You can get the ID from the
@@ -579,7 +579,7 @@ organizations_decline_handshake <- function(HandshakeId) {
 #' @description
 #' Deletes the organization. You can delete an organization only by using credentials from the management account. The organization must be empty of member accounts.
 #'
-#' See [https://paws-r.github.io/docs/organizations/delete_organization.html](https://paws-r.github.io/docs/organizations/delete_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_delete_organization/](https://www.paws-r-sdk.com/docs/organizations_delete_organization/) for full documentation.
 #'
 
 #'
@@ -608,7 +608,7 @@ organizations_delete_organization <- function() {
 #' @description
 #' Deletes an organizational unit (OU) from a root or another OU. You must first remove all accounts and child OUs from the OU that you want to delete.
 #'
-#' See [https://paws-r.github.io/docs/organizations/delete_organizational_unit.html](https://paws-r.github.io/docs/organizations/delete_organizational_unit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_delete_organizational_unit/](https://www.paws-r-sdk.com/docs/organizations_delete_organizational_unit/) for full documentation.
 #'
 #' @param OrganizationalUnitId &#91;required&#93; The unique identifier (ID) of the organizational unit that you want to
 #' delete. You can get the ID from the
@@ -646,7 +646,7 @@ organizations_delete_organizational_unit <- function(OrganizationalUnitId) {
 #' @description
 #' Deletes the specified policy from your organization. Before you perform this operation, you must first detach the policy from all organizational units (OUs), roots, and accounts.
 #'
-#' See [https://paws-r.github.io/docs/organizations/delete_policy.html](https://paws-r.github.io/docs/organizations/delete_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_delete_policy/](https://www.paws-r-sdk.com/docs/organizations_delete_policy/) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The unique identifier (ID) of the policy that you want to delete. You
 #' can get the ID from the [`list_policies`][organizations_list_policies]
@@ -682,7 +682,7 @@ organizations_delete_policy <- function(PolicyId) {
 #' @description
 #' Deletes the resource policy from your organization.
 #'
-#' See [https://paws-r.github.io/docs/organizations/delete_resource_policy.html](https://paws-r.github.io/docs/organizations/delete_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_delete_resource_policy/](https://www.paws-r-sdk.com/docs/organizations_delete_resource_policy/) for full documentation.
 #'
 
 #'
@@ -712,7 +712,7 @@ organizations_delete_resource_policy <- function() {
 #' @description
 #' Removes the specified member Amazon Web Services account as a delegated administrator for the specified Amazon Web Services service.
 #'
-#' See [https://paws-r.github.io/docs/organizations/deregister_delegated_administrator.html](https://paws-r.github.io/docs/organizations/deregister_delegated_administrator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_deregister_delegated_administrator/](https://www.paws-r-sdk.com/docs/organizations_deregister_delegated_administrator/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The account ID number of the member account in the organization that you
 #' want to deregister as a delegated administrator.
@@ -750,7 +750,7 @@ organizations_deregister_delegated_administrator <- function(AccountId, ServiceP
 #' @description
 #' Retrieves Organizations-related information about the specified account.
 #'
-#' See [https://paws-r.github.io/docs/organizations/describe_account.html](https://paws-r.github.io/docs/organizations/describe_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_describe_account/](https://www.paws-r-sdk.com/docs/organizations_describe_account/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The unique identifier (ID) of the Amazon Web Services account that you
 #' want information about. You can get the ID from the
@@ -787,7 +787,7 @@ organizations_describe_account <- function(AccountId) {
 #' @description
 #' Retrieves the current status of an asynchronous request to create an account.
 #'
-#' See [https://paws-r.github.io/docs/organizations/describe_create_account_status.html](https://paws-r.github.io/docs/organizations/describe_create_account_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_describe_create_account_status/](https://www.paws-r-sdk.com/docs/organizations_describe_create_account_status/) for full documentation.
 #'
 #' @param CreateAccountRequestId &#91;required&#93; Specifies the `Id` value that uniquely identifies the
 #' [`create_account`][organizations_create_account] request. You can get
@@ -826,7 +826,7 @@ organizations_describe_create_account_status <- function(CreateAccountRequestId)
 #' @description
 #' Returns the contents of the effective policy for specified policy type and account. The effective policy is the aggregation of any policies of the specified type that the account inherits, plus any policy of that type that is directly attached to the account.
 #'
-#' See [https://paws-r.github.io/docs/organizations/describe_effective_policy.html](https://paws-r.github.io/docs/organizations/describe_effective_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_describe_effective_policy/](https://www.paws-r-sdk.com/docs/organizations_describe_effective_policy/) for full documentation.
 #'
 #' @param PolicyType &#91;required&#93; The type of policy that you want information about. You can specify one
 #' of the following values:
@@ -865,7 +865,7 @@ organizations_describe_effective_policy <- function(PolicyType, TargetId = NULL)
 #' @description
 #' Retrieves information about a previously requested handshake. The handshake ID comes from the response to the original [`invite_account_to_organization`][organizations_invite_account_to_organization] operation that generated the handshake.
 #'
-#' See [https://paws-r.github.io/docs/organizations/describe_handshake.html](https://paws-r.github.io/docs/organizations/describe_handshake.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_describe_handshake/](https://www.paws-r-sdk.com/docs/organizations_describe_handshake/) for full documentation.
 #'
 #' @param HandshakeId &#91;required&#93; The unique identifier (ID) of the handshake that you want information
 #' about. You can get the ID from the original call to
@@ -905,7 +905,7 @@ organizations_describe_handshake <- function(HandshakeId) {
 #' @description
 #' Retrieves information about the organization that the user's account belongs to.
 #'
-#' See [https://paws-r.github.io/docs/organizations/describe_organization.html](https://paws-r.github.io/docs/organizations/describe_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_describe_organization/](https://www.paws-r-sdk.com/docs/organizations_describe_organization/) for full documentation.
 #'
 
 #'
@@ -934,7 +934,7 @@ organizations_describe_organization <- function() {
 #' @description
 #' Retrieves information about an organizational unit (OU).
 #'
-#' See [https://paws-r.github.io/docs/organizations/describe_organizational_unit.html](https://paws-r.github.io/docs/organizations/describe_organizational_unit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_describe_organizational_unit/](https://www.paws-r-sdk.com/docs/organizations_describe_organizational_unit/) for full documentation.
 #'
 #' @param OrganizationalUnitId &#91;required&#93; The unique identifier (ID) of the organizational unit that you want
 #' details about. You can get the ID from the
@@ -972,7 +972,7 @@ organizations_describe_organizational_unit <- function(OrganizationalUnitId) {
 #' @description
 #' Retrieves information about a policy.
 #'
-#' See [https://paws-r.github.io/docs/organizations/describe_policy.html](https://paws-r.github.io/docs/organizations/describe_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_describe_policy/](https://www.paws-r-sdk.com/docs/organizations_describe_policy/) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The unique identifier (ID) of the policy that you want details about.
 #' You can get the ID from the
@@ -1009,7 +1009,7 @@ organizations_describe_policy <- function(PolicyId) {
 #' @description
 #' Retrieves information about a resource policy.
 #'
-#' See [https://paws-r.github.io/docs/organizations/describe_resource_policy.html](https://paws-r.github.io/docs/organizations/describe_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_describe_resource_policy/](https://www.paws-r-sdk.com/docs/organizations_describe_resource_policy/) for full documentation.
 #'
 
 #'
@@ -1039,7 +1039,7 @@ organizations_describe_resource_policy <- function() {
 #' @description
 #' Detaches a policy from a target root, organizational unit (OU), or account.
 #'
-#' See [https://paws-r.github.io/docs/organizations/detach_policy.html](https://paws-r.github.io/docs/organizations/detach_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_detach_policy/](https://www.paws-r-sdk.com/docs/organizations_detach_policy/) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The unique identifier (ID) of the policy you want to detach. You can get
 #' the ID from the [`list_policies`][organizations_list_policies] or
@@ -1094,7 +1094,7 @@ organizations_detach_policy <- function(PolicyId, TargetId) {
 #' @description
 #' Disables the integration of an Amazon Web Services service (the service that is specified by `ServicePrincipal`) with Organizations. When you disable integration, the specified service no longer can create a [service-linked role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html) in *new* accounts in your organization. This means the service can't perform operations on your behalf on any new accounts in your organization. The service can still perform operations in older accounts until the service completes its clean-up from Organizations.
 #'
-#' See [https://paws-r.github.io/docs/organizations/disable_aws_service_access.html](https://paws-r.github.io/docs/organizations/disable_aws_service_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_disable_aws_service_access/](https://www.paws-r-sdk.com/docs/organizations_disable_aws_service_access/) for full documentation.
 #'
 #' @param ServicePrincipal &#91;required&#93; The service principal name of the Amazon Web Services service for which
 #' you want to disable integration with your organization. This is
@@ -1126,7 +1126,7 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
 #' @description
 #' Disables an organizational policy type in a root. A policy of a certain type can be attached to entities in a root only if that type is enabled in the root. After you perform this operation, you no longer can attach policies of the specified type to that root or to any organizational unit (OU) or account in that root. You can undo this by using the [`enable_policy_type`][organizations_enable_policy_type] operation.
 #'
-#' See [https://paws-r.github.io/docs/organizations/disable_policy_type.html](https://paws-r.github.io/docs/organizations/disable_policy_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_disable_policy_type/](https://www.paws-r-sdk.com/docs/organizations_disable_policy_type/) for full documentation.
 #'
 #' @param RootId &#91;required&#93; The unique identifier (ID) of the root in which you want to disable a
 #' policy type. You can get the ID from the
@@ -1172,7 +1172,7 @@ organizations_disable_policy_type <- function(RootId, PolicyType) {
 #' @description
 #' Enables the integration of an Amazon Web Services service (the service that is specified by `ServicePrincipal`) with Organizations. When you enable integration, you allow the specified service to create a [service-linked role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html) in all the accounts in your organization. This allows the service to perform operations on your behalf in your organization and its accounts.
 #'
-#' See [https://paws-r.github.io/docs/organizations/enable_aws_service_access.html](https://paws-r.github.io/docs/organizations/enable_aws_service_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_enable_aws_service_access/](https://www.paws-r-sdk.com/docs/organizations_enable_aws_service_access/) for full documentation.
 #'
 #' @param ServicePrincipal &#91;required&#93; The service principal name of the Amazon Web Services service for which
 #' you want to enable integration with your organization. This is typically
@@ -1203,7 +1203,7 @@ organizations_enable_aws_service_access <- function(ServicePrincipal) {
 #' @description
 #' Enables all features in an organization. This enables the use of organization policies that can restrict the services and actions that can be called in each account. Until you enable all features, you have access only to consolidated billing, and you can't use any of the advanced account administration features that Organizations supports. For more information, see [Enabling All Features in Your Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html) in the *Organizations User Guide.*
 #'
-#' See [https://paws-r.github.io/docs/organizations/enable_all_features.html](https://paws-r.github.io/docs/organizations/enable_all_features.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_enable_all_features/](https://www.paws-r-sdk.com/docs/organizations_enable_all_features/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1230,7 +1230,7 @@ organizations_enable_all_features <- function() {
 #' @description
 #' Enables a policy type in a root. After you enable a policy type in a root, you can attach policies of that type to the root, any organizational unit (OU), or account in that root. You can undo this by using the [`disable_policy_type`][organizations_disable_policy_type] operation.
 #'
-#' See [https://paws-r.github.io/docs/organizations/enable_policy_type.html](https://paws-r.github.io/docs/organizations/enable_policy_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_enable_policy_type/](https://www.paws-r-sdk.com/docs/organizations_enable_policy_type/) for full documentation.
 #'
 #' @param RootId &#91;required&#93; The unique identifier (ID) of the root in which you want to enable a
 #' policy type. You can get the ID from the
@@ -1276,7 +1276,7 @@ organizations_enable_policy_type <- function(RootId, PolicyType) {
 #' @description
 #' Sends an invitation to another account to join your organization as a member account. Organizations sends email on your behalf to the email address that is associated with the other account's owner. The invitation is implemented as a Handshake whose details are in the response.
 #'
-#' See [https://paws-r.github.io/docs/organizations/invite_account_to_organization.html](https://paws-r.github.io/docs/organizations/invite_account_to_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_invite_account_to_organization/](https://www.paws-r-sdk.com/docs/organizations_invite_account_to_organization/) for full documentation.
 #'
 #' @param Target &#91;required&#93; The identifier (ID) of the Amazon Web Services account that you want to
 #' invite to join your organization. This is a JSON object that contains
@@ -1342,7 +1342,7 @@ organizations_invite_account_to_organization <- function(Target, Notes = NULL, T
 #' @description
 #' Removes a member account from its parent organization. This version of the operation is performed by the account that wants to leave. To remove a member account as a user in the management account, use [`remove_account_from_organization`][organizations_remove_account_from_organization] instead.
 #'
-#' See [https://paws-r.github.io/docs/organizations/leave_organization.html](https://paws-r.github.io/docs/organizations/leave_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_leave_organization/](https://www.paws-r-sdk.com/docs/organizations_leave_organization/) for full documentation.
 #'
 
 #'
@@ -1372,7 +1372,7 @@ organizations_leave_organization <- function() {
 #' @description
 #' Returns a list of the Amazon Web Services services that you enabled to integrate with your organization. After a service on this list creates the resources that it requires for the integration, it can perform operations on your organization and its accounts.
 #'
-#' See [https://paws-r.github.io/docs/organizations/list_aws_service_access_for_organization.html](https://paws-r.github.io/docs/organizations/list_aws_service_access_for_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_list_aws_service_access_for_organization/](https://www.paws-r-sdk.com/docs/organizations_list_aws_service_access_for_organization/) for full documentation.
 #'
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
@@ -1415,7 +1415,7 @@ organizations_list_aws_service_access_for_organization <- function(NextToken = N
 #' @description
 #' Lists all the accounts in the organization. To request only the accounts in a specified root or organizational unit (OU), use the [`list_accounts_for_parent`][organizations_list_accounts_for_parent] operation instead.
 #'
-#' See [https://paws-r.github.io/docs/organizations/list_accounts.html](https://paws-r.github.io/docs/organizations/list_accounts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_list_accounts/](https://www.paws-r-sdk.com/docs/organizations_list_accounts/) for full documentation.
 #'
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
@@ -1459,7 +1459,7 @@ organizations_list_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Lists the accounts in an organization that are contained by the specified target root or organizational unit (OU). If you specify the root, you get a list of all the accounts that aren't in any OU. If you specify an OU, you get a list of all the accounts in only that OU and not in any child OUs. To get a list of all accounts in the organization, use the [`list_accounts`][organizations_list_accounts] operation.
 #'
-#' See [https://paws-r.github.io/docs/organizations/list_accounts_for_parent.html](https://paws-r.github.io/docs/organizations/list_accounts_for_parent.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_list_accounts_for_parent/](https://www.paws-r-sdk.com/docs/organizations_list_accounts_for_parent/) for full documentation.
 #'
 #' @param ParentId &#91;required&#93; The unique identifier (ID) for the parent root or organization unit (OU)
 #' whose accounts you want to list.
@@ -1505,7 +1505,7 @@ organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, M
 #' @description
 #' Lists all of the organizational units (OUs) or accounts that are contained in the specified parent OU or root. This operation, along with [`list_parents`][organizations_list_parents] enables you to traverse the tree structure that makes up this root.
 #'
-#' See [https://paws-r.github.io/docs/organizations/list_children.html](https://paws-r.github.io/docs/organizations/list_children.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_list_children/](https://www.paws-r-sdk.com/docs/organizations_list_children/) for full documentation.
 #'
 #' @param ParentId &#91;required&#93; The unique identifier (ID) for the parent root or OU whose children you
 #' want to list.
@@ -1563,7 +1563,7 @@ organizations_list_children <- function(ParentId, ChildType, NextToken = NULL, M
 #' @description
 #' Lists the account creation requests that match the specified status that is currently being tracked for the organization.
 #'
-#' See [https://paws-r.github.io/docs/organizations/list_create_account_status.html](https://paws-r.github.io/docs/organizations/list_create_account_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_list_create_account_status/](https://www.paws-r-sdk.com/docs/organizations_list_create_account_status/) for full documentation.
 #'
 #' @param States A list of one or more states that you want included in the response. If
 #' this parameter isn't present, all requests are included in the response.
@@ -1609,7 +1609,7 @@ organizations_list_create_account_status <- function(States = NULL, NextToken = 
 #' @description
 #' Lists the Amazon Web Services accounts that are designated as delegated administrators in this organization.
 #'
-#' See [https://paws-r.github.io/docs/organizations/list_delegated_administrators.html](https://paws-r.github.io/docs/organizations/list_delegated_administrators.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_list_delegated_administrators/](https://www.paws-r-sdk.com/docs/organizations_list_delegated_administrators/) for full documentation.
 #'
 #' @param ServicePrincipal Specifies a service principal name. If specified, then the operation
 #' lists the delegated administrators only for the specified service.
@@ -1658,7 +1658,7 @@ organizations_list_delegated_administrators <- function(ServicePrincipal = NULL,
 #' @description
 #' List the Amazon Web Services services for which the specified account is a delegated administrator.
 #'
-#' See [https://paws-r.github.io/docs/organizations/list_delegated_services_for_account.html](https://paws-r.github.io/docs/organizations/list_delegated_services_for_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_list_delegated_services_for_account/](https://www.paws-r-sdk.com/docs/organizations_list_delegated_services_for_account/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The account ID number of a delegated administrator account in the
 #' organization.
@@ -1704,7 +1704,7 @@ organizations_list_delegated_services_for_account <- function(AccountId, NextTok
 #' @description
 #' Lists the current handshakes that are associated with the account of the requesting user.
 #'
-#' See [https://paws-r.github.io/docs/organizations/list_handshakes_for_account.html](https://paws-r.github.io/docs/organizations/list_handshakes_for_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_list_handshakes_for_account/](https://www.paws-r-sdk.com/docs/organizations_list_handshakes_for_account/) for full documentation.
 #'
 #' @param Filter Filters the handshakes that you want included in the response. The
 #' default is all types. Use the `ActionType` element to limit the output
@@ -1755,7 +1755,7 @@ organizations_list_handshakes_for_account <- function(Filter = NULL, NextToken =
 #' @description
 #' Lists the handshakes that are associated with the organization that the requesting user is part of. The [`list_handshakes_for_organization`][organizations_list_handshakes_for_organization] operation returns a list of handshake structures. Each structure contains details and status about a handshake.
 #'
-#' See [https://paws-r.github.io/docs/organizations/list_handshakes_for_organization.html](https://paws-r.github.io/docs/organizations/list_handshakes_for_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_list_handshakes_for_organization/](https://www.paws-r-sdk.com/docs/organizations_list_handshakes_for_organization/) for full documentation.
 #'
 #' @param Filter A filter of the handshakes that you want included in the response. The
 #' default is all types. Use the `ActionType` element to limit the output
@@ -1806,7 +1806,7 @@ organizations_list_handshakes_for_organization <- function(Filter = NULL, NextTo
 #' @description
 #' Lists the organizational units (OUs) in a parent organizational unit or root.
 #'
-#' See [https://paws-r.github.io/docs/organizations/list_organizational_units_for_parent.html](https://paws-r.github.io/docs/organizations/list_organizational_units_for_parent.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_list_organizational_units_for_parent/](https://www.paws-r-sdk.com/docs/organizations_list_organizational_units_for_parent/) for full documentation.
 #'
 #' @param ParentId &#91;required&#93; The unique identifier (ID) of the root or OU whose child OUs you want to
 #' list.
@@ -1863,7 +1863,7 @@ organizations_list_organizational_units_for_parent <- function(ParentId, NextTok
 #' @description
 #' Lists the root or organizational units (OUs) that serve as the immediate parent of the specified child OU or account. This operation, along with [`list_children`][organizations_list_children] enables you to traverse the tree structure that makes up this root.
 #'
-#' See [https://paws-r.github.io/docs/organizations/list_parents.html](https://paws-r.github.io/docs/organizations/list_parents.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_list_parents/](https://www.paws-r-sdk.com/docs/organizations_list_parents/) for full documentation.
 #'
 #' @param ChildId &#91;required&#93; The unique identifier (ID) of the OU or account whose parent containers
 #' you want to list. Don't specify a root.
@@ -1919,7 +1919,7 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
 #' @description
 #' Retrieves the list of all policies in an organization of a specified type.
 #'
-#' See [https://paws-r.github.io/docs/organizations/list_policies.html](https://paws-r.github.io/docs/organizations/list_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_list_policies/](https://www.paws-r-sdk.com/docs/organizations_list_policies/) for full documentation.
 #'
 #' @param Filter &#91;required&#93; Specifies the type of policy that you want to include in the response.
 #' You must specify one of the following values:
@@ -1973,7 +1973,7 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
 #' @description
 #' Lists the policies that are directly attached to the specified target root, organizational unit (OU), or account. You must specify the policy type that you want included in the returned list.
 #'
-#' See [https://paws-r.github.io/docs/organizations/list_policies_for_target.html](https://paws-r.github.io/docs/organizations/list_policies_for_target.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_list_policies_for_target/](https://www.paws-r-sdk.com/docs/organizations_list_policies_for_target/) for full documentation.
 #'
 #' @param TargetId &#91;required&#93; The unique identifier (ID) of the root, organizational unit, or account
 #' whose policies you want to list.
@@ -2041,7 +2041,7 @@ organizations_list_policies_for_target <- function(TargetId, Filter, NextToken =
 #' @description
 #' Lists the roots that are defined in the current organization.
 #'
-#' See [https://paws-r.github.io/docs/organizations/list_roots.html](https://paws-r.github.io/docs/organizations/list_roots.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_list_roots/](https://www.paws-r-sdk.com/docs/organizations_list_roots/) for full documentation.
 #'
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
@@ -2084,7 +2084,7 @@ organizations_list_roots <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Lists tags that are attached to the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/organizations/list_tags_for_resource.html](https://paws-r.github.io/docs/organizations/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/organizations_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The ID of the resource with the tags to list.
 #' 
@@ -2132,7 +2132,7 @@ organizations_list_tags_for_resource <- function(ResourceId, NextToken = NULL) {
 #' @description
 #' Lists all the roots, organizational units (OUs), and accounts that the specified policy is attached to.
 #'
-#' See [https://paws-r.github.io/docs/organizations/list_targets_for_policy.html](https://paws-r.github.io/docs/organizations/list_targets_for_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_list_targets_for_policy/](https://www.paws-r-sdk.com/docs/organizations_list_targets_for_policy/) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The unique identifier (ID) of the policy whose attachments you want to
 #' know.
@@ -2182,7 +2182,7 @@ organizations_list_targets_for_policy <- function(PolicyId, NextToken = NULL, Ma
 #' @description
 #' Moves an account from its current source parent root or organizational unit (OU) to the specified destination parent root or OU.
 #'
-#' See [https://paws-r.github.io/docs/organizations/move_account.html](https://paws-r.github.io/docs/organizations/move_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_move_account/](https://www.paws-r-sdk.com/docs/organizations_move_account/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The unique identifier (ID) of the account that you want to move.
 #' 
@@ -2240,7 +2240,7 @@ organizations_move_account <- function(AccountId, SourceParentId, DestinationPar
 #' @description
 #' Creates or updates a resource policy.
 #'
-#' See [https://paws-r.github.io/docs/organizations/put_resource_policy.html](https://paws-r.github.io/docs/organizations/put_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_put_resource_policy/](https://www.paws-r-sdk.com/docs/organizations_put_resource_policy/) for full documentation.
 #'
 #' @param Content &#91;required&#93; If provided, the new content for the resource policy. The text must be
 #' correctly formatted JSON that complies with the syntax for the resource
@@ -2285,7 +2285,7 @@ organizations_put_resource_policy <- function(Content, Tags = NULL) {
 #' @description
 #' Enables the specified member account to administer the Organizations features of the specified Amazon Web Services service. It grants read-only access to Organizations service data. The account still requires IAM permissions to access and administer the Amazon Web Services service.
 #'
-#' See [https://paws-r.github.io/docs/organizations/register_delegated_administrator.html](https://paws-r.github.io/docs/organizations/register_delegated_administrator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_register_delegated_administrator/](https://www.paws-r-sdk.com/docs/organizations_register_delegated_administrator/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The account ID number of the member account in the organization to
 #' register as a delegated administrator.
@@ -2317,7 +2317,7 @@ organizations_register_delegated_administrator <- function(AccountId, ServicePri
 #' @description
 #' Removes the specified account from the organization.
 #'
-#' See [https://paws-r.github.io/docs/organizations/remove_account_from_organization.html](https://paws-r.github.io/docs/organizations/remove_account_from_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_remove_account_from_organization/](https://www.paws-r-sdk.com/docs/organizations_remove_account_from_organization/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The unique identifier (ID) of the member account that you want to remove
 #' from the organization.
@@ -2350,7 +2350,7 @@ organizations_remove_account_from_organization <- function(AccountId) {
 #' @description
 #' Adds one or more tags to the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/organizations/tag_resource.html](https://paws-r.github.io/docs/organizations/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_tag_resource/](https://www.paws-r-sdk.com/docs/organizations_tag_resource/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The ID of the resource to add a tag to.
 #' 
@@ -2399,7 +2399,7 @@ organizations_tag_resource <- function(ResourceId, Tags) {
 #' @description
 #' Removes any tags with the specified keys from the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/organizations/untag_resource.html](https://paws-r.github.io/docs/organizations/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_untag_resource/](https://www.paws-r-sdk.com/docs/organizations_untag_resource/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The ID of the resource to remove a tag from.
 #' 
@@ -2442,7 +2442,7 @@ organizations_untag_resource <- function(ResourceId, TagKeys) {
 #' @description
 #' Renames the specified organizational unit (OU). The ID and ARN don't change. The child OUs and accounts remain in place, and any attached policies of the OU remain attached.
 #'
-#' See [https://paws-r.github.io/docs/organizations/update_organizational_unit.html](https://paws-r.github.io/docs/organizations/update_organizational_unit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_update_organizational_unit/](https://www.paws-r-sdk.com/docs/organizations_update_organizational_unit/) for full documentation.
 #'
 #' @param OrganizationalUnitId &#91;required&#93; The unique identifier (ID) of the OU that you want to rename. You can
 #' get the ID from the
@@ -2485,7 +2485,7 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #' @description
 #' Updates an existing policy with a new name, description, or content. If you don't supply any parameter, that value remains unchanged. You can't change a policy's type.
 #'
-#' See [https://paws-r.github.io/docs/organizations/update_policy.html](https://paws-r.github.io/docs/organizations/update_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/organizations_update_policy/](https://www.paws-r-sdk.com/docs/organizations_update_policy/) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The unique identifier (ID) of the policy that you want to update.
 #' 

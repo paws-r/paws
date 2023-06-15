@@ -25,6 +25,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Modifies the recovery behavior of your instance to disable simplified automatic recovery or set the recovery behavior to default. The default configuration will not enable simplified automatic recovery for an unsupported instance type. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html#instance-configuration-recovery}{Simplified automatic recovery}.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_instance_maintenance_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_instance_maintenance_options/} for full documentation.
 }
 \keyword{internal}

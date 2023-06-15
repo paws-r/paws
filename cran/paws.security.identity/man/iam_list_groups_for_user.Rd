@@ -31,6 +31,6 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists the IAM groups that the specified IAM user belongs to.
 
-See \url{https://paws-r.github.io/docs/iam/list_groups_for_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_groups_for_user/} for full documentation.
 }
 \keyword{internal}

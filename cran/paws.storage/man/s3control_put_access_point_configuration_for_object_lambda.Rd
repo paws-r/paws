@@ -21,6 +21,6 @@ Access Point.}
 \description{
 Replaces configuration for an Object Lambda Access Point.
 
-See \url{https://paws-r.github.io/docs/s3control/put_access_point_configuration_for_object_lambda.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_put_access_point_configuration_for_object_lambda/} for full documentation.
 }
 \keyword{internal}

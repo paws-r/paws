@@ -16,6 +16,6 @@ standard.}
 \description{
 For a batch of security controls and standards, this operation updates the enablement status of a control in a standard.
 
-See \url{https://paws-r.github.io/docs/securityhub/batch_update_standards_control_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_batch_update_standards_control_associations/} for full documentation.
 }
 \keyword{internal}

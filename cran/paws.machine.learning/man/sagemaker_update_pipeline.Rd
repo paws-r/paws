@@ -34,6 +34,6 @@ location.}
 \description{
 Updates a pipeline.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_pipeline.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_pipeline/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ lightsail_delete_relational_database_snapshot(relationalDatabaseSnapshotName)
 \description{
 Deletes a database snapshot in Amazon Lightsail.
 
-See \url{https://paws-r.github.io/docs/lightsail/delete_relational_database_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_delete_relational_database_snapshot/} for full documentation.
 }
 \keyword{internal}

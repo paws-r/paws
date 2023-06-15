@@ -22,6 +22,6 @@ subscribers.}
 \description{
 Creates a notification. You must create the budget before you create the associated notification.
 
-See \url{https://paws-r.github.io/docs/budgets/create_notification.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/budgets_create_notification/} for full documentation.
 }
 \keyword{internal}

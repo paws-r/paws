@@ -14,6 +14,6 @@ ssm_register_patch_baseline_for_patch_group(BaselineId, PatchGroup)
 \description{
 Registers a patch baseline for a patch group.
 
-See \url{https://paws-r.github.io/docs/ssm/register_patch_baseline_for_patch_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_register_patch_baseline_for_patch_group/} for full documentation.
 }
 \keyword{internal}

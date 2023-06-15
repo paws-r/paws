@@ -12,6 +12,6 @@ cloudfront_get_cloud_front_origin_access_identity_config(Id)
 \description{
 Get the configuration information about an origin access identity.
 
-See \url{https://paws-r.github.io/docs/cloudfront/get_cloud_front_origin_access_identity_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_get_cloud_front_origin_access_identity_config/} for full documentation.
 }
 \keyword{internal}

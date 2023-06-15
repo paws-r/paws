@@ -12,6 +12,6 @@ gluedatabrew_delete_schedule(Name)
 \description{
 Deletes the specified DataBrew schedule.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/delete_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_delete_schedule/} for full documentation.
 }
 \keyword{internal}

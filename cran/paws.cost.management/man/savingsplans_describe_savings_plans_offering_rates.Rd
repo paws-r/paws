@@ -42,6 +42,6 @@ additional results, make another call with the returned token value.}
 \description{
 Describes the specified Savings Plans offering rates.
 
-See \url{https://paws-r.github.io/docs/savingsplans/describe_savings_plans_offering_rates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/savingsplans_describe_savings_plans_offering_rates/} for full documentation.
 }
 \keyword{internal}

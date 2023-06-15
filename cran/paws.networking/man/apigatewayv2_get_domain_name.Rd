@@ -12,6 +12,6 @@ apigatewayv2_get_domain_name(DomainName)
 \description{
 Gets a domain name.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/get_domain_name.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_get_domain_name/} for full documentation.
 }
 \keyword{internal}

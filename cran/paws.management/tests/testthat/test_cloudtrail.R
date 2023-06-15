@@ -1,5 +1,9 @@
 svc <- paws::cloudtrail()
 
+test_that("describe_query", {
+  expect_error(svc$describe_query(), NA)
+})
+
 test_that("describe_trails", {
   expect_error(svc$describe_trails(), NA)
 })

@@ -16,6 +16,6 @@ different account, the request fails with the HTTP status code
 \description{
 Returns the versioning state of a bucket.
 
-See \url{https://paws-r.github.io/docs/s3/get_bucket_versioning.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_versioning/} for full documentation.
 }
 \keyword{internal}

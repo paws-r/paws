@@ -29,6 +29,6 @@ create resources named both "MyResource" and "myresource".}
 \description{
 Creates a new group.
 
-See \url{https://paws-r.github.io/docs/iam/create_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_create_group/} for full documentation.
 }
 \keyword{internal}

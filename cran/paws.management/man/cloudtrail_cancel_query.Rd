@@ -17,6 +17,6 @@ the response of a \code{\link[=cloudtrail_start_query]{start_query}} operation.}
 \description{
 Cancels a query if the query is not in a terminated state, such as \code{CANCELLED}, \code{FAILED}, \code{TIMED_OUT}, or \code{FINISHED}. You must specify an ARN value for \code{EventDataStore}. The ID of the query that you want to cancel is also required. When you run \code{\link[=cloudtrail_cancel_query]{cancel_query}}, the query status might show as \code{CANCELLED} even if the operation is not yet finished.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/cancel_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_cancel_query/} for full documentation.
 }
 \keyword{internal}

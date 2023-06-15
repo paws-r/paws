@@ -31,6 +31,6 @@ results. The default is 100 comments, but you can configure up to 500.}
 \description{
 Returns information about comments made on the comparison between two commits.
 
-See \url{https://paws-r.github.io/docs/codecommit/get_comments_for_compared_commit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_get_comments_for_compared_commit/} for full documentation.
 }
 \keyword{internal}

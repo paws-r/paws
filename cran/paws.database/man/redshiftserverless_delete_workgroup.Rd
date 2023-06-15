@@ -12,6 +12,6 @@ redshiftserverless_delete_workgroup(workgroupName)
 \description{
 Deletes a workgroup.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/delete_workgroup.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_delete_workgroup/} for full documentation.
 }
 \keyword{internal}

@@ -43,6 +43,6 @@ since you last read it.}
 \description{
 Updates the configuration of a Lambda function \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html}{alias}.
 
-See \url{https://paws-r.github.io/docs/lambda/update_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_update_alias/} for full documentation.
 }
 \keyword{internal}

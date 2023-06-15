@@ -24,6 +24,6 @@ blocks.}
 \description{
 Gets the results for an Amazon Textract asynchronous operation that analyzes invoices and receipts. Amazon Textract finds contact information, items purchased, and vendor name, from input invoices and receipts.
 
-See \url{https://paws-r.github.io/docs/textract/get_expense_analysis.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/textract_get_expense_analysis/} for full documentation.
 }
 \keyword{internal}

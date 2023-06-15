@@ -31,6 +31,6 @@ operating metrics.}
 \description{
 Use to get the current status of devices registered on SageMaker Edge Manager.
 
-See \url{https://paws-r.github.io/docs/sagemakeredgemanager/send_heartbeat.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemakeredgemanager_send_heartbeat/} for full documentation.
 }
 \keyword{internal}

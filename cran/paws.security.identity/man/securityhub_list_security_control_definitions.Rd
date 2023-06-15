@@ -26,6 +26,6 @@ controls. This repeats until all controls for the standard are returned.}
 \description{
 Lists all of the security controls that apply to a specified standard.
 
-See \url{https://paws-r.github.io/docs/securityhub/list_security_control_definitions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_list_security_control_definitions/} for full documentation.
 }
 \keyword{internal}

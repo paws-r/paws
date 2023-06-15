@@ -34,6 +34,6 @@ in the \emph{Proton User Guide}.}
 \description{
 Create an environment template for Proton. For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-templates.html}{Environment Templates} in the \emph{Proton User Guide}.
 
-See \url{https://paws-r.github.io/docs/proton/create_environment_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_create_environment_template/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ identifiers in a single call. To obtain pipeline IDs, call
 \description{
 Retrieves metadata about one or more pipelines. The information retrieved includes the name of the pipeline, the pipeline identifier, its current state, and the user account that owns the pipeline. Using account credentials, you can retrieve metadata about pipelines that you or your IAM users have created. If you are using an IAM user account, you can retrieve metadata about only those pipelines for which you have read permissions.
 
-See \url{https://paws-r.github.io/docs/datapipeline/describe_pipelines.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/datapipeline_describe_pipelines/} for full documentation.
 }
 \keyword{internal}

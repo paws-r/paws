@@ -18,6 +18,6 @@ rule.}
 \description{
 Sets the position of the specified receipt rule in the receipt rule set.
 
-See \url{https://paws-r.github.io/docs/ses/set_receipt_rule_position.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_set_receipt_rule_position/} for full documentation.
 }
 \keyword{internal}

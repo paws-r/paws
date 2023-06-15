@@ -150,7 +150,7 @@ policies, by using the console.
 \link[=kms_decrypt]{decrypt} \tab Decrypts ciphertext that was encrypted by a KMS key using any of the following operations:\cr
 \link[=kms_delete_alias]{delete_alias} \tab Deletes the specified alias\cr
 \link[=kms_delete_custom_key_store]{delete_custom_key_store} \tab Deletes a custom key store\cr
-\link[=kms_delete_imported_key_material]{delete_imported_key_material} \tab Deletes key material that you previously imported\cr
+\link[=kms_delete_imported_key_material]{delete_imported_key_material} \tab Deletes key material that was previously imported\cr
 \link[=kms_describe_custom_key_stores]{describe_custom_key_stores} \tab Gets information about custom key stores in the account and Region\cr
 \link[=kms_describe_key]{describe_key} \tab Provides detailed information about a KMS key\cr
 \link[=kms_disable_key]{disable_key} \tab Sets the state of a KMS key to disabled\cr
@@ -167,9 +167,9 @@ policies, by using the console.
 \link[=kms_generate_random]{generate_random} \tab Returns a random byte string that is cryptographically secure\cr
 \link[=kms_get_key_policy]{get_key_policy} \tab Gets a key policy attached to the specified KMS key\cr
 \link[=kms_get_key_rotation_status]{get_key_rotation_status} \tab Gets a Boolean value that indicates whether automatic rotation of the key material is enabled for the specified KMS key\cr
-\link[=kms_get_parameters_for_import]{get_parameters_for_import} \tab Returns the items you need to import key material into a symmetric encryption KMS key\cr
+\link[=kms_get_parameters_for_import]{get_parameters_for_import} \tab Returns the public key and an import token you need to import or reimport key material for a KMS key\cr
 \link[=kms_get_public_key]{get_public_key} \tab Returns the public key of an asymmetric KMS key\cr
-\link[=kms_import_key_material]{import_key_material} \tab Imports key material into an existing symmetric encryption KMS key that was created without key material\cr
+\link[=kms_import_key_material]{import_key_material} \tab Imports or reimports key material into an existing KMS key that was created without key material\cr
 \link[=kms_list_aliases]{list_aliases} \tab Gets a list of aliases in the caller's Amazon Web Services account and region\cr
 \link[=kms_list_grants]{list_grants} \tab Gets a list of all grants for the specified KMS key\cr
 \link[=kms_list_key_policies]{list_key_policies} \tab Gets the names of the key policies that are attached to a KMS key\cr

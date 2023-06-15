@@ -55,6 +55,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes one or more of your VPN connections.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_vpn_connections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_vpn_connections/} for full documentation.
 }
 \keyword{internal}

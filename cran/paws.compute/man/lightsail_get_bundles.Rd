@@ -29,6 +29,6 @@ You must use this parameter to view Lightsail for Research bundles.}
 \description{
 Returns the bundles that you can apply to an Amazon Lightsail instance when you create it.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_bundles.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_bundles/} for full documentation.
 }
 \keyword{internal}

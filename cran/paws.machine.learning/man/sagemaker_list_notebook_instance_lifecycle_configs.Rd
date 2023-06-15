@@ -48,6 +48,6 @@ after the specified time (timestamp).}
 \description{
 Lists notebook instance lifestyle configurations created with the \code{\link[=sagemaker_create_notebook_instance_lifecycle_config]{create_notebook_instance_lifecycle_config}} API.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_notebook_instance_lifecycle_configs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_notebook_instance_lifecycle_configs/} for full documentation.
 }
 \keyword{internal}

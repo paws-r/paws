@@ -16,6 +16,6 @@ hours)".}
 \description{
 Modifies a snapshot schedule. Any schedule associated with a cluster is modified asynchronously.
 
-See \url{https://paws-r.github.io/docs/redshift/modify_snapshot_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_modify_snapshot_schedule/} for full documentation.
 }
 \keyword{internal}

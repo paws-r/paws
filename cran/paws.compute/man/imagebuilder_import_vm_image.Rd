@@ -58,6 +58,6 @@ in the \emph{Amazon EC2 API Reference}.}
 \description{
 When you export your virtual machine (VM) from its virtualization environment, that process creates a set of one or more disk container files that act as snapshots of your VM’s environment, settings, and data. The Amazon EC2 API \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportImage.html}{ImportImage} action uses those files to import your VM and create an AMI. To import using the CLI command, see \href{https://docs.aws.amazon.com/cli/latest/reference/ec2/import-image.html}{import-image}
 
-See \url{https://paws-r.github.io/docs/imagebuilder/import_vm_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_import_vm_image/} for full documentation.
 }
 \keyword{internal}

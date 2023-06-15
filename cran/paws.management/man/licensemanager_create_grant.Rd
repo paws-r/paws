@@ -38,6 +38,6 @@ organization.
 \description{
 Creates a grant for the specified license. A grant shares the use of license entitlements with a specific Amazon Web Services account, an organization, or an organizational unit (OU). For more information, see \href{https://docs.aws.amazon.com/license-manager/latest/userguide/granted-licenses.html}{Granted licenses in License Manager} in the \emph{License Manager User Guide}.
 
-See \url{https://paws-r.github.io/docs/licensemanager/create_grant.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_create_grant/} for full documentation.
 }
 \keyword{internal}

@@ -29,6 +29,6 @@ request token, Amazon Lookout for Equipment generates one.}
 \description{
 Creates a container for a collection of data being ingested for analysis. The dataset contains the metadata describing where the data is and what the data actually looks like. In other words, it contains the location of the data source, the data schema, and other information. A dataset also contains any tags associated with the ingested data.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/create_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_create_dataset/} for full documentation.
 }
 \keyword{internal}

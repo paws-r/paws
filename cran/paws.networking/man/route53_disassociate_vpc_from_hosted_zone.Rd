@@ -19,6 +19,6 @@ disassociating from the specified hosted zone.}
 \description{
 Disassociates an Amazon Virtual Private Cloud (Amazon VPC) from an Amazon Route 53 private hosted zone. Note the following:
 
-See \url{https://paws-r.github.io/docs/route53/disassociate_vpc_from_hosted_zone.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_disassociate_vpc_from_hosted_zone/} for full documentation.
 }
 \keyword{internal}

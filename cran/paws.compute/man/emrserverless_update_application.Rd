@@ -55,6 +55,6 @@ worker types.}
 \description{
 Updates a specified application. An application has to be in a stopped or created state in order to be updated.
 
-See \url{https://paws-r.github.io/docs/emrserverless/update_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emrserverless_update_application/} for full documentation.
 }
 \keyword{internal}

@@ -43,6 +43,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a snapshot of an EBS volume and stores it in Amazon S3. You can use snapshots for backups, to make copies of EBS volumes, and to save data before shutting down an instance.
 
-See \url{https://paws-r.github.io/docs/ec2/create_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_snapshot/} for full documentation.
 }
 \keyword{internal}

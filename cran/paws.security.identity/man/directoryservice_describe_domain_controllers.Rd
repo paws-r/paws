@@ -27,6 +27,6 @@ Pass null if this is the first call.}
 \description{
 Provides information about any domain controllers in your directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/describe_domain_controllers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_describe_domain_controllers/} for full documentation.
 }
 \keyword{internal}

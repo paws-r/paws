@@ -13,6 +13,6 @@ fms_get_third_party_firewall_association_status(ThirdPartyFirewall)
 \description{
 The onboarding status of a Firewall Manager admin account to third-party firewall vendor tenant.
 
-See \url{https://paws-r.github.io/docs/fms/get_third_party_firewall_association_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_get_third_party_firewall_association_status/} for full documentation.
 }
 \keyword{internal}

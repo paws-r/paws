@@ -24,6 +24,6 @@ you send an empty list it clears all your feedback.}
 \description{
 Stores customer feedback for a CodeGuru Reviewer recommendation. When this API is called again with different reactions the previous feedback is overwritten.
 
-See \url{https://paws-r.github.io/docs/codegurureviewer/put_recommendation_feedback.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codegurureviewer_put_recommendation_feedback/} for full documentation.
 }
 \keyword{internal}

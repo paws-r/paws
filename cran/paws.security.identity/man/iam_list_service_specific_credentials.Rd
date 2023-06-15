@@ -23,6 +23,6 @@ service-specific credentials for all services.}
 \description{
 Returns information about the service-specific credentials associated with the specified IAM user. If none exists, the operation returns an empty list. The service-specific credentials returned by this operation are used only for authenticating the IAM user to a specific service. For more information about using service-specific credentials to authenticate to an Amazon Web Services service, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html}{Set up service-specific credentials} in the CodeCommit User Guide.
 
-See \url{https://paws-r.github.io/docs/iam/list_service_specific_credentials.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_service_specific_credentials/} for full documentation.
 }
 \keyword{internal}

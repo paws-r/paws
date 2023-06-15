@@ -20,6 +20,6 @@ case sensitive and can be null.}
 \description{
 Adds one or more tags to a specified Amazon QLDB resource.
 
-See \url{https://paws-r.github.io/docs/qldb/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/qldb_tag_resource/} for full documentation.
 }
 \keyword{internal}

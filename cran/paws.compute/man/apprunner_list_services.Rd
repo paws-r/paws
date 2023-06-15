@@ -24,6 +24,6 @@ results in a single response.}
 \description{
 Returns a list of running App Runner services in your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/apprunner/list_services.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_list_services/} for full documentation.
 }
 \keyword{internal}

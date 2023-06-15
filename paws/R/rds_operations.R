@@ -2304,6 +2304,13 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
 #' Default: `aurora` (Aurora DB clusters); `io1` (Multi-AZ DB clusters)
 #' 
 #' Valid for: Aurora DB clusters and Multi-AZ DB clusters
+#' 
+#' For more information on storage types for Aurora DB clusters, see
+#' [Storage configurations for Amazon Aurora DB
+#' clusters](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.StorageReliability.html#aurora-storage-type).
+#' For more information on storage types for Multi-AZ DB clusters, see
+#' [Settings for creating Multi-AZ DB
+#' clusters](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/create-multi-az-db-cluster.html#create-multi-az-db-cluster-settings).
 #' @param Iops The amount of Provisioned IOPS (input/output operations per second) to
 #' be initially allocated for each DB instance in the Multi-AZ DB cluster.
 #' 
@@ -4242,7 +4249,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #'       ResumeFullAutomationModeTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       StorageThroughput = 123
+#'       StorageThroughput = 123,
+#'       Engine = "string"
 #'     ),
 #'     LatestRestorableTime = as.POSIXct(
 #'       "2015-01-01"
@@ -5078,7 +5086,8 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #'       ResumeFullAutomationModeTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       StorageThroughput = 123
+#'       StorageThroughput = 123,
+#'       Engine = "string"
 #'     ),
 #'     LatestRestorableTime = as.POSIXct(
 #'       "2015-01-01"
@@ -7316,7 +7325,8 @@ rds_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #'       ResumeFullAutomationModeTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       StorageThroughput = 123
+#'       StorageThroughput = 123,
+#'       Engine = "string"
 #'     ),
 #'     LatestRestorableTime = as.POSIXct(
 #'       "2015-01-01"
@@ -10098,7 +10108,8 @@ rds_describe_db_instance_automated_backups <- function(DbiResourceId = NULL, DBI
 #'         ResumeFullAutomationModeTime = as.POSIXct(
 #'           "2015-01-01"
 #'         ),
-#'         StorageThroughput = 123
+#'         StorageThroughput = 123,
+#'         Engine = "string"
 #'       ),
 #'       LatestRestorableTime = as.POSIXct(
 #'         "2015-01-01"
@@ -15385,7 +15396,7 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #'   AwsBackupRecoveryPointArn, AutomationMode,
 #'   ResumeFullAutomationModeMinutes, NetworkType, StorageThroughput,
 #'   ManageMasterUserPassword, RotateMasterUserPassword,
-#'   MasterUserSecretKmsKeyId)
+#'   MasterUserSecretKmsKeyId, Engine)
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier. This value is stored as a lowercase string.
 #' 
@@ -16144,6 +16155,32 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' There is a default KMS key for your Amazon Web Services account. Your
 #' Amazon Web Services account has a different default KMS key for each
 #' Amazon Web Services Region.
+#' @param Engine The target Oracle DB engine when you convert a non-CDB to a CDB. This
+#' intermediate step is necessary to upgrade an Oracle Database 19c non-CDB
+#' to an Oracle Database 21c CDB.
+#' 
+#' Note the following requirements:
+#' 
+#' -   Make sure that you specify `oracle-ee-cdb` or `oracle-se2-cdb`.
+#' 
+#' -   Make sure that your DB engine runs Oracle Database 19c with an April
+#'     2021 or later RU.
+#' 
+#' Note the following limitations:
+#' 
+#' -   You can't convert a CDB to a non-CDB.
+#' 
+#' -   You can't convert a replica database.
+#' 
+#' -   You can't convert a non-CDB to a CDB and upgrade the engine version
+#'     in the same command.
+#' 
+#' -   You can't convert the existing custom parameter or option group when
+#'     it has options or parameters that are permanent or persistent. In
+#'     this situation, the DB instance reverts to the default option and
+#'     parameter group. To avoid reverting to the default, specify a new
+#'     parameter group with `--db-parameter-group-name` and a new option
+#'     group with `--option-group-name`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -16245,7 +16282,8 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #'       ResumeFullAutomationModeTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       StorageThroughput = 123
+#'       StorageThroughput = 123,
+#'       Engine = "string"
 #'     ),
 #'     LatestRestorableTime = as.POSIXct(
 #'       "2015-01-01"
@@ -16445,7 +16483,8 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #'   StorageThroughput = 123,
 #'   ManageMasterUserPassword = TRUE|FALSE,
 #'   RotateMasterUserPassword = TRUE|FALSE,
-#'   MasterUserSecretKmsKeyId = "string"
+#'   MasterUserSecretKmsKeyId = "string",
+#'   Engine = "string"
 #' )
 #' ```
 #'
@@ -16454,14 +16493,14 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' @rdname rds_modify_db_instance
 #'
 #' @aliases rds_modify_db_instance
-rds_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = NULL, DBInstanceClass = NULL, DBSubnetGroupName = NULL, DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ApplyImmediately = NULL, MasterUserPassword = NULL, DBParameterGroupName = NULL, BackupRetentionPeriod = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, MultiAZ = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, Iops = NULL, OptionGroupName = NULL, NewDBInstanceIdentifier = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, CACertificateIdentifier = NULL, Domain = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, DBPortNumber = NULL, PubliclyAccessible = NULL, MonitoringRoleArn = NULL, DomainIAMRoleName = NULL, PromotionTier = NULL, EnableIAMDatabaseAuthentication = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, CloudwatchLogsExportConfiguration = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DeletionProtection = NULL, MaxAllocatedStorage = NULL, CertificateRotationRestart = NULL, ReplicaMode = NULL, EnableCustomerOwnedIp = NULL, AwsBackupRecoveryPointArn = NULL, AutomationMode = NULL, ResumeFullAutomationModeMinutes = NULL, NetworkType = NULL, StorageThroughput = NULL, ManageMasterUserPassword = NULL, RotateMasterUserPassword = NULL, MasterUserSecretKmsKeyId = NULL) {
+rds_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = NULL, DBInstanceClass = NULL, DBSubnetGroupName = NULL, DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ApplyImmediately = NULL, MasterUserPassword = NULL, DBParameterGroupName = NULL, BackupRetentionPeriod = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, MultiAZ = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, Iops = NULL, OptionGroupName = NULL, NewDBInstanceIdentifier = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, CACertificateIdentifier = NULL, Domain = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, DBPortNumber = NULL, PubliclyAccessible = NULL, MonitoringRoleArn = NULL, DomainIAMRoleName = NULL, PromotionTier = NULL, EnableIAMDatabaseAuthentication = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, CloudwatchLogsExportConfiguration = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DeletionProtection = NULL, MaxAllocatedStorage = NULL, CertificateRotationRestart = NULL, ReplicaMode = NULL, EnableCustomerOwnedIp = NULL, AwsBackupRecoveryPointArn = NULL, AutomationMode = NULL, ResumeFullAutomationModeMinutes = NULL, NetworkType = NULL, StorageThroughput = NULL, ManageMasterUserPassword = NULL, RotateMasterUserPassword = NULL, MasterUserSecretKmsKeyId = NULL, Engine = NULL) {
   op <- new_operation(
     name = "ModifyDBInstance",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, AllocatedStorage = AllocatedStorage, DBInstanceClass = DBInstanceClass, DBSubnetGroupName = DBSubnetGroupName, DBSecurityGroups = DBSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ApplyImmediately = ApplyImmediately, MasterUserPassword = MasterUserPassword, DBParameterGroupName = DBParameterGroupName, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, MultiAZ = MultiAZ, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, Iops = Iops, OptionGroupName = OptionGroupName, NewDBInstanceIdentifier = NewDBInstanceIdentifier, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, CACertificateIdentifier = CACertificateIdentifier, Domain = Domain, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, DBPortNumber = DBPortNumber, PubliclyAccessible = PubliclyAccessible, MonitoringRoleArn = MonitoringRoleArn, DomainIAMRoleName = DomainIAMRoleName, PromotionTier = PromotionTier, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DeletionProtection = DeletionProtection, MaxAllocatedStorage = MaxAllocatedStorage, CertificateRotationRestart = CertificateRotationRestart, ReplicaMode = ReplicaMode, EnableCustomerOwnedIp = EnableCustomerOwnedIp, AwsBackupRecoveryPointArn = AwsBackupRecoveryPointArn, AutomationMode = AutomationMode, ResumeFullAutomationModeMinutes = ResumeFullAutomationModeMinutes, NetworkType = NetworkType, StorageThroughput = StorageThroughput, ManageMasterUserPassword = ManageMasterUserPassword, RotateMasterUserPassword = RotateMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId)
+  input <- .rds$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, AllocatedStorage = AllocatedStorage, DBInstanceClass = DBInstanceClass, DBSubnetGroupName = DBSubnetGroupName, DBSecurityGroups = DBSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ApplyImmediately = ApplyImmediately, MasterUserPassword = MasterUserPassword, DBParameterGroupName = DBParameterGroupName, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, MultiAZ = MultiAZ, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, Iops = Iops, OptionGroupName = OptionGroupName, NewDBInstanceIdentifier = NewDBInstanceIdentifier, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, CACertificateIdentifier = CACertificateIdentifier, Domain = Domain, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, DBPortNumber = DBPortNumber, PubliclyAccessible = PubliclyAccessible, MonitoringRoleArn = MonitoringRoleArn, DomainIAMRoleName = DomainIAMRoleName, PromotionTier = PromotionTier, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DeletionProtection = DeletionProtection, MaxAllocatedStorage = MaxAllocatedStorage, CertificateRotationRestart = CertificateRotationRestart, ReplicaMode = ReplicaMode, EnableCustomerOwnedIp = EnableCustomerOwnedIp, AwsBackupRecoveryPointArn = AwsBackupRecoveryPointArn, AutomationMode = AutomationMode, ResumeFullAutomationModeMinutes = ResumeFullAutomationModeMinutes, NetworkType = NetworkType, StorageThroughput = StorageThroughput, ManageMasterUserPassword = ManageMasterUserPassword, RotateMasterUserPassword = RotateMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId, Engine = Engine)
   output <- .rds$modify_db_instance_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -16886,12 +16925,6 @@ rds_modify_db_proxy_target_group <- function(TargetGroupName, DBProxyName, Conne
 #' -   `5.5.46` (supported for 5.1 DB snapshots)
 #' 
 #' **Oracle**
-#' 
-#' -   `19.0.0.0.ru-2022-01.rur-2022-01.r1` (supported for 12.2.0.1 DB
-#'     snapshots)
-#' 
-#' -   `19.0.0.0.ru-2022-07.rur-2022-07.r1` (supported for 12.1.0.2 DB
-#'     snapshots)
 #' 
 #' -   `12.1.0.2.v8` (supported for 12.1.0.1 DB snapshots)
 #' 
@@ -17726,7 +17759,8 @@ rds_modify_option_group <- function(OptionGroupName, OptionsToInclude = NULL, Op
 #'       ResumeFullAutomationModeTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       StorageThroughput = 123
+#'       StorageThroughput = 123,
+#'       Engine = "string"
 #'     ),
 #'     LatestRestorableTime = as.POSIXct(
 #'       "2015-01-01"
@@ -18553,7 +18587,8 @@ rds_reboot_db_cluster <- function(DBClusterIdentifier) {
 #'       ResumeFullAutomationModeTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       StorageThroughput = 123
+#'       StorageThroughput = 123,
+#'       Engine = "string"
 #'     ),
 #'     LatestRestorableTime = as.POSIXct(
 #'       "2015-01-01"
@@ -21500,7 +21535,8 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #'       ResumeFullAutomationModeTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       StorageThroughput = 123
+#'       StorageThroughput = 123,
+#'       Engine = "string"
 #'     ),
 #'     LatestRestorableTime = as.POSIXct(
 #'       "2015-01-01"
@@ -22187,7 +22223,8 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #'       ResumeFullAutomationModeTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       StorageThroughput = 123
+#'       StorageThroughput = 123,
+#'       Engine = "string"
 #'     ),
 #'     LatestRestorableTime = as.POSIXct(
 #'       "2015-01-01"
@@ -22862,7 +22899,8 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #'       ResumeFullAutomationModeTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       StorageThroughput = 123
+#'       StorageThroughput = 123,
+#'       Engine = "string"
 #'     ),
 #'     LatestRestorableTime = as.POSIXct(
 #'       "2015-01-01"
@@ -23596,7 +23634,8 @@ rds_start_db_cluster <- function(DBClusterIdentifier) {
 #'       ResumeFullAutomationModeTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       StorageThroughput = 123
+#'       StorageThroughput = 123,
+#'       Engine = "string"
 #'     ),
 #'     LatestRestorableTime = as.POSIXct(
 #'       "2015-01-01"
@@ -24462,7 +24501,8 @@ rds_stop_db_cluster <- function(DBClusterIdentifier) {
 #'       ResumeFullAutomationModeTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       StorageThroughput = 123
+#'       StorageThroughput = 123,
+#'       Engine = "string"
 #'     ),
 #'     LatestRestorableTime = as.POSIXct(
 #'       "2015-01-01"
@@ -24942,7 +24982,8 @@ rds_switchover_blue_green_deployment <- function(BlueGreenDeploymentIdentifier, 
 #'       ResumeFullAutomationModeTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       StorageThroughput = 123
+#'       StorageThroughput = 123,
+#'       Engine = "string"
 #'     ),
 #'     LatestRestorableTime = as.POSIXct(
 #'       "2015-01-01"

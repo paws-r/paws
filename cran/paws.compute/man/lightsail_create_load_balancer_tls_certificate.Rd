@@ -39,6 +39,6 @@ resource after it's created.}
 \description{
 Creates an SSL/TLS certificate for an Amazon Lightsail load balancer.
 
-See \url{https://paws-r.github.io/docs/lightsail/create_load_balancer_tls_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_create_load_balancer_tls_certificate/} for full documentation.
 }
 \keyword{internal}

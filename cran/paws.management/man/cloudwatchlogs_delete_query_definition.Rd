@@ -14,6 +14,6 @@ to retrieve the IDs of your saved query definitions.}
 \description{
 Deletes a saved CloudWatch Logs Insights query definition. A query definition contains details about a saved CloudWatch Logs Insights query.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/delete_query_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_query_definition/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Retrieves information about all the endpoints that are associated with a specific user ID.
 
-See \url{https://paws-r.github.io/docs/pinpoint/get_user_endpoints.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_get_user_endpoints/} for full documentation.
 }
 \keyword{internal}

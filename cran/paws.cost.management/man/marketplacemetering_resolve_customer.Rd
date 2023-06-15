@@ -16,6 +16,6 @@ token is resolved to obtain a \code{CustomerIdentifier} along with the
 \description{
 \code{\link[=marketplacemetering_resolve_customer]{resolve_customer}} is called by a SaaS application during the registration process. When a buyer visits your website during the registration process, the buyer submits a registration token through their browser. The registration token is resolved through this API to obtain a \code{CustomerIdentifier} along with the \code{CustomerAWSAccountId} and \code{ProductCode}.
 
-See \url{https://paws-r.github.io/docs/marketplacemetering/resolve_customer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/marketplacemetering_resolve_customer/} for full documentation.
 }
 \keyword{internal}

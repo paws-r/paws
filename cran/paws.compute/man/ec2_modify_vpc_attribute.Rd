@@ -38,6 +38,6 @@ VPC.}
 \description{
 Modifies the specified attribute of the specified VPC.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_vpc_attribute.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_vpc_attribute/} for full documentation.
 }
 \keyword{internal}

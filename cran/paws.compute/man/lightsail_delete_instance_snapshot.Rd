@@ -12,6 +12,6 @@ lightsail_delete_instance_snapshot(instanceSnapshotName)
 \description{
 Deletes a specific snapshot of a virtual private server (or \emph{instance}).
 
-See \url{https://paws-r.github.io/docs/lightsail/delete_instance_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_delete_instance_snapshot/} for full documentation.
 }
 \keyword{internal}

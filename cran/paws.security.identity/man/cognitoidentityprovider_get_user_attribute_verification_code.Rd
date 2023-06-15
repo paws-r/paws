@@ -50,6 +50,6 @@ provide sensitive information.
 \description{
 Generates a user attribute verification code for the specified attribute name. Sends a message to a user with a code that they must return in a VerifyUserAttribute request.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/get_user_attribute_verification_code.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_user_attribute_verification_code/} for full documentation.
 }
 \keyword{internal}

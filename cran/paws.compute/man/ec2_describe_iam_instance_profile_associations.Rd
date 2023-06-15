@@ -32,6 +32,6 @@ continues from the end of the items returned by the previous request.}
 \description{
 Describes your IAM instance profile associations.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_iam_instance_profile_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_iam_instance_profile_associations/} for full documentation.
 }
 \keyword{internal}

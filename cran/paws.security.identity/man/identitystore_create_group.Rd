@@ -23,6 +23,6 @@ groups.}
 \description{
 Creates a group within the specified identity store.
 
-See \url{https://paws-r.github.io/docs/identitystore/create_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/identitystore_create_group/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ backup_get_backup_plan_from_template(BackupPlanTemplateId)
 \description{
 Returns the template specified by its \code{templateId} as a backup plan.
 
-See \url{https://paws-r.github.io/docs/backup/get_backup_plan_from_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_get_backup_plan_from_template/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ dynamodb_enable_kinesis_streaming_destination(TableName, StreamArn)
 \description{
 Starts table data replication to the specified Kinesis data stream at a timestamp chosen during the enable workflow. If this operation doesn't return results immediately, use DescribeKinesisStreamingDestination to check if streaming to the Kinesis data stream is ACTIVE.
 
-See \url{https://paws-r.github.io/docs/dynamodb/enable_kinesis_streaming_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_enable_kinesis_streaming_destination/} for full documentation.
 }
 \keyword{internal}

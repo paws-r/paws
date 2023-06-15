@@ -27,6 +27,6 @@ The value must be URL encoded.}
 \description{
 This action gets a bucket policy for an Amazon S3 on Outposts bucket. To get a policy for an S3 bucket, see \code{\link[=s3control_get_bucket_policy]{get_bucket_policy}} in the \emph{Amazon S3 API Reference}.
 
-See \url{https://paws-r.github.io/docs/s3control/get_bucket_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_get_bucket_policy/} for full documentation.
 }
 \keyword{internal}

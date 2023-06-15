@@ -73,6 +73,127 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 }
 .customerprofiles$operations$add_profile_key <- customerprofiles_add_profile_key
 
+#' Creates a new calculated attribute definition
+#'
+#' @description
+#' Creates a new calculated attribute definition. After creation, new
+#' object data ingested into Customer Profiles will be included in the
+#' calculated attribute, which can be retrieved for a profile using the
+#' [`get_calculated_attribute_for_profile`][customerprofiles_get_calculated_attribute_for_profile]
+#' API. Defining a calculated attribute makes it available for all profiles
+#' within a domain. Each calculated attribute can only reference one
+#' `ObjectType` and at most, two fields from that `ObjectType`.
+#'
+#' @usage
+#' customerprofiles_create_calculated_attribute_definition(DomainName,
+#'   CalculatedAttributeName, DisplayName, Description, AttributeDetails,
+#'   Conditions, Statistic, Tags)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param CalculatedAttributeName &#91;required&#93; The unique name of the calculated attribute.
+#' @param DisplayName The display name of the calculated attribute.
+#' @param Description The description of the calculated attribute.
+#' @param AttributeDetails &#91;required&#93; Mathematical expression and a list of attribute items specified in that
+#' expression.
+#' @param Conditions The conditions including range, object count, and threshold for the
+#' calculated attribute.
+#' @param Statistic &#91;required&#93; The aggregation operation to perform for the calculated attribute.
+#' @param Tags The tags used to organize, track, or control access for this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CalculatedAttributeName = "string",
+#'   DisplayName = "string",
+#'   Description = "string",
+#'   AttributeDetails = list(
+#'     Attributes = list(
+#'       list(
+#'         Name = "string"
+#'       )
+#'     ),
+#'     Expression = "string"
+#'   ),
+#'   Conditions = list(
+#'     Range = list(
+#'       Value = 123,
+#'       Unit = "DAYS"
+#'     ),
+#'     ObjectCount = 123,
+#'     Threshold = list(
+#'       Value = "string",
+#'       Operator = "EQUAL_TO"|"GREATER_THAN"|"LESS_THAN"|"NOT_EQUAL_TO"
+#'     )
+#'   ),
+#'   Statistic = "FIRST_OCCURRENCE"|"LAST_OCCURRENCE"|"COUNT"|"SUM"|"MINIMUM"|"MAXIMUM"|"AVERAGE"|"MAX_OCCURRENCE",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_calculated_attribute_definition(
+#'   DomainName = "string",
+#'   CalculatedAttributeName = "string",
+#'   DisplayName = "string",
+#'   Description = "string",
+#'   AttributeDetails = list(
+#'     Attributes = list(
+#'       list(
+#'         Name = "string"
+#'       )
+#'     ),
+#'     Expression = "string"
+#'   ),
+#'   Conditions = list(
+#'     Range = list(
+#'       Value = 123,
+#'       Unit = "DAYS"
+#'     ),
+#'     ObjectCount = 123,
+#'     Threshold = list(
+#'       Value = "string",
+#'       Operator = "EQUAL_TO"|"GREATER_THAN"|"LESS_THAN"|"NOT_EQUAL_TO"
+#'     )
+#'   ),
+#'   Statistic = "FIRST_OCCURRENCE"|"LAST_OCCURRENCE"|"COUNT"|"SUM"|"MINIMUM"|"MAXIMUM"|"AVERAGE"|"MAX_OCCURRENCE",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_create_calculated_attribute_definition
+#'
+#' @aliases customerprofiles_create_calculated_attribute_definition
+customerprofiles_create_calculated_attribute_definition <- function(DomainName, CalculatedAttributeName, DisplayName = NULL, Description = NULL, AttributeDetails, Conditions = NULL, Statistic, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateCalculatedAttributeDefinition",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}",
+    paginator = list()
+  )
+  input <- .customerprofiles$create_calculated_attribute_definition_input(DomainName = DomainName, CalculatedAttributeName = CalculatedAttributeName, DisplayName = DisplayName, Description = Description, AttributeDetails = AttributeDetails, Conditions = Conditions, Statistic = Statistic, Tags = Tags)
+  output <- .customerprofiles$create_calculated_attribute_definition_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$create_calculated_attribute_definition <- customerprofiles_create_calculated_attribute_definition
+
 #' Creates a domain, which is a container for all customer data, such as
 #' customer profile attributes, object types, profile keys, and encryption
 #' keys
@@ -232,6 +353,74 @@ customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, De
   return(response)
 }
 .customerprofiles$operations$create_domain <- customerprofiles_create_domain
+
+#' Creates an event stream, which is a subscription to real-time events,
+#' such as when profiles are created and updated through Amazon Connect
+#' Customer Profiles
+#'
+#' @description
+#' Creates an event stream, which is a subscription to real-time events,
+#' such as when profiles are created and updated through Amazon Connect
+#' Customer Profiles.
+#' 
+#' Each event stream can be associated with only one Kinesis Data Stream
+#' destination in the same region and Amazon Web Services account as the
+#' customer profiles domain
+#'
+#' @usage
+#' customerprofiles_create_event_stream(DomainName, Uri, EventStreamName,
+#'   Tags)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param Uri &#91;required&#93; The StreamARN of the destination to deliver profile events to. For
+#' example, arn:aws:kinesis:region:account-id:stream/stream-name
+#' @param EventStreamName &#91;required&#93; The name of the event stream.
+#' @param Tags The tags used to organize, track, or control access for this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventStreamArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_event_stream(
+#'   DomainName = "string",
+#'   Uri = "string",
+#'   EventStreamName = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_create_event_stream
+#'
+#' @aliases customerprofiles_create_event_stream
+customerprofiles_create_event_stream <- function(DomainName, Uri, EventStreamName, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateEventStream",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/event-streams/{EventStreamName}",
+    paginator = list()
+  )
+  input <- .customerprofiles$create_event_stream_input(DomainName = DomainName, Uri = Uri, EventStreamName = EventStreamName, Tags = Tags)
+  output <- .customerprofiles$create_event_stream_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$create_event_stream <- customerprofiles_create_event_stream
 
 #' Creates an integration workflow
 #'
@@ -534,6 +723,55 @@ customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, Ad
 }
 .customerprofiles$operations$create_profile <- customerprofiles_create_profile
 
+#' Deletes an existing calculated attribute definition
+#'
+#' @description
+#' Deletes an existing calculated attribute definition. Note that deleting
+#' a default calculated attribute is possible, however once deleted, you
+#' will be unable to undo that action and will need to recreate it on your
+#' own using the CreateCalculatedAttributeDefinition API if you want it
+#' back.
+#'
+#' @usage
+#' customerprofiles_delete_calculated_attribute_definition(DomainName,
+#'   CalculatedAttributeName)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param CalculatedAttributeName &#91;required&#93; The unique name of the calculated attribute.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_calculated_attribute_definition(
+#'   DomainName = "string",
+#'   CalculatedAttributeName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_delete_calculated_attribute_definition
+#'
+#' @aliases customerprofiles_delete_calculated_attribute_definition
+customerprofiles_delete_calculated_attribute_definition <- function(DomainName, CalculatedAttributeName) {
+  op <- new_operation(
+    name = "DeleteCalculatedAttributeDefinition",
+    http_method = "DELETE",
+    http_path = "/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}",
+    paginator = list()
+  )
+  input <- .customerprofiles$delete_calculated_attribute_definition_input(DomainName = DomainName, CalculatedAttributeName = CalculatedAttributeName)
+  output <- .customerprofiles$delete_calculated_attribute_definition_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$delete_calculated_attribute_definition <- customerprofiles_delete_calculated_attribute_definition
+
 #' Deletes a specific domain and all of its customer data, such as customer
 #' profile attributes and their related objects
 #'
@@ -582,6 +820,50 @@ customerprofiles_delete_domain <- function(DomainName) {
   return(response)
 }
 .customerprofiles$operations$delete_domain <- customerprofiles_delete_domain
+
+#' Disables and deletes the specified event stream
+#'
+#' @description
+#' Disables and deletes the specified event stream.
+#'
+#' @usage
+#' customerprofiles_delete_event_stream(DomainName, EventStreamName)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param EventStreamName &#91;required&#93; The name of the event stream
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_event_stream(
+#'   DomainName = "string",
+#'   EventStreamName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_delete_event_stream
+#'
+#' @aliases customerprofiles_delete_event_stream
+customerprofiles_delete_event_stream <- function(DomainName, EventStreamName) {
+  op <- new_operation(
+    name = "DeleteEventStream",
+    http_method = "DELETE",
+    http_path = "/domains/{DomainName}/event-streams/{EventStreamName}",
+    paginator = list()
+  )
+  input <- .customerprofiles$delete_event_stream_input(DomainName = DomainName, EventStreamName = EventStreamName)
+  output <- .customerprofiles$delete_event_stream_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$delete_event_stream <- customerprofiles_delete_event_stream
 
 #' Removes an integration from a specific domain
 #'
@@ -977,6 +1259,144 @@ customerprofiles_get_auto_merging_preview <- function(DomainName, Consolidation,
 }
 .customerprofiles$operations$get_auto_merging_preview <- customerprofiles_get_auto_merging_preview
 
+#' Provides more information on a calculated attribute definition for
+#' Customer Profiles
+#'
+#' @description
+#' Provides more information on a calculated attribute definition for
+#' Customer Profiles.
+#'
+#' @usage
+#' customerprofiles_get_calculated_attribute_definition(DomainName,
+#'   CalculatedAttributeName)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param CalculatedAttributeName &#91;required&#93; The unique name of the calculated attribute.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CalculatedAttributeName = "string",
+#'   DisplayName = "string",
+#'   Description = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Statistic = "FIRST_OCCURRENCE"|"LAST_OCCURRENCE"|"COUNT"|"SUM"|"MINIMUM"|"MAXIMUM"|"AVERAGE"|"MAX_OCCURRENCE",
+#'   Conditions = list(
+#'     Range = list(
+#'       Value = 123,
+#'       Unit = "DAYS"
+#'     ),
+#'     ObjectCount = 123,
+#'     Threshold = list(
+#'       Value = "string",
+#'       Operator = "EQUAL_TO"|"GREATER_THAN"|"LESS_THAN"|"NOT_EQUAL_TO"
+#'     )
+#'   ),
+#'   AttributeDetails = list(
+#'     Attributes = list(
+#'       list(
+#'         Name = "string"
+#'       )
+#'     ),
+#'     Expression = "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_calculated_attribute_definition(
+#'   DomainName = "string",
+#'   CalculatedAttributeName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_calculated_attribute_definition
+#'
+#' @aliases customerprofiles_get_calculated_attribute_definition
+customerprofiles_get_calculated_attribute_definition <- function(DomainName, CalculatedAttributeName) {
+  op <- new_operation(
+    name = "GetCalculatedAttributeDefinition",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}",
+    paginator = list()
+  )
+  input <- .customerprofiles$get_calculated_attribute_definition_input(DomainName = DomainName, CalculatedAttributeName = CalculatedAttributeName)
+  output <- .customerprofiles$get_calculated_attribute_definition_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_calculated_attribute_definition <- customerprofiles_get_calculated_attribute_definition
+
+#' Retrieve a calculated attribute for a customer profile
+#'
+#' @description
+#' Retrieve a calculated attribute for a customer profile.
+#'
+#' @usage
+#' customerprofiles_get_calculated_attribute_for_profile(DomainName,
+#'   ProfileId, CalculatedAttributeName)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param ProfileId &#91;required&#93; The unique identifier of a customer profile.
+#' @param CalculatedAttributeName &#91;required&#93; The unique name of the calculated attribute.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CalculatedAttributeName = "string",
+#'   DisplayName = "string",
+#'   IsDataPartial = "string",
+#'   Value = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_calculated_attribute_for_profile(
+#'   DomainName = "string",
+#'   ProfileId = "string",
+#'   CalculatedAttributeName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_calculated_attribute_for_profile
+#'
+#' @aliases customerprofiles_get_calculated_attribute_for_profile
+customerprofiles_get_calculated_attribute_for_profile <- function(DomainName, ProfileId, CalculatedAttributeName) {
+  op <- new_operation(
+    name = "GetCalculatedAttributeForProfile",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/profile/{ProfileId}/calculated-attributes/{CalculatedAttributeName}",
+    paginator = list()
+  )
+  input <- .customerprofiles$get_calculated_attribute_for_profile_input(DomainName = DomainName, ProfileId = ProfileId, CalculatedAttributeName = CalculatedAttributeName)
+  output <- .customerprofiles$get_calculated_attribute_for_profile_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_calculated_attribute_for_profile <- customerprofiles_get_calculated_attribute_for_profile
+
 #' Returns information about a specific domain
 #'
 #' @description
@@ -1069,6 +1489,76 @@ customerprofiles_get_domain <- function(DomainName) {
   return(response)
 }
 .customerprofiles$operations$get_domain <- customerprofiles_get_domain
+
+#' Returns information about the specified event stream in a specific
+#' domain
+#'
+#' @description
+#' Returns information about the specified event stream in a specific
+#' domain.
+#'
+#' @usage
+#' customerprofiles_get_event_stream(DomainName, EventStreamName)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param EventStreamName &#91;required&#93; The name of the event stream provided during create operations.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainName = "string",
+#'   EventStreamArn = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   State = "RUNNING"|"STOPPED",
+#'   StoppedSince = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DestinationDetails = list(
+#'     Uri = "string",
+#'     Status = "HEALTHY"|"UNHEALTHY",
+#'     UnhealthySince = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Message = "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_event_stream(
+#'   DomainName = "string",
+#'   EventStreamName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_event_stream
+#'
+#' @aliases customerprofiles_get_event_stream
+customerprofiles_get_event_stream <- function(DomainName, EventStreamName) {
+  op <- new_operation(
+    name = "GetEventStream",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/event-streams/{EventStreamName}",
+    paginator = list()
+  )
+  input <- .customerprofiles$get_event_stream_input(DomainName = DomainName, EventStreamName = EventStreamName)
+  output <- .customerprofiles$get_event_stream_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_event_stream <- customerprofiles_get_event_stream
 
 #' Returns information about an Identity Resolution Job in a specific
 #' domain
@@ -1727,6 +2217,139 @@ customerprofiles_list_account_integrations <- function(Uri, NextToken = NULL, Ma
 }
 .customerprofiles$operations$list_account_integrations <- customerprofiles_list_account_integrations
 
+#' Lists calculated attribute definitions for Customer Profiles
+#'
+#' @description
+#' Lists calculated attribute definitions for Customer Profiles
+#'
+#' @usage
+#' customerprofiles_list_calculated_attribute_definitions(DomainName,
+#'   NextToken, MaxResults)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param NextToken The pagination token from the previous call to
+#' ListCalculatedAttributeDefinitions.
+#' @param MaxResults The maximum number of calculated attribute definitions returned per
+#' page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       CalculatedAttributeName = "string",
+#'       DisplayName = "string",
+#'       Description = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_calculated_attribute_definitions(
+#'   DomainName = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_calculated_attribute_definitions
+#'
+#' @aliases customerprofiles_list_calculated_attribute_definitions
+customerprofiles_list_calculated_attribute_definitions <- function(DomainName, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListCalculatedAttributeDefinitions",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/calculated-attributes",
+    paginator = list()
+  )
+  input <- .customerprofiles$list_calculated_attribute_definitions_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .customerprofiles$list_calculated_attribute_definitions_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_calculated_attribute_definitions <- customerprofiles_list_calculated_attribute_definitions
+
+#' Retrieve a list of calculated attributes for a customer profile
+#'
+#' @description
+#' Retrieve a list of calculated attributes for a customer profile.
+#'
+#' @usage
+#' customerprofiles_list_calculated_attributes_for_profile(NextToken,
+#'   MaxResults, DomainName, ProfileId)
+#'
+#' @param NextToken The pagination token from the previous call to
+#' ListCalculatedAttributesForProfile.
+#' @param MaxResults The maximum number of calculated attributes returned per page.
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param ProfileId &#91;required&#93; The unique identifier of a customer profile.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       CalculatedAttributeName = "string",
+#'       DisplayName = "string",
+#'       IsDataPartial = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_calculated_attributes_for_profile(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   DomainName = "string",
+#'   ProfileId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_calculated_attributes_for_profile
+#'
+#' @aliases customerprofiles_list_calculated_attributes_for_profile
+customerprofiles_list_calculated_attributes_for_profile <- function(NextToken = NULL, MaxResults = NULL, DomainName, ProfileId) {
+  op <- new_operation(
+    name = "ListCalculatedAttributesForProfile",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/profile/{ProfileId}/calculated-attributes",
+    paginator = list()
+  )
+  input <- .customerprofiles$list_calculated_attributes_for_profile_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName, ProfileId = ProfileId)
+  output <- .customerprofiles$list_calculated_attributes_for_profile_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_calculated_attributes_for_profile <- customerprofiles_list_calculated_attributes_for_profile
+
 #' Returns a list of all the domains for an AWS account that have been
 #' created
 #'
@@ -1791,6 +2414,78 @@ customerprofiles_list_domains <- function(NextToken = NULL, MaxResults = NULL) {
   return(response)
 }
 .customerprofiles$operations$list_domains <- customerprofiles_list_domains
+
+#' Returns a list of all the event streams in a specific domain
+#'
+#' @description
+#' Returns a list of all the event streams in a specific domain.
+#'
+#' @usage
+#' customerprofiles_list_event_streams(DomainName, NextToken, MaxResults)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param NextToken Identifies the next page of results to return.
+#' @param MaxResults The maximum number of objects returned per page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       DomainName = "string",
+#'       EventStreamName = "string",
+#'       EventStreamArn = "string",
+#'       State = "RUNNING"|"STOPPED",
+#'       StoppedSince = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DestinationSummary = list(
+#'         Uri = "string",
+#'         Status = "HEALTHY"|"UNHEALTHY",
+#'         UnhealthySince = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_event_streams(
+#'   DomainName = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_event_streams
+#'
+#' @aliases customerprofiles_list_event_streams
+customerprofiles_list_event_streams <- function(DomainName, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListEventStreams",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/event-streams",
+    paginator = list()
+  )
+  input <- .customerprofiles$list_event_streams_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .customerprofiles$list_event_streams_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_event_streams <- customerprofiles_list_event_streams
 
 #' Lists all of the Identity Resolution Jobs in your domain
 #'
@@ -2089,8 +2784,7 @@ customerprofiles_list_profile_object_types <- function(DomainName, NextToken = N
 #' @param ObjectTypeName &#91;required&#93; The name of the profile object type.
 #' @param ProfileId &#91;required&#93; The unique identifier of a customer profile.
 #' @param ObjectFilter Applies a filter to the response to include profile objects with the
-#' specified index values. This filter is only supported for ObjectTypeName
-#' _asset, _case and _order.
+#' specified index values.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3058,6 +3752,107 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
   return(response)
 }
 .customerprofiles$operations$untag_resource <- customerprofiles_untag_resource
+
+#' Updates an existing calculated attribute definition
+#'
+#' @description
+#' Updates an existing calculated attribute definition. When updating the
+#' Conditions, note that increasing the date range of a calculated
+#' attribute will not trigger inclusion of historical data greater than the
+#' current date range.
+#'
+#' @usage
+#' customerprofiles_update_calculated_attribute_definition(DomainName,
+#'   CalculatedAttributeName, DisplayName, Description, Conditions)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param CalculatedAttributeName &#91;required&#93; The unique name of the calculated attribute.
+#' @param DisplayName The display name of the calculated attribute.
+#' @param Description The description of the calculated attribute.
+#' @param Conditions The conditions including range, object count, and threshold for the
+#' calculated attribute.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CalculatedAttributeName = "string",
+#'   DisplayName = "string",
+#'   Description = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Statistic = "FIRST_OCCURRENCE"|"LAST_OCCURRENCE"|"COUNT"|"SUM"|"MINIMUM"|"MAXIMUM"|"AVERAGE"|"MAX_OCCURRENCE",
+#'   Conditions = list(
+#'     Range = list(
+#'       Value = 123,
+#'       Unit = "DAYS"
+#'     ),
+#'     ObjectCount = 123,
+#'     Threshold = list(
+#'       Value = "string",
+#'       Operator = "EQUAL_TO"|"GREATER_THAN"|"LESS_THAN"|"NOT_EQUAL_TO"
+#'     )
+#'   ),
+#'   AttributeDetails = list(
+#'     Attributes = list(
+#'       list(
+#'         Name = "string"
+#'       )
+#'     ),
+#'     Expression = "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_calculated_attribute_definition(
+#'   DomainName = "string",
+#'   CalculatedAttributeName = "string",
+#'   DisplayName = "string",
+#'   Description = "string",
+#'   Conditions = list(
+#'     Range = list(
+#'       Value = 123,
+#'       Unit = "DAYS"
+#'     ),
+#'     ObjectCount = 123,
+#'     Threshold = list(
+#'       Value = "string",
+#'       Operator = "EQUAL_TO"|"GREATER_THAN"|"LESS_THAN"|"NOT_EQUAL_TO"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_update_calculated_attribute_definition
+#'
+#' @aliases customerprofiles_update_calculated_attribute_definition
+customerprofiles_update_calculated_attribute_definition <- function(DomainName, CalculatedAttributeName, DisplayName = NULL, Description = NULL, Conditions = NULL) {
+  op <- new_operation(
+    name = "UpdateCalculatedAttributeDefinition",
+    http_method = "PUT",
+    http_path = "/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}",
+    paginator = list()
+  )
+  input <- .customerprofiles$update_calculated_attribute_definition_input(DomainName = DomainName, CalculatedAttributeName = CalculatedAttributeName, DisplayName = DisplayName, Description = Description, Conditions = Conditions)
+  output <- .customerprofiles$update_calculated_attribute_definition_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$update_calculated_attribute_definition <- customerprofiles_update_calculated_attribute_definition
 
 #' Updates the properties of a domain, including creating or selecting a
 #' dead letter queue or an encryption key

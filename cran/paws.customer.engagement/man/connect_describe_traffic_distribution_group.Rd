@@ -15,6 +15,6 @@ from the replicated Region.}
 \description{
 Gets details and status of a traffic distribution group.
 
-See \url{https://paws-r.github.io/docs/connect/describe_traffic_distribution_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_describe_traffic_distribution_group/} for full documentation.
 }
 \keyword{internal}

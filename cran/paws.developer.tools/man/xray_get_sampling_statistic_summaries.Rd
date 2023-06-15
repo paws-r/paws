@@ -13,6 +13,6 @@ xray_get_sampling_statistic_summaries(NextToken = NULL)
 \description{
 Retrieves information about recent sampling results for all sampling rules.
 
-See \url{https://paws-r.github.io/docs/xray/get_sampling_statistic_summaries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_get_sampling_statistic_summaries/} for full documentation.
 }
 \keyword{internal}

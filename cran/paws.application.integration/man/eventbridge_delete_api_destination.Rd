@@ -12,6 +12,6 @@ eventbridge_delete_api_destination(Name)
 \description{
 Deletes the specified API destination.
 
-See \url{https://paws-r.github.io/docs/eventbridge/delete_api_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_delete_api_destination/} for full documentation.
 }
 \keyword{internal}

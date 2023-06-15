@@ -12,6 +12,6 @@ opsworks_delete_stack(StackId)
 \description{
 Deletes a specified stack. You must first delete all instances, layers, and apps or deregister registered instances. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-shutting.html}{Shut Down a Stack}.
 
-See \url{https://paws-r.github.io/docs/opsworks/delete_stack.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_delete_stack/} for full documentation.
 }
 \keyword{internal}

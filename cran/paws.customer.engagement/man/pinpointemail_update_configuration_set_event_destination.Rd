@@ -21,6 +21,6 @@ that you want to modify.}
 \description{
 Update the configuration of an event destination for a configuration set.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/update_configuration_set_event_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_update_configuration_set_event_destination/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ elb_register_instances_with_load_balancer(LoadBalancerName, Instances)
 \description{
 Adds the specified instances to the specified load balancer.
 
-See \url{https://paws-r.github.io/docs/elb/register_instances_with_load_balancer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_register_instances_with_load_balancer/} for full documentation.
 }
 \keyword{internal}

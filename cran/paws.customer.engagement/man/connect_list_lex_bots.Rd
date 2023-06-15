@@ -21,6 +21,6 @@ specified, the default is 10.}
 \description{
 This API is in preview release for Amazon Connect and is subject to change.
 
-See \url{https://paws-r.github.io/docs/connect/list_lex_bots.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_list_lex_bots/} for full documentation.
 }
 \keyword{internal}

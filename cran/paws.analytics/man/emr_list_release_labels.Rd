@@ -27,6 +27,6 @@ response. The default is \code{100}.}
 \description{
 Retrieves release labels of Amazon EMR services in the Region where the API is called.
 
-See \url{https://paws-r.github.io/docs/emr/list_release_labels.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_list_release_labels/} for full documentation.
 }
 \keyword{internal}

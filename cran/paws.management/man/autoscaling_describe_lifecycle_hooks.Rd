@@ -19,6 +19,6 @@ lifecycle hooks are described.}
 \description{
 Gets information about the lifecycle hooks for the specified Auto Scaling group.
 
-See \url{https://paws-r.github.io/docs/autoscaling/describe_lifecycle_hooks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_describe_lifecycle_hooks/} for full documentation.
 }
 \keyword{internal}

@@ -55,6 +55,6 @@ those listed by \code{NodeGroupsToRetain} from the cluster.}
 \description{
 Modifies a replication group's shards (node groups) by allowing you to add shards, remove shards, or rebalance the keyspaces among existing shards.
 
-See \url{https://paws-r.github.io/docs/elasticache/modify_replication_group_shard_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_modify_replication_group_shard_configuration/} for full documentation.
 }
 \keyword{internal}

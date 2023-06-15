@@ -18,6 +18,6 @@ in the \emph{AWS General Reference} guide.}
 \description{
 Describes the Resilience Hub application version.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/describe_app_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_describe_app_version/} for full documentation.
 }
 \keyword{internal}

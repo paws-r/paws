@@ -19,6 +19,6 @@ Constraints:
 \description{
 Deletes a specified cluster parameter group. The cluster parameter group to be deleted can't be associated with any clusters.
 
-See \url{https://paws-r.github.io/docs/docdb/delete_db_cluster_parameter_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_delete_db_cluster_parameter_group/} for full documentation.
 }
 \keyword{internal}

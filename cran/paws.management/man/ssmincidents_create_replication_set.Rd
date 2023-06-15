@@ -19,6 +19,6 @@ up to three Regions in your replication set.}
 \description{
 A replication set replicates and encrypts your data to the provided Regions with the provided KMS key.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/create_replication_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_create_replication_set/} for full documentation.
 }
 \keyword{internal}

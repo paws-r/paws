@@ -51,6 +51,6 @@ batch time window expired) before EventBridge event trigger fires.}
 \description{
 Creates a new trigger.
 
-See \url{https://paws-r.github.io/docs/glue/create_trigger.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_create_trigger/} for full documentation.
 }
 \keyword{internal}

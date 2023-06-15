@@ -23,6 +23,6 @@ cognitoidentityprovider_admin_list_devices(
 \description{
 Lists devices, as an administrator.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_list_devices.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_list_devices/} for full documentation.
 }
 \keyword{internal}

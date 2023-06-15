@@ -18,6 +18,6 @@ this operation. If this value is null, it retrieves the first page.}
 \description{
 Returns lists Amazon Web Services resources that are of the specified resource collection type. The two types of Amazon Web Services resource collections supported are Amazon Web Services CloudFormation stacks and Amazon Web Services resources that contain the same Amazon Web Services tag. DevOps Guru can be configured to analyze the Amazon Web Services resources that are defined in the stacks or that are tagged using the same tag \emph{key}. You can specify up to 500 Amazon Web Services CloudFormation stacks.
 
-See \url{https://paws-r.github.io/docs/devopsguru/get_resource_collection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_get_resource_collection/} for full documentation.
 }
 \keyword{internal}

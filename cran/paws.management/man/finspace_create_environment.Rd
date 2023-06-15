@@ -49,6 +49,6 @@ trades and quotes data in addition to sample Capital Markets data.
 \description{
 Create a new FinSpace environment.
 
-See \url{https://paws-r.github.io/docs/finspace/create_environment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspace_create_environment/} for full documentation.
 }
 \keyword{internal}

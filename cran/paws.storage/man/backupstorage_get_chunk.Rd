@@ -14,6 +14,6 @@ backupstorage_get_chunk(StorageJobId, ChunkToken)
 \description{
 Gets the specified object's chunk.
 
-See \url{https://paws-r.github.io/docs/backupstorage/get_chunk.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupstorage_get_chunk/} for full documentation.
 }
 \keyword{internal}

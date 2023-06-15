@@ -1350,6 +1350,7 @@ locationservice_create_key <- function(Description = NULL, ExpireTime = NULL, Ke
 #' ```
 #' svc$create_map(
 #'   Configuration = list(
+#'     PoliticalView = "string",
 #'     Style = "string"
 #'   ),
 #'   Description = "string",
@@ -2206,6 +2207,7 @@ locationservice_describe_key <- function(KeyName) {
 #' ```
 #' list(
 #'   Configuration = list(
+#'     PoliticalView = "string",
 #'     Style = "string"
 #'   ),
 #'   CreateTime = as.POSIXct(
@@ -2800,7 +2802,14 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
 #'     `Amazon Ember Medium,Noto Sans Medium` |
 #'     `Amazon Ember Regular Italic,Noto Sans Italic` |
 #'     `Amazon Ember Condensed RC Regular,Noto Sans Regular` |
-#'     `Amazon Ember Condensed RC Bold,Noto Sans Bold`
+#'     `Amazon Ember Condensed RC Bold,Noto Sans Bold` |
+#'     `Amazon Ember Regular,Noto Sans Regular,Noto Sans Arabic Regular` |
+#'     `Amazon Ember Condensed RC Bold,Noto Sans Bold,Noto Sans Arabic Condensed Bold`
+#'     | `Amazon Ember Bold,Noto Sans Bold,Noto Sans Arabic Bold` |
+#'     `Amazon Ember Regular Italic,Noto Sans Italic,Noto Sans Arabic Regular`
+#'     |
+#'     `Amazon Ember Condensed RC Regular,Noto Sans Regular,Noto Sans Arabic Condensed Regular`
+#'     | `Amazon Ember Medium,Noto Sans Medium,Noto Sans Arabic Medium`
 #' 
 #' The fonts used by the Open Data map styles are combined fonts that use
 #' `Amazon Ember` for most glyphs but `Noto Sans` for glyphs unsupported by
@@ -4670,8 +4679,11 @@ locationservice_update_key <- function(Description = NULL, ExpireTime = NULL, Fo
 #' Updates the specified properties of a given map resource.
 #'
 #' @usage
-#' locationservice_update_map(Description, MapName, PricingPlan)
+#' locationservice_update_map(ConfigurationUpdate, Description, MapName,
+#'   PricingPlan)
 #'
+#' @param ConfigurationUpdate Updates the parts of the map configuration that can be updated,
+#' including the political view.
 #' @param Description Updates the description for the map resource.
 #' @param MapName &#91;required&#93; The name of the map resource to update.
 #' @param PricingPlan No longer used. If included, the only allowed value is
@@ -4692,6 +4704,9 @@ locationservice_update_key <- function(Description = NULL, ExpireTime = NULL, Fo
 #' @section Request syntax:
 #' ```
 #' svc$update_map(
+#'   ConfigurationUpdate = list(
+#'     PoliticalView = "string"
+#'   ),
 #'   Description = "string",
 #'   MapName = "string",
 #'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement"
@@ -4703,14 +4718,14 @@ locationservice_update_key <- function(Description = NULL, ExpireTime = NULL, Fo
 #' @rdname locationservice_update_map
 #'
 #' @aliases locationservice_update_map
-locationservice_update_map <- function(Description = NULL, MapName, PricingPlan = NULL) {
+locationservice_update_map <- function(ConfigurationUpdate = NULL, Description = NULL, MapName, PricingPlan = NULL) {
   op <- new_operation(
     name = "UpdateMap",
     http_method = "PATCH",
     http_path = "/maps/v0/maps/{MapName}",
     paginator = list()
   )
-  input <- .locationservice$update_map_input(Description = Description, MapName = MapName, PricingPlan = PricingPlan)
+  input <- .locationservice$update_map_input(ConfigurationUpdate = ConfigurationUpdate, Description = Description, MapName = MapName, PricingPlan = PricingPlan)
   output <- .locationservice$update_map_output()
   config <- get_config()
   svc <- .locationservice$service(config)

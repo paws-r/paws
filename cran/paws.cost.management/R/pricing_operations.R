@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Returns the metadata for one service or a list of the metadata for all services. Use this without a service code to get the service codes for all services. Use it with a service code, such as `AmazonEC2`, to get information specific to that service, such as the attribute names available for that service. For example, some of the attribute names available for EC2 are `volumeType`, `maxIopsVolume`, `operation`, `locationType`, and `instanceCapacity10xlarge`.
 #'
-#' See [https://paws-r.github.io/docs/pricing/describe_services.html](https://paws-r.github.io/docs/pricing/describe_services.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pricing_describe_services/](https://www.paws-r-sdk.com/docs/pricing_describe_services/) for full documentation.
 #'
 #' @param ServiceCode The code for the service whose information you want to retrieve, such as
 #' `AmazonEC2`. You can use the `ServiceCode` to filter the results in a
@@ -47,7 +47,7 @@ pricing_describe_services <- function(ServiceCode = NULL, FormatVersion = NULL, 
 #' @description
 #' Returns a list of attribute values. Attributes are similar to the details in a Price List API offer file. For a list of available attributes, see [Offer File Definitions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/reading-an-offer.html#pps-defs) in the [Billing and Cost Management User Guide](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html).
 #'
-#' See [https://paws-r.github.io/docs/pricing/get_attribute_values.html](https://paws-r.github.io/docs/pricing/get_attribute_values.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pricing_get_attribute_values/](https://www.paws-r-sdk.com/docs/pricing_get_attribute_values/) for full documentation.
 #'
 #' @param ServiceCode &#91;required&#93; The service code for the service whose attributes you want to retrieve.
 #' For example, if you want the retrieve an EC2 attribute, use `AmazonEC2`.
@@ -82,7 +82,7 @@ pricing_get_attribute_values <- function(ServiceCode, AttributeName, NextToken =
 #' @description
 #' *This feature is in preview release and is subject to change. Your use of Amazon Web Services Price List API is subject to the Beta Service Participation terms of the <span href="https://aws.amazon.com/service-terms/">Amazon Web Services Service Terms</span> (Section 1.10).*
 #'
-#' See [https://paws-r.github.io/docs/pricing/get_price_list_file_url.html](https://paws-r.github.io/docs/pricing/get_price_list_file_url.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pricing_get_price_list_file_url/](https://www.paws-r-sdk.com/docs/pricing_get_price_list_file_url/) for full documentation.
 #'
 #' @param PriceListArn &#91;required&#93; The unique identifier that maps to where your Price List files are
 #' located. `PriceListArn` can be obtained from the
@@ -118,7 +118,7 @@ pricing_get_price_list_file_url <- function(PriceListArn, FileFormat) {
 #' @description
 #' Returns a list of all products that match the filter criteria.
 #'
-#' See [https://paws-r.github.io/docs/pricing/get_products.html](https://paws-r.github.io/docs/pricing/get_products.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pricing_get_products/](https://www.paws-r-sdk.com/docs/pricing_get_products/) for full documentation.
 #'
 #' @param ServiceCode &#91;required&#93; The code for the service whose products you want to retrieve.
 #' @param Filters The list of filters that limit the returned products. only products that
@@ -155,7 +155,7 @@ pricing_get_products <- function(ServiceCode, Filters = NULL, FormatVersion = NU
 #' @description
 #' *This feature is in preview release and is subject to change. Your use of Amazon Web Services Price List API is subject to the Beta Service Participation terms of the <span href="https://aws.amazon.com/service-terms/">Amazon Web Services Service Terms</span> (Section 1.10).*
 #'
-#' See [https://paws-r.github.io/docs/pricing/list_price_lists.html](https://paws-r.github.io/docs/pricing/list_price_lists.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pricing_list_price_lists/](https://www.paws-r-sdk.com/docs/pricing_list_price_lists/) for full documentation.
 #'
 #' @param ServiceCode &#91;required&#93; The service code or the Savings Plan service code for the attributes
 #' that you want to retrieve. For example, to get the list of applicable

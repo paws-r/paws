@@ -47,6 +47,6 @@ both bot locales and custom vocabularies.}
 \description{
 Lists the imports for a bot, bot locale, or custom vocabulary. Imports are kept in the list for 7 days.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/list_imports.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_list_imports/} for full documentation.
 }
 \keyword{internal}

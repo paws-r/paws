@@ -85,6 +85,6 @@ characters.}
 \description{
 Creates and defines the criteria and other settings for a custom data identifier.
 
-See \url{https://paws-r.github.io/docs/macie2/create_custom_data_identifier.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_create_custom_data_identifier/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ for up to 30 days.}
 \description{
 Creates a Grafana API key for the workspace. This key can be used to authenticate requests sent to the workspace's HTTP API. See \url{https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html} for available APIs and example requests.
 
-See \url{https://paws-r.github.io/docs/managedgrafana/create_workspace_api_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/managedgrafana_create_workspace_api_key/} for full documentation.
 }
 \keyword{internal}

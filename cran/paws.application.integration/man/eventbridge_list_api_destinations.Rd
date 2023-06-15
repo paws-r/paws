@@ -25,6 +25,6 @@ results.}
 \description{
 Retrieves a list of API destination in the account in the current Region.
 
-See \url{https://paws-r.github.io/docs/eventbridge/list_api_destinations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_list_api_destinations/} for full documentation.
 }
 \keyword{internal}

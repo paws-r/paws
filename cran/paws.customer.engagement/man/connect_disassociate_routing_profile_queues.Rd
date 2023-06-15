@@ -21,6 +21,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Disassociates a set of queues from a routing profile.
 
-See \url{https://paws-r.github.io/docs/connect/disassociate_routing_profile_queues.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_disassociate_routing_profile_queues/} for full documentation.
 }
 \keyword{internal}

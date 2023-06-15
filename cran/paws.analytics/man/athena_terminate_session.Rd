@@ -12,6 +12,6 @@ athena_terminate_session(SessionId)
 \description{
 Terminates an active session. A \code{\link[=athena_terminate_session]{terminate_session}} call on a session that is already inactive (for example, in a \code{FAILED}, \code{TERMINATED} or \code{TERMINATING} state) succeeds but has no effect. Calculations running in the session when \code{\link[=athena_terminate_session]{terminate_session}} is called are forcefully stopped, but may display as \code{FAILED} instead of \code{STOPPED}.
 
-See \url{https://paws-r.github.io/docs/athena/terminate_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_terminate_session/} for full documentation.
 }
 \keyword{internal}

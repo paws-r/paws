@@ -39,6 +39,6 @@ returns information about all of them.}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-See \url{https://paws-r.github.io/docs/wafregional/get_sampled_requests.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafregional_get_sampled_requests/} for full documentation.
 }
 \keyword{internal}

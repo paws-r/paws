@@ -39,6 +39,6 @@ with the same client token will create only one thesaurus.}
 \description{
 Creates a thesaurus for an index. The thesaurus contains a list of synonyms in Solr format.
 
-See \url{https://paws-r.github.io/docs/kendra/create_thesaurus.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_create_thesaurus/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ email and enabled the Deliverability dashboard for.}
 \description{
 Enable or disable the Deliverability dashboard. When you enable the Deliverability dashboard, you gain access to reputation, deliverability, and other metrics for the domains that you use to send email. You also gain the ability to perform predictive inbox placement tests.
 
-See \url{https://paws-r.github.io/docs/sesv2/put_deliverability_dashboard_option.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_put_deliverability_dashboard_option/} for full documentation.
 }
 \keyword{internal}

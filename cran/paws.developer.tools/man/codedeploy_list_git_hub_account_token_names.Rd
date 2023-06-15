@@ -14,6 +14,6 @@ call. It can be used to return the next set of names in the list.}
 \description{
 Lists the names of stored connections to GitHub accounts.
 
-See \url{https://paws-r.github.io/docs/codedeploy/list_git_hub_account_token_names.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_list_git_hub_account_token_names/} for full documentation.
 }
 \keyword{internal}

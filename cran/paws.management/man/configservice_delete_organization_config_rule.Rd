@@ -13,6 +13,6 @@ configservice_delete_organization_config_rule(OrganizationConfigRuleName)
 \description{
 Deletes the specified organization Config rule and all of its evaluation results from all member accounts in that organization.
 
-See \url{https://paws-r.github.io/docs/configservice/delete_organization_config_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_delete_organization_config_rule/} for full documentation.
 }
 \keyword{internal}

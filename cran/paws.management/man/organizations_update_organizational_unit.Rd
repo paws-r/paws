@@ -27,6 +27,6 @@ ASCII character range.}
 \description{
 Renames the specified organizational unit (OU). The ID and ARN don't change. The child OUs and accounts remain in place, and any attached policies of the OU remain attached.
 
-See \url{https://paws-r.github.io/docs/organizations/update_organizational_unit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_update_organizational_unit/} for full documentation.
 }
 \keyword{internal}

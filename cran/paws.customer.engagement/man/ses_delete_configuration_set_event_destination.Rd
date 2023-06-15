@@ -18,6 +18,6 @@ destination.}
 \description{
 Deletes a configuration set event destination. Configuration set event destinations are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the \href{https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html}{Amazon SES Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/ses/delete_configuration_set_event_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_delete_configuration_set_event_destination/} for full documentation.
 }
 \keyword{internal}

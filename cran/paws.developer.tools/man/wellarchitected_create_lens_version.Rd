@@ -23,6 +23,6 @@ wellarchitected_create_lens_version(
 \description{
 Create a new lens version.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/create_lens_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_create_lens_version/} for full documentation.
 }
 \keyword{internal}

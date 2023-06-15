@@ -28,6 +28,6 @@ returning call left off.}
 \description{
 Returns the description of specific Amazon FSx file systems, if a \code{FileSystemIds} value is provided for that file system. Otherwise, it returns descriptions of all file systems owned by your Amazon Web Services account in the Amazon Web Services Region of the endpoint that you're calling.
 
-See \url{https://paws-r.github.io/docs/fsx/describe_file_systems.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_describe_file_systems/} for full documentation.
 }
 \keyword{internal}

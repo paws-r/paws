@@ -39,6 +39,6 @@ domain.}
 \description{
 Lists all instance types and available features for a given OpenSearch or Elasticsearch version.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/list_instance_type_details.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_list_instance_type_details/} for full documentation.
 }
 \keyword{internal}

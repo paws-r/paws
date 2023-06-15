@@ -13,6 +13,6 @@ delete.}
 \description{
 Deletes a cost anomaly monitor.
 
-See \url{https://paws-r.github.io/docs/costexplorer/delete_anomaly_monitor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_delete_anomaly_monitor/} for full documentation.
 }
 \keyword{internal}

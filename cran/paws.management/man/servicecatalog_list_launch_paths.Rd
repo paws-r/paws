@@ -28,6 +28,6 @@ results, use null.}
 \description{
 Lists the paths to the specified product. A path describes how the user gets access to a specified product and is necessary when provisioning a product. A path also determines the constraints that are put on a product. A path is dependent on a specific product, porfolio, and principal.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/list_launch_paths.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_list_launch_paths/} for full documentation.
 }
 \keyword{internal}

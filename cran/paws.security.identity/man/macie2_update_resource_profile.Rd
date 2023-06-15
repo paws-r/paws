@@ -18,6 +18,6 @@ after you submit the request.}
 \description{
 Updates the sensitivity score for an S3 bucket.
 
-See \url{https://paws-r.github.io/docs/macie2/update_resource_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_update_resource_profile/} for full documentation.
 }
 \keyword{internal}

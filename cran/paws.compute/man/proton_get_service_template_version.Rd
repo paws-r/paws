@@ -19,6 +19,6 @@ detailed data for.}
 \description{
 Get detailed data for a major or minor version of a service template.
 
-See \url{https://paws-r.github.io/docs/proton/get_service_template_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_get_service_template_version/} for full documentation.
 }
 \keyword{internal}

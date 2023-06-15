@@ -14,6 +14,6 @@ organization that is currently designated as a delegated administrator.}
 \description{
 Removes CloudTrail delegated administrator permissions from a member account in an organization.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/deregister_organization_delegated_admin.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_deregister_organization_delegated_admin/} for full documentation.
 }
 \keyword{internal}

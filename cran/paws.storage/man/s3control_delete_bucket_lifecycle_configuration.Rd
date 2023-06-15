@@ -28,6 +28,6 @@ The value must be URL encoded.}
 \description{
 This action deletes an Amazon S3 on Outposts bucket's lifecycle configuration. To delete an S3 bucket's lifecycle configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html}{DeleteBucketLifecycle} in the \emph{Amazon S3 API Reference}.
 
-See \url{https://paws-r.github.io/docs/s3control/delete_bucket_lifecycle_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_delete_bucket_lifecycle_configuration/} for full documentation.
 }
 \keyword{internal}

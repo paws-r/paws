@@ -12,6 +12,6 @@ apigateway_update_account(patchOperations = NULL)
 \description{
 Changes information about the current Account resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/update_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_update_account/} for full documentation.
 }
 \keyword{internal}

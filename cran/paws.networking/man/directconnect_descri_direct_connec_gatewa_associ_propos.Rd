@@ -32,6 +32,6 @@ returned.}
 \description{
 Describes one or more association proposals for connection between a virtual private gateway or transit gateway and a Direct Connect gateway.
 
-See \url{https://paws-r.github.io/docs/directconnect/describe_direct_connect_gateway_association_proposals.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_describe_direct_connect_gateway_association_proposals/} for full documentation.
 }
 \keyword{internal}

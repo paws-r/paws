@@ -18,6 +18,6 @@ fraudster.}
 \description{
 Associates the fraudsters with the watchlist specified in the same domain.
 
-See \url{https://paws-r.github.io/docs/voiceid/associate_fraudster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/voiceid_associate_fraudster/} for full documentation.
 }
 \keyword{internal}

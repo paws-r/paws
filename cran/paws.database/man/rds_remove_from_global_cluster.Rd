@@ -20,6 +20,6 @@ from the Aurora global database cluster.}
 \description{
 Detaches an Aurora secondary cluster from an Aurora global database cluster. The cluster becomes a standalone cluster with read-write capability instead of being read-only and receiving data from a primary cluster in a different Region.
 
-See \url{https://paws-r.github.io/docs/rds/remove_from_global_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_remove_from_global_cluster/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ cognitoidentityprovider_set_ui_customization(
 \description{
 Sets the user interface (UI) customization information for a user pool's built-in app UI.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/set_ui_customization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_set_ui_customization/} for full documentation.
 }
 \keyword{internal}

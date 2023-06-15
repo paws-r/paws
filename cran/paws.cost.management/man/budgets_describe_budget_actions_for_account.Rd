@@ -20,6 +20,6 @@ budgets_describe_budget_actions_for_account(
 \description{
 Describes all of the budget actions for an account.
 
-See \url{https://paws-r.github.io/docs/budgets/describe_budget_actions_for_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/budgets_describe_budget_actions_for_account/} for full documentation.
 }
 \keyword{internal}

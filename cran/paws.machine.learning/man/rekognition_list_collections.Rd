@@ -14,6 +14,6 @@ rekognition_list_collections(NextToken = NULL, MaxResults = NULL)
 \description{
 Returns list of collection IDs in your account. If the result is truncated, the response also provides a \code{NextToken} that you can use in the subsequent request to fetch the next set of collection IDs.
 
-See \url{https://paws-r.github.io/docs/rekognition/list_collections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_list_collections/} for full documentation.
 }
 \keyword{internal}

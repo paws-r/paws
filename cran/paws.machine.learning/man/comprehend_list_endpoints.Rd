@@ -19,6 +19,6 @@ You can only set one filter at a time.}
 \description{
 Gets a list of all existing endpoints that you've created. For information about endpoints, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html}{Managing endpoints}.
 
-See \url{https://paws-r.github.io/docs/comprehend/list_endpoints.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_list_endpoints/} for full documentation.
 }
 \keyword{internal}

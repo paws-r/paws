@@ -20,6 +20,6 @@ pinpointsmsvoice_create_configuration_set_event_destination(
 \description{
 Create a new event destination in a configuration set.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoice/create_configuration_set_event_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoice_create_configuration_set_event_destination/} for full documentation.
 }
 \keyword{internal}

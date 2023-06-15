@@ -48,6 +48,6 @@ both.}
 \description{
 Lists all executions of a state machine or a Map Run. You can list all executions related to a state machine by specifying a state machine Amazon Resource Name (ARN), or those related to a Map Run by specifying a Map Run ARN.
 
-See \url{https://paws-r.github.io/docs/sfn/list_executions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sfn_list_executions/} for full documentation.
 }
 \keyword{internal}

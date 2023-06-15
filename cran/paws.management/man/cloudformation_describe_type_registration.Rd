@@ -17,6 +17,6 @@ a registration request using
 \description{
 Returns information about an extension's registration, including its current status and type and version identifiers.
 
-See \url{https://paws-r.github.io/docs/cloudformation/describe_type_registration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_describe_type_registration/} for full documentation.
 }
 \keyword{internal}

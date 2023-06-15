@@ -15,6 +15,6 @@ the domain. It does not include dashes or spaces.}
 \description{
 Returns the resource policy attached to the specified domain.
 
-See \url{https://paws-r.github.io/docs/codeartifact/get_domain_permissions_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_get_domain_permissions_policy/} for full documentation.
 }
 \keyword{internal}

@@ -228,6 +228,10 @@ emrcontainers_create_job_template <- function(name, clientToken, jobTemplateData
 #'       ),
 #'       s3MonitoringConfiguration = list(
 #'         logUri = "string"
+#'       ),
+#'       containerLogRotationConfiguration = list(
+#'         rotationSize = "string",
+#'         maxFilesToKeep = 123
 #'       )
 #'     )
 #'   ),
@@ -529,6 +533,10 @@ emrcontainers_delete_virtual_cluster <- function(id) {
 #'         ),
 #'         s3MonitoringConfiguration = list(
 #'           logUri = "string"
+#'         ),
+#'         containerLogRotationConfiguration = list(
+#'           rotationSize = "string",
+#'           maxFilesToKeep = 123
 #'         )
 #'       )
 #'     ),
@@ -757,6 +765,10 @@ emrcontainers_describe_job_template <- function(id) {
 #'         ),
 #'         s3MonitoringConfiguration = list(
 #'           logUri = "string"
+#'         ),
+#'         containerLogRotationConfiguration = list(
+#'           rotationSize = "string",
+#'           maxFilesToKeep = 123
 #'         )
 #'       )
 #'     ),
@@ -1001,6 +1013,10 @@ emrcontainers_get_managed_endpoint_session_credentials <- function(endpointIdent
 #'           ),
 #'           s3MonitoringConfiguration = list(
 #'             logUri = "string"
+#'           ),
+#'           containerLogRotationConfiguration = list(
+#'             rotationSize = "string",
+#'             maxFilesToKeep = 123
 #'           )
 #'         )
 #'       ),
@@ -1263,6 +1279,10 @@ emrcontainers_list_job_templates <- function(createdAfter = NULL, createdBefore 
 #'           ),
 #'           s3MonitoringConfiguration = list(
 #'             logUri = "string"
+#'           ),
+#'           containerLogRotationConfiguration = list(
+#'             rotationSize = "string",
+#'             maxFilesToKeep = 123
 #'           )
 #'         )
 #'       ),
@@ -1546,6 +1566,10 @@ emrcontainers_list_virtual_clusters <- function(containerProviderId = NULL, cont
 #'       ),
 #'       s3MonitoringConfiguration = list(
 #'         logUri = "string"
+#'       ),
+#'       containerLogRotationConfiguration = list(
+#'         rotationSize = "string",
+#'         maxFilesToKeep = 123
 #'       )
 #'     )
 #'   ),

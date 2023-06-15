@@ -31,6 +31,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Modifies the customer gateway or the target gateway of an Amazon Web Services Site-to-Site VPN connection. To modify the target gateway, the following migration options are available:
 
-See \url{https://paws-r.github.io/docs/ec2/modify_vpn_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_vpn_connection/} for full documentation.
 }
 \keyword{internal}

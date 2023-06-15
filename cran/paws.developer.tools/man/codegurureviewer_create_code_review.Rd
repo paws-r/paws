@@ -33,6 +33,6 @@ creation of duplicate code reviews if there are failures and retries.}
 \description{
 Use to create a code review with a \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReviewType.html}{CodeReviewType} of \code{RepositoryAnalysis}. This type of code review analyzes all code under a specified branch in an associated repository. \code{PullRequest} code reviews are automatically triggered by a pull request.
 
-See \url{https://paws-r.github.io/docs/codegurureviewer/create_code_review.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codegurureviewer_create_code_review/} for full documentation.
 }
 \keyword{internal}

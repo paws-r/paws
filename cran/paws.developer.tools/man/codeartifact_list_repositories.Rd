@@ -23,6 +23,6 @@ results.}
 \description{
 Returns a list of \href{https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_RepositorySummary.html}{RepositorySummary} objects. Each \code{RepositorySummary} contains information about a repository in the specified Amazon Web Services account and that matches the input parameters.
 
-See \url{https://paws-r.github.io/docs/codeartifact/list_repositories.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_list_repositories/} for full documentation.
 }
 \keyword{internal}

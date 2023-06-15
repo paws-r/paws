@@ -15,6 +15,6 @@ s3control_get_access_point_policy_status(AccountId, Name)
 \description{
 Indicates whether the specified access point currently has a policy that allows public access. For more information about public access through access points, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{Managing Data Access with Amazon S3 access points} in the \emph{Amazon S3 User Guide}.
 
-See \url{https://paws-r.github.io/docs/s3control/get_access_point_policy_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_get_access_point_policy_status/} for full documentation.
 }
 \keyword{internal}

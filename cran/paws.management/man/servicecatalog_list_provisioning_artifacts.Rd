@@ -19,6 +19,6 @@ servicecatalog_list_provisioning_artifacts(AcceptLanguage = NULL, ProductId)
 \description{
 Lists all provisioning artifacts (also known as versions) for the specified product.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/list_provisioning_artifacts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_list_provisioning_artifacts/} for full documentation.
 }
 \keyword{internal}

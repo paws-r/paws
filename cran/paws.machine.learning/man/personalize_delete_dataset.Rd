@@ -12,6 +12,6 @@ personalize_delete_dataset(datasetArn)
 \description{
 Deletes a dataset. You can't delete a dataset if an associated \code{DatasetImportJob} or \code{SolutionVersion} is in the CREATE PENDING or IN PROGRESS state. For more information on datasets, see \code{\link[=personalize_create_dataset]{create_dataset}}.
 
-See \url{https://paws-r.github.io/docs/personalize/delete_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_delete_dataset/} for full documentation.
 }
 \keyword{internal}

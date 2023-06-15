@@ -10,6 +10,6 @@ mturk_get_account_balance()
 \description{
 The \code{\link[=mturk_get_account_balance]{get_account_balance}} operation retrieves the Prepaid HITs balance in your Amazon Mechanical Turk account if you are a Prepaid Requester. Alternatively, this operation will retrieve the remaining available AWS Billing usage if you have enabled AWS Billing. Note: If you have enabled AWS Billing and still have a remaining Prepaid HITs balance, this balance can be viewed on the My Account page in the Requester console.
 
-See \url{https://paws-r.github.io/docs/mturk/get_account_balance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_get_account_balance/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ outputs, after the list of outputs that was previously requested.}
 \description{
 Get a list of service pipeline Infrastructure as Code (IaC) outputs.
 
-See \url{https://paws-r.github.io/docs/proton/list_service_pipeline_outputs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_list_service_pipeline_outputs/} for full documentation.
 }
 \keyword{internal}

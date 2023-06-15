@@ -25,6 +25,6 @@ Amazon Web Services Region for each Amazon Web Services account.}
 \description{
 Updates the permissions of a topic.
 
-See \url{https://paws-r.github.io/docs/quicksight/update_topic_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_update_topic_permissions/} for full documentation.
 }
 \keyword{internal}

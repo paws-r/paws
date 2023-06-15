@@ -17,6 +17,6 @@ idempotency of the request.}
 \description{
 Designates an account as the delegated Amazon Macie administrator account for an organization in Organizations.
 
-See \url{https://paws-r.github.io/docs/macie2/enable_organization_admin_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_enable_organization_admin_account/} for full documentation.
 }
 \keyword{internal}

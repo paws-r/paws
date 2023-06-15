@@ -15,6 +15,6 @@ balancer name.}
 \description{
 Removes one or more tags from the specified load balancer.
 
-See \url{https://paws-r.github.io/docs/elb/remove_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_remove_tags/} for full documentation.
 }
 \keyword{internal}

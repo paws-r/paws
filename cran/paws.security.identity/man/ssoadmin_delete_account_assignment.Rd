@@ -37,6 +37,6 @@ Identity Store API Reference.}
 \description{
 Deletes a principal's access from a specified AWS account using a specified permission set.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/delete_account_assignment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_delete_account_assignment/} for full documentation.
 }
 \keyword{internal}

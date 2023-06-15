@@ -14,6 +14,6 @@ customerprofiles_delete_workflow(DomainName, WorkflowId)
 \description{
 Deletes the specified workflow and all its corresponding resources. This is an async process.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/delete_workflow.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_delete_workflow/} for full documentation.
 }
 \keyword{internal}

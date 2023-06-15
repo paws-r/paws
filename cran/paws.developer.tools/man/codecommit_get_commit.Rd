@@ -15,6 +15,6 @@ codecommit_get_commit(repositoryName, commitId)
 \description{
 Returns information about a commit, including commit message and committer information.
 
-See \url{https://paws-r.github.io/docs/codecommit/get_commit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_get_commit/} for full documentation.
 }
 \keyword{internal}

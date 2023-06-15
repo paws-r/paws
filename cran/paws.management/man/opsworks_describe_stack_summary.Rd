@@ -13,6 +13,6 @@ opsworks_describe_stack_summary(StackId)
 \description{
 Describes the number of layers and apps in a specified stack, and the number of instances in each state, such as \code{running_setup} or \code{online}.
 
-See \url{https://paws-r.github.io/docs/opsworks/describe_stack_summary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_describe_stack_summary/} for full documentation.
 }
 \keyword{internal}

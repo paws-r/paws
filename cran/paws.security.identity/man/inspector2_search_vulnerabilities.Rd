@@ -17,6 +17,6 @@ the previous request to continue listing results after the first page.}
 \description{
 Lists Amazon Inspector coverage details for a specific vulnerability.
 
-See \url{https://paws-r.github.io/docs/inspector2/search_vulnerabilities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_search_vulnerabilities/} for full documentation.
 }
 \keyword{internal}

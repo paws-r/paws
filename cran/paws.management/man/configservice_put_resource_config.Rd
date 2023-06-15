@@ -42,6 +42,6 @@ you supply for the configuration items of your custom resources.}
 \description{
 Records the configuration state for the resource provided in the request. The configuration state of a resource is represented in Config as Configuration Items. Once this API records the configuration item, you can retrieve the list of configuration items for the custom resource type using existing Config APIs.
 
-See \url{https://paws-r.github.io/docs/configservice/put_resource_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_put_resource_config/} for full documentation.
 }
 \keyword{internal}

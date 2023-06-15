@@ -17,6 +17,6 @@ include any hyphens ('-') in the ID.}
 \description{
 This operation lists the provisioned capacity units for the specified AWS account.
 
-See \url{https://paws-r.github.io/docs/glacier/list_provisioned_capacity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_list_provisioned_capacity/} for full documentation.
 }
 \keyword{internal}

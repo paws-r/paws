@@ -37,6 +37,6 @@ of the country code.}
 \description{
 Lists phone numbers claimed to your Amazon Connect instance or traffic distribution group. If the provided \code{TargetArn} is a traffic distribution group, you can call this API in both Amazon Web Services Regions associated with traffic distribution group.
 
-See \url{https://paws-r.github.io/docs/connect/list_phone_numbers_v2.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_list_phone_numbers_v2/} for full documentation.
 }
 \keyword{internal}

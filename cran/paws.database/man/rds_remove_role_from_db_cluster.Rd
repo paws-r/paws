@@ -25,6 +25,6 @@ DBEngineVersion.}
 \description{
 Removes the asssociation of an Amazon Web Services Identity and Access Management (IAM) role from a DB cluster.
 
-See \url{https://paws-r.github.io/docs/rds/remove_role_from_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_remove_role_from_db_cluster/} for full documentation.
 }
 \keyword{internal}

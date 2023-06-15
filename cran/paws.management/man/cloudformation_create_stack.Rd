@@ -220,8 +220,8 @@ termination protection is set on the root stack and can't be changed
 directly on the nested stack.}
 }
 \description{
-Creates a stack as specified in the template. After the call completes successfully, the stack creation starts. You can check the status of the stack through the \code{\link[=cloudformation_describe_stacks]{describe_stacks}}operation.
+Creates a stack as specified in the template. After the call completes successfully, the stack creation starts. You can check the status of the stack through the \code{\link[=cloudformation_describe_stacks]{describe_stacks}} operation.
 
-See \url{https://paws-r.github.io/docs/cloudformation/create_stack.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_create_stack/} for full documentation.
 }
 \keyword{internal}

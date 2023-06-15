@@ -13,6 +13,6 @@ client branding information.}
 \description{
 Describes the specified client branding. Client branding allows you to customize the log in page of various device types for your users. You can add your company logo, the support email address, support link, link to reset password, and a custom message for users trying to sign in.
 
-See \url{https://paws-r.github.io/docs/workspaces/describe_client_branding.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_describe_client_branding/} for full documentation.
 }
 \keyword{internal}

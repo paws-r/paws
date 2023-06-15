@@ -18,6 +18,6 @@ a previously truncated response.}
 \description{
 Returns a list of image scan aggregations for your account. You can filter by the type of key that Image Builder uses to group results. For example, if you want to get a list of findings by severity level for one of your pipelines, you might specify your pipeline with the \code{imagePipelineArn} filter. If you don't specify a filter, Image Builder returns an aggregation for your account.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/list_image_scan_finding_aggregations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_list_image_scan_finding_aggregations/} for full documentation.
 }
 \keyword{internal}

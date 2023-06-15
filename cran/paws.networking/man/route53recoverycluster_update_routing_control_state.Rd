@@ -27,6 +27,6 @@ in the Amazon Route 53 Application Recovery Controller Developer Guide.}
 \description{
 Set the state of the routing control to reroute traffic. You can set the value to be On or Off. When the state is On, traffic flows to a cell. When the state is Off, traffic does not flow.
 
-See \url{https://paws-r.github.io/docs/route53recoverycluster/update_routing_control_state.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoverycluster_update_routing_control_state/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ opsworks_update_elastic_ip(ElasticIp, Name = NULL)
 \description{
 Updates a registered Elastic IP address's name. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
 
-See \url{https://paws-r.github.io/docs/opsworks/update_elastic_ip.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_update_elastic_ip/} for full documentation.
 }
 \keyword{internal}

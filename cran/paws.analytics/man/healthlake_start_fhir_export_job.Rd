@@ -28,6 +28,6 @@ exported for an export job.}
 \description{
 Begins a FHIR export job.
 
-See \url{https://paws-r.github.io/docs/healthlake/start_fhir_export_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/healthlake_start_fhir_export_job/} for full documentation.
 }
 \keyword{internal}

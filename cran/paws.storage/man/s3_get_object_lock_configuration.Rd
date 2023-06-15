@@ -24,6 +24,6 @@ different account, the request fails with the HTTP status code
 \description{
 Gets the Object Lock configuration for a bucket. The rule specified in the Object Lock configuration will be applied by default to every new object placed in the specified bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Locking Objects}.
 
-See \url{https://paws-r.github.io/docs/s3/get_object_lock_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_object_lock_configuration/} for full documentation.
 }
 \keyword{internal}

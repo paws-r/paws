@@ -12,6 +12,6 @@ apigateway_delete_client_certificate(clientCertificateId)
 \description{
 Deletes the ClientCertificate resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/delete_client_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_delete_client_certificate/} for full documentation.
 }
 \keyword{internal}

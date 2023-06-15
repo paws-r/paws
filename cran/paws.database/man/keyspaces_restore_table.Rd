@@ -76,6 +76,6 @@ in the \emph{Amazon Keyspaces Developer Guide}.}
 \description{
 Restores the specified table to the specified point in time within the \code{earliest_restorable_timestamp} and the current time. For more information about restore points, see \href{https://docs.aws.amazon.com/keyspaces/latest/devguide/PointInTimeRecovery_HowItWorks.html#howitworks_backup_window}{Time window for PITR continuous backups} in the \emph{Amazon Keyspaces Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/keyspaces/restore_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/keyspaces_restore_table/} for full documentation.
 }
 \keyword{internal}

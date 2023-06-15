@@ -15,6 +15,6 @@ codepipeline_poll_for_third_party_jobs(actionTypeId, maxBatchSize = NULL)
 \description{
 Determines whether there are any third party jobs for a job worker to act on. Used for partner actions only.
 
-See \url{https://paws-r.github.io/docs/codepipeline/poll_for_third_party_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_poll_for_third_party_jobs/} for full documentation.
 }
 \keyword{internal}

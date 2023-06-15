@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Connects an array of account IDs in a consolidated billing family to a predefined billing group. The account IDs must be a part of the consolidated billing family during the current month, and not already associated with another billing group. The maximum number of accounts that can be associated in one call is 30.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/associate_accounts.html](https://paws-r.github.io/docs/billingconductor/associate_accounts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_associate_accounts/](https://www.paws-r-sdk.com/docs/billingconductor_associate_accounts/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the billing group that associates the
 #' array of account IDs.
@@ -40,7 +40,7 @@ billingconductor_associate_accounts <- function(Arn, AccountIds) {
 #' @description
 #' Connects an array of `PricingRuleArns` to a defined `PricingPlan`. The maximum number `PricingRuleArn` that can be associated in one call is 30.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/associate_pricing_rules.html](https://paws-r.github.io/docs/billingconductor/associate_pricing_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_associate_pricing_rules/](https://www.paws-r-sdk.com/docs/billingconductor_associate_pricing_rules/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The `PricingPlanArn` that the `PricingRuleArns` are associated with.
 #' @param PricingRuleArns &#91;required&#93; The `PricingRuleArns` that are associated with the Pricing Plan.
@@ -70,7 +70,7 @@ billingconductor_associate_pricing_rules <- function(Arn, PricingRuleArns) {
 #' @description
 #' Associates a batch of resources to a percentage custom line item.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/batch_associate_resources_to_custom_line_item.html](https://paws-r.github.io/docs/billingconductor/batch_associate_resources_to_custom_line_item.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_batch_associate_resources_to_custom_line_item/](https://www.paws-r-sdk.com/docs/billingconductor_batch_associate_resources_to_custom_line_item/) for full documentation.
 #'
 #' @param TargetArn &#91;required&#93; A percentage custom line item ARN to associate the resources to.
 #' @param ResourceArns &#91;required&#93; A list containing the ARNs of the resources to be associated.
@@ -101,7 +101,7 @@ billingconductor_batch_associate_resources_to_custom_line_item <- function(Targe
 #' @description
 #' Disassociates a batch of resources from a percentage custom line item.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/batch_disassociate_resources_from_custom_line_item.html](https://paws-r.github.io/docs/billingconductor/batch_disassociate_resources_from_custom_line_item.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_batch_disassociate_resources_from_custom_line_item/](https://www.paws-r-sdk.com/docs/billingconductor_batch_disassociate_resources_from_custom_line_item/) for full documentation.
 #'
 #' @param TargetArn &#91;required&#93; A percentage custom line item ARN to disassociate the resources from.
 #' @param ResourceArns &#91;required&#93; A list containing the ARNs of resources to be disassociated.
@@ -134,7 +134,7 @@ billingconductor_batch_disassociate_resources_from_custom_line_item <- function(
 #' @description
 #' Creates a billing group that resembles a consolidated billing family that Amazon Web Services charges, based off of the predefined pricing plan computation.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/create_billing_group.html](https://paws-r.github.io/docs/billingconductor/create_billing_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_create_billing_group/](https://www.paws-r-sdk.com/docs/billingconductor_create_billing_group/) for full documentation.
 #'
 #' @param ClientToken The token that is needed to support idempotency. Idempotency isn't
 #' currently supported, but will be implemented in a future update.
@@ -175,7 +175,7 @@ billingconductor_create_billing_group <- function(ClientToken = NULL, Name, Acco
 #' @description
 #' Creates a custom line item that can be used to create a one-time fixed charge that can be applied to a single billing group for the current or previous billing period. The one-time fixed charge is either a fee or discount.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/create_custom_line_item.html](https://paws-r.github.io/docs/billingconductor/create_custom_line_item.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_create_custom_line_item/](https://www.paws-r-sdk.com/docs/billingconductor_create_custom_line_item/) for full documentation.
 #'
 #' @param ClientToken The token that is needed to support idempotency. Idempotency isn't
 #' currently supported, but will be implemented in a future update.
@@ -216,7 +216,7 @@ billingconductor_create_custom_line_item <- function(ClientToken = NULL, Name, D
 #' @description
 #' Creates a pricing plan that is used for computing Amazon Web Services charges for billing groups.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/create_pricing_plan.html](https://paws-r.github.io/docs/billingconductor/create_pricing_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_create_pricing_plan/](https://www.paws-r-sdk.com/docs/billingconductor_create_pricing_plan/) for full documentation.
 #'
 #' @param ClientToken The token that is needed to support idempotency. Idempotency isn't
 #' currently supported, but will be implemented in a future update.
@@ -254,7 +254,7 @@ billingconductor_create_pricing_plan <- function(ClientToken = NULL, Name, Descr
 #' @description
 #' Creates a pricing rule can be associated to a pricing plan, or a set of pricing plans.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/create_pricing_rule.html](https://paws-r.github.io/docs/billingconductor/create_pricing_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_create_pricing_rule/](https://www.paws-r-sdk.com/docs/billingconductor_create_pricing_rule/) for full documentation.
 #'
 #' @param ClientToken The token that's needed to support idempotency. Idempotency isn't
 #' currently supported, but will be implemented in a future update.
@@ -315,7 +315,7 @@ billingconductor_create_pricing_rule <- function(ClientToken = NULL, Name, Descr
 #' @description
 #' Deletes a billing group.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/delete_billing_group.html](https://paws-r.github.io/docs/billingconductor/delete_billing_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_delete_billing_group/](https://www.paws-r-sdk.com/docs/billingconductor_delete_billing_group/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the billing group that you're
 #' deleting.
@@ -346,7 +346,7 @@ billingconductor_delete_billing_group <- function(Arn) {
 #' @description
 #' Deletes the custom line item identified by the given ARN in the current, or previous billing period.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/delete_custom_line_item.html](https://paws-r.github.io/docs/billingconductor/delete_custom_line_item.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_delete_custom_line_item/](https://www.paws-r-sdk.com/docs/billingconductor_delete_custom_line_item/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The ARN of the custom line item to be deleted.
 #' @param BillingPeriodRange 
@@ -376,7 +376,7 @@ billingconductor_delete_custom_line_item <- function(Arn, BillingPeriodRange = N
 #' @description
 #' Deletes a pricing plan. The pricing plan must not be associated with any billing groups to delete successfully.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/delete_pricing_plan.html](https://paws-r.github.io/docs/billingconductor/delete_pricing_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_delete_pricing_plan/](https://www.paws-r-sdk.com/docs/billingconductor_delete_pricing_plan/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the pricing plan that you're deleting.
 #'
@@ -406,7 +406,7 @@ billingconductor_delete_pricing_plan <- function(Arn) {
 #' @description
 #' Deletes the pricing rule that's identified by the input Amazon Resource Name (ARN).
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/delete_pricing_rule.html](https://paws-r.github.io/docs/billingconductor/delete_pricing_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_delete_pricing_rule/](https://www.paws-r-sdk.com/docs/billingconductor_delete_pricing_rule/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the pricing rule that you are
 #' deleting.
@@ -436,7 +436,7 @@ billingconductor_delete_pricing_rule <- function(Arn) {
 #' @description
 #' Removes the specified list of account IDs from the given billing group.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/disassociate_accounts.html](https://paws-r.github.io/docs/billingconductor/disassociate_accounts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_disassociate_accounts/](https://www.paws-r-sdk.com/docs/billingconductor_disassociate_accounts/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the billing group that the array of
 #' account IDs will disassociate from.
@@ -467,7 +467,7 @@ billingconductor_disassociate_accounts <- function(Arn, AccountIds) {
 #' @description
 #' Disassociates a list of pricing rules from a pricing plan.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/disassociate_pricing_rules.html](https://paws-r.github.io/docs/billingconductor/disassociate_pricing_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_disassociate_pricing_rules/](https://www.paws-r-sdk.com/docs/billingconductor_disassociate_pricing_rules/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The pricing plan Amazon Resource Name (ARN) to disassociate pricing
 #' rules from.
@@ -500,7 +500,7 @@ billingconductor_disassociate_pricing_rules <- function(Arn, PricingRuleArns) {
 #' @description
 #' This is a paginated call to list linked accounts that are linked to the payer account for the specified time period. If no information is provided, the current billing period is used. The response will optionally include the billing group that's associated with the linked account.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/list_account_associations.html](https://paws-r.github.io/docs/billingconductor/list_account_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_list_account_associations/](https://www.paws-r-sdk.com/docs/billingconductor_list_account_associations/) for full documentation.
 #'
 #' @param BillingPeriod The preferred billing period to get account associations.
 #' @param Filters The filter on the account ID of the linked account, or any of the
@@ -542,7 +542,7 @@ billingconductor_list_account_associations <- function(BillingPeriod = NULL, Fil
 #' @description
 #' A paginated call to retrieve a summary report of actual Amazon Web Services charges and the calculated Amazon Web Services charges based on the associated pricing plan of a billing group.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/list_billing_group_cost_reports.html](https://paws-r.github.io/docs/billingconductor/list_billing_group_cost_reports.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_list_billing_group_cost_reports/](https://www.paws-r-sdk.com/docs/billingconductor_list_billing_group_cost_reports/) for full documentation.
 #'
 #' @param BillingPeriod The preferred billing period for your report.
 #' @param MaxResults The maximum number of reports to retrieve.
@@ -576,7 +576,7 @@ billingconductor_list_billing_group_cost_reports <- function(BillingPeriod = NUL
 #' @description
 #' A paginated call to retrieve a list of billing groups for the given billing period. If you don't provide a billing group, the current billing period is used.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/list_billing_groups.html](https://paws-r.github.io/docs/billingconductor/list_billing_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_list_billing_groups/](https://www.paws-r-sdk.com/docs/billingconductor_list_billing_groups/) for full documentation.
 #'
 #' @param BillingPeriod The preferred billing period to get billing groups.
 #' @param MaxResults The maximum number of billing groups to retrieve.
@@ -610,7 +610,7 @@ billingconductor_list_billing_groups <- function(BillingPeriod = NULL, MaxResult
 #' @description
 #' A paginated call to get a list of all custom line item versions.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/list_custom_line_item_versions.html](https://paws-r.github.io/docs/billingconductor/list_custom_line_item_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_list_custom_line_item_versions/](https://www.paws-r-sdk.com/docs/billingconductor_list_custom_line_item_versions/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) for the custom line item.
 #' @param MaxResults The maximum number of custom line item versions to retrieve.
@@ -645,7 +645,7 @@ billingconductor_list_custom_line_item_versions <- function(Arn, MaxResults = NU
 #' @description
 #' A paginated call to get a list of all custom line items (FFLIs) for the given billing period. If you don't provide a billing period, the current billing period is used.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/list_custom_line_items.html](https://paws-r.github.io/docs/billingconductor/list_custom_line_items.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_list_custom_line_items/](https://www.paws-r-sdk.com/docs/billingconductor_list_custom_line_items/) for full documentation.
 #'
 #' @param BillingPeriod The preferred billing period to get custom line items (FFLIs).
 #' @param MaxResults The maximum number of billing groups to retrieve.
@@ -680,7 +680,7 @@ billingconductor_list_custom_line_items <- function(BillingPeriod = NULL, MaxRes
 #' @description
 #' A paginated call to get pricing plans for the given billing period. If you don't provide a billing period, the current billing period is used.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/list_pricing_plans.html](https://paws-r.github.io/docs/billingconductor/list_pricing_plans.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_list_pricing_plans/](https://www.paws-r-sdk.com/docs/billingconductor_list_pricing_plans/) for full documentation.
 #'
 #' @param BillingPeriod The preferred billing period to get pricing plan.
 #' @param Filters A `ListPricingPlansFilter` that specifies the Amazon Resource Name
@@ -714,7 +714,7 @@ billingconductor_list_pricing_plans <- function(BillingPeriod = NULL, Filters = 
 #' @description
 #' A list of the pricing plans that are associated with a pricing rule.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/list_pricing_plans_associated_with_pricing_rule.html](https://paws-r.github.io/docs/billingconductor/list_pricing_plans_associated_with_pricing_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_list_pricing_plans_associated_with_pricing_rule/](https://www.paws-r-sdk.com/docs/billingconductor_list_pricing_plans_associated_with_pricing_rule/) for full documentation.
 #'
 #' @param BillingPeriod The pricing plan billing period for which associations will be listed.
 #' @param PricingRuleArn &#91;required&#93; The pricing rule Amazon Resource Name (ARN) for which associations will
@@ -748,7 +748,7 @@ billingconductor_list_pricing_plans_associated_with_pricing_rule <- function(Bil
 #' @description
 #' Describes a pricing rule that can be associated to a pricing plan, or set of pricing plans.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/list_pricing_rules.html](https://paws-r.github.io/docs/billingconductor/list_pricing_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_list_pricing_rules/](https://www.paws-r-sdk.com/docs/billingconductor_list_pricing_rules/) for full documentation.
 #'
 #' @param BillingPeriod The preferred billing period to get the pricing plan.
 #' @param Filters A `DescribePricingRuleFilter` that specifies the Amazon Resource Name
@@ -782,7 +782,7 @@ billingconductor_list_pricing_rules <- function(BillingPeriod = NULL, Filters = 
 #' @description
 #' Lists the pricing rules that are associated with a pricing plan.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/list_pricing_rules_associated_to_pricing_plan.html](https://paws-r.github.io/docs/billingconductor/list_pricing_rules_associated_to_pricing_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_list_pricing_rules_associated_to_pricing_plan/](https://www.paws-r-sdk.com/docs/billingconductor_list_pricing_rules_associated_to_pricing_plan/) for full documentation.
 #'
 #' @param BillingPeriod The billing period for which the pricing rule associations are to be
 #' listed.
@@ -816,7 +816,7 @@ billingconductor_list_pricing_rules_associated_to_pricing_plan <- function(Billi
 #' @description
 #' List the resources that are associated to a custom line item.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/list_resources_associated_to_custom_line_item.html](https://paws-r.github.io/docs/billingconductor/list_resources_associated_to_custom_line_item.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_list_resources_associated_to_custom_line_item/](https://www.paws-r-sdk.com/docs/billingconductor_list_resources_associated_to_custom_line_item/) for full documentation.
 #'
 #' @param BillingPeriod The billing period for which the resource associations will be listed.
 #' @param Arn &#91;required&#93; The ARN of the custom line item for which the resource associations will
@@ -851,7 +851,7 @@ billingconductor_list_resources_associated_to_custom_line_item <- function(Billi
 #' @description
 #' A list the tags for a resource.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/list_tags_for_resource.html](https://paws-r.github.io/docs/billingconductor/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/billingconductor_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource to list the
 #' tags.
@@ -882,7 +882,7 @@ billingconductor_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Associates the specified tags to a resource with the specified `resourceArn`. If existing tags on a resource are not specified in the request parameters, they are not changed.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/tag_resource.html](https://paws-r.github.io/docs/billingconductor/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_tag_resource/](https://www.paws-r-sdk.com/docs/billingconductor_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which to add tags.
 #' @param Tags &#91;required&#93; The tags to add to the resource as a list of key-value pairs.
@@ -912,7 +912,7 @@ billingconductor_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Deletes specified tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/untag_resource.html](https://paws-r.github.io/docs/billingconductor/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_untag_resource/](https://www.paws-r-sdk.com/docs/billingconductor_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which to delete tags.
 #' @param TagKeys &#91;required&#93; The tags to delete from the resource as a list of key-value pairs.
@@ -942,7 +942,7 @@ billingconductor_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' This updates an existing billing group.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/update_billing_group.html](https://paws-r.github.io/docs/billingconductor/update_billing_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_update_billing_group/](https://www.paws-r-sdk.com/docs/billingconductor_update_billing_group/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the billing group being updated.
 #' @param Name The name of the billing group. The names must be unique to each billing
@@ -979,7 +979,7 @@ billingconductor_update_billing_group <- function(Arn, Name = NULL, Status = NUL
 #' @description
 #' Update an existing custom line item in the current or previous billing period.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/update_custom_line_item.html](https://paws-r.github.io/docs/billingconductor/update_custom_line_item.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_update_custom_line_item/](https://www.paws-r-sdk.com/docs/billingconductor_update_custom_line_item/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The ARN of the custom line item to be updated.
 #' @param Name The new name for the custom line item.
@@ -1013,7 +1013,7 @@ billingconductor_update_custom_line_item <- function(Arn, Name = NULL, Descripti
 #' @description
 #' This updates an existing pricing plan.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/update_pricing_plan.html](https://paws-r.github.io/docs/billingconductor/update_pricing_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_update_pricing_plan/](https://www.paws-r-sdk.com/docs/billingconductor_update_pricing_plan/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the pricing plan that you're updating.
 #' @param Name The name of the pricing plan. The name must be unique to each pricing
@@ -1045,7 +1045,7 @@ billingconductor_update_pricing_plan <- function(Arn, Name = NULL, Description =
 #' @description
 #' Updates an existing pricing rule.
 #'
-#' See [https://paws-r.github.io/docs/billingconductor/update_pricing_rule.html](https://paws-r.github.io/docs/billingconductor/update_pricing_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/billingconductor_update_pricing_rule/](https://www.paws-r-sdk.com/docs/billingconductor_update_pricing_rule/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the pricing rule to update.
 #' @param Name The new name of the pricing rule. The name must be unique to each

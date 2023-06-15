@@ -18,6 +18,6 @@ elb_disable_availability_zones_for_load_balancer(
 \description{
 Removes the specified Availability Zones from the set of Availability Zones for the specified load balancer in EC2-Classic or a default VPC.
 
-See \url{https://paws-r.github.io/docs/elb/disable_availability_zones_for_load_balancer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_disable_availability_zones_for_load_balancer/} for full documentation.
 }
 \keyword{internal}

@@ -32,11 +32,13 @@ recipe or the
 \href{https://docs.aws.amazon.com/personalize/latest/dg/native-recipe-hrnn-coldstart.html}{HRNN-Coldstart}
 recipe.}
 
-\item{tags}{A list of tags to apply to the solution version.}
+\item{tags}{A list of
+\href{https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html}{tags}
+to apply to the solution version.}
 }
 \description{
 Trains or retrains an active solution in a Custom dataset group. A solution is created using the \code{\link[=personalize_create_solution]{create_solution}} operation and must be in the ACTIVE state before calling \code{\link[=personalize_create_solution_version]{create_solution_version}}. A new version of the solution is created every time you call this operation.
 
-See \url{https://paws-r.github.io/docs/personalize/create_solution_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_create_solution_version/} for full documentation.
 }
 \keyword{internal}

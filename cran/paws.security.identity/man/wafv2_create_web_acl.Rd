@@ -102,6 +102,6 @@ body sizes that are larger than the default. For more information, see
 \description{
 Creates a WebACL per the specifications provided.
 
-See \url{https://paws-r.github.io/docs/wafv2/create_web_acl.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_create_web_acl/} for full documentation.
 }
 \keyword{internal}

@@ -47,6 +47,6 @@ the results. Or, if you have configured \code{ExportingConfig} in the
 \description{
 Updates the properties of a domain, including creating or selecting a dead letter queue or an encryption key.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/update_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_update_domain/} for full documentation.
 }
 \keyword{internal}

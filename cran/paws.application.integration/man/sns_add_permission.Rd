@@ -24,6 +24,6 @@ Valid values: Any Amazon SNS action name, for example
 \description{
 Adds a statement to a topic's access control policy, granting access for the specified Amazon Web Services accounts to the specified actions.
 
-See \url{https://paws-r.github.io/docs/sns/add_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_add_permission/} for full documentation.
 }
 \keyword{internal}

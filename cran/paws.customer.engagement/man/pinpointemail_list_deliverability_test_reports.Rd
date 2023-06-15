@@ -28,6 +28,6 @@ The value you specify has to be at least 0, and can be no more than
 \description{
 Show a list of the predictive inbox placement tests that you've performed, regardless of their statuses. For predictive inbox placement tests that are complete, you can use the \code{\link[=pinpointemail_get_deliverability_test_report]{get_deliverability_test_report}} operation to view the results.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/list_deliverability_test_reports.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_list_deliverability_test_reports/} for full documentation.
 }
 \keyword{internal}

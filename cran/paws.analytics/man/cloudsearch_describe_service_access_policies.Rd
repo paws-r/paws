@@ -16,6 +16,6 @@ pending changes (\code{false}). Defaults to \code{false}.}
 \description{
 Gets information about the access policies that control access to the domain's document and search endpoints. By default, shows the configuration with any pending changes. Set the \code{Deployed} option to \code{true} to show the active configuration and exclude pending changes. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html" target="_blank">}}Configuring Access for a Search Domain\if{html}{\out{</a>}} in the \emph{Amazon CloudSearch Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/cloudsearch/describe_service_access_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudsearch_describe_service_access_policies/} for full documentation.
 }
 \keyword{internal}

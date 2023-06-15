@@ -21,6 +21,6 @@ proton_delete_service_template_version(
 \description{
 If no other minor versions of a service template exist, delete a major version of the service template if it's not the \code{Recommended} version. Delete the \code{Recommended} version of the service template if no other major versions or minor versions of the service template exist. A major version of a service template is a version that \emph{isn't} backwards compatible.
 
-See \url{https://paws-r.github.io/docs/proton/delete_service_template_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_delete_service_template_version/} for full documentation.
 }
 \keyword{internal}

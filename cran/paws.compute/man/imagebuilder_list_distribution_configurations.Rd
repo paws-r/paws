@@ -21,6 +21,6 @@ a previously truncated response.}
 \description{
 Returns a list of distribution configurations.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/list_distribution_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_list_distribution_configurations/} for full documentation.
 }
 \keyword{internal}

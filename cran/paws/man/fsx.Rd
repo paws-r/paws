@@ -97,7 +97,7 @@ application administrators to launch and use shared file storage.
 \link[paws.storage:fsx_update_file_cache]{update_file_cache} \tab Updates the configuration of an existing Amazon File Cache resource\cr
 \link[paws.storage:fsx_update_file_system]{update_file_system} \tab Use this operation to update the configuration of an existing Amazon FSx file system\cr
 \link[paws.storage:fsx_update_snapshot]{update_snapshot} \tab Updates the name of an Amazon FSx for OpenZFS snapshot\cr
-\link[paws.storage:fsx_update_storage_virtual_machine]{update_storage_virtual_machine} \tab Updates an Amazon FSx for ONTAP storage virtual machine (SVM)\cr
+\link[paws.storage:fsx_update_storage_virtual_machine]{update_storage_virtual_machine} \tab Updates an FSx for ONTAP storage virtual machine (SVM)\cr
 \link[paws.storage:fsx_update_volume]{update_volume} \tab Updates the configuration of an Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS volume
 }
 }

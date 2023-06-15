@@ -12,6 +12,6 @@ ssmincidents_delete_incident_record(arn)
 \description{
 Delete an incident record from Incident Manager.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/delete_incident_record.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_delete_incident_record/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ servicecatalog_disassociate_product_from_portfolio(
 \description{
 Disassociates the specified product from the specified portfolio.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/disassociate_product_from_portfolio.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_product_from_portfolio/} for full documentation.
 }
 \keyword{internal}

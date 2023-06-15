@@ -21,6 +21,6 @@ arguments unchanged. Each pagination token expires after 24 hours.}
 \description{
 Lists all watchlists in a specified domain.
 
-See \url{https://paws-r.github.io/docs/voiceid/list_watchlists.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/voiceid_list_watchlists/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ personalize_delete_recommender(recommenderArn)
 \description{
 Deactivates and removes a recommender. A deleted recommender can no longer be specified in a \href{https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html}{GetRecommendations} request.
 
-See \url{https://paws-r.github.io/docs/personalize/delete_recommender.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_delete_recommender/} for full documentation.
 }
 \keyword{internal}

@@ -35,6 +35,6 @@ endpoint. Only relevant if the list of static members is empty.}
 \description{
 Creates a new custom endpoint and associates it with an Amazon Neptune DB cluster.
 
-See \url{https://paws-r.github.io/docs/neptune/create_db_cluster_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_create_db_cluster_endpoint/} for full documentation.
 }
 \keyword{internal}

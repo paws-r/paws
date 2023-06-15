@@ -14,6 +14,6 @@ pinpoint_send_otp_message(ApplicationId, SendOTPMessageRequestParameters)
 \description{
 Send an OTP message
 
-See \url{https://paws-r.github.io/docs/pinpoint/send_otp_message.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_send_otp_message/} for full documentation.
 }
 \keyword{internal}

@@ -140,6 +140,6 @@ provide sensitive information.
 \description{
 Creates a new user in the specified user pool.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_create_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_create_user/} for full documentation.
 }
 \keyword{internal}

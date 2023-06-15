@@ -15,6 +15,6 @@ opsworks_set_time_based_auto_scaling(InstanceId, AutoScalingSchedule = NULL)
 \description{
 Specify the time-based auto scaling configuration for a specified instance. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html}{Managing Load with Time-based and Load-based Instances}.
 
-See \url{https://paws-r.github.io/docs/opsworks/set_time_based_auto_scaling.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_set_time_based_auto_scaling/} for full documentation.
 }
 \keyword{internal}

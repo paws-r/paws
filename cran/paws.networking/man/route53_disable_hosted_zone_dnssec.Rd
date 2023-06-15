@@ -12,6 +12,6 @@ route53_disable_hosted_zone_dnssec(HostedZoneId)
 \description{
 Disables DNSSEC signing in a specific hosted zone. This action does not deactivate any key-signing keys (KSKs) that are active in the hosted zone.
 
-See \url{https://paws-r.github.io/docs/route53/disable_hosted_zone_dnssec.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_disable_hosted_zone_dnssec/} for full documentation.
 }
 \keyword{internal}

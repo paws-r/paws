@@ -69,6 +69,6 @@ TCP. Currently, UDP is only supported in the Windows native client.}
 \description{
 Creates a stack to start streaming applications to users. A stack consists of an associated fleet, user access policies, and storage configurations.
 
-See \url{https://paws-r.github.io/docs/appstream/create_stack.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_create_stack/} for full documentation.
 }
 \keyword{internal}

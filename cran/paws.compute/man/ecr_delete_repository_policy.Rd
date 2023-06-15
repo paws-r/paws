@@ -17,6 +17,6 @@ to delete.}
 \description{
 Deletes the repository policy associated with the specified repository.
 
-See \url{https://paws-r.github.io/docs/ecr/delete_repository_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_delete_repository_policy/} for full documentation.
 }
 \keyword{internal}

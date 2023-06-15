@@ -30,6 +30,6 @@ Services Region.}
 \description{
 Creates a \emph{context}. A context is a lineage tracking entity that represents a logical grouping of other tracking or experiment entities. Some examples are an endpoint and a model package. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html}{Amazon SageMaker ML Lineage Tracking}.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_context.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_context/} for full documentation.
 }
 \keyword{internal}

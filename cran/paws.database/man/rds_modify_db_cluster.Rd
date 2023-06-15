@@ -560,6 +560,6 @@ Valid for: Aurora Serverless v1 DB clusters only}
 \description{
 Modify the settings for an Amazon Aurora DB cluster or a Multi-AZ DB cluster. You can change one or more settings by specifying these parameters and the new values in the request.
 
-See \url{https://paws-r.github.io/docs/rds/modify_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_modify_db_cluster/} for full documentation.
 }
 \keyword{internal}

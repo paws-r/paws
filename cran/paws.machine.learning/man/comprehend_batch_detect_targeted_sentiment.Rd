@@ -18,6 +18,6 @@ supported language.}
 \description{
 Inspects a batch of documents and returns a sentiment analysis for each entity identified in the documents.
 
-See \url{https://paws-r.github.io/docs/comprehend/batch_detect_targeted_sentiment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_batch_detect_targeted_sentiment/} for full documentation.
 }
 \keyword{internal}

@@ -76,6 +76,6 @@ characters: + - = . _ : / @.
 \description{
 Creates a route calculator resource in your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/locationservice/create_route_calculator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_create_route_calculator/} for full documentation.
 }
 \keyword{internal}

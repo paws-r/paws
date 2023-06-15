@@ -23,6 +23,6 @@ getting the next set of dataset import jobs (if they exist).}
 \description{
 Returns a list of dataset import jobs that use the given dataset. When a dataset is not specified, all the dataset import jobs associated with the account are listed. The response provides the properties for each dataset import job, including the Amazon Resource Name (ARN). For more information on dataset import jobs, see \code{\link[=personalize_create_dataset_import_job]{create_dataset_import_job}}. For more information on datasets, see \code{\link[=personalize_create_dataset]{create_dataset}}.
 
-See \url{https://paws-r.github.io/docs/personalize/list_dataset_import_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_list_dataset_import_jobs/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ personalize_delete_filter(filterArn)
 \description{
 Deletes a filter.
 
-See \url{https://paws-r.github.io/docs/personalize/delete_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_delete_filter/} for full documentation.
 }
 \keyword{internal}

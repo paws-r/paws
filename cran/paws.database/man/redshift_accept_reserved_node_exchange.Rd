@@ -22,6 +22,6 @@ the exchange. You can obtain the value for the parameter by calling
 \description{
 Exchanges a DC1 Reserved Node for a DC2 Reserved Node with no changes to the configuration (term, payment type, or number of nodes) and no additional costs.
 
-See \url{https://paws-r.github.io/docs/redshift/accept_reserved_node_exchange.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_accept_reserved_node_exchange/} for full documentation.
 }
 \keyword{internal}

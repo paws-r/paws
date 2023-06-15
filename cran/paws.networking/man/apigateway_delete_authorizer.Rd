@@ -14,6 +14,6 @@ apigateway_delete_authorizer(restApiId, authorizerId)
 \description{
 Deletes an existing Authorizer resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/delete_authorizer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_delete_authorizer/} for full documentation.
 }
 \keyword{internal}

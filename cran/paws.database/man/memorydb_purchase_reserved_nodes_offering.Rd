@@ -24,6 +24,6 @@ A tag key must be accompanied by a tag value, although null is accepted.}
 \description{
 Allows you to purchase a reserved node offering. Reserved nodes are not eligible for cancellation and are non-refundable.
 
-See \url{https://paws-r.github.io/docs/memorydb/purchase_reserved_nodes_offering.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_purchase_reserved_nodes_offering/} for full documentation.
 }
 \keyword{internal}

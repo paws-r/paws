@@ -16,6 +16,6 @@ to find this value.}
 \description{
 Removes a package from the specified Amazon OpenSearch Service domain. The package can't be in use with any OpenSearch index for the dissociation to succeed. The package is still available in OpenSearch Service for association later. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html}{Custom packages for Amazon OpenSearch Service}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/dissociate_package.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_dissociate_package/} for full documentation.
 }
 \keyword{internal}

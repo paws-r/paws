@@ -16,6 +16,6 @@ cache node IDs.}
 \description{
 Reboots some, or all, of the cache nodes within a provisioned cluster. This operation applies any modified cache parameter groups to the cluster. The reboot operation takes place as soon as possible, and results in a momentary outage to the cluster. During the reboot, the cluster status is set to REBOOTING.
 
-See \url{https://paws-r.github.io/docs/elasticache/reboot_cache_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_reboot_cache_cluster/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ ssmincidents_get_response_plan(arn)
 \description{
 Retrieves the details of the specified response plan.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/get_response_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_get_response_plan/} for full documentation.
 }
 \keyword{internal}

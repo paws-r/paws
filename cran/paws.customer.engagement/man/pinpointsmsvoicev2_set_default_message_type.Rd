@@ -17,6 +17,6 @@ critical or time-sensitive.}
 \description{
 Sets the default message type on a configuration set.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/set_default_message_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_set_default_message_type/} for full documentation.
 }
 \keyword{internal}

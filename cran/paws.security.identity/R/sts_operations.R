@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Returns a set of temporary security credentials that you can use to access Amazon Web Services resources. These temporary credentials consist of an access key ID, a secret access key, and a security token. Typically, you use [`assume_role`][sts_assume_role] within your account or for cross-account access. For a comparison of [`assume_role`][sts_assume_role] with other API operations that produce temporary credentials, see [Requesting Temporary Security Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html) and [Comparing the Amazon Web Services STS API operations](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison) in the *IAM User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/sts/assume_role.html](https://paws-r.github.io/docs/sts/assume_role.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sts_assume_role/](https://www.paws-r-sdk.com/docs/sts_assume_role/) for full documentation.
 #'
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the role to assume.
 #' @param RoleSessionName &#91;required&#93; An identifier for the assumed role session.
@@ -249,7 +249,7 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' @description
 #' Returns a set of temporary security credentials for users who have been authenticated via a SAML authentication response. This operation provides a mechanism for tying an enterprise identity store or directory to role-based Amazon Web Services access without user-specific credentials or configuration. For a comparison of [`assume_role_with_saml`][sts_assume_role_with_saml] with the other API operations that produce temporary credentials, see [Requesting Temporary Security Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html) and [Comparing the Amazon Web Services STS API operations](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison) in the *IAM User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/sts/assume_role_with_saml.html](https://paws-r.github.io/docs/sts/assume_role_with_saml.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sts_assume_role_with_saml/](https://www.paws-r-sdk.com/docs/sts_assume_role_with_saml/) for full documentation.
 #'
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the role that the caller is assuming.
 #' @param PrincipalArn &#91;required&#93; The Amazon Resource Name (ARN) of the SAML provider in IAM that
@@ -367,7 +367,7 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' @description
 #' Returns a set of temporary security credentials for users who have been authenticated in a mobile or web application with a web identity provider. Example providers include the OAuth 2.0 providers Login with Amazon and Facebook, or any OpenID Connect-compatible identity provider such as Google or [Amazon Cognito federated identities](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html).
 #'
-#' See [https://paws-r.github.io/docs/sts/assume_role_with_web_identity.html](https://paws-r.github.io/docs/sts/assume_role_with_web_identity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sts_assume_role_with_web_identity/](https://www.paws-r-sdk.com/docs/sts_assume_role_with_web_identity/) for full documentation.
 #'
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the role that the caller is assuming.
 #' @param RoleSessionName &#91;required&#93; An identifier for the assumed role session. Typically, you pass the name
@@ -500,7 +500,7 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
 #' @description
 #' Decodes additional information about the authorization status of a request from an encoded message returned in response to an Amazon Web Services request.
 #'
-#' See [https://paws-r.github.io/docs/sts/decode_authorization_message.html](https://paws-r.github.io/docs/sts/decode_authorization_message.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sts_decode_authorization_message/](https://www.paws-r-sdk.com/docs/sts_decode_authorization_message/) for full documentation.
 #'
 #' @param EncodedMessage &#91;required&#93; The encoded message that was returned with the response.
 #'
@@ -529,7 +529,7 @@ sts_decode_authorization_message <- function(EncodedMessage) {
 #' @description
 #' Returns the account identifier for the specified access key ID.
 #'
-#' See [https://paws-r.github.io/docs/sts/get_access_key_info.html](https://paws-r.github.io/docs/sts/get_access_key_info.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sts_get_access_key_info/](https://www.paws-r-sdk.com/docs/sts_get_access_key_info/) for full documentation.
 #'
 #' @param AccessKeyId &#91;required&#93; The identifier of an access key.
 #' 
@@ -562,7 +562,7 @@ sts_get_access_key_info <- function(AccessKeyId) {
 #' @description
 #' Returns details about the IAM user or role whose credentials are used to call the operation.
 #'
-#' See [https://paws-r.github.io/docs/sts/get_caller_identity.html](https://paws-r.github.io/docs/sts/get_caller_identity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sts_get_caller_identity/](https://www.paws-r-sdk.com/docs/sts_get_caller_identity/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -590,7 +590,7 @@ sts_get_caller_identity <- function() {
 #' @description
 #' Returns a set of temporary security credentials (consisting of an access key ID, a secret access key, and a security token) for a user. A typical use is in a proxy application that gets temporary security credentials on behalf of distributed applications inside a corporate network.
 #'
-#' See [https://paws-r.github.io/docs/sts/get_federation_token.html](https://paws-r.github.io/docs/sts/get_federation_token.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sts_get_federation_token/](https://www.paws-r-sdk.com/docs/sts_get_federation_token/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the federated user. The name is used as an identifier for
 #' the temporary security credentials (such as `Bob`). For example, you can
@@ -746,7 +746,7 @@ sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, Dur
 #' @description
 #' Returns a set of temporary credentials for an Amazon Web Services account or IAM user. The credentials consist of an access key ID, a secret access key, and a security token. Typically, you use [`get_session_token`][sts_get_session_token] if you want to use MFA to protect programmatic calls to specific Amazon Web Services API operations like Amazon EC2 `StopInstances`.
 #'
-#' See [https://paws-r.github.io/docs/sts/get_session_token.html](https://paws-r.github.io/docs/sts/get_session_token.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sts_get_session_token/](https://www.paws-r-sdk.com/docs/sts_get_session_token/) for full documentation.
 #'
 #' @param DurationSeconds The duration, in seconds, that the credentials should remain valid.
 #' Acceptable durations for IAM user sessions range from 900 seconds (15

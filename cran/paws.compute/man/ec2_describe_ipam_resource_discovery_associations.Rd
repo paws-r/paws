@@ -31,6 +31,6 @@ page of results.}
 \description{
 Describes resource discovery association with an Amazon VPC IPAM. An associated resource discovery is a resource discovery that has been associated with an IPAM..
 
-See \url{https://paws-r.github.io/docs/ec2/describe_ipam_resource_discovery_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_ipam_resource_discovery_associations/} for full documentation.
 }
 \keyword{internal}

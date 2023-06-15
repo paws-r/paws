@@ -25,9 +25,9 @@ information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/referenc
 \item{effect}{[required] Determines whether the statement allows or denies access to the
 resource.}
 
-\item{principal}{[required] An IAM principal, such as an IAM users, IAM roles, or AWS services that
-is allowed or denied access to a resource. For more information, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html}{AWS JSON policy elements: Principal}.}
+\item{principal}{[required] An IAM principal, such as an IAM user, IAM role, or Amazon Web Services
+services that is allowed or denied access to a resource. For more
+information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html}{Amazon Web Services JSON policy elements: Principal}.}
 
 \item{action}{[required] The Amazon Lex action that this policy either allows or denies. The
 action must apply to the resource type of the specified ARN. For more
@@ -51,6 +51,6 @@ the policy with the new values.}
 \description{
 Adds a new resource policy statement to a bot or bot alias. If a resource policy exists, the statement is added to the current resource policy. If a policy doesn't exist, a new policy is created.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/create_resource_policy_statement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_create_resource_policy_statement/} for full documentation.
 }
 \keyword{internal}

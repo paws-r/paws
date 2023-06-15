@@ -16,6 +16,6 @@ opsworks_update_volume(VolumeId, Name = NULL, MountPoint = NULL)
 \description{
 Updates an Amazon EBS volume's name or mount point. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
 
-See \url{https://paws-r.github.io/docs/opsworks/update_volume.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_update_volume/} for full documentation.
 }
 \keyword{internal}

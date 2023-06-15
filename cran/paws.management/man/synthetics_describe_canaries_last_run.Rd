@@ -36,6 +36,6 @@ you are allowed to view. For more information, see \href{https://docs.aws.amazon
 \description{
 Use this operation to see information from the most recent run of each canary that you have created.
 
-See \url{https://paws-r.github.io/docs/synthetics/describe_canaries_last_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/synthetics_describe_canaries_last_run/} for full documentation.
 }
 \keyword{internal}

@@ -37,6 +37,6 @@ merge operation is successful.}
 \description{
 Returns information about the merge options available for merging two specified branches. For details about why a merge option is not available, use GetMergeConflicts or DescribeMergeConflicts.
 
-See \url{https://paws-r.github.io/docs/codecommit/get_merge_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_get_merge_options/} for full documentation.
 }
 \keyword{internal}

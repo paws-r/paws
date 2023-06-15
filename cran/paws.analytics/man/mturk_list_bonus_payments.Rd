@@ -30,6 +30,6 @@ specified}
 \description{
 The \code{\link[=mturk_list_bonus_payments]{list_bonus_payments}} operation retrieves the amounts of bonuses you have paid to Workers for a given HIT or assignment.
 
-See \url{https://paws-r.github.io/docs/mturk/list_bonus_payments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_list_bonus_payments/} for full documentation.
 }
 \keyword{internal}

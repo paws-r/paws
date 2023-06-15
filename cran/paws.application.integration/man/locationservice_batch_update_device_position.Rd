@@ -15,6 +15,6 @@ locationservice_batch_update_device_position(TrackerName, Updates)
 \description{
 Uploads position update data for one or more devices to a tracker resource. Amazon Location uses the data when it reports the last known device position and position history. Amazon Location retains location data for 30 days.
 
-See \url{https://paws-r.github.io/docs/locationservice/batch_update_device_position.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_batch_update_device_position/} for full documentation.
 }
 \keyword{internal}

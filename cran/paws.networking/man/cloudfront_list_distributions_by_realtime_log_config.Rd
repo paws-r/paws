@@ -30,6 +30,6 @@ associated distributions you want to list.}
 \description{
 Gets a list of distributions that have a cache behavior that's associated with the specified real-time log configuration.
 
-See \url{https://paws-r.github.io/docs/cloudfront/list_distributions_by_realtime_log_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_distributions_by_realtime_log_config/} for full documentation.
 }
 \keyword{internal}

@@ -41,6 +41,6 @@ implemented.}
 \description{
 Posts updates to records and adds and deletes records for a dataset and user.
 
-See \url{https://paws-r.github.io/docs/cognitosync/update_records.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitosync_update_records/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ A tag key must be accompanied by a tag value, although null is accepted.}
 \description{
 Creates a MemoryDB user. For more information, see \href{https://docs.aws.amazon.com/memorydb/latest/devguide/clusters.acls.html}{Authenticating users with Access Contol Lists (ACLs)}.
 
-See \url{https://paws-r.github.io/docs/memorydb/create_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_create_user/} for full documentation.
 }
 \keyword{internal}

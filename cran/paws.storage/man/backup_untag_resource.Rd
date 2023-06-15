@@ -17,6 +17,6 @@ resource.}
 \description{
 Removes a set of key-value pairs from a recovery point, backup plan, or backup vault identified by an Amazon Resource Name (ARN)
 
-See \url{https://paws-r.github.io/docs/backup/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_untag_resource/} for full documentation.
 }
 \keyword{internal}

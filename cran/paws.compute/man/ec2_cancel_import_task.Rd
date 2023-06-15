@@ -19,6 +19,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Cancels an in-process import virtual machine or import snapshot task.
 
-See \url{https://paws-r.github.io/docs/ec2/cancel_import_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_cancel_import_task/} for full documentation.
 }
 \keyword{internal}

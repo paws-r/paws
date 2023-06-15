@@ -20,6 +20,6 @@ results.}
 \description{
 This API is in preview release for Amazon Connect and is subject to change.
 
-See \url{https://paws-r.github.io/docs/connect/list_security_keys.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_list_security_keys/} for full documentation.
 }
 \keyword{internal}

@@ -53,6 +53,6 @@ earliest backtrack time, an error occurs.}
 \description{
 Backtracks a DB cluster to a specific time, without creating a new DB cluster.
 
-See \url{https://paws-r.github.io/docs/rds/backtrack_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_backtrack_db_cluster/} for full documentation.
 }
 \keyword{internal}

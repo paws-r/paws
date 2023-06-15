@@ -10,6 +10,6 @@ iam_list_open_id_connect_providers()
 \description{
 Lists information about the IAM OpenID Connect (OIDC) provider resource objects defined in the Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/iam/list_open_id_connect_providers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_open_id_connect_providers/} for full documentation.
 }
 \keyword{internal}

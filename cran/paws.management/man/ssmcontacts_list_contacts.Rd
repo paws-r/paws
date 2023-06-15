@@ -25,6 +25,6 @@ is type \code{ESCALATION}.}
 \description{
 Lists all contacts and escalation plans in Incident Manager.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/list_contacts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_list_contacts/} for full documentation.
 }
 \keyword{internal}

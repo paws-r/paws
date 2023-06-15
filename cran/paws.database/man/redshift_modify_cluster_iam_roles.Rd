@@ -27,6 +27,6 @@ for the cluster when the cluster was last modified.}
 \description{
 Modifies the list of Identity and Access Management (IAM) roles that can be used by the cluster to access other Amazon Web Services services.
 
-See \url{https://paws-r.github.io/docs/redshift/modify_cluster_iam_roles.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_modify_cluster_iam_roles/} for full documentation.
 }
 \keyword{internal}

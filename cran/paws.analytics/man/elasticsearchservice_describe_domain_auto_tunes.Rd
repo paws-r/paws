@@ -24,6 +24,6 @@ NextToken. It is used for pagination.}
 \description{
 Provides scheduled Auto-Tune action details for the Elasticsearch domain, such as Auto-Tune action type, description, severity, and scheduled date.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/describe_domain_auto_tunes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_domain_auto_tunes/} for full documentation.
 }
 \keyword{internal}

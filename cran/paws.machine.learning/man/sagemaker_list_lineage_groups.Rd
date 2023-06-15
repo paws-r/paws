@@ -34,6 +34,6 @@ defaults to 10.}
 \description{
 A list of lineage groups shared with your Amazon Web Services account. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/xaccount-lineage-tracking.html}{Cross-Account Lineage Tracking} in the \emph{Amazon SageMaker Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_lineage_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_lineage_groups/} for full documentation.
 }
 \keyword{internal}

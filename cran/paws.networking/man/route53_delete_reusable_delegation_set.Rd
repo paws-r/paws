@@ -12,6 +12,6 @@ route53_delete_reusable_delegation_set(Id)
 \description{
 Deletes a reusable delegation set.
 
-See \url{https://paws-r.github.io/docs/route53/delete_reusable_delegation_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_delete_reusable_delegation_set/} for full documentation.
 }
 \keyword{internal}

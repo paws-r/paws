@@ -65,6 +65,6 @@ can set the value to \code{ACTIVE} or \code{INACTIVE}.}
 \description{
 Creates a new key-signing key (KSK) associated with a hosted zone. You can only have two KSKs per hosted zone.
 
-See \url{https://paws-r.github.io/docs/route53/create_key_signing_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_create_key_signing_key/} for full documentation.
 }
 \keyword{internal}

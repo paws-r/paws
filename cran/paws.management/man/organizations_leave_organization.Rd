@@ -9,6 +9,6 @@ organizations_leave_organization()
 \description{
 Removes a member account from its parent organization. This version of the operation is performed by the account that wants to leave. To remove a member account as a user in the management account, use \code{\link[=organizations_remove_account_from_organization]{remove_account_from_organization}} instead.
 
-See \url{https://paws-r.github.io/docs/organizations/leave_organization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_leave_organization/} for full documentation.
 }
 \keyword{internal}

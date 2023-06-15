@@ -470,7 +470,8 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'           "string"
 #'         ),
 #'         ThroughputCapacity = 123,
-#'         WeeklyMaintenanceStartTime = "string"
+#'         WeeklyMaintenanceStartTime = "string",
+#'         FsxAdminPassword = "string"
 #'       ),
 #'       FileSystemTypeVersion = "string",
 #'       OpenZFSConfiguration = list(
@@ -665,7 +666,8 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'                 "string"
 #'               ),
 #'               ThroughputCapacity = 123,
-#'               WeeklyMaintenanceStartTime = "string"
+#'               WeeklyMaintenanceStartTime = "string",
+#'               FsxAdminPassword = "string"
 #'             ),
 #'             FileSystemTypeVersion = "string",
 #'             OpenZFSConfiguration = list(
@@ -1127,7 +1129,8 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'           "string"
 #'         ),
 #'         ThroughputCapacity = 123,
-#'         WeeklyMaintenanceStartTime = "string"
+#'         WeeklyMaintenanceStartTime = "string",
+#'         FsxAdminPassword = "string"
 #'       ),
 #'       FileSystemTypeVersion = "string",
 #'       OpenZFSConfiguration = list(
@@ -1322,7 +1325,8 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'                 "string"
 #'               ),
 #'               ThroughputCapacity = 123,
-#'               WeeklyMaintenanceStartTime = "string"
+#'               WeeklyMaintenanceStartTime = "string",
+#'               FsxAdminPassword = "string"
 #'             ),
 #'             FileSystemTypeVersion = "string",
 #'             OpenZFSConfiguration = list(
@@ -1465,8 +1469,8 @@ fsx_create_backup <- function(FileSystemId = NULL, ClientRequestToken = NULL, Ta
 #' data repository association is a link between a directory on the file
 #' system and an Amazon S3 bucket or prefix. You can have a maximum of 8
 #' data repository associations on a file system. Data repository
-#' associations are supported for all file systems except for `Scratch_1`
-#' deployment type.
+#' associations are supported on all FSx for Lustre 2.12 and newer file
+#' systems, excluding `scratch_1` deployment type.
 #' 
 #' Each data repository association must have a unique Amazon FSx file
 #' system directory and a unique S3 bucket or prefix associated with it.
@@ -2371,7 +2375,8 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'         "string"
 #'       ),
 #'       ThroughputCapacity = 123,
-#'       WeeklyMaintenanceStartTime = "string"
+#'       WeeklyMaintenanceStartTime = "string",
+#'       FsxAdminPassword = "string"
 #'     ),
 #'     FileSystemTypeVersion = "string",
 #'     OpenZFSConfiguration = list(
@@ -2925,7 +2930,8 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'         "string"
 #'       ),
 #'       ThroughputCapacity = 123,
-#'       WeeklyMaintenanceStartTime = "string"
+#'       WeeklyMaintenanceStartTime = "string",
+#'       FsxAdminPassword = "string"
 #'     ),
 #'     FileSystemTypeVersion = "string",
 #'     OpenZFSConfiguration = list(
@@ -3302,7 +3308,8 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'               "string"
 #'             ),
 #'             ThroughputCapacity = 123,
-#'             WeeklyMaintenanceStartTime = "string"
+#'             WeeklyMaintenanceStartTime = "string",
+#'             FsxAdminPassword = "string"
 #'           ),
 #'           FileSystemTypeVersion = "string",
 #'           OpenZFSConfiguration = list(
@@ -3786,7 +3793,8 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'               "string"
 #'             ),
 #'             ThroughputCapacity = 123,
-#'             WeeklyMaintenanceStartTime = "string"
+#'             WeeklyMaintenanceStartTime = "string",
+#'             FsxAdminPassword = "string"
 #'           ),
 #'           FileSystemTypeVersion = "string",
 #'           OpenZFSConfiguration = list(
@@ -4142,7 +4150,8 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'               "string"
 #'             ),
 #'             ThroughputCapacity = 123,
-#'             WeeklyMaintenanceStartTime = "string"
+#'             WeeklyMaintenanceStartTime = "string",
+#'             FsxAdminPassword = "string"
 #'           ),
 #'           FileSystemTypeVersion = "string",
 #'           OpenZFSConfiguration = list(
@@ -4354,8 +4363,8 @@ fsx_delete_backup <- function(BackupId, ClientRequestToken = NULL) {
 #' from the Amazon S3 bucket. When deleting a data repository association,
 #' you have the option of deleting the data in the file system that
 #' corresponds to the data repository association. Data repository
-#' associations are supported for all file systems except for `Scratch_1`
-#' deployment type.
+#' associations are supported on all FSx for Lustre 2.12 and newer file
+#' systems, excluding `scratch_1` deployment type.
 #'
 #' @usage
 #' fsx_delete_data_repository_association(AssociationId,
@@ -5110,7 +5119,8 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'             "string"
 #'           ),
 #'           ThroughputCapacity = 123,
-#'           WeeklyMaintenanceStartTime = "string"
+#'           WeeklyMaintenanceStartTime = "string",
+#'           FsxAdminPassword = "string"
 #'         ),
 #'         FileSystemTypeVersion = "string",
 #'         OpenZFSConfiguration = list(
@@ -5305,7 +5315,8 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'                   "string"
 #'                 ),
 #'                 ThroughputCapacity = 123,
-#'                 WeeklyMaintenanceStartTime = "string"
+#'                 WeeklyMaintenanceStartTime = "string",
+#'                 FsxAdminPassword = "string"
 #'               ),
 #'               FileSystemTypeVersion = "string",
 #'               OpenZFSConfiguration = list(
@@ -5448,8 +5459,8 @@ fsx_describe_backups <- function(BackupIds = NULL, Filters = NULL, MaxResults = 
 #' Cache data repository associations, if one or more `AssociationIds`
 #' values are provided in the request, or if filters are used in the
 #' request. Data repository associations are supported on Amazon File Cache
-#' resources and all Amazon FSx for Lustre file systems excluding
-#' `Scratch_1` deployment types.
+#' resources and all FSx for Lustre 2.12 and newer file systems, excluding
+#' `scratch_1` deployment type.
 #' 
 #' You can use filters to narrow the response to include just data
 #' repository associations for specific file systems (use the
@@ -6190,7 +6201,8 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'           "string"
 #'         ),
 #'         ThroughputCapacity = 123,
-#'         WeeklyMaintenanceStartTime = "string"
+#'         WeeklyMaintenanceStartTime = "string",
+#'         FsxAdminPassword = "string"
 #'       ),
 #'       FileSystemTypeVersion = "string",
 #'       OpenZFSConfiguration = list(
@@ -6451,7 +6463,8 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 #'                 "string"
 #'               ),
 #'               ThroughputCapacity = 123,
-#'               WeeklyMaintenanceStartTime = "string"
+#'               WeeklyMaintenanceStartTime = "string",
+#'               FsxAdminPassword = "string"
 #'             ),
 #'             FileSystemTypeVersion = "string",
 #'             OpenZFSConfiguration = list(
@@ -6911,7 +6924,8 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'                 "string"
 #'               ),
 #'               ThroughputCapacity = 123,
-#'               WeeklyMaintenanceStartTime = "string"
+#'               WeeklyMaintenanceStartTime = "string",
+#'               FsxAdminPassword = "string"
 #'             ),
 #'             FileSystemTypeVersion = "string",
 #'             OpenZFSConfiguration = list(
@@ -7450,7 +7464,8 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'         "string"
 #'       ),
 #'       ThroughputCapacity = 123,
-#'       WeeklyMaintenanceStartTime = "string"
+#'       WeeklyMaintenanceStartTime = "string",
+#'       FsxAdminPassword = "string"
 #'     ),
 #'     FileSystemTypeVersion = "string",
 #'     OpenZFSConfiguration = list(
@@ -7668,7 +7683,8 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'             "string"
 #'           ),
 #'           ThroughputCapacity = 123,
-#'           WeeklyMaintenanceStartTime = "string"
+#'           WeeklyMaintenanceStartTime = "string",
+#'           FsxAdminPassword = "string"
 #'         ),
 #'         FileSystemTypeVersion = "string",
 #'         OpenZFSConfiguration = list(
@@ -7951,7 +7967,8 @@ fsx_untag_resource <- function(ResourceARN, TagKeys) {
 #' @description
 #' Updates the configuration of an existing data repository association on
 #' an Amazon FSx for Lustre file system. Data repository associations are
-#' supported for all file systems except for `Scratch_1` deployment type.
+#' supported on all FSx for Lustre 2.12 and newer file systems, excluding
+#' `scratch_1` deployment type.
 #'
 #' @usage
 #' fsx_update_data_repository_association(AssociationId,
@@ -8296,7 +8313,7 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' increase storage capacity, the file system must have at least 16 MBps of
 #' throughput capacity. For more information, see [Managing storage
 #' capacity](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-capacity.html)
-#' in the *Amazon FSx for Windows File Server User Guide*.
+#' in the *Amazon FSxfor Windows File Server User Guide*.
 #' 
 #' For ONTAP file systems, the storage capacity target value must be at
 #' least 10 percent greater than the current storage capacity value. For
@@ -8307,7 +8324,7 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' system.
 #' @param LustreConfiguration 
 #' @param OntapConfiguration 
-#' @param OpenZFSConfiguration The configuration updates for an Amazon FSx for OpenZFS file system.
+#' @param OpenZFSConfiguration The configuration updates for an FSx for OpenZFS file system.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8544,7 +8561,8 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'         "string"
 #'       ),
 #'       ThroughputCapacity = 123,
-#'       WeeklyMaintenanceStartTime = "string"
+#'       WeeklyMaintenanceStartTime = "string",
+#'       FsxAdminPassword = "string"
 #'     ),
 #'     FileSystemTypeVersion = "string",
 #'     OpenZFSConfiguration = list(
@@ -8581,7 +8599,10 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'       Password = "string",
 #'       DnsIps = list(
 #'         "string"
-#'       )
+#'       ),
+#'       DomainName = "string",
+#'       OrganizationalUnitDistinguishedName = "string",
+#'       FileSystemAdministratorsGroup = "string"
 #'     ),
 #'     AuditLogConfiguration = list(
 #'       FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
@@ -8840,7 +8861,8 @@ fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, Stor
 #'               "string"
 #'             ),
 #'             ThroughputCapacity = 123,
-#'             WeeklyMaintenanceStartTime = "string"
+#'             WeeklyMaintenanceStartTime = "string",
+#'             FsxAdminPassword = "string"
 #'           ),
 #'           FileSystemTypeVersion = "string",
 #'           OpenZFSConfiguration = list(
@@ -8973,21 +8995,21 @@ fsx_update_snapshot <- function(ClientRequestToken = NULL, Name, SnapshotId) {
 }
 .fsx$operations$update_snapshot <- fsx_update_snapshot
 
-#' Updates an Amazon FSx for ONTAP storage virtual machine (SVM)
+#' Updates an FSx for ONTAP storage virtual machine (SVM)
 #'
 #' @description
-#' Updates an Amazon FSx for ONTAP storage virtual machine (SVM).
+#' Updates an FSx for ONTAP storage virtual machine (SVM).
 #'
 #' @usage
 #' fsx_update_storage_virtual_machine(ActiveDirectoryConfiguration,
 #'   ClientRequestToken, StorageVirtualMachineId, SvmAdminPassword)
 #'
-#' @param ActiveDirectoryConfiguration Updates the Microsoft Active Directory (AD) configuration for an SVM
-#' that is joined to an AD.
+#' @param ActiveDirectoryConfiguration Specifies updates to an SVM's Microsoft Active Directory (AD)
+#' configuration.
 #' @param ClientRequestToken 
 #' @param StorageVirtualMachineId &#91;required&#93; The ID of the SVM that you want to update, in the format
 #' `svm-0123456789abcdef0`.
-#' @param SvmAdminPassword Enter a new SvmAdminPassword if you are updating it.
+#' @param SvmAdminPassword Specifies a new SvmAdminPassword.
 #'
 #' @return
 #' A list with the following syntax:
@@ -9065,8 +9087,12 @@ fsx_update_snapshot <- function(ClientRequestToken = NULL, Name, SnapshotId) {
 #'       Password = "string",
 #'       DnsIps = list(
 #'         "string"
-#'       )
-#'     )
+#'       ),
+#'       DomainName = "string",
+#'       OrganizationalUnitDistinguishedName = "string",
+#'       FileSystemAdministratorsGroup = "string"
+#'     ),
+#'     NetBiosName = "string"
 #'   ),
 #'   ClientRequestToken = "string",
 #'   StorageVirtualMachineId = "string",
@@ -9289,7 +9315,8 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'               "string"
 #'             ),
 #'             ThroughputCapacity = 123,
-#'             WeeklyMaintenanceStartTime = "string"
+#'             WeeklyMaintenanceStartTime = "string",
+#'             FsxAdminPassword = "string"
 #'           ),
 #'           FileSystemTypeVersion = "string",
 #'           OpenZFSConfiguration = list(

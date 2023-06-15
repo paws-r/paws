@@ -9,6 +9,6 @@ securityhub_get_master_account()
 \description{
 This method is deprecated. Instead, use \code{\link[=securityhub_get_administrator_account]{get_administrator_account}}.
 
-See \url{https://paws-r.github.io/docs/securityhub/get_master_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_get_master_account/} for full documentation.
 }
 \keyword{internal}

@@ -32,6 +32,6 @@ populates this field. For more information about idempotency, see
 \description{
 Initiates silent monitoring of a contact. The Contact Control Panel (CCP) of the user specified by \emph{userId} will be set to silent monitoring mode on the contact.
 
-See \url{https://paws-r.github.io/docs/connect/monitor_contact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_monitor_contact/} for full documentation.
 }
 \keyword{internal}

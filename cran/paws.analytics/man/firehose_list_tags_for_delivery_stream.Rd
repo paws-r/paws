@@ -26,6 +26,6 @@ to \code{true} in the response. To list additional tags, set
 \description{
 Lists the tags for the specified delivery stream. This operation has a limit of five transactions per second per account.
 
-See \url{https://paws-r.github.io/docs/firehose/list_tags_for_delivery_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/firehose_list_tags_for_delivery_stream/} for full documentation.
 }
 \keyword{internal}

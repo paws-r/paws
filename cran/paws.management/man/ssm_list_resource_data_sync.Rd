@@ -26,6 +26,6 @@ next set of results.}
 \description{
 Lists your resource data sync configurations. Includes information about the last time a sync attempted to start, the last sync status, and the last time a sync successfully completed.
 
-See \url{https://paws-r.github.io/docs/ssm/list_resource_data_sync.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_list_resource_data_sync/} for full documentation.
 }
 \keyword{internal}

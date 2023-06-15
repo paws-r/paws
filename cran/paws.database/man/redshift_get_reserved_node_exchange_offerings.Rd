@@ -24,6 +24,6 @@ ReservedNodeOfferings.}
 \description{
 Returns an array of DC2 ReservedNodeOfferings that matches the payment type, term, and usage price of the given DC1 reserved node.
 
-See \url{https://paws-r.github.io/docs/redshift/get_reserved_node_exchange_offerings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_get_reserved_node_exchange_offerings/} for full documentation.
 }
 \keyword{internal}

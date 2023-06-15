@@ -28,6 +28,6 @@ references.}
 \description{
 Deletes a Lambda function. To delete a specific function version, use the \code{Qualifier} parameter. Otherwise, all versions and aliases are deleted.
 
-See \url{https://paws-r.github.io/docs/lambda/delete_function.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_delete_function/} for full documentation.
 }
 \keyword{internal}

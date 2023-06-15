@@ -22,6 +22,6 @@ will be executed.}
 \description{
 Attaches an AWS managed or customer managed policy to the specified PermissionSet as a permissions boundary.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/put_permissions_boundary_to_permission_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_put_permissions_boundary_to_permission_set/} for full documentation.
 }
 \keyword{internal}

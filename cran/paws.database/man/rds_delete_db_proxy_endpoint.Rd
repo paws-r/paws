@@ -12,6 +12,6 @@ rds_delete_db_proxy_endpoint(DBProxyEndpointName)
 \description{
 Deletes a \code{DBProxyEndpoint}. Doing so removes the ability to access the DB proxy using the endpoint that you defined. The endpoint that you delete might have provided capabilities such as read/write or read-only operations, or using a different VPC than the DB proxy's default VPC.
 
-See \url{https://paws-r.github.io/docs/rds/delete_db_proxy_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_delete_db_proxy_endpoint/} for full documentation.
 }
 \keyword{internal}

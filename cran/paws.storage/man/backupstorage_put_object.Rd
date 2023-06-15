@@ -43,6 +43,6 @@ metadata etc.}
 \description{
 Upload object that can store object metadata String and data blob in single API call using inline chunk field.
 
-See \url{https://paws-r.github.io/docs/backupstorage/put_object.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupstorage_put_object/} for full documentation.
 }
 \keyword{internal}

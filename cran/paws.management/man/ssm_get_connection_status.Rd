@@ -14,6 +14,6 @@ ssm_get_connection_status(Target)
 \description{
 Retrieves the Session Manager connection status for a managed node to determine whether it is running and ready to receive Session Manager connections.
 
-See \url{https://paws-r.github.io/docs/ssm/get_connection_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_connection_status/} for full documentation.
 }
 \keyword{internal}

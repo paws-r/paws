@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a receipt rule set by cloning an existing one. All receipt rules and configurations are copied to the new receipt rule set and are completely independent of the source rule set.
 #'
-#' See [https://paws-r.github.io/docs/ses/clone_receipt_rule_set.html](https://paws-r.github.io/docs/ses/clone_receipt_rule_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_clone_receipt_rule_set/](https://www.paws-r-sdk.com/docs/ses_clone_receipt_rule_set/) for full documentation.
 #'
 #' @param RuleSetName &#91;required&#93; The name of the rule set to create. The name must:
 #' 
@@ -45,7 +45,7 @@ ses_clone_receipt_rule_set <- function(RuleSetName, OriginalRuleSetName) {
 #' @description
 #' Creates a configuration set.
 #'
-#' See [https://paws-r.github.io/docs/ses/create_configuration_set.html](https://paws-r.github.io/docs/ses/create_configuration_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_create_configuration_set/](https://www.paws-r-sdk.com/docs/ses_create_configuration_set/) for full documentation.
 #'
 #' @param ConfigurationSet &#91;required&#93; A data structure that contains the name of the configuration set.
 #'
@@ -74,7 +74,7 @@ ses_create_configuration_set <- function(ConfigurationSet) {
 #' @description
 #' Creates a configuration set event destination.
 #'
-#' See [https://paws-r.github.io/docs/ses/create_configuration_set_event_destination.html](https://paws-r.github.io/docs/ses/create_configuration_set_event_destination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_create_configuration_set_event_destination/](https://www.paws-r-sdk.com/docs/ses_create_configuration_set_event_destination/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that the event destination should be
 #' associated with.
@@ -107,7 +107,7 @@ ses_create_configuration_set_event_destination <- function(ConfigurationSetName,
 #' @description
 #' Creates an association between a configuration set and a custom domain for open and click event tracking.
 #'
-#' See [https://paws-r.github.io/docs/ses/create_configuration_set_tracking_options.html](https://paws-r.github.io/docs/ses/create_configuration_set_tracking_options.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_create_configuration_set_tracking_options/](https://www.paws-r-sdk.com/docs/ses_create_configuration_set_tracking_options/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that the tracking options should be
 #' associated with.
@@ -138,7 +138,7 @@ ses_create_configuration_set_tracking_options <- function(ConfigurationSetName, 
 #' @description
 #' Creates a new custom verification email template.
 #'
-#' See [https://paws-r.github.io/docs/ses/create_custom_verification_email_template.html](https://paws-r.github.io/docs/ses/create_custom_verification_email_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_create_custom_verification_email_template/](https://www.paws-r-sdk.com/docs/ses_create_custom_verification_email_template/) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the custom verification email template.
 #' @param FromEmailAddress &#91;required&#93; The email address that the custom verification email is sent from.
@@ -179,7 +179,7 @@ ses_create_custom_verification_email_template <- function(TemplateName, FromEmai
 #' @description
 #' Creates a new IP address filter.
 #'
-#' See [https://paws-r.github.io/docs/ses/create_receipt_filter.html](https://paws-r.github.io/docs/ses/create_receipt_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_create_receipt_filter/](https://www.paws-r-sdk.com/docs/ses_create_receipt_filter/) for full documentation.
 #'
 #' @param Filter &#91;required&#93; A data structure that describes the IP address filter to create, which
 #' consists of a name, an IP address range, and whether to allow or block
@@ -210,7 +210,7 @@ ses_create_receipt_filter <- function(Filter) {
 #' @description
 #' Creates a receipt rule.
 #'
-#' See [https://paws-r.github.io/docs/ses/create_receipt_rule.html](https://paws-r.github.io/docs/ses/create_receipt_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_create_receipt_rule/](https://www.paws-r-sdk.com/docs/ses_create_receipt_rule/) for full documentation.
 #'
 #' @param RuleSetName &#91;required&#93; The name of the rule set that the receipt rule will be added to.
 #' @param After The name of an existing rule after which the new rule will be placed. If
@@ -244,7 +244,7 @@ ses_create_receipt_rule <- function(RuleSetName, After = NULL, Rule) {
 #' @description
 #' Creates an empty receipt rule set.
 #'
-#' See [https://paws-r.github.io/docs/ses/create_receipt_rule_set.html](https://paws-r.github.io/docs/ses/create_receipt_rule_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_create_receipt_rule_set/](https://www.paws-r-sdk.com/docs/ses_create_receipt_rule_set/) for full documentation.
 #'
 #' @param RuleSetName &#91;required&#93; The name of the rule set to create. The name must:
 #' 
@@ -280,7 +280,7 @@ ses_create_receipt_rule_set <- function(RuleSetName) {
 #' @description
 #' Creates an email template. Email templates enable you to send personalized email to one or more destinations in a single API operation. For more information, see the [Amazon SES Developer Guide](https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html).
 #'
-#' See [https://paws-r.github.io/docs/ses/create_template.html](https://paws-r.github.io/docs/ses/create_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_create_template/](https://www.paws-r-sdk.com/docs/ses_create_template/) for full documentation.
 #'
 #' @param Template &#91;required&#93; The content of the email, composed of a subject line, an HTML part, and
 #' a text-only part.
@@ -310,7 +310,7 @@ ses_create_template <- function(Template) {
 #' @description
 #' Deletes a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the [Amazon SES Developer Guide](https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html).
 #'
-#' See [https://paws-r.github.io/docs/ses/delete_configuration_set.html](https://paws-r.github.io/docs/ses/delete_configuration_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_delete_configuration_set/](https://www.paws-r-sdk.com/docs/ses_delete_configuration_set/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set to delete.
 #'
@@ -339,7 +339,7 @@ ses_delete_configuration_set <- function(ConfigurationSetName) {
 #' @description
 #' Deletes a configuration set event destination. Configuration set event destinations are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the [Amazon SES Developer Guide](https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html).
 #'
-#' See [https://paws-r.github.io/docs/ses/delete_configuration_set_event_destination.html](https://paws-r.github.io/docs/ses/delete_configuration_set_event_destination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_delete_configuration_set_event_destination/](https://www.paws-r-sdk.com/docs/ses_delete_configuration_set_event_destination/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set from which to delete the event
 #' destination.
@@ -371,7 +371,7 @@ ses_delete_configuration_set_event_destination <- function(ConfigurationSetName,
 #' @description
 #' Deletes an association between a configuration set and a custom domain for open and click event tracking.
 #'
-#' See [https://paws-r.github.io/docs/ses/delete_configuration_set_tracking_options.html](https://paws-r.github.io/docs/ses/delete_configuration_set_tracking_options.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_delete_configuration_set_tracking_options/](https://www.paws-r-sdk.com/docs/ses_delete_configuration_set_tracking_options/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set from which you want to delete the
 #' tracking options.
@@ -401,7 +401,7 @@ ses_delete_configuration_set_tracking_options <- function(ConfigurationSetName) 
 #' @description
 #' Deletes an existing custom verification email template.
 #'
-#' See [https://paws-r.github.io/docs/ses/delete_custom_verification_email_template.html](https://paws-r.github.io/docs/ses/delete_custom_verification_email_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_delete_custom_verification_email_template/](https://www.paws-r-sdk.com/docs/ses_delete_custom_verification_email_template/) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the custom verification email template that you want to
 #' delete.
@@ -432,7 +432,7 @@ ses_delete_custom_verification_email_template <- function(TemplateName) {
 #' @description
 #' Deletes the specified identity (an email address or a domain) from the list of verified identities.
 #'
-#' See [https://paws-r.github.io/docs/ses/delete_identity.html](https://paws-r.github.io/docs/ses/delete_identity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_delete_identity/](https://www.paws-r-sdk.com/docs/ses_delete_identity/) for full documentation.
 #'
 #' @param Identity &#91;required&#93; The identity to be removed from the list of identities for the AWS
 #' Account.
@@ -463,7 +463,7 @@ ses_delete_identity <- function(Identity) {
 #' @description
 #' Deletes the specified sending authorization policy for the given identity (an email address or a domain). This API returns successfully even if a policy with the specified name does not exist.
 #'
-#' See [https://paws-r.github.io/docs/ses/delete_identity_policy.html](https://paws-r.github.io/docs/ses/delete_identity_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_delete_identity_policy/](https://www.paws-r-sdk.com/docs/ses_delete_identity_policy/) for full documentation.
 #'
 #' @param Identity &#91;required&#93; The identity that is associated with the policy that you want to delete.
 #' You can specify the identity by using its name or by using its Amazon
@@ -498,7 +498,7 @@ ses_delete_identity_policy <- function(Identity, PolicyName) {
 #' @description
 #' Deletes the specified IP address filter.
 #'
-#' See [https://paws-r.github.io/docs/ses/delete_receipt_filter.html](https://paws-r.github.io/docs/ses/delete_receipt_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_delete_receipt_filter/](https://www.paws-r-sdk.com/docs/ses_delete_receipt_filter/) for full documentation.
 #'
 #' @param FilterName &#91;required&#93; The name of the IP address filter to delete.
 #'
@@ -527,7 +527,7 @@ ses_delete_receipt_filter <- function(FilterName) {
 #' @description
 #' Deletes the specified receipt rule.
 #'
-#' See [https://paws-r.github.io/docs/ses/delete_receipt_rule.html](https://paws-r.github.io/docs/ses/delete_receipt_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_delete_receipt_rule/](https://www.paws-r-sdk.com/docs/ses_delete_receipt_rule/) for full documentation.
 #'
 #' @param RuleSetName &#91;required&#93; The name of the receipt rule set that contains the receipt rule to
 #' delete.
@@ -559,7 +559,7 @@ ses_delete_receipt_rule <- function(RuleSetName, RuleName) {
 #' @description
 #' Deletes the specified receipt rule set and all of the receipt rules it contains.
 #'
-#' See [https://paws-r.github.io/docs/ses/delete_receipt_rule_set.html](https://paws-r.github.io/docs/ses/delete_receipt_rule_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_delete_receipt_rule_set/](https://www.paws-r-sdk.com/docs/ses_delete_receipt_rule_set/) for full documentation.
 #'
 #' @param RuleSetName &#91;required&#93; The name of the receipt rule set to delete.
 #'
@@ -588,7 +588,7 @@ ses_delete_receipt_rule_set <- function(RuleSetName) {
 #' @description
 #' Deletes an email template.
 #'
-#' See [https://paws-r.github.io/docs/ses/delete_template.html](https://paws-r.github.io/docs/ses/delete_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_delete_template/](https://www.paws-r-sdk.com/docs/ses_delete_template/) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the template to be deleted.
 #'
@@ -617,7 +617,7 @@ ses_delete_template <- function(TemplateName) {
 #' @description
 #' Deprecated. Use the [`delete_identity`][ses_delete_identity] operation to delete email addresses and domains.
 #'
-#' See [https://paws-r.github.io/docs/ses/delete_verified_email_address.html](https://paws-r.github.io/docs/ses/delete_verified_email_address.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_delete_verified_email_address/](https://www.paws-r-sdk.com/docs/ses_delete_verified_email_address/) for full documentation.
 #'
 #' @param EmailAddress &#91;required&#93; An email address to be removed from the list of verified addresses.
 #'
@@ -647,7 +647,7 @@ ses_delete_verified_email_address <- function(EmailAddress) {
 #' @description
 #' Returns the metadata and receipt rules for the receipt rule set that is currently active.
 #'
-#' See [https://paws-r.github.io/docs/ses/describe_active_receipt_rule_set.html](https://paws-r.github.io/docs/ses/describe_active_receipt_rule_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_describe_active_receipt_rule_set/](https://www.paws-r-sdk.com/docs/ses_describe_active_receipt_rule_set/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -674,7 +674,7 @@ ses_describe_active_receipt_rule_set <- function() {
 #' @description
 #' Returns the details of the specified configuration set. For information about using configuration sets, see the [Amazon SES Developer Guide](https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html).
 #'
-#' See [https://paws-r.github.io/docs/ses/describe_configuration_set.html](https://paws-r.github.io/docs/ses/describe_configuration_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_describe_configuration_set/](https://www.paws-r-sdk.com/docs/ses_describe_configuration_set/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set to describe.
 #' @param ConfigurationSetAttributeNames A list of configuration set attributes to return.
@@ -704,7 +704,7 @@ ses_describe_configuration_set <- function(ConfigurationSetName, ConfigurationSe
 #' @description
 #' Returns the details of the specified receipt rule.
 #'
-#' See [https://paws-r.github.io/docs/ses/describe_receipt_rule.html](https://paws-r.github.io/docs/ses/describe_receipt_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_describe_receipt_rule/](https://www.paws-r-sdk.com/docs/ses_describe_receipt_rule/) for full documentation.
 #'
 #' @param RuleSetName &#91;required&#93; The name of the receipt rule set that the receipt rule belongs to.
 #' @param RuleName &#91;required&#93; The name of the receipt rule.
@@ -734,7 +734,7 @@ ses_describe_receipt_rule <- function(RuleSetName, RuleName) {
 #' @description
 #' Returns the details of the specified receipt rule set.
 #'
-#' See [https://paws-r.github.io/docs/ses/describe_receipt_rule_set.html](https://paws-r.github.io/docs/ses/describe_receipt_rule_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_describe_receipt_rule_set/](https://www.paws-r-sdk.com/docs/ses_describe_receipt_rule_set/) for full documentation.
 #'
 #' @param RuleSetName &#91;required&#93; The name of the receipt rule set to describe.
 #'
@@ -764,7 +764,7 @@ ses_describe_receipt_rule_set <- function(RuleSetName) {
 #' @description
 #' Returns the email sending status of the Amazon SES account for the current region.
 #'
-#' See [https://paws-r.github.io/docs/ses/get_account_sending_enabled.html](https://paws-r.github.io/docs/ses/get_account_sending_enabled.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_get_account_sending_enabled/](https://www.paws-r-sdk.com/docs/ses_get_account_sending_enabled/) for full documentation.
 #'
 
 #'
@@ -794,7 +794,7 @@ ses_get_account_sending_enabled <- function() {
 #' @description
 #' Returns the custom email verification template for the template name you specify.
 #'
-#' See [https://paws-r.github.io/docs/ses/get_custom_verification_email_template.html](https://paws-r.github.io/docs/ses/get_custom_verification_email_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_get_custom_verification_email_template/](https://www.paws-r-sdk.com/docs/ses_get_custom_verification_email_template/) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the custom verification email template that you want to
 #' retrieve.
@@ -824,7 +824,7 @@ ses_get_custom_verification_email_template <- function(TemplateName) {
 #' @description
 #' Returns the current status of Easy DKIM signing for an entity. For domain name identities, this operation also returns the DKIM tokens that are required for Easy DKIM signing, and whether Amazon SES has successfully verified that these tokens have been published.
 #'
-#' See [https://paws-r.github.io/docs/ses/get_identity_dkim_attributes.html](https://paws-r.github.io/docs/ses/get_identity_dkim_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_get_identity_dkim_attributes/](https://www.paws-r-sdk.com/docs/ses_get_identity_dkim_attributes/) for full documentation.
 #'
 #' @param Identities &#91;required&#93; A list of one or more verified identities - email addresses, domains, or
 #' both.
@@ -855,7 +855,7 @@ ses_get_identity_dkim_attributes <- function(Identities) {
 #' @description
 #' Returns the custom MAIL FROM attributes for a list of identities (email addresses : domains).
 #'
-#' See [https://paws-r.github.io/docs/ses/get_identity_mail_from_domain_attributes.html](https://paws-r.github.io/docs/ses/get_identity_mail_from_domain_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_get_identity_mail_from_domain_attributes/](https://www.paws-r-sdk.com/docs/ses_get_identity_mail_from_domain_attributes/) for full documentation.
 #'
 #' @param Identities &#91;required&#93; A list of one or more identities.
 #'
@@ -885,7 +885,7 @@ ses_get_identity_mail_from_domain_attributes <- function(Identities) {
 #' @description
 #' Given a list of verified identities (email addresses and/or domains), returns a structure describing identity notification attributes.
 #'
-#' See [https://paws-r.github.io/docs/ses/get_identity_notification_attributes.html](https://paws-r.github.io/docs/ses/get_identity_notification_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_get_identity_notification_attributes/](https://www.paws-r-sdk.com/docs/ses_get_identity_notification_attributes/) for full documentation.
 #'
 #' @param Identities &#91;required&#93; A list of one or more identities. You can specify an identity by using
 #' its name or by using its Amazon Resource Name (ARN). Examples:
@@ -918,7 +918,7 @@ ses_get_identity_notification_attributes <- function(Identities) {
 #' @description
 #' Returns the requested sending authorization policies for the given identity (an email address or a domain). The policies are returned as a map of policy names to policy contents. You can retrieve a maximum of 20 policies at a time.
 #'
-#' See [https://paws-r.github.io/docs/ses/get_identity_policies.html](https://paws-r.github.io/docs/ses/get_identity_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_get_identity_policies/](https://www.paws-r-sdk.com/docs/ses_get_identity_policies/) for full documentation.
 #'
 #' @param Identity &#91;required&#93; The identity for which the policies will be retrieved. You can specify
 #' an identity by using its name or by using its Amazon Resource Name
@@ -958,7 +958,7 @@ ses_get_identity_policies <- function(Identity, PolicyNames) {
 #' @description
 #' Given a list of identities (email addresses and/or domains), returns the verification status and (for domain identities) the verification token for each identity.
 #'
-#' See [https://paws-r.github.io/docs/ses/get_identity_verification_attributes.html](https://paws-r.github.io/docs/ses/get_identity_verification_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_get_identity_verification_attributes/](https://www.paws-r-sdk.com/docs/ses_get_identity_verification_attributes/) for full documentation.
 #'
 #' @param Identities &#91;required&#93; A list of identities.
 #'
@@ -987,7 +987,7 @@ ses_get_identity_verification_attributes <- function(Identities) {
 #' @description
 #' Provides the sending limits for the Amazon SES account.
 #'
-#' See [https://paws-r.github.io/docs/ses/get_send_quota.html](https://paws-r.github.io/docs/ses/get_send_quota.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_get_send_quota/](https://www.paws-r-sdk.com/docs/ses_get_send_quota/) for full documentation.
 #'
 
 #'
@@ -1016,7 +1016,7 @@ ses_get_send_quota <- function() {
 #' @description
 #' Provides sending statistics for the current AWS Region. The result is a list of data points, representing the last two weeks of sending activity. Each data point in the list contains statistics for a 15-minute period of time.
 #'
-#' See [https://paws-r.github.io/docs/ses/get_send_statistics.html](https://paws-r.github.io/docs/ses/get_send_statistics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_get_send_statistics/](https://www.paws-r-sdk.com/docs/ses_get_send_statistics/) for full documentation.
 #'
 
 #'
@@ -1046,7 +1046,7 @@ ses_get_send_statistics <- function() {
 #' @description
 #' Displays the template object (which includes the Subject line, HTML part and text part) for the template you specify.
 #'
-#' See [https://paws-r.github.io/docs/ses/get_template.html](https://paws-r.github.io/docs/ses/get_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_get_template/](https://www.paws-r-sdk.com/docs/ses_get_template/) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the template you want to retrieve.
 #'
@@ -1076,7 +1076,7 @@ ses_get_template <- function(TemplateName) {
 #' @description
 #' Provides a list of the configuration sets associated with your Amazon SES account in the current AWS Region. For information about using configuration sets, see [Monitoring Your Amazon SES Sending Activity](https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html) in the *Amazon SES Developer Guide.*
 #'
-#' See [https://paws-r.github.io/docs/ses/list_configuration_sets.html](https://paws-r.github.io/docs/ses/list_configuration_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_list_configuration_sets/](https://www.paws-r-sdk.com/docs/ses_list_configuration_sets/) for full documentation.
 #'
 #' @param NextToken A token returned from a previous call to
 #' [`list_configuration_sets`][ses_list_configuration_sets] to indicate the
@@ -1109,7 +1109,7 @@ ses_list_configuration_sets <- function(NextToken = NULL, MaxItems = NULL) {
 #' @description
 #' Lists the existing custom verification email templates for your account in the current AWS Region.
 #'
-#' See [https://paws-r.github.io/docs/ses/list_custom_verification_email_templates.html](https://paws-r.github.io/docs/ses/list_custom_verification_email_templates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_list_custom_verification_email_templates/](https://www.paws-r-sdk.com/docs/ses_list_custom_verification_email_templates/) for full documentation.
 #'
 #' @param NextToken An array the contains the name and creation time stamp for each template
 #' in your Amazon SES account.
@@ -1145,7 +1145,7 @@ ses_list_custom_verification_email_templates <- function(NextToken = NULL, MaxRe
 #' @description
 #' Returns a list containing all of the identities (email addresses and domains) for your AWS account in the current AWS Region, regardless of verification status.
 #'
-#' See [https://paws-r.github.io/docs/ses/list_identities.html](https://paws-r.github.io/docs/ses/list_identities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_list_identities/](https://www.paws-r-sdk.com/docs/ses_list_identities/) for full documentation.
 #'
 #' @param IdentityType The type of the identities to list. Possible values are "EmailAddress"
 #' and "Domain". If this parameter is omitted, then all identities will be
@@ -1180,7 +1180,7 @@ ses_list_identities <- function(IdentityType = NULL, NextToken = NULL, MaxItems 
 #' @description
 #' Returns a list of sending authorization policies that are attached to the given identity (an email address or a domain). This API returns only a list. If you want the actual policy content, you can use [`get_identity_policies`][ses_get_identity_policies].
 #'
-#' See [https://paws-r.github.io/docs/ses/list_identity_policies.html](https://paws-r.github.io/docs/ses/list_identity_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_list_identity_policies/](https://www.paws-r-sdk.com/docs/ses_list_identity_policies/) for full documentation.
 #'
 #' @param Identity &#91;required&#93; The identity that is associated with the policy for which the policies
 #' will be listed. You can specify an identity by using its name or by
@@ -1216,7 +1216,7 @@ ses_list_identity_policies <- function(Identity) {
 #' @description
 #' Lists the IP address filters associated with your AWS account in the current AWS Region.
 #'
-#' See [https://paws-r.github.io/docs/ses/list_receipt_filters.html](https://paws-r.github.io/docs/ses/list_receipt_filters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_list_receipt_filters/](https://www.paws-r-sdk.com/docs/ses_list_receipt_filters/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1244,7 +1244,7 @@ ses_list_receipt_filters <- function() {
 #' @description
 #' Lists the receipt rule sets that exist under your AWS account in the current AWS Region. If there are additional receipt rule sets to be retrieved, you will receive a `NextToken` that you can provide to the next call to [`list_receipt_rule_sets`][ses_list_receipt_rule_sets] to retrieve the additional entries.
 #'
-#' See [https://paws-r.github.io/docs/ses/list_receipt_rule_sets.html](https://paws-r.github.io/docs/ses/list_receipt_rule_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_list_receipt_rule_sets/](https://www.paws-r-sdk.com/docs/ses_list_receipt_rule_sets/) for full documentation.
 #'
 #' @param NextToken A token returned from a previous call to
 #' [`list_receipt_rule_sets`][ses_list_receipt_rule_sets] to indicate the
@@ -1276,7 +1276,7 @@ ses_list_receipt_rule_sets <- function(NextToken = NULL) {
 #' @description
 #' Lists the email templates present in your Amazon SES account in the current AWS Region.
 #'
-#' See [https://paws-r.github.io/docs/ses/list_templates.html](https://paws-r.github.io/docs/ses/list_templates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_list_templates/](https://www.paws-r-sdk.com/docs/ses_list_templates/) for full documentation.
 #'
 #' @param NextToken A token returned from a previous call to
 #' [`list_templates`][ses_list_templates] to indicate the position in the
@@ -1311,7 +1311,7 @@ ses_list_templates <- function(NextToken = NULL, MaxItems = NULL) {
 #' @description
 #' Deprecated. Use the [`list_identities`][ses_list_identities] operation to list the email addresses and domains associated with your account.
 #'
-#' See [https://paws-r.github.io/docs/ses/list_verified_email_addresses.html](https://paws-r.github.io/docs/ses/list_verified_email_addresses.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_list_verified_email_addresses/](https://www.paws-r-sdk.com/docs/ses_list_verified_email_addresses/) for full documentation.
 #'
 
 #'
@@ -1340,7 +1340,7 @@ ses_list_verified_email_addresses <- function() {
 #' @description
 #' Adds or updates the delivery options for a configuration set.
 #'
-#' See [https://paws-r.github.io/docs/ses/put_configuration_set_delivery_options.html](https://paws-r.github.io/docs/ses/put_configuration_set_delivery_options.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_put_configuration_set_delivery_options/](https://www.paws-r-sdk.com/docs/ses_put_configuration_set_delivery_options/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to specify the delivery
 #' options for.
@@ -1373,7 +1373,7 @@ ses_put_configuration_set_delivery_options <- function(ConfigurationSetName, Del
 #' @description
 #' Adds or updates a sending authorization policy for the specified identity (an email address or a domain).
 #'
-#' See [https://paws-r.github.io/docs/ses/put_identity_policy.html](https://paws-r.github.io/docs/ses/put_identity_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_put_identity_policy/](https://www.paws-r-sdk.com/docs/ses_put_identity_policy/) for full documentation.
 #'
 #' @param Identity &#91;required&#93; The identity that the policy will apply to. You can specify an identity
 #' by using its name or by using its Amazon Resource Name (ARN). Examples:
@@ -1416,7 +1416,7 @@ ses_put_identity_policy <- function(Identity, PolicyName, Policy) {
 #' @description
 #' Reorders the receipt rules within a receipt rule set.
 #'
-#' See [https://paws-r.github.io/docs/ses/reorder_receipt_rule_set.html](https://paws-r.github.io/docs/ses/reorder_receipt_rule_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_reorder_receipt_rule_set/](https://www.paws-r-sdk.com/docs/ses_reorder_receipt_rule_set/) for full documentation.
 #'
 #' @param RuleSetName &#91;required&#93; The name of the receipt rule set to reorder.
 #' @param RuleNames &#91;required&#93; A list of the specified receipt rule set's receipt rules in the order
@@ -1448,7 +1448,7 @@ ses_reorder_receipt_rule_set <- function(RuleSetName, RuleNames) {
 #' @description
 #' Generates and sends a bounce message to the sender of an email you received through Amazon SES. You can only use this API on an email up to 24 hours after you receive it.
 #'
-#' See [https://paws-r.github.io/docs/ses/send_bounce.html](https://paws-r.github.io/docs/ses/send_bounce.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_send_bounce/](https://www.paws-r-sdk.com/docs/ses_send_bounce/) for full documentation.
 #'
 #' @param OriginalMessageId &#91;required&#93; The message ID of the message to be bounced.
 #' @param BounceSender &#91;required&#93; The address to use in the "From" header of the bounce message. This must
@@ -1494,7 +1494,7 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
 #' @description
 #' Composes an email message to multiple destinations. The message body is created using an email template.
 #'
-#' See [https://paws-r.github.io/docs/ses/send_bulk_templated_email.html](https://paws-r.github.io/docs/ses/send_bulk_templated_email.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_send_bulk_templated_email/](https://www.paws-r-sdk.com/docs/ses_send_bulk_templated_email/) for full documentation.
 #'
 #' @param Source &#91;required&#93; The email address that is sending the email. This email address must be
 #' either individually verified with Amazon SES, or from a domain that has
@@ -1605,7 +1605,7 @@ ses_send_bulk_templated_email <- function(Source, SourceArn = NULL, ReplyToAddre
 #' @description
 #' Adds an email address to the list of identities for your Amazon SES account in the current AWS Region and attempts to verify it. As a result of executing this operation, a customized verification email is sent to the specified address.
 #'
-#' See [https://paws-r.github.io/docs/ses/send_custom_verification_email.html](https://paws-r.github.io/docs/ses/send_custom_verification_email.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_send_custom_verification_email/](https://www.paws-r-sdk.com/docs/ses_send_custom_verification_email/) for full documentation.
 #'
 #' @param EmailAddress &#91;required&#93; The email address to verify.
 #' @param TemplateName &#91;required&#93; The name of the custom verification email template to use when sending
@@ -1637,7 +1637,7 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
 #' @description
 #' Composes an email message and immediately queues it for sending. In order to send email using the [`send_email`][ses_send_email] operation, your message must meet the following requirements:
 #'
-#' See [https://paws-r.github.io/docs/ses/send_email.html](https://paws-r.github.io/docs/ses/send_email.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_send_email/](https://www.paws-r-sdk.com/docs/ses_send_email/) for full documentation.
 #'
 #' @param Source &#91;required&#93; The email address that is sending the email. This email address must be
 #' either individually verified with Amazon SES, or from a domain that has
@@ -1738,7 +1738,7 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #' @description
 #' Composes an email message and immediately queues it for sending.
 #'
-#' See [https://paws-r.github.io/docs/ses/send_raw_email.html](https://paws-r.github.io/docs/ses/send_raw_email.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_send_raw_email/](https://www.paws-r-sdk.com/docs/ses_send_raw_email/) for full documentation.
 #'
 #' @param Source The identity's email address. If you do not provide a value for this
 #' parameter, you must specify a "From" address in the raw text of the
@@ -1880,7 +1880,7 @@ ses_send_raw_email <- function(Source = NULL, Destinations = NULL, RawMessage, F
 #' @description
 #' Composes an email message using an email template and immediately queues it for sending.
 #'
-#' See [https://paws-r.github.io/docs/ses/send_templated_email.html](https://paws-r.github.io/docs/ses/send_templated_email.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_send_templated_email/](https://www.paws-r-sdk.com/docs/ses_send_templated_email/) for full documentation.
 #'
 #' @param Source &#91;required&#93; The email address that is sending the email. This email address must be
 #' either individually verified with Amazon SES, or from a domain that has
@@ -1986,7 +1986,7 @@ ses_send_templated_email <- function(Source, Destination, ReplyToAddresses = NUL
 #' @description
 #' Sets the specified receipt rule set as the active receipt rule set.
 #'
-#' See [https://paws-r.github.io/docs/ses/set_active_receipt_rule_set.html](https://paws-r.github.io/docs/ses/set_active_receipt_rule_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_set_active_receipt_rule_set/](https://www.paws-r-sdk.com/docs/ses_set_active_receipt_rule_set/) for full documentation.
 #'
 #' @param RuleSetName The name of the receipt rule set to make active. Setting this value to
 #' null disables all email receiving.
@@ -2016,7 +2016,7 @@ ses_set_active_receipt_rule_set <- function(RuleSetName = NULL) {
 #' @description
 #' Enables or disables Easy DKIM signing of email sent from an identity. If Easy DKIM signing is enabled for a domain, then Amazon SES uses DKIM to sign all email that it sends from addresses on that domain. If Easy DKIM signing is enabled for an email address, then Amazon SES uses DKIM to sign all email it sends from that address.
 #'
-#' See [https://paws-r.github.io/docs/ses/set_identity_dkim_enabled.html](https://paws-r.github.io/docs/ses/set_identity_dkim_enabled.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_set_identity_dkim_enabled/](https://www.paws-r-sdk.com/docs/ses_set_identity_dkim_enabled/) for full documentation.
 #'
 #' @param Identity &#91;required&#93; The identity for which DKIM signing should be enabled or disabled.
 #' @param DkimEnabled &#91;required&#93; Sets whether DKIM signing is enabled for an identity. Set to `true` to
@@ -2048,7 +2048,7 @@ ses_set_identity_dkim_enabled <- function(Identity, DkimEnabled) {
 #' @description
 #' Given an identity (an email address or a domain), enables or disables whether Amazon SES forwards bounce and complaint notifications as email. Feedback forwarding can only be disabled when Amazon Simple Notification Service (Amazon SNS) topics are specified for both bounces and complaints.
 #'
-#' See [https://paws-r.github.io/docs/ses/set_identity_feedback_forwarding_enabled.html](https://paws-r.github.io/docs/ses/set_identity_feedback_forwarding_enabled.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_set_identity_feedback_forwarding_enabled/](https://www.paws-r-sdk.com/docs/ses_set_identity_feedback_forwarding_enabled/) for full documentation.
 #'
 #' @param Identity &#91;required&#93; The identity for which to set bounce and complaint notification
 #' forwarding. Examples: `user@@example.com`, `example.com`.
@@ -2087,7 +2087,7 @@ ses_set_identity_feedback_forwarding_enabled <- function(Identity, ForwardingEna
 #' @description
 #' Given an identity (an email address or a domain), sets whether Amazon SES includes the original email headers in the Amazon Simple Notification Service (Amazon SNS) notifications of a specified type.
 #'
-#' See [https://paws-r.github.io/docs/ses/set_identity_headers_in_notifications_enabled.html](https://paws-r.github.io/docs/ses/set_identity_headers_in_notifications_enabled.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_set_identity_headers_in_notifications_enabled/](https://www.paws-r-sdk.com/docs/ses_set_identity_headers_in_notifications_enabled/) for full documentation.
 #'
 #' @param Identity &#91;required&#93; The identity for which to enable or disable headers in notifications.
 #' Examples: `user@@example.com`, `example.com`.
@@ -2128,7 +2128,7 @@ ses_set_identity_headers_in_notifications_enabled <- function(Identity, Notifica
 #' @description
 #' Enables or disables the custom MAIL FROM domain setup for a verified identity (an email address or a domain).
 #'
-#' See [https://paws-r.github.io/docs/ses/set_identity_mail_from_domain.html](https://paws-r.github.io/docs/ses/set_identity_mail_from_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_set_identity_mail_from_domain/](https://www.paws-r-sdk.com/docs/ses_set_identity_mail_from_domain/) for full documentation.
 #'
 #' @param Identity &#91;required&#93; The verified identity for which you want to enable or disable the
 #' specified custom MAIL FROM domain.
@@ -2176,7 +2176,7 @@ ses_set_identity_mail_from_domain <- function(Identity, MailFromDomain = NULL, B
 #' @description
 #' Sets an Amazon Simple Notification Service (Amazon SNS) topic to use when delivering notifications. When you use this operation, you specify a verified identity, such as an email address or domain. When you send an email that uses the chosen identity in the Source field, Amazon SES sends notifications to the topic you specified. You can send bounce, complaint, or delivery notifications (or any combination of the three) to the Amazon SNS topic that you specify.
 #'
-#' See [https://paws-r.github.io/docs/ses/set_identity_notification_topic.html](https://paws-r.github.io/docs/ses/set_identity_notification_topic.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_set_identity_notification_topic/](https://www.paws-r-sdk.com/docs/ses_set_identity_notification_topic/) for full documentation.
 #'
 #' @param Identity &#91;required&#93; The identity (email address or domain) that you want to set the Amazon
 #' SNS topic for.
@@ -2218,7 +2218,7 @@ ses_set_identity_notification_topic <- function(Identity, NotificationType, SnsT
 #' @description
 #' Sets the position of the specified receipt rule in the receipt rule set.
 #'
-#' See [https://paws-r.github.io/docs/ses/set_receipt_rule_position.html](https://paws-r.github.io/docs/ses/set_receipt_rule_position.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_set_receipt_rule_position/](https://www.paws-r-sdk.com/docs/ses_set_receipt_rule_position/) for full documentation.
 #'
 #' @param RuleSetName &#91;required&#93; The name of the receipt rule set that contains the receipt rule to
 #' reposition.
@@ -2252,7 +2252,7 @@ ses_set_receipt_rule_position <- function(RuleSetName, RuleName, After = NULL) {
 #' @description
 #' Creates a preview of the MIME content of an email when provided with a template and a set of replacement data.
 #'
-#' See [https://paws-r.github.io/docs/ses/test_render_template.html](https://paws-r.github.io/docs/ses/test_render_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_test_render_template/](https://www.paws-r-sdk.com/docs/ses_test_render_template/) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the template that you want to render.
 #' @param TemplateData &#91;required&#93; A list of replacement values to apply to the template. This parameter is
@@ -2285,7 +2285,7 @@ ses_test_render_template <- function(TemplateName, TemplateData) {
 #' @description
 #' Enables or disables email sending across your entire Amazon SES account in the current AWS Region. You can use this operation in conjunction with Amazon CloudWatch alarms to temporarily pause email sending across your Amazon SES account in a given AWS Region when reputation metrics (such as your bounce or complaint rates) reach certain thresholds.
 #'
-#' See [https://paws-r.github.io/docs/ses/update_account_sending_enabled.html](https://paws-r.github.io/docs/ses/update_account_sending_enabled.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_update_account_sending_enabled/](https://www.paws-r-sdk.com/docs/ses_update_account_sending_enabled/) for full documentation.
 #'
 #' @param Enabled Describes whether email sending is enabled or disabled for your Amazon
 #' SES account in the current AWS Region.
@@ -2315,7 +2315,7 @@ ses_update_account_sending_enabled <- function(Enabled = NULL) {
 #' @description
 #' Updates the event destination of a configuration set. Event destinations are associated with configuration sets, which enable you to publish email sending events to Amazon CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS). For information about using configuration sets, see [Monitoring Your Amazon SES Sending Activity](https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html) in the *Amazon SES Developer Guide.*
 #'
-#' See [https://paws-r.github.io/docs/ses/update_configuration_set_event_destination.html](https://paws-r.github.io/docs/ses/update_configuration_set_event_destination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_update_configuration_set_event_destination/](https://www.paws-r-sdk.com/docs/ses_update_configuration_set_event_destination/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that contains the event destination
 #' that you want to update.
@@ -2348,7 +2348,7 @@ ses_update_configuration_set_event_destination <- function(ConfigurationSetName,
 #' @description
 #' Enables or disables the publishing of reputation metrics for emails sent using a specific configuration set in a given AWS Region. Reputation metrics include bounce and complaint rates. These metrics are published to Amazon CloudWatch. By using CloudWatch, you can create alarms when bounce or complaint rates exceed certain thresholds.
 #'
-#' See [https://paws-r.github.io/docs/ses/update_configuration_set_reputation_metrics_enabled.html](https://paws-r.github.io/docs/ses/update_configuration_set_reputation_metrics_enabled.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_update_configuration_set_reputation_metrics_enabled/](https://www.paws-r-sdk.com/docs/ses_update_configuration_set_reputation_metrics_enabled/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to update.
 #' @param Enabled &#91;required&#93; Describes whether or not Amazon SES will publish reputation metrics for
@@ -2381,7 +2381,7 @@ ses_update_configuration_set_reputation_metrics_enabled <- function(Configuratio
 #' @description
 #' Enables or disables email sending for messages sent using a specific configuration set in a given AWS Region. You can use this operation in conjunction with Amazon CloudWatch alarms to temporarily pause email sending for a configuration set when the reputation metrics for that configuration set (such as your bounce on complaint rate) exceed certain thresholds.
 #'
-#' See [https://paws-r.github.io/docs/ses/update_configuration_set_sending_enabled.html](https://paws-r.github.io/docs/ses/update_configuration_set_sending_enabled.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_update_configuration_set_sending_enabled/](https://www.paws-r-sdk.com/docs/ses_update_configuration_set_sending_enabled/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to update.
 #' @param Enabled &#91;required&#93; Describes whether email sending is enabled or disabled for the
@@ -2413,7 +2413,7 @@ ses_update_configuration_set_sending_enabled <- function(ConfigurationSetName, E
 #' @description
 #' Modifies an association between a configuration set and a custom domain for open and click event tracking.
 #'
-#' See [https://paws-r.github.io/docs/ses/update_configuration_set_tracking_options.html](https://paws-r.github.io/docs/ses/update_configuration_set_tracking_options.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_update_configuration_set_tracking_options/](https://www.paws-r-sdk.com/docs/ses_update_configuration_set_tracking_options/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set for which you want to update the
 #' custom tracking domain.
@@ -2444,7 +2444,7 @@ ses_update_configuration_set_tracking_options <- function(ConfigurationSetName, 
 #' @description
 #' Updates an existing custom verification email template.
 #'
-#' See [https://paws-r.github.io/docs/ses/update_custom_verification_email_template.html](https://paws-r.github.io/docs/ses/update_custom_verification_email_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_update_custom_verification_email_template/](https://www.paws-r-sdk.com/docs/ses_update_custom_verification_email_template/) for full documentation.
 #'
 #' @param TemplateName &#91;required&#93; The name of the custom verification email template that you want to
 #' update.
@@ -2486,7 +2486,7 @@ ses_update_custom_verification_email_template <- function(TemplateName, FromEmai
 #' @description
 #' Updates a receipt rule.
 #'
-#' See [https://paws-r.github.io/docs/ses/update_receipt_rule.html](https://paws-r.github.io/docs/ses/update_receipt_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_update_receipt_rule/](https://www.paws-r-sdk.com/docs/ses_update_receipt_rule/) for full documentation.
 #'
 #' @param RuleSetName &#91;required&#93; The name of the receipt rule set that the receipt rule belongs to.
 #' @param Rule &#91;required&#93; A data structure that contains the updated receipt rule information.
@@ -2516,7 +2516,7 @@ ses_update_receipt_rule <- function(RuleSetName, Rule) {
 #' @description
 #' Updates an email template. Email templates enable you to send personalized email to one or more destinations in a single API operation. For more information, see the [Amazon SES Developer Guide](https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html).
 #'
-#' See [https://paws-r.github.io/docs/ses/update_template.html](https://paws-r.github.io/docs/ses/update_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_update_template/](https://www.paws-r-sdk.com/docs/ses_update_template/) for full documentation.
 #'
 #' @param Template &#91;required&#93; 
 #'
@@ -2545,7 +2545,7 @@ ses_update_template <- function(Template) {
 #' @description
 #' Returns a set of DKIM tokens for a domain identity.
 #'
-#' See [https://paws-r.github.io/docs/ses/verify_domain_dkim.html](https://paws-r.github.io/docs/ses/verify_domain_dkim.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_verify_domain_dkim/](https://www.paws-r-sdk.com/docs/ses_verify_domain_dkim/) for full documentation.
 #'
 #' @param Domain &#91;required&#93; The name of the domain to be verified for Easy DKIM signing.
 #'
@@ -2575,7 +2575,7 @@ ses_verify_domain_dkim <- function(Domain) {
 #' @description
 #' Adds a domain to the list of identities for your Amazon SES account in the current AWS Region and attempts to verify it. For more information about verifying domains, see [Verifying Email Addresses and Domains](https://docs.aws.amazon.com/ses/latest/dg/verify-addresses-and-domains.html) in the *Amazon SES Developer Guide.*
 #'
-#' See [https://paws-r.github.io/docs/ses/verify_domain_identity.html](https://paws-r.github.io/docs/ses/verify_domain_identity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_verify_domain_identity/](https://www.paws-r-sdk.com/docs/ses_verify_domain_identity/) for full documentation.
 #'
 #' @param Domain &#91;required&#93; The domain to be verified.
 #'
@@ -2604,7 +2604,7 @@ ses_verify_domain_identity <- function(Domain) {
 #' @description
 #' Deprecated. Use the [`verify_email_identity`][ses_verify_email_identity] operation to verify a new email address.
 #'
-#' See [https://paws-r.github.io/docs/ses/verify_email_address.html](https://paws-r.github.io/docs/ses/verify_email_address.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_verify_email_address/](https://www.paws-r-sdk.com/docs/ses_verify_email_address/) for full documentation.
 #'
 #' @param EmailAddress &#91;required&#93; The email address to be verified.
 #'
@@ -2634,7 +2634,7 @@ ses_verify_email_address <- function(EmailAddress) {
 #' @description
 #' Adds an email address to the list of identities for your Amazon SES account in the current AWS region and attempts to verify it. As a result of executing this operation, a verification email is sent to the specified address.
 #'
-#' See [https://paws-r.github.io/docs/ses/verify_email_identity.html](https://paws-r.github.io/docs/ses/verify_email_identity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ses_verify_email_identity/](https://www.paws-r-sdk.com/docs/ses_verify_email_identity/) for full documentation.
 #'
 #' @param EmailAddress &#91;required&#93; The email address to be verified.
 #'

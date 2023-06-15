@@ -14,6 +14,6 @@ swf_undeprecate_workflow_type(domain, workflowType)
 \description{
 Undeprecates a previously deprecated \emph{workflow type}. After a workflow type has been undeprecated, you can create new executions of that type.
 
-See \url{https://paws-r.github.io/docs/swf/undeprecate_workflow_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_undeprecate_workflow_type/} for full documentation.
 }
 \keyword{internal}

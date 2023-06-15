@@ -20,6 +20,6 @@ your account ID, do not include any hyphens ('-') in the ID.}
 \description{
 This operation sets and then enacts a data retrieval policy in the region specified in the PUT request. You can set one policy per region for an AWS account. The policy is enacted within a few minutes of a successful PUT operation.
 
-See \url{https://paws-r.github.io/docs/glacier/set_data_retrieval_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_set_data_retrieval_policy/} for full documentation.
 }
 \keyword{internal}

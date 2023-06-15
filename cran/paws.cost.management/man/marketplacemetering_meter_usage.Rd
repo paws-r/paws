@@ -42,6 +42,6 @@ request, and each \code{UsageAllocation} must have a unique set of tags
 \description{
 API to emit metering records. For identical requests, the API is idempotent. It simply returns the metering record ID.
 
-See \url{https://paws-r.github.io/docs/marketplacemetering/meter_usage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/marketplacemetering_meter_usage/} for full documentation.
 }
 \keyword{internal}

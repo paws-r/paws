@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Removes session information for a specified bot, alias, and user ID.
 #'
-#' See [https://paws-r.github.io/docs/lexruntimeservice/delete_session.html](https://paws-r.github.io/docs/lexruntimeservice/delete_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexruntimeservice_delete_session/](https://www.paws-r-sdk.com/docs/lexruntimeservice_delete_session/) for full documentation.
 #'
 #' @param botName &#91;required&#93; The name of the bot that contains the session data.
 #' @param botAlias &#91;required&#93; The alias in use for the bot that contains the session data.
@@ -39,7 +39,7 @@ lexruntimeservice_delete_session <- function(botName, botAlias, userId) {
 #' @description
 #' Returns session information for a specified bot, alias, and user ID.
 #'
-#' See [https://paws-r.github.io/docs/lexruntimeservice/get_session.html](https://paws-r.github.io/docs/lexruntimeservice/get_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexruntimeservice_get_session/](https://www.paws-r-sdk.com/docs/lexruntimeservice_get_session/) for full documentation.
 #'
 #' @param botName &#91;required&#93; The name of the bot that contains the session data.
 #' @param botAlias &#91;required&#93; The alias in use for the bot that contains the session data.
@@ -76,7 +76,7 @@ lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointL
 #' @description
 #' Sends user input (text or speech) to Amazon Lex. Clients use this API to send text and audio requests to Amazon Lex at runtime. Amazon Lex interprets the user input using the machine learning model that it built for the bot.
 #'
-#' See [https://paws-r.github.io/docs/lexruntimeservice/post_content.html](https://paws-r.github.io/docs/lexruntimeservice/post_content.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexruntimeservice_post_content/](https://www.paws-r-sdk.com/docs/lexruntimeservice_post_content/) for full documentation.
 #'
 #' @param botName &#91;required&#93; Name of the Amazon Lex bot.
 #' @param botAlias &#91;required&#93; Alias of the Amazon Lex bot.
@@ -215,7 +215,7 @@ lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAtt
 #' @description
 #' Sends user input to Amazon Lex. Client applications can use this API to send requests to Amazon Lex at runtime. Amazon Lex then interprets the user input using the machine learning model it built for the bot.
 #'
-#' See [https://paws-r.github.io/docs/lexruntimeservice/post_text.html](https://paws-r.github.io/docs/lexruntimeservice/post_text.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexruntimeservice_post_text/](https://www.paws-r-sdk.com/docs/lexruntimeservice_post_text/) for full documentation.
 #'
 #' @param botName &#91;required&#93; The name of the Amazon Lex bot.
 #' @param botAlias &#91;required&#93; The alias of the Amazon Lex bot.
@@ -291,7 +291,7 @@ lexruntimeservice_post_text <- function(botName, botAlias, userId, sessionAttrib
 #' @description
 #' Creates a new session or modifies an existing session with an Amazon Lex bot. Use this operation to enable your application to set the state of the bot.
 #'
-#' See [https://paws-r.github.io/docs/lexruntimeservice/put_session.html](https://paws-r.github.io/docs/lexruntimeservice/put_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexruntimeservice_put_session/](https://www.paws-r-sdk.com/docs/lexruntimeservice_put_session/) for full documentation.
 #'
 #' @param botName &#91;required&#93; The name of the bot that contains the session data.
 #' @param botAlias &#91;required&#93; The alias in use for the bot that contains the session data.

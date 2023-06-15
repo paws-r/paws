@@ -15,6 +15,6 @@ tag key are unassigned.}
 \description{
 Unassigns a tag from a retention rule.
 
-See \url{https://paws-r.github.io/docs/recyclebin/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/recyclebin_untag_resource/} for full documentation.
 }
 \keyword{internal}

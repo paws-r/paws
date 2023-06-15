@@ -17,6 +17,6 @@ serverlessapplicationrepository_unshare_application(
 \description{
 Unshares an application from an AWS Organization.
 
-See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/unshare_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_unshare_application/} for full documentation.
 }
 \keyword{internal}

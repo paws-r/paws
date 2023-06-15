@@ -17,6 +17,6 @@ instance.}
 \description{
 Opens ports for a specific Amazon Lightsail instance, and specifies the IP addresses allowed to connect to the instance through the ports, and the protocol. This action also closes all currently open ports that are not included in the request. Include all of the ports and the protocols you want to open in your \code{\link[=lightsail_put_instance_public_ports]{put_instance_public_ports}}request. Or use the \code{\link[=lightsail_open_instance_public_ports]{open_instance_public_ports}} action to open ports without closing currently open ports.
 
-See \url{https://paws-r.github.io/docs/lightsail/put_instance_public_ports.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_put_instance_public_ports/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ a-z, 0-9), hyphen (-), period (.), and space.}
 \description{
 Creates a new schedule for one or more DataBrew jobs. Jobs can be run at a specific date and time, or at regular intervals.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/create_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_create_schedule/} for full documentation.
 }
 \keyword{internal}

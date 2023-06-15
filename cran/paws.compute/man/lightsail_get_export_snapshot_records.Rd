@@ -19,6 +19,6 @@ request.}
 \description{
 Returns all export snapshot records created as a result of the \verb{export snapshot} operation.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_export_snapshot_records.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_export_snapshot_records/} for full documentation.
 }
 \keyword{internal}

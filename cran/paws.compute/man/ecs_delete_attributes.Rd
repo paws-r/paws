@@ -20,6 +20,6 @@ target type.}
 \description{
 Deletes one or more custom attributes from an Amazon ECS resource.
 
-See \url{https://paws-r.github.io/docs/ecs/delete_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_delete_attributes/} for full documentation.
 }
 \keyword{internal}

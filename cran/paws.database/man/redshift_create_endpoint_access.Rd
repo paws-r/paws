@@ -33,6 +33,6 @@ inbound traffic that you are authorizing into your endpoint.}
 \description{
 Creates a Redshift-managed VPC endpoint.
 
-See \url{https://paws-r.github.io/docs/redshift/create_endpoint_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_create_endpoint_access/} for full documentation.
 }
 \keyword{internal}

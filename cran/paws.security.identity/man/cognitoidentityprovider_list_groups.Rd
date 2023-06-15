@@ -18,6 +18,6 @@ list.}
 \description{
 Lists the groups associated with a user pool.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/list_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_groups/} for full documentation.
 }
 \keyword{internal}

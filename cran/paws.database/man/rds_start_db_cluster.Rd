@@ -15,6 +15,6 @@ This parameter is stored as a lowercase string.}
 \description{
 Starts an Amazon Aurora DB cluster that was stopped using the Amazon Web Services console, the stop-db-cluster CLI command, or the StopDBCluster action.
 
-See \url{https://paws-r.github.io/docs/rds/start_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_start_db_cluster/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ that you want to remove the tags from.}
 \description{
 Removes one or more tags from an Amazon Rekognition collection, stream processor, or Custom Labels model.
 
-See \url{https://paws-r.github.io/docs/rekognition/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_untag_resource/} for full documentation.
 }
 \keyword{internal}

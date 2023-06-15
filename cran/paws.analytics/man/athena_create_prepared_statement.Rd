@@ -23,6 +23,6 @@ athena_create_prepared_statement(
 \description{
 Creates a prepared statement for use with SQL queries in Athena.
 
-See \url{https://paws-r.github.io/docs/athena/create_prepared_statement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_create_prepared_statement/} for full documentation.
 }
 \keyword{internal}

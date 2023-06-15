@@ -21,6 +21,6 @@ associated with the resource.}
 \description{
 Updates an existing Shield Advanced automatic application layer DDoS mitigation configuration for the specified resource.
 
-See \url{https://paws-r.github.io/docs/shield/update_application_layer_automatic_response.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_update_application_layer_automatic_response/} for full documentation.
 }
 \keyword{internal}

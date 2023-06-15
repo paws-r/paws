@@ -14,6 +14,6 @@ codepipeline_update_action_type(actionType)
 \description{
 Updates an action type that was created with any supported integration model, where the action type is to be used by customers of the action type provider. Use a JSON file with the action definition and \code{\link[=codepipeline_update_action_type]{update_action_type}} to provide the full structure.
 
-See \url{https://paws-r.github.io/docs/codepipeline/update_action_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_update_action_type/} for full documentation.
 }
 \keyword{internal}

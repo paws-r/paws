@@ -19,6 +19,6 @@ pointed to by the next token.}
 \description{
 Returns an array of resources successfully backed up by Backup, including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type.
 
-See \url{https://paws-r.github.io/docs/backup/list_protected_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_list_protected_resources/} for full documentation.
 }
 \keyword{internal}

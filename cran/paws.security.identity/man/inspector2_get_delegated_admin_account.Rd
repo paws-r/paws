@@ -10,6 +10,6 @@ inspector2_get_delegated_admin_account()
 \description{
 Retrieves information about the Amazon Inspector delegated administrator for your organization.
 
-See \url{https://paws-r.github.io/docs/inspector2/get_delegated_admin_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_get_delegated_admin_account/} for full documentation.
 }
 \keyword{internal}

@@ -6566,9 +6566,6 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' [`get_metric_data`][connect_get_metric_data], see [Historical metrics
 #' definitions](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html)
 #' in the *Amazon Connect Administrator's Guide*.
-#' 
-#' This API is not available in the Amazon Web Services GovCloud (US)
-#' Regions.
 #'
 #' @usage
 #' connect_get_metric_data_v2(ResourceArn, StartTime, EndTime, Filters,
@@ -10159,6 +10156,234 @@ connect_search_available_phone_numbers <- function(TargetArn, PhoneNumberCountry
 }
 .connect$operations$search_available_phone_numbers <- connect_search_available_phone_numbers
 
+#' Searches the hours of operation in an Amazon Connect instance, with
+#' optional filtering
+#'
+#' @description
+#' Searches the hours of operation in an Amazon Connect instance, with
+#' optional filtering.
+#'
+#' @usage
+#' connect_search_hours_of_operations(InstanceId, NextToken, MaxResults,
+#'   SearchFilter, SearchCriteria)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximum number of results to return per page.
+#' @param SearchFilter Filters to be applied to search results.
+#' @param SearchCriteria The search criteria to be used to return hours of operations.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   HoursOfOperations = list(
+#'     list(
+#'       HoursOfOperationId = "string",
+#'       HoursOfOperationArn = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       TimeZone = "string",
+#'       Config = list(
+#'         list(
+#'           Day = "SUNDAY"|"MONDAY"|"TUESDAY"|"WEDNESDAY"|"THURSDAY"|"FRIDAY"|"SATURDAY",
+#'           StartTime = list(
+#'             Hours = 123,
+#'             Minutes = 123
+#'           ),
+#'           EndTime = list(
+#'             Hours = 123,
+#'             Minutes = 123
+#'           )
+#'         )
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   ApproximateTotalCount = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_hours_of_operations(
+#'   InstanceId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   SearchFilter = list(
+#'     TagFilter = list(
+#'       OrConditions = list(
+#'         list(
+#'           list(
+#'             TagKey = "string",
+#'             TagValue = "string"
+#'           )
+#'         )
+#'       ),
+#'       AndConditions = list(
+#'         list(
+#'           TagKey = "string",
+#'           TagValue = "string"
+#'         )
+#'       ),
+#'       TagCondition = list(
+#'         TagKey = "string",
+#'         TagValue = "string"
+#'       )
+#'     )
+#'   ),
+#'   SearchCriteria = list(
+#'     OrConditions = list(
+#'       list()
+#'     ),
+#'     AndConditions = list(
+#'       list()
+#'     ),
+#'     StringCondition = list(
+#'       FieldName = "string",
+#'       Value = "string",
+#'       ComparisonType = "STARTS_WITH"|"CONTAINS"|"EXACT"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_search_hours_of_operations
+#'
+#' @aliases connect_search_hours_of_operations
+connect_search_hours_of_operations <- function(InstanceId, NextToken = NULL, MaxResults = NULL, SearchFilter = NULL, SearchCriteria = NULL) {
+  op <- new_operation(
+    name = "SearchHoursOfOperations",
+    http_method = "POST",
+    http_path = "/search-hours-of-operations",
+    paginator = list()
+  )
+  input <- .connect$search_hours_of_operations_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, SearchFilter = SearchFilter, SearchCriteria = SearchCriteria)
+  output <- .connect$search_hours_of_operations_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$search_hours_of_operations <- connect_search_hours_of_operations
+
+#' Searches prompts in an Amazon Connect instance, with optional filtering
+#'
+#' @description
+#' Searches prompts in an Amazon Connect instance, with optional filtering.
+#'
+#' @usage
+#' connect_search_prompts(InstanceId, NextToken, MaxResults, SearchFilter,
+#'   SearchCriteria)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximum number of results to return per page.
+#' @param SearchFilter Filters to be applied to search results.
+#' @param SearchCriteria The search criteria to be used to return prompts.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Prompts = list(
+#'     list(
+#'       PromptARN = "string",
+#'       PromptId = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   ApproximateTotalCount = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_prompts(
+#'   InstanceId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   SearchFilter = list(
+#'     TagFilter = list(
+#'       OrConditions = list(
+#'         list(
+#'           list(
+#'             TagKey = "string",
+#'             TagValue = "string"
+#'           )
+#'         )
+#'       ),
+#'       AndConditions = list(
+#'         list(
+#'           TagKey = "string",
+#'           TagValue = "string"
+#'         )
+#'       ),
+#'       TagCondition = list(
+#'         TagKey = "string",
+#'         TagValue = "string"
+#'       )
+#'     )
+#'   ),
+#'   SearchCriteria = list(
+#'     OrConditions = list(
+#'       list()
+#'     ),
+#'     AndConditions = list(
+#'       list()
+#'     ),
+#'     StringCondition = list(
+#'       FieldName = "string",
+#'       Value = "string",
+#'       ComparisonType = "STARTS_WITH"|"CONTAINS"|"EXACT"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_search_prompts
+#'
+#' @aliases connect_search_prompts
+connect_search_prompts <- function(InstanceId, NextToken = NULL, MaxResults = NULL, SearchFilter = NULL, SearchCriteria = NULL) {
+  op <- new_operation(
+    name = "SearchPrompts",
+    http_method = "POST",
+    http_path = "/search-prompts",
+    paginator = list()
+  )
+  input <- .connect$search_prompts_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, SearchFilter = SearchFilter, SearchCriteria = SearchCriteria)
+  output <- .connect$search_prompts_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$search_prompts <- connect_search_prompts
+
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
@@ -10281,6 +10506,128 @@ connect_search_queues <- function(InstanceId, NextToken = NULL, MaxResults = NUL
   return(response)
 }
 .connect$operations$search_queues <- connect_search_queues
+
+#' Searches quick connects in an Amazon Connect instance, with optional
+#' filtering
+#'
+#' @description
+#' Searches quick connects in an Amazon Connect instance, with optional
+#' filtering.
+#'
+#' @usage
+#' connect_search_quick_connects(InstanceId, NextToken, MaxResults,
+#'   SearchFilter, SearchCriteria)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximum number of results to return per page.
+#' @param SearchFilter Filters to be applied to search results.
+#' @param SearchCriteria The search criteria to be used to return quick connects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   QuickConnects = list(
+#'     list(
+#'       QuickConnectARN = "string",
+#'       QuickConnectId = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       QuickConnectConfig = list(
+#'         QuickConnectType = "USER"|"QUEUE"|"PHONE_NUMBER",
+#'         UserConfig = list(
+#'           UserId = "string",
+#'           ContactFlowId = "string"
+#'         ),
+#'         QueueConfig = list(
+#'           QueueId = "string",
+#'           ContactFlowId = "string"
+#'         ),
+#'         PhoneConfig = list(
+#'           PhoneNumber = "string"
+#'         )
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   ApproximateTotalCount = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_quick_connects(
+#'   InstanceId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   SearchFilter = list(
+#'     TagFilter = list(
+#'       OrConditions = list(
+#'         list(
+#'           list(
+#'             TagKey = "string",
+#'             TagValue = "string"
+#'           )
+#'         )
+#'       ),
+#'       AndConditions = list(
+#'         list(
+#'           TagKey = "string",
+#'           TagValue = "string"
+#'         )
+#'       ),
+#'       TagCondition = list(
+#'         TagKey = "string",
+#'         TagValue = "string"
+#'       )
+#'     )
+#'   ),
+#'   SearchCriteria = list(
+#'     OrConditions = list(
+#'       list()
+#'     ),
+#'     AndConditions = list(
+#'       list()
+#'     ),
+#'     StringCondition = list(
+#'       FieldName = "string",
+#'       Value = "string",
+#'       ComparisonType = "STARTS_WITH"|"CONTAINS"|"EXACT"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_search_quick_connects
+#'
+#' @aliases connect_search_quick_connects
+connect_search_quick_connects <- function(InstanceId, NextToken = NULL, MaxResults = NULL, SearchFilter = NULL, SearchCriteria = NULL) {
+  op <- new_operation(
+    name = "SearchQuickConnects",
+    http_method = "POST",
+    http_path = "/search-quick-connects",
+    paginator = list()
+  )
+  input <- .connect$search_quick_connects_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults, SearchFilter = SearchFilter, SearchCriteria = SearchCriteria)
+  output <- .connect$search_quick_connects_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$search_quick_connects <- connect_search_quick_connects
 
 #' This API is in preview release for Amazon Connect and is subject to
 #' change

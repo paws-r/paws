@@ -232,6 +232,6 @@ operation to update the tags on a bot. To update tags, use the
 \description{
 Creates an Amazon Lex conversational bot or replaces an existing bot. When you create or update a bot you are only required to specify a name, a locale, and whether the bot is directed toward children under age 13. You can use this to add intents later, or to remove intents from an existing bot. When you create a bot with the minimum information, the bot is created or updated but Amazon Lex returns the `` response \code{FAILED}. You can build the bot after you add one or more intents. For more information about Amazon Lex bots, see how-it-works.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/put_bot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_put_bot/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ user or users to.}
 \description{
 Adds one or more users to a Users dataset. For more information see \href{https://docs.aws.amazon.com/personalize/latest/dg/importing-users.html}{Importing Users Incrementally}.
 
-See \url{https://paws-r.github.io/docs/personalizeevents/put_users.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalizeevents_put_users/} for full documentation.
 }
 \keyword{internal}

@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Associates an Amazon Web Services account with an Amazon Inspector delegated administrator. An HTTP 200 response indicates the association was successfully started, but doesn’t indicate whether it was completed. You can check if the association completed by using [`list_members`][inspector2_list_members] for multiple accounts or [GetMembers](https://docs.aws.amazon.com/inspector/v2/APIReference/API_GetMember.html) for a single account.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/associate_member.html](https://paws-r.github.io/docs/inspector2/associate_member.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_associate_member/](https://www.paws-r-sdk.com/docs/inspector2_associate_member/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The Amazon Web Services account ID of the member account to be
 #' associated.
@@ -40,7 +40,7 @@ inspector2_associate_member <- function(accountId) {
 #' @description
 #' Retrieves the Amazon Inspector status of multiple Amazon Web Services accounts within your environment.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/batch_get_account_status.html](https://paws-r.github.io/docs/inspector2/batch_get_account_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_batch_get_account_status/](https://www.paws-r-sdk.com/docs/inspector2_batch_get_account_status/) for full documentation.
 #'
 #' @param accountIds The 12-digit Amazon Web Services account IDs of the accounts to retrieve
 #' Amazon Inspector status for.
@@ -70,7 +70,7 @@ inspector2_batch_get_account_status <- function(accountIds = NULL) {
 #' @description
 #' Gets free trial status for multiple Amazon Web Services accounts.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/batch_get_free_trial_info.html](https://paws-r.github.io/docs/inspector2/batch_get_free_trial_info.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_batch_get_free_trial_info/](https://www.paws-r-sdk.com/docs/inspector2_batch_get_free_trial_info/) for full documentation.
 #'
 #' @param accountIds &#91;required&#93; The account IDs to get free trial status for.
 #'
@@ -100,7 +100,7 @@ inspector2_batch_get_free_trial_info <- function(accountIds) {
 #' @description
 #' Retrieves Amazon Inspector deep inspection activation status of multiple member accounts within your organization. You must be the delegated administrator of an organization in Amazon Inspector to use this API.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/batch_get_member_ec_2_deep_inspection_status.html](https://paws-r.github.io/docs/inspector2/batch_get_member_ec_2_deep_inspection_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_batch_get_member_ec_2_deep_inspection_status/](https://www.paws-r-sdk.com/docs/inspector2_batch_get_member_ec_2_deep_inspection_status/) for full documentation.
 #'
 #' @param accountIds The unique identifiers for the Amazon Web Services accounts to retrieve
 #' Amazon Inspector deep inspection activation status for.
@@ -133,7 +133,7 @@ inspector2_batch_get_member_ec_2_deep_inspection_status <- function(accountIds =
 #' @description
 #' Activates or deactivates Amazon Inspector deep inspection for the provided member accounts in your organization. You must be the delegated administrator of an organization in Amazon Inspector to use this API.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/batch_update_member_ec_2_deep_inspection_status.html](https://paws-r.github.io/docs/inspector2/batch_update_member_ec_2_deep_inspection_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_batch_update_member_ec_2_deep_inspection_status/](https://www.paws-r-sdk.com/docs/inspector2_batch_update_member_ec_2_deep_inspection_status/) for full documentation.
 #'
 #' @param accountIds &#91;required&#93; The unique identifiers for the Amazon Web Services accounts to change
 #' Amazon Inspector deep inspection status for.
@@ -163,7 +163,7 @@ inspector2_batch_update_member_ec_2_deep_inspection_status <- function(accountId
 #' @description
 #' Cancels the given findings report.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/cancel_findings_report.html](https://paws-r.github.io/docs/inspector2/cancel_findings_report.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_cancel_findings_report/](https://www.paws-r-sdk.com/docs/inspector2_cancel_findings_report/) for full documentation.
 #'
 #' @param reportId &#91;required&#93; The ID of the report to be canceled.
 #'
@@ -192,7 +192,7 @@ inspector2_cancel_findings_report <- function(reportId) {
 #' @description
 #' Creates a filter resource using specified filter criteria.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/create_filter.html](https://paws-r.github.io/docs/inspector2/create_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_create_filter/](https://www.paws-r-sdk.com/docs/inspector2_create_filter/) for full documentation.
 #'
 #' @param action &#91;required&#93; Defines the action that is to be applied to the findings that match the
 #' filter.
@@ -229,7 +229,7 @@ inspector2_create_filter <- function(action, description = NULL, filterCriteria,
 #' @description
 #' Creates a finding report. By default only `ACTIVE` findings are returned in the report. To see `SUPRESSED` or `CLOSED` findings you must specify a value for the `findingStatus` filter criteria.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/create_findings_report.html](https://paws-r.github.io/docs/inspector2/create_findings_report.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_create_findings_report/](https://www.paws-r-sdk.com/docs/inspector2_create_findings_report/) for full documentation.
 #'
 #' @param filterCriteria The filter criteria to apply to the results of the finding report.
 #' @param reportFormat &#91;required&#93; The format to generate the report in.
@@ -260,7 +260,7 @@ inspector2_create_findings_report <- function(filterCriteria = NULL, reportForma
 #' @description
 #' Deletes a filter resource.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/delete_filter.html](https://paws-r.github.io/docs/inspector2/delete_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_delete_filter/](https://www.paws-r-sdk.com/docs/inspector2_delete_filter/) for full documentation.
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Number (ARN) of the filter to be deleted.
 #'
@@ -290,7 +290,7 @@ inspector2_delete_filter <- function(arn) {
 #' @description
 #' Describe Amazon Inspector configuration settings for an Amazon Web Services organization.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/describe_organization_configuration.html](https://paws-r.github.io/docs/inspector2/describe_organization_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_describe_organization_configuration/](https://www.paws-r-sdk.com/docs/inspector2_describe_organization_configuration/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -318,7 +318,7 @@ inspector2_describe_organization_configuration <- function() {
 #' @description
 #' Disables Amazon Inspector scans for one or more Amazon Web Services accounts. Disabling all scan types in an account disables the Amazon Inspector service.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/disable.html](https://paws-r.github.io/docs/inspector2/disable.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_disable/](https://www.paws-r-sdk.com/docs/inspector2_disable/) for full documentation.
 #'
 #' @param accountIds An array of account IDs you want to disable Amazon Inspector scans for.
 #' @param resourceTypes The resource scan types you want to disable.
@@ -349,7 +349,7 @@ inspector2_disable <- function(accountIds = NULL, resourceTypes = NULL) {
 #' @description
 #' Disables the Amazon Inspector delegated administrator for your organization.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/disable_delegated_admin_account.html](https://paws-r.github.io/docs/inspector2/disable_delegated_admin_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_disable_delegated_admin_account/](https://www.paws-r-sdk.com/docs/inspector2_disable_delegated_admin_account/) for full documentation.
 #'
 #' @param delegatedAdminAccountId &#91;required&#93; The Amazon Web Services account ID of the current Amazon Inspector
 #' delegated administrator.
@@ -380,7 +380,7 @@ inspector2_disable_delegated_admin_account <- function(delegatedAdminAccountId) 
 #' @description
 #' Disassociates a member account from an Amazon Inspector delegated administrator.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/disassociate_member.html](https://paws-r.github.io/docs/inspector2/disassociate_member.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_disassociate_member/](https://www.paws-r-sdk.com/docs/inspector2_disassociate_member/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The Amazon Web Services account ID of the member account to
 #' disassociate.
@@ -411,7 +411,7 @@ inspector2_disassociate_member <- function(accountId) {
 #' @description
 #' Enables Amazon Inspector scans for one or more Amazon Web Services accounts.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/enable.html](https://paws-r.github.io/docs/inspector2/enable.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_enable/](https://www.paws-r-sdk.com/docs/inspector2_enable/) for full documentation.
 #'
 #' @param accountIds A list of account IDs you want to enable Amazon Inspector scans for.
 #' @param clientToken The idempotency token for the request.
@@ -443,7 +443,7 @@ inspector2_enable <- function(accountIds = NULL, clientToken = NULL, resourceTyp
 #' @description
 #' Enables the Amazon Inspector delegated administrator for your Organizations organization.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/enable_delegated_admin_account.html](https://paws-r.github.io/docs/inspector2/enable_delegated_admin_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_enable_delegated_admin_account/](https://www.paws-r-sdk.com/docs/inspector2_enable_delegated_admin_account/) for full documentation.
 #'
 #' @param clientToken The idempotency token for the request.
 #' @param delegatedAdminAccountId &#91;required&#93; The Amazon Web Services account ID of the Amazon Inspector delegated
@@ -474,7 +474,7 @@ inspector2_enable_delegated_admin_account <- function(clientToken = NULL, delega
 #' @description
 #' Retrieves setting configurations for Inspector scans.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/get_configuration.html](https://paws-r.github.io/docs/inspector2/get_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_get_configuration/](https://www.paws-r-sdk.com/docs/inspector2_get_configuration/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -502,7 +502,7 @@ inspector2_get_configuration <- function() {
 #' @description
 #' Retrieves information about the Amazon Inspector delegated administrator for your organization.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/get_delegated_admin_account.html](https://paws-r.github.io/docs/inspector2/get_delegated_admin_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_get_delegated_admin_account/](https://www.paws-r-sdk.com/docs/inspector2_get_delegated_admin_account/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -530,7 +530,7 @@ inspector2_get_delegated_admin_account <- function() {
 #' @description
 #' Retrieves the activation status of Amazon Inspector deep inspection and custom paths associated with your account.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/get_ec_2_deep_inspection_configuration.html](https://paws-r.github.io/docs/inspector2/get_ec_2_deep_inspection_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_get_ec_2_deep_inspection_configuration/](https://www.paws-r-sdk.com/docs/inspector2_get_ec_2_deep_inspection_configuration/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -557,7 +557,7 @@ inspector2_get_ec_2_deep_inspection_configuration <- function() {
 #' @description
 #' Gets the status of a findings report.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/get_findings_report_status.html](https://paws-r.github.io/docs/inspector2/get_findings_report_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_get_findings_report_status/](https://www.paws-r-sdk.com/docs/inspector2_get_findings_report_status/) for full documentation.
 #'
 #' @param reportId The ID of the report to retrieve the status of.
 #'
@@ -586,7 +586,7 @@ inspector2_get_findings_report_status <- function(reportId = NULL) {
 #' @description
 #' Gets member information for your organization.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/get_member.html](https://paws-r.github.io/docs/inspector2/get_member.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_get_member/](https://www.paws-r-sdk.com/docs/inspector2_get_member/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The Amazon Web Services account ID of the member account to retrieve
 #' information on.
@@ -616,7 +616,7 @@ inspector2_get_member <- function(accountId) {
 #' @description
 #' Lists the permissions an account has to configure Amazon Inspector.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/list_account_permissions.html](https://paws-r.github.io/docs/inspector2/list_account_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_list_account_permissions/](https://www.paws-r-sdk.com/docs/inspector2_list_account_permissions/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token to use for paginating results that are returned in the response.
@@ -650,7 +650,7 @@ inspector2_list_account_permissions <- function(maxResults = NULL, nextToken = N
 #' @description
 #' Lists coverage details for you environment.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/list_coverage.html](https://paws-r.github.io/docs/inspector2/list_coverage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_list_coverage/](https://www.paws-r-sdk.com/docs/inspector2_list_coverage/) for full documentation.
 #'
 #' @param filterCriteria An object that contains details on the filters to apply to the coverage
 #' data for your environment.
@@ -685,7 +685,7 @@ inspector2_list_coverage <- function(filterCriteria = NULL, maxResults = NULL, n
 #' @description
 #' Lists Amazon Inspector coverage statistics for your environment.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/list_coverage_statistics.html](https://paws-r.github.io/docs/inspector2/list_coverage_statistics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_list_coverage_statistics/](https://www.paws-r-sdk.com/docs/inspector2_list_coverage_statistics/) for full documentation.
 #'
 #' @param filterCriteria An object that contains details on the filters to apply to the coverage
 #' data for your environment.
@@ -721,7 +721,7 @@ inspector2_list_coverage_statistics <- function(filterCriteria = NULL, groupBy =
 #' @description
 #' Lists information about the Amazon Inspector delegated administrator of your organization.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/list_delegated_admin_accounts.html](https://paws-r.github.io/docs/inspector2/list_delegated_admin_accounts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_list_delegated_admin_accounts/](https://www.paws-r-sdk.com/docs/inspector2_list_delegated_admin_accounts/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token to use for paginating results that are returned in the response.
@@ -754,7 +754,7 @@ inspector2_list_delegated_admin_accounts <- function(maxResults = NULL, nextToke
 #' @description
 #' Lists the filters associated with your account.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/list_filters.html](https://paws-r.github.io/docs/inspector2/list_filters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_list_filters/](https://www.paws-r-sdk.com/docs/inspector2_list_filters/) for full documentation.
 #'
 #' @param action The action the filter applies to matched findings.
 #' @param arns The Amazon resource number (ARN) of the filter.
@@ -790,7 +790,7 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
 #' @description
 #' Lists aggregated finding data for your environment based on specific criteria.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/list_finding_aggregations.html](https://paws-r.github.io/docs/inspector2/list_finding_aggregations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_list_finding_aggregations/](https://www.paws-r-sdk.com/docs/inspector2_list_finding_aggregations/) for full documentation.
 #'
 #' @param accountIds The Amazon Web Services account IDs to retrieve finding aggregation data
 #' for.
@@ -828,7 +828,7 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
 #' @description
 #' Lists findings for your environment.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/list_findings.html](https://paws-r.github.io/docs/inspector2/list_findings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_list_findings/](https://www.paws-r-sdk.com/docs/inspector2_list_findings/) for full documentation.
 #'
 #' @param filterCriteria Details on the filters to apply to your finding results.
 #' @param maxResults The maximum number of results to return in the response.
@@ -864,7 +864,7 @@ inspector2_list_findings <- function(filterCriteria = NULL, maxResults = NULL, n
 #' @description
 #' List members associated with the Amazon Inspector delegated administrator for your organization.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/list_members.html](https://paws-r.github.io/docs/inspector2/list_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_list_members/](https://www.paws-r-sdk.com/docs/inspector2_list_members/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to return in the response.
 #' @param nextToken A token to use for paginating results that are returned in the response.
@@ -899,7 +899,7 @@ inspector2_list_members <- function(maxResults = NULL, nextToken = NULL, onlyAss
 #' @description
 #' Lists all tags attached to a given resource.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/list_tags_for_resource.html](https://paws-r.github.io/docs/inspector2/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/inspector2_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon resource number (ARN) of the resource to list tags of.
 #'
@@ -928,7 +928,7 @@ inspector2_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Lists the Amazon Inspector usage totals over the last 30 days.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/list_usage_totals.html](https://paws-r.github.io/docs/inspector2/list_usage_totals.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_list_usage_totals/](https://www.paws-r-sdk.com/docs/inspector2_list_usage_totals/) for full documentation.
 #'
 #' @param accountIds The Amazon Web Services account IDs to retrieve usage totals for.
 #' @param maxResults The maximum number of results to return in the response.
@@ -962,7 +962,7 @@ inspector2_list_usage_totals <- function(accountIds = NULL, maxResults = NULL, n
 #' @description
 #' Lists Amazon Inspector coverage details for a specific vulnerability.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/search_vulnerabilities.html](https://paws-r.github.io/docs/inspector2/search_vulnerabilities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_search_vulnerabilities/](https://www.paws-r-sdk.com/docs/inspector2_search_vulnerabilities/) for full documentation.
 #'
 #' @param filterCriteria &#91;required&#93; The criteria used to filter the results of a vulnerability search.
 #' @param nextToken A token to use for paginating results that are returned in the response.
@@ -995,7 +995,7 @@ inspector2_search_vulnerabilities <- function(filterCriteria, nextToken = NULL) 
 #' @description
 #' Adds tags to a resource.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/tag_resource.html](https://paws-r.github.io/docs/inspector2/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_tag_resource/](https://www.paws-r-sdk.com/docs/inspector2_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to apply a tag to.
 #' @param tags &#91;required&#93; The tags to be added to a resource.
@@ -1025,7 +1025,7 @@ inspector2_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/untag_resource.html](https://paws-r.github.io/docs/inspector2/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_untag_resource/](https://www.paws-r-sdk.com/docs/inspector2_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource to remove tags from.
 #' @param tagKeys &#91;required&#93; The tag keys to remove from the resource.
@@ -1055,7 +1055,7 @@ inspector2_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates setting configurations for your Amazon Inspector account. When you use this API as an Amazon Inspector delegated administrator this updates the setting for all accounts you manage. Member accounts in an organization cannot update this setting.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/update_configuration.html](https://paws-r.github.io/docs/inspector2/update_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_update_configuration/](https://www.paws-r-sdk.com/docs/inspector2_update_configuration/) for full documentation.
 #'
 #' @param ecrConfiguration &#91;required&#93; Specifies how the ECR automated re-scan will be updated for your
 #' environment.
@@ -1086,7 +1086,7 @@ inspector2_update_configuration <- function(ecrConfiguration) {
 #' @description
 #' Activates, deactivates Amazon Inspector deep inspection, or updates custom paths for your account.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/update_ec_2_deep_inspection_configuration.html](https://paws-r.github.io/docs/inspector2/update_ec_2_deep_inspection_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_update_ec_2_deep_inspection_configuration/](https://www.paws-r-sdk.com/docs/inspector2_update_ec_2_deep_inspection_configuration/) for full documentation.
 #'
 #' @param activateDeepInspection Specify `TRUE` to activate Amazon Inspector deep inspection in your
 #' account, or `FALSE` to deactivate. Member accounts in an organization
@@ -1122,7 +1122,7 @@ inspector2_update_ec_2_deep_inspection_configuration <- function(activateDeepIns
 #' @description
 #' Specifies the action that is to be applied to the findings that match the filter.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/update_filter.html](https://paws-r.github.io/docs/inspector2/update_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_update_filter/](https://www.paws-r-sdk.com/docs/inspector2_update_filter/) for full documentation.
 #'
 #' @param action Specifies the action that is to be applied to the findings that match
 #' the filter.
@@ -1158,7 +1158,7 @@ inspector2_update_filter <- function(action = NULL, description = NULL, filterAr
 #' @description
 #' Updates the Amazon Inspector deep inspection custom paths for your organization. You must be an Amazon Inspector delegated administrator to use this API.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/update_org_ec_2_deep_inspection_configuration.html](https://paws-r.github.io/docs/inspector2/update_org_ec_2_deep_inspection_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_update_org_ec_2_deep_inspection_configuration/](https://www.paws-r-sdk.com/docs/inspector2_update_org_ec_2_deep_inspection_configuration/) for full documentation.
 #'
 #' @param orgPackagePaths &#91;required&#93; The Amazon Inspector deep inspection custom paths you are adding for
 #' your organization.
@@ -1188,7 +1188,7 @@ inspector2_update_org_ec_2_deep_inspection_configuration <- function(orgPackageP
 #' @description
 #' Updates the configurations for your Amazon Inspector organization.
 #'
-#' See [https://paws-r.github.io/docs/inspector2/update_organization_configuration.html](https://paws-r.github.io/docs/inspector2/update_organization_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/inspector2_update_organization_configuration/](https://www.paws-r-sdk.com/docs/inspector2_update_organization_configuration/) for full documentation.
 #'
 #' @param autoEnable &#91;required&#93; Defines which scan types are enabled automatically for new members of
 #' your Amazon Inspector organization.

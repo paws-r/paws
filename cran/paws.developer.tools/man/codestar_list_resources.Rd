@@ -18,6 +18,6 @@ results.}
 \description{
 Lists resources associated with a project in AWS CodeStar.
 
-See \url{https://paws-r.github.io/docs/codestar/list_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestar_list_resources/} for full documentation.
 }
 \keyword{internal}

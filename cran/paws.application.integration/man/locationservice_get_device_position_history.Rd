@@ -53,6 +53,6 @@ history.}
 \description{
 Retrieves the device position history from a tracker resource within a specified range of time.
 
-See \url{https://paws-r.github.io/docs/locationservice/get_device_position_history.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_get_device_position_history/} for full documentation.
 }
 \keyword{internal}

@@ -25,6 +25,6 @@ the value from the IAM Identity Center identity store.}
 \description{
 Enables the attributes-based access control (ABAC) feature for the specified IAM Identity Center instance. You can also specify new attributes to add to your ABAC configuration during the enabling process. For more information about ABAC, see Attribute-Based Access Control in the \emph{IAM Identity Center User Guide}.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/create_instance_access_control_attribute_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_create_instance_access_control_attribute_configuration/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ opsworks_start_instance(InstanceId)
 \description{
 Starts a specified instance. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html}{Starting, Stopping, and Rebooting Instances}.
 
-See \url{https://paws-r.github.io/docs/opsworks/start_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_start_instance/} for full documentation.
 }
 \keyword{internal}

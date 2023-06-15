@@ -13,6 +13,6 @@ ses_get_template(TemplateName)
 \description{
 Displays the template object (which includes the Subject line, HTML part and text part) for the template you specify.
 
-See \url{https://paws-r.github.io/docs/ses/get_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_get_template/} for full documentation.
 }
 \keyword{internal}

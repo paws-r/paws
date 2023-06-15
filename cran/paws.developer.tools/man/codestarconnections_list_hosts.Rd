@@ -18,6 +18,6 @@ to return the next set of hosts in the list.}
 \description{
 Lists the hosts associated with your account.
 
-See \url{https://paws-r.github.io/docs/codestarconnections/list_hosts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestarconnections_list_hosts/} for full documentation.
 }
 \keyword{internal}

@@ -27,6 +27,6 @@ CreateFacetRequest$ObjectType for more details.}
 \description{
 Does the following:
 
-See \url{https://paws-r.github.io/docs/clouddirectory/update_facet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_update_facet/} for full documentation.
 }
 \keyword{internal}

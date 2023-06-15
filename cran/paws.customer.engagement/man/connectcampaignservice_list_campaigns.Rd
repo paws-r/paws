@@ -21,6 +21,6 @@ connectcampaignservice_list_campaigns(
 \description{
 Provides summary information about the campaigns under the specified Amazon Connect account.
 
-See \url{https://paws-r.github.io/docs/connectcampaignservice/list_campaigns.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectcampaignservice_list_campaigns/} for full documentation.
 }
 \keyword{internal}

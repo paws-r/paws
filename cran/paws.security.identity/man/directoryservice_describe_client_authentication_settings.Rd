@@ -31,6 +31,6 @@ operation.}
 \description{
 Retrieves information about the type of client authentication for the specified directory, if the type is specified. If no type is specified, information about all client authentication types that are supported for the specified directory is retrieved. Currently, only \code{SmartCard} is supported.
 
-See \url{https://paws-r.github.io/docs/directoryservice/describe_client_authentication_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_describe_client_authentication_settings/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ backup_describe_framework(FrameworkName)
 \description{
 Returns the framework details for the specified \code{FrameworkName}.
 
-See \url{https://paws-r.github.io/docs/backup/describe_framework.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_describe_framework/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ this operation. If this value is null, it retrieves the first page.}
 \description{
 Retrieves the name of the stack with which the specified fleet is associated.
 
-See \url{https://paws-r.github.io/docs/appstream/list_associated_stacks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_list_associated_stacks/} for full documentation.
 }
 \keyword{internal}

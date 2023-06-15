@@ -40,6 +40,6 @@ the workflow types.}
 \description{
 Returns information about workflow types in the specified domain. The results may be split into multiple pages that can be retrieved by making the call repeatedly.
 
-See \url{https://paws-r.github.io/docs/swf/list_workflow_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_list_workflow_types/} for full documentation.
 }
 \keyword{internal}

@@ -36,6 +36,6 @@ created.}
 \description{
 Creates an organizational unit (OU) within a root or parent OU. An OU is a container for accounts that enables you to organize your accounts to apply policies according to your business requirements. The number of levels deep that you can nest OUs is dependent upon the policy types enabled for that root. For service control policies, the limit is five.
 
-See \url{https://paws-r.github.io/docs/organizations/create_organizational_unit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_create_organizational_unit/} for full documentation.
 }
 \keyword{internal}

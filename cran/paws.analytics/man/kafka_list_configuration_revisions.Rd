@@ -20,6 +20,6 @@ batch, provide this token in your next request.}
 \description{
 Returns a list of all the MSK configurations in this Region.
 
-See \url{https://paws-r.github.io/docs/kafka/list_configuration_revisions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_list_configuration_revisions/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ CloudWatch.}
 \description{
 Enables or disables the publishing of reputation metrics for emails sent using a specific configuration set in a given AWS Region. Reputation metrics include bounce and complaint rates. These metrics are published to Amazon CloudWatch. By using CloudWatch, you can create alarms when bounce or complaint rates exceed certain thresholds.
 
-See \url{https://paws-r.github.io/docs/ses/update_configuration_set_reputation_metrics_enabled.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_update_configuration_set_reputation_metrics_enabled/} for full documentation.
 }
 \keyword{internal}

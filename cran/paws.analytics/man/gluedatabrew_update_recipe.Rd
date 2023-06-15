@@ -18,6 +18,6 @@ an action, and the conditions under which the action should succeed.}
 \description{
 Modifies the definition of the \code{LATEST_WORKING} version of a DataBrew recipe.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/update_recipe.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_update_recipe/} for full documentation.
 }
 \keyword{internal}

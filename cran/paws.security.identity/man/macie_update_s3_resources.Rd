@@ -18,6 +18,6 @@ update.}
 \description{
 (Discontinued) Updates the classification types for the specified S3 resources. If \code{memberAccountId} isn't specified, the action updates the classification types of the S3 resources associated with Amazon Macie Classic for the current Macie Classic administrator account. If \code{memberAccountId} is specified, the action updates the classification types of the S3 resources associated with Macie Classic for the specified member account.
 
-See \url{https://paws-r.github.io/docs/macie/update_s3_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie_update_s3_resources/} for full documentation.
 }
 \keyword{internal}

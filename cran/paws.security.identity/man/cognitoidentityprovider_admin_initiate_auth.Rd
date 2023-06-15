@@ -127,6 +127,6 @@ generates and passes to Amazon Cognito when it makes API requests.}
 \description{
 Initiates the authentication flow, as an administrator.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_initiate_auth.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_initiate_auth/} for full documentation.
 }
 \keyword{internal}

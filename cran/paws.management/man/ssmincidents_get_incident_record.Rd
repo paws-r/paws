@@ -12,6 +12,6 @@ ssmincidents_get_incident_record(arn)
 \description{
 Returns the details for the specified incident record.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/get_incident_record.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_get_incident_record/} for full documentation.
 }
 \keyword{internal}

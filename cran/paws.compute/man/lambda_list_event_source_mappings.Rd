@@ -48,6 +48,6 @@ even if you set the number higher.}
 \description{
 Lists event source mappings. Specify an \code{EventSourceArn} to show only event source mappings for a single event source.
 
-See \url{https://paws-r.github.io/docs/lambda/list_event_source_mappings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_list_event_source_mappings/} for full documentation.
 }
 \keyword{internal}

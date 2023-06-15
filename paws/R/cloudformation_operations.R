@@ -3,6 +3,46 @@
 #' @include cloudformation_service.R
 NULL
 
+#' Activate trusted access with Organizations
+#'
+#' @description
+#' Activate trusted access with Organizations. With trusted access between
+#' StackSets and Organizations activated, the management account has
+#' permissions to create and manage StackSets for your organization.
+#'
+#' @usage
+#' cloudformation_activate_organizations_access()
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$activate_organizations_access()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_activate_organizations_access
+#'
+#' @aliases cloudformation_activate_organizations_access
+cloudformation_activate_organizations_access <- function() {
+  op <- new_operation(
+    name = "ActivateOrganizationsAccess",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$activate_organizations_access_input()
+  output <- .cloudformation$activate_organizations_access_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$activate_organizations_access <- cloudformation_activate_organizations_access
+
 #' Activates a public third-party extension, making it available for use in
 #' stack templates
 #'
@@ -13,7 +53,7 @@ NULL
 #' in the *CloudFormation User Guide*.
 #' 
 #' Once you have activated a public third-party extension in your account
-#' and region, use
+#' and Region, use
 #' [`set_type_configuration`][cloudformation_set_type_configuration] to
 #' specify configuration properties for the extension. For more
 #' information, see [Configuring extensions at the account
@@ -41,21 +81,21 @@ NULL
 #' 
 #' Conditional: You must specify `PublicTypeArn`, or `TypeName`, `Type`,
 #' and `PublisherId`.
-#' @param TypeNameAlias An alias to assign to the public extension, in this account and region.
+#' @param TypeNameAlias An alias to assign to the public extension, in this account and Region.
 #' If you specify an alias for the extension, CloudFormation treats the
-#' alias as the extension type name within this account and region. You
+#' alias as the extension type name within this account and Region. You
 #' must use the alias to refer to the extension in your templates, API
 #' calls, and CloudFormation console.
 #' 
-#' An extension alias must be unique within a given account and region. You
+#' An extension alias must be unique within a given account and Region. You
 #' can activate the same public resource multiple times in the same account
-#' and region, using different type name aliases.
-#' @param AutoUpdate Whether to automatically update the extension in this account and region
+#' and Region, using different type name aliases.
+#' @param AutoUpdate Whether to automatically update the extension in this account and Region
 #' when a new *minor* version is published by the extension publisher.
 #' Major versions released by the publisher must be manually updated.
 #' 
 #' The default is `true`.
-#' @param LoggingConfig 
+#' @param LoggingConfig Contains logging configuration information for an extension.
 #' @param ExecutionRoleArn The name of the IAM execution role to use to activate the extension.
 #' @param VersionBump Manually updates a previously-activated type to a new major or minor
 #' version, if available. You can also use this parameter to update the
@@ -123,11 +163,11 @@ cloudformation_activate_type <- function(Type = NULL, PublicTypeArn = NULL, Publ
 .cloudformation$operations$activate_type <- cloudformation_activate_type
 
 #' Returns configuration data for the specified CloudFormation extensions,
-#' from the CloudFormation registry for the account and region
+#' from the CloudFormation registry for the account and Region
 #'
 #' @description
 #' Returns configuration data for the specified CloudFormation extensions,
-#' from the CloudFormation registry for the account and region.
+#' from the CloudFormation registry for the account and Region.
 #' 
 #' For more information, see [Configuring extensions at the account
 #' level](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#registry-set-configuration)
@@ -230,7 +270,16 @@ cloudformation_batch_describe_type_configurations <- function(TypeConfigurationI
 #' @usage
 #' cloudformation_cancel_update_stack(StackName, ClientRequestToken)
 #'
-#' @param StackName &#91;required&#93; The name or the unique stack ID that's associated with the stack.
+#' @param StackName &#91;required&#93; If you don't pass a parameter to `StackName`, the API returns a response
+#' that describes all resources in the account.
+#' 
+#' The IAM policy below can be added to IAM policies when you want to limit
+#' resource-level permissions and avoid returning a response when no
+#' parameter is sent in the request:
+#' 
+#' `{ "Version": "2012-10-17", "Statement": [{ "Effect": "Deny", "Action": "cloudformation:DescribeStacks", "NotResource": "arn:aws:cloudformation:*:*:stack/*/*" }] }`
+#' 
+#' The name or the unique stack ID that's associated with the stack.
 #' @param ClientRequestToken A unique identifier for this
 #' [`cancel_update_stack`][cloudformation_cancel_update_stack] request.
 #' Specify this token if you plan to retry requests so that CloudFormation
@@ -356,7 +405,7 @@ cloudformation_cancel_update_stack <- function(StackName, ClientRequestToken = N
 #' @param ClientRequestToken A unique identifier for this
 #' [`continue_update_rollback`][cloudformation_continue_update_rollback]
 #' request. Specify this token if you plan to retry requests so that
-#' CloudFormationknows that you're not attempting to continue the rollback
+#' CloudFormation knows that you're not attempting to continue the rollback
 #' to a stack with the same name. You might retry
 #' [`continue_update_rollback`][cloudformation_continue_update_rollback]
 #' requests to ensure that CloudFormation successfully received them.
@@ -589,7 +638,7 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' If you create a change set for a new stack, CloudFormation creates a
 #' stack with a unique stack ID, but no template or resources. The stack
 #' will be in the
-#' [`REVIEW_IN_PROGRESS`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995)
+#' [REVIEW_IN_PROGRESS](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995)
 #' state until you execute the change set.
 #' 
 #' By default, CloudFormation specifies `UPDATE`. You can't use the
@@ -693,8 +742,8 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' @description
 #' Creates a stack as specified in the template. After the call completes
 #' successfully, the stack creation starts. You can check the status of the
-#' stack through the
-#' [`describe_stacks`][cloudformation_describe_stacks]operation.
+#' stack through the [`describe_stacks`][cloudformation_describe_stacks]
+#' operation.
 #'
 #' @usage
 #' cloudformation_create_stack(StackName, TemplateBody, TemplateURL,
@@ -1390,12 +1439,52 @@ cloudformation_create_stack_set <- function(StackSetName, Description = NULL, Te
 }
 .cloudformation$operations$create_stack_set <- cloudformation_create_stack_set
 
+#' Deactivates trusted access with Organizations
+#'
+#' @description
+#' Deactivates trusted access with Organizations. If trusted access is
+#' deactivated, the management account does not have permissions to create
+#' and manage service-managed StackSets for your organization.
+#'
+#' @usage
+#' cloudformation_deactivate_organizations_access()
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$deactivate_organizations_access()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_deactivate_organizations_access
+#'
+#' @aliases cloudformation_deactivate_organizations_access
+cloudformation_deactivate_organizations_access <- function() {
+  op <- new_operation(
+    name = "DeactivateOrganizationsAccess",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$deactivate_organizations_access_input()
+  output <- .cloudformation$deactivate_organizations_access_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$deactivate_organizations_access <- cloudformation_deactivate_organizations_access
+
 #' Deactivates a public extension that was previously activated in this
-#' account and region
+#' account and Region
 #'
 #' @description
 #' Deactivates a public extension that was previously activated in this
-#' account and region.
+#' account and Region.
 #' 
 #' Once deactivated, an extension can't be used in any CloudFormation
 #' operation. This includes stack update operations where the stack
@@ -1406,7 +1495,7 @@ cloudformation_create_stack_set <- function(StackSetName, Description = NULL, Te
 #' @usage
 #' cloudformation_deactivate_type(TypeName, Type, Arn)
 #'
-#' @param TypeName The type name of the extension, in this account and region. If you
+#' @param TypeName The type name of the extension, in this account and Region. If you
 #' specified a type name alias when enabling the extension, use the type
 #' name alias.
 #' 
@@ -1415,7 +1504,7 @@ cloudformation_create_stack_set <- function(StackSetName, Description = NULL, Te
 #' 
 #' Conditional: You must specify either `Arn`, or `TypeName` and `Type`.
 #' @param Arn The Amazon Resource Name (ARN) for the extension, in this account and
-#' region.
+#' Region.
 #' 
 #' Conditional: You must specify either `Arn`, or `TypeName` and `Type`.
 #'
@@ -2140,6 +2229,71 @@ cloudformation_describe_change_set_hooks <- function(ChangeSetName, StackName = 
 }
 .cloudformation$operations$describe_change_set_hooks <- cloudformation_describe_change_set_hooks
 
+#' Retrieves information about the account's OrganizationAccess status
+#'
+#' @description
+#' Retrieves information about the account's `OrganizationAccess` status.
+#' This API can be called either by the management account or the delegated
+#' administrator by using the `CallAs` parameter. This API can also be
+#' called without the `CallAs` parameter by the management account.
+#'
+#' @usage
+#' cloudformation_describe_organizations_access(CallAs)
+#'
+#' @param CallAs \[Service-managed permissions\] Specifies whether you are acting as an
+#' account administrator in the organization's management account or as a
+#' delegated administrator in a member account.
+#' 
+#' By default, `SELF` is specified.
+#' 
+#' -   If you are signed in to the management account, specify `SELF`.
+#' 
+#' -   If you are signed in to a delegated administrator account, specify
+#'     `DELEGATED_ADMIN`.
+#' 
+#'     Your Amazon Web Services account must be registered as a delegated
+#'     administrator in the management account. For more information, see
+#'     [Register a delegated
+#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'     in the *CloudFormation User Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "ENABLED"|"DISABLED"|"DISABLED_PERMANENTLY"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_organizations_access(
+#'   CallAs = "SELF"|"DELEGATED_ADMIN"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_describe_organizations_access
+#'
+#' @aliases cloudformation_describe_organizations_access
+cloudformation_describe_organizations_access <- function(CallAs = NULL) {
+  op <- new_operation(
+    name = "DescribeOrganizationsAccess",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$describe_organizations_access_input(CallAs = CallAs)
+  output <- .cloudformation$describe_organizations_access_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$describe_organizations_access <- cloudformation_describe_organizations_access
+
 #' Returns information about a CloudFormation extension publisher
 #'
 #' @description
@@ -2213,7 +2367,7 @@ cloudformation_describe_publisher <- function(PublisherId = NULL) {
 #' @description
 #' Returns information about a stack drift detection operation. A stack
 #' drift detection operation detects whether a stack's actual configuration
-#' differs, or has *drifted*, from it's expected configuration, as defined
+#' differs, or has *drifted*, from its expected configuration, as defined
 #' in the stack template and any values specified as template parameters. A
 #' stack is considered to have drifted if one or more of its resources have
 #' drifted. For more information about stack and resource drift, see
@@ -2373,15 +2527,16 @@ cloudformation_describe_stack_events <- function(StackName = NULL, NextToken = N
 }
 .cloudformation$operations$describe_stack_events <- cloudformation_describe_stack_events
 
-#' Returns the stack instance that's associated with the specified stack
-#' set, Amazon Web Services account, and Region
+#' Returns the stack instance that's associated with the specified
+#' StackSet, Amazon Web Services account, and Amazon Web Services Region
 #'
 #' @description
-#' Returns the stack instance that's associated with the specified stack
-#' set, Amazon Web Services account, and Region.
+#' Returns the stack instance that's associated with the specified
+#' StackSet, Amazon Web Services account, and Amazon Web Services Region.
 #' 
-#' For a list of stack instances that are associated with a specific stack
-#' set, use [`list_stack_instances`][cloudformation_list_stack_instances].
+#' For a list of stack instances that are associated with a specific
+#' StackSet, use
+#' [`list_stack_instances`][cloudformation_list_stack_instances].
 #'
 #' @usage
 #' cloudformation_describe_stack_instance(StackSetName,
@@ -2429,7 +2584,7 @@ cloudformation_describe_stack_events <- function(StackName = NULL, NextToken = N
 #'     ),
 #'     Status = "CURRENT"|"OUTDATED"|"INOPERABLE",
 #'     StackInstanceStatus = list(
-#'       DetailedStatus = "PENDING"|"RUNNING"|"SUCCEEDED"|"FAILED"|"CANCELLED"|"INOPERABLE"
+#'       DetailedStatus = "PENDING"|"RUNNING"|"SUCCEEDED"|"FAILED"|"CANCELLED"|"INOPERABLE"|"SKIPPED_SUSPENDED_ACCOUNT"
 #'     ),
 #'     StatusReason = "string",
 #'     OrganizationalUnitId = "string",
@@ -2806,10 +2961,10 @@ cloudformation_describe_stack_resources <- function(StackName = NULL, LogicalRes
 }
 .cloudformation$operations$describe_stack_resources <- cloudformation_describe_stack_resources
 
-#' Returns the description of the specified stack set
+#' Returns the description of the specified StackSet
 #'
 #' @description
-#' Returns the description of the specified stack set.
+#' Returns the description of the specified StackSet.
 #'
 #' @usage
 #' cloudformation_describe_stack_set(StackSetName, CallAs)
@@ -2923,10 +3078,10 @@ cloudformation_describe_stack_set <- function(StackSetName, CallAs = NULL) {
 }
 .cloudformation$operations$describe_stack_set <- cloudformation_describe_stack_set
 
-#' Returns the description of the specified stack set operation
+#' Returns the description of the specified StackSet operation
 #'
 #' @description
-#' Returns the description of the specified stack set operation.
+#' Returns the description of the specified StackSet operation.
 #'
 #' @usage
 #' cloudformation_describe_stack_set_operation(StackSetName, OperationId,
@@ -3054,7 +3209,20 @@ cloudformation_describe_stack_set_operation <- function(StackSetName, OperationI
 #' @usage
 #' cloudformation_describe_stacks(StackName, NextToken)
 #'
-#' @param StackName The name or the unique stack ID that's associated with the stack, which
+#' @param StackName If you don't pass a parameter to `StackName`, the API returns a response
+#' that describes all resources in the account. This requires
+#' [`list_stacks`][cloudformation_list_stacks] and
+#' [`describe_stacks`][cloudformation_describe_stacks] permissions.
+#' 
+#' The IAM policy below can be added to IAM policies when you want to limit
+#' resource-level permissions and avoid returning a response when no
+#' parameter is sent in the request:
+#' 
+#' \{ "Version": "2012-10-17", "Statement": \[\{ "Effect": "Deny",
+#' "Action": "cloudformation:DescribeStacks", "NotResource":
+#' "arn:aws:cloudformation:*:*:stack/*/*" \}\] \}
+#' 
+#' The name or the unique stack ID that's associated with the stack, which
 #' aren't always interchangeable:
 #' 
 #' -   Running stacks: You can specify either the stack's name or its
@@ -3360,12 +3528,12 @@ cloudformation_describe_type_registration <- function(RegistrationToken) {
 .cloudformation$operations$describe_type_registration <- cloudformation_describe_type_registration
 
 #' Detects whether a stack's actual configuration differs, or has drifted,
-#' from it's expected configuration, as defined in the stack template and
+#' from its expected configuration, as defined in the stack template and
 #' any values specified as template parameters
 #'
 #' @description
 #' Detects whether a stack's actual configuration differs, or has
-#' *drifted*, from it's expected configuration, as defined in the stack
+#' *drifted*, from its expected configuration, as defined in the stack
 #' template and any values specified as template parameters. For each
 #' resource in the stack that supports drift detection, CloudFormation
 #' compares the actual configuration of the resource with its expected
@@ -3446,12 +3614,12 @@ cloudformation_detect_stack_drift <- function(StackName, LogicalResourceIds = NU
 .cloudformation$operations$detect_stack_drift <- cloudformation_detect_stack_drift
 
 #' Returns information about whether a resource's actual configuration
-#' differs, or has drifted, from it's expected configuration, as defined in
+#' differs, or has drifted, from its expected configuration, as defined in
 #' the stack template and any values specified as template parameters
 #'
 #' @description
 #' Returns information about whether a resource's actual configuration
-#' differs, or has *drifted*, from it's expected configuration, as defined
+#' differs, or has *drifted*, from its expected configuration, as defined
 #' in the stack template and any values specified as template parameters.
 #' This information includes actual and expected property values for
 #' resources in which CloudFormation detects drift. Only resource
@@ -3597,7 +3765,12 @@ cloudformation_detect_stack_resource_drift <- function(StackName, LogicalResourc
 #'
 #' @param StackSetName &#91;required&#93; The name of the stack set on which to perform the drift detection
 #' operation.
-#' @param OperationPreferences 
+#' @param OperationPreferences The user-specified preferences for how CloudFormation performs a stack
+#' set operation.
+#' 
+#' For more information about maximum concurrent accounts and failure
+#' tolerance, see [Stack set operation
+#' options](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options).
 #' @param OperationId *The ID of the stack set operation.*
 #' @param CallAs \[Service-managed permissions\] Specifies whether you are acting as an
 #' account administrator in the organization's management account or as a
@@ -4098,9 +4271,6 @@ cloudformation_get_template_summary <- function(TemplateBody = NULL, TemplateURL
 #' operation to import up to 10 stacks into a new stack set in the same
 #' account as the source stack or in a different administrator account and
 #' Region, by specifying the stack ID of the stack you intend to import.
-#' 
-#' [`import_stacks_to_stack_set`][cloudformation_import_stacks_to_stack_set]
-#' is only supported by self-managed permissions.
 #'
 #' @usage
 #' cloudformation_import_stacks_to_stack_set(StackSetName, StackIds,
@@ -4118,7 +4288,12 @@ cloudformation_get_template_summary <- function(TemplateBody = NULL, TemplateURL
 #' Specify either `StackIds` or `StackIdsUrl`.
 #' @param OrganizationalUnitIds The list of OU ID's to which the stacks being imported has to be mapped
 #' as deployment target.
-#' @param OperationPreferences 
+#' @param OperationPreferences The user-specified preferences for how CloudFormation performs a stack
+#' set operation.
+#' 
+#' For more information about maximum concurrent accounts and failure
+#' tolerance, see [Stack set operation
+#' options](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options).
 #' @param OperationId A unique, user defined, identifier for the stack set operation.
 #' @param CallAs By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
@@ -4262,7 +4437,7 @@ cloudformation_list_change_sets <- function(StackName, NextToken = NULL) {
 #' Lists all exported output values in the account and Region in which you
 #' call this action. Use this action to see the exported output values that
 #' you can import into other stacks. To import values, use the
-#' [`Fn::ImportValue`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html)
+#' [Fn::ImportValue](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html)
 #' function.
 #' 
 #' For more information, see [CloudFormation export stack output
@@ -4328,7 +4503,7 @@ cloudformation_list_exports <- function(NextToken = NULL) {
 #' see [`list_exports`][cloudformation_list_exports].
 #' 
 #' For more information about importing an exported output value, see the
-#' [`Fn::ImportValue`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html)
+#' [Fn::ImportValue](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html)
 #' function.
 #'
 #' @usage
@@ -4442,7 +4617,7 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
 #'       Status = "CURRENT"|"OUTDATED"|"INOPERABLE",
 #'       StatusReason = "string",
 #'       StackInstanceStatus = list(
-#'         DetailedStatus = "PENDING"|"RUNNING"|"SUCCEEDED"|"FAILED"|"CANCELLED"|"INOPERABLE"
+#'         DetailedStatus = "PENDING"|"RUNNING"|"SUCCEEDED"|"FAILED"|"CANCELLED"|"INOPERABLE"|"SKIPPED_SUSPENDED_ACCOUNT"
 #'       ),
 #'       OrganizationalUnitId = "string",
 #'       DriftStatus = "DRIFTED"|"IN_SYNC"|"UNKNOWN"|"NOT_CHECKED",
@@ -5189,13 +5364,13 @@ cloudformation_list_type_versions <- function(Type = NULL, TypeName = NULL, Arn 
 #' Valid values include:
 #' 
 #' -   `PRIVATE`: Extensions that are visible and usable within this
-#'     account and region. This includes:
+#'     account and Region. This includes:
 #' 
 #'     -   Private extensions you have registered in this account and
-#'         region.
+#'         Region.
 #' 
 #'     -   Public extensions that you have activated in this account and
-#'         region.
+#'         Region.
 #' 
 #' -   `PUBLIC`: Extensions that are publicly visible and available to be
 #'     activated within any Amazon Web Services account. This includes
@@ -5315,11 +5490,11 @@ cloudformation_list_types <- function(Visibility = NULL, ProvisioningType = NULL
 .cloudformation$operations$list_types <- cloudformation_list_types
 
 #' Publishes the specified extension to the CloudFormation registry as a
-#' public extension in this region
+#' public extension in this Region
 #'
 #' @description
 #' Publishes the specified extension to the CloudFormation registry as a
-#' public extension in this region. Public extensions are available for use
+#' public extension in this Region. Public extensions are available for use
 #' by all CloudFormation users. For more information about publishing
 #' extensions, see [Publishing extensions to make them available for public
 #' use](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/publish-extension.html)
@@ -5557,7 +5732,7 @@ cloudformation_register_publisher <- function(AcceptTermsAndConditions = NULL, C
 #' in the *CloudFormation CLI User Guide*.
 #' 
 #' You can have a maximum of 50 resource extension versions registered at a
-#' time. This maximum is per account and per region. Use
+#' time. This maximum is per account and per Region. Use
 #' [`deregister_type`][cloudformation_deregister_type] to deregister
 #' specific extension versions if necessary.
 #' 
@@ -5566,7 +5741,7 @@ cloudformation_register_publisher <- function(AcceptTermsAndConditions = NULL, C
 #' [`describe_type_registration`][cloudformation_describe_type_registration]
 #' to monitor the progress of the registration request.
 #' 
-#' Once you have registered a private extension in your account and region,
+#' Once you have registered a private extension in your account and Region,
 #' use [`set_type_configuration`][cloudformation_set_type_configuration] to
 #' specify configuration properties for the extension. For more
 #' information, see [Configuring extensions at the account
@@ -5818,11 +5993,11 @@ cloudformation_set_stack_policy <- function(StackName, StackPolicyBody = NULL, S
 .cloudformation$operations$set_stack_policy <- cloudformation_set_stack_policy
 
 #' Specifies the configuration data for a registered CloudFormation
-#' extension, in the given account and region
+#' extension, in the given account and Region
 #'
 #' @description
 #' Specifies the configuration data for a registered CloudFormation
-#' extension, in the given account and region.
+#' extension, in the given account and Region.
 #' 
 #' To view the current configuration data for an extension, refer to the
 #' `ConfigurationSchema` element of
@@ -5842,26 +6017,25 @@ cloudformation_set_stack_policy <- function(StackName, StackPolicyBody = NULL, S
 #'   ConfigurationAlias, TypeName, Type)
 #'
 #' @param TypeArn The Amazon Resource Name (ARN) for the extension, in this account and
-#' region.
+#' Region.
 #' 
 #' For public extensions, this will be the ARN assigned when you [activate
 #' the
 #' type](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ActivateType.html)
-#' in this account and region. For private extensions, this will be the ARN
+#' in this account and Region. For private extensions, this will be the ARN
 #' assigned when you [register the
 #' type](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterType.html)
-#' in this account and region.
+#' in this account and Region.
 #' 
 #' Do not include the extension versions suffix at the end of the ARN. You
 #' can set the configuration for an extension, but not for a specific
 #' extension version.
-#' @param Configuration &#91;required&#93; The configuration data for the extension, in this account and region.
+#' @param Configuration &#91;required&#93; The configuration data for the extension, in this account and Region.
 #' 
 #' The configuration data must be formatted as JSON, and validate against
 #' the schema returned in the `ConfigurationSchema` response element of
-#' [API_DescribeType](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html).
-#' For more information, see [Defining account-level configuration data for
-#' an
+#' [`describe_type`][cloudformation_describe_type]. For more information,
+#' see [Defining account-level configuration data for an
 #' extension](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-model.html#resource-type-howto-configuration)
 #' in the *CloudFormation CLI User Guide*.
 #' @param ConfigurationAlias An alias by which to refer to this extension configuration data.
@@ -6126,7 +6300,7 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId, C
 #' in the *CloudFormation CLI User Guide*.
 #' 
 #' If you don't specify a version, CloudFormation uses the default version
-#' of the extension in your account and region for testing.
+#' of the extension in your account and Region for testing.
 #' 
 #' To perform testing, CloudFormation assumes the execution role specified
 #' when the type was registered. For more information, see
@@ -6163,7 +6337,7 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId, C
 #' `Type`.
 #' 
 #' If you don't specify a version, CloudFormation uses the default version
-#' of the extension in this account and region for testing.
+#' of the extension in this account and Region for testing.
 #' @param LogDeliveryBucket The S3 bucket to which CloudFormation delivers the contract test
 #' execution logs.
 #' 

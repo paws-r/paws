@@ -15,6 +15,6 @@ Example: \code{examplecluster}}
 \description{
 Describes whether information, such as queries and connection attempts, is being logged for the specified Amazon Redshift cluster.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_logging_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_logging_status/} for full documentation.
 }
 \keyword{internal}

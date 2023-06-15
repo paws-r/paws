@@ -17,6 +17,6 @@ sesv2_put_email_identity_configuration_set_attributes(
 \description{
 Used to associate a configuration set with an email identity.
 
-See \url{https://paws-r.github.io/docs/sesv2/put_email_identity_configuration_set_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_put_email_identity_configuration_set_attributes/} for full documentation.
 }
 \keyword{internal}

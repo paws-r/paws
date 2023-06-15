@@ -13,6 +13,6 @@ URLs cannot contain the ARN.}
 \description{
 Retrieves information about an assistant.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/get_assistant.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_get_assistant/} for full documentation.
 }
 \keyword{internal}

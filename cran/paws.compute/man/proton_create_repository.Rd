@@ -34,6 +34,6 @@ in the \emph{Proton User Guide}.}
 \description{
 Create and register a link to a repository. Proton uses the link to repeatedly access the repository, to either push to it (self-managed provisioning) or pull from it (template sync). You can share a linked repository across multiple resources (like environments using self-managed provisioning, or synced templates). When you create a repository link, Proton creates a \href{https://docs.aws.amazon.com/proton/latest/userguide/using-service-linked-roles.html}{service-linked role} for you.
 
-See \url{https://paws-r.github.io/docs/proton/create_repository.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_create_repository/} for full documentation.
 }
 \keyword{internal}

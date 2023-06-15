@@ -34,6 +34,6 @@ minimum is 900 seconds, and the maximum is 3600 seconds.}
 \description{
 Returns a database user name and temporary password with temporary authorization to log in to Amazon Redshift Serverless.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/get_credentials.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_get_credentials/} for full documentation.
 }
 \keyword{internal}

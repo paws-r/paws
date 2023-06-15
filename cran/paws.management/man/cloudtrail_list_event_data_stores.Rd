@@ -3,7 +3,7 @@
 \name{cloudtrail_list_event_data_stores}
 \alias{cloudtrail_list_event_data_stores}
 \title{Returns information about all event data stores in the account, in the
-current region}
+current Region}
 \usage{
 cloudtrail_list_event_data_stores(NextToken = NULL, MaxResults = NULL)
 }
@@ -13,8 +13,8 @@ cloudtrail_list_event_data_stores(NextToken = NULL, MaxResults = NULL)
 \item{MaxResults}{The maximum number of event data stores to display on a single page.}
 }
 \description{
-Returns information about all event data stores in the account, in the current region.
+Returns information about all event data stores in the account, in the current Region.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/list_event_data_stores.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_list_event_data_stores/} for full documentation.
 }
 \keyword{internal}

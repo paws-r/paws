@@ -12,6 +12,6 @@ comprehendmedical_stop_entities_detection_v2_job(JobId)
 \description{
 Stops a medical entities detection job in progress.
 
-See \url{https://paws-r.github.io/docs/comprehendmedical/stop_entities_detection_v2_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehendmedical_stop_entities_detection_v2_job/} for full documentation.
 }
 \keyword{internal}

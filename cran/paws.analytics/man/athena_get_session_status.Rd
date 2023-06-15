@@ -12,6 +12,6 @@ athena_get_session_status(SessionId)
 \description{
 Gets the current status of a session.
 
-See \url{https://paws-r.github.io/docs/athena/get_session_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_get_session_status/} for full documentation.
 }
 \keyword{internal}

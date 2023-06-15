@@ -20,6 +20,6 @@ for.}
 \description{
 Enable or disable email sending for messages that use a particular configuration set in a specific Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/sesv2/put_configuration_set_sending_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_put_configuration_set_sending_options/} for full documentation.
 }
 \keyword{internal}

@@ -35,6 +35,6 @@ batch of objects.}
 \description{
 Retrieves an array of WebACLSummary objects for the web ACLs that you manage.
 
-See \url{https://paws-r.github.io/docs/wafv2/list_web_ac_ls.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_list_web_ac_ls/} for full documentation.
 }
 \keyword{internal}

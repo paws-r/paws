@@ -63,6 +63,6 @@ different variations.}
 \description{
 Creates an Evidently \emph{feature} that you want to launch or test. You can define up to five variations of a feature, and use these variations in your launches and experiments. A feature must be created in a project. For information about creating a project, see \code{\link[=cloudwatchevidently_create_project]{create_project}}.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/create_feature.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_create_feature/} for full documentation.
 }
 \keyword{internal}

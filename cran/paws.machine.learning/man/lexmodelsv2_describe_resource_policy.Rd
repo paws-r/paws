@@ -13,6 +13,6 @@ policy is attached to.}
 \description{
 Gets the resource policy and policy revision for a bot or bot alias.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/describe_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_describe_resource_policy/} for full documentation.
 }
 \keyword{internal}

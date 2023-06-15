@@ -23,6 +23,6 @@ frauddetector_get_models(
 \description{
 Gets one or more models. Gets all models for the Amazon Web Services account if no model type and no model id provided. Gets all models for the Amazon Web Services account and model type, if the model type is specified but model id is not provided. Gets a specific model if (model type, model id) tuple is specified.
 
-See \url{https://paws-r.github.io/docs/frauddetector/get_models.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_get_models/} for full documentation.
 }
 \keyword{internal}

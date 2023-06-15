@@ -14,6 +14,6 @@ glue_get_classifiers(MaxResults = NULL, NextToken = NULL)
 \description{
 Lists all classifier objects in the Data Catalog.
 
-See \url{https://paws-r.github.io/docs/glue/get_classifiers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_classifiers/} for full documentation.
 }
 \keyword{internal}

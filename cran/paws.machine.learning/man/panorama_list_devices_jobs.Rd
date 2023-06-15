@@ -21,6 +21,6 @@ next page of results.}
 \description{
 Returns a list of jobs.
 
-See \url{https://paws-r.github.io/docs/panorama/list_devices_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_list_devices_jobs/} for full documentation.
 }
 \keyword{internal}

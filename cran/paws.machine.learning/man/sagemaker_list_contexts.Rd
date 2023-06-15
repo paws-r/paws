@@ -40,6 +40,6 @@ value is 10.}
 \description{
 Lists the contexts in your account and their properties.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_contexts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_contexts/} for full documentation.
 }
 \keyword{internal}

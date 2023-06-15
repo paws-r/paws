@@ -47,6 +47,6 @@ in the \emph{Amazon EC2 User Guide}.}
 \description{
 Modify the auto-placement setting of a Dedicated Host. When auto-placement is enabled, any instances that you launch with a tenancy of \code{host} but without a specific host ID are placed onto any available Dedicated Host in your account that has auto-placement enabled. When auto-placement is disabled, you need to provide a host ID to have the instance launch onto a specific host. If no host ID is provided, the instance is launched onto a suitable host with auto-placement enabled.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_hosts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_hosts/} for full documentation.
 }
 \keyword{internal}

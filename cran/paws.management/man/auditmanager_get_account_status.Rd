@@ -9,6 +9,6 @@ auditmanager_get_account_status()
 \description{
 Returns the registration status of an account in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_account_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_account_status/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ finspacedata_get_external_data_view_access_details(dataViewId, datasetId)
 \description{
 Returns the credentials to access the external Dataview from an S3 location. To call this API:
 
-See \url{https://paws-r.github.io/docs/finspacedata/get_external_data_view_access_details.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_get_external_data_view_access_details/} for full documentation.
 }
 \keyword{internal}

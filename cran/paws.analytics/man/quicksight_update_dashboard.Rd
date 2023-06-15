@@ -73,6 +73,6 @@ or Analysis.}
 \description{
 Updates a dashboard in an Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/quicksight/update_dashboard.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_update_dashboard/} for full documentation.
 }
 \keyword{internal}

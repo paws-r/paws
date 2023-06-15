@@ -25,6 +25,6 @@ passed successfully in your API call.}
 \description{
 Sets the result of a Lambda validation function. The function validates lifecycle hooks during a deployment that uses the Lambda or Amazon ECS compute platform. For Lambda deployments, the available lifecycle hooks are \code{BeforeAllowTraffic} and \code{AfterAllowTraffic}. For Amazon ECS deployments, the available lifecycle hooks are \code{BeforeInstall}, \code{AfterInstall}, \code{AfterAllowTestTraffic}, \code{BeforeAllowTraffic}, and \code{AfterAllowTraffic}. Lambda validation functions return \code{Succeeded} or \code{Failed}. For more information, see \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-lambda}{AppSpec 'hooks' Section for an Lambda Deployment} and \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-ecs}{AppSpec 'hooks' Section for an Amazon ECS Deployment}.
 
-See \url{https://paws-r.github.io/docs/codedeploy/put_lifecycle_event_hook_execution_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_put_lifecycle_event_hook_execution_status/} for full documentation.
 }
 \keyword{internal}

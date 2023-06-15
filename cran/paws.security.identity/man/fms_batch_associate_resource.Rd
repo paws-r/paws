@@ -17,6 +17,6 @@ associated to the resource set. The URIs must be Amazon Resource Names
 \description{
 Associate resources to a Firewall Manager resource set.
 
-See \url{https://paws-r.github.io/docs/fms/batch_associate_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_batch_associate_resource/} for full documentation.
 }
 \keyword{internal}

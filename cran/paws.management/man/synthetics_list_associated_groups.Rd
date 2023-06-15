@@ -26,6 +26,6 @@ If you omit this parameter, the default of 20 is used.}
 \description{
 Returns a list of the groups that the specified canary is associated with. The canary that you specify must be in the current Region.
 
-See \url{https://paws-r.github.io/docs/synthetics/list_associated_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/synthetics_list_associated_groups/} for full documentation.
 }
 \keyword{internal}

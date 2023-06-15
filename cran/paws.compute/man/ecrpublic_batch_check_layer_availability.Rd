@@ -24,6 +24,6 @@ check.}
 \description{
 Checks the availability of one or more image layers that are within a repository in a public registry. When an image is pushed to a repository, each image layer is checked to verify if it has been uploaded before. If it has been uploaded, then the image layer is skipped.
 
-See \url{https://paws-r.github.io/docs/ecrpublic/batch_check_layer_availability.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecrpublic_batch_check_layer_availability/} for full documentation.
 }
 \keyword{internal}

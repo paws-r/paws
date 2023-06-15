@@ -36,6 +36,6 @@ merge operation is successful.}
 \description{
 Returns information about a specified merge commit.
 
-See \url{https://paws-r.github.io/docs/codecommit/get_merge_commit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_get_merge_commit/} for full documentation.
 }
 \keyword{internal}

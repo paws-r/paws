@@ -27,6 +27,6 @@ fsx_create_volume_from_backup(
 \description{
 Creates a new Amazon FSx for NetApp ONTAP volume from an existing Amazon FSx volume backup.
 
-See \url{https://paws-r.github.io/docs/fsx/create_volume_from_backup.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_create_volume_from_backup/} for full documentation.
 }
 \keyword{internal}

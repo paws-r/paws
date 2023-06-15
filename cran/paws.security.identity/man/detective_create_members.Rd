@@ -33,6 +33,6 @@ the organization behavior graph, the email address is not required.}
 \description{
 \code{\link[=detective_create_members]{create_members}} is used to send invitations to accounts. For the organization behavior graph, the Detective administrator account uses \code{\link[=detective_create_members]{create_members}} to enable organization accounts as member accounts.
 
-See \url{https://paws-r.github.io/docs/detective/create_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/detective_create_members/} for full documentation.
 }
 \keyword{internal}

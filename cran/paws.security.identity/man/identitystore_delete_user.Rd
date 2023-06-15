@@ -14,6 +14,6 @@ identitystore_delete_user(IdentityStoreId, UserId)
 \description{
 Deletes a user within an identity store given \code{UserId}.
 
-See \url{https://paws-r.github.io/docs/identitystore/delete_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/identitystore_delete_user/} for full documentation.
 }
 \keyword{internal}

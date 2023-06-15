@@ -13,6 +13,6 @@ proton_delete_service_template(name)
 \description{
 If no other major or minor versions of the service template exist, delete the service template.
 
-See \url{https://paws-r.github.io/docs/proton/delete_service_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_delete_service_template/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ comprehend_list_flywheel_iteration_history(
 \description{
 Information about the history of a flywheel iteration. For more information about flywheels, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html}{Flywheel overview} in the \emph{Amazon Comprehend Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/comprehend/list_flywheel_iteration_history.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_list_flywheel_iteration_history/} for full documentation.
 }
 \keyword{internal}

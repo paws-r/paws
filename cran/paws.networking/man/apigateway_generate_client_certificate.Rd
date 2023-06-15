@@ -16,6 +16,6 @@ start with \verb{aws:}. The tag value can be up to 256 characters.}
 \description{
 Generates a ClientCertificate resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/generate_client_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_generate_client_certificate/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ retrieve an InsightId.}
 \description{
 Retrieves the summary information of an insight. This includes impact to clients and root cause services, the top anomalous services, the category, the state of the insight, and the start and end time of the insight.
 
-See \url{https://paws-r.github.io/docs/xray/get_insight.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_get_insight/} for full documentation.
 }
 \keyword{internal}

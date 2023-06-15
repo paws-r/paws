@@ -24,6 +24,6 @@ cloudtrail_list_imports(
 \description{
 Returns information on all imports, or a select set of imports by \code{ImportStatus} or \code{Destination}.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/list_imports.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_list_imports/} for full documentation.
 }
 \keyword{internal}

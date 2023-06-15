@@ -17,6 +17,6 @@ cannot be returned in one response.}
 \description{
 Lists all team members associated with a project.
 
-See \url{https://paws-r.github.io/docs/codestar/list_team_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestar_list_team_members/} for full documentation.
 }
 \keyword{internal}

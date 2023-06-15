@@ -75,6 +75,6 @@ characters, and the maximum length for a tag's value is 256 characters.}
 \description{
 Creates a cached volume on a specified cached volume gateway. This operation is only supported in the cached volume gateway type.
 
-See \url{https://paws-r.github.io/docs/storagegateway/create_cachedi_scsi_volume.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_create_cachedi_scsi_volume/} for full documentation.
 }
 \keyword{internal}

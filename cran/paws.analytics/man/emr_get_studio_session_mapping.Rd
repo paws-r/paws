@@ -35,6 +35,6 @@ in the \emph{IAM Identity Center Identity Store API Reference}. Either
 \description{
 Fetches mapping details for the specified Amazon EMR Studio and identity (user or group).
 
-See \url{https://paws-r.github.io/docs/emr/get_studio_session_mapping.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_get_studio_session_mapping/} for full documentation.
 }
 \keyword{internal}

@@ -32,6 +32,6 @@ instance.
 \description{
 Detaches a network interface from an instance.
 
-See \url{https://paws-r.github.io/docs/ec2/detach_network_interface.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_detach_network_interface/} for full documentation.
 }
 \keyword{internal}

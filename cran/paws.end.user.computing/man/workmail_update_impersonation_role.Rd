@@ -30,6 +30,6 @@ update.}
 \description{
 Updates an impersonation role for the given WorkMail organization.
 
-See \url{https://paws-r.github.io/docs/workmail/update_impersonation_role.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_update_impersonation_role/} for full documentation.
 }
 \keyword{internal}

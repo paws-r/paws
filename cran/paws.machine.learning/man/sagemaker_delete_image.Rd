@@ -12,6 +12,6 @@ sagemaker_delete_image(ImageName)
 \description{
 Deletes a SageMaker image and all versions of the image. The container images aren't deleted.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_image/} for full documentation.
 }
 \keyword{internal}

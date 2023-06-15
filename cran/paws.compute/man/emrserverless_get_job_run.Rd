@@ -14,6 +14,6 @@ emrserverless_get_job_run(applicationId, jobRunId)
 \description{
 Displays detailed information about a job run.
 
-See \url{https://paws-r.github.io/docs/emrserverless/get_job_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emrserverless_get_job_run/} for full documentation.
 }
 \keyword{internal}

@@ -31,6 +31,6 @@ to remotely access project resources, for example Amazon EC2 instances.}
 \description{
 Adds an IAM user to the team for an AWS CodeStar project.
 
-See \url{https://paws-r.github.io/docs/codestar/associate_team_member.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestar_associate_team_member/} for full documentation.
 }
 \keyword{internal}

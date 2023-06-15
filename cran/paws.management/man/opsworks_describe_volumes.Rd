@@ -31,6 +31,6 @@ volume.}
 \description{
 Describes an instance's Amazon EBS volumes.
 
-See \url{https://paws-r.github.io/docs/opsworks/describe_volumes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_describe_volumes/} for full documentation.
 }
 \keyword{internal}

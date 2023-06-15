@@ -64,6 +64,6 @@ worker types.}
 \description{
 Creates an application.
 
-See \url{https://paws-r.github.io/docs/emrserverless/create_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emrserverless_create_application/} for full documentation.
 }
 \keyword{internal}

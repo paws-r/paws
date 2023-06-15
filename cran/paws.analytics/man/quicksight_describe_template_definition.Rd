@@ -29,6 +29,6 @@ apply to templates.}
 \description{
 Provides a detailed description of the definition of a template.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_template_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_template_definition/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ be described.}
 \description{
 Gets a description for one or more Server Message Block (SMB) file shares from a S3 File Gateway. This operation is only supported for S3 File Gateways.
 
-See \url{https://paws-r.github.io/docs/storagegateway/describe_smb_file_shares.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_describe_smb_file_shares/} for full documentation.
 }
 \keyword{internal}

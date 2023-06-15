@@ -17,6 +17,6 @@ results.}
 \description{
 Returns a list of \href{https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html}{DomainSummary} objects for all domains owned by the Amazon Web Services account that makes this call. Each returned \code{DomainSummary} object contains information about a domain.
 
-See \url{https://paws-r.github.io/docs/codeartifact/list_domains.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_list_domains/} for full documentation.
 }
 \keyword{internal}

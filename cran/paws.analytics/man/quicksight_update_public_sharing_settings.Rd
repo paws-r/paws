@@ -20,6 +20,6 @@ an Amazon QuickSight account.}
 \description{
 Use the \code{\link[=quicksight_update_public_sharing_settings]{update_public_sharing_settings}} operation to turn on or turn off the public sharing settings of an Amazon QuickSight dashboard.
 
-See \url{https://paws-r.github.io/docs/quicksight/update_public_sharing_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_update_public_sharing_settings/} for full documentation.
 }
 \keyword{internal}

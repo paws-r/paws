@@ -19,6 +19,6 @@ configuration for.}
 \description{
 Puts a new capacity assignment configuration for a specified capacity reservation. If a capacity assignment configuration already exists for the capacity reservation, replaces the existing capacity assignment configuration.
 
-See \url{https://paws-r.github.io/docs/athena/put_capacity_assignment_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_put_capacity_assignment_configuration/} for full documentation.
 }
 \keyword{internal}

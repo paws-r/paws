@@ -15,6 +15,6 @@ configservice_delete_resource_config(ResourceType, ResourceId)
 \description{
 Records the configuration state for a custom resource that has been deleted. This API records a new ConfigurationItem with a ResourceDeleted status. You can retrieve the ConfigurationItems recorded for this resource in your Config History.
 
-See \url{https://paws-r.github.io/docs/configservice/delete_resource_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_delete_resource_config/} for full documentation.
 }
 \keyword{internal}
